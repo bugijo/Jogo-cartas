@@ -1,0 +1,14 @@
+test_ambush_cannot_be_skipped_from_entry (test_rules.CampaignRegressionTests.test_ambush_cannot_be_skipped_from_entry) ... ok
+test_all_initial_link_combinations_fit (test_rules.RulesTests.test_all_initial_link_combinations_fit) ... ok
+test_deprivation_reset_and_collapse_threshold (test_rules.RulesTests.test_deprivation_reset_and_collapse_threshold) ... ok
+test_intake_and_deadline (test_rules.RulesTests.test_intake_and_deadline) ... ok
+test_intent_protection_current_night (test_rules.RulesTests.test_intent_protection_current_night) ... ok
+test_night_return_and_overrun (test_rules.RulesTests.test_night_return_and_overrun) ... ok
+test_portions_and_expiry (test_rules.RulesTests.test_portions_and_expiry) ... ok
+test_pressure_queue_no_duplicate_at_three (test_rules.RulesTests.test_pressure_queue_no_duplicate_at_three) ... ok
+test_project_stock_conservation (test_rules.RulesTests.test_project_stock_conservation) ... ok
+
+----------------------------------------------------------------------
+Ran 9 tests in 0.007s
+
+OK

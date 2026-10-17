@@ -1,2 +1,6 @@
 __pycache__/
 *.pyc
+dist/
+history.bundle
+COMMIT_LOG.txt
+SHA256SUMS.txt

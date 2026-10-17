@@ -86,6 +86,7 @@ for n in range(1,25):token('enemy',f'E{n:02}')
 for text,q in [('Errante',12),('Corredor',6),('Bruto',6),('Porta',12),('Bloqueio',6),('Busca',12),('Verificado',6),('Fome',12),('Sede',12),('Dano',8),('1',20),('2',12),('3',12),('4',12),('Relógio',1),('Pressão',1)]:token('marker',text,q)
 D['modules']=[dict(id=f'ZC-MOD-{i:04}',name=f'M{i}',width_mm=277,height_mm=190,rotation=0) for i in range(1,5)]
 (P/'content/catalog.json').write_text(json.dumps(D,ensure_ascii=False,indent=2))
+(P/'content/map_layouts.json').write_text(json.dumps(D['maps'],ensure_ascii=False,indent=2))
 counts={f:sum(c['family']==f for c in D['cards']) for f in sorted({c['family'] for c in D['cards']})}
 (P/'CONTENT_CATALOG.md').write_text('# Catálogo real 0.1\n\nFonte editável: content/catalog.json. IDs ZC-FAM-0001; quantidade física representada por entrada, não por nome.\n\n'+ '\n'.join(f'- {k}: {v} cartas.' for k,v in counts.items())+f'\n\nTotal {len(D["cards"])} cartas pequenas; 24 fichas meia A4; {len(D['tokens'])} marcadores, dos quais 24 tokens de heróis. Recursos são reserva finita com registro de excedentes. As quantidades foram definidas antes da diagramação. Sem miniaturas ou dados físicos incluídos.\n\n24 heróis: 12 iniciais e 12 desbloqueáveis. Quatro módulos locais reutilizáveis, seis diagramas, três painéis, marcadores e registro repetível. Profissões dos dez primeiros: propostas D02.\n')
 print(len(D['cards']),counts)
