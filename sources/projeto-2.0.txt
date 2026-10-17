@@ -1,0 +1,584 @@
+ZONA ZERO / COMUNIDADE / DOCUMENTO DE PROJETO 2.0
+
+
+
+
+ SOBREVIVENTES
+
+ ZONA ZERO
+ COMUNIDADE
+ Projeto de campanha física / proposta 2.0
+
+ Abrigo, famílias, resgates, recursos, expedições e mapas modulares.
+
+
+
+ Documento de design, não um novo kit pronto para imprimir e jogar. Preserva a edição básica
+ anterior. Regras novas e valores aqui propostos ainda precisam de prototipagem e playtest
+ humano.
+
+
+
+
+ Inclui preparação válida para 2-6 heróis, consumo por porções, intenções ocultas sem mestre,
+ expansão do abrigo e padrões de produção PnP.
+
+
+
+
+Proposta de regras / balanceamento e impressão física ainda não validados                       1
+ZONA ZERO / COMUNIDADE / DOCUMENTO DE PROJETO 2.0
+
+
+
+
+ 1. A experiência central
+
+ O grupo administra uma comunidade e escolhe expedições para mantê-la viva. Todo recurso
+ encontrado deve responder a uma necessidade: alimentar pessoas, recuperar alguém, ampliar
+ alojamento, tratar feridos ou concluir um projeto. Ganhar combate não é condição suficiente
+ para ganhar a campanha.
+
+ O jogo é cooperativo, sem mestre, para 1-6 participantes. Cada participante controla um herói
+ por expedição; no solo, controle dois. A comunidade possui mais moradores do que heróis
+ ativos. Todos os participantes podem sair; os civis executam as tarefas que ficaram
+ programadas no abrigo. Na primeira caixa, há apenas uma expedição do grupo por dia.
+ Expedições simultâneas serão um módulo posterior.
+
+ O capítulo inicial dura cinco dias e chama-se Antes que a água acabe. O grupo precisa instalar
+ um filtro funcional e terminar o quinto dia com segurança e abastecimento. As explorações não
+ são episódios sem consequências: ferimentos, saque esgotado, pessoas resgatadas e
+ construções permanecem registrados.
+
+
+
+
+Proposta de regras / balanceamento e impressão física ainda não validados                         2
+ZONA ZERO / COMUNIDADE / DOCUMENTO DE PROJETO 2.0
+
+
+
+
+ 2. Preparação: barracas e famílias
+
+ O abrigo básico possui quatro barracas de duas vagas humanas: oito vagas. Cada herói fundador
+ ocupa uma barraca com sua família. Para 5-6 heróis fundadores, acrescente uma barraca por
+ herói acima de quatro: cinco barracas para cinco heróis, seis para seis. Assim a dificuldade não
+ vem de uma configuração impossível. Em grupos menores, as barracas restantes ficam
+ disponíveis para resgates.
+
+ Use um baralho inicial de 12 vínculos: quatro Sozinho, quatro Com parceiro ou parceira, dois
+ Com filho ou filha, um Com cachorro, um Com parceiro e cachorro. Embaralhe e distribua uma
+ carta por fundador, sem repetir sorteio por falta de vaga. Cada carta adiciona no máximo um
+ humano: com quatro heróis haverá de quatro a oito humanos, mais até dois cães. Famílias
+ maiores existem nos encontros da campanha, não nesse sorteio inicial.
+
+ Nome e gênero de parceiros e filhos são escolhidos pelos jogadores, sem vantagem mecânica.
+ Crianças não saem em combate nem executam trabalho técnico. Adultos acompanhantes
+ recebem uma ficha civil e podem trabalhar. Todos têm identidade e vínculo, mas o jogo não
+ exige controlar cada pessoa com uma planilha extensa.
+
+ Cachorros não ocupam vaga humana de barraca: ficam vinculados a uma família. Cada família
+ aceita no máximo um. Cada cão consome uma porção de comida e uma de água por dia, oferece
+ alerta (+1 defesa uma vez por ataque, máximo +1 pelo grupo) e pode acompanhar uma
+ expedição por dia como apoio, sem ativação ou inventário próprios.
+
+ Estoque inicial candidato: alimento e água suficientes para dois dias da população inicial,
+ incluindo cães. Quantidade de cartas de quatro porções = arredondar para cima(2 ×
+ consumidores / 4). Começar com comida conservada; carne não é adequada como estoque
+ inicial de longa duração.
+
+
+
+
+Proposta de regras / balanceamento e impressão física ainda não validados                           3
+ZONA ZERO / COMUNIDADE / DOCUMENTO DE PROJETO 2.0
+
+
+
+
+ 3. O dia de campanha
+
+ Amanhecer: resolva recuperações, revele um evento diário e consulte a missão. Escolha os
+ heróis ativos; equipe todos a partir do estoque. Cada adulto presente fica alocado uma única
+ vez: expedição OU trabalho no abrigo OU recuperação. Crianças e cães não geram trabalho.
+ Registre os consumidores iniciais; quem chegar antes da refeição também consome naquela
+ noite.
+
+ Planejamento: atribua um trabalho a cada civil adulto disponível. Máximo de dois projetos de
+ construção em andamento; cada projeto recebe no máximo dois pontos de trabalho por dia.
+ Pontos restantes podem ir para vigilância, cuidado, investigação ou produção permitida por
+ estrutura. Não é possível deslocar um trabalhador depois de conhecer o resultado da expedição.
+
+ Expedição: percorra a rota, jogue o local e retorne. Noite: resolva primeiro o retorno e eventual
+ ataque, depois os trabalhos programados, a refeição, as intenções de recém-chegados e o
+ vencimento dos alimentos. Cada efeito deve informar explicitamente a própria fase; uma carta
+ não pode decidir retroativamente o que um civil fez.
+
+ A luz do dia possui oito segmentos. Rota curta custa um na ida e um na volta; rota longa custa
+ dois em cada sentido. Cada rodada tática custa um. Depois dos oito segmentos diurnos, há dois
+ segmentos noturnos (9 e 10), compartilhados por viagem e combate. Cada ligação de rota e
+ cada rodada tática consome um segmento, de dia ou de noite. Cada segmento noturno gasto
+ causa um ponto de fadiga a todos na volta. Se for rodada tática, acrescente uma Horda ao final;
+ se for viagem, revele uma carta de Viagem extra. Uma carta pode iniciar combate, mas não
+ concede tempo adicional. Antes de encerrar o décimo segmento, o grupo precisa ter terminado
+ o retorno. A retirada normal deve ser possível pela saída; não há transporte gratuito do meio do
+ mapa. Falhar em retornar encerra a expedição como retirada de emergência: perca a carga de
+ expedição, mantenha equipamentos pessoais, volte com fadiga e falhe no objetivo local. Limites
+ e custos precisam de ajuste em mesa.
+
+
+
+
+Proposta de regras / balanceamento e impressão física ainda não validados                            4
+ZONA ZERO / COMUNIDADE / DOCUMENTO DE PROJETO 2.0
+
+
+
+
+ 4. Estoque, comida e água
+
+ Existem quatro lugares distintos: estoque do abrigo, mochila individual, carga do veículo e
+ cartas no chão de uma zona. Transferir entre eles exige presença e ação quando a expedição
+ está em curso. Preparação e descarga no abrigo são gratuitas. Um item não pode existir em dois
+ lugares ao mesmo tempo.
+
+ Cada humano consome uma porção de comida e uma de água por noite. Cada cão também.
+ Uma carta Carne contém quatro porções e alimenta quatro consumidores em um dia. Mantenha
+ a carta com um cursor 4/3/2/1 enquanto houver porções. Abra quantas forem necessárias; retire
+ apenas as porções consumidas. Carne obtida hoje vence depois da refeição de hoje, inclusive
+ sobras, salvo refrigeração ativa. Comida conservada não vence fechada nem parcialmente
+ utilizada nesta primeira edição. Água permanece até ser usada.
+
+ Não reutilize o mesmo baralho para representar sorteio e estoque. A carta de Saque determina o
+ achado. A reserva fornece a carta física de Alimento, Água ou Material. Ao zerar, a carta física
+ volta à reserva correspondente. Isso não aumenta o estoque nem reabastece um local. A carta
+ de Saque vai ao descarte regional e não volta durante a mesma visita.
+
+ Exemplo: sete humanos e um cachorro consomem oito porções de cada recurso. Duas Carnes
+ completas e duas Águas completas bastam. Com oito humanos e um cachorro, são nove
+ porções: use duas cartas cheias e uma porção de uma terceira. Se a terceira comida for
+ conservada, guarde três; se for carne sem geladeira, as três vencem naquela noite. Não se
+ arredonda população para baixo.
+
+ Controle porções por marcadores ou pequenos discos sobre as cartas; não precisa recortar uma
+ carta a cada refeição. A reserva tem capacidade física declarada. Se faltar uma carta de reserva,
+ use ficha numerada equivalente, e registre a quantidade; a falta de impressão não altera a
+ regra.
+
+
+
+
+Proposta de regras / balanceamento e impressão física ainda não validados                            5
+ZONA ZERO / COMUNIDADE / DOCUMENTO DE PROJETO 2.0
+
+
+
+
+ 5. Fome, sede e recuperação
+
+ Após a refeição, quem não recebeu comida ganha Fome; quem não recebeu água ganha Sede.
+ Cada condição impede trabalho civil no dia seguinte e reduz os PA iniciais em um na próxima
+ expedição (mínimo um; reduções acumulam). Ao alimentar e hidratar alguém na refeição
+ seguinte, remova as respectivas condições. Recuperação exige que a pessoa tenha recebido as
+ duas necessidades.
+
+ Duas noites consecutivas com falta de qualquer necessidade causam um ferimento leve
+ adicional ao morador. Três noites consecutivas com falta em pelo menos um quarto dos
+ humanos colocam o abrigo em Colapso. Arredonde esse quarto para cima. Colapso oferece
+ missão de evacuação, não uma morte aleatória de familiares. Ao evacuar, o capítulo falha e a
+ comunidade recomeça com alojamento e estoque reduzidos segundo a carta do capítulo.
+
+ Para evitar bloqueio econômico, existe Coleta de emergência: um adulto que ficou no abrigo
+ produz uma porção de água OU uma porção de comida, escolhida no planejamento. Máximo
+ duas porções no total por dia para a comunidade. Não cria cartas cheias e não atende a
+ população toda; apenas oferece recuperação parcial. Horta, cisterna e filtro exigem recursos e
+ trabalho antes de produzir.
+
+ As quantidades são protótipos. É necessário medir se o grupo sofre escolhas interessantes ou
+ entra em uma sequência inevitável de fome e derrota. Nunca afirmar que essa curva foi
+ equilibrada apenas por fazer as contas de um exemplo.
+
+
+
+
+Proposta de regras / balanceamento e impressão física ainda não validados                         6
+ZONA ZERO / COMUNIDADE / DOCUMENTO DE PROJETO 2.0
+
+
+
+
+ 6. Construção e espaço do abrigo
+
+ O tabuleiro inicial possui 12 terrenos. Cada barraca, cozinha, depósito, oficina, enfermaria, horta
+ ou cisterna ocupa um; garagem ocupa dois. Portão e torre de vigia ocupam espaços de
+ perímetro separados. Início: quatro barracas, cozinha improvisada e depósito. Para cinco e seis
+ fundadores, as barracas extras ocupam terrenos livres do mesmo tabuleiro.
+
+ Os projetos são visíveis e não precisam ser sorteados para permitir sobrevivência básica. Nova
+ barraca: dois Materiais, uma Lona, um trabalho; +2 vagas. Casa simples: substitua uma barraca
+ por quatro vagas, pagando quatro Materiais, Madeira e dois trabalhos. Enfermaria: três
+ Materiais, Kit de instalação médica e dois trabalhos. Oficina: três Materiais, Bancada e dois
+ trabalhos. Garagem: quatro Materiais, Ferramentas e três trabalhos. Os componentes nomeados
+ são peças de projeto, diferentes de medicamentos consumíveis.
+
+ Uma estrutura só funciona depois de todos os custos e trabalhos terem sido pagos. Os custos
+ devem estar reservados no planejamento, antes da saída da expedição. Recursos reservados
+ ficam sobre a carta do projeto e saem do estoque disponível; materiais encontrados hoje só
+ podem iniciar um novo projeto amanhã. Cancelar devolve componentes intactos; trabalho já
+ gasto se perde. Danos não apagam a construção: ela fica inativa e pode ser reparada com dois
+ Materiais e um trabalho.
+
+ Ampliar o terreno custa quatro Materiais, duas Madeiras e dois trabalhos, além de concluir a
+ missão de limpar a área adjacente. Adicione um módulo de seis terrenos; máximo um módulo
+ adicional no capítulo inicial. Assim a expansão tem custo logístico, não é uma ação gratuita de
+ acomodação.
+
+
+
+
+Proposta de regras / balanceamento e impressão física ainda não validados                              7
+ZONA ZERO / COMUNIDADE / DOCUMENTO DE PROJETO 2.0
+
+
+
+
+ 7. Acolher pessoas e famílias
+
+ Encontros de sobreviventes exibem nome, número de humanos, presença de cão, ofício,
+ ferimentos e pista pública. O grupo conhece a carga humana que está assumindo antes de
+ decidir. Uma família ocupa tantas vagas e consome tantas porções quanto seus integrantes; não
+ é uma única pessoa porque cabe numa carta.
+
+ Há três escolhas: acolher definitivamente, oferecer resgate temporário ou ajudar sem levar. A
+ terceira permite entregar mantimentos ou uma informação de rota segura; não equivale a
+ abandonar a pessoa obrigatoriamente. Recusar acolhimento não gera punição automática de
+ moral. Compromissos assumidos e quebrados podem gerar consequências escritas no encontro.
+
+ A recepção temporária aceita até duas pessoas acima da capacidade, durante duas noites, uma
+ única vez por grupo recém-chegado. Registre a data. Elas consomem normalmente e não podem
+ trabalhar nem sair como heróis enquanto estão em recepção. Uma criança fica com o adulto
+ responsável. Alojamento precisa ficar pronto até o terceiro anoitecer. Não se renova o prazo
+ expulsando e aceitando a mesma pessoa.
+
+ Se o prazo acabar, resolva Superlotação: perda de uma moral e uma saúde comunitária por
+ noite de excesso, até construir ou executar um encaminhamento seguro. Encaminhar a uma
+ comunidade conhecida ocupa uma expedição de rota curta e uma porção de comida e de água
+ por passageiro; esse grupo deixa o abrigo. Sem destino conhecido, existe missão de contato.
+ Não coloque moradores em estoque nem transforme capacidade em pessoas descartáveis sem
+ consequência.
+
+
+
+
+Proposta de regras / balanceamento e impressão física ainda não validados                        8
+ZONA ZERO / COMUNIDADE / DOCUMENTO DE PROJETO 2.0
+
+
+
+
+ 8. Intenções ocultas sem mestre
+
+ Use um único verso neutro e sleeves opacos para TODAS as cartas de Intenção. Embaralhe as 12
+ cartas viradas para baixo: sete Solidário, três Assustado, um Oportunista e um Infiltrado. Ao
+ acolher um novo adulto ou família, coloque uma carta em envelope opaco numerado junto da
+ ficha, sem ninguém olhar. Uma intenção vale pelo grupo do encontro, não por criança ou cão. Os
+ fundadores e suas famílias são confiáveis.
+
+ A pista pública está na carta do encontro e não revela deterministicamente a intenção. Todos os
+ acolhidos ficam em observação por duas noites: não usam armas ou estoque sem escolta e não
+ podem ser heróis ainda. Um trabalho de Acompanhar coloca o marcador Verificado para aquela
+ noite; não revela a carta. Um segundo trabalho no mesmo dia ou em outro dia marca Revelar:
+ abra o envelope na fase de intenções dessa noite, lendo em voz alta. Sem investigação
+ completa, abra na fase de intenções da segunda noite. Revelação antecipada não encerra os
+ dois dias de observação nem o prazo de recepção temporária. Um ofício só funciona no
+ amanhecer depois de concluídas as duas noites de observação, com alojamento permanente
+ disponível. Nenhum jogador precisa representar um traidor secreto.
+
+ Solidário: é confirmado como confiável; torna-se membro permanente depois das duas noites de
+ observação e da obtenção de alojamento. Só então libera seu ofício no amanhecer seguinte.
+ Assustado: requer uma tarefa de cuidado; até recebê-la, descansa e consome, sem sabotar.
+ Oportunista: se não estiver Verificado na noite da revelação, retira até quatro porções de comida
+ do estoque e parte; se estiver, a tentativa é impedida e parte sem roubo. Infiltrado: se não
+ estiver Verificado, revela a localização (+1 Pressão externa, máximo três) e parte; se estiver,
+ parte sem efeito. Não destrói automaticamente o abrigo nem mata familiares.
+
+ O envelope resolvido é esvaziado, a intenção vai ao descarte e não é sorteada de novo para a
+ mesma pessoa. Se o baralho esgotar, embaralhe seu descarte apenas para novos grupos. As
+ probabilidades se referem ao monte inicial e mudam sem reposição. A investigação tem custo
+ de trabalho e evita perdas concretas; expulsar indiscriminadamente perde moradores úteis e
+ oportunidades. Isso precisa de teste para não virar uma escolha automática.
+
+
+
+
+Proposta de regras / balanceamento e impressão física ainda não validados                            9
+ZONA ZERO / COMUNIDADE / DOCUMENTO DE PROJETO 2.0
+
+
+
+
+ 9. Heróis, moradores e famílias
+
+ Troque de herói somente no amanhecer, antes de equipar e atribuir trabalhos. Cada pessoa tem
+ ID, XP, ferimentos, fadiga e vínculo próprios. Ao trocar, o herói anterior continua morando,
+ trabalhando ou se recuperando; seus níveis não passam para o novo. Inventário de expedição é
+ devolvido ao estoque no retorno, salvo equipamentos pessoais vinculados por efeito explícito.
+
+ Adulto civil não recebe uma ficha de herói automaticamente. Heróis resgatáveis estão
+ identificados no catálogo e só entram em seleção depois de terminar observação e recuperação.
+ Civis comuns fornecem ofícios. Crianças não entram no elenco de combate. Isso permite muitos
+ rostos na comunidade sem exigir 30 fichas de combate abertas na mesa.
+
+ Planejamento do elenco: 24 heróis, com 12 disponíveis no início e 12 desbloqueados por
+ encontros ou histórias. Primeiros 12: Lia, Ivo, Mara, Caio, Nara, Bento, Duda, Rosa, Joel, Yumi,
+ Téo (encanador) e Célia (professora). Outros 12: Aline (veterinária), Samuel (carpinteiro), Bruna
+ (agricultora), Raul (caminhoneiro), Denise (médica), Hugo (eletricista), Sol (guia), Otávio
+ (porteiro), Jana (cozinheira de campo), Miguel (socorrista), Bia (mecânica) e Vicente (operador
+ de rádio). Só dez retratos existem no kit anterior; os demais ainda precisam ser produzidos.
+
+ XP de campanha candidato: um por expedição concluída e um pelo objetivo principal, máximo
+ dois por dia. Não dar XP ilimitado por repetir mortes. Benefícios aos 3, 6 e 9 XP; escolher
+ caminhos por personagem, sem transformar evolução em crescimento infinito. O combate
+ básico continua por zonas e PA; testes técnicos usam 1d6 + atributo contra dificuldade 6
+ (comum) ou 8 (difícil). Cada interação limita tentativas e escreve o custo da falha.
+
+
+
+
+Proposta de regras / balanceamento e impressão física ainda não validados                            10
+ZONA ZERO / COMUNIDADE / DOCUMENTO DE PROJETO 2.0
+
+
+
+
+ 10. Viagem, carga e veículos
+
+ Escolha rota curta ou longa na carta do destino. Cada trecho de ida e volta revela uma carta de
+ Viagem; resolva uma por sentido para rota curta, duas por sentido para longa. Uma carta pode
+ pedir decisão, oferecer encontro ou iniciar emboscada; combate só acontece se indicado. Tempo
+ de viagem, combustível e dano de veículo são custos diferentes.
+
+ Veículo encontrado tem ficha pública de modelo, estado e peças faltantes. Estados:
+ abandonado, incompleto, operacional, danificado. Só um veículo operacional é usado por
+ expedição no capítulo inicial. Carro: quatro lugares humanos, oito cargas e um combustível por
+ trecho. Picape: dois lugares, 14 cargas e um combustível por trecho. Van: seis lugares, 12
+ cargas e dois combustíveis por trecho. Cada ligação de rota conta um trecho; disponibilidade de
+ veículo precisa corresponder ao tamanho do grupo. A pé, não gasta combustível, mas cada herói
+ carrega sua capacidade.
+
+ Itens usam carga 1; componentes grandes informam carga 2 ou 3. Um humano resgatado ocupa
+ lugar de passageiro, não o porta-malas. Sem lugar, alguém precisa acompanhar a pé; a
+ expedição passa a usar a duração de viagem a pé indicada no destino e não ganha duas viagens
+ gratuitas. Cão não ocupa lugar humano, mas só um pode acompanhar o grupo; seu espaço de
+ transporte fica reservado no modelo.
+
+ Trocar equipamento com o veículo exige estar na zona de estacionamento. Transferir uma carga
+ durante missão custa uma ação; fora de combate e após saída concluída, descarregar o veículo
+ no abrigo é gratuito. Combustível sai da reserva quando adquirido e volta à reserva quando
+ consumido; não é confundido com uma carta de viagem favorável.
+
+
+
+
+Proposta de regras / balanceamento e impressão física ainda não validados                      11
+ZONA ZERO / COMUNIDADE / DOCUMENTO DE PROJETO 2.0
+
+
+
+
+ 11. Exploração e módulos de mapa
+
+ O mapa geral possui destinos com ID, dificuldade, rotas, tipo de saque e estado: não visitado,
+ conhecido, parcialmente saqueado ou esgotado. Os interiores usam módulos compatíveis de
+ entrada, corredor, cômodo, pátio e estacionamento. Layout da missão define portas, saídas,
+ pontos de entrada de inimigos e objetivos. O mesmo módulo pode ser girado; a rotação precisa
+ preservar conexões e códigos.
+
+ Nesta primeira campanha, seis destinos bastam: mercado, hospital, oficina, posto, condomínio e
+ estação de tratamento. Use montagens curadas e verificadas, não sorteio irrestrito de peças que
+ pode fechar uma saída. Cada objetivo precisa de caminho realizável desde a entrada; rota
+ bloqueada por porta exige ferramenta ou ação disponível.
+
+ Cada ponto de busca possui uma ficha de disponibilidade. Ao buscar, gaste uma ação e um uso,
+ revele a carta regional e resolva. Saque descartado não repõe um ponto esgotado. Voltar ao
+ mesmo local recupera itens largados ou resolve objetivos pendentes, mas não fabrica recursos.
+ Um evento de reabastecimento deve dizer o que repõe, onde e por qual motivo.
+
+ Combate utiliza o motor básico, mas as diferenças de campanha precisam ser consolidadas
+ numa nova edição antes de imprimir novas cartas. Não misturar automaticamente a
+ alimentação e a evolução desta proposta com o manual básico 1.0; uma folha de
+ compatibilidade deve apontar cada substituição.
+
+
+
+
+Proposta de regras / balanceamento e impressão física ainda não validados                         12
+ZONA ZERO / COMUNIDADE / DOCUMENTO DE PROJETO 2.0
+
+
+
+
+ 12. Ataques ao abrigo e ameaças humanas
+
+ Os ataques ocorrem na fase de noite, após o retorno da expedição. Não interrompem a
+ exploração a cada turno. Revele uma carta de Cerco quando o evento ou missão mandar, ou
+ quando houver Cerco pendente por Pressão externa três. Atingir três apenas marca Cerco
+ pendente; resolva na próxima fase de ataques, nunca fora dela. Nesse caso, depois do Cerco
+ reduza Pressão a um e limpe a pendência. Resolva no máximo um Cerco por noite; gatilhos
+ excedentes ficam pendentes para a noite seguinte. Zumbis e grupos rivais usam cartas distintas
+ dentro da família Cerco.
+
+ Compare Força do cerco com Defesa: portão básico oferece dois; torre construída oferece um;
+ no máximo três adultos atribuídos à vigilância oferecem um dado cada, com +1 Defesa por 4+.
+ Cachorro oferece +1 Defesa, máximo um. Descartar uma munição fornece +1 Defesa, máximo
+ dois; a decisão é feita antes dos dados. Outros adultos não viram vigias retroativamente.
+
+ Se Defesa iguala ou supera Força, não há brecha. Se perde por um ou dois, danifique uma
+ estrutura não residencial e perca até quatro porções de alimento. Se perde por três ou mais,
+ danifique duas estruturas e perca também quatro de água e uma Moral. O grupo escolhe as
+ estruturas elegíveis; sem elegível, perca uma Saúde por estrutura faltante. Pessoas não são
+ mortas por um sorteio sem resposta nesta primeira caixa.
+
+ Grupos rivais persistem por trilha de relação, de -2 a +2, e uma carta de facção. Negociar,
+ cumprir acordo e encaminhar sobreviventes pode mudar essa relação. Nem todo humano
+ armado é um inimigo. Recompensa, custo e consequência devem estar escritos no encontro.
+ Nada copia personagens ou enredos de séries existentes.
+
+
+
+
+Proposta de regras / balanceamento e impressão física ainda não validados                       13
+ZONA ZERO / COMUNIDADE / DOCUMENTO DE PROJETO 2.0
+
+
+
+
+ 13. Baralhos, símbolos e organização
+
+ Planejar famílias estáveis: Heróis (azul, silhueta); Moradores (ocre, grupo); Vínculos (rosa escuro,
+ laço); Intenções (cinza, envelope neutro); Saque (verde, caixa); Viagem (amarelo, estrada);
+ Horda (vermelho, pegadas); Cerco (bordô, portão); Projetos (petróleo, ferramentas); Estruturas
+ (marrom, casa); Missões (roxo, bandeira); Recursos (creme, símbolo do recurso). Cor é reforço;
+ palavra e símbolo também identificam.
+
+ Intenções solidárias e hostis têm exatamente o mesmo verso, sem código externo que permita
+ descobrir o efeito. Heróis e civis podem ter fichas maiores que cartas de saque. Vínculos não vão
+ ao baralho de Saque. Recursos e equipamentos físicos ficam em reservas, separados dos
+ sorteios. Objetivos de missão não entram em estoque consumível.
+
+ A base organizadora inicial é um conjunto de quatro berços: exploração, comunidade, recursos e
+ referências. Usar divisórias verticais e bolsos identificados. Bandejas de Saque possuem lugar
+ para monte, descarte e esgotado. Recursos possuem reserva e estoque em áreas distintas. Cada
+ família recebe faixa de identificação e lista de contagem. Uma caixa rígida exata só deve ser
+ dimensionada depois de medir cartas reais e sleeves.
+
+
+
+
+Proposta de regras / balanceamento e impressão física ainda não validados                           14
+ZONA ZERO / COMUNIDADE / DOCUMENTO DE PROJETO 2.0
+
+
+
+
+ 14. Produção PnP e expansões
+
+ Cartas pequenas: 63 × 88 mm; nove por A4 retrato; 2 mm entre cartas, 4 mm de margem
+ interna. Frente e verso por lote, colunas do verso refletidas para duplex na borda longa. Fichas
+ de personagens: meia A4. Mapas: peças de área útil 277 × 190 mm em A4 paisagem; quatro
+ peças formam 554 × 380 mm por corte e união, sem sobreposição. Texto e portas não devem
+ ficar sobre emendas.
+
+ Pacotes separados: manual; cartas duplex; fichas duplex; painéis de uma face; mapas de uma
+ face; marcadores duplex; divisórias e moldes; teste de impressão. Imprimir 100%, sem ajustar.
+ Testar régua de 100 mm, alvos assimétricos e opacidade do papel. Carta secreta que pode ser
+ lida contra a luz precisa de sleeve opaco ou camada interna.
+
+ IDs seguem ZC-FAMÍLIA-0001; toda carta registra versão e dependências no catálogo editável.
+ Expansões fornecem módulo e instrução de mistura. Novos locais acrescentam seus próprios
+ encontros, sem simplesmente jogar tudo no mesmo monte e alterar chances. Cada mapa
+ registra conectores. Uma missão informa caixa necessária, população recomendada, tempo,
+ condições de sucesso e consequências de retirada.
+
+ Publicação futura em camadas: núcleo de abrigo e economia; expedição completa; moradores e
+ intenções; veículos e projetos; expansão de mapa e novas facções. Conteúdo pode ser planejado
+ desde já, mas somente componentes gerados e conferidos contam como entregues.
+
+
+
+
+Proposta de regras / balanceamento e impressão física ainda não validados                           15
+ZONA ZERO / COMUNIDADE / DOCUMENTO DE PROJETO 2.0
+
+
+
+
+ 15. Um dia completo em números
+
+ Quatro fundadores possuem quatro barracas (oito vagas). Vínculos sorteados: parceiro, filho,
+ sozinho e cachorro. Antes deste dia de exemplo, um adulto já foi acolhido e está na segunda
+ noite de observação. São sete humanos e um cão: oito consumidores. Estoque no começo do
+ dia: quatro alimentos conservados e quatro águas de quatro porções cada, total 16+16. Cada
+ fundador controla um herói; os dois acompanhantes humanos incluem um adulto e uma criança.
+ Só o adulto gera um trabalho no abrigo.
+
+ O adulto acompanha uma recém-chegada acolhida no dia anterior. Os quatro heróis vão ao
+ mercado, gastando um segmento de luz na ida, quatro em exploração e um no retorno: seis de
+ oito. Encontram uma carta de Carne (quatro porções), uma Água (quatro), dois Materiais e uma
+ Lona. Resgatam um adulto. Retornam antes de qualquer consumo.
+
+ Agora são oito humanos e um cão: nove consumidores. Vagas humanas ocupadas: oito de oito,
+ logo o novo adulto cabe. Ele entra em observação e recebe uma Intenção oculta. O trabalho do
+ civil já estava atribuído à pessoa anterior; não pode ser trocado para o resgatado depois de ver
+ o resultado. Nenhuma construção fica pronta hoje porque não foi programada; Materiais e Lona
+ são guardados.
+
+ Na refeição, consumam as quatro porções de Carne e cinco conservadas. Restam 11 porções
+ conservadas, incluindo uma carta parcialmente usada. Água: 16 iniciais + 4 encontradas - 9
+ consumidas = 11. A carta Carne e uma conservada vazia voltam às reservas, não aos montes de
+ Saque. As cartas de Saque ficam nos descartes regionais; o local perde os usos de busca gastos.
+
+ A pessoa acolhida ontem chegou à segunda noite e tem Verificado. Revelem sua intenção: se for
+ Oportunista, parte sem levar comida; se for Solidária, fica e seu trabalho só será disponível
+ amanhã. O recém-chegado de hoje permanece na primeira noite de observação. Registrem se
+ alguém partiu antes de calcular a população da manhã seguinte; o consumo de hoje não é
+ devolvido.
+
+
+
+
+Proposta de regras / balanceamento e impressão física ainda não validados                           16
+ZONA ZERO / COMUNIDADE / DOCUMENTO DE PROJETO 2.0
+
+
+
+
+ 16. Critérios antes de produzir a caixa completa
+
+ Revisão lógica: conferir 2, 4 e 6 heróis, todos os vínculos iniciais, sobras de comida, capacidade
+ de estoque, pagamento de projetos e abertura de intenções sem mestre. Confirmar que não há
+ duplicação de cartas e que mapas preservam conectividade após rotação.
+
+ Protótipo econômico: dez dias com populações distintas, sem fingir que isso mede diversão.
+ Registrar saldo por recurso, ações de trabalho, custo de abrigo e proporção de expedições que
+ precisam voltar cedo. Rodar casos de fome, excesso de vagas, roubo prevenido, roubo não
+ prevenido e evacuação.
+
+ Playtest humano: começar com casal, depois quatro e seis pessoas. Medir duração da
+ administração e da exploração; tempo ocioso; clareza das cartas; motivos de derrota; relevância
+ de resgates e investigação. Meta inicial: administração de até dez minutos por dia e nenhuma
+ pessoa parada enquanto os outros jogam uma missão inteira. São metas, não medições já
+ obtidas.
+
+ Entrega seguinte sugerida: protótipo funcional do capítulo Antes que a água acabe, com
+ material de eventos suficiente para repetir o capítulo de cinco dias, 12 heróis disponíveis e os
+ módulos essenciais. Os 24 nomes constituem catálogo planejado; não significam 24 fichas e
+ ilustrações já produzidas. A campanha completa só deve ser chamada pronta depois de
+ montagem e partidas reais.
+
+
+
+
+Proposta de regras / balanceamento e impressão física ainda não validados                             17
+
