@@ -1,0 +1,779 @@
+{
+  "files": [
+    {
+      "file": "assets/buildings.png",
+      "size": [
+        1536,
+        1024
+      ],
+      "sha256": "c4e9932dc8053f9a974cb1941b5c4cf639e91fa1562268bccd21421dd5624d18",
+      "status": "gerado pela ferramenta integrada; arquivo preservado"
+    },
+    {
+      "file": "assets/cover.png",
+      "size": [
+        1024,
+        1536
+      ],
+      "sha256": "f3f832138d8325dd677d58922a12f374b8dca959ce5b9ebfcaf5a0a17695f6df",
+      "status": "gerado pela ferramenta integrada; arquivo preservado"
+    },
+    {
+      "file": "assets/encounters.png",
+      "size": [
+        1024,
+        1536
+      ],
+      "sha256": "2c098fe4b33098012d41590bea12c4aa94d1b9ebd44bc8d2fd7dbfb2971425bd",
+      "status": "gerado pela ferramenta integrada; arquivo preservado"
+    },
+    {
+      "file": "assets/enemies.png",
+      "size": [
+        1222,
+        1287
+      ],
+      "sha256": "8520c684e745e352cf631cd76cd607eaf8df8c4d8f13626170b41b54bbf7104e",
+      "status": "gerado pela ferramenta integrada; arquivo preservado"
+    },
+    {
+      "file": "assets/equipment.png",
+      "size": [
+        1536,
+        1024
+      ],
+      "sha256": "c2b70671da93d8035cfd26d5547b70a6c3dc64eb6128b8d1c56d506cc8168304",
+      "status": "gerado pela ferramenta integrada; arquivo preservado"
+    },
+    {
+      "file": "assets/portraits_01.png",
+      "size": [
+        1024,
+        1536
+      ],
+      "sha256": "69a473b479a4a94f13cd7fd438402f5bb179f9ed8bae7acd81f5022c9ecba2bf",
+      "status": "gerado pela ferramenta integrada; arquivo preservado"
+    },
+    {
+      "file": "assets/portraits_02.png",
+      "size": [
+        1024,
+        1536
+      ],
+      "sha256": "cef46e9e43db8dc5011adcd603a8d57e67d33e1ee903a6679f30fc83babfdf24",
+      "status": "gerado pela ferramenta integrada; arquivo preservado"
+    }
+  ],
+  "illustrations": [
+    {
+      "id": "ZC-HER-0001",
+      "kind": "portrait",
+      "name": "Lia",
+      "region": {
+        "path": "assets/portraits_01.png",
+        "col": 0,
+        "row": 0
+      },
+      "prompt": "Retrato original adulto de Lia, agente comunitária de saúde, Santa Aurora brasileira fictícia. Cuidou de um bairro inteiro antes de procurar abrigo. Graphic novel expressiva, petróleo, concreto, verde desbotado, ferrugem e âmbar; fundo claro; sem texto ou números; manter identidade da região de referência.",
+      "status": "gerado e integrado à ficha e token"
+    },
+    {
+      "id": "ZC-HER-0002",
+      "kind": "portrait",
+      "name": "Ivo",
+      "region": {
+        "path": "assets/portraits_01.png",
+        "col": 1,
+        "row": 0
+      },
+      "prompt": "Retrato original adulto de Ivo, vigilante, Santa Aurora brasileira fictícia. Conhece o peso de uma noite atrás do portão. Graphic novel expressiva, petróleo, concreto, verde desbotado, ferrugem e âmbar; fundo claro; sem texto ou números; manter identidade da região de referência.",
+      "status": "gerado e integrado à ficha e token"
+    },
+    {
+      "id": "ZC-HER-0003",
+      "kind": "portrait",
+      "name": "Mara",
+      "region": {
+        "path": "assets/portraits_01.png",
+        "col": 2,
+        "row": 0
+      },
+      "prompt": "Retrato original adulto de Mara, técnica de enfermagem, Santa Aurora brasileira fictícia. Transformou o carrinho de plantão em mala de primeiros socorros. Graphic novel expressiva, petróleo, concreto, verde desbotado, ferrugem e âmbar; fundo claro; sem texto ou números; manter identidade da região de referência.",
+      "status": "gerado e integrado à ficha e token"
+    },
+    {
+      "id": "ZC-HER-0004",
+      "kind": "portrait",
+      "name": "Caio",
+      "region": {
+        "path": "assets/portraits_01.png",
+        "col": 0,
+        "row": 1
+      },
+      "prompt": "Retrato original adulto de Caio, entregador ciclista, Santa Aurora brasileira fictícia. Suas rotas de entrega agora ligam bolsões de vida. Graphic novel expressiva, petróleo, concreto, verde desbotado, ferrugem e âmbar; fundo claro; sem texto ou números; manter identidade da região de referência.",
+      "status": "gerado e integrado à ficha e token"
+    },
+    {
+      "id": "ZC-HER-0005",
+      "kind": "portrait",
+      "name": "Nara",
+      "region": {
+        "path": "assets/portraits_01.png",
+        "col": 1,
+        "row": 1
+      },
+      "prompt": "Retrato original adulto de Nara, técnica de saneamento, Santa Aurora brasileira fictícia. Guardou plantas da rede quando todos guardavam dinheiro. Graphic novel expressiva, petróleo, concreto, verde desbotado, ferrugem e âmbar; fundo claro; sem texto ou números; manter identidade da região de referência.",
+      "status": "gerado e integrado à ficha e token"
+    },
+    {
+      "id": "ZC-HER-0006",
+      "kind": "portrait",
+      "name": "Bento",
+      "region": {
+        "path": "assets/portraits_01.png",
+        "col": 2,
+        "row": 1
+      },
+      "prompt": "Retrato original adulto de Bento, pedreiro, Santa Aurora brasileira fictícia. Reconstruiu casas depois de enchentes e não desistiu agora. Graphic novel expressiva, petróleo, concreto, verde desbotado, ferrugem e âmbar; fundo claro; sem texto ou números; manter identidade da região de referência.",
+      "status": "gerado e integrado à ficha e token"
+    },
+    {
+      "id": "ZC-HER-0007",
+      "kind": "portrait",
+      "name": "Duda",
+      "region": {
+        "path": "assets/portraits_01.png",
+        "col": 0,
+        "row": 2
+      },
+      "prompt": "Retrato original adulto de Duda, estudante de eletrônica, Santa Aurora brasileira fictícia. Os rádios quebrados ainda têm alguma coisa a dizer. Graphic novel expressiva, petróleo, concreto, verde desbotado, ferrugem e âmbar; fundo claro; sem texto ou números; manter identidade da região de referência.",
+      "status": "gerado e integrado à ficha e token"
+    },
+    {
+      "id": "ZC-HER-0008",
+      "kind": "portrait",
+      "name": "Rosa",
+      "region": {
+        "path": "assets/portraits_01.png",
+        "col": 1,
+        "row": 2
+      },
+      "prompt": "Retrato original adulto de Rosa, cozinheira escolar, Santa Aurora brasileira fictícia. Nunca serviu uma refeição sem saber quem ainda faltava. Graphic novel expressiva, petróleo, concreto, verde desbotado, ferrugem e âmbar; fundo claro; sem texto ou números; manter identidade da região de referência.",
+      "status": "gerado e integrado à ficha e token"
+    },
+    {
+      "id": "ZC-HER-0009",
+      "kind": "portrait",
+      "name": "Joel",
+      "region": {
+        "path": "assets/portraits_01.png",
+        "col": 2,
+        "row": 2
+      },
+      "prompt": "Retrato original adulto de Joel, bombeiro civil, Santa Aurora brasileira fictícia. Voltar para buscar alguém sempre foi parte do serviço. Graphic novel expressiva, petróleo, concreto, verde desbotado, ferrugem e âmbar; fundo claro; sem texto ou números; manter identidade da região de referência.",
+      "status": "gerado e integrado à ficha e token"
+    },
+    {
+      "id": "ZC-HER-0010",
+      "kind": "portrait",
+      "name": "Yumi",
+      "region": {
+        "path": "assets/portraits_01.png",
+        "col": 0,
+        "row": 3
+      },
+      "prompt": "Retrato original adulto de Yumi, técnica de laboratório, Santa Aurora brasileira fictícia. Aprendeu a não confiar em água transparente. Graphic novel expressiva, petróleo, concreto, verde desbotado, ferrugem e âmbar; fundo claro; sem texto ou números; manter identidade da região de referência.",
+      "status": "gerado e integrado à ficha e token"
+    },
+    {
+      "id": "ZC-HER-0011",
+      "kind": "portrait",
+      "name": "Téo",
+      "region": {
+        "path": "assets/portraits_01.png",
+        "col": 1,
+        "row": 3
+      },
+      "prompt": "Retrato original adulto de Téo, encanador, Santa Aurora brasileira fictícia. Conhece Santa Aurora pelo que passa debaixo das ruas. Graphic novel expressiva, petróleo, concreto, verde desbotado, ferrugem e âmbar; fundo claro; sem texto ou números; manter identidade da região de referência.",
+      "status": "gerado e integrado à ficha e token"
+    },
+    {
+      "id": "ZC-HER-0012",
+      "kind": "portrait",
+      "name": "Célia",
+      "region": {
+        "path": "assets/portraits_01.png",
+        "col": 2,
+        "row": 3
+      },
+      "prompt": "Retrato original adulto de Célia, professora, Santa Aurora brasileira fictícia. Continua chamando cada pessoa pelo nome. Graphic novel expressiva, petróleo, concreto, verde desbotado, ferrugem e âmbar; fundo claro; sem texto ou números; manter identidade da região de referência.",
+      "status": "gerado e integrado à ficha e token"
+    },
+    {
+      "id": "ZC-HER-0013",
+      "kind": "portrait",
+      "name": "Aline",
+      "region": {
+        "path": "assets/portraits_02.png",
+        "col": 0,
+        "row": 0
+      },
+      "prompt": "Retrato original adulto de Aline, veterinária, Santa Aurora brasileira fictícia. Recusou trocar companheiros por utilidade. Graphic novel expressiva, petróleo, concreto, verde desbotado, ferrugem e âmbar; fundo claro; sem texto ou números; manter identidade da região de referência.",
+      "status": "gerado e integrado à ficha e token"
+    },
+    {
+      "id": "ZC-HER-0014",
+      "kind": "portrait",
+      "name": "Samuel",
+      "region": {
+        "path": "assets/portraits_02.png",
+        "col": 1,
+        "row": 0
+      },
+      "prompt": "Retrato original adulto de Samuel, carpinteiro, Santa Aurora brasileira fictícia. A primeira coisa que fez foi uma mesa para todos. Graphic novel expressiva, petróleo, concreto, verde desbotado, ferrugem e âmbar; fundo claro; sem texto ou números; manter identidade da região de referência.",
+      "status": "gerado e integrado à ficha e token"
+    },
+    {
+      "id": "ZC-HER-0015",
+      "kind": "portrait",
+      "name": "Bruna",
+      "region": {
+        "path": "assets/portraits_02.png",
+        "col": 2,
+        "row": 0
+      },
+      "prompt": "Retrato original adulto de Bruna, agricultora, Santa Aurora brasileira fictícia. Guardou sementes em envelopes de contas antigas. Graphic novel expressiva, petróleo, concreto, verde desbotado, ferrugem e âmbar; fundo claro; sem texto ou números; manter identidade da região de referência.",
+      "status": "gerado e integrado à ficha e token"
+    },
+    {
+      "id": "ZC-HER-0016",
+      "kind": "portrait",
+      "name": "Raul",
+      "region": {
+        "path": "assets/portraits_02.png",
+        "col": 0,
+        "row": 1
+      },
+      "prompt": "Retrato original adulto de Raul, caminhoneiro, Santa Aurora brasileira fictícia. Sabe o que uma carga vale quando a estrada fecha. Graphic novel expressiva, petróleo, concreto, verde desbotado, ferrugem e âmbar; fundo claro; sem texto ou números; manter identidade da região de referência.",
+      "status": "gerado e integrado à ficha e token"
+    },
+    {
+      "id": "ZC-HER-0017",
+      "kind": "portrait",
+      "name": "Denise",
+      "region": {
+        "path": "assets/portraits_02.png",
+        "col": 1,
+        "row": 1
+      },
+      "prompt": "Retrato original adulto de Denise, médica, Santa Aurora brasileira fictícia. Deixou o hospital carregando nomes, não prontuários. Graphic novel expressiva, petróleo, concreto, verde desbotado, ferrugem e âmbar; fundo claro; sem texto ou números; manter identidade da região de referência.",
+      "status": "gerado e integrado à ficha e token"
+    },
+    {
+      "id": "ZC-HER-0018",
+      "kind": "portrait",
+      "name": "Hugo",
+      "region": {
+        "path": "assets/portraits_02.png",
+        "col": 2,
+        "row": 1
+      },
+      "prompt": "Retrato original adulto de Hugo, eletricista, Santa Aurora brasileira fictícia. Luzes acesas ainda significam gente esperando. Graphic novel expressiva, petróleo, concreto, verde desbotado, ferrugem e âmbar; fundo claro; sem texto ou números; manter identidade da região de referência.",
+      "status": "gerado e integrado à ficha e token"
+    },
+    {
+      "id": "ZC-HER-0019",
+      "kind": "portrait",
+      "name": "Sol",
+      "region": {
+        "path": "assets/portraits_02.png",
+        "col": 0,
+        "row": 2
+      },
+      "prompt": "Retrato original adulto de Sol, guia, Santa Aurora brasileira fictícia. A cidade ficou irreconhecível, mas as encostas continuam iguais. Graphic novel expressiva, petróleo, concreto, verde desbotado, ferrugem e âmbar; fundo claro; sem texto ou números; manter identidade da região de referência.",
+      "status": "gerado e integrado à ficha e token"
+    },
+    {
+      "id": "ZC-HER-0020",
+      "kind": "portrait",
+      "name": "Otávio",
+      "region": {
+        "path": "assets/portraits_02.png",
+        "col": 1,
+        "row": 2
+      },
+      "prompt": "Retrato original adulto de Otávio, porteiro, Santa Aurora brasileira fictícia. Não abre uma porta sem saber como fechá-la. Graphic novel expressiva, petróleo, concreto, verde desbotado, ferrugem e âmbar; fundo claro; sem texto ou números; manter identidade da região de referência.",
+      "status": "gerado e integrado à ficha e token"
+    },
+    {
+      "id": "ZC-HER-0021",
+      "kind": "portrait",
+      "name": "Jana",
+      "region": {
+        "path": "assets/portraits_02.png",
+        "col": 2,
+        "row": 2
+      },
+      "prompt": "Retrato original adulto de Jana, cozinheira de campo, Santa Aurora brasileira fictícia. Aprendeu a cozinhar quando parar era um risco. Graphic novel expressiva, petróleo, concreto, verde desbotado, ferrugem e âmbar; fundo claro; sem texto ou números; manter identidade da região de referência.",
+      "status": "gerado e integrado à ficha e token"
+    },
+    {
+      "id": "ZC-HER-0022",
+      "kind": "portrait",
+      "name": "Miguel",
+      "region": {
+        "path": "assets/portraits_02.png",
+        "col": 0,
+        "row": 3
+      },
+      "prompt": "Retrato original adulto de Miguel, socorrista, Santa Aurora brasileira fictícia. Marca saídas com giz para lembrar a todos de voltar. Graphic novel expressiva, petróleo, concreto, verde desbotado, ferrugem e âmbar; fundo claro; sem texto ou números; manter identidade da região de referência.",
+      "status": "gerado e integrado à ficha e token"
+    },
+    {
+      "id": "ZC-HER-0023",
+      "kind": "portrait",
+      "name": "Bia",
+      "region": {
+        "path": "assets/portraits_02.png",
+        "col": 1,
+        "row": 3
+      },
+      "prompt": "Retrato original adulto de Bia, mecânica, Santa Aurora brasileira fictícia. Ouviu uma van falhar e decidiu que não seria a última viagem. Graphic novel expressiva, petróleo, concreto, verde desbotado, ferrugem e âmbar; fundo claro; sem texto ou números; manter identidade da região de referência.",
+      "status": "gerado e integrado à ficha e token"
+    },
+    {
+      "id": "ZC-HER-0024",
+      "kind": "portrait",
+      "name": "Vicente",
+      "region": {
+        "path": "assets/portraits_02.png",
+        "col": 2,
+        "row": 3
+      },
+      "prompt": "Retrato original adulto de Vicente, operador de rádio, Santa Aurora brasileira fictícia. Repete o nome da cidade até alguém responder. Graphic novel expressiva, petróleo, concreto, verde desbotado, ferrugem e âmbar; fundo claro; sem texto ou números; manter identidade da região de referência.",
+      "status": "gerado e integrado à ficha e token"
+    },
+    {
+      "id": "ZC-ART-EQUIPMENT-0001",
+      "kind": "equipment",
+      "name": "Pé de cabra",
+      "region": {
+        "path": "assets/equipment.png",
+        "col": 0,
+        "row": 0,
+        "cols": 3,
+        "rows": 3
+      },
+      "prompt": "Ilustração original Pé de cabra em Santa Aurora, graphic novel em paleta petróleo/concreto/verde/ferrugem/âmbar, fundo claro, sem texto ou números. Usar região do manifesto como referência de identidade.",
+      "status": "gerado e integrado à galeria; cartas/tokens quando correspondente"
+    },
+    {
+      "id": "ZC-ART-EQUIPMENT-0002",
+      "kind": "equipment",
+      "name": "Faca",
+      "region": {
+        "path": "assets/equipment.png",
+        "col": 1,
+        "row": 0,
+        "cols": 3,
+        "rows": 3
+      },
+      "prompt": "Ilustração original Faca em Santa Aurora, graphic novel em paleta petróleo/concreto/verde/ferrugem/âmbar, fundo claro, sem texto ou números. Usar região do manifesto como referência de identidade.",
+      "status": "gerado e integrado à galeria; cartas/tokens quando correspondente"
+    },
+    {
+      "id": "ZC-ART-EQUIPMENT-0003",
+      "kind": "equipment",
+      "name": "Machado",
+      "region": {
+        "path": "assets/equipment.png",
+        "col": 2,
+        "row": 0,
+        "cols": 3,
+        "rows": 3
+      },
+      "prompt": "Ilustração original Machado em Santa Aurora, graphic novel em paleta petróleo/concreto/verde/ferrugem/âmbar, fundo claro, sem texto ou números. Usar região do manifesto como referência de identidade.",
+      "status": "gerado e integrado à galeria; cartas/tokens quando correspondente"
+    },
+    {
+      "id": "ZC-ART-EQUIPMENT-0004",
+      "kind": "equipment",
+      "name": "Pistola",
+      "region": {
+        "path": "assets/equipment.png",
+        "col": 0,
+        "row": 1,
+        "cols": 3,
+        "rows": 3
+      },
+      "prompt": "Ilustração original Pistola em Santa Aurora, graphic novel em paleta petróleo/concreto/verde/ferrugem/âmbar, fundo claro, sem texto ou números. Usar região do manifesto como referência de identidade.",
+      "status": "gerado e integrado à galeria; cartas/tokens quando correspondente"
+    },
+    {
+      "id": "ZC-ART-EQUIPMENT-0005",
+      "kind": "equipment",
+      "name": "Espingarda",
+      "region": {
+        "path": "assets/equipment.png",
+        "col": 1,
+        "row": 1,
+        "cols": 3,
+        "rows": 3
+      },
+      "prompt": "Ilustração original Espingarda em Santa Aurora, graphic novel em paleta petróleo/concreto/verde/ferrugem/âmbar, fundo claro, sem texto ou números. Usar região do manifesto como referência de identidade.",
+      "status": "gerado e integrado à galeria; cartas/tokens quando correspondente"
+    },
+    {
+      "id": "ZC-ART-EQUIPMENT-0006",
+      "kind": "equipment",
+      "name": "Ferramentas",
+      "region": {
+        "path": "assets/equipment.png",
+        "col": 2,
+        "row": 1,
+        "cols": 3,
+        "rows": 3
+      },
+      "prompt": "Ilustração original Ferramentas em Santa Aurora, graphic novel em paleta petróleo/concreto/verde/ferrugem/âmbar, fundo claro, sem texto ou números. Usar região do manifesto como referência de identidade.",
+      "status": "gerado e integrado à galeria; cartas/tokens quando correspondente"
+    },
+    {
+      "id": "ZC-ART-EQUIPMENT-0007",
+      "kind": "equipment",
+      "name": "Lanterna",
+      "region": {
+        "path": "assets/equipment.png",
+        "col": 0,
+        "row": 2,
+        "cols": 3,
+        "rows": 3
+      },
+      "prompt": "Ilustração original Lanterna em Santa Aurora, graphic novel em paleta petróleo/concreto/verde/ferrugem/âmbar, fundo claro, sem texto ou números. Usar região do manifesto como referência de identidade.",
+      "status": "gerado e integrado à galeria; cartas/tokens quando correspondente"
+    },
+    {
+      "id": "ZC-ART-EQUIPMENT-0008",
+      "kind": "equipment",
+      "name": "Bomba",
+      "region": {
+        "path": "assets/equipment.png",
+        "col": 1,
+        "row": 2,
+        "cols": 3,
+        "rows": 3
+      },
+      "prompt": "Ilustração original Bomba em Santa Aurora, graphic novel em paleta petróleo/concreto/verde/ferrugem/âmbar, fundo claro, sem texto ou números. Usar região do manifesto como referência de identidade.",
+      "status": "gerado e integrado à galeria; cartas/tokens quando correspondente"
+    },
+    {
+      "id": "ZC-ART-EQUIPMENT-0009",
+      "kind": "equipment",
+      "name": "Membrana",
+      "region": {
+        "path": "assets/equipment.png",
+        "col": 2,
+        "row": 2,
+        "cols": 3,
+        "rows": 3
+      },
+      "prompt": "Ilustração original Membrana em Santa Aurora, graphic novel em paleta petróleo/concreto/verde/ferrugem/âmbar, fundo claro, sem texto ou números. Usar região do manifesto como referência de identidade.",
+      "status": "gerado e integrado à galeria; cartas/tokens quando correspondente"
+    },
+    {
+      "id": "ZC-ART-BUILDINGS-0001",
+      "kind": "buildings",
+      "name": "Barraca",
+      "region": {
+        "path": "assets/buildings.png",
+        "col": 0,
+        "row": 0,
+        "cols": 3,
+        "rows": 3
+      },
+      "prompt": "Ilustração original Barraca em Santa Aurora, graphic novel em paleta petróleo/concreto/verde/ferrugem/âmbar, fundo claro, sem texto ou números. Usar região do manifesto como referência de identidade.",
+      "status": "gerado e integrado à galeria; cartas/tokens quando correspondente"
+    },
+    {
+      "id": "ZC-ART-BUILDINGS-0002",
+      "kind": "buildings",
+      "name": "Casa simples",
+      "region": {
+        "path": "assets/buildings.png",
+        "col": 1,
+        "row": 0,
+        "cols": 3,
+        "rows": 3
+      },
+      "prompt": "Ilustração original Casa simples em Santa Aurora, graphic novel em paleta petróleo/concreto/verde/ferrugem/âmbar, fundo claro, sem texto ou números. Usar região do manifesto como referência de identidade.",
+      "status": "gerado e integrado à galeria; cartas/tokens quando correspondente"
+    },
+    {
+      "id": "ZC-ART-BUILDINGS-0003",
+      "kind": "buildings",
+      "name": "Enfermaria",
+      "region": {
+        "path": "assets/buildings.png",
+        "col": 2,
+        "row": 0,
+        "cols": 3,
+        "rows": 3
+      },
+      "prompt": "Ilustração original Enfermaria em Santa Aurora, graphic novel em paleta petróleo/concreto/verde/ferrugem/âmbar, fundo claro, sem texto ou números. Usar região do manifesto como referência de identidade.",
+      "status": "gerado e integrado à galeria; cartas/tokens quando correspondente"
+    },
+    {
+      "id": "ZC-ART-BUILDINGS-0004",
+      "kind": "buildings",
+      "name": "Oficina",
+      "region": {
+        "path": "assets/buildings.png",
+        "col": 0,
+        "row": 1,
+        "cols": 3,
+        "rows": 3
+      },
+      "prompt": "Ilustração original Oficina em Santa Aurora, graphic novel em paleta petróleo/concreto/verde/ferrugem/âmbar, fundo claro, sem texto ou números. Usar região do manifesto como referência de identidade.",
+      "status": "gerado e integrado à galeria; cartas/tokens quando correspondente"
+    },
+    {
+      "id": "ZC-ART-BUILDINGS-0005",
+      "kind": "buildings",
+      "name": "Garagem",
+      "region": {
+        "path": "assets/buildings.png",
+        "col": 1,
+        "row": 1,
+        "cols": 3,
+        "rows": 3
+      },
+      "prompt": "Ilustração original Garagem em Santa Aurora, graphic novel em paleta petróleo/concreto/verde/ferrugem/âmbar, fundo claro, sem texto ou números. Usar região do manifesto como referência de identidade.",
+      "status": "gerado e integrado à galeria; cartas/tokens quando correspondente"
+    },
+    {
+      "id": "ZC-ART-BUILDINGS-0006",
+      "kind": "buildings",
+      "name": "Torre",
+      "region": {
+        "path": "assets/buildings.png",
+        "col": 2,
+        "row": 1,
+        "cols": 3,
+        "rows": 3
+      },
+      "prompt": "Ilustração original Torre em Santa Aurora, graphic novel em paleta petróleo/concreto/verde/ferrugem/âmbar, fundo claro, sem texto ou números. Usar região do manifesto como referência de identidade.",
+      "status": "gerado e integrado à galeria; cartas/tokens quando correspondente"
+    },
+    {
+      "id": "ZC-ART-BUILDINGS-0007",
+      "kind": "buildings",
+      "name": "Horta",
+      "region": {
+        "path": "assets/buildings.png",
+        "col": 0,
+        "row": 2,
+        "cols": 3,
+        "rows": 3
+      },
+      "prompt": "Ilustração original Horta em Santa Aurora, graphic novel em paleta petróleo/concreto/verde/ferrugem/âmbar, fundo claro, sem texto ou números. Usar região do manifesto como referência de identidade.",
+      "status": "gerado e integrado à galeria; cartas/tokens quando correspondente"
+    },
+    {
+      "id": "ZC-ART-BUILDINGS-0008",
+      "kind": "buildings",
+      "name": "Filtro",
+      "region": {
+        "path": "assets/buildings.png",
+        "col": 1,
+        "row": 2,
+        "cols": 3,
+        "rows": 3
+      },
+      "prompt": "Ilustração original Filtro em Santa Aurora, graphic novel em paleta petróleo/concreto/verde/ferrugem/âmbar, fundo claro, sem texto ou números. Usar região do manifesto como referência de identidade.",
+      "status": "gerado e integrado à galeria; cartas/tokens quando correspondente"
+    },
+    {
+      "id": "ZC-ART-BUILDINGS-0009",
+      "kind": "buildings",
+      "name": "Cozinha",
+      "region": {
+        "path": "assets/buildings.png",
+        "col": 2,
+        "row": 2,
+        "cols": 3,
+        "rows": 3
+      },
+      "prompt": "Ilustração original Cozinha em Santa Aurora, graphic novel em paleta petróleo/concreto/verde/ferrugem/âmbar, fundo claro, sem texto ou números. Usar região do manifesto como referência de identidade.",
+      "status": "gerado e integrado à galeria; cartas/tokens quando correspondente"
+    },
+    {
+      "id": "ZC-ART-ENEMIES-0001",
+      "kind": "enemies",
+      "name": "Errante",
+      "region": {
+        "path": "assets/enemies.png",
+        "col": 0,
+        "row": 0,
+        "cols": 2,
+        "rows": 2
+      },
+      "prompt": "Ilustração original Errante em Santa Aurora, graphic novel em paleta petróleo/concreto/verde/ferrugem/âmbar, fundo claro, sem texto ou números. Usar região do manifesto como referência de identidade.",
+      "status": "gerado e integrado à galeria; cartas/tokens quando correspondente"
+    },
+    {
+      "id": "ZC-ART-ENEMIES-0002",
+      "kind": "enemies",
+      "name": "Corredor",
+      "region": {
+        "path": "assets/enemies.png",
+        "col": 1,
+        "row": 0,
+        "cols": 2,
+        "rows": 2
+      },
+      "prompt": "Ilustração original Corredor em Santa Aurora, graphic novel em paleta petróleo/concreto/verde/ferrugem/âmbar, fundo claro, sem texto ou números. Usar região do manifesto como referência de identidade.",
+      "status": "gerado e integrado à galeria; cartas/tokens quando correspondente"
+    },
+    {
+      "id": "ZC-ART-ENEMIES-0003",
+      "kind": "enemies",
+      "name": "Bruto",
+      "region": {
+        "path": "assets/enemies.png",
+        "col": 0,
+        "row": 1,
+        "cols": 2,
+        "rows": 2
+      },
+      "prompt": "Ilustração original Bruto em Santa Aurora, graphic novel em paleta petróleo/concreto/verde/ferrugem/âmbar, fundo claro, sem texto ou números. Usar região do manifesto como referência de identidade.",
+      "status": "gerado e integrado à galeria; cartas/tokens quando correspondente"
+    },
+    {
+      "id": "ZC-ART-ENEMIES-0004",
+      "kind": "enemies",
+      "name": "Rival",
+      "region": {
+        "path": "assets/enemies.png",
+        "col": 1,
+        "row": 1,
+        "cols": 2,
+        "rows": 2
+      },
+      "prompt": "Ilustração original Rival em Santa Aurora, graphic novel em paleta petróleo/concreto/verde/ferrugem/âmbar, fundo claro, sem texto ou números. Usar região do manifesto como referência de identidade.",
+      "status": "gerado e integrado à galeria; cartas/tokens quando correspondente"
+    },
+    {
+      "id": "ZC-ART-ENCOUNTERS-0001",
+      "kind": "encounters",
+      "name": "Jana e criança",
+      "region": {
+        "path": "assets/encounters.png",
+        "col": 0,
+        "row": 0,
+        "cols": 2,
+        "rows": 4
+      },
+      "prompt": "Ilustração original Jana e criança em Santa Aurora, graphic novel em paleta petróleo/concreto/verde/ferrugem/âmbar, fundo claro, sem texto ou números. Usar região do manifesto como referência de identidade.",
+      "status": "gerado e integrado à galeria; cartas/tokens quando correspondente"
+    },
+    {
+      "id": "ZC-ART-ENCOUNTERS-0002",
+      "kind": "encounters",
+      "name": "Bia",
+      "region": {
+        "path": "assets/encounters.png",
+        "col": 1,
+        "row": 0,
+        "cols": 2,
+        "rows": 4
+      },
+      "prompt": "Ilustração original Bia em Santa Aurora, graphic novel em paleta petróleo/concreto/verde/ferrugem/âmbar, fundo claro, sem texto ou números. Usar região do manifesto como referência de identidade.",
+      "status": "gerado e integrado à galeria; cartas/tokens quando correspondente"
+    },
+    {
+      "id": "ZC-ART-ENCOUNTERS-0003",
+      "kind": "encounters",
+      "name": "Vicente e Sol",
+      "region": {
+        "path": "assets/encounters.png",
+        "col": 0,
+        "row": 1,
+        "cols": 2,
+        "rows": 4
+      },
+      "prompt": "Ilustração original Vicente e Sol em Santa Aurora, graphic novel em paleta petróleo/concreto/verde/ferrugem/âmbar, fundo claro, sem texto ou números. Usar região do manifesto como referência de identidade.",
+      "status": "gerado e integrado à galeria; cartas/tokens quando correspondente"
+    },
+    {
+      "id": "ZC-ART-ENCOUNTERS-0004",
+      "kind": "encounters",
+      "name": "Raul e Otávio",
+      "region": {
+        "path": "assets/encounters.png",
+        "col": 1,
+        "row": 1,
+        "cols": 2,
+        "rows": 4
+      },
+      "prompt": "Ilustração original Raul e Otávio em Santa Aurora, graphic novel em paleta petróleo/concreto/verde/ferrugem/âmbar, fundo claro, sem texto ou números. Usar região do manifesto como referência de identidade.",
+      "status": "gerado e integrado à galeria; cartas/tokens quando correspondente"
+    },
+    {
+      "id": "ZC-ART-ENCOUNTERS-0005",
+      "kind": "encounters",
+      "name": "Denise, Miguel e civil",
+      "region": {
+        "path": "assets/encounters.png",
+        "col": 0,
+        "row": 2,
+        "cols": 2,
+        "rows": 4
+      },
+      "prompt": "Ilustração original Denise, Miguel e civil em Santa Aurora, graphic novel em paleta petróleo/concreto/verde/ferrugem/âmbar, fundo claro, sem texto ou números. Usar região do manifesto como referência de identidade.",
+      "status": "gerado e integrado à galeria; cartas/tokens quando correspondente"
+    },
+    {
+      "id": "ZC-ART-ENCOUNTERS-0006",
+      "kind": "encounters",
+      "name": "Samuel, Bruna e criança",
+      "region": {
+        "path": "assets/encounters.png",
+        "col": 1,
+        "row": 2,
+        "cols": 2,
+        "rows": 4
+      },
+      "prompt": "Ilustração original Samuel, Bruna e criança em Santa Aurora, graphic novel em paleta petróleo/concreto/verde/ferrugem/âmbar, fundo claro, sem texto ou números. Usar região do manifesto como referência de identidade.",
+      "status": "gerado e integrado à galeria; cartas/tokens quando correspondente"
+    },
+    {
+      "id": "ZC-ART-ENCOUNTERS-0007",
+      "kind": "encounters",
+      "name": "Aline e cão",
+      "region": {
+        "path": "assets/encounters.png",
+        "col": 0,
+        "row": 3,
+        "cols": 2,
+        "rows": 4
+      },
+      "prompt": "Ilustração original Aline e cão em Santa Aurora, graphic novel em paleta petróleo/concreto/verde/ferrugem/âmbar, fundo claro, sem texto ou números. Usar região do manifesto como referência de identidade.",
+      "status": "gerado e integrado à galeria; cartas/tokens quando correspondente"
+    },
+    {
+      "id": "ZC-ART-ENCOUNTERS-0008",
+      "kind": "encounters",
+      "name": "Hugo",
+      "region": {
+        "path": "assets/encounters.png",
+        "col": 1,
+        "row": 3,
+        "cols": 2,
+        "rows": 4
+      },
+      "prompt": "Ilustração original Hugo em Santa Aurora, graphic novel em paleta petróleo/concreto/verde/ferrugem/âmbar, fundo claro, sem texto ou números. Usar região do manifesto como referência de identidade.",
+      "status": "gerado e integrado à galeria; cartas/tokens quando correspondente"
+    }
+  ],
+  "cover": "assets/cover.png",
+  "raster_illustrations": 55
+}

@@ -471,7 +471,7 @@
       "ability": "Seu cuidado pode reativar alerta de cão privado com 1 comida+1 água, na noite.",
       "story": "Recusou trocar companheiros por utilidade.",
       "initial": false,
-      "unlock": "Resgate: ver CAMPAIGN.md",
+      "unlock": "Resgate: Hospital segunda visita ou Condomínio terceira; duas noites, vaga e aptidão.",
       "progression": {
         "3": [
           "Vínculo: cão alerta +2 em vez de +1 se ela vigiar.",
@@ -486,7 +486,11 @@
           "Resiliência: ignore primeiro ferimento recebido no dia."
         ]
       },
-      "art": null,
+      "art": {
+        "path": "assets/portraits_02.png",
+        "col": 0,
+        "row": 0
+      },
       "refs": [
         "RULES.md §3",
         "RULES.md §13"
@@ -505,7 +509,7 @@
       "ability": "Ao construir Casa, reduza custo em 1 Material se você trabalhar nela.",
       "story": "A primeira coisa que fez foi uma mesa para todos.",
       "initial": false,
-      "unlock": "Resgate: ver CAMPAIGN.md",
+      "unlock": "Resgate: Condomínio; duas noites, vaga e aptidão.",
       "progression": {
         "3": [
           "Trave: torre sua exige 1 trabalho a menos.",
@@ -520,7 +524,11 @@
           "Resiliência: ignore primeiro ferimento recebido no dia."
         ]
       },
-      "art": null,
+      "art": {
+        "path": "assets/portraits_02.png",
+        "col": 1,
+        "row": 0
+      },
       "refs": [
         "RULES.md §3",
         "RULES.md §13"
@@ -539,7 +547,7 @@
       "ability": "Se trabalhar na horta ativa, produz 6 porções em vez de 4.",
       "story": "Guardou sementes em envelopes de contas antigas.",
       "initial": false,
-      "unlock": "Resgate: ver CAMPAIGN.md",
+      "unlock": "Resgate: Condomínio; duas noites, vaga e aptidão.",
       "progression": {
         "3": [
           "Mudas: horta exige 1 Material a menos com seu trabalho.",
@@ -554,7 +562,11 @@
           "Resiliência: ignore primeiro ferimento recebido no dia."
         ]
       },
-      "art": null,
+      "art": {
+        "path": "assets/portraits_02.png",
+        "col": 2,
+        "row": 0
+      },
       "refs": [
         "RULES.md §3",
         "RULES.md §13"
@@ -573,7 +585,7 @@
       "ability": "Van conduzida por ele gasta 1 combustível a menos no primeiro trecho do dia.",
       "story": "Sabe o que uma carga vale quando a estrada fecha.",
       "initial": false,
-      "unlock": "Resgate: ver CAMPAIGN.md",
+      "unlock": "Resgate: Posto; duas noites, vaga e aptidão.",
       "progression": {
         "3": [
           "Amarração: van ganha +2 cargas nesse dia.",
@@ -588,7 +600,11 @@
           "Resiliência: ignore primeiro ferimento recebido no dia."
         ]
       },
-      "art": null,
+      "art": {
+        "path": "assets/portraits_02.png",
+        "col": 0,
+        "row": 1
+      },
       "refs": [
         "RULES.md §3",
         "RULES.md §13"
@@ -607,7 +623,7 @@
       "ability": "Seu socorro remove 2 ferimentos com um Medicamento, 1/rodada.",
       "story": "Deixou o hospital carregando nomes, não prontuários.",
       "initial": false,
-      "unlock": "Resgate: ver CAMPAIGN.md",
+      "unlock": "Resgate: Hospital; duas noites, vaga e aptidão.",
       "progression": {
         "3": [
           "Cirurgia: seu cuidado civil remove +1 ferimento.",
@@ -622,7 +638,11 @@
           "Resiliência: ignore primeiro ferimento recebido no dia."
         ]
       },
-      "art": null,
+      "art": {
+        "path": "assets/portraits_02.png",
+        "col": 1,
+        "row": 1
+      },
       "refs": [
         "RULES.md §3",
         "RULES.md §13"
@@ -641,7 +661,7 @@
       "ability": "Seu teste para recuperar van tem +1 Técnica.",
       "story": "Luzes acesas ainda significam gente esperando.",
       "initial": false,
-      "unlock": "Resgate: ver CAMPAIGN.md",
+      "unlock": "Resgate: Condomínio segunda visita; duas noites, vaga e aptidão.",
       "progression": {
         "3": [
           "Isolamento: ignore falha de reparo da van uma vez/campanha; não dá sucesso.",
@@ -656,7 +676,11 @@
           "Resiliência: ignore primeiro ferimento recebido no dia."
         ]
       },
-      "art": null,
+      "art": {
+        "path": "assets/portraits_02.png",
+        "col": 2,
+        "row": 1
+      },
       "refs": [
         "RULES.md §3",
         "RULES.md §13"
@@ -675,7 +699,7 @@
       "ability": "Uma vez/dia, após revelar Viagem, pode descartar e revelar outra, obrigatória.",
       "story": "A cidade ficou irreconhecível, mas as encostas continuam iguais.",
       "initial": false,
-      "unlock": "Resgate: ver CAMPAIGN.md",
+      "unlock": "Resgate: Estação; duas noites, vaga e aptidão.",
       "progression": {
         "3": [
           "Rastro: rota longa reduz mais um inimigo inicial.",
@@ -690,7 +714,11 @@
           "Resiliência: ignore primeiro ferimento recebido no dia."
         ]
       },
-      "art": null,
+      "art": {
+        "path": "assets/portraits_02.png",
+        "col": 0,
+        "row": 2
+      },
       "refs": [
         "RULES.md §3",
         "RULES.md §13"
@@ -709,7 +737,7 @@
       "ability": "Se vigiar, portão danificado ainda dá 1 Defesa nessa noite.",
       "story": "Não abre uma porta sem saber como fechá-la.",
       "initial": false,
-      "unlock": "Resgate: ver CAMPAIGN.md",
+      "unlock": "Resgate: Posto; duas noites, vaga e aptidão.",
       "progression": {
         "3": [
           "Chave: abre porta comum por 0 PA, 1/rodada.",
@@ -724,7 +752,11 @@
           "Resiliência: ignore primeiro ferimento recebido no dia."
         ]
       },
-      "art": null,
+      "art": {
+        "path": "assets/portraits_02.png",
+        "col": 1,
+        "row": 2
+      },
       "refs": [
         "RULES.md §3",
         "RULES.md §13"
@@ -743,7 +775,7 @@
       "ability": "Sua tarefa no abrigo pode converter 1 Carne em Conserva sem mudar porções, 1/dia.",
       "story": "Aprendeu a cozinhar quando parar era um risco.",
       "initial": false,
-      "unlock": "Resgate: ver CAMPAIGN.md",
+      "unlock": "Resgate: Mercado; duas noites, vaga e aptidão.",
       "progression": {
         "3": [
           "Panela: converte duas cartas de Carne por tarefa.",
@@ -758,7 +790,11 @@
           "Resiliência: ignore primeiro ferimento recebido no dia."
         ]
       },
-      "art": null,
+      "art": {
+        "path": "assets/portraits_02.png",
+        "col": 2,
+        "row": 2
+      },
       "refs": [
         "RULES.md §3",
         "RULES.md §13"
@@ -777,7 +813,7 @@
       "ability": "Primeiro socorro a incapacitado por dia custa 0 PA e consome Medicamento.",
       "story": "Marca saídas com giz para lembrar a todos de voltar.",
       "initial": false,
-      "unlock": "Resgate: ver CAMPAIGN.md",
+      "unlock": "Resgate: Hospital; duas noites, vaga e aptidão.",
       "progression": {
         "3": [
           "Maca: escolta incapacitado não ocupa carga com ele.",
@@ -792,7 +828,11 @@
           "Resiliência: ignore primeiro ferimento recebido no dia."
         ]
       },
-      "art": null,
+      "art": {
+        "path": "assets/portraits_02.png",
+        "col": 0,
+        "row": 3
+      },
       "refs": [
         "RULES.md §3",
         "RULES.md §13"
@@ -811,7 +851,7 @@
       "ability": "Recuperar van exige 1 PA a menos para você, mínimo 1.",
       "story": "Ouviu uma van falhar e decidiu que não seria a última viagem.",
       "initial": false,
-      "unlock": "Resgate: ver CAMPAIGN.md",
+      "unlock": "Resgate: Oficina; duas noites, vaga e aptidão.",
       "progression": {
         "3": [
           "Oficina: reparo de van no abrigo custa 1 Material.",
@@ -826,7 +866,11 @@
           "Resiliência: ignore primeiro ferimento recebido no dia."
         ]
       },
-      "art": null,
+      "art": {
+        "path": "assets/portraits_02.png",
+        "col": 1,
+        "row": 3
+      },
       "refs": [
         "RULES.md §3",
         "RULES.md §13"
@@ -845,7 +889,7 @@
       "ability": "Se trabalhar em vigilância, pode rerrolar seu dado uma vez.",
       "story": "Repete o nome da cidade até alguém responder.",
       "initial": false,
-      "unlock": "Resgate: ver CAMPAIGN.md",
+      "unlock": "Resgate: Estação; duas noites, vaga e aptidão.",
       "progression": {
         "3": [
           "Contato: missão Contato não requer rodada local.",
@@ -860,7 +904,11 @@
           "Resiliência: ignore primeiro ferimento recebido no dia."
         ]
       },
-      "art": null,
+      "art": {
+        "path": "assets/portraits_02.png",
+        "col": 2,
+        "row": 3
+      },
       "refs": [
         "RULES.md §3",
         "RULES.md §13"
@@ -4243,7 +4291,12 @@
       "version": "0.1",
       "refs": [
         "RULES.md"
-      ]
+      ],
+      "cost": {
+        "Material": 2,
+        "Lona": 1
+      },
+      "work": 1
     },
     {
       "id": "ZC-PRO-0002",
@@ -4253,7 +4306,12 @@
       "version": "0.1",
       "refs": [
         "RULES.md"
-      ]
+      ],
+      "cost": {
+        "Material": 4,
+        "Madeira": 1
+      },
+      "work": 2
     },
     {
       "id": "ZC-PRO-0003",
@@ -4263,7 +4321,12 @@
       "version": "0.1",
       "refs": [
         "RULES.md"
-      ]
+      ],
+      "cost": {
+        "Material": 3,
+        "Kit de instalação médica": 1
+      },
+      "work": 2
     },
     {
       "id": "ZC-PRO-0004",
@@ -4273,7 +4336,12 @@
       "version": "0.1",
       "refs": [
         "RULES.md"
-      ]
+      ],
+      "cost": {
+        "Material": 3,
+        "Bancada": 1
+      },
+      "work": 2
     },
     {
       "id": "ZC-PRO-0005",
@@ -4283,7 +4351,12 @@
       "version": "0.1",
       "refs": [
         "RULES.md"
-      ]
+      ],
+      "cost": {
+        "Material": 4,
+        "Ferramentas": 1
+      },
+      "work": 3
     },
     {
       "id": "ZC-PRO-0006",
@@ -4293,7 +4366,12 @@
       "version": "0.1",
       "refs": [
         "RULES.md"
-      ]
+      ],
+      "cost": {
+        "Material": 2,
+        "Madeira": 1
+      },
+      "work": 2
     },
     {
       "id": "ZC-PRO-0007",
@@ -4303,7 +4381,12 @@
       "version": "0.1",
       "refs": [
         "RULES.md"
-      ]
+      ],
+      "cost": {
+        "Material": 2,
+        "Sementes": 1
+      },
+      "work": 2
     },
     {
       "id": "ZC-PRO-0008",
@@ -4313,7 +4396,14 @@
       "version": "0.1",
       "refs": [
         "RULES.md"
-      ]
+      ],
+      "cost": {
+        "Material": 3,
+        "Conexões": 1,
+        "Bomba": 1,
+        "Membrana": 1
+      },
+      "work": 4
     },
     {
       "id": "ZC-PRO-0009",
@@ -4323,7 +4413,12 @@
       "version": "0.1",
       "refs": [
         "RULES.md"
-      ]
+      ],
+      "cost": {
+        "Material": 4,
+        "Madeira": 2
+      },
+      "work": 2
     },
     {
       "id": "ZC-PRO-0010",
@@ -4333,7 +4428,11 @@
       "version": "0.1",
       "refs": [
         "RULES.md"
-      ]
+      ],
+      "cost": {
+        "Material": 2
+      },
+      "work": 1
     },
     {
       "id": "ZC-STR-0001",
@@ -4635,7 +4734,7 @@
       "id": "ZC-MIS-0002",
       "family": "MIS",
       "name": "Oficina",
-      "text": "Entregar Conexões. O1 Conexões+Bateria; O2 três Materiais+Ferramentas. Um lote de cada provisão.",
+      "text": "Entregar Conexões. O1 Conexões+Bateria; O2 três Materiais+Ferramentas+Bancada. Um lote de cada provisão.",
       "version": "0.1",
       "refs": [
         "RULES.md"
