@@ -19,6 +19,6 @@ Fonte editável: content/catalog.json. IDs ZC-FAM-0001; quantidade física repre
 - VIA: 12 cartas.
 - VIN: 12 cartas.
 
-Total 324 cartas pequenas; 24 fichas meia A4; 24 tokens de heróis. Recursos são reserva finita com registro de excedentes. As quantidades foram definidas antes da diagramação. Sem miniaturas ou dados físicos incluídos.
+Total 324 cartas pequenas; 24 fichas meia A4; 198 marcadores, dos quais 24 tokens de heróis. Recursos são reserva finita com registro de excedentes. As quantidades foram definidas antes da diagramação. Sem miniaturas ou dados físicos incluídos.
 
 24 heróis: 12 iniciais e 12 desbloqueáveis. Quatro módulos locais reutilizáveis, seis diagramas, três painéis, marcadores e registro repetível. Profissões dos dez primeiros: propostas D02.

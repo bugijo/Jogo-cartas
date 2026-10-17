@@ -5,7 +5,7 @@ import fitz
 P=Path(__file__).resolve().parents[1];O=P/'output';D=json.loads((P/'content/catalog.json').read_text());checks=[]
 def check(name,condition,detail=''):
  checks.append(dict(name=name,passed=bool(condition),detail=detail));print(('OK ' if condition else 'FALHA ')+name+(' • '+str(detail) if detail else ''))
-ids=[x['id'] for x in D['cards']+D['heroes']+D['maps']]
+ids=[x['id'] for x in D['cards']+D['heroes']+D['maps']+D['tokens']+D['modules']]
 check('IDs únicos',len(ids)==len(set(ids)),len(ids))
 check('24 heróis / 12 iniciais',len(D['heroes'])==24 and sum(h['initial'] for h in D['heroes'])==12)
 rescue={i for c in D['cards'] if c['family']=='MOR' for i in c['hero_refs']}

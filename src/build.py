@@ -57,6 +57,30 @@ def clip_portrait(c,hero,x,y,w,h):
  if hero.get('art'):sheet_art(c,hero['art'],x,y,w,h,True)
  else:
   c.setStrokeColor(RUST);c.rect(x,y,w,h);para(c,'RETRATO PENDENTE',x+2*mm,y+2*mm,w-4*mm,h-4*mm,10)
+FAMILY_COLOR={'VIN':'#98535e','INT':'#777d7d','REC':'#8d896d','SAQ':'#667f5d','VIA':'#ac873d','HOR':'#a0523c','CER':'#7d4750','PRO':'#173c43','STR':'#876b54','MIS':'#786077','MOR':'#ad874a','EQU':'#36616b','EVE':'#a77f39','PEC':'#546b67','VEI':'#536879','AJU':'#637a7b'}
+def family_icon(c,f,x,y,s):
+ c.saveState();c.setStrokeColor(HexColor(FAMILY_COLOR[f]));c.setLineWidth(.7)
+ if f=='INT':
+  c.rect(x,y,s,s*.7);c.line(x,y+s*.7,x+s/2,y+s*.3);c.line(x+s,y+s*.7,x+s/2,y+s*.3)
+ elif f=='STR':
+  p=c.beginPath();p.moveTo(x,y);p.lineTo(x,y+s*.6);p.lineTo(x+s/2,y+s);p.lineTo(x+s,y+s*.6);p.lineTo(x+s,y);p.close();c.drawPath(p)
+ elif f=='VIN':
+  c.ellipse(x,y,x+s*.65,y+s*.5);c.ellipse(x+s*.35,y,x+s,y+s*.5)
+ elif f=='VIA':
+  c.line(x,y,x+s*.3,y+s);c.line(x+s,y,x+s*.7,y+s);c.line(x+s/2,y,x+s/2,y+s*.4)
+ elif f=='CER':
+  c.rect(x,y,s,s);c.line(x+s*.33,y,x+s*.33,y+s);c.line(x+s*.66,y,x+s*.66,y+s)
+ elif f=='MIS':
+  c.line(x,y,x,y+s);c.rect(x,y+s*.55,s*.8,s*.45)
+ elif f=='MOR':
+  c.circle(x+s*.3,y+s*.7,s*.16);c.circle(x+s*.75,y+s*.7,s*.16);c.line(x+s*.1,y,x+s*.3,y+s*.5);c.line(x+s*.55,y,x+s*.75,y+s*.5)
+ elif f in ['PRO','EQU','PEC']:
+  c.line(x,y,x+s,y+s);c.line(x,y+s,x+s,y);c.circle(x+s,y+s,s*.15)
+ elif f=='HOR':
+  c.ellipse(x,y,x+s*.35,y+s*.6);c.ellipse(x+s*.6,y+s*.4,x+s,y+s)
+ else:
+  c.rect(x,y,s,s*.8);c.line(x,y+s*.8,x+s/2,y+s*.4);c.line(x+s,y+s*.8,x+s/2,y+s*.4)
+ c.restoreState()
 def cards(card_list=None,name='03_cartas_duplex.pdf'):
  card_list=D['cards'] if card_list is None else card_list
  c=canvas.Canvas(str(O/name),pagesize=A4)
@@ -71,7 +95,7 @@ def cards(card_list=None,name='03_cartas_duplex.pdf'):
     x=8.5*mm+pcol*(cw+gap);y=H-14.5*mm-(r+1)*ch-r*gap
     c.setStrokeColor(Color(.6,.6,.6));c.setLineWidth(.35);c.rect(x,y,cw,ch)
     if side=='front':
-     c.setFillColor(INK);c.rect(x+4*mm,y+ch-9*mm,6*mm,1.2*mm,fill=1,stroke=0)
+     family_icon(c,card['family'],x+4*mm,y+ch-10*mm,5*mm)
      para(c,FAMILIES[card['family']],x+12*mm,y+ch-11*mm,cw-16*mm,6*mm,8,bold=True,file=name,page=page,label=card['id']+' family')
      art=lookup(card['name'],card['family'])
      hasart=art and (P/art['path']).exists()
@@ -194,10 +218,8 @@ def panels():
 def markers():
  name='08_marcadores.pdf';c=canvas.Canvas(str(O/name),pagesize=A4);W,H=A4
  # hero token portraits circularly clipped, same actual artwork; no raster editing.
- items=[]
- for h in D['heroes']:items.append(('hero',h['name'],h))
- for n in range(1,25):items.append(('enemy',f'E{n:02}',None))
- for txt,q in [('Errante',12),('Corredor',6),('Bruto',6),('Porta',12),('Bloqueio',6),('Busca',12),('Verificado',6),('Fome',12),('Sede',12),('Dano',8),('1',20),('2',12),('3',12),('4',12),('Relógio',1),('Pressão',1)]:items += [('marker',txt,None)]*q
+ hero_by_id={h['id']:h for h in D['heroes']}
+ items=[(t['kind'],t['name'],hero_by_id.get(t['hero_ref'])) for t in D['tokens']]
  for i,(typ,txt,h) in enumerate(items):
   slot=i%48;r,col=divmod(slot,6);x=(10+col*32)*mm;y=H-(15+(r+1)*32)*mm;c.setStrokeColor(INK);c.rect(x,y,29*mm,29*mm)
   if typ=='hero':clip_portrait(c,h,x+2*mm,y+8*mm,25*mm,19*mm)
@@ -215,8 +237,8 @@ def organizer():
  fams=sorted({c['family'] for c in D['cards']})
  for i,f in enumerate(fams):
   slot=i%8;r,col=divmod(slot,2);x=(10+col*96)*mm;y=H-(15+(r+1)*65)*mm
-  c.setStrokeColor(INK);c.rect(x,y,90*mm,60*mm);para(c,'ZONA ZERO / '+f,x+4*mm,y+42*mm,82*mm,12*mm,13,bold=True)
-  qty=sum(a['family']==f for a in D['cards']);para(c,f'{qty} cartas • símbolo {f[0]}\nMonte □ Descarte □\nReserva separada do estoque',x+4*mm,y+9*mm,82*mm,29*mm,10)
+  c.setStrokeColor(INK);c.rect(x,y,90*mm,60*mm);para(c,'ZONA ZERO / '+FAMILIES[f],x+4*mm,y+42*mm,82*mm,12*mm,13,bold=True)
+  qty=sum(a['family']==f for a in D['cards']);para(c,f'{qty} cartas na edição completa • {f}\nMonte □ Descarte □\nReserva separada do estoque',x+4*mm,y+9*mm,82*mm,29*mm,10)
   c.setDash(3,2);c.line(x,y+8*mm,x+90*mm,y+8*mm);c.setDash()
   if slot==7:c.showPage()
  if len(fams)%8:c.showPage()

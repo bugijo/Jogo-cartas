@@ -38,3 +38,13 @@ class RulesTests(unittest.TestCase):
   self.assertEqual(apply_deprivation(1,False,True),(2,1))
   self.assertEqual(apply_deprivation(2,True,True),(0,0))
 if __name__=='__main__':unittest.main()
+
+class CampaignRegressionTests(unittest.TestCase):
+ def test_ambush_cannot_be_skipped_from_entry(self):
+  import json
+  p=Path(__file__).resolve().parents[1]
+  data=json.loads((p/'content/catalog.json').read_text())
+  ambush=next(c for c in data['cards'] if c['name']=='Emboscada')
+  minimum=ambush.get('minimum_rounds',0)
+  self.assertFalse(0>=minimum,'Sair na chegada não pode evitar a rodada de emboscada')
+  self.assertTrue(1>=minimum,'Após uma rodada a saída pode abrir se estiver livre')

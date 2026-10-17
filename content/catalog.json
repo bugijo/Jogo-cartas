@@ -3960,7 +3960,8 @@
       "version": "0.1",
       "refs": [
         "RULES.md"
-      ]
+      ],
+      "minimum_rounds": 0
     },
     {
       "id": "ZC-VIA-0002",
@@ -3970,7 +3971,8 @@
       "version": "0.1",
       "refs": [
         "RULES.md"
-      ]
+      ],
+      "minimum_rounds": 0
     },
     {
       "id": "ZC-VIA-0003",
@@ -3980,7 +3982,8 @@
       "version": "0.1",
       "refs": [
         "RULES.md"
-      ]
+      ],
+      "minimum_rounds": 0
     },
     {
       "id": "ZC-VIA-0004",
@@ -3990,17 +3993,19 @@
       "version": "0.1",
       "refs": [
         "RULES.md"
-      ]
+      ],
+      "minimum_rounds": 0
     },
     {
       "id": "ZC-VIA-0005",
       "family": "VIA",
       "name": "Emboscada",
-      "text": "Iniciem mapa de entrada: ceil(H/2) Errantes em zona 4, grupo na 1. Rodadas custam segmentos. Saída zona 1 sem inimigos. Sem saque; sigam viagem após sair.",
+      "text": "Iniciem mapa de entrada: ceil(H/2) Errantes em zona 4, grupo na 1. Rodadas custam segmentos. Saída zona 1 sem inimigos, só após ao menos uma rodada completa. Sem saque; sigam viagem após sair.",
       "version": "0.1",
       "refs": [
         "RULES.md"
-      ]
+      ],
+      "minimum_rounds": 1
     },
     {
       "id": "ZC-VIA-0006",
@@ -4010,7 +4015,8 @@
       "version": "0.1",
       "refs": [
         "RULES.md"
-      ]
+      ],
+      "minimum_rounds": 0
     },
     {
       "id": "ZC-VIA-0007",
@@ -4020,7 +4026,8 @@
       "version": "0.1",
       "refs": [
         "RULES.md"
-      ]
+      ],
+      "minimum_rounds": 0
     },
     {
       "id": "ZC-VIA-0008",
@@ -4030,7 +4037,8 @@
       "version": "0.1",
       "refs": [
         "RULES.md"
-      ]
+      ],
+      "minimum_rounds": 0
     },
     {
       "id": "ZC-VIA-0009",
@@ -4040,7 +4048,8 @@
       "version": "0.1",
       "refs": [
         "RULES.md"
-      ]
+      ],
+      "minimum_rounds": 0
     },
     {
       "id": "ZC-VIA-0010",
@@ -4050,7 +4059,8 @@
       "version": "0.1",
       "refs": [
         "RULES.md"
-      ]
+      ],
+      "minimum_rounds": 0
     },
     {
       "id": "ZC-VIA-0011",
@@ -4060,7 +4070,8 @@
       "version": "0.1",
       "refs": [
         "RULES.md"
-      ]
+      ],
+      "minimum_rounds": 0
     },
     {
       "id": "ZC-VIA-0012",
@@ -4070,7 +4081,8 @@
       "version": "0.1",
       "refs": [
         "RULES.md"
-      ]
+      ],
+      "minimum_rounds": 0
     },
     {
       "id": "ZC-HOR-0001",
@@ -4608,12 +4620,14 @@
       "id": "ZC-MOR-0001",
       "family": "MOR",
       "name": "Jana e criança",
-      "text": "Mercado O1; 2 humanos. Jana cozinheira de campo, criança sem trabalho. Pista: protege mochila. Até dia 5. Acolher: vagas ou recepção até +2/duas noites; sorteie uma Intenção por grupo. Ajuda local: 1 comida+1 água/humano.",
+      "text": "Mercado O1; 2 humanos. Jana cozinheira de campo, criança sem trabalho. Pista: protege mochila. Até dia 5. Acolher: vagas ou recepção até +2/duas noites; sorteie uma Intenção por grupo. Ajuda local: 1 comida+1 água/humano. Contato 1 PA em O1.",
       "version": "0.1",
       "refs": [
         "RULES.md"
       ],
       "hero_ref": "ZC-HER-0021",
+      "zone": "O1",
+      "contact_pa": 1,
       "hero_refs": [
         21
       ]
@@ -4622,12 +4636,14 @@
       "id": "ZC-MOR-0002",
       "family": "MOR",
       "name": "Bia",
-      "text": "Oficina O1; 1 adulta mecânica. Pista: sabe o chassi. Até dia 5. Acolher: vagas ou recepção até +2/duas noites; sorteie uma Intenção por grupo. Ajuda local: 1 comida+1 água/humano.",
+      "text": "Oficina O1; 1 adulta mecânica. Pista: sabe o chassi. Até dia 5. Acolher: vagas ou recepção até +2/duas noites; sorteie uma Intenção por grupo. Ajuda local: 1 comida+1 água/humano. Contato 1 PA em O1.",
       "version": "0.1",
       "refs": [
         "RULES.md"
       ],
       "hero_ref": "ZC-HER-0023",
+      "zone": "O1",
+      "contact_pa": 1,
       "hero_refs": [
         23
       ]
@@ -4636,12 +4652,14 @@
       "id": "ZC-MOR-0003",
       "family": "MOR",
       "name": "Vicente e Sol",
-      "text": "Estação O2; 2 adultos, rádio e guia. Pista: estática. Até dia 5. Acolher: vagas ou recepção até +2/duas noites; sorteie uma Intenção por grupo. Ajuda local: 1 comida+1 água/humano.",
+      "text": "Estação O2; 2 adultos, rádio e guia. Pista: estática. Até dia 5. Acolher: vagas ou recepção até +2/duas noites; sorteie uma Intenção por grupo. Ajuda local: 1 comida+1 água/humano. Contato 1 PA em O2.",
       "version": "0.1",
       "refs": [
         "RULES.md"
       ],
       "hero_ref": "ZC-HER-0024",
+      "zone": "O2",
+      "contact_pa": 1,
       "hero_refs": [
         24,
         19
@@ -4651,12 +4669,14 @@
       "id": "ZC-MOR-0004",
       "family": "MOR",
       "name": "Raul e Otávio",
-      "text": "Posto O2; 2 adultos. Pista: negociam chaves. Até dia 5. Acolher: vagas ou recepção até +2/duas noites; sorteie uma Intenção por grupo. Ajuda local: 1 comida+1 água/humano.",
+      "text": "Posto O2; 2 adultos. Pista: negociam chaves. Até dia 5. Acolher: vagas ou recepção até +2/duas noites; sorteie uma Intenção por grupo. Ajuda local: 1 comida+1 água/humano. Contato 1 PA em O2.",
       "version": "0.1",
       "refs": [
         "RULES.md"
       ],
       "hero_ref": "ZC-HER-0016",
+      "zone": "O2",
+      "contact_pa": 1,
       "hero_refs": [
         16,
         20
@@ -4666,12 +4686,14 @@
       "id": "ZC-MOR-0005",
       "family": "MOR",
       "name": "Denise, Miguel e civil",
-      "text": "Hospital O2; 3 humanos, um civil com ferimento 1. Pista: ninguém fica. Até dia 5. Acolher: vagas ou recepção até +2/duas noites; sorteie uma Intenção por grupo. Ajuda local: 1 comida+1 água/humano.",
+      "text": "Hospital O2; 3 humanos, um civil com ferimento 1. Pista: ninguém fica. Até dia 5. Acolher: vagas ou recepção até +2/duas noites; sorteie uma Intenção por grupo. Ajuda local: 1 comida+1 água/humano. Contato 1 PA em O2.",
       "version": "0.1",
       "refs": [
         "RULES.md"
       ],
       "hero_ref": "ZC-HER-0017",
+      "zone": "O2",
+      "contact_pa": 1,
       "hero_refs": [
         17,
         22
@@ -4681,12 +4703,14 @@
       "id": "ZC-MOR-0006",
       "family": "MOR",
       "name": "Samuel, Bruna e criança",
-      "text": "Condomínio O2; 3 humanos. Sementes carga 1 se acolher. Pista: saco fechado. Até dia 5. Acolher: vagas ou recepção até +2/duas noites; sorteie uma Intenção por grupo. Ajuda local: 1 comida+1 água/humano.",
+      "text": "Condomínio O2; 3 humanos. Sementes carga 1 se acolher. Pista: saco fechado. Até dia 5. Acolher: vagas ou recepção até +2/duas noites; sorteie uma Intenção por grupo. Ajuda local: 1 comida+1 água/humano. Contato 1 PA em O2.",
       "version": "0.1",
       "refs": [
         "RULES.md"
       ],
       "hero_ref": "ZC-HER-0014",
+      "zone": "O2",
+      "contact_pa": 1,
       "hero_refs": [
         14,
         15
@@ -4696,12 +4720,14 @@
       "id": "ZC-MOR-0007",
       "family": "MOR",
       "name": "Aline e cão",
-      "text": "Hospital segunda visita; 1 humana veterinária+1 cão. Pista: examina mordidas. Não duplicar no condomínio. Acolher: vagas ou recepção até +2/duas noites; sorteie uma Intenção por grupo. Ajuda local: 1 comida+1 água/humano.",
+      "text": "Hospital segunda visita; 1 humana veterinária+1 cão. Pista: examina mordidas. Não duplicar no condomínio. Acolher: vagas ou recepção até +2/duas noites; sorteie uma Intenção por grupo. Ajuda local: 1 comida+1 água/humano. Contato 1 PA em O2.",
       "version": "0.1",
       "refs": [
         "RULES.md"
       ],
       "hero_ref": "ZC-HER-0013",
+      "zone": "O2",
+      "contact_pa": 1,
       "hero_refs": [
         13
       ]
@@ -4710,12 +4736,14 @@
       "id": "ZC-MOR-0008",
       "family": "MOR",
       "name": "Hugo",
-      "text": "Condomínio segunda visita; 1 adulto eletricista. Pista: traz fios enrolados. Até dia 5. Acolher: vagas ou recepção até +2/duas noites; sorteie uma Intenção por grupo. Ajuda local: 1 comida+1 água/humano.",
+      "text": "Condomínio segunda visita; 1 adulto eletricista. Pista: traz fios enrolados. Até dia 5. Acolher: vagas ou recepção até +2/duas noites; sorteie uma Intenção por grupo. Ajuda local: 1 comida+1 água/humano. Contato 1 PA em O2.",
       "version": "0.1",
       "refs": [
         "RULES.md"
       ],
       "hero_ref": "ZC-HER-0018",
+      "zone": "O2",
+      "contact_pa": 1,
       "hero_refs": [
         18
       ]
@@ -5777,6 +5805,1226 @@
         7,
         14
       ],
+      "rotation": 0
+    }
+  ],
+  "tokens": [
+    {
+      "id": "ZC-TOK-0001",
+      "kind": "hero",
+      "name": "Lia",
+      "hero_ref": "ZC-HER-0001"
+    },
+    {
+      "id": "ZC-TOK-0002",
+      "kind": "hero",
+      "name": "Ivo",
+      "hero_ref": "ZC-HER-0002"
+    },
+    {
+      "id": "ZC-TOK-0003",
+      "kind": "hero",
+      "name": "Mara",
+      "hero_ref": "ZC-HER-0003"
+    },
+    {
+      "id": "ZC-TOK-0004",
+      "kind": "hero",
+      "name": "Caio",
+      "hero_ref": "ZC-HER-0004"
+    },
+    {
+      "id": "ZC-TOK-0005",
+      "kind": "hero",
+      "name": "Nara",
+      "hero_ref": "ZC-HER-0005"
+    },
+    {
+      "id": "ZC-TOK-0006",
+      "kind": "hero",
+      "name": "Bento",
+      "hero_ref": "ZC-HER-0006"
+    },
+    {
+      "id": "ZC-TOK-0007",
+      "kind": "hero",
+      "name": "Duda",
+      "hero_ref": "ZC-HER-0007"
+    },
+    {
+      "id": "ZC-TOK-0008",
+      "kind": "hero",
+      "name": "Rosa",
+      "hero_ref": "ZC-HER-0008"
+    },
+    {
+      "id": "ZC-TOK-0009",
+      "kind": "hero",
+      "name": "Joel",
+      "hero_ref": "ZC-HER-0009"
+    },
+    {
+      "id": "ZC-TOK-0010",
+      "kind": "hero",
+      "name": "Yumi",
+      "hero_ref": "ZC-HER-0010"
+    },
+    {
+      "id": "ZC-TOK-0011",
+      "kind": "hero",
+      "name": "Téo",
+      "hero_ref": "ZC-HER-0011"
+    },
+    {
+      "id": "ZC-TOK-0012",
+      "kind": "hero",
+      "name": "Célia",
+      "hero_ref": "ZC-HER-0012"
+    },
+    {
+      "id": "ZC-TOK-0013",
+      "kind": "hero",
+      "name": "Aline",
+      "hero_ref": "ZC-HER-0013"
+    },
+    {
+      "id": "ZC-TOK-0014",
+      "kind": "hero",
+      "name": "Samuel",
+      "hero_ref": "ZC-HER-0014"
+    },
+    {
+      "id": "ZC-TOK-0015",
+      "kind": "hero",
+      "name": "Bruna",
+      "hero_ref": "ZC-HER-0015"
+    },
+    {
+      "id": "ZC-TOK-0016",
+      "kind": "hero",
+      "name": "Raul",
+      "hero_ref": "ZC-HER-0016"
+    },
+    {
+      "id": "ZC-TOK-0017",
+      "kind": "hero",
+      "name": "Denise",
+      "hero_ref": "ZC-HER-0017"
+    },
+    {
+      "id": "ZC-TOK-0018",
+      "kind": "hero",
+      "name": "Hugo",
+      "hero_ref": "ZC-HER-0018"
+    },
+    {
+      "id": "ZC-TOK-0019",
+      "kind": "hero",
+      "name": "Sol",
+      "hero_ref": "ZC-HER-0019"
+    },
+    {
+      "id": "ZC-TOK-0020",
+      "kind": "hero",
+      "name": "Otávio",
+      "hero_ref": "ZC-HER-0020"
+    },
+    {
+      "id": "ZC-TOK-0021",
+      "kind": "hero",
+      "name": "Jana",
+      "hero_ref": "ZC-HER-0021"
+    },
+    {
+      "id": "ZC-TOK-0022",
+      "kind": "hero",
+      "name": "Miguel",
+      "hero_ref": "ZC-HER-0022"
+    },
+    {
+      "id": "ZC-TOK-0023",
+      "kind": "hero",
+      "name": "Bia",
+      "hero_ref": "ZC-HER-0023"
+    },
+    {
+      "id": "ZC-TOK-0024",
+      "kind": "hero",
+      "name": "Vicente",
+      "hero_ref": "ZC-HER-0024"
+    },
+    {
+      "id": "ZC-TOK-0025",
+      "kind": "enemy",
+      "name": "E01",
+      "hero_ref": null
+    },
+    {
+      "id": "ZC-TOK-0026",
+      "kind": "enemy",
+      "name": "E02",
+      "hero_ref": null
+    },
+    {
+      "id": "ZC-TOK-0027",
+      "kind": "enemy",
+      "name": "E03",
+      "hero_ref": null
+    },
+    {
+      "id": "ZC-TOK-0028",
+      "kind": "enemy",
+      "name": "E04",
+      "hero_ref": null
+    },
+    {
+      "id": "ZC-TOK-0029",
+      "kind": "enemy",
+      "name": "E05",
+      "hero_ref": null
+    },
+    {
+      "id": "ZC-TOK-0030",
+      "kind": "enemy",
+      "name": "E06",
+      "hero_ref": null
+    },
+    {
+      "id": "ZC-TOK-0031",
+      "kind": "enemy",
+      "name": "E07",
+      "hero_ref": null
+    },
+    {
+      "id": "ZC-TOK-0032",
+      "kind": "enemy",
+      "name": "E08",
+      "hero_ref": null
+    },
+    {
+      "id": "ZC-TOK-0033",
+      "kind": "enemy",
+      "name": "E09",
+      "hero_ref": null
+    },
+    {
+      "id": "ZC-TOK-0034",
+      "kind": "enemy",
+      "name": "E10",
+      "hero_ref": null
+    },
+    {
+      "id": "ZC-TOK-0035",
+      "kind": "enemy",
+      "name": "E11",
+      "hero_ref": null
+    },
+    {
+      "id": "ZC-TOK-0036",
+      "kind": "enemy",
+      "name": "E12",
+      "hero_ref": null
+    },
+    {
+      "id": "ZC-TOK-0037",
+      "kind": "enemy",
+      "name": "E13",
+      "hero_ref": null
+    },
+    {
+      "id": "ZC-TOK-0038",
+      "kind": "enemy",
+      "name": "E14",
+      "hero_ref": null
+    },
+    {
+      "id": "ZC-TOK-0039",
+      "kind": "enemy",
+      "name": "E15",
+      "hero_ref": null
+    },
+    {
+      "id": "ZC-TOK-0040",
+      "kind": "enemy",
+      "name": "E16",
+      "hero_ref": null
+    },
+    {
+      "id": "ZC-TOK-0041",
+      "kind": "enemy",
+      "name": "E17",
+      "hero_ref": null
+    },
+    {
+      "id": "ZC-TOK-0042",
+      "kind": "enemy",
+      "name": "E18",
+      "hero_ref": null
+    },
+    {
+      "id": "ZC-TOK-0043",
+      "kind": "enemy",
+      "name": "E19",
+      "hero_ref": null
+    },
+    {
+      "id": "ZC-TOK-0044",
+      "kind": "enemy",
+      "name": "E20",
+      "hero_ref": null
+    },
+    {
+      "id": "ZC-TOK-0045",
+      "kind": "enemy",
+      "name": "E21",
+      "hero_ref": null
+    },
+    {
+      "id": "ZC-TOK-0046",
+      "kind": "enemy",
+      "name": "E22",
+      "hero_ref": null
+    },
+    {
+      "id": "ZC-TOK-0047",
+      "kind": "enemy",
+      "name": "E23",
+      "hero_ref": null
+    },
+    {
+      "id": "ZC-TOK-0048",
+      "kind": "enemy",
+      "name": "E24",
+      "hero_ref": null
+    },
+    {
+      "id": "ZC-TOK-0049",
+      "kind": "marker",
+      "name": "Errante",
+      "hero_ref": null
+    },
+    {
+      "id": "ZC-TOK-0050",
+      "kind": "marker",
+      "name": "Errante",
+      "hero_ref": null
+    },
+    {
+      "id": "ZC-TOK-0051",
+      "kind": "marker",
+      "name": "Errante",
+      "hero_ref": null
+    },
+    {
+      "id": "ZC-TOK-0052",
+      "kind": "marker",
+      "name": "Errante",
+      "hero_ref": null
+    },
+    {
+      "id": "ZC-TOK-0053",
+      "kind": "marker",
+      "name": "Errante",
+      "hero_ref": null
+    },
+    {
+      "id": "ZC-TOK-0054",
+      "kind": "marker",
+      "name": "Errante",
+      "hero_ref": null
+    },
+    {
+      "id": "ZC-TOK-0055",
+      "kind": "marker",
+      "name": "Errante",
+      "hero_ref": null
+    },
+    {
+      "id": "ZC-TOK-0056",
+      "kind": "marker",
+      "name": "Errante",
+      "hero_ref": null
+    },
+    {
+      "id": "ZC-TOK-0057",
+      "kind": "marker",
+      "name": "Errante",
+      "hero_ref": null
+    },
+    {
+      "id": "ZC-TOK-0058",
+      "kind": "marker",
+      "name": "Errante",
+      "hero_ref": null
+    },
+    {
+      "id": "ZC-TOK-0059",
+      "kind": "marker",
+      "name": "Errante",
+      "hero_ref": null
+    },
+    {
+      "id": "ZC-TOK-0060",
+      "kind": "marker",
+      "name": "Errante",
+      "hero_ref": null
+    },
+    {
+      "id": "ZC-TOK-0061",
+      "kind": "marker",
+      "name": "Corredor",
+      "hero_ref": null
+    },
+    {
+      "id": "ZC-TOK-0062",
+      "kind": "marker",
+      "name": "Corredor",
+      "hero_ref": null
+    },
+    {
+      "id": "ZC-TOK-0063",
+      "kind": "marker",
+      "name": "Corredor",
+      "hero_ref": null
+    },
+    {
+      "id": "ZC-TOK-0064",
+      "kind": "marker",
+      "name": "Corredor",
+      "hero_ref": null
+    },
+    {
+      "id": "ZC-TOK-0065",
+      "kind": "marker",
+      "name": "Corredor",
+      "hero_ref": null
+    },
+    {
+      "id": "ZC-TOK-0066",
+      "kind": "marker",
+      "name": "Corredor",
+      "hero_ref": null
+    },
+    {
+      "id": "ZC-TOK-0067",
+      "kind": "marker",
+      "name": "Bruto",
+      "hero_ref": null
+    },
+    {
+      "id": "ZC-TOK-0068",
+      "kind": "marker",
+      "name": "Bruto",
+      "hero_ref": null
+    },
+    {
+      "id": "ZC-TOK-0069",
+      "kind": "marker",
+      "name": "Bruto",
+      "hero_ref": null
+    },
+    {
+      "id": "ZC-TOK-0070",
+      "kind": "marker",
+      "name": "Bruto",
+      "hero_ref": null
+    },
+    {
+      "id": "ZC-TOK-0071",
+      "kind": "marker",
+      "name": "Bruto",
+      "hero_ref": null
+    },
+    {
+      "id": "ZC-TOK-0072",
+      "kind": "marker",
+      "name": "Bruto",
+      "hero_ref": null
+    },
+    {
+      "id": "ZC-TOK-0073",
+      "kind": "marker",
+      "name": "Porta",
+      "hero_ref": null
+    },
+    {
+      "id": "ZC-TOK-0074",
+      "kind": "marker",
+      "name": "Porta",
+      "hero_ref": null
+    },
+    {
+      "id": "ZC-TOK-0075",
+      "kind": "marker",
+      "name": "Porta",
+      "hero_ref": null
+    },
+    {
+      "id": "ZC-TOK-0076",
+      "kind": "marker",
+      "name": "Porta",
+      "hero_ref": null
+    },
+    {
+      "id": "ZC-TOK-0077",
+      "kind": "marker",
+      "name": "Porta",
+      "hero_ref": null
+    },
+    {
+      "id": "ZC-TOK-0078",
+      "kind": "marker",
+      "name": "Porta",
+      "hero_ref": null
+    },
+    {
+      "id": "ZC-TOK-0079",
+      "kind": "marker",
+      "name": "Porta",
+      "hero_ref": null
+    },
+    {
+      "id": "ZC-TOK-0080",
+      "kind": "marker",
+      "name": "Porta",
+      "hero_ref": null
+    },
+    {
+      "id": "ZC-TOK-0081",
+      "kind": "marker",
+      "name": "Porta",
+      "hero_ref": null
+    },
+    {
+      "id": "ZC-TOK-0082",
+      "kind": "marker",
+      "name": "Porta",
+      "hero_ref": null
+    },
+    {
+      "id": "ZC-TOK-0083",
+      "kind": "marker",
+      "name": "Porta",
+      "hero_ref": null
+    },
+    {
+      "id": "ZC-TOK-0084",
+      "kind": "marker",
+      "name": "Porta",
+      "hero_ref": null
+    },
+    {
+      "id": "ZC-TOK-0085",
+      "kind": "marker",
+      "name": "Bloqueio",
+      "hero_ref": null
+    },
+    {
+      "id": "ZC-TOK-0086",
+      "kind": "marker",
+      "name": "Bloqueio",
+      "hero_ref": null
+    },
+    {
+      "id": "ZC-TOK-0087",
+      "kind": "marker",
+      "name": "Bloqueio",
+      "hero_ref": null
+    },
+    {
+      "id": "ZC-TOK-0088",
+      "kind": "marker",
+      "name": "Bloqueio",
+      "hero_ref": null
+    },
+    {
+      "id": "ZC-TOK-0089",
+      "kind": "marker",
+      "name": "Bloqueio",
+      "hero_ref": null
+    },
+    {
+      "id": "ZC-TOK-0090",
+      "kind": "marker",
+      "name": "Bloqueio",
+      "hero_ref": null
+    },
+    {
+      "id": "ZC-TOK-0091",
+      "kind": "marker",
+      "name": "Busca",
+      "hero_ref": null
+    },
+    {
+      "id": "ZC-TOK-0092",
+      "kind": "marker",
+      "name": "Busca",
+      "hero_ref": null
+    },
+    {
+      "id": "ZC-TOK-0093",
+      "kind": "marker",
+      "name": "Busca",
+      "hero_ref": null
+    },
+    {
+      "id": "ZC-TOK-0094",
+      "kind": "marker",
+      "name": "Busca",
+      "hero_ref": null
+    },
+    {
+      "id": "ZC-TOK-0095",
+      "kind": "marker",
+      "name": "Busca",
+      "hero_ref": null
+    },
+    {
+      "id": "ZC-TOK-0096",
+      "kind": "marker",
+      "name": "Busca",
+      "hero_ref": null
+    },
+    {
+      "id": "ZC-TOK-0097",
+      "kind": "marker",
+      "name": "Busca",
+      "hero_ref": null
+    },
+    {
+      "id": "ZC-TOK-0098",
+      "kind": "marker",
+      "name": "Busca",
+      "hero_ref": null
+    },
+    {
+      "id": "ZC-TOK-0099",
+      "kind": "marker",
+      "name": "Busca",
+      "hero_ref": null
+    },
+    {
+      "id": "ZC-TOK-0100",
+      "kind": "marker",
+      "name": "Busca",
+      "hero_ref": null
+    },
+    {
+      "id": "ZC-TOK-0101",
+      "kind": "marker",
+      "name": "Busca",
+      "hero_ref": null
+    },
+    {
+      "id": "ZC-TOK-0102",
+      "kind": "marker",
+      "name": "Busca",
+      "hero_ref": null
+    },
+    {
+      "id": "ZC-TOK-0103",
+      "kind": "marker",
+      "name": "Verificado",
+      "hero_ref": null
+    },
+    {
+      "id": "ZC-TOK-0104",
+      "kind": "marker",
+      "name": "Verificado",
+      "hero_ref": null
+    },
+    {
+      "id": "ZC-TOK-0105",
+      "kind": "marker",
+      "name": "Verificado",
+      "hero_ref": null
+    },
+    {
+      "id": "ZC-TOK-0106",
+      "kind": "marker",
+      "name": "Verificado",
+      "hero_ref": null
+    },
+    {
+      "id": "ZC-TOK-0107",
+      "kind": "marker",
+      "name": "Verificado",
+      "hero_ref": null
+    },
+    {
+      "id": "ZC-TOK-0108",
+      "kind": "marker",
+      "name": "Verificado",
+      "hero_ref": null
+    },
+    {
+      "id": "ZC-TOK-0109",
+      "kind": "marker",
+      "name": "Fome",
+      "hero_ref": null
+    },
+    {
+      "id": "ZC-TOK-0110",
+      "kind": "marker",
+      "name": "Fome",
+      "hero_ref": null
+    },
+    {
+      "id": "ZC-TOK-0111",
+      "kind": "marker",
+      "name": "Fome",
+      "hero_ref": null
+    },
+    {
+      "id": "ZC-TOK-0112",
+      "kind": "marker",
+      "name": "Fome",
+      "hero_ref": null
+    },
+    {
+      "id": "ZC-TOK-0113",
+      "kind": "marker",
+      "name": "Fome",
+      "hero_ref": null
+    },
+    {
+      "id": "ZC-TOK-0114",
+      "kind": "marker",
+      "name": "Fome",
+      "hero_ref": null
+    },
+    {
+      "id": "ZC-TOK-0115",
+      "kind": "marker",
+      "name": "Fome",
+      "hero_ref": null
+    },
+    {
+      "id": "ZC-TOK-0116",
+      "kind": "marker",
+      "name": "Fome",
+      "hero_ref": null
+    },
+    {
+      "id": "ZC-TOK-0117",
+      "kind": "marker",
+      "name": "Fome",
+      "hero_ref": null
+    },
+    {
+      "id": "ZC-TOK-0118",
+      "kind": "marker",
+      "name": "Fome",
+      "hero_ref": null
+    },
+    {
+      "id": "ZC-TOK-0119",
+      "kind": "marker",
+      "name": "Fome",
+      "hero_ref": null
+    },
+    {
+      "id": "ZC-TOK-0120",
+      "kind": "marker",
+      "name": "Fome",
+      "hero_ref": null
+    },
+    {
+      "id": "ZC-TOK-0121",
+      "kind": "marker",
+      "name": "Sede",
+      "hero_ref": null
+    },
+    {
+      "id": "ZC-TOK-0122",
+      "kind": "marker",
+      "name": "Sede",
+      "hero_ref": null
+    },
+    {
+      "id": "ZC-TOK-0123",
+      "kind": "marker",
+      "name": "Sede",
+      "hero_ref": null
+    },
+    {
+      "id": "ZC-TOK-0124",
+      "kind": "marker",
+      "name": "Sede",
+      "hero_ref": null
+    },
+    {
+      "id": "ZC-TOK-0125",
+      "kind": "marker",
+      "name": "Sede",
+      "hero_ref": null
+    },
+    {
+      "id": "ZC-TOK-0126",
+      "kind": "marker",
+      "name": "Sede",
+      "hero_ref": null
+    },
+    {
+      "id": "ZC-TOK-0127",
+      "kind": "marker",
+      "name": "Sede",
+      "hero_ref": null
+    },
+    {
+      "id": "ZC-TOK-0128",
+      "kind": "marker",
+      "name": "Sede",
+      "hero_ref": null
+    },
+    {
+      "id": "ZC-TOK-0129",
+      "kind": "marker",
+      "name": "Sede",
+      "hero_ref": null
+    },
+    {
+      "id": "ZC-TOK-0130",
+      "kind": "marker",
+      "name": "Sede",
+      "hero_ref": null
+    },
+    {
+      "id": "ZC-TOK-0131",
+      "kind": "marker",
+      "name": "Sede",
+      "hero_ref": null
+    },
+    {
+      "id": "ZC-TOK-0132",
+      "kind": "marker",
+      "name": "Sede",
+      "hero_ref": null
+    },
+    {
+      "id": "ZC-TOK-0133",
+      "kind": "marker",
+      "name": "Dano",
+      "hero_ref": null
+    },
+    {
+      "id": "ZC-TOK-0134",
+      "kind": "marker",
+      "name": "Dano",
+      "hero_ref": null
+    },
+    {
+      "id": "ZC-TOK-0135",
+      "kind": "marker",
+      "name": "Dano",
+      "hero_ref": null
+    },
+    {
+      "id": "ZC-TOK-0136",
+      "kind": "marker",
+      "name": "Dano",
+      "hero_ref": null
+    },
+    {
+      "id": "ZC-TOK-0137",
+      "kind": "marker",
+      "name": "Dano",
+      "hero_ref": null
+    },
+    {
+      "id": "ZC-TOK-0138",
+      "kind": "marker",
+      "name": "Dano",
+      "hero_ref": null
+    },
+    {
+      "id": "ZC-TOK-0139",
+      "kind": "marker",
+      "name": "Dano",
+      "hero_ref": null
+    },
+    {
+      "id": "ZC-TOK-0140",
+      "kind": "marker",
+      "name": "Dano",
+      "hero_ref": null
+    },
+    {
+      "id": "ZC-TOK-0141",
+      "kind": "marker",
+      "name": "1",
+      "hero_ref": null
+    },
+    {
+      "id": "ZC-TOK-0142",
+      "kind": "marker",
+      "name": "1",
+      "hero_ref": null
+    },
+    {
+      "id": "ZC-TOK-0143",
+      "kind": "marker",
+      "name": "1",
+      "hero_ref": null
+    },
+    {
+      "id": "ZC-TOK-0144",
+      "kind": "marker",
+      "name": "1",
+      "hero_ref": null
+    },
+    {
+      "id": "ZC-TOK-0145",
+      "kind": "marker",
+      "name": "1",
+      "hero_ref": null
+    },
+    {
+      "id": "ZC-TOK-0146",
+      "kind": "marker",
+      "name": "1",
+      "hero_ref": null
+    },
+    {
+      "id": "ZC-TOK-0147",
+      "kind": "marker",
+      "name": "1",
+      "hero_ref": null
+    },
+    {
+      "id": "ZC-TOK-0148",
+      "kind": "marker",
+      "name": "1",
+      "hero_ref": null
+    },
+    {
+      "id": "ZC-TOK-0149",
+      "kind": "marker",
+      "name": "1",
+      "hero_ref": null
+    },
+    {
+      "id": "ZC-TOK-0150",
+      "kind": "marker",
+      "name": "1",
+      "hero_ref": null
+    },
+    {
+      "id": "ZC-TOK-0151",
+      "kind": "marker",
+      "name": "1",
+      "hero_ref": null
+    },
+    {
+      "id": "ZC-TOK-0152",
+      "kind": "marker",
+      "name": "1",
+      "hero_ref": null
+    },
+    {
+      "id": "ZC-TOK-0153",
+      "kind": "marker",
+      "name": "1",
+      "hero_ref": null
+    },
+    {
+      "id": "ZC-TOK-0154",
+      "kind": "marker",
+      "name": "1",
+      "hero_ref": null
+    },
+    {
+      "id": "ZC-TOK-0155",
+      "kind": "marker",
+      "name": "1",
+      "hero_ref": null
+    },
+    {
+      "id": "ZC-TOK-0156",
+      "kind": "marker",
+      "name": "1",
+      "hero_ref": null
+    },
+    {
+      "id": "ZC-TOK-0157",
+      "kind": "marker",
+      "name": "1",
+      "hero_ref": null
+    },
+    {
+      "id": "ZC-TOK-0158",
+      "kind": "marker",
+      "name": "1",
+      "hero_ref": null
+    },
+    {
+      "id": "ZC-TOK-0159",
+      "kind": "marker",
+      "name": "1",
+      "hero_ref": null
+    },
+    {
+      "id": "ZC-TOK-0160",
+      "kind": "marker",
+      "name": "1",
+      "hero_ref": null
+    },
+    {
+      "id": "ZC-TOK-0161",
+      "kind": "marker",
+      "name": "2",
+      "hero_ref": null
+    },
+    {
+      "id": "ZC-TOK-0162",
+      "kind": "marker",
+      "name": "2",
+      "hero_ref": null
+    },
+    {
+      "id": "ZC-TOK-0163",
+      "kind": "marker",
+      "name": "2",
+      "hero_ref": null
+    },
+    {
+      "id": "ZC-TOK-0164",
+      "kind": "marker",
+      "name": "2",
+      "hero_ref": null
+    },
+    {
+      "id": "ZC-TOK-0165",
+      "kind": "marker",
+      "name": "2",
+      "hero_ref": null
+    },
+    {
+      "id": "ZC-TOK-0166",
+      "kind": "marker",
+      "name": "2",
+      "hero_ref": null
+    },
+    {
+      "id": "ZC-TOK-0167",
+      "kind": "marker",
+      "name": "2",
+      "hero_ref": null
+    },
+    {
+      "id": "ZC-TOK-0168",
+      "kind": "marker",
+      "name": "2",
+      "hero_ref": null
+    },
+    {
+      "id": "ZC-TOK-0169",
+      "kind": "marker",
+      "name": "2",
+      "hero_ref": null
+    },
+    {
+      "id": "ZC-TOK-0170",
+      "kind": "marker",
+      "name": "2",
+      "hero_ref": null
+    },
+    {
+      "id": "ZC-TOK-0171",
+      "kind": "marker",
+      "name": "2",
+      "hero_ref": null
+    },
+    {
+      "id": "ZC-TOK-0172",
+      "kind": "marker",
+      "name": "2",
+      "hero_ref": null
+    },
+    {
+      "id": "ZC-TOK-0173",
+      "kind": "marker",
+      "name": "3",
+      "hero_ref": null
+    },
+    {
+      "id": "ZC-TOK-0174",
+      "kind": "marker",
+      "name": "3",
+      "hero_ref": null
+    },
+    {
+      "id": "ZC-TOK-0175",
+      "kind": "marker",
+      "name": "3",
+      "hero_ref": null
+    },
+    {
+      "id": "ZC-TOK-0176",
+      "kind": "marker",
+      "name": "3",
+      "hero_ref": null
+    },
+    {
+      "id": "ZC-TOK-0177",
+      "kind": "marker",
+      "name": "3",
+      "hero_ref": null
+    },
+    {
+      "id": "ZC-TOK-0178",
+      "kind": "marker",
+      "name": "3",
+      "hero_ref": null
+    },
+    {
+      "id": "ZC-TOK-0179",
+      "kind": "marker",
+      "name": "3",
+      "hero_ref": null
+    },
+    {
+      "id": "ZC-TOK-0180",
+      "kind": "marker",
+      "name": "3",
+      "hero_ref": null
+    },
+    {
+      "id": "ZC-TOK-0181",
+      "kind": "marker",
+      "name": "3",
+      "hero_ref": null
+    },
+    {
+      "id": "ZC-TOK-0182",
+      "kind": "marker",
+      "name": "3",
+      "hero_ref": null
+    },
+    {
+      "id": "ZC-TOK-0183",
+      "kind": "marker",
+      "name": "3",
+      "hero_ref": null
+    },
+    {
+      "id": "ZC-TOK-0184",
+      "kind": "marker",
+      "name": "3",
+      "hero_ref": null
+    },
+    {
+      "id": "ZC-TOK-0185",
+      "kind": "marker",
+      "name": "4",
+      "hero_ref": null
+    },
+    {
+      "id": "ZC-TOK-0186",
+      "kind": "marker",
+      "name": "4",
+      "hero_ref": null
+    },
+    {
+      "id": "ZC-TOK-0187",
+      "kind": "marker",
+      "name": "4",
+      "hero_ref": null
+    },
+    {
+      "id": "ZC-TOK-0188",
+      "kind": "marker",
+      "name": "4",
+      "hero_ref": null
+    },
+    {
+      "id": "ZC-TOK-0189",
+      "kind": "marker",
+      "name": "4",
+      "hero_ref": null
+    },
+    {
+      "id": "ZC-TOK-0190",
+      "kind": "marker",
+      "name": "4",
+      "hero_ref": null
+    },
+    {
+      "id": "ZC-TOK-0191",
+      "kind": "marker",
+      "name": "4",
+      "hero_ref": null
+    },
+    {
+      "id": "ZC-TOK-0192",
+      "kind": "marker",
+      "name": "4",
+      "hero_ref": null
+    },
+    {
+      "id": "ZC-TOK-0193",
+      "kind": "marker",
+      "name": "4",
+      "hero_ref": null
+    },
+    {
+      "id": "ZC-TOK-0194",
+      "kind": "marker",
+      "name": "4",
+      "hero_ref": null
+    },
+    {
+      "id": "ZC-TOK-0195",
+      "kind": "marker",
+      "name": "4",
+      "hero_ref": null
+    },
+    {
+      "id": "ZC-TOK-0196",
+      "kind": "marker",
+      "name": "4",
+      "hero_ref": null
+    },
+    {
+      "id": "ZC-TOK-0197",
+      "kind": "marker",
+      "name": "Relógio",
+      "hero_ref": null
+    },
+    {
+      "id": "ZC-TOK-0198",
+      "kind": "marker",
+      "name": "Pressão",
+      "hero_ref": null
+    }
+  ],
+  "modules": [
+    {
+      "id": "ZC-MOD-0001",
+      "name": "M1",
+      "width_mm": 277,
+      "height_mm": 190,
+      "rotation": 0
+    },
+    {
+      "id": "ZC-MOD-0002",
+      "name": "M2",
+      "width_mm": 277,
+      "height_mm": 190,
+      "rotation": 0
+    },
+    {
+      "id": "ZC-MOD-0003",
+      "name": "M3",
+      "width_mm": 277,
+      "height_mm": 190,
+      "rotation": 0
+    },
+    {
+      "id": "ZC-MOD-0004",
+      "name": "M4",
+      "width_mm": 277,
+      "height_mm": 190,
       "rotation": 0
     }
   ]
