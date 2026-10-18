@@ -133,6 +133,12 @@ def shelter(c):
   txt(c,f'T{j+8:02} / LIVRE',x+1,51,7.3,True);txt(c,'Dano □ Projeto ____',x+1,46.5,7)
  txt(c,'PORTÃO / PERÍMETRO',76,60,7.5,True)
  paragraph(c,'Portão ativo □ Defesa 2\nDia: 1 2 3 4 5\nMoral: 0 1 2 3 4 5\nSaúde: 0 1 2 3 4 5\nPressão: 0 1 2 3\nPonte conhecida □\nRelação −2 −1 0 +1 +2\nFila de cercos:\n________________\nC inicial ___ Vagas 8\nConsumidores hoje ___',198,73,88,97,10,label='shelter indicators')
+ # A regra existente de garagem usa adjacência: conservar a grade administrativa original.
+ txt(c,'Adjacência original dos terrenos / garagem',198,117,7.8,True)
+ for n in range(12):
+  row,col=divmod(n,4);xx=198+col*21;yy=105-row*9
+  a.rect(c,xx*mm,yy*mm,21*mm,9*mm,'#ffffff',stroke=a.OLIVE)
+  txt(c,f'T{n+1:02}',xx+6,yy+3,8,True)
  paragraph(c,'População humana ___ / capacidade ___\nComida ___ porções  Água ___ porções\nDanos e reparos: anote no terreno.\nConstruções novas: escreva nos livres.',198,44,88,26,8.8)
  a.rect(c,10*mm,9*mm,277*mm,30*mm,a.PAPER,stroke=a.OLIVE,r=2*mm)
  paragraph(c,'FILTRO / T7 — A: Material+Conexões+1 trabalho □  B: Material+Bomba+1 □  C: Material+Membrana+2 □□\nMáximo dois trabalhos/dia. Ao concluir: 2C água uma vez; depois C por amanhecer. Ativo □ Danificado □\nProjeto B: terreno ____ custos reservados ____ trabalho 0 1 2 3 4\nRelógio: 0 1 2 3 4 5 6 7 8 | 9 10   Pressão local 0 1   Rota curta 1+1 / longa 2+2',12,11,273,26,9.4,label='filter')
@@ -143,8 +149,32 @@ def shelter_pdf(folder):
  c=canvas.Canvas(LABEL,pagesize=landscape(A4));shelter(c);c.save()
  original=fitz.open(BASE/'01_inicial/06_paineis_registros.pdf');d=fitz.open(LABEL);d.insert_pdf(original,from_page=1,to_page=2);tmp=Path(LABEL).with_suffix('.tmp.pdf');d.save(tmp,garbage=4,deflate=True);d.close();tmp.replace(LABEL)
 
+def travel_art(c,name,x,y,w,h):
+ if name=='Cão perdido':raster(c,b.lookup('Aline e cão','MOR'),x,y,w,h);return
+ if name=='Ferragens':a.prop(c,'pipes',x*mm,y*mm,w*mm,h*mm);return
+ if name=='Barricada':a.prop(c,'pallet',x*mm,y*mm,w*mm,h*mm);return
+ if name=='Vizinho na janela':
+  art=next(z for z in D['heroes'] if z['name']=='Otávio')['art'];raster(c,art,x+3,y,w-6,h)
+  a.rect(c,(x+2)*mm,y*mm,2*mm,h*mm,a.RUST);a.rect(c,(x+w-4)*mm,y*mm,2*mm,h*mm,a.RUST)
+  a.line(c,(x+2)*mm,(y+h*.5)*mm,(x+w-2)*mm,(y+h*.5)*mm,a.RUST,2);return
+ if name=='Ruído distante':raster(c,b.lookup('Errante'),x,y,w,h);return
+ if name=='Ponte avistada':
+  a.rect(c,x*mm,(y+h*.25)*mm,w*mm,h*.4*mm,a.CONCRETE,stroke=a.CONCRETE)
+  for j in range(8):a.line(c,(x+j*w/8)*mm,(y+h*.25)*mm,(x+j*w/8)*mm,(y+h*.65)*mm,a.PAPER,2)
+  for yy in [.21,.69]:a.line(c,x*mm,(y+h*yy)*mm,(x+w)*mm,(y+h*yy)*mm,a.RUST,2)
+  return
+ a.rect(c,x*mm,(y+h*.18)*mm,w*mm,h*.63*mm,a.CONCRETE,stroke=a.CONCRETE)
+ for j in range(4):a.line(c,(x+j*w/4)*mm,(y+h*.48)*mm,(x+(j+.5)*w/4)*mm,(y+h*.48)*mm,a.PAPER,1)
+ if name=='Chuva ácida de fuligem':
+  for j in range(9):a.line(c,(x+j*w/9)*mm,(y+h*.9)*mm,(x+(j+.4)*w/9)*mm,(y+h*.1)*mm,a.INK,.6)
+ elif name in ['Sinal de passagem','Desvio sinalizado']:
+  a.line(c,(x+w*.3)*mm,(y+h*.45)*mm,(x+w*.7)*mm,(y+h*.45)*mm,a.YELLOW,4)
+  a.poly(c,[((x+w*.7)*mm,(y+h*.7)*mm),((x+w*.7)*mm,(y+h*.2)*mm),((x+w*.95)*mm,(y+h*.45)*mm)],a.YELLOW)
+ elif name=='Emboscada':raster(c,b.lookup('Corredor'),x,y,w,h)
+ else:a.prop(c,'van',(x+w*.25)*mm,(y+h*.3)*mm,w*.5*mm,h*.35*mm)
+
 def card_art(c,card,x,y,large=False):
- ax,ay,aw,ah=(x+6,y+31,51,31) if large else (x+40,y+56,19,20)
+ ax,ay,aw,ah=(x+10,y+31,43,31) if large else (x+40,y+56,19,20)
  name=card['name'];fam=card['family'];art=b.lookup(name,fam)
  if fam=='MOR':
   # Character portraits are the canonical identity in all playable components.
@@ -159,7 +189,7 @@ def card_art(c,card,x,y,large=False):
   elif fam=='HOR':
    art=b.lookup('Corredor' if name=='Corrida' else 'Bruto' if name=='Peso morto' else 'Errante');raster(c,art,ax,ay,aw,ah);return
   elif fam=='CER':raster(c,b.lookup('Rival' if 'Ponte' in name or 'Caravana' in name else 'Bruto'),ax,ay,aw,ah);return
-  elif fam=='VIA':kind2={'Ferragens':'pipes','Barricada':'pallet','Emboscada':'car','Cão perdido':'tree','Ponte avistada':'roof','Chuva ácida de fuligem':'water'}.get(name,'van')
+  elif fam=='VIA':travel_art(c,name,ax,ay,aw,ah);return
   elif fam=='VIN':
    arts={'Sozinho':b.lookup('Bia','MOR'),'Parceiro ou parceira':b.lookup('Vicente e Sol','MOR'),'Filho ou filha':b.lookup('Jana e criança','MOR'),'Cachorro':b.lookup('Aline e cão','MOR'),'Parceiro e cachorro':b.lookup('Aline e cão','MOR')}
    raster(c,arts[name],ax,ay,aw,ah);return
@@ -243,9 +273,23 @@ def markers(folder,ids,name):
    for j,n in enumerate(['Errante','Corredor','Bruto']):raster(c,b.lookup(n),x+2+j*8,y+15,8,12)
    txt(c,t['name']+'  E/C/B ___',x+2,y+11,7.3,True);txt(c,'Vida ___',x+2,y+6,7.4)
   else:
-   name2=t['name'];kind='pipes' if name2=='Bloqueio' else 'water' if name2=='Sede' else 'can' if name2=='Fome' else 'crate'
-   a.prop(c,kind,(x+15)*mm,(y+10)*mm,11*mm,12*mm)
-   paragraph(c,name2,x+2,y+10,16,15,8.2,True,label=id)
+   n=t['name'];txt(c,n,x+2,y+23,8.2,True)
+   cx,cy=(x+14)*mm,(y+13)*mm
+   if n in ['Porta','Bloqueio']:
+    a.rect(c,cx-5*mm,cy-5*mm,10*mm,10*mm,a.PAPER)
+    if n=='Bloqueio':
+     a.line(c,cx-4*mm,cy-4*mm,cx+4*mm,cy+4*mm,a.RUST,2);a.line(c,cx-4*mm,cy+4*mm,cx+4*mm,cy-4*mm,a.RUST,2)
+    else:a.line(c,cx-4*mm,cy-4*mm,cx+4*mm,cy+4*mm,a.OLIVE,2)
+   elif n in ['Busca','Relógio']:
+    c.setStrokeColor(a.color(a.INK));c.circle(cx,cy,4*mm,fill=0)
+    if n=='Busca':a.line(c,cx+3*mm,cy-3*mm,cx+7*mm,cy-7*mm,a.INK,2)
+    else:a.line(c,cx,cy,cx,cy+3*mm,a.INK,1.5);a.line(c,cx,cy,cx+3*mm,cy,a.INK,1.5)
+   elif n=='Pressão':
+    a.poly(c,[(cx-6*mm,cy-5*mm),(cx+6*mm,cy-5*mm),(cx,cy+6*mm)],a.YELLOW)
+    a.line(c,cx,cy-1*mm,cx,cy+3*mm,a.INK,2)
+   elif n=='Verificado':
+    a.line(c,cx-5*mm,cy,cx-1*mm,cy-4*mm,a.OLIVE,2);a.line(c,cx-1*mm,cy-4*mm,cx+6*mm,cy+5*mm,a.OLIVE,2)
+   else:a.prop(c,'water' if n=='Sede' else 'can',(x+8)*mm,(y+6)*mm,13*mm,15*mm)
   txt(c,t['name'] if t['kind']=='hero' else id,x+2,y+3,6.2)
  c.showPage();c.save()
 
@@ -290,6 +334,19 @@ def decorate_existing(root):
    page.draw_line((10*mm,8*mm),(page.rect.width-10*mm,8*mm),color=(.32,.43,.37),width=.8)
   tmp=f.with_suffix('.tmp.pdf');doc.save(tmp,garbage=4,deflate=True);doc.close();tmp.replace(f)
 
+def gray_pdf(f):
+ import re
+ doc=fitz.open(f)
+ pattern=re.compile(rb'(?<![\d.])([0-9.]+)\s+([0-9.]+)\s+([0-9.]+)\s+(rg|RG)\b')
+ def sub(m):
+  r,g,b2=map(float,m.group(1,2,3));v=.299*r+.587*g+.114*b2
+  return f'{v:.6f} '.encode()+(b'g' if m[4]==b'rg' else b'G')
+ for xref in range(1,doc.xref_length()):
+  if doc.xref_is_stream(xref) and doc.xref_get_key(xref,'Subtype')[1]!='/Image':
+   stream=doc.xref_stream(xref);new=pattern.sub(sub,stream)
+   if new!=stream:doc.update_stream(xref,new)
+ tmp=f.with_suffix('.tmp.pdf');doc.save(tmp,garbage=4,deflate=True);doc.close();tmp.replace(f)
+
 def init(root):
  for key in ['initial','supplement']:
   for entry in M[key]:
@@ -326,6 +383,10 @@ if __name__=='__main__':
   if args.cycle>=4:
    cards(I,M['initial_cards'],'02_cartas_duplex.pdf',True);cards(S,M['supplement_cards'],'01_cartas_complemento_duplex.pdf')
    markers(I,M['initial_tokens'],'07_marcadores.pdf');markers(S,M['supplement_tokens'],'08_tokens_resgataveis.pdf');dividers(I)
-  if args.cycle>=5:decorate_existing(root);index(root,edition)
+  if args.cycle>=5:
+   decorate_existing(root)
+   if a.ECON:
+    for file in root.rglob('*.pdf'):gray_pdf(file)
+   index(root,edition)
  (OUT/'layout_issues.json').write_text(json.dumps(b.issues,ensure_ascii=False,indent=2));(OUT/'layout_boxes.json').write_text(json.dumps(b.boxes,ensure_ascii=False,indent=2));(OUT/'geometry.json').write_text(json.dumps(GEOMETRY,indent=2));(OUT/'duplex.json').write_text(json.dumps(DUPLEX,indent=2))
  print('Ciclo',args.cycle,'estouros:',len(b.issues));print(b.issues[:8])
