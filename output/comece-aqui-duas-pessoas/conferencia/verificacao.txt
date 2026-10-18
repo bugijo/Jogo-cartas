@@ -1,0 +1,47 @@
+OK 25 folhas iniciais: 25
+OK 33 folhas complemento: 33
+OK 58 folhas capítulo: 58
+OK 62+52 cartas únicas existentes: 
+OK Monte VIN completo no inicial: 
+OK Monte INT completo no inicial: 
+OK Monte VIA completo no inicial: 
+OK Monte HOR completo no inicial: 
+OK Monte CER completo no inicial: 
+OK Saque regional preservado: 
+OK Pés de cabra sem carta duplicada: 
+OK Marcadores de ambos heróis no inicial: 
+OK Sem PDFs extras nas pastas de impressão: 
+OK Folhas 01_comece_aqui.pdf: 
+OK Folhas 02_cartas_duplex.pdf: 
+OK Duplex em pares 02_cartas_duplex.pdf: 
+OK Folhas 03_lia_ivo.pdf: 
+OK Folhas 04_modulos_locais.pdf: 
+OK Folhas 05_montagem_mercado.pdf: 
+OK Folhas 06_paineis_registros.pdf: 
+OK Folhas 07_marcadores.pdf: 
+OK Folhas 08_divisorias.pdf: 
+OK Folhas 09_calibracao_duplex.pdf: 
+OK Duplex em pares 09_calibracao_duplex.pdf: 
+OK Folhas 01_cartas_complemento_duplex.pdf: 
+OK Duplex em pares 01_cartas_complemento_duplex.pdf: 
+OK Folhas 02_herois_resgataveis.pdf: 
+OK Folhas 03_montagens_restantes.pdf: 
+OK Folhas 04_manual_revisado.pdf: 
+OK Folhas 05_campanha_cinco_dias.pdf: 
+OK Folhas 06_mapa_geral.pdf: 
+OK Folhas 07_registro_adicional.pdf: 
+OK Folhas 08_tokens_resgataveis.pdf: 
+OK Folhas 09_moradores_adicional.pdf: 
+OK A4 e texto dentro de página: []
+OK Parágrafos cabem nas caixas: 
+OK IDs e colunas duplex initial: 62
+OK Texto seguro no corte initial: 
+OK Versos secretos neutros initial: 
+OK IDs e colunas duplex supplement: 52
+OK Texto seguro no corte supplement: 
+OK Versos secretos neutros supplement: 
+OK Quantidade da Horda resolvida para duas pessoas: 
+OK Guia em seis páginas sem seções deslocadas: 
+OK Replay cinco dias passa: 
+OK ZIP 0.1 preservado: 
+TOTAL 46 verificações aprovadas

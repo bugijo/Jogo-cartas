@@ -1,0 +1,19 @@
+test_blocked_doors_are_printed_doors (test_revision.RevisionTests.test_blocked_doors_are_printed_doors) ... ok
+test_ten_professions_are_consolidated_with_provenance (test_revision.RevisionTests.test_ten_professions_are_consolidated_with_provenance) ... ok
+test_ambush_uses_actual_entry_module_zones (test_revision.StarterContentTests.test_ambush_uses_actual_entry_module_zones) ... ok
+test_five_days_replay_respects_cargo_clock_and_work (test_revision.StarterContentTests.test_five_days_replay_respects_cargo_clock_and_work) ... ok
+test_unique_filter_parts_can_be_recovered (test_revision.StarterContentTests.test_unique_filter_parts_can_be_recovered) ... ok
+test_ambush_cannot_be_skipped_from_entry (test_rules.CampaignRegressionTests.test_ambush_cannot_be_skipped_from_entry) ... ok
+test_all_initial_link_combinations_fit (test_rules.RulesTests.test_all_initial_link_combinations_fit) ... ok
+test_deprivation_reset_and_collapse_threshold (test_rules.RulesTests.test_deprivation_reset_and_collapse_threshold) ... ok
+test_intake_and_deadline (test_rules.RulesTests.test_intake_and_deadline) ... ok
+test_intent_protection_current_night (test_rules.RulesTests.test_intent_protection_current_night) ... ok
+test_night_return_and_overrun (test_rules.RulesTests.test_night_return_and_overrun) ... ok
+test_portions_and_expiry (test_rules.RulesTests.test_portions_and_expiry) ... ok
+test_pressure_queue_no_duplicate_at_three (test_rules.RulesTests.test_pressure_queue_no_duplicate_at_three) ... ok
+test_project_stock_conservation (test_rules.RulesTests.test_project_stock_conservation) ... ok
+
+----------------------------------------------------------------------
+Ran 14 tests in 0.015s
+
+OK

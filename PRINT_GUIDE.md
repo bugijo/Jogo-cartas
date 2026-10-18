@@ -1,3 +1,9 @@
+# Impressão atual — kit de duas pessoas 0.2
+
+Use [LEIA-ME do kit](output/comece-aqui-duas-pessoas/LEIA-ME.md): 25 folhas iniciais e 33 de complemento. Imprima apenas as pastas indicadas, sem juntar PDFs antigos. O texto abaixo preserva o guia da caixa 0.1.
+
+---
+
 # Guia de impressão A4
 Comece pela calibração 10. Imprima em 100%, tamanho real, sem ajustar, sem modo livreto. Régua deve medir 100 mm; alvos assimétricos verificam orientação e correspondência. A posição dos alvos foi corrigida após inspeção para não cruzar a régua.
 

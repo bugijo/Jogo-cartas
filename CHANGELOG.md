@@ -1,3 +1,14 @@
+# Edição 0.2 — 18/10/2026
+
+- Base db67f42 auditada e preservada; nenhuma alteração posterior encontrada.
+- Dez profissões fixadas editorialmente; Duda técnica em eletrônica, nove demais mantidas.
+- Corrigidos bloqueio do mercado, emboscada no módulo errado, IA de portas/saída, posição de lotes, recuperação de peças únicas e XP repetido.
+- Vitória do filtro reavaliada após cercos; custos de viagem/van explicitados.
+- Kit selecionado para duas pessoas: 25 folhas iniciais, 33 de complemento, sem novos conteúdos.
+- Replay de cinco dias com PA/carga/portas/inimigos/consumo/obra e verificações de impressão do kit. Revisão visual corrigiu sobreposição no painel e caracteres do item nas fichas.
+
+---
+
 # Histórico
 ## 0.1 — 17/10/2026
 - Auditoria integral da proposta 2.0; projeto físico isolado.

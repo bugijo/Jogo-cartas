@@ -1,0 +1,236 @@
+{
+  "checks": [
+    {
+      "name": "IDs únicos",
+      "passed": true,
+      "detail": 556
+    },
+    {
+      "name": "24 heróis / 12 iniciais",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "Todos os 12 desbloqueáveis têm encontro",
+      "passed": true,
+      "detail": [
+        13,
+        14,
+        15,
+        16,
+        17,
+        18,
+        19,
+        20,
+        21,
+        22,
+        23,
+        24
+      ]
+    },
+    {
+      "name": "12 vínculos / 12 intenções",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "Proporção das intenções",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "Saque só concede recursos existentes",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "Seis buscas e seis cartas por destino",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "Referências de arquivos existem",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "Mercado conectividade",
+      "passed": true,
+      "detail": {
+        "7": 3,
+        "14": 4
+      }
+    },
+    {
+      "name": "Mercado rota alternativa sem bloqueios",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "Mercado portas fora das emendas",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "Hospital conectividade",
+      "passed": true,
+      "detail": {
+        "7": 3,
+        "14": 4
+      }
+    },
+    {
+      "name": "Hospital rota alternativa sem bloqueios",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "Hospital portas fora das emendas",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "Oficina conectividade",
+      "passed": true,
+      "detail": {
+        "7": 3,
+        "14": 4
+      }
+    },
+    {
+      "name": "Oficina rota alternativa sem bloqueios",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "Oficina portas fora das emendas",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "Posto conectividade",
+      "passed": true,
+      "detail": {
+        "7": 3,
+        "14": 4
+      }
+    },
+    {
+      "name": "Posto rota alternativa sem bloqueios",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "Posto portas fora das emendas",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "Condomínio conectividade",
+      "passed": true,
+      "detail": {
+        "7": 3,
+        "14": 4
+      }
+    },
+    {
+      "name": "Condomínio rota alternativa sem bloqueios",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "Condomínio portas fora das emendas",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "Estação conectividade",
+      "passed": true,
+      "detail": {
+        "7": 3,
+        "14": 4
+      }
+    },
+    {
+      "name": "Estação rota alternativa sem bloqueios",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "Estação portas fora das emendas",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "Custos estruturados têm componentes e valores válidos",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "24 retratos produzidos e referenciados",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "324 posições frente/verso",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "Duplex reflete só colunas",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "Verso de intenção único",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "Correspondência lida nos 324 recortes PDF",
+      "passed": true,
+      "detail": 324
+    },
+    {
+      "name": "Grade física",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "Nenhum estouro de parágrafo",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "Dimensões A4 e texto dentro da página",
+      "passed": true,
+      "detail": []
+    },
+    {
+      "name": "Cartas 72 páginas duplex",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "Limite de oferta em cinco dias sem escassez inevitável",
+      "passed": true,
+      "detail": ""
+    }
+  ],
+  "pagecounts": {
+    "00_capa.pdf": 1,
+    "01_manual_iniciantes.pdf": 8,
+    "02_campanha.pdf": 3,
+    "03_cartas_duplex.pdf": 72,
+    "03b_cartas_sem_recursos_duplex.pdf": 38,
+    "04_fichas_personagens.pdf": 12,
+    "05_paineis_registros.pdf": 5,
+    "06_mapas_modulos.pdf": 4,
+    "07_montagens_destinos.pdf": 6,
+    "08_marcadores.pdf": 5,
+    "09_organizacao.pdf": 5,
+    "10_calibracao_duplex.pdf": 2,
+    "11_galeria_arte.pdf": 4
+  },
+  "pdf_problems": []
+}

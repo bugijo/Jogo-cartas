@@ -1,0 +1,99 @@
+{
+  "status": "PASS",
+  "expeditions": [
+    {
+      "destination": "Mercado",
+      "segments": 7,
+      "rounds": 5,
+      "delivery": {
+        "Conserva": 4,
+        "Água": 2
+      },
+      "health": {
+        "Lia": 3,
+        "Ivo": 3
+      }
+    },
+    {
+      "destination": "Oficina",
+      "segments": 8,
+      "rounds": 6,
+      "delivery": {
+        "Conexões": 1,
+        "Bateria": 1,
+        "Conserva": 2,
+        "Água": 2
+      },
+      "health": {
+        "Lia": 3,
+        "Ivo": 3
+      }
+    },
+    {
+      "destination": "Estação",
+      "segments": 9,
+      "rounds": 7,
+      "delivery": {
+        "Bomba": 1,
+        "Membrana": 1,
+        "Água": 2
+      },
+      "health": {
+        "Lia": 3,
+        "Ivo": 3
+      }
+    }
+  ],
+  "days": [
+    {
+      "day": 1,
+      "food": 23,
+      "water": 15,
+      "materials": 3,
+      "filter_work": 0,
+      "fatigue": 0,
+      "pressure": 0,
+      "ammo": 2
+    },
+    {
+      "day": 2,
+      "food": 26,
+      "water": 18,
+      "materials": 3,
+      "filter_work": 0,
+      "fatigue": 0,
+      "pressure": 1,
+      "ammo": 2
+    },
+    {
+      "day": 3,
+      "food": 21,
+      "water": 21,
+      "materials": 4,
+      "filter_work": 0,
+      "fatigue": 1,
+      "pressure": 1,
+      "ammo": 1
+    },
+    {
+      "day": 4,
+      "food": 16,
+      "water": 16,
+      "materials": 2,
+      "filter_work": 2,
+      "fatigue": 0,
+      "pressure": 2,
+      "ammo": 1
+    },
+    {
+      "day": 5,
+      "food": 11,
+      "water": 21,
+      "materials": 1,
+      "filter_work": 4,
+      "fatigue": 0,
+      "pressure": 1,
+      "ammo": 0
+    }
+  ]
+}

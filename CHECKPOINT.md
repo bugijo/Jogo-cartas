@@ -1,3 +1,19 @@
+# Retomada atual — edição 0.2 — 18/10/2026
+
+Base auditada: db67f42, limpa, sem commits posteriores. Tag preservado/prototipo-0.1-db67f42. O ZIP antigo e PDFs 0.1 foram preservados.
+
+Tarefa concluída nesta rodada: revisão focada dos cinco dias; dez profissões consolidadas; kit Comece Aqui — Duas Pessoas. Nenhum conteúdo de jogo novo. Fonte do kit: src/build_starter.py e content/starter/01_guia.json. Índice e contagem: output/comece-aqui-duas-pessoas/LEIA-ME.md e manifesto.json. Inicial 25 folhas, complemento 33, total 58.
+
+Referências correntes: RULES.md, CAMPAIGN.md, PROFISSOES.md, REVISAO_0.2.md; catálogo 0.2 com mesmos IDs. PDFs completos revisados em output/revisao-0.2, sem substituir os PDFs 0.1.
+
+Reproduzir: python src/make_content.py; ZC_OUTPUT_DIR=/workspace/zona-zero-comunidade/output/revisao-0.2 python src/build.py; python src/build_starter.py; python -m unittest discover -s tests -v; python src/review_five_days.py; python src/validate_starter.py; python src/render_starter.py. O replay é uma trajetória de dados conhecidos, não equilíbrio ou playtest.
+
+Sem impressão física ou teste humano nesta rodada. Próxima atividade recomendada é imprimir o inicial, medir calibração e jogar o primeiro dia com duas pessoas, anotando dificuldades. Não gerar novas cartas, regras ou arte sem nova instrução. Novo hash em COMMIT_0.2.txt dentro dos ZIPs ou git log -1.
+
+---
+
+## Checkpoint anterior preservado
+
 # Checkpoint de retomada — 17/10/2026
 Workspace independente: /workspace/zona-zero-comunidade
 Branch: fisico/antes-que-a-agua-acabe. Repositório local novo; nenhum jogo digital foi alterado. Sem push.

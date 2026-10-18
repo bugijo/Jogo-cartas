@@ -1,0 +1,38 @@
+OK IDs únicos • 556
+OK 24 heróis / 12 iniciais
+OK Todos os 12 desbloqueáveis têm encontro • [13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24]
+OK 12 vínculos / 12 intenções
+OK Proporção das intenções
+OK Saque só concede recursos existentes
+OK Seis buscas e seis cartas por destino
+OK Referências de arquivos existem
+OK Mercado conectividade • {'7': 3, '14': 4}
+OK Mercado rota alternativa sem bloqueios
+OK Mercado portas fora das emendas
+OK Hospital conectividade • {'7': 3, '14': 4}
+OK Hospital rota alternativa sem bloqueios
+OK Hospital portas fora das emendas
+OK Oficina conectividade • {'7': 3, '14': 4}
+OK Oficina rota alternativa sem bloqueios
+OK Oficina portas fora das emendas
+OK Posto conectividade • {'7': 3, '14': 4}
+OK Posto rota alternativa sem bloqueios
+OK Posto portas fora das emendas
+OK Condomínio conectividade • {'7': 3, '14': 4}
+OK Condomínio rota alternativa sem bloqueios
+OK Condomínio portas fora das emendas
+OK Estação conectividade • {'7': 3, '14': 4}
+OK Estação rota alternativa sem bloqueios
+OK Estação portas fora das emendas
+OK Custos estruturados têm componentes e valores válidos
+OK 24 retratos produzidos e referenciados
+OK 324 posições frente/verso
+OK Duplex reflete só colunas
+OK Verso de intenção único
+OK Correspondência lida nos 324 recortes PDF • 324
+OK Grade física
+OK Nenhum estouro de parágrafo
+OK Dimensões A4 e texto dentro da página
+OK Cartas 72 páginas duplex
+OK Limite de oferta em cinco dias sem escassez inevitável
+Páginas: 165 {'00_capa.pdf': 1, '01_manual_iniciantes.pdf': 8, '02_campanha.pdf': 3, '03_cartas_duplex.pdf': 72, '03b_cartas_sem_recursos_duplex.pdf': 38, '04_fichas_personagens.pdf': 12, '05_paineis_registros.pdf': 5, '06_mapas_modulos.pdf': 4, '07_montagens_destinos.pdf': 6, '08_marcadores.pdf': 5, '09_organizacao.pdf': 5, '10_calibracao_duplex.pdf': 2, '11_galeria_arte.pdf': 4}

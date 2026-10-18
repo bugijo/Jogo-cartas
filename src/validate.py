@@ -1,8 +1,8 @@
 from pathlib import Path
 from collections import deque,Counter
-import json,itertools,math,sys
+import json,itertools,math,sys,os
 import fitz
-P=Path(__file__).resolve().parents[1];O=P/'output';D=json.loads((P/'content/catalog.json').read_text());checks=[]
+P=Path(__file__).resolve().parents[1];O=Path(os.environ.get('ZC_OUTPUT_DIR',str(P/'output')));D=json.loads((P/'content/catalog.json').read_text());checks=[]
 def check(name,condition,detail=''):
  checks.append(dict(name=name,passed=bool(condition),detail=detail));print(('OK ' if condition else 'FALHA ')+name+(' • '+str(detail) if detail else ''))
 ids=[x['id'] for x in D['cards']+D['heroes']+D['maps']+D['tokens']+D['modules']]

@@ -1,12 +1,13 @@
 {
-  "version": "0.1",
+  "version": "0.2",
   "source": "sources/projeto-2.0.pdf",
   "heroes": [
     {
       "id": "ZC-HER-0001",
       "name": "Lia",
       "profession": "agente comunitária de saúde",
-      "profession_status": "proposta editorial D02",
+      "profession_status": "consolidada 0.2 (editorial D02)",
+      "profession_origin": "decisão editorial; fonte 2.0 não especifica",
       "attributes": {
         "Corpo": 2,
         "Agilidade": 2,
@@ -44,7 +45,8 @@
       "id": "ZC-HER-0002",
       "name": "Ivo",
       "profession": "vigilante",
-      "profession_status": "proposta editorial D02",
+      "profession_status": "consolidada 0.2 (editorial D02)",
+      "profession_origin": "decisão editorial; fonte 2.0 não especifica",
       "attributes": {
         "Corpo": 3,
         "Agilidade": 2,
@@ -82,7 +84,8 @@
       "id": "ZC-HER-0003",
       "name": "Mara",
       "profession": "técnica de enfermagem",
-      "profession_status": "proposta editorial D02",
+      "profession_status": "consolidada 0.2 (editorial D02)",
+      "profession_origin": "decisão editorial; fonte 2.0 não especifica",
       "attributes": {
         "Corpo": 1,
         "Agilidade": 2,
@@ -120,7 +123,8 @@
       "id": "ZC-HER-0004",
       "name": "Caio",
       "profession": "entregador ciclista",
-      "profession_status": "proposta editorial D02",
+      "profession_status": "consolidada 0.2 (editorial D02)",
+      "profession_origin": "decisão editorial; fonte 2.0 não especifica",
       "attributes": {
         "Corpo": 2,
         "Agilidade": 3,
@@ -158,7 +162,8 @@
       "id": "ZC-HER-0005",
       "name": "Nara",
       "profession": "técnica de saneamento",
-      "profession_status": "proposta editorial D02",
+      "profession_status": "consolidada 0.2 (editorial D02)",
+      "profession_origin": "decisão editorial; fonte 2.0 não especifica",
       "attributes": {
         "Corpo": 1,
         "Agilidade": 2,
@@ -196,7 +201,8 @@
       "id": "ZC-HER-0006",
       "name": "Bento",
       "profession": "pedreiro",
-      "profession_status": "proposta editorial D02",
+      "profession_status": "consolidada 0.2 (editorial D02)",
+      "profession_origin": "decisão editorial; fonte 2.0 não especifica",
       "attributes": {
         "Corpo": 3,
         "Agilidade": 1,
@@ -233,8 +239,9 @@
     {
       "id": "ZC-HER-0007",
       "name": "Duda",
-      "profession": "estudante de eletrônica",
-      "profession_status": "proposta editorial D02",
+      "profession": "técnica em eletrônica",
+      "profession_status": "consolidada 0.2 (editorial D02)",
+      "profession_origin": "decisão editorial; fonte 2.0 não especifica",
       "attributes": {
         "Corpo": 1,
         "Agilidade": 3,
@@ -272,7 +279,8 @@
       "id": "ZC-HER-0008",
       "name": "Rosa",
       "profession": "cozinheira escolar",
-      "profession_status": "proposta editorial D02",
+      "profession_status": "consolidada 0.2 (editorial D02)",
+      "profession_origin": "decisão editorial; fonte 2.0 não especifica",
       "attributes": {
         "Corpo": 2,
         "Agilidade": 1,
@@ -310,7 +318,8 @@
       "id": "ZC-HER-0009",
       "name": "Joel",
       "profession": "bombeiro civil",
-      "profession_status": "proposta editorial D02",
+      "profession_status": "consolidada 0.2 (editorial D02)",
+      "profession_origin": "decisão editorial; fonte 2.0 não especifica",
       "attributes": {
         "Corpo": 3,
         "Agilidade": 2,
@@ -348,7 +357,8 @@
       "id": "ZC-HER-0010",
       "name": "Yumi",
       "profession": "técnica de laboratório",
-      "profession_status": "proposta editorial D02",
+      "profession_status": "consolidada 0.2 (editorial D02)",
+      "profession_origin": "decisão editorial; fonte 2.0 não especifica",
       "attributes": {
         "Corpo": 1,
         "Agilidade": 2,
@@ -387,6 +397,7 @@
       "name": "Téo",
       "profession": "encanador",
       "profession_status": "fonte p.10",
+      "profession_origin": "documento 2.0, p.10",
       "attributes": {
         "Corpo": 2,
         "Agilidade": 1,
@@ -425,6 +436,7 @@
       "name": "Célia",
       "profession": "professora",
       "profession_status": "fonte p.10",
+      "profession_origin": "documento 2.0, p.10",
       "attributes": {
         "Corpo": 1,
         "Agilidade": 3,
@@ -463,6 +475,7 @@
       "name": "Aline",
       "profession": "veterinária",
       "profession_status": "fonte p.10",
+      "profession_origin": "documento 2.0, p.10",
       "attributes": {
         "Corpo": 2,
         "Agilidade": 2,
@@ -501,6 +514,7 @@
       "name": "Samuel",
       "profession": "carpinteiro",
       "profession_status": "fonte p.10",
+      "profession_origin": "documento 2.0, p.10",
       "attributes": {
         "Corpo": 3,
         "Agilidade": 1,
@@ -539,6 +553,7 @@
       "name": "Bruna",
       "profession": "agricultora",
       "profession_status": "fonte p.10",
+      "profession_origin": "documento 2.0, p.10",
       "attributes": {
         "Corpo": 2,
         "Agilidade": 1,
@@ -577,6 +592,7 @@
       "name": "Raul",
       "profession": "caminhoneiro",
       "profession_status": "fonte p.10",
+      "profession_origin": "documento 2.0, p.10",
       "attributes": {
         "Corpo": 3,
         "Agilidade": 2,
@@ -615,6 +631,7 @@
       "name": "Denise",
       "profession": "médica",
       "profession_status": "fonte p.10",
+      "profession_origin": "documento 2.0, p.10",
       "attributes": {
         "Corpo": 1,
         "Agilidade": 2,
@@ -653,6 +670,7 @@
       "name": "Hugo",
       "profession": "eletricista",
       "profession_status": "fonte p.10",
+      "profession_origin": "documento 2.0, p.10",
       "attributes": {
         "Corpo": 2,
         "Agilidade": 2,
@@ -691,6 +709,7 @@
       "name": "Sol",
       "profession": "guia",
       "profession_status": "fonte p.10",
+      "profession_origin": "documento 2.0, p.10",
       "attributes": {
         "Corpo": 1,
         "Agilidade": 3,
@@ -729,6 +748,7 @@
       "name": "Otávio",
       "profession": "porteiro",
       "profession_status": "fonte p.10",
+      "profession_origin": "documento 2.0, p.10",
       "attributes": {
         "Corpo": 3,
         "Agilidade": 1,
@@ -767,6 +787,7 @@
       "name": "Jana",
       "profession": "cozinheira de campo",
       "profession_status": "fonte p.10",
+      "profession_origin": "documento 2.0, p.10",
       "attributes": {
         "Corpo": 2,
         "Agilidade": 2,
@@ -805,6 +826,7 @@
       "name": "Miguel",
       "profession": "socorrista",
       "profession_status": "fonte p.10",
+      "profession_origin": "documento 2.0, p.10",
       "attributes": {
         "Corpo": 2,
         "Agilidade": 3,
@@ -843,6 +865,7 @@
       "name": "Bia",
       "profession": "mecânica",
       "profession_status": "fonte p.10",
+      "profession_origin": "documento 2.0, p.10",
       "attributes": {
         "Corpo": 2,
         "Agilidade": 1,
@@ -881,6 +904,7 @@
       "name": "Vicente",
       "profession": "operador de rádio",
       "profession_status": "fonte p.10",
+      "profession_origin": "documento 2.0, p.10",
       "attributes": {
         "Corpo": 1,
         "Agilidade": 3,
@@ -921,7 +945,7 @@
       "family": "VIN",
       "name": "Sozinho",
       "text": "Somente fundador. +0 humanos, +0 cães.",
-      "version": "0.1",
+      "version": "0.2",
       "refs": [
         "RULES.md"
       ]
@@ -931,7 +955,7 @@
       "family": "VIN",
       "name": "Sozinho",
       "text": "Somente fundador. +0 humanos, +0 cães.",
-      "version": "0.1",
+      "version": "0.2",
       "refs": [
         "RULES.md"
       ]
@@ -941,7 +965,7 @@
       "family": "VIN",
       "name": "Sozinho",
       "text": "Somente fundador. +0 humanos, +0 cães.",
-      "version": "0.1",
+      "version": "0.2",
       "refs": [
         "RULES.md"
       ]
@@ -951,7 +975,7 @@
       "family": "VIN",
       "name": "Sozinho",
       "text": "Somente fundador. +0 humanos, +0 cães.",
-      "version": "0.1",
+      "version": "0.2",
       "refs": [
         "RULES.md"
       ]
@@ -961,7 +985,7 @@
       "family": "VIN",
       "name": "Parceiro ou parceira",
       "text": "+1 adulto civil, +1 consumidor e vaga.",
-      "version": "0.1",
+      "version": "0.2",
       "refs": [
         "RULES.md"
       ]
@@ -971,7 +995,7 @@
       "family": "VIN",
       "name": "Parceiro ou parceira",
       "text": "+1 adulto civil, +1 consumidor e vaga.",
-      "version": "0.1",
+      "version": "0.2",
       "refs": [
         "RULES.md"
       ]
@@ -981,7 +1005,7 @@
       "family": "VIN",
       "name": "Parceiro ou parceira",
       "text": "+1 adulto civil, +1 consumidor e vaga.",
-      "version": "0.1",
+      "version": "0.2",
       "refs": [
         "RULES.md"
       ]
@@ -991,7 +1015,7 @@
       "family": "VIN",
       "name": "Parceiro ou parceira",
       "text": "+1 adulto civil, +1 consumidor e vaga.",
-      "version": "0.1",
+      "version": "0.2",
       "refs": [
         "RULES.md"
       ]
@@ -1001,7 +1025,7 @@
       "family": "VIN",
       "name": "Filho ou filha",
       "text": "+1 criança, +1 consumidor e vaga; sem trabalho ou combate.",
-      "version": "0.1",
+      "version": "0.2",
       "refs": [
         "RULES.md"
       ]
@@ -1011,7 +1035,7 @@
       "family": "VIN",
       "name": "Filho ou filha",
       "text": "+1 criança, +1 consumidor e vaga; sem trabalho ou combate.",
-      "version": "0.1",
+      "version": "0.2",
       "refs": [
         "RULES.md"
       ]
@@ -1021,7 +1045,7 @@
       "family": "VIN",
       "name": "Cachorro",
       "text": "+1 cão consumidor; sem vaga humana; alerta coletivo +1.",
-      "version": "0.1",
+      "version": "0.2",
       "refs": [
         "RULES.md"
       ]
@@ -1031,7 +1055,7 @@
       "family": "VIN",
       "name": "Parceiro e cachorro",
       "text": "+1 adulto civil e +1 cão. Dois consumidores extras; uma vaga extra.",
-      "version": "0.1",
+      "version": "0.2",
       "refs": [
         "RULES.md"
       ]
@@ -1041,7 +1065,7 @@
       "family": "INT",
       "name": "Solidário",
       "text": "Permanece; após duas noites e vaga definitiva, apto no próximo amanhecer.",
-      "version": "0.1",
+      "version": "0.2",
       "refs": [
         "RULES.md"
       ]
@@ -1051,7 +1075,7 @@
       "family": "INT",
       "name": "Solidário",
       "text": "Permanece; após duas noites e vaga definitiva, apto no próximo amanhecer.",
-      "version": "0.1",
+      "version": "0.2",
       "refs": [
         "RULES.md"
       ]
@@ -1061,7 +1085,7 @@
       "family": "INT",
       "name": "Solidário",
       "text": "Permanece; após duas noites e vaga definitiva, apto no próximo amanhecer.",
-      "version": "0.1",
+      "version": "0.2",
       "refs": [
         "RULES.md"
       ]
@@ -1071,7 +1095,7 @@
       "family": "INT",
       "name": "Solidário",
       "text": "Permanece; após duas noites e vaga definitiva, apto no próximo amanhecer.",
-      "version": "0.1",
+      "version": "0.2",
       "refs": [
         "RULES.md"
       ]
@@ -1081,7 +1105,7 @@
       "family": "INT",
       "name": "Solidário",
       "text": "Permanece; após duas noites e vaga definitiva, apto no próximo amanhecer.",
-      "version": "0.1",
+      "version": "0.2",
       "refs": [
         "RULES.md"
       ]
@@ -1091,7 +1115,7 @@
       "family": "INT",
       "name": "Solidário",
       "text": "Permanece; após duas noites e vaga definitiva, apto no próximo amanhecer.",
-      "version": "0.1",
+      "version": "0.2",
       "refs": [
         "RULES.md"
       ]
@@ -1101,7 +1125,7 @@
       "family": "INT",
       "name": "Solidário",
       "text": "Permanece; após duas noites e vaga definitiva, apto no próximo amanhecer.",
-      "version": "0.1",
+      "version": "0.2",
       "refs": [
         "RULES.md"
       ]
@@ -1111,7 +1135,7 @@
       "family": "INT",
       "name": "Assustado",
       "text": "Fica, mas requer um trabalho de cuidado além de observação e vaga.",
-      "version": "0.1",
+      "version": "0.2",
       "refs": [
         "RULES.md"
       ]
@@ -1121,7 +1145,7 @@
       "family": "INT",
       "name": "Assustado",
       "text": "Fica, mas requer um trabalho de cuidado além de observação e vaga.",
-      "version": "0.1",
+      "version": "0.2",
       "refs": [
         "RULES.md"
       ]
@@ -1131,7 +1155,7 @@
       "family": "INT",
       "name": "Assustado",
       "text": "Fica, mas requer um trabalho de cuidado além de observação e vaga.",
-      "version": "0.1",
+      "version": "0.2",
       "refs": [
         "RULES.md"
       ]
@@ -1140,8 +1164,8 @@
       "id": "ZC-INT-0011",
       "family": "INT",
       "name": "Oportunista",
-      "text": "Sem Verificado nesta noite: rouba até quatro porções comida e grupo parte. Verificado: parte sem roubo.",
-      "version": "0.1",
+      "text": "Sem Verificado nesta noite: rouba até quatro porções de conserva e grupo parte. Verificado: parte sem roubo.",
+      "version": "0.2",
       "refs": [
         "RULES.md"
       ]
@@ -1151,7 +1175,7 @@
       "family": "INT",
       "name": "Infiltrado",
       "text": "Sem Verificado nesta noite: +1 Pressão e grupo parte. Verificado: parte sem efeito.",
-      "version": "0.1",
+      "version": "0.2",
       "refs": [
         "RULES.md"
       ]
@@ -1161,7 +1185,7 @@
       "family": "REC",
       "name": "Conserva",
       "text": "4 porções. Cursor 4 / 3 / 2 / 1. Carga 1. Vazio: reserva, nunca monte/estoque.",
-      "version": "0.1",
+      "version": "0.2",
       "refs": [
         "RULES.md"
       ],
@@ -1174,7 +1198,7 @@
       "family": "REC",
       "name": "Conserva",
       "text": "4 porções. Cursor 4 / 3 / 2 / 1. Carga 1. Vazio: reserva, nunca monte/estoque.",
-      "version": "0.1",
+      "version": "0.2",
       "refs": [
         "RULES.md"
       ],
@@ -1187,7 +1211,7 @@
       "family": "REC",
       "name": "Conserva",
       "text": "4 porções. Cursor 4 / 3 / 2 / 1. Carga 1. Vazio: reserva, nunca monte/estoque.",
-      "version": "0.1",
+      "version": "0.2",
       "refs": [
         "RULES.md"
       ],
@@ -1200,7 +1224,7 @@
       "family": "REC",
       "name": "Conserva",
       "text": "4 porções. Cursor 4 / 3 / 2 / 1. Carga 1. Vazio: reserva, nunca monte/estoque.",
-      "version": "0.1",
+      "version": "0.2",
       "refs": [
         "RULES.md"
       ],
@@ -1213,7 +1237,7 @@
       "family": "REC",
       "name": "Conserva",
       "text": "4 porções. Cursor 4 / 3 / 2 / 1. Carga 1. Vazio: reserva, nunca monte/estoque.",
-      "version": "0.1",
+      "version": "0.2",
       "refs": [
         "RULES.md"
       ],
@@ -1226,7 +1250,7 @@
       "family": "REC",
       "name": "Conserva",
       "text": "4 porções. Cursor 4 / 3 / 2 / 1. Carga 1. Vazio: reserva, nunca monte/estoque.",
-      "version": "0.1",
+      "version": "0.2",
       "refs": [
         "RULES.md"
       ],
@@ -1239,7 +1263,7 @@
       "family": "REC",
       "name": "Conserva",
       "text": "4 porções. Cursor 4 / 3 / 2 / 1. Carga 1. Vazio: reserva, nunca monte/estoque.",
-      "version": "0.1",
+      "version": "0.2",
       "refs": [
         "RULES.md"
       ],
@@ -1252,7 +1276,7 @@
       "family": "REC",
       "name": "Conserva",
       "text": "4 porções. Cursor 4 / 3 / 2 / 1. Carga 1. Vazio: reserva, nunca monte/estoque.",
-      "version": "0.1",
+      "version": "0.2",
       "refs": [
         "RULES.md"
       ],
@@ -1265,7 +1289,7 @@
       "family": "REC",
       "name": "Conserva",
       "text": "4 porções. Cursor 4 / 3 / 2 / 1. Carga 1. Vazio: reserva, nunca monte/estoque.",
-      "version": "0.1",
+      "version": "0.2",
       "refs": [
         "RULES.md"
       ],
@@ -1278,7 +1302,7 @@
       "family": "REC",
       "name": "Conserva",
       "text": "4 porções. Cursor 4 / 3 / 2 / 1. Carga 1. Vazio: reserva, nunca monte/estoque.",
-      "version": "0.1",
+      "version": "0.2",
       "refs": [
         "RULES.md"
       ],
@@ -1291,7 +1315,7 @@
       "family": "REC",
       "name": "Conserva",
       "text": "4 porções. Cursor 4 / 3 / 2 / 1. Carga 1. Vazio: reserva, nunca monte/estoque.",
-      "version": "0.1",
+      "version": "0.2",
       "refs": [
         "RULES.md"
       ],
@@ -1304,7 +1328,7 @@
       "family": "REC",
       "name": "Conserva",
       "text": "4 porções. Cursor 4 / 3 / 2 / 1. Carga 1. Vazio: reserva, nunca monte/estoque.",
-      "version": "0.1",
+      "version": "0.2",
       "refs": [
         "RULES.md"
       ],
@@ -1317,7 +1341,7 @@
       "family": "REC",
       "name": "Conserva",
       "text": "4 porções. Cursor 4 / 3 / 2 / 1. Carga 1. Vazio: reserva, nunca monte/estoque.",
-      "version": "0.1",
+      "version": "0.2",
       "refs": [
         "RULES.md"
       ],
@@ -1330,7 +1354,7 @@
       "family": "REC",
       "name": "Conserva",
       "text": "4 porções. Cursor 4 / 3 / 2 / 1. Carga 1. Vazio: reserva, nunca monte/estoque.",
-      "version": "0.1",
+      "version": "0.2",
       "refs": [
         "RULES.md"
       ],
@@ -1343,7 +1367,7 @@
       "family": "REC",
       "name": "Conserva",
       "text": "4 porções. Cursor 4 / 3 / 2 / 1. Carga 1. Vazio: reserva, nunca monte/estoque.",
-      "version": "0.1",
+      "version": "0.2",
       "refs": [
         "RULES.md"
       ],
@@ -1356,7 +1380,7 @@
       "family": "REC",
       "name": "Conserva",
       "text": "4 porções. Cursor 4 / 3 / 2 / 1. Carga 1. Vazio: reserva, nunca monte/estoque.",
-      "version": "0.1",
+      "version": "0.2",
       "refs": [
         "RULES.md"
       ],
@@ -1369,7 +1393,7 @@
       "family": "REC",
       "name": "Conserva",
       "text": "4 porções. Cursor 4 / 3 / 2 / 1. Carga 1. Vazio: reserva, nunca monte/estoque.",
-      "version": "0.1",
+      "version": "0.2",
       "refs": [
         "RULES.md"
       ],
@@ -1382,7 +1406,7 @@
       "family": "REC",
       "name": "Conserva",
       "text": "4 porções. Cursor 4 / 3 / 2 / 1. Carga 1. Vazio: reserva, nunca monte/estoque.",
-      "version": "0.1",
+      "version": "0.2",
       "refs": [
         "RULES.md"
       ],
@@ -1395,7 +1419,7 @@
       "family": "REC",
       "name": "Conserva",
       "text": "4 porções. Cursor 4 / 3 / 2 / 1. Carga 1. Vazio: reserva, nunca monte/estoque.",
-      "version": "0.1",
+      "version": "0.2",
       "refs": [
         "RULES.md"
       ],
@@ -1408,7 +1432,7 @@
       "family": "REC",
       "name": "Conserva",
       "text": "4 porções. Cursor 4 / 3 / 2 / 1. Carga 1. Vazio: reserva, nunca monte/estoque.",
-      "version": "0.1",
+      "version": "0.2",
       "refs": [
         "RULES.md"
       ],
@@ -1421,7 +1445,7 @@
       "family": "REC",
       "name": "Conserva",
       "text": "4 porções. Cursor 4 / 3 / 2 / 1. Carga 1. Vazio: reserva, nunca monte/estoque.",
-      "version": "0.1",
+      "version": "0.2",
       "refs": [
         "RULES.md"
       ],
@@ -1434,7 +1458,7 @@
       "family": "REC",
       "name": "Conserva",
       "text": "4 porções. Cursor 4 / 3 / 2 / 1. Carga 1. Vazio: reserva, nunca monte/estoque.",
-      "version": "0.1",
+      "version": "0.2",
       "refs": [
         "RULES.md"
       ],
@@ -1447,7 +1471,7 @@
       "family": "REC",
       "name": "Conserva",
       "text": "4 porções. Cursor 4 / 3 / 2 / 1. Carga 1. Vazio: reserva, nunca monte/estoque.",
-      "version": "0.1",
+      "version": "0.2",
       "refs": [
         "RULES.md"
       ],
@@ -1460,7 +1484,7 @@
       "family": "REC",
       "name": "Conserva",
       "text": "4 porções. Cursor 4 / 3 / 2 / 1. Carga 1. Vazio: reserva, nunca monte/estoque.",
-      "version": "0.1",
+      "version": "0.2",
       "refs": [
         "RULES.md"
       ],
@@ -1473,7 +1497,7 @@
       "family": "REC",
       "name": "Conserva",
       "text": "4 porções. Cursor 4 / 3 / 2 / 1. Carga 1. Vazio: reserva, nunca monte/estoque.",
-      "version": "0.1",
+      "version": "0.2",
       "refs": [
         "RULES.md"
       ],
@@ -1486,7 +1510,7 @@
       "family": "REC",
       "name": "Conserva",
       "text": "4 porções. Cursor 4 / 3 / 2 / 1. Carga 1. Vazio: reserva, nunca monte/estoque.",
-      "version": "0.1",
+      "version": "0.2",
       "refs": [
         "RULES.md"
       ],
@@ -1499,7 +1523,7 @@
       "family": "REC",
       "name": "Conserva",
       "text": "4 porções. Cursor 4 / 3 / 2 / 1. Carga 1. Vazio: reserva, nunca monte/estoque.",
-      "version": "0.1",
+      "version": "0.2",
       "refs": [
         "RULES.md"
       ],
@@ -1512,7 +1536,7 @@
       "family": "REC",
       "name": "Conserva",
       "text": "4 porções. Cursor 4 / 3 / 2 / 1. Carga 1. Vazio: reserva, nunca monte/estoque.",
-      "version": "0.1",
+      "version": "0.2",
       "refs": [
         "RULES.md"
       ],
@@ -1525,7 +1549,7 @@
       "family": "REC",
       "name": "Conserva",
       "text": "4 porções. Cursor 4 / 3 / 2 / 1. Carga 1. Vazio: reserva, nunca monte/estoque.",
-      "version": "0.1",
+      "version": "0.2",
       "refs": [
         "RULES.md"
       ],
@@ -1538,7 +1562,7 @@
       "family": "REC",
       "name": "Conserva",
       "text": "4 porções. Cursor 4 / 3 / 2 / 1. Carga 1. Vazio: reserva, nunca monte/estoque.",
-      "version": "0.1",
+      "version": "0.2",
       "refs": [
         "RULES.md"
       ],
@@ -1551,7 +1575,7 @@
       "family": "REC",
       "name": "Conserva",
       "text": "4 porções. Cursor 4 / 3 / 2 / 1. Carga 1. Vazio: reserva, nunca monte/estoque.",
-      "version": "0.1",
+      "version": "0.2",
       "refs": [
         "RULES.md"
       ],
@@ -1564,7 +1588,7 @@
       "family": "REC",
       "name": "Conserva",
       "text": "4 porções. Cursor 4 / 3 / 2 / 1. Carga 1. Vazio: reserva, nunca monte/estoque.",
-      "version": "0.1",
+      "version": "0.2",
       "refs": [
         "RULES.md"
       ],
@@ -1577,7 +1601,7 @@
       "family": "REC",
       "name": "Água",
       "text": "4 porções. Cursor 4 / 3 / 2 / 1. Carga 1. Vazio: reserva, nunca monte/estoque.",
-      "version": "0.1",
+      "version": "0.2",
       "refs": [
         "RULES.md"
       ],
@@ -1590,7 +1614,7 @@
       "family": "REC",
       "name": "Água",
       "text": "4 porções. Cursor 4 / 3 / 2 / 1. Carga 1. Vazio: reserva, nunca monte/estoque.",
-      "version": "0.1",
+      "version": "0.2",
       "refs": [
         "RULES.md"
       ],
@@ -1603,7 +1627,7 @@
       "family": "REC",
       "name": "Água",
       "text": "4 porções. Cursor 4 / 3 / 2 / 1. Carga 1. Vazio: reserva, nunca monte/estoque.",
-      "version": "0.1",
+      "version": "0.2",
       "refs": [
         "RULES.md"
       ],
@@ -1616,7 +1640,7 @@
       "family": "REC",
       "name": "Água",
       "text": "4 porções. Cursor 4 / 3 / 2 / 1. Carga 1. Vazio: reserva, nunca monte/estoque.",
-      "version": "0.1",
+      "version": "0.2",
       "refs": [
         "RULES.md"
       ],
@@ -1629,7 +1653,7 @@
       "family": "REC",
       "name": "Água",
       "text": "4 porções. Cursor 4 / 3 / 2 / 1. Carga 1. Vazio: reserva, nunca monte/estoque.",
-      "version": "0.1",
+      "version": "0.2",
       "refs": [
         "RULES.md"
       ],
@@ -1642,7 +1666,7 @@
       "family": "REC",
       "name": "Água",
       "text": "4 porções. Cursor 4 / 3 / 2 / 1. Carga 1. Vazio: reserva, nunca monte/estoque.",
-      "version": "0.1",
+      "version": "0.2",
       "refs": [
         "RULES.md"
       ],
@@ -1655,7 +1679,7 @@
       "family": "REC",
       "name": "Água",
       "text": "4 porções. Cursor 4 / 3 / 2 / 1. Carga 1. Vazio: reserva, nunca monte/estoque.",
-      "version": "0.1",
+      "version": "0.2",
       "refs": [
         "RULES.md"
       ],
@@ -1668,7 +1692,7 @@
       "family": "REC",
       "name": "Água",
       "text": "4 porções. Cursor 4 / 3 / 2 / 1. Carga 1. Vazio: reserva, nunca monte/estoque.",
-      "version": "0.1",
+      "version": "0.2",
       "refs": [
         "RULES.md"
       ],
@@ -1681,7 +1705,7 @@
       "family": "REC",
       "name": "Água",
       "text": "4 porções. Cursor 4 / 3 / 2 / 1. Carga 1. Vazio: reserva, nunca monte/estoque.",
-      "version": "0.1",
+      "version": "0.2",
       "refs": [
         "RULES.md"
       ],
@@ -1694,7 +1718,7 @@
       "family": "REC",
       "name": "Água",
       "text": "4 porções. Cursor 4 / 3 / 2 / 1. Carga 1. Vazio: reserva, nunca monte/estoque.",
-      "version": "0.1",
+      "version": "0.2",
       "refs": [
         "RULES.md"
       ],
@@ -1707,7 +1731,7 @@
       "family": "REC",
       "name": "Água",
       "text": "4 porções. Cursor 4 / 3 / 2 / 1. Carga 1. Vazio: reserva, nunca monte/estoque.",
-      "version": "0.1",
+      "version": "0.2",
       "refs": [
         "RULES.md"
       ],
@@ -1720,7 +1744,7 @@
       "family": "REC",
       "name": "Água",
       "text": "4 porções. Cursor 4 / 3 / 2 / 1. Carga 1. Vazio: reserva, nunca monte/estoque.",
-      "version": "0.1",
+      "version": "0.2",
       "refs": [
         "RULES.md"
       ],
@@ -1733,7 +1757,7 @@
       "family": "REC",
       "name": "Água",
       "text": "4 porções. Cursor 4 / 3 / 2 / 1. Carga 1. Vazio: reserva, nunca monte/estoque.",
-      "version": "0.1",
+      "version": "0.2",
       "refs": [
         "RULES.md"
       ],
@@ -1746,7 +1770,7 @@
       "family": "REC",
       "name": "Água",
       "text": "4 porções. Cursor 4 / 3 / 2 / 1. Carga 1. Vazio: reserva, nunca monte/estoque.",
-      "version": "0.1",
+      "version": "0.2",
       "refs": [
         "RULES.md"
       ],
@@ -1759,7 +1783,7 @@
       "family": "REC",
       "name": "Água",
       "text": "4 porções. Cursor 4 / 3 / 2 / 1. Carga 1. Vazio: reserva, nunca monte/estoque.",
-      "version": "0.1",
+      "version": "0.2",
       "refs": [
         "RULES.md"
       ],
@@ -1772,7 +1796,7 @@
       "family": "REC",
       "name": "Água",
       "text": "4 porções. Cursor 4 / 3 / 2 / 1. Carga 1. Vazio: reserva, nunca monte/estoque.",
-      "version": "0.1",
+      "version": "0.2",
       "refs": [
         "RULES.md"
       ],
@@ -1785,7 +1809,7 @@
       "family": "REC",
       "name": "Água",
       "text": "4 porções. Cursor 4 / 3 / 2 / 1. Carga 1. Vazio: reserva, nunca monte/estoque.",
-      "version": "0.1",
+      "version": "0.2",
       "refs": [
         "RULES.md"
       ],
@@ -1798,7 +1822,7 @@
       "family": "REC",
       "name": "Água",
       "text": "4 porções. Cursor 4 / 3 / 2 / 1. Carga 1. Vazio: reserva, nunca monte/estoque.",
-      "version": "0.1",
+      "version": "0.2",
       "refs": [
         "RULES.md"
       ],
@@ -1811,7 +1835,7 @@
       "family": "REC",
       "name": "Água",
       "text": "4 porções. Cursor 4 / 3 / 2 / 1. Carga 1. Vazio: reserva, nunca monte/estoque.",
-      "version": "0.1",
+      "version": "0.2",
       "refs": [
         "RULES.md"
       ],
@@ -1824,7 +1848,7 @@
       "family": "REC",
       "name": "Água",
       "text": "4 porções. Cursor 4 / 3 / 2 / 1. Carga 1. Vazio: reserva, nunca monte/estoque.",
-      "version": "0.1",
+      "version": "0.2",
       "refs": [
         "RULES.md"
       ],
@@ -1837,7 +1861,7 @@
       "family": "REC",
       "name": "Água",
       "text": "4 porções. Cursor 4 / 3 / 2 / 1. Carga 1. Vazio: reserva, nunca monte/estoque.",
-      "version": "0.1",
+      "version": "0.2",
       "refs": [
         "RULES.md"
       ],
@@ -1850,7 +1874,7 @@
       "family": "REC",
       "name": "Água",
       "text": "4 porções. Cursor 4 / 3 / 2 / 1. Carga 1. Vazio: reserva, nunca monte/estoque.",
-      "version": "0.1",
+      "version": "0.2",
       "refs": [
         "RULES.md"
       ],
@@ -1863,7 +1887,7 @@
       "family": "REC",
       "name": "Água",
       "text": "4 porções. Cursor 4 / 3 / 2 / 1. Carga 1. Vazio: reserva, nunca monte/estoque.",
-      "version": "0.1",
+      "version": "0.2",
       "refs": [
         "RULES.md"
       ],
@@ -1876,7 +1900,7 @@
       "family": "REC",
       "name": "Água",
       "text": "4 porções. Cursor 4 / 3 / 2 / 1. Carga 1. Vazio: reserva, nunca monte/estoque.",
-      "version": "0.1",
+      "version": "0.2",
       "refs": [
         "RULES.md"
       ],
@@ -1889,7 +1913,7 @@
       "family": "REC",
       "name": "Água",
       "text": "4 porções. Cursor 4 / 3 / 2 / 1. Carga 1. Vazio: reserva, nunca monte/estoque.",
-      "version": "0.1",
+      "version": "0.2",
       "refs": [
         "RULES.md"
       ],
@@ -1902,7 +1926,7 @@
       "family": "REC",
       "name": "Água",
       "text": "4 porções. Cursor 4 / 3 / 2 / 1. Carga 1. Vazio: reserva, nunca monte/estoque.",
-      "version": "0.1",
+      "version": "0.2",
       "refs": [
         "RULES.md"
       ],
@@ -1915,7 +1939,7 @@
       "family": "REC",
       "name": "Água",
       "text": "4 porções. Cursor 4 / 3 / 2 / 1. Carga 1. Vazio: reserva, nunca monte/estoque.",
-      "version": "0.1",
+      "version": "0.2",
       "refs": [
         "RULES.md"
       ],
@@ -1928,7 +1952,7 @@
       "family": "REC",
       "name": "Água",
       "text": "4 porções. Cursor 4 / 3 / 2 / 1. Carga 1. Vazio: reserva, nunca monte/estoque.",
-      "version": "0.1",
+      "version": "0.2",
       "refs": [
         "RULES.md"
       ],
@@ -1941,7 +1965,7 @@
       "family": "REC",
       "name": "Água",
       "text": "4 porções. Cursor 4 / 3 / 2 / 1. Carga 1. Vazio: reserva, nunca monte/estoque.",
-      "version": "0.1",
+      "version": "0.2",
       "refs": [
         "RULES.md"
       ],
@@ -1954,7 +1978,7 @@
       "family": "REC",
       "name": "Água",
       "text": "4 porções. Cursor 4 / 3 / 2 / 1. Carga 1. Vazio: reserva, nunca monte/estoque.",
-      "version": "0.1",
+      "version": "0.2",
       "refs": [
         "RULES.md"
       ],
@@ -1967,7 +1991,7 @@
       "family": "REC",
       "name": "Água",
       "text": "4 porções. Cursor 4 / 3 / 2 / 1. Carga 1. Vazio: reserva, nunca monte/estoque.",
-      "version": "0.1",
+      "version": "0.2",
       "refs": [
         "RULES.md"
       ],
@@ -1980,7 +2004,7 @@
       "family": "REC",
       "name": "Água",
       "text": "4 porções. Cursor 4 / 3 / 2 / 1. Carga 1. Vazio: reserva, nunca monte/estoque.",
-      "version": "0.1",
+      "version": "0.2",
       "refs": [
         "RULES.md"
       ],
@@ -1993,7 +2017,7 @@
       "family": "REC",
       "name": "Água",
       "text": "4 porções. Cursor 4 / 3 / 2 / 1. Carga 1. Vazio: reserva, nunca monte/estoque.",
-      "version": "0.1",
+      "version": "0.2",
       "refs": [
         "RULES.md"
       ],
@@ -2006,7 +2030,7 @@
       "family": "REC",
       "name": "Água",
       "text": "4 porções. Cursor 4 / 3 / 2 / 1. Carga 1. Vazio: reserva, nunca monte/estoque.",
-      "version": "0.1",
+      "version": "0.2",
       "refs": [
         "RULES.md"
       ],
@@ -2019,7 +2043,7 @@
       "family": "REC",
       "name": "Água",
       "text": "4 porções. Cursor 4 / 3 / 2 / 1. Carga 1. Vazio: reserva, nunca monte/estoque.",
-      "version": "0.1",
+      "version": "0.2",
       "refs": [
         "RULES.md"
       ],
@@ -2032,7 +2056,7 @@
       "family": "REC",
       "name": "Água",
       "text": "4 porções. Cursor 4 / 3 / 2 / 1. Carga 1. Vazio: reserva, nunca monte/estoque.",
-      "version": "0.1",
+      "version": "0.2",
       "refs": [
         "RULES.md"
       ],
@@ -2045,7 +2069,7 @@
       "family": "REC",
       "name": "Carne",
       "text": "4 porções. Cursor 4 / 3 / 2 / 1. Carga 1. Vazio: reserva, nunca monte/estoque. Vence após refeição de hoje.",
-      "version": "0.1",
+      "version": "0.2",
       "refs": [
         "RULES.md"
       ],
@@ -2058,7 +2082,7 @@
       "family": "REC",
       "name": "Carne",
       "text": "4 porções. Cursor 4 / 3 / 2 / 1. Carga 1. Vazio: reserva, nunca monte/estoque. Vence após refeição de hoje.",
-      "version": "0.1",
+      "version": "0.2",
       "refs": [
         "RULES.md"
       ],
@@ -2071,7 +2095,7 @@
       "family": "REC",
       "name": "Carne",
       "text": "4 porções. Cursor 4 / 3 / 2 / 1. Carga 1. Vazio: reserva, nunca monte/estoque. Vence após refeição de hoje.",
-      "version": "0.1",
+      "version": "0.2",
       "refs": [
         "RULES.md"
       ],
@@ -2084,7 +2108,7 @@
       "family": "REC",
       "name": "Carne",
       "text": "4 porções. Cursor 4 / 3 / 2 / 1. Carga 1. Vazio: reserva, nunca monte/estoque. Vence após refeição de hoje.",
-      "version": "0.1",
+      "version": "0.2",
       "refs": [
         "RULES.md"
       ],
@@ -2097,7 +2121,7 @@
       "family": "REC",
       "name": "Carne",
       "text": "4 porções. Cursor 4 / 3 / 2 / 1. Carga 1. Vazio: reserva, nunca monte/estoque. Vence após refeição de hoje.",
-      "version": "0.1",
+      "version": "0.2",
       "refs": [
         "RULES.md"
       ],
@@ -2110,7 +2134,7 @@
       "family": "REC",
       "name": "Carne",
       "text": "4 porções. Cursor 4 / 3 / 2 / 1. Carga 1. Vazio: reserva, nunca monte/estoque. Vence após refeição de hoje.",
-      "version": "0.1",
+      "version": "0.2",
       "refs": [
         "RULES.md"
       ],
@@ -2123,7 +2147,7 @@
       "family": "REC",
       "name": "Carne",
       "text": "4 porções. Cursor 4 / 3 / 2 / 1. Carga 1. Vazio: reserva, nunca monte/estoque. Vence após refeição de hoje.",
-      "version": "0.1",
+      "version": "0.2",
       "refs": [
         "RULES.md"
       ],
@@ -2136,7 +2160,7 @@
       "family": "REC",
       "name": "Carne",
       "text": "4 porções. Cursor 4 / 3 / 2 / 1. Carga 1. Vazio: reserva, nunca monte/estoque. Vence após refeição de hoje.",
-      "version": "0.1",
+      "version": "0.2",
       "refs": [
         "RULES.md"
       ],
@@ -2149,7 +2173,7 @@
       "family": "REC",
       "name": "Material",
       "text": "1 unidade. Carga 1. Vazio: reserva, nunca monte/estoque.",
-      "version": "0.1",
+      "version": "0.2",
       "refs": [
         "RULES.md"
       ],
@@ -2162,7 +2186,7 @@
       "family": "REC",
       "name": "Material",
       "text": "1 unidade. Carga 1. Vazio: reserva, nunca monte/estoque.",
-      "version": "0.1",
+      "version": "0.2",
       "refs": [
         "RULES.md"
       ],
@@ -2175,7 +2199,7 @@
       "family": "REC",
       "name": "Material",
       "text": "1 unidade. Carga 1. Vazio: reserva, nunca monte/estoque.",
-      "version": "0.1",
+      "version": "0.2",
       "refs": [
         "RULES.md"
       ],
@@ -2188,7 +2212,7 @@
       "family": "REC",
       "name": "Material",
       "text": "1 unidade. Carga 1. Vazio: reserva, nunca monte/estoque.",
-      "version": "0.1",
+      "version": "0.2",
       "refs": [
         "RULES.md"
       ],
@@ -2201,7 +2225,7 @@
       "family": "REC",
       "name": "Material",
       "text": "1 unidade. Carga 1. Vazio: reserva, nunca monte/estoque.",
-      "version": "0.1",
+      "version": "0.2",
       "refs": [
         "RULES.md"
       ],
@@ -2214,7 +2238,7 @@
       "family": "REC",
       "name": "Material",
       "text": "1 unidade. Carga 1. Vazio: reserva, nunca monte/estoque.",
-      "version": "0.1",
+      "version": "0.2",
       "refs": [
         "RULES.md"
       ],
@@ -2227,7 +2251,7 @@
       "family": "REC",
       "name": "Material",
       "text": "1 unidade. Carga 1. Vazio: reserva, nunca monte/estoque.",
-      "version": "0.1",
+      "version": "0.2",
       "refs": [
         "RULES.md"
       ],
@@ -2240,7 +2264,7 @@
       "family": "REC",
       "name": "Material",
       "text": "1 unidade. Carga 1. Vazio: reserva, nunca monte/estoque.",
-      "version": "0.1",
+      "version": "0.2",
       "refs": [
         "RULES.md"
       ],
@@ -2253,7 +2277,7 @@
       "family": "REC",
       "name": "Material",
       "text": "1 unidade. Carga 1. Vazio: reserva, nunca monte/estoque.",
-      "version": "0.1",
+      "version": "0.2",
       "refs": [
         "RULES.md"
       ],
@@ -2266,7 +2290,7 @@
       "family": "REC",
       "name": "Material",
       "text": "1 unidade. Carga 1. Vazio: reserva, nunca monte/estoque.",
-      "version": "0.1",
+      "version": "0.2",
       "refs": [
         "RULES.md"
       ],
@@ -2279,7 +2303,7 @@
       "family": "REC",
       "name": "Material",
       "text": "1 unidade. Carga 1. Vazio: reserva, nunca monte/estoque.",
-      "version": "0.1",
+      "version": "0.2",
       "refs": [
         "RULES.md"
       ],
@@ -2292,7 +2316,7 @@
       "family": "REC",
       "name": "Material",
       "text": "1 unidade. Carga 1. Vazio: reserva, nunca monte/estoque.",
-      "version": "0.1",
+      "version": "0.2",
       "refs": [
         "RULES.md"
       ],
@@ -2305,7 +2329,7 @@
       "family": "REC",
       "name": "Material",
       "text": "1 unidade. Carga 1. Vazio: reserva, nunca monte/estoque.",
-      "version": "0.1",
+      "version": "0.2",
       "refs": [
         "RULES.md"
       ],
@@ -2318,7 +2342,7 @@
       "family": "REC",
       "name": "Material",
       "text": "1 unidade. Carga 1. Vazio: reserva, nunca monte/estoque.",
-      "version": "0.1",
+      "version": "0.2",
       "refs": [
         "RULES.md"
       ],
@@ -2331,7 +2355,7 @@
       "family": "REC",
       "name": "Material",
       "text": "1 unidade. Carga 1. Vazio: reserva, nunca monte/estoque.",
-      "version": "0.1",
+      "version": "0.2",
       "refs": [
         "RULES.md"
       ],
@@ -2344,7 +2368,7 @@
       "family": "REC",
       "name": "Material",
       "text": "1 unidade. Carga 1. Vazio: reserva, nunca monte/estoque.",
-      "version": "0.1",
+      "version": "0.2",
       "refs": [
         "RULES.md"
       ],
@@ -2357,7 +2381,7 @@
       "family": "REC",
       "name": "Material",
       "text": "1 unidade. Carga 1. Vazio: reserva, nunca monte/estoque.",
-      "version": "0.1",
+      "version": "0.2",
       "refs": [
         "RULES.md"
       ],
@@ -2370,7 +2394,7 @@
       "family": "REC",
       "name": "Material",
       "text": "1 unidade. Carga 1. Vazio: reserva, nunca monte/estoque.",
-      "version": "0.1",
+      "version": "0.2",
       "refs": [
         "RULES.md"
       ],
@@ -2383,7 +2407,7 @@
       "family": "REC",
       "name": "Material",
       "text": "1 unidade. Carga 1. Vazio: reserva, nunca monte/estoque.",
-      "version": "0.1",
+      "version": "0.2",
       "refs": [
         "RULES.md"
       ],
@@ -2396,7 +2420,7 @@
       "family": "REC",
       "name": "Material",
       "text": "1 unidade. Carga 1. Vazio: reserva, nunca monte/estoque.",
-      "version": "0.1",
+      "version": "0.2",
       "refs": [
         "RULES.md"
       ],
@@ -2409,7 +2433,7 @@
       "family": "REC",
       "name": "Material",
       "text": "1 unidade. Carga 1. Vazio: reserva, nunca monte/estoque.",
-      "version": "0.1",
+      "version": "0.2",
       "refs": [
         "RULES.md"
       ],
@@ -2422,7 +2446,7 @@
       "family": "REC",
       "name": "Material",
       "text": "1 unidade. Carga 1. Vazio: reserva, nunca monte/estoque.",
-      "version": "0.1",
+      "version": "0.2",
       "refs": [
         "RULES.md"
       ],
@@ -2435,7 +2459,7 @@
       "family": "REC",
       "name": "Material",
       "text": "1 unidade. Carga 1. Vazio: reserva, nunca monte/estoque.",
-      "version": "0.1",
+      "version": "0.2",
       "refs": [
         "RULES.md"
       ],
@@ -2448,7 +2472,7 @@
       "family": "REC",
       "name": "Material",
       "text": "1 unidade. Carga 1. Vazio: reserva, nunca monte/estoque.",
-      "version": "0.1",
+      "version": "0.2",
       "refs": [
         "RULES.md"
       ],
@@ -2461,7 +2485,7 @@
       "family": "REC",
       "name": "Combustível",
       "text": "1 unidade. Carga 1. Vazio: reserva, nunca monte/estoque.",
-      "version": "0.1",
+      "version": "0.2",
       "refs": [
         "RULES.md"
       ],
@@ -2474,7 +2498,7 @@
       "family": "REC",
       "name": "Combustível",
       "text": "1 unidade. Carga 1. Vazio: reserva, nunca monte/estoque.",
-      "version": "0.1",
+      "version": "0.2",
       "refs": [
         "RULES.md"
       ],
@@ -2487,7 +2511,7 @@
       "family": "REC",
       "name": "Combustível",
       "text": "1 unidade. Carga 1. Vazio: reserva, nunca monte/estoque.",
-      "version": "0.1",
+      "version": "0.2",
       "refs": [
         "RULES.md"
       ],
@@ -2500,7 +2524,7 @@
       "family": "REC",
       "name": "Combustível",
       "text": "1 unidade. Carga 1. Vazio: reserva, nunca monte/estoque.",
-      "version": "0.1",
+      "version": "0.2",
       "refs": [
         "RULES.md"
       ],
@@ -2513,7 +2537,7 @@
       "family": "REC",
       "name": "Combustível",
       "text": "1 unidade. Carga 1. Vazio: reserva, nunca monte/estoque.",
-      "version": "0.1",
+      "version": "0.2",
       "refs": [
         "RULES.md"
       ],
@@ -2526,7 +2550,7 @@
       "family": "REC",
       "name": "Combustível",
       "text": "1 unidade. Carga 1. Vazio: reserva, nunca monte/estoque.",
-      "version": "0.1",
+      "version": "0.2",
       "refs": [
         "RULES.md"
       ],
@@ -2539,7 +2563,7 @@
       "family": "REC",
       "name": "Combustível",
       "text": "1 unidade. Carga 1. Vazio: reserva, nunca monte/estoque.",
-      "version": "0.1",
+      "version": "0.2",
       "refs": [
         "RULES.md"
       ],
@@ -2552,7 +2576,7 @@
       "family": "REC",
       "name": "Combustível",
       "text": "1 unidade. Carga 1. Vazio: reserva, nunca monte/estoque.",
-      "version": "0.1",
+      "version": "0.2",
       "refs": [
         "RULES.md"
       ],
@@ -2565,7 +2589,7 @@
       "family": "REC",
       "name": "Combustível",
       "text": "1 unidade. Carga 1. Vazio: reserva, nunca monte/estoque.",
-      "version": "0.1",
+      "version": "0.2",
       "refs": [
         "RULES.md"
       ],
@@ -2578,7 +2602,7 @@
       "family": "REC",
       "name": "Combustível",
       "text": "1 unidade. Carga 1. Vazio: reserva, nunca monte/estoque.",
-      "version": "0.1",
+      "version": "0.2",
       "refs": [
         "RULES.md"
       ],
@@ -2591,7 +2615,7 @@
       "family": "REC",
       "name": "Combustível",
       "text": "1 unidade. Carga 1. Vazio: reserva, nunca monte/estoque.",
-      "version": "0.1",
+      "version": "0.2",
       "refs": [
         "RULES.md"
       ],
@@ -2604,7 +2628,7 @@
       "family": "REC",
       "name": "Combustível",
       "text": "1 unidade. Carga 1. Vazio: reserva, nunca monte/estoque.",
-      "version": "0.1",
+      "version": "0.2",
       "refs": [
         "RULES.md"
       ],
@@ -2617,7 +2641,7 @@
       "family": "REC",
       "name": "Munição",
       "text": "1 unidade. Carga 1. Vazio: reserva, nunca monte/estoque.",
-      "version": "0.1",
+      "version": "0.2",
       "refs": [
         "RULES.md"
       ],
@@ -2630,7 +2654,7 @@
       "family": "REC",
       "name": "Munição",
       "text": "1 unidade. Carga 1. Vazio: reserva, nunca monte/estoque.",
-      "version": "0.1",
+      "version": "0.2",
       "refs": [
         "RULES.md"
       ],
@@ -2643,7 +2667,7 @@
       "family": "REC",
       "name": "Munição",
       "text": "1 unidade. Carga 1. Vazio: reserva, nunca monte/estoque.",
-      "version": "0.1",
+      "version": "0.2",
       "refs": [
         "RULES.md"
       ],
@@ -2656,7 +2680,7 @@
       "family": "REC",
       "name": "Munição",
       "text": "1 unidade. Carga 1. Vazio: reserva, nunca monte/estoque.",
-      "version": "0.1",
+      "version": "0.2",
       "refs": [
         "RULES.md"
       ],
@@ -2669,7 +2693,7 @@
       "family": "REC",
       "name": "Munição",
       "text": "1 unidade. Carga 1. Vazio: reserva, nunca monte/estoque.",
-      "version": "0.1",
+      "version": "0.2",
       "refs": [
         "RULES.md"
       ],
@@ -2682,7 +2706,7 @@
       "family": "REC",
       "name": "Munição",
       "text": "1 unidade. Carga 1. Vazio: reserva, nunca monte/estoque.",
-      "version": "0.1",
+      "version": "0.2",
       "refs": [
         "RULES.md"
       ],
@@ -2695,7 +2719,7 @@
       "family": "REC",
       "name": "Munição",
       "text": "1 unidade. Carga 1. Vazio: reserva, nunca monte/estoque.",
-      "version": "0.1",
+      "version": "0.2",
       "refs": [
         "RULES.md"
       ],
@@ -2708,7 +2732,7 @@
       "family": "REC",
       "name": "Munição",
       "text": "1 unidade. Carga 1. Vazio: reserva, nunca monte/estoque.",
-      "version": "0.1",
+      "version": "0.2",
       "refs": [
         "RULES.md"
       ],
@@ -2721,7 +2745,7 @@
       "family": "REC",
       "name": "Munição",
       "text": "1 unidade. Carga 1. Vazio: reserva, nunca monte/estoque.",
-      "version": "0.1",
+      "version": "0.2",
       "refs": [
         "RULES.md"
       ],
@@ -2734,7 +2758,7 @@
       "family": "REC",
       "name": "Munição",
       "text": "1 unidade. Carga 1. Vazio: reserva, nunca monte/estoque.",
-      "version": "0.1",
+      "version": "0.2",
       "refs": [
         "RULES.md"
       ],
@@ -2747,7 +2771,7 @@
       "family": "REC",
       "name": "Munição",
       "text": "1 unidade. Carga 1. Vazio: reserva, nunca monte/estoque.",
-      "version": "0.1",
+      "version": "0.2",
       "refs": [
         "RULES.md"
       ],
@@ -2760,7 +2784,7 @@
       "family": "REC",
       "name": "Munição",
       "text": "1 unidade. Carga 1. Vazio: reserva, nunca monte/estoque.",
-      "version": "0.1",
+      "version": "0.2",
       "refs": [
         "RULES.md"
       ],
@@ -2773,7 +2797,7 @@
       "family": "REC",
       "name": "Munição",
       "text": "1 unidade. Carga 1. Vazio: reserva, nunca monte/estoque.",
-      "version": "0.1",
+      "version": "0.2",
       "refs": [
         "RULES.md"
       ],
@@ -2786,7 +2810,7 @@
       "family": "REC",
       "name": "Munição",
       "text": "1 unidade. Carga 1. Vazio: reserva, nunca monte/estoque.",
-      "version": "0.1",
+      "version": "0.2",
       "refs": [
         "RULES.md"
       ],
@@ -2799,7 +2823,7 @@
       "family": "REC",
       "name": "Munição",
       "text": "1 unidade. Carga 1. Vazio: reserva, nunca monte/estoque.",
-      "version": "0.1",
+      "version": "0.2",
       "refs": [
         "RULES.md"
       ],
@@ -2812,7 +2836,7 @@
       "family": "REC",
       "name": "Munição",
       "text": "1 unidade. Carga 1. Vazio: reserva, nunca monte/estoque.",
-      "version": "0.1",
+      "version": "0.2",
       "refs": [
         "RULES.md"
       ],
@@ -2825,7 +2849,7 @@
       "family": "REC",
       "name": "Munição",
       "text": "1 unidade. Carga 1. Vazio: reserva, nunca monte/estoque.",
-      "version": "0.1",
+      "version": "0.2",
       "refs": [
         "RULES.md"
       ],
@@ -2838,7 +2862,7 @@
       "family": "REC",
       "name": "Munição",
       "text": "1 unidade. Carga 1. Vazio: reserva, nunca monte/estoque.",
-      "version": "0.1",
+      "version": "0.2",
       "refs": [
         "RULES.md"
       ],
@@ -2851,7 +2875,7 @@
       "family": "REC",
       "name": "Medicamento",
       "text": "1 unidade. Carga 1. Vazio: reserva, nunca monte/estoque.",
-      "version": "0.1",
+      "version": "0.2",
       "refs": [
         "RULES.md"
       ],
@@ -2864,7 +2888,7 @@
       "family": "REC",
       "name": "Medicamento",
       "text": "1 unidade. Carga 1. Vazio: reserva, nunca monte/estoque.",
-      "version": "0.1",
+      "version": "0.2",
       "refs": [
         "RULES.md"
       ],
@@ -2877,7 +2901,7 @@
       "family": "REC",
       "name": "Medicamento",
       "text": "1 unidade. Carga 1. Vazio: reserva, nunca monte/estoque.",
-      "version": "0.1",
+      "version": "0.2",
       "refs": [
         "RULES.md"
       ],
@@ -2890,7 +2914,7 @@
       "family": "REC",
       "name": "Medicamento",
       "text": "1 unidade. Carga 1. Vazio: reserva, nunca monte/estoque.",
-      "version": "0.1",
+      "version": "0.2",
       "refs": [
         "RULES.md"
       ],
@@ -2903,7 +2927,7 @@
       "family": "REC",
       "name": "Medicamento",
       "text": "1 unidade. Carga 1. Vazio: reserva, nunca monte/estoque.",
-      "version": "0.1",
+      "version": "0.2",
       "refs": [
         "RULES.md"
       ],
@@ -2916,7 +2940,7 @@
       "family": "REC",
       "name": "Medicamento",
       "text": "1 unidade. Carga 1. Vazio: reserva, nunca monte/estoque.",
-      "version": "0.1",
+      "version": "0.2",
       "refs": [
         "RULES.md"
       ],
@@ -2929,7 +2953,7 @@
       "family": "REC",
       "name": "Medicamento",
       "text": "1 unidade. Carga 1. Vazio: reserva, nunca monte/estoque.",
-      "version": "0.1",
+      "version": "0.2",
       "refs": [
         "RULES.md"
       ],
@@ -2942,7 +2966,7 @@
       "family": "REC",
       "name": "Medicamento",
       "text": "1 unidade. Carga 1. Vazio: reserva, nunca monte/estoque.",
-      "version": "0.1",
+      "version": "0.2",
       "refs": [
         "RULES.md"
       ],
@@ -2955,7 +2979,7 @@
       "family": "REC",
       "name": "Medicamento",
       "text": "1 unidade. Carga 1. Vazio: reserva, nunca monte/estoque.",
-      "version": "0.1",
+      "version": "0.2",
       "refs": [
         "RULES.md"
       ],
@@ -2968,7 +2992,7 @@
       "family": "REC",
       "name": "Medicamento",
       "text": "1 unidade. Carga 1. Vazio: reserva, nunca monte/estoque.",
-      "version": "0.1",
+      "version": "0.2",
       "refs": [
         "RULES.md"
       ],
@@ -2981,7 +3005,7 @@
       "family": "REC",
       "name": "Medicamento",
       "text": "1 unidade. Carga 1. Vazio: reserva, nunca monte/estoque.",
-      "version": "0.1",
+      "version": "0.2",
       "refs": [
         "RULES.md"
       ],
@@ -2994,7 +3018,7 @@
       "family": "REC",
       "name": "Medicamento",
       "text": "1 unidade. Carga 1. Vazio: reserva, nunca monte/estoque.",
-      "version": "0.1",
+      "version": "0.2",
       "refs": [
         "RULES.md"
       ],
@@ -3007,7 +3031,7 @@
       "family": "REC",
       "name": "Lona",
       "text": "1 unidade. Carga 1. Vazio: reserva, nunca monte/estoque.",
-      "version": "0.1",
+      "version": "0.2",
       "refs": [
         "RULES.md"
       ],
@@ -3020,7 +3044,7 @@
       "family": "REC",
       "name": "Lona",
       "text": "1 unidade. Carga 1. Vazio: reserva, nunca monte/estoque.",
-      "version": "0.1",
+      "version": "0.2",
       "refs": [
         "RULES.md"
       ],
@@ -3033,7 +3057,7 @@
       "family": "REC",
       "name": "Lona",
       "text": "1 unidade. Carga 1. Vazio: reserva, nunca monte/estoque.",
-      "version": "0.1",
+      "version": "0.2",
       "refs": [
         "RULES.md"
       ],
@@ -3046,7 +3070,7 @@
       "family": "REC",
       "name": "Lona",
       "text": "1 unidade. Carga 1. Vazio: reserva, nunca monte/estoque.",
-      "version": "0.1",
+      "version": "0.2",
       "refs": [
         "RULES.md"
       ],
@@ -3059,7 +3083,7 @@
       "family": "REC",
       "name": "Lona",
       "text": "1 unidade. Carga 1. Vazio: reserva, nunca monte/estoque.",
-      "version": "0.1",
+      "version": "0.2",
       "refs": [
         "RULES.md"
       ],
@@ -3072,7 +3096,7 @@
       "family": "REC",
       "name": "Lona",
       "text": "1 unidade. Carga 1. Vazio: reserva, nunca monte/estoque.",
-      "version": "0.1",
+      "version": "0.2",
       "refs": [
         "RULES.md"
       ],
@@ -3085,7 +3109,7 @@
       "family": "REC",
       "name": "Madeira",
       "text": "1 unidade. Carga 1. Vazio: reserva, nunca monte/estoque.",
-      "version": "0.1",
+      "version": "0.2",
       "refs": [
         "RULES.md"
       ],
@@ -3098,7 +3122,7 @@
       "family": "REC",
       "name": "Madeira",
       "text": "1 unidade. Carga 1. Vazio: reserva, nunca monte/estoque.",
-      "version": "0.1",
+      "version": "0.2",
       "refs": [
         "RULES.md"
       ],
@@ -3111,7 +3135,7 @@
       "family": "REC",
       "name": "Madeira",
       "text": "1 unidade. Carga 1. Vazio: reserva, nunca monte/estoque.",
-      "version": "0.1",
+      "version": "0.2",
       "refs": [
         "RULES.md"
       ],
@@ -3124,7 +3148,7 @@
       "family": "REC",
       "name": "Madeira",
       "text": "1 unidade. Carga 1. Vazio: reserva, nunca monte/estoque.",
-      "version": "0.1",
+      "version": "0.2",
       "refs": [
         "RULES.md"
       ],
@@ -3137,7 +3161,7 @@
       "family": "REC",
       "name": "Madeira",
       "text": "1 unidade. Carga 1. Vazio: reserva, nunca monte/estoque.",
-      "version": "0.1",
+      "version": "0.2",
       "refs": [
         "RULES.md"
       ],
@@ -3150,7 +3174,7 @@
       "family": "REC",
       "name": "Madeira",
       "text": "1 unidade. Carga 1. Vazio: reserva, nunca monte/estoque.",
-      "version": "0.1",
+      "version": "0.2",
       "refs": [
         "RULES.md"
       ],
@@ -3163,7 +3187,7 @@
       "family": "REC",
       "name": "Sementes",
       "text": "1 unidade. Carga 1. Vazio: reserva, nunca monte/estoque.",
-      "version": "0.1",
+      "version": "0.2",
       "refs": [
         "RULES.md"
       ],
@@ -3176,7 +3200,7 @@
       "family": "REC",
       "name": "Sementes",
       "text": "1 unidade. Carga 1. Vazio: reserva, nunca monte/estoque.",
-      "version": "0.1",
+      "version": "0.2",
       "refs": [
         "RULES.md"
       ],
@@ -3189,51 +3213,59 @@
       "family": "PEC",
       "name": "Conexões",
       "text": "Componente de projeto, não consumível de cuidado. Carga 1. Uso único ao instalar; mantenha sobre estrutura.",
-      "version": "0.1",
+      "version": "0.2",
       "refs": [
         "RULES.md"
       ],
-      "load": 1
+      "load": 1,
+      "unique_campaign": true,
+      "on_emergency": "origin_floor"
     },
     {
       "id": "ZC-PEC-0002",
       "family": "PEC",
       "name": "Bomba",
       "text": "Componente de projeto, não consumível de cuidado. Carga 2. Uso único ao instalar; mantenha sobre estrutura.",
-      "version": "0.1",
+      "version": "0.2",
       "refs": [
         "RULES.md"
       ],
-      "load": 2
+      "load": 2,
+      "unique_campaign": true,
+      "on_emergency": "origin_floor"
     },
     {
       "id": "ZC-PEC-0003",
       "family": "PEC",
       "name": "Membrana",
       "text": "Componente de projeto, não consumível de cuidado. Carga 1. Uso único ao instalar; mantenha sobre estrutura.",
-      "version": "0.1",
+      "version": "0.2",
       "refs": [
         "RULES.md"
       ],
-      "load": 1
+      "load": 1,
+      "unique_campaign": true,
+      "on_emergency": "origin_floor"
     },
     {
       "id": "ZC-PEC-0004",
       "family": "PEC",
       "name": "Bateria",
       "text": "Componente de projeto, não consumível de cuidado. Carga 1. Uso único ao instalar; mantenha sobre estrutura.",
-      "version": "0.1",
+      "version": "0.2",
       "refs": [
         "RULES.md"
       ],
-      "load": 1
+      "load": 1,
+      "unique_campaign": true,
+      "on_emergency": "origin_floor"
     },
     {
       "id": "ZC-PEC-0005",
       "family": "PEC",
       "name": "Kit de instalação médica",
       "text": "Componente de projeto, não consumível de cuidado. Carga 2. Uso único ao instalar; mantenha sobre estrutura.",
-      "version": "0.1",
+      "version": "0.2",
       "refs": [
         "RULES.md"
       ],
@@ -3244,7 +3276,7 @@
       "family": "PEC",
       "name": "Bancada",
       "text": "Componente de projeto, não consumível de cuidado. Carga 2. Uso único ao instalar; mantenha sobre estrutura.",
-      "version": "0.1",
+      "version": "0.2",
       "refs": [
         "RULES.md"
       ],
@@ -3255,7 +3287,7 @@
       "family": "EQU",
       "name": "Pé de cabra",
       "text": "Próximo: Corpo vs Defesa; 1 PA, dano 1. Abre porta bloqueada por 2 PA.",
-      "version": "0.1",
+      "version": "0.2",
       "refs": [
         "RULES.md"
       ],
@@ -3266,7 +3298,7 @@
       "family": "EQU",
       "name": "Pé de cabra",
       "text": "Próximo: Corpo vs Defesa; 1 PA, dano 1. Abre porta bloqueada por 2 PA.",
-      "version": "0.1",
+      "version": "0.2",
       "refs": [
         "RULES.md"
       ],
@@ -3277,7 +3309,7 @@
       "family": "EQU",
       "name": "Pé de cabra",
       "text": "Próximo: Corpo vs Defesa; 1 PA, dano 1. Abre porta bloqueada por 2 PA.",
-      "version": "0.1",
+      "version": "0.2",
       "refs": [
         "RULES.md"
       ],
@@ -3288,7 +3320,7 @@
       "family": "EQU",
       "name": "Pé de cabra",
       "text": "Próximo: Corpo vs Defesa; 1 PA, dano 1. Abre porta bloqueada por 2 PA.",
-      "version": "0.1",
+      "version": "0.2",
       "refs": [
         "RULES.md"
       ],
@@ -3299,7 +3331,7 @@
       "family": "EQU",
       "name": "Pé de cabra",
       "text": "Próximo: Corpo vs Defesa; 1 PA, dano 1. Abre porta bloqueada por 2 PA.",
-      "version": "0.1",
+      "version": "0.2",
       "refs": [
         "RULES.md"
       ],
@@ -3310,7 +3342,7 @@
       "family": "EQU",
       "name": "Pé de cabra",
       "text": "Próximo: Corpo vs Defesa; 1 PA, dano 1. Abre porta bloqueada por 2 PA.",
-      "version": "0.1",
+      "version": "0.2",
       "refs": [
         "RULES.md"
       ],
@@ -3321,7 +3353,7 @@
       "family": "EQU",
       "name": "Faca",
       "text": "Próximo, dano 1, 1 PA. +1 Corpo no primeiro ataque da rodada.",
-      "version": "0.1",
+      "version": "0.2",
       "refs": [
         "RULES.md"
       ],
@@ -3332,7 +3364,7 @@
       "family": "EQU",
       "name": "Faca",
       "text": "Próximo, dano 1, 1 PA. +1 Corpo no primeiro ataque da rodada.",
-      "version": "0.1",
+      "version": "0.2",
       "refs": [
         "RULES.md"
       ],
@@ -3343,7 +3375,7 @@
       "family": "EQU",
       "name": "Machado",
       "text": "Próximo, dano 2; 2 PA por ataque.",
-      "version": "0.1",
+      "version": "0.2",
       "refs": [
         "RULES.md"
       ],
@@ -3354,7 +3386,7 @@
       "family": "EQU",
       "name": "Machado",
       "text": "Próximo, dano 2; 2 PA por ataque.",
-      "version": "0.1",
+      "version": "0.2",
       "refs": [
         "RULES.md"
       ],
@@ -3365,7 +3397,7 @@
       "family": "EQU",
       "name": "Pistola",
       "text": "Mesma/adjacente visível; Agilidade vs Defesa. 1 PA+1 Munição, dano 1; gera Ruído.",
-      "version": "0.1",
+      "version": "0.2",
       "refs": [
         "RULES.md"
       ],
@@ -3376,7 +3408,7 @@
       "family": "EQU",
       "name": "Pistola",
       "text": "Mesma/adjacente visível; Agilidade vs Defesa. 1 PA+1 Munição, dano 1; gera Ruído.",
-      "version": "0.1",
+      "version": "0.2",
       "refs": [
         "RULES.md"
       ],
@@ -3387,7 +3419,7 @@
       "family": "EQU",
       "name": "Espingarda",
       "text": "Mesma/adjacente visível; Agilidade. 1 PA+1 Munição, dano 2, uma vez/rodada; Ruído.",
-      "version": "0.1",
+      "version": "0.2",
       "refs": [
         "RULES.md"
       ],
@@ -3398,7 +3430,7 @@
       "family": "EQU",
       "name": "Ferramentas",
       "text": "Permite abrir bloqueio por 2 PA e reparar van. Carga 1; não é consumido salvo projeto que o exige.",
-      "version": "0.1",
+      "version": "0.2",
       "refs": [
         "RULES.md"
       ],
@@ -3409,7 +3441,7 @@
       "family": "EQU",
       "name": "Ferramentas",
       "text": "Permite abrir bloqueio por 2 PA e reparar van. Carga 1; não é consumido salvo projeto que o exige.",
-      "version": "0.1",
+      "version": "0.2",
       "refs": [
         "RULES.md"
       ],
@@ -3420,7 +3452,7 @@
       "family": "EQU",
       "name": "Ferramentas",
       "text": "Permite abrir bloqueio por 2 PA e reparar van. Carga 1; não é consumido salvo projeto que o exige.",
-      "version": "0.1",
+      "version": "0.2",
       "refs": [
         "RULES.md"
       ],
@@ -3431,7 +3463,7 @@
       "family": "EQU",
       "name": "Lanterna",
       "text": "Uma vez/visita, permite olhar carta Saque do topo e devolver; 1 PA. Carga 1.",
-      "version": "0.1",
+      "version": "0.2",
       "refs": [
         "RULES.md"
       ],
@@ -3442,7 +3474,7 @@
       "family": "EQU",
       "name": "Lanterna",
       "text": "Uma vez/visita, permite olhar carta Saque do topo e devolver; 1 PA. Carga 1.",
-      "version": "0.1",
+      "version": "0.2",
       "refs": [
         "RULES.md"
       ],
@@ -3453,7 +3485,7 @@
       "family": "SAQ",
       "name": "Mercado: Conserva",
       "text": "Ganhe 1 carta(s) física(s) Conserva da reserva; carga 1/carta. Retire um uso de busca e descarte aqui. Não repõe em nova visita.",
-      "version": "0.1",
+      "version": "0.2",
       "refs": [
         "RULES.md"
       ],
@@ -3467,7 +3499,7 @@
       "family": "SAQ",
       "name": "Mercado: Água",
       "text": "Ganhe 1 carta(s) física(s) Água da reserva; carga 1/carta. Retire um uso de busca e descarte aqui. Não repõe em nova visita.",
-      "version": "0.1",
+      "version": "0.2",
       "refs": [
         "RULES.md"
       ],
@@ -3481,7 +3513,7 @@
       "family": "SAQ",
       "name": "Mercado: Material",
       "text": "Ganhe 1 carta(s) física(s) Material da reserva; carga 1/carta. Retire um uso de busca e descarte aqui. Não repõe em nova visita.",
-      "version": "0.1",
+      "version": "0.2",
       "refs": [
         "RULES.md"
       ],
@@ -3495,7 +3527,7 @@
       "family": "SAQ",
       "name": "Mercado: Munição",
       "text": "Ganhe 2 carta(s) física(s) Munição da reserva; carga 1/carta. Retire um uso de busca e descarte aqui. Não repõe em nova visita.",
-      "version": "0.1",
+      "version": "0.2",
       "refs": [
         "RULES.md"
       ],
@@ -3509,7 +3541,7 @@
       "family": "SAQ",
       "name": "Mercado: Medicamento",
       "text": "Ganhe 1 carta(s) física(s) Medicamento da reserva; carga 1/carta. Retire um uso de busca e descarte aqui. Não repõe em nova visita.",
-      "version": "0.1",
+      "version": "0.2",
       "refs": [
         "RULES.md"
       ],
@@ -3523,7 +3555,7 @@
       "family": "SAQ",
       "name": "Mercado: Carne",
       "text": "Ganhe 1 carta(s) física(s) Carne da reserva; carga 1/carta. Retire um uso de busca e descarte aqui. Não repõe em nova visita.",
-      "version": "0.1",
+      "version": "0.2",
       "refs": [
         "RULES.md"
       ],
@@ -3537,7 +3569,7 @@
       "family": "SAQ",
       "name": "Hospital: Conserva",
       "text": "Ganhe 1 carta(s) física(s) Conserva da reserva; carga 1/carta. Retire um uso de busca e descarte aqui. Não repõe em nova visita.",
-      "version": "0.1",
+      "version": "0.2",
       "refs": [
         "RULES.md"
       ],
@@ -3551,7 +3583,7 @@
       "family": "SAQ",
       "name": "Hospital: Água",
       "text": "Ganhe 1 carta(s) física(s) Água da reserva; carga 1/carta. Retire um uso de busca e descarte aqui. Não repõe em nova visita.",
-      "version": "0.1",
+      "version": "0.2",
       "refs": [
         "RULES.md"
       ],
@@ -3565,7 +3597,7 @@
       "family": "SAQ",
       "name": "Hospital: Material",
       "text": "Ganhe 1 carta(s) física(s) Material da reserva; carga 1/carta. Retire um uso de busca e descarte aqui. Não repõe em nova visita.",
-      "version": "0.1",
+      "version": "0.2",
       "refs": [
         "RULES.md"
       ],
@@ -3579,7 +3611,7 @@
       "family": "SAQ",
       "name": "Hospital: Munição",
       "text": "Ganhe 2 carta(s) física(s) Munição da reserva; carga 1/carta. Retire um uso de busca e descarte aqui. Não repõe em nova visita.",
-      "version": "0.1",
+      "version": "0.2",
       "refs": [
         "RULES.md"
       ],
@@ -3593,7 +3625,7 @@
       "family": "SAQ",
       "name": "Hospital: Medicamento",
       "text": "Ganhe 1 carta(s) física(s) Medicamento da reserva; carga 1/carta. Retire um uso de busca e descarte aqui. Não repõe em nova visita.",
-      "version": "0.1",
+      "version": "0.2",
       "refs": [
         "RULES.md"
       ],
@@ -3607,7 +3639,7 @@
       "family": "SAQ",
       "name": "Hospital: Carne",
       "text": "Ganhe 1 carta(s) física(s) Carne da reserva; carga 1/carta. Retire um uso de busca e descarte aqui. Não repõe em nova visita.",
-      "version": "0.1",
+      "version": "0.2",
       "refs": [
         "RULES.md"
       ],
@@ -3621,7 +3653,7 @@
       "family": "SAQ",
       "name": "Oficina: Conserva",
       "text": "Ganhe 1 carta(s) física(s) Conserva da reserva; carga 1/carta. Retire um uso de busca e descarte aqui. Não repõe em nova visita.",
-      "version": "0.1",
+      "version": "0.2",
       "refs": [
         "RULES.md"
       ],
@@ -3635,7 +3667,7 @@
       "family": "SAQ",
       "name": "Oficina: Água",
       "text": "Ganhe 1 carta(s) física(s) Água da reserva; carga 1/carta. Retire um uso de busca e descarte aqui. Não repõe em nova visita.",
-      "version": "0.1",
+      "version": "0.2",
       "refs": [
         "RULES.md"
       ],
@@ -3649,7 +3681,7 @@
       "family": "SAQ",
       "name": "Oficina: Material",
       "text": "Ganhe 1 carta(s) física(s) Material da reserva; carga 1/carta. Retire um uso de busca e descarte aqui. Não repõe em nova visita.",
-      "version": "0.1",
+      "version": "0.2",
       "refs": [
         "RULES.md"
       ],
@@ -3663,7 +3695,7 @@
       "family": "SAQ",
       "name": "Oficina: Munição",
       "text": "Ganhe 2 carta(s) física(s) Munição da reserva; carga 1/carta. Retire um uso de busca e descarte aqui. Não repõe em nova visita.",
-      "version": "0.1",
+      "version": "0.2",
       "refs": [
         "RULES.md"
       ],
@@ -3677,7 +3709,7 @@
       "family": "SAQ",
       "name": "Oficina: Medicamento",
       "text": "Ganhe 1 carta(s) física(s) Medicamento da reserva; carga 1/carta. Retire um uso de busca e descarte aqui. Não repõe em nova visita.",
-      "version": "0.1",
+      "version": "0.2",
       "refs": [
         "RULES.md"
       ],
@@ -3691,7 +3723,7 @@
       "family": "SAQ",
       "name": "Oficina: Carne",
       "text": "Ganhe 1 carta(s) física(s) Carne da reserva; carga 1/carta. Retire um uso de busca e descarte aqui. Não repõe em nova visita.",
-      "version": "0.1",
+      "version": "0.2",
       "refs": [
         "RULES.md"
       ],
@@ -3705,7 +3737,7 @@
       "family": "SAQ",
       "name": "Posto: Conserva",
       "text": "Ganhe 1 carta(s) física(s) Conserva da reserva; carga 1/carta. Retire um uso de busca e descarte aqui. Não repõe em nova visita.",
-      "version": "0.1",
+      "version": "0.2",
       "refs": [
         "RULES.md"
       ],
@@ -3719,7 +3751,7 @@
       "family": "SAQ",
       "name": "Posto: Água",
       "text": "Ganhe 1 carta(s) física(s) Água da reserva; carga 1/carta. Retire um uso de busca e descarte aqui. Não repõe em nova visita.",
-      "version": "0.1",
+      "version": "0.2",
       "refs": [
         "RULES.md"
       ],
@@ -3733,7 +3765,7 @@
       "family": "SAQ",
       "name": "Posto: Material",
       "text": "Ganhe 1 carta(s) física(s) Material da reserva; carga 1/carta. Retire um uso de busca e descarte aqui. Não repõe em nova visita.",
-      "version": "0.1",
+      "version": "0.2",
       "refs": [
         "RULES.md"
       ],
@@ -3747,7 +3779,7 @@
       "family": "SAQ",
       "name": "Posto: Munição",
       "text": "Ganhe 2 carta(s) física(s) Munição da reserva; carga 1/carta. Retire um uso de busca e descarte aqui. Não repõe em nova visita.",
-      "version": "0.1",
+      "version": "0.2",
       "refs": [
         "RULES.md"
       ],
@@ -3761,7 +3793,7 @@
       "family": "SAQ",
       "name": "Posto: Medicamento",
       "text": "Ganhe 1 carta(s) física(s) Medicamento da reserva; carga 1/carta. Retire um uso de busca e descarte aqui. Não repõe em nova visita.",
-      "version": "0.1",
+      "version": "0.2",
       "refs": [
         "RULES.md"
       ],
@@ -3775,7 +3807,7 @@
       "family": "SAQ",
       "name": "Posto: Carne",
       "text": "Ganhe 1 carta(s) física(s) Carne da reserva; carga 1/carta. Retire um uso de busca e descarte aqui. Não repõe em nova visita.",
-      "version": "0.1",
+      "version": "0.2",
       "refs": [
         "RULES.md"
       ],
@@ -3789,7 +3821,7 @@
       "family": "SAQ",
       "name": "Condomínio: Conserva",
       "text": "Ganhe 1 carta(s) física(s) Conserva da reserva; carga 1/carta. Retire um uso de busca e descarte aqui. Não repõe em nova visita.",
-      "version": "0.1",
+      "version": "0.2",
       "refs": [
         "RULES.md"
       ],
@@ -3803,7 +3835,7 @@
       "family": "SAQ",
       "name": "Condomínio: Água",
       "text": "Ganhe 1 carta(s) física(s) Água da reserva; carga 1/carta. Retire um uso de busca e descarte aqui. Não repõe em nova visita.",
-      "version": "0.1",
+      "version": "0.2",
       "refs": [
         "RULES.md"
       ],
@@ -3817,7 +3849,7 @@
       "family": "SAQ",
       "name": "Condomínio: Material",
       "text": "Ganhe 1 carta(s) física(s) Material da reserva; carga 1/carta. Retire um uso de busca e descarte aqui. Não repõe em nova visita.",
-      "version": "0.1",
+      "version": "0.2",
       "refs": [
         "RULES.md"
       ],
@@ -3831,7 +3863,7 @@
       "family": "SAQ",
       "name": "Condomínio: Munição",
       "text": "Ganhe 2 carta(s) física(s) Munição da reserva; carga 1/carta. Retire um uso de busca e descarte aqui. Não repõe em nova visita.",
-      "version": "0.1",
+      "version": "0.2",
       "refs": [
         "RULES.md"
       ],
@@ -3845,7 +3877,7 @@
       "family": "SAQ",
       "name": "Condomínio: Medicamento",
       "text": "Ganhe 1 carta(s) física(s) Medicamento da reserva; carga 1/carta. Retire um uso de busca e descarte aqui. Não repõe em nova visita.",
-      "version": "0.1",
+      "version": "0.2",
       "refs": [
         "RULES.md"
       ],
@@ -3859,7 +3891,7 @@
       "family": "SAQ",
       "name": "Condomínio: Carne",
       "text": "Ganhe 1 carta(s) física(s) Carne da reserva; carga 1/carta. Retire um uso de busca e descarte aqui. Não repõe em nova visita.",
-      "version": "0.1",
+      "version": "0.2",
       "refs": [
         "RULES.md"
       ],
@@ -3873,7 +3905,7 @@
       "family": "SAQ",
       "name": "Estação: Conserva",
       "text": "Ganhe 1 carta(s) física(s) Conserva da reserva; carga 1/carta. Retire um uso de busca e descarte aqui. Não repõe em nova visita.",
-      "version": "0.1",
+      "version": "0.2",
       "refs": [
         "RULES.md"
       ],
@@ -3887,7 +3919,7 @@
       "family": "SAQ",
       "name": "Estação: Água",
       "text": "Ganhe 1 carta(s) física(s) Água da reserva; carga 1/carta. Retire um uso de busca e descarte aqui. Não repõe em nova visita.",
-      "version": "0.1",
+      "version": "0.2",
       "refs": [
         "RULES.md"
       ],
@@ -3901,7 +3933,7 @@
       "family": "SAQ",
       "name": "Estação: Material",
       "text": "Ganhe 1 carta(s) física(s) Material da reserva; carga 1/carta. Retire um uso de busca e descarte aqui. Não repõe em nova visita.",
-      "version": "0.1",
+      "version": "0.2",
       "refs": [
         "RULES.md"
       ],
@@ -3915,7 +3947,7 @@
       "family": "SAQ",
       "name": "Estação: Munição",
       "text": "Ganhe 2 carta(s) física(s) Munição da reserva; carga 1/carta. Retire um uso de busca e descarte aqui. Não repõe em nova visita.",
-      "version": "0.1",
+      "version": "0.2",
       "refs": [
         "RULES.md"
       ],
@@ -3929,7 +3961,7 @@
       "family": "SAQ",
       "name": "Estação: Medicamento",
       "text": "Ganhe 1 carta(s) física(s) Medicamento da reserva; carga 1/carta. Retire um uso de busca e descarte aqui. Não repõe em nova visita.",
-      "version": "0.1",
+      "version": "0.2",
       "refs": [
         "RULES.md"
       ],
@@ -3943,7 +3975,7 @@
       "family": "SAQ",
       "name": "Estação: Carne",
       "text": "Ganhe 1 carta(s) física(s) Carne da reserva; carga 1/carta. Retire um uso de busca e descarte aqui. Não repõe em nova visita.",
-      "version": "0.1",
+      "version": "0.2",
       "refs": [
         "RULES.md"
       ],
@@ -3957,7 +3989,7 @@
       "family": "VIA",
       "name": "Rua vazia",
       "text": "Sem efeito adicional.",
-      "version": "0.1",
+      "version": "0.2",
       "refs": [
         "RULES.md"
       ],
@@ -3968,7 +4000,7 @@
       "family": "VIA",
       "name": "Chuva ácida de fuligem",
       "text": "Escolham perder uma porção água levada OU cada herói ganha 1 fadiga.",
-      "version": "0.1",
+      "version": "0.2",
       "refs": [
         "RULES.md"
       ],
@@ -3979,7 +4011,7 @@
       "family": "VIA",
       "name": "Sinal de passagem",
       "text": "Se voltarem hoje por esta rota, ignorem a próxima Viagem normal da volta, mas paguem tempo e combustível.",
-      "version": "0.1",
+      "version": "0.2",
       "refs": [
         "RULES.md"
       ],
@@ -3990,7 +4022,7 @@
       "family": "VIA",
       "name": "Barricada",
       "text": "Paguem 1 Material levado OU +1 Pressão externa. Sem tempo extra.",
-      "version": "0.1",
+      "version": "0.2",
       "refs": [
         "RULES.md"
       ],
@@ -4000,19 +4032,32 @@
       "id": "ZC-VIA-0005",
       "family": "VIA",
       "name": "Emboscada",
-      "text": "Iniciem mapa de entrada: ceil(H/2) Errantes em zona 4, grupo na 1. Rodadas custam segmentos. Saída zona 1 sem inimigos, só após ao menos uma rodada completa. Sem saque; sigam viagem após sair.",
-      "version": "0.1",
+      "text": "Use M1: Z1/2/5/6. Grupo Z1; ceil(H/2) Errantes e surgimento em Z6. Porta 1–5 fechada comum; pressão local 0. Uma rodada completa obrigatória, mesmo relógio. Saída Z1 livre. Sem Saque; retome a viagem sem pagar de novo o trecho.",
+      "version": "0.2",
       "refs": [
         "RULES.md"
       ],
-      "minimum_rounds": 1
+      "minimum_rounds": 1,
+      "map_module": "ZC-MOD-0001",
+      "encounter_zones": [
+        1,
+        2,
+        5,
+        6
+      ],
+      "entry": 1,
+      "spawn": 6,
+      "closed_door": [
+        1,
+        5
+      ]
     },
     {
       "id": "ZC-VIA-0006",
       "family": "VIA",
       "name": "Vizinho na janela",
       "text": "Podem entregar 1 comida+1 água levadas: +1 Moral, máximo 5. Sem resgate.",
-      "version": "0.1",
+      "version": "0.2",
       "refs": [
         "RULES.md"
       ],
@@ -4023,7 +4068,7 @@
       "family": "VIA",
       "name": "Ruído distante",
       "text": "+1 Pressão externa.",
-      "version": "0.1",
+      "version": "0.2",
       "refs": [
         "RULES.md"
       ],
@@ -4034,7 +4079,7 @@
       "family": "VIA",
       "name": "Desvio sinalizado",
       "text": "Sem efeito; registrem rota conhecida.",
-      "version": "0.1",
+      "version": "0.2",
       "refs": [
         "RULES.md"
       ],
@@ -4044,8 +4089,8 @@
       "id": "ZC-VIA-0009",
       "family": "VIA",
       "name": "Cão perdido",
-      "text": "Sem vínculo humano: se família sem cão aceitar e houver comida+água, +1 cão à chegada. Caso contrário segue seguro no local, sem punição.",
-      "version": "0.1",
+      "text": "Sem vínculo humano: se uma família sem cão aceitar, +1 cão à chegada. Consome uma comida e uma água na refeição; não há custo adicional na estrada. Caso contrário segue seguro no local, sem punição.",
+      "version": "0.2",
       "refs": [
         "RULES.md"
       ],
@@ -4055,8 +4100,8 @@
       "id": "ZC-VIA-0010",
       "family": "VIA",
       "name": "Ferragens",
-      "text": "Deixem 1 Material no chão do destino de chegada; coletar requer 1 PA na entrada, uma vez.",
-      "version": "0.1",
+      "text": "Ida: deixe 1 Material no chão Z1 do destino; coletar custa 1 PA. Volta: acrescente 1 Material ao estoque ao chegar. Uma unidade por ocorrência, nunca ambos.",
+      "version": "0.2",
       "refs": [
         "RULES.md"
       ],
@@ -4067,7 +4112,7 @@
       "family": "VIA",
       "name": "Ponte avistada",
       "text": "Marque Ponte conhecida; não encaminha de graça.",
-      "version": "0.1",
+      "version": "0.2",
       "refs": [
         "RULES.md"
       ],
@@ -4078,7 +4123,7 @@
       "family": "VIA",
       "name": "Caminho limpo",
       "text": "Sem efeito. Não gera recursos.",
-      "version": "0.1",
+      "version": "0.2",
       "refs": [
         "RULES.md"
       ],
@@ -4089,7 +4134,7 @@
       "family": "HOR",
       "name": "Arrastar",
       "text": "Coloque 1 Errante em S.",
-      "version": "0.1",
+      "version": "0.2",
       "refs": [
         "RULES.md"
       ]
@@ -4099,7 +4144,7 @@
       "family": "HOR",
       "name": "Arrastar",
       "text": "Coloque 1 Errante em S.",
-      "version": "0.1",
+      "version": "0.2",
       "refs": [
         "RULES.md"
       ]
@@ -4109,7 +4154,7 @@
       "family": "HOR",
       "name": "Arrastar",
       "text": "Coloque 1 Errante em S.",
-      "version": "0.1",
+      "version": "0.2",
       "refs": [
         "RULES.md"
       ]
@@ -4119,7 +4164,7 @@
       "family": "HOR",
       "name": "Arrastar",
       "text": "Coloque 1 Errante em S.",
-      "version": "0.1",
+      "version": "0.2",
       "refs": [
         "RULES.md"
       ]
@@ -4129,7 +4174,7 @@
       "family": "HOR",
       "name": "Corrida",
       "text": "Coloque 1 Corredor em S.",
-      "version": "0.1",
+      "version": "0.2",
       "refs": [
         "RULES.md"
       ]
@@ -4139,7 +4184,7 @@
       "family": "HOR",
       "name": "Corrida",
       "text": "Coloque 1 Corredor em S.",
-      "version": "0.1",
+      "version": "0.2",
       "refs": [
         "RULES.md"
       ]
@@ -4149,7 +4194,7 @@
       "family": "HOR",
       "name": "Aglomerado",
       "text": "Coloque ceil(H/2) Errantes em S.",
-      "version": "0.1",
+      "version": "0.2",
       "refs": [
         "RULES.md"
       ]
@@ -4159,7 +4204,7 @@
       "family": "HOR",
       "name": "Aglomerado",
       "text": "Coloque ceil(H/2) Errantes em S.",
-      "version": "0.1",
+      "version": "0.2",
       "refs": [
         "RULES.md"
       ]
@@ -4169,7 +4214,7 @@
       "family": "HOR",
       "name": "Peso morto",
       "text": "Coloque 1 Bruto em S.",
-      "version": "0.1",
+      "version": "0.2",
       "refs": [
         "RULES.md"
       ]
@@ -4179,7 +4224,7 @@
       "family": "CER",
       "name": "Portão pressionado",
       "text": "Força 4. Zumbis. Defesa: portão 2 + torre 1 + cão 1 + até 3 vigias 4+ + até 2 Munições. Consulte perdas no painel.",
-      "version": "0.1",
+      "version": "0.2",
       "refs": [
         "RULES.md"
       ],
@@ -4190,7 +4235,7 @@
       "family": "CER",
       "name": "Fila na cerca",
       "text": "Força 5. Zumbis. Defesa: portão 2 + torre 1 + cão 1 + até 3 vigias 4+ + até 2 Munições. Consulte perdas no painel.",
-      "version": "0.1",
+      "version": "0.2",
       "refs": [
         "RULES.md"
       ],
@@ -4201,7 +4246,7 @@
       "family": "CER",
       "name": "Mãos no arame",
       "text": "Força 6. Zumbis. Defesa: portão 2 + torre 1 + cão 1 + até 3 vigias 4+ + até 2 Munições. Consulte perdas no painel.",
-      "version": "0.1",
+      "version": "0.2",
       "refs": [
         "RULES.md"
       ],
@@ -4212,7 +4257,7 @@
       "family": "CER",
       "name": "Passos no escuro",
       "text": "Força 4. Zumbis. Defesa: portão 2 + torre 1 + cão 1 + até 3 vigias 4+ + até 2 Munições. Consulte perdas no painel.",
-      "version": "0.1",
+      "version": "0.2",
       "refs": [
         "RULES.md"
       ],
@@ -4223,7 +4268,7 @@
       "family": "CER",
       "name": "Cobrança da Ponte",
       "text": "Força 5. Rivais: ajuste Força por relação: −2 +1; +2 −1. Defesa: portão 2 + torre 1 + cão 1 + até 3 vigias 4+ + até 2 Munições. Consulte perdas no painel.",
-      "version": "0.1",
+      "version": "0.2",
       "refs": [
         "RULES.md"
       ],
@@ -4234,7 +4279,7 @@
       "family": "CER",
       "name": "Caravana hostil",
       "text": "Força 6. Rivais: podem pagar 4 comida+4 água do estoque antes dos dados para cancelar este cerco. Defesa: portão 2 + torre 1 + cão 1 + até 3 vigias 4+ + até 2 Munições. Consulte perdas no painel.",
-      "version": "0.1",
+      "version": "0.2",
       "refs": [
         "RULES.md"
       ],
@@ -4245,7 +4290,7 @@
       "family": "EVE",
       "name": "Bilhete na caixa",
       "text": "Dia 1: leia introdução do capítulo. Mercado ensina primeira rodada sem inimigos.",
-      "version": "0.1",
+      "version": "0.2",
       "refs": [
         "RULES.md"
       ],
@@ -4256,7 +4301,7 @@
       "family": "EVE",
       "name": "Batidas na cerca",
       "text": "Dia 2: +1 Pressão externa.",
-      "version": "0.1",
+      "version": "0.2",
       "refs": [
         "RULES.md"
       ],
@@ -4267,7 +4312,7 @@
       "family": "EVE",
       "name": "Barulho no vale",
       "text": "Dia 3: enfileire Cerco de missão Força 4 para esta noite.",
-      "version": "0.1",
+      "version": "0.2",
       "refs": [
         "RULES.md"
       ],
@@ -4278,7 +4323,7 @@
       "family": "EVE",
       "name": "Fumaça no posto",
       "text": "Dia 4: +1 Pressão externa.",
-      "version": "0.1",
+      "version": "0.2",
       "refs": [
         "RULES.md"
       ],
@@ -4289,7 +4334,7 @@
       "family": "EVE",
       "name": "A última manhã",
       "text": "Dia 5: +1 Pressão; prazo termina após noite.",
-      "version": "0.1",
+      "version": "0.2",
       "refs": [
         "RULES.md"
       ],
@@ -4300,7 +4345,7 @@
       "family": "PRO",
       "name": "Barraca",
       "text": "2 Materiais + Lona + 1 trabalho. Um terreno; +2 vagas.",
-      "version": "0.1",
+      "version": "0.2",
       "refs": [
         "RULES.md"
       ],
@@ -4315,7 +4360,7 @@
       "family": "PRO",
       "name": "Casa simples",
       "text": "Substitui barraca; 4 Materiais + Madeira + 2 trabalhos. Quatro vagas totais.",
-      "version": "0.1",
+      "version": "0.2",
       "refs": [
         "RULES.md"
       ],
@@ -4330,7 +4375,7 @@
       "family": "PRO",
       "name": "Enfermaria",
       "text": "3 Materiais + Kit de instalação + 2 trabalhos. Um terreno; cuidado dispensa Medicamento.",
-      "version": "0.1",
+      "version": "0.2",
       "refs": [
         "RULES.md"
       ],
@@ -4345,7 +4390,7 @@
       "family": "PRO",
       "name": "Oficina",
       "text": "3 Materiais + Bancada + 2 trabalhos. Um terreno; habilita reparo de van sem Ferramentas (custo de materiais/trabalho permanece).",
-      "version": "0.1",
+      "version": "0.2",
       "refs": [
         "RULES.md"
       ],
@@ -4360,7 +4405,7 @@
       "family": "PRO",
       "name": "Garagem",
       "text": "4 Materiais + Ferramentas + 3 trabalhos. Dois terrenos; +4 cargas de estoque protegido de cerco, escolhidas ao planejar.",
-      "version": "0.1",
+      "version": "0.2",
       "refs": [
         "RULES.md"
       ],
@@ -4375,7 +4420,7 @@
       "family": "PRO",
       "name": "Torre",
       "text": "2 Materiais + Madeira + 2 trabalhos. Perímetro; +1 Defesa ativa.",
-      "version": "0.1",
+      "version": "0.2",
       "refs": [
         "RULES.md"
       ],
@@ -4390,7 +4435,7 @@
       "family": "PRO",
       "name": "Horta",
       "text": "2 Materiais + Sementes + 2 trabalhos. Um terreno; trabalhador produz 4 comida/dia depois de pronta.",
-      "version": "0.1",
+      "version": "0.2",
       "refs": [
         "RULES.md"
       ],
@@ -4405,7 +4450,7 @@
       "family": "PRO",
       "name": "Filtro",
       "text": "Etapa A: 1 Material+Conexões+1 trabalho. B: 1 Material+Bomba+1. C: 1 Material+Membrana+2. Max 2 trabalhos/dia; enchimento 2C água ao concluir; depois C/amanhecer.",
-      "version": "0.1",
+      "version": "0.2",
       "refs": [
         "RULES.md"
       ],
@@ -4422,7 +4467,7 @@
       "family": "PRO",
       "name": "Expansão",
       "text": "Limpeza adjacente concluída +4 Materiais+2 Madeiras+2 trabalhos. Adicione seis terrenos; máximo uma.",
-      "version": "0.1",
+      "version": "0.2",
       "refs": [
         "RULES.md"
       ],
@@ -4437,7 +4482,7 @@
       "family": "PRO",
       "name": "Reparo",
       "text": "2 Materiais+1 trabalho por estrutura danificada. Volta a funcionar à noite, depois do cerco.",
-      "version": "0.1",
+      "version": "0.2",
       "refs": [
         "RULES.md"
       ],
@@ -4451,7 +4496,7 @@
       "family": "STR",
       "name": "Barraca",
       "text": "Coloque no terreno reservado ao concluir. Danificada: vire 90 graus, inativa. Reparo 2 Materiais+1 trabalho. Barracas/casas não são alvos de cerco.",
-      "version": "0.1",
+      "version": "0.2",
       "refs": [
         "RULES.md"
       ]
@@ -4461,7 +4506,7 @@
       "family": "STR",
       "name": "Barraca",
       "text": "Coloque no terreno reservado ao concluir. Danificada: vire 90 graus, inativa. Reparo 2 Materiais+1 trabalho. Barracas/casas não são alvos de cerco.",
-      "version": "0.1",
+      "version": "0.2",
       "refs": [
         "RULES.md"
       ]
@@ -4471,7 +4516,7 @@
       "family": "STR",
       "name": "Barraca",
       "text": "Coloque no terreno reservado ao concluir. Danificada: vire 90 graus, inativa. Reparo 2 Materiais+1 trabalho. Barracas/casas não são alvos de cerco.",
-      "version": "0.1",
+      "version": "0.2",
       "refs": [
         "RULES.md"
       ]
@@ -4481,7 +4526,7 @@
       "family": "STR",
       "name": "Barraca",
       "text": "Coloque no terreno reservado ao concluir. Danificada: vire 90 graus, inativa. Reparo 2 Materiais+1 trabalho. Barracas/casas não são alvos de cerco.",
-      "version": "0.1",
+      "version": "0.2",
       "refs": [
         "RULES.md"
       ]
@@ -4491,7 +4536,7 @@
       "family": "STR",
       "name": "Barraca",
       "text": "Coloque no terreno reservado ao concluir. Danificada: vire 90 graus, inativa. Reparo 2 Materiais+1 trabalho. Barracas/casas não são alvos de cerco.",
-      "version": "0.1",
+      "version": "0.2",
       "refs": [
         "RULES.md"
       ]
@@ -4501,7 +4546,7 @@
       "family": "STR",
       "name": "Barraca",
       "text": "Coloque no terreno reservado ao concluir. Danificada: vire 90 graus, inativa. Reparo 2 Materiais+1 trabalho. Barracas/casas não são alvos de cerco.",
-      "version": "0.1",
+      "version": "0.2",
       "refs": [
         "RULES.md"
       ]
@@ -4511,7 +4556,7 @@
       "family": "STR",
       "name": "Casa simples",
       "text": "Coloque no terreno reservado ao concluir. Danificada: vire 90 graus, inativa. Reparo 2 Materiais+1 trabalho. Barracas/casas não são alvos de cerco.",
-      "version": "0.1",
+      "version": "0.2",
       "refs": [
         "RULES.md"
       ]
@@ -4521,7 +4566,7 @@
       "family": "STR",
       "name": "Casa simples",
       "text": "Coloque no terreno reservado ao concluir. Danificada: vire 90 graus, inativa. Reparo 2 Materiais+1 trabalho. Barracas/casas não são alvos de cerco.",
-      "version": "0.1",
+      "version": "0.2",
       "refs": [
         "RULES.md"
       ]
@@ -4531,7 +4576,7 @@
       "family": "STR",
       "name": "Cozinha",
       "text": "Coloque no terreno reservado ao concluir. Danificada: vire 90 graus, inativa. Reparo 2 Materiais+1 trabalho. Barracas/casas não são alvos de cerco.",
-      "version": "0.1",
+      "version": "0.2",
       "refs": [
         "RULES.md"
       ]
@@ -4541,7 +4586,7 @@
       "family": "STR",
       "name": "Depósito",
       "text": "Coloque no terreno reservado ao concluir. Danificada: vire 90 graus, inativa. Reparo 2 Materiais+1 trabalho. Barracas/casas não são alvos de cerco.",
-      "version": "0.1",
+      "version": "0.2",
       "refs": [
         "RULES.md"
       ]
@@ -4551,7 +4596,7 @@
       "family": "STR",
       "name": "Cisterna / filtro",
       "text": "Coloque no terreno reservado ao concluir. Danificada: vire 90 graus, inativa. Reparo 2 Materiais+1 trabalho. Barracas/casas não são alvos de cerco.",
-      "version": "0.1",
+      "version": "0.2",
       "refs": [
         "RULES.md"
       ]
@@ -4561,7 +4606,7 @@
       "family": "STR",
       "name": "Enfermaria",
       "text": "Coloque no terreno reservado ao concluir. Danificada: vire 90 graus, inativa. Reparo 2 Materiais+1 trabalho. Barracas/casas não são alvos de cerco.",
-      "version": "0.1",
+      "version": "0.2",
       "refs": [
         "RULES.md"
       ]
@@ -4571,7 +4616,7 @@
       "family": "STR",
       "name": "Oficina",
       "text": "Coloque no terreno reservado ao concluir. Danificada: vire 90 graus, inativa. Reparo 2 Materiais+1 trabalho. Barracas/casas não são alvos de cerco.",
-      "version": "0.1",
+      "version": "0.2",
       "refs": [
         "RULES.md"
       ]
@@ -4581,7 +4626,7 @@
       "family": "STR",
       "name": "Garagem",
       "text": "Coloque no terreno reservado ao concluir. Danificada: vire 90 graus, inativa. Reparo 2 Materiais+1 trabalho. Barracas/casas não são alvos de cerco.",
-      "version": "0.1",
+      "version": "0.2",
       "refs": [
         "RULES.md"
       ]
@@ -4591,7 +4636,7 @@
       "family": "STR",
       "name": "Torre",
       "text": "Coloque no terreno reservado ao concluir. Danificada: vire 90 graus, inativa. Reparo 2 Materiais+1 trabalho. Barracas/casas não são alvos de cerco.",
-      "version": "0.1",
+      "version": "0.2",
       "refs": [
         "RULES.md"
       ]
@@ -4601,7 +4646,7 @@
       "family": "STR",
       "name": "Horta",
       "text": "Coloque no terreno reservado ao concluir. Danificada: vire 90 graus, inativa. Reparo 2 Materiais+1 trabalho. Barracas/casas não são alvos de cerco.",
-      "version": "0.1",
+      "version": "0.2",
       "refs": [
         "RULES.md"
       ]
@@ -4611,7 +4656,7 @@
       "family": "STR",
       "name": "Portão",
       "text": "Coloque no terreno reservado ao concluir. Danificada: vire 90 graus, inativa. Reparo 2 Materiais+1 trabalho. Barracas/casas não são alvos de cerco.",
-      "version": "0.1",
+      "version": "0.2",
       "refs": [
         "RULES.md"
       ]
@@ -4621,7 +4666,7 @@
       "family": "MOR",
       "name": "Jana e criança",
       "text": "Mercado O1; 2 humanos. Jana cozinheira de campo, criança sem trabalho. Pista: protege mochila. Até dia 5. Acolher: vagas ou recepção até +2/duas noites; sorteie uma Intenção por grupo. Ajuda local: 1 comida+1 água/humano. Contato 1 PA em O1.",
-      "version": "0.1",
+      "version": "0.2",
       "refs": [
         "RULES.md"
       ],
@@ -4637,7 +4682,7 @@
       "family": "MOR",
       "name": "Bia",
       "text": "Oficina O1; 1 adulta mecânica. Pista: sabe o chassi. Até dia 5. Acolher: vagas ou recepção até +2/duas noites; sorteie uma Intenção por grupo. Ajuda local: 1 comida+1 água/humano. Contato 1 PA em O1.",
-      "version": "0.1",
+      "version": "0.2",
       "refs": [
         "RULES.md"
       ],
@@ -4653,7 +4698,7 @@
       "family": "MOR",
       "name": "Vicente e Sol",
       "text": "Estação O2; 2 adultos, rádio e guia. Pista: estática. Até dia 5. Acolher: vagas ou recepção até +2/duas noites; sorteie uma Intenção por grupo. Ajuda local: 1 comida+1 água/humano. Contato 1 PA em O2.",
-      "version": "0.1",
+      "version": "0.2",
       "refs": [
         "RULES.md"
       ],
@@ -4670,7 +4715,7 @@
       "family": "MOR",
       "name": "Raul e Otávio",
       "text": "Posto O2; 2 adultos. Pista: negociam chaves. Até dia 5. Acolher: vagas ou recepção até +2/duas noites; sorteie uma Intenção por grupo. Ajuda local: 1 comida+1 água/humano. Contato 1 PA em O2.",
-      "version": "0.1",
+      "version": "0.2",
       "refs": [
         "RULES.md"
       ],
@@ -4687,7 +4732,7 @@
       "family": "MOR",
       "name": "Denise, Miguel e civil",
       "text": "Hospital O2; 3 humanos, um civil com ferimento 1. Pista: ninguém fica. Até dia 5. Acolher: vagas ou recepção até +2/duas noites; sorteie uma Intenção por grupo. Ajuda local: 1 comida+1 água/humano. Contato 1 PA em O2.",
-      "version": "0.1",
+      "version": "0.2",
       "refs": [
         "RULES.md"
       ],
@@ -4704,7 +4749,7 @@
       "family": "MOR",
       "name": "Samuel, Bruna e criança",
       "text": "Condomínio O2; 3 humanos. Sementes carga 1 se acolher. Pista: saco fechado. Até dia 5. Acolher: vagas ou recepção até +2/duas noites; sorteie uma Intenção por grupo. Ajuda local: 1 comida+1 água/humano. Contato 1 PA em O2.",
-      "version": "0.1",
+      "version": "0.2",
       "refs": [
         "RULES.md"
       ],
@@ -4721,7 +4766,7 @@
       "family": "MOR",
       "name": "Aline e cão",
       "text": "Hospital segunda visita; 1 humana veterinária+1 cão. Pista: examina mordidas. Não duplicar no condomínio. Acolher: vagas ou recepção até +2/duas noites; sorteie uma Intenção por grupo. Ajuda local: 1 comida+1 água/humano. Contato 1 PA em O2.",
-      "version": "0.1",
+      "version": "0.2",
       "refs": [
         "RULES.md"
       ],
@@ -4737,7 +4782,7 @@
       "family": "MOR",
       "name": "Hugo",
       "text": "Condomínio segunda visita; 1 adulto eletricista. Pista: traz fios enrolados. Até dia 5. Acolher: vagas ou recepção até +2/duas noites; sorteie uma Intenção por grupo. Ajuda local: 1 comida+1 água/humano. Contato 1 PA em O2.",
-      "version": "0.1",
+      "version": "0.2",
       "refs": [
         "RULES.md"
       ],
@@ -4753,7 +4798,7 @@
       "family": "MIS",
       "name": "Mercado",
       "text": "Entregar um lote comida e um água. Revele Ponte na primeira interação O1. Lotes 2 comida e 2 água.",
-      "version": "0.1",
+      "version": "0.2",
       "refs": [
         "RULES.md"
       ]
@@ -4763,7 +4808,7 @@
       "family": "MIS",
       "name": "Oficina",
       "text": "Entregar Conexões. O1 Conexões+Bateria; O2 três Materiais+Ferramentas+Bancada. Um lote de cada provisão.",
-      "version": "0.1",
+      "version": "0.2",
       "refs": [
         "RULES.md"
       ]
@@ -4773,7 +4818,7 @@
       "family": "MIS",
       "name": "Estação",
       "text": "Entregar Bomba+Membrana. O1 Bomba 2 PA+Técnica 6; falha +1 Pressão. O2 Membrana 1 PA e dois lotes água.",
-      "version": "0.1",
+      "version": "0.2",
       "refs": [
         "RULES.md"
       ]
@@ -4783,7 +4828,7 @@
       "family": "MIS",
       "name": "Posto",
       "text": "Recuperar van com Bateria+2 PA+Técnica 6. O1 oito Combustíveis. O2 um lote de cada provisão.",
-      "version": "0.1",
+      "version": "0.2",
       "refs": [
         "RULES.md"
       ]
@@ -4793,7 +4838,7 @@
       "family": "MIS",
       "name": "Hospital",
       "text": "Entregar Kit ou resgatar ferido. O1 Kit+3 Medicamentos. O2 um lote de cada provisão.",
-      "version": "0.1",
+      "version": "0.2",
       "refs": [
         "RULES.md"
       ]
@@ -4803,7 +4848,7 @@
       "family": "MIS",
       "name": "Condomínio",
       "text": "Entregar Lona ou limpar expansão: O1 2 PA+Corpo 6, falha Errante em S. O1 duas Lonas+duas Madeiras; O2 um lote de cada provisão.",
-      "version": "0.1",
+      "version": "0.2",
       "refs": [
         "RULES.md"
       ]
@@ -4813,7 +4858,7 @@
       "family": "MIS",
       "name": "Contato / encaminhamento",
       "text": "Contato: rota curta+1 rodada sem combate revela Ponte. Encaminhar: expedição rota curta e 1 comida+1 água/passageiro; saem, +1 relação.",
-      "version": "0.1",
+      "version": "0.2",
       "refs": [
         "RULES.md"
       ]
@@ -4823,7 +4868,7 @@
       "family": "MIS",
       "name": "Segurança final",
       "text": "Dia 5: filtro completo, comida/água para todos, Saúde/Moral >=1. Resolva cercos pendentes sem nova expedição ou produção. Falha abre Evacuação.",
-      "version": "0.1",
+      "version": "0.2",
       "refs": [
         "RULES.md"
       ]
@@ -4833,7 +4878,7 @@
       "family": "VEI",
       "name": "Van de manutenção",
       "text": "Seis humanos + um cão; 12 cargas; 2 Combustíveis/trecho. Abandonada → incompleta por inspeção → operacional com Bateria e reparo. Danificada: não transporta. Ver manual §11.",
-      "version": "0.1",
+      "version": "0.2",
       "refs": [
         "RULES.md"
       ]
@@ -4843,7 +4888,7 @@
       "family": "AJU",
       "name": "Ordem do dia",
       "text": "Amanhecer → Planejamento → Expedição → Noite: retorno, um Cerco, trabalhos, refeição, intenções, vencimento → registro.",
-      "version": "0.1",
+      "version": "0.2",
       "refs": [
         "RULES.md"
       ]
@@ -4853,7 +4898,7 @@
       "family": "AJU",
       "name": "Ordem do dia",
       "text": "Amanhecer → Planejamento → Expedição → Noite: retorno, um Cerco, trabalhos, refeição, intenções, vencimento → registro.",
-      "version": "0.1",
+      "version": "0.2",
       "refs": [
         "RULES.md"
       ]
@@ -4863,7 +4908,7 @@
       "family": "AJU",
       "name": "PA",
       "text": "Normal 3; fadiga>=2 −1, Fome −1, Sede −1; mínimo 1. Mover/abrir/atacar/buscar/transferir 1; bloqueio com ferramenta 2.",
-      "version": "0.1",
+      "version": "0.2",
       "refs": [
         "RULES.md"
       ]
@@ -4873,7 +4918,7 @@
       "family": "AJU",
       "name": "PA",
       "text": "Normal 3; fadiga>=2 −1, Fome −1, Sede −1; mínimo 1. Mover/abrir/atacar/buscar/transferir 1; bloqueio com ferramenta 2.",
-      "version": "0.1",
+      "version": "0.2",
       "refs": [
         "RULES.md"
       ]
@@ -4883,7 +4928,7 @@
       "family": "AJU",
       "name": "Retorno",
       "text": "Relógio 0–10; curta 1+1, longa 2+2; rodada 1. Segmentos 9–10: +1 fadiga cada, Horda se rodada / Viagem extra se trecho. Emergência perde carga encontrada e objetivo, +1 ferimento e fadiga 3.",
-      "version": "0.1",
+      "version": "0.2",
       "refs": [
         "RULES.md"
       ]
@@ -4893,7 +4938,7 @@
       "family": "AJU",
       "name": "Retorno",
       "text": "Relógio 0–10; curta 1+1, longa 2+2; rodada 1. Segmentos 9–10: +1 fadiga cada, Horda se rodada / Viagem extra se trecho. Emergência perde carga encontrada e objetivo, +1 ferimento e fadiga 3.",
-      "version": "0.1",
+      "version": "0.2",
       "refs": [
         "RULES.md"
       ]
@@ -4903,7 +4948,7 @@
       "family": "AJU",
       "name": "Reserva não é estoque",
       "text": "Saque revela achado. Físico sai da reserva para mochila/chão; entrega vira estoque. Consumido volta só à reserva. Busca usada não se renova.",
-      "version": "0.1",
+      "version": "0.2",
       "refs": [
         "RULES.md"
       ]
@@ -4913,7 +4958,7 @@
       "family": "AJU",
       "name": "Reserva não é estoque",
       "text": "Saque revela achado. Físico sai da reserva para mochila/chão; entrega vira estoque. Consumido volta só à reserva. Busca usada não se renova.",
-      "version": "0.1",
+      "version": "0.2",
       "refs": [
         "RULES.md"
       ]
@@ -5029,8 +5074,8 @@
       ],
       "blocked": [
         [
-          6,
-          7
+          7,
+          8
         ]
       ],
       "doors": [

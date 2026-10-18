@@ -1,3 +1,15 @@
+# Entrega atual — Comece Aqui / Duas Pessoas, edição 0.2
+
+[Abra o índice do kit](output/comece-aqui-duas-pessoas/LEIA-ME.md): 25 folhas para começar o dia 1; 33 de complemento; 58 no capítulo completo. [Guia inicial PDF](output/comece-aqui-duas-pessoas/01_inicial/01_comece_aqui.pdf). [Correções e revisão dos cinco dias](REVISAO_0.2.md). [Profissões consolidadas](PROFISSOES.md).
+
+O estado de partida era db67f42, sem alterações posteriores. A base está na tag preservado/prototipo-0.1-db67f42. A revisão continua o mesmo projeto, com os mesmos IDs e arte; novos PDFs estão em subpastas próprias. Não misture versões.
+
+---
+
+## Registro preservado da entrega 0.1
+
+Os links e números abaixo documentam o pacote anterior. Para imprimir agora, use o índice 0.2 acima.
+
 # Sobreviventes — Zona Zero: Comunidade
 ## Antes que a água acabe • protótipo físico 0.1
 Jogo cooperativo sem narrador para 1–6 participantes; solo controla dois heróis. Este pacote contém regras e componentes para testar os cinco dias. Não é uma caixa final validada: não houve impressão física nem playtest humano. Mapas usam planta funcional comum; ambientação final e algumas ilustrações de peças continuam pendentes.

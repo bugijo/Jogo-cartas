@@ -1,0 +1,237 @@
+{
+  "checks": [
+    {
+      "name": "25 folhas iniciais",
+      "passed": true,
+      "detail": 25
+    },
+    {
+      "name": "33 folhas complemento",
+      "passed": true,
+      "detail": 33
+    },
+    {
+      "name": "58 folhas capítulo",
+      "passed": true,
+      "detail": 58
+    },
+    {
+      "name": "62+52 cartas únicas existentes",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "Monte VIN completo no inicial",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "Monte INT completo no inicial",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "Monte VIA completo no inicial",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "Monte HOR completo no inicial",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "Monte CER completo no inicial",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "Saque regional preservado",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "Pés de cabra sem carta duplicada",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "Marcadores de ambos heróis no inicial",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "Sem PDFs extras nas pastas de impressão",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "Folhas 01_comece_aqui.pdf",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "Folhas 02_cartas_duplex.pdf",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "Duplex em pares 02_cartas_duplex.pdf",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "Folhas 03_lia_ivo.pdf",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "Folhas 04_modulos_locais.pdf",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "Folhas 05_montagem_mercado.pdf",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "Folhas 06_paineis_registros.pdf",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "Folhas 07_marcadores.pdf",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "Folhas 08_divisorias.pdf",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "Folhas 09_calibracao_duplex.pdf",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "Duplex em pares 09_calibracao_duplex.pdf",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "Folhas 01_cartas_complemento_duplex.pdf",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "Duplex em pares 01_cartas_complemento_duplex.pdf",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "Folhas 02_herois_resgataveis.pdf",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "Folhas 03_montagens_restantes.pdf",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "Folhas 04_manual_revisado.pdf",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "Folhas 05_campanha_cinco_dias.pdf",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "Folhas 06_mapa_geral.pdf",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "Folhas 07_registro_adicional.pdf",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "Folhas 08_tokens_resgataveis.pdf",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "Folhas 09_moradores_adicional.pdf",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "A4 e texto dentro de página",
+      "passed": true,
+      "detail": []
+    },
+    {
+      "name": "Parágrafos cabem nas caixas",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "IDs e colunas duplex initial",
+      "passed": true,
+      "detail": 62
+    },
+    {
+      "name": "Texto seguro no corte initial",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "Versos secretos neutros initial",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "IDs e colunas duplex supplement",
+      "passed": true,
+      "detail": 52
+    },
+    {
+      "name": "Texto seguro no corte supplement",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "Versos secretos neutros supplement",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "Quantidade da Horda resolvida para duas pessoas",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "Guia em seis páginas sem seções deslocadas",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "Replay cinco dias passa",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "ZIP 0.1 preservado",
+      "passed": true,
+      "detail": ""
+    }
+  ],
+  "passed": 46,
+  "total": 46,
+  "pages": 72
+}

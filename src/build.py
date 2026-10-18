@@ -1,5 +1,5 @@
 from pathlib import Path
-import json, math, re, html, shutil
+import json, math, re, html, shutil, os
 from reportlab.pdfgen import canvas
 from reportlab.lib.pagesizes import A4, landscape
 from reportlab.lib.units import mm
@@ -9,7 +9,7 @@ from reportlab.pdfbase.ttfonts import TTFont
 from reportlab.platypus import SimpleDocTemplate, Paragraph, Spacer, PageBreak, Image, Table, TableStyle
 from reportlab.lib.styles import ParagraphStyle
 from asset_catalog import lookup
-P=Path(__file__).resolve().parents[1]; O=P/'output'; O.mkdir(exist_ok=True)
+P=Path(__file__).resolve().parents[1]; O=Path(os.environ.get('ZC_OUTPUT_DIR',str(P/'output'))); O.mkdir(exist_ok=True)
 D=json.loads((P/'content/catalog.json').read_text())
 pdfmetrics.registerFont(TTFont('Body','/usr/share/fonts/truetype/dejavu/DejaVuSans.ttf'))
 pdfmetrics.registerFont(TTFont('Bold','/usr/share/fonts/truetype/dejavu/DejaVuSans-Bold.ttf'))
@@ -21,7 +21,7 @@ styles={
  'h1':ParagraphStyle('h1',fontName='Bold',fontSize=24,leading=29,spaceAfter=16,textColor=INK),
  'h2':ParagraphStyle('h2',fontName='Bold',fontSize=15,leading=20,spaceBefore=12,spaceAfter=9,textColor=INK)}
 def foot(c,doc):
- c.setFont('Body',8);c.setFillColor(INK); c.drawString(17*mm,10*mm,'ZONA ZERO / COMUNIDADE • protótipo 0.1'); c.drawRightString(doc.pagesize[0]-17*mm,10*mm,str(doc.page))
+ c.setFont('Body',8);c.setFillColor(INK); c.drawString(17*mm,10*mm,'ZONA ZERO / COMUNIDADE • protótipo 0.2'); c.drawRightString(doc.pagesize[0]-17*mm,10*mm,str(doc.page))
 def md_pdf(src,name):
  flow=[]
  for line in (P/src).read_text().splitlines():
@@ -102,7 +102,7 @@ def cards(card_list=None,name='03_cartas_duplex.pdf'):
      if hasart:sheet_art(c,art,x+cw-23*mm,y+ch-31*mm,19*mm,19*mm)
      para(c,card['name'],x+4*mm,y+ch-30*mm,cw-(29 if hasart else 8)*mm,17*mm,11 if hasart else 12,bold=True,file=name,page=page,label=card['id']+' title')
      para(c,card['text'],x+4*mm,y+12*mm,cw-8*mm,ch-44*mm,9.5,file=name,page=page,label=card['id'])
-     para(c,card['id']+' • 0.1',x+4*mm,y+4*mm,cw-8*mm,5*mm,6.8,file=name,page=page,label=card['id']+' id')
+     para(c,card['id']+' • 0.2',x+4*mm,y+4*mm,cw-8*mm,5*mm,6.8,file=name,page=page,label=card['id']+' id')
     else:
      # INT back carries no unique ID or secret identity.
      fam=card['family']; para(c,'ZONA ZERO\nCOMUNIDADE',x+5*mm,y+44*mm,cw-10*mm,20*mm,14,bold=True,file=name,page=page,label='back')
@@ -285,7 +285,7 @@ def cover():
  c.setFillColor(INK);c.setFont('Bold',13);c.drawString(15*mm,H-22*mm,'SOBREVIVENTES')
  c.setFont('Bold',37);c.drawString(15*mm,H-39*mm,'ZONA ZERO')
  c.setFont('Bold',18);c.drawString(15*mm,H-51*mm,'COMUNIDADE')
- c.setFont('Body',11);c.drawString(15*mm,H-63*mm,'ANTES QUE A ÁGUA ACABE • protótipo 0.1')
+ c.setFont('Body',11);c.drawString(15*mm,H-63*mm,'ANTES QUE A ÁGUA ACABE • protótipo 0.2')
  c.save()
 if __name__=='__main__':
  for src,name in [('RULES.md','01_manual_iniciantes.pdf'),('CAMPAIGN.md','02_campanha.pdf')]:md_pdf(src,name)

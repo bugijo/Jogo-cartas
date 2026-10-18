@@ -1,4 +1,4 @@
-# Catálogo real 0.1
+# Catálogo real 0.2
 
 Fonte editável: content/catalog.json. IDs ZC-FAM-0001; quantidade física representada por entrada, não por nome.
 
@@ -21,4 +21,4 @@ Fonte editável: content/catalog.json. IDs ZC-FAM-0001; quantidade física repre
 
 Total 324 cartas pequenas; 24 fichas meia A4; 198 marcadores, dos quais 24 tokens de heróis. Recursos são reserva finita com registro de excedentes. As quantidades foram definidas antes da diagramação. Sem miniaturas ou dados físicos incluídos.
 
-24 heróis: 12 iniciais e 12 desbloqueáveis. Quatro módulos locais reutilizáveis, seis diagramas, três painéis, marcadores e registro repetível. Profissões dos dez primeiros: propostas D02.
+24 heróis: 12 iniciais e 12 desbloqueáveis. Quatro módulos locais reutilizáveis, seis diagramas, três painéis, marcadores e registro repetível. Profissões dos dez primeiros: consolidadas editorialmente na edição 0.2; ver PROFISSOES.md, decisão D02.
