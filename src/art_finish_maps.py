@@ -4,7 +4,45 @@ from reportlab.lib.units import mm
 import illustrated_art as a
 W,H=554,380
 
+THEMES={'Mercado':'mercado','Hospital':'hospital','Oficina':'oficina','Posto':'posto','Estação':'estacao','Condomínio':'condominio','Neutro':'oficina'}
+from functools import lru_cache
+@lru_cache(maxsize=64)
+def arrangement_crop(path,index):
+ """Analisa o alfa para enquadrar o grupo; desenha sempre os pixels nativos originais."""
+ from PIL import Image
+ image=Image.open(path);iw,ih=image.size;left=(index%2)*iw//2;top=(index//2)*ih//2;right=(index%2+1)*iw//2;bottom=(index//2+1)*ih//2
+ mask=image.crop((left,top,right,bottom)).getchannel('A') if image.mode=='RGBA' else image.crop((left,top,right,bottom)).convert('L').point(lambda v:255 if v<240 else 0)
+ native=mask.size;mask=mask.resize((192,128),Image.Resampling.NEAREST);pixels=mask.load();visited=set();groups=[]
+ for yy in range(128):
+  for xx in range(192):
+   if (xx,yy) in visited or pixels[xx,yy]<160:continue
+   todo=[(xx,yy)];visited.add((xx,yy));count=0;l=r=xx;t=b=yy
+   while todo:
+    x,y=todo.pop();count+=1;l=min(l,x);r=max(r,x);t=min(t,y);b=max(b,y)
+    for X,Y in [(x-1,y),(x+1,y),(x,y-1),(x,y+1)]:
+     if 0<=X<192 and 0<=Y<128 and (X,Y) not in visited and pixels[X,Y]>=160:visited.add((X,Y));todo.append((X,Y))
+   groups.append((count,l,t,r+1,b+1))
+ if not groups:return [left,top,right,bottom]
+ largest=max(g[0] for g in groups);keep=[g for g in groups if g[0]>=largest*(.15 if path.name=='mapa_mercado.png' else .04)];l=min(g[1] for g in keep);t=min(g[2] for g in keep);r=max(g[3] for g in keep);b=max(g[4] for g in keep)
+ return [max(left,left+l*native[0]/192-2),max(top,top+t*native[1]/128-2),min(right,left+r*native[0]/192+2),min(bottom,top+b*native[1]/128+2)]
+
+def detailed(c,index,x,y,w,h,asset_theme=None):
+ """Raster nativo pequeno sobre arquitetura global; piso não é uma imagem ampliada."""
+ from pathlib import Path
+ from PIL import Image
+ import build_illustrated as q
+ import build_fabrication as f
+ theme=getattr(c,'_zz05_theme','Mercado');key=THEMES[asset_theme or theme];path=q.P/'assets/v0.5'/('mapa_'+key+'.png')
+ if not path.exists():return False
+ art=dict(path=str(path.relative_to(q.P)),cols=2,rows=2,col=index%2,row=index//2)
+ art['crop']=arrangement_crop(path,index);l,t,r,b=art['crop'];cw,ch=r-l,b-t
+ # Hard native-density guard: no resampling; target ≥170 ppi (reserve above 150).
+ ww=min(w,cw*25.4/170);hh=min(h,ch*25.4/170)
+ c.saveState();c.scale(1/mm,1/mm);q.raster(c,art,x+(w-ww)/2,y+(h-hh)/2,ww,hh);c.restoreState();return True
+
 def rect(c,x,y,w,h,fill,stroke=None,r=0):
+ 
+ if a.ECON and w*h>6000:fill='#f4f4f0' if fill!='#a5aaa4' and fill!='#9fa8a0' else '#e6e6e0'
  c.setFillColor(a.color(fill));c.setStrokeColor(a.color(stroke or fill));c.setLineWidth(.25)
  if r:c.roundRect(x,y,w,h,r,fill=1,stroke=bool(stroke))
  else:c.rect(x,y,w,h,fill=1,stroke=bool(stroke))
@@ -39,6 +77,8 @@ def floor(c,theme):
   for x in range(12,554,30):line(c,x,0,x,380,'#c0c7b8',.2)
 
 def shelf(c,x,y,w=110,h=16,kind='goods'):
+ theme=getattr(c,'_zz05_theme','Mercado');idx=(1 if int(x+y)%3==0 else 0) if theme=='Mercado' else 2 if theme=='Hospital' else 1 if theme in ['Posto','Condomínio'] else 2 if theme=='Oficina' else 3
+ if detailed(c,idx,x,y,w,max(h,28)):return
  shadow(c,x,y,w,h);rect(c,x,y,w,h,'#5b6962','#344942',1);rect(c,x+1,y+1,w-2,h-2,'#d0c5a6')
  rng=random.Random(int(x*3+y*7))
  n=max(4,int(w/5.5))
@@ -53,14 +93,19 @@ def shelf(c,x,y,w=110,h=16,kind='goods'):
    else:rect(c,xx,yy,3,h/2-2,col)
  line(c,x+1,y+h/2,x+w-1,y+h/2,'#53685e',.8)
  for xx in [x+1,x+w-2]:rect(c,xx,y+1,1,h-2,'#849184')
+ theme=getattr(c,'_zz05_theme','Mercado');idx=(1 if int(x+y)%3==0 else 0) if theme=='Mercado' else 2 if theme=='Hospital' else 1 if theme in ['Posto','Condomínio'] else 2 if theme=='Oficina' else 3
+ detailed(c,idx,x,y,w,h)
 def crate(c,x,y,w=19,h=15):
  shadow(c,x,y,w,h);rect(c,x,y,w,h,'#b29367','#665f48')
  for off in [1.2,3.3]:line(c,x+off,y+1,x+off,y+h-1,'#725e40',.6);line(c,x+w-off,y+1,x+w-off,y+h-1,'#725e40',.6)
  line(c,x+4,y+1,x+w-4,y+h-1,'#cbb08a',1);rect(c,x+w*.35,y+h*.35,w*.3,h*.25,'#e2d3b3')
 def pallets(c,x,y,cols=3,rows=2):
+ if detailed(c,3,x,y,cols*21-3,rows*18-4):return
  for r in range(rows):
   for col in range(cols):crate(c,x+col*21,y+r*18,18,14)
+ detailed(c,3,x,y,cols*21-3,rows*18-4)
 def vehicle(c,x,y,w=80,h=35,ambulance=False):
+ if not ambulance and detailed(c,2 if getattr(c,'_zz05_theme','')=='Posto' else 1,x,y,w,h,'Posto' if getattr(c,'_zz05_theme','')=='Posto' else 'Oficina'):return
  shadow(c,x,y,w,h)
  for xx in [x+w*.17,x+w*.72]:
   for yy in [y-2,y+h-2]:rect(c,xx,yy,w*.13,4,'#3d4440',r=.8)
@@ -72,6 +117,8 @@ def vehicle(c,x,y,w=80,h=35,ambulance=False):
  line(c,x+w*.13,y+3,x+w*.18,y+h-4,'#9d8264',.6)
  if ambulance:
   rect(c,x+w*.49,y+h*.25,4,h*.5,'#9e4d40');rect(c,x+w*.43,y+h*.42,w*.18,h*.15,'#9e4d40')
+ 
+ if getattr(c,'_zz05_theme','') in ['Oficina','Neutro','Posto']:detailed(c,2 if getattr(c,'_zz05_theme','')=='Posto' else 1,x,y,w,h)
 def cart(c,x,y):
  shadow(c,x,y,17,11);rect(c,x,y,17,11,'#b2bab1','#526761',1)
  for i in range(1,5):line(c,x+i*3,y+1,x+i*3,y+10,'#627c70',.35)
@@ -79,47 +126,58 @@ def cart(c,x,y):
  line(c,x+18,y+1,x+18,y+10,'#526a5d',1.2)
  for xx in [x+2,x+13]:ellipse(c,xx,y-2,2,2,'#334f47')
 def checkout(c,x,y):
- shadow(c,x,y,30,18);rect(c,x,y,30,18,'#91a39a','#4b655d',2);rect(c,x+2,y+2,13,14,'#424e49');rect(c,x+17,y+9,8,7,'#c0bda5','#4b655d',1);rect(c,x+18,y+10,5,4,'#31544c');ellipse(c,x+21,y-6,7,7,'#687e70')
+ if detailed(c,2 if getattr(c,'_zz05_theme','')=='Mercado' else 1,x,y,30,18):return
+ shadow(c,x,y,30,18);rect(c,x,y,30,18,'#91a39a','#4b655d',2);rect(c,x+2,y+2,13,14,'#424e49');rect(c,x+17,y+9,8,7,'#c0bda5','#4b655d',1);rect(c,x+18,y+10,5,4,'#31544c');ellipse(c,x+21,y-6,7,7,'#687e70');detailed(c,2 if getattr(c,'_zz05_theme','')=='Mercado' else 1,x,y,30,18)
 def tank(c,x,y,r=36):
+ if detailed(c,0,x-r,y-r,2*r,2*r):return
  ellipse(c,x-r+2,y-r-2,2*r,2*r,'#b2bbaa');ellipse(c,x-r,y-r,2*r,2*r,'#6e8c7c','#3f6059');ellipse(c,x-r+3,y-r+3,2*r-6,2*r-6,'#b8c5aa','#475e52');ellipse(c,x-r+6,y-r+6,2*r-12,2*r-12,'#668b80')
  for rr in [.38,.68]:
   c.setStrokeColor(a.color('#a4b9a1'));c.setLineWidth(.3);c.circle(x,y,r*rr,fill=0,stroke=1)
- line(c,x-r,y,x+r,y,'#d1c6a2',2);ellipse(c,x-3,y-3,6,6,'#c4b38a','#56665a');line(c,x,y,x+r*.64,y+r*.55,'#b3ac8a',1.2)
+ line(c,x-r,y,x+r,y,'#d1c6a2',2);ellipse(c,x-3,y-3,6,6,'#c4b38a','#56665a');line(c,x,y,x+r*.64,y+r*.55,'#b3ac8a',1.2);detailed(c,0,x-r,y-r,2*r,2*r)
 def bed(c,x,y):
+ if detailed(c,0,x,y,24,46):return
  shadow(c,x,y,24,46);rect(c,x,y,24,46,'#aeb6ac','#5f736c',2);rect(c,x+2,y+3,20,39,'#e4e5d5',r=2);rect(c,x+3,y+22,18,20,'#6f958b',r=1);rect(c,x+4,y+5,16,7,'#f1eadb',r=2)
  for xx in [x-1,x+24]:line(c,xx,y+5,xx,y+38,'#7a8d81',.9)
  for xx in [x+2,x+20]:ellipse(c,xx,y-2,2,2,'#526a60')
+ detailed(c,0,x,y,24,46)
 def plant(c,x,y,r=9):
  ellipse(c,x-r+2,y-r-2,r*2,r*2,'#adb19b');ellipse(c,x-r*.8,y-r*.8,r*1.6,r*1.6,'#b19673','#837e5f')
  for i in range(9):
   ang=i*math.pi*2/9;xx=x+math.cos(ang)*r*.45;yy=y+math.sin(ang)*r*.45;ellipse(c,xx-r*.45,yy-r*.2,r*.9,r*.4,['#6f8c6a','#839a6c','#4f7560'][i%3])
  ellipse(c,x-2,y-2,4,4,'#476854')
 def bench(c,x,y,w=85):
+ if detailed(c,0 if getattr(c,'_zz05_theme','') in ['Oficina','Neutro'] else 2,x,y,w,27):return
  shadow(c,x,y,w,22);rect(c,x,y,w,22,'#a88f6b','#5b6558',1)
  for yy in [y+3,y+10,y+17]:line(c,x+2,yy,x+w-2,yy,'#d3bc8f',.4)
  for i in range(8):
   xx=x+5+i*(w-10)/8;line(c,xx,y+4,xx+4,y+16,'#435b53',1);ellipse(c,xx+2,y+14,4,4,'#849b8d','#3e5e53')
  rect(c,x+3,y+5,18,11,'#52665e',r=1)
+ detailed(c,0 if getattr(c,'_zz05_theme','') in ['Oficina','Neutro'] else 2,x,y,w,22)
 def sofa(c,x,y,w=65):
+ if detailed(c,0,x,y-20,w,47):return
  shadow(c,x,y,w,27);rect(c,x,y,w,27,'#6a8579','#405e52',3);rect(c,x+5,y+4,w-10,16,'#a0ad8e',r=2)
  for xx in [x+4,x+w-10]:rect(c,xx,y+2,6,22,'#80997f',r=2)
  line(c,x+w/2,y+5,x+w/2,y+20,'#5f796b',.45)
- ellipse(c,x+w*.45,y-20,19,13,'#ac936c','#69715d');ellipse(c,x+w*.5,y-17,7,6,'#cab58f')
+ ellipse(c,x+w*.45,y-20,19,13,'#ac936c','#69715d');ellipse(c,x+w*.5,y-17,7,6,'#cab58f');detailed(c,0,x,y-20,w,47)
 def pipes(c,points):
  for (x,y),(X,Y) in zip(points,points[1:]):
   line(c,x+1,y-1,X+1,Y-1,'#a5b3a0',4);line(c,x,y,X,Y,'#516e63',3.5);line(c,x,y,X,Y,'#a2b19a',2)
   ellipse(c,x-2,y-2,4,4,'#a5b599','#536a5c')
 
 def scene(c,theme):
- c.saveState();c.scale(mm,mm);floor(c,theme)
+ c._zz05_theme=theme;c.saveState();c.scale(mm,mm);floor(c,theme)
  if theme=='Mercado':
   vehicle(c,16,314,72,34);vehicle(c,163,319,80,36)
   for x in [16,35,54]:cart(c,x,302)
   # Setores contínuos; as gôndolas atravessam fronteiras de zona permitidas.
-  for y in [212,155,105,40]:
-   for x,w in [(18,113),(177,123),(341,132)]:shelf(c,x,y,w,15)
+  for y in [202,105,18]:
+   for x,w in [(18,110),(170,95),(310,90),(440,95)]:
+    if y==18 and x==440:continue
+    shelf(c,x,y,w,28)
   for x in [18,62,104]:checkout(c,x,258)
-  shelf(c,514,100,18,165,'cold')
+  # Parede fria com portas de vidro desenhadas em vetor, sem escalar um sprite horizontal.
+  rect(c,520,105,18,150,'#829e93','#425f57')
+  for yy in range(110,250,23):rect(c,522,yy,14,19,'#bbcabe','#476a60',1)
   for x,y,cols,rows in [(297,312,3,3),(440,310,4,3),(450,26,3,2)]:pallets(c,x,y,cols,rows)
   cart(c,309,236);cart(c,474,75);plant(c,8,275,6)
  elif theme=='Oficina':
@@ -173,7 +231,7 @@ def scene(c,theme):
  c.restoreState()
 
 def floor_draw(c,x,y,w,h,z,theme='Neutro'):
- key='ZZ05_'+theme;made=getattr(c,'_zz05_forms',set())
+ key='ZZ05_'+str(['Neutro','Mercado','Hospital','Oficina','Posto','Condomínio','Estação'].index(theme));made=getattr(c,'_zz05_forms',set())
  if key not in made:
   c.beginForm(key,0,0,W*mm,H*mm);scene(c,theme);c.endForm();made.add(key);c._zz05_forms=made
  row,col=divmod(z-1,4);scale=w/(138.5*mm);c.saveState();path=c.beginPath();path.rect(x,y,w,h);c.clipPath(path,stroke=0);c.translate(x-col*138.5*mm*scale,y-(3-row)*95*mm*scale);c.scale(scale,scale);c.doForm(key);c.restoreState()

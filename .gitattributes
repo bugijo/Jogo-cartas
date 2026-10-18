@@ -3,3 +3,5 @@
 *.jpg binary
 *.zip binary
 assets/v0.3/vetores/*.svg -diff
+
+assets/v0.5/vetores/*.svgz binary

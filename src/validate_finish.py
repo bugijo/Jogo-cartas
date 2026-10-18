@@ -23,7 +23,7 @@ ck('Sem estouros de parágrafos',json.loads((O/'layout_issues.json').read_text()
 geo=json.loads((O/'geometry.json').read_text());edges={tuple(sorted(e)) for e in D['maps'][0]['edges']}
 ck('Geometria derivada das conexões existentes',len(geo)>0 and all(r['connected']==(bool(r['neighbor']) and tuple(sorted((r['zone'],r['neighbor']))) in edges) for r in geo))
 ck('Aberturas exatas de 14 mm',all(abs(r['gap_mm']-(14 if r['connected'] else 0))<1e-5 for r in geo))
-rendered=0;econ_bad=[];private_names=['zombecide','Pesonagens','Equipamentos-1.pdf','Equipamentos-2.pdf'];secret_hashes={}
+rendered=0;rasterized=0;cards_only='--cards-only' in sys.argv;econ_bad=[];private_names=['zombecide','Pesonagens','Equipamentos-1.pdf','Equipamentos-2.pdf'];secret_hashes={}
 for edition in ['ilustrada','economica']:
  root=O/edition;manifest=json.loads((root/'00_LEIA_PRIMEIRO/manifesto.json').read_text());allf=manifest['files']
  for method in ['duplex','manual']:
@@ -41,12 +41,17 @@ for edition in ['ilustrada','economica']:
    ck(f'{edition}/{f.name}/{page.number+1} texto na página',not outside,outside)
    for font in page.get_fonts(full=True):
     if font[3] in used or font[3].split('+')[-1] in used:ck(f'{edition}/{f.name} fonte {font[3]}',len(d.extract_font(font[0])[3])>0)
-   pix=page.get_pixmap(matrix=fitz.Matrix(1,1),alpha=False);rendered+=1
-   im=Image.frombytes('RGB',[pix.width,pix.height],pix.samples)
+   out=O/'renders'/edition/Path(fentry['file']).parent/f.stem;out.mkdir(parents=True,exist_ok=True);renderfile=out/f'{page.number+1:03}.jpg'
+   reuse=cards_only and Path(fentry['file']).parent.name not in ['02_CARTAS_DUPLEX','03_CARTAS_RECORTAR_E_COLAR'] and renderfile.exists()
+   if reuse:im=Image.open(renderfile).convert('RGB')
+   else:
+    pix=page.get_pixmap(matrix=fitz.Matrix(1,1),alpha=False);rasterized+=1;im=Image.frombytes('RGB',[pix.width,pix.height],pix.samples)
+   rendered+=1
    if edition=='economica':
     r,gg,b=im.split();import PIL.ImageChops as ic
     if ic.difference(r,gg).getextrema()[1]>3 or ic.difference(r,b).getextrema()[1]>3:econ_bad.append(str(f))
-   out=O/'renders'/edition/Path(fentry['file']).parent/f.stem;out.mkdir(parents=True,exist_ok=True);im.save(out/f'{page.number+1:03}.jpg',quality=80)
+   out=O/'renders'/edition/Path(fentry['file']).parent/f.stem;out.mkdir(parents=True,exist_ok=True);
+   if not reuse:im.save(out/f'{page.number+1:03}.jpg',quality=80)
    im.thumbnail((180,255));thumbs.append(im.copy())
   sheet=Image.new('RGB',(4*190,math.ceil(len(thumbs)/4)*280),'#cccccc');draw=ImageDraw.Draw(sheet)
   for i,im in enumerate(thumbs):x=(i%4)*190;y=(i//4)*280;sheet.paste(im,(x,y));draw.text((x+2,y+256),str(i+1),fill='black')
@@ -72,12 +77,13 @@ for ed in ['ilustrada','economica']:
  root=O/ed
  for path in root.rglob('*.pdf'):
   doc=fitz.open(path);mainmap=path.name.endswith('_M01_M04_LADO_A.pdf')
-  if mainmap:ck('Mapa principal integralmente vetorial '+str(path.relative_to(O)),all(not p.get_images(full=True) for p in doc))
+  if mainmap:ck('Mapa principal disponível '+str(path.relative_to(O)),len(doc)==4)
   for page in doc:
    for info in page.get_image_info(xrefs=True):
     aa,bb,cc,dd,ee,ff=info['transform'];w=(aa*aa+bb*bb)**.5;h=(cc*cc+dd*dd)**.5
     ppix=info['width']/(w/72) if w else 0;ppiy=info['height']/(h/72) if h else 0
+    if mainmap:ck('Mapa raster nativo ≥150 ppi '+str(path.relative_to(O)),min(ppix,ppiy)>=149.9,round(min(ppix,ppiy),1))
     resolution.append(dict(file=str(path.relative_to(O)),page=page.number+1,xref=info['xref'],pixels=[info['width'],info['height']],effective_ppi=round(min(ppix,ppiy),1),status='abaixo de 300 ppi; arte existente preservada ou recorte documentado' if min(ppix,ppiy)<299.5 else '≥300 ppi'))
 (O/'resolucao_pdfs.json').write_text(json.dumps(resolution,ensure_ascii=False,indent=2))
-report=dict(checks=len(checks),passed=len(checks)-len(fails),failures=fails,rendered_pages=rendered,economic_colored_pages=econ_bad,limitations=['Sem impressão física, montagem física ou playtest humano.','Mapas principais 100% vetoriais, sem limitação de ppi. Imagens de cartas/peões documentadas individualmente em resolucao_pdfs.json; nem todas atingem 300 ppi.','Referência recebida: cinco PDFs, seis páginas; ZIP e demais categorias ausentes.'],details=checks)
+report=dict(checks=len(checks),passed=len(checks)-len(fails),failures=fails,rendered_pages=rendered,rerendered_pages=rasterized,economic_colored_pages=econ_bad,limitations=['Sem impressão física, montagem física ou playtest humano.','Mapas: pisos/arquitetura vetoriais e mobiliário original raster nativo com mínimo conferido de 150 ppi. Imagens de cartas/peões documentadas individualmente em resolucao_pdfs.json; nem todas atingem 300 ppi.','Referência recebida: cinco PDFs, seis páginas; ZIP e demais categorias ausentes.'],details=checks)
 (O/'verificacao.json').write_text(json.dumps(report,ensure_ascii=False,indent=2));print(json.dumps({k:v for k,v in report.items() if k!='details'},ensure_ascii=False,indent=2));sys.exit(bool(fails))

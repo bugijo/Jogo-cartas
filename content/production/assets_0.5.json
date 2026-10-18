@@ -1,0 +1,192 @@
+{
+  "version": "0.5",
+  "assets": [
+    {
+      "file": "assets/v0.5/armas.png",
+      "origin": "geração integrada de imagem original",
+      "pixels": [
+        1536,
+        1024
+      ],
+      "integrated": true,
+      "destination": "cartas",
+      "sha256": "01f8c729aed5fdb89cf9f1bcd8ee64ce4fec72bea57c9214a8c7bf1ce9596beb"
+    },
+    {
+      "file": "assets/v0.5/mapa_condominio.png",
+      "origin": "geração integrada de imagem original",
+      "pixels": [
+        1536,
+        1024
+      ],
+      "integrated": true,
+      "destination": "mobiliário de mapa",
+      "sha256": "377d72e52031de4d8ccf594d6b02bd8fe71dad397f83068154d3b66d6f3a3c34"
+    },
+    {
+      "file": "assets/v0.5/mapa_estacao.png",
+      "origin": "geração integrada de imagem original",
+      "pixels": [
+        1536,
+        1024
+      ],
+      "integrated": true,
+      "destination": "mobiliário de mapa",
+      "sha256": "97bad662c08d20efd40aa0a4bd511d257660f5d53b59624b946db5fcfb23ee88"
+    },
+    {
+      "file": "assets/v0.5/mapa_hospital.png",
+      "origin": "geração integrada de imagem original",
+      "pixels": [
+        1536,
+        1024
+      ],
+      "integrated": true,
+      "destination": "mobiliário de mapa",
+      "sha256": "ee113c97f2f85f47ae9a7c0fb102502326453eb51cb3072518fcf857c4a52403"
+    },
+    {
+      "file": "assets/v0.5/mapa_mercado.png",
+      "origin": "geração integrada de imagem original",
+      "pixels": [
+        1536,
+        1024
+      ],
+      "integrated": true,
+      "destination": "mobiliário de mapa",
+      "sha256": "def0c0cab970189e9ffb072c8afdb0bf94d8a5dc8d715ea33cc5491627e69620"
+    },
+    {
+      "file": "assets/v0.5/mapa_oficina.png",
+      "origin": "geração integrada de imagem original",
+      "pixels": [
+        1536,
+        1024
+      ],
+      "integrated": true,
+      "destination": "mobiliário de mapa",
+      "sha256": "e16260f4f3ffdbb9429185e87e05d80e3080ed70b685e39e42b1e1ae3694732b"
+    },
+    {
+      "file": "assets/v0.5/mapa_posto.png",
+      "origin": "geração integrada de imagem original",
+      "pixels": [
+        1536,
+        1024
+      ],
+      "integrated": true,
+      "destination": "mobiliário de mapa",
+      "sha256": "06a63b89c551dc36a0d978fbb0d4412b060052f9acf240742679e67f46eed14f"
+    },
+    {
+      "file": "assets/v0.5/pecas.png",
+      "origin": "geração integrada de imagem original",
+      "pixels": [
+        1536,
+        1024
+      ],
+      "integrated": false,
+      "destination": "rascunho substituído",
+      "sha256": "ab724f11823180a50c534620a8787e42c698ff71ee914daf61954e8dfdaf9ec2"
+    },
+    {
+      "file": "assets/v0.5/pecas_corrigidas.png",
+      "origin": "geração integrada de imagem original",
+      "pixels": [
+        1536,
+        1024
+      ],
+      "integrated": true,
+      "destination": "cartas",
+      "sha256": "6d43b35d5d620d752216bb340bd76bda03a955d6920957d06f8b980a44a25ce5"
+    },
+    {
+      "file": "assets/v0.5/suprimentos.png",
+      "origin": "geração integrada de imagem original",
+      "pixels": [
+        1536,
+        1024
+      ],
+      "integrated": true,
+      "destination": "cartas",
+      "sha256": "0495c26271e5a764a33dc53b73d7c81f266a1b7681d92e4c96c9d6d5def7c5ce"
+    },
+    {
+      "file": "assets/v0.5/toolbox.png",
+      "origin": "geração integrada de imagem original",
+      "pixels": [
+        1536,
+        1024
+      ],
+      "integrated": true,
+      "destination": "cartas",
+      "sha256": "c7cd42737274ea835e02200ea74a507a07c51aa97b626c4f880b63978a72de36"
+    },
+    {
+      "file": "assets/v0.5/viagens.png",
+      "origin": "geração integrada de imagem original",
+      "pixels": [
+        1536,
+        1024
+      ],
+      "integrated": true,
+      "destination": "cartas",
+      "sha256": "690d50d8f208fbdda582c75d3431b818c57dfdd2c96e956fb7808f98fee906da"
+    },
+    {
+      "file": "assets/v0.5/vetores/COMUNS_M01_M04_LADO_A.svgz",
+      "origin": "vetores originais + imagens nativas exportados do PDF final",
+      "integrated": true,
+      "destination": "fonte editável do mapa",
+      "pixels": null
+    },
+    {
+      "file": "assets/v0.5/vetores/CONDOMINIO_M01_M04_LADO_A.svgz",
+      "origin": "vetores originais + imagens nativas exportados do PDF final",
+      "integrated": true,
+      "destination": "fonte editável do mapa",
+      "pixels": null
+    },
+    {
+      "file": "assets/v0.5/vetores/ESTACAO_M01_M04_LADO_A.svgz",
+      "origin": "vetores originais + imagens nativas exportados do PDF final",
+      "integrated": true,
+      "destination": "fonte editável do mapa",
+      "pixels": null
+    },
+    {
+      "file": "assets/v0.5/vetores/HOSPITAL_M01_M04_LADO_A.svgz",
+      "origin": "vetores originais + imagens nativas exportados do PDF final",
+      "integrated": true,
+      "destination": "fonte editável do mapa",
+      "pixels": null
+    },
+    {
+      "file": "assets/v0.5/vetores/MERCADO_M01_M04_LADO_A.svgz",
+      "origin": "vetores originais + imagens nativas exportados do PDF final",
+      "integrated": true,
+      "destination": "fonte editável do mapa",
+      "pixels": null
+    },
+    {
+      "file": "assets/v0.5/vetores/OFICINA_M01_M04_LADO_A.svgz",
+      "origin": "vetores originais + imagens nativas exportados do PDF final",
+      "integrated": true,
+      "destination": "fonte editável do mapa",
+      "pixels": null
+    },
+    {
+      "file": "assets/v0.5/vetores/POSTO_M01_M04_LADO_A.svgz",
+      "origin": "vetores originais + imagens nativas exportados do PDF final",
+      "integrated": true,
+      "destination": "fonte editável do mapa",
+      "pixels": null
+    }
+  ],
+  "map_minimum_ppi": 201.3,
+  "architecture": "vetorial original em escala física",
+  "native_resize": false,
+  "ppi_method": "pixels nativos divididos pelo tamanho impresso em polegadas, usando a transformação real do XObject no PDF; alfa altera enquadramento, não densidade",
+  "missing_assets": [],
+  "remaining_limitations": "Artes antigas de cartas/rostos preservados podem ficar abaixo de 300 ppi. Todas as ocorrências estão na planilha por PDF/página/xref. Sem impressão física/playtest humano."
+}

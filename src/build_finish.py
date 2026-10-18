@@ -16,7 +16,9 @@ RES=[]
 def new_art(c,card,x,y,w,h):
  name=card['name'].split(': ')[-1]
  if name not in NEW_ART:return original_art(c,card,x,y,w,h)
- sheet,i=NEW_ART[name];piece=dict(path=f'assets/v0.5/{sheet}.png',cols=2,rows=2,col=i%2,row=i//2)
+ sheet,i=NEW_ART[name]
+ if name=='Ferramentas':sheet,i='toolbox',0
+ piece=dict(path=f'assets/v0.5/{sheet}.png',cols=1 if sheet=='toolbox' else 2,rows=1 if sheet=='toolbox' else 2,col=i%2,row=i//2)
  if sheet=='suprimentos':piece['crop']=[[100,0,755,448],[970,0,1420,445],[230,448,640,1024],[925,450,1430,1024]][i]
  if sheet=='pecas_corrigidas':piece['crop']=[[20,0,785,480],[800,25,1520,475],[10,530,800,1015],[810,490,1525,1015]][i]
  if sheet!='viagens':piece=f.tight_body(piece)
@@ -47,9 +49,9 @@ def card_front(c,card,x,y,initial):
   badge=''
   if card.get('load') is not None:badge=f'CARGA {card["load"]}'
   elif card.get('reward'):
-   qty=sum(card['reward'].values());resource=next(iter(card['reward']));parts=next((r.get('portions') for r in D['cards'] if r.get('resource')==resource),None);badge=f'{qty} carta(s) / {qty*parts} porções' if parts else f'ACHADO: {qty} carta(s) da reserva'
+   qty=sum(card['reward'].values());resource=next(iter(card['reward']));parts=next((r.get('portions') for r in D['cards'] if r.get('resource')==resource),None) if resource in ['Conserva','Água','Carne'] else None;badge=f'{qty} carta(s) / {qty*parts} porções' if parts else f'RESERVA: {qty} carta(s)'
   else:badge=b.FAMILIES[card['family']].upper()
-  q.txt(c,badge,x+6,by+1,7.5,True,col='#ffffff')
+  q.txt(c,badge,x+6,by+1,9.5,True,col='#ffffff')
  a.rect(c,(x+3.5)*mm,(y+9)*mm,56*mm,(hh+1)*mm,'#fcf9ee',stroke='#c9c1a9',r=.6*mm)
  f.para(c,text,x+4,y+10,55,hh,9.5 if dense else 10,label=card['id']+' efeito')
  b.family_icon(c,card['family'],(x+4)*mm,(y+4.5)*mm,3*mm);q.txt(c,b.FAMILIES[card['family']],x+8,y+4.7,6.4,True);q.txt(c,card['id'],x+33,y+4.4,6)
