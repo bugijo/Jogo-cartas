@@ -194,7 +194,7 @@ MAP_ASSETS={'Neutro':'comum','Mercado':'mercado','Hospital':'hospital','Oficina'
 
 def scenario_floor(c,x,y,w,h,z,theme='Neutro'):
  from PIL import Image
- key=MAP_ASSETS[theme];file=P/'assets/v0.4'/f'{key}.png';iw,ih=Image.open(file).size
+ key=MAP_ASSETS[theme];file=P/'assets/v0.4'/('condominio_final.png' if key=='condominio' else f'{key}_ajustado.png');iw,ih=Image.open(file).size
  uw=min(iw,ih*554/380);uh=uw*380/554;left=(iw-uw)/2;top=(ih-uh)/2;row,col=divmod(z-1,4)
  art=dict(path=str(file.relative_to(P)),crop=[left+col*uw/4,top+row*uh/4,left+(col+1)*uw/4,top+(row+1)*uh/4])
  q.raster(c,art,x/mm,y/mm,w/mm,h/mm)
@@ -306,10 +306,33 @@ def make_index(root):
  (root/'00_LEIA_PRIMEIRO/IMPRIMA_ESTES.md').write_text(text)
  (root/'00_LEIA_PRIMEIRO/manifesto.json').write_text(json.dumps(dict(version='0.4',rules='0.2',edition=root.name,totals=totals,files=entries),ensure_ascii=False,indent=2))
 
+def organization(root):
+ f=root/'08_EXTRAS_OPCIONAIS/BASES_ORGANIZACAO.pdf';c=canvas.Canvas(str(f),pagesize=A4)
+ labels=[('MONTE','Cartas a sortear; não é estoque.'),('DESCARTE','Cartas resolvidas; não gera recursos.'),('RESERVA DE COMPONENTES','Físicos ainda sem dono.'),('ESTOQUE DO ABRIGO','Bens da comunidade; local E.'),('INVENTÁRIO','Pertence ao herói; respeite cargas.'),('CARGA DO VEÍCULO','Um lugar por item; respeite limite.'),('PROJETOS EM ANDAMENTO','Custos reservados; anote terreno.'),('CARTAS EM USO','Efeitos ativos; não descartar cedo.'),('REMOVIDOS DA CAMPANHA','Registre perdas pelas regras.'),('CHÃO DO DESTINO','Registre destino, zona e item.')]
+ for i,(name,note) in enumerate(labels):
+  row,col=divmod(i,2);x=10+96*col;y=245-row*47;a.rect(c,x*mm,y*mm,90*mm,41*mm,'#ffffff',stroke=a.INK);txt(c,str(i+1),x+3,y+29,14,True);para(c,name,x+14,y+25,72,13,10,True);para(c,note,x+3,y+10,84,14,9);txt(c,'CORTE / use como base ou etiqueta',x+3,y+3,6.5)
+ c.showPage();c.save();record(root,f,'bases de organização',optional=True)
+
+def starter_guide(root):
+ from reportlab.platypus import SimpleDocTemplate,Paragraph,Spacer,PageBreak
+ from reportlab.lib.styles import ParagraphStyle
+ import html
+ pages=json.loads((P/'content/starter/01_guia.json').read_text())
+ pages[0]['subtitle']='Antes que a água acabe • fabricação 0.4 / regras 0.2'
+ pages[0]['sections'][1]=['2. Escolham A duplex OU B recortar e colar','Sigam a etapa INICIAL do índice IMPRIMA_ESTES.md. A: 25 folhas, cartas/calibração duplex retrato, borda longa; restante uma face. B: 33 folhas, tudo uma face; frentes e versos separados, unidos com miolo opaco. Ambos contêm as mesmas 62 cartas. Não imprimam as duas alternativas. 100%, sem ajustar. Antes do dia 2: complemento A de 33 folhas ou B de 39; continuem o mesmo estado. Extras opcionais não integram essas contas.']
+ styles={k:ParagraphStyle(k,fontName='Bold' if k!='body' else 'Body',fontSize=sz,leading=lead,textColor=b.INK,spaceAfter=6,spaceBefore=5 if k=='h' else 0) for k,sz,lead in [('title',21,25),('sub',10,13),('h',12,16),('body',10.3,13.6)]}
+ flow=[]
+ for i,page in enumerate(pages):
+  if i:flow.append(PageBreak())
+  flow.extend([Paragraph(html.escape(page['title']),styles['title']),Paragraph(html.escape(page['subtitle']),styles['sub']),Spacer(1,5*mm)])
+  for name,text in page['sections']:flow.extend([Paragraph(html.escape(name),styles['h']),Paragraph(html.escape(text),styles['body'])])
+ f=root/'01_GUIA_E_REGRAS/COMECE_AQUI.pdf';doc=SimpleDocTemplate(str(f),pagesize=A4,leftMargin=16*mm,rightMargin=16*mm,topMargin=15*mm,bottomMargin=17*mm);doc.build(flow,onFirstPage=b.foot,onLaterPages=b.foot)
+ assert len(fitz.open(f))==6
+
 def full_build():
  for ed in ['ilustrada','economica']:
   root=O/ed;init(root);a.ECON=ed=='economica';start=len(FILES)
-  copy_stable(root);all_cards(root);standees(root);standees(root,True);player_panel(root);all_maps(root);manual_calibration(root);assembly_guide(root)
+  copy_stable(root);starter_guide(root);all_cards(root);standees(root);standees(root,True);player_panel(root);all_maps(root);manual_calibration(root);assembly_guide(root);organization(root)
   if a.ECON:
    for f in root.rglob('*.pdf'):q.gray_pdf(f)
   for e in FILES[start:]:
