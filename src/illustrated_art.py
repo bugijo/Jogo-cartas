@@ -2,6 +2,7 @@
 from reportlab.lib.colors import HexColor, white
 INK='#24484b'; PAPER='#f3efe4'; OLIVE='#879581'; RUST='#af7554'; YELLOW='#d2af60'; CONCRETE='#d6d9d2'
 ECON=False
+SPRITE_DRAW=None
 
 def color(h):
  if not ECON:return HexColor(h)
@@ -21,6 +22,10 @@ def oval(c,x,y,w,h,fill=CONCRETE):
  c.setFillColor(color(fill));c.setStrokeColor(color(INK));c.ellipse(x,y,x+w,y+h,fill=1,stroke=1)
 def prop(c,kind,x,y,w,h,variant=0):
  """Objetos de ambientação detalhados, ortográficos. Sem paredes ou aberturas."""
+ 
+ sprite={'shelf':0,'checkout':1,'cart':2,'crate':3,'bench':4,'car':6,'van':6,'pump':7,'bed':8,'medicine':9,'pipes':10,'tank':11,'pallet':13,'tree':14,'laundry':15}
+ if SPRITE_DRAW is not None and kind in sprite:
+  SPRITE_DRAW(c,sprite[kind],x,y,w,h);return
  c.saveState();c.translate(x,y);c.scale(w/100,h/70)
  if kind in ('shelf','crate','bench'):
   rect(c,3,6,94,58,CONCRETE if kind=='shelf' else RUST,r=2)
@@ -118,11 +123,16 @@ def floor(c,x,y,w,h,z,theme='Neutro'):
  # Fine paving, cracked edges and plant growth; no false walls.
  for j in range(1,7):line(c,x+j*w/7,y,x+j*w/7,y+h,'#e4e4dc',.25)
  for j in range(1,5):line(c,x,y+j*h/5,x+w,y+j*h/5,'#e4e4dc',.25)
- prop(c,THEMES[theme][z-1],x+w*.58,y+h*.60,w*.34,h*.25,z)
- prop(c,'crate' if z%3 else 'pallet',x+w*.06,y+h*.13,w*.23,h*.20,z)
+ prop(c,THEMES[theme][z-1],x+w*.54,y+h*.60,w*.42,h*.34,z)
+ prop(c,'crate' if z%3 else 'pallet',x+w*.06,y+h*.13,w*.34,h*.26,z)
  for j in range(3):
   xx=x+w*(.78+j*.045);yy=y+h*.12
   line(c,xx,yy,xx+w*.02,yy+h*.06,OLIVE,.6)
+ # Faded stains are floor texture only, never silhouettes of walls.
+ if not ECON:
+  c.saveState();c.setFillAlpha(.08)
+  for j in range(5):oval(c,x+w*(.65+j*.045),y+h*.16,w*.09,h*.025,RUST)
+  c.restoreState()
  # Printed footprint traces emphasize the traversable centre.
  if not ECON:
   for j in [0,1]:oval(c,x+w*(.42+j*.06),y+h*(.42+j*.07),w*.025,h*.05,'#d3d8cf')
