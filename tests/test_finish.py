@@ -15,3 +15,9 @@ class FinishTests(unittest.TestCase):
   for ed in ['ilustrada','economica']:
    for f in ['HEROIS_24_RECORTAR.pdf','INIMIGOS_VARIANTES_E01_E24_RECORTAR.pdf']:
     p=Path(ed)/'04_PERSONAGENS_E_INIMIGOS'/f;self.assertEqual((O/p).read_bytes(),(P/'output/edicao-fabricacao-v0.4'/p).read_bytes())
+ def test_every_map_form_renders_including_accented_destinations(self):
+  root=O/'ilustrada/08_EXTRAS_OPCIONAIS'
+  for f in root.glob('*_M01_M04_LADO_A.pdf'):
+   d=fitz.open(f);fitz.TOOLS.mupdf_warnings(reset=True)
+   for page in d:page.get_pixmap(matrix=fitz.Matrix(.2,.2))
+   self.assertNotIn('cannot find XObject',fitz.TOOLS.mupdf_warnings(),f.name)

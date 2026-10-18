@@ -10,3 +10,5 @@ Referência: zombecide.zip não disponível; somente os cinco PDFs já auditados
 Ciclos: 1 amostra; 2 cartas; 3 painel; 4 sete tabuleiros; 5 inspeção, pacotes, push sem merge. Fontes e arte 0.4 intactas. Cada ciclo: gerar, inspecionar, corrigir, validar, checkpoint e commit.
 
 Ciclo 1: amostra real de nove cartas, painel e quatro módulos do mercado gerados sem estouro. Fontes mecânicas não alteradas. Inspeção encontrou objetos de peças atravessando a divisão da prancha; nova composição com margens solicitada antes de replicar. Mercado usa composição global e mobiliário vetorial que atravessa limites conectados sem criar bloqueios. Três contratos dos PDFs falharam antes da geração completa (mapas vetoriais, contagens, peões preservados).
+
+Ciclo 2 concluído: 114 cartas, quatro PDFs manuais e dois duplex por edição. Arte de armas e peças em pranchas 2×2; recortes por objeto corrigidos, sem fragmentos vizinhos. Efeitos mantidos a 9,5–10 pt e texto pesquisável. Validação dos mesmos efeitos/IDs e versos passou em ambas as edições; mesmos 58/72 A4.

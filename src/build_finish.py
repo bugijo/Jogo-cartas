@@ -11,12 +11,13 @@ import build_fabrication as f
 import art_finish_maps as art
 P=f.P;O=P/'output/edicao-acabamento-v0.5';OLD=P/'output/edicao-fabricacao-v0.4';q=f.q;a=f.a;b=f.b;D=f.D;M=f.M
 original_art=f.artwork;old_panel=f.player_panel
-NEW_ART={**{n:('armas',i) for i,n in enumerate(['Faca','Machado','Pistola','Espingarda'])},**{n:('suprimentos',i) for i,n in enumerate(['Ferramentas','Conserva','Água','Combustível'])},**{n:('pecas',i) for i,n in enumerate(['Bomba','Membrana','Conexões','Bateria'])},**{n:('viagens',i) for i,n in enumerate(['Emboscada','Ruído distante','Barricada','Ponte avistada'])}}
+NEW_ART={**{n:('armas',i) for i,n in enumerate(['Faca','Machado','Pistola','Espingarda'])},**{n:('suprimentos',i) for i,n in enumerate(['Ferramentas','Conserva','Água','Combustível'])},**{n:('pecas_corrigidas',i) for i,n in enumerate(['Bomba','Membrana','Conexões','Bateria'])},**{n:('viagens',i) for i,n in enumerate(['Emboscada','Ruído distante','Barricada','Ponte avistada'])}}
 RES=[]
 def new_art(c,card,x,y,w,h):
  name=card['name'].split(': ')[-1]
  if name not in NEW_ART:return original_art(c,card,x,y,w,h)
  sheet,i=NEW_ART[name];piece=dict(path=f'assets/v0.5/{sheet}.png',cols=2,rows=2,col=i%2,row=i//2)
+ if sheet=='pecas_corrigidas':piece['crop']=[[20,0,785,480],[800,25,1520,475],[10,530,800,1015],[810,490,1525,1015]][i]
  if sheet!='viagens':piece=f.tight_body(piece)
  else:
   from PIL import Image
@@ -171,7 +172,8 @@ def build(step):
    dest=root/'04_PERSONAGENS_E_INIMIGOS'/name;shutil.copyfile(OLD/ed/'04_PERSONAGENS_E_INIMIGOS'/name,dest);f.record(root,dest,'peões preservados',optional=True,replaces='marcadores planos, mesmos IDs')
   panel(root);f.all_maps(root);f.manual_calibration(root);f.assembly_guide(root);f.organization(root)
   if a.ECON:
-   for file in root.rglob('*.pdf'):q.gray_pdf(file)
+   for file in root.rglob('*.pdf'):
+    if '04_PERSONAGENS_E_INIMIGOS' not in file.parts:q.gray_pdf(file)
   for e in f.FILES[start:]:e['edition']=ed;e['sha256']=hashlib.sha256((root/e['file']).read_bytes()).hexdigest()
   index(root)
  (O/'geometry.json').write_text(json.dumps(f.MAP_GEOMETRY,indent=2));(O/'files.json').write_text(json.dumps(f.FILES,ensure_ascii=False,indent=2))
