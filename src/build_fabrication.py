@@ -41,8 +41,12 @@ def record(root,f,kind,stage='initial',duplex=False,optional=False,replaces=None
 
 def effect(card,initial=False):return card['text'].replace('ceil(H/2)','1') if initial else card['text']
 
+ITEM_ART={'Conserva':('a',0),'Água':('a',1),'Carne':('a',2),'Medicamento':('a',3),'Munição':('a',4),'Material':('a',5),'Bateria':('b',0),'Conexões':('b',1),'Kit de instalação médica':('b',2),'Bancada':('b',3),'Combustível':('b',4),'Madeira':('b',5)}
 def artwork(c,card,x,y,w,h):
  # Same canonical original artwork, mapped uniformly to the requested area.
+ name=card['name'].split(': ')[-1]
+ if name in ITEM_ART:
+  sheet,i=ITEM_ART[name];art=dict(path='assets/v0.4/itens_'+sheet+'.png',col=i%3,row=i//3,cols=3,rows=2);q.raster(c,tight_body(art),x,y,w,h);return
  if card['family']=='MOR':
   heroes=[hero for hero in D['heroes'] if hero['name'] in card['name']]
   for i,hero in enumerate(heroes):q.raster(c,hero['art'],x+i*w/len(heroes),y,w/len(heroes),h)
@@ -50,7 +54,12 @@ def artwork(c,card,x,y,w,h):
  c.saveState();scale=min(w/43,h/31);c.translate((x+(w-43*scale)/2-10*scale)*mm,(y+(h-31*scale)/2-31*scale)*mm);c.scale(scale,scale);q.card_art(c,card,0,0,True);c.restoreState()
 
 def card_front(c,card,x,y,initial):
- text=effect(card,initial);dense=len(text)>165;short=len(text)<=85
+ text=effect(card,initial)
+ from reportlab.platypus import Paragraph
+ from reportlab.lib.styles import ParagraphStyle
+ import html
+ measured=Paragraph(html.escape(text),ParagraphStyle('fit',fontName='Body',fontSize=10,leading=12.5)).wrap(55*mm,200*mm)[1]
+ dense=measured>27*mm;short=measured<=16*mm
  a.rect(c,x*mm,y*mm,63*mm,88*mm,'#ffffff',stroke='#8b9b95',r=1*mm)
  a.line(c,(x+4)*mm,(y+85)*mm,(x+59)*mm,(y+85)*mm,a.OLIVE,1.2)
  para(c,card['name'],x+4,y+(58 if dense else 72),35 if dense else 55,25 if dense else 12,11.5 if dense else 12.5,True,card['id']+' nome')
@@ -117,6 +126,109 @@ def all_cards(root):
  for ids,stem,stage,initial in [(M['initial_cards'],'KIT_INICIAL_1','initial',True),(M['supplement_cards'],'KIT_COMPLEMENTO_2','supplement',False)]:
   f=cards_pdf(root/'02_CARTAS_DUPLEX',ids,stem+'_DUPLEX.pdf',initial);record(root,f,'cartas',stage,True,method='duplex');manual_cards(root,f,ids,stem,stage)
 
+def hero_body(index):
+ art=dict(path='assets/v0.4/herois_'+['a','b','c','d'][index//6]+'.png',col=index%3,row=(index%6)//3,cols=3,rows=2)
+ return tight_body(art)
+
+def tight_body(art):
+ from PIL import Image,ImageOps
+ art=art.copy();im=Image.open(P/art['path']);iw,ih=im.size
+ if 'crop' in art:l,t,r,bot=art['crop']
+ elif Path(art['path']).name in q.REGIONS:
+  cols,rows=q.REGIONS[Path(art['path']).name];l,r=cols[art['col']];t,bot=rows[art['row']]
+ else:
+  cw,ch=iw/art.get('cols',3),ih/art.get('rows',2);l,t=int(art['col']*cw),int(art['row']*ch);r,bot=int(l+cw),int(t+ch)
+ crop=im.crop((l,t,r,bot));mask=crop.getchannel('A').point(lambda v:255 if v>160 else 0) if crop.mode=='RGBA' else ImageOps.grayscale(crop).point(lambda v:255 if v<205 else 0)
+ bounds=mask.getbbox()
+ if bounds:
+  x0,y0,x1,y1=bounds;art['crop']=[max(l,l+x0-2),max(t,t+y0-2),min(r,l+x1+2),min(bot,t+y1+2)]
+ return art
+
+def standee_face(c,label,art,x,y,reverse=False):
+ if reverse:
+  c.saveState();c.translate((x+22)*mm,y*mm);c.scale(-1,1);q.raster(c,art,1,12,20,44);c.restoreState()
+ else:q.raster(c,art,x+1,y+12,20,44)
+ txt(c,label,x+1,y+7.8,6.1,True)
+
+def standees(root,enemy=False):
+ folder=root/'04_PERSONAGENS_E_INIMIGOS'
+ if enemy:items=[dict(label=v['id']+' / '+v['type'],art=tight_body(b.lookup(v['type'])),id=v['id'],type=v['type']) for v in g.enemy_variants()];name='INIMIGOS_VARIANTES_E01_E24_RECORTAR.pdf'
+ else:items=[dict(label=h['name'],art=hero_body(i),id=h['id']) for i,h in enumerate(D['heroes'])];name='HEROIS_24_RECORTAR.pdf'
+ f=folder/name;q.LABEL=str(f);c=canvas.Canvas(str(f),pagesize=A4)
+ for i,item in enumerate(items):
+  slot=i%12;row,col=divmod(slot,6);x=19+col*29;y=161-row*124;q.PAGE=i//12+1
+  if slot==0:txt(c,('VARIANTES DOS MESMOS 24 IDs • nunca use duas do mesmo E' if enemy else '24 HERÓIS EXISTENTES • frente e verso ilustrado espelhado'),10,289,7.5,True)
+  a.rect(c,x*mm,y*mm,22*mm,116*mm,'#ffffff',stroke=a.INK)
+  standee_face(c,item['label'],item['art'],x,y)
+  c.saveState();c.translate((x+22)*mm,(y+116)*mm);c.rotate(180);standee_face(c,item['label'],item['art'],0,0,True);c.restoreState()
+  c.setDash(2,1)
+  for yy in [y+6,y+58,y+110]:a.line(c,x*mm,yy*mm,(x+22)*mm,yy*mm,a.OLIVE,.6)
+  c.setDash();txt(c,'BASE / NÃO COLAR',x+.6,y+2,4.5);c.saveState();c.translate((x+22)*mm,(y+116)*mm);c.rotate(180);txt(c,'BASE / NÃO COLAR',.6,2,4.5);c.restoreState()
+  if slot==11:c.showPage()
+ if len(items)%12:c.showPage()
+ c.save();record(root,f,'peões',optional=True,replaces='marcadores planos de personagem/inimigo; mesmos IDs')
+ return f
+
+def player_panel(root):
+ f=root/'05_PAINEIS/PAINEL_JOGADOR_2_A4.pdf';q.LABEL=str(f);c=canvas.Canvas(str(f),pagesize=landscape(A4))
+ for page in range(2):
+  q.PAGE=page+1;txt(c,f'PJ{page+1} / LADO ÚNICO / TOPO ↑ / corte 277×190 mm / juntar PJ1–PJ2 sem sobreposição',10,204,7)
+  c.saveState();path=c.beginPath();path.rect(10*mm,10*mm,277*mm,190*mm);c.clipPath(path,stroke=0);c.translate((10-277*page)*mm,10*mm)
+  txt(c,'MEU SOBREVIVENTE',8,181,14,True)
+  a.rect(c,8*mm,22*mm,214*mm,152.5*mm,'#ffffff',stroke=a.OLIVE)
+  para(c,'COLOQUE A FICHA COMPACTA AQUI\n210 × 148,5 mm • mesma pessoa, mesmas habilidades e estados',17,77,195,38,13,True)
+  para(c,'FERIMENTOS\n0  1  2  3\nVida máxima 3\n\nFADIGA\n0  1  2  3\n\nFome □ Sede □\n\nXP total ___\nEscolhas\n3 ___\n6 ___\n9 ___',230,28,40,141,9.5)
+  for n in range(10):
+   xx=8+n*24;a.rect(c,xx*mm,6*mm,24*mm,11*mm,a.PAPER,stroke=a.OLIVE);txt(c,str(n),xx+9,9,10,True)
+  txt(c,'3 / 6 / 9: escolha somente a evolução da própria ficha',8,19,7)
+  txt(c,'EQUIPAMENTOS E INVENTÁRIO / MESMAS QUATRO CARGAS',284,181,11.5,True)
+  for i,(x,y,w,h) in enumerate(g.panel_slots()):
+   a.rect(c,x*mm,y*mm,w*mm,h*mm,'#ffffff',stroke=a.OLIVE,r=1*mm);txt(c,f'CARGA {i+1}',x+4,y+h+3,9.5,True)
+   para(c,'Carta 63 × 88 mm\nFolga: 66 × 92 mm',x+5,y+32,w-10,24,10)
+  para(c,'Armas: máximo duas transportadas, dentro destas cargas. Uma usada por ataque. Equipar na mochila é grátis no próprio turno.\nPeça com carga 2 ou 3: marque os demais espaços ocupados, sem duplicar o item. As cargas da ficha e do painel são as mesmas; não somam.\nCapacidade atual ___ / bônus de habilidade ___ / itens além da base: ____________________\nUse lápis, marcador solto ou clipe. Não há trilho ou pino funcional impresso.',284,10,263,59,10)
+  c.restoreState();c.showPage()
+ c.save();record(root,f,'painel ampliado',optional=True,copies=2,replaces='organização compacta na mesa; coloque a ficha existente, não elimina regras')
+ return f
+
+MAP_ASSETS={'Neutro':'comum','Mercado':'mercado','Hospital':'hospital','Oficina':'oficina','Posto':'posto','Condomínio':'condominio','Estação':'estacao'}
+
+def scenario_floor(c,x,y,w,h,z,theme='Neutro'):
+ from PIL import Image
+ key=MAP_ASSETS[theme];file=P/'assets/v0.4'/f'{key}.png';iw,ih=Image.open(file).size
+ uw=min(iw,ih*554/380);uh=uw*380/554;left=(iw-uw)/2;top=(ih-uh)/2;row,col=divmod(z-1,4)
+ art=dict(path=str(file.relative_to(P)),crop=[left+col*uw/4,top+row*uh/4,left+(col+1)*uw/4,top+(row+1)*uh/4])
+ q.raster(c,art,x/mm,y/mm,w/mm,h/mm)
+ # Borda de parede opaca e corredores livres derivados exclusivamente dos conectores.
+ band=2.3*mm*min(w/(138.5*mm),h/(95*mm));floor='#e8e5d9' if not a.ECON else '#f5f5f5'
+ for xx,yy,ww,hh in [(x,y,band,h),(x+w-band,y,band,h),(x,y,w,band),(x,y+h-band,w,band)]:a.rect(c,xx,yy,ww,hh,floor,stroke=floor)
+ edges={tuple(sorted(e)) for e in D['maps'][0]['edges']};scale=w/(138.5*mm);gap=14*mm*scale;depth=12*mm*scale
+ for side,nb in [('L',z-1 if col else None),('R',z+1 if col<3 else None),('U',z-4 if row else None),('D',z+4 if row<3 else None)]:
+  if nb is None or tuple(sorted((z,nb))) not in edges:continue
+  if side=='L':xx,yy,ww,hh=x,y+h/2-gap/2,depth,gap
+  elif side=='R':xx,yy,ww,hh=x+w-depth,y+h/2-gap/2,depth,gap
+  elif side=='U':xx,yy,ww,hh=x+w/2-gap/2,y+h-depth,gap,depth
+  else:xx,yy,ww,hh=x+w/2-gap/2,y,gap,depth
+  a.rect(c,xx,yy,ww,hh,floor,stroke=floor)
+
+def maps_pdf(folder,theme,name):
+ f=folder/name;q.LABEL=str(f);c=canvas.Canvas(str(f),pagesize=landscape(A4))
+ for mi,(r0,c0) in enumerate([(0,0),(0,2),(2,0),(2,2)],1):
+  q.PAGE=mi;txt(c,f'M{mi} / {theme} / LADO A / TOPO ↑ / corte 277×190 mm / união sem sobreposição / 100%',10,204,6.7)
+  for lr in range(2):
+   for lc in range(2):q.zone(c,(r0+lr)*4+c0+lc+1,10+lc*138.5,10+(1-lr)*95,138.5,95,theme)
+  c.showPage()
+ c.save();return f
+
+def all_maps(root):
+ a.floor=scenario_floor
+ f=maps_pdf(root/'06_TABULEIROS','Neutro','COMUNS_M01_M04_LADO_A.pdf');record(root,f,'módulos comuns')
+ q.assemblies(root/'06_TABULEIROS',[0],'MERCADO_MONTAGEM.pdf');record(root,root/'06_TABULEIROS/MERCADO_MONTAGEM.pdf','montagem')
+ q.assemblies(root/'06_TABULEIROS',range(1,6),'DEMAIS_DESTINOS_MONTAGENS.pdf');record(root,root/'06_TABULEIROS/DEMAIS_DESTINOS_MONTAGENS.pdf','montagens','supplement')
+ for m in D['maps']:
+  key=MAP_ASSETS[m['name']];f=maps_pdf(root/'08_EXTRAS_OPCIONAIS',m['name'],key.upper()+'_M01_M04_LADO_A.pdf');record(root,f,'variante temática',optional=True,replaces='COMUNS_M01_M04_LADO_A.pdf (quatro folhas)')
+ # Nenhuma face B: todos os destinos têm seu conjunto separado e nunca exigem virar peça em uso.
+ MAP_GEOMETRY.extend(q.GEOMETRY);q.GEOMETRY.clear()
+
 def save_layout():
  (O/'layout.json').write_text(json.dumps(LAYOUT,ensure_ascii=False,indent=2));(O/'layout_issues.json').write_text(json.dumps(b.issues,ensure_ascii=False,indent=2));(O/'pares_manuais.json').write_text(json.dumps(PAIRS,ensure_ascii=False,indent=2))
 
@@ -127,4 +239,6 @@ if __name__=='__main__':
   for ed in ['ilustrada','economica']:
    root=O/ed;init(root);a.ECON=ed=='economica'
    if args.step=='cards':all_cards(root)
+   if args.step=='pawns':standees(root);standees(root,True);player_panel(root)
+   if args.step=='maps':all_maps(root)
  save_layout();print('Etapa',args.step,'estouros',b.issues[:8])

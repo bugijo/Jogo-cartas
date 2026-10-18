@@ -64,3 +64,6 @@ Base ccff9c8 conferida e preservada. Branch arte/pnp-fabricacao-v0-4. Não exist
 
 ### Fabricação 0.4 — ciclo 2
 Template real gerado em output/edicao-fabricacao-v0.4/amostras; nove cartas representativas, sem estouros. Contratos de 58/72 folhas, pareamento manual sem espelhamento, quatro slots reais, base e limite de inimigos testados RED→GREEN; suíte 19/19. Pequenos valores vêm apenas de catálogo existente. Correção de enquadramento do encontro preserva o rosto inteiro. Próximo: aplicar à seleção e comparar conteúdo impresso.
+
+### Fabricação 0.4 — ciclo 3
+114 cartas diagramadas e alternativas manual/duplex geradas, com 456 comparações de efeitos aprovadas. Uma quebra de linha da Espingarda foi corrigida medindo a altura tipográfica, sem diminuir fonte. Peões e mapas estão em produção independente. Assets novos em assets/v0.4; originais não alterados. Próximo: integrar peões/painel e cenas, unificar índice e validar todas as saídas.
