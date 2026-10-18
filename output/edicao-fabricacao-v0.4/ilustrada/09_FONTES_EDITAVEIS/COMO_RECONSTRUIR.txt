@@ -1,0 +1,1 @@
+As fontes editáveis ficam nos cinco ZIPs FONTES ou no clone da branch arte/pnp-fabricacao-v0-4. Consulte DOWNLOADS_0.4.md na raiz do repositório. Estes arquivos não são componentes para imprimir. Nenhuma referência privada integra as fontes.

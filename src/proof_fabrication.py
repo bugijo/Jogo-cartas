@@ -19,8 +19,9 @@ src=fitz.open(R/'05_PAINEIS/PAINEL_JOGADOR_2_A4.pdf');v=fitz.open();p=v.new_page
 for i in range(2):p.show_pdf_page(fitz.Rect(i*277*MM,0,(i+1)*277*MM,190*MM),src,i,clip=fitz.Rect(10*MM,10*MM,287*MM,200*MM))
 p.draw_rect(fitz.Rect(10*MM,17.5*MM,220*MM,166*MM),color=None,fill=(1,1,1));f=fitz.open(R/'05_PAINEIS/FICHAS_LIA_IVO.pdf');p.show_pdf_page(fitz.Rect(10*MM,17.5*MM,220*MM,166*MM),f,0,clip=fitz.Rect(0,0,210*MM,148.5*MM))
 cards=fitz.open(R/'02_CARTAS_DUPLEX/KIT_INICIAL_1_DUPLEX.pdf')
-for i,card_index in enumerate([24,26,27,28]):
+for i,card_index in enumerate([24,25,26,27]):
  sn,k=divmod(card_index,9);x=277+5+68*i;y=26;col=k%3;row=k//3;p.show_pdf_page(fitz.Rect(x*MM,y*MM,(x+63)*MM,(y+88)*MM),cards,2*sn,clip=fitz.Rect((8.5+65*col)*MM,(14.5+90*row)*MM,(71.5+65*col)*MM,(102.5+90*row)*MM))
+p.insert_text((284*MM,162*MM),'Ensaio de medidas; nao representa uma preparacao de partida.',fontsize=9,color=(.15,.25,.2))
 render(v,E/'PAINEL_COM_CARTAS_REAIS.png',1)
 # Duplex evidence: original fronts above backs, physical orientation explained by labels.
 dup=fitz.open(O/'amostras/AMOSTRA_CARTAS_DUPLEX.pdf');render(dup,E/'CARTAS_FRENTES.png',1.2)
@@ -56,4 +57,14 @@ files=['MERCADO_M01_M04_LADO_A_MONTADO.png','CARTAS_FRENTES.png','PEOES_SIMULADO
 for i,name in enumerate(files):
  im=Image.open(E/name).convert('RGB');im.thumbnail((770,560));x=10+(i%2)*800;y=40+(i//2)*590;out.paste(im,(x,y));draw.text((x,y-27),['Mercado montado','Cartas 63 × 88 mm','Peões (simulação)','Painel com cartas reais','Abrigo preservado'][i],font=font,fill='black')
 out.save(E/'COMPONENTES_0.4.jpg',quality=90)
+# Global contacts and every assembled map are reproducible from current renders.
+for ed in ['ilustrada','economica']:
+ files=sorted((O/'renders'/ed).rglob('*.jpg'));out=Image.new('RGB',(1600,240*((len(files)+9)//10)),'#ccc');draw=ImageDraw.Draw(out)
+ for i,file in enumerate(files):
+  im=Image.open(file);im.thumbnail((152,215));x=i%10*160;y=i//10*240;out.paste(im,(x,y));draw.text((x,y+216),file.stem+' '+file.parent.name[:16],fill='black')
+ out.save(E/('CONTATO_GERAL_'+ed+'.jpg'),quality=85)
+files=sorted(E.glob('*_MONTADO.png'));out=Image.new('RGB',(2100,500*((len(files)+2)//3)),'#ddd');draw=ImageDraw.Draw(out)
+for i,file in enumerate(files):
+ im=Image.open(file).convert('RGB');im.thumbnail((690,465));x=i%3*700;y=i//3*500;out.paste(im,(x,y+25));draw.text((x,y+3),file.stem,fill='black')
+out.save(E/'TODOS_MAPAS_MONTADOS.jpg',quality=90)
 print('Evidências geradas:',len(list(E.iterdir())))

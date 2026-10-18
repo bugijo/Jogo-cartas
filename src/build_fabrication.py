@@ -16,14 +16,21 @@ def art_for_print(art):
  art=art.copy();name=Path(art['path']).name
  if 'crop' not in art and name in q.REGIONS:
   cols,rows=q.REGIONS[name];l,r=cols[art.get('col',0)];t,bot=rows[art.get('row',0)];art['crop']=[l,t,r,bot]
- if not a.ECON:return art
+ if not a.ECON:return map_raster(art)
  from PIL import Image,ImageOps
  path=P/art['path'];out=P/'assets/v0.4/economica'/path.name
  if out not in q.DERIVED:
   out.parent.mkdir(parents=True,exist_ok=True);src=Image.open(path);im=ImageOps.grayscale(src).point(lambda v:min(255,int(v*.78+56.1)))
   if src.mode=='RGBA':im=Image.merge('LA',(im,src.getchannel('A')))
   im.save(out);q.DERIVED.add(out)
- art['path']=str(out.relative_to(P));return art
+ art['path']=str(out.relative_to(P));return map_raster(art)
+def map_raster(art):
+ if not (Path(art['path']).stem.endswith('_ajustado') or Path(art['path']).stem.endswith('_final')):return art
+ from PIL import Image
+ src=P/art['path'];out=P/'assets/v0.4/impressao'/('cinza_' if a.ECON else 'cor_')/src.with_suffix('.jpg').name
+ if out not in q.DERIVED:
+  out.parent.mkdir(parents=True,exist_ok=True);im=Image.open(src);im.convert('L' if a.ECON else 'RGB').save(out,quality=95,subsampling=0);q.DERIVED.add(out)
+ result=art.copy();result['path']=str(out.relative_to(P));return result
 q.art_for_print=art_for_print
 
 def init(root):
@@ -194,7 +201,7 @@ MAP_ASSETS={'Neutro':'comum','Mercado':'mercado','Hospital':'hospital','Oficina'
 
 def scenario_floor(c,x,y,w,h,z,theme='Neutro'):
  from PIL import Image
- key=MAP_ASSETS[theme];file=P/'assets/v0.4'/('condominio_final.png' if key=='condominio' else f'{key}_ajustado.png');iw,ih=Image.open(file).size
+ key=MAP_ASSETS[theme];file=P/'assets/v0.4'/(f'{key}_final.png' if key in ['condominio','oficina'] else f'{key}_ajustado.png');iw,ih=Image.open(file).size
  uw=min(iw,ih*554/380);uh=uw*380/554;left=(iw-uw)/2;top=(ih-uh)/2;row,col=divmod(z-1,4)
  art=dict(path=str(file.relative_to(P)),crop=[left+col*uw/4,top+row*uh/4,left+(col+1)*uw/4,top+(row+1)*uh/4])
  q.raster(c,art,x/mm,y/mm,w/mm,h/mm)
@@ -259,7 +266,7 @@ def manual_calibration(root):
   for n in range(11):a.line(c,(20+10*n)*mm,237*mm,(20+10*n)*mm,243*mm,a.INK,1)
   txt(c,'100 mm entre as pontas',20,230,11,True)
   a.rect(c,35*mm,105*mm,63*mm,88*mm,'#ffffff',stroke=a.INK)
-  txt(c,'TOPO ↑',40,182,12,True);txt(c,'A',40,167,18,True);txt(c,'B',82,118,18,True)
+  txt(c,'TOPO ↑',40,182,12,True);c.setFont('Bold',18);c.drawCentredString(66.5*mm,167*mm,'A');c.drawCentredString(66.5*mm,118*mm,'B')
   para(c,'Recorte as duas peças de 63 × 88 mm. Una os topos A com A e B com B, costas para dentro. Aplique miolo opaco. Confira escala, corte e orientação antes do lote. Este ensaio não mede o registro automático da impressora.',20,33,170,56,12)
   c.showPage()
  c.save();record(root,f,'calibração manual',method='manual')
@@ -304,6 +311,16 @@ def make_index(root):
   if e['optional']:text+=f"| [{Path(e['file']).name}](../{e['file']}) | {e['sheets']} | {e['copies']} | {e['replaces'] or e['kind']} |\n"
  text+='\nPeões: oito folhas (2 heróis + 6 variantes inimigas); preservam limite de 24 inimigos. Painel: duas folhas por jogador; quatro para duas pessoas. Guia de montagem: três opcionais. Seis variantes de destino: 24 folhas; cada conjunto de quatro substitui os quatro módulos comuns. Fichas de todos os heróis: 12 opcionais. Não são expansões de conteúdo.\n\nPDFs de referência privados não fazem parte desta entrega. Não houve montagem física nem playtest humano.\n'
  (root/'00_LEIA_PRIMEIRO/IMPRIMA_ESTES.md').write_text(text)
+ import html
+ body='<h1>Zona Zero / fabricação 0.4 / '+root.name+'</h1><p>Escolha A duplex: <b>58 folhas</b> (25 + 33), OU B recortar e colar: <b>72 folhas</b> (33 + 39). Não imprima ambos. A4, 100%, sem ajustar.</p>'
+ for method,label in [('duplex','A — DUPLEX'),('manual','B — RECORTAR E COLAR')]:
+  body+='<h2>'+label+'</h2><table><tr><th>PDF</th><th>Etapa</th><th>Folhas</th><th>Impressão</th></tr>'
+  for e in entries:
+   if e['optional'] or e['method'] not in ['both',method]:continue
+   body+='<tr><td><a href="../'+e['file']+'">'+html.escape(Path(e['file']).name)+'</a></td><td>'+('Inicial' if e['stage']=='initial' else 'Complemento')+'</td><td>'+str(e['sheets'])+'</td><td>'+e['orientation']+' / '+('duplex, borda longa' if e['duplex'] else 'uma face')+'</td></tr>'
+  body+='</table>'
+ body+='<h2>Extras opcionais</h2><p>Peões: oito folhas; painel: duas por jogador; guia: três; bases de organização: uma; variantes: quatro por destino; todas as fichas: doze. Os marcadores planos e fichas compactas continuam válidos.</p><p>Use miolo opaco na colagem. Mapas: 277 × 190 mm por peça; quatro peças unidas sem sobreposição. Sem montagem física ou playtest humano.</p>'
+ (root/'00_LEIA_PRIMEIRO/ABRA_NO_NAVEGADOR.html').write_text('<!doctype html><meta charset="utf-8"><title>Imprimir Zona Zero</title><style>body{font:16px sans-serif;max-width:1100px;margin:2em auto;padding:1em;color:#203d35}td,th{border:1px solid #aaa;padding:.5em}table{border-collapse:collapse}a{color:#145a74}</style>'+body)
  (root/'00_LEIA_PRIMEIRO/manifesto.json').write_text(json.dumps(dict(version='0.4',rules='0.2',edition=root.name,totals=totals,files=entries),ensure_ascii=False,indent=2))
 
 def organization(root):
@@ -330,6 +347,7 @@ def starter_guide(root):
  assert len(fitz.open(f))==6
 
 def full_build():
+ sample()
  for ed in ['ilustrada','economica']:
   root=O/ed;init(root);a.ECON=ed=='economica';start=len(FILES)
   copy_stable(root);starter_guide(root);all_cards(root);standees(root);standees(root,True);player_panel(root);all_maps(root);manual_calibration(root);assembly_guide(root);organization(root)

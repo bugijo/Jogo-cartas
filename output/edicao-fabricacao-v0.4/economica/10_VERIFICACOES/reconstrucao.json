@@ -1,0 +1,13 @@
+{
+  "base": "ccff9c8",
+  "branch": "arte/pnp-fabricacao-v0-4",
+  "source_extraction": "/tmp/zz-fontes-reconstrucao-04",
+  "source_checks": 1922,
+  "source_proof": true,
+  "unit_tests": 21,
+  "physical_print": false,
+  "human_playtest": false,
+  "reference_zip_available": false,
+  "reference_pdfs": 5,
+  "reference_pages": 6
+}

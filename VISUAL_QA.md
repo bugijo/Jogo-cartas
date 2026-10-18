@@ -37,3 +37,20 @@ Retratos originais foram mantidos; resolução na ficha é aproximadamente 165 p
 ## Resultado final registrado
 
 1.423 verificações digitais passaram sem falhas; 14 testes de regras existentes passaram. Foram renderizadas 216 páginas (144 obrigatórias nas duas edições e 72 de extras). As 108 páginas da econômica foram verificadas canal a canal como cinza. Todos os dez contatos, sete mapas montados de cada edição e amostras ampliadas foram inspecionados. Comparação normalizada dos 12 versos de Intenção por edição: diferença média máxima menor que 0,00003 numa escala RGB de 0 a 255, atribuível à rasterização em posições distintas. Evidência em duplex_visual.json. Mapas e abrigo econômicos têm menor cobertura escura na renderização; isso não mede cartucho.
+
+
+## Fabricação 0.4 — verificação final
+
+Base ccff9c8, nova branch arte/pnp-fabricacao-v0-4. Foram conferidos hashes das fontes mecânicas, todos os efeitos de 114 cartas nos dois métodos/edições, IDs únicos, contagens reais dos PDFs, A4, fontes incorporadas, texto dentro da página, geometria do catálogo e aberturas de 14 mm. Resultado registrado em output/edicao-fabricacao-v0.4/verificacao.json: 1.922 verificações, sem falhas, 300 páginas renderizadas, econômica sem páginas coloridas. Efeitos a 9,5–10 pt. Cartas 63 × 88, grade 193 × 268, margens 8,5/14,5 mm e intervalo 2 mm.
+
+Inspeção visual: contatos de todas as páginas em ambas as edições; amostra de nove cartas diferentes; Espingarda e Jana, densas; frente/verso sobreposto; peões de 24 heróis e três tipos inimigos; rede e simulação digital; painel com ficha e cartas reais; abrigo preservado; sete mapas montados e junções. Corrigidos: medição real da altura dos efeitos, enquadramento dos peões, guia com pasta antiga, móveis cruzando limites (tanque, jardim central e carro da oficina), dependências de prova nas fontes e alvos de calibração manual. Na prova do painel, o papel é tratado como opaco para não deixar o texto-guia transparecer.
+
+Revisão independente verificou invariantes, 19 testes iniciais, manifestações/hash, dimensões e amostras dos métodos. Encontrou dependência de fontes ausente e calibração manual impossível de alinhar pelos alvos; ambos receberam testes que falharam antes da correção. A revisão não julgou semelhança facial exaustiva, montagem física, registro/opacidade da impressora e extração ainda em empacotamento. Fontes e extração final são conferidas separadamente pelo autor.
+
+As cenas opacas são exportadas em JPEG qualidade 95, sem reamostragem e nas dimensões originais; PNGs originais editáveis são preservados. Isso reduz arquivos sem rasterizar regras ou geometria. Mapas têm cerca de 70 ppi efetivos; não se alega 300 ppi nem detalhe acrescentado por ampliação.
+
+Limites reais: não houve impressão física, recorte/colagem ou playtest humano, nem nova validação de equilíbrio. A simulação digital não garante registro duplex nem opacidade da impressora do proprietário. zombecide.zip não foi recebido; somente cinco PDFs/seis páginas, integralmente renderizados e inspecionados, sem tiles/tokens/spawn/folhas de peões. Nenhum componente privado foi incorporado. Não foram encontradas novas contradições mecânicas; regras 0.2 e campanha permanecem congeladas.
+
+Nem todas as artes pequenas atingem 300 ppi efetivos: a resolução depende da prancha e do recorte original. A revisão digital mostrou os objetos reconhecíveis, mas isso permanece uma limitação de acabamento para impressão exigente; não foi ocultada por ampliação artificial. Todas as ilustrações necessárias desta seleção existem e estão integradas.
+
+Reconstrução final do autor: extraídas as cinco partes de fontes em pasta limpa, executados build, validação e provas na ordem documentada. 1.922/1.922 verificações, 300 páginas e capturas produzidas; suíte 21/21. As correções de revisão não deixaram achados menores pendentes. Evidência em reconstrucao.json.

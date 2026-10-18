@@ -22,3 +22,20 @@ class FabricationTests(unittest.TestCase):
   p=self.contract();self.assertEqual(p.MAX_ENEMIES,24);self.assertEqual(p.pawn_capacity(138.5,95),42);self.assertGreaterEqual(p.pawn_capacity(138.5,95),24+6)
  def test_only_one_enemy_variant_per_existing_id(self):
   p=self.contract();self.assertEqual(len(p.enemy_variants()),72);self.assertEqual(len({v['id'] for v in p.enemy_variants()}),24)
+ def test_editable_archive_includes_proof_dependencies(self):
+  import zipfile
+  root=Path(__file__).resolve().parents[1]
+  archive=root/'dist/ZZ_04_FONTES_EDITAVEIS.zip'
+  if not archive.exists():self.skipTest('Verificação de distribuição: gerar pacotes primeiro')
+  with zipfile.ZipFile(archive) as z:
+   self.assertIn('output/edicao-ilustrada-v0.3/ilustrada/extras/mapa_mercado.pdf',z.namelist())
+   build=z.read('src/build_fabrication.py').decode();self.assertIn('sample()',build[build.index('def full_build():'):])
+ def test_manual_calibration_marks_can_align_back_to_back(self):
+  import fitz
+  root=Path(__file__).resolve().parents[1];f=root/'output/edicao-fabricacao-v0.4/ilustrada/03_CARTAS_RECORTAR_E_COLAR/CALIBRACAO_COLAGEM.pdf'
+  if not f.exists():self.skipTest('Gerar PDFs de fabricação primeiro')
+  d=fitz.open(f);center=(35+63/2)*72/25.4
+  for page in d:
+   spans=[s for b in page.get_text('dict')['blocks'] if 'lines' in b for l in b['lines'] for s in l['spans'] if s['text'] in ['A','B']]
+   self.assertEqual(len(spans),2)
+   for s in spans:self.assertAlmostEqual((s['bbox'][0]+s['bbox'][2])/2,center,delta=.5)

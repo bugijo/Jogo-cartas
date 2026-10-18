@@ -325,8 +325,8 @@
       1514,
       1039
     ],
-    "destination": "mapa tático contínuo",
-    "integrated": true,
+    "destination": "rascunho de composição, não distribuído",
+    "integrated": false,
     "pending": null
   },
   {
@@ -348,6 +348,17 @@
       1039
     ],
     "destination": "mapa tático contínuo",
+    "integrated": true,
+    "pending": null
+  },
+  {
+    "file": "assets/v0.4/oficina_final.png",
+    "origin": "geração de imagem integrada",
+    "dimensions": [
+      1514,
+      1039
+    ],
+    "destination": "mapa tático Oficina",
     "integrated": true,
     "pending": null
   }

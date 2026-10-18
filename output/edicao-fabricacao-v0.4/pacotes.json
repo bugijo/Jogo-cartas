@@ -1,0 +1,128 @@
+[
+  {
+    "file": "ZZ_04_ILUSTRADA_DUPLEX_INICIAL.zip",
+    "bytes": 45169408,
+    "sha256": "7a6281a312fe9fe39ddeb632e2b2aaf48698581335a196aba200f4743e78fefe",
+    "description": "ilustrada / duplex / INICIAL: 25 folhas A4. Dia 1."
+  },
+  {
+    "file": "ZZ_04_ILUSTRADA_DUPLEX_COMPLEMENTO.zip",
+    "bytes": 40370227,
+    "sha256": "d703a25ba980a5417477adaae269b26880417745e4db89662a79bbc2105761a2",
+    "description": "ilustrada / duplex / COMPLEMENTO: 33 folhas A4. Dias 2–5; use com o inicial da mesma edição/método."
+  },
+  {
+    "file": "ZZ_04_ILUSTRADA_DUPLEX_COMPLETO.zip",
+    "bytes": 85532124,
+    "sha256": "157a00331544f9c258b85c6f8d303a4578e0b4613b7f6e3f7fbf1fe9062f7806",
+    "description": "ilustrada / duplex / kit completo: 58 folhas A4."
+  },
+  {
+    "file": "ZZ_04_ILUSTRADA_MANUAL_INICIAL.zip",
+    "bytes": 46029990,
+    "sha256": "71e37624182db23020ba836cdc04a9741b8d517092a00f73011c54110b9cd819",
+    "description": "ilustrada / manual / INICIAL: 33 folhas A4. Dia 1."
+  },
+  {
+    "file": "ZZ_04_ILUSTRADA_MANUAL_COMPLEMENTO.zip",
+    "bytes": 41231966,
+    "sha256": "26329106f687a3cbc0b426bed534006ce616a88fb5188b56388a7b51dd929b77",
+    "description": "ilustrada / manual / COMPLEMENTO: 39 folhas A4. Dias 2–5; use com o inicial da mesma edição/método."
+  },
+  {
+    "file": "ZZ_04_ILUSTRADA_MANUAL_COMPLETO.zip",
+    "bytes": 87254435,
+    "sha256": "f9ca23f0b9995a99d2fefc3512d1324dc4a5affd3c481091a69d8034d8de9925",
+    "description": "ilustrada / manual / kit completo: 72 folhas A4."
+  },
+  {
+    "file": "ZZ_04_ILUSTRADA_EXTRAS_OPCIONAIS.zip",
+    "bytes": 28455975,
+    "sha256": "5b8625c18b7afad6b47bd5d0d581e8f40f6a79d0b6d2d9e02b7ab947a65e1372",
+    "description": "ilustrada: extras opcionais. Peões 8 folhas; painel 2 por jogador; guia 3; variantes 4 por destino; todas as fichas 12. Não acrescente tudo ao kit básico automaticamente."
+  },
+  {
+    "file": "ZZ_04_ECONOMICA_DUPLEX_INICIAL.zip",
+    "bytes": 15482637,
+    "sha256": "c9d712ddd06fa238e704941b9e9a5ea32ae97ce8c378bc3d14584182dab4d6bb",
+    "description": "economica / duplex / INICIAL: 25 folhas A4. Dia 1."
+  },
+  {
+    "file": "ZZ_04_ECONOMICA_DUPLEX_COMPLEMENTO.zip",
+    "bytes": 15154065,
+    "sha256": "2465d718992a3535515f96cdc327566e1747575fe897845c725b08776266d7d5",
+    "description": "economica / duplex / COMPLEMENTO: 33 folhas A4. Dias 2–5; use com o inicial da mesma edição/método."
+  },
+  {
+    "file": "ZZ_04_ECONOMICA_DUPLEX_COMPLETO.zip",
+    "bytes": 30629180,
+    "sha256": "87f6e0345947f2a44f08fa93cbed95f364eefe1ae861672bfde9d87d68631f7e",
+    "description": "economica / duplex / kit completo: 58 folhas A4."
+  },
+  {
+    "file": "ZZ_04_ECONOMICA_MANUAL_INICIAL.zip",
+    "bytes": 16345385,
+    "sha256": "dfc8bf59fd751e40672dcae91baf28eb6d87ee378919940b9bc5ce353ecde22f",
+    "description": "economica / manual / INICIAL: 33 folhas A4. Dia 1."
+  },
+  {
+    "file": "ZZ_04_ECONOMICA_MANUAL_COMPLEMENTO.zip",
+    "bytes": 16017805,
+    "sha256": "a855f3f41dd4a7c68aad2abf0f2bf5a40d793b58122070f8a7fb6728a4431769",
+    "description": "economica / manual / COMPLEMENTO: 39 folhas A4. Dias 2–5; use com o inicial da mesma edição/método."
+  },
+  {
+    "file": "ZZ_04_ECONOMICA_MANUAL_COMPLETO.zip",
+    "bytes": 32355657,
+    "sha256": "d16428f6a5302bf48d53a27d58525c21734fca8d8e06579f3e23d236bc0fcafb",
+    "description": "economica / manual / kit completo: 72 folhas A4."
+  },
+  {
+    "file": "ZZ_04_ECONOMICA_EXTRAS_OPCIONAIS.zip",
+    "bytes": 11622939,
+    "sha256": "a11f40d6bd45e2e3a2fad59d169a5ae085723d5d429a01f645cf4a96a2c1448d",
+    "description": "economica: extras opcionais. Peões 8 folhas; painel 2 por jogador; guia 3; variantes 4 por destino; todas as fichas 12. Não acrescente tudo ao kit básico automaticamente."
+  },
+  {
+    "file": "ZZ_04_FONTES_EDITAVEIS.zip",
+    "bytes": 198407778,
+    "sha256": "1e46b339a700650fdf5756548daffeacacb758995dba2ac54bdafa2bb6961e06",
+    "description": "Fontes editáveis e base preservada. Python 3; pip install reportlab Pillow pymupdf. Execute python src/build_fabrication.py --step all; python src/validate_fabrication.py; python src/proof_fabrication.py. O repositório GitHub contém o histórico e todas as edições anteriores."
+  },
+  {
+    "file": "ZZ_04_FONTES_CODIGO.zip",
+    "bytes": 178496,
+    "sha256": "7d061a7e1b0835dee8f52a2cb25d642f566929d90a873a28224a1b2c7ecdd5de",
+    "description": "Parte das fontes editáveis: CODIGO. Para reconstruir, extraia as cinco partes FONTES no mesmo diretório. Alternativa: clone a branch do repositório, que já contém todas elas."
+  },
+  {
+    "file": "ZZ_04_FONTES_ARTES.zip",
+    "bytes": 82221575,
+    "sha256": "938179ab136d1b24245b91651ed31b71c71c34f31f506c9ccd5b1ae4347b3281",
+    "description": "Parte das fontes editáveis: ARTES. Para reconstruir, extraia as cinco partes FONTES no mesmo diretório. Alternativa: clone a branch do repositório, que já contém todas elas."
+  },
+  {
+    "file": "ZZ_04_FONTES_BASE_ILUSTRADA.zip",
+    "bytes": 88263022,
+    "sha256": "0dad51256c88c6fdeb66c5554c9ab0e6fa64f8004c1eff463ea57125508813ce",
+    "description": "Parte das fontes editáveis: BASE_ILUSTRADA. Para reconstruir, extraia as cinco partes FONTES no mesmo diretório. Alternativa: clone a branch do repositório, que já contém todas elas."
+  },
+  {
+    "file": "ZZ_04_FONTES_BASE_ECONOMICA.zip",
+    "bytes": 27716567,
+    "sha256": "659c88ce1c39552ce5ac278f488b8bf559661bdf1ac286f41290b662daca3aa8",
+    "description": "Parte das fontes editáveis: BASE_ECONOMICA. Para reconstruir, extraia as cinco partes FONTES no mesmo diretório. Alternativa: clone a branch do repositório, que já contém todas elas."
+  },
+  {
+    "file": "ZZ_04_FONTES_BASE_MANIFESTOS.zip",
+    "bytes": 32360,
+    "sha256": "78f5b1126ac30d1b63106014797b428c5a36613c5c4408eb1504f3170d2a1b89",
+    "description": "Parte das fontes editáveis: BASE_MANIFESTOS. Para reconstruir, extraia as cinco partes FONTES no mesmo diretório. Alternativa: clone a branch do repositório, que já contém todas elas."
+  },
+  {
+    "file": "ZZ_04_PROVAS_E_VERIFICACOES.zip",
+    "bytes": 27193576,
+    "sha256": "51dfe3670433163bcbcde4a6825518ca0a96e4aa2a6edaea4267236cd503c6cb",
+    "description": "Capturas e relatórios digitais; não imprimir como componentes."
+  }
+]
