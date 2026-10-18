@@ -197,7 +197,7 @@ def build(step):
   for e in f.FILES[start:]:e['edition']=ed;e['sha256']=hashlib.sha256((root/e['file']).read_bytes()).hexdigest()
   index(root)
  (O/'geometry.json').write_text(json.dumps(f.MAP_GEOMETRY,indent=2));(O/'files.json').write_text(json.dumps(f.FILES,ensure_ascii=False,indent=2))
- # Main boards use only vectors: ppi is not a meaningful limitation.
+ # Pisos vetoriais e mobiliário raster nativo; medir o ppi efetivo no PDF final.
  RES.extend(dict(file=e['file'],component='mapa principal',kind='arquitetura vetorial + mobiliário raster nativo',effective_ppi=None,print_box_mm=[277,190],resolution_status='piso vetorial; imagens nativas limitadas a ≥170 ppi, verificar resolucao_pdfs.json') for e in f.FILES if e['kind'] in ['módulos comuns','variante temática'])
  (O/'resolucao.json').write_text(json.dumps(RES,ensure_ascii=False,indent=2))
 if __name__=='__main__':

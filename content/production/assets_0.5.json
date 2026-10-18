@@ -183,7 +183,7 @@
       "pixels": null
     }
   ],
-  "map_minimum_ppi": 201.3,
+  "map_minimum_ppi": 211.3,
   "architecture": "vetorial original em escala física",
   "native_resize": false,
   "ppi_method": "pixels nativos divididos pelo tamanho impresso em polegadas, usando a transformação real do XObject no PDF; alfa altera enquadramento, não densidade",

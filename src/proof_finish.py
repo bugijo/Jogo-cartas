@@ -103,7 +103,7 @@ out=fitz.open();page=out.new_page(width=210*MM,height=297*MM)
 for i,root in enumerate([P/'output/edicao-fabricacao-v0.4/ilustrada',R]):
  doc=fitz.open(root/'08_EXTRAS_OPCIONAIS/MERCADO_M01_M04_LADO_A.pdf');y=25+i*130;page.show_pdf_page(fitz.Rect(55*MM,y*MM,155*MM,(y+100)*MM),doc,2,clip=fitz.Rect(20*MM,40*MM,120*MM,140*MM));page.insert_text((55*MM,(y-5)*MM),'0.4 / 100 x 100 mm' if i==0 else '0.5 / 100 x 100 mm / vetores',fontsize=11)
 page.insert_text((30*MM,285*MM),'100% / sem ajustar. Prova digital; nao comprova impressao fisica.',fontsize=9);out.save(E/'DETALHE_MAPA_ESCALA_REAL_A4.pdf');render(out,E/'DETALHE_MAPA_ESCALA_REAL_A4.png',1.3)
-# SVGs keep map drawings editable; no raster background in these files.
+# SVGs mantêm piso e geometria editáveis, com mobiliário raster nativo incorporado.
 svg=P/'assets/v0.5/vetores';svg.mkdir(exist_ok=True)
 import gzip
 for stem,doc in maps.items():(svg/(stem+'.svgz')).write_bytes(gzip.compress(doc[0].get_svg_image(text_as_path=False).encode(),compresslevel=9))

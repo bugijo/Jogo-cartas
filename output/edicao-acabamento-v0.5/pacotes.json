@@ -1,0 +1,116 @@
+[
+  {
+    "file": "ZZ_05_ILUSTRADA_DUPLEX_COMPLETO.zip",
+    "bytes": 66174933,
+    "sha256": "ade1e853f65af7f1f96dae0d8fea15a293feb4f832cf3cde972e3fe6f3bb4eaa",
+    "description": "ilustrada / duplex: 58 A4. 25 iniciais + 33 complemento. Cartas 63×88 mm. Somente cartas/calibração duplex retrato, borda longa. Restante uma face."
+  },
+  {
+    "file": "ZZ_05_ILUSTRADA_DUPLEX_INICIAL.zip",
+    "bytes": 34133202,
+    "sha256": "0fcd7bd1c7e3bca15965f1b89b4dfafad47c0286a75eb1b6b7f2fd0f8cc1fe16",
+    "description": "ilustrada / duplex / INICIAL: 25 A4. Substitui a etapa correspondente no ZIP completo; não imprimir ambos."
+  },
+  {
+    "file": "ZZ_05_ILUSTRADA_DUPLEX_COMPLEMENTO.zip",
+    "bytes": 32048391,
+    "sha256": "172c9bcd0c5af4a91b26c847ab11b23fd203d606ed14906ba2a4df13b88c968d",
+    "description": "ilustrada / duplex / COMPLEMENTO: 33 A4. Substitui a etapa correspondente no ZIP completo; não imprimir ambos."
+  },
+  {
+    "file": "ZZ_05_ILUSTRADA_MANUAL_COMPLETO.zip",
+    "bytes": 67886518,
+    "sha256": "e8d50704578b28fb1e1fcf372c12ee04caa025e88cc6a7dbe0c6128106b0c842",
+    "description": "ilustrada / manual: 72 A4. 33 iniciais + 39 complemento. Cartas 63×88 mm. Tudo uma face. Frente + miolo opaco + verso; topos iguais. Remova códigos fora do corte."
+  },
+  {
+    "file": "ZZ_05_ILUSTRADA_EXTRAS_OPCIONAIS.zip",
+    "bytes": 36449213,
+    "sha256": "9b567daa8bedc704ccb385b7f8fb1d2483a262c882342286b2e4c12443e40b71",
+    "description": "ilustrada: extras. Painel 2 folhas por jogador; peões 8; guia 3; bases 1; variantes 4 por destino substituem comuns; fichas 24 heróis 12. Máximo 24 inimigos, não duplicar ID."
+  },
+  {
+    "file": "ZZ_05_ECONOMICA_DUPLEX_COMPLETO.zip",
+    "bytes": 36584422,
+    "sha256": "a150b479e00d2e4cd270844d2e228069a90a8e74ddeeee13958a3b59b29d7f57",
+    "description": "economica / duplex: 58 A4. 25 iniciais + 33 complemento. Cartas 63×88 mm. Somente cartas/calibração duplex retrato, borda longa. Restante uma face."
+  },
+  {
+    "file": "ZZ_05_ECONOMICA_DUPLEX_INICIAL.zip",
+    "bytes": 17703919,
+    "sha256": "827fee4b4dd0687e9dcc5f76a00d48819d237127b3b7b8743a8c96c8ec10a52d",
+    "description": "economica / duplex / INICIAL: 25 A4. Substitui a etapa correspondente no ZIP completo; não imprimir ambos."
+  },
+  {
+    "file": "ZZ_05_ECONOMICA_DUPLEX_COMPLEMENTO.zip",
+    "bytes": 18887170,
+    "sha256": "8fedce2e88028505727b65eaff193581e1bd3d05ccc4cd00976e8f31161abb58",
+    "description": "economica / duplex / COMPLEMENTO: 33 A4. Substitui a etapa correspondente no ZIP completo; não imprimir ambos."
+  },
+  {
+    "file": "ZZ_05_ECONOMICA_MANUAL_COMPLETO.zip",
+    "bytes": 38306718,
+    "sha256": "01809fc2ab840216fbe01e0c7a8cad666465946a7402446851eafcd6b44d459b",
+    "description": "economica / manual: 72 A4. 33 iniciais + 39 complemento. Cartas 63×88 mm. Tudo uma face. Frente + miolo opaco + verso; topos iguais. Remova códigos fora do corte."
+  },
+  {
+    "file": "ZZ_05_ECONOMICA_EXTRAS_OPCIONAIS.zip",
+    "bytes": 17487011,
+    "sha256": "f6acf6a16d561aec6bb9831013a9cd1ba045f2eeff14039d5c0076ca6b54e62a",
+    "description": "economica: extras. Painel 2 folhas por jogador; peões 8; guia 3; bases 1; variantes 4 por destino substituem comuns; fichas 24 heróis 12. Máximo 24 inimigos, não duplicar ID."
+  },
+  {
+    "file": "ZZ_05_FONTES_CODIGO.zip",
+    "bytes": 214448,
+    "sha256": "eb8243695f0a4e0c85cda6b07a223a0b60c6ac24630fb4ed3915415dff1076ed",
+    "description": "FONTES: extraia TODAS as oito partes FONTES_05 no mesmo diretório, preservando caminhos. Python 3 + requirements.txt + DejaVu Sans. Execute python src/build_finish.py --step all; python src/validate_finish.py; python src/proof_finish.py. Alternativa: clone arte/pnp-acabamento-v0-5. Não imprimir fontes."
+  },
+  {
+    "file": "ZZ_05_FONTES_ARTES_NOVAS.zip",
+    "bytes": 30262024,
+    "sha256": "ef1925bd0f3af7bf31ddc3d69a76cf57cf64909f84120fe2060beb304696c166",
+    "description": "FONTES: extraia TODAS as oito partes FONTES_05 no mesmo diretório, preservando caminhos. Python 3 + requirements.txt + DejaVu Sans. Execute python src/build_finish.py --step all; python src/validate_finish.py; python src/proof_finish.py. Alternativa: clone arte/pnp-acabamento-v0-5. Não imprimir fontes."
+  },
+  {
+    "file": "ZZ_05_FONTES_VETORES.zip",
+    "bytes": 18591080,
+    "sha256": "cc9cf3ffcec7e1385ad9b0dcc34fb3aa04d5d5fe18f53957dd72ffdee2eda092",
+    "description": "FONTES: extraia TODAS as oito partes FONTES_05 no mesmo diretório, preservando caminhos. Python 3 + requirements.txt + DejaVu Sans. Execute python src/build_finish.py --step all; python src/validate_finish.py; python src/proof_finish.py. Alternativa: clone arte/pnp-acabamento-v0-5. Não imprimir fontes."
+  },
+  {
+    "file": "ZZ_05_FONTES_ARTES_BASE04.zip",
+    "bytes": 82221575,
+    "sha256": "938179ab136d1b24245b91651ed31b71c71c34f31f506c9ccd5b1ae4347b3281",
+    "description": "FONTES: extraia TODAS as oito partes FONTES_05 no mesmo diretório, preservando caminhos. Python 3 + requirements.txt + DejaVu Sans. Execute python src/build_finish.py --step all; python src/validate_finish.py; python src/proof_finish.py. Alternativa: clone arte/pnp-acabamento-v0-5. Não imprimir fontes."
+  },
+  {
+    "file": "ZZ_05_FONTES_PDF_BASE03_ILUSTRADA.zip",
+    "bytes": 88263022,
+    "sha256": "0dad51256c88c6fdeb66c5554c9ab0e6fa64f8004c1eff463ea57125508813ce",
+    "description": "FONTES: extraia TODAS as oito partes FONTES_05 no mesmo diretório, preservando caminhos. Python 3 + requirements.txt + DejaVu Sans. Execute python src/build_finish.py --step all; python src/validate_finish.py; python src/proof_finish.py. Alternativa: clone arte/pnp-acabamento-v0-5. Não imprimir fontes."
+  },
+  {
+    "file": "ZZ_05_FONTES_PDF_BASE03_ECONOMICA.zip",
+    "bytes": 27716567,
+    "sha256": "659c88ce1c39552ce5ac278f488b8bf559661bdf1ac286f41290b662daca3aa8",
+    "description": "FONTES: extraia TODAS as oito partes FONTES_05 no mesmo diretório, preservando caminhos. Python 3 + requirements.txt + DejaVu Sans. Execute python src/build_finish.py --step all; python src/validate_finish.py; python src/proof_finish.py. Alternativa: clone arte/pnp-acabamento-v0-5. Não imprimir fontes."
+  },
+  {
+    "file": "ZZ_05_FONTES_MANIFESTOS_BASE.zip",
+    "bytes": 32360,
+    "sha256": "78f5b1126ac30d1b63106014797b428c5a36613c5c4408eb1504f3170d2a1b89",
+    "description": "FONTES: extraia TODAS as oito partes FONTES_05 no mesmo diretório, preservando caminhos. Python 3 + requirements.txt + DejaVu Sans. Execute python src/build_finish.py --step all; python src/validate_finish.py; python src/proof_finish.py. Alternativa: clone arte/pnp-acabamento-v0-5. Não imprimir fontes."
+  },
+  {
+    "file": "ZZ_05_FONTES_PDF_BASE04.zip",
+    "bytes": 66100860,
+    "sha256": "983977f3a0b606984b0959f866fa703459ea740b72c2af54999adc112cbdc906",
+    "description": "FONTES: extraia TODAS as oito partes FONTES_05 no mesmo diretório, preservando caminhos. Python 3 + requirements.txt + DejaVu Sans. Execute python src/build_finish.py --step all; python src/validate_finish.py; python src/proof_finish.py. Alternativa: clone arte/pnp-acabamento-v0-5. Não imprimir fontes."
+  },
+  {
+    "file": "ZZ_05_PROVAS_E_RESOLUCAO.zip",
+    "bytes": 58043716,
+    "sha256": "3f35d1a6d762df52327bc2ef6f46f7d5b5297f72e48261db433cb4c4a55e58d6",
+    "description": "Comparações reais 0.4→0.5 extraídas dos PDFs finais. Detalhe A4 100×100 mm em escala 100%. Capturas não são componentes obrigatórios. Resolução por imagem e relatório de verificação incluídos."
+  }
+]

@@ -22,3 +22,10 @@ Orientação adicional do proprietário: manter personagens e todo conteúdo; re
 ## Fabricação 0.4
 
 Prioridade: objetos legíveis e ambientes ortográficos contínuos. Arte em camada A, geometria preservada em B, informação em C e fabricação em D. As sete cenas foram ajustadas à planta 4 × 4 para que carros, tanques e móveis não atravessem paredes; corredores de 14 mm recebem limpeza vetorial. Composição não cria obstáculos, coberturas nem distâncias novas. Rostos canônicos continuam nas fichas/cartas; os peões acrescentam corpo coerente, sem trocar nome ou profissão. Versos de intenções são uniformes por família. Layout das cartas: nome, arte, metadados existentes, efeito integral, família/ID discreto. Efeitos a 9,5–10 pt. Não há cópia de identidade, atributos ou componentes da referência privada.
+
+
+## Acabamento 0.5
+
+Molduras originais de equipamento de campo, metal gasto e papel claro; leitura sem textura sob o efeito. Títulos e valores estruturados em posições fixas, efeito integral a 9,5–10 pt. Imagens nativas maiores em armas e suprimentos. Bordas e versos por função/família com símbolos e nomes; nenhum ID individual no verso secreto. Painel em superfície de tecido com costura/fechos ilustrados, sem simular pinos. Mesmas quatro cargas e duas A4 por jogador.
+
+Os sete locais são desenhados globalmente em escala física, com pisos e arquitetura vetoriais contínuos e mobiliário nativo original. Estacionamento, setores de venda, caixas, câmaras frias e estoque são composições funcionais do mercado; hospital, oficina, posto, estação e condomínio recebem objetos próprios. Não usar uma imagem pequena ampliada, nem uma cena por quadrado. Fronteiras de zonas conectadas são tracejadas; paredes sem conexão permanecem espessas, soleiras de 14 mm nos mesmos centros, portas e bloqueios pelos mesmos dados. Mudança de notação gráfica, sem novo caminho ou regra.

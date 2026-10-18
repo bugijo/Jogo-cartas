@@ -27,3 +27,10 @@ As plantas táticas têm geometria vetorial exata; objetos não criam obstáculo
 ## Fabricação 0.4
 
 Inventário por arquivo, dimensão, origem e integração em [assets_0.4.json](content/production/assets_0.4.json). Novos corpos completos usam os retratos originais como referência; retratos das fichas e encontros foram preservados. Quatro pranchas contêm 24 corpos; duas pranchas contêm 12 itens; sete cenas contínuas integradas. Rascunhos de cenas estão preservados localmente e identificados como não integrados. Econômica é derivada pelo gerador; não é arte independente. Não há prompts contados como imagens. Nenhum PDF ou desenho privado de referência foi incorporado. Mapas têm cerca de 70 ppi efetivos; não foram ampliados para alegar detalhe novo. Textos, medidas, paredes e símbolos funcionais são vetoriais.
+
+
+## Acabamento 0.5
+
+[Inventário estruturado](content/production/assets_0.5.json), [medições por imagem no PDF](output/edicao-acabamento-v0.5/resolucao_pdfs.json) e [CSV](output/edicao-acabamento-v0.5/RESOLUCAO_EFETIVA.csv). Cinco fontes de cartas integradas (armas, suprimentos, peças corrigidas, viagens e caixa de ferramentas individual); seis pranchas de mobiliário original; sete SVGZ extraídos dos tabuleiros finais. Prancha de peças inicial é rascunho não integrado. Retratos, peões, abrigo e fichas compactas 0.4 preservados. Não há prompts contabilizados como imagens.
+
+Pisos e arquitetura vetoriais; imagens de mobiliário medem pelo menos 211,3 ppi nos módulos. O relatório identifica cada raster por PDF, página, xref, pixels e densidade efetiva. Artes antigas de cartas/rostos mantidas podem ficar abaixo de 300 ppi; não se declara que todas atingem essa meta. JPEG 95 preserva dimensões e máscara alfa, sem reamostragem; PNGs originais editáveis incluídos. A miniatura de alfa é usada somente na análise do enquadramento, nunca como imagem impressa.

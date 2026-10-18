@@ -1,4 +1,4 @@
-"""Cenas globais originais 0.5. Coordenadas em mm; tudo vetorial, sem imagem esticada."""
+"""Cenas globais originais 0.5. Coordenadas em mm; piso vetorial e mobiliário raster nativo, sem imagem esticada."""
 import math,random
 from reportlab.lib.units import mm
 import illustrated_art as a

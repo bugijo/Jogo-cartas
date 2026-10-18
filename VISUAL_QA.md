@@ -54,3 +54,18 @@ Limites reais: não houve impressão física, recorte/colagem ou playtest humano
 Nem todas as artes pequenas atingem 300 ppi efetivos: a resolução depende da prancha e do recorte original. A revisão digital mostrou os objetos reconhecíveis, mas isso permanece uma limitação de acabamento para impressão exigente; não foi ocultada por ampliação artificial. Todas as ilustrações necessárias desta seleção existem e estão integradas.
 
 Reconstrução final do autor: extraídas as cinco partes de fontes em pasta limpa, executados build, validação e provas na ordem documentada. 1.922/1.922 verificações, 300 páginas e capturas produzidas; suíte 21/21. As correções de revisão não deixaram achados menores pendentes. Evidência em reconstrucao.json.
+
+
+## Acabamento 0.5
+
+Base 9db928d, branch arte/pnp-acabamento-v0-5. 4.798 verificações aprovadas, 29 testes e 300 páginas renderizadas. Na conferência final, uma saída de mapas antiga foi detectada; o build completo, as 300 renderizações e todas as provas foram refeitos. Um teste novo exige a planta global nos PDFs distribuídos. Conteúdo e IDs dos mesmos 114 componentes conferidos; hashes canônicos de regras/campanha/catálogo preservados; peões bons copiados byte a byte. Frente/verso e ambos os métodos mantêm 58/72 A4.
+
+Resolução medida na transformação física de cada imagem do PDF. Mobiliário dos sete tabuleiros: mínimo 211,3 ppi; piso e arquitetura vetoriais. Não foi reutilizado o fundo de 70 ppi nem aplicada ampliação artificial. PNGs nativos e SVGZ disponíveis. Exceções de 300 ppi em artes antigas de cartas/rostos estão no CSV por arquivo/página/xref.
+
+Inspeção: contatos das 300 páginas, armas e carta densa ampliadas, folha A4 com mesmos IDs nas duas versões, frente/verso, painel com cartas reais e ficha, sete mapas montados e junções, econômica em cinza e detalhe de mapa 100×100 mm em A4 real. Comparações ARMA_04_05, CARTA_DENSA_04_05, FOLHA_A4_04_05, PAINEL_04_05, MAPA_ANTES_DEPOIS e OFICINA_04_05 vêm dos PDFs finais. Não são mockups de componentes inexistentes.
+
+Corrigidos: cortes de pranchas e fragmentos vizinhos; forms com acentos que desapareciam em leitores PDF; fonte dos valores estruturados; etiqueta que tratava materiais/munição/medicamento como porções. Esta última era erro de apresentação herdado: agora apenas comida/água exibem rendimento em porções. Efeitos integrais, recursos, custos e quantidades continuam os mesmos. Testes reproduziram a falha de forms, o fragmento e a etiqueta de unidade antes da correção.
+
+Limites: sem impressão física, montagem física ou playtest humano; simulação digital não garante registro/opacity da impressora doméstica. Não há nova validação de equilíbrio ou diversão. Revisão direta do autor realizada. A tentativa de revisão independente não produziu parecer: o agente revisor ficou indisponível por limite de uso da ferramenta. A reconstrução limpa é registrada em reconstrucao.json.
+
+Reconstrução limpa: oito partes de fontes extraídas juntas, build, validação e provas executados. 4.792 verificações aprovadas e 300 imagens renderizadas idênticas às da entrega. A diferença de seis verificações decorre dos arquivos de relatório já existentes no checkout completo. Na pasta limpa: 27 testes aprovados e dois testes históricos de distribuição 0.4 omitidos por não haver seu pacote/PDF não utilizado; no checkout completo, 29/29 passaram. Registro em output/edicao-acabamento-v0.5/reconstrucao.json.

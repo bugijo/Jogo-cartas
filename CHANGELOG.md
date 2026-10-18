@@ -33,3 +33,8 @@
 ## 0.4 — fabricação e organização
 
 Base ccff9c8 preservada; branch arte/pnp-fabricacao-v0-4. Cartas com efeito 9,5–10 pt, alternativas duplex/colagem, peões de corpo completo, painel com cartas físicas e cenas contínuas em sete mapas. Guia inicial atualizado na seção de impressão. Regras 0.2, catálogo e campanha inalterados. Pacote básico permanece 58 folhas; alternativa manual usa 72. Extras claramente opcionais.
+
+
+## 0.5 — acabamento
+
+Novos templates para as mesmas 114 cartas, artes nativas de armas/suprimentos/peças/viagens, painel de campo claro para equipamento real e sete plantas contínuas com arquitetura vetorial e mobiliário medido acima de 200 ppi. Fonte de efeito/valores ≥9,5 pt. Correções gráficas de unidade, recortes e forms PDF. Sem alterações mecânicas, novas cartas ou folhas obrigatórias. Preservadas 58/72 folhas e toda a edição 0.4.

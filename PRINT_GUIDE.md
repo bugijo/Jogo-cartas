@@ -56,3 +56,8 @@ A4 exato, 100%, sem ajustar. [Índice ilustrado](output/edicao-fabricacao-v0.4/i
 Peões opcionais: 2 folhas para 24 heróis e 6 para as três variantes dos mesmos E01–E24; máximo 24 inimigos simultâneos, nunca duplicar um ID. Rede 22 × 116 mm, corpo duplo, dobra central e abas de 6 mm opostas; base 22 × 12 mm. Verso é imagem espelhada, não anatomia posterior. Marcadores planos continuam válidos. Painel opcional: 2 folhas por jogador; 4 para duas pessoas. Quatro slots 66 × 92 mm para as mesmas quatro cargas-base; armas ocupam essas cargas. Guarde ficha compacta no painel; não acrescente capacidade.
 
 Mapas: corte 277 × 190 mm, M1/M2 acima de M3/M4, todos LADO A, união sem sobreposição: 554 × 380 mm. Nenhuma face alternativa foi emparelhada. Variantes temáticas: quatro folhas por destino, substituem as comuns. Guia ilustrado: 3 opcionais; bases de organização: 1 opcional; todas as fichas: 12 opcionais. Não há medição de tinta, teste em impressora doméstica ou montagem física. Faça calibração e teste de opacidade antes do lote.
+
+
+## Acabamento 0.5
+
+[Índice](DOWNLOADS_0.5.md). Mesmo regime: 25+33=58 folhas duplex ou 33+39=72 manuais; uma edição e um método. Escala 100%, sem ajustar. Somente cartas/calibração duplex retrato, borda longa. Mapas e painéis paisagem: uma face. M1/M2 acima de M3/M4, cortar 277×190 mm e unir sem sobreposição. Símbolos de zona/porta atualizados nos diagramas sem mudar a geometria. Peões e abrigo preservados. Extras: painel 2 por jogador, peões 8, guia 3, bases 1, variante 4 por destino. Detalhe A4 de comparação é uma prova opcional, não componente obrigatório.

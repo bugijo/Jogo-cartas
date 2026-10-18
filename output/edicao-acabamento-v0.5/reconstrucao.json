@@ -1,0 +1,27 @@
+{
+  "source_parts": 8,
+  "clean_directory": "/tmp/zz05-reconstrucao",
+  "commands": [
+    "python src/build_finish.py --step all",
+    "python src/validate_finish.py",
+    "python src/proof_finish.py",
+    "python -m unittest discover -s tests"
+  ],
+  "checks": 4792,
+  "passed": 4792,
+  "rendered_pages": 300,
+  "identical_render_files": 300,
+  "different_renders": [],
+  "missing_renders": [],
+  "tests": {
+    "discovered": 29,
+    "passed": 27,
+    "skipped": 2,
+    "skip_reason": "Dois testes históricos de distribuição 0.4 requerem seu ZIP e PDF não utilizados pelo build 0.5. No checkout completo, todos os 29 passaram."
+  },
+  "notes": [
+    "Oito partes extraídas juntas; teste de planta global sincronizado antes da validação.",
+    "4.792 verificações e 300 capturas idênticas às da entrega; 27 testes aprovados, dois históricos da distribuição 0.4 omitidos. O checkout completo passou nos 29.",
+    "Sem impressão física ou playtest humano; revisão independente indisponível por limite de uso."
+  ]
+}

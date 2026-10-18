@@ -23,6 +23,14 @@ class FinishTests(unittest.TestCase):
    d=fitz.open(f);fitz.TOOLS.mupdf_warnings(reset=True)
    for page in d:page.get_pixmap(matrix=fitz.Matrix(.2,.2))
    self.assertNotIn('cannot find XObject',fitz.TOOLS.mupdf_warnings(),f.name)
+ def test_delivered_maps_use_the_current_continuous_scene(self):
+  for ed in ['ilustrada','economica']:
+   root=O/ed
+   paths=list((root/'08_EXTRAS_OPCIONAIS').glob('*_M01_M04_LADO_A.pdf'))+[root/'06_TABULEIROS/COMUNS_M01_M04_LADO_A.pdf']
+   for path in paths:
+    doc=fitz.open(path)
+    for page in doc:
+     self.assertTrue(any('ZZ05_' in item[1] for item in page.get_xobjects()),str(path)+' deve usar a planta global atual, não a antiga composição por zona')
  def test_atlas_crop_excludes_neighbor_fragments(self):
   from art_finish_maps import arrangement_crop
   crop=arrangement_crop(P/'assets/v0.5/mapa_mercado.png',1)

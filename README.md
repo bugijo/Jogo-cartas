@@ -1,3 +1,7 @@
+# Acabamento 0.5 / arquivos para imprimir
+
+[Downloads 0.5](DOWNLOADS_0.5.md): ilustrada e econômica, mesmas 58 folhas duplex ou 72 para colar. Cartas com arte nativa, painel de campo opcional e tabuleiros contínuos com piso vetorial e mobiliário acima de 200 ppi medidos. Personagens, regras e campanha preservados. [Relatório visual](VISUAL_QA.md). Edições anteriores abaixo permanecem disponíveis.
+
 # Fabricação 0.4 / arquivos para imprimir
 
 [Abra o índice de downloads](DOWNLOADS_0.4.md). Edição ilustrada e econômica; escolha duplex (58 A4: 25 + 33) ou recortar/colar (72 A4: 33 + 39). Peões e painéis ampliados são opcionais. Regras, campanha, personagens e edições anteriores preservados. [Relatório visual](VISUAL_QA.md).
