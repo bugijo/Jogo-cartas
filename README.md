@@ -1,3 +1,7 @@
+# Fabricação 0.4 / arquivos para imprimir
+
+[Abra o índice de downloads](DOWNLOADS_0.4.md). Edição ilustrada e econômica; escolha duplex (58 A4: 25 + 33) ou recortar/colar (72 A4: 33 + 39). Peões e painéis ampliados são opcionais. Regras, campanha, personagens e edições anteriores preservados. [Relatório visual](VISUAL_QA.md).
+
 # Edição ilustrada 0.3 — Comece Aqui / Duas Pessoas
 
 **Mesmo jogo e personagens da edição 0.2. Apenas apresentação artística e produção gráfica.** Base preservada: 9c38aa5 (posterior a b407e84). Branch `arte/pnp-edicao-ilustrada-v0-3`; sem merge na branch anterior.

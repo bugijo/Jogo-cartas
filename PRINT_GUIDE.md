@@ -47,3 +47,12 @@ Cartas e mapas têm fundo branco e linhas finas, sem sangria. Capa e galeria sã
 
 ## Folhas
 Configuração completa com todos PDFs de jogo (sem 03b nem fonte original): 90 folhas se manual/campanha em uma face, incluindo capa e galeria, mais fotocópias desejadas. Confirmar contagem gerada em output/validation.json e README: a contagem final prevalece sobre estimativas anteriores. Econômica omite capa/galeria e usa 03b: 68 folhas nas mesmas condições. Não inclui anexos de relatório.
+
+
+## Fabricação 0.4 — alternativas
+
+A4 exato, 100%, sem ajustar. [Índice ilustrado](output/edicao-fabricacao-v0.4/ilustrada/00_LEIA_PRIMEIRO/IMPRIMA_ESTES.md) e [econômico](output/edicao-fabricacao-v0.4/economica/00_LEIA_PRIMEIRO/IMPRIMA_ESTES.md). Escolha A duplex: 25 + 33 = 58 folhas; somente cartas/calibração retrato viram na borda longa, colunas já espelhadas. OU B colar: 33 + 39 = 72 folhas, tudo uma face; topos iguais, miolo opaco e remoção total dos códigos fora do corte. Não imprima ambos. O guia inicial foi atualizado somente nas instruções de fabricação.
+
+Peões opcionais: 2 folhas para 24 heróis e 6 para as três variantes dos mesmos E01–E24; máximo 24 inimigos simultâneos, nunca duplicar um ID. Rede 22 × 116 mm, corpo duplo, dobra central e abas de 6 mm opostas; base 22 × 12 mm. Verso é imagem espelhada, não anatomia posterior. Marcadores planos continuam válidos. Painel opcional: 2 folhas por jogador; 4 para duas pessoas. Quatro slots 66 × 92 mm para as mesmas quatro cargas-base; armas ocupam essas cargas. Guarde ficha compacta no painel; não acrescente capacidade.
+
+Mapas: corte 277 × 190 mm, M1/M2 acima de M3/M4, todos LADO A, união sem sobreposição: 554 × 380 mm. Nenhuma face alternativa foi emparelhada. Variantes temáticas: quatro folhas por destino, substituem as comuns. Guia ilustrado: 3 opcionais; bases de organização: 1 opcional; todas as fichas: 12 opcionais. Não há medição de tinta, teste em impressora doméstica ou montagem física. Faça calibração e teste de opacidade antes do lote.

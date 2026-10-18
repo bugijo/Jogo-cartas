@@ -67,3 +67,8 @@ Template real gerado em output/edicao-fabricacao-v0.4/amostras; nove cartas repr
 
 ### Fabricação 0.4 — ciclo 3
 114 cartas diagramadas e alternativas manual/duplex geradas, com 456 comparações de efeitos aprovadas. Uma quebra de linha da Espingarda foi corrigida medindo a altura tipográfica, sem diminuir fonte. Peões e mapas estão em produção independente. Assets novos em assets/v0.4; originais não alterados. Próximo: integrar peões/painel e cenas, unificar índice e validar todas as saídas.
+
+
+## Fabricação 0.4
+
+Base ccff9c8; branch arte/pnp-fabricacao-v0-4. Ciclos 1–6 implementados. Referência disponível: cinco PDFs/seis páginas; zombecide.zip não recebido. Não copiar material privado /tmp/zz-referencia-privada. Gerar com python src/build_fabrication.py --step all; conferir com python src/validate_fabrication.py; provas com python src/proof_fabrication.py; pacotes com python src/package_fabrication.py. Finalização: rever branch inteira, corrigir achados importantes, registrar revisão, empacotar e fazer push sem merge.

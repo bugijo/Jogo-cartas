@@ -28,3 +28,8 @@
 - Econômica mantém as mesmas 25+33=58 folhas, com imagens em cinza e fundos mais claros. Extras ficam em pacote separado.
 - Correção de recortes irregulares nas pranchas antigas, sem substituir a arte: itens vizinhos deixam de aparecer nas bordas.
 - Fontes editáveis, SVGs auxiliares, índices, provas digitais e pacotes verificáveis. Não houve impressão física ou playtest humano.
+
+
+## 0.4 — fabricação e organização
+
+Base ccff9c8 preservada; branch arte/pnp-fabricacao-v0-4. Cartas com efeito 9,5–10 pt, alternativas duplex/colagem, peões de corpo completo, painel com cartas físicas e cenas contínuas em sete mapas. Guia inicial atualizado na seção de impressão. Regras 0.2, catálogo e campanha inalterados. Pacote básico permanece 58 folhas; alternativa manual usa 72. Extras claramente opcionais.

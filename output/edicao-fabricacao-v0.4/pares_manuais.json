@@ -1,0 +1,6842 @@
+[
+  {
+    "file": "03_CARTAS_RECORTAR_E_COLAR/KIT_INICIAL_1_FRENTES.pdf",
+    "id": "ZC-VIN-0001",
+    "code": "1-01-1",
+    "page": 1,
+    "slot": 0,
+    "side": "front",
+    "box": [
+      8.5,
+      14.5,
+      63,
+      88
+    ],
+    "label_outside": true
+  },
+  {
+    "file": "03_CARTAS_RECORTAR_E_COLAR/KIT_INICIAL_1_FRENTES.pdf",
+    "id": "ZC-VIN-0002",
+    "code": "1-01-2",
+    "page": 1,
+    "slot": 1,
+    "side": "front",
+    "box": [
+      73.5,
+      14.5,
+      63,
+      88
+    ],
+    "label_outside": true
+  },
+  {
+    "file": "03_CARTAS_RECORTAR_E_COLAR/KIT_INICIAL_1_FRENTES.pdf",
+    "id": "ZC-VIN-0003",
+    "code": "1-01-3",
+    "page": 1,
+    "slot": 2,
+    "side": "front",
+    "box": [
+      138.5,
+      14.5,
+      63,
+      88
+    ],
+    "label_outside": true
+  },
+  {
+    "file": "03_CARTAS_RECORTAR_E_COLAR/KIT_INICIAL_1_FRENTES.pdf",
+    "id": "ZC-VIN-0004",
+    "code": "1-01-4",
+    "page": 1,
+    "slot": 3,
+    "side": "front",
+    "box": [
+      8.5,
+      104.5,
+      63,
+      88
+    ],
+    "label_outside": true
+  },
+  {
+    "file": "03_CARTAS_RECORTAR_E_COLAR/KIT_INICIAL_1_FRENTES.pdf",
+    "id": "ZC-VIN-0005",
+    "code": "1-01-5",
+    "page": 1,
+    "slot": 4,
+    "side": "front",
+    "box": [
+      73.5,
+      104.5,
+      63,
+      88
+    ],
+    "label_outside": true
+  },
+  {
+    "file": "03_CARTAS_RECORTAR_E_COLAR/KIT_INICIAL_1_FRENTES.pdf",
+    "id": "ZC-VIN-0006",
+    "code": "1-01-6",
+    "page": 1,
+    "slot": 5,
+    "side": "front",
+    "box": [
+      138.5,
+      104.5,
+      63,
+      88
+    ],
+    "label_outside": true
+  },
+  {
+    "file": "03_CARTAS_RECORTAR_E_COLAR/KIT_INICIAL_1_FRENTES.pdf",
+    "id": "ZC-VIN-0007",
+    "code": "1-01-7",
+    "page": 1,
+    "slot": 6,
+    "side": "front",
+    "box": [
+      8.5,
+      194.5,
+      63,
+      88
+    ],
+    "label_outside": true
+  },
+  {
+    "file": "03_CARTAS_RECORTAR_E_COLAR/KIT_INICIAL_1_FRENTES.pdf",
+    "id": "ZC-VIN-0008",
+    "code": "1-01-8",
+    "page": 1,
+    "slot": 7,
+    "side": "front",
+    "box": [
+      73.5,
+      194.5,
+      63,
+      88
+    ],
+    "label_outside": true
+  },
+  {
+    "file": "03_CARTAS_RECORTAR_E_COLAR/KIT_INICIAL_1_FRENTES.pdf",
+    "id": "ZC-VIN-0009",
+    "code": "1-01-9",
+    "page": 1,
+    "slot": 8,
+    "side": "front",
+    "box": [
+      138.5,
+      194.5,
+      63,
+      88
+    ],
+    "label_outside": true
+  },
+  {
+    "file": "03_CARTAS_RECORTAR_E_COLAR/KIT_INICIAL_1_FRENTES.pdf",
+    "id": "ZC-VIN-0010",
+    "code": "1-02-1",
+    "page": 2,
+    "slot": 0,
+    "side": "front",
+    "box": [
+      8.5,
+      14.5,
+      63,
+      88
+    ],
+    "label_outside": true
+  },
+  {
+    "file": "03_CARTAS_RECORTAR_E_COLAR/KIT_INICIAL_1_FRENTES.pdf",
+    "id": "ZC-VIN-0011",
+    "code": "1-02-2",
+    "page": 2,
+    "slot": 1,
+    "side": "front",
+    "box": [
+      73.5,
+      14.5,
+      63,
+      88
+    ],
+    "label_outside": true
+  },
+  {
+    "file": "03_CARTAS_RECORTAR_E_COLAR/KIT_INICIAL_1_FRENTES.pdf",
+    "id": "ZC-VIN-0012",
+    "code": "1-02-3",
+    "page": 2,
+    "slot": 2,
+    "side": "front",
+    "box": [
+      138.5,
+      14.5,
+      63,
+      88
+    ],
+    "label_outside": true
+  },
+  {
+    "file": "03_CARTAS_RECORTAR_E_COLAR/KIT_INICIAL_1_FRENTES.pdf",
+    "id": "ZC-INT-0001",
+    "code": "1-02-4",
+    "page": 2,
+    "slot": 3,
+    "side": "front",
+    "box": [
+      8.5,
+      104.5,
+      63,
+      88
+    ],
+    "label_outside": true
+  },
+  {
+    "file": "03_CARTAS_RECORTAR_E_COLAR/KIT_INICIAL_1_FRENTES.pdf",
+    "id": "ZC-INT-0002",
+    "code": "1-02-5",
+    "page": 2,
+    "slot": 4,
+    "side": "front",
+    "box": [
+      73.5,
+      104.5,
+      63,
+      88
+    ],
+    "label_outside": true
+  },
+  {
+    "file": "03_CARTAS_RECORTAR_E_COLAR/KIT_INICIAL_1_FRENTES.pdf",
+    "id": "ZC-INT-0003",
+    "code": "1-02-6",
+    "page": 2,
+    "slot": 5,
+    "side": "front",
+    "box": [
+      138.5,
+      104.5,
+      63,
+      88
+    ],
+    "label_outside": true
+  },
+  {
+    "file": "03_CARTAS_RECORTAR_E_COLAR/KIT_INICIAL_1_FRENTES.pdf",
+    "id": "ZC-INT-0004",
+    "code": "1-02-7",
+    "page": 2,
+    "slot": 6,
+    "side": "front",
+    "box": [
+      8.5,
+      194.5,
+      63,
+      88
+    ],
+    "label_outside": true
+  },
+  {
+    "file": "03_CARTAS_RECORTAR_E_COLAR/KIT_INICIAL_1_FRENTES.pdf",
+    "id": "ZC-INT-0005",
+    "code": "1-02-8",
+    "page": 2,
+    "slot": 7,
+    "side": "front",
+    "box": [
+      73.5,
+      194.5,
+      63,
+      88
+    ],
+    "label_outside": true
+  },
+  {
+    "file": "03_CARTAS_RECORTAR_E_COLAR/KIT_INICIAL_1_FRENTES.pdf",
+    "id": "ZC-INT-0006",
+    "code": "1-02-9",
+    "page": 2,
+    "slot": 8,
+    "side": "front",
+    "box": [
+      138.5,
+      194.5,
+      63,
+      88
+    ],
+    "label_outside": true
+  },
+  {
+    "file": "03_CARTAS_RECORTAR_E_COLAR/KIT_INICIAL_1_FRENTES.pdf",
+    "id": "ZC-INT-0007",
+    "code": "1-03-1",
+    "page": 3,
+    "slot": 0,
+    "side": "front",
+    "box": [
+      8.5,
+      14.5,
+      63,
+      88
+    ],
+    "label_outside": true
+  },
+  {
+    "file": "03_CARTAS_RECORTAR_E_COLAR/KIT_INICIAL_1_FRENTES.pdf",
+    "id": "ZC-INT-0008",
+    "code": "1-03-2",
+    "page": 3,
+    "slot": 1,
+    "side": "front",
+    "box": [
+      73.5,
+      14.5,
+      63,
+      88
+    ],
+    "label_outside": true
+  },
+  {
+    "file": "03_CARTAS_RECORTAR_E_COLAR/KIT_INICIAL_1_FRENTES.pdf",
+    "id": "ZC-INT-0009",
+    "code": "1-03-3",
+    "page": 3,
+    "slot": 2,
+    "side": "front",
+    "box": [
+      138.5,
+      14.5,
+      63,
+      88
+    ],
+    "label_outside": true
+  },
+  {
+    "file": "03_CARTAS_RECORTAR_E_COLAR/KIT_INICIAL_1_FRENTES.pdf",
+    "id": "ZC-INT-0010",
+    "code": "1-03-4",
+    "page": 3,
+    "slot": 3,
+    "side": "front",
+    "box": [
+      8.5,
+      104.5,
+      63,
+      88
+    ],
+    "label_outside": true
+  },
+  {
+    "file": "03_CARTAS_RECORTAR_E_COLAR/KIT_INICIAL_1_FRENTES.pdf",
+    "id": "ZC-INT-0011",
+    "code": "1-03-5",
+    "page": 3,
+    "slot": 4,
+    "side": "front",
+    "box": [
+      73.5,
+      104.5,
+      63,
+      88
+    ],
+    "label_outside": true
+  },
+  {
+    "file": "03_CARTAS_RECORTAR_E_COLAR/KIT_INICIAL_1_FRENTES.pdf",
+    "id": "ZC-INT-0012",
+    "code": "1-03-6",
+    "page": 3,
+    "slot": 5,
+    "side": "front",
+    "box": [
+      138.5,
+      104.5,
+      63,
+      88
+    ],
+    "label_outside": true
+  },
+  {
+    "file": "03_CARTAS_RECORTAR_E_COLAR/KIT_INICIAL_1_FRENTES.pdf",
+    "id": "ZC-EQU-0007",
+    "code": "1-03-7",
+    "page": 3,
+    "slot": 6,
+    "side": "front",
+    "box": [
+      8.5,
+      194.5,
+      63,
+      88
+    ],
+    "label_outside": true
+  },
+  {
+    "file": "03_CARTAS_RECORTAR_E_COLAR/KIT_INICIAL_1_FRENTES.pdf",
+    "id": "ZC-EQU-0008",
+    "code": "1-03-8",
+    "page": 3,
+    "slot": 7,
+    "side": "front",
+    "box": [
+      73.5,
+      194.5,
+      63,
+      88
+    ],
+    "label_outside": true
+  },
+  {
+    "file": "03_CARTAS_RECORTAR_E_COLAR/KIT_INICIAL_1_FRENTES.pdf",
+    "id": "ZC-EQU-0014",
+    "code": "1-03-9",
+    "page": 3,
+    "slot": 8,
+    "side": "front",
+    "box": [
+      138.5,
+      194.5,
+      63,
+      88
+    ],
+    "label_outside": true
+  },
+  {
+    "file": "03_CARTAS_RECORTAR_E_COLAR/KIT_INICIAL_1_FRENTES.pdf",
+    "id": "ZC-EQU-0017",
+    "code": "1-04-1",
+    "page": 4,
+    "slot": 0,
+    "side": "front",
+    "box": [
+      8.5,
+      14.5,
+      63,
+      88
+    ],
+    "label_outside": true
+  },
+  {
+    "file": "03_CARTAS_RECORTAR_E_COLAR/KIT_INICIAL_1_FRENTES.pdf",
+    "id": "ZC-SAQ-0001",
+    "code": "1-04-2",
+    "page": 4,
+    "slot": 1,
+    "side": "front",
+    "box": [
+      73.5,
+      14.5,
+      63,
+      88
+    ],
+    "label_outside": true
+  },
+  {
+    "file": "03_CARTAS_RECORTAR_E_COLAR/KIT_INICIAL_1_FRENTES.pdf",
+    "id": "ZC-SAQ-0002",
+    "code": "1-04-3",
+    "page": 4,
+    "slot": 2,
+    "side": "front",
+    "box": [
+      138.5,
+      14.5,
+      63,
+      88
+    ],
+    "label_outside": true
+  },
+  {
+    "file": "03_CARTAS_RECORTAR_E_COLAR/KIT_INICIAL_1_FRENTES.pdf",
+    "id": "ZC-SAQ-0003",
+    "code": "1-04-4",
+    "page": 4,
+    "slot": 3,
+    "side": "front",
+    "box": [
+      8.5,
+      104.5,
+      63,
+      88
+    ],
+    "label_outside": true
+  },
+  {
+    "file": "03_CARTAS_RECORTAR_E_COLAR/KIT_INICIAL_1_FRENTES.pdf",
+    "id": "ZC-SAQ-0004",
+    "code": "1-04-5",
+    "page": 4,
+    "slot": 4,
+    "side": "front",
+    "box": [
+      73.5,
+      104.5,
+      63,
+      88
+    ],
+    "label_outside": true
+  },
+  {
+    "file": "03_CARTAS_RECORTAR_E_COLAR/KIT_INICIAL_1_FRENTES.pdf",
+    "id": "ZC-SAQ-0005",
+    "code": "1-04-6",
+    "page": 4,
+    "slot": 5,
+    "side": "front",
+    "box": [
+      138.5,
+      104.5,
+      63,
+      88
+    ],
+    "label_outside": true
+  },
+  {
+    "file": "03_CARTAS_RECORTAR_E_COLAR/KIT_INICIAL_1_FRENTES.pdf",
+    "id": "ZC-SAQ-0006",
+    "code": "1-04-7",
+    "page": 4,
+    "slot": 6,
+    "side": "front",
+    "box": [
+      8.5,
+      194.5,
+      63,
+      88
+    ],
+    "label_outside": true
+  },
+  {
+    "file": "03_CARTAS_RECORTAR_E_COLAR/KIT_INICIAL_1_FRENTES.pdf",
+    "id": "ZC-VIA-0001",
+    "code": "1-04-8",
+    "page": 4,
+    "slot": 7,
+    "side": "front",
+    "box": [
+      73.5,
+      194.5,
+      63,
+      88
+    ],
+    "label_outside": true
+  },
+  {
+    "file": "03_CARTAS_RECORTAR_E_COLAR/KIT_INICIAL_1_FRENTES.pdf",
+    "id": "ZC-VIA-0002",
+    "code": "1-04-9",
+    "page": 4,
+    "slot": 8,
+    "side": "front",
+    "box": [
+      138.5,
+      194.5,
+      63,
+      88
+    ],
+    "label_outside": true
+  },
+  {
+    "file": "03_CARTAS_RECORTAR_E_COLAR/KIT_INICIAL_1_FRENTES.pdf",
+    "id": "ZC-VIA-0003",
+    "code": "1-05-1",
+    "page": 5,
+    "slot": 0,
+    "side": "front",
+    "box": [
+      8.5,
+      14.5,
+      63,
+      88
+    ],
+    "label_outside": true
+  },
+  {
+    "file": "03_CARTAS_RECORTAR_E_COLAR/KIT_INICIAL_1_FRENTES.pdf",
+    "id": "ZC-VIA-0004",
+    "code": "1-05-2",
+    "page": 5,
+    "slot": 1,
+    "side": "front",
+    "box": [
+      73.5,
+      14.5,
+      63,
+      88
+    ],
+    "label_outside": true
+  },
+  {
+    "file": "03_CARTAS_RECORTAR_E_COLAR/KIT_INICIAL_1_FRENTES.pdf",
+    "id": "ZC-VIA-0005",
+    "code": "1-05-3",
+    "page": 5,
+    "slot": 2,
+    "side": "front",
+    "box": [
+      138.5,
+      14.5,
+      63,
+      88
+    ],
+    "label_outside": true
+  },
+  {
+    "file": "03_CARTAS_RECORTAR_E_COLAR/KIT_INICIAL_1_FRENTES.pdf",
+    "id": "ZC-VIA-0006",
+    "code": "1-05-4",
+    "page": 5,
+    "slot": 3,
+    "side": "front",
+    "box": [
+      8.5,
+      104.5,
+      63,
+      88
+    ],
+    "label_outside": true
+  },
+  {
+    "file": "03_CARTAS_RECORTAR_E_COLAR/KIT_INICIAL_1_FRENTES.pdf",
+    "id": "ZC-VIA-0007",
+    "code": "1-05-5",
+    "page": 5,
+    "slot": 4,
+    "side": "front",
+    "box": [
+      73.5,
+      104.5,
+      63,
+      88
+    ],
+    "label_outside": true
+  },
+  {
+    "file": "03_CARTAS_RECORTAR_E_COLAR/KIT_INICIAL_1_FRENTES.pdf",
+    "id": "ZC-VIA-0008",
+    "code": "1-05-6",
+    "page": 5,
+    "slot": 5,
+    "side": "front",
+    "box": [
+      138.5,
+      104.5,
+      63,
+      88
+    ],
+    "label_outside": true
+  },
+  {
+    "file": "03_CARTAS_RECORTAR_E_COLAR/KIT_INICIAL_1_FRENTES.pdf",
+    "id": "ZC-VIA-0009",
+    "code": "1-05-7",
+    "page": 5,
+    "slot": 6,
+    "side": "front",
+    "box": [
+      8.5,
+      194.5,
+      63,
+      88
+    ],
+    "label_outside": true
+  },
+  {
+    "file": "03_CARTAS_RECORTAR_E_COLAR/KIT_INICIAL_1_FRENTES.pdf",
+    "id": "ZC-VIA-0010",
+    "code": "1-05-8",
+    "page": 5,
+    "slot": 7,
+    "side": "front",
+    "box": [
+      73.5,
+      194.5,
+      63,
+      88
+    ],
+    "label_outside": true
+  },
+  {
+    "file": "03_CARTAS_RECORTAR_E_COLAR/KIT_INICIAL_1_FRENTES.pdf",
+    "id": "ZC-VIA-0011",
+    "code": "1-05-9",
+    "page": 5,
+    "slot": 8,
+    "side": "front",
+    "box": [
+      138.5,
+      194.5,
+      63,
+      88
+    ],
+    "label_outside": true
+  },
+  {
+    "file": "03_CARTAS_RECORTAR_E_COLAR/KIT_INICIAL_1_FRENTES.pdf",
+    "id": "ZC-VIA-0012",
+    "code": "1-06-1",
+    "page": 6,
+    "slot": 0,
+    "side": "front",
+    "box": [
+      8.5,
+      14.5,
+      63,
+      88
+    ],
+    "label_outside": true
+  },
+  {
+    "file": "03_CARTAS_RECORTAR_E_COLAR/KIT_INICIAL_1_FRENTES.pdf",
+    "id": "ZC-HOR-0001",
+    "code": "1-06-2",
+    "page": 6,
+    "slot": 1,
+    "side": "front",
+    "box": [
+      73.5,
+      14.5,
+      63,
+      88
+    ],
+    "label_outside": true
+  },
+  {
+    "file": "03_CARTAS_RECORTAR_E_COLAR/KIT_INICIAL_1_FRENTES.pdf",
+    "id": "ZC-HOR-0002",
+    "code": "1-06-3",
+    "page": 6,
+    "slot": 2,
+    "side": "front",
+    "box": [
+      138.5,
+      14.5,
+      63,
+      88
+    ],
+    "label_outside": true
+  },
+  {
+    "file": "03_CARTAS_RECORTAR_E_COLAR/KIT_INICIAL_1_FRENTES.pdf",
+    "id": "ZC-HOR-0003",
+    "code": "1-06-4",
+    "page": 6,
+    "slot": 3,
+    "side": "front",
+    "box": [
+      8.5,
+      104.5,
+      63,
+      88
+    ],
+    "label_outside": true
+  },
+  {
+    "file": "03_CARTAS_RECORTAR_E_COLAR/KIT_INICIAL_1_FRENTES.pdf",
+    "id": "ZC-HOR-0004",
+    "code": "1-06-5",
+    "page": 6,
+    "slot": 4,
+    "side": "front",
+    "box": [
+      73.5,
+      104.5,
+      63,
+      88
+    ],
+    "label_outside": true
+  },
+  {
+    "file": "03_CARTAS_RECORTAR_E_COLAR/KIT_INICIAL_1_FRENTES.pdf",
+    "id": "ZC-HOR-0005",
+    "code": "1-06-6",
+    "page": 6,
+    "slot": 5,
+    "side": "front",
+    "box": [
+      138.5,
+      104.5,
+      63,
+      88
+    ],
+    "label_outside": true
+  },
+  {
+    "file": "03_CARTAS_RECORTAR_E_COLAR/KIT_INICIAL_1_FRENTES.pdf",
+    "id": "ZC-HOR-0006",
+    "code": "1-06-7",
+    "page": 6,
+    "slot": 6,
+    "side": "front",
+    "box": [
+      8.5,
+      194.5,
+      63,
+      88
+    ],
+    "label_outside": true
+  },
+  {
+    "file": "03_CARTAS_RECORTAR_E_COLAR/KIT_INICIAL_1_FRENTES.pdf",
+    "id": "ZC-HOR-0007",
+    "code": "1-06-8",
+    "page": 6,
+    "slot": 7,
+    "side": "front",
+    "box": [
+      73.5,
+      194.5,
+      63,
+      88
+    ],
+    "label_outside": true
+  },
+  {
+    "file": "03_CARTAS_RECORTAR_E_COLAR/KIT_INICIAL_1_FRENTES.pdf",
+    "id": "ZC-HOR-0008",
+    "code": "1-06-9",
+    "page": 6,
+    "slot": 8,
+    "side": "front",
+    "box": [
+      138.5,
+      194.5,
+      63,
+      88
+    ],
+    "label_outside": true
+  },
+  {
+    "file": "03_CARTAS_RECORTAR_E_COLAR/KIT_INICIAL_1_FRENTES.pdf",
+    "id": "ZC-HOR-0009",
+    "code": "1-07-1",
+    "page": 7,
+    "slot": 0,
+    "side": "front",
+    "box": [
+      8.5,
+      14.5,
+      63,
+      88
+    ],
+    "label_outside": true
+  },
+  {
+    "file": "03_CARTAS_RECORTAR_E_COLAR/KIT_INICIAL_1_FRENTES.pdf",
+    "id": "ZC-CER-0001",
+    "code": "1-07-2",
+    "page": 7,
+    "slot": 1,
+    "side": "front",
+    "box": [
+      73.5,
+      14.5,
+      63,
+      88
+    ],
+    "label_outside": true
+  },
+  {
+    "file": "03_CARTAS_RECORTAR_E_COLAR/KIT_INICIAL_1_FRENTES.pdf",
+    "id": "ZC-CER-0002",
+    "code": "1-07-3",
+    "page": 7,
+    "slot": 2,
+    "side": "front",
+    "box": [
+      138.5,
+      14.5,
+      63,
+      88
+    ],
+    "label_outside": true
+  },
+  {
+    "file": "03_CARTAS_RECORTAR_E_COLAR/KIT_INICIAL_1_FRENTES.pdf",
+    "id": "ZC-CER-0003",
+    "code": "1-07-4",
+    "page": 7,
+    "slot": 3,
+    "side": "front",
+    "box": [
+      8.5,
+      104.5,
+      63,
+      88
+    ],
+    "label_outside": true
+  },
+  {
+    "file": "03_CARTAS_RECORTAR_E_COLAR/KIT_INICIAL_1_FRENTES.pdf",
+    "id": "ZC-CER-0004",
+    "code": "1-07-5",
+    "page": 7,
+    "slot": 4,
+    "side": "front",
+    "box": [
+      73.5,
+      104.5,
+      63,
+      88
+    ],
+    "label_outside": true
+  },
+  {
+    "file": "03_CARTAS_RECORTAR_E_COLAR/KIT_INICIAL_1_FRENTES.pdf",
+    "id": "ZC-CER-0005",
+    "code": "1-07-6",
+    "page": 7,
+    "slot": 5,
+    "side": "front",
+    "box": [
+      138.5,
+      104.5,
+      63,
+      88
+    ],
+    "label_outside": true
+  },
+  {
+    "file": "03_CARTAS_RECORTAR_E_COLAR/KIT_INICIAL_1_FRENTES.pdf",
+    "id": "ZC-CER-0006",
+    "code": "1-07-7",
+    "page": 7,
+    "slot": 6,
+    "side": "front",
+    "box": [
+      8.5,
+      194.5,
+      63,
+      88
+    ],
+    "label_outside": true
+  },
+  {
+    "file": "03_CARTAS_RECORTAR_E_COLAR/KIT_INICIAL_1_FRENTES.pdf",
+    "id": "ZC-MOR-0001",
+    "code": "1-07-8",
+    "page": 7,
+    "slot": 7,
+    "side": "front",
+    "box": [
+      73.5,
+      194.5,
+      63,
+      88
+    ],
+    "label_outside": true
+  },
+  {
+    "file": "03_CARTAS_RECORTAR_E_COLAR/KIT_INICIAL_1_VERSOS.pdf",
+    "id": "ZC-VIN-0001",
+    "code": "1-01-1",
+    "page": 1,
+    "slot": 0,
+    "side": "back",
+    "box": [
+      8.5,
+      14.5,
+      63,
+      88
+    ],
+    "label_outside": true
+  },
+  {
+    "file": "03_CARTAS_RECORTAR_E_COLAR/KIT_INICIAL_1_VERSOS.pdf",
+    "id": "ZC-VIN-0002",
+    "code": "1-01-2",
+    "page": 1,
+    "slot": 1,
+    "side": "back",
+    "box": [
+      73.5,
+      14.5,
+      63,
+      88
+    ],
+    "label_outside": true
+  },
+  {
+    "file": "03_CARTAS_RECORTAR_E_COLAR/KIT_INICIAL_1_VERSOS.pdf",
+    "id": "ZC-VIN-0003",
+    "code": "1-01-3",
+    "page": 1,
+    "slot": 2,
+    "side": "back",
+    "box": [
+      138.5,
+      14.5,
+      63,
+      88
+    ],
+    "label_outside": true
+  },
+  {
+    "file": "03_CARTAS_RECORTAR_E_COLAR/KIT_INICIAL_1_VERSOS.pdf",
+    "id": "ZC-VIN-0004",
+    "code": "1-01-4",
+    "page": 1,
+    "slot": 3,
+    "side": "back",
+    "box": [
+      8.5,
+      104.5,
+      63,
+      88
+    ],
+    "label_outside": true
+  },
+  {
+    "file": "03_CARTAS_RECORTAR_E_COLAR/KIT_INICIAL_1_VERSOS.pdf",
+    "id": "ZC-VIN-0005",
+    "code": "1-01-5",
+    "page": 1,
+    "slot": 4,
+    "side": "back",
+    "box": [
+      73.5,
+      104.5,
+      63,
+      88
+    ],
+    "label_outside": true
+  },
+  {
+    "file": "03_CARTAS_RECORTAR_E_COLAR/KIT_INICIAL_1_VERSOS.pdf",
+    "id": "ZC-VIN-0006",
+    "code": "1-01-6",
+    "page": 1,
+    "slot": 5,
+    "side": "back",
+    "box": [
+      138.5,
+      104.5,
+      63,
+      88
+    ],
+    "label_outside": true
+  },
+  {
+    "file": "03_CARTAS_RECORTAR_E_COLAR/KIT_INICIAL_1_VERSOS.pdf",
+    "id": "ZC-VIN-0007",
+    "code": "1-01-7",
+    "page": 1,
+    "slot": 6,
+    "side": "back",
+    "box": [
+      8.5,
+      194.5,
+      63,
+      88
+    ],
+    "label_outside": true
+  },
+  {
+    "file": "03_CARTAS_RECORTAR_E_COLAR/KIT_INICIAL_1_VERSOS.pdf",
+    "id": "ZC-VIN-0008",
+    "code": "1-01-8",
+    "page": 1,
+    "slot": 7,
+    "side": "back",
+    "box": [
+      73.5,
+      194.5,
+      63,
+      88
+    ],
+    "label_outside": true
+  },
+  {
+    "file": "03_CARTAS_RECORTAR_E_COLAR/KIT_INICIAL_1_VERSOS.pdf",
+    "id": "ZC-VIN-0009",
+    "code": "1-01-9",
+    "page": 1,
+    "slot": 8,
+    "side": "back",
+    "box": [
+      138.5,
+      194.5,
+      63,
+      88
+    ],
+    "label_outside": true
+  },
+  {
+    "file": "03_CARTAS_RECORTAR_E_COLAR/KIT_INICIAL_1_VERSOS.pdf",
+    "id": "ZC-VIN-0010",
+    "code": "1-02-1",
+    "page": 2,
+    "slot": 0,
+    "side": "back",
+    "box": [
+      8.5,
+      14.5,
+      63,
+      88
+    ],
+    "label_outside": true
+  },
+  {
+    "file": "03_CARTAS_RECORTAR_E_COLAR/KIT_INICIAL_1_VERSOS.pdf",
+    "id": "ZC-VIN-0011",
+    "code": "1-02-2",
+    "page": 2,
+    "slot": 1,
+    "side": "back",
+    "box": [
+      73.5,
+      14.5,
+      63,
+      88
+    ],
+    "label_outside": true
+  },
+  {
+    "file": "03_CARTAS_RECORTAR_E_COLAR/KIT_INICIAL_1_VERSOS.pdf",
+    "id": "ZC-VIN-0012",
+    "code": "1-02-3",
+    "page": 2,
+    "slot": 2,
+    "side": "back",
+    "box": [
+      138.5,
+      14.5,
+      63,
+      88
+    ],
+    "label_outside": true
+  },
+  {
+    "file": "03_CARTAS_RECORTAR_E_COLAR/KIT_INICIAL_1_VERSOS.pdf",
+    "id": "ZC-INT-0001",
+    "code": "1-02-4",
+    "page": 2,
+    "slot": 3,
+    "side": "back",
+    "box": [
+      8.5,
+      104.5,
+      63,
+      88
+    ],
+    "label_outside": true
+  },
+  {
+    "file": "03_CARTAS_RECORTAR_E_COLAR/KIT_INICIAL_1_VERSOS.pdf",
+    "id": "ZC-INT-0002",
+    "code": "1-02-5",
+    "page": 2,
+    "slot": 4,
+    "side": "back",
+    "box": [
+      73.5,
+      104.5,
+      63,
+      88
+    ],
+    "label_outside": true
+  },
+  {
+    "file": "03_CARTAS_RECORTAR_E_COLAR/KIT_INICIAL_1_VERSOS.pdf",
+    "id": "ZC-INT-0003",
+    "code": "1-02-6",
+    "page": 2,
+    "slot": 5,
+    "side": "back",
+    "box": [
+      138.5,
+      104.5,
+      63,
+      88
+    ],
+    "label_outside": true
+  },
+  {
+    "file": "03_CARTAS_RECORTAR_E_COLAR/KIT_INICIAL_1_VERSOS.pdf",
+    "id": "ZC-INT-0004",
+    "code": "1-02-7",
+    "page": 2,
+    "slot": 6,
+    "side": "back",
+    "box": [
+      8.5,
+      194.5,
+      63,
+      88
+    ],
+    "label_outside": true
+  },
+  {
+    "file": "03_CARTAS_RECORTAR_E_COLAR/KIT_INICIAL_1_VERSOS.pdf",
+    "id": "ZC-INT-0005",
+    "code": "1-02-8",
+    "page": 2,
+    "slot": 7,
+    "side": "back",
+    "box": [
+      73.5,
+      194.5,
+      63,
+      88
+    ],
+    "label_outside": true
+  },
+  {
+    "file": "03_CARTAS_RECORTAR_E_COLAR/KIT_INICIAL_1_VERSOS.pdf",
+    "id": "ZC-INT-0006",
+    "code": "1-02-9",
+    "page": 2,
+    "slot": 8,
+    "side": "back",
+    "box": [
+      138.5,
+      194.5,
+      63,
+      88
+    ],
+    "label_outside": true
+  },
+  {
+    "file": "03_CARTAS_RECORTAR_E_COLAR/KIT_INICIAL_1_VERSOS.pdf",
+    "id": "ZC-INT-0007",
+    "code": "1-03-1",
+    "page": 3,
+    "slot": 0,
+    "side": "back",
+    "box": [
+      8.5,
+      14.5,
+      63,
+      88
+    ],
+    "label_outside": true
+  },
+  {
+    "file": "03_CARTAS_RECORTAR_E_COLAR/KIT_INICIAL_1_VERSOS.pdf",
+    "id": "ZC-INT-0008",
+    "code": "1-03-2",
+    "page": 3,
+    "slot": 1,
+    "side": "back",
+    "box": [
+      73.5,
+      14.5,
+      63,
+      88
+    ],
+    "label_outside": true
+  },
+  {
+    "file": "03_CARTAS_RECORTAR_E_COLAR/KIT_INICIAL_1_VERSOS.pdf",
+    "id": "ZC-INT-0009",
+    "code": "1-03-3",
+    "page": 3,
+    "slot": 2,
+    "side": "back",
+    "box": [
+      138.5,
+      14.5,
+      63,
+      88
+    ],
+    "label_outside": true
+  },
+  {
+    "file": "03_CARTAS_RECORTAR_E_COLAR/KIT_INICIAL_1_VERSOS.pdf",
+    "id": "ZC-INT-0010",
+    "code": "1-03-4",
+    "page": 3,
+    "slot": 3,
+    "side": "back",
+    "box": [
+      8.5,
+      104.5,
+      63,
+      88
+    ],
+    "label_outside": true
+  },
+  {
+    "file": "03_CARTAS_RECORTAR_E_COLAR/KIT_INICIAL_1_VERSOS.pdf",
+    "id": "ZC-INT-0011",
+    "code": "1-03-5",
+    "page": 3,
+    "slot": 4,
+    "side": "back",
+    "box": [
+      73.5,
+      104.5,
+      63,
+      88
+    ],
+    "label_outside": true
+  },
+  {
+    "file": "03_CARTAS_RECORTAR_E_COLAR/KIT_INICIAL_1_VERSOS.pdf",
+    "id": "ZC-INT-0012",
+    "code": "1-03-6",
+    "page": 3,
+    "slot": 5,
+    "side": "back",
+    "box": [
+      138.5,
+      104.5,
+      63,
+      88
+    ],
+    "label_outside": true
+  },
+  {
+    "file": "03_CARTAS_RECORTAR_E_COLAR/KIT_INICIAL_1_VERSOS.pdf",
+    "id": "ZC-EQU-0007",
+    "code": "1-03-7",
+    "page": 3,
+    "slot": 6,
+    "side": "back",
+    "box": [
+      8.5,
+      194.5,
+      63,
+      88
+    ],
+    "label_outside": true
+  },
+  {
+    "file": "03_CARTAS_RECORTAR_E_COLAR/KIT_INICIAL_1_VERSOS.pdf",
+    "id": "ZC-EQU-0008",
+    "code": "1-03-8",
+    "page": 3,
+    "slot": 7,
+    "side": "back",
+    "box": [
+      73.5,
+      194.5,
+      63,
+      88
+    ],
+    "label_outside": true
+  },
+  {
+    "file": "03_CARTAS_RECORTAR_E_COLAR/KIT_INICIAL_1_VERSOS.pdf",
+    "id": "ZC-EQU-0014",
+    "code": "1-03-9",
+    "page": 3,
+    "slot": 8,
+    "side": "back",
+    "box": [
+      138.5,
+      194.5,
+      63,
+      88
+    ],
+    "label_outside": true
+  },
+  {
+    "file": "03_CARTAS_RECORTAR_E_COLAR/KIT_INICIAL_1_VERSOS.pdf",
+    "id": "ZC-EQU-0017",
+    "code": "1-04-1",
+    "page": 4,
+    "slot": 0,
+    "side": "back",
+    "box": [
+      8.5,
+      14.5,
+      63,
+      88
+    ],
+    "label_outside": true
+  },
+  {
+    "file": "03_CARTAS_RECORTAR_E_COLAR/KIT_INICIAL_1_VERSOS.pdf",
+    "id": "ZC-SAQ-0001",
+    "code": "1-04-2",
+    "page": 4,
+    "slot": 1,
+    "side": "back",
+    "box": [
+      73.5,
+      14.5,
+      63,
+      88
+    ],
+    "label_outside": true
+  },
+  {
+    "file": "03_CARTAS_RECORTAR_E_COLAR/KIT_INICIAL_1_VERSOS.pdf",
+    "id": "ZC-SAQ-0002",
+    "code": "1-04-3",
+    "page": 4,
+    "slot": 2,
+    "side": "back",
+    "box": [
+      138.5,
+      14.5,
+      63,
+      88
+    ],
+    "label_outside": true
+  },
+  {
+    "file": "03_CARTAS_RECORTAR_E_COLAR/KIT_INICIAL_1_VERSOS.pdf",
+    "id": "ZC-SAQ-0003",
+    "code": "1-04-4",
+    "page": 4,
+    "slot": 3,
+    "side": "back",
+    "box": [
+      8.5,
+      104.5,
+      63,
+      88
+    ],
+    "label_outside": true
+  },
+  {
+    "file": "03_CARTAS_RECORTAR_E_COLAR/KIT_INICIAL_1_VERSOS.pdf",
+    "id": "ZC-SAQ-0004",
+    "code": "1-04-5",
+    "page": 4,
+    "slot": 4,
+    "side": "back",
+    "box": [
+      73.5,
+      104.5,
+      63,
+      88
+    ],
+    "label_outside": true
+  },
+  {
+    "file": "03_CARTAS_RECORTAR_E_COLAR/KIT_INICIAL_1_VERSOS.pdf",
+    "id": "ZC-SAQ-0005",
+    "code": "1-04-6",
+    "page": 4,
+    "slot": 5,
+    "side": "back",
+    "box": [
+      138.5,
+      104.5,
+      63,
+      88
+    ],
+    "label_outside": true
+  },
+  {
+    "file": "03_CARTAS_RECORTAR_E_COLAR/KIT_INICIAL_1_VERSOS.pdf",
+    "id": "ZC-SAQ-0006",
+    "code": "1-04-7",
+    "page": 4,
+    "slot": 6,
+    "side": "back",
+    "box": [
+      8.5,
+      194.5,
+      63,
+      88
+    ],
+    "label_outside": true
+  },
+  {
+    "file": "03_CARTAS_RECORTAR_E_COLAR/KIT_INICIAL_1_VERSOS.pdf",
+    "id": "ZC-VIA-0001",
+    "code": "1-04-8",
+    "page": 4,
+    "slot": 7,
+    "side": "back",
+    "box": [
+      73.5,
+      194.5,
+      63,
+      88
+    ],
+    "label_outside": true
+  },
+  {
+    "file": "03_CARTAS_RECORTAR_E_COLAR/KIT_INICIAL_1_VERSOS.pdf",
+    "id": "ZC-VIA-0002",
+    "code": "1-04-9",
+    "page": 4,
+    "slot": 8,
+    "side": "back",
+    "box": [
+      138.5,
+      194.5,
+      63,
+      88
+    ],
+    "label_outside": true
+  },
+  {
+    "file": "03_CARTAS_RECORTAR_E_COLAR/KIT_INICIAL_1_VERSOS.pdf",
+    "id": "ZC-VIA-0003",
+    "code": "1-05-1",
+    "page": 5,
+    "slot": 0,
+    "side": "back",
+    "box": [
+      8.5,
+      14.5,
+      63,
+      88
+    ],
+    "label_outside": true
+  },
+  {
+    "file": "03_CARTAS_RECORTAR_E_COLAR/KIT_INICIAL_1_VERSOS.pdf",
+    "id": "ZC-VIA-0004",
+    "code": "1-05-2",
+    "page": 5,
+    "slot": 1,
+    "side": "back",
+    "box": [
+      73.5,
+      14.5,
+      63,
+      88
+    ],
+    "label_outside": true
+  },
+  {
+    "file": "03_CARTAS_RECORTAR_E_COLAR/KIT_INICIAL_1_VERSOS.pdf",
+    "id": "ZC-VIA-0005",
+    "code": "1-05-3",
+    "page": 5,
+    "slot": 2,
+    "side": "back",
+    "box": [
+      138.5,
+      14.5,
+      63,
+      88
+    ],
+    "label_outside": true
+  },
+  {
+    "file": "03_CARTAS_RECORTAR_E_COLAR/KIT_INICIAL_1_VERSOS.pdf",
+    "id": "ZC-VIA-0006",
+    "code": "1-05-4",
+    "page": 5,
+    "slot": 3,
+    "side": "back",
+    "box": [
+      8.5,
+      104.5,
+      63,
+      88
+    ],
+    "label_outside": true
+  },
+  {
+    "file": "03_CARTAS_RECORTAR_E_COLAR/KIT_INICIAL_1_VERSOS.pdf",
+    "id": "ZC-VIA-0007",
+    "code": "1-05-5",
+    "page": 5,
+    "slot": 4,
+    "side": "back",
+    "box": [
+      73.5,
+      104.5,
+      63,
+      88
+    ],
+    "label_outside": true
+  },
+  {
+    "file": "03_CARTAS_RECORTAR_E_COLAR/KIT_INICIAL_1_VERSOS.pdf",
+    "id": "ZC-VIA-0008",
+    "code": "1-05-6",
+    "page": 5,
+    "slot": 5,
+    "side": "back",
+    "box": [
+      138.5,
+      104.5,
+      63,
+      88
+    ],
+    "label_outside": true
+  },
+  {
+    "file": "03_CARTAS_RECORTAR_E_COLAR/KIT_INICIAL_1_VERSOS.pdf",
+    "id": "ZC-VIA-0009",
+    "code": "1-05-7",
+    "page": 5,
+    "slot": 6,
+    "side": "back",
+    "box": [
+      8.5,
+      194.5,
+      63,
+      88
+    ],
+    "label_outside": true
+  },
+  {
+    "file": "03_CARTAS_RECORTAR_E_COLAR/KIT_INICIAL_1_VERSOS.pdf",
+    "id": "ZC-VIA-0010",
+    "code": "1-05-8",
+    "page": 5,
+    "slot": 7,
+    "side": "back",
+    "box": [
+      73.5,
+      194.5,
+      63,
+      88
+    ],
+    "label_outside": true
+  },
+  {
+    "file": "03_CARTAS_RECORTAR_E_COLAR/KIT_INICIAL_1_VERSOS.pdf",
+    "id": "ZC-VIA-0011",
+    "code": "1-05-9",
+    "page": 5,
+    "slot": 8,
+    "side": "back",
+    "box": [
+      138.5,
+      194.5,
+      63,
+      88
+    ],
+    "label_outside": true
+  },
+  {
+    "file": "03_CARTAS_RECORTAR_E_COLAR/KIT_INICIAL_1_VERSOS.pdf",
+    "id": "ZC-VIA-0012",
+    "code": "1-06-1",
+    "page": 6,
+    "slot": 0,
+    "side": "back",
+    "box": [
+      8.5,
+      14.5,
+      63,
+      88
+    ],
+    "label_outside": true
+  },
+  {
+    "file": "03_CARTAS_RECORTAR_E_COLAR/KIT_INICIAL_1_VERSOS.pdf",
+    "id": "ZC-HOR-0001",
+    "code": "1-06-2",
+    "page": 6,
+    "slot": 1,
+    "side": "back",
+    "box": [
+      73.5,
+      14.5,
+      63,
+      88
+    ],
+    "label_outside": true
+  },
+  {
+    "file": "03_CARTAS_RECORTAR_E_COLAR/KIT_INICIAL_1_VERSOS.pdf",
+    "id": "ZC-HOR-0002",
+    "code": "1-06-3",
+    "page": 6,
+    "slot": 2,
+    "side": "back",
+    "box": [
+      138.5,
+      14.5,
+      63,
+      88
+    ],
+    "label_outside": true
+  },
+  {
+    "file": "03_CARTAS_RECORTAR_E_COLAR/KIT_INICIAL_1_VERSOS.pdf",
+    "id": "ZC-HOR-0003",
+    "code": "1-06-4",
+    "page": 6,
+    "slot": 3,
+    "side": "back",
+    "box": [
+      8.5,
+      104.5,
+      63,
+      88
+    ],
+    "label_outside": true
+  },
+  {
+    "file": "03_CARTAS_RECORTAR_E_COLAR/KIT_INICIAL_1_VERSOS.pdf",
+    "id": "ZC-HOR-0004",
+    "code": "1-06-5",
+    "page": 6,
+    "slot": 4,
+    "side": "back",
+    "box": [
+      73.5,
+      104.5,
+      63,
+      88
+    ],
+    "label_outside": true
+  },
+  {
+    "file": "03_CARTAS_RECORTAR_E_COLAR/KIT_INICIAL_1_VERSOS.pdf",
+    "id": "ZC-HOR-0005",
+    "code": "1-06-6",
+    "page": 6,
+    "slot": 5,
+    "side": "back",
+    "box": [
+      138.5,
+      104.5,
+      63,
+      88
+    ],
+    "label_outside": true
+  },
+  {
+    "file": "03_CARTAS_RECORTAR_E_COLAR/KIT_INICIAL_1_VERSOS.pdf",
+    "id": "ZC-HOR-0006",
+    "code": "1-06-7",
+    "page": 6,
+    "slot": 6,
+    "side": "back",
+    "box": [
+      8.5,
+      194.5,
+      63,
+      88
+    ],
+    "label_outside": true
+  },
+  {
+    "file": "03_CARTAS_RECORTAR_E_COLAR/KIT_INICIAL_1_VERSOS.pdf",
+    "id": "ZC-HOR-0007",
+    "code": "1-06-8",
+    "page": 6,
+    "slot": 7,
+    "side": "back",
+    "box": [
+      73.5,
+      194.5,
+      63,
+      88
+    ],
+    "label_outside": true
+  },
+  {
+    "file": "03_CARTAS_RECORTAR_E_COLAR/KIT_INICIAL_1_VERSOS.pdf",
+    "id": "ZC-HOR-0008",
+    "code": "1-06-9",
+    "page": 6,
+    "slot": 8,
+    "side": "back",
+    "box": [
+      138.5,
+      194.5,
+      63,
+      88
+    ],
+    "label_outside": true
+  },
+  {
+    "file": "03_CARTAS_RECORTAR_E_COLAR/KIT_INICIAL_1_VERSOS.pdf",
+    "id": "ZC-HOR-0009",
+    "code": "1-07-1",
+    "page": 7,
+    "slot": 0,
+    "side": "back",
+    "box": [
+      8.5,
+      14.5,
+      63,
+      88
+    ],
+    "label_outside": true
+  },
+  {
+    "file": "03_CARTAS_RECORTAR_E_COLAR/KIT_INICIAL_1_VERSOS.pdf",
+    "id": "ZC-CER-0001",
+    "code": "1-07-2",
+    "page": 7,
+    "slot": 1,
+    "side": "back",
+    "box": [
+      73.5,
+      14.5,
+      63,
+      88
+    ],
+    "label_outside": true
+  },
+  {
+    "file": "03_CARTAS_RECORTAR_E_COLAR/KIT_INICIAL_1_VERSOS.pdf",
+    "id": "ZC-CER-0002",
+    "code": "1-07-3",
+    "page": 7,
+    "slot": 2,
+    "side": "back",
+    "box": [
+      138.5,
+      14.5,
+      63,
+      88
+    ],
+    "label_outside": true
+  },
+  {
+    "file": "03_CARTAS_RECORTAR_E_COLAR/KIT_INICIAL_1_VERSOS.pdf",
+    "id": "ZC-CER-0003",
+    "code": "1-07-4",
+    "page": 7,
+    "slot": 3,
+    "side": "back",
+    "box": [
+      8.5,
+      104.5,
+      63,
+      88
+    ],
+    "label_outside": true
+  },
+  {
+    "file": "03_CARTAS_RECORTAR_E_COLAR/KIT_INICIAL_1_VERSOS.pdf",
+    "id": "ZC-CER-0004",
+    "code": "1-07-5",
+    "page": 7,
+    "slot": 4,
+    "side": "back",
+    "box": [
+      73.5,
+      104.5,
+      63,
+      88
+    ],
+    "label_outside": true
+  },
+  {
+    "file": "03_CARTAS_RECORTAR_E_COLAR/KIT_INICIAL_1_VERSOS.pdf",
+    "id": "ZC-CER-0005",
+    "code": "1-07-6",
+    "page": 7,
+    "slot": 5,
+    "side": "back",
+    "box": [
+      138.5,
+      104.5,
+      63,
+      88
+    ],
+    "label_outside": true
+  },
+  {
+    "file": "03_CARTAS_RECORTAR_E_COLAR/KIT_INICIAL_1_VERSOS.pdf",
+    "id": "ZC-CER-0006",
+    "code": "1-07-7",
+    "page": 7,
+    "slot": 6,
+    "side": "back",
+    "box": [
+      8.5,
+      194.5,
+      63,
+      88
+    ],
+    "label_outside": true
+  },
+  {
+    "file": "03_CARTAS_RECORTAR_E_COLAR/KIT_INICIAL_1_VERSOS.pdf",
+    "id": "ZC-MOR-0001",
+    "code": "1-07-8",
+    "page": 7,
+    "slot": 7,
+    "side": "back",
+    "box": [
+      73.5,
+      194.5,
+      63,
+      88
+    ],
+    "label_outside": true
+  },
+  {
+    "file": "03_CARTAS_RECORTAR_E_COLAR/KIT_COMPLEMENTO_2_FRENTES.pdf",
+    "id": "ZC-PEC-0001",
+    "code": "2-01-1",
+    "page": 1,
+    "slot": 0,
+    "side": "front",
+    "box": [
+      8.5,
+      14.5,
+      63,
+      88
+    ],
+    "label_outside": true
+  },
+  {
+    "file": "03_CARTAS_RECORTAR_E_COLAR/KIT_COMPLEMENTO_2_FRENTES.pdf",
+    "id": "ZC-PEC-0002",
+    "code": "2-01-2",
+    "page": 1,
+    "slot": 1,
+    "side": "front",
+    "box": [
+      73.5,
+      14.5,
+      63,
+      88
+    ],
+    "label_outside": true
+  },
+  {
+    "file": "03_CARTAS_RECORTAR_E_COLAR/KIT_COMPLEMENTO_2_FRENTES.pdf",
+    "id": "ZC-PEC-0003",
+    "code": "2-01-3",
+    "page": 1,
+    "slot": 2,
+    "side": "front",
+    "box": [
+      138.5,
+      14.5,
+      63,
+      88
+    ],
+    "label_outside": true
+  },
+  {
+    "file": "03_CARTAS_RECORTAR_E_COLAR/KIT_COMPLEMENTO_2_FRENTES.pdf",
+    "id": "ZC-PEC-0004",
+    "code": "2-01-4",
+    "page": 1,
+    "slot": 3,
+    "side": "front",
+    "box": [
+      8.5,
+      104.5,
+      63,
+      88
+    ],
+    "label_outside": true
+  },
+  {
+    "file": "03_CARTAS_RECORTAR_E_COLAR/KIT_COMPLEMENTO_2_FRENTES.pdf",
+    "id": "ZC-PEC-0005",
+    "code": "2-01-5",
+    "page": 1,
+    "slot": 4,
+    "side": "front",
+    "box": [
+      73.5,
+      104.5,
+      63,
+      88
+    ],
+    "label_outside": true
+  },
+  {
+    "file": "03_CARTAS_RECORTAR_E_COLAR/KIT_COMPLEMENTO_2_FRENTES.pdf",
+    "id": "ZC-PEC-0006",
+    "code": "2-01-6",
+    "page": 1,
+    "slot": 5,
+    "side": "front",
+    "box": [
+      138.5,
+      104.5,
+      63,
+      88
+    ],
+    "label_outside": true
+  },
+  {
+    "file": "03_CARTAS_RECORTAR_E_COLAR/KIT_COMPLEMENTO_2_FRENTES.pdf",
+    "id": "ZC-EQU-0009",
+    "code": "2-01-7",
+    "page": 1,
+    "slot": 6,
+    "side": "front",
+    "box": [
+      8.5,
+      194.5,
+      63,
+      88
+    ],
+    "label_outside": true
+  },
+  {
+    "file": "03_CARTAS_RECORTAR_E_COLAR/KIT_COMPLEMENTO_2_FRENTES.pdf",
+    "id": "ZC-EQU-0010",
+    "code": "2-01-8",
+    "page": 1,
+    "slot": 7,
+    "side": "front",
+    "box": [
+      73.5,
+      194.5,
+      63,
+      88
+    ],
+    "label_outside": true
+  },
+  {
+    "file": "03_CARTAS_RECORTAR_E_COLAR/KIT_COMPLEMENTO_2_FRENTES.pdf",
+    "id": "ZC-EQU-0011",
+    "code": "2-01-9",
+    "page": 1,
+    "slot": 8,
+    "side": "front",
+    "box": [
+      138.5,
+      194.5,
+      63,
+      88
+    ],
+    "label_outside": true
+  },
+  {
+    "file": "03_CARTAS_RECORTAR_E_COLAR/KIT_COMPLEMENTO_2_FRENTES.pdf",
+    "id": "ZC-EQU-0012",
+    "code": "2-02-1",
+    "page": 2,
+    "slot": 0,
+    "side": "front",
+    "box": [
+      8.5,
+      14.5,
+      63,
+      88
+    ],
+    "label_outside": true
+  },
+  {
+    "file": "03_CARTAS_RECORTAR_E_COLAR/KIT_COMPLEMENTO_2_FRENTES.pdf",
+    "id": "ZC-EQU-0013",
+    "code": "2-02-2",
+    "page": 2,
+    "slot": 1,
+    "side": "front",
+    "box": [
+      73.5,
+      14.5,
+      63,
+      88
+    ],
+    "label_outside": true
+  },
+  {
+    "file": "03_CARTAS_RECORTAR_E_COLAR/KIT_COMPLEMENTO_2_FRENTES.pdf",
+    "id": "ZC-EQU-0015",
+    "code": "2-02-3",
+    "page": 2,
+    "slot": 2,
+    "side": "front",
+    "box": [
+      138.5,
+      14.5,
+      63,
+      88
+    ],
+    "label_outside": true
+  },
+  {
+    "file": "03_CARTAS_RECORTAR_E_COLAR/KIT_COMPLEMENTO_2_FRENTES.pdf",
+    "id": "ZC-EQU-0016",
+    "code": "2-02-4",
+    "page": 2,
+    "slot": 3,
+    "side": "front",
+    "box": [
+      8.5,
+      104.5,
+      63,
+      88
+    ],
+    "label_outside": true
+  },
+  {
+    "file": "03_CARTAS_RECORTAR_E_COLAR/KIT_COMPLEMENTO_2_FRENTES.pdf",
+    "id": "ZC-EQU-0018",
+    "code": "2-02-5",
+    "page": 2,
+    "slot": 4,
+    "side": "front",
+    "box": [
+      73.5,
+      104.5,
+      63,
+      88
+    ],
+    "label_outside": true
+  },
+  {
+    "file": "03_CARTAS_RECORTAR_E_COLAR/KIT_COMPLEMENTO_2_FRENTES.pdf",
+    "id": "ZC-SAQ-0007",
+    "code": "2-02-6",
+    "page": 2,
+    "slot": 5,
+    "side": "front",
+    "box": [
+      138.5,
+      104.5,
+      63,
+      88
+    ],
+    "label_outside": true
+  },
+  {
+    "file": "03_CARTAS_RECORTAR_E_COLAR/KIT_COMPLEMENTO_2_FRENTES.pdf",
+    "id": "ZC-SAQ-0008",
+    "code": "2-02-7",
+    "page": 2,
+    "slot": 6,
+    "side": "front",
+    "box": [
+      8.5,
+      194.5,
+      63,
+      88
+    ],
+    "label_outside": true
+  },
+  {
+    "file": "03_CARTAS_RECORTAR_E_COLAR/KIT_COMPLEMENTO_2_FRENTES.pdf",
+    "id": "ZC-SAQ-0009",
+    "code": "2-02-8",
+    "page": 2,
+    "slot": 7,
+    "side": "front",
+    "box": [
+      73.5,
+      194.5,
+      63,
+      88
+    ],
+    "label_outside": true
+  },
+  {
+    "file": "03_CARTAS_RECORTAR_E_COLAR/KIT_COMPLEMENTO_2_FRENTES.pdf",
+    "id": "ZC-SAQ-0010",
+    "code": "2-02-9",
+    "page": 2,
+    "slot": 8,
+    "side": "front",
+    "box": [
+      138.5,
+      194.5,
+      63,
+      88
+    ],
+    "label_outside": true
+  },
+  {
+    "file": "03_CARTAS_RECORTAR_E_COLAR/KIT_COMPLEMENTO_2_FRENTES.pdf",
+    "id": "ZC-SAQ-0011",
+    "code": "2-03-1",
+    "page": 3,
+    "slot": 0,
+    "side": "front",
+    "box": [
+      8.5,
+      14.5,
+      63,
+      88
+    ],
+    "label_outside": true
+  },
+  {
+    "file": "03_CARTAS_RECORTAR_E_COLAR/KIT_COMPLEMENTO_2_FRENTES.pdf",
+    "id": "ZC-SAQ-0012",
+    "code": "2-03-2",
+    "page": 3,
+    "slot": 1,
+    "side": "front",
+    "box": [
+      73.5,
+      14.5,
+      63,
+      88
+    ],
+    "label_outside": true
+  },
+  {
+    "file": "03_CARTAS_RECORTAR_E_COLAR/KIT_COMPLEMENTO_2_FRENTES.pdf",
+    "id": "ZC-SAQ-0013",
+    "code": "2-03-3",
+    "page": 3,
+    "slot": 2,
+    "side": "front",
+    "box": [
+      138.5,
+      14.5,
+      63,
+      88
+    ],
+    "label_outside": true
+  },
+  {
+    "file": "03_CARTAS_RECORTAR_E_COLAR/KIT_COMPLEMENTO_2_FRENTES.pdf",
+    "id": "ZC-SAQ-0014",
+    "code": "2-03-4",
+    "page": 3,
+    "slot": 3,
+    "side": "front",
+    "box": [
+      8.5,
+      104.5,
+      63,
+      88
+    ],
+    "label_outside": true
+  },
+  {
+    "file": "03_CARTAS_RECORTAR_E_COLAR/KIT_COMPLEMENTO_2_FRENTES.pdf",
+    "id": "ZC-SAQ-0015",
+    "code": "2-03-5",
+    "page": 3,
+    "slot": 4,
+    "side": "front",
+    "box": [
+      73.5,
+      104.5,
+      63,
+      88
+    ],
+    "label_outside": true
+  },
+  {
+    "file": "03_CARTAS_RECORTAR_E_COLAR/KIT_COMPLEMENTO_2_FRENTES.pdf",
+    "id": "ZC-SAQ-0016",
+    "code": "2-03-6",
+    "page": 3,
+    "slot": 5,
+    "side": "front",
+    "box": [
+      138.5,
+      104.5,
+      63,
+      88
+    ],
+    "label_outside": true
+  },
+  {
+    "file": "03_CARTAS_RECORTAR_E_COLAR/KIT_COMPLEMENTO_2_FRENTES.pdf",
+    "id": "ZC-SAQ-0017",
+    "code": "2-03-7",
+    "page": 3,
+    "slot": 6,
+    "side": "front",
+    "box": [
+      8.5,
+      194.5,
+      63,
+      88
+    ],
+    "label_outside": true
+  },
+  {
+    "file": "03_CARTAS_RECORTAR_E_COLAR/KIT_COMPLEMENTO_2_FRENTES.pdf",
+    "id": "ZC-SAQ-0018",
+    "code": "2-03-8",
+    "page": 3,
+    "slot": 7,
+    "side": "front",
+    "box": [
+      73.5,
+      194.5,
+      63,
+      88
+    ],
+    "label_outside": true
+  },
+  {
+    "file": "03_CARTAS_RECORTAR_E_COLAR/KIT_COMPLEMENTO_2_FRENTES.pdf",
+    "id": "ZC-SAQ-0019",
+    "code": "2-03-9",
+    "page": 3,
+    "slot": 8,
+    "side": "front",
+    "box": [
+      138.5,
+      194.5,
+      63,
+      88
+    ],
+    "label_outside": true
+  },
+  {
+    "file": "03_CARTAS_RECORTAR_E_COLAR/KIT_COMPLEMENTO_2_FRENTES.pdf",
+    "id": "ZC-SAQ-0020",
+    "code": "2-04-1",
+    "page": 4,
+    "slot": 0,
+    "side": "front",
+    "box": [
+      8.5,
+      14.5,
+      63,
+      88
+    ],
+    "label_outside": true
+  },
+  {
+    "file": "03_CARTAS_RECORTAR_E_COLAR/KIT_COMPLEMENTO_2_FRENTES.pdf",
+    "id": "ZC-SAQ-0021",
+    "code": "2-04-2",
+    "page": 4,
+    "slot": 1,
+    "side": "front",
+    "box": [
+      73.5,
+      14.5,
+      63,
+      88
+    ],
+    "label_outside": true
+  },
+  {
+    "file": "03_CARTAS_RECORTAR_E_COLAR/KIT_COMPLEMENTO_2_FRENTES.pdf",
+    "id": "ZC-SAQ-0022",
+    "code": "2-04-3",
+    "page": 4,
+    "slot": 2,
+    "side": "front",
+    "box": [
+      138.5,
+      14.5,
+      63,
+      88
+    ],
+    "label_outside": true
+  },
+  {
+    "file": "03_CARTAS_RECORTAR_E_COLAR/KIT_COMPLEMENTO_2_FRENTES.pdf",
+    "id": "ZC-SAQ-0023",
+    "code": "2-04-4",
+    "page": 4,
+    "slot": 3,
+    "side": "front",
+    "box": [
+      8.5,
+      104.5,
+      63,
+      88
+    ],
+    "label_outside": true
+  },
+  {
+    "file": "03_CARTAS_RECORTAR_E_COLAR/KIT_COMPLEMENTO_2_FRENTES.pdf",
+    "id": "ZC-SAQ-0024",
+    "code": "2-04-5",
+    "page": 4,
+    "slot": 4,
+    "side": "front",
+    "box": [
+      73.5,
+      104.5,
+      63,
+      88
+    ],
+    "label_outside": true
+  },
+  {
+    "file": "03_CARTAS_RECORTAR_E_COLAR/KIT_COMPLEMENTO_2_FRENTES.pdf",
+    "id": "ZC-SAQ-0025",
+    "code": "2-04-6",
+    "page": 4,
+    "slot": 5,
+    "side": "front",
+    "box": [
+      138.5,
+      104.5,
+      63,
+      88
+    ],
+    "label_outside": true
+  },
+  {
+    "file": "03_CARTAS_RECORTAR_E_COLAR/KIT_COMPLEMENTO_2_FRENTES.pdf",
+    "id": "ZC-SAQ-0026",
+    "code": "2-04-7",
+    "page": 4,
+    "slot": 6,
+    "side": "front",
+    "box": [
+      8.5,
+      194.5,
+      63,
+      88
+    ],
+    "label_outside": true
+  },
+  {
+    "file": "03_CARTAS_RECORTAR_E_COLAR/KIT_COMPLEMENTO_2_FRENTES.pdf",
+    "id": "ZC-SAQ-0027",
+    "code": "2-04-8",
+    "page": 4,
+    "slot": 7,
+    "side": "front",
+    "box": [
+      73.5,
+      194.5,
+      63,
+      88
+    ],
+    "label_outside": true
+  },
+  {
+    "file": "03_CARTAS_RECORTAR_E_COLAR/KIT_COMPLEMENTO_2_FRENTES.pdf",
+    "id": "ZC-SAQ-0028",
+    "code": "2-04-9",
+    "page": 4,
+    "slot": 8,
+    "side": "front",
+    "box": [
+      138.5,
+      194.5,
+      63,
+      88
+    ],
+    "label_outside": true
+  },
+  {
+    "file": "03_CARTAS_RECORTAR_E_COLAR/KIT_COMPLEMENTO_2_FRENTES.pdf",
+    "id": "ZC-SAQ-0029",
+    "code": "2-05-1",
+    "page": 5,
+    "slot": 0,
+    "side": "front",
+    "box": [
+      8.5,
+      14.5,
+      63,
+      88
+    ],
+    "label_outside": true
+  },
+  {
+    "file": "03_CARTAS_RECORTAR_E_COLAR/KIT_COMPLEMENTO_2_FRENTES.pdf",
+    "id": "ZC-SAQ-0030",
+    "code": "2-05-2",
+    "page": 5,
+    "slot": 1,
+    "side": "front",
+    "box": [
+      73.5,
+      14.5,
+      63,
+      88
+    ],
+    "label_outside": true
+  },
+  {
+    "file": "03_CARTAS_RECORTAR_E_COLAR/KIT_COMPLEMENTO_2_FRENTES.pdf",
+    "id": "ZC-SAQ-0031",
+    "code": "2-05-3",
+    "page": 5,
+    "slot": 2,
+    "side": "front",
+    "box": [
+      138.5,
+      14.5,
+      63,
+      88
+    ],
+    "label_outside": true
+  },
+  {
+    "file": "03_CARTAS_RECORTAR_E_COLAR/KIT_COMPLEMENTO_2_FRENTES.pdf",
+    "id": "ZC-SAQ-0032",
+    "code": "2-05-4",
+    "page": 5,
+    "slot": 3,
+    "side": "front",
+    "box": [
+      8.5,
+      104.5,
+      63,
+      88
+    ],
+    "label_outside": true
+  },
+  {
+    "file": "03_CARTAS_RECORTAR_E_COLAR/KIT_COMPLEMENTO_2_FRENTES.pdf",
+    "id": "ZC-SAQ-0033",
+    "code": "2-05-5",
+    "page": 5,
+    "slot": 4,
+    "side": "front",
+    "box": [
+      73.5,
+      104.5,
+      63,
+      88
+    ],
+    "label_outside": true
+  },
+  {
+    "file": "03_CARTAS_RECORTAR_E_COLAR/KIT_COMPLEMENTO_2_FRENTES.pdf",
+    "id": "ZC-SAQ-0034",
+    "code": "2-05-6",
+    "page": 5,
+    "slot": 5,
+    "side": "front",
+    "box": [
+      138.5,
+      104.5,
+      63,
+      88
+    ],
+    "label_outside": true
+  },
+  {
+    "file": "03_CARTAS_RECORTAR_E_COLAR/KIT_COMPLEMENTO_2_FRENTES.pdf",
+    "id": "ZC-SAQ-0035",
+    "code": "2-05-7",
+    "page": 5,
+    "slot": 6,
+    "side": "front",
+    "box": [
+      8.5,
+      194.5,
+      63,
+      88
+    ],
+    "label_outside": true
+  },
+  {
+    "file": "03_CARTAS_RECORTAR_E_COLAR/KIT_COMPLEMENTO_2_FRENTES.pdf",
+    "id": "ZC-SAQ-0036",
+    "code": "2-05-8",
+    "page": 5,
+    "slot": 7,
+    "side": "front",
+    "box": [
+      73.5,
+      194.5,
+      63,
+      88
+    ],
+    "label_outside": true
+  },
+  {
+    "file": "03_CARTAS_RECORTAR_E_COLAR/KIT_COMPLEMENTO_2_FRENTES.pdf",
+    "id": "ZC-MOR-0002",
+    "code": "2-05-9",
+    "page": 5,
+    "slot": 8,
+    "side": "front",
+    "box": [
+      138.5,
+      194.5,
+      63,
+      88
+    ],
+    "label_outside": true
+  },
+  {
+    "file": "03_CARTAS_RECORTAR_E_COLAR/KIT_COMPLEMENTO_2_FRENTES.pdf",
+    "id": "ZC-MOR-0003",
+    "code": "2-06-1",
+    "page": 6,
+    "slot": 0,
+    "side": "front",
+    "box": [
+      8.5,
+      14.5,
+      63,
+      88
+    ],
+    "label_outside": true
+  },
+  {
+    "file": "03_CARTAS_RECORTAR_E_COLAR/KIT_COMPLEMENTO_2_FRENTES.pdf",
+    "id": "ZC-MOR-0004",
+    "code": "2-06-2",
+    "page": 6,
+    "slot": 1,
+    "side": "front",
+    "box": [
+      73.5,
+      14.5,
+      63,
+      88
+    ],
+    "label_outside": true
+  },
+  {
+    "file": "03_CARTAS_RECORTAR_E_COLAR/KIT_COMPLEMENTO_2_FRENTES.pdf",
+    "id": "ZC-MOR-0005",
+    "code": "2-06-3",
+    "page": 6,
+    "slot": 2,
+    "side": "front",
+    "box": [
+      138.5,
+      14.5,
+      63,
+      88
+    ],
+    "label_outside": true
+  },
+  {
+    "file": "03_CARTAS_RECORTAR_E_COLAR/KIT_COMPLEMENTO_2_FRENTES.pdf",
+    "id": "ZC-MOR-0006",
+    "code": "2-06-4",
+    "page": 6,
+    "slot": 3,
+    "side": "front",
+    "box": [
+      8.5,
+      104.5,
+      63,
+      88
+    ],
+    "label_outside": true
+  },
+  {
+    "file": "03_CARTAS_RECORTAR_E_COLAR/KIT_COMPLEMENTO_2_FRENTES.pdf",
+    "id": "ZC-MOR-0007",
+    "code": "2-06-5",
+    "page": 6,
+    "slot": 4,
+    "side": "front",
+    "box": [
+      73.5,
+      104.5,
+      63,
+      88
+    ],
+    "label_outside": true
+  },
+  {
+    "file": "03_CARTAS_RECORTAR_E_COLAR/KIT_COMPLEMENTO_2_FRENTES.pdf",
+    "id": "ZC-MOR-0008",
+    "code": "2-06-6",
+    "page": 6,
+    "slot": 5,
+    "side": "front",
+    "box": [
+      138.5,
+      104.5,
+      63,
+      88
+    ],
+    "label_outside": true
+  },
+  {
+    "file": "03_CARTAS_RECORTAR_E_COLAR/KIT_COMPLEMENTO_2_FRENTES.pdf",
+    "id": "ZC-VEI-0001",
+    "code": "2-06-7",
+    "page": 6,
+    "slot": 6,
+    "side": "front",
+    "box": [
+      8.5,
+      194.5,
+      63,
+      88
+    ],
+    "label_outside": true
+  },
+  {
+    "file": "03_CARTAS_RECORTAR_E_COLAR/KIT_COMPLEMENTO_2_VERSOS.pdf",
+    "id": "ZC-PEC-0001",
+    "code": "2-01-1",
+    "page": 1,
+    "slot": 0,
+    "side": "back",
+    "box": [
+      8.5,
+      14.5,
+      63,
+      88
+    ],
+    "label_outside": true
+  },
+  {
+    "file": "03_CARTAS_RECORTAR_E_COLAR/KIT_COMPLEMENTO_2_VERSOS.pdf",
+    "id": "ZC-PEC-0002",
+    "code": "2-01-2",
+    "page": 1,
+    "slot": 1,
+    "side": "back",
+    "box": [
+      73.5,
+      14.5,
+      63,
+      88
+    ],
+    "label_outside": true
+  },
+  {
+    "file": "03_CARTAS_RECORTAR_E_COLAR/KIT_COMPLEMENTO_2_VERSOS.pdf",
+    "id": "ZC-PEC-0003",
+    "code": "2-01-3",
+    "page": 1,
+    "slot": 2,
+    "side": "back",
+    "box": [
+      138.5,
+      14.5,
+      63,
+      88
+    ],
+    "label_outside": true
+  },
+  {
+    "file": "03_CARTAS_RECORTAR_E_COLAR/KIT_COMPLEMENTO_2_VERSOS.pdf",
+    "id": "ZC-PEC-0004",
+    "code": "2-01-4",
+    "page": 1,
+    "slot": 3,
+    "side": "back",
+    "box": [
+      8.5,
+      104.5,
+      63,
+      88
+    ],
+    "label_outside": true
+  },
+  {
+    "file": "03_CARTAS_RECORTAR_E_COLAR/KIT_COMPLEMENTO_2_VERSOS.pdf",
+    "id": "ZC-PEC-0005",
+    "code": "2-01-5",
+    "page": 1,
+    "slot": 4,
+    "side": "back",
+    "box": [
+      73.5,
+      104.5,
+      63,
+      88
+    ],
+    "label_outside": true
+  },
+  {
+    "file": "03_CARTAS_RECORTAR_E_COLAR/KIT_COMPLEMENTO_2_VERSOS.pdf",
+    "id": "ZC-PEC-0006",
+    "code": "2-01-6",
+    "page": 1,
+    "slot": 5,
+    "side": "back",
+    "box": [
+      138.5,
+      104.5,
+      63,
+      88
+    ],
+    "label_outside": true
+  },
+  {
+    "file": "03_CARTAS_RECORTAR_E_COLAR/KIT_COMPLEMENTO_2_VERSOS.pdf",
+    "id": "ZC-EQU-0009",
+    "code": "2-01-7",
+    "page": 1,
+    "slot": 6,
+    "side": "back",
+    "box": [
+      8.5,
+      194.5,
+      63,
+      88
+    ],
+    "label_outside": true
+  },
+  {
+    "file": "03_CARTAS_RECORTAR_E_COLAR/KIT_COMPLEMENTO_2_VERSOS.pdf",
+    "id": "ZC-EQU-0010",
+    "code": "2-01-8",
+    "page": 1,
+    "slot": 7,
+    "side": "back",
+    "box": [
+      73.5,
+      194.5,
+      63,
+      88
+    ],
+    "label_outside": true
+  },
+  {
+    "file": "03_CARTAS_RECORTAR_E_COLAR/KIT_COMPLEMENTO_2_VERSOS.pdf",
+    "id": "ZC-EQU-0011",
+    "code": "2-01-9",
+    "page": 1,
+    "slot": 8,
+    "side": "back",
+    "box": [
+      138.5,
+      194.5,
+      63,
+      88
+    ],
+    "label_outside": true
+  },
+  {
+    "file": "03_CARTAS_RECORTAR_E_COLAR/KIT_COMPLEMENTO_2_VERSOS.pdf",
+    "id": "ZC-EQU-0012",
+    "code": "2-02-1",
+    "page": 2,
+    "slot": 0,
+    "side": "back",
+    "box": [
+      8.5,
+      14.5,
+      63,
+      88
+    ],
+    "label_outside": true
+  },
+  {
+    "file": "03_CARTAS_RECORTAR_E_COLAR/KIT_COMPLEMENTO_2_VERSOS.pdf",
+    "id": "ZC-EQU-0013",
+    "code": "2-02-2",
+    "page": 2,
+    "slot": 1,
+    "side": "back",
+    "box": [
+      73.5,
+      14.5,
+      63,
+      88
+    ],
+    "label_outside": true
+  },
+  {
+    "file": "03_CARTAS_RECORTAR_E_COLAR/KIT_COMPLEMENTO_2_VERSOS.pdf",
+    "id": "ZC-EQU-0015",
+    "code": "2-02-3",
+    "page": 2,
+    "slot": 2,
+    "side": "back",
+    "box": [
+      138.5,
+      14.5,
+      63,
+      88
+    ],
+    "label_outside": true
+  },
+  {
+    "file": "03_CARTAS_RECORTAR_E_COLAR/KIT_COMPLEMENTO_2_VERSOS.pdf",
+    "id": "ZC-EQU-0016",
+    "code": "2-02-4",
+    "page": 2,
+    "slot": 3,
+    "side": "back",
+    "box": [
+      8.5,
+      104.5,
+      63,
+      88
+    ],
+    "label_outside": true
+  },
+  {
+    "file": "03_CARTAS_RECORTAR_E_COLAR/KIT_COMPLEMENTO_2_VERSOS.pdf",
+    "id": "ZC-EQU-0018",
+    "code": "2-02-5",
+    "page": 2,
+    "slot": 4,
+    "side": "back",
+    "box": [
+      73.5,
+      104.5,
+      63,
+      88
+    ],
+    "label_outside": true
+  },
+  {
+    "file": "03_CARTAS_RECORTAR_E_COLAR/KIT_COMPLEMENTO_2_VERSOS.pdf",
+    "id": "ZC-SAQ-0007",
+    "code": "2-02-6",
+    "page": 2,
+    "slot": 5,
+    "side": "back",
+    "box": [
+      138.5,
+      104.5,
+      63,
+      88
+    ],
+    "label_outside": true
+  },
+  {
+    "file": "03_CARTAS_RECORTAR_E_COLAR/KIT_COMPLEMENTO_2_VERSOS.pdf",
+    "id": "ZC-SAQ-0008",
+    "code": "2-02-7",
+    "page": 2,
+    "slot": 6,
+    "side": "back",
+    "box": [
+      8.5,
+      194.5,
+      63,
+      88
+    ],
+    "label_outside": true
+  },
+  {
+    "file": "03_CARTAS_RECORTAR_E_COLAR/KIT_COMPLEMENTO_2_VERSOS.pdf",
+    "id": "ZC-SAQ-0009",
+    "code": "2-02-8",
+    "page": 2,
+    "slot": 7,
+    "side": "back",
+    "box": [
+      73.5,
+      194.5,
+      63,
+      88
+    ],
+    "label_outside": true
+  },
+  {
+    "file": "03_CARTAS_RECORTAR_E_COLAR/KIT_COMPLEMENTO_2_VERSOS.pdf",
+    "id": "ZC-SAQ-0010",
+    "code": "2-02-9",
+    "page": 2,
+    "slot": 8,
+    "side": "back",
+    "box": [
+      138.5,
+      194.5,
+      63,
+      88
+    ],
+    "label_outside": true
+  },
+  {
+    "file": "03_CARTAS_RECORTAR_E_COLAR/KIT_COMPLEMENTO_2_VERSOS.pdf",
+    "id": "ZC-SAQ-0011",
+    "code": "2-03-1",
+    "page": 3,
+    "slot": 0,
+    "side": "back",
+    "box": [
+      8.5,
+      14.5,
+      63,
+      88
+    ],
+    "label_outside": true
+  },
+  {
+    "file": "03_CARTAS_RECORTAR_E_COLAR/KIT_COMPLEMENTO_2_VERSOS.pdf",
+    "id": "ZC-SAQ-0012",
+    "code": "2-03-2",
+    "page": 3,
+    "slot": 1,
+    "side": "back",
+    "box": [
+      73.5,
+      14.5,
+      63,
+      88
+    ],
+    "label_outside": true
+  },
+  {
+    "file": "03_CARTAS_RECORTAR_E_COLAR/KIT_COMPLEMENTO_2_VERSOS.pdf",
+    "id": "ZC-SAQ-0013",
+    "code": "2-03-3",
+    "page": 3,
+    "slot": 2,
+    "side": "back",
+    "box": [
+      138.5,
+      14.5,
+      63,
+      88
+    ],
+    "label_outside": true
+  },
+  {
+    "file": "03_CARTAS_RECORTAR_E_COLAR/KIT_COMPLEMENTO_2_VERSOS.pdf",
+    "id": "ZC-SAQ-0014",
+    "code": "2-03-4",
+    "page": 3,
+    "slot": 3,
+    "side": "back",
+    "box": [
+      8.5,
+      104.5,
+      63,
+      88
+    ],
+    "label_outside": true
+  },
+  {
+    "file": "03_CARTAS_RECORTAR_E_COLAR/KIT_COMPLEMENTO_2_VERSOS.pdf",
+    "id": "ZC-SAQ-0015",
+    "code": "2-03-5",
+    "page": 3,
+    "slot": 4,
+    "side": "back",
+    "box": [
+      73.5,
+      104.5,
+      63,
+      88
+    ],
+    "label_outside": true
+  },
+  {
+    "file": "03_CARTAS_RECORTAR_E_COLAR/KIT_COMPLEMENTO_2_VERSOS.pdf",
+    "id": "ZC-SAQ-0016",
+    "code": "2-03-6",
+    "page": 3,
+    "slot": 5,
+    "side": "back",
+    "box": [
+      138.5,
+      104.5,
+      63,
+      88
+    ],
+    "label_outside": true
+  },
+  {
+    "file": "03_CARTAS_RECORTAR_E_COLAR/KIT_COMPLEMENTO_2_VERSOS.pdf",
+    "id": "ZC-SAQ-0017",
+    "code": "2-03-7",
+    "page": 3,
+    "slot": 6,
+    "side": "back",
+    "box": [
+      8.5,
+      194.5,
+      63,
+      88
+    ],
+    "label_outside": true
+  },
+  {
+    "file": "03_CARTAS_RECORTAR_E_COLAR/KIT_COMPLEMENTO_2_VERSOS.pdf",
+    "id": "ZC-SAQ-0018",
+    "code": "2-03-8",
+    "page": 3,
+    "slot": 7,
+    "side": "back",
+    "box": [
+      73.5,
+      194.5,
+      63,
+      88
+    ],
+    "label_outside": true
+  },
+  {
+    "file": "03_CARTAS_RECORTAR_E_COLAR/KIT_COMPLEMENTO_2_VERSOS.pdf",
+    "id": "ZC-SAQ-0019",
+    "code": "2-03-9",
+    "page": 3,
+    "slot": 8,
+    "side": "back",
+    "box": [
+      138.5,
+      194.5,
+      63,
+      88
+    ],
+    "label_outside": true
+  },
+  {
+    "file": "03_CARTAS_RECORTAR_E_COLAR/KIT_COMPLEMENTO_2_VERSOS.pdf",
+    "id": "ZC-SAQ-0020",
+    "code": "2-04-1",
+    "page": 4,
+    "slot": 0,
+    "side": "back",
+    "box": [
+      8.5,
+      14.5,
+      63,
+      88
+    ],
+    "label_outside": true
+  },
+  {
+    "file": "03_CARTAS_RECORTAR_E_COLAR/KIT_COMPLEMENTO_2_VERSOS.pdf",
+    "id": "ZC-SAQ-0021",
+    "code": "2-04-2",
+    "page": 4,
+    "slot": 1,
+    "side": "back",
+    "box": [
+      73.5,
+      14.5,
+      63,
+      88
+    ],
+    "label_outside": true
+  },
+  {
+    "file": "03_CARTAS_RECORTAR_E_COLAR/KIT_COMPLEMENTO_2_VERSOS.pdf",
+    "id": "ZC-SAQ-0022",
+    "code": "2-04-3",
+    "page": 4,
+    "slot": 2,
+    "side": "back",
+    "box": [
+      138.5,
+      14.5,
+      63,
+      88
+    ],
+    "label_outside": true
+  },
+  {
+    "file": "03_CARTAS_RECORTAR_E_COLAR/KIT_COMPLEMENTO_2_VERSOS.pdf",
+    "id": "ZC-SAQ-0023",
+    "code": "2-04-4",
+    "page": 4,
+    "slot": 3,
+    "side": "back",
+    "box": [
+      8.5,
+      104.5,
+      63,
+      88
+    ],
+    "label_outside": true
+  },
+  {
+    "file": "03_CARTAS_RECORTAR_E_COLAR/KIT_COMPLEMENTO_2_VERSOS.pdf",
+    "id": "ZC-SAQ-0024",
+    "code": "2-04-5",
+    "page": 4,
+    "slot": 4,
+    "side": "back",
+    "box": [
+      73.5,
+      104.5,
+      63,
+      88
+    ],
+    "label_outside": true
+  },
+  {
+    "file": "03_CARTAS_RECORTAR_E_COLAR/KIT_COMPLEMENTO_2_VERSOS.pdf",
+    "id": "ZC-SAQ-0025",
+    "code": "2-04-6",
+    "page": 4,
+    "slot": 5,
+    "side": "back",
+    "box": [
+      138.5,
+      104.5,
+      63,
+      88
+    ],
+    "label_outside": true
+  },
+  {
+    "file": "03_CARTAS_RECORTAR_E_COLAR/KIT_COMPLEMENTO_2_VERSOS.pdf",
+    "id": "ZC-SAQ-0026",
+    "code": "2-04-7",
+    "page": 4,
+    "slot": 6,
+    "side": "back",
+    "box": [
+      8.5,
+      194.5,
+      63,
+      88
+    ],
+    "label_outside": true
+  },
+  {
+    "file": "03_CARTAS_RECORTAR_E_COLAR/KIT_COMPLEMENTO_2_VERSOS.pdf",
+    "id": "ZC-SAQ-0027",
+    "code": "2-04-8",
+    "page": 4,
+    "slot": 7,
+    "side": "back",
+    "box": [
+      73.5,
+      194.5,
+      63,
+      88
+    ],
+    "label_outside": true
+  },
+  {
+    "file": "03_CARTAS_RECORTAR_E_COLAR/KIT_COMPLEMENTO_2_VERSOS.pdf",
+    "id": "ZC-SAQ-0028",
+    "code": "2-04-9",
+    "page": 4,
+    "slot": 8,
+    "side": "back",
+    "box": [
+      138.5,
+      194.5,
+      63,
+      88
+    ],
+    "label_outside": true
+  },
+  {
+    "file": "03_CARTAS_RECORTAR_E_COLAR/KIT_COMPLEMENTO_2_VERSOS.pdf",
+    "id": "ZC-SAQ-0029",
+    "code": "2-05-1",
+    "page": 5,
+    "slot": 0,
+    "side": "back",
+    "box": [
+      8.5,
+      14.5,
+      63,
+      88
+    ],
+    "label_outside": true
+  },
+  {
+    "file": "03_CARTAS_RECORTAR_E_COLAR/KIT_COMPLEMENTO_2_VERSOS.pdf",
+    "id": "ZC-SAQ-0030",
+    "code": "2-05-2",
+    "page": 5,
+    "slot": 1,
+    "side": "back",
+    "box": [
+      73.5,
+      14.5,
+      63,
+      88
+    ],
+    "label_outside": true
+  },
+  {
+    "file": "03_CARTAS_RECORTAR_E_COLAR/KIT_COMPLEMENTO_2_VERSOS.pdf",
+    "id": "ZC-SAQ-0031",
+    "code": "2-05-3",
+    "page": 5,
+    "slot": 2,
+    "side": "back",
+    "box": [
+      138.5,
+      14.5,
+      63,
+      88
+    ],
+    "label_outside": true
+  },
+  {
+    "file": "03_CARTAS_RECORTAR_E_COLAR/KIT_COMPLEMENTO_2_VERSOS.pdf",
+    "id": "ZC-SAQ-0032",
+    "code": "2-05-4",
+    "page": 5,
+    "slot": 3,
+    "side": "back",
+    "box": [
+      8.5,
+      104.5,
+      63,
+      88
+    ],
+    "label_outside": true
+  },
+  {
+    "file": "03_CARTAS_RECORTAR_E_COLAR/KIT_COMPLEMENTO_2_VERSOS.pdf",
+    "id": "ZC-SAQ-0033",
+    "code": "2-05-5",
+    "page": 5,
+    "slot": 4,
+    "side": "back",
+    "box": [
+      73.5,
+      104.5,
+      63,
+      88
+    ],
+    "label_outside": true
+  },
+  {
+    "file": "03_CARTAS_RECORTAR_E_COLAR/KIT_COMPLEMENTO_2_VERSOS.pdf",
+    "id": "ZC-SAQ-0034",
+    "code": "2-05-6",
+    "page": 5,
+    "slot": 5,
+    "side": "back",
+    "box": [
+      138.5,
+      104.5,
+      63,
+      88
+    ],
+    "label_outside": true
+  },
+  {
+    "file": "03_CARTAS_RECORTAR_E_COLAR/KIT_COMPLEMENTO_2_VERSOS.pdf",
+    "id": "ZC-SAQ-0035",
+    "code": "2-05-7",
+    "page": 5,
+    "slot": 6,
+    "side": "back",
+    "box": [
+      8.5,
+      194.5,
+      63,
+      88
+    ],
+    "label_outside": true
+  },
+  {
+    "file": "03_CARTAS_RECORTAR_E_COLAR/KIT_COMPLEMENTO_2_VERSOS.pdf",
+    "id": "ZC-SAQ-0036",
+    "code": "2-05-8",
+    "page": 5,
+    "slot": 7,
+    "side": "back",
+    "box": [
+      73.5,
+      194.5,
+      63,
+      88
+    ],
+    "label_outside": true
+  },
+  {
+    "file": "03_CARTAS_RECORTAR_E_COLAR/KIT_COMPLEMENTO_2_VERSOS.pdf",
+    "id": "ZC-MOR-0002",
+    "code": "2-05-9",
+    "page": 5,
+    "slot": 8,
+    "side": "back",
+    "box": [
+      138.5,
+      194.5,
+      63,
+      88
+    ],
+    "label_outside": true
+  },
+  {
+    "file": "03_CARTAS_RECORTAR_E_COLAR/KIT_COMPLEMENTO_2_VERSOS.pdf",
+    "id": "ZC-MOR-0003",
+    "code": "2-06-1",
+    "page": 6,
+    "slot": 0,
+    "side": "back",
+    "box": [
+      8.5,
+      14.5,
+      63,
+      88
+    ],
+    "label_outside": true
+  },
+  {
+    "file": "03_CARTAS_RECORTAR_E_COLAR/KIT_COMPLEMENTO_2_VERSOS.pdf",
+    "id": "ZC-MOR-0004",
+    "code": "2-06-2",
+    "page": 6,
+    "slot": 1,
+    "side": "back",
+    "box": [
+      73.5,
+      14.5,
+      63,
+      88
+    ],
+    "label_outside": true
+  },
+  {
+    "file": "03_CARTAS_RECORTAR_E_COLAR/KIT_COMPLEMENTO_2_VERSOS.pdf",
+    "id": "ZC-MOR-0005",
+    "code": "2-06-3",
+    "page": 6,
+    "slot": 2,
+    "side": "back",
+    "box": [
+      138.5,
+      14.5,
+      63,
+      88
+    ],
+    "label_outside": true
+  },
+  {
+    "file": "03_CARTAS_RECORTAR_E_COLAR/KIT_COMPLEMENTO_2_VERSOS.pdf",
+    "id": "ZC-MOR-0006",
+    "code": "2-06-4",
+    "page": 6,
+    "slot": 3,
+    "side": "back",
+    "box": [
+      8.5,
+      104.5,
+      63,
+      88
+    ],
+    "label_outside": true
+  },
+  {
+    "file": "03_CARTAS_RECORTAR_E_COLAR/KIT_COMPLEMENTO_2_VERSOS.pdf",
+    "id": "ZC-MOR-0007",
+    "code": "2-06-5",
+    "page": 6,
+    "slot": 4,
+    "side": "back",
+    "box": [
+      73.5,
+      104.5,
+      63,
+      88
+    ],
+    "label_outside": true
+  },
+  {
+    "file": "03_CARTAS_RECORTAR_E_COLAR/KIT_COMPLEMENTO_2_VERSOS.pdf",
+    "id": "ZC-MOR-0008",
+    "code": "2-06-6",
+    "page": 6,
+    "slot": 5,
+    "side": "back",
+    "box": [
+      138.5,
+      104.5,
+      63,
+      88
+    ],
+    "label_outside": true
+  },
+  {
+    "file": "03_CARTAS_RECORTAR_E_COLAR/KIT_COMPLEMENTO_2_VERSOS.pdf",
+    "id": "ZC-VEI-0001",
+    "code": "2-06-7",
+    "page": 6,
+    "slot": 6,
+    "side": "back",
+    "box": [
+      8.5,
+      194.5,
+      63,
+      88
+    ],
+    "label_outside": true
+  },
+  {
+    "file": "03_CARTAS_RECORTAR_E_COLAR/KIT_INICIAL_1_FRENTES.pdf",
+    "id": "ZC-VIN-0001",
+    "code": "1-01-1",
+    "page": 1,
+    "slot": 0,
+    "side": "front",
+    "box": [
+      8.5,
+      14.5,
+      63,
+      88
+    ],
+    "label_outside": true
+  },
+  {
+    "file": "03_CARTAS_RECORTAR_E_COLAR/KIT_INICIAL_1_FRENTES.pdf",
+    "id": "ZC-VIN-0002",
+    "code": "1-01-2",
+    "page": 1,
+    "slot": 1,
+    "side": "front",
+    "box": [
+      73.5,
+      14.5,
+      63,
+      88
+    ],
+    "label_outside": true
+  },
+  {
+    "file": "03_CARTAS_RECORTAR_E_COLAR/KIT_INICIAL_1_FRENTES.pdf",
+    "id": "ZC-VIN-0003",
+    "code": "1-01-3",
+    "page": 1,
+    "slot": 2,
+    "side": "front",
+    "box": [
+      138.5,
+      14.5,
+      63,
+      88
+    ],
+    "label_outside": true
+  },
+  {
+    "file": "03_CARTAS_RECORTAR_E_COLAR/KIT_INICIAL_1_FRENTES.pdf",
+    "id": "ZC-VIN-0004",
+    "code": "1-01-4",
+    "page": 1,
+    "slot": 3,
+    "side": "front",
+    "box": [
+      8.5,
+      104.5,
+      63,
+      88
+    ],
+    "label_outside": true
+  },
+  {
+    "file": "03_CARTAS_RECORTAR_E_COLAR/KIT_INICIAL_1_FRENTES.pdf",
+    "id": "ZC-VIN-0005",
+    "code": "1-01-5",
+    "page": 1,
+    "slot": 4,
+    "side": "front",
+    "box": [
+      73.5,
+      104.5,
+      63,
+      88
+    ],
+    "label_outside": true
+  },
+  {
+    "file": "03_CARTAS_RECORTAR_E_COLAR/KIT_INICIAL_1_FRENTES.pdf",
+    "id": "ZC-VIN-0006",
+    "code": "1-01-6",
+    "page": 1,
+    "slot": 5,
+    "side": "front",
+    "box": [
+      138.5,
+      104.5,
+      63,
+      88
+    ],
+    "label_outside": true
+  },
+  {
+    "file": "03_CARTAS_RECORTAR_E_COLAR/KIT_INICIAL_1_FRENTES.pdf",
+    "id": "ZC-VIN-0007",
+    "code": "1-01-7",
+    "page": 1,
+    "slot": 6,
+    "side": "front",
+    "box": [
+      8.5,
+      194.5,
+      63,
+      88
+    ],
+    "label_outside": true
+  },
+  {
+    "file": "03_CARTAS_RECORTAR_E_COLAR/KIT_INICIAL_1_FRENTES.pdf",
+    "id": "ZC-VIN-0008",
+    "code": "1-01-8",
+    "page": 1,
+    "slot": 7,
+    "side": "front",
+    "box": [
+      73.5,
+      194.5,
+      63,
+      88
+    ],
+    "label_outside": true
+  },
+  {
+    "file": "03_CARTAS_RECORTAR_E_COLAR/KIT_INICIAL_1_FRENTES.pdf",
+    "id": "ZC-VIN-0009",
+    "code": "1-01-9",
+    "page": 1,
+    "slot": 8,
+    "side": "front",
+    "box": [
+      138.5,
+      194.5,
+      63,
+      88
+    ],
+    "label_outside": true
+  },
+  {
+    "file": "03_CARTAS_RECORTAR_E_COLAR/KIT_INICIAL_1_FRENTES.pdf",
+    "id": "ZC-VIN-0010",
+    "code": "1-02-1",
+    "page": 2,
+    "slot": 0,
+    "side": "front",
+    "box": [
+      8.5,
+      14.5,
+      63,
+      88
+    ],
+    "label_outside": true
+  },
+  {
+    "file": "03_CARTAS_RECORTAR_E_COLAR/KIT_INICIAL_1_FRENTES.pdf",
+    "id": "ZC-VIN-0011",
+    "code": "1-02-2",
+    "page": 2,
+    "slot": 1,
+    "side": "front",
+    "box": [
+      73.5,
+      14.5,
+      63,
+      88
+    ],
+    "label_outside": true
+  },
+  {
+    "file": "03_CARTAS_RECORTAR_E_COLAR/KIT_INICIAL_1_FRENTES.pdf",
+    "id": "ZC-VIN-0012",
+    "code": "1-02-3",
+    "page": 2,
+    "slot": 2,
+    "side": "front",
+    "box": [
+      138.5,
+      14.5,
+      63,
+      88
+    ],
+    "label_outside": true
+  },
+  {
+    "file": "03_CARTAS_RECORTAR_E_COLAR/KIT_INICIAL_1_FRENTES.pdf",
+    "id": "ZC-INT-0001",
+    "code": "1-02-4",
+    "page": 2,
+    "slot": 3,
+    "side": "front",
+    "box": [
+      8.5,
+      104.5,
+      63,
+      88
+    ],
+    "label_outside": true
+  },
+  {
+    "file": "03_CARTAS_RECORTAR_E_COLAR/KIT_INICIAL_1_FRENTES.pdf",
+    "id": "ZC-INT-0002",
+    "code": "1-02-5",
+    "page": 2,
+    "slot": 4,
+    "side": "front",
+    "box": [
+      73.5,
+      104.5,
+      63,
+      88
+    ],
+    "label_outside": true
+  },
+  {
+    "file": "03_CARTAS_RECORTAR_E_COLAR/KIT_INICIAL_1_FRENTES.pdf",
+    "id": "ZC-INT-0003",
+    "code": "1-02-6",
+    "page": 2,
+    "slot": 5,
+    "side": "front",
+    "box": [
+      138.5,
+      104.5,
+      63,
+      88
+    ],
+    "label_outside": true
+  },
+  {
+    "file": "03_CARTAS_RECORTAR_E_COLAR/KIT_INICIAL_1_FRENTES.pdf",
+    "id": "ZC-INT-0004",
+    "code": "1-02-7",
+    "page": 2,
+    "slot": 6,
+    "side": "front",
+    "box": [
+      8.5,
+      194.5,
+      63,
+      88
+    ],
+    "label_outside": true
+  },
+  {
+    "file": "03_CARTAS_RECORTAR_E_COLAR/KIT_INICIAL_1_FRENTES.pdf",
+    "id": "ZC-INT-0005",
+    "code": "1-02-8",
+    "page": 2,
+    "slot": 7,
+    "side": "front",
+    "box": [
+      73.5,
+      194.5,
+      63,
+      88
+    ],
+    "label_outside": true
+  },
+  {
+    "file": "03_CARTAS_RECORTAR_E_COLAR/KIT_INICIAL_1_FRENTES.pdf",
+    "id": "ZC-INT-0006",
+    "code": "1-02-9",
+    "page": 2,
+    "slot": 8,
+    "side": "front",
+    "box": [
+      138.5,
+      194.5,
+      63,
+      88
+    ],
+    "label_outside": true
+  },
+  {
+    "file": "03_CARTAS_RECORTAR_E_COLAR/KIT_INICIAL_1_FRENTES.pdf",
+    "id": "ZC-INT-0007",
+    "code": "1-03-1",
+    "page": 3,
+    "slot": 0,
+    "side": "front",
+    "box": [
+      8.5,
+      14.5,
+      63,
+      88
+    ],
+    "label_outside": true
+  },
+  {
+    "file": "03_CARTAS_RECORTAR_E_COLAR/KIT_INICIAL_1_FRENTES.pdf",
+    "id": "ZC-INT-0008",
+    "code": "1-03-2",
+    "page": 3,
+    "slot": 1,
+    "side": "front",
+    "box": [
+      73.5,
+      14.5,
+      63,
+      88
+    ],
+    "label_outside": true
+  },
+  {
+    "file": "03_CARTAS_RECORTAR_E_COLAR/KIT_INICIAL_1_FRENTES.pdf",
+    "id": "ZC-INT-0009",
+    "code": "1-03-3",
+    "page": 3,
+    "slot": 2,
+    "side": "front",
+    "box": [
+      138.5,
+      14.5,
+      63,
+      88
+    ],
+    "label_outside": true
+  },
+  {
+    "file": "03_CARTAS_RECORTAR_E_COLAR/KIT_INICIAL_1_FRENTES.pdf",
+    "id": "ZC-INT-0010",
+    "code": "1-03-4",
+    "page": 3,
+    "slot": 3,
+    "side": "front",
+    "box": [
+      8.5,
+      104.5,
+      63,
+      88
+    ],
+    "label_outside": true
+  },
+  {
+    "file": "03_CARTAS_RECORTAR_E_COLAR/KIT_INICIAL_1_FRENTES.pdf",
+    "id": "ZC-INT-0011",
+    "code": "1-03-5",
+    "page": 3,
+    "slot": 4,
+    "side": "front",
+    "box": [
+      73.5,
+      104.5,
+      63,
+      88
+    ],
+    "label_outside": true
+  },
+  {
+    "file": "03_CARTAS_RECORTAR_E_COLAR/KIT_INICIAL_1_FRENTES.pdf",
+    "id": "ZC-INT-0012",
+    "code": "1-03-6",
+    "page": 3,
+    "slot": 5,
+    "side": "front",
+    "box": [
+      138.5,
+      104.5,
+      63,
+      88
+    ],
+    "label_outside": true
+  },
+  {
+    "file": "03_CARTAS_RECORTAR_E_COLAR/KIT_INICIAL_1_FRENTES.pdf",
+    "id": "ZC-EQU-0007",
+    "code": "1-03-7",
+    "page": 3,
+    "slot": 6,
+    "side": "front",
+    "box": [
+      8.5,
+      194.5,
+      63,
+      88
+    ],
+    "label_outside": true
+  },
+  {
+    "file": "03_CARTAS_RECORTAR_E_COLAR/KIT_INICIAL_1_FRENTES.pdf",
+    "id": "ZC-EQU-0008",
+    "code": "1-03-8",
+    "page": 3,
+    "slot": 7,
+    "side": "front",
+    "box": [
+      73.5,
+      194.5,
+      63,
+      88
+    ],
+    "label_outside": true
+  },
+  {
+    "file": "03_CARTAS_RECORTAR_E_COLAR/KIT_INICIAL_1_FRENTES.pdf",
+    "id": "ZC-EQU-0014",
+    "code": "1-03-9",
+    "page": 3,
+    "slot": 8,
+    "side": "front",
+    "box": [
+      138.5,
+      194.5,
+      63,
+      88
+    ],
+    "label_outside": true
+  },
+  {
+    "file": "03_CARTAS_RECORTAR_E_COLAR/KIT_INICIAL_1_FRENTES.pdf",
+    "id": "ZC-EQU-0017",
+    "code": "1-04-1",
+    "page": 4,
+    "slot": 0,
+    "side": "front",
+    "box": [
+      8.5,
+      14.5,
+      63,
+      88
+    ],
+    "label_outside": true
+  },
+  {
+    "file": "03_CARTAS_RECORTAR_E_COLAR/KIT_INICIAL_1_FRENTES.pdf",
+    "id": "ZC-SAQ-0001",
+    "code": "1-04-2",
+    "page": 4,
+    "slot": 1,
+    "side": "front",
+    "box": [
+      73.5,
+      14.5,
+      63,
+      88
+    ],
+    "label_outside": true
+  },
+  {
+    "file": "03_CARTAS_RECORTAR_E_COLAR/KIT_INICIAL_1_FRENTES.pdf",
+    "id": "ZC-SAQ-0002",
+    "code": "1-04-3",
+    "page": 4,
+    "slot": 2,
+    "side": "front",
+    "box": [
+      138.5,
+      14.5,
+      63,
+      88
+    ],
+    "label_outside": true
+  },
+  {
+    "file": "03_CARTAS_RECORTAR_E_COLAR/KIT_INICIAL_1_FRENTES.pdf",
+    "id": "ZC-SAQ-0003",
+    "code": "1-04-4",
+    "page": 4,
+    "slot": 3,
+    "side": "front",
+    "box": [
+      8.5,
+      104.5,
+      63,
+      88
+    ],
+    "label_outside": true
+  },
+  {
+    "file": "03_CARTAS_RECORTAR_E_COLAR/KIT_INICIAL_1_FRENTES.pdf",
+    "id": "ZC-SAQ-0004",
+    "code": "1-04-5",
+    "page": 4,
+    "slot": 4,
+    "side": "front",
+    "box": [
+      73.5,
+      104.5,
+      63,
+      88
+    ],
+    "label_outside": true
+  },
+  {
+    "file": "03_CARTAS_RECORTAR_E_COLAR/KIT_INICIAL_1_FRENTES.pdf",
+    "id": "ZC-SAQ-0005",
+    "code": "1-04-6",
+    "page": 4,
+    "slot": 5,
+    "side": "front",
+    "box": [
+      138.5,
+      104.5,
+      63,
+      88
+    ],
+    "label_outside": true
+  },
+  {
+    "file": "03_CARTAS_RECORTAR_E_COLAR/KIT_INICIAL_1_FRENTES.pdf",
+    "id": "ZC-SAQ-0006",
+    "code": "1-04-7",
+    "page": 4,
+    "slot": 6,
+    "side": "front",
+    "box": [
+      8.5,
+      194.5,
+      63,
+      88
+    ],
+    "label_outside": true
+  },
+  {
+    "file": "03_CARTAS_RECORTAR_E_COLAR/KIT_INICIAL_1_FRENTES.pdf",
+    "id": "ZC-VIA-0001",
+    "code": "1-04-8",
+    "page": 4,
+    "slot": 7,
+    "side": "front",
+    "box": [
+      73.5,
+      194.5,
+      63,
+      88
+    ],
+    "label_outside": true
+  },
+  {
+    "file": "03_CARTAS_RECORTAR_E_COLAR/KIT_INICIAL_1_FRENTES.pdf",
+    "id": "ZC-VIA-0002",
+    "code": "1-04-9",
+    "page": 4,
+    "slot": 8,
+    "side": "front",
+    "box": [
+      138.5,
+      194.5,
+      63,
+      88
+    ],
+    "label_outside": true
+  },
+  {
+    "file": "03_CARTAS_RECORTAR_E_COLAR/KIT_INICIAL_1_FRENTES.pdf",
+    "id": "ZC-VIA-0003",
+    "code": "1-05-1",
+    "page": 5,
+    "slot": 0,
+    "side": "front",
+    "box": [
+      8.5,
+      14.5,
+      63,
+      88
+    ],
+    "label_outside": true
+  },
+  {
+    "file": "03_CARTAS_RECORTAR_E_COLAR/KIT_INICIAL_1_FRENTES.pdf",
+    "id": "ZC-VIA-0004",
+    "code": "1-05-2",
+    "page": 5,
+    "slot": 1,
+    "side": "front",
+    "box": [
+      73.5,
+      14.5,
+      63,
+      88
+    ],
+    "label_outside": true
+  },
+  {
+    "file": "03_CARTAS_RECORTAR_E_COLAR/KIT_INICIAL_1_FRENTES.pdf",
+    "id": "ZC-VIA-0005",
+    "code": "1-05-3",
+    "page": 5,
+    "slot": 2,
+    "side": "front",
+    "box": [
+      138.5,
+      14.5,
+      63,
+      88
+    ],
+    "label_outside": true
+  },
+  {
+    "file": "03_CARTAS_RECORTAR_E_COLAR/KIT_INICIAL_1_FRENTES.pdf",
+    "id": "ZC-VIA-0006",
+    "code": "1-05-4",
+    "page": 5,
+    "slot": 3,
+    "side": "front",
+    "box": [
+      8.5,
+      104.5,
+      63,
+      88
+    ],
+    "label_outside": true
+  },
+  {
+    "file": "03_CARTAS_RECORTAR_E_COLAR/KIT_INICIAL_1_FRENTES.pdf",
+    "id": "ZC-VIA-0007",
+    "code": "1-05-5",
+    "page": 5,
+    "slot": 4,
+    "side": "front",
+    "box": [
+      73.5,
+      104.5,
+      63,
+      88
+    ],
+    "label_outside": true
+  },
+  {
+    "file": "03_CARTAS_RECORTAR_E_COLAR/KIT_INICIAL_1_FRENTES.pdf",
+    "id": "ZC-VIA-0008",
+    "code": "1-05-6",
+    "page": 5,
+    "slot": 5,
+    "side": "front",
+    "box": [
+      138.5,
+      104.5,
+      63,
+      88
+    ],
+    "label_outside": true
+  },
+  {
+    "file": "03_CARTAS_RECORTAR_E_COLAR/KIT_INICIAL_1_FRENTES.pdf",
+    "id": "ZC-VIA-0009",
+    "code": "1-05-7",
+    "page": 5,
+    "slot": 6,
+    "side": "front",
+    "box": [
+      8.5,
+      194.5,
+      63,
+      88
+    ],
+    "label_outside": true
+  },
+  {
+    "file": "03_CARTAS_RECORTAR_E_COLAR/KIT_INICIAL_1_FRENTES.pdf",
+    "id": "ZC-VIA-0010",
+    "code": "1-05-8",
+    "page": 5,
+    "slot": 7,
+    "side": "front",
+    "box": [
+      73.5,
+      194.5,
+      63,
+      88
+    ],
+    "label_outside": true
+  },
+  {
+    "file": "03_CARTAS_RECORTAR_E_COLAR/KIT_INICIAL_1_FRENTES.pdf",
+    "id": "ZC-VIA-0011",
+    "code": "1-05-9",
+    "page": 5,
+    "slot": 8,
+    "side": "front",
+    "box": [
+      138.5,
+      194.5,
+      63,
+      88
+    ],
+    "label_outside": true
+  },
+  {
+    "file": "03_CARTAS_RECORTAR_E_COLAR/KIT_INICIAL_1_FRENTES.pdf",
+    "id": "ZC-VIA-0012",
+    "code": "1-06-1",
+    "page": 6,
+    "slot": 0,
+    "side": "front",
+    "box": [
+      8.5,
+      14.5,
+      63,
+      88
+    ],
+    "label_outside": true
+  },
+  {
+    "file": "03_CARTAS_RECORTAR_E_COLAR/KIT_INICIAL_1_FRENTES.pdf",
+    "id": "ZC-HOR-0001",
+    "code": "1-06-2",
+    "page": 6,
+    "slot": 1,
+    "side": "front",
+    "box": [
+      73.5,
+      14.5,
+      63,
+      88
+    ],
+    "label_outside": true
+  },
+  {
+    "file": "03_CARTAS_RECORTAR_E_COLAR/KIT_INICIAL_1_FRENTES.pdf",
+    "id": "ZC-HOR-0002",
+    "code": "1-06-3",
+    "page": 6,
+    "slot": 2,
+    "side": "front",
+    "box": [
+      138.5,
+      14.5,
+      63,
+      88
+    ],
+    "label_outside": true
+  },
+  {
+    "file": "03_CARTAS_RECORTAR_E_COLAR/KIT_INICIAL_1_FRENTES.pdf",
+    "id": "ZC-HOR-0003",
+    "code": "1-06-4",
+    "page": 6,
+    "slot": 3,
+    "side": "front",
+    "box": [
+      8.5,
+      104.5,
+      63,
+      88
+    ],
+    "label_outside": true
+  },
+  {
+    "file": "03_CARTAS_RECORTAR_E_COLAR/KIT_INICIAL_1_FRENTES.pdf",
+    "id": "ZC-HOR-0004",
+    "code": "1-06-5",
+    "page": 6,
+    "slot": 4,
+    "side": "front",
+    "box": [
+      73.5,
+      104.5,
+      63,
+      88
+    ],
+    "label_outside": true
+  },
+  {
+    "file": "03_CARTAS_RECORTAR_E_COLAR/KIT_INICIAL_1_FRENTES.pdf",
+    "id": "ZC-HOR-0005",
+    "code": "1-06-6",
+    "page": 6,
+    "slot": 5,
+    "side": "front",
+    "box": [
+      138.5,
+      104.5,
+      63,
+      88
+    ],
+    "label_outside": true
+  },
+  {
+    "file": "03_CARTAS_RECORTAR_E_COLAR/KIT_INICIAL_1_FRENTES.pdf",
+    "id": "ZC-HOR-0006",
+    "code": "1-06-7",
+    "page": 6,
+    "slot": 6,
+    "side": "front",
+    "box": [
+      8.5,
+      194.5,
+      63,
+      88
+    ],
+    "label_outside": true
+  },
+  {
+    "file": "03_CARTAS_RECORTAR_E_COLAR/KIT_INICIAL_1_FRENTES.pdf",
+    "id": "ZC-HOR-0007",
+    "code": "1-06-8",
+    "page": 6,
+    "slot": 7,
+    "side": "front",
+    "box": [
+      73.5,
+      194.5,
+      63,
+      88
+    ],
+    "label_outside": true
+  },
+  {
+    "file": "03_CARTAS_RECORTAR_E_COLAR/KIT_INICIAL_1_FRENTES.pdf",
+    "id": "ZC-HOR-0008",
+    "code": "1-06-9",
+    "page": 6,
+    "slot": 8,
+    "side": "front",
+    "box": [
+      138.5,
+      194.5,
+      63,
+      88
+    ],
+    "label_outside": true
+  },
+  {
+    "file": "03_CARTAS_RECORTAR_E_COLAR/KIT_INICIAL_1_FRENTES.pdf",
+    "id": "ZC-HOR-0009",
+    "code": "1-07-1",
+    "page": 7,
+    "slot": 0,
+    "side": "front",
+    "box": [
+      8.5,
+      14.5,
+      63,
+      88
+    ],
+    "label_outside": true
+  },
+  {
+    "file": "03_CARTAS_RECORTAR_E_COLAR/KIT_INICIAL_1_FRENTES.pdf",
+    "id": "ZC-CER-0001",
+    "code": "1-07-2",
+    "page": 7,
+    "slot": 1,
+    "side": "front",
+    "box": [
+      73.5,
+      14.5,
+      63,
+      88
+    ],
+    "label_outside": true
+  },
+  {
+    "file": "03_CARTAS_RECORTAR_E_COLAR/KIT_INICIAL_1_FRENTES.pdf",
+    "id": "ZC-CER-0002",
+    "code": "1-07-3",
+    "page": 7,
+    "slot": 2,
+    "side": "front",
+    "box": [
+      138.5,
+      14.5,
+      63,
+      88
+    ],
+    "label_outside": true
+  },
+  {
+    "file": "03_CARTAS_RECORTAR_E_COLAR/KIT_INICIAL_1_FRENTES.pdf",
+    "id": "ZC-CER-0003",
+    "code": "1-07-4",
+    "page": 7,
+    "slot": 3,
+    "side": "front",
+    "box": [
+      8.5,
+      104.5,
+      63,
+      88
+    ],
+    "label_outside": true
+  },
+  {
+    "file": "03_CARTAS_RECORTAR_E_COLAR/KIT_INICIAL_1_FRENTES.pdf",
+    "id": "ZC-CER-0004",
+    "code": "1-07-5",
+    "page": 7,
+    "slot": 4,
+    "side": "front",
+    "box": [
+      73.5,
+      104.5,
+      63,
+      88
+    ],
+    "label_outside": true
+  },
+  {
+    "file": "03_CARTAS_RECORTAR_E_COLAR/KIT_INICIAL_1_FRENTES.pdf",
+    "id": "ZC-CER-0005",
+    "code": "1-07-6",
+    "page": 7,
+    "slot": 5,
+    "side": "front",
+    "box": [
+      138.5,
+      104.5,
+      63,
+      88
+    ],
+    "label_outside": true
+  },
+  {
+    "file": "03_CARTAS_RECORTAR_E_COLAR/KIT_INICIAL_1_FRENTES.pdf",
+    "id": "ZC-CER-0006",
+    "code": "1-07-7",
+    "page": 7,
+    "slot": 6,
+    "side": "front",
+    "box": [
+      8.5,
+      194.5,
+      63,
+      88
+    ],
+    "label_outside": true
+  },
+  {
+    "file": "03_CARTAS_RECORTAR_E_COLAR/KIT_INICIAL_1_FRENTES.pdf",
+    "id": "ZC-MOR-0001",
+    "code": "1-07-8",
+    "page": 7,
+    "slot": 7,
+    "side": "front",
+    "box": [
+      73.5,
+      194.5,
+      63,
+      88
+    ],
+    "label_outside": true
+  },
+  {
+    "file": "03_CARTAS_RECORTAR_E_COLAR/KIT_INICIAL_1_VERSOS.pdf",
+    "id": "ZC-VIN-0001",
+    "code": "1-01-1",
+    "page": 1,
+    "slot": 0,
+    "side": "back",
+    "box": [
+      8.5,
+      14.5,
+      63,
+      88
+    ],
+    "label_outside": true
+  },
+  {
+    "file": "03_CARTAS_RECORTAR_E_COLAR/KIT_INICIAL_1_VERSOS.pdf",
+    "id": "ZC-VIN-0002",
+    "code": "1-01-2",
+    "page": 1,
+    "slot": 1,
+    "side": "back",
+    "box": [
+      73.5,
+      14.5,
+      63,
+      88
+    ],
+    "label_outside": true
+  },
+  {
+    "file": "03_CARTAS_RECORTAR_E_COLAR/KIT_INICIAL_1_VERSOS.pdf",
+    "id": "ZC-VIN-0003",
+    "code": "1-01-3",
+    "page": 1,
+    "slot": 2,
+    "side": "back",
+    "box": [
+      138.5,
+      14.5,
+      63,
+      88
+    ],
+    "label_outside": true
+  },
+  {
+    "file": "03_CARTAS_RECORTAR_E_COLAR/KIT_INICIAL_1_VERSOS.pdf",
+    "id": "ZC-VIN-0004",
+    "code": "1-01-4",
+    "page": 1,
+    "slot": 3,
+    "side": "back",
+    "box": [
+      8.5,
+      104.5,
+      63,
+      88
+    ],
+    "label_outside": true
+  },
+  {
+    "file": "03_CARTAS_RECORTAR_E_COLAR/KIT_INICIAL_1_VERSOS.pdf",
+    "id": "ZC-VIN-0005",
+    "code": "1-01-5",
+    "page": 1,
+    "slot": 4,
+    "side": "back",
+    "box": [
+      73.5,
+      104.5,
+      63,
+      88
+    ],
+    "label_outside": true
+  },
+  {
+    "file": "03_CARTAS_RECORTAR_E_COLAR/KIT_INICIAL_1_VERSOS.pdf",
+    "id": "ZC-VIN-0006",
+    "code": "1-01-6",
+    "page": 1,
+    "slot": 5,
+    "side": "back",
+    "box": [
+      138.5,
+      104.5,
+      63,
+      88
+    ],
+    "label_outside": true
+  },
+  {
+    "file": "03_CARTAS_RECORTAR_E_COLAR/KIT_INICIAL_1_VERSOS.pdf",
+    "id": "ZC-VIN-0007",
+    "code": "1-01-7",
+    "page": 1,
+    "slot": 6,
+    "side": "back",
+    "box": [
+      8.5,
+      194.5,
+      63,
+      88
+    ],
+    "label_outside": true
+  },
+  {
+    "file": "03_CARTAS_RECORTAR_E_COLAR/KIT_INICIAL_1_VERSOS.pdf",
+    "id": "ZC-VIN-0008",
+    "code": "1-01-8",
+    "page": 1,
+    "slot": 7,
+    "side": "back",
+    "box": [
+      73.5,
+      194.5,
+      63,
+      88
+    ],
+    "label_outside": true
+  },
+  {
+    "file": "03_CARTAS_RECORTAR_E_COLAR/KIT_INICIAL_1_VERSOS.pdf",
+    "id": "ZC-VIN-0009",
+    "code": "1-01-9",
+    "page": 1,
+    "slot": 8,
+    "side": "back",
+    "box": [
+      138.5,
+      194.5,
+      63,
+      88
+    ],
+    "label_outside": true
+  },
+  {
+    "file": "03_CARTAS_RECORTAR_E_COLAR/KIT_INICIAL_1_VERSOS.pdf",
+    "id": "ZC-VIN-0010",
+    "code": "1-02-1",
+    "page": 2,
+    "slot": 0,
+    "side": "back",
+    "box": [
+      8.5,
+      14.5,
+      63,
+      88
+    ],
+    "label_outside": true
+  },
+  {
+    "file": "03_CARTAS_RECORTAR_E_COLAR/KIT_INICIAL_1_VERSOS.pdf",
+    "id": "ZC-VIN-0011",
+    "code": "1-02-2",
+    "page": 2,
+    "slot": 1,
+    "side": "back",
+    "box": [
+      73.5,
+      14.5,
+      63,
+      88
+    ],
+    "label_outside": true
+  },
+  {
+    "file": "03_CARTAS_RECORTAR_E_COLAR/KIT_INICIAL_1_VERSOS.pdf",
+    "id": "ZC-VIN-0012",
+    "code": "1-02-3",
+    "page": 2,
+    "slot": 2,
+    "side": "back",
+    "box": [
+      138.5,
+      14.5,
+      63,
+      88
+    ],
+    "label_outside": true
+  },
+  {
+    "file": "03_CARTAS_RECORTAR_E_COLAR/KIT_INICIAL_1_VERSOS.pdf",
+    "id": "ZC-INT-0001",
+    "code": "1-02-4",
+    "page": 2,
+    "slot": 3,
+    "side": "back",
+    "box": [
+      8.5,
+      104.5,
+      63,
+      88
+    ],
+    "label_outside": true
+  },
+  {
+    "file": "03_CARTAS_RECORTAR_E_COLAR/KIT_INICIAL_1_VERSOS.pdf",
+    "id": "ZC-INT-0002",
+    "code": "1-02-5",
+    "page": 2,
+    "slot": 4,
+    "side": "back",
+    "box": [
+      73.5,
+      104.5,
+      63,
+      88
+    ],
+    "label_outside": true
+  },
+  {
+    "file": "03_CARTAS_RECORTAR_E_COLAR/KIT_INICIAL_1_VERSOS.pdf",
+    "id": "ZC-INT-0003",
+    "code": "1-02-6",
+    "page": 2,
+    "slot": 5,
+    "side": "back",
+    "box": [
+      138.5,
+      104.5,
+      63,
+      88
+    ],
+    "label_outside": true
+  },
+  {
+    "file": "03_CARTAS_RECORTAR_E_COLAR/KIT_INICIAL_1_VERSOS.pdf",
+    "id": "ZC-INT-0004",
+    "code": "1-02-7",
+    "page": 2,
+    "slot": 6,
+    "side": "back",
+    "box": [
+      8.5,
+      194.5,
+      63,
+      88
+    ],
+    "label_outside": true
+  },
+  {
+    "file": "03_CARTAS_RECORTAR_E_COLAR/KIT_INICIAL_1_VERSOS.pdf",
+    "id": "ZC-INT-0005",
+    "code": "1-02-8",
+    "page": 2,
+    "slot": 7,
+    "side": "back",
+    "box": [
+      73.5,
+      194.5,
+      63,
+      88
+    ],
+    "label_outside": true
+  },
+  {
+    "file": "03_CARTAS_RECORTAR_E_COLAR/KIT_INICIAL_1_VERSOS.pdf",
+    "id": "ZC-INT-0006",
+    "code": "1-02-9",
+    "page": 2,
+    "slot": 8,
+    "side": "back",
+    "box": [
+      138.5,
+      194.5,
+      63,
+      88
+    ],
+    "label_outside": true
+  },
+  {
+    "file": "03_CARTAS_RECORTAR_E_COLAR/KIT_INICIAL_1_VERSOS.pdf",
+    "id": "ZC-INT-0007",
+    "code": "1-03-1",
+    "page": 3,
+    "slot": 0,
+    "side": "back",
+    "box": [
+      8.5,
+      14.5,
+      63,
+      88
+    ],
+    "label_outside": true
+  },
+  {
+    "file": "03_CARTAS_RECORTAR_E_COLAR/KIT_INICIAL_1_VERSOS.pdf",
+    "id": "ZC-INT-0008",
+    "code": "1-03-2",
+    "page": 3,
+    "slot": 1,
+    "side": "back",
+    "box": [
+      73.5,
+      14.5,
+      63,
+      88
+    ],
+    "label_outside": true
+  },
+  {
+    "file": "03_CARTAS_RECORTAR_E_COLAR/KIT_INICIAL_1_VERSOS.pdf",
+    "id": "ZC-INT-0009",
+    "code": "1-03-3",
+    "page": 3,
+    "slot": 2,
+    "side": "back",
+    "box": [
+      138.5,
+      14.5,
+      63,
+      88
+    ],
+    "label_outside": true
+  },
+  {
+    "file": "03_CARTAS_RECORTAR_E_COLAR/KIT_INICIAL_1_VERSOS.pdf",
+    "id": "ZC-INT-0010",
+    "code": "1-03-4",
+    "page": 3,
+    "slot": 3,
+    "side": "back",
+    "box": [
+      8.5,
+      104.5,
+      63,
+      88
+    ],
+    "label_outside": true
+  },
+  {
+    "file": "03_CARTAS_RECORTAR_E_COLAR/KIT_INICIAL_1_VERSOS.pdf",
+    "id": "ZC-INT-0011",
+    "code": "1-03-5",
+    "page": 3,
+    "slot": 4,
+    "side": "back",
+    "box": [
+      73.5,
+      104.5,
+      63,
+      88
+    ],
+    "label_outside": true
+  },
+  {
+    "file": "03_CARTAS_RECORTAR_E_COLAR/KIT_INICIAL_1_VERSOS.pdf",
+    "id": "ZC-INT-0012",
+    "code": "1-03-6",
+    "page": 3,
+    "slot": 5,
+    "side": "back",
+    "box": [
+      138.5,
+      104.5,
+      63,
+      88
+    ],
+    "label_outside": true
+  },
+  {
+    "file": "03_CARTAS_RECORTAR_E_COLAR/KIT_INICIAL_1_VERSOS.pdf",
+    "id": "ZC-EQU-0007",
+    "code": "1-03-7",
+    "page": 3,
+    "slot": 6,
+    "side": "back",
+    "box": [
+      8.5,
+      194.5,
+      63,
+      88
+    ],
+    "label_outside": true
+  },
+  {
+    "file": "03_CARTAS_RECORTAR_E_COLAR/KIT_INICIAL_1_VERSOS.pdf",
+    "id": "ZC-EQU-0008",
+    "code": "1-03-8",
+    "page": 3,
+    "slot": 7,
+    "side": "back",
+    "box": [
+      73.5,
+      194.5,
+      63,
+      88
+    ],
+    "label_outside": true
+  },
+  {
+    "file": "03_CARTAS_RECORTAR_E_COLAR/KIT_INICIAL_1_VERSOS.pdf",
+    "id": "ZC-EQU-0014",
+    "code": "1-03-9",
+    "page": 3,
+    "slot": 8,
+    "side": "back",
+    "box": [
+      138.5,
+      194.5,
+      63,
+      88
+    ],
+    "label_outside": true
+  },
+  {
+    "file": "03_CARTAS_RECORTAR_E_COLAR/KIT_INICIAL_1_VERSOS.pdf",
+    "id": "ZC-EQU-0017",
+    "code": "1-04-1",
+    "page": 4,
+    "slot": 0,
+    "side": "back",
+    "box": [
+      8.5,
+      14.5,
+      63,
+      88
+    ],
+    "label_outside": true
+  },
+  {
+    "file": "03_CARTAS_RECORTAR_E_COLAR/KIT_INICIAL_1_VERSOS.pdf",
+    "id": "ZC-SAQ-0001",
+    "code": "1-04-2",
+    "page": 4,
+    "slot": 1,
+    "side": "back",
+    "box": [
+      73.5,
+      14.5,
+      63,
+      88
+    ],
+    "label_outside": true
+  },
+  {
+    "file": "03_CARTAS_RECORTAR_E_COLAR/KIT_INICIAL_1_VERSOS.pdf",
+    "id": "ZC-SAQ-0002",
+    "code": "1-04-3",
+    "page": 4,
+    "slot": 2,
+    "side": "back",
+    "box": [
+      138.5,
+      14.5,
+      63,
+      88
+    ],
+    "label_outside": true
+  },
+  {
+    "file": "03_CARTAS_RECORTAR_E_COLAR/KIT_INICIAL_1_VERSOS.pdf",
+    "id": "ZC-SAQ-0003",
+    "code": "1-04-4",
+    "page": 4,
+    "slot": 3,
+    "side": "back",
+    "box": [
+      8.5,
+      104.5,
+      63,
+      88
+    ],
+    "label_outside": true
+  },
+  {
+    "file": "03_CARTAS_RECORTAR_E_COLAR/KIT_INICIAL_1_VERSOS.pdf",
+    "id": "ZC-SAQ-0004",
+    "code": "1-04-5",
+    "page": 4,
+    "slot": 4,
+    "side": "back",
+    "box": [
+      73.5,
+      104.5,
+      63,
+      88
+    ],
+    "label_outside": true
+  },
+  {
+    "file": "03_CARTAS_RECORTAR_E_COLAR/KIT_INICIAL_1_VERSOS.pdf",
+    "id": "ZC-SAQ-0005",
+    "code": "1-04-6",
+    "page": 4,
+    "slot": 5,
+    "side": "back",
+    "box": [
+      138.5,
+      104.5,
+      63,
+      88
+    ],
+    "label_outside": true
+  },
+  {
+    "file": "03_CARTAS_RECORTAR_E_COLAR/KIT_INICIAL_1_VERSOS.pdf",
+    "id": "ZC-SAQ-0006",
+    "code": "1-04-7",
+    "page": 4,
+    "slot": 6,
+    "side": "back",
+    "box": [
+      8.5,
+      194.5,
+      63,
+      88
+    ],
+    "label_outside": true
+  },
+  {
+    "file": "03_CARTAS_RECORTAR_E_COLAR/KIT_INICIAL_1_VERSOS.pdf",
+    "id": "ZC-VIA-0001",
+    "code": "1-04-8",
+    "page": 4,
+    "slot": 7,
+    "side": "back",
+    "box": [
+      73.5,
+      194.5,
+      63,
+      88
+    ],
+    "label_outside": true
+  },
+  {
+    "file": "03_CARTAS_RECORTAR_E_COLAR/KIT_INICIAL_1_VERSOS.pdf",
+    "id": "ZC-VIA-0002",
+    "code": "1-04-9",
+    "page": 4,
+    "slot": 8,
+    "side": "back",
+    "box": [
+      138.5,
+      194.5,
+      63,
+      88
+    ],
+    "label_outside": true
+  },
+  {
+    "file": "03_CARTAS_RECORTAR_E_COLAR/KIT_INICIAL_1_VERSOS.pdf",
+    "id": "ZC-VIA-0003",
+    "code": "1-05-1",
+    "page": 5,
+    "slot": 0,
+    "side": "back",
+    "box": [
+      8.5,
+      14.5,
+      63,
+      88
+    ],
+    "label_outside": true
+  },
+  {
+    "file": "03_CARTAS_RECORTAR_E_COLAR/KIT_INICIAL_1_VERSOS.pdf",
+    "id": "ZC-VIA-0004",
+    "code": "1-05-2",
+    "page": 5,
+    "slot": 1,
+    "side": "back",
+    "box": [
+      73.5,
+      14.5,
+      63,
+      88
+    ],
+    "label_outside": true
+  },
+  {
+    "file": "03_CARTAS_RECORTAR_E_COLAR/KIT_INICIAL_1_VERSOS.pdf",
+    "id": "ZC-VIA-0005",
+    "code": "1-05-3",
+    "page": 5,
+    "slot": 2,
+    "side": "back",
+    "box": [
+      138.5,
+      14.5,
+      63,
+      88
+    ],
+    "label_outside": true
+  },
+  {
+    "file": "03_CARTAS_RECORTAR_E_COLAR/KIT_INICIAL_1_VERSOS.pdf",
+    "id": "ZC-VIA-0006",
+    "code": "1-05-4",
+    "page": 5,
+    "slot": 3,
+    "side": "back",
+    "box": [
+      8.5,
+      104.5,
+      63,
+      88
+    ],
+    "label_outside": true
+  },
+  {
+    "file": "03_CARTAS_RECORTAR_E_COLAR/KIT_INICIAL_1_VERSOS.pdf",
+    "id": "ZC-VIA-0007",
+    "code": "1-05-5",
+    "page": 5,
+    "slot": 4,
+    "side": "back",
+    "box": [
+      73.5,
+      104.5,
+      63,
+      88
+    ],
+    "label_outside": true
+  },
+  {
+    "file": "03_CARTAS_RECORTAR_E_COLAR/KIT_INICIAL_1_VERSOS.pdf",
+    "id": "ZC-VIA-0008",
+    "code": "1-05-6",
+    "page": 5,
+    "slot": 5,
+    "side": "back",
+    "box": [
+      138.5,
+      104.5,
+      63,
+      88
+    ],
+    "label_outside": true
+  },
+  {
+    "file": "03_CARTAS_RECORTAR_E_COLAR/KIT_INICIAL_1_VERSOS.pdf",
+    "id": "ZC-VIA-0009",
+    "code": "1-05-7",
+    "page": 5,
+    "slot": 6,
+    "side": "back",
+    "box": [
+      8.5,
+      194.5,
+      63,
+      88
+    ],
+    "label_outside": true
+  },
+  {
+    "file": "03_CARTAS_RECORTAR_E_COLAR/KIT_INICIAL_1_VERSOS.pdf",
+    "id": "ZC-VIA-0010",
+    "code": "1-05-8",
+    "page": 5,
+    "slot": 7,
+    "side": "back",
+    "box": [
+      73.5,
+      194.5,
+      63,
+      88
+    ],
+    "label_outside": true
+  },
+  {
+    "file": "03_CARTAS_RECORTAR_E_COLAR/KIT_INICIAL_1_VERSOS.pdf",
+    "id": "ZC-VIA-0011",
+    "code": "1-05-9",
+    "page": 5,
+    "slot": 8,
+    "side": "back",
+    "box": [
+      138.5,
+      194.5,
+      63,
+      88
+    ],
+    "label_outside": true
+  },
+  {
+    "file": "03_CARTAS_RECORTAR_E_COLAR/KIT_INICIAL_1_VERSOS.pdf",
+    "id": "ZC-VIA-0012",
+    "code": "1-06-1",
+    "page": 6,
+    "slot": 0,
+    "side": "back",
+    "box": [
+      8.5,
+      14.5,
+      63,
+      88
+    ],
+    "label_outside": true
+  },
+  {
+    "file": "03_CARTAS_RECORTAR_E_COLAR/KIT_INICIAL_1_VERSOS.pdf",
+    "id": "ZC-HOR-0001",
+    "code": "1-06-2",
+    "page": 6,
+    "slot": 1,
+    "side": "back",
+    "box": [
+      73.5,
+      14.5,
+      63,
+      88
+    ],
+    "label_outside": true
+  },
+  {
+    "file": "03_CARTAS_RECORTAR_E_COLAR/KIT_INICIAL_1_VERSOS.pdf",
+    "id": "ZC-HOR-0002",
+    "code": "1-06-3",
+    "page": 6,
+    "slot": 2,
+    "side": "back",
+    "box": [
+      138.5,
+      14.5,
+      63,
+      88
+    ],
+    "label_outside": true
+  },
+  {
+    "file": "03_CARTAS_RECORTAR_E_COLAR/KIT_INICIAL_1_VERSOS.pdf",
+    "id": "ZC-HOR-0003",
+    "code": "1-06-4",
+    "page": 6,
+    "slot": 3,
+    "side": "back",
+    "box": [
+      8.5,
+      104.5,
+      63,
+      88
+    ],
+    "label_outside": true
+  },
+  {
+    "file": "03_CARTAS_RECORTAR_E_COLAR/KIT_INICIAL_1_VERSOS.pdf",
+    "id": "ZC-HOR-0004",
+    "code": "1-06-5",
+    "page": 6,
+    "slot": 4,
+    "side": "back",
+    "box": [
+      73.5,
+      104.5,
+      63,
+      88
+    ],
+    "label_outside": true
+  },
+  {
+    "file": "03_CARTAS_RECORTAR_E_COLAR/KIT_INICIAL_1_VERSOS.pdf",
+    "id": "ZC-HOR-0005",
+    "code": "1-06-6",
+    "page": 6,
+    "slot": 5,
+    "side": "back",
+    "box": [
+      138.5,
+      104.5,
+      63,
+      88
+    ],
+    "label_outside": true
+  },
+  {
+    "file": "03_CARTAS_RECORTAR_E_COLAR/KIT_INICIAL_1_VERSOS.pdf",
+    "id": "ZC-HOR-0006",
+    "code": "1-06-7",
+    "page": 6,
+    "slot": 6,
+    "side": "back",
+    "box": [
+      8.5,
+      194.5,
+      63,
+      88
+    ],
+    "label_outside": true
+  },
+  {
+    "file": "03_CARTAS_RECORTAR_E_COLAR/KIT_INICIAL_1_VERSOS.pdf",
+    "id": "ZC-HOR-0007",
+    "code": "1-06-8",
+    "page": 6,
+    "slot": 7,
+    "side": "back",
+    "box": [
+      73.5,
+      194.5,
+      63,
+      88
+    ],
+    "label_outside": true
+  },
+  {
+    "file": "03_CARTAS_RECORTAR_E_COLAR/KIT_INICIAL_1_VERSOS.pdf",
+    "id": "ZC-HOR-0008",
+    "code": "1-06-9",
+    "page": 6,
+    "slot": 8,
+    "side": "back",
+    "box": [
+      138.5,
+      194.5,
+      63,
+      88
+    ],
+    "label_outside": true
+  },
+  {
+    "file": "03_CARTAS_RECORTAR_E_COLAR/KIT_INICIAL_1_VERSOS.pdf",
+    "id": "ZC-HOR-0009",
+    "code": "1-07-1",
+    "page": 7,
+    "slot": 0,
+    "side": "back",
+    "box": [
+      8.5,
+      14.5,
+      63,
+      88
+    ],
+    "label_outside": true
+  },
+  {
+    "file": "03_CARTAS_RECORTAR_E_COLAR/KIT_INICIAL_1_VERSOS.pdf",
+    "id": "ZC-CER-0001",
+    "code": "1-07-2",
+    "page": 7,
+    "slot": 1,
+    "side": "back",
+    "box": [
+      73.5,
+      14.5,
+      63,
+      88
+    ],
+    "label_outside": true
+  },
+  {
+    "file": "03_CARTAS_RECORTAR_E_COLAR/KIT_INICIAL_1_VERSOS.pdf",
+    "id": "ZC-CER-0002",
+    "code": "1-07-3",
+    "page": 7,
+    "slot": 2,
+    "side": "back",
+    "box": [
+      138.5,
+      14.5,
+      63,
+      88
+    ],
+    "label_outside": true
+  },
+  {
+    "file": "03_CARTAS_RECORTAR_E_COLAR/KIT_INICIAL_1_VERSOS.pdf",
+    "id": "ZC-CER-0003",
+    "code": "1-07-4",
+    "page": 7,
+    "slot": 3,
+    "side": "back",
+    "box": [
+      8.5,
+      104.5,
+      63,
+      88
+    ],
+    "label_outside": true
+  },
+  {
+    "file": "03_CARTAS_RECORTAR_E_COLAR/KIT_INICIAL_1_VERSOS.pdf",
+    "id": "ZC-CER-0004",
+    "code": "1-07-5",
+    "page": 7,
+    "slot": 4,
+    "side": "back",
+    "box": [
+      73.5,
+      104.5,
+      63,
+      88
+    ],
+    "label_outside": true
+  },
+  {
+    "file": "03_CARTAS_RECORTAR_E_COLAR/KIT_INICIAL_1_VERSOS.pdf",
+    "id": "ZC-CER-0005",
+    "code": "1-07-6",
+    "page": 7,
+    "slot": 5,
+    "side": "back",
+    "box": [
+      138.5,
+      104.5,
+      63,
+      88
+    ],
+    "label_outside": true
+  },
+  {
+    "file": "03_CARTAS_RECORTAR_E_COLAR/KIT_INICIAL_1_VERSOS.pdf",
+    "id": "ZC-CER-0006",
+    "code": "1-07-7",
+    "page": 7,
+    "slot": 6,
+    "side": "back",
+    "box": [
+      8.5,
+      194.5,
+      63,
+      88
+    ],
+    "label_outside": true
+  },
+  {
+    "file": "03_CARTAS_RECORTAR_E_COLAR/KIT_INICIAL_1_VERSOS.pdf",
+    "id": "ZC-MOR-0001",
+    "code": "1-07-8",
+    "page": 7,
+    "slot": 7,
+    "side": "back",
+    "box": [
+      73.5,
+      194.5,
+      63,
+      88
+    ],
+    "label_outside": true
+  },
+  {
+    "file": "03_CARTAS_RECORTAR_E_COLAR/KIT_COMPLEMENTO_2_FRENTES.pdf",
+    "id": "ZC-PEC-0001",
+    "code": "2-01-1",
+    "page": 1,
+    "slot": 0,
+    "side": "front",
+    "box": [
+      8.5,
+      14.5,
+      63,
+      88
+    ],
+    "label_outside": true
+  },
+  {
+    "file": "03_CARTAS_RECORTAR_E_COLAR/KIT_COMPLEMENTO_2_FRENTES.pdf",
+    "id": "ZC-PEC-0002",
+    "code": "2-01-2",
+    "page": 1,
+    "slot": 1,
+    "side": "front",
+    "box": [
+      73.5,
+      14.5,
+      63,
+      88
+    ],
+    "label_outside": true
+  },
+  {
+    "file": "03_CARTAS_RECORTAR_E_COLAR/KIT_COMPLEMENTO_2_FRENTES.pdf",
+    "id": "ZC-PEC-0003",
+    "code": "2-01-3",
+    "page": 1,
+    "slot": 2,
+    "side": "front",
+    "box": [
+      138.5,
+      14.5,
+      63,
+      88
+    ],
+    "label_outside": true
+  },
+  {
+    "file": "03_CARTAS_RECORTAR_E_COLAR/KIT_COMPLEMENTO_2_FRENTES.pdf",
+    "id": "ZC-PEC-0004",
+    "code": "2-01-4",
+    "page": 1,
+    "slot": 3,
+    "side": "front",
+    "box": [
+      8.5,
+      104.5,
+      63,
+      88
+    ],
+    "label_outside": true
+  },
+  {
+    "file": "03_CARTAS_RECORTAR_E_COLAR/KIT_COMPLEMENTO_2_FRENTES.pdf",
+    "id": "ZC-PEC-0005",
+    "code": "2-01-5",
+    "page": 1,
+    "slot": 4,
+    "side": "front",
+    "box": [
+      73.5,
+      104.5,
+      63,
+      88
+    ],
+    "label_outside": true
+  },
+  {
+    "file": "03_CARTAS_RECORTAR_E_COLAR/KIT_COMPLEMENTO_2_FRENTES.pdf",
+    "id": "ZC-PEC-0006",
+    "code": "2-01-6",
+    "page": 1,
+    "slot": 5,
+    "side": "front",
+    "box": [
+      138.5,
+      104.5,
+      63,
+      88
+    ],
+    "label_outside": true
+  },
+  {
+    "file": "03_CARTAS_RECORTAR_E_COLAR/KIT_COMPLEMENTO_2_FRENTES.pdf",
+    "id": "ZC-EQU-0009",
+    "code": "2-01-7",
+    "page": 1,
+    "slot": 6,
+    "side": "front",
+    "box": [
+      8.5,
+      194.5,
+      63,
+      88
+    ],
+    "label_outside": true
+  },
+  {
+    "file": "03_CARTAS_RECORTAR_E_COLAR/KIT_COMPLEMENTO_2_FRENTES.pdf",
+    "id": "ZC-EQU-0010",
+    "code": "2-01-8",
+    "page": 1,
+    "slot": 7,
+    "side": "front",
+    "box": [
+      73.5,
+      194.5,
+      63,
+      88
+    ],
+    "label_outside": true
+  },
+  {
+    "file": "03_CARTAS_RECORTAR_E_COLAR/KIT_COMPLEMENTO_2_FRENTES.pdf",
+    "id": "ZC-EQU-0011",
+    "code": "2-01-9",
+    "page": 1,
+    "slot": 8,
+    "side": "front",
+    "box": [
+      138.5,
+      194.5,
+      63,
+      88
+    ],
+    "label_outside": true
+  },
+  {
+    "file": "03_CARTAS_RECORTAR_E_COLAR/KIT_COMPLEMENTO_2_FRENTES.pdf",
+    "id": "ZC-EQU-0012",
+    "code": "2-02-1",
+    "page": 2,
+    "slot": 0,
+    "side": "front",
+    "box": [
+      8.5,
+      14.5,
+      63,
+      88
+    ],
+    "label_outside": true
+  },
+  {
+    "file": "03_CARTAS_RECORTAR_E_COLAR/KIT_COMPLEMENTO_2_FRENTES.pdf",
+    "id": "ZC-EQU-0013",
+    "code": "2-02-2",
+    "page": 2,
+    "slot": 1,
+    "side": "front",
+    "box": [
+      73.5,
+      14.5,
+      63,
+      88
+    ],
+    "label_outside": true
+  },
+  {
+    "file": "03_CARTAS_RECORTAR_E_COLAR/KIT_COMPLEMENTO_2_FRENTES.pdf",
+    "id": "ZC-EQU-0015",
+    "code": "2-02-3",
+    "page": 2,
+    "slot": 2,
+    "side": "front",
+    "box": [
+      138.5,
+      14.5,
+      63,
+      88
+    ],
+    "label_outside": true
+  },
+  {
+    "file": "03_CARTAS_RECORTAR_E_COLAR/KIT_COMPLEMENTO_2_FRENTES.pdf",
+    "id": "ZC-EQU-0016",
+    "code": "2-02-4",
+    "page": 2,
+    "slot": 3,
+    "side": "front",
+    "box": [
+      8.5,
+      104.5,
+      63,
+      88
+    ],
+    "label_outside": true
+  },
+  {
+    "file": "03_CARTAS_RECORTAR_E_COLAR/KIT_COMPLEMENTO_2_FRENTES.pdf",
+    "id": "ZC-EQU-0018",
+    "code": "2-02-5",
+    "page": 2,
+    "slot": 4,
+    "side": "front",
+    "box": [
+      73.5,
+      104.5,
+      63,
+      88
+    ],
+    "label_outside": true
+  },
+  {
+    "file": "03_CARTAS_RECORTAR_E_COLAR/KIT_COMPLEMENTO_2_FRENTES.pdf",
+    "id": "ZC-SAQ-0007",
+    "code": "2-02-6",
+    "page": 2,
+    "slot": 5,
+    "side": "front",
+    "box": [
+      138.5,
+      104.5,
+      63,
+      88
+    ],
+    "label_outside": true
+  },
+  {
+    "file": "03_CARTAS_RECORTAR_E_COLAR/KIT_COMPLEMENTO_2_FRENTES.pdf",
+    "id": "ZC-SAQ-0008",
+    "code": "2-02-7",
+    "page": 2,
+    "slot": 6,
+    "side": "front",
+    "box": [
+      8.5,
+      194.5,
+      63,
+      88
+    ],
+    "label_outside": true
+  },
+  {
+    "file": "03_CARTAS_RECORTAR_E_COLAR/KIT_COMPLEMENTO_2_FRENTES.pdf",
+    "id": "ZC-SAQ-0009",
+    "code": "2-02-8",
+    "page": 2,
+    "slot": 7,
+    "side": "front",
+    "box": [
+      73.5,
+      194.5,
+      63,
+      88
+    ],
+    "label_outside": true
+  },
+  {
+    "file": "03_CARTAS_RECORTAR_E_COLAR/KIT_COMPLEMENTO_2_FRENTES.pdf",
+    "id": "ZC-SAQ-0010",
+    "code": "2-02-9",
+    "page": 2,
+    "slot": 8,
+    "side": "front",
+    "box": [
+      138.5,
+      194.5,
+      63,
+      88
+    ],
+    "label_outside": true
+  },
+  {
+    "file": "03_CARTAS_RECORTAR_E_COLAR/KIT_COMPLEMENTO_2_FRENTES.pdf",
+    "id": "ZC-SAQ-0011",
+    "code": "2-03-1",
+    "page": 3,
+    "slot": 0,
+    "side": "front",
+    "box": [
+      8.5,
+      14.5,
+      63,
+      88
+    ],
+    "label_outside": true
+  },
+  {
+    "file": "03_CARTAS_RECORTAR_E_COLAR/KIT_COMPLEMENTO_2_FRENTES.pdf",
+    "id": "ZC-SAQ-0012",
+    "code": "2-03-2",
+    "page": 3,
+    "slot": 1,
+    "side": "front",
+    "box": [
+      73.5,
+      14.5,
+      63,
+      88
+    ],
+    "label_outside": true
+  },
+  {
+    "file": "03_CARTAS_RECORTAR_E_COLAR/KIT_COMPLEMENTO_2_FRENTES.pdf",
+    "id": "ZC-SAQ-0013",
+    "code": "2-03-3",
+    "page": 3,
+    "slot": 2,
+    "side": "front",
+    "box": [
+      138.5,
+      14.5,
+      63,
+      88
+    ],
+    "label_outside": true
+  },
+  {
+    "file": "03_CARTAS_RECORTAR_E_COLAR/KIT_COMPLEMENTO_2_FRENTES.pdf",
+    "id": "ZC-SAQ-0014",
+    "code": "2-03-4",
+    "page": 3,
+    "slot": 3,
+    "side": "front",
+    "box": [
+      8.5,
+      104.5,
+      63,
+      88
+    ],
+    "label_outside": true
+  },
+  {
+    "file": "03_CARTAS_RECORTAR_E_COLAR/KIT_COMPLEMENTO_2_FRENTES.pdf",
+    "id": "ZC-SAQ-0015",
+    "code": "2-03-5",
+    "page": 3,
+    "slot": 4,
+    "side": "front",
+    "box": [
+      73.5,
+      104.5,
+      63,
+      88
+    ],
+    "label_outside": true
+  },
+  {
+    "file": "03_CARTAS_RECORTAR_E_COLAR/KIT_COMPLEMENTO_2_FRENTES.pdf",
+    "id": "ZC-SAQ-0016",
+    "code": "2-03-6",
+    "page": 3,
+    "slot": 5,
+    "side": "front",
+    "box": [
+      138.5,
+      104.5,
+      63,
+      88
+    ],
+    "label_outside": true
+  },
+  {
+    "file": "03_CARTAS_RECORTAR_E_COLAR/KIT_COMPLEMENTO_2_FRENTES.pdf",
+    "id": "ZC-SAQ-0017",
+    "code": "2-03-7",
+    "page": 3,
+    "slot": 6,
+    "side": "front",
+    "box": [
+      8.5,
+      194.5,
+      63,
+      88
+    ],
+    "label_outside": true
+  },
+  {
+    "file": "03_CARTAS_RECORTAR_E_COLAR/KIT_COMPLEMENTO_2_FRENTES.pdf",
+    "id": "ZC-SAQ-0018",
+    "code": "2-03-8",
+    "page": 3,
+    "slot": 7,
+    "side": "front",
+    "box": [
+      73.5,
+      194.5,
+      63,
+      88
+    ],
+    "label_outside": true
+  },
+  {
+    "file": "03_CARTAS_RECORTAR_E_COLAR/KIT_COMPLEMENTO_2_FRENTES.pdf",
+    "id": "ZC-SAQ-0019",
+    "code": "2-03-9",
+    "page": 3,
+    "slot": 8,
+    "side": "front",
+    "box": [
+      138.5,
+      194.5,
+      63,
+      88
+    ],
+    "label_outside": true
+  },
+  {
+    "file": "03_CARTAS_RECORTAR_E_COLAR/KIT_COMPLEMENTO_2_FRENTES.pdf",
+    "id": "ZC-SAQ-0020",
+    "code": "2-04-1",
+    "page": 4,
+    "slot": 0,
+    "side": "front",
+    "box": [
+      8.5,
+      14.5,
+      63,
+      88
+    ],
+    "label_outside": true
+  },
+  {
+    "file": "03_CARTAS_RECORTAR_E_COLAR/KIT_COMPLEMENTO_2_FRENTES.pdf",
+    "id": "ZC-SAQ-0021",
+    "code": "2-04-2",
+    "page": 4,
+    "slot": 1,
+    "side": "front",
+    "box": [
+      73.5,
+      14.5,
+      63,
+      88
+    ],
+    "label_outside": true
+  },
+  {
+    "file": "03_CARTAS_RECORTAR_E_COLAR/KIT_COMPLEMENTO_2_FRENTES.pdf",
+    "id": "ZC-SAQ-0022",
+    "code": "2-04-3",
+    "page": 4,
+    "slot": 2,
+    "side": "front",
+    "box": [
+      138.5,
+      14.5,
+      63,
+      88
+    ],
+    "label_outside": true
+  },
+  {
+    "file": "03_CARTAS_RECORTAR_E_COLAR/KIT_COMPLEMENTO_2_FRENTES.pdf",
+    "id": "ZC-SAQ-0023",
+    "code": "2-04-4",
+    "page": 4,
+    "slot": 3,
+    "side": "front",
+    "box": [
+      8.5,
+      104.5,
+      63,
+      88
+    ],
+    "label_outside": true
+  },
+  {
+    "file": "03_CARTAS_RECORTAR_E_COLAR/KIT_COMPLEMENTO_2_FRENTES.pdf",
+    "id": "ZC-SAQ-0024",
+    "code": "2-04-5",
+    "page": 4,
+    "slot": 4,
+    "side": "front",
+    "box": [
+      73.5,
+      104.5,
+      63,
+      88
+    ],
+    "label_outside": true
+  },
+  {
+    "file": "03_CARTAS_RECORTAR_E_COLAR/KIT_COMPLEMENTO_2_FRENTES.pdf",
+    "id": "ZC-SAQ-0025",
+    "code": "2-04-6",
+    "page": 4,
+    "slot": 5,
+    "side": "front",
+    "box": [
+      138.5,
+      104.5,
+      63,
+      88
+    ],
+    "label_outside": true
+  },
+  {
+    "file": "03_CARTAS_RECORTAR_E_COLAR/KIT_COMPLEMENTO_2_FRENTES.pdf",
+    "id": "ZC-SAQ-0026",
+    "code": "2-04-7",
+    "page": 4,
+    "slot": 6,
+    "side": "front",
+    "box": [
+      8.5,
+      194.5,
+      63,
+      88
+    ],
+    "label_outside": true
+  },
+  {
+    "file": "03_CARTAS_RECORTAR_E_COLAR/KIT_COMPLEMENTO_2_FRENTES.pdf",
+    "id": "ZC-SAQ-0027",
+    "code": "2-04-8",
+    "page": 4,
+    "slot": 7,
+    "side": "front",
+    "box": [
+      73.5,
+      194.5,
+      63,
+      88
+    ],
+    "label_outside": true
+  },
+  {
+    "file": "03_CARTAS_RECORTAR_E_COLAR/KIT_COMPLEMENTO_2_FRENTES.pdf",
+    "id": "ZC-SAQ-0028",
+    "code": "2-04-9",
+    "page": 4,
+    "slot": 8,
+    "side": "front",
+    "box": [
+      138.5,
+      194.5,
+      63,
+      88
+    ],
+    "label_outside": true
+  },
+  {
+    "file": "03_CARTAS_RECORTAR_E_COLAR/KIT_COMPLEMENTO_2_FRENTES.pdf",
+    "id": "ZC-SAQ-0029",
+    "code": "2-05-1",
+    "page": 5,
+    "slot": 0,
+    "side": "front",
+    "box": [
+      8.5,
+      14.5,
+      63,
+      88
+    ],
+    "label_outside": true
+  },
+  {
+    "file": "03_CARTAS_RECORTAR_E_COLAR/KIT_COMPLEMENTO_2_FRENTES.pdf",
+    "id": "ZC-SAQ-0030",
+    "code": "2-05-2",
+    "page": 5,
+    "slot": 1,
+    "side": "front",
+    "box": [
+      73.5,
+      14.5,
+      63,
+      88
+    ],
+    "label_outside": true
+  },
+  {
+    "file": "03_CARTAS_RECORTAR_E_COLAR/KIT_COMPLEMENTO_2_FRENTES.pdf",
+    "id": "ZC-SAQ-0031",
+    "code": "2-05-3",
+    "page": 5,
+    "slot": 2,
+    "side": "front",
+    "box": [
+      138.5,
+      14.5,
+      63,
+      88
+    ],
+    "label_outside": true
+  },
+  {
+    "file": "03_CARTAS_RECORTAR_E_COLAR/KIT_COMPLEMENTO_2_FRENTES.pdf",
+    "id": "ZC-SAQ-0032",
+    "code": "2-05-4",
+    "page": 5,
+    "slot": 3,
+    "side": "front",
+    "box": [
+      8.5,
+      104.5,
+      63,
+      88
+    ],
+    "label_outside": true
+  },
+  {
+    "file": "03_CARTAS_RECORTAR_E_COLAR/KIT_COMPLEMENTO_2_FRENTES.pdf",
+    "id": "ZC-SAQ-0033",
+    "code": "2-05-5",
+    "page": 5,
+    "slot": 4,
+    "side": "front",
+    "box": [
+      73.5,
+      104.5,
+      63,
+      88
+    ],
+    "label_outside": true
+  },
+  {
+    "file": "03_CARTAS_RECORTAR_E_COLAR/KIT_COMPLEMENTO_2_FRENTES.pdf",
+    "id": "ZC-SAQ-0034",
+    "code": "2-05-6",
+    "page": 5,
+    "slot": 5,
+    "side": "front",
+    "box": [
+      138.5,
+      104.5,
+      63,
+      88
+    ],
+    "label_outside": true
+  },
+  {
+    "file": "03_CARTAS_RECORTAR_E_COLAR/KIT_COMPLEMENTO_2_FRENTES.pdf",
+    "id": "ZC-SAQ-0035",
+    "code": "2-05-7",
+    "page": 5,
+    "slot": 6,
+    "side": "front",
+    "box": [
+      8.5,
+      194.5,
+      63,
+      88
+    ],
+    "label_outside": true
+  },
+  {
+    "file": "03_CARTAS_RECORTAR_E_COLAR/KIT_COMPLEMENTO_2_FRENTES.pdf",
+    "id": "ZC-SAQ-0036",
+    "code": "2-05-8",
+    "page": 5,
+    "slot": 7,
+    "side": "front",
+    "box": [
+      73.5,
+      194.5,
+      63,
+      88
+    ],
+    "label_outside": true
+  },
+  {
+    "file": "03_CARTAS_RECORTAR_E_COLAR/KIT_COMPLEMENTO_2_FRENTES.pdf",
+    "id": "ZC-MOR-0002",
+    "code": "2-05-9",
+    "page": 5,
+    "slot": 8,
+    "side": "front",
+    "box": [
+      138.5,
+      194.5,
+      63,
+      88
+    ],
+    "label_outside": true
+  },
+  {
+    "file": "03_CARTAS_RECORTAR_E_COLAR/KIT_COMPLEMENTO_2_FRENTES.pdf",
+    "id": "ZC-MOR-0003",
+    "code": "2-06-1",
+    "page": 6,
+    "slot": 0,
+    "side": "front",
+    "box": [
+      8.5,
+      14.5,
+      63,
+      88
+    ],
+    "label_outside": true
+  },
+  {
+    "file": "03_CARTAS_RECORTAR_E_COLAR/KIT_COMPLEMENTO_2_FRENTES.pdf",
+    "id": "ZC-MOR-0004",
+    "code": "2-06-2",
+    "page": 6,
+    "slot": 1,
+    "side": "front",
+    "box": [
+      73.5,
+      14.5,
+      63,
+      88
+    ],
+    "label_outside": true
+  },
+  {
+    "file": "03_CARTAS_RECORTAR_E_COLAR/KIT_COMPLEMENTO_2_FRENTES.pdf",
+    "id": "ZC-MOR-0005",
+    "code": "2-06-3",
+    "page": 6,
+    "slot": 2,
+    "side": "front",
+    "box": [
+      138.5,
+      14.5,
+      63,
+      88
+    ],
+    "label_outside": true
+  },
+  {
+    "file": "03_CARTAS_RECORTAR_E_COLAR/KIT_COMPLEMENTO_2_FRENTES.pdf",
+    "id": "ZC-MOR-0006",
+    "code": "2-06-4",
+    "page": 6,
+    "slot": 3,
+    "side": "front",
+    "box": [
+      8.5,
+      104.5,
+      63,
+      88
+    ],
+    "label_outside": true
+  },
+  {
+    "file": "03_CARTAS_RECORTAR_E_COLAR/KIT_COMPLEMENTO_2_FRENTES.pdf",
+    "id": "ZC-MOR-0007",
+    "code": "2-06-5",
+    "page": 6,
+    "slot": 4,
+    "side": "front",
+    "box": [
+      73.5,
+      104.5,
+      63,
+      88
+    ],
+    "label_outside": true
+  },
+  {
+    "file": "03_CARTAS_RECORTAR_E_COLAR/KIT_COMPLEMENTO_2_FRENTES.pdf",
+    "id": "ZC-MOR-0008",
+    "code": "2-06-6",
+    "page": 6,
+    "slot": 5,
+    "side": "front",
+    "box": [
+      138.5,
+      104.5,
+      63,
+      88
+    ],
+    "label_outside": true
+  },
+  {
+    "file": "03_CARTAS_RECORTAR_E_COLAR/KIT_COMPLEMENTO_2_FRENTES.pdf",
+    "id": "ZC-VEI-0001",
+    "code": "2-06-7",
+    "page": 6,
+    "slot": 6,
+    "side": "front",
+    "box": [
+      8.5,
+      194.5,
+      63,
+      88
+    ],
+    "label_outside": true
+  },
+  {
+    "file": "03_CARTAS_RECORTAR_E_COLAR/KIT_COMPLEMENTO_2_VERSOS.pdf",
+    "id": "ZC-PEC-0001",
+    "code": "2-01-1",
+    "page": 1,
+    "slot": 0,
+    "side": "back",
+    "box": [
+      8.5,
+      14.5,
+      63,
+      88
+    ],
+    "label_outside": true
+  },
+  {
+    "file": "03_CARTAS_RECORTAR_E_COLAR/KIT_COMPLEMENTO_2_VERSOS.pdf",
+    "id": "ZC-PEC-0002",
+    "code": "2-01-2",
+    "page": 1,
+    "slot": 1,
+    "side": "back",
+    "box": [
+      73.5,
+      14.5,
+      63,
+      88
+    ],
+    "label_outside": true
+  },
+  {
+    "file": "03_CARTAS_RECORTAR_E_COLAR/KIT_COMPLEMENTO_2_VERSOS.pdf",
+    "id": "ZC-PEC-0003",
+    "code": "2-01-3",
+    "page": 1,
+    "slot": 2,
+    "side": "back",
+    "box": [
+      138.5,
+      14.5,
+      63,
+      88
+    ],
+    "label_outside": true
+  },
+  {
+    "file": "03_CARTAS_RECORTAR_E_COLAR/KIT_COMPLEMENTO_2_VERSOS.pdf",
+    "id": "ZC-PEC-0004",
+    "code": "2-01-4",
+    "page": 1,
+    "slot": 3,
+    "side": "back",
+    "box": [
+      8.5,
+      104.5,
+      63,
+      88
+    ],
+    "label_outside": true
+  },
+  {
+    "file": "03_CARTAS_RECORTAR_E_COLAR/KIT_COMPLEMENTO_2_VERSOS.pdf",
+    "id": "ZC-PEC-0005",
+    "code": "2-01-5",
+    "page": 1,
+    "slot": 4,
+    "side": "back",
+    "box": [
+      73.5,
+      104.5,
+      63,
+      88
+    ],
+    "label_outside": true
+  },
+  {
+    "file": "03_CARTAS_RECORTAR_E_COLAR/KIT_COMPLEMENTO_2_VERSOS.pdf",
+    "id": "ZC-PEC-0006",
+    "code": "2-01-6",
+    "page": 1,
+    "slot": 5,
+    "side": "back",
+    "box": [
+      138.5,
+      104.5,
+      63,
+      88
+    ],
+    "label_outside": true
+  },
+  {
+    "file": "03_CARTAS_RECORTAR_E_COLAR/KIT_COMPLEMENTO_2_VERSOS.pdf",
+    "id": "ZC-EQU-0009",
+    "code": "2-01-7",
+    "page": 1,
+    "slot": 6,
+    "side": "back",
+    "box": [
+      8.5,
+      194.5,
+      63,
+      88
+    ],
+    "label_outside": true
+  },
+  {
+    "file": "03_CARTAS_RECORTAR_E_COLAR/KIT_COMPLEMENTO_2_VERSOS.pdf",
+    "id": "ZC-EQU-0010",
+    "code": "2-01-8",
+    "page": 1,
+    "slot": 7,
+    "side": "back",
+    "box": [
+      73.5,
+      194.5,
+      63,
+      88
+    ],
+    "label_outside": true
+  },
+  {
+    "file": "03_CARTAS_RECORTAR_E_COLAR/KIT_COMPLEMENTO_2_VERSOS.pdf",
+    "id": "ZC-EQU-0011",
+    "code": "2-01-9",
+    "page": 1,
+    "slot": 8,
+    "side": "back",
+    "box": [
+      138.5,
+      194.5,
+      63,
+      88
+    ],
+    "label_outside": true
+  },
+  {
+    "file": "03_CARTAS_RECORTAR_E_COLAR/KIT_COMPLEMENTO_2_VERSOS.pdf",
+    "id": "ZC-EQU-0012",
+    "code": "2-02-1",
+    "page": 2,
+    "slot": 0,
+    "side": "back",
+    "box": [
+      8.5,
+      14.5,
+      63,
+      88
+    ],
+    "label_outside": true
+  },
+  {
+    "file": "03_CARTAS_RECORTAR_E_COLAR/KIT_COMPLEMENTO_2_VERSOS.pdf",
+    "id": "ZC-EQU-0013",
+    "code": "2-02-2",
+    "page": 2,
+    "slot": 1,
+    "side": "back",
+    "box": [
+      73.5,
+      14.5,
+      63,
+      88
+    ],
+    "label_outside": true
+  },
+  {
+    "file": "03_CARTAS_RECORTAR_E_COLAR/KIT_COMPLEMENTO_2_VERSOS.pdf",
+    "id": "ZC-EQU-0015",
+    "code": "2-02-3",
+    "page": 2,
+    "slot": 2,
+    "side": "back",
+    "box": [
+      138.5,
+      14.5,
+      63,
+      88
+    ],
+    "label_outside": true
+  },
+  {
+    "file": "03_CARTAS_RECORTAR_E_COLAR/KIT_COMPLEMENTO_2_VERSOS.pdf",
+    "id": "ZC-EQU-0016",
+    "code": "2-02-4",
+    "page": 2,
+    "slot": 3,
+    "side": "back",
+    "box": [
+      8.5,
+      104.5,
+      63,
+      88
+    ],
+    "label_outside": true
+  },
+  {
+    "file": "03_CARTAS_RECORTAR_E_COLAR/KIT_COMPLEMENTO_2_VERSOS.pdf",
+    "id": "ZC-EQU-0018",
+    "code": "2-02-5",
+    "page": 2,
+    "slot": 4,
+    "side": "back",
+    "box": [
+      73.5,
+      104.5,
+      63,
+      88
+    ],
+    "label_outside": true
+  },
+  {
+    "file": "03_CARTAS_RECORTAR_E_COLAR/KIT_COMPLEMENTO_2_VERSOS.pdf",
+    "id": "ZC-SAQ-0007",
+    "code": "2-02-6",
+    "page": 2,
+    "slot": 5,
+    "side": "back",
+    "box": [
+      138.5,
+      104.5,
+      63,
+      88
+    ],
+    "label_outside": true
+  },
+  {
+    "file": "03_CARTAS_RECORTAR_E_COLAR/KIT_COMPLEMENTO_2_VERSOS.pdf",
+    "id": "ZC-SAQ-0008",
+    "code": "2-02-7",
+    "page": 2,
+    "slot": 6,
+    "side": "back",
+    "box": [
+      8.5,
+      194.5,
+      63,
+      88
+    ],
+    "label_outside": true
+  },
+  {
+    "file": "03_CARTAS_RECORTAR_E_COLAR/KIT_COMPLEMENTO_2_VERSOS.pdf",
+    "id": "ZC-SAQ-0009",
+    "code": "2-02-8",
+    "page": 2,
+    "slot": 7,
+    "side": "back",
+    "box": [
+      73.5,
+      194.5,
+      63,
+      88
+    ],
+    "label_outside": true
+  },
+  {
+    "file": "03_CARTAS_RECORTAR_E_COLAR/KIT_COMPLEMENTO_2_VERSOS.pdf",
+    "id": "ZC-SAQ-0010",
+    "code": "2-02-9",
+    "page": 2,
+    "slot": 8,
+    "side": "back",
+    "box": [
+      138.5,
+      194.5,
+      63,
+      88
+    ],
+    "label_outside": true
+  },
+  {
+    "file": "03_CARTAS_RECORTAR_E_COLAR/KIT_COMPLEMENTO_2_VERSOS.pdf",
+    "id": "ZC-SAQ-0011",
+    "code": "2-03-1",
+    "page": 3,
+    "slot": 0,
+    "side": "back",
+    "box": [
+      8.5,
+      14.5,
+      63,
+      88
+    ],
+    "label_outside": true
+  },
+  {
+    "file": "03_CARTAS_RECORTAR_E_COLAR/KIT_COMPLEMENTO_2_VERSOS.pdf",
+    "id": "ZC-SAQ-0012",
+    "code": "2-03-2",
+    "page": 3,
+    "slot": 1,
+    "side": "back",
+    "box": [
+      73.5,
+      14.5,
+      63,
+      88
+    ],
+    "label_outside": true
+  },
+  {
+    "file": "03_CARTAS_RECORTAR_E_COLAR/KIT_COMPLEMENTO_2_VERSOS.pdf",
+    "id": "ZC-SAQ-0013",
+    "code": "2-03-3",
+    "page": 3,
+    "slot": 2,
+    "side": "back",
+    "box": [
+      138.5,
+      14.5,
+      63,
+      88
+    ],
+    "label_outside": true
+  },
+  {
+    "file": "03_CARTAS_RECORTAR_E_COLAR/KIT_COMPLEMENTO_2_VERSOS.pdf",
+    "id": "ZC-SAQ-0014",
+    "code": "2-03-4",
+    "page": 3,
+    "slot": 3,
+    "side": "back",
+    "box": [
+      8.5,
+      104.5,
+      63,
+      88
+    ],
+    "label_outside": true
+  },
+  {
+    "file": "03_CARTAS_RECORTAR_E_COLAR/KIT_COMPLEMENTO_2_VERSOS.pdf",
+    "id": "ZC-SAQ-0015",
+    "code": "2-03-5",
+    "page": 3,
+    "slot": 4,
+    "side": "back",
+    "box": [
+      73.5,
+      104.5,
+      63,
+      88
+    ],
+    "label_outside": true
+  },
+  {
+    "file": "03_CARTAS_RECORTAR_E_COLAR/KIT_COMPLEMENTO_2_VERSOS.pdf",
+    "id": "ZC-SAQ-0016",
+    "code": "2-03-6",
+    "page": 3,
+    "slot": 5,
+    "side": "back",
+    "box": [
+      138.5,
+      104.5,
+      63,
+      88
+    ],
+    "label_outside": true
+  },
+  {
+    "file": "03_CARTAS_RECORTAR_E_COLAR/KIT_COMPLEMENTO_2_VERSOS.pdf",
+    "id": "ZC-SAQ-0017",
+    "code": "2-03-7",
+    "page": 3,
+    "slot": 6,
+    "side": "back",
+    "box": [
+      8.5,
+      194.5,
+      63,
+      88
+    ],
+    "label_outside": true
+  },
+  {
+    "file": "03_CARTAS_RECORTAR_E_COLAR/KIT_COMPLEMENTO_2_VERSOS.pdf",
+    "id": "ZC-SAQ-0018",
+    "code": "2-03-8",
+    "page": 3,
+    "slot": 7,
+    "side": "back",
+    "box": [
+      73.5,
+      194.5,
+      63,
+      88
+    ],
+    "label_outside": true
+  },
+  {
+    "file": "03_CARTAS_RECORTAR_E_COLAR/KIT_COMPLEMENTO_2_VERSOS.pdf",
+    "id": "ZC-SAQ-0019",
+    "code": "2-03-9",
+    "page": 3,
+    "slot": 8,
+    "side": "back",
+    "box": [
+      138.5,
+      194.5,
+      63,
+      88
+    ],
+    "label_outside": true
+  },
+  {
+    "file": "03_CARTAS_RECORTAR_E_COLAR/KIT_COMPLEMENTO_2_VERSOS.pdf",
+    "id": "ZC-SAQ-0020",
+    "code": "2-04-1",
+    "page": 4,
+    "slot": 0,
+    "side": "back",
+    "box": [
+      8.5,
+      14.5,
+      63,
+      88
+    ],
+    "label_outside": true
+  },
+  {
+    "file": "03_CARTAS_RECORTAR_E_COLAR/KIT_COMPLEMENTO_2_VERSOS.pdf",
+    "id": "ZC-SAQ-0021",
+    "code": "2-04-2",
+    "page": 4,
+    "slot": 1,
+    "side": "back",
+    "box": [
+      73.5,
+      14.5,
+      63,
+      88
+    ],
+    "label_outside": true
+  },
+  {
+    "file": "03_CARTAS_RECORTAR_E_COLAR/KIT_COMPLEMENTO_2_VERSOS.pdf",
+    "id": "ZC-SAQ-0022",
+    "code": "2-04-3",
+    "page": 4,
+    "slot": 2,
+    "side": "back",
+    "box": [
+      138.5,
+      14.5,
+      63,
+      88
+    ],
+    "label_outside": true
+  },
+  {
+    "file": "03_CARTAS_RECORTAR_E_COLAR/KIT_COMPLEMENTO_2_VERSOS.pdf",
+    "id": "ZC-SAQ-0023",
+    "code": "2-04-4",
+    "page": 4,
+    "slot": 3,
+    "side": "back",
+    "box": [
+      8.5,
+      104.5,
+      63,
+      88
+    ],
+    "label_outside": true
+  },
+  {
+    "file": "03_CARTAS_RECORTAR_E_COLAR/KIT_COMPLEMENTO_2_VERSOS.pdf",
+    "id": "ZC-SAQ-0024",
+    "code": "2-04-5",
+    "page": 4,
+    "slot": 4,
+    "side": "back",
+    "box": [
+      73.5,
+      104.5,
+      63,
+      88
+    ],
+    "label_outside": true
+  },
+  {
+    "file": "03_CARTAS_RECORTAR_E_COLAR/KIT_COMPLEMENTO_2_VERSOS.pdf",
+    "id": "ZC-SAQ-0025",
+    "code": "2-04-6",
+    "page": 4,
+    "slot": 5,
+    "side": "back",
+    "box": [
+      138.5,
+      104.5,
+      63,
+      88
+    ],
+    "label_outside": true
+  },
+  {
+    "file": "03_CARTAS_RECORTAR_E_COLAR/KIT_COMPLEMENTO_2_VERSOS.pdf",
+    "id": "ZC-SAQ-0026",
+    "code": "2-04-7",
+    "page": 4,
+    "slot": 6,
+    "side": "back",
+    "box": [
+      8.5,
+      194.5,
+      63,
+      88
+    ],
+    "label_outside": true
+  },
+  {
+    "file": "03_CARTAS_RECORTAR_E_COLAR/KIT_COMPLEMENTO_2_VERSOS.pdf",
+    "id": "ZC-SAQ-0027",
+    "code": "2-04-8",
+    "page": 4,
+    "slot": 7,
+    "side": "back",
+    "box": [
+      73.5,
+      194.5,
+      63,
+      88
+    ],
+    "label_outside": true
+  },
+  {
+    "file": "03_CARTAS_RECORTAR_E_COLAR/KIT_COMPLEMENTO_2_VERSOS.pdf",
+    "id": "ZC-SAQ-0028",
+    "code": "2-04-9",
+    "page": 4,
+    "slot": 8,
+    "side": "back",
+    "box": [
+      138.5,
+      194.5,
+      63,
+      88
+    ],
+    "label_outside": true
+  },
+  {
+    "file": "03_CARTAS_RECORTAR_E_COLAR/KIT_COMPLEMENTO_2_VERSOS.pdf",
+    "id": "ZC-SAQ-0029",
+    "code": "2-05-1",
+    "page": 5,
+    "slot": 0,
+    "side": "back",
+    "box": [
+      8.5,
+      14.5,
+      63,
+      88
+    ],
+    "label_outside": true
+  },
+  {
+    "file": "03_CARTAS_RECORTAR_E_COLAR/KIT_COMPLEMENTO_2_VERSOS.pdf",
+    "id": "ZC-SAQ-0030",
+    "code": "2-05-2",
+    "page": 5,
+    "slot": 1,
+    "side": "back",
+    "box": [
+      73.5,
+      14.5,
+      63,
+      88
+    ],
+    "label_outside": true
+  },
+  {
+    "file": "03_CARTAS_RECORTAR_E_COLAR/KIT_COMPLEMENTO_2_VERSOS.pdf",
+    "id": "ZC-SAQ-0031",
+    "code": "2-05-3",
+    "page": 5,
+    "slot": 2,
+    "side": "back",
+    "box": [
+      138.5,
+      14.5,
+      63,
+      88
+    ],
+    "label_outside": true
+  },
+  {
+    "file": "03_CARTAS_RECORTAR_E_COLAR/KIT_COMPLEMENTO_2_VERSOS.pdf",
+    "id": "ZC-SAQ-0032",
+    "code": "2-05-4",
+    "page": 5,
+    "slot": 3,
+    "side": "back",
+    "box": [
+      8.5,
+      104.5,
+      63,
+      88
+    ],
+    "label_outside": true
+  },
+  {
+    "file": "03_CARTAS_RECORTAR_E_COLAR/KIT_COMPLEMENTO_2_VERSOS.pdf",
+    "id": "ZC-SAQ-0033",
+    "code": "2-05-5",
+    "page": 5,
+    "slot": 4,
+    "side": "back",
+    "box": [
+      73.5,
+      104.5,
+      63,
+      88
+    ],
+    "label_outside": true
+  },
+  {
+    "file": "03_CARTAS_RECORTAR_E_COLAR/KIT_COMPLEMENTO_2_VERSOS.pdf",
+    "id": "ZC-SAQ-0034",
+    "code": "2-05-6",
+    "page": 5,
+    "slot": 5,
+    "side": "back",
+    "box": [
+      138.5,
+      104.5,
+      63,
+      88
+    ],
+    "label_outside": true
+  },
+  {
+    "file": "03_CARTAS_RECORTAR_E_COLAR/KIT_COMPLEMENTO_2_VERSOS.pdf",
+    "id": "ZC-SAQ-0035",
+    "code": "2-05-7",
+    "page": 5,
+    "slot": 6,
+    "side": "back",
+    "box": [
+      8.5,
+      194.5,
+      63,
+      88
+    ],
+    "label_outside": true
+  },
+  {
+    "file": "03_CARTAS_RECORTAR_E_COLAR/KIT_COMPLEMENTO_2_VERSOS.pdf",
+    "id": "ZC-SAQ-0036",
+    "code": "2-05-8",
+    "page": 5,
+    "slot": 7,
+    "side": "back",
+    "box": [
+      73.5,
+      194.5,
+      63,
+      88
+    ],
+    "label_outside": true
+  },
+  {
+    "file": "03_CARTAS_RECORTAR_E_COLAR/KIT_COMPLEMENTO_2_VERSOS.pdf",
+    "id": "ZC-MOR-0002",
+    "code": "2-05-9",
+    "page": 5,
+    "slot": 8,
+    "side": "back",
+    "box": [
+      138.5,
+      194.5,
+      63,
+      88
+    ],
+    "label_outside": true
+  },
+  {
+    "file": "03_CARTAS_RECORTAR_E_COLAR/KIT_COMPLEMENTO_2_VERSOS.pdf",
+    "id": "ZC-MOR-0003",
+    "code": "2-06-1",
+    "page": 6,
+    "slot": 0,
+    "side": "back",
+    "box": [
+      8.5,
+      14.5,
+      63,
+      88
+    ],
+    "label_outside": true
+  },
+  {
+    "file": "03_CARTAS_RECORTAR_E_COLAR/KIT_COMPLEMENTO_2_VERSOS.pdf",
+    "id": "ZC-MOR-0004",
+    "code": "2-06-2",
+    "page": 6,
+    "slot": 1,
+    "side": "back",
+    "box": [
+      73.5,
+      14.5,
+      63,
+      88
+    ],
+    "label_outside": true
+  },
+  {
+    "file": "03_CARTAS_RECORTAR_E_COLAR/KIT_COMPLEMENTO_2_VERSOS.pdf",
+    "id": "ZC-MOR-0005",
+    "code": "2-06-3",
+    "page": 6,
+    "slot": 2,
+    "side": "back",
+    "box": [
+      138.5,
+      14.5,
+      63,
+      88
+    ],
+    "label_outside": true
+  },
+  {
+    "file": "03_CARTAS_RECORTAR_E_COLAR/KIT_COMPLEMENTO_2_VERSOS.pdf",
+    "id": "ZC-MOR-0006",
+    "code": "2-06-4",
+    "page": 6,
+    "slot": 3,
+    "side": "back",
+    "box": [
+      8.5,
+      104.5,
+      63,
+      88
+    ],
+    "label_outside": true
+  },
+  {
+    "file": "03_CARTAS_RECORTAR_E_COLAR/KIT_COMPLEMENTO_2_VERSOS.pdf",
+    "id": "ZC-MOR-0007",
+    "code": "2-06-5",
+    "page": 6,
+    "slot": 4,
+    "side": "back",
+    "box": [
+      73.5,
+      104.5,
+      63,
+      88
+    ],
+    "label_outside": true
+  },
+  {
+    "file": "03_CARTAS_RECORTAR_E_COLAR/KIT_COMPLEMENTO_2_VERSOS.pdf",
+    "id": "ZC-MOR-0008",
+    "code": "2-06-6",
+    "page": 6,
+    "slot": 5,
+    "side": "back",
+    "box": [
+      138.5,
+      104.5,
+      63,
+      88
+    ],
+    "label_outside": true
+  },
+  {
+    "file": "03_CARTAS_RECORTAR_E_COLAR/KIT_COMPLEMENTO_2_VERSOS.pdf",
+    "id": "ZC-VEI-0001",
+    "code": "2-06-7",
+    "page": 6,
+    "slot": 6,
+    "side": "back",
+    "box": [
+      8.5,
+      194.5,
+      63,
+      88
+    ],
+    "label_outside": true
+  }
+]

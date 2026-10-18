@@ -1,0 +1,354 @@
+[
+  {
+    "file": "assets/buildings.png",
+    "origin": "original existente",
+    "dimensions": [
+      1536,
+      1024
+    ],
+    "destination": "original preservado / mesma aplicação 0.3",
+    "integrated": true,
+    "pending": null
+  },
+  {
+    "file": "assets/cover.png",
+    "origin": "original existente",
+    "dimensions": [
+      1024,
+      1536
+    ],
+    "destination": "original preservado / mesma aplicação 0.3",
+    "integrated": true,
+    "pending": null
+  },
+  {
+    "file": "assets/encounters.png",
+    "origin": "original existente",
+    "dimensions": [
+      1024,
+      1536
+    ],
+    "destination": "original preservado / mesma aplicação 0.3",
+    "integrated": true,
+    "pending": null
+  },
+  {
+    "file": "assets/enemies.png",
+    "origin": "original existente",
+    "dimensions": [
+      1222,
+      1287
+    ],
+    "destination": "original preservado / mesma aplicação 0.3",
+    "integrated": true,
+    "pending": null
+  },
+  {
+    "file": "assets/equipment.png",
+    "origin": "original existente",
+    "dimensions": [
+      1536,
+      1024
+    ],
+    "destination": "original preservado / mesma aplicação 0.3",
+    "integrated": true,
+    "pending": null
+  },
+  {
+    "file": "assets/portraits_01.png",
+    "origin": "original existente",
+    "dimensions": [
+      1024,
+      1536
+    ],
+    "destination": "original preservado / mesma aplicação 0.3",
+    "integrated": true,
+    "pending": null
+  },
+  {
+    "file": "assets/portraits_02.png",
+    "origin": "original existente",
+    "dimensions": [
+      1024,
+      1536
+    ],
+    "destination": "original preservado / mesma aplicação 0.3",
+    "integrated": true,
+    "pending": null
+  },
+  {
+    "file": "assets/v0.3/environments.png",
+    "origin": "original existente",
+    "dimensions": [
+      1536,
+      1024
+    ],
+    "destination": "original preservado / mesma aplicação 0.3",
+    "integrated": true,
+    "pending": null
+  },
+  {
+    "file": "assets/v0.3/map_objects.png",
+    "origin": "original existente",
+    "dimensions": [
+      1536,
+      1024
+    ],
+    "destination": "original preservado / mesma aplicação 0.3",
+    "integrated": true,
+    "pending": null
+  },
+  {
+    "file": "assets/v0.3/map_objects_alpha.png",
+    "origin": "original existente",
+    "dimensions": [
+      1536,
+      1024
+    ],
+    "destination": "original preservado / mesma aplicação 0.3",
+    "integrated": true,
+    "pending": null
+  },
+  {
+    "file": "assets/v0.3/shelter.png",
+    "origin": "original existente",
+    "dimensions": [
+      1536,
+      1024
+    ],
+    "destination": "original preservado / mesma aplicação 0.3",
+    "integrated": true,
+    "pending": null
+  },
+  {
+    "file": "assets/v0.4/comum.png",
+    "origin": "geração de imagem integrada",
+    "dimensions": [
+      1514,
+      1039
+    ],
+    "destination": "rascunho de composição, não distribuído",
+    "integrated": false,
+    "pending": null
+  },
+  {
+    "file": "assets/v0.4/comum_ajustado.png",
+    "origin": "geração de imagem integrada",
+    "dimensions": [
+      1514,
+      1039
+    ],
+    "destination": "mapa tático contínuo",
+    "integrated": true,
+    "pending": null
+  },
+  {
+    "file": "assets/v0.4/condominio.png",
+    "origin": "geração de imagem integrada",
+    "dimensions": [
+      1515,
+      1038
+    ],
+    "destination": "rascunho de composição, não distribuído",
+    "integrated": false,
+    "pending": null
+  },
+  {
+    "file": "assets/v0.4/condominio_ajustado.png",
+    "origin": "geração de imagem integrada",
+    "dimensions": [
+      1514,
+      1039
+    ],
+    "destination": "rascunho de composição, não distribuído",
+    "integrated": false,
+    "pending": null
+  },
+  {
+    "file": "assets/v0.4/condominio_final.png",
+    "origin": "geração de imagem integrada",
+    "dimensions": [
+      1515,
+      1038
+    ],
+    "destination": "mapa tático contínuo",
+    "integrated": true,
+    "pending": null
+  },
+  {
+    "file": "assets/v0.4/estacao.png",
+    "origin": "geração de imagem integrada",
+    "dimensions": [
+      1515,
+      1038
+    ],
+    "destination": "rascunho de composição, não distribuído",
+    "integrated": false,
+    "pending": null
+  },
+  {
+    "file": "assets/v0.4/estacao_ajustado.png",
+    "origin": "geração de imagem integrada",
+    "dimensions": [
+      1514,
+      1039
+    ],
+    "destination": "mapa tático contínuo",
+    "integrated": true,
+    "pending": null
+  },
+  {
+    "file": "assets/v0.4/herois_a.png",
+    "origin": "geração de imagem integrada",
+    "dimensions": [
+      1536,
+      1024
+    ],
+    "destination": "peões dos heróis",
+    "integrated": true,
+    "pending": null
+  },
+  {
+    "file": "assets/v0.4/herois_b.png",
+    "origin": "geração de imagem integrada",
+    "dimensions": [
+      1536,
+      1024
+    ],
+    "destination": "peões dos heróis",
+    "integrated": true,
+    "pending": null
+  },
+  {
+    "file": "assets/v0.4/herois_c.png",
+    "origin": "geração de imagem integrada",
+    "dimensions": [
+      1536,
+      1024
+    ],
+    "destination": "peões dos heróis",
+    "integrated": true,
+    "pending": null
+  },
+  {
+    "file": "assets/v0.4/herois_d.png",
+    "origin": "geração de imagem integrada",
+    "dimensions": [
+      1024,
+      1536
+    ],
+    "destination": "peões dos heróis",
+    "integrated": true,
+    "pending": null
+  },
+  {
+    "file": "assets/v0.4/hospital.png",
+    "origin": "geração de imagem integrada",
+    "dimensions": [
+      1515,
+      1038
+    ],
+    "destination": "rascunho de composição, não distribuído",
+    "integrated": false,
+    "pending": null
+  },
+  {
+    "file": "assets/v0.4/hospital_ajustado.png",
+    "origin": "geração de imagem integrada",
+    "dimensions": [
+      1514,
+      1039
+    ],
+    "destination": "mapa tático contínuo",
+    "integrated": true,
+    "pending": null
+  },
+  {
+    "file": "assets/v0.4/itens_a.png",
+    "origin": "geração de imagem integrada",
+    "dimensions": [
+      1536,
+      1024
+    ],
+    "destination": "cartas de recursos",
+    "integrated": true,
+    "pending": null
+  },
+  {
+    "file": "assets/v0.4/itens_b.png",
+    "origin": "geração de imagem integrada",
+    "dimensions": [
+      1536,
+      1024
+    ],
+    "destination": "cartas de recursos",
+    "integrated": true,
+    "pending": null
+  },
+  {
+    "file": "assets/v0.4/mercado.png",
+    "origin": "geração de imagem integrada",
+    "dimensions": [
+      1514,
+      1039
+    ],
+    "destination": "rascunho de composição, não distribuído",
+    "integrated": false,
+    "pending": null
+  },
+  {
+    "file": "assets/v0.4/mercado_ajustado.png",
+    "origin": "geração de imagem integrada",
+    "dimensions": [
+      1514,
+      1039
+    ],
+    "destination": "mapa tático contínuo",
+    "integrated": true,
+    "pending": null
+  },
+  {
+    "file": "assets/v0.4/oficina.png",
+    "origin": "geração de imagem integrada",
+    "dimensions": [
+      1514,
+      1039
+    ],
+    "destination": "rascunho de composição, não distribuído",
+    "integrated": false,
+    "pending": null
+  },
+  {
+    "file": "assets/v0.4/oficina_ajustado.png",
+    "origin": "geração de imagem integrada",
+    "dimensions": [
+      1514,
+      1039
+    ],
+    "destination": "mapa tático contínuo",
+    "integrated": true,
+    "pending": null
+  },
+  {
+    "file": "assets/v0.4/posto.png",
+    "origin": "geração de imagem integrada",
+    "dimensions": [
+      1515,
+      1038
+    ],
+    "destination": "rascunho de composição, não distribuído",
+    "integrated": false,
+    "pending": null
+  },
+  {
+    "file": "assets/v0.4/posto_ajustado.png",
+    "origin": "geração de imagem integrada",
+    "dimensions": [
+      1514,
+      1039
+    ],
+    "destination": "mapa tático contínuo",
+    "integrated": true,
+    "pending": null
+  }
+]

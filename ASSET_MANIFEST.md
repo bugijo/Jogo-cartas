@@ -22,3 +22,8 @@ A econômica deriva os mesmos arquivos para cinza e clareia a luminância em 25%
 - Não houve impressão física nem playtest humano.
 
 As plantas táticas têm geometria vetorial exata; objetos não criam obstáculos ou cobertura. A arte das montagens é ilustração de ambientação separada do diagrama jogável. Não há imagem essencial faltando para jogar o kit. A capa anterior permanece disponível, mas não acrescenta folha obrigatória à seleção.
+
+
+## Fabricação 0.4
+
+Inventário por arquivo, dimensão, origem e integração em [assets_0.4.json](content/production/assets_0.4.json). Novos corpos completos usam os retratos originais como referência; retratos das fichas e encontros foram preservados. Quatro pranchas contêm 24 corpos; duas pranchas contêm 12 itens; sete cenas contínuas integradas. Rascunhos de cenas estão preservados localmente e identificados como não integrados. Econômica é derivada pelo gerador; não é arte independente. Não há prompts contados como imagens. Nenhum PDF ou desenho privado de referência foi incorporado. Mapas têm cerca de 70 ppi efetivos; não foram ampliados para alegar detalhe novo. Textos, medidas, paredes e símbolos funcionais são vetoriais.

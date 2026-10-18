@@ -17,3 +17,8 @@ Mapas comuns têm piso claro e objetos neutros, usados nos seis locais. As seis 
 Geração integrada disponível e utilizada nesta sessão, sem API externa, chave ou contratação adicional. Pranchas de ambientes e objetos são ilustrações; textos e geometria continuam vetoriais. A econômica reduz fundos e transforma imagens para cinza, preservando informação e tamanho. Registros de lápis ficam brancos. Não confundir a econômica 0.3 (mesmas 58 folhas) com a seleção reduzida 03b da caixa antiga.
 
 Orientação adicional do proprietário: manter personagens e todo conteúdo; referência de preferência é a leitura de cartas de Zombicide. Aplicação nesta edição: títulos destacados, faixa de família, arte maior em cartas de efeito curto e painel de efeito claro. Molduras, cores, ícones e composição são próprios; nenhuma imagem, marca ou texto da referência foi usado.
+
+
+## Fabricação 0.4
+
+Prioridade: objetos legíveis e ambientes ortográficos contínuos. Arte em camada A, geometria preservada em B, informação em C e fabricação em D. As sete cenas foram ajustadas à planta 4 × 4 para que carros, tanques e móveis não atravessem paredes; corredores de 14 mm recebem limpeza vetorial. Composição não cria obstáculos, coberturas nem distâncias novas. Rostos canônicos continuam nas fichas/cartas; os peões acrescentam corpo coerente, sem trocar nome ou profissão. Versos de intenções são uniformes por família. Layout das cartas: nome, arte, metadados existentes, efeito integral, família/ID discreto. Efeitos a 9,5–10 pt. Não há cópia de identidade, atributos ou componentes da referência privada.
