@@ -35,3 +35,6 @@ Branch: fisico/antes-que-a-agua-acabe. Repositório local novo; nenhum jogo digi
 6. Após testes, revisar curva econômica/tática e progressões; concluir ambientações e artes listadas no manifesto; gerar nova versão e nova inspeção. Não afirmar validação humana antes de ocorrer.
 
 Histórico completo acompanha history.bundle; restaurar em uma pasta nova com git clone history.bundle zona-zero-retomada. COMMIT_LOG.txt lista hashes finais. Nenhuma tarefa fica rodando após a entrega.
+
+## Produção artística 0.3 — ciclo 1
+Branch arte/pnp-edicao-ilustrada-v0-3 criada de 9c38aa5, árvore limpa e origem conferida. Nenhum trabalho posterior remoto na base. Leitura dos geradores, catálogo, regras, campanha, guia e manifesto; sete pranchas auditadas visualmente. Capturas anteriores em output/edicao-ilustrada-v0.3/evidencias/antes_*.png; hashes da base em baseline.json. Amostras reais em amostras/ (mapa, abrigo e cartas), revisadas: trocar ícones das estruturas por ilustrações preservadas; ampliar arte em cartas curtas. Sem alteração de regras. Próximo: concluir mapas e montagem digital, integrar demais componentes e conferir ambas edições.
