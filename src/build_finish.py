@@ -17,6 +17,7 @@ def new_art(c,card,x,y,w,h):
  name=card['name'].split(': ')[-1]
  if name not in NEW_ART:return original_art(c,card,x,y,w,h)
  sheet,i=NEW_ART[name];piece=dict(path=f'assets/v0.5/{sheet}.png',cols=2,rows=2,col=i%2,row=i//2)
+ if sheet=='suprimentos':piece['crop']=[[100,0,755,448],[970,0,1420,445],[230,448,640,1024],[925,450,1430,1024]][i]
  if sheet=='pecas_corrigidas':piece['crop']=[[20,0,785,480],[800,25,1520,475],[10,530,800,1015],[810,490,1525,1015]][i]
  if sheet!='viagens':piece=f.tight_body(piece)
  else:
@@ -27,8 +28,8 @@ def new_art(c,card,x,y,w,h):
  q.raster(c,piece,x,y,w,h)
 def palette(fam):return '#9a604b' if fam in ['HOR','CER'] else '#b29351' if fam=='VIA' else '#5c7861' if fam in ['SAQ','PEC','VIN','MOR','INT'] else '#315e60'
 def frame(c,x,y,w,h,accent):
- a.rect(c,x*mm,y*mm,w*mm,h*mm,'#dfd7c2',stroke=a.INK,r=1.8*mm)
- a.rect(c,(x+1.4)*mm,(y+1.4)*mm,(w-2.8)*mm,(h-2.8)*mm,'#f0eadb',stroke=accent,r=1.1*mm)
+ a.rect(c,x*mm,y*mm,w*mm,h*mm,'#ffffff' if a.ECON else '#dfd7c2',stroke=a.INK,r=1.8*mm)
+ a.rect(c,(x+1.4)*mm,(y+1.4)*mm,(w-2.8)*mm,(h-2.8)*mm,'#fcfcf8' if a.ECON else '#f0eadb',stroke=accent,r=1.1*mm)
  for xx,yy in [(x+2.4,y+2.4),(x+w-2.4,y+2.4),(x+2.4,y+h-2.4),(x+w-2.4,y+h-2.4)]:
   c.setFillColor(a.color(accent));c.circle(xx*mm,yy*mm,.45*mm,fill=1,stroke=0)
  # Laminação angular de cantos; não interfere na zona de texto.
@@ -54,12 +55,12 @@ def card_front(c,card,x,y,initial):
  b.family_icon(c,card['family'],(x+4)*mm,(y+4.5)*mm,3*mm);q.txt(c,b.FAMILIES[card['family']],x+8,y+4.7,6.4,True);q.txt(c,card['id'],x+33,y+4.4,6)
 def card_back(c,fam,x,y):
  accent=palette(fam);frame(c,x,y,63,88,accent)
- a.rect(c,(x+4)*mm,(y+4)*mm,55*mm,80*mm,'#36585a',stroke='#d9c89d',r=1*mm)
+ a.rect(c,(x+4)*mm,(y+4)*mm,55*mm,80*mm,'#e4e6de' if a.ECON else '#36585a',stroke='#d9c89d',r=1*mm)
  for j in range(9):
   yy=y+8+j*8;a.line(c,(x+6)*mm,yy*mm,(x+57)*mm,(yy+5)*mm,'#43676a',.5)
  for yy in [y+10,y+78]:
   a.line(c,(x+8)*mm,yy*mm,(x+55)*mm,yy*mm,'#bdab7d',1)
- q.txt(c,'ZONA ZERO',x+8,y+64,15,True,col='#f3e8cc');q.txt(c,'COMUNIDADE',x+8,y+57,10,True,col='#f3e8cc')
+ q.txt(c,'ZONA ZERO',x+8,y+64,15,True,col=a.INK if a.ECON else '#f3e8cc');q.txt(c,'COMUNIDADE',x+8,y+57,10,True,col=a.INK if a.ECON else '#f3e8cc')
  a.rect(c,(x+21)*mm,(y+31)*mm,21*mm,21*mm,'#e6d6ae',stroke='#a18b5d',r=1*mm);b.family_icon(c,fam,(x+25)*mm,(y+35)*mm,13*mm)
  a.rect(c,(x+6)*mm,(y+15)*mm,51*mm,12*mm,'#ecdfbf',stroke='#ecdfbf',r=.6*mm);f.para(c,b.FAMILIES[fam].upper(),x+8,y+16,47,10,10.5,True,label='verso '+fam)
 
@@ -91,6 +92,20 @@ def geometry(c,z,x,y,w,h,scale=1,doors=None,blocked=None):
     for sign in [-1,1]:a.line(c,(cx-3*scale)*mm,(cy-sign*3*scale)*mm,(cx+3*scale)*mm,(cy+sign*3*scale)*mm,'#9c493b',1.5*scale)
   q.GEOMETRY.append(dict(file=q.LABEL,page=q.PAGE,zone=z,side=side,neighbor=nb,connected=connected,gap_mm=gap/scale,x=x,y=y,w=w,h=h,scale=scale))
 
+def assemblies(folder,indices,name):
+ path=folder/name;q.LABEL=str(path);c=canvas.Canvas(str(path),pagesize=landscape(A4))
+ for page,index in enumerate(indices,1):
+  q.PAGE=page;m=D['maps'][index];q.heading(c,m['name'].upper()+' / SANTA AURORA','M1 M2 em cima; M3 M4 embaixo. Topo ↑, rotação 0°. Mesmas conexões da edição 0.2.')
+  scale=150/554;zw=138.5*scale;zh=95*scale
+  for z in m['zones']:
+   r,col=divmod(z-1,4);q.zone(c,z,11+col*zw,46+(3-r)*zh,zw,zh,m['name'],scale,{tuple(sorted(e)) for e in m['doors']},{tuple(sorted(e)) for e in m['blocked']})
+  scene_thumb(c,index,174,116,111,60);q.txt(c,'AMBIENTAÇÃO / ilustração, não tabuleiro',174,113,7)
+  f.para(c,'SÍMBOLOS\nTracejado: limite de zona conectada.\nTraço espesso: parede sem conexão.\nSoleira: passagem de 14 mm.\nBarra ferrugem: porta. X: bloqueio.\nB: busca. O: objetivo. S: surgimento.\nEntrada e saída: Z1.',174,61,111,52,10)
+  f.para(c,'Portas: '+', '.join(f'{x}–{y}' for x,y in m['doors'])+'.\nBloqueadas: '+(', '.join(f'{x}–{y}' for x,y in m['blocked']) or 'nenhuma')+'.\nInicial: ceil(H/2) Errantes em S; longa −1. Estação acrescenta Bruto em Z14.',174,19,111,37,9.5)
+  f.para(c,'Use os quatro módulos comuns, mudando apenas os marcadores. Móveis são ambientação sem efeito: não bloqueiam, não dão cobertura e não acrescentam buscas. B1 em Z5; B2 em Z12. O1 em Z7; O2 em Z14; S em Z16. Consulte os achados na campanha.',11,13,150,28,9)
+  c.showPage()
+ c.save()
+
 def scene_thumb(c,index,x,y,w,h):
  c.saveState();c.translate(x*mm,y*mm);c.scale(w/554,h/380);art.scene(c,D['maps'][index]['name']);c.restoreState()
 def maps_pdf(folder,theme,name):
@@ -108,7 +123,7 @@ def panel(root):
  for page in range(2):
   q.PAGE=page+1;q.txt(c,f'PJ{page+1} / corte 277×190 mm / unir sem sobrepor / A4 100%',10,203,7)
   c.saveState();clip=c.beginPath();clip.rect(10*mm,10*mm,277*mm,190*mm);c.clipPath(clip,stroke=0);c.translate((10-277*page)*mm,10*mm)
-  a.rect(c,0,0,554*mm,190*mm,'#45635c',stroke='#24443f')
+  a.rect(c,0,0,554*mm,190*mm,'#eeeeE8' if a.ECON else '#45635c',stroke='#24443f')
   # Tecido, costura, correias e fechos desenhados como superfície; sem trilhos falsos.
   for j in range(1,138):a.line(c,j*4*mm,0,j*4*mm,190*mm,'#506d62',.15)
   for yy in [3,187]:
@@ -116,27 +131,27 @@ def panel(root):
   for xx in [4,275,279,550]:a.line(c,xx*mm,4*mm,xx*mm,186*mm,'#273f38',2)
   for xx in [5,268,282,545]:
    a.rect(c,xx*mm,174*mm,8*mm,9*mm,'#a59570',stroke='#273f38',r=1*mm);a.rect(c,(xx+1.5)*mm,176*mm,5*mm,5*mm,'#52665c',stroke='#273f38')
-  q.txt(c,'SANTA AURORA / CADERNO DE CAMPO',16,181,12,True,col='#f3e8c9')
+  q.txt(c,'SANTA AURORA / CADERNO DE CAMPO',16,181,12,True,col=a.INK if a.ECON else '#f3e8c9')
   frame(c,8,22,214,152.5,'#9c8d69');a.rect(c,11*mm,25*mm,208*mm,146.5*mm,'#eee9d7',stroke='#d2c8ac')
   f.para(c,'SUA FICHA COMPACTA\nMesma pessoa, habilidades, inventário e evolução.\nColoque a ficha de 210 × 148,5 mm sobre esta área.',28,78,174,38,13,True)
   a.rect(c,226*mm,24*mm,46*mm,149*mm,'#eee8d6',stroke='#c6b995',r=1*mm)
   f.para(c,'FERIMENTOS\n0  1  2  3\nVida máxima 3\n\nFADIGA\n0  1  2  3\n\nFome □ Sede □\n\nXP total ___\nEscolhas\n3 ___\n6 ___\n9 ___',230,28,38,140,9.5)
   for i in range(10):
    xx=8+i*24;a.rect(c,xx*mm,6*mm,23*mm,11*mm,'#dbc798' if i in [3,6,9] else '#d7ddc6',stroke='#273f38',r=.8*mm);q.txt(c,str(i),xx+9,9,10,True)
-  q.txt(c,'3 / 6 / 9: evolução da própria ficha',10,19,7,col='#f5edcf')
-  q.txt(c,'MOCHILA / EQUIPAMENTOS / QUATRO CARGAS-BASE',285,181,11.5,True,col='#f5edcf')
+  q.txt(c,'3 / 6 / 9: evolução da própria ficha',10,19,7,col=a.INK if a.ECON else '#f5edcf')
+  q.txt(c,'MOCHILA / EQUIPAMENTOS / QUATRO CARGAS-BASE',285,181,11.5,True,col=a.INK if a.ECON else '#f5edcf')
   for i,(x,y,w,h) in enumerate(f.g.panel_slots()):
    frame(c,x-1,y-1,w+2,h+2,'#c6b58a');a.rect(c,x*mm,y*mm,w*mm,h*mm,'#d5ddc6',stroke='#8d9c84',r=1*mm)
    a.rect(c,(x+3)*mm,(y+h+2)*mm,(w-6)*mm,6*mm,'#d4bd87',stroke='#2d4a3f');q.txt(c,f'CARGA {i+1}',x+5,y+h+3.4,9,True)
    f.para(c,'63 × 88 mm\nSlot 66 × 92 mm',x+6,y+35,w-12,18,10,True)
   a.rect(c,283*mm,8*mm,264*mm,61*mm,'#eee9d7',stroke='#bea777',r=1*mm)
   f.para(c,'Armas: máximo duas transportadas, dentro destas cargas. Uma usada por ataque. Equipar na mochila é grátis no próprio turno.\nPeça com carga 2 ou 3: marque os demais espaços ocupados. As cargas da ficha e do painel são as mesmas; não somam.\nCapacidade atual ___ / bônus de habilidade ___ / itens além da base: ____________________\nUse lápis, marcador solto ou clipe. A arte não é mecanismo de pinos.',287,11,256,55,10)
-  q.txt(c,f'PJ{page+1} / A / topo ↑',254+277*page,5,6,col='#f4e8c5');c.restoreState();c.showPage()
+  q.txt(c,f'PJ{page+1} / A / topo ↑',254+277*page,5,6,col=a.INK if a.ECON else '#f4e8c5');c.restoreState();c.showPage()
  c.save();f.record(root,path,'painel ampliado',optional=True,copies=2,replaces='organização compacta; mesmas quatro cargas')
 
 # All old generation entrypoints retain their contract; only presentation callbacks change.
 def setup():
- f.O=O;f.artwork=new_art;f.card_front=card_front;f.card_back=card_back;f.player_panel=panel;f.maps_pdf=maps_pdf;f.scenario_floor=art.floor_draw;q.geometry=geometry;q.scene=scene_thumb
+ f.O=O;f.artwork=new_art;f.card_front=card_front;f.card_back=card_back;f.player_panel=panel;f.maps_pdf=maps_pdf;f.scenario_floor=art.floor_draw;q.geometry=geometry;q.scene=scene_thumb;q.assemblies=assemblies
 
 def index(root):
  entries=[e for e in f.FILES if e.get('edition')==root.name];totals={}
@@ -174,11 +189,14 @@ def build(step):
   if a.ECON:
    for file in root.rglob('*.pdf'):
     if '04_PERSONAGENS_E_INIMIGOS' not in file.parts:q.gray_pdf(file)
+  from pdf_finish_export import compact
+  for file in root.rglob('*.pdf'):
+   if file.parent.name in ['02_CARTAS_DUPLEX','03_CARTAS_RECORTAR_E_COLAR','06_TABULEIROS'] or file.name.endswith('_M01_M04_LADO_A.pdf'):compact(file)
   for e in f.FILES[start:]:e['edition']=ed;e['sha256']=hashlib.sha256((root/e['file']).read_bytes()).hexdigest()
   index(root)
  (O/'geometry.json').write_text(json.dumps(f.MAP_GEOMETRY,indent=2));(O/'files.json').write_text(json.dumps(f.FILES,ensure_ascii=False,indent=2))
  # Main boards use only vectors: ppi is not a meaningful limitation.
- RES.extend(dict(file=e['file'],component='mapa principal',kind='100% vetorial',effective_ppi=None,print_box_mm=[277,190],resolution_status='independente de pixels; sem raster de mapa 0.4') for e in f.FILES if e['kind'] in ['módulos comuns','variante temática'])
+ RES.extend(dict(file=e['file'],component='mapa principal',kind='arquitetura vetorial + mobiliário raster nativo',effective_ppi=None,print_box_mm=[277,190],resolution_status='piso vetorial; imagens nativas limitadas a ≥170 ppi, verificar resolucao_pdfs.json') for e in f.FILES if e['kind'] in ['módulos comuns','variante temática'])
  (O/'resolucao.json').write_text(json.dumps(RES,ensure_ascii=False,indent=2))
 if __name__=='__main__':
  parser=argparse.ArgumentParser();parser.add_argument('--step',default='sample');args=parser.parse_args();O.mkdir(parents=True,exist_ok=True);build(args.step);f.save_layout();print('Acabamento',args.step,'estouros',b.issues[:10])
