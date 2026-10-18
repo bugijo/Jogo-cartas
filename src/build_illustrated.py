@@ -22,10 +22,33 @@ def heading(c,title,sub,W=297,H=210):
  a.rect(c,10*mm,(H-23)*mm,(W-20)*mm,13*mm,a.PAPER,stroke=a.PAPER)
  txt(c,title,13,H-19,17,True);txt(c,sub,11,H-30,8)
 
-def raster(c,art,x,y,w,h):b.sheet_art(c,art,x*mm,y*mm,w*mm,h*mm)
+def art_for_print(art):
+ if not a.ECON:return art
+ path=P/art['path'];out=P/'assets/v0.3/economica'/path.name
+ if not out.exists():
+  from PIL import Image,ImageOps
+  out.parent.mkdir(parents=True,exist_ok=True)
+  im=ImageOps.grayscale(Image.open(path));im=im.point(lambda v:min(255,int(v*.75+63.75)));im.save(out)
+ result=art.copy();result['path']=str(out.relative_to(P));return result
+
+def raster(c,art,x,y,w,h):
+ art=art_for_print(art)
+ if 'crop' not in art:b.sheet_art(c,art,x*mm,y*mm,w*mm,h*mm);return
+ from PIL import Image
+ iw,ih=Image.open(P/art['path']).size;l,t,r,bot=art['crop'];cw,ch=r-l,bot-t;scale=min(w*mm/cw,h*mm/ch);ax=x*mm+(w*mm-cw*scale)/2;ay=y*mm+(h*mm-ch*scale)/2
+ c.saveState();path=c.beginPath();path.rect(ax,ay,cw*scale,ch*scale);c.clipPath(path,stroke=0)
+ c.drawImage(str(P/art['path']),ax-l*scale,ay-(ih-bot)*scale,width=iw*scale,height=ih*scale,mask='auto');c.restoreState()
+def portrait(c,hero,x,y,w,h):
+ hcopy=hero.copy();hcopy['art']=art_for_print(hero['art']);b.clip_portrait(c,hcopy,x,y,w,h)
+def sprite(c,index,x,y,w,h):
+ art=dict(path='assets/v0.3/map_objects.png',col=index%4,row=index//4,cols=4,rows=4)
+ if (P/art['path']).exists():b.sheet_art(c,art_for_print(art),x,y,w,h)
+a.SPRITE_DRAW=sprite
 def scene(c,index,x,y,w,h):
  f=P/'assets/v0.3/environments.png'
- if f.exists():raster(c,dict(path=str(f.relative_to(P)),col=index%2,row=index//2,cols=2,rows=3),x,y,w,h)
+ if f.exists():
+  top,bottom=[(0,315),(326,633),(645,1024)][index//2];left=768*(index%2)
+  raster(c,dict(path=str(f.relative_to(P)),crop=[left,top,left+768,bottom]),x,y,w,h)
 
 def geometry(c,z,x,y,w,h,scale=1,doors=None,blocked=None):
  """B: geometria exata, independente da arte A. Abertura proporcional 14 mm."""
@@ -43,7 +66,7 @@ def geometry(c,z,x,y,w,h,scale=1,doors=None,blocked=None):
    a.line(c,(mid+gap/2)*mm,yy*mm,(x+w)*mm,yy*mm,width=2.4*scale)
    center=(mid,yy)
   if connected and side in ['R','D'] and doors is not None and key in doors:
-   xx,yy=center;s=4*scale
+   xx,yy=center;s=max(2,4*scale)
    a.rect(c,(xx-s/2)*mm,(yy-s/2)*mm,s*mm,s*mm,a.PAPER)
    if key in blocked:
     a.line(c,(xx-s/2)*mm,(yy-s/2)*mm,(xx+s/2)*mm,(yy+s/2)*mm,a.RUST,1)
@@ -54,12 +77,19 @@ def zone(c,z,x,y,w,h,theme='Neutro',scale=1,doors=None,blocked=None):
  a.floor(c,x*mm,y*mm,w*mm,h*mm,z,theme)
  geometry(c,z,x,y,w,h,scale,doors,blocked)
  # C: labels on opaque plaques, never textures beneath rules.
+ if scale<1:
+  txt(c,str(z),x+1.5,y+h-4,8,True)
+  mini={1:'ENTRADA',5:'B1',12:'B2',7:'O1',14:'O2',16:'S'}
+  if z in mini:
+   a.rect(c,(x+1)*mm,(y+2)*mm,(w-2)*mm,5*mm,a.PAPER,stroke=a.PAPER)
+   txt(c,mini[z],x+2,y+3,7.5,True)
+  return
  a.rect(c,(x+4*scale)*mm,(y+h-13*scale)*mm,26*scale*mm,9*scale*mm,a.PAPER,stroke=a.PAPER)
  txt(c,f'Z{z:02}',x+6*scale,y+h-11*scale,16*scale,True)
  tags={1:('↔ ENTRADA / SAÍDA','ESTACIONAMENTO'),5:('B1 / BUSCA','3 usos por campanha'),12:('B2 / BUSCA','3 usos por campanha'),7:('O1 / OBJETIVO',''),14:('O2 / OBJETIVO',''),16:('S / SURGIMENTO','')}
  if z in tags:
-  t,sub=tags[z];py=y+h*.30
-  a.rect(c,(x+4*scale)*mm,py*mm,(w-8*scale)*mm,13*scale*mm,a.PAPER,stroke=a.PAPER)
+  t,sub=tags[z];py=y+h*.69
+  a.rect(c,(x+4*scale)*mm,py*mm,(w*.46)*mm,13*scale*mm,a.PAPER,stroke=a.PAPER)
   txt(c,t,x+6*scale,py+7*scale,10*scale,True,col=a.RUST if z==16 else a.INK)
   if sub:txt(c,sub,x+6*scale,py+2*scale,7.5*scale)
 
@@ -82,6 +112,7 @@ def assemblies(folder,indices,name):
   for z in m['zones']:
    r,col=divmod(z-1,4);zone(c,z,11+col*zw,46+(3-r)*zh,zw,zh,m['name'],scale,{tuple(sorted(e)) for e in m['doors']},{tuple(sorted(e)) for e in m['blocked']})
   scene(c,idx,174,116,111,60)
+  txt(c,'AMBIENTAÇÃO / ilustração, não tabuleiro',174,113,7)
   paragraph(c,'SÍMBOLOS\nTraço espesso: parede permanente.\nAbertura: conexão livre. □: porta.\nQuadrado com X: porta bloqueada.\nB: busca. O: objetivo. S: surgimento.\nEntrada e saída: Z1.',174,61,111,52,10)
   paragraph(c,'Portas: '+', '.join(f'{x}–{y}' for x,y in m['doors'])+'.\nBloqueadas: '+(', '.join(f'{x}–{y}' for x,y in m['blocked']) or 'nenhuma')+'.\nInicial: ceil(H/2) Errantes em S; longa −1. Estação acrescenta Bruto em Z14.',174,19,111,37,9.5)
   paragraph(c,'Use os quatro módulos comuns, mudando apenas os marcadores. Móveis são ambientação sem efeito: não bloqueiam, não dão cobertura e não acrescentam buscas. B1 em Z5; B2 em Z12. O1 em Z7; O2 em Z14; S em Z16. Consulte os achados na campanha.',11,13,150,28,9)
@@ -90,28 +121,17 @@ def assemblies(folder,indices,name):
 
 def shelter(c):
  heading(c,'COMUNIDADE / SANTA AURORA','Planta ilustrativa: terrenos conservam as regras atuais; a distância desenhada não cria efeito mecânico.')
- # A community seen from above: perimeter, paths, vegetation, tents, shared buildings.
- a.rect(c,10*mm,48*mm,180*mm,126*mm,'#f4f0e2',stroke=a.OLIVE,r=6*mm)
- for xx in range(13,189,6):a.line(c,xx*mm,169*mm,(xx+3)*mm,172*mm,a.OLIVE,.5)
- a.line(c,12*mm,50*mm,187*mm,50*mm,a.RUST,2)
- for row in range(3):
-  for col in range(4):
-   n=row*4+col;x=14+col*43.2;y=133-row*40
-   a.rect(c,x*mm,y*mm,39*mm,36*mm,'#faf8f0',stroke='#b5bba7',r=2*mm)
-   kind=['tent']*4+['kitchen','depot','cistern']+['tree']*5
-   
-   if n<7:
-    building=['Barraca']*4+['Cozinha','Casa simples','Filtro'];raster(c,b.lookup(building[n],'STR'),x+1,y+10,37,24)
-   else:
-    for j in range(4):a.line(c,(x+8+j*7)*mm,(y+15)*mm,(x+10+j*7)*mm,(y+18)*mm,a.OLIVE,.4)
-   txt(c,f'T{n+1:02}',x+1.5,y+29,7.5,True)
-   names=['Barraca • 2 vagas']*4+['Cozinha ativa','Depósito ativo','Cisterna danificada']+['Livre']*5
-   txt(c,names[n],x+1,y+8,7.6,True)
-   txt(c,'Dano □ Projeto ____',x+1,y+3,7.1)
- # Portão is a perimeter structure, not a thirteenth terrain.
- a.rect(c,63*mm,47*mm,48*mm,5*mm,a.OLIVE)
- for xx in range(66,110,5):a.line(c,xx*mm,48*mm,xx*mm,52*mm,a.PAPER)
- txt(c,'PORTÃO / PERÍMETRO',65,43,7.5,True)
+ # A: cena contínua do abrigo, sem geografia com efeito mecânico.
+ raster(c,dict(path='assets/v0.3/shelter.png',col=0,row=0,cols=1,rows=1),10,58,180,120)
+ sites=[(1,18,139,34,'Barraca • 2 vagas'),(2,53,139,34,'Barraca • 2 vagas'),(3,18,91,34,'Barraca • 2 vagas'),(4,53,91,34,'Barraca • 2 vagas'),(5,90,143,41,'Cozinha ativa'),(6,90,83,42,'Depósito ativo'),(7,120,116,48,'Cisterna danificada')]
+ for n,x,y,w,label in sites:
+  a.rect(c,x*mm,y*mm,w*mm,10*mm,'#ffffff',stroke=a.OLIVE,r=1*mm)
+  txt(c,f'T{n:02} / '+label,x+1,y+6.4,6.8,True)
+  txt(c,'Dano □ Projeto ____',x+1,y+2,7)
+ for j in range(5):
+  x=11+j*35.7;a.rect(c,x*mm,44*mm,34*mm,11*mm,'#ffffff',stroke=a.OLIVE,r=1*mm)
+  txt(c,f'T{j+8:02} / LIVRE',x+1,51,7.3,True);txt(c,'Dano □ Projeto ____',x+1,46.5,7)
+ txt(c,'PORTÃO / PERÍMETRO',76,60,7.5,True)
  paragraph(c,'Portão ativo □ Defesa 2\nDia: 1 2 3 4 5\nMoral: 0 1 2 3 4 5\nSaúde: 0 1 2 3 4 5\nPressão: 0 1 2 3\nPonte conhecida □\nRelação −2 −1 0 +1 +2\nFila de cercos:\n________________\nC inicial ___ Vagas 8\nConsumidores hoje ___',198,73,88,97,10,label='shelter indicators')
  paragraph(c,'População humana ___ / capacidade ___\nComida ___ porções  Água ___ porções\nDanos e reparos: anote no terreno.\nConstruções novas: escreva nos livres.',198,44,88,26,8.8)
  a.rect(c,10*mm,9*mm,277*mm,30*mm,a.PAPER,stroke=a.OLIVE,r=2*mm)
@@ -130,7 +150,7 @@ def card_art(c,card,x,y,large=False):
   # Character portraits are the canonical identity in all playable components.
   names={'Jana e criança':['Jana'],'Bia':['Bia'],'Vicente e Sol':['Vicente','Sol'],'Raul e Otávio':['Raul','Otávio'],'Denise, Miguel e civil':['Denise','Miguel'],'Samuel, Bruna e criança':['Samuel','Bruna'],'Aline e cão':['Aline'],'Hugo':['Hugo']}[name]
   for i,n in enumerate(names):
-   hero=next(h for h in D['heroes'] if h['name']==n);b.clip_portrait(c,hero,(ax+i*aw/len(names))*mm,ay*mm,(aw/len(names))*mm,ah*mm)
+   hero=next(h for h in D['heroes'] if h['name']==n);portrait(c,hero,(ax+i*aw/len(names))*mm,ay*mm,(aw/len(names))*mm,ah*mm)
  elif art:raster(c,art,ax,ay,aw,ah)
  else:
   kind={'Conexões':'pipes','Bateria':'battery','Kit de instalação médica':'medicine','Bancada':'bench','Van de manutenção':'van'}
@@ -143,7 +163,8 @@ def card_art(c,card,x,y,large=False):
   elif fam=='VIN':
    arts={'Sozinho':b.lookup('Bia','MOR'),'Parceiro ou parceira':b.lookup('Vicente e Sol','MOR'),'Filho ou filha':b.lookup('Jana e criança','MOR'),'Cachorro':b.lookup('Aline e cão','MOR'),'Parceiro e cachorro':b.lookup('Aline e cão','MOR')}
    raster(c,arts[name],ax,ay,aw,ah);return
-  elif fam=='INT':kind2='roof'
+  elif fam=='INT':
+   art=b.lookup('Jana e criança' if name=='Solidário' else 'Vicente e Sol' if name=='Assustado' else 'Raul e Otávio' if name=='Oportunista' else 'Hugo','MOR');raster(c,art,ax,ay,aw,ah);return
   else:kind2=kind.get(name,'bench')
   a.prop(c,kind2,ax*mm,ay*mm,aw*mm,ah*mm)
 
@@ -158,9 +179,10 @@ def cards(folder,ids,name,initial=False):
     card=CARDS[id];r,col=divmod(i,3);col=2-col if back else col;x=8.5+col*65;y=297-14.5-(r+1)*88-r*2;fam=card['family']
     a.rect(c,x*mm,y*mm,63*mm,88*mm,'#ffffff',stroke='#a0aaa5')
     if not back:
-     a.rect(c,(x+3)*mm,(y+76)*mm,57*mm,8*mm,a.PAPER,stroke=a.PAPER)
+     a.rect(c,(x+3)*mm,(y+76)*mm,57*mm,8*mm,a.INK,stroke=a.INK)
+     a.poly(c,[((x+3)*mm,(y+76)*mm),((x+8)*mm,(y+76)*mm),((x+10)*mm,(y+84)*mm),((x+3)*mm,(y+84)*mm)],a.YELLOW)
      b.family_icon(c,fam,(x+4)*mm,(y+78)*mm,4*mm)
-     paragraph(c,b.FAMILIES[fam],x+10,y+77,49,6,8,True,label=id+' family')
+     txt(c,b.FAMILIES[fam].upper(),x+12,y+79,8,True,col='#ffffff')
      text=card['text'].replace('ceil(H/2)','1') if initial else card['text']
      large=len(text)<118
      card_art(c,card,x,y,large)
@@ -187,7 +209,7 @@ def heroes(folder,ids,name,embedded=False):
   c.saveState();c.translate(0,off*mm)
   a.rect(c,8*mm,130*mm,194*mm,13*mm,a.PAPER,stroke=a.PAPER)
   txt(c,h['name'].upper(),10,135,19,True);txt(c,h['profession'],57,135,10,True)
-  b.clip_portrait(c,h,9*mm,68*mm,40*mm,59*mm)
+  portrait(c,h,9*mm,68*mm,40*mm,59*mm)
   for j,(attr,val) in enumerate(h['attributes'].items()):
    xx=55+j*48;a.rect(c,xx*mm,115*mm,44*mm,12*mm,a.PAPER,stroke=a.OLIVE,r=2*mm);txt(c,f'{attr.upper()} {val}',xx+2,119,10,True)
   body=h['story']+'\nInicial: '+h['ability']+'\n3 XP — escolha: '+' OU '.join(h['progression']['3'])+'\n6 XP — escolha: '+' OU '.join(h['progression']['6'])+'\n9 XP — escolha: '+' OU '.join(h['progression']['9'])
@@ -215,7 +237,7 @@ def markers(folder,ids,name):
  for i,id in enumerate(ids):
   t=TOKENS[id];row,col=divmod(i,6);x=10+col*32;y=297-(15+(row+1)*32)
   a.rect(c,x*mm,y*mm,29*mm,29*mm,'#ffffff',stroke=a.INK,r=1*mm)
-  if t['kind']=='hero':b.clip_portrait(c,HEROES[t['hero_ref']],(x+2)*mm,(y+8)*mm,25*mm,19*mm)
+  if t['kind']=='hero':portrait(c,HEROES[t['hero_ref']],(x+2)*mm,(y+8)*mm,25*mm,19*mm)
   elif t['kind']=='enemy':
    # Generic numbered tokens remain assignable to all types; three canonical silhouettes.
    for j,n in enumerate(['Errante','Corredor','Bruto']):raster(c,b.lookup(n),x+2+j*8,y+15,8,12)
@@ -225,6 +247,22 @@ def markers(folder,ids,name):
    a.prop(c,kind,(x+15)*mm,(y+10)*mm,11*mm,12*mm)
    paragraph(c,name2,x+2,y+10,16,15,8.2,True,label=id)
   txt(c,t['name'] if t['kind']=='hero' else id,x+2,y+3,6.2)
+ c.showPage();c.save()
+
+def dividers(folder):
+ global LABEL,PAGE
+ LABEL=str(folder/'08_divisorias.pdf');PAGE=1;c=canvas.Canvas(LABEL,pagesize=A4)
+ labels=['VÍNCULOS','INTENÇÕES','VIAGEM','HORDA','CERCO','SAQUE MERCADO','SAQUE HOSPITAL','SAQUE OFICINA','SAQUE POSTO','SAQUE CONDOMÍNIO','SAQUE ESTAÇÃO','EQUIPAMENTOS / ENCONTROS']
+ fams=['VIN','INT','VIA','HOR','CER']+['SAQ']*6+['EQU']
+ for i,label in enumerate(labels):
+  r,col=divmod(i,2);x=10+96*col;y=297-(14+(r+1)*44)
+  a.rect(c,x*mm,y*mm,90*mm,40*mm,'#ffffff',stroke=a.INK)
+  a.rect(c,(x+2)*mm,(y+27)*mm,86*mm,11*mm,a.PAPER,stroke=a.PAPER)
+  b.family_icon(c,fams[i],(x+4)*mm,(y+29)*mm,6*mm)
+  paragraph(c,label,x+13,y+28,73,9,9.5,True,label='divider '+label)
+  txt(c,'RESERVA' if i==11 else 'MONTE (esquerda) | DESCARTE (direita)',x+4,y+15,7.8)
+  txt(c,'DOBRE A ABA • ajuste à sua caixa e sleeves',x+4,y+3,7)
+  c.setDash(3,2);a.line(c,x*mm,(y+8)*mm,(x+90)*mm,(y+8)*mm,a.OLIVE,.5);c.setDash()
  c.showPage();c.save()
 
 def world(folder):
@@ -287,7 +325,7 @@ if __name__=='__main__':
    heroes(S,[h['id'] for h in D['heroes'][12:]],'02_herois_resgataveis.pdf');heroes(root/'extras',[h['id'] for h in D['heroes']],'24_fichas.pdf')
   if args.cycle>=4:
    cards(I,M['initial_cards'],'02_cartas_duplex.pdf',True);cards(S,M['supplement_cards'],'01_cartas_complemento_duplex.pdf')
-   markers(I,M['initial_tokens'],'07_marcadores.pdf');markers(S,M['supplement_tokens'],'08_tokens_resgataveis.pdf')
+   markers(I,M['initial_tokens'],'07_marcadores.pdf');markers(S,M['supplement_tokens'],'08_tokens_resgataveis.pdf');dividers(I)
   if args.cycle>=5:decorate_existing(root);index(root,edition)
  (OUT/'layout_issues.json').write_text(json.dumps(b.issues,ensure_ascii=False,indent=2));(OUT/'layout_boxes.json').write_text(json.dumps(b.boxes,ensure_ascii=False,indent=2));(OUT/'geometry.json').write_text(json.dumps(GEOMETRY,indent=2));(OUT/'duplex.json').write_text(json.dumps(DUPLEX,indent=2))
  print('Ciclo',args.cycle,'estouros:',len(b.issues));print(b.issues[:8])

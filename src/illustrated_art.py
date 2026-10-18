@@ -128,12 +128,4 @@ def floor(c,x,y,w,h,z,theme='Neutro'):
  for j in range(3):
   xx=x+w*(.78+j*.045);yy=y+h*.12
   line(c,xx,yy,xx+w*.02,yy+h*.06,OLIVE,.6)
- # Faded stains are floor texture only, never silhouettes of walls.
- if not ECON:
-  c.saveState();c.setFillAlpha(.08)
-  for j in range(5):oval(c,x+w*(.65+j*.045),y+h*.16,w*.09,h*.025,RUST)
-  c.restoreState()
- # Printed footprint traces emphasize the traversable centre.
- if not ECON:
-  for j in [0,1]:oval(c,x+w*(.42+j*.06),y+h*(.42+j*.07),w*.025,h*.05,'#d3d8cf')
  c.restoreState()
