@@ -27,3 +27,5 @@ Dimensões observadas variam: 209,55–210,06 mm × 296,76–297,04 mm. São amo
 
 ## Progresso
 Ciclo 1 concluído: seis páginas integralmente renderizadas e inspecionadas, textos extraídos quando presentes. Categorias ausentes registradas. Nenhum asset privado copiado ao produto.
+
+Ciclo 2 concluído: amostra real de nove tipos de carta, nove por A4, 63×88 mm. Efeitos a 10 pt quando curtos/médios e 9,5 pt quando densos, sem suprimir texto. Nomes primeiro, arte central, valores apenas de metadados existentes. Inspeção corrigiu enquadramento de retratos dos encontros; não recortar o rosto em miniatura horizontal. Cinco novos testes físicos falharam antes da implementação e passaram depois; suíte total 19/19.

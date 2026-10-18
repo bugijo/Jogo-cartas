@@ -61,3 +61,6 @@ Retomada: conferir git log e git status, abrir índices IMPRIMA-ESTES.md e VISUA
 
 ## Fabricação 0.4 — ciclo 1
 Base ccff9c8 conferida e preservada. Branch arte/pnp-fabricacao-v0-4. Não existe candidata 0.4 anterior no checkout ou remotos. Cinco PDFs avulsos de referência recebidos (seis páginas), todos renderizados e visualizados. ZIP mencionado ausente. Observações e decisões em docs/PRODUCAO_0.4.md; hashes imutáveis em content/production/baseline_0.4.json. Referência privada fica fora do repo. Próximo: templates e cartas, peões, painel opcional e cenas contínuas.
+
+### Fabricação 0.4 — ciclo 2
+Template real gerado em output/edicao-fabricacao-v0.4/amostras; nove cartas representativas, sem estouros. Contratos de 58/72 folhas, pareamento manual sem espelhamento, quatro slots reais, base e limite de inimigos testados RED→GREEN; suíte 19/19. Pequenos valores vêm apenas de catálogo existente. Correção de enquadramento do encontro preserva o rosto inteiro. Próximo: aplicar à seleção e comparar conteúdo impresso.
