@@ -232,9 +232,96 @@ def all_maps(root):
 def save_layout():
  (O/'layout.json').write_text(json.dumps(LAYOUT,ensure_ascii=False,indent=2));(O/'layout_issues.json').write_text(json.dumps(b.issues,ensure_ascii=False,indent=2));(O/'pares_manuais.json').write_text(json.dumps(PAIRS,ensure_ascii=False,indent=2))
 
+def copy_stable(root):
+ mappings=[
+ ('01_inicial/01_comece_aqui.pdf','01_GUIA_E_REGRAS/COMECE_AQUI.pdf','guia','initial',False),
+ ('01_inicial/03_lia_ivo.pdf','05_PAINEIS/FICHAS_LIA_IVO.pdf','fichas compactas','initial',False),
+ ('01_inicial/06_paineis_registros.pdf','05_PAINEIS/ABRIGO_MORADORES_ESTOQUE.pdf','abrigo e registros','initial',False),
+ ('01_inicial/07_marcadores.pdf','07_MARCADORES_E_DIVISORIAS/MARCADORES_INICIAIS.pdf','marcadores planos','initial',False),
+ ('01_inicial/08_divisorias.pdf','07_MARCADORES_E_DIVISORIAS/DIVISORIAS.pdf','divisórias','initial',False),
+ ('01_inicial/09_calibracao_duplex.pdf','02_CARTAS_DUPLEX/CALIBRACAO_DUPLEX.pdf','calibração','initial',True),
+ ('02_complemento/02_herois_resgataveis.pdf','05_PAINEIS/FICHAS_RESGATAVEIS.pdf','fichas compactas','supplement',False),
+ ('02_complemento/04_manual_revisado.pdf','01_GUIA_E_REGRAS/MANUAL.pdf','manual','supplement',False),
+ ('02_complemento/05_campanha_cinco_dias.pdf','01_GUIA_E_REGRAS/CAMPANHA.pdf','campanha','supplement',False),
+ ('02_complemento/06_mapa_geral.pdf','06_TABULEIROS/SANTA_AURORA_ROTAS.pdf','rotas','supplement',False),
+ ('02_complemento/07_registro_adicional.pdf','05_PAINEIS/REGISTRO_ADICIONAL.pdf','registro','supplement',False),
+ ('02_complemento/08_tokens_resgataveis.pdf','07_MARCADORES_E_DIVISORIAS/MARCADORES_RESGATAVEIS.pdf','marcadores planos','supplement',False),
+ ('02_complemento/09_moradores_adicional.pdf','05_PAINEIS/MORADORES_ADICIONAL.pdf','moradores','supplement',False)]
+ for old,new,kind,stage,dup in mappings:
+  f=root/new;shutil.copyfile(BASE/root.name/old,f);record(root,f,kind,stage,dup,method='duplex' if dup else 'both')
+ f=root/'08_EXTRAS_OPCIONAIS/FICHAS_24_HEROIS.pdf';shutil.copyfile(BASE/root.name/'extras/24_fichas.pdf',f);record(root,f,'24 fichas',optional=True,replaces='fichas compactas selecionadas, se desejado')
+
+def manual_calibration(root):
+ f=root/'03_CARTAS_RECORTAR_E_COLAR/CALIBRACAO_COLAGEM.pdf';q.LABEL=str(f);c=canvas.Canvas(str(f),pagesize=A4)
+ for side in ['FRENTE','VERSO']:
+  title(c,'CALIBRAÇÃO / COLAR',side+' / uma face / não imprimir duplex / 100%')
+  a.line(c,20*mm,240*mm,120*mm,240*mm,a.INK,1)
+  for n in range(11):a.line(c,(20+10*n)*mm,237*mm,(20+10*n)*mm,243*mm,a.INK,1)
+  txt(c,'100 mm entre as pontas',20,230,11,True)
+  a.rect(c,35*mm,105*mm,63*mm,88*mm,'#ffffff',stroke=a.INK)
+  txt(c,'TOPO ↑',40,182,12,True);txt(c,'A',40,167,18,True);txt(c,'B',82,118,18,True)
+  para(c,'Recorte as duas peças de 63 × 88 mm. Una os topos A com A e B com B, costas para dentro. Aplique miolo opaco. Confira escala, corte e orientação antes do lote. Este ensaio não mede o registro automático da impressora.',20,33,170,56,12)
+  c.showPage()
+ c.save();record(root,f,'calibração manual',method='manual')
+
+def assembly_guide(root):
+ f=root/'08_EXTRAS_OPCIONAIS/GUIA_ILUSTRADO_MONTAGEM.pdf';q.LABEL=str(f);c=canvas.Canvas(str(f),pagesize=A4)
+ title(c,'1 / ESCOLHA UMA IMPRESSÃO','Leia na tela; imprimir este guia é opcional: três folhas.')
+ para(c,'A — DUPLEX: 25 folhas iniciais + 33 de complemento = 58 A4. Somente cartas e calibração: retrato, borda longa. O verso já reflete as colunas. Restante: uma face.\n\nB — RECORTAR E COLAR: 33 iniciais + 39 de complemento = 72 A4. Tudo uma face. Use as frentes e os versos separados; não imprima também o duplex. As posições de colagem são iguais em ambas as folhas.\n\nEscolha também uma única edição: ilustrada OU econômica. Escala 100%, tamanho real, sem ajustar. Meça primeiro a régua de 100 mm. Os dois métodos têm as mesmas 114 cartas e os mesmos componentes jogáveis.',15,130,180,115,12)
+ for i,label in enumerate(['FRENTE','MIOLO OPACO','VERSO']):
+  x=15+i*65;a.rect(c,x*mm,48*mm,54*mm,76*mm,a.PAPER,stroke=a.INK);txt(c,label,x+3,108,9,True)
+ para(c,'Colagem: separe pares pelo código fora do corte. Mantenha TOPO com TOPO. Cole com miolo opaco, deixe secar plano e recorte. Remova completamente os códigos. Intenções têm versos iguais: nenhuma marca individual pode permanecer. Confira opacidade sob luz antes de jogar.',15,15,180,29,10)
+ c.showPage();title(c,'2 / PEÕES E PAINÉIS','Extras de fabricação; marcadores planos e fichas compactas continuam válidos.')
+ para(c,'Peões: 24 heróis em duas folhas. Inimigos: seis folhas com três variantes de E01–E24. São alternativas visuais dos mesmos IDs, não 72 inimigos: máximo 24 simultâneos; nunca use duas variantes do mesmo ID. Recorte o contorno retangular; vinque nas linhas tracejadas. Dobre no centro, una somente os corpos e abra as duas abas de 6 mm para lados opostos. Base 22 × 12 mm. O verso é a mesma figura espelhada, não uma vista das costas.',15,155,180,86,11)
+ # Esquema de rede e montagem, vetorial e em escala declaradamente reduzida.
+ x=22;y=65;scale=.65
+ a.rect(c,x*mm,y*mm,22*scale*mm,116*scale*mm,'#ffffff',stroke=a.INK)
+ for dy in [6,58,110]:
+  c.setDash(2,2);a.line(c,x*mm,(y+dy*scale)*mm,(x+22*scale)*mm,(y+dy*scale)*mm,a.OLIVE,.6);c.setDash()
+ txt(c,'REDE (reduzida)',15,56,8,True)
+ a.poly(c,[(86*mm,71*mm),(102*mm,65*mm),(118*mm,71*mm),(102*mm,77*mm)],a.PAPER)
+ a.rect(c,99*mm,71*mm,6*mm,62*mm,a.PAPER,stroke=a.INK);txt(c,'BASE ABERTA',78,56,9,True)
+ para(c,'Painel opcional: duas A4 paisagem por jogador; quatro folhas para duas pessoas. Recorte 277 × 190 mm e una PJ1–PJ2 sem sobrepor. Coloque a ficha compacta sobre PJ1 e cartas reais sobre PJ2. Quatro slots de 66 × 92 mm recebem cartas de 63 × 88 mm. São as mesmas quatro cargas das regras; armas contam nelas. Itens com carga 2/3 ocupam mais slots. Use lápis ou marcadores soltos; não há mecanismo de pinos.',15,15,180,36,10)
+ c.showPage();title(c,'3 / TABULEIROS E MESA','Módulos comuns reutilizados nos seis destinos; variantes são opcionais.')
+ for i in range(4):
+  xx=20+(i%2)*75;yy=130-(i//2)*51;a.rect(c,xx*mm,yy*mm,75*mm,51*mm,a.PAPER,stroke=a.INK);txt(c,f'M{i+1} / TOPO ↑',xx+5,yy+24,11,True)
+ para(c,'Recorte cada módulo em 277 × 190 mm. M1/M2 em cima, M3/M4 embaixo, todos com o topo para cima. Una borda com borda, sem abas dentro do jogo e sem sobreposição. Tabuleiro montado: 554 × 380 mm. Use fita no verso. Todos são LADO A: não há pareamento duplex de mapas.\n\nO diagrama do destino indica portas e bloqueios por marcadores. A arte não cria obstáculos, cobertura ou conexões. Nunca atravesse parede porque um móvel sugere passagem. As variantes temáticas substituem as quatro folhas comuns; não são exigidas para continuar a campanha.',15,15,180,104,11)
+ c.showPage();c.save();record(root,f,'guia de montagem',optional=True)
+
+def make_index(root):
+ entries=[e for e in FILES if (root/e['file']).exists() and e.get('edition')==root.name]
+ text='# Zona Zero / fabricação 0.4 — '+root.name+'\n\n**Escolha A duplex (58 folhas) OU B recortar e colar (72 folhas). Não imprima os dois.**\n\nRegras 0.2 e seleção original preservadas. Leia COMECE_AQUI antes da primeira partida; MANUAL e CAMPANHA completam os cinco dias. 100%, sem ajustar. Materiais externos: três d6, lápis, borracha, tesoura, fita/cola e miolo ou envelopes opacos.\n\n'
+ totals={}
+ for method,label in [('duplex','A / DUPLEX'),('manual','B / RECORTAR E COLAR')]:
+  text+='## '+label+'\n\n| Arquivo | Uso | Etapa | Páginas | Folhas | Impressão |\n|---|---|---|---:|---:|---|\n';totals[method]={}
+  for stage in ['initial','supplement']:
+   use=[e for e in entries if not e['optional'] and e['method'] in ['both',method] and e['stage']==stage];totals[method][stage]=sum(e['sheets'] for e in use)
+   for e in use:text+=f"| [{Path(e['file']).name}](../{e['file']}) | {e['kind']} | {'Inicial' if stage=='initial' else 'Complemento'} | {e['pages']} | {e['sheets']} | {e['orientation']}, "+('duplex borda longa' if e['duplex'] else 'uma face')+' |\n'
+  expected=g.sheet_totals(method);assert (totals[method]['initial'],totals[method]['supplement'])==expected[:2],totals
+  text+=f"\n**{totals[method]['initial']} + {totals[method]['supplement']} = {expected[2]} folhas.**\n\n"
+ text+='## Extras opcionais — não somar automaticamente\n\n| PDF | Folhas | Cópias consideradas | Substitui / finalidade |\n|---|---:|---:|---|\n'
+ for e in entries:
+  if e['optional']:text+=f"| [{Path(e['file']).name}](../{e['file']}) | {e['sheets']} | {e['copies']} | {e['replaces'] or e['kind']} |\n"
+ text+='\nPeões: oito folhas (2 heróis + 6 variantes inimigas); preservam limite de 24 inimigos. Painel: duas folhas por jogador; quatro para duas pessoas. Guia de montagem: três opcionais. Seis variantes de destino: 24 folhas; cada conjunto de quatro substitui os quatro módulos comuns. Fichas de todos os heróis: 12 opcionais. Não são expansões de conteúdo.\n\nPDFs de referência privados não fazem parte desta entrega. Não houve montagem física nem playtest humano.\n'
+ (root/'00_LEIA_PRIMEIRO/IMPRIMA_ESTES.md').write_text(text)
+ (root/'00_LEIA_PRIMEIRO/manifesto.json').write_text(json.dumps(dict(version='0.4',rules='0.2',edition=root.name,totals=totals,files=entries),ensure_ascii=False,indent=2))
+
+def full_build():
+ for ed in ['ilustrada','economica']:
+  root=O/ed;init(root);a.ECON=ed=='economica';start=len(FILES)
+  copy_stable(root);all_cards(root);standees(root);standees(root,True);player_panel(root);all_maps(root);manual_calibration(root);assembly_guide(root)
+  if a.ECON:
+   for f in root.rglob('*.pdf'):q.gray_pdf(f)
+  for e in FILES[start:]:
+   e['edition']=ed;e['sha256']=hashlib.sha256((root/e['file']).read_bytes()).hexdigest()
+  make_index(root)
+ (O/'geometry.json').write_text(json.dumps(MAP_GEOMETRY,ensure_ascii=False,indent=2))
+ (O/'files.json').write_text(json.dumps(FILES,ensure_ascii=False,indent=2))
+
 if __name__=='__main__':
  p=argparse.ArgumentParser();p.add_argument('--step',default='sample');args=p.parse_args()
  if args.step=='sample':sample()
+ elif args.step=='all':full_build()
  else:
   for ed in ['ilustrada','economica']:
    root=O/ed;init(root);a.ECON=ed=='economica'
