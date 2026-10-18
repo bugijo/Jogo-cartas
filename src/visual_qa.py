@@ -31,6 +31,17 @@ def render_samples():
    img.thumbnail((880,710));canvas.paste(img,(x+(900-img.width)//2,40));draw.text((x+18,12),label,fill='black')
   canvas.save(E/f'comparacao_{name}.jpg',quality=91)
 
+def duplex_overlay():
+ for edition in ['ilustrada','economica']:
+  doc=fitz.open(O/edition/'01_inicial/02_cartas_duplex.pdf');ims=[]
+  for n in [2,3]:
+   pix=doc[n].get_pixmap(matrix=fitz.Matrix(1.4,1.4),alpha=False);ims.append(Image.frombytes('RGB',[pix.width,pix.height],pix.samples))
+  Image.blend(ims[0],ImageOps.mirror(ims[1]),.35).save(E/f'{edition}_duplex_sobreposto.png')
+  doc=fitz.open(O/edition/'01_inicial/02_cartas_duplex.pdf');page=doc[2]
+  # An intention front/back at the same normalized card size, no unique identity outside.
+  pix=page.get_pixmap(matrix=fitz.Matrix(3,3),clip=fitz.Rect(8.5*MM,104.5*MM,71.5*MM,192.5*MM),alpha=False)
+  pix.save(E/f'{edition}_carta_intencao_detalhe.png')
+
 def contacts():
  report=[]
  for edition in ['ilustrada','economica']:
@@ -39,7 +50,9 @@ def contacts():
   for f in files:
    d=fitz.open(f)
    for p in d:
-    pix=p.get_pixmap(matrix=fitz.Matrix(1,1),alpha=False);im=Image.frombytes('RGB',[pix.width,pix.height],pix.samples);im.thumbnail((230,270));thumbs.append((f.name,p.number+1,im))
+    pix=p.get_pixmap(matrix=fitz.Matrix(1,1),alpha=False)
+    out=O/'renders'/edition/f.relative_to(root).parent;out.mkdir(parents=True,exist_ok=True);pix.save(out/(f.stem+f'_{p.number+1:03}.png'))
+    im=Image.frombytes('RGB',[pix.width,pix.height],pix.samples);im.thumbnail((230,270));thumbs.append((f.name,p.number+1,im))
    report.append(dict(edition=edition,file=str(f.relative_to(root)),pages=len(d)))
   for start in range(0,len(thumbs),24):
    sheet=Image.new('RGB',(1500,4*320),'#deded6');draw=ImageDraw.Draw(sheet)
@@ -47,8 +60,22 @@ def contacts():
     x=i%6*250;y=i//6*320;sheet.paste(img,(x+(250-img.width)//2,y+23));draw.text((x+5,y+3),f'{name[:27]} / {pg}',fill='black')
    sheet.save(E/f'contato_{edition}_{start//24+1:02}.jpg',quality=90)
  (E/'render_manifest.json').write_text(json.dumps(report,ensure_ascii=False,indent=2))
+def grayscale_proof():
+ from PIL import ImageChops,ImageStat
+ rs=list((O/'renders/economica').rglob('*.png'));bad=[]
+ for f in rs:
+  im=Image.open(f).convert('RGB');r,g,b=im.split()
+  if ImageChops.difference(r,g).getextrema()[1] or ImageChops.difference(r,b).getextrema()[1]:bad.append(str(f))
+ assert not bad,bad
+ result={'rendered_pages':len(list((O/'renders').rglob('*.png'))),'economic_pages_verified_grayscale':len(rs),'grayscale_failures':bad,'ink_proxy':{}}
+ for name in ['mapa','abrigo']:
+  scores={ed:1-ImageStat.Stat(Image.open(E/f'{ed}_{name}.png').convert('L')).mean[0]/255 for ed in ['ilustrada','economica']}
+  assert scores['economica']<scores['ilustrada'];result['ink_proxy'][name]=scores
+ result['ink_proxy_note']='Média de luminância renderizada; não mede cartucho ou CMYK.'
+ (O/'producao.json').write_text(json.dumps(result,ensure_ascii=False,indent=2))
+
 if __name__=='__main__':
  import sys
- render_samples()
- if '--samples' not in sys.argv:contacts()
+ render_samples();duplex_overlay()
+ if '--samples' not in sys.argv:contacts();grayscale_proof()
  print('Renderização concluída.')

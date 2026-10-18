@@ -1,0 +1,1381 @@
+{
+  "edition": "0.3",
+  "old_raster_regions": 55,
+  "new_raster_regions": 23,
+  "new_raster_files": 3,
+  "items": [
+    {
+      "id": "ZC-HER-0001",
+      "kind": "portrait",
+      "name": "Lia",
+      "region": {
+        "path": "assets/portraits_01.png",
+        "col": 0,
+        "row": 0
+      },
+      "status": "gerado e integrado à ficha e token",
+      "origin": "original existente (geração integrada 0.1)",
+      "integration_0.3": "Retrato canônico em ficha/token/encontro; demais objetos quando selecionados. Capa e cenas preservadas nas fontes.",
+      "dimensions_px": [
+        1024,
+        1536
+      ],
+      "print_crop_0_3": [
+        11,
+        9,
+        331,
+        374
+      ]
+    },
+    {
+      "id": "ZC-HER-0002",
+      "kind": "portrait",
+      "name": "Ivo",
+      "region": {
+        "path": "assets/portraits_01.png",
+        "col": 1,
+        "row": 0
+      },
+      "status": "gerado e integrado à ficha e token",
+      "origin": "original existente (geração integrada 0.1)",
+      "integration_0.3": "Retrato canônico em ficha/token/encontro; demais objetos quando selecionados. Capa e cenas preservadas nas fontes.",
+      "dimensions_px": [
+        1024,
+        1536
+      ],
+      "print_crop_0_3": [
+        352,
+        9,
+        673,
+        374
+      ]
+    },
+    {
+      "id": "ZC-HER-0003",
+      "kind": "portrait",
+      "name": "Mara",
+      "region": {
+        "path": "assets/portraits_01.png",
+        "col": 2,
+        "row": 0
+      },
+      "status": "gerado e integrado à ficha e token",
+      "origin": "original existente (geração integrada 0.1)",
+      "integration_0.3": "Retrato canônico em ficha/token/encontro; demais objetos quando selecionados. Capa e cenas preservadas nas fontes.",
+      "dimensions_px": [
+        1024,
+        1536
+      ],
+      "print_crop_0_3": [
+        693,
+        9,
+        1016,
+        374
+      ]
+    },
+    {
+      "id": "ZC-HER-0004",
+      "kind": "portrait",
+      "name": "Caio",
+      "region": {
+        "path": "assets/portraits_01.png",
+        "col": 0,
+        "row": 1
+      },
+      "status": "gerado e integrado à ficha e token",
+      "origin": "original existente (geração integrada 0.1)",
+      "integration_0.3": "Retrato canônico em ficha/token/encontro; demais objetos quando selecionados. Capa e cenas preservadas nas fontes.",
+      "dimensions_px": [
+        1024,
+        1536
+      ],
+      "print_crop_0_3": [
+        11,
+        390,
+        331,
+        759
+      ]
+    },
+    {
+      "id": "ZC-HER-0005",
+      "kind": "portrait",
+      "name": "Nara",
+      "region": {
+        "path": "assets/portraits_01.png",
+        "col": 1,
+        "row": 1
+      },
+      "status": "gerado e integrado à ficha e token",
+      "origin": "original existente (geração integrada 0.1)",
+      "integration_0.3": "Retrato canônico em ficha/token/encontro; demais objetos quando selecionados. Capa e cenas preservadas nas fontes.",
+      "dimensions_px": [
+        1024,
+        1536
+      ],
+      "print_crop_0_3": [
+        352,
+        390,
+        673,
+        759
+      ]
+    },
+    {
+      "id": "ZC-HER-0006",
+      "kind": "portrait",
+      "name": "Bento",
+      "region": {
+        "path": "assets/portraits_01.png",
+        "col": 2,
+        "row": 1
+      },
+      "status": "gerado e integrado à ficha e token",
+      "origin": "original existente (geração integrada 0.1)",
+      "integration_0.3": "Retrato canônico em ficha/token/encontro; demais objetos quando selecionados. Capa e cenas preservadas nas fontes.",
+      "dimensions_px": [
+        1024,
+        1536
+      ],
+      "print_crop_0_3": [
+        693,
+        390,
+        1016,
+        759
+      ]
+    },
+    {
+      "id": "ZC-HER-0007",
+      "kind": "portrait",
+      "name": "Duda",
+      "region": {
+        "path": "assets/portraits_01.png",
+        "col": 0,
+        "row": 2
+      },
+      "status": "gerado e integrado à ficha e token",
+      "origin": "original existente (geração integrada 0.1)",
+      "integration_0.3": "Retrato canônico em ficha/token/encontro; demais objetos quando selecionados. Capa e cenas preservadas nas fontes.",
+      "dimensions_px": [
+        1024,
+        1536
+      ],
+      "print_crop_0_3": [
+        11,
+        772,
+        331,
+        1139
+      ]
+    },
+    {
+      "id": "ZC-HER-0008",
+      "kind": "portrait",
+      "name": "Rosa",
+      "region": {
+        "path": "assets/portraits_01.png",
+        "col": 1,
+        "row": 2
+      },
+      "status": "gerado e integrado à ficha e token",
+      "origin": "original existente (geração integrada 0.1)",
+      "integration_0.3": "Retrato canônico em ficha/token/encontro; demais objetos quando selecionados. Capa e cenas preservadas nas fontes.",
+      "dimensions_px": [
+        1024,
+        1536
+      ],
+      "print_crop_0_3": [
+        352,
+        772,
+        673,
+        1139
+      ]
+    },
+    {
+      "id": "ZC-HER-0009",
+      "kind": "portrait",
+      "name": "Joel",
+      "region": {
+        "path": "assets/portraits_01.png",
+        "col": 2,
+        "row": 2
+      },
+      "status": "gerado e integrado à ficha e token",
+      "origin": "original existente (geração integrada 0.1)",
+      "integration_0.3": "Retrato canônico em ficha/token/encontro; demais objetos quando selecionados. Capa e cenas preservadas nas fontes.",
+      "dimensions_px": [
+        1024,
+        1536
+      ],
+      "print_crop_0_3": [
+        693,
+        772,
+        1016,
+        1139
+      ]
+    },
+    {
+      "id": "ZC-HER-0010",
+      "kind": "portrait",
+      "name": "Yumi",
+      "region": {
+        "path": "assets/portraits_01.png",
+        "col": 0,
+        "row": 3
+      },
+      "status": "gerado e integrado à ficha e token",
+      "origin": "original existente (geração integrada 0.1)",
+      "integration_0.3": "Retrato canônico em ficha/token/encontro; demais objetos quando selecionados. Capa e cenas preservadas nas fontes.",
+      "dimensions_px": [
+        1024,
+        1536
+      ],
+      "print_crop_0_3": [
+        11,
+        1153,
+        331,
+        1524
+      ]
+    },
+    {
+      "id": "ZC-HER-0011",
+      "kind": "portrait",
+      "name": "Téo",
+      "region": {
+        "path": "assets/portraits_01.png",
+        "col": 1,
+        "row": 3
+      },
+      "status": "gerado e integrado à ficha e token",
+      "origin": "original existente (geração integrada 0.1)",
+      "integration_0.3": "Retrato canônico em ficha/token/encontro; demais objetos quando selecionados. Capa e cenas preservadas nas fontes.",
+      "dimensions_px": [
+        1024,
+        1536
+      ],
+      "print_crop_0_3": [
+        352,
+        1153,
+        673,
+        1524
+      ]
+    },
+    {
+      "id": "ZC-HER-0012",
+      "kind": "portrait",
+      "name": "Célia",
+      "region": {
+        "path": "assets/portraits_01.png",
+        "col": 2,
+        "row": 3
+      },
+      "status": "gerado e integrado à ficha e token",
+      "origin": "original existente (geração integrada 0.1)",
+      "integration_0.3": "Retrato canônico em ficha/token/encontro; demais objetos quando selecionados. Capa e cenas preservadas nas fontes.",
+      "dimensions_px": [
+        1024,
+        1536
+      ],
+      "print_crop_0_3": [
+        693,
+        1153,
+        1016,
+        1524
+      ]
+    },
+    {
+      "id": "ZC-HER-0013",
+      "kind": "portrait",
+      "name": "Aline",
+      "region": {
+        "path": "assets/portraits_02.png",
+        "col": 0,
+        "row": 0
+      },
+      "status": "gerado e integrado à ficha e token",
+      "origin": "original existente (geração integrada 0.1)",
+      "integration_0.3": "Retrato canônico em ficha/token/encontro; demais objetos quando selecionados. Capa e cenas preservadas nas fontes.",
+      "dimensions_px": [
+        1024,
+        1536
+      ],
+      "print_crop_0_3": [
+        8,
+        6,
+        335,
+        374
+      ]
+    },
+    {
+      "id": "ZC-HER-0014",
+      "kind": "portrait",
+      "name": "Samuel",
+      "region": {
+        "path": "assets/portraits_02.png",
+        "col": 1,
+        "row": 0
+      },
+      "status": "gerado e integrado à ficha e token",
+      "origin": "original existente (geração integrada 0.1)",
+      "integration_0.3": "Retrato canônico em ficha/token/encontro; demais objetos quando selecionados. Capa e cenas preservadas nas fontes.",
+      "dimensions_px": [
+        1024,
+        1536
+      ],
+      "print_crop_0_3": [
+        349,
+        6,
+        676,
+        374
+      ]
+    },
+    {
+      "id": "ZC-HER-0015",
+      "kind": "portrait",
+      "name": "Bruna",
+      "region": {
+        "path": "assets/portraits_02.png",
+        "col": 2,
+        "row": 0
+      },
+      "status": "gerado e integrado à ficha e token",
+      "origin": "original existente (geração integrada 0.1)",
+      "integration_0.3": "Retrato canônico em ficha/token/encontro; demais objetos quando selecionados. Capa e cenas preservadas nas fontes.",
+      "dimensions_px": [
+        1024,
+        1536
+      ],
+      "print_crop_0_3": [
+        690,
+        6,
+        1017,
+        374
+      ]
+    },
+    {
+      "id": "ZC-HER-0016",
+      "kind": "portrait",
+      "name": "Raul",
+      "region": {
+        "path": "assets/portraits_02.png",
+        "col": 0,
+        "row": 1
+      },
+      "status": "gerado e integrado à ficha e token",
+      "origin": "original existente (geração integrada 0.1)",
+      "integration_0.3": "Retrato canônico em ficha/token/encontro; demais objetos quando selecionados. Capa e cenas preservadas nas fontes.",
+      "dimensions_px": [
+        1024,
+        1536
+      ],
+      "print_crop_0_3": [
+        8,
+        385,
+        335,
+        761
+      ]
+    },
+    {
+      "id": "ZC-HER-0017",
+      "kind": "portrait",
+      "name": "Denise",
+      "region": {
+        "path": "assets/portraits_02.png",
+        "col": 1,
+        "row": 1
+      },
+      "status": "gerado e integrado à ficha e token",
+      "origin": "original existente (geração integrada 0.1)",
+      "integration_0.3": "Retrato canônico em ficha/token/encontro; demais objetos quando selecionados. Capa e cenas preservadas nas fontes.",
+      "dimensions_px": [
+        1024,
+        1536
+      ],
+      "print_crop_0_3": [
+        349,
+        385,
+        676,
+        761
+      ]
+    },
+    {
+      "id": "ZC-HER-0018",
+      "kind": "portrait",
+      "name": "Hugo",
+      "region": {
+        "path": "assets/portraits_02.png",
+        "col": 2,
+        "row": 1
+      },
+      "status": "gerado e integrado à ficha e token",
+      "origin": "original existente (geração integrada 0.1)",
+      "integration_0.3": "Retrato canônico em ficha/token/encontro; demais objetos quando selecionados. Capa e cenas preservadas nas fontes.",
+      "dimensions_px": [
+        1024,
+        1536
+      ],
+      "print_crop_0_3": [
+        690,
+        385,
+        1017,
+        761
+      ]
+    },
+    {
+      "id": "ZC-HER-0019",
+      "kind": "portrait",
+      "name": "Sol",
+      "region": {
+        "path": "assets/portraits_02.png",
+        "col": 0,
+        "row": 2
+      },
+      "status": "gerado e integrado à ficha e token",
+      "origin": "original existente (geração integrada 0.1)",
+      "integration_0.3": "Retrato canônico em ficha/token/encontro; demais objetos quando selecionados. Capa e cenas preservadas nas fontes.",
+      "dimensions_px": [
+        1024,
+        1536
+      ],
+      "print_crop_0_3": [
+        8,
+        772,
+        335,
+        1134
+      ]
+    },
+    {
+      "id": "ZC-HER-0020",
+      "kind": "portrait",
+      "name": "Otávio",
+      "region": {
+        "path": "assets/portraits_02.png",
+        "col": 1,
+        "row": 2
+      },
+      "status": "gerado e integrado à ficha e token",
+      "origin": "original existente (geração integrada 0.1)",
+      "integration_0.3": "Retrato canônico em ficha/token/encontro; demais objetos quando selecionados. Capa e cenas preservadas nas fontes.",
+      "dimensions_px": [
+        1024,
+        1536
+      ],
+      "print_crop_0_3": [
+        349,
+        772,
+        676,
+        1134
+      ]
+    },
+    {
+      "id": "ZC-HER-0021",
+      "kind": "portrait",
+      "name": "Jana",
+      "region": {
+        "path": "assets/portraits_02.png",
+        "col": 2,
+        "row": 2
+      },
+      "status": "gerado e integrado à ficha e token",
+      "origin": "original existente (geração integrada 0.1)",
+      "integration_0.3": "Retrato canônico em ficha/token/encontro; demais objetos quando selecionados. Capa e cenas preservadas nas fontes.",
+      "dimensions_px": [
+        1024,
+        1536
+      ],
+      "print_crop_0_3": [
+        690,
+        772,
+        1017,
+        1134
+      ]
+    },
+    {
+      "id": "ZC-HER-0022",
+      "kind": "portrait",
+      "name": "Miguel",
+      "region": {
+        "path": "assets/portraits_02.png",
+        "col": 0,
+        "row": 3
+      },
+      "status": "gerado e integrado à ficha e token",
+      "origin": "original existente (geração integrada 0.1)",
+      "integration_0.3": "Retrato canônico em ficha/token/encontro; demais objetos quando selecionados. Capa e cenas preservadas nas fontes.",
+      "dimensions_px": [
+        1024,
+        1536
+      ],
+      "print_crop_0_3": [
+        8,
+        1144,
+        335,
+        1527
+      ]
+    },
+    {
+      "id": "ZC-HER-0023",
+      "kind": "portrait",
+      "name": "Bia",
+      "region": {
+        "path": "assets/portraits_02.png",
+        "col": 1,
+        "row": 3
+      },
+      "status": "gerado e integrado à ficha e token",
+      "origin": "original existente (geração integrada 0.1)",
+      "integration_0.3": "Retrato canônico em ficha/token/encontro; demais objetos quando selecionados. Capa e cenas preservadas nas fontes.",
+      "dimensions_px": [
+        1024,
+        1536
+      ],
+      "print_crop_0_3": [
+        349,
+        1144,
+        676,
+        1527
+      ]
+    },
+    {
+      "id": "ZC-HER-0024",
+      "kind": "portrait",
+      "name": "Vicente",
+      "region": {
+        "path": "assets/portraits_02.png",
+        "col": 2,
+        "row": 3
+      },
+      "status": "gerado e integrado à ficha e token",
+      "origin": "original existente (geração integrada 0.1)",
+      "integration_0.3": "Retrato canônico em ficha/token/encontro; demais objetos quando selecionados. Capa e cenas preservadas nas fontes.",
+      "dimensions_px": [
+        1024,
+        1536
+      ],
+      "print_crop_0_3": [
+        690,
+        1144,
+        1017,
+        1527
+      ]
+    },
+    {
+      "id": "ZC-ART-EQUIPMENT-0001",
+      "kind": "equipment",
+      "name": "Pé de cabra",
+      "region": {
+        "path": "assets/equipment.png",
+        "col": 0,
+        "row": 0,
+        "cols": 3,
+        "rows": 3
+      },
+      "status": "gerado e integrado à galeria; cartas/tokens quando correspondente",
+      "origin": "original existente (geração integrada 0.1)",
+      "integration_0.3": "Retrato canônico em ficha/token/encontro; demais objetos quando selecionados. Capa e cenas preservadas nas fontes.",
+      "dimensions_px": [
+        1536,
+        1024
+      ],
+      "print_crop_0_3": [
+        6,
+        3,
+        504,
+        296
+      ]
+    },
+    {
+      "id": "ZC-ART-EQUIPMENT-0002",
+      "kind": "equipment",
+      "name": "Faca",
+      "region": {
+        "path": "assets/equipment.png",
+        "col": 1,
+        "row": 0,
+        "cols": 3,
+        "rows": 3
+      },
+      "status": "gerado e integrado à galeria; cartas/tokens quando correspondente",
+      "origin": "original existente (geração integrada 0.1)",
+      "integration_0.3": "Retrato canônico em ficha/token/encontro; demais objetos quando selecionados. Capa e cenas preservadas nas fontes.",
+      "dimensions_px": [
+        1536,
+        1024
+      ],
+      "print_crop_0_3": [
+        518,
+        3,
+        1017,
+        296
+      ]
+    },
+    {
+      "id": "ZC-ART-EQUIPMENT-0003",
+      "kind": "equipment",
+      "name": "Machado",
+      "region": {
+        "path": "assets/equipment.png",
+        "col": 2,
+        "row": 0,
+        "cols": 3,
+        "rows": 3
+      },
+      "status": "gerado e integrado à galeria; cartas/tokens quando correspondente",
+      "origin": "original existente (geração integrada 0.1)",
+      "integration_0.3": "Retrato canônico em ficha/token/encontro; demais objetos quando selecionados. Capa e cenas preservadas nas fontes.",
+      "dimensions_px": [
+        1536,
+        1024
+      ],
+      "print_crop_0_3": [
+        1031,
+        3,
+        1530,
+        296
+      ]
+    },
+    {
+      "id": "ZC-ART-EQUIPMENT-0004",
+      "kind": "equipment",
+      "name": "Pistola",
+      "region": {
+        "path": "assets/equipment.png",
+        "col": 0,
+        "row": 1,
+        "cols": 3,
+        "rows": 3
+      },
+      "status": "gerado e integrado à galeria; cartas/tokens quando correspondente",
+      "origin": "original existente (geração integrada 0.1)",
+      "integration_0.3": "Retrato canônico em ficha/token/encontro; demais objetos quando selecionados. Capa e cenas preservadas nas fontes.",
+      "dimensions_px": [
+        1536,
+        1024
+      ],
+      "print_crop_0_3": [
+        6,
+        306,
+        504,
+        612
+      ]
+    },
+    {
+      "id": "ZC-ART-EQUIPMENT-0005",
+      "kind": "equipment",
+      "name": "Espingarda",
+      "region": {
+        "path": "assets/equipment.png",
+        "col": 1,
+        "row": 1,
+        "cols": 3,
+        "rows": 3
+      },
+      "status": "gerado e integrado à galeria; cartas/tokens quando correspondente",
+      "origin": "original existente (geração integrada 0.1)",
+      "integration_0.3": "Retrato canônico em ficha/token/encontro; demais objetos quando selecionados. Capa e cenas preservadas nas fontes.",
+      "dimensions_px": [
+        1536,
+        1024
+      ],
+      "print_crop_0_3": [
+        518,
+        306,
+        1017,
+        612
+      ]
+    },
+    {
+      "id": "ZC-ART-EQUIPMENT-0006",
+      "kind": "equipment",
+      "name": "Ferramentas",
+      "region": {
+        "path": "assets/equipment.png",
+        "col": 2,
+        "row": 1,
+        "cols": 3,
+        "rows": 3
+      },
+      "status": "gerado e integrado à galeria; cartas/tokens quando correspondente",
+      "origin": "original existente (geração integrada 0.1)",
+      "integration_0.3": "Retrato canônico em ficha/token/encontro; demais objetos quando selecionados. Capa e cenas preservadas nas fontes.",
+      "dimensions_px": [
+        1536,
+        1024
+      ],
+      "print_crop_0_3": [
+        1031,
+        306,
+        1530,
+        612
+      ]
+    },
+    {
+      "id": "ZC-ART-EQUIPMENT-0007",
+      "kind": "equipment",
+      "name": "Lanterna",
+      "region": {
+        "path": "assets/equipment.png",
+        "col": 0,
+        "row": 2,
+        "cols": 3,
+        "rows": 3
+      },
+      "status": "gerado e integrado à galeria; cartas/tokens quando correspondente",
+      "origin": "original existente (geração integrada 0.1)",
+      "integration_0.3": "Retrato canônico em ficha/token/encontro; demais objetos quando selecionados. Capa e cenas preservadas nas fontes.",
+      "dimensions_px": [
+        1536,
+        1024
+      ],
+      "print_crop_0_3": [
+        6,
+        622,
+        504,
+        1017
+      ]
+    },
+    {
+      "id": "ZC-ART-EQUIPMENT-0008",
+      "kind": "equipment",
+      "name": "Bomba",
+      "region": {
+        "path": "assets/equipment.png",
+        "col": 1,
+        "row": 2,
+        "cols": 3,
+        "rows": 3
+      },
+      "status": "gerado e integrado à galeria; cartas/tokens quando correspondente",
+      "origin": "original existente (geração integrada 0.1)",
+      "integration_0.3": "Retrato canônico em ficha/token/encontro; demais objetos quando selecionados. Capa e cenas preservadas nas fontes.",
+      "dimensions_px": [
+        1536,
+        1024
+      ],
+      "print_crop_0_3": [
+        518,
+        622,
+        1017,
+        1017
+      ]
+    },
+    {
+      "id": "ZC-ART-EQUIPMENT-0009",
+      "kind": "equipment",
+      "name": "Membrana",
+      "region": {
+        "path": "assets/equipment.png",
+        "col": 2,
+        "row": 2,
+        "cols": 3,
+        "rows": 3
+      },
+      "status": "gerado e integrado à galeria; cartas/tokens quando correspondente",
+      "origin": "original existente (geração integrada 0.1)",
+      "integration_0.3": "Retrato canônico em ficha/token/encontro; demais objetos quando selecionados. Capa e cenas preservadas nas fontes.",
+      "dimensions_px": [
+        1536,
+        1024
+      ],
+      "print_crop_0_3": [
+        1031,
+        622,
+        1530,
+        1017
+      ]
+    },
+    {
+      "id": "ZC-ART-BUILDINGS-0001",
+      "kind": "buildings",
+      "name": "Barraca",
+      "region": {
+        "path": "assets/buildings.png",
+        "col": 0,
+        "row": 0,
+        "cols": 3,
+        "rows": 3
+      },
+      "status": "gerado e integrado à galeria; cartas/tokens quando correspondente",
+      "origin": "original existente (geração integrada 0.1)",
+      "integration_0.3": "Retrato canônico em ficha/token/encontro; demais objetos quando selecionados. Capa e cenas preservadas nas fontes.",
+      "dimensions_px": [
+        1536,
+        1024
+      ],
+      "print_crop_0_3": [
+        11,
+        8,
+        500,
+        332
+      ]
+    },
+    {
+      "id": "ZC-ART-BUILDINGS-0002",
+      "kind": "buildings",
+      "name": "Casa simples",
+      "region": {
+        "path": "assets/buildings.png",
+        "col": 1,
+        "row": 0,
+        "cols": 3,
+        "rows": 3
+      },
+      "status": "gerado e integrado à galeria; cartas/tokens quando correspondente",
+      "origin": "original existente (geração integrada 0.1)",
+      "integration_0.3": "Retrato canônico em ficha/token/encontro; demais objetos quando selecionados. Capa e cenas preservadas nas fontes.",
+      "dimensions_px": [
+        1536,
+        1024
+      ],
+      "print_crop_0_3": [
+        520,
+        8,
+        1015,
+        332
+      ]
+    },
+    {
+      "id": "ZC-ART-BUILDINGS-0003",
+      "kind": "buildings",
+      "name": "Enfermaria",
+      "region": {
+        "path": "assets/buildings.png",
+        "col": 2,
+        "row": 0,
+        "cols": 3,
+        "rows": 3
+      },
+      "status": "gerado e integrado à galeria; cartas/tokens quando correspondente",
+      "origin": "original existente (geração integrada 0.1)",
+      "integration_0.3": "Retrato canônico em ficha/token/encontro; demais objetos quando selecionados. Capa e cenas preservadas nas fontes.",
+      "dimensions_px": [
+        1536,
+        1024
+      ],
+      "print_crop_0_3": [
+        1036,
+        8,
+        1526,
+        332
+      ]
+    },
+    {
+      "id": "ZC-ART-BUILDINGS-0004",
+      "kind": "buildings",
+      "name": "Oficina",
+      "region": {
+        "path": "assets/buildings.png",
+        "col": 0,
+        "row": 1,
+        "cols": 3,
+        "rows": 3
+      },
+      "status": "gerado e integrado à galeria; cartas/tokens quando correspondente",
+      "origin": "original existente (geração integrada 0.1)",
+      "integration_0.3": "Retrato canônico em ficha/token/encontro; demais objetos quando selecionados. Capa e cenas preservadas nas fontes.",
+      "dimensions_px": [
+        1536,
+        1024
+      ],
+      "print_crop_0_3": [
+        11,
+        348,
+        500,
+        673
+      ]
+    },
+    {
+      "id": "ZC-ART-BUILDINGS-0005",
+      "kind": "buildings",
+      "name": "Garagem",
+      "region": {
+        "path": "assets/buildings.png",
+        "col": 1,
+        "row": 1,
+        "cols": 3,
+        "rows": 3
+      },
+      "status": "gerado e integrado à galeria; cartas/tokens quando correspondente",
+      "origin": "original existente (geração integrada 0.1)",
+      "integration_0.3": "Retrato canônico em ficha/token/encontro; demais objetos quando selecionados. Capa e cenas preservadas nas fontes.",
+      "dimensions_px": [
+        1536,
+        1024
+      ],
+      "print_crop_0_3": [
+        520,
+        348,
+        1015,
+        673
+      ]
+    },
+    {
+      "id": "ZC-ART-BUILDINGS-0006",
+      "kind": "buildings",
+      "name": "Torre",
+      "region": {
+        "path": "assets/buildings.png",
+        "col": 2,
+        "row": 1,
+        "cols": 3,
+        "rows": 3
+      },
+      "status": "gerado e integrado à galeria; cartas/tokens quando correspondente",
+      "origin": "original existente (geração integrada 0.1)",
+      "integration_0.3": "Retrato canônico em ficha/token/encontro; demais objetos quando selecionados. Capa e cenas preservadas nas fontes.",
+      "dimensions_px": [
+        1536,
+        1024
+      ],
+      "print_crop_0_3": [
+        1036,
+        348,
+        1526,
+        673
+      ]
+    },
+    {
+      "id": "ZC-ART-BUILDINGS-0007",
+      "kind": "buildings",
+      "name": "Horta",
+      "region": {
+        "path": "assets/buildings.png",
+        "col": 0,
+        "row": 2,
+        "cols": 3,
+        "rows": 3
+      },
+      "status": "gerado e integrado à galeria; cartas/tokens quando correspondente",
+      "origin": "original existente (geração integrada 0.1)",
+      "integration_0.3": "Retrato canônico em ficha/token/encontro; demais objetos quando selecionados. Capa e cenas preservadas nas fontes.",
+      "dimensions_px": [
+        1536,
+        1024
+      ],
+      "print_crop_0_3": [
+        11,
+        689,
+        500,
+        1015
+      ]
+    },
+    {
+      "id": "ZC-ART-BUILDINGS-0008",
+      "kind": "buildings",
+      "name": "Filtro",
+      "region": {
+        "path": "assets/buildings.png",
+        "col": 1,
+        "row": 2,
+        "cols": 3,
+        "rows": 3
+      },
+      "status": "gerado e integrado à galeria; cartas/tokens quando correspondente",
+      "origin": "original existente (geração integrada 0.1)",
+      "integration_0.3": "Retrato canônico em ficha/token/encontro; demais objetos quando selecionados. Capa e cenas preservadas nas fontes.",
+      "dimensions_px": [
+        1536,
+        1024
+      ],
+      "print_crop_0_3": [
+        520,
+        689,
+        1015,
+        1015
+      ]
+    },
+    {
+      "id": "ZC-ART-BUILDINGS-0009",
+      "kind": "buildings",
+      "name": "Cozinha",
+      "region": {
+        "path": "assets/buildings.png",
+        "col": 2,
+        "row": 2,
+        "cols": 3,
+        "rows": 3
+      },
+      "status": "gerado e integrado à galeria; cartas/tokens quando correspondente",
+      "origin": "original existente (geração integrada 0.1)",
+      "integration_0.3": "Retrato canônico em ficha/token/encontro; demais objetos quando selecionados. Capa e cenas preservadas nas fontes.",
+      "dimensions_px": [
+        1536,
+        1024
+      ],
+      "print_crop_0_3": [
+        1036,
+        689,
+        1526,
+        1015
+      ]
+    },
+    {
+      "id": "ZC-ART-ENEMIES-0001",
+      "kind": "enemies",
+      "name": "Errante",
+      "region": {
+        "path": "assets/enemies.png",
+        "col": 0,
+        "row": 0,
+        "cols": 2,
+        "rows": 2
+      },
+      "status": "gerado e integrado à galeria; cartas/tokens quando correspondente",
+      "origin": "original existente (geração integrada 0.1)",
+      "integration_0.3": "Retrato canônico em ficha/token/encontro; demais objetos quando selecionados. Capa e cenas preservadas nas fontes.",
+      "dimensions_px": [
+        1222,
+        1287
+      ],
+      "print_crop_0_3": [
+        22,
+        0,
+        600,
+        600
+      ]
+    },
+    {
+      "id": "ZC-ART-ENEMIES-0002",
+      "kind": "enemies",
+      "name": "Corredor",
+      "region": {
+        "path": "assets/enemies.png",
+        "col": 1,
+        "row": 0,
+        "cols": 2,
+        "rows": 2
+      },
+      "status": "gerado e integrado à galeria; cartas/tokens quando correspondente",
+      "origin": "original existente (geração integrada 0.1)",
+      "integration_0.3": "Retrato canônico em ficha/token/encontro; demais objetos quando selecionados. Capa e cenas preservadas nas fontes.",
+      "dimensions_px": [
+        1222,
+        1287
+      ],
+      "print_crop_0_3": [
+        623,
+        0,
+        1201,
+        600
+      ]
+    },
+    {
+      "id": "ZC-ART-ENEMIES-0003",
+      "kind": "enemies",
+      "name": "Bruto",
+      "region": {
+        "path": "assets/enemies.png",
+        "col": 0,
+        "row": 1,
+        "cols": 2,
+        "rows": 2
+      },
+      "status": "gerado e integrado à galeria; cartas/tokens quando correspondente",
+      "origin": "original existente (geração integrada 0.1)",
+      "integration_0.3": "Retrato canônico em ficha/token/encontro; demais objetos quando selecionados. Capa e cenas preservadas nas fontes.",
+      "dimensions_px": [
+        1222,
+        1287
+      ],
+      "print_crop_0_3": [
+        22,
+        619,
+        600,
+        1267
+      ]
+    },
+    {
+      "id": "ZC-ART-ENEMIES-0004",
+      "kind": "enemies",
+      "name": "Rival",
+      "region": {
+        "path": "assets/enemies.png",
+        "col": 1,
+        "row": 1,
+        "cols": 2,
+        "rows": 2
+      },
+      "status": "gerado e integrado à galeria; cartas/tokens quando correspondente",
+      "origin": "original existente (geração integrada 0.1)",
+      "integration_0.3": "Retrato canônico em ficha/token/encontro; demais objetos quando selecionados. Capa e cenas preservadas nas fontes.",
+      "dimensions_px": [
+        1222,
+        1287
+      ],
+      "print_crop_0_3": [
+        623,
+        619,
+        1201,
+        1267
+      ]
+    },
+    {
+      "id": "ZC-ART-ENCOUNTERS-0001",
+      "kind": "encounters",
+      "name": "Jana e criança",
+      "region": {
+        "path": "assets/encounters.png",
+        "col": 0,
+        "row": 0,
+        "cols": 2,
+        "rows": 4
+      },
+      "status": "gerado e integrado à galeria; cartas/tokens quando correspondente",
+      "origin": "original existente (geração integrada 0.1)",
+      "integration_0.3": "Retrato canônico em ficha/token/encontro; demais objetos quando selecionados. Capa e cenas preservadas nas fontes.",
+      "dimensions_px": [
+        1024,
+        1536
+      ],
+      "print_crop_0_3": [
+        0,
+        0,
+        506,
+        346
+      ]
+    },
+    {
+      "id": "ZC-ART-ENCOUNTERS-0002",
+      "kind": "encounters",
+      "name": "Bia",
+      "region": {
+        "path": "assets/encounters.png",
+        "col": 1,
+        "row": 0,
+        "cols": 2,
+        "rows": 4
+      },
+      "status": "gerado e integrado à galeria; cartas/tokens quando correspondente",
+      "origin": "original existente (geração integrada 0.1)",
+      "integration_0.3": "Retrato canônico em ficha/token/encontro; demais objetos quando selecionados. Capa e cenas preservadas nas fontes.",
+      "dimensions_px": [
+        1024,
+        1536
+      ],
+      "print_crop_0_3": [
+        520,
+        0,
+        1024,
+        346
+      ]
+    },
+    {
+      "id": "ZC-ART-ENCOUNTERS-0003",
+      "kind": "encounters",
+      "name": "Vicente e Sol",
+      "region": {
+        "path": "assets/encounters.png",
+        "col": 0,
+        "row": 1,
+        "cols": 2,
+        "rows": 4
+      },
+      "status": "gerado e integrado à galeria; cartas/tokens quando correspondente",
+      "origin": "original existente (geração integrada 0.1)",
+      "integration_0.3": "Retrato canônico em ficha/token/encontro; demais objetos quando selecionados. Capa e cenas preservadas nas fontes.",
+      "dimensions_px": [
+        1024,
+        1536
+      ],
+      "print_crop_0_3": [
+        0,
+        357,
+        506,
+        707
+      ]
+    },
+    {
+      "id": "ZC-ART-ENCOUNTERS-0004",
+      "kind": "encounters",
+      "name": "Raul e Otávio",
+      "region": {
+        "path": "assets/encounters.png",
+        "col": 1,
+        "row": 1,
+        "cols": 2,
+        "rows": 4
+      },
+      "status": "gerado e integrado à galeria; cartas/tokens quando correspondente",
+      "origin": "original existente (geração integrada 0.1)",
+      "integration_0.3": "Retrato canônico em ficha/token/encontro; demais objetos quando selecionados. Capa e cenas preservadas nas fontes.",
+      "dimensions_px": [
+        1024,
+        1536
+      ],
+      "print_crop_0_3": [
+        520,
+        357,
+        1024,
+        707
+      ]
+    },
+    {
+      "id": "ZC-ART-ENCOUNTERS-0005",
+      "kind": "encounters",
+      "name": "Denise, Miguel e civil",
+      "region": {
+        "path": "assets/encounters.png",
+        "col": 0,
+        "row": 2,
+        "cols": 2,
+        "rows": 4
+      },
+      "status": "gerado e integrado à galeria; cartas/tokens quando correspondente",
+      "origin": "original existente (geração integrada 0.1)",
+      "integration_0.3": "Retrato canônico em ficha/token/encontro; demais objetos quando selecionados. Capa e cenas preservadas nas fontes.",
+      "dimensions_px": [
+        1024,
+        1536
+      ],
+      "print_crop_0_3": [
+        0,
+        718,
+        506,
+        1092
+      ]
+    },
+    {
+      "id": "ZC-ART-ENCOUNTERS-0006",
+      "kind": "encounters",
+      "name": "Samuel, Bruna e criança",
+      "region": {
+        "path": "assets/encounters.png",
+        "col": 1,
+        "row": 2,
+        "cols": 2,
+        "rows": 4
+      },
+      "status": "gerado e integrado à galeria; cartas/tokens quando correspondente",
+      "origin": "original existente (geração integrada 0.1)",
+      "integration_0.3": "Retrato canônico em ficha/token/encontro; demais objetos quando selecionados. Capa e cenas preservadas nas fontes.",
+      "dimensions_px": [
+        1024,
+        1536
+      ],
+      "print_crop_0_3": [
+        520,
+        718,
+        1024,
+        1092
+      ]
+    },
+    {
+      "id": "ZC-ART-ENCOUNTERS-0007",
+      "kind": "encounters",
+      "name": "Aline e cão",
+      "region": {
+        "path": "assets/encounters.png",
+        "col": 0,
+        "row": 3,
+        "cols": 2,
+        "rows": 4
+      },
+      "status": "gerado e integrado à galeria; cartas/tokens quando correspondente",
+      "origin": "original existente (geração integrada 0.1)",
+      "integration_0.3": "Retrato canônico em ficha/token/encontro; demais objetos quando selecionados. Capa e cenas preservadas nas fontes.",
+      "dimensions_px": [
+        1024,
+        1536
+      ],
+      "print_crop_0_3": [
+        0,
+        1102,
+        506,
+        1536
+      ]
+    },
+    {
+      "id": "ZC-ART-ENCOUNTERS-0008",
+      "kind": "encounters",
+      "name": "Hugo",
+      "region": {
+        "path": "assets/encounters.png",
+        "col": 1,
+        "row": 3,
+        "cols": 2,
+        "rows": 4
+      },
+      "status": "gerado e integrado à galeria; cartas/tokens quando correspondente",
+      "origin": "original existente (geração integrada 0.1)",
+      "integration_0.3": "Retrato canônico em ficha/token/encontro; demais objetos quando selecionados. Capa e cenas preservadas nas fontes.",
+      "dimensions_px": [
+        1024,
+        1536
+      ],
+      "print_crop_0_3": [
+        520,
+        1102,
+        1024,
+        1536
+      ]
+    },
+    {
+      "file": "assets/v0.3/environments.png",
+      "id": "ZC-ART-03-environments",
+      "origin": "geração integrada nesta sessão, sem API externa",
+      "dimensions_px": [
+        1536,
+        1024
+      ],
+      "regions": 6,
+      "component": "Montagens dos seis destinos e mapa geral; arte de ambientação, não define geometria.",
+      "status": "integrado",
+      "sha256": "48658677f52ec7672f18748dcf3127b8a6dae92ed82bc7858cd25de9f0fb8f0e"
+    },
+    {
+      "file": "assets/v0.3/map_objects.png",
+      "id": "ZC-ART-03-map_objects",
+      "origin": "geração integrada nesta sessão, sem API externa",
+      "dimensions_px": [
+        1536,
+        1024
+      ],
+      "regions": 16,
+      "component": "Camada A dos módulos comuns e temáticos; cartas/itens quando correspondente.",
+      "status": "integrado",
+      "sha256": "bb097b6772bae7e68b3ac1c15399d83d950c7c7769fdc514a66cb2e5f592e684"
+    },
+    {
+      "file": "assets/v0.3/shelter.png",
+      "id": "ZC-ART-03-shelter",
+      "origin": "geração integrada nesta sessão, sem API externa",
+      "dimensions_px": [
+        1536,
+        1024
+      ],
+      "regions": 1,
+      "component": "Painel do abrigo, cena contínua com etiquetas vetoriais.",
+      "status": "integrado",
+      "sha256": "9db41c5cc05384fd87512e80e2ed03790f9439a8ab063efdd75338c37da5f477"
+    },
+    {
+      "file": "assets/v0.3/map_objects_alpha.png",
+      "origin": "edição integrada do gerador: fundo transparente dos mesmos 16 objetos",
+      "dimensions_px": [
+        1536,
+        1024
+      ],
+      "component": "Mapas e itens; substitui a prancha opaca na composição",
+      "status": "integrado; não contado novamente como ilustração",
+      "sha256": "d5c95f3a56602b1eb56138dac4d53ff7b840e858dbd23ad6e22e089229dfa467"
+    },
+    {
+      "file": "src/illustrated_art.py",
+      "origin": "vetorial original por código",
+      "dimensions": "milímetros / vetores escaláveis",
+      "component": "Pisos, texturas discretas, objetos suplementares e construções",
+      "status": "integrado"
+    },
+    {
+      "file": "src/build_illustrated.py",
+      "origin": "vetorial original por código",
+      "dimensions": "milímetros / vetores escaláveis",
+      "component": "Molduras, textos, famílias, ícones funcionais, portas, campos, corte e calibração preservada",
+      "status": "integrado"
+    }
+  ],
+  "limitations": [
+    "Retratos originais mantidos: aproximadamente 165 ppi na ficha; não foram ampliados artificialmente para alegar detalhe adicional.",
+    "Objetos raster pequenos em cartas: fonte 512×341 px, cerca de 300 ppi na área de 43×29 mm; mapas cerca de 170–210 ppi conforme escala de cada sprite.",
+    "Abrigo 1536×1024 px em 180×120 mm: cerca de 217 ppi; cenas de montagem cerca de 176 ppi.",
+    "Nem todas as 324 cartas da caixa antiga foram rediagramadas: a seleção física desta edição mantém exatamente as 114 cartas do kit 0.2. Catálogo completo e PDFs anteriores preservados.",
+    "Não houve impressão física nem playtest humano."
+  ]
+}

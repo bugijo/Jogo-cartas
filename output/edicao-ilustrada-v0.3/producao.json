@@ -1,0 +1,16 @@
+{
+  "rendered_pages": 216,
+  "economic_pages_verified_grayscale": 108,
+  "grayscale_failures": [],
+  "ink_proxy": {
+    "mapa": {
+      "ilustrada": 0.12830206229103458,
+      "economica": 0.07484473458459018
+    },
+    "abrigo": {
+      "ilustrada": 0.1831131121028967,
+      "economica": 0.1469235880775942
+    }
+  },
+  "ink_proxy_note": "Média de luminância de renderização, não medição de cartucho ou CMYK."
+}

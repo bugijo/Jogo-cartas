@@ -1,0 +1,252 @@
+[
+  {
+    "edition": "ilustrada",
+    "file": "01_inicial/01_comece_aqui.pdf",
+    "pages": 6
+  },
+  {
+    "edition": "ilustrada",
+    "file": "01_inicial/02_cartas_duplex.pdf",
+    "pages": 14
+  },
+  {
+    "edition": "ilustrada",
+    "file": "01_inicial/03_lia_ivo.pdf",
+    "pages": 1
+  },
+  {
+    "edition": "ilustrada",
+    "file": "01_inicial/04_modulos_locais.pdf",
+    "pages": 4
+  },
+  {
+    "edition": "ilustrada",
+    "file": "01_inicial/05_montagem_mercado.pdf",
+    "pages": 1
+  },
+  {
+    "edition": "ilustrada",
+    "file": "01_inicial/06_paineis_registros.pdf",
+    "pages": 3
+  },
+  {
+    "edition": "ilustrada",
+    "file": "01_inicial/07_marcadores.pdf",
+    "pages": 1
+  },
+  {
+    "edition": "ilustrada",
+    "file": "01_inicial/08_divisorias.pdf",
+    "pages": 1
+  },
+  {
+    "edition": "ilustrada",
+    "file": "01_inicial/09_calibracao_duplex.pdf",
+    "pages": 2
+  },
+  {
+    "edition": "ilustrada",
+    "file": "02_complemento/01_cartas_complemento_duplex.pdf",
+    "pages": 12
+  },
+  {
+    "edition": "ilustrada",
+    "file": "02_complemento/02_herois_resgataveis.pdf",
+    "pages": 6
+  },
+  {
+    "edition": "ilustrada",
+    "file": "02_complemento/03_montagens_restantes.pdf",
+    "pages": 5
+  },
+  {
+    "edition": "ilustrada",
+    "file": "02_complemento/04_manual_revisado.pdf",
+    "pages": 8
+  },
+  {
+    "edition": "ilustrada",
+    "file": "02_complemento/05_campanha_cinco_dias.pdf",
+    "pages": 3
+  },
+  {
+    "edition": "ilustrada",
+    "file": "02_complemento/06_mapa_geral.pdf",
+    "pages": 1
+  },
+  {
+    "edition": "ilustrada",
+    "file": "02_complemento/07_registro_adicional.pdf",
+    "pages": 2
+  },
+  {
+    "edition": "ilustrada",
+    "file": "02_complemento/08_tokens_resgataveis.pdf",
+    "pages": 1
+  },
+  {
+    "edition": "ilustrada",
+    "file": "02_complemento/09_moradores_adicional.pdf",
+    "pages": 1
+  },
+  {
+    "edition": "ilustrada",
+    "file": "extras/24_fichas.pdf",
+    "pages": 12
+  },
+  {
+    "edition": "ilustrada",
+    "file": "extras/mapa_condomínio.pdf",
+    "pages": 4
+  },
+  {
+    "edition": "ilustrada",
+    "file": "extras/mapa_estação.pdf",
+    "pages": 4
+  },
+  {
+    "edition": "ilustrada",
+    "file": "extras/mapa_hospital.pdf",
+    "pages": 4
+  },
+  {
+    "edition": "ilustrada",
+    "file": "extras/mapa_mercado.pdf",
+    "pages": 4
+  },
+  {
+    "edition": "ilustrada",
+    "file": "extras/mapa_oficina.pdf",
+    "pages": 4
+  },
+  {
+    "edition": "ilustrada",
+    "file": "extras/mapa_posto.pdf",
+    "pages": 4
+  },
+  {
+    "edition": "economica",
+    "file": "01_inicial/01_comece_aqui.pdf",
+    "pages": 6
+  },
+  {
+    "edition": "economica",
+    "file": "01_inicial/02_cartas_duplex.pdf",
+    "pages": 14
+  },
+  {
+    "edition": "economica",
+    "file": "01_inicial/03_lia_ivo.pdf",
+    "pages": 1
+  },
+  {
+    "edition": "economica",
+    "file": "01_inicial/04_modulos_locais.pdf",
+    "pages": 4
+  },
+  {
+    "edition": "economica",
+    "file": "01_inicial/05_montagem_mercado.pdf",
+    "pages": 1
+  },
+  {
+    "edition": "economica",
+    "file": "01_inicial/06_paineis_registros.pdf",
+    "pages": 3
+  },
+  {
+    "edition": "economica",
+    "file": "01_inicial/07_marcadores.pdf",
+    "pages": 1
+  },
+  {
+    "edition": "economica",
+    "file": "01_inicial/08_divisorias.pdf",
+    "pages": 1
+  },
+  {
+    "edition": "economica",
+    "file": "01_inicial/09_calibracao_duplex.pdf",
+    "pages": 2
+  },
+  {
+    "edition": "economica",
+    "file": "02_complemento/01_cartas_complemento_duplex.pdf",
+    "pages": 12
+  },
+  {
+    "edition": "economica",
+    "file": "02_complemento/02_herois_resgataveis.pdf",
+    "pages": 6
+  },
+  {
+    "edition": "economica",
+    "file": "02_complemento/03_montagens_restantes.pdf",
+    "pages": 5
+  },
+  {
+    "edition": "economica",
+    "file": "02_complemento/04_manual_revisado.pdf",
+    "pages": 8
+  },
+  {
+    "edition": "economica",
+    "file": "02_complemento/05_campanha_cinco_dias.pdf",
+    "pages": 3
+  },
+  {
+    "edition": "economica",
+    "file": "02_complemento/06_mapa_geral.pdf",
+    "pages": 1
+  },
+  {
+    "edition": "economica",
+    "file": "02_complemento/07_registro_adicional.pdf",
+    "pages": 2
+  },
+  {
+    "edition": "economica",
+    "file": "02_complemento/08_tokens_resgataveis.pdf",
+    "pages": 1
+  },
+  {
+    "edition": "economica",
+    "file": "02_complemento/09_moradores_adicional.pdf",
+    "pages": 1
+  },
+  {
+    "edition": "economica",
+    "file": "extras/24_fichas.pdf",
+    "pages": 12
+  },
+  {
+    "edition": "economica",
+    "file": "extras/mapa_condomínio.pdf",
+    "pages": 4
+  },
+  {
+    "edition": "economica",
+    "file": "extras/mapa_estação.pdf",
+    "pages": 4
+  },
+  {
+    "edition": "economica",
+    "file": "extras/mapa_hospital.pdf",
+    "pages": 4
+  },
+  {
+    "edition": "economica",
+    "file": "extras/mapa_mercado.pdf",
+    "pages": 4
+  },
+  {
+    "edition": "economica",
+    "file": "extras/mapa_oficina.pdf",
+    "pages": 4
+  },
+  {
+    "edition": "economica",
+    "file": "extras/mapa_posto.pdf",
+    "pages": 4
+  }
+]

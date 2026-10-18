@@ -123,7 +123,7 @@ def floor(c,x,y,w,h,z,theme='Neutro'):
  # Fine paving, cracked edges and plant growth; no false walls.
  for j in range(1,7):line(c,x+j*w/7,y,x+j*w/7,y+h,'#e4e4dc',.25)
  for j in range(1,5):line(c,x,y+j*h/5,x+w,y+j*h/5,'#e4e4dc',.25)
- prop(c,THEMES[theme][z-1],x+w*.54,y+h*.60,w*.42,h*.34,z)
+ prop(c,THEMES[theme][z-1],x+w*.57,y+h*.60,w*.39,h*.34,z)
  prop(c,'crate' if z%3 else 'pallet',x+w*.06,y+h*.13,w*.34,h*.26,z)
  for j in range(3):
   xx=x+w*(.78+j*.045);yy=y+h*.12

@@ -19,3 +19,12 @@
 - Ciclo 5: 324 cartas/24 fichas/198 marcadores; alternativa econômica de 168 cartas com registro de recursos; calibração corrigida após inspeção.
 - Ciclo 6: nove testes e 37 verificações digitais; revisão independente; correções de emboscada, contato dos resgates, reparo da van, efeitos de Oficina/Garagem e Colapso.
 - Não houve impressão física nem playtest humano. Arte de seis peças/estruturas e cenários finais permanece pendente.
+
+## 0.3 — edição ilustrada e econômica (regras 0.2)
+- Base real 9c38aa5 preservada; branch arte/pnp-edicao-ilustrada-v0-3, sem merge na anterior.
+- Mesmos personagens, regras, atributos, progressões, probabilidades, custos, 114 cartas e 57 marcadores do kit; catálogo 324/24 preservado.
+- Três pranchas novas (23 regiões) e derivação transparente dos objetos; mapas com arte separada da geometria, seis montagens e variantes opcionais.
+- Abrigo com cena contínua e grade administrativa original; fichas com retratos canônicos e espaços de carga; cartas com títulos/arte em destaque e versos secretos comuns.
+- Econômica mantém as mesmas 25+33=58 folhas, com imagens em cinza e fundos mais claros. Extras ficam em pacote separado.
+- Correção de recortes irregulares nas pranchas antigas, sem substituir a arte: itens vizinhos deixam de aparecer nas bordas.
+- Fontes editáveis, SVGs auxiliares, índices, provas digitais e pacotes verificáveis. Não houve impressão física ou playtest humano.

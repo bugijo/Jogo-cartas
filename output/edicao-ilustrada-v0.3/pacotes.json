@@ -1,0 +1,32 @@
+[
+  {
+    "file": "Zona-Zero-0.3-ilustrada-58-folhas.zip",
+    "bytes": 77232760,
+    "sha256": "9f1377c41db7b3a1576834dc8a8fd8e3acbc8f8e778fb86b58a0472fdf597cdc",
+    "files": 20
+  },
+  {
+    "file": "Zona-Zero-0.3-economica-58-folhas.zip",
+    "bytes": 25275266,
+    "sha256": "f52fe8d7fdc6b890bddd3b24e274535adaf3eb0403cc08996d7f9e37e75bf4eb",
+    "files": 20
+  },
+  {
+    "file": "Zona-Zero-0.3-extras-opcionais.zip",
+    "bytes": 39385094,
+    "sha256": "2c0c7940f2c3ec94a13ceb1155491db7702971f9be22814bf50dbd4dcf2c7193",
+    "files": 15
+  },
+  {
+    "file": "Zona-Zero-0.3-fontes-editaveis.zip",
+    "bytes": 42334997,
+    "sha256": "c45e91f2aa874e36fa8e2286ad037bcda6de297474c7463811b3c796a2386446",
+    "files": 60
+  },
+  {
+    "file": "Zona-Zero-0.3-conferencia-visual.zip",
+    "bytes": 20061864,
+    "sha256": "f686393103dd14f437ff9cda790413676643ce83ff66cd42cbfb24f13968d265",
+    "files": 87
+  }
+]

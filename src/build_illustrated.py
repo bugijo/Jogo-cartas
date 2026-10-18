@@ -22,26 +22,39 @@ def heading(c,title,sub,W=297,H=210):
  a.rect(c,10*mm,(H-23)*mm,(W-20)*mm,13*mm,a.PAPER,stroke=a.PAPER)
  txt(c,title,13,H-19,17,True);txt(c,sub,11,H-30,8)
 
+REGIONS={
+ 'equipment.png':([[6,504],[518,1017],[1031,1530]],[[3,296],[306,612],[622,1017]]),
+ 'buildings.png':([[11,500],[520,1015],[1036,1526]],[[8,332],[348,673],[689,1015]]),
+ 'portraits_01.png':([[11,331],[352,673],[693,1016]],[[9,374],[390,759],[772,1139],[1153,1524]]),
+ 'portraits_02.png':([[8,335],[349,676],[690,1017]],[[6,374],[385,761],[772,1134],[1144,1527]]),
+ 'encounters.png':([[0,506],[520,1024]],[[0,346],[357,707],[718,1092],[1102,1536]]),
+ 'enemies.png':([[22,600],[623,1201]],[[0,600],[619,1267]])}
+DERIVED=set()
 def art_for_print(art):
+ art=art.copy();name=Path(art['path']).name
+ if 'crop' not in art and name in REGIONS:
+  cols,rows=REGIONS[name];l,r=cols[art.get('col',0)];t,bot=rows[art.get('row',0)];art['crop']=[l,t,r,bot]
  if not a.ECON:return art
  path=P/art['path'];out=P/'assets/v0.3/economica'/path.name
- if not out.exists():
+ if out not in DERIVED:
   from PIL import Image,ImageOps
   out.parent.mkdir(parents=True,exist_ok=True)
-  im=ImageOps.grayscale(Image.open(path));im=im.point(lambda v:min(255,int(v*.75+63.75)));im.save(out)
+  original=Image.open(path);im=ImageOps.grayscale(original);im=im.point(lambda v:min(255,int(v*.75+63.75)))
+  if original.mode=='RGBA':im=Image.merge('LA',(im,original.getchannel('A')))
+  im.save(out);DERIVED.add(out)
  result=art.copy();result['path']=str(out.relative_to(P));return result
 
 def raster(c,art,x,y,w,h):
  art=art_for_print(art)
  if 'crop' not in art:b.sheet_art(c,art,x*mm,y*mm,w*mm,h*mm);return
  from PIL import Image
- iw,ih=Image.open(P/art['path']).size;l,t,r,bot=art['crop'];cw,ch=r-l,bot-t;scale=min(w*mm/cw,h*mm/ch);ax=x*mm+(w*mm-cw*scale)/2;ay=y*mm+(h*mm-ch*scale)/2
- c.saveState();path=c.beginPath();path.rect(ax,ay,cw*scale,ch*scale);c.clipPath(path,stroke=0)
+ iw,ih=Image.open(P/art['path']).size;l,t,r,bot=art['crop'];cw,ch=r-l,bot-t;scale=(max if art.get('fill') else min)(w*mm/cw,h*mm/ch);ax=x*mm+(w*mm-cw*scale)/2;ay=y*mm+(h*mm-ch*scale)/2
+ c.saveState();path=c.beginPath();path.rect(x*mm,y*mm,w*mm,h*mm) if art.get('fill') else path.rect(ax,ay,cw*scale,ch*scale);c.clipPath(path,stroke=0)
  c.drawImage(str(P/art['path']),ax-l*scale,ay-(ih-bot)*scale,width=iw*scale,height=ih*scale,mask='auto');c.restoreState()
 def portrait(c,hero,x,y,w,h):
- hcopy=hero.copy();hcopy['art']=art_for_print(hero['art']);b.clip_portrait(c,hcopy,x,y,w,h)
+ art=hero['art'].copy();art['fill']=True;raster(c,art,x/mm,y/mm,w/mm,h/mm)
 def sprite(c,index,x,y,w,h):
- art=dict(path='assets/v0.3/map_objects.png',col=index%4,row=index//4,cols=4,rows=4)
+ art=dict(path='assets/v0.3/map_objects_alpha.png',col=index%4,row=index//4,cols=4,rows=4)
  if (P/art['path']).exists():b.sheet_art(c,art_for_print(art),x,y,w,h)
 a.SPRITE_DRAW=sprite
 def scene(c,index,x,y,w,h):
@@ -194,7 +207,14 @@ def card_art(c,card,x,y,large=False):
    arts={'Sozinho':b.lookup('Bia','MOR'),'Parceiro ou parceira':b.lookup('Vicente e Sol','MOR'),'Filho ou filha':b.lookup('Jana e criança','MOR'),'Cachorro':b.lookup('Aline e cão','MOR'),'Parceiro e cachorro':b.lookup('Aline e cão','MOR')}
    raster(c,arts[name],ax,ay,aw,ah);return
   elif fam=='INT':
-   art=b.lookup('Jana e criança' if name=='Solidário' else 'Vicente e Sol' if name=='Assustado' else 'Raul e Otávio' if name=='Oportunista' else 'Hugo','MOR');raster(c,art,ax,ay,aw,ah);return
+   if name=='Solidário':raster(c,b.lookup('Cozinha','STR'),ax,ay,aw,ah)
+   elif name=='Assustado':raster(c,b.lookup('Lanterna','EQU'),ax,ay,aw,ah)
+   elif name=='Oportunista':
+    a.prop(c,'can',ax*mm,ay*mm,aw*.65*mm,ah*mm);a.line(c,(ax+aw*.55)*mm,(ay+ah*.4)*mm,(ax+aw*.95)*mm,(ay+ah*.4)*mm,a.RUST,2)
+   else:
+    for j in range(6):a.line(c,(ax+j*aw/6)*mm,ay*mm,(ax+j*aw/6)*mm,(ay+ah)*mm,a.OLIVE,2)
+    a.line(c,ax*mm,(ay+ah*.5)*mm,(ax+aw)*mm,(ay+ah*.5)*mm,a.RUST,2)
+   return
   else:kind2=kind.get(name,'bench')
   a.prop(c,kind2,ax*mm,ay*mm,aw*mm,ah*mm)
 

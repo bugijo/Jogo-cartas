@@ -1,0 +1,18 @@
+[
+  {
+    "edition": "ilustrada",
+    "intentions": 12,
+    "maximum_mean_pixel_difference": 2.985486802282405e-05,
+    "identical_layout_and_content": true,
+    "threshold": 0.6,
+    "reason": "Subpixel rasterization can differ across original positions; maximum average difference in RGB 0..255."
+  },
+  {
+    "edition": "economica",
+    "intentions": 12,
+    "maximum_mean_pixel_difference": 2.2391151017118034e-05,
+    "identical_layout_and_content": true,
+    "threshold": 0.6,
+    "reason": "Subpixel rasterization can differ across original positions; maximum average difference in RGB 0..255."
+  }
+]

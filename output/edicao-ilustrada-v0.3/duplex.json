@@ -1,0 +1,2054 @@
+[
+  {
+    "file": "/workspace/zona-zero-comunidade/output/edicao-ilustrada-v0.3/ilustrada/01_inicial/02_cartas_duplex.pdf",
+    "page": 2,
+    "id": "ZC-VIN-0001",
+    "family": "VIN",
+    "row": 0,
+    "front_col": 0,
+    "back_col": 2
+  },
+  {
+    "file": "/workspace/zona-zero-comunidade/output/edicao-ilustrada-v0.3/ilustrada/01_inicial/02_cartas_duplex.pdf",
+    "page": 2,
+    "id": "ZC-VIN-0002",
+    "family": "VIN",
+    "row": 0,
+    "front_col": 1,
+    "back_col": 1
+  },
+  {
+    "file": "/workspace/zona-zero-comunidade/output/edicao-ilustrada-v0.3/ilustrada/01_inicial/02_cartas_duplex.pdf",
+    "page": 2,
+    "id": "ZC-VIN-0003",
+    "family": "VIN",
+    "row": 0,
+    "front_col": 2,
+    "back_col": 0
+  },
+  {
+    "file": "/workspace/zona-zero-comunidade/output/edicao-ilustrada-v0.3/ilustrada/01_inicial/02_cartas_duplex.pdf",
+    "page": 2,
+    "id": "ZC-VIN-0004",
+    "family": "VIN",
+    "row": 1,
+    "front_col": 0,
+    "back_col": 2
+  },
+  {
+    "file": "/workspace/zona-zero-comunidade/output/edicao-ilustrada-v0.3/ilustrada/01_inicial/02_cartas_duplex.pdf",
+    "page": 2,
+    "id": "ZC-VIN-0005",
+    "family": "VIN",
+    "row": 1,
+    "front_col": 1,
+    "back_col": 1
+  },
+  {
+    "file": "/workspace/zona-zero-comunidade/output/edicao-ilustrada-v0.3/ilustrada/01_inicial/02_cartas_duplex.pdf",
+    "page": 2,
+    "id": "ZC-VIN-0006",
+    "family": "VIN",
+    "row": 1,
+    "front_col": 2,
+    "back_col": 0
+  },
+  {
+    "file": "/workspace/zona-zero-comunidade/output/edicao-ilustrada-v0.3/ilustrada/01_inicial/02_cartas_duplex.pdf",
+    "page": 2,
+    "id": "ZC-VIN-0007",
+    "family": "VIN",
+    "row": 2,
+    "front_col": 0,
+    "back_col": 2
+  },
+  {
+    "file": "/workspace/zona-zero-comunidade/output/edicao-ilustrada-v0.3/ilustrada/01_inicial/02_cartas_duplex.pdf",
+    "page": 2,
+    "id": "ZC-VIN-0008",
+    "family": "VIN",
+    "row": 2,
+    "front_col": 1,
+    "back_col": 1
+  },
+  {
+    "file": "/workspace/zona-zero-comunidade/output/edicao-ilustrada-v0.3/ilustrada/01_inicial/02_cartas_duplex.pdf",
+    "page": 2,
+    "id": "ZC-VIN-0009",
+    "family": "VIN",
+    "row": 2,
+    "front_col": 2,
+    "back_col": 0
+  },
+  {
+    "file": "/workspace/zona-zero-comunidade/output/edicao-ilustrada-v0.3/ilustrada/01_inicial/02_cartas_duplex.pdf",
+    "page": 4,
+    "id": "ZC-VIN-0010",
+    "family": "VIN",
+    "row": 0,
+    "front_col": 0,
+    "back_col": 2
+  },
+  {
+    "file": "/workspace/zona-zero-comunidade/output/edicao-ilustrada-v0.3/ilustrada/01_inicial/02_cartas_duplex.pdf",
+    "page": 4,
+    "id": "ZC-VIN-0011",
+    "family": "VIN",
+    "row": 0,
+    "front_col": 1,
+    "back_col": 1
+  },
+  {
+    "file": "/workspace/zona-zero-comunidade/output/edicao-ilustrada-v0.3/ilustrada/01_inicial/02_cartas_duplex.pdf",
+    "page": 4,
+    "id": "ZC-VIN-0012",
+    "family": "VIN",
+    "row": 0,
+    "front_col": 2,
+    "back_col": 0
+  },
+  {
+    "file": "/workspace/zona-zero-comunidade/output/edicao-ilustrada-v0.3/ilustrada/01_inicial/02_cartas_duplex.pdf",
+    "page": 4,
+    "id": "ZC-INT-0001",
+    "family": "INT",
+    "row": 1,
+    "front_col": 0,
+    "back_col": 2
+  },
+  {
+    "file": "/workspace/zona-zero-comunidade/output/edicao-ilustrada-v0.3/ilustrada/01_inicial/02_cartas_duplex.pdf",
+    "page": 4,
+    "id": "ZC-INT-0002",
+    "family": "INT",
+    "row": 1,
+    "front_col": 1,
+    "back_col": 1
+  },
+  {
+    "file": "/workspace/zona-zero-comunidade/output/edicao-ilustrada-v0.3/ilustrada/01_inicial/02_cartas_duplex.pdf",
+    "page": 4,
+    "id": "ZC-INT-0003",
+    "family": "INT",
+    "row": 1,
+    "front_col": 2,
+    "back_col": 0
+  },
+  {
+    "file": "/workspace/zona-zero-comunidade/output/edicao-ilustrada-v0.3/ilustrada/01_inicial/02_cartas_duplex.pdf",
+    "page": 4,
+    "id": "ZC-INT-0004",
+    "family": "INT",
+    "row": 2,
+    "front_col": 0,
+    "back_col": 2
+  },
+  {
+    "file": "/workspace/zona-zero-comunidade/output/edicao-ilustrada-v0.3/ilustrada/01_inicial/02_cartas_duplex.pdf",
+    "page": 4,
+    "id": "ZC-INT-0005",
+    "family": "INT",
+    "row": 2,
+    "front_col": 1,
+    "back_col": 1
+  },
+  {
+    "file": "/workspace/zona-zero-comunidade/output/edicao-ilustrada-v0.3/ilustrada/01_inicial/02_cartas_duplex.pdf",
+    "page": 4,
+    "id": "ZC-INT-0006",
+    "family": "INT",
+    "row": 2,
+    "front_col": 2,
+    "back_col": 0
+  },
+  {
+    "file": "/workspace/zona-zero-comunidade/output/edicao-ilustrada-v0.3/ilustrada/01_inicial/02_cartas_duplex.pdf",
+    "page": 6,
+    "id": "ZC-INT-0007",
+    "family": "INT",
+    "row": 0,
+    "front_col": 0,
+    "back_col": 2
+  },
+  {
+    "file": "/workspace/zona-zero-comunidade/output/edicao-ilustrada-v0.3/ilustrada/01_inicial/02_cartas_duplex.pdf",
+    "page": 6,
+    "id": "ZC-INT-0008",
+    "family": "INT",
+    "row": 0,
+    "front_col": 1,
+    "back_col": 1
+  },
+  {
+    "file": "/workspace/zona-zero-comunidade/output/edicao-ilustrada-v0.3/ilustrada/01_inicial/02_cartas_duplex.pdf",
+    "page": 6,
+    "id": "ZC-INT-0009",
+    "family": "INT",
+    "row": 0,
+    "front_col": 2,
+    "back_col": 0
+  },
+  {
+    "file": "/workspace/zona-zero-comunidade/output/edicao-ilustrada-v0.3/ilustrada/01_inicial/02_cartas_duplex.pdf",
+    "page": 6,
+    "id": "ZC-INT-0010",
+    "family": "INT",
+    "row": 1,
+    "front_col": 0,
+    "back_col": 2
+  },
+  {
+    "file": "/workspace/zona-zero-comunidade/output/edicao-ilustrada-v0.3/ilustrada/01_inicial/02_cartas_duplex.pdf",
+    "page": 6,
+    "id": "ZC-INT-0011",
+    "family": "INT",
+    "row": 1,
+    "front_col": 1,
+    "back_col": 1
+  },
+  {
+    "file": "/workspace/zona-zero-comunidade/output/edicao-ilustrada-v0.3/ilustrada/01_inicial/02_cartas_duplex.pdf",
+    "page": 6,
+    "id": "ZC-INT-0012",
+    "family": "INT",
+    "row": 1,
+    "front_col": 2,
+    "back_col": 0
+  },
+  {
+    "file": "/workspace/zona-zero-comunidade/output/edicao-ilustrada-v0.3/ilustrada/01_inicial/02_cartas_duplex.pdf",
+    "page": 6,
+    "id": "ZC-EQU-0007",
+    "family": "EQU",
+    "row": 2,
+    "front_col": 0,
+    "back_col": 2
+  },
+  {
+    "file": "/workspace/zona-zero-comunidade/output/edicao-ilustrada-v0.3/ilustrada/01_inicial/02_cartas_duplex.pdf",
+    "page": 6,
+    "id": "ZC-EQU-0008",
+    "family": "EQU",
+    "row": 2,
+    "front_col": 1,
+    "back_col": 1
+  },
+  {
+    "file": "/workspace/zona-zero-comunidade/output/edicao-ilustrada-v0.3/ilustrada/01_inicial/02_cartas_duplex.pdf",
+    "page": 6,
+    "id": "ZC-EQU-0014",
+    "family": "EQU",
+    "row": 2,
+    "front_col": 2,
+    "back_col": 0
+  },
+  {
+    "file": "/workspace/zona-zero-comunidade/output/edicao-ilustrada-v0.3/ilustrada/01_inicial/02_cartas_duplex.pdf",
+    "page": 8,
+    "id": "ZC-EQU-0017",
+    "family": "EQU",
+    "row": 0,
+    "front_col": 0,
+    "back_col": 2
+  },
+  {
+    "file": "/workspace/zona-zero-comunidade/output/edicao-ilustrada-v0.3/ilustrada/01_inicial/02_cartas_duplex.pdf",
+    "page": 8,
+    "id": "ZC-SAQ-0001",
+    "family": "SAQ",
+    "row": 0,
+    "front_col": 1,
+    "back_col": 1
+  },
+  {
+    "file": "/workspace/zona-zero-comunidade/output/edicao-ilustrada-v0.3/ilustrada/01_inicial/02_cartas_duplex.pdf",
+    "page": 8,
+    "id": "ZC-SAQ-0002",
+    "family": "SAQ",
+    "row": 0,
+    "front_col": 2,
+    "back_col": 0
+  },
+  {
+    "file": "/workspace/zona-zero-comunidade/output/edicao-ilustrada-v0.3/ilustrada/01_inicial/02_cartas_duplex.pdf",
+    "page": 8,
+    "id": "ZC-SAQ-0003",
+    "family": "SAQ",
+    "row": 1,
+    "front_col": 0,
+    "back_col": 2
+  },
+  {
+    "file": "/workspace/zona-zero-comunidade/output/edicao-ilustrada-v0.3/ilustrada/01_inicial/02_cartas_duplex.pdf",
+    "page": 8,
+    "id": "ZC-SAQ-0004",
+    "family": "SAQ",
+    "row": 1,
+    "front_col": 1,
+    "back_col": 1
+  },
+  {
+    "file": "/workspace/zona-zero-comunidade/output/edicao-ilustrada-v0.3/ilustrada/01_inicial/02_cartas_duplex.pdf",
+    "page": 8,
+    "id": "ZC-SAQ-0005",
+    "family": "SAQ",
+    "row": 1,
+    "front_col": 2,
+    "back_col": 0
+  },
+  {
+    "file": "/workspace/zona-zero-comunidade/output/edicao-ilustrada-v0.3/ilustrada/01_inicial/02_cartas_duplex.pdf",
+    "page": 8,
+    "id": "ZC-SAQ-0006",
+    "family": "SAQ",
+    "row": 2,
+    "front_col": 0,
+    "back_col": 2
+  },
+  {
+    "file": "/workspace/zona-zero-comunidade/output/edicao-ilustrada-v0.3/ilustrada/01_inicial/02_cartas_duplex.pdf",
+    "page": 8,
+    "id": "ZC-VIA-0001",
+    "family": "VIA",
+    "row": 2,
+    "front_col": 1,
+    "back_col": 1
+  },
+  {
+    "file": "/workspace/zona-zero-comunidade/output/edicao-ilustrada-v0.3/ilustrada/01_inicial/02_cartas_duplex.pdf",
+    "page": 8,
+    "id": "ZC-VIA-0002",
+    "family": "VIA",
+    "row": 2,
+    "front_col": 2,
+    "back_col": 0
+  },
+  {
+    "file": "/workspace/zona-zero-comunidade/output/edicao-ilustrada-v0.3/ilustrada/01_inicial/02_cartas_duplex.pdf",
+    "page": 10,
+    "id": "ZC-VIA-0003",
+    "family": "VIA",
+    "row": 0,
+    "front_col": 0,
+    "back_col": 2
+  },
+  {
+    "file": "/workspace/zona-zero-comunidade/output/edicao-ilustrada-v0.3/ilustrada/01_inicial/02_cartas_duplex.pdf",
+    "page": 10,
+    "id": "ZC-VIA-0004",
+    "family": "VIA",
+    "row": 0,
+    "front_col": 1,
+    "back_col": 1
+  },
+  {
+    "file": "/workspace/zona-zero-comunidade/output/edicao-ilustrada-v0.3/ilustrada/01_inicial/02_cartas_duplex.pdf",
+    "page": 10,
+    "id": "ZC-VIA-0005",
+    "family": "VIA",
+    "row": 0,
+    "front_col": 2,
+    "back_col": 0
+  },
+  {
+    "file": "/workspace/zona-zero-comunidade/output/edicao-ilustrada-v0.3/ilustrada/01_inicial/02_cartas_duplex.pdf",
+    "page": 10,
+    "id": "ZC-VIA-0006",
+    "family": "VIA",
+    "row": 1,
+    "front_col": 0,
+    "back_col": 2
+  },
+  {
+    "file": "/workspace/zona-zero-comunidade/output/edicao-ilustrada-v0.3/ilustrada/01_inicial/02_cartas_duplex.pdf",
+    "page": 10,
+    "id": "ZC-VIA-0007",
+    "family": "VIA",
+    "row": 1,
+    "front_col": 1,
+    "back_col": 1
+  },
+  {
+    "file": "/workspace/zona-zero-comunidade/output/edicao-ilustrada-v0.3/ilustrada/01_inicial/02_cartas_duplex.pdf",
+    "page": 10,
+    "id": "ZC-VIA-0008",
+    "family": "VIA",
+    "row": 1,
+    "front_col": 2,
+    "back_col": 0
+  },
+  {
+    "file": "/workspace/zona-zero-comunidade/output/edicao-ilustrada-v0.3/ilustrada/01_inicial/02_cartas_duplex.pdf",
+    "page": 10,
+    "id": "ZC-VIA-0009",
+    "family": "VIA",
+    "row": 2,
+    "front_col": 0,
+    "back_col": 2
+  },
+  {
+    "file": "/workspace/zona-zero-comunidade/output/edicao-ilustrada-v0.3/ilustrada/01_inicial/02_cartas_duplex.pdf",
+    "page": 10,
+    "id": "ZC-VIA-0010",
+    "family": "VIA",
+    "row": 2,
+    "front_col": 1,
+    "back_col": 1
+  },
+  {
+    "file": "/workspace/zona-zero-comunidade/output/edicao-ilustrada-v0.3/ilustrada/01_inicial/02_cartas_duplex.pdf",
+    "page": 10,
+    "id": "ZC-VIA-0011",
+    "family": "VIA",
+    "row": 2,
+    "front_col": 2,
+    "back_col": 0
+  },
+  {
+    "file": "/workspace/zona-zero-comunidade/output/edicao-ilustrada-v0.3/ilustrada/01_inicial/02_cartas_duplex.pdf",
+    "page": 12,
+    "id": "ZC-VIA-0012",
+    "family": "VIA",
+    "row": 0,
+    "front_col": 0,
+    "back_col": 2
+  },
+  {
+    "file": "/workspace/zona-zero-comunidade/output/edicao-ilustrada-v0.3/ilustrada/01_inicial/02_cartas_duplex.pdf",
+    "page": 12,
+    "id": "ZC-HOR-0001",
+    "family": "HOR",
+    "row": 0,
+    "front_col": 1,
+    "back_col": 1
+  },
+  {
+    "file": "/workspace/zona-zero-comunidade/output/edicao-ilustrada-v0.3/ilustrada/01_inicial/02_cartas_duplex.pdf",
+    "page": 12,
+    "id": "ZC-HOR-0002",
+    "family": "HOR",
+    "row": 0,
+    "front_col": 2,
+    "back_col": 0
+  },
+  {
+    "file": "/workspace/zona-zero-comunidade/output/edicao-ilustrada-v0.3/ilustrada/01_inicial/02_cartas_duplex.pdf",
+    "page": 12,
+    "id": "ZC-HOR-0003",
+    "family": "HOR",
+    "row": 1,
+    "front_col": 0,
+    "back_col": 2
+  },
+  {
+    "file": "/workspace/zona-zero-comunidade/output/edicao-ilustrada-v0.3/ilustrada/01_inicial/02_cartas_duplex.pdf",
+    "page": 12,
+    "id": "ZC-HOR-0004",
+    "family": "HOR",
+    "row": 1,
+    "front_col": 1,
+    "back_col": 1
+  },
+  {
+    "file": "/workspace/zona-zero-comunidade/output/edicao-ilustrada-v0.3/ilustrada/01_inicial/02_cartas_duplex.pdf",
+    "page": 12,
+    "id": "ZC-HOR-0005",
+    "family": "HOR",
+    "row": 1,
+    "front_col": 2,
+    "back_col": 0
+  },
+  {
+    "file": "/workspace/zona-zero-comunidade/output/edicao-ilustrada-v0.3/ilustrada/01_inicial/02_cartas_duplex.pdf",
+    "page": 12,
+    "id": "ZC-HOR-0006",
+    "family": "HOR",
+    "row": 2,
+    "front_col": 0,
+    "back_col": 2
+  },
+  {
+    "file": "/workspace/zona-zero-comunidade/output/edicao-ilustrada-v0.3/ilustrada/01_inicial/02_cartas_duplex.pdf",
+    "page": 12,
+    "id": "ZC-HOR-0007",
+    "family": "HOR",
+    "row": 2,
+    "front_col": 1,
+    "back_col": 1
+  },
+  {
+    "file": "/workspace/zona-zero-comunidade/output/edicao-ilustrada-v0.3/ilustrada/01_inicial/02_cartas_duplex.pdf",
+    "page": 12,
+    "id": "ZC-HOR-0008",
+    "family": "HOR",
+    "row": 2,
+    "front_col": 2,
+    "back_col": 0
+  },
+  {
+    "file": "/workspace/zona-zero-comunidade/output/edicao-ilustrada-v0.3/ilustrada/01_inicial/02_cartas_duplex.pdf",
+    "page": 14,
+    "id": "ZC-HOR-0009",
+    "family": "HOR",
+    "row": 0,
+    "front_col": 0,
+    "back_col": 2
+  },
+  {
+    "file": "/workspace/zona-zero-comunidade/output/edicao-ilustrada-v0.3/ilustrada/01_inicial/02_cartas_duplex.pdf",
+    "page": 14,
+    "id": "ZC-CER-0001",
+    "family": "CER",
+    "row": 0,
+    "front_col": 1,
+    "back_col": 1
+  },
+  {
+    "file": "/workspace/zona-zero-comunidade/output/edicao-ilustrada-v0.3/ilustrada/01_inicial/02_cartas_duplex.pdf",
+    "page": 14,
+    "id": "ZC-CER-0002",
+    "family": "CER",
+    "row": 0,
+    "front_col": 2,
+    "back_col": 0
+  },
+  {
+    "file": "/workspace/zona-zero-comunidade/output/edicao-ilustrada-v0.3/ilustrada/01_inicial/02_cartas_duplex.pdf",
+    "page": 14,
+    "id": "ZC-CER-0003",
+    "family": "CER",
+    "row": 1,
+    "front_col": 0,
+    "back_col": 2
+  },
+  {
+    "file": "/workspace/zona-zero-comunidade/output/edicao-ilustrada-v0.3/ilustrada/01_inicial/02_cartas_duplex.pdf",
+    "page": 14,
+    "id": "ZC-CER-0004",
+    "family": "CER",
+    "row": 1,
+    "front_col": 1,
+    "back_col": 1
+  },
+  {
+    "file": "/workspace/zona-zero-comunidade/output/edicao-ilustrada-v0.3/ilustrada/01_inicial/02_cartas_duplex.pdf",
+    "page": 14,
+    "id": "ZC-CER-0005",
+    "family": "CER",
+    "row": 1,
+    "front_col": 2,
+    "back_col": 0
+  },
+  {
+    "file": "/workspace/zona-zero-comunidade/output/edicao-ilustrada-v0.3/ilustrada/01_inicial/02_cartas_duplex.pdf",
+    "page": 14,
+    "id": "ZC-CER-0006",
+    "family": "CER",
+    "row": 2,
+    "front_col": 0,
+    "back_col": 2
+  },
+  {
+    "file": "/workspace/zona-zero-comunidade/output/edicao-ilustrada-v0.3/ilustrada/01_inicial/02_cartas_duplex.pdf",
+    "page": 14,
+    "id": "ZC-MOR-0001",
+    "family": "MOR",
+    "row": 2,
+    "front_col": 1,
+    "back_col": 1
+  },
+  {
+    "file": "/workspace/zona-zero-comunidade/output/edicao-ilustrada-v0.3/ilustrada/02_complemento/01_cartas_complemento_duplex.pdf",
+    "page": 2,
+    "id": "ZC-PEC-0001",
+    "family": "PEC",
+    "row": 0,
+    "front_col": 0,
+    "back_col": 2
+  },
+  {
+    "file": "/workspace/zona-zero-comunidade/output/edicao-ilustrada-v0.3/ilustrada/02_complemento/01_cartas_complemento_duplex.pdf",
+    "page": 2,
+    "id": "ZC-PEC-0002",
+    "family": "PEC",
+    "row": 0,
+    "front_col": 1,
+    "back_col": 1
+  },
+  {
+    "file": "/workspace/zona-zero-comunidade/output/edicao-ilustrada-v0.3/ilustrada/02_complemento/01_cartas_complemento_duplex.pdf",
+    "page": 2,
+    "id": "ZC-PEC-0003",
+    "family": "PEC",
+    "row": 0,
+    "front_col": 2,
+    "back_col": 0
+  },
+  {
+    "file": "/workspace/zona-zero-comunidade/output/edicao-ilustrada-v0.3/ilustrada/02_complemento/01_cartas_complemento_duplex.pdf",
+    "page": 2,
+    "id": "ZC-PEC-0004",
+    "family": "PEC",
+    "row": 1,
+    "front_col": 0,
+    "back_col": 2
+  },
+  {
+    "file": "/workspace/zona-zero-comunidade/output/edicao-ilustrada-v0.3/ilustrada/02_complemento/01_cartas_complemento_duplex.pdf",
+    "page": 2,
+    "id": "ZC-PEC-0005",
+    "family": "PEC",
+    "row": 1,
+    "front_col": 1,
+    "back_col": 1
+  },
+  {
+    "file": "/workspace/zona-zero-comunidade/output/edicao-ilustrada-v0.3/ilustrada/02_complemento/01_cartas_complemento_duplex.pdf",
+    "page": 2,
+    "id": "ZC-PEC-0006",
+    "family": "PEC",
+    "row": 1,
+    "front_col": 2,
+    "back_col": 0
+  },
+  {
+    "file": "/workspace/zona-zero-comunidade/output/edicao-ilustrada-v0.3/ilustrada/02_complemento/01_cartas_complemento_duplex.pdf",
+    "page": 2,
+    "id": "ZC-EQU-0009",
+    "family": "EQU",
+    "row": 2,
+    "front_col": 0,
+    "back_col": 2
+  },
+  {
+    "file": "/workspace/zona-zero-comunidade/output/edicao-ilustrada-v0.3/ilustrada/02_complemento/01_cartas_complemento_duplex.pdf",
+    "page": 2,
+    "id": "ZC-EQU-0010",
+    "family": "EQU",
+    "row": 2,
+    "front_col": 1,
+    "back_col": 1
+  },
+  {
+    "file": "/workspace/zona-zero-comunidade/output/edicao-ilustrada-v0.3/ilustrada/02_complemento/01_cartas_complemento_duplex.pdf",
+    "page": 2,
+    "id": "ZC-EQU-0011",
+    "family": "EQU",
+    "row": 2,
+    "front_col": 2,
+    "back_col": 0
+  },
+  {
+    "file": "/workspace/zona-zero-comunidade/output/edicao-ilustrada-v0.3/ilustrada/02_complemento/01_cartas_complemento_duplex.pdf",
+    "page": 4,
+    "id": "ZC-EQU-0012",
+    "family": "EQU",
+    "row": 0,
+    "front_col": 0,
+    "back_col": 2
+  },
+  {
+    "file": "/workspace/zona-zero-comunidade/output/edicao-ilustrada-v0.3/ilustrada/02_complemento/01_cartas_complemento_duplex.pdf",
+    "page": 4,
+    "id": "ZC-EQU-0013",
+    "family": "EQU",
+    "row": 0,
+    "front_col": 1,
+    "back_col": 1
+  },
+  {
+    "file": "/workspace/zona-zero-comunidade/output/edicao-ilustrada-v0.3/ilustrada/02_complemento/01_cartas_complemento_duplex.pdf",
+    "page": 4,
+    "id": "ZC-EQU-0015",
+    "family": "EQU",
+    "row": 0,
+    "front_col": 2,
+    "back_col": 0
+  },
+  {
+    "file": "/workspace/zona-zero-comunidade/output/edicao-ilustrada-v0.3/ilustrada/02_complemento/01_cartas_complemento_duplex.pdf",
+    "page": 4,
+    "id": "ZC-EQU-0016",
+    "family": "EQU",
+    "row": 1,
+    "front_col": 0,
+    "back_col": 2
+  },
+  {
+    "file": "/workspace/zona-zero-comunidade/output/edicao-ilustrada-v0.3/ilustrada/02_complemento/01_cartas_complemento_duplex.pdf",
+    "page": 4,
+    "id": "ZC-EQU-0018",
+    "family": "EQU",
+    "row": 1,
+    "front_col": 1,
+    "back_col": 1
+  },
+  {
+    "file": "/workspace/zona-zero-comunidade/output/edicao-ilustrada-v0.3/ilustrada/02_complemento/01_cartas_complemento_duplex.pdf",
+    "page": 4,
+    "id": "ZC-SAQ-0007",
+    "family": "SAQ",
+    "row": 1,
+    "front_col": 2,
+    "back_col": 0
+  },
+  {
+    "file": "/workspace/zona-zero-comunidade/output/edicao-ilustrada-v0.3/ilustrada/02_complemento/01_cartas_complemento_duplex.pdf",
+    "page": 4,
+    "id": "ZC-SAQ-0008",
+    "family": "SAQ",
+    "row": 2,
+    "front_col": 0,
+    "back_col": 2
+  },
+  {
+    "file": "/workspace/zona-zero-comunidade/output/edicao-ilustrada-v0.3/ilustrada/02_complemento/01_cartas_complemento_duplex.pdf",
+    "page": 4,
+    "id": "ZC-SAQ-0009",
+    "family": "SAQ",
+    "row": 2,
+    "front_col": 1,
+    "back_col": 1
+  },
+  {
+    "file": "/workspace/zona-zero-comunidade/output/edicao-ilustrada-v0.3/ilustrada/02_complemento/01_cartas_complemento_duplex.pdf",
+    "page": 4,
+    "id": "ZC-SAQ-0010",
+    "family": "SAQ",
+    "row": 2,
+    "front_col": 2,
+    "back_col": 0
+  },
+  {
+    "file": "/workspace/zona-zero-comunidade/output/edicao-ilustrada-v0.3/ilustrada/02_complemento/01_cartas_complemento_duplex.pdf",
+    "page": 6,
+    "id": "ZC-SAQ-0011",
+    "family": "SAQ",
+    "row": 0,
+    "front_col": 0,
+    "back_col": 2
+  },
+  {
+    "file": "/workspace/zona-zero-comunidade/output/edicao-ilustrada-v0.3/ilustrada/02_complemento/01_cartas_complemento_duplex.pdf",
+    "page": 6,
+    "id": "ZC-SAQ-0012",
+    "family": "SAQ",
+    "row": 0,
+    "front_col": 1,
+    "back_col": 1
+  },
+  {
+    "file": "/workspace/zona-zero-comunidade/output/edicao-ilustrada-v0.3/ilustrada/02_complemento/01_cartas_complemento_duplex.pdf",
+    "page": 6,
+    "id": "ZC-SAQ-0013",
+    "family": "SAQ",
+    "row": 0,
+    "front_col": 2,
+    "back_col": 0
+  },
+  {
+    "file": "/workspace/zona-zero-comunidade/output/edicao-ilustrada-v0.3/ilustrada/02_complemento/01_cartas_complemento_duplex.pdf",
+    "page": 6,
+    "id": "ZC-SAQ-0014",
+    "family": "SAQ",
+    "row": 1,
+    "front_col": 0,
+    "back_col": 2
+  },
+  {
+    "file": "/workspace/zona-zero-comunidade/output/edicao-ilustrada-v0.3/ilustrada/02_complemento/01_cartas_complemento_duplex.pdf",
+    "page": 6,
+    "id": "ZC-SAQ-0015",
+    "family": "SAQ",
+    "row": 1,
+    "front_col": 1,
+    "back_col": 1
+  },
+  {
+    "file": "/workspace/zona-zero-comunidade/output/edicao-ilustrada-v0.3/ilustrada/02_complemento/01_cartas_complemento_duplex.pdf",
+    "page": 6,
+    "id": "ZC-SAQ-0016",
+    "family": "SAQ",
+    "row": 1,
+    "front_col": 2,
+    "back_col": 0
+  },
+  {
+    "file": "/workspace/zona-zero-comunidade/output/edicao-ilustrada-v0.3/ilustrada/02_complemento/01_cartas_complemento_duplex.pdf",
+    "page": 6,
+    "id": "ZC-SAQ-0017",
+    "family": "SAQ",
+    "row": 2,
+    "front_col": 0,
+    "back_col": 2
+  },
+  {
+    "file": "/workspace/zona-zero-comunidade/output/edicao-ilustrada-v0.3/ilustrada/02_complemento/01_cartas_complemento_duplex.pdf",
+    "page": 6,
+    "id": "ZC-SAQ-0018",
+    "family": "SAQ",
+    "row": 2,
+    "front_col": 1,
+    "back_col": 1
+  },
+  {
+    "file": "/workspace/zona-zero-comunidade/output/edicao-ilustrada-v0.3/ilustrada/02_complemento/01_cartas_complemento_duplex.pdf",
+    "page": 6,
+    "id": "ZC-SAQ-0019",
+    "family": "SAQ",
+    "row": 2,
+    "front_col": 2,
+    "back_col": 0
+  },
+  {
+    "file": "/workspace/zona-zero-comunidade/output/edicao-ilustrada-v0.3/ilustrada/02_complemento/01_cartas_complemento_duplex.pdf",
+    "page": 8,
+    "id": "ZC-SAQ-0020",
+    "family": "SAQ",
+    "row": 0,
+    "front_col": 0,
+    "back_col": 2
+  },
+  {
+    "file": "/workspace/zona-zero-comunidade/output/edicao-ilustrada-v0.3/ilustrada/02_complemento/01_cartas_complemento_duplex.pdf",
+    "page": 8,
+    "id": "ZC-SAQ-0021",
+    "family": "SAQ",
+    "row": 0,
+    "front_col": 1,
+    "back_col": 1
+  },
+  {
+    "file": "/workspace/zona-zero-comunidade/output/edicao-ilustrada-v0.3/ilustrada/02_complemento/01_cartas_complemento_duplex.pdf",
+    "page": 8,
+    "id": "ZC-SAQ-0022",
+    "family": "SAQ",
+    "row": 0,
+    "front_col": 2,
+    "back_col": 0
+  },
+  {
+    "file": "/workspace/zona-zero-comunidade/output/edicao-ilustrada-v0.3/ilustrada/02_complemento/01_cartas_complemento_duplex.pdf",
+    "page": 8,
+    "id": "ZC-SAQ-0023",
+    "family": "SAQ",
+    "row": 1,
+    "front_col": 0,
+    "back_col": 2
+  },
+  {
+    "file": "/workspace/zona-zero-comunidade/output/edicao-ilustrada-v0.3/ilustrada/02_complemento/01_cartas_complemento_duplex.pdf",
+    "page": 8,
+    "id": "ZC-SAQ-0024",
+    "family": "SAQ",
+    "row": 1,
+    "front_col": 1,
+    "back_col": 1
+  },
+  {
+    "file": "/workspace/zona-zero-comunidade/output/edicao-ilustrada-v0.3/ilustrada/02_complemento/01_cartas_complemento_duplex.pdf",
+    "page": 8,
+    "id": "ZC-SAQ-0025",
+    "family": "SAQ",
+    "row": 1,
+    "front_col": 2,
+    "back_col": 0
+  },
+  {
+    "file": "/workspace/zona-zero-comunidade/output/edicao-ilustrada-v0.3/ilustrada/02_complemento/01_cartas_complemento_duplex.pdf",
+    "page": 8,
+    "id": "ZC-SAQ-0026",
+    "family": "SAQ",
+    "row": 2,
+    "front_col": 0,
+    "back_col": 2
+  },
+  {
+    "file": "/workspace/zona-zero-comunidade/output/edicao-ilustrada-v0.3/ilustrada/02_complemento/01_cartas_complemento_duplex.pdf",
+    "page": 8,
+    "id": "ZC-SAQ-0027",
+    "family": "SAQ",
+    "row": 2,
+    "front_col": 1,
+    "back_col": 1
+  },
+  {
+    "file": "/workspace/zona-zero-comunidade/output/edicao-ilustrada-v0.3/ilustrada/02_complemento/01_cartas_complemento_duplex.pdf",
+    "page": 8,
+    "id": "ZC-SAQ-0028",
+    "family": "SAQ",
+    "row": 2,
+    "front_col": 2,
+    "back_col": 0
+  },
+  {
+    "file": "/workspace/zona-zero-comunidade/output/edicao-ilustrada-v0.3/ilustrada/02_complemento/01_cartas_complemento_duplex.pdf",
+    "page": 10,
+    "id": "ZC-SAQ-0029",
+    "family": "SAQ",
+    "row": 0,
+    "front_col": 0,
+    "back_col": 2
+  },
+  {
+    "file": "/workspace/zona-zero-comunidade/output/edicao-ilustrada-v0.3/ilustrada/02_complemento/01_cartas_complemento_duplex.pdf",
+    "page": 10,
+    "id": "ZC-SAQ-0030",
+    "family": "SAQ",
+    "row": 0,
+    "front_col": 1,
+    "back_col": 1
+  },
+  {
+    "file": "/workspace/zona-zero-comunidade/output/edicao-ilustrada-v0.3/ilustrada/02_complemento/01_cartas_complemento_duplex.pdf",
+    "page": 10,
+    "id": "ZC-SAQ-0031",
+    "family": "SAQ",
+    "row": 0,
+    "front_col": 2,
+    "back_col": 0
+  },
+  {
+    "file": "/workspace/zona-zero-comunidade/output/edicao-ilustrada-v0.3/ilustrada/02_complemento/01_cartas_complemento_duplex.pdf",
+    "page": 10,
+    "id": "ZC-SAQ-0032",
+    "family": "SAQ",
+    "row": 1,
+    "front_col": 0,
+    "back_col": 2
+  },
+  {
+    "file": "/workspace/zona-zero-comunidade/output/edicao-ilustrada-v0.3/ilustrada/02_complemento/01_cartas_complemento_duplex.pdf",
+    "page": 10,
+    "id": "ZC-SAQ-0033",
+    "family": "SAQ",
+    "row": 1,
+    "front_col": 1,
+    "back_col": 1
+  },
+  {
+    "file": "/workspace/zona-zero-comunidade/output/edicao-ilustrada-v0.3/ilustrada/02_complemento/01_cartas_complemento_duplex.pdf",
+    "page": 10,
+    "id": "ZC-SAQ-0034",
+    "family": "SAQ",
+    "row": 1,
+    "front_col": 2,
+    "back_col": 0
+  },
+  {
+    "file": "/workspace/zona-zero-comunidade/output/edicao-ilustrada-v0.3/ilustrada/02_complemento/01_cartas_complemento_duplex.pdf",
+    "page": 10,
+    "id": "ZC-SAQ-0035",
+    "family": "SAQ",
+    "row": 2,
+    "front_col": 0,
+    "back_col": 2
+  },
+  {
+    "file": "/workspace/zona-zero-comunidade/output/edicao-ilustrada-v0.3/ilustrada/02_complemento/01_cartas_complemento_duplex.pdf",
+    "page": 10,
+    "id": "ZC-SAQ-0036",
+    "family": "SAQ",
+    "row": 2,
+    "front_col": 1,
+    "back_col": 1
+  },
+  {
+    "file": "/workspace/zona-zero-comunidade/output/edicao-ilustrada-v0.3/ilustrada/02_complemento/01_cartas_complemento_duplex.pdf",
+    "page": 10,
+    "id": "ZC-MOR-0002",
+    "family": "MOR",
+    "row": 2,
+    "front_col": 2,
+    "back_col": 0
+  },
+  {
+    "file": "/workspace/zona-zero-comunidade/output/edicao-ilustrada-v0.3/ilustrada/02_complemento/01_cartas_complemento_duplex.pdf",
+    "page": 12,
+    "id": "ZC-MOR-0003",
+    "family": "MOR",
+    "row": 0,
+    "front_col": 0,
+    "back_col": 2
+  },
+  {
+    "file": "/workspace/zona-zero-comunidade/output/edicao-ilustrada-v0.3/ilustrada/02_complemento/01_cartas_complemento_duplex.pdf",
+    "page": 12,
+    "id": "ZC-MOR-0004",
+    "family": "MOR",
+    "row": 0,
+    "front_col": 1,
+    "back_col": 1
+  },
+  {
+    "file": "/workspace/zona-zero-comunidade/output/edicao-ilustrada-v0.3/ilustrada/02_complemento/01_cartas_complemento_duplex.pdf",
+    "page": 12,
+    "id": "ZC-MOR-0005",
+    "family": "MOR",
+    "row": 0,
+    "front_col": 2,
+    "back_col": 0
+  },
+  {
+    "file": "/workspace/zona-zero-comunidade/output/edicao-ilustrada-v0.3/ilustrada/02_complemento/01_cartas_complemento_duplex.pdf",
+    "page": 12,
+    "id": "ZC-MOR-0006",
+    "family": "MOR",
+    "row": 1,
+    "front_col": 0,
+    "back_col": 2
+  },
+  {
+    "file": "/workspace/zona-zero-comunidade/output/edicao-ilustrada-v0.3/ilustrada/02_complemento/01_cartas_complemento_duplex.pdf",
+    "page": 12,
+    "id": "ZC-MOR-0007",
+    "family": "MOR",
+    "row": 1,
+    "front_col": 1,
+    "back_col": 1
+  },
+  {
+    "file": "/workspace/zona-zero-comunidade/output/edicao-ilustrada-v0.3/ilustrada/02_complemento/01_cartas_complemento_duplex.pdf",
+    "page": 12,
+    "id": "ZC-MOR-0008",
+    "family": "MOR",
+    "row": 1,
+    "front_col": 2,
+    "back_col": 0
+  },
+  {
+    "file": "/workspace/zona-zero-comunidade/output/edicao-ilustrada-v0.3/ilustrada/02_complemento/01_cartas_complemento_duplex.pdf",
+    "page": 12,
+    "id": "ZC-VEI-0001",
+    "family": "VEI",
+    "row": 2,
+    "front_col": 0,
+    "back_col": 2
+  },
+  {
+    "file": "/workspace/zona-zero-comunidade/output/edicao-ilustrada-v0.3/economica/01_inicial/02_cartas_duplex.pdf",
+    "page": 2,
+    "id": "ZC-VIN-0001",
+    "family": "VIN",
+    "row": 0,
+    "front_col": 0,
+    "back_col": 2
+  },
+  {
+    "file": "/workspace/zona-zero-comunidade/output/edicao-ilustrada-v0.3/economica/01_inicial/02_cartas_duplex.pdf",
+    "page": 2,
+    "id": "ZC-VIN-0002",
+    "family": "VIN",
+    "row": 0,
+    "front_col": 1,
+    "back_col": 1
+  },
+  {
+    "file": "/workspace/zona-zero-comunidade/output/edicao-ilustrada-v0.3/economica/01_inicial/02_cartas_duplex.pdf",
+    "page": 2,
+    "id": "ZC-VIN-0003",
+    "family": "VIN",
+    "row": 0,
+    "front_col": 2,
+    "back_col": 0
+  },
+  {
+    "file": "/workspace/zona-zero-comunidade/output/edicao-ilustrada-v0.3/economica/01_inicial/02_cartas_duplex.pdf",
+    "page": 2,
+    "id": "ZC-VIN-0004",
+    "family": "VIN",
+    "row": 1,
+    "front_col": 0,
+    "back_col": 2
+  },
+  {
+    "file": "/workspace/zona-zero-comunidade/output/edicao-ilustrada-v0.3/economica/01_inicial/02_cartas_duplex.pdf",
+    "page": 2,
+    "id": "ZC-VIN-0005",
+    "family": "VIN",
+    "row": 1,
+    "front_col": 1,
+    "back_col": 1
+  },
+  {
+    "file": "/workspace/zona-zero-comunidade/output/edicao-ilustrada-v0.3/economica/01_inicial/02_cartas_duplex.pdf",
+    "page": 2,
+    "id": "ZC-VIN-0006",
+    "family": "VIN",
+    "row": 1,
+    "front_col": 2,
+    "back_col": 0
+  },
+  {
+    "file": "/workspace/zona-zero-comunidade/output/edicao-ilustrada-v0.3/economica/01_inicial/02_cartas_duplex.pdf",
+    "page": 2,
+    "id": "ZC-VIN-0007",
+    "family": "VIN",
+    "row": 2,
+    "front_col": 0,
+    "back_col": 2
+  },
+  {
+    "file": "/workspace/zona-zero-comunidade/output/edicao-ilustrada-v0.3/economica/01_inicial/02_cartas_duplex.pdf",
+    "page": 2,
+    "id": "ZC-VIN-0008",
+    "family": "VIN",
+    "row": 2,
+    "front_col": 1,
+    "back_col": 1
+  },
+  {
+    "file": "/workspace/zona-zero-comunidade/output/edicao-ilustrada-v0.3/economica/01_inicial/02_cartas_duplex.pdf",
+    "page": 2,
+    "id": "ZC-VIN-0009",
+    "family": "VIN",
+    "row": 2,
+    "front_col": 2,
+    "back_col": 0
+  },
+  {
+    "file": "/workspace/zona-zero-comunidade/output/edicao-ilustrada-v0.3/economica/01_inicial/02_cartas_duplex.pdf",
+    "page": 4,
+    "id": "ZC-VIN-0010",
+    "family": "VIN",
+    "row": 0,
+    "front_col": 0,
+    "back_col": 2
+  },
+  {
+    "file": "/workspace/zona-zero-comunidade/output/edicao-ilustrada-v0.3/economica/01_inicial/02_cartas_duplex.pdf",
+    "page": 4,
+    "id": "ZC-VIN-0011",
+    "family": "VIN",
+    "row": 0,
+    "front_col": 1,
+    "back_col": 1
+  },
+  {
+    "file": "/workspace/zona-zero-comunidade/output/edicao-ilustrada-v0.3/economica/01_inicial/02_cartas_duplex.pdf",
+    "page": 4,
+    "id": "ZC-VIN-0012",
+    "family": "VIN",
+    "row": 0,
+    "front_col": 2,
+    "back_col": 0
+  },
+  {
+    "file": "/workspace/zona-zero-comunidade/output/edicao-ilustrada-v0.3/economica/01_inicial/02_cartas_duplex.pdf",
+    "page": 4,
+    "id": "ZC-INT-0001",
+    "family": "INT",
+    "row": 1,
+    "front_col": 0,
+    "back_col": 2
+  },
+  {
+    "file": "/workspace/zona-zero-comunidade/output/edicao-ilustrada-v0.3/economica/01_inicial/02_cartas_duplex.pdf",
+    "page": 4,
+    "id": "ZC-INT-0002",
+    "family": "INT",
+    "row": 1,
+    "front_col": 1,
+    "back_col": 1
+  },
+  {
+    "file": "/workspace/zona-zero-comunidade/output/edicao-ilustrada-v0.3/economica/01_inicial/02_cartas_duplex.pdf",
+    "page": 4,
+    "id": "ZC-INT-0003",
+    "family": "INT",
+    "row": 1,
+    "front_col": 2,
+    "back_col": 0
+  },
+  {
+    "file": "/workspace/zona-zero-comunidade/output/edicao-ilustrada-v0.3/economica/01_inicial/02_cartas_duplex.pdf",
+    "page": 4,
+    "id": "ZC-INT-0004",
+    "family": "INT",
+    "row": 2,
+    "front_col": 0,
+    "back_col": 2
+  },
+  {
+    "file": "/workspace/zona-zero-comunidade/output/edicao-ilustrada-v0.3/economica/01_inicial/02_cartas_duplex.pdf",
+    "page": 4,
+    "id": "ZC-INT-0005",
+    "family": "INT",
+    "row": 2,
+    "front_col": 1,
+    "back_col": 1
+  },
+  {
+    "file": "/workspace/zona-zero-comunidade/output/edicao-ilustrada-v0.3/economica/01_inicial/02_cartas_duplex.pdf",
+    "page": 4,
+    "id": "ZC-INT-0006",
+    "family": "INT",
+    "row": 2,
+    "front_col": 2,
+    "back_col": 0
+  },
+  {
+    "file": "/workspace/zona-zero-comunidade/output/edicao-ilustrada-v0.3/economica/01_inicial/02_cartas_duplex.pdf",
+    "page": 6,
+    "id": "ZC-INT-0007",
+    "family": "INT",
+    "row": 0,
+    "front_col": 0,
+    "back_col": 2
+  },
+  {
+    "file": "/workspace/zona-zero-comunidade/output/edicao-ilustrada-v0.3/economica/01_inicial/02_cartas_duplex.pdf",
+    "page": 6,
+    "id": "ZC-INT-0008",
+    "family": "INT",
+    "row": 0,
+    "front_col": 1,
+    "back_col": 1
+  },
+  {
+    "file": "/workspace/zona-zero-comunidade/output/edicao-ilustrada-v0.3/economica/01_inicial/02_cartas_duplex.pdf",
+    "page": 6,
+    "id": "ZC-INT-0009",
+    "family": "INT",
+    "row": 0,
+    "front_col": 2,
+    "back_col": 0
+  },
+  {
+    "file": "/workspace/zona-zero-comunidade/output/edicao-ilustrada-v0.3/economica/01_inicial/02_cartas_duplex.pdf",
+    "page": 6,
+    "id": "ZC-INT-0010",
+    "family": "INT",
+    "row": 1,
+    "front_col": 0,
+    "back_col": 2
+  },
+  {
+    "file": "/workspace/zona-zero-comunidade/output/edicao-ilustrada-v0.3/economica/01_inicial/02_cartas_duplex.pdf",
+    "page": 6,
+    "id": "ZC-INT-0011",
+    "family": "INT",
+    "row": 1,
+    "front_col": 1,
+    "back_col": 1
+  },
+  {
+    "file": "/workspace/zona-zero-comunidade/output/edicao-ilustrada-v0.3/economica/01_inicial/02_cartas_duplex.pdf",
+    "page": 6,
+    "id": "ZC-INT-0012",
+    "family": "INT",
+    "row": 1,
+    "front_col": 2,
+    "back_col": 0
+  },
+  {
+    "file": "/workspace/zona-zero-comunidade/output/edicao-ilustrada-v0.3/economica/01_inicial/02_cartas_duplex.pdf",
+    "page": 6,
+    "id": "ZC-EQU-0007",
+    "family": "EQU",
+    "row": 2,
+    "front_col": 0,
+    "back_col": 2
+  },
+  {
+    "file": "/workspace/zona-zero-comunidade/output/edicao-ilustrada-v0.3/economica/01_inicial/02_cartas_duplex.pdf",
+    "page": 6,
+    "id": "ZC-EQU-0008",
+    "family": "EQU",
+    "row": 2,
+    "front_col": 1,
+    "back_col": 1
+  },
+  {
+    "file": "/workspace/zona-zero-comunidade/output/edicao-ilustrada-v0.3/economica/01_inicial/02_cartas_duplex.pdf",
+    "page": 6,
+    "id": "ZC-EQU-0014",
+    "family": "EQU",
+    "row": 2,
+    "front_col": 2,
+    "back_col": 0
+  },
+  {
+    "file": "/workspace/zona-zero-comunidade/output/edicao-ilustrada-v0.3/economica/01_inicial/02_cartas_duplex.pdf",
+    "page": 8,
+    "id": "ZC-EQU-0017",
+    "family": "EQU",
+    "row": 0,
+    "front_col": 0,
+    "back_col": 2
+  },
+  {
+    "file": "/workspace/zona-zero-comunidade/output/edicao-ilustrada-v0.3/economica/01_inicial/02_cartas_duplex.pdf",
+    "page": 8,
+    "id": "ZC-SAQ-0001",
+    "family": "SAQ",
+    "row": 0,
+    "front_col": 1,
+    "back_col": 1
+  },
+  {
+    "file": "/workspace/zona-zero-comunidade/output/edicao-ilustrada-v0.3/economica/01_inicial/02_cartas_duplex.pdf",
+    "page": 8,
+    "id": "ZC-SAQ-0002",
+    "family": "SAQ",
+    "row": 0,
+    "front_col": 2,
+    "back_col": 0
+  },
+  {
+    "file": "/workspace/zona-zero-comunidade/output/edicao-ilustrada-v0.3/economica/01_inicial/02_cartas_duplex.pdf",
+    "page": 8,
+    "id": "ZC-SAQ-0003",
+    "family": "SAQ",
+    "row": 1,
+    "front_col": 0,
+    "back_col": 2
+  },
+  {
+    "file": "/workspace/zona-zero-comunidade/output/edicao-ilustrada-v0.3/economica/01_inicial/02_cartas_duplex.pdf",
+    "page": 8,
+    "id": "ZC-SAQ-0004",
+    "family": "SAQ",
+    "row": 1,
+    "front_col": 1,
+    "back_col": 1
+  },
+  {
+    "file": "/workspace/zona-zero-comunidade/output/edicao-ilustrada-v0.3/economica/01_inicial/02_cartas_duplex.pdf",
+    "page": 8,
+    "id": "ZC-SAQ-0005",
+    "family": "SAQ",
+    "row": 1,
+    "front_col": 2,
+    "back_col": 0
+  },
+  {
+    "file": "/workspace/zona-zero-comunidade/output/edicao-ilustrada-v0.3/economica/01_inicial/02_cartas_duplex.pdf",
+    "page": 8,
+    "id": "ZC-SAQ-0006",
+    "family": "SAQ",
+    "row": 2,
+    "front_col": 0,
+    "back_col": 2
+  },
+  {
+    "file": "/workspace/zona-zero-comunidade/output/edicao-ilustrada-v0.3/economica/01_inicial/02_cartas_duplex.pdf",
+    "page": 8,
+    "id": "ZC-VIA-0001",
+    "family": "VIA",
+    "row": 2,
+    "front_col": 1,
+    "back_col": 1
+  },
+  {
+    "file": "/workspace/zona-zero-comunidade/output/edicao-ilustrada-v0.3/economica/01_inicial/02_cartas_duplex.pdf",
+    "page": 8,
+    "id": "ZC-VIA-0002",
+    "family": "VIA",
+    "row": 2,
+    "front_col": 2,
+    "back_col": 0
+  },
+  {
+    "file": "/workspace/zona-zero-comunidade/output/edicao-ilustrada-v0.3/economica/01_inicial/02_cartas_duplex.pdf",
+    "page": 10,
+    "id": "ZC-VIA-0003",
+    "family": "VIA",
+    "row": 0,
+    "front_col": 0,
+    "back_col": 2
+  },
+  {
+    "file": "/workspace/zona-zero-comunidade/output/edicao-ilustrada-v0.3/economica/01_inicial/02_cartas_duplex.pdf",
+    "page": 10,
+    "id": "ZC-VIA-0004",
+    "family": "VIA",
+    "row": 0,
+    "front_col": 1,
+    "back_col": 1
+  },
+  {
+    "file": "/workspace/zona-zero-comunidade/output/edicao-ilustrada-v0.3/economica/01_inicial/02_cartas_duplex.pdf",
+    "page": 10,
+    "id": "ZC-VIA-0005",
+    "family": "VIA",
+    "row": 0,
+    "front_col": 2,
+    "back_col": 0
+  },
+  {
+    "file": "/workspace/zona-zero-comunidade/output/edicao-ilustrada-v0.3/economica/01_inicial/02_cartas_duplex.pdf",
+    "page": 10,
+    "id": "ZC-VIA-0006",
+    "family": "VIA",
+    "row": 1,
+    "front_col": 0,
+    "back_col": 2
+  },
+  {
+    "file": "/workspace/zona-zero-comunidade/output/edicao-ilustrada-v0.3/economica/01_inicial/02_cartas_duplex.pdf",
+    "page": 10,
+    "id": "ZC-VIA-0007",
+    "family": "VIA",
+    "row": 1,
+    "front_col": 1,
+    "back_col": 1
+  },
+  {
+    "file": "/workspace/zona-zero-comunidade/output/edicao-ilustrada-v0.3/economica/01_inicial/02_cartas_duplex.pdf",
+    "page": 10,
+    "id": "ZC-VIA-0008",
+    "family": "VIA",
+    "row": 1,
+    "front_col": 2,
+    "back_col": 0
+  },
+  {
+    "file": "/workspace/zona-zero-comunidade/output/edicao-ilustrada-v0.3/economica/01_inicial/02_cartas_duplex.pdf",
+    "page": 10,
+    "id": "ZC-VIA-0009",
+    "family": "VIA",
+    "row": 2,
+    "front_col": 0,
+    "back_col": 2
+  },
+  {
+    "file": "/workspace/zona-zero-comunidade/output/edicao-ilustrada-v0.3/economica/01_inicial/02_cartas_duplex.pdf",
+    "page": 10,
+    "id": "ZC-VIA-0010",
+    "family": "VIA",
+    "row": 2,
+    "front_col": 1,
+    "back_col": 1
+  },
+  {
+    "file": "/workspace/zona-zero-comunidade/output/edicao-ilustrada-v0.3/economica/01_inicial/02_cartas_duplex.pdf",
+    "page": 10,
+    "id": "ZC-VIA-0011",
+    "family": "VIA",
+    "row": 2,
+    "front_col": 2,
+    "back_col": 0
+  },
+  {
+    "file": "/workspace/zona-zero-comunidade/output/edicao-ilustrada-v0.3/economica/01_inicial/02_cartas_duplex.pdf",
+    "page": 12,
+    "id": "ZC-VIA-0012",
+    "family": "VIA",
+    "row": 0,
+    "front_col": 0,
+    "back_col": 2
+  },
+  {
+    "file": "/workspace/zona-zero-comunidade/output/edicao-ilustrada-v0.3/economica/01_inicial/02_cartas_duplex.pdf",
+    "page": 12,
+    "id": "ZC-HOR-0001",
+    "family": "HOR",
+    "row": 0,
+    "front_col": 1,
+    "back_col": 1
+  },
+  {
+    "file": "/workspace/zona-zero-comunidade/output/edicao-ilustrada-v0.3/economica/01_inicial/02_cartas_duplex.pdf",
+    "page": 12,
+    "id": "ZC-HOR-0002",
+    "family": "HOR",
+    "row": 0,
+    "front_col": 2,
+    "back_col": 0
+  },
+  {
+    "file": "/workspace/zona-zero-comunidade/output/edicao-ilustrada-v0.3/economica/01_inicial/02_cartas_duplex.pdf",
+    "page": 12,
+    "id": "ZC-HOR-0003",
+    "family": "HOR",
+    "row": 1,
+    "front_col": 0,
+    "back_col": 2
+  },
+  {
+    "file": "/workspace/zona-zero-comunidade/output/edicao-ilustrada-v0.3/economica/01_inicial/02_cartas_duplex.pdf",
+    "page": 12,
+    "id": "ZC-HOR-0004",
+    "family": "HOR",
+    "row": 1,
+    "front_col": 1,
+    "back_col": 1
+  },
+  {
+    "file": "/workspace/zona-zero-comunidade/output/edicao-ilustrada-v0.3/economica/01_inicial/02_cartas_duplex.pdf",
+    "page": 12,
+    "id": "ZC-HOR-0005",
+    "family": "HOR",
+    "row": 1,
+    "front_col": 2,
+    "back_col": 0
+  },
+  {
+    "file": "/workspace/zona-zero-comunidade/output/edicao-ilustrada-v0.3/economica/01_inicial/02_cartas_duplex.pdf",
+    "page": 12,
+    "id": "ZC-HOR-0006",
+    "family": "HOR",
+    "row": 2,
+    "front_col": 0,
+    "back_col": 2
+  },
+  {
+    "file": "/workspace/zona-zero-comunidade/output/edicao-ilustrada-v0.3/economica/01_inicial/02_cartas_duplex.pdf",
+    "page": 12,
+    "id": "ZC-HOR-0007",
+    "family": "HOR",
+    "row": 2,
+    "front_col": 1,
+    "back_col": 1
+  },
+  {
+    "file": "/workspace/zona-zero-comunidade/output/edicao-ilustrada-v0.3/economica/01_inicial/02_cartas_duplex.pdf",
+    "page": 12,
+    "id": "ZC-HOR-0008",
+    "family": "HOR",
+    "row": 2,
+    "front_col": 2,
+    "back_col": 0
+  },
+  {
+    "file": "/workspace/zona-zero-comunidade/output/edicao-ilustrada-v0.3/economica/01_inicial/02_cartas_duplex.pdf",
+    "page": 14,
+    "id": "ZC-HOR-0009",
+    "family": "HOR",
+    "row": 0,
+    "front_col": 0,
+    "back_col": 2
+  },
+  {
+    "file": "/workspace/zona-zero-comunidade/output/edicao-ilustrada-v0.3/economica/01_inicial/02_cartas_duplex.pdf",
+    "page": 14,
+    "id": "ZC-CER-0001",
+    "family": "CER",
+    "row": 0,
+    "front_col": 1,
+    "back_col": 1
+  },
+  {
+    "file": "/workspace/zona-zero-comunidade/output/edicao-ilustrada-v0.3/economica/01_inicial/02_cartas_duplex.pdf",
+    "page": 14,
+    "id": "ZC-CER-0002",
+    "family": "CER",
+    "row": 0,
+    "front_col": 2,
+    "back_col": 0
+  },
+  {
+    "file": "/workspace/zona-zero-comunidade/output/edicao-ilustrada-v0.3/economica/01_inicial/02_cartas_duplex.pdf",
+    "page": 14,
+    "id": "ZC-CER-0003",
+    "family": "CER",
+    "row": 1,
+    "front_col": 0,
+    "back_col": 2
+  },
+  {
+    "file": "/workspace/zona-zero-comunidade/output/edicao-ilustrada-v0.3/economica/01_inicial/02_cartas_duplex.pdf",
+    "page": 14,
+    "id": "ZC-CER-0004",
+    "family": "CER",
+    "row": 1,
+    "front_col": 1,
+    "back_col": 1
+  },
+  {
+    "file": "/workspace/zona-zero-comunidade/output/edicao-ilustrada-v0.3/economica/01_inicial/02_cartas_duplex.pdf",
+    "page": 14,
+    "id": "ZC-CER-0005",
+    "family": "CER",
+    "row": 1,
+    "front_col": 2,
+    "back_col": 0
+  },
+  {
+    "file": "/workspace/zona-zero-comunidade/output/edicao-ilustrada-v0.3/economica/01_inicial/02_cartas_duplex.pdf",
+    "page": 14,
+    "id": "ZC-CER-0006",
+    "family": "CER",
+    "row": 2,
+    "front_col": 0,
+    "back_col": 2
+  },
+  {
+    "file": "/workspace/zona-zero-comunidade/output/edicao-ilustrada-v0.3/economica/01_inicial/02_cartas_duplex.pdf",
+    "page": 14,
+    "id": "ZC-MOR-0001",
+    "family": "MOR",
+    "row": 2,
+    "front_col": 1,
+    "back_col": 1
+  },
+  {
+    "file": "/workspace/zona-zero-comunidade/output/edicao-ilustrada-v0.3/economica/02_complemento/01_cartas_complemento_duplex.pdf",
+    "page": 2,
+    "id": "ZC-PEC-0001",
+    "family": "PEC",
+    "row": 0,
+    "front_col": 0,
+    "back_col": 2
+  },
+  {
+    "file": "/workspace/zona-zero-comunidade/output/edicao-ilustrada-v0.3/economica/02_complemento/01_cartas_complemento_duplex.pdf",
+    "page": 2,
+    "id": "ZC-PEC-0002",
+    "family": "PEC",
+    "row": 0,
+    "front_col": 1,
+    "back_col": 1
+  },
+  {
+    "file": "/workspace/zona-zero-comunidade/output/edicao-ilustrada-v0.3/economica/02_complemento/01_cartas_complemento_duplex.pdf",
+    "page": 2,
+    "id": "ZC-PEC-0003",
+    "family": "PEC",
+    "row": 0,
+    "front_col": 2,
+    "back_col": 0
+  },
+  {
+    "file": "/workspace/zona-zero-comunidade/output/edicao-ilustrada-v0.3/economica/02_complemento/01_cartas_complemento_duplex.pdf",
+    "page": 2,
+    "id": "ZC-PEC-0004",
+    "family": "PEC",
+    "row": 1,
+    "front_col": 0,
+    "back_col": 2
+  },
+  {
+    "file": "/workspace/zona-zero-comunidade/output/edicao-ilustrada-v0.3/economica/02_complemento/01_cartas_complemento_duplex.pdf",
+    "page": 2,
+    "id": "ZC-PEC-0005",
+    "family": "PEC",
+    "row": 1,
+    "front_col": 1,
+    "back_col": 1
+  },
+  {
+    "file": "/workspace/zona-zero-comunidade/output/edicao-ilustrada-v0.3/economica/02_complemento/01_cartas_complemento_duplex.pdf",
+    "page": 2,
+    "id": "ZC-PEC-0006",
+    "family": "PEC",
+    "row": 1,
+    "front_col": 2,
+    "back_col": 0
+  },
+  {
+    "file": "/workspace/zona-zero-comunidade/output/edicao-ilustrada-v0.3/economica/02_complemento/01_cartas_complemento_duplex.pdf",
+    "page": 2,
+    "id": "ZC-EQU-0009",
+    "family": "EQU",
+    "row": 2,
+    "front_col": 0,
+    "back_col": 2
+  },
+  {
+    "file": "/workspace/zona-zero-comunidade/output/edicao-ilustrada-v0.3/economica/02_complemento/01_cartas_complemento_duplex.pdf",
+    "page": 2,
+    "id": "ZC-EQU-0010",
+    "family": "EQU",
+    "row": 2,
+    "front_col": 1,
+    "back_col": 1
+  },
+  {
+    "file": "/workspace/zona-zero-comunidade/output/edicao-ilustrada-v0.3/economica/02_complemento/01_cartas_complemento_duplex.pdf",
+    "page": 2,
+    "id": "ZC-EQU-0011",
+    "family": "EQU",
+    "row": 2,
+    "front_col": 2,
+    "back_col": 0
+  },
+  {
+    "file": "/workspace/zona-zero-comunidade/output/edicao-ilustrada-v0.3/economica/02_complemento/01_cartas_complemento_duplex.pdf",
+    "page": 4,
+    "id": "ZC-EQU-0012",
+    "family": "EQU",
+    "row": 0,
+    "front_col": 0,
+    "back_col": 2
+  },
+  {
+    "file": "/workspace/zona-zero-comunidade/output/edicao-ilustrada-v0.3/economica/02_complemento/01_cartas_complemento_duplex.pdf",
+    "page": 4,
+    "id": "ZC-EQU-0013",
+    "family": "EQU",
+    "row": 0,
+    "front_col": 1,
+    "back_col": 1
+  },
+  {
+    "file": "/workspace/zona-zero-comunidade/output/edicao-ilustrada-v0.3/economica/02_complemento/01_cartas_complemento_duplex.pdf",
+    "page": 4,
+    "id": "ZC-EQU-0015",
+    "family": "EQU",
+    "row": 0,
+    "front_col": 2,
+    "back_col": 0
+  },
+  {
+    "file": "/workspace/zona-zero-comunidade/output/edicao-ilustrada-v0.3/economica/02_complemento/01_cartas_complemento_duplex.pdf",
+    "page": 4,
+    "id": "ZC-EQU-0016",
+    "family": "EQU",
+    "row": 1,
+    "front_col": 0,
+    "back_col": 2
+  },
+  {
+    "file": "/workspace/zona-zero-comunidade/output/edicao-ilustrada-v0.3/economica/02_complemento/01_cartas_complemento_duplex.pdf",
+    "page": 4,
+    "id": "ZC-EQU-0018",
+    "family": "EQU",
+    "row": 1,
+    "front_col": 1,
+    "back_col": 1
+  },
+  {
+    "file": "/workspace/zona-zero-comunidade/output/edicao-ilustrada-v0.3/economica/02_complemento/01_cartas_complemento_duplex.pdf",
+    "page": 4,
+    "id": "ZC-SAQ-0007",
+    "family": "SAQ",
+    "row": 1,
+    "front_col": 2,
+    "back_col": 0
+  },
+  {
+    "file": "/workspace/zona-zero-comunidade/output/edicao-ilustrada-v0.3/economica/02_complemento/01_cartas_complemento_duplex.pdf",
+    "page": 4,
+    "id": "ZC-SAQ-0008",
+    "family": "SAQ",
+    "row": 2,
+    "front_col": 0,
+    "back_col": 2
+  },
+  {
+    "file": "/workspace/zona-zero-comunidade/output/edicao-ilustrada-v0.3/economica/02_complemento/01_cartas_complemento_duplex.pdf",
+    "page": 4,
+    "id": "ZC-SAQ-0009",
+    "family": "SAQ",
+    "row": 2,
+    "front_col": 1,
+    "back_col": 1
+  },
+  {
+    "file": "/workspace/zona-zero-comunidade/output/edicao-ilustrada-v0.3/economica/02_complemento/01_cartas_complemento_duplex.pdf",
+    "page": 4,
+    "id": "ZC-SAQ-0010",
+    "family": "SAQ",
+    "row": 2,
+    "front_col": 2,
+    "back_col": 0
+  },
+  {
+    "file": "/workspace/zona-zero-comunidade/output/edicao-ilustrada-v0.3/economica/02_complemento/01_cartas_complemento_duplex.pdf",
+    "page": 6,
+    "id": "ZC-SAQ-0011",
+    "family": "SAQ",
+    "row": 0,
+    "front_col": 0,
+    "back_col": 2
+  },
+  {
+    "file": "/workspace/zona-zero-comunidade/output/edicao-ilustrada-v0.3/economica/02_complemento/01_cartas_complemento_duplex.pdf",
+    "page": 6,
+    "id": "ZC-SAQ-0012",
+    "family": "SAQ",
+    "row": 0,
+    "front_col": 1,
+    "back_col": 1
+  },
+  {
+    "file": "/workspace/zona-zero-comunidade/output/edicao-ilustrada-v0.3/economica/02_complemento/01_cartas_complemento_duplex.pdf",
+    "page": 6,
+    "id": "ZC-SAQ-0013",
+    "family": "SAQ",
+    "row": 0,
+    "front_col": 2,
+    "back_col": 0
+  },
+  {
+    "file": "/workspace/zona-zero-comunidade/output/edicao-ilustrada-v0.3/economica/02_complemento/01_cartas_complemento_duplex.pdf",
+    "page": 6,
+    "id": "ZC-SAQ-0014",
+    "family": "SAQ",
+    "row": 1,
+    "front_col": 0,
+    "back_col": 2
+  },
+  {
+    "file": "/workspace/zona-zero-comunidade/output/edicao-ilustrada-v0.3/economica/02_complemento/01_cartas_complemento_duplex.pdf",
+    "page": 6,
+    "id": "ZC-SAQ-0015",
+    "family": "SAQ",
+    "row": 1,
+    "front_col": 1,
+    "back_col": 1
+  },
+  {
+    "file": "/workspace/zona-zero-comunidade/output/edicao-ilustrada-v0.3/economica/02_complemento/01_cartas_complemento_duplex.pdf",
+    "page": 6,
+    "id": "ZC-SAQ-0016",
+    "family": "SAQ",
+    "row": 1,
+    "front_col": 2,
+    "back_col": 0
+  },
+  {
+    "file": "/workspace/zona-zero-comunidade/output/edicao-ilustrada-v0.3/economica/02_complemento/01_cartas_complemento_duplex.pdf",
+    "page": 6,
+    "id": "ZC-SAQ-0017",
+    "family": "SAQ",
+    "row": 2,
+    "front_col": 0,
+    "back_col": 2
+  },
+  {
+    "file": "/workspace/zona-zero-comunidade/output/edicao-ilustrada-v0.3/economica/02_complemento/01_cartas_complemento_duplex.pdf",
+    "page": 6,
+    "id": "ZC-SAQ-0018",
+    "family": "SAQ",
+    "row": 2,
+    "front_col": 1,
+    "back_col": 1
+  },
+  {
+    "file": "/workspace/zona-zero-comunidade/output/edicao-ilustrada-v0.3/economica/02_complemento/01_cartas_complemento_duplex.pdf",
+    "page": 6,
+    "id": "ZC-SAQ-0019",
+    "family": "SAQ",
+    "row": 2,
+    "front_col": 2,
+    "back_col": 0
+  },
+  {
+    "file": "/workspace/zona-zero-comunidade/output/edicao-ilustrada-v0.3/economica/02_complemento/01_cartas_complemento_duplex.pdf",
+    "page": 8,
+    "id": "ZC-SAQ-0020",
+    "family": "SAQ",
+    "row": 0,
+    "front_col": 0,
+    "back_col": 2
+  },
+  {
+    "file": "/workspace/zona-zero-comunidade/output/edicao-ilustrada-v0.3/economica/02_complemento/01_cartas_complemento_duplex.pdf",
+    "page": 8,
+    "id": "ZC-SAQ-0021",
+    "family": "SAQ",
+    "row": 0,
+    "front_col": 1,
+    "back_col": 1
+  },
+  {
+    "file": "/workspace/zona-zero-comunidade/output/edicao-ilustrada-v0.3/economica/02_complemento/01_cartas_complemento_duplex.pdf",
+    "page": 8,
+    "id": "ZC-SAQ-0022",
+    "family": "SAQ",
+    "row": 0,
+    "front_col": 2,
+    "back_col": 0
+  },
+  {
+    "file": "/workspace/zona-zero-comunidade/output/edicao-ilustrada-v0.3/economica/02_complemento/01_cartas_complemento_duplex.pdf",
+    "page": 8,
+    "id": "ZC-SAQ-0023",
+    "family": "SAQ",
+    "row": 1,
+    "front_col": 0,
+    "back_col": 2
+  },
+  {
+    "file": "/workspace/zona-zero-comunidade/output/edicao-ilustrada-v0.3/economica/02_complemento/01_cartas_complemento_duplex.pdf",
+    "page": 8,
+    "id": "ZC-SAQ-0024",
+    "family": "SAQ",
+    "row": 1,
+    "front_col": 1,
+    "back_col": 1
+  },
+  {
+    "file": "/workspace/zona-zero-comunidade/output/edicao-ilustrada-v0.3/economica/02_complemento/01_cartas_complemento_duplex.pdf",
+    "page": 8,
+    "id": "ZC-SAQ-0025",
+    "family": "SAQ",
+    "row": 1,
+    "front_col": 2,
+    "back_col": 0
+  },
+  {
+    "file": "/workspace/zona-zero-comunidade/output/edicao-ilustrada-v0.3/economica/02_complemento/01_cartas_complemento_duplex.pdf",
+    "page": 8,
+    "id": "ZC-SAQ-0026",
+    "family": "SAQ",
+    "row": 2,
+    "front_col": 0,
+    "back_col": 2
+  },
+  {
+    "file": "/workspace/zona-zero-comunidade/output/edicao-ilustrada-v0.3/economica/02_complemento/01_cartas_complemento_duplex.pdf",
+    "page": 8,
+    "id": "ZC-SAQ-0027",
+    "family": "SAQ",
+    "row": 2,
+    "front_col": 1,
+    "back_col": 1
+  },
+  {
+    "file": "/workspace/zona-zero-comunidade/output/edicao-ilustrada-v0.3/economica/02_complemento/01_cartas_complemento_duplex.pdf",
+    "page": 8,
+    "id": "ZC-SAQ-0028",
+    "family": "SAQ",
+    "row": 2,
+    "front_col": 2,
+    "back_col": 0
+  },
+  {
+    "file": "/workspace/zona-zero-comunidade/output/edicao-ilustrada-v0.3/economica/02_complemento/01_cartas_complemento_duplex.pdf",
+    "page": 10,
+    "id": "ZC-SAQ-0029",
+    "family": "SAQ",
+    "row": 0,
+    "front_col": 0,
+    "back_col": 2
+  },
+  {
+    "file": "/workspace/zona-zero-comunidade/output/edicao-ilustrada-v0.3/economica/02_complemento/01_cartas_complemento_duplex.pdf",
+    "page": 10,
+    "id": "ZC-SAQ-0030",
+    "family": "SAQ",
+    "row": 0,
+    "front_col": 1,
+    "back_col": 1
+  },
+  {
+    "file": "/workspace/zona-zero-comunidade/output/edicao-ilustrada-v0.3/economica/02_complemento/01_cartas_complemento_duplex.pdf",
+    "page": 10,
+    "id": "ZC-SAQ-0031",
+    "family": "SAQ",
+    "row": 0,
+    "front_col": 2,
+    "back_col": 0
+  },
+  {
+    "file": "/workspace/zona-zero-comunidade/output/edicao-ilustrada-v0.3/economica/02_complemento/01_cartas_complemento_duplex.pdf",
+    "page": 10,
+    "id": "ZC-SAQ-0032",
+    "family": "SAQ",
+    "row": 1,
+    "front_col": 0,
+    "back_col": 2
+  },
+  {
+    "file": "/workspace/zona-zero-comunidade/output/edicao-ilustrada-v0.3/economica/02_complemento/01_cartas_complemento_duplex.pdf",
+    "page": 10,
+    "id": "ZC-SAQ-0033",
+    "family": "SAQ",
+    "row": 1,
+    "front_col": 1,
+    "back_col": 1
+  },
+  {
+    "file": "/workspace/zona-zero-comunidade/output/edicao-ilustrada-v0.3/economica/02_complemento/01_cartas_complemento_duplex.pdf",
+    "page": 10,
+    "id": "ZC-SAQ-0034",
+    "family": "SAQ",
+    "row": 1,
+    "front_col": 2,
+    "back_col": 0
+  },
+  {
+    "file": "/workspace/zona-zero-comunidade/output/edicao-ilustrada-v0.3/economica/02_complemento/01_cartas_complemento_duplex.pdf",
+    "page": 10,
+    "id": "ZC-SAQ-0035",
+    "family": "SAQ",
+    "row": 2,
+    "front_col": 0,
+    "back_col": 2
+  },
+  {
+    "file": "/workspace/zona-zero-comunidade/output/edicao-ilustrada-v0.3/economica/02_complemento/01_cartas_complemento_duplex.pdf",
+    "page": 10,
+    "id": "ZC-SAQ-0036",
+    "family": "SAQ",
+    "row": 2,
+    "front_col": 1,
+    "back_col": 1
+  },
+  {
+    "file": "/workspace/zona-zero-comunidade/output/edicao-ilustrada-v0.3/economica/02_complemento/01_cartas_complemento_duplex.pdf",
+    "page": 10,
+    "id": "ZC-MOR-0002",
+    "family": "MOR",
+    "row": 2,
+    "front_col": 2,
+    "back_col": 0
+  },
+  {
+    "file": "/workspace/zona-zero-comunidade/output/edicao-ilustrada-v0.3/economica/02_complemento/01_cartas_complemento_duplex.pdf",
+    "page": 12,
+    "id": "ZC-MOR-0003",
+    "family": "MOR",
+    "row": 0,
+    "front_col": 0,
+    "back_col": 2
+  },
+  {
+    "file": "/workspace/zona-zero-comunidade/output/edicao-ilustrada-v0.3/economica/02_complemento/01_cartas_complemento_duplex.pdf",
+    "page": 12,
+    "id": "ZC-MOR-0004",
+    "family": "MOR",
+    "row": 0,
+    "front_col": 1,
+    "back_col": 1
+  },
+  {
+    "file": "/workspace/zona-zero-comunidade/output/edicao-ilustrada-v0.3/economica/02_complemento/01_cartas_complemento_duplex.pdf",
+    "page": 12,
+    "id": "ZC-MOR-0005",
+    "family": "MOR",
+    "row": 0,
+    "front_col": 2,
+    "back_col": 0
+  },
+  {
+    "file": "/workspace/zona-zero-comunidade/output/edicao-ilustrada-v0.3/economica/02_complemento/01_cartas_complemento_duplex.pdf",
+    "page": 12,
+    "id": "ZC-MOR-0006",
+    "family": "MOR",
+    "row": 1,
+    "front_col": 0,
+    "back_col": 2
+  },
+  {
+    "file": "/workspace/zona-zero-comunidade/output/edicao-ilustrada-v0.3/economica/02_complemento/01_cartas_complemento_duplex.pdf",
+    "page": 12,
+    "id": "ZC-MOR-0007",
+    "family": "MOR",
+    "row": 1,
+    "front_col": 1,
+    "back_col": 1
+  },
+  {
+    "file": "/workspace/zona-zero-comunidade/output/edicao-ilustrada-v0.3/economica/02_complemento/01_cartas_complemento_duplex.pdf",
+    "page": 12,
+    "id": "ZC-MOR-0008",
+    "family": "MOR",
+    "row": 1,
+    "front_col": 2,
+    "back_col": 0
+  },
+  {
+    "file": "/workspace/zona-zero-comunidade/output/edicao-ilustrada-v0.3/economica/02_complemento/01_cartas_complemento_duplex.pdf",
+    "page": 12,
+    "id": "ZC-VEI-0001",
+    "family": "VEI",
+    "row": 2,
+    "front_col": 0,
+    "back_col": 2
+  }
+]

@@ -1,3 +1,45 @@
+# Edição ilustrada 0.3 — Comece Aqui / Duas Pessoas
+
+**Mesmo jogo e personagens da edição 0.2. Apenas apresentação artística e produção gráfica.** Base preservada: 9c38aa5 (posterior a b407e84). Branch `arte/pnp-edicao-ilustrada-v0-3`; sem merge na branch anterior.
+
+- [Baixar ZIP ilustrado — 58 folhas](https://raw.githubusercontent.com/bugijo/Jogo-cartas/arte/pnp-edicao-ilustrada-v0-3/dist/Zona-Zero-0.3-ilustrada-58-folhas.zip)
+- [Baixar ZIP econômico — 58 folhas](https://raw.githubusercontent.com/bugijo/Jogo-cartas/arte/pnp-edicao-ilustrada-v0-3/dist/Zona-Zero-0.3-economica-58-folhas.zip)
+- [Extras opcionais](https://raw.githubusercontent.com/bugijo/Jogo-cartas/arte/pnp-edicao-ilustrada-v0-3/dist/Zona-Zero-0.3-extras-opcionais.zip) · [Fontes editáveis](https://raw.githubusercontent.com/bugijo/Jogo-cartas/arte/pnp-edicao-ilustrada-v0-3/dist/Zona-Zero-0.3-fontes-editaveis.zip) · [Provas e comparações](https://raw.githubusercontent.com/bugijo/Jogo-cartas/arte/pnp-edicao-ilustrada-v0-3/dist/Zona-Zero-0.3-conferencia-visual.zip)
+- [O que imprimir — ilustrada](output/edicao-ilustrada-v0.3/ilustrada/IMPRIMA-ESTES.md)
+- [O que imprimir — econômica](output/edicao-ilustrada-v0.3/economica/IMPRIMA-ESTES.md)
+- [Guia inicial PDF](output/edicao-ilustrada-v0.3/ilustrada/01_inicial/01_comece_aqui.pdf)
+- [PDFs iniciais](output/edicao-ilustrada-v0.3/ilustrada/01_inicial) · [PDFs de complemento](output/edicao-ilustrada-v0.3/ilustrada/02_complemento)
+- [Verificação e limitações](VISUAL_QA.md) · [Inventário real](ASSET_MANIFEST.md) · [Comparações antes/depois](output/edicao-ilustrada-v0.3/evidencias)
+
+Escolha ilustrada **ou** econômica: ambas têm **25 folhas iniciais + 33 de complemento = 58 A4**, 114 cartas, 14 fichas selecionadas e 57 marcadores. Sem cartas ou regras novas. Imprima a calibração primeiro. Os PDFs mantêm texto pesquisável e fontes incorporadas. Só cartas e calibração são duplex, retrato, borda longa; demais arquivos são uma face. 100%, sem ajustar.
+
+As seis montagens mostram o ambiente de cada destino; os quatro módulos comuns são reutilizados. Mapas temáticos em `extras/` são opcionais (quatro folhas por destino; 24 para todos), substituindo os módulos comuns. As 24 fichas existentes também estão num extra de 12 folhas. Nenhum extra é necessário ao kit de duas pessoas. ZIPs de impressão básica não incluem esses extras.
+
+![Abrigo ilustrado](output/edicao-ilustrada-v0.3/evidencias/ilustrada_abrigo.png)
+
+![Mercado montado — variante opcional](output/edicao-ilustrada-v0.3/evidencias/ilustrada_mapa_mercado_montado.jpg)
+
+## Fontes e reprodução
+
+Reutiliza `requirements.txt`, Python e fontes DejaVu já definidos abaixo. Não precisa gerar imagens novamente, usar chave de API ou acessar um serviço pago.
+
+```bash
+python src/build_illustrated.py --cycle 5
+python src/document_illustrated.py
+python src/export_vectors.py
+python src/validate_illustrated.py
+python src/visual_qa.py
+python src/package_illustrated.py
+```
+
+`src/build_illustrated.py` lê catálogo e seleção atuais sem alterá-los; `src/illustrated_art.py` separa ambiente, geometria e sinais. Manuais/guia preservam o texto 0.2. Não execute os geradores antigos para atualizar esta edição; eles continuam disponíveis para reproduzir a anterior. Os pacotes antigos foram mantidos.
+
+Sem impressão física ou playtest humano. Resolução original dos retratos foi mantida: não se alega detalhe novo por ampliação. Veja as limitações no inventário.
+
+---
+
+## Registro preservado da edição 0.2
+
 # Entrega atual — Comece Aqui / Duas Pessoas, edição 0.2
 
 [Abra o índice do kit](output/comece-aqui-duas-pessoas/LEIA-ME.md): 25 folhas para começar o dia 1; 33 de complemento; 58 no capítulo completo. [Guia inicial PDF](output/comece-aqui-duas-pessoas/01_inicial/01_comece_aqui.pdf). [Correções e revisão dos cinco dias](REVISAO_0.2.md). [Profissões consolidadas](PROFISSOES.md).

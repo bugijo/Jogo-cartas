@@ -1,3 +1,21 @@
+# Impressão da edição artística 0.3
+
+Escolha uma edição: [ilustrada](output/edicao-ilustrada-v0.3/ilustrada/IMPRIMA-ESTES.md) ou [econômica](output/edicao-ilustrada-v0.3/economica/IMPRIMA-ESTES.md). **25 + 33 = 58 folhas A4**, mesma seleção e informação. Econômica não reduz o baralho: clareia fundos e converte cores/arte a cinza. Não imprima as duas juntas.
+
+Imprima apenas os 18 PDFs listados no índice. Primeiro `01_inicial` (25 folhas), depois `02_complemento` (33). ZIPs básicos excluem extras, relatórios e fontes. Cartas 63 × 88 mm, 9 por retrato A4, grade 193 × 268 mm, intervalo 2 mm, margens laterais 8,5 mm e verticais 14,5 mm; segurança essencial 4 mm. Duplex: cartões e calibração, retrato, borda longa; colunas do verso refletidas, linhas mantidas. Não aplicar transformação aos painéis ou mapas de uma face. Textos de regras não são raster.
+
+Calibre em 100%, sem ajustar. Régua 100 mm e alvos assimétricos mantidos da 0.2. Verifique papel e impressora reais: simulação de duplex não garante registro físico. Intenções: use envelopes/sleeves idênticos realmente opacos; versos digitais iguais não impedem transparência do papel.
+
+Mapas: A4 paisagem, recorte útil 277 × 190 mm. M1 M2 sobre M3 M4, topo ↑, união sem sobreposição, total 554 × 380 mm. As seis montagens indicam portas/bloqueios; quatro módulos comuns atendem a todos os destinos. Arte decorativa não bloqueia nem dá cobertura. Use parede espessa, abertura e símbolos para decidir conexões. O abrigo tem planta ilustrativa; a grade administrativa T1–T12 preservada no painel mantém a referência de terrenos para a garagem.
+
+Extras separados: seis mapas temáticos, 4 folhas cada, 24 no total. Cada variante substitui os quatro módulos comuns; imprimir todos além do kit soma 24 folhas opcionais. Fichas dos 24 heróis existentes: 12 folhas opcionais, sem novos personagens. O kit básico já tem todas as fichas necessárias a sua seleção. Não misture edições ao imprimir versos.
+
+Sem promessa de caixa exata: divisas têm abas de dobra e devem ser ajustadas ao papel e sleeves reais. Monte, descarte, reserva, estoque, inventários e carga continuam distintos conforme guia e registros. Três d6, lápis, borracha, tesoura, fita e envelopes opacos são externos.
+
+---
+
+## Guia anterior preservado
+
 # Impressão atual — kit de duas pessoas 0.2
 
 Use [LEIA-ME do kit](output/comece-aqui-duas-pessoas/LEIA-ME.md): 25 folhas iniciais e 33 de complemento. Imprima apenas as pastas indicadas, sem juntar PDFs antigos. O texto abaixo preserva o guia da caixa 0.1.
