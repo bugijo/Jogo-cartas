@@ -107,21 +107,40 @@ def split_board(source,destination,theme):
   x=(i%2)*277;y=(i//2)*190;page.show_pdf_page(fitz.Rect(10*mm,10*mm,287*mm,200*mm),full,0,clip=fitz.Rect(x*mm,y*mm,(x+277)*mm,(y+190)*mm))
  metadata=doc.metadata;metadata['subject']=full.metadata['subject'];doc.set_metadata(metadata);doc.save(destination,garbage=4,deflate=True);return destination
 
+def miniature(theme,edition):
+ # Miniatura de ambientação SEM textos/portas: somente A–C é rasterizado a 200 ppi.
+ folder=O/'miniaturas'/edition;folder.mkdir(exist_ok=True,parents=True);path=folder/(KEYS[theme]+'.png')
+ buf=io.BytesIO();c=canvas.Canvas(buf,pagesize=(554*mm,380*mm),invariant=1);start=len(art.USES)
+ c.saveState();c.scale(mm,mm);art.scene(c,theme,SCENES[theme]);c.restoreState();c.save()
+ del art.USES[start:]
+ doc=fitz.open(stream=buf.getvalue(),filetype='pdf');scale=170/554*200/72;pix=doc[0].get_pixmap(matrix=fitz.Matrix(scale,scale),alpha=False);pix.save(path)
+ art.USES.append(dict(theme=theme,file=str(path.relative_to(P)),role='miniatura derivada de A–C; D–E continuam vetoriais',original_pixels=[pix.width,pix.height],used_pixels=[pix.width,pix.height],crop_pixels=[0,0,pix.width,pix.height],print_mm=[170,380*170/554],effective_ppi=min(pix.width/(170/25.4),pix.height/(380*170/554/25.4)),edition=edition))
+ return path
+
 def diagrams(root,indices,name):
  dest=root/'06_TABULEIROS'/name;buf=io.BytesIO();c=canvas.Canvas(buf,pagesize=landscape(A4),invariant=1);art.ECON=root.name=='economica'
  for idx in indices:
-  m=MAPS[idx];c.saveState();c.scale(mm,mm);text(c,m['name'].upper()+' / MONTAGEM 0.6',11,192,17,True)
+  m=MAPS[idx];image=miniature(m['name'],root.name);c.saveState();c.scale(mm,mm);text(c,m['name'].upper()+' / MONTAGEM 0.6',11,192,17,True)
   text(c,'M1 M2 em cima; M3 M4 embaixo. Topo ↑. Não girar. Corte e união sem sobreposição.',11,181,8.5)
+  # O form contém a arte da miniatura; geometria, números e símbolos são texto/vetor.
+  key='ZZ06_MINI_'+KEYS[m['name']];c.beginForm(key,0,0,170,380*170/554);c.drawImage(str(image),0,0,170,380*170/554);c.endForm()
+  c.saveState();c.translate(11,54);c.doForm(key);c.saveState();c.scale(170/554,170/554);geometry(c,m);c.restoreState()
+  scale=170/554
+  for z in m['zones']:
+   x,y,w,h=zone_box(z);X,Y=x*scale,y*scale
+   art.rect(c,X+1.2,Y+h*scale-5,8,4.3,'#f4efdf');text(c,str(z),X+2,Y+h*scale-4,7.5,True)
+   tag={1:'E/S',5:'B1',12:'B2',7:'O1',14:'O2',16:'S'}.get(z)
+   if tag:art.rect(c,X+1.2,Y+1,11,4.5,'#f4efdf');text(c,tag,X+2,Y+2,7.2,True)
+  c.restoreState()
+  for label,x,y in [('M1',11,173),('M2',96,173),('M3',11,47),('M4',96,47)]:text(c,label,x,y,9,True)
   lines=['MESMA GEOMETRIA','Parede espessa: sem conexão.','Tracejado: fronteira aberta.','Vão central: passagem de 14 mm.','Barra: porta. X: bloqueada.','Móveis: sem obstáculo/cobertura.','','Entrada e saída: Z1.','B1: Z5. B2: Z12.','O1: Z7. O2: Z14. S: Z16.','','Portas: 1–5, 3–7, 7–8,','9–13 e 13–14.','Bloqueadas: '+(', '.join(f'{x}–{y}' for x,y in m['blocked']) or 'nenhuma')+'.','','Grupo inicial: ceil(H/2) Errantes','em S; rota longa reduz um.']
   if m['name']=='Estação':lines+=['Acrescente Bruto na Z14.']
-  for j,s in enumerate(lines):text(c,s,191,170-j*7,9.3,j==0)
+  for j,word in enumerate(lines):text(c,word,191,170-j*7,9.3,j==0)
   text(c,'Use quatro módulos comuns OU quatro temáticos. Não imprimir ambos para a mesma montagem.',11,24,9.2,True)
   text(c,'Coloque os marcadores de portas e bloqueios conforme este diagrama. Achados e resgates seguem a campanha.',11,15,8.3)
   c.restoreState();c.showPage()
- c.save();doc=fitz.open(stream=buf.getvalue(),filetype='pdf')
- for page,idx in zip(doc,indices):
-  full=fitz.open(O/'fontes_tabuleiros'/root.name/(KEYS[MAPS[idx]['name']]+'.pdf'));page.show_pdf_page(fitz.Rect(11*mm,39*mm,181*mm,156*mm),full,0)
- doc.save(dest,garbage=4,deflate=True)
+ c.setSubject('ZZ06_SOURCE_SHA256='+hashlib.sha256(''.join(signature(MAPS[i]['name']) for i in indices).encode()).hexdigest());c.save()
+ doc=fitz.open(stream=buf.getvalue(),filetype='pdf');doc.save(dest,garbage=4,deflate=True)
 
 def copy_preserved(root):
  for f in (BASE/root.name).rglob('*.pdf'):

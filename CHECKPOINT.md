@@ -89,3 +89,6 @@ Reconstrução limpa concluída: 4.792/4.792, 300 capturas idênticas. Na pasta 
 
 ## Tabuleiros 0.6 — ciclo 1
 Base b99c470 conferida limpa e sem trabalho posterior no remoto. Branch arte/pnp-tabuleiros-v0-6. Geometria e 81 arquivos anteriores congelados; mercado piloto gerado/revisto em ilustrada e econômica, plantas funcionais disponíveis. Fontes novas: src/board_art06.py, src/build_boards06.py e content/production/scenes_0.6.json. Cards/painel/peões/abrigo não regenerados. Próximo: build completo dos sete mapas, validar soleiras/assinaturas/densidade e revisar montagens. Guia e decisões em docs/TABULEIROS_0.6.md. Não houve impressão física ou playtest humano.
+
+### Tabuleiros 0.6 — ciclo 2
+Sete mapas nas duas edições gerados e revisados, nove testes próprios aprovados. 7.536/7.536 verificações; 68 páginas alteradas renderizadas, 52 entradas PDF da 0.5 intactas. Arte principal ≥215 ppi; sem móveis nas soleiras protegidas. Bancada individual substituiu um agrupamento cortado; recortes da oficina foram curados pela posição real dos objetos. As sete remontagens conferem com a cena global. Próximo: fechar índices/pacotes, extrair todas as partes de fontes em pasta limpa e reconstruir. Não regenerar cartas/painéis/peões.

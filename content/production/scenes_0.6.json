@@ -711,14 +711,15 @@
         "index": 2
       },
       {
-        "kind": "bench",
+        "kind": "asset",
         "box": [
           167,
-          18,
+          14,
           90,
-          21
+          39
         ],
-        "variant": "medical"
+        "file": "assets/v0.6/hospital_topo.png",
+        "index": 3
       },
       {
         "kind": "bed",
@@ -887,14 +888,15 @@
         "index": 2
       },
       {
-        "kind": "bench",
+        "kind": "asset",
         "box": [
           442,
-          319,
+          315,
           87,
-          24
+          36
         ],
-        "variant": ""
+        "file": "assets/v0.5/mapa_oficina.png",
+        "index": 0
       },
       {
         "kind": "bay",
@@ -973,8 +975,8 @@
           41
         ],
         "variant": "",
-        "file": "assets/v0.6/oficina_topo.png",
-        "index": 2
+        "file": "assets/v0.6/bancada_topo.png",
+        "index": 0
       },
       {
         "kind": "bay",
@@ -1051,8 +1053,8 @@
           34
         ],
         "variant": "",
-        "file": "assets/v0.6/oficina_topo.png",
-        "index": 2
+        "file": "assets/v0.6/bancada_topo.png",
+        "index": 0
       },
       {
         "kind": "drain",
@@ -1237,24 +1239,26 @@
         "index": 2
       },
       {
-        "kind": "gondola",
+        "kind": "asset",
         "box": [
           309,
-          319,
+          315,
           77,
-          20
+          28
         ],
-        "variant": "bottle"
+        "file": "assets/v0.6/mercado_gondolas_topo.png",
+        "index": 2
       },
       {
-        "kind": "gondola",
+        "kind": "asset",
         "box": [
           442,
-          319,
+          315,
           85,
-          20
+          28
         ],
-        "variant": "box"
+        "file": "assets/v0.6/mercado_gondolas_topo.png",
+        "index": 0
       },
       {
         "kind": "asset",
@@ -1327,14 +1331,15 @@
         "index": 0
       },
       {
-        "kind": "bench",
+        "kind": "asset",
         "box": [
-          440,
-          113,
-          88,
-          21
+          441,
+          110,
+          87,
+          36
         ],
-        "variant": ""
+        "file": "assets/v0.5/mapa_oficina.png",
+        "index": 0
       },
       {
         "kind": "planter",
@@ -1347,14 +1352,15 @@
         "variant": ""
       },
       {
-        "kind": "gondola",
+        "kind": "asset",
         "box": [
           168,
-          19,
+          12,
           86,
-          20
+          27
         ],
-        "variant": "bottle"
+        "file": "assets/v0.6/mercado_gondolas_topo.png",
+        "index": 1
       },
       {
         "kind": "asset",
@@ -1393,8 +1399,8 @@
       {
         "kind": "cart",
         "box": [
-          256,
-          319,
+          246,
+          310,
           17,
           12
         ],
@@ -2005,14 +2011,15 @@
         "index": 0
       },
       {
-        "kind": "bench",
+        "kind": "asset",
         "box": [
           441,
-          19,
+          16,
           87,
-          23
+          40
         ],
-        "variant": ""
+        "file": "assets/v0.5/mapa_estacao.png",
+        "index": 3
       },
       {
         "kind": "drain",
@@ -2135,14 +2142,15 @@
         "variant": ""
       },
       {
-        "kind": "bench",
+        "kind": "asset",
         "box": [
           309,
-          321,
+          315,
           81,
-          22
+          39
         ],
-        "variant": ""
+        "file": "assets/v0.6/bancada_topo.png",
+        "index": 0
       },
       {
         "kind": "crate",
@@ -2165,14 +2173,15 @@
         "variant": "open"
       },
       {
-        "kind": "bench",
+        "kind": "asset",
         "box": [
-          18,
+          20,
           210,
-          94,
-          23
+          90,
+          38
         ],
-        "variant": ""
+        "file": "assets/v0.6/hospital_topo.png",
+        "index": 1
       },
       {
         "kind": "asset",
@@ -2219,14 +2228,15 @@
         "variant": "open"
       },
       {
-        "kind": "bench",
+        "kind": "asset",
         "box": [
           167,
-          112,
+          110,
           87,
-          23
+          38
         ],
-        "variant": ""
+        "file": "assets/v0.6/oficina_topo.png",
+        "index": 1
       },
       {
         "kind": "chairs",
@@ -2289,14 +2299,15 @@
         "variant": ""
       },
       {
-        "kind": "bench",
+        "kind": "asset",
         "box": [
           306,
-          20,
+          16,
           81,
-          24
+          38
         ],
-        "variant": ""
+        "file": "assets/v0.6/condominio_topo.png",
+        "index": 2
       },
       {
         "kind": "asset",
@@ -2307,8 +2318,8 @@
           40
         ],
         "variant": "",
-        "file": "assets/v0.6/oficina_topo.png",
-        "index": 2
+        "file": "assets/v0.6/bancada_topo.png",
+        "index": 0
       },
       {
         "kind": "drain",
@@ -2323,8 +2334,8 @@
       {
         "kind": "cart",
         "box": [
-          256,
-          319,
+          246,
+          310,
           17,
           12
         ],

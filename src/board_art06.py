@@ -33,8 +33,8 @@ def shade(c,x,y,w,h):
 @lru_cache(maxsize=128)
 def crop(path,index):
  im=Image.open(P/path)
- if path.startswith('assets/v0.5/'):
-  return json.loads((P/'content/production/crops_0.6.json').read_text())[path][index],im.size
+ curated=json.loads((P/'content/production/crops_0.6.json').read_text())
+ if path in curated:return curated[path][index],im.size
  iw,ih=im.size;l=index%2*iw//2;t=index//2*ih//2;r=l+iw//2;b=t+ih//2
  if im.mode=='RGBA':
   alpha=im.getchannel('A').crop((l,t,r,b));native=alpha.size
@@ -50,7 +50,7 @@ def crop(path,index):
       if 0<=u<192 and 0<=v<128 and (u,v) not in seen and px[u,v]>=160:seen.add((u,v));todo.append((u,v))
     groups.append((n,L,T,R+1,B+1))
   if groups:
-   largest=max(g[0] for g in groups);keep=[g for g in groups if g[0]>=largest*.035]
+   largest=max(g[0] for g in groups);keep=[g for g in groups if g[0]>=largest*.035 and (g[0]>=largest*.4 or (g[1]>0 and g[2]>0 and g[3]<192 and g[4]<128))]
    L=min(g[1] for g in keep);T=min(g[2] for g in keep);R=max(g[3] for g in keep);B=max(g[4] for g in keep)
    old_l,old_t=l,t;l=max(l,old_l+L*native[0]/192-2);t=max(t,old_t+T*native[1]/128-2);r=min(r,old_l+R*native[0]/192+2);b=min(b,old_t+B*native[1]/128+2)
  return [l,t,r,b],im.size

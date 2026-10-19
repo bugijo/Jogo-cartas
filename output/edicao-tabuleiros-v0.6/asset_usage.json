@@ -64,6 +64,414 @@
     "role": "material nativo repetido; não mobiliário"
   },
   {
+    "theme": "material/paver",
+    "file": "assets/v0.6/pisos_materiais.png",
+    "index": 3,
+    "original_pixels": [
+      1536,
+      1024
+    ],
+    "crop_pixels": [
+      0.0,
+      512.0,
+      512.0,
+      1024.0
+    ],
+    "used_pixels": [
+      512.0,
+      512.0
+    ],
+    "print_mm": [
+      60.0,
+      60.0
+    ],
+    "bbox_mm": [
+      277,
+      285,
+      277,
+      95
+    ],
+    "effective_ppi": 216.74666666666664,
+    "edition": "ilustrada",
+    "role": "material nativo repetido; não mobiliário"
+  },
+  {
+    "theme": "material/concrete",
+    "file": "assets/v0.6/pisos_materiais.png",
+    "index": 0,
+    "original_pixels": [
+      1536,
+      1024
+    ],
+    "crop_pixels": [
+      0.0,
+      0.0,
+      512.0,
+      512.0
+    ],
+    "used_pixels": [
+      512.0,
+      512.0
+    ],
+    "print_mm": [
+      60.0,
+      60.0
+    ],
+    "bbox_mm": [
+      0,
+      0,
+      277,
+      285
+    ],
+    "effective_ppi": 216.74666666666664,
+    "edition": "ilustrada",
+    "role": "material nativo repetido; não mobiliário"
+  },
+  {
+    "theme": "material/paver",
+    "file": "assets/v0.6/pisos_materiais.png",
+    "index": 3,
+    "original_pixels": [
+      1536,
+      1024
+    ],
+    "crop_pixels": [
+      0.0,
+      512.0,
+      512.0,
+      1024.0
+    ],
+    "used_pixels": [
+      512.0,
+      512.0
+    ],
+    "print_mm": [
+      60.0,
+      60.0
+    ],
+    "bbox_mm": [
+      277,
+      0,
+      277,
+      285
+    ],
+    "effective_ppi": 216.74666666666664,
+    "edition": "ilustrada",
+    "role": "material nativo repetido; não mobiliário"
+  },
+  {
+    "theme": "Comuns",
+    "file": "assets/v0.5/mapa_oficina.png",
+    "index": 1,
+    "original_pixels": [
+      1536,
+      1024
+    ],
+    "crop_pixels": [
+      768,
+      66.0,
+      1514.0,
+      446.0
+    ],
+    "used_pixels": [
+      746.0,
+      380.0
+    ],
+    "print_mm": [
+      53.00526315789474,
+      27.0
+    ],
+    "bbox_mm": [
+      25.49736842105263,
+      320.0,
+      53.00526315789474,
+      27.0
+    ],
+    "effective_ppi": 357.48148148148147,
+    "edition": "ilustrada"
+  },
+  {
+    "theme": "Comuns",
+    "file": "assets/v0.6/bancada_topo.png",
+    "index": 0,
+    "original_pixels": [
+      1536,
+      1024
+    ],
+    "crop_pixels": [
+      56,
+      119,
+      1506,
+      888
+    ],
+    "used_pixels": [
+      1450,
+      769
+    ],
+    "print_mm": [
+      73.5370611183355,
+      39.0
+    ],
+    "bbox_mm": [
+      312.73146944083226,
+      315.0,
+      73.5370611183355,
+      39.0
+    ],
+    "effective_ppi": 500.83589743589744,
+    "edition": "ilustrada"
+  },
+  {
+    "theme": "Comuns",
+    "file": "assets/v0.6/hospital_topo.png",
+    "index": 1,
+    "original_pixels": [
+      1536,
+      1024
+    ],
+    "crop_pixels": [
+      790.0,
+      58.0,
+      1510.0,
+      506.0
+    ],
+    "used_pixels": [
+      720.0,
+      448.0
+    ],
+    "print_mm": [
+      61.07142857142858,
+      38.0
+    ],
+    "bbox_mm": [
+      34.46428571428571,
+      210.0,
+      61.07142857142858,
+      38.0
+    ],
+    "effective_ppi": 299.4526315789473,
+    "edition": "ilustrada"
+  },
+  {
+    "theme": "Comuns",
+    "file": "assets/v0.5/mapa_oficina.png",
+    "index": 2,
+    "original_pixels": [
+      1536,
+      1024
+    ],
+    "crop_pixels": [
+      30.0,
+      512,
+      758.0,
+      974.0
+    ],
+    "used_pixels": [
+      728.0,
+      462.0
+    ],
+    "print_mm": [
+      53.57575757575758,
+      34.0
+    ],
+    "bbox_mm": [
+      182.21212121212122,
+      210.0,
+      53.57575757575758,
+      34.0
+    ],
+    "effective_ppi": 345.14117647058816,
+    "edition": "ilustrada"
+  },
+  {
+    "theme": "Comuns",
+    "file": "assets/v0.5/mapa_mercado.png",
+    "index": 3,
+    "original_pixels": [
+      1536,
+      1024
+    ],
+    "crop_pixels": [
+      842.0,
+      526.0,
+      1502.0,
+      942.0
+    ],
+    "used_pixels": [
+      660.0,
+      416.0
+    ],
+    "print_mm": [
+      66.63461538461539,
+      42.0
+    ],
+    "bbox_mm": [
+      315.1826923076923,
+      207.0,
+      66.63461538461539,
+      42.0
+    ],
+    "effective_ppi": 251.58095238095237,
+    "edition": "ilustrada"
+  },
+  {
+    "theme": "Comuns",
+    "file": "assets/v0.6/oficina_topo.png",
+    "index": 1,
+    "original_pixels": [
+      1536,
+      1024
+    ],
+    "crop_pixels": [
+      828,
+      55,
+      1525,
+      505
+    ],
+    "used_pixels": [
+      697,
+      450
+    ],
+    "print_mm": [
+      58.85777777777778,
+      38.0
+    ],
+    "bbox_mm": [
+      181.07111111111112,
+      110.0,
+      58.85777777777778,
+      38.0
+    ],
+    "effective_ppi": 300.7894736842105,
+    "edition": "ilustrada"
+  },
+  {
+    "theme": "Comuns",
+    "file": "assets/v0.6/condominio_topo.png",
+    "index": 2,
+    "original_pixels": [
+      1536,
+      1024
+    ],
+    "crop_pixels": [
+      26.0,
+      526.0,
+      754.0,
+      998.0
+    ],
+    "used_pixels": [
+      728.0,
+      472.0
+    ],
+    "print_mm": [
+      58.61016949152542,
+      38.0
+    ],
+    "bbox_mm": [
+      317.1949152542373,
+      16.0,
+      58.61016949152542,
+      38.0
+    ],
+    "effective_ppi": 315.4947368421053,
+    "edition": "ilustrada"
+  },
+  {
+    "theme": "Comuns",
+    "file": "assets/v0.6/bancada_topo.png",
+    "index": 0,
+    "original_pixels": [
+      1536,
+      1024
+    ],
+    "crop_pixels": [
+      56,
+      119,
+      1506,
+      888
+    ],
+    "used_pixels": [
+      1450,
+      769
+    ],
+    "print_mm": [
+      75.42262678803641,
+      40.0
+    ],
+    "bbox_mm": [
+      445.7886866059818,
+      16.0,
+      75.42262678803641,
+      40.0
+    ],
+    "effective_ppi": 488.315,
+    "edition": "ilustrada"
+  },
+  {
+    "theme": "material/tile",
+    "file": "assets/v0.6/pisos_materiais.png",
+    "index": 2,
+    "original_pixels": [
+      1536,
+      1024
+    ],
+    "crop_pixels": [
+      1024.0,
+      0.0,
+      1536.0,
+      512.0
+    ],
+    "used_pixels": [
+      512.0,
+      512.0
+    ],
+    "print_mm": [
+      60.0,
+      60.0
+    ],
+    "bbox_mm": [
+      0,
+      0,
+      554,
+      380
+    ],
+    "effective_ppi": 216.74666666666664,
+    "edition": "ilustrada",
+    "role": "material nativo repetido; não mobiliário"
+  },
+  {
+    "theme": "material/asphalt",
+    "file": "assets/v0.6/pisos_materiais.png",
+    "index": 1,
+    "original_pixels": [
+      1536,
+      1024
+    ],
+    "crop_pixels": [
+      512.0,
+      0.0,
+      1024.0,
+      512.0
+    ],
+    "used_pixels": [
+      512.0,
+      512.0
+    ],
+    "print_mm": [
+      60.0,
+      60.0
+    ],
+    "bbox_mm": [
+      0,
+      285,
+      277,
+      95
+    ],
+    "effective_ppi": 216.74666666666664,
+    "edition": "ilustrada",
+    "role": "material nativo repetido; não mobiliário"
+  },
+  {
     "theme": "material/concrete",
     "file": "assets/v0.6/pisos_materiais.png",
     "index": 0,
@@ -813,6 +1221,2909 @@
     "edition": "ilustrada"
   },
   {
+    "theme": "material/tile",
+    "file": "assets/v0.6/pisos_materiais.png",
+    "index": 2,
+    "original_pixels": [
+      1536,
+      1024
+    ],
+    "crop_pixels": [
+      1024.0,
+      0.0,
+      1536.0,
+      512.0
+    ],
+    "used_pixels": [
+      512.0,
+      512.0
+    ],
+    "print_mm": [
+      60.0,
+      60.0
+    ],
+    "bbox_mm": [
+      0,
+      0,
+      554,
+      380
+    ],
+    "effective_ppi": 216.74666666666664,
+    "edition": "ilustrada",
+    "role": "material nativo repetido; não mobiliário"
+  },
+  {
+    "theme": "material/paver",
+    "file": "assets/v0.6/pisos_materiais.png",
+    "index": 3,
+    "original_pixels": [
+      1536,
+      1024
+    ],
+    "crop_pixels": [
+      0.0,
+      512.0,
+      512.0,
+      1024.0
+    ],
+    "used_pixels": [
+      512.0,
+      512.0
+    ],
+    "print_mm": [
+      60.0,
+      60.0
+    ],
+    "bbox_mm": [
+      0,
+      285,
+      138.5,
+      95
+    ],
+    "effective_ppi": 216.74666666666664,
+    "edition": "ilustrada",
+    "role": "material nativo repetido; não mobiliário"
+  },
+  {
+    "theme": "material/tile",
+    "file": "assets/v0.6/pisos_materiais.png",
+    "index": 2,
+    "original_pixels": [
+      1536,
+      1024
+    ],
+    "crop_pixels": [
+      1024.0,
+      0.0,
+      1536.0,
+      512.0
+    ],
+    "used_pixels": [
+      512.0,
+      512.0
+    ],
+    "print_mm": [
+      60.0,
+      60.0
+    ],
+    "bbox_mm": [
+      138.5,
+      285,
+      415.5,
+      95
+    ],
+    "effective_ppi": 216.74666666666664,
+    "edition": "ilustrada",
+    "role": "material nativo repetido; não mobiliário"
+  },
+  {
+    "theme": "material/tile",
+    "file": "assets/v0.6/pisos_materiais.png",
+    "index": 2,
+    "original_pixels": [
+      1536,
+      1024
+    ],
+    "crop_pixels": [
+      1024.0,
+      0.0,
+      1536.0,
+      512.0
+    ],
+    "used_pixels": [
+      512.0,
+      512.0
+    ],
+    "print_mm": [
+      60.0,
+      60.0
+    ],
+    "bbox_mm": [
+      0,
+      0,
+      554,
+      285
+    ],
+    "effective_ppi": 216.74666666666664,
+    "edition": "ilustrada",
+    "role": "material nativo repetido; não mobiliário"
+  },
+  {
+    "theme": "material/tile",
+    "file": "assets/v0.6/pisos_materiais.png",
+    "index": 2,
+    "original_pixels": [
+      1536,
+      1024
+    ],
+    "crop_pixels": [
+      1024.0,
+      0.0,
+      1536.0,
+      512.0
+    ],
+    "used_pixels": [
+      512.0,
+      512.0
+    ],
+    "print_mm": [
+      60.0,
+      60.0
+    ],
+    "bbox_mm": [
+      265,
+      0,
+      30,
+      285
+    ],
+    "effective_ppi": 216.74666666666664,
+    "edition": "ilustrada",
+    "role": "material nativo repetido; não mobiliário"
+  },
+  {
+    "theme": "Hospital",
+    "file": "assets/v0.5/mapa_oficina.png",
+    "index": 1,
+    "original_pixels": [
+      1536,
+      1024
+    ],
+    "crop_pixels": [
+      768,
+      66.0,
+      1514.0,
+      446.0
+    ],
+    "used_pixels": [
+      746.0,
+      380.0
+    ],
+    "print_mm": [
+      51.0421052631579,
+      26.0
+    ],
+    "bbox_mm": [
+      26.47894736842105,
+      321.0,
+      51.0421052631579,
+      26.0
+    ],
+    "effective_ppi": 371.23076923076917,
+    "edition": "ilustrada"
+  },
+  {
+    "theme": "Hospital",
+    "file": "assets/v0.6/hospital_topo.png",
+    "index": 1,
+    "original_pixels": [
+      1536,
+      1024
+    ],
+    "crop_pixels": [
+      790.0,
+      58.0,
+      1510.0,
+      506.0
+    ],
+    "used_pixels": [
+      720.0,
+      448.0
+    ],
+    "print_mm": [
+      72.32142857142857,
+      45.0
+    ],
+    "bbox_mm": [
+      173.83928571428572,
+      310.0,
+      72.32142857142857,
+      45.0
+    ],
+    "effective_ppi": 252.87111111111108,
+    "edition": "ilustrada"
+  },
+  {
+    "theme": "Hospital",
+    "file": "assets/v0.6/hospital_topo.png",
+    "index": 0,
+    "original_pixels": [
+      1536,
+      1024
+    ],
+    "crop_pixels": [
+      54.0,
+      30.0,
+      678.0,
+      512
+    ],
+    "used_pixels": [
+      624.0,
+      482.0
+    ],
+    "print_mm": [
+      55.66804979253112,
+      43.0
+    ],
+    "bbox_mm": [
+      34.16597510373444,
+      207.0,
+      55.66804979253112,
+      43.0
+    ],
+    "effective_ppi": 284.71627906976744,
+    "edition": "ilustrada"
+  },
+  {
+    "theme": "Hospital",
+    "file": "assets/v0.6/hospital_topo.png",
+    "index": 2,
+    "original_pixels": [
+      1536,
+      1024
+    ],
+    "crop_pixels": [
+      38.0,
+      526.0,
+      754.0,
+      1002.0
+    ],
+    "used_pixels": [
+      716.0,
+      476.0
+    ],
+    "print_mm": [
+      66.18487394957984,
+      44.0
+    ],
+    "bbox_mm": [
+      314.4075630252101,
+      205.0,
+      66.18487394957984,
+      44.0
+    ],
+    "effective_ppi": 274.78181818181815,
+    "edition": "ilustrada"
+  },
+  {
+    "theme": "Hospital",
+    "file": "assets/v0.6/hospital_topo.png",
+    "index": 3,
+    "original_pixels": [
+      1536,
+      1024
+    ],
+    "crop_pixels": [
+      826.0,
+      598.0,
+      1490.0,
+      874.0
+    ],
+    "used_pixels": [
+      664.0,
+      276.0
+    ],
+    "print_mm": [
+      78.44465116279069,
+      32.606511627906976
+    ],
+    "bbox_mm": [
+      445.77767441860465,
+      210.69674418604652,
+      78.44465116279069,
+      32.606511627906976
+    ],
+    "effective_ppi": 215.0,
+    "edition": "ilustrada"
+  },
+  {
+    "theme": "Hospital",
+    "file": "assets/v0.6/hospital_topo.png",
+    "index": 3,
+    "original_pixels": [
+      1536,
+      1024
+    ],
+    "crop_pixels": [
+      826.0,
+      598.0,
+      1490.0,
+      874.0
+    ],
+    "used_pixels": [
+      664.0,
+      276.0
+    ],
+    "print_mm": [
+      78.44465116279069,
+      32.606511627906976
+    ],
+    "bbox_mm": [
+      169.77767441860465,
+      113.69674418604652,
+      78.44465116279069,
+      32.606511627906976
+    ],
+    "effective_ppi": 215.0,
+    "edition": "ilustrada"
+  },
+  {
+    "theme": "Hospital",
+    "file": "assets/v0.6/hospital_topo.png",
+    "index": 0,
+    "original_pixels": [
+      1536,
+      1024
+    ],
+    "crop_pixels": [
+      54.0,
+      30.0,
+      678.0,
+      512
+    ],
+    "used_pixels": [
+      624.0,
+      482.0
+    ],
+    "print_mm": [
+      55.66804979253112,
+      43.0
+    ],
+    "bbox_mm": [
+      454.66597510373447,
+      110.0,
+      55.66804979253112,
+      43.0
+    ],
+    "effective_ppi": 284.71627906976744,
+    "edition": "ilustrada"
+  },
+  {
+    "theme": "Hospital",
+    "file": "assets/v0.6/hospital_topo.png",
+    "index": 2,
+    "original_pixels": [
+      1536,
+      1024
+    ],
+    "crop_pixels": [
+      38.0,
+      526.0,
+      754.0,
+      1002.0
+    ],
+    "used_pixels": [
+      716.0,
+      476.0
+    ],
+    "print_mm": [
+      61.67226890756302,
+      41.0
+    ],
+    "bbox_mm": [
+      32.16386554621849,
+      14.0,
+      61.67226890756302,
+      41.0
+    ],
+    "effective_ppi": 294.88780487804877,
+    "edition": "ilustrada"
+  },
+  {
+    "theme": "Hospital",
+    "file": "assets/v0.6/hospital_topo.png",
+    "index": 3,
+    "original_pixels": [
+      1536,
+      1024
+    ],
+    "crop_pixels": [
+      826.0,
+      598.0,
+      1490.0,
+      874.0
+    ],
+    "used_pixels": [
+      664.0,
+      276.0
+    ],
+    "print_mm": [
+      78.44465116279069,
+      32.606511627906976
+    ],
+    "bbox_mm": [
+      172.77767441860465,
+      17.196744186046512,
+      78.44465116279069,
+      32.606511627906976
+    ],
+    "effective_ppi": 215.0,
+    "edition": "ilustrada"
+  },
+  {
+    "theme": "material/tile",
+    "file": "assets/v0.6/pisos_materiais.png",
+    "index": 2,
+    "original_pixels": [
+      1536,
+      1024
+    ],
+    "crop_pixels": [
+      1024.0,
+      0.0,
+      1536.0,
+      512.0
+    ],
+    "used_pixels": [
+      512.0,
+      512.0
+    ],
+    "print_mm": [
+      60.0,
+      60.0
+    ],
+    "bbox_mm": [
+      0,
+      0,
+      554,
+      380
+    ],
+    "effective_ppi": 216.74666666666664,
+    "edition": "ilustrada",
+    "role": "material nativo repetido; não mobiliário"
+  },
+  {
+    "theme": "material/concrete",
+    "file": "assets/v0.6/pisos_materiais.png",
+    "index": 0,
+    "original_pixels": [
+      1536,
+      1024
+    ],
+    "crop_pixels": [
+      0.0,
+      0.0,
+      512.0,
+      512.0
+    ],
+    "used_pixels": [
+      512.0,
+      512.0
+    ],
+    "print_mm": [
+      60.0,
+      60.0
+    ],
+    "bbox_mm": [
+      0,
+      285,
+      277,
+      95
+    ],
+    "effective_ppi": 216.74666666666664,
+    "edition": "ilustrada",
+    "role": "material nativo repetido; não mobiliário"
+  },
+  {
+    "theme": "material/paver",
+    "file": "assets/v0.6/pisos_materiais.png",
+    "index": 3,
+    "original_pixels": [
+      1536,
+      1024
+    ],
+    "crop_pixels": [
+      0.0,
+      512.0,
+      512.0,
+      1024.0
+    ],
+    "used_pixels": [
+      512.0,
+      512.0
+    ],
+    "print_mm": [
+      60.0,
+      60.0
+    ],
+    "bbox_mm": [
+      277,
+      285,
+      277,
+      95
+    ],
+    "effective_ppi": 216.74666666666664,
+    "edition": "ilustrada",
+    "role": "material nativo repetido; não mobiliário"
+  },
+  {
+    "theme": "material/concrete",
+    "file": "assets/v0.6/pisos_materiais.png",
+    "index": 0,
+    "original_pixels": [
+      1536,
+      1024
+    ],
+    "crop_pixels": [
+      0.0,
+      0.0,
+      512.0,
+      512.0
+    ],
+    "used_pixels": [
+      512.0,
+      512.0
+    ],
+    "print_mm": [
+      60.0,
+      60.0
+    ],
+    "bbox_mm": [
+      0,
+      0,
+      554,
+      190
+    ],
+    "effective_ppi": 216.74666666666664,
+    "edition": "ilustrada",
+    "role": "material nativo repetido; não mobiliário"
+  },
+  {
+    "theme": "Oficina",
+    "file": "assets/v0.5/mapa_oficina.png",
+    "index": 1,
+    "original_pixels": [
+      1536,
+      1024
+    ],
+    "crop_pixels": [
+      768,
+      66.0,
+      1514.0,
+      446.0
+    ],
+    "used_pixels": [
+      746.0,
+      380.0
+    ],
+    "print_mm": [
+      54.96842105263158,
+      27.999999999999996
+    ],
+    "bbox_mm": [
+      23.51578947368421,
+      321.0,
+      54.96842105263158,
+      27.999999999999996
+    ],
+    "effective_ppi": 344.7142857142857,
+    "edition": "ilustrada"
+  },
+  {
+    "theme": "Oficina",
+    "file": "assets/v0.6/oficina_topo.png",
+    "index": 1,
+    "original_pixels": [
+      1536,
+      1024
+    ],
+    "crop_pixels": [
+      828,
+      55,
+      1525,
+      505
+    ],
+    "used_pixels": [
+      697,
+      450
+    ],
+    "print_mm": [
+      65.05333333333334,
+      42.0
+    ],
+    "bbox_mm": [
+      179.47333333333333,
+      312.0,
+      65.05333333333334,
+      42.0
+    ],
+    "effective_ppi": 272.1428571428571,
+    "edition": "ilustrada"
+  },
+  {
+    "theme": "Oficina",
+    "file": "assets/v0.5/mapa_oficina.png",
+    "index": 2,
+    "original_pixels": [
+      1536,
+      1024
+    ],
+    "crop_pixels": [
+      30.0,
+      512,
+      758.0,
+      974.0
+    ],
+    "used_pixels": [
+      728.0,
+      462.0
+    ],
+    "print_mm": [
+      53.57575757575758,
+      34.0
+    ],
+    "bbox_mm": [
+      318.2121212121212,
+      316.0,
+      53.57575757575758,
+      34.0
+    ],
+    "effective_ppi": 345.14117647058816,
+    "edition": "ilustrada"
+  },
+  {
+    "theme": "Oficina",
+    "file": "assets/v0.5/mapa_oficina.png",
+    "index": 0,
+    "original_pixels": [
+      1536,
+      1024
+    ],
+    "crop_pixels": [
+      22.0,
+      34.0,
+      738.0,
+      474.0
+    ],
+    "used_pixels": [
+      716.0,
+      440.0
+    ],
+    "print_mm": [
+      58.58181818181818,
+      36.0
+    ],
+    "bbox_mm": [
+      456.2090909090909,
+      315.0,
+      58.58181818181818,
+      36.0
+    ],
+    "effective_ppi": 310.44444444444446,
+    "edition": "ilustrada"
+  },
+  {
+    "theme": "Oficina",
+    "file": "assets/v0.5/mapa_oficina.png",
+    "index": 1,
+    "original_pixels": [
+      1536,
+      1024
+    ],
+    "crop_pixels": [
+      768,
+      66.0,
+      1514.0,
+      446.0
+    ],
+    "used_pixels": [
+      746.0,
+      380.0
+    ],
+    "print_mm": [
+      54.96842105263158,
+      27.999999999999996
+    ],
+    "bbox_mm": [
+      36.01578947368421,
+      211.0,
+      54.96842105263158,
+      27.999999999999996
+    ],
+    "effective_ppi": 344.7142857142857,
+    "edition": "ilustrada"
+  },
+  {
+    "theme": "Oficina",
+    "file": "assets/v0.6/oficina_topo.png",
+    "index": 0,
+    "original_pixels": [
+      1536,
+      1024
+    ],
+    "crop_pixels": [
+      34,
+      22,
+      826,
+      505
+    ],
+    "used_pixels": [
+      792,
+      483
+    ],
+    "print_mm": [
+      78.70807453416148,
+      48.0
+    ],
+    "bbox_mm": [
+      169.64596273291926,
+      204.0,
+      78.70807453416148,
+      48.0
+    ],
+    "effective_ppi": 255.5875,
+    "edition": "ilustrada"
+  },
+  {
+    "theme": "Oficina",
+    "file": "assets/v0.6/oficina_topo.png",
+    "index": 1,
+    "original_pixels": [
+      1536,
+      1024
+    ],
+    "crop_pixels": [
+      828,
+      55,
+      1525,
+      505
+    ],
+    "used_pixels": [
+      697,
+      450
+    ],
+    "print_mm": [
+      65.05333333333334,
+      42.0
+    ],
+    "bbox_mm": [
+      316.97333333333336,
+      203.0,
+      65.05333333333334,
+      42.0
+    ],
+    "effective_ppi": 272.1428571428571,
+    "edition": "ilustrada"
+  },
+  {
+    "theme": "Oficina",
+    "file": "assets/v0.6/oficina_topo.png",
+    "index": 3,
+    "original_pixels": [
+      1536,
+      1024
+    ],
+    "crop_pixels": [
+      852,
+      506,
+      1526,
+      1007
+    ],
+    "used_pixels": [
+      674,
+      501
+    ],
+    "print_mm": [
+      57.84830339321358,
+      43.0
+    ],
+    "bbox_mm": [
+      455.57584830339323,
+      204.0,
+      57.84830339321358,
+      43.0
+    ],
+    "effective_ppi": 295.9395348837209,
+    "edition": "ilustrada"
+  },
+  {
+    "theme": "Oficina",
+    "file": "assets/v0.6/bancada_topo.png",
+    "index": 0,
+    "original_pixels": [
+      1536,
+      1024
+    ],
+    "crop_pixels": [
+      56,
+      119,
+      1506,
+      888
+    ],
+    "used_pixels": [
+      1450,
+      769
+    ],
+    "print_mm": [
+      77.30819245773732,
+      41.0
+    ],
+    "bbox_mm": [
+      172.34590377113133,
+      111.0,
+      77.30819245773732,
+      41.0
+    ],
+    "effective_ppi": 476.4048780487804,
+    "edition": "ilustrada"
+  },
+  {
+    "theme": "Oficina",
+    "file": "assets/v0.6/oficina_topo.png",
+    "index": 0,
+    "original_pixels": [
+      1536,
+      1024
+    ],
+    "crop_pixels": [
+      34,
+      22,
+      826,
+      505
+    ],
+    "used_pixels": [
+      792,
+      483
+    ],
+    "print_mm": [
+      57.391304347826086,
+      35.0
+    ],
+    "bbox_mm": [
+      317.30434782608694,
+      116.0,
+      57.391304347826086,
+      35.0
+    ],
+    "effective_ppi": 350.52,
+    "edition": "ilustrada"
+  },
+  {
+    "theme": "Oficina",
+    "file": "assets/v0.6/oficina_topo.png",
+    "index": 3,
+    "original_pixels": [
+      1536,
+      1024
+    ],
+    "crop_pixels": [
+      852,
+      506,
+      1526,
+      1007
+    ],
+    "used_pixels": [
+      674,
+      501
+    ],
+    "print_mm": [
+      48.431137724550894,
+      36.0
+    ],
+    "bbox_mm": [
+      38.78443113772455,
+      14.0,
+      48.431137724550894,
+      36.0
+    ],
+    "effective_ppi": 353.48333333333335,
+    "edition": "ilustrada"
+  },
+  {
+    "theme": "Oficina",
+    "file": "assets/v0.5/mapa_oficina.png",
+    "index": 2,
+    "original_pixels": [
+      1536,
+      1024
+    ],
+    "crop_pixels": [
+      30.0,
+      512,
+      758.0,
+      974.0
+    ],
+    "used_pixels": [
+      728.0,
+      462.0
+    ],
+    "print_mm": [
+      47.272727272727266,
+      29.999999999999996
+    ],
+    "bbox_mm": [
+      324.8636363636364,
+      16.0,
+      47.272727272727266,
+      29.999999999999996
+    ],
+    "effective_ppi": 391.16,
+    "edition": "ilustrada"
+  },
+  {
+    "theme": "Oficina",
+    "file": "assets/v0.6/bancada_topo.png",
+    "index": 0,
+    "original_pixels": [
+      1536,
+      1024
+    ],
+    "crop_pixels": [
+      56,
+      119,
+      1506,
+      888
+    ],
+    "used_pixels": [
+      1450,
+      769
+    ],
+    "print_mm": [
+      64.10923276983095,
+      34.0
+    ],
+    "bbox_mm": [
+      451.94538361508455,
+      16.0,
+      64.10923276983095,
+      34.0
+    ],
+    "effective_ppi": 574.4882352941177,
+    "edition": "ilustrada"
+  },
+  {
+    "theme": "material/tile",
+    "file": "assets/v0.6/pisos_materiais.png",
+    "index": 2,
+    "original_pixels": [
+      1536,
+      1024
+    ],
+    "crop_pixels": [
+      1024.0,
+      0.0,
+      1536.0,
+      512.0
+    ],
+    "used_pixels": [
+      512.0,
+      512.0
+    ],
+    "print_mm": [
+      60.0,
+      60.0
+    ],
+    "bbox_mm": [
+      0,
+      0,
+      554,
+      380
+    ],
+    "effective_ppi": 216.74666666666664,
+    "edition": "ilustrada",
+    "role": "material nativo repetido; não mobiliário"
+  },
+  {
+    "theme": "material/asphalt",
+    "file": "assets/v0.6/pisos_materiais.png",
+    "index": 1,
+    "original_pixels": [
+      1536,
+      1024
+    ],
+    "crop_pixels": [
+      512.0,
+      0.0,
+      1024.0,
+      512.0
+    ],
+    "used_pixels": [
+      512.0,
+      512.0
+    ],
+    "print_mm": [
+      60.0,
+      60.0
+    ],
+    "bbox_mm": [
+      0,
+      0,
+      152,
+      380
+    ],
+    "effective_ppi": 216.74666666666664,
+    "edition": "ilustrada",
+    "role": "material nativo repetido; não mobiliário"
+  },
+  {
+    "theme": "material/concrete",
+    "file": "assets/v0.6/pisos_materiais.png",
+    "index": 0,
+    "original_pixels": [
+      1536,
+      1024
+    ],
+    "crop_pixels": [
+      0.0,
+      0.0,
+      512.0,
+      512.0
+    ],
+    "used_pixels": [
+      512.0,
+      512.0
+    ],
+    "print_mm": [
+      60.0,
+      60.0
+    ],
+    "bbox_mm": [
+      152,
+      0,
+      264,
+      285
+    ],
+    "effective_ppi": 216.74666666666664,
+    "edition": "ilustrada",
+    "role": "material nativo repetido; não mobiliário"
+  },
+  {
+    "theme": "material/tile",
+    "file": "assets/v0.6/pisos_materiais.png",
+    "index": 2,
+    "original_pixels": [
+      1536,
+      1024
+    ],
+    "crop_pixels": [
+      1024.0,
+      0.0,
+      1536.0,
+      512.0
+    ],
+    "used_pixels": [
+      512.0,
+      512.0
+    ],
+    "print_mm": [
+      60.0,
+      60.0
+    ],
+    "bbox_mm": [
+      152,
+      285,
+      402,
+      95
+    ],
+    "effective_ppi": 216.74666666666664,
+    "edition": "ilustrada",
+    "role": "material nativo repetido; não mobiliário"
+  },
+  {
+    "theme": "material/paver",
+    "file": "assets/v0.6/pisos_materiais.png",
+    "index": 3,
+    "original_pixels": [
+      1536,
+      1024
+    ],
+    "crop_pixels": [
+      0.0,
+      512.0,
+      512.0,
+      1024.0
+    ],
+    "used_pixels": [
+      512.0,
+      512.0
+    ],
+    "print_mm": [
+      60.0,
+      60.0
+    ],
+    "bbox_mm": [
+      416,
+      0,
+      138,
+      285
+    ],
+    "effective_ppi": 216.74666666666664,
+    "edition": "ilustrada",
+    "role": "material nativo repetido; não mobiliário"
+  },
+  {
+    "theme": "Posto",
+    "file": "assets/v0.5/mapa_oficina.png",
+    "index": 1,
+    "original_pixels": [
+      1536,
+      1024
+    ],
+    "crop_pixels": [
+      768,
+      66.0,
+      1514.0,
+      446.0
+    ],
+    "used_pixels": [
+      746.0,
+      380.0
+    ],
+    "print_mm": [
+      53.00526315789474,
+      27.0
+    ],
+    "bbox_mm": [
+      26.49736842105263,
+      320.0,
+      53.00526315789474,
+      27.0
+    ],
+    "effective_ppi": 357.48148148148147,
+    "edition": "ilustrada"
+  },
+  {
+    "theme": "Posto",
+    "file": "assets/v0.6/posto_topo.png",
+    "index": 2,
+    "original_pixels": [
+      1536,
+      1024
+    ],
+    "crop_pixels": [
+      54.0,
+      574.0,
+      714.0,
+      966.0
+    ],
+    "used_pixels": [
+      660.0,
+      392.0
+    ],
+    "print_mm": [
+      67.34693877551021,
+      40.0
+    ],
+    "bbox_mm": [
+      177.32653061224488,
+      313.0,
+      67.34693877551021,
+      40.0
+    ],
+    "effective_ppi": 248.92,
+    "edition": "ilustrada"
+  },
+  {
+    "theme": "Posto",
+    "file": "assets/v0.6/mercado_gondolas_topo.png",
+    "index": 2,
+    "original_pixels": [
+      1536,
+      1024
+    ],
+    "crop_pixels": [
+      26.0,
+      586.0,
+      710.0,
+      886.0
+    ],
+    "used_pixels": [
+      684.0,
+      300.0
+    ],
+    "print_mm": [
+      63.84,
+      28.0
+    ],
+    "bbox_mm": [
+      315.58,
+      315.0,
+      63.84,
+      28.0
+    ],
+    "effective_ppi": 272.1428571428571,
+    "edition": "ilustrada"
+  },
+  {
+    "theme": "Posto",
+    "file": "assets/v0.6/mercado_gondolas_topo.png",
+    "index": 0,
+    "original_pixels": [
+      1536,
+      1024
+    ],
+    "crop_pixels": [
+      26.0,
+      146.0,
+      710.0,
+      438.0
+    ],
+    "used_pixels": [
+      684.0,
+      292.0
+    ],
+    "print_mm": [
+      65.58904109589041,
+      28.0
+    ],
+    "bbox_mm": [
+      451.7054794520548,
+      315.0,
+      65.58904109589041,
+      28.0
+    ],
+    "effective_ppi": 264.8857142857143,
+    "edition": "ilustrada"
+  },
+  {
+    "theme": "Posto",
+    "file": "assets/v0.6/posto_topo.png",
+    "index": 0,
+    "original_pixels": [
+      1536,
+      1024
+    ],
+    "crop_pixels": [
+      58.0,
+      86.0,
+      678.0,
+      450.0
+    ],
+    "used_pixels": [
+      620.0,
+      364.0
+    ],
+    "print_mm": [
+      73.24651162790697,
+      43.00279069767441
+    ],
+    "bbox_mm": [
+      174.87674418604652,
+      209.4986046511628,
+      73.24651162790697,
+      43.00279069767441
+    ],
+    "effective_ppi": 215.0,
+    "edition": "ilustrada"
+  },
+  {
+    "theme": "Posto",
+    "file": "assets/v0.6/posto_topo.png",
+    "index": 1,
+    "original_pixels": [
+      1536,
+      1024
+    ],
+    "crop_pixels": [
+      768,
+      70.0,
+      1494.0,
+      458.0
+    ],
+    "used_pixels": [
+      726.0,
+      388.0
+    ],
+    "print_mm": [
+      80.45876288659794,
+      43.0
+    ],
+    "bbox_mm": [
+      307.77061855670104,
+      207.0,
+      80.45876288659794,
+      43.0
+    ],
+    "effective_ppi": 229.1906976744186,
+    "edition": "ilustrada"
+  },
+  {
+    "theme": "Posto",
+    "file": "assets/v0.6/posto_topo.png",
+    "index": 3,
+    "original_pixels": [
+      1536,
+      1024
+    ],
+    "crop_pixels": [
+      782.0,
+      514.0,
+      1490.0,
+      946.0
+    ],
+    "used_pixels": [
+      708.0,
+      432.0
+    ],
+    "print_mm": [
+      67.19444444444444,
+      41.0
+    ],
+    "bbox_mm": [
+      450.40277777777777,
+      210.0,
+      67.19444444444444,
+      41.0
+    ],
+    "effective_ppi": 267.6292682926829,
+    "edition": "ilustrada"
+  },
+  {
+    "theme": "Posto",
+    "file": "assets/v0.5/mapa_oficina.png",
+    "index": 1,
+    "original_pixels": [
+      1536,
+      1024
+    ],
+    "crop_pixels": [
+      768,
+      66.0,
+      1514.0,
+      446.0
+    ],
+    "used_pixels": [
+      746.0,
+      380.0
+    ],
+    "print_mm": [
+      56.93157894736842,
+      29.0
+    ],
+    "bbox_mm": [
+      32.53421052631579,
+      119.0,
+      56.93157894736842,
+      29.0
+    ],
+    "effective_ppi": 332.8275862068965,
+    "edition": "ilustrada"
+  },
+  {
+    "theme": "Posto",
+    "file": "assets/v0.6/posto_topo.png",
+    "index": 0,
+    "original_pixels": [
+      1536,
+      1024
+    ],
+    "crop_pixels": [
+      58.0,
+      86.0,
+      678.0,
+      450.0
+    ],
+    "used_pixels": [
+      620.0,
+      364.0
+    ],
+    "print_mm": [
+      71.53846153846155,
+      42.0
+    ],
+    "bbox_mm": [
+      311.2307692307692,
+      110.0,
+      71.53846153846155,
+      42.0
+    ],
+    "effective_ppi": 220.1333333333333,
+    "edition": "ilustrada"
+  },
+  {
+    "theme": "Posto",
+    "file": "assets/v0.5/mapa_oficina.png",
+    "index": 0,
+    "original_pixels": [
+      1536,
+      1024
+    ],
+    "crop_pixels": [
+      22.0,
+      34.0,
+      738.0,
+      474.0
+    ],
+    "used_pixels": [
+      716.0,
+      440.0
+    ],
+    "print_mm": [
+      58.58181818181818,
+      36.0
+    ],
+    "bbox_mm": [
+      455.2090909090909,
+      110.0,
+      58.58181818181818,
+      36.0
+    ],
+    "effective_ppi": 310.44444444444446,
+    "edition": "ilustrada"
+  },
+  {
+    "theme": "Posto",
+    "file": "assets/v0.6/mercado_gondolas_topo.png",
+    "index": 1,
+    "original_pixels": [
+      1536,
+      1024
+    ],
+    "crop_pixels": [
+      830.0,
+      146.0,
+      1510.0,
+      438.0
+    ],
+    "used_pixels": [
+      680.0,
+      292.0
+    ],
+    "print_mm": [
+      62.87671232876712,
+      27.0
+    ],
+    "bbox_mm": [
+      179.56164383561645,
+      12.0,
+      62.87671232876712,
+      27.0
+    ],
+    "effective_ppi": 274.6962962962963,
+    "edition": "ilustrada"
+  },
+  {
+    "theme": "Posto",
+    "file": "assets/v0.6/posto_topo.png",
+    "index": 3,
+    "original_pixels": [
+      1536,
+      1024
+    ],
+    "crop_pixels": [
+      782.0,
+      514.0,
+      1490.0,
+      946.0
+    ],
+    "used_pixels": [
+      708.0,
+      432.0
+    ],
+    "print_mm": [
+      63.916666666666664,
+      39.0
+    ],
+    "bbox_mm": [
+      316.0416666666667,
+      16.0,
+      63.916666666666664,
+      39.0
+    ],
+    "effective_ppi": 281.3538461538461,
+    "edition": "ilustrada"
+  },
+  {
+    "theme": "Posto",
+    "file": "assets/v0.5/mapa_mercado.png",
+    "index": 3,
+    "original_pixels": [
+      1536,
+      1024
+    ],
+    "crop_pixels": [
+      842.0,
+      526.0,
+      1502.0,
+      942.0
+    ],
+    "used_pixels": [
+      660.0,
+      416.0
+    ],
+    "print_mm": [
+      60.28846153846153,
+      38.0
+    ],
+    "bbox_mm": [
+      452.8557692307692,
+      16.0,
+      60.28846153846153,
+      38.0
+    ],
+    "effective_ppi": 278.06315789473683,
+    "edition": "ilustrada"
+  },
+  {
+    "theme": "material/tile",
+    "file": "assets/v0.6/pisos_materiais.png",
+    "index": 2,
+    "original_pixels": [
+      1536,
+      1024
+    ],
+    "crop_pixels": [
+      1024.0,
+      0.0,
+      1536.0,
+      512.0
+    ],
+    "used_pixels": [
+      512.0,
+      512.0
+    ],
+    "print_mm": [
+      60.0,
+      60.0
+    ],
+    "bbox_mm": [
+      0,
+      0,
+      554,
+      380
+    ],
+    "effective_ppi": 216.74666666666664,
+    "edition": "ilustrada",
+    "role": "material nativo repetido; não mobiliário"
+  },
+  {
+    "theme": "material/paver",
+    "file": "assets/v0.6/pisos_materiais.png",
+    "index": 3,
+    "original_pixels": [
+      1536,
+      1024
+    ],
+    "crop_pixels": [
+      0.0,
+      512.0,
+      512.0,
+      1024.0
+    ],
+    "used_pixels": [
+      512.0,
+      512.0
+    ],
+    "print_mm": [
+      60.0,
+      60.0
+    ],
+    "bbox_mm": [
+      0,
+      285,
+      277,
+      95
+    ],
+    "effective_ppi": 216.74666666666664,
+    "edition": "ilustrada",
+    "role": "material nativo repetido; não mobiliário"
+  },
+  {
+    "theme": "material/tile",
+    "file": "assets/v0.6/pisos_materiais.png",
+    "index": 2,
+    "original_pixels": [
+      1536,
+      1024
+    ],
+    "crop_pixels": [
+      1024.0,
+      0.0,
+      1536.0,
+      512.0
+    ],
+    "used_pixels": [
+      512.0,
+      512.0
+    ],
+    "print_mm": [
+      60.0,
+      60.0
+    ],
+    "bbox_mm": [
+      277,
+      285,
+      277,
+      95
+    ],
+    "effective_ppi": 216.74666666666664,
+    "edition": "ilustrada",
+    "role": "material nativo repetido; não mobiliário"
+  },
+  {
+    "theme": "material/wood",
+    "file": "assets/v0.6/pisos_materiais.png",
+    "index": 4,
+    "original_pixels": [
+      1536,
+      1024
+    ],
+    "crop_pixels": [
+      512.0,
+      512.0,
+      1024.0,
+      1024.0
+    ],
+    "used_pixels": [
+      512.0,
+      512.0
+    ],
+    "print_mm": [
+      60.0,
+      60.0
+    ],
+    "bbox_mm": [
+      0,
+      95,
+      277,
+      190
+    ],
+    "effective_ppi": 216.74666666666664,
+    "edition": "ilustrada",
+    "role": "material nativo repetido; não mobiliário"
+  },
+  {
+    "theme": "material/paver",
+    "file": "assets/v0.6/pisos_materiais.png",
+    "index": 3,
+    "original_pixels": [
+      1536,
+      1024
+    ],
+    "crop_pixels": [
+      0.0,
+      512.0,
+      512.0,
+      1024.0
+    ],
+    "used_pixels": [
+      512.0,
+      512.0
+    ],
+    "print_mm": [
+      60.0,
+      60.0
+    ],
+    "bbox_mm": [
+      277,
+      0,
+      277,
+      285
+    ],
+    "effective_ppi": 216.74666666666664,
+    "edition": "ilustrada",
+    "role": "material nativo repetido; não mobiliário"
+  },
+  {
+    "theme": "material/grass",
+    "file": "assets/v0.6/pisos_materiais.png",
+    "index": 5,
+    "original_pixels": [
+      1536,
+      1024
+    ],
+    "crop_pixels": [
+      1024.0,
+      512.0,
+      1536.0,
+      1024.0
+    ],
+    "used_pixels": [
+      512.0,
+      512.0
+    ],
+    "print_mm": [
+      60.0,
+      60.0
+    ],
+    "bbox_mm": [
+      420,
+      0,
+      134,
+      95
+    ],
+    "effective_ppi": 216.74666666666664,
+    "edition": "ilustrada",
+    "role": "material nativo repetido; não mobiliário"
+  },
+  {
+    "theme": "Condomínio",
+    "file": "assets/v0.5/mapa_oficina.png",
+    "index": 1,
+    "original_pixels": [
+      1536,
+      1024
+    ],
+    "crop_pixels": [
+      768,
+      66.0,
+      1514.0,
+      446.0
+    ],
+    "used_pixels": [
+      746.0,
+      380.0
+    ],
+    "print_mm": [
+      53.00526315789474,
+      27.0
+    ],
+    "bbox_mm": [
+      26.49736842105263,
+      320.0,
+      53.00526315789474,
+      27.0
+    ],
+    "effective_ppi": 357.48148148148147,
+    "edition": "ilustrada"
+  },
+  {
+    "theme": "Condomínio",
+    "file": "assets/v0.6/condominio_topo.png",
+    "index": 0,
+    "original_pixels": [
+      1536,
+      1024
+    ],
+    "crop_pixels": [
+      10.0,
+      38.0,
+      762.0,
+      510.0
+    ],
+    "used_pixels": [
+      752.0,
+      472.0
+    ],
+    "print_mm": [
+      70.10169491525424,
+      44.0
+    ],
+    "bbox_mm": [
+      173.94915254237287,
+      309.0,
+      70.10169491525424,
+      44.0
+    ],
+    "effective_ppi": 272.47272727272724,
+    "edition": "ilustrada"
+  },
+  {
+    "theme": "Condomínio",
+    "file": "assets/v0.6/condominio_topo.png",
+    "index": 1,
+    "original_pixels": [
+      1536,
+      1024
+    ],
+    "crop_pixels": [
+      846.0,
+      14.0,
+      1506.0,
+      494.0
+    ],
+    "used_pixels": [
+      660.0,
+      480.0
+    ],
+    "print_mm": [
+      57.74999999999999,
+      42.0
+    ],
+    "bbox_mm": [
+      318.125,
+      311.0,
+      57.74999999999999,
+      42.0
+    ],
+    "effective_ppi": 290.2857142857143,
+    "edition": "ilustrada"
+  },
+  {
+    "theme": "Condomínio",
+    "file": "assets/v0.6/condominio_topo.png",
+    "index": 3,
+    "original_pixels": [
+      1536,
+      1024
+    ],
+    "crop_pixels": [
+      814.0,
+      512,
+      1506.0,
+      1002.0
+    ],
+    "used_pixels": [
+      692.0,
+      490.0
+    ],
+    "print_mm": [
+      63.55102040816327,
+      45.0
+    ],
+    "bbox_mm": [
+      32.224489795918366,
+      203.0,
+      63.55102040816327,
+      45.0
+    ],
+    "effective_ppi": 276.5777777777777,
+    "edition": "ilustrada"
+  },
+  {
+    "theme": "Condomínio",
+    "file": "assets/v0.6/condominio_topo.png",
+    "index": 1,
+    "original_pixels": [
+      1536,
+      1024
+    ],
+    "crop_pixels": [
+      846.0,
+      14.0,
+      1506.0,
+      494.0
+    ],
+    "used_pixels": [
+      660.0,
+      480.0
+    ],
+    "print_mm": [
+      60.49999999999999,
+      44.0
+    ],
+    "bbox_mm": [
+      178.75,
+      205.0,
+      60.49999999999999,
+      44.0
+    ],
+    "effective_ppi": 277.0909090909091,
+    "edition": "ilustrada"
+  },
+  {
+    "theme": "Condomínio",
+    "file": "assets/v0.6/condominio_topo.png",
+    "index": 2,
+    "original_pixels": [
+      1536,
+      1024
+    ],
+    "crop_pixels": [
+      26.0,
+      526.0,
+      754.0,
+      998.0
+    ],
+    "used_pixels": [
+      728.0,
+      472.0
+    ],
+    "print_mm": [
+      67.86440677966102,
+      44.0
+    ],
+    "bbox_mm": [
+      315.06779661016947,
+      205.0,
+      67.86440677966102,
+      44.0
+    ],
+    "effective_ppi": 272.47272727272724,
+    "edition": "ilustrada"
+  },
+  {
+    "theme": "Condomínio",
+    "file": "assets/v0.6/condominio_topo.png",
+    "index": 3,
+    "original_pixels": [
+      1536,
+      1024
+    ],
+    "crop_pixels": [
+      814.0,
+      512,
+      1506.0,
+      1002.0
+    ],
+    "used_pixels": [
+      692.0,
+      490.0
+    ],
+    "print_mm": [
+      55.07755102040816,
+      39.0
+    ],
+    "bbox_mm": [
+      36.461224489795924,
+      115.0,
+      55.07755102040816,
+      39.0
+    ],
+    "effective_ppi": 319.12820512820514,
+    "edition": "ilustrada"
+  },
+  {
+    "theme": "Condomínio",
+    "file": "assets/v0.6/condominio_topo.png",
+    "index": 3,
+    "original_pixels": [
+      1536,
+      1024
+    ],
+    "crop_pixels": [
+      814.0,
+      512,
+      1506.0,
+      1002.0
+    ],
+    "used_pixels": [
+      692.0,
+      490.0
+    ],
+    "print_mm": [
+      63.55102040816327,
+      45.0
+    ],
+    "bbox_mm": [
+      179.22448979591837,
+      109.0,
+      63.55102040816327,
+      45.0
+    ],
+    "effective_ppi": 276.5777777777777,
+    "edition": "ilustrada"
+  },
+  {
+    "theme": "Condomínio",
+    "file": "assets/v0.6/condominio_topo.png",
+    "index": 2,
+    "original_pixels": [
+      1536,
+      1024
+    ],
+    "crop_pixels": [
+      26.0,
+      526.0,
+      754.0,
+      998.0
+    ],
+    "used_pixels": [
+      728.0,
+      472.0
+    ],
+    "print_mm": [
+      66.32203389830508,
+      43.0
+    ],
+    "bbox_mm": [
+      452.83898305084745,
+      111.0,
+      66.32203389830508,
+      43.0
+    ],
+    "effective_ppi": 278.8093023255814,
+    "edition": "ilustrada"
+  },
+  {
+    "theme": "material/tile",
+    "file": "assets/v0.6/pisos_materiais.png",
+    "index": 2,
+    "original_pixels": [
+      1536,
+      1024
+    ],
+    "crop_pixels": [
+      1024.0,
+      0.0,
+      1536.0,
+      512.0
+    ],
+    "used_pixels": [
+      512.0,
+      512.0
+    ],
+    "print_mm": [
+      60.0,
+      60.0
+    ],
+    "bbox_mm": [
+      0,
+      0,
+      554,
+      380
+    ],
+    "effective_ppi": 216.74666666666664,
+    "edition": "ilustrada",
+    "role": "material nativo repetido; não mobiliário"
+  },
+  {
+    "theme": "material/concrete",
+    "file": "assets/v0.6/pisos_materiais.png",
+    "index": 0,
+    "original_pixels": [
+      1536,
+      1024
+    ],
+    "crop_pixels": [
+      0.0,
+      0.0,
+      512.0,
+      512.0
+    ],
+    "used_pixels": [
+      512.0,
+      512.0
+    ],
+    "print_mm": [
+      60.0,
+      60.0
+    ],
+    "bbox_mm": [
+      0,
+      0,
+      554,
+      380
+    ],
+    "effective_ppi": 216.74666666666664,
+    "edition": "ilustrada",
+    "role": "material nativo repetido; não mobiliário"
+  },
+  {
+    "theme": "material/paver",
+    "file": "assets/v0.6/pisos_materiais.png",
+    "index": 3,
+    "original_pixels": [
+      1536,
+      1024
+    ],
+    "crop_pixels": [
+      0.0,
+      512.0,
+      512.0,
+      1024.0
+    ],
+    "used_pixels": [
+      512.0,
+      512.0
+    ],
+    "print_mm": [
+      60.0,
+      60.0
+    ],
+    "bbox_mm": [
+      0,
+      285,
+      277,
+      95
+    ],
+    "effective_ppi": 216.74666666666664,
+    "edition": "ilustrada",
+    "role": "material nativo repetido; não mobiliário"
+  },
+  {
+    "theme": "material/grass",
+    "file": "assets/v0.6/pisos_materiais.png",
+    "index": 5,
+    "original_pixels": [
+      1536,
+      1024
+    ],
+    "crop_pixels": [
+      1024.0,
+      512.0,
+      1536.0,
+      1024.0
+    ],
+    "used_pixels": [
+      512.0,
+      512.0
+    ],
+    "print_mm": [
+      60.0,
+      60.0
+    ],
+    "bbox_mm": [
+      0,
+      0,
+      138.5,
+      95
+    ],
+    "effective_ppi": 216.74666666666664,
+    "edition": "ilustrada",
+    "role": "material nativo repetido; não mobiliário"
+  },
+  {
+    "theme": "material/tile",
+    "file": "assets/v0.6/pisos_materiais.png",
+    "index": 2,
+    "original_pixels": [
+      1536,
+      1024
+    ],
+    "crop_pixels": [
+      1024.0,
+      0.0,
+      1536.0,
+      512.0
+    ],
+    "used_pixels": [
+      512.0,
+      512.0
+    ],
+    "print_mm": [
+      60.0,
+      60.0
+    ],
+    "bbox_mm": [
+      416,
+      95,
+      138,
+      190
+    ],
+    "effective_ppi": 216.74666666666664,
+    "edition": "ilustrada",
+    "role": "material nativo repetido; não mobiliário"
+  },
+  {
+    "theme": "Estação",
+    "file": "assets/v0.5/mapa_estacao.png",
+    "index": 0,
+    "original_pixels": [
+      1536,
+      1024
+    ],
+    "crop_pixels": [
+      34.0,
+      6.0,
+      702.0,
+      512
+    ],
+    "used_pixels": [
+      668.0,
+      506.0
+    ],
+    "print_mm": [
+      56.76679841897233,
+      43.0
+    ],
+    "bbox_mm": [
+      30.616600790513836,
+      311.0,
+      56.76679841897233,
+      43.0
+    ],
+    "effective_ppi": 298.89302325581394,
+    "edition": "ilustrada"
+  },
+  {
+    "theme": "Estação",
+    "file": "assets/v0.6/estacao_topo.png",
+    "index": 2,
+    "original_pixels": [
+      1536,
+      1024
+    ],
+    "crop_pixels": [
+      34.0,
+      574.0,
+      730.0,
+      986.0
+    ],
+    "used_pixels": [
+      696.0,
+      412.0
+    ],
+    "print_mm": [
+      72.64077669902912,
+      43.0
+    ],
+    "bbox_mm": [
+      311.1796116504854,
+      310.0,
+      72.64077669902912,
+      43.0
+    ],
+    "effective_ppi": 243.3674418604651,
+    "edition": "ilustrada"
+  },
+  {
+    "theme": "Estação",
+    "file": "assets/v0.6/estacao_topo.png",
+    "index": 3,
+    "original_pixels": [
+      1536,
+      1024
+    ],
+    "crop_pixels": [
+      768,
+      578.0,
+      1502.0,
+      922.0
+    ],
+    "used_pixels": [
+      734.0,
+      344.0
+    ],
+    "print_mm": [
+      85.0,
+      39.83651226158038
+    ],
+    "bbox_mm": [
+      443.0,
+      312.5817438692098,
+      85.0,
+      39.83651226158038
+    ],
+    "effective_ppi": 219.33647058823527,
+    "edition": "ilustrada"
+  },
+  {
+    "theme": "Estação",
+    "file": "assets/v0.6/estacao_topo.png",
+    "index": 0,
+    "original_pixels": [
+      1536,
+      1024
+    ],
+    "crop_pixels": [
+      74.0,
+      34.0,
+      694.0,
+      512
+    ],
+    "used_pixels": [
+      620.0,
+      478.0
+    ],
+    "print_mm": [
+      58.36820083682008,
+      45.0
+    ],
+    "bbox_mm": [
+      319.31589958159,
+      205.0,
+      58.36820083682008,
+      45.0
+    ],
+    "effective_ppi": 269.8044444444444,
+    "edition": "ilustrada"
+  },
+  {
+    "theme": "Estação",
+    "file": "assets/v0.6/estacao_topo.png",
+    "index": 1,
+    "original_pixels": [
+      1536,
+      1024
+    ],
+    "crop_pixels": [
+      768,
+      58.0,
+      1522.0,
+      512
+    ],
+    "used_pixels": [
+      754.0,
+      454.0
+    ],
+    "print_mm": [
+      73.0748898678414,
+      44.0
+    ],
+    "bbox_mm": [
+      448.9625550660793,
+      207.0,
+      73.0748898678414,
+      44.0
+    ],
+    "effective_ppi": 262.08181818181816,
+    "edition": "ilustrada"
+  },
+  {
+    "theme": "Estação",
+    "file": "assets/v0.6/estacao_topo.png",
+    "index": 2,
+    "original_pixels": [
+      1536,
+      1024
+    ],
+    "crop_pixels": [
+      34.0,
+      574.0,
+      730.0,
+      986.0
+    ],
+    "used_pixels": [
+      696.0,
+      412.0
+    ],
+    "print_mm": [
+      72.64077669902912,
+      43.0
+    ],
+    "bbox_mm": [
+      27.17961165048544,
+      110.0,
+      72.64077669902912,
+      43.0
+    ],
+    "effective_ppi": 243.3674418604651,
+    "edition": "ilustrada"
+  },
+  {
+    "theme": "Estação",
+    "file": "assets/v0.6/estacao_topo.png",
+    "index": 1,
+    "original_pixels": [
+      1536,
+      1024
+    ],
+    "crop_pixels": [
+      768,
+      58.0,
+      1522.0,
+      512
+    ],
+    "used_pixels": [
+      754.0,
+      454.0
+    ],
+    "print_mm": [
+      73.0748898678414,
+      44.0
+    ],
+    "bbox_mm": [
+      311.4625550660793,
+      110.0,
+      73.0748898678414,
+      44.0
+    ],
+    "effective_ppi": 262.08181818181816,
+    "edition": "ilustrada"
+  },
+  {
+    "theme": "Estação",
+    "file": "assets/v0.6/estacao_topo.png",
+    "index": 3,
+    "original_pixels": [
+      1536,
+      1024
+    ],
+    "crop_pixels": [
+      768,
+      578.0,
+      1502.0,
+      922.0
+    ],
+    "used_pixels": [
+      734.0,
+      344.0
+    ],
+    "print_mm": [
+      84.0,
+      39.36784741144414
+    ],
+    "bbox_mm": [
+      443.0,
+      112.31607629427793,
+      84.0,
+      39.36784741144414
+    ],
+    "effective_ppi": 221.94761904761904,
+    "edition": "ilustrada"
+  },
+  {
+    "theme": "Estação",
+    "file": "assets/v0.6/estacao_topo.png",
+    "index": 1,
+    "original_pixels": [
+      1536,
+      1024
+    ],
+    "crop_pixels": [
+      768,
+      58.0,
+      1522.0,
+      512
+    ],
+    "used_pixels": [
+      754.0,
+      454.0
+    ],
+    "print_mm": [
+      66.43171806167402,
+      40.0
+    ],
+    "bbox_mm": [
+      177.284140969163,
+      14.0,
+      66.43171806167402,
+      40.0
+    ],
+    "effective_ppi": 288.28999999999996,
+    "edition": "ilustrada"
+  },
+  {
+    "theme": "Estação",
+    "file": "assets/v0.5/mapa_estacao.png",
+    "index": 0,
+    "original_pixels": [
+      1536,
+      1024
+    ],
+    "crop_pixels": [
+      34.0,
+      6.0,
+      702.0,
+      512
+    ],
+    "used_pixels": [
+      668.0,
+      506.0
+    ],
+    "print_mm": [
+      55.44664031620554,
+      42.0
+    ],
+    "bbox_mm": [
+      318.77667984189725,
+      17.0,
+      55.44664031620554,
+      42.0
+    ],
+    "effective_ppi": 306.0095238095238,
+    "edition": "ilustrada"
+  },
+  {
+    "theme": "Estação",
+    "file": "assets/v0.5/mapa_estacao.png",
+    "index": 3,
+    "original_pixels": [
+      1536,
+      1024
+    ],
+    "crop_pixels": [
+      768,
+      554.0,
+      1514.0,
+      994.0
+    ],
+    "used_pixels": [
+      746.0,
+      440.0
+    ],
+    "print_mm": [
+      67.81818181818181,
+      40.0
+    ],
+    "bbox_mm": [
+      450.5909090909091,
+      16.0,
+      67.81818181818181,
+      40.0
+    ],
+    "effective_ppi": 279.4,
+    "edition": "ilustrada"
+  },
+  {
+    "theme": "Mercado",
+    "file": "output/edicao-tabuleiros-v0.6/miniaturas/ilustrada/MERCADO.png",
+    "role": "miniatura derivada de A–C; D–E continuam vetoriais",
+    "original_pixels": [
+      1339,
+      919
+    ],
+    "used_pixels": [
+      1339,
+      919
+    ],
+    "crop_pixels": [
+      0,
+      0,
+      1339,
+      919
+    ],
+    "print_mm": [
+      170,
+      116.60649819494584
+    ],
+    "effective_ppi": 200.06235294117644,
+    "edition": "ilustrada"
+  },
+  {
+    "theme": "Hospital",
+    "file": "output/edicao-tabuleiros-v0.6/miniaturas/ilustrada/HOSPITAL.png",
+    "role": "miniatura derivada de A–C; D–E continuam vetoriais",
+    "original_pixels": [
+      1339,
+      919
+    ],
+    "used_pixels": [
+      1339,
+      919
+    ],
+    "crop_pixels": [
+      0,
+      0,
+      1339,
+      919
+    ],
+    "print_mm": [
+      170,
+      116.60649819494584
+    ],
+    "effective_ppi": 200.06235294117644,
+    "edition": "ilustrada"
+  },
+  {
+    "theme": "Oficina",
+    "file": "output/edicao-tabuleiros-v0.6/miniaturas/ilustrada/OFICINA.png",
+    "role": "miniatura derivada de A–C; D–E continuam vetoriais",
+    "original_pixels": [
+      1339,
+      919
+    ],
+    "used_pixels": [
+      1339,
+      919
+    ],
+    "crop_pixels": [
+      0,
+      0,
+      1339,
+      919
+    ],
+    "print_mm": [
+      170,
+      116.60649819494584
+    ],
+    "effective_ppi": 200.06235294117644,
+    "edition": "ilustrada"
+  },
+  {
+    "theme": "Posto",
+    "file": "output/edicao-tabuleiros-v0.6/miniaturas/ilustrada/POSTO.png",
+    "role": "miniatura derivada de A–C; D–E continuam vetoriais",
+    "original_pixels": [
+      1339,
+      919
+    ],
+    "used_pixels": [
+      1339,
+      919
+    ],
+    "crop_pixels": [
+      0,
+      0,
+      1339,
+      919
+    ],
+    "print_mm": [
+      170,
+      116.60649819494584
+    ],
+    "effective_ppi": 200.06235294117644,
+    "edition": "ilustrada"
+  },
+  {
+    "theme": "Condomínio",
+    "file": "output/edicao-tabuleiros-v0.6/miniaturas/ilustrada/CONDOMINIO.png",
+    "role": "miniatura derivada de A–C; D–E continuam vetoriais",
+    "original_pixels": [
+      1339,
+      919
+    ],
+    "used_pixels": [
+      1339,
+      919
+    ],
+    "crop_pixels": [
+      0,
+      0,
+      1339,
+      919
+    ],
+    "print_mm": [
+      170,
+      116.60649819494584
+    ],
+    "effective_ppi": 200.06235294117644,
+    "edition": "ilustrada"
+  },
+  {
+    "theme": "Estação",
+    "file": "output/edicao-tabuleiros-v0.6/miniaturas/ilustrada/ESTACAO.png",
+    "role": "miniatura derivada de A–C; D–E continuam vetoriais",
+    "original_pixels": [
+      1339,
+      919
+    ],
+    "used_pixels": [
+      1339,
+      919
+    ],
+    "crop_pixels": [
+      0,
+      0,
+      1339,
+      919
+    ],
+    "print_mm": [
+      170,
+      116.60649819494584
+    ],
+    "effective_ppi": 200.06235294117644,
+    "edition": "ilustrada"
+  },
+  {
+    "theme": "Comuns",
+    "file": "assets/v0.5/mapa_oficina.png",
+    "index": 1,
+    "original_pixels": [
+      1536,
+      1024
+    ],
+    "crop_pixels": [
+      768,
+      66.0,
+      1514.0,
+      446.0
+    ],
+    "used_pixels": [
+      746.0,
+      380.0
+    ],
+    "print_mm": [
+      53.00526315789474,
+      27.0
+    ],
+    "bbox_mm": [
+      25.49736842105263,
+      320.0,
+      53.00526315789474,
+      27.0
+    ],
+    "effective_ppi": 357.48148148148147,
+    "edition": "economica"
+  },
+  {
+    "theme": "Comuns",
+    "file": "assets/v0.6/bancada_topo.png",
+    "index": 0,
+    "original_pixels": [
+      1536,
+      1024
+    ],
+    "crop_pixels": [
+      56,
+      119,
+      1506,
+      888
+    ],
+    "used_pixels": [
+      1450,
+      769
+    ],
+    "print_mm": [
+      73.5370611183355,
+      39.0
+    ],
+    "bbox_mm": [
+      312.73146944083226,
+      315.0,
+      73.5370611183355,
+      39.0
+    ],
+    "effective_ppi": 500.83589743589744,
+    "edition": "economica"
+  },
+  {
+    "theme": "Comuns",
+    "file": "assets/v0.6/hospital_topo.png",
+    "index": 1,
+    "original_pixels": [
+      1536,
+      1024
+    ],
+    "crop_pixels": [
+      790.0,
+      58.0,
+      1510.0,
+      506.0
+    ],
+    "used_pixels": [
+      720.0,
+      448.0
+    ],
+    "print_mm": [
+      61.07142857142858,
+      38.0
+    ],
+    "bbox_mm": [
+      34.46428571428571,
+      210.0,
+      61.07142857142858,
+      38.0
+    ],
+    "effective_ppi": 299.4526315789473,
+    "edition": "economica"
+  },
+  {
+    "theme": "Comuns",
+    "file": "assets/v0.5/mapa_oficina.png",
+    "index": 2,
+    "original_pixels": [
+      1536,
+      1024
+    ],
+    "crop_pixels": [
+      30.0,
+      512,
+      758.0,
+      974.0
+    ],
+    "used_pixels": [
+      728.0,
+      462.0
+    ],
+    "print_mm": [
+      53.57575757575758,
+      34.0
+    ],
+    "bbox_mm": [
+      182.21212121212122,
+      210.0,
+      53.57575757575758,
+      34.0
+    ],
+    "effective_ppi": 345.14117647058816,
+    "edition": "economica"
+  },
+  {
+    "theme": "Comuns",
+    "file": "assets/v0.5/mapa_mercado.png",
+    "index": 3,
+    "original_pixels": [
+      1536,
+      1024
+    ],
+    "crop_pixels": [
+      842.0,
+      526.0,
+      1502.0,
+      942.0
+    ],
+    "used_pixels": [
+      660.0,
+      416.0
+    ],
+    "print_mm": [
+      66.63461538461539,
+      42.0
+    ],
+    "bbox_mm": [
+      315.1826923076923,
+      207.0,
+      66.63461538461539,
+      42.0
+    ],
+    "effective_ppi": 251.58095238095237,
+    "edition": "economica"
+  },
+  {
+    "theme": "Comuns",
+    "file": "assets/v0.6/oficina_topo.png",
+    "index": 1,
+    "original_pixels": [
+      1536,
+      1024
+    ],
+    "crop_pixels": [
+      828,
+      55,
+      1525,
+      505
+    ],
+    "used_pixels": [
+      697,
+      450
+    ],
+    "print_mm": [
+      58.85777777777778,
+      38.0
+    ],
+    "bbox_mm": [
+      181.07111111111112,
+      110.0,
+      58.85777777777778,
+      38.0
+    ],
+    "effective_ppi": 300.7894736842105,
+    "edition": "economica"
+  },
+  {
+    "theme": "Comuns",
+    "file": "assets/v0.6/condominio_topo.png",
+    "index": 2,
+    "original_pixels": [
+      1536,
+      1024
+    ],
+    "crop_pixels": [
+      26.0,
+      526.0,
+      754.0,
+      998.0
+    ],
+    "used_pixels": [
+      728.0,
+      472.0
+    ],
+    "print_mm": [
+      58.61016949152542,
+      38.0
+    ],
+    "bbox_mm": [
+      317.1949152542373,
+      16.0,
+      58.61016949152542,
+      38.0
+    ],
+    "effective_ppi": 315.4947368421053,
+    "edition": "economica"
+  },
+  {
+    "theme": "Comuns",
+    "file": "assets/v0.6/bancada_topo.png",
+    "index": 0,
+    "original_pixels": [
+      1536,
+      1024
+    ],
+    "crop_pixels": [
+      56,
+      119,
+      1506,
+      888
+    ],
+    "used_pixels": [
+      1450,
+      769
+    ],
+    "print_mm": [
+      75.42262678803641,
+      40.0
+    ],
+    "bbox_mm": [
+      445.7886866059818,
+      16.0,
+      75.42262678803641,
+      40.0
+    ],
+    "effective_ppi": 488.315,
+    "edition": "economica"
+  },
+  {
     "theme": "Mercado",
     "file": "assets/v0.5/mapa_oficina.png",
     "index": 1,
@@ -1431,6 +4742,1861 @@
       26.0
     ],
     "effective_ppi": 293.07692307692304,
+    "edition": "economica"
+  },
+  {
+    "theme": "Hospital",
+    "file": "assets/v0.5/mapa_oficina.png",
+    "index": 1,
+    "original_pixels": [
+      1536,
+      1024
+    ],
+    "crop_pixels": [
+      768,
+      66.0,
+      1514.0,
+      446.0
+    ],
+    "used_pixels": [
+      746.0,
+      380.0
+    ],
+    "print_mm": [
+      51.0421052631579,
+      26.0
+    ],
+    "bbox_mm": [
+      26.47894736842105,
+      321.0,
+      51.0421052631579,
+      26.0
+    ],
+    "effective_ppi": 371.23076923076917,
+    "edition": "economica"
+  },
+  {
+    "theme": "Hospital",
+    "file": "assets/v0.6/hospital_topo.png",
+    "index": 1,
+    "original_pixels": [
+      1536,
+      1024
+    ],
+    "crop_pixels": [
+      790.0,
+      58.0,
+      1510.0,
+      506.0
+    ],
+    "used_pixels": [
+      720.0,
+      448.0
+    ],
+    "print_mm": [
+      72.32142857142857,
+      45.0
+    ],
+    "bbox_mm": [
+      173.83928571428572,
+      310.0,
+      72.32142857142857,
+      45.0
+    ],
+    "effective_ppi": 252.87111111111108,
+    "edition": "economica"
+  },
+  {
+    "theme": "Hospital",
+    "file": "assets/v0.6/hospital_topo.png",
+    "index": 0,
+    "original_pixels": [
+      1536,
+      1024
+    ],
+    "crop_pixels": [
+      54.0,
+      30.0,
+      678.0,
+      512
+    ],
+    "used_pixels": [
+      624.0,
+      482.0
+    ],
+    "print_mm": [
+      55.66804979253112,
+      43.0
+    ],
+    "bbox_mm": [
+      34.16597510373444,
+      207.0,
+      55.66804979253112,
+      43.0
+    ],
+    "effective_ppi": 284.71627906976744,
+    "edition": "economica"
+  },
+  {
+    "theme": "Hospital",
+    "file": "assets/v0.6/hospital_topo.png",
+    "index": 2,
+    "original_pixels": [
+      1536,
+      1024
+    ],
+    "crop_pixels": [
+      38.0,
+      526.0,
+      754.0,
+      1002.0
+    ],
+    "used_pixels": [
+      716.0,
+      476.0
+    ],
+    "print_mm": [
+      66.18487394957984,
+      44.0
+    ],
+    "bbox_mm": [
+      314.4075630252101,
+      205.0,
+      66.18487394957984,
+      44.0
+    ],
+    "effective_ppi": 274.78181818181815,
+    "edition": "economica"
+  },
+  {
+    "theme": "Hospital",
+    "file": "assets/v0.6/hospital_topo.png",
+    "index": 3,
+    "original_pixels": [
+      1536,
+      1024
+    ],
+    "crop_pixels": [
+      826.0,
+      598.0,
+      1490.0,
+      874.0
+    ],
+    "used_pixels": [
+      664.0,
+      276.0
+    ],
+    "print_mm": [
+      78.44465116279069,
+      32.606511627906976
+    ],
+    "bbox_mm": [
+      445.77767441860465,
+      210.69674418604652,
+      78.44465116279069,
+      32.606511627906976
+    ],
+    "effective_ppi": 215.0,
+    "edition": "economica"
+  },
+  {
+    "theme": "Hospital",
+    "file": "assets/v0.6/hospital_topo.png",
+    "index": 3,
+    "original_pixels": [
+      1536,
+      1024
+    ],
+    "crop_pixels": [
+      826.0,
+      598.0,
+      1490.0,
+      874.0
+    ],
+    "used_pixels": [
+      664.0,
+      276.0
+    ],
+    "print_mm": [
+      78.44465116279069,
+      32.606511627906976
+    ],
+    "bbox_mm": [
+      169.77767441860465,
+      113.69674418604652,
+      78.44465116279069,
+      32.606511627906976
+    ],
+    "effective_ppi": 215.0,
+    "edition": "economica"
+  },
+  {
+    "theme": "Hospital",
+    "file": "assets/v0.6/hospital_topo.png",
+    "index": 0,
+    "original_pixels": [
+      1536,
+      1024
+    ],
+    "crop_pixels": [
+      54.0,
+      30.0,
+      678.0,
+      512
+    ],
+    "used_pixels": [
+      624.0,
+      482.0
+    ],
+    "print_mm": [
+      55.66804979253112,
+      43.0
+    ],
+    "bbox_mm": [
+      454.66597510373447,
+      110.0,
+      55.66804979253112,
+      43.0
+    ],
+    "effective_ppi": 284.71627906976744,
+    "edition": "economica"
+  },
+  {
+    "theme": "Hospital",
+    "file": "assets/v0.6/hospital_topo.png",
+    "index": 2,
+    "original_pixels": [
+      1536,
+      1024
+    ],
+    "crop_pixels": [
+      38.0,
+      526.0,
+      754.0,
+      1002.0
+    ],
+    "used_pixels": [
+      716.0,
+      476.0
+    ],
+    "print_mm": [
+      61.67226890756302,
+      41.0
+    ],
+    "bbox_mm": [
+      32.16386554621849,
+      14.0,
+      61.67226890756302,
+      41.0
+    ],
+    "effective_ppi": 294.88780487804877,
+    "edition": "economica"
+  },
+  {
+    "theme": "Hospital",
+    "file": "assets/v0.6/hospital_topo.png",
+    "index": 3,
+    "original_pixels": [
+      1536,
+      1024
+    ],
+    "crop_pixels": [
+      826.0,
+      598.0,
+      1490.0,
+      874.0
+    ],
+    "used_pixels": [
+      664.0,
+      276.0
+    ],
+    "print_mm": [
+      78.44465116279069,
+      32.606511627906976
+    ],
+    "bbox_mm": [
+      172.77767441860465,
+      17.196744186046512,
+      78.44465116279069,
+      32.606511627906976
+    ],
+    "effective_ppi": 215.0,
+    "edition": "economica"
+  },
+  {
+    "theme": "Oficina",
+    "file": "assets/v0.5/mapa_oficina.png",
+    "index": 1,
+    "original_pixels": [
+      1536,
+      1024
+    ],
+    "crop_pixels": [
+      768,
+      66.0,
+      1514.0,
+      446.0
+    ],
+    "used_pixels": [
+      746.0,
+      380.0
+    ],
+    "print_mm": [
+      54.96842105263158,
+      27.999999999999996
+    ],
+    "bbox_mm": [
+      23.51578947368421,
+      321.0,
+      54.96842105263158,
+      27.999999999999996
+    ],
+    "effective_ppi": 344.7142857142857,
+    "edition": "economica"
+  },
+  {
+    "theme": "Oficina",
+    "file": "assets/v0.6/oficina_topo.png",
+    "index": 1,
+    "original_pixels": [
+      1536,
+      1024
+    ],
+    "crop_pixels": [
+      828,
+      55,
+      1525,
+      505
+    ],
+    "used_pixels": [
+      697,
+      450
+    ],
+    "print_mm": [
+      65.05333333333334,
+      42.0
+    ],
+    "bbox_mm": [
+      179.47333333333333,
+      312.0,
+      65.05333333333334,
+      42.0
+    ],
+    "effective_ppi": 272.1428571428571,
+    "edition": "economica"
+  },
+  {
+    "theme": "Oficina",
+    "file": "assets/v0.5/mapa_oficina.png",
+    "index": 2,
+    "original_pixels": [
+      1536,
+      1024
+    ],
+    "crop_pixels": [
+      30.0,
+      512,
+      758.0,
+      974.0
+    ],
+    "used_pixels": [
+      728.0,
+      462.0
+    ],
+    "print_mm": [
+      53.57575757575758,
+      34.0
+    ],
+    "bbox_mm": [
+      318.2121212121212,
+      316.0,
+      53.57575757575758,
+      34.0
+    ],
+    "effective_ppi": 345.14117647058816,
+    "edition": "economica"
+  },
+  {
+    "theme": "Oficina",
+    "file": "assets/v0.5/mapa_oficina.png",
+    "index": 0,
+    "original_pixels": [
+      1536,
+      1024
+    ],
+    "crop_pixels": [
+      22.0,
+      34.0,
+      738.0,
+      474.0
+    ],
+    "used_pixels": [
+      716.0,
+      440.0
+    ],
+    "print_mm": [
+      58.58181818181818,
+      36.0
+    ],
+    "bbox_mm": [
+      456.2090909090909,
+      315.0,
+      58.58181818181818,
+      36.0
+    ],
+    "effective_ppi": 310.44444444444446,
+    "edition": "economica"
+  },
+  {
+    "theme": "Oficina",
+    "file": "assets/v0.5/mapa_oficina.png",
+    "index": 1,
+    "original_pixels": [
+      1536,
+      1024
+    ],
+    "crop_pixels": [
+      768,
+      66.0,
+      1514.0,
+      446.0
+    ],
+    "used_pixels": [
+      746.0,
+      380.0
+    ],
+    "print_mm": [
+      54.96842105263158,
+      27.999999999999996
+    ],
+    "bbox_mm": [
+      36.01578947368421,
+      211.0,
+      54.96842105263158,
+      27.999999999999996
+    ],
+    "effective_ppi": 344.7142857142857,
+    "edition": "economica"
+  },
+  {
+    "theme": "Oficina",
+    "file": "assets/v0.6/oficina_topo.png",
+    "index": 0,
+    "original_pixels": [
+      1536,
+      1024
+    ],
+    "crop_pixels": [
+      34,
+      22,
+      826,
+      505
+    ],
+    "used_pixels": [
+      792,
+      483
+    ],
+    "print_mm": [
+      78.70807453416148,
+      48.0
+    ],
+    "bbox_mm": [
+      169.64596273291926,
+      204.0,
+      78.70807453416148,
+      48.0
+    ],
+    "effective_ppi": 255.5875,
+    "edition": "economica"
+  },
+  {
+    "theme": "Oficina",
+    "file": "assets/v0.6/oficina_topo.png",
+    "index": 1,
+    "original_pixels": [
+      1536,
+      1024
+    ],
+    "crop_pixels": [
+      828,
+      55,
+      1525,
+      505
+    ],
+    "used_pixels": [
+      697,
+      450
+    ],
+    "print_mm": [
+      65.05333333333334,
+      42.0
+    ],
+    "bbox_mm": [
+      316.97333333333336,
+      203.0,
+      65.05333333333334,
+      42.0
+    ],
+    "effective_ppi": 272.1428571428571,
+    "edition": "economica"
+  },
+  {
+    "theme": "Oficina",
+    "file": "assets/v0.6/oficina_topo.png",
+    "index": 3,
+    "original_pixels": [
+      1536,
+      1024
+    ],
+    "crop_pixels": [
+      852,
+      506,
+      1526,
+      1007
+    ],
+    "used_pixels": [
+      674,
+      501
+    ],
+    "print_mm": [
+      57.84830339321358,
+      43.0
+    ],
+    "bbox_mm": [
+      455.57584830339323,
+      204.0,
+      57.84830339321358,
+      43.0
+    ],
+    "effective_ppi": 295.9395348837209,
+    "edition": "economica"
+  },
+  {
+    "theme": "Oficina",
+    "file": "assets/v0.6/bancada_topo.png",
+    "index": 0,
+    "original_pixels": [
+      1536,
+      1024
+    ],
+    "crop_pixels": [
+      56,
+      119,
+      1506,
+      888
+    ],
+    "used_pixels": [
+      1450,
+      769
+    ],
+    "print_mm": [
+      77.30819245773732,
+      41.0
+    ],
+    "bbox_mm": [
+      172.34590377113133,
+      111.0,
+      77.30819245773732,
+      41.0
+    ],
+    "effective_ppi": 476.4048780487804,
+    "edition": "economica"
+  },
+  {
+    "theme": "Oficina",
+    "file": "assets/v0.6/oficina_topo.png",
+    "index": 0,
+    "original_pixels": [
+      1536,
+      1024
+    ],
+    "crop_pixels": [
+      34,
+      22,
+      826,
+      505
+    ],
+    "used_pixels": [
+      792,
+      483
+    ],
+    "print_mm": [
+      57.391304347826086,
+      35.0
+    ],
+    "bbox_mm": [
+      317.30434782608694,
+      116.0,
+      57.391304347826086,
+      35.0
+    ],
+    "effective_ppi": 350.52,
+    "edition": "economica"
+  },
+  {
+    "theme": "Oficina",
+    "file": "assets/v0.6/oficina_topo.png",
+    "index": 3,
+    "original_pixels": [
+      1536,
+      1024
+    ],
+    "crop_pixels": [
+      852,
+      506,
+      1526,
+      1007
+    ],
+    "used_pixels": [
+      674,
+      501
+    ],
+    "print_mm": [
+      48.431137724550894,
+      36.0
+    ],
+    "bbox_mm": [
+      38.78443113772455,
+      14.0,
+      48.431137724550894,
+      36.0
+    ],
+    "effective_ppi": 353.48333333333335,
+    "edition": "economica"
+  },
+  {
+    "theme": "Oficina",
+    "file": "assets/v0.5/mapa_oficina.png",
+    "index": 2,
+    "original_pixels": [
+      1536,
+      1024
+    ],
+    "crop_pixels": [
+      30.0,
+      512,
+      758.0,
+      974.0
+    ],
+    "used_pixels": [
+      728.0,
+      462.0
+    ],
+    "print_mm": [
+      47.272727272727266,
+      29.999999999999996
+    ],
+    "bbox_mm": [
+      324.8636363636364,
+      16.0,
+      47.272727272727266,
+      29.999999999999996
+    ],
+    "effective_ppi": 391.16,
+    "edition": "economica"
+  },
+  {
+    "theme": "Oficina",
+    "file": "assets/v0.6/bancada_topo.png",
+    "index": 0,
+    "original_pixels": [
+      1536,
+      1024
+    ],
+    "crop_pixels": [
+      56,
+      119,
+      1506,
+      888
+    ],
+    "used_pixels": [
+      1450,
+      769
+    ],
+    "print_mm": [
+      64.10923276983095,
+      34.0
+    ],
+    "bbox_mm": [
+      451.94538361508455,
+      16.0,
+      64.10923276983095,
+      34.0
+    ],
+    "effective_ppi": 574.4882352941177,
+    "edition": "economica"
+  },
+  {
+    "theme": "Posto",
+    "file": "assets/v0.5/mapa_oficina.png",
+    "index": 1,
+    "original_pixels": [
+      1536,
+      1024
+    ],
+    "crop_pixels": [
+      768,
+      66.0,
+      1514.0,
+      446.0
+    ],
+    "used_pixels": [
+      746.0,
+      380.0
+    ],
+    "print_mm": [
+      53.00526315789474,
+      27.0
+    ],
+    "bbox_mm": [
+      26.49736842105263,
+      320.0,
+      53.00526315789474,
+      27.0
+    ],
+    "effective_ppi": 357.48148148148147,
+    "edition": "economica"
+  },
+  {
+    "theme": "Posto",
+    "file": "assets/v0.6/posto_topo.png",
+    "index": 2,
+    "original_pixels": [
+      1536,
+      1024
+    ],
+    "crop_pixels": [
+      54.0,
+      574.0,
+      714.0,
+      966.0
+    ],
+    "used_pixels": [
+      660.0,
+      392.0
+    ],
+    "print_mm": [
+      67.34693877551021,
+      40.0
+    ],
+    "bbox_mm": [
+      177.32653061224488,
+      313.0,
+      67.34693877551021,
+      40.0
+    ],
+    "effective_ppi": 248.92,
+    "edition": "economica"
+  },
+  {
+    "theme": "Posto",
+    "file": "assets/v0.6/mercado_gondolas_topo.png",
+    "index": 2,
+    "original_pixels": [
+      1536,
+      1024
+    ],
+    "crop_pixels": [
+      26.0,
+      586.0,
+      710.0,
+      886.0
+    ],
+    "used_pixels": [
+      684.0,
+      300.0
+    ],
+    "print_mm": [
+      63.84,
+      28.0
+    ],
+    "bbox_mm": [
+      315.58,
+      315.0,
+      63.84,
+      28.0
+    ],
+    "effective_ppi": 272.1428571428571,
+    "edition": "economica"
+  },
+  {
+    "theme": "Posto",
+    "file": "assets/v0.6/mercado_gondolas_topo.png",
+    "index": 0,
+    "original_pixels": [
+      1536,
+      1024
+    ],
+    "crop_pixels": [
+      26.0,
+      146.0,
+      710.0,
+      438.0
+    ],
+    "used_pixels": [
+      684.0,
+      292.0
+    ],
+    "print_mm": [
+      65.58904109589041,
+      28.0
+    ],
+    "bbox_mm": [
+      451.7054794520548,
+      315.0,
+      65.58904109589041,
+      28.0
+    ],
+    "effective_ppi": 264.8857142857143,
+    "edition": "economica"
+  },
+  {
+    "theme": "Posto",
+    "file": "assets/v0.6/posto_topo.png",
+    "index": 0,
+    "original_pixels": [
+      1536,
+      1024
+    ],
+    "crop_pixels": [
+      58.0,
+      86.0,
+      678.0,
+      450.0
+    ],
+    "used_pixels": [
+      620.0,
+      364.0
+    ],
+    "print_mm": [
+      73.24651162790697,
+      43.00279069767441
+    ],
+    "bbox_mm": [
+      174.87674418604652,
+      209.4986046511628,
+      73.24651162790697,
+      43.00279069767441
+    ],
+    "effective_ppi": 215.0,
+    "edition": "economica"
+  },
+  {
+    "theme": "Posto",
+    "file": "assets/v0.6/posto_topo.png",
+    "index": 1,
+    "original_pixels": [
+      1536,
+      1024
+    ],
+    "crop_pixels": [
+      768,
+      70.0,
+      1494.0,
+      458.0
+    ],
+    "used_pixels": [
+      726.0,
+      388.0
+    ],
+    "print_mm": [
+      80.45876288659794,
+      43.0
+    ],
+    "bbox_mm": [
+      307.77061855670104,
+      207.0,
+      80.45876288659794,
+      43.0
+    ],
+    "effective_ppi": 229.1906976744186,
+    "edition": "economica"
+  },
+  {
+    "theme": "Posto",
+    "file": "assets/v0.6/posto_topo.png",
+    "index": 3,
+    "original_pixels": [
+      1536,
+      1024
+    ],
+    "crop_pixels": [
+      782.0,
+      514.0,
+      1490.0,
+      946.0
+    ],
+    "used_pixels": [
+      708.0,
+      432.0
+    ],
+    "print_mm": [
+      67.19444444444444,
+      41.0
+    ],
+    "bbox_mm": [
+      450.40277777777777,
+      210.0,
+      67.19444444444444,
+      41.0
+    ],
+    "effective_ppi": 267.6292682926829,
+    "edition": "economica"
+  },
+  {
+    "theme": "Posto",
+    "file": "assets/v0.5/mapa_oficina.png",
+    "index": 1,
+    "original_pixels": [
+      1536,
+      1024
+    ],
+    "crop_pixels": [
+      768,
+      66.0,
+      1514.0,
+      446.0
+    ],
+    "used_pixels": [
+      746.0,
+      380.0
+    ],
+    "print_mm": [
+      56.93157894736842,
+      29.0
+    ],
+    "bbox_mm": [
+      32.53421052631579,
+      119.0,
+      56.93157894736842,
+      29.0
+    ],
+    "effective_ppi": 332.8275862068965,
+    "edition": "economica"
+  },
+  {
+    "theme": "Posto",
+    "file": "assets/v0.6/posto_topo.png",
+    "index": 0,
+    "original_pixels": [
+      1536,
+      1024
+    ],
+    "crop_pixels": [
+      58.0,
+      86.0,
+      678.0,
+      450.0
+    ],
+    "used_pixels": [
+      620.0,
+      364.0
+    ],
+    "print_mm": [
+      71.53846153846155,
+      42.0
+    ],
+    "bbox_mm": [
+      311.2307692307692,
+      110.0,
+      71.53846153846155,
+      42.0
+    ],
+    "effective_ppi": 220.1333333333333,
+    "edition": "economica"
+  },
+  {
+    "theme": "Posto",
+    "file": "assets/v0.5/mapa_oficina.png",
+    "index": 0,
+    "original_pixels": [
+      1536,
+      1024
+    ],
+    "crop_pixels": [
+      22.0,
+      34.0,
+      738.0,
+      474.0
+    ],
+    "used_pixels": [
+      716.0,
+      440.0
+    ],
+    "print_mm": [
+      58.58181818181818,
+      36.0
+    ],
+    "bbox_mm": [
+      455.2090909090909,
+      110.0,
+      58.58181818181818,
+      36.0
+    ],
+    "effective_ppi": 310.44444444444446,
+    "edition": "economica"
+  },
+  {
+    "theme": "Posto",
+    "file": "assets/v0.6/mercado_gondolas_topo.png",
+    "index": 1,
+    "original_pixels": [
+      1536,
+      1024
+    ],
+    "crop_pixels": [
+      830.0,
+      146.0,
+      1510.0,
+      438.0
+    ],
+    "used_pixels": [
+      680.0,
+      292.0
+    ],
+    "print_mm": [
+      62.87671232876712,
+      27.0
+    ],
+    "bbox_mm": [
+      179.56164383561645,
+      12.0,
+      62.87671232876712,
+      27.0
+    ],
+    "effective_ppi": 274.6962962962963,
+    "edition": "economica"
+  },
+  {
+    "theme": "Posto",
+    "file": "assets/v0.6/posto_topo.png",
+    "index": 3,
+    "original_pixels": [
+      1536,
+      1024
+    ],
+    "crop_pixels": [
+      782.0,
+      514.0,
+      1490.0,
+      946.0
+    ],
+    "used_pixels": [
+      708.0,
+      432.0
+    ],
+    "print_mm": [
+      63.916666666666664,
+      39.0
+    ],
+    "bbox_mm": [
+      316.0416666666667,
+      16.0,
+      63.916666666666664,
+      39.0
+    ],
+    "effective_ppi": 281.3538461538461,
+    "edition": "economica"
+  },
+  {
+    "theme": "Posto",
+    "file": "assets/v0.5/mapa_mercado.png",
+    "index": 3,
+    "original_pixels": [
+      1536,
+      1024
+    ],
+    "crop_pixels": [
+      842.0,
+      526.0,
+      1502.0,
+      942.0
+    ],
+    "used_pixels": [
+      660.0,
+      416.0
+    ],
+    "print_mm": [
+      60.28846153846153,
+      38.0
+    ],
+    "bbox_mm": [
+      452.8557692307692,
+      16.0,
+      60.28846153846153,
+      38.0
+    ],
+    "effective_ppi": 278.06315789473683,
+    "edition": "economica"
+  },
+  {
+    "theme": "Condomínio",
+    "file": "assets/v0.5/mapa_oficina.png",
+    "index": 1,
+    "original_pixels": [
+      1536,
+      1024
+    ],
+    "crop_pixels": [
+      768,
+      66.0,
+      1514.0,
+      446.0
+    ],
+    "used_pixels": [
+      746.0,
+      380.0
+    ],
+    "print_mm": [
+      53.00526315789474,
+      27.0
+    ],
+    "bbox_mm": [
+      26.49736842105263,
+      320.0,
+      53.00526315789474,
+      27.0
+    ],
+    "effective_ppi": 357.48148148148147,
+    "edition": "economica"
+  },
+  {
+    "theme": "Condomínio",
+    "file": "assets/v0.6/condominio_topo.png",
+    "index": 0,
+    "original_pixels": [
+      1536,
+      1024
+    ],
+    "crop_pixels": [
+      10.0,
+      38.0,
+      762.0,
+      510.0
+    ],
+    "used_pixels": [
+      752.0,
+      472.0
+    ],
+    "print_mm": [
+      70.10169491525424,
+      44.0
+    ],
+    "bbox_mm": [
+      173.94915254237287,
+      309.0,
+      70.10169491525424,
+      44.0
+    ],
+    "effective_ppi": 272.47272727272724,
+    "edition": "economica"
+  },
+  {
+    "theme": "Condomínio",
+    "file": "assets/v0.6/condominio_topo.png",
+    "index": 1,
+    "original_pixels": [
+      1536,
+      1024
+    ],
+    "crop_pixels": [
+      846.0,
+      14.0,
+      1506.0,
+      494.0
+    ],
+    "used_pixels": [
+      660.0,
+      480.0
+    ],
+    "print_mm": [
+      57.74999999999999,
+      42.0
+    ],
+    "bbox_mm": [
+      318.125,
+      311.0,
+      57.74999999999999,
+      42.0
+    ],
+    "effective_ppi": 290.2857142857143,
+    "edition": "economica"
+  },
+  {
+    "theme": "Condomínio",
+    "file": "assets/v0.6/condominio_topo.png",
+    "index": 3,
+    "original_pixels": [
+      1536,
+      1024
+    ],
+    "crop_pixels": [
+      814.0,
+      512,
+      1506.0,
+      1002.0
+    ],
+    "used_pixels": [
+      692.0,
+      490.0
+    ],
+    "print_mm": [
+      63.55102040816327,
+      45.0
+    ],
+    "bbox_mm": [
+      32.224489795918366,
+      203.0,
+      63.55102040816327,
+      45.0
+    ],
+    "effective_ppi": 276.5777777777777,
+    "edition": "economica"
+  },
+  {
+    "theme": "Condomínio",
+    "file": "assets/v0.6/condominio_topo.png",
+    "index": 1,
+    "original_pixels": [
+      1536,
+      1024
+    ],
+    "crop_pixels": [
+      846.0,
+      14.0,
+      1506.0,
+      494.0
+    ],
+    "used_pixels": [
+      660.0,
+      480.0
+    ],
+    "print_mm": [
+      60.49999999999999,
+      44.0
+    ],
+    "bbox_mm": [
+      178.75,
+      205.0,
+      60.49999999999999,
+      44.0
+    ],
+    "effective_ppi": 277.0909090909091,
+    "edition": "economica"
+  },
+  {
+    "theme": "Condomínio",
+    "file": "assets/v0.6/condominio_topo.png",
+    "index": 2,
+    "original_pixels": [
+      1536,
+      1024
+    ],
+    "crop_pixels": [
+      26.0,
+      526.0,
+      754.0,
+      998.0
+    ],
+    "used_pixels": [
+      728.0,
+      472.0
+    ],
+    "print_mm": [
+      67.86440677966102,
+      44.0
+    ],
+    "bbox_mm": [
+      315.06779661016947,
+      205.0,
+      67.86440677966102,
+      44.0
+    ],
+    "effective_ppi": 272.47272727272724,
+    "edition": "economica"
+  },
+  {
+    "theme": "Condomínio",
+    "file": "assets/v0.6/condominio_topo.png",
+    "index": 3,
+    "original_pixels": [
+      1536,
+      1024
+    ],
+    "crop_pixels": [
+      814.0,
+      512,
+      1506.0,
+      1002.0
+    ],
+    "used_pixels": [
+      692.0,
+      490.0
+    ],
+    "print_mm": [
+      55.07755102040816,
+      39.0
+    ],
+    "bbox_mm": [
+      36.461224489795924,
+      115.0,
+      55.07755102040816,
+      39.0
+    ],
+    "effective_ppi": 319.12820512820514,
+    "edition": "economica"
+  },
+  {
+    "theme": "Condomínio",
+    "file": "assets/v0.6/condominio_topo.png",
+    "index": 3,
+    "original_pixels": [
+      1536,
+      1024
+    ],
+    "crop_pixels": [
+      814.0,
+      512,
+      1506.0,
+      1002.0
+    ],
+    "used_pixels": [
+      692.0,
+      490.0
+    ],
+    "print_mm": [
+      63.55102040816327,
+      45.0
+    ],
+    "bbox_mm": [
+      179.22448979591837,
+      109.0,
+      63.55102040816327,
+      45.0
+    ],
+    "effective_ppi": 276.5777777777777,
+    "edition": "economica"
+  },
+  {
+    "theme": "Condomínio",
+    "file": "assets/v0.6/condominio_topo.png",
+    "index": 2,
+    "original_pixels": [
+      1536,
+      1024
+    ],
+    "crop_pixels": [
+      26.0,
+      526.0,
+      754.0,
+      998.0
+    ],
+    "used_pixels": [
+      728.0,
+      472.0
+    ],
+    "print_mm": [
+      66.32203389830508,
+      43.0
+    ],
+    "bbox_mm": [
+      452.83898305084745,
+      111.0,
+      66.32203389830508,
+      43.0
+    ],
+    "effective_ppi": 278.8093023255814,
+    "edition": "economica"
+  },
+  {
+    "theme": "Estação",
+    "file": "assets/v0.5/mapa_estacao.png",
+    "index": 0,
+    "original_pixels": [
+      1536,
+      1024
+    ],
+    "crop_pixels": [
+      34.0,
+      6.0,
+      702.0,
+      512
+    ],
+    "used_pixels": [
+      668.0,
+      506.0
+    ],
+    "print_mm": [
+      56.76679841897233,
+      43.0
+    ],
+    "bbox_mm": [
+      30.616600790513836,
+      311.0,
+      56.76679841897233,
+      43.0
+    ],
+    "effective_ppi": 298.89302325581394,
+    "edition": "economica"
+  },
+  {
+    "theme": "Estação",
+    "file": "assets/v0.6/estacao_topo.png",
+    "index": 2,
+    "original_pixels": [
+      1536,
+      1024
+    ],
+    "crop_pixels": [
+      34.0,
+      574.0,
+      730.0,
+      986.0
+    ],
+    "used_pixels": [
+      696.0,
+      412.0
+    ],
+    "print_mm": [
+      72.64077669902912,
+      43.0
+    ],
+    "bbox_mm": [
+      311.1796116504854,
+      310.0,
+      72.64077669902912,
+      43.0
+    ],
+    "effective_ppi": 243.3674418604651,
+    "edition": "economica"
+  },
+  {
+    "theme": "Estação",
+    "file": "assets/v0.6/estacao_topo.png",
+    "index": 3,
+    "original_pixels": [
+      1536,
+      1024
+    ],
+    "crop_pixels": [
+      768,
+      578.0,
+      1502.0,
+      922.0
+    ],
+    "used_pixels": [
+      734.0,
+      344.0
+    ],
+    "print_mm": [
+      85.0,
+      39.83651226158038
+    ],
+    "bbox_mm": [
+      443.0,
+      312.5817438692098,
+      85.0,
+      39.83651226158038
+    ],
+    "effective_ppi": 219.33647058823527,
+    "edition": "economica"
+  },
+  {
+    "theme": "Estação",
+    "file": "assets/v0.6/estacao_topo.png",
+    "index": 0,
+    "original_pixels": [
+      1536,
+      1024
+    ],
+    "crop_pixels": [
+      74.0,
+      34.0,
+      694.0,
+      512
+    ],
+    "used_pixels": [
+      620.0,
+      478.0
+    ],
+    "print_mm": [
+      58.36820083682008,
+      45.0
+    ],
+    "bbox_mm": [
+      319.31589958159,
+      205.0,
+      58.36820083682008,
+      45.0
+    ],
+    "effective_ppi": 269.8044444444444,
+    "edition": "economica"
+  },
+  {
+    "theme": "Estação",
+    "file": "assets/v0.6/estacao_topo.png",
+    "index": 1,
+    "original_pixels": [
+      1536,
+      1024
+    ],
+    "crop_pixels": [
+      768,
+      58.0,
+      1522.0,
+      512
+    ],
+    "used_pixels": [
+      754.0,
+      454.0
+    ],
+    "print_mm": [
+      73.0748898678414,
+      44.0
+    ],
+    "bbox_mm": [
+      448.9625550660793,
+      207.0,
+      73.0748898678414,
+      44.0
+    ],
+    "effective_ppi": 262.08181818181816,
+    "edition": "economica"
+  },
+  {
+    "theme": "Estação",
+    "file": "assets/v0.6/estacao_topo.png",
+    "index": 2,
+    "original_pixels": [
+      1536,
+      1024
+    ],
+    "crop_pixels": [
+      34.0,
+      574.0,
+      730.0,
+      986.0
+    ],
+    "used_pixels": [
+      696.0,
+      412.0
+    ],
+    "print_mm": [
+      72.64077669902912,
+      43.0
+    ],
+    "bbox_mm": [
+      27.17961165048544,
+      110.0,
+      72.64077669902912,
+      43.0
+    ],
+    "effective_ppi": 243.3674418604651,
+    "edition": "economica"
+  },
+  {
+    "theme": "Estação",
+    "file": "assets/v0.6/estacao_topo.png",
+    "index": 1,
+    "original_pixels": [
+      1536,
+      1024
+    ],
+    "crop_pixels": [
+      768,
+      58.0,
+      1522.0,
+      512
+    ],
+    "used_pixels": [
+      754.0,
+      454.0
+    ],
+    "print_mm": [
+      73.0748898678414,
+      44.0
+    ],
+    "bbox_mm": [
+      311.4625550660793,
+      110.0,
+      73.0748898678414,
+      44.0
+    ],
+    "effective_ppi": 262.08181818181816,
+    "edition": "economica"
+  },
+  {
+    "theme": "Estação",
+    "file": "assets/v0.6/estacao_topo.png",
+    "index": 3,
+    "original_pixels": [
+      1536,
+      1024
+    ],
+    "crop_pixels": [
+      768,
+      578.0,
+      1502.0,
+      922.0
+    ],
+    "used_pixels": [
+      734.0,
+      344.0
+    ],
+    "print_mm": [
+      84.0,
+      39.36784741144414
+    ],
+    "bbox_mm": [
+      443.0,
+      112.31607629427793,
+      84.0,
+      39.36784741144414
+    ],
+    "effective_ppi": 221.94761904761904,
+    "edition": "economica"
+  },
+  {
+    "theme": "Estação",
+    "file": "assets/v0.6/estacao_topo.png",
+    "index": 1,
+    "original_pixels": [
+      1536,
+      1024
+    ],
+    "crop_pixels": [
+      768,
+      58.0,
+      1522.0,
+      512
+    ],
+    "used_pixels": [
+      754.0,
+      454.0
+    ],
+    "print_mm": [
+      66.43171806167402,
+      40.0
+    ],
+    "bbox_mm": [
+      177.284140969163,
+      14.0,
+      66.43171806167402,
+      40.0
+    ],
+    "effective_ppi": 288.28999999999996,
+    "edition": "economica"
+  },
+  {
+    "theme": "Estação",
+    "file": "assets/v0.5/mapa_estacao.png",
+    "index": 0,
+    "original_pixels": [
+      1536,
+      1024
+    ],
+    "crop_pixels": [
+      34.0,
+      6.0,
+      702.0,
+      512
+    ],
+    "used_pixels": [
+      668.0,
+      506.0
+    ],
+    "print_mm": [
+      55.44664031620554,
+      42.0
+    ],
+    "bbox_mm": [
+      318.77667984189725,
+      17.0,
+      55.44664031620554,
+      42.0
+    ],
+    "effective_ppi": 306.0095238095238,
+    "edition": "economica"
+  },
+  {
+    "theme": "Estação",
+    "file": "assets/v0.5/mapa_estacao.png",
+    "index": 3,
+    "original_pixels": [
+      1536,
+      1024
+    ],
+    "crop_pixels": [
+      768,
+      554.0,
+      1514.0,
+      994.0
+    ],
+    "used_pixels": [
+      746.0,
+      440.0
+    ],
+    "print_mm": [
+      67.81818181818181,
+      40.0
+    ],
+    "bbox_mm": [
+      450.5909090909091,
+      16.0,
+      67.81818181818181,
+      40.0
+    ],
+    "effective_ppi": 279.4,
+    "edition": "economica"
+  },
+  {
+    "theme": "Mercado",
+    "file": "output/edicao-tabuleiros-v0.6/miniaturas/economica/MERCADO.png",
+    "role": "miniatura derivada de A–C; D–E continuam vetoriais",
+    "original_pixels": [
+      1339,
+      919
+    ],
+    "used_pixels": [
+      1339,
+      919
+    ],
+    "crop_pixels": [
+      0,
+      0,
+      1339,
+      919
+    ],
+    "print_mm": [
+      170,
+      116.60649819494584
+    ],
+    "effective_ppi": 200.06235294117644,
+    "edition": "economica"
+  },
+  {
+    "theme": "Hospital",
+    "file": "output/edicao-tabuleiros-v0.6/miniaturas/economica/HOSPITAL.png",
+    "role": "miniatura derivada de A–C; D–E continuam vetoriais",
+    "original_pixels": [
+      1339,
+      919
+    ],
+    "used_pixels": [
+      1339,
+      919
+    ],
+    "crop_pixels": [
+      0,
+      0,
+      1339,
+      919
+    ],
+    "print_mm": [
+      170,
+      116.60649819494584
+    ],
+    "effective_ppi": 200.06235294117644,
+    "edition": "economica"
+  },
+  {
+    "theme": "Oficina",
+    "file": "output/edicao-tabuleiros-v0.6/miniaturas/economica/OFICINA.png",
+    "role": "miniatura derivada de A–C; D–E continuam vetoriais",
+    "original_pixels": [
+      1339,
+      919
+    ],
+    "used_pixels": [
+      1339,
+      919
+    ],
+    "crop_pixels": [
+      0,
+      0,
+      1339,
+      919
+    ],
+    "print_mm": [
+      170,
+      116.60649819494584
+    ],
+    "effective_ppi": 200.06235294117644,
+    "edition": "economica"
+  },
+  {
+    "theme": "Posto",
+    "file": "output/edicao-tabuleiros-v0.6/miniaturas/economica/POSTO.png",
+    "role": "miniatura derivada de A–C; D–E continuam vetoriais",
+    "original_pixels": [
+      1339,
+      919
+    ],
+    "used_pixels": [
+      1339,
+      919
+    ],
+    "crop_pixels": [
+      0,
+      0,
+      1339,
+      919
+    ],
+    "print_mm": [
+      170,
+      116.60649819494584
+    ],
+    "effective_ppi": 200.06235294117644,
+    "edition": "economica"
+  },
+  {
+    "theme": "Condomínio",
+    "file": "output/edicao-tabuleiros-v0.6/miniaturas/economica/CONDOMINIO.png",
+    "role": "miniatura derivada de A–C; D–E continuam vetoriais",
+    "original_pixels": [
+      1339,
+      919
+    ],
+    "used_pixels": [
+      1339,
+      919
+    ],
+    "crop_pixels": [
+      0,
+      0,
+      1339,
+      919
+    ],
+    "print_mm": [
+      170,
+      116.60649819494584
+    ],
+    "effective_ppi": 200.06235294117644,
+    "edition": "economica"
+  },
+  {
+    "theme": "Estação",
+    "file": "output/edicao-tabuleiros-v0.6/miniaturas/economica/ESTACAO.png",
+    "role": "miniatura derivada de A–C; D–E continuam vetoriais",
+    "original_pixels": [
+      1339,
+      919
+    ],
+    "used_pixels": [
+      1339,
+      919
+    ],
+    "crop_pixels": [
+      0,
+      0,
+      1339,
+      919
+    ],
+    "print_mm": [
+      170,
+      116.60649819494584
+    ],
+    "effective_ppi": 200.06235294117644,
     "edition": "economica"
   }
 ]
