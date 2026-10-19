@@ -1,0 +1,1436 @@
+[
+  {
+    "theme": "material/tile",
+    "file": "assets/v0.6/pisos_materiais.png",
+    "index": 2,
+    "original_pixels": [
+      1536,
+      1024
+    ],
+    "crop_pixels": [
+      1024.0,
+      0.0,
+      1536.0,
+      512.0
+    ],
+    "used_pixels": [
+      512.0,
+      512.0
+    ],
+    "print_mm": [
+      60.0,
+      60.0
+    ],
+    "bbox_mm": [
+      0,
+      0,
+      554,
+      380
+    ],
+    "effective_ppi": 216.74666666666664,
+    "edition": "ilustrada",
+    "role": "material nativo repetido; não mobiliário"
+  },
+  {
+    "theme": "material/asphalt",
+    "file": "assets/v0.6/pisos_materiais.png",
+    "index": 1,
+    "original_pixels": [
+      1536,
+      1024
+    ],
+    "crop_pixels": [
+      512.0,
+      0.0,
+      1024.0,
+      512.0
+    ],
+    "used_pixels": [
+      512.0,
+      512.0
+    ],
+    "print_mm": [
+      60.0,
+      60.0
+    ],
+    "bbox_mm": [
+      0,
+      285,
+      277,
+      95
+    ],
+    "effective_ppi": 216.74666666666664,
+    "edition": "ilustrada",
+    "role": "material nativo repetido; não mobiliário"
+  },
+  {
+    "theme": "material/concrete",
+    "file": "assets/v0.6/pisos_materiais.png",
+    "index": 0,
+    "original_pixels": [
+      1536,
+      1024
+    ],
+    "crop_pixels": [
+      0.0,
+      0.0,
+      512.0,
+      512.0
+    ],
+    "used_pixels": [
+      512.0,
+      512.0
+    ],
+    "print_mm": [
+      60.0,
+      60.0
+    ],
+    "bbox_mm": [
+      277,
+      285,
+      277,
+      95
+    ],
+    "effective_ppi": 216.74666666666664,
+    "edition": "ilustrada",
+    "role": "material nativo repetido; não mobiliário"
+  },
+  {
+    "theme": "material/concrete",
+    "file": "assets/v0.6/pisos_materiais.png",
+    "index": 0,
+    "original_pixels": [
+      1536,
+      1024
+    ],
+    "crop_pixels": [
+      0.0,
+      0.0,
+      512.0,
+      512.0
+    ],
+    "used_pixels": [
+      512.0,
+      512.0
+    ],
+    "print_mm": [
+      60.0,
+      60.0
+    ],
+    "bbox_mm": [
+      416,
+      0,
+      138,
+      285
+    ],
+    "effective_ppi": 216.74666666666664,
+    "edition": "ilustrada",
+    "role": "material nativo repetido; não mobiliário"
+  },
+  {
+    "theme": "material/wood",
+    "file": "assets/v0.6/pisos_materiais.png",
+    "index": 4,
+    "original_pixels": [
+      1536,
+      1024
+    ],
+    "crop_pixels": [
+      512.0,
+      512.0,
+      1024.0,
+      1024.0
+    ],
+    "used_pixels": [
+      512.0,
+      512.0
+    ],
+    "print_mm": [
+      60.0,
+      60.0
+    ],
+    "bbox_mm": [
+      0,
+      95,
+      158,
+      132
+    ],
+    "effective_ppi": 216.74666666666664,
+    "edition": "ilustrada",
+    "role": "material nativo repetido; não mobiliário"
+  },
+  {
+    "theme": "material/tile",
+    "file": "assets/v0.6/pisos_materiais.png",
+    "index": 2,
+    "original_pixels": [
+      1536,
+      1024
+    ],
+    "crop_pixels": [
+      1024.0,
+      0.0,
+      1536.0,
+      512.0
+    ],
+    "used_pixels": [
+      512.0,
+      512.0
+    ],
+    "print_mm": [
+      60.0,
+      60.0
+    ],
+    "bbox_mm": [
+      277,
+      95,
+      139,
+      95
+    ],
+    "effective_ppi": 216.74666666666664,
+    "edition": "ilustrada",
+    "role": "material nativo repetido; não mobiliário"
+  },
+  {
+    "theme": "Mercado",
+    "file": "assets/v0.5/mapa_oficina.png",
+    "index": 1,
+    "original_pixels": [
+      1536,
+      1024
+    ],
+    "crop_pixels": [
+      768,
+      66.0,
+      1514.0,
+      446.0
+    ],
+    "used_pixels": [
+      746.0,
+      380.0
+    ],
+    "print_mm": [
+      56.93157894736842,
+      29.0
+    ],
+    "bbox_mm": [
+      24.53421052631579,
+      321.0,
+      56.93157894736842,
+      29.0
+    ],
+    "effective_ppi": 332.8275862068965,
+    "edition": "ilustrada"
+  },
+  {
+    "theme": "Mercado",
+    "file": "assets/v0.5/mapa_mercado.png",
+    "index": 2,
+    "original_pixels": [
+      1536,
+      1024
+    ],
+    "crop_pixels": [
+      34.0,
+      558.0,
+      768,
+      898.0
+    ],
+    "used_pixels": [
+      734.0,
+      340.0
+    ],
+    "print_mm": [
+      38.858823529411765,
+      18.0
+    ],
+    "bbox_mm": [
+      31.570588235294117,
+      244.0,
+      38.858823529411765,
+      18.0
+    ],
+    "effective_ppi": 479.77777777777777,
+    "edition": "ilustrada"
+  },
+  {
+    "theme": "Mercado",
+    "file": "assets/v0.6/mercado_topo.png",
+    "index": 1,
+    "original_pixels": [
+      1536,
+      1024
+    ],
+    "crop_pixels": [
+      822.0,
+      58.0,
+      1502.0,
+      512
+    ],
+    "used_pixels": [
+      680.0,
+      454.0
+    ],
+    "print_mm": [
+      46.43171806167401,
+      31.0
+    ],
+    "bbox_mm": [
+      216.784140969163,
+      248.0,
+      46.43171806167401,
+      31.0
+    ],
+    "effective_ppi": 371.9870967741935,
+    "edition": "ilustrada"
+  },
+  {
+    "theme": "Mercado",
+    "file": "assets/v0.5/mapa_mercado.png",
+    "index": 3,
+    "original_pixels": [
+      1536,
+      1024
+    ],
+    "crop_pixels": [
+      842.0,
+      526.0,
+      1502.0,
+      942.0
+    ],
+    "used_pixels": [
+      660.0,
+      416.0
+    ],
+    "print_mm": [
+      68.22115384615384,
+      43.0
+    ],
+    "bbox_mm": [
+      304.3894230769231,
+      315.0,
+      68.22115384615384,
+      43.0
+    ],
+    "effective_ppi": 245.73023255813953,
+    "edition": "ilustrada"
+  },
+  {
+    "theme": "Mercado",
+    "file": "assets/v0.6/mercado_topo.png",
+    "index": 3,
+    "original_pixels": [
+      1536,
+      1024
+    ],
+    "crop_pixels": [
+      838.0,
+      534.0,
+      1478.0,
+      958.0
+    ],
+    "used_pixels": [
+      640.0,
+      424.0
+    ],
+    "print_mm": [
+      72.45283018867924,
+      48.0
+    ],
+    "bbox_mm": [
+      451.27358490566036,
+      309.0,
+      72.45283018867924,
+      48.0
+    ],
+    "effective_ppi": 224.36666666666665,
+    "edition": "ilustrada"
+  },
+  {
+    "theme": "Mercado",
+    "file": "assets/v0.6/mercado_gondolas_topo.png",
+    "index": 1,
+    "original_pixels": [
+      1536,
+      1024
+    ],
+    "crop_pixels": [
+      830.0,
+      146.0,
+      1510.0,
+      438.0
+    ],
+    "used_pixels": [
+      680.0,
+      292.0
+    ],
+    "print_mm": [
+      58.219178082191775,
+      25.0
+    ],
+    "bbox_mm": [
+      28.890410958904113,
+      153.0,
+      58.219178082191775,
+      25.0
+    ],
+    "effective_ppi": 296.672,
+    "edition": "ilustrada"
+  },
+  {
+    "theme": "Mercado",
+    "file": "assets/v0.6/mercado_gondolas_topo.png",
+    "index": 2,
+    "original_pixels": [
+      1536,
+      1024
+    ],
+    "crop_pixels": [
+      26.0,
+      586.0,
+      710.0,
+      886.0
+    ],
+    "used_pixels": [
+      684.0,
+      300.0
+    ],
+    "print_mm": [
+      25.0,
+      57.0
+    ],
+    "bbox_mm": [
+      218.5,
+      110.0,
+      25.0,
+      57.0
+    ],
+    "effective_ppi": 304.8,
+    "edition": "ilustrada",
+    "rotation": 90
+  },
+  {
+    "theme": "Mercado",
+    "file": "assets/v0.6/mercado_topo.png",
+    "index": 0,
+    "original_pixels": [
+      1536,
+      1024
+    ],
+    "crop_pixels": [
+      58.0,
+      22.0,
+      738.0,
+      470.0
+    ],
+    "used_pixels": [
+      680.0,
+      448.0
+    ],
+    "print_mm": [
+      54.642857142857146,
+      36.0
+    ],
+    "bbox_mm": [
+      29.178571428571427,
+      111.0,
+      54.642857142857146,
+      36.0
+    ],
+    "effective_ppi": 316.08888888888885,
+    "edition": "ilustrada"
+  },
+  {
+    "theme": "Mercado",
+    "file": "assets/v0.5/mapa_mercado.png",
+    "index": 1,
+    "original_pixels": [
+      1536,
+      1024
+    ],
+    "crop_pixels": [
+      854.0,
+      90.0,
+      1518.0,
+      454.0
+    ],
+    "used_pixels": [
+      664.0,
+      364.0
+    ],
+    "print_mm": [
+      54.72527472527472,
+      30.0
+    ],
+    "bbox_mm": [
+      153.63736263736263,
+      112.0,
+      54.72527472527472,
+      30.0
+    ],
+    "effective_ppi": 308.18666666666667,
+    "edition": "ilustrada"
+  },
+  {
+    "theme": "Mercado",
+    "file": "assets/v0.6/mercado_topo.png",
+    "index": 2,
+    "original_pixels": [
+      1536,
+      1024
+    ],
+    "crop_pixels": [
+      34.0,
+      542.0,
+      750.0,
+      966.0
+    ],
+    "used_pixels": [
+      716.0,
+      424.0
+    ],
+    "print_mm": [
+      67.54716981132076,
+      40.0
+    ],
+    "bbox_mm": [
+      311.22641509433964,
+      111.0,
+      67.54716981132076,
+      40.0
+    ],
+    "effective_ppi": 269.23999999999995,
+    "edition": "ilustrada"
+  },
+  {
+    "theme": "Mercado",
+    "file": "assets/v0.5/mapa_mercado.png",
+    "index": 3,
+    "original_pixels": [
+      1536,
+      1024
+    ],
+    "crop_pixels": [
+      842.0,
+      526.0,
+      1502.0,
+      942.0
+    ],
+    "used_pixels": [
+      660.0,
+      416.0
+    ],
+    "print_mm": [
+      65.04807692307692,
+      41.0
+    ],
+    "bbox_mm": [
+      447.47596153846155,
+      111.0,
+      65.04807692307692,
+      41.0
+    ],
+    "effective_ppi": 257.7170731707317,
+    "edition": "ilustrada"
+  },
+  {
+    "theme": "Mercado",
+    "file": "assets/v0.6/mercado_gondolas_topo.png",
+    "index": 0,
+    "original_pixels": [
+      1536,
+      1024
+    ],
+    "crop_pixels": [
+      26.0,
+      146.0,
+      710.0,
+      438.0
+    ],
+    "used_pixels": [
+      684.0,
+      292.0
+    ],
+    "print_mm": [
+      66.76027397260275,
+      28.5
+    ],
+    "bbox_mm": [
+      19.619863013698627,
+      199.5,
+      66.76027397260275,
+      28.5
+    ],
+    "effective_ppi": 260.23859649122807,
+    "edition": "ilustrada"
+  },
+  {
+    "theme": "Mercado",
+    "file": "assets/v0.6/mercado_gondolas_topo.png",
+    "index": 3,
+    "original_pixels": [
+      1536,
+      1024
+    ],
+    "crop_pixels": [
+      830.0,
+      582.0,
+      1506.0,
+      886.0
+    ],
+    "used_pixels": [
+      676.0,
+      304.0
+    ],
+    "print_mm": [
+      63.375,
+      28.5
+    ],
+    "bbox_mm": [
+      106.3125,
+      199.5,
+      63.375,
+      28.5
+    ],
+    "effective_ppi": 270.93333333333334,
+    "edition": "ilustrada"
+  },
+  {
+    "theme": "Mercado",
+    "file": "assets/v0.6/mercado_gondolas_topo.png",
+    "index": 2,
+    "original_pixels": [
+      1536,
+      1024
+    ],
+    "crop_pixels": [
+      26.0,
+      586.0,
+      710.0,
+      886.0
+    ],
+    "used_pixels": [
+      684.0,
+      300.0
+    ],
+    "print_mm": [
+      64.98,
+      28.5
+    ],
+    "bbox_mm": [
+      204.01,
+      199.5,
+      64.98,
+      28.5
+    ],
+    "effective_ppi": 267.36842105263156,
+    "edition": "ilustrada"
+  },
+  {
+    "theme": "Mercado",
+    "file": "assets/v0.6/mercado_gondolas_topo.png",
+    "index": 1,
+    "original_pixels": [
+      1536,
+      1024
+    ],
+    "crop_pixels": [
+      830.0,
+      146.0,
+      1510.0,
+      438.0
+    ],
+    "used_pixels": [
+      680.0,
+      292.0
+    ],
+    "print_mm": [
+      66.36986301369863,
+      28.5
+    ],
+    "bbox_mm": [
+      308.8150684931507,
+      199.5,
+      66.36986301369863,
+      28.5
+    ],
+    "effective_ppi": 260.23859649122807,
+    "edition": "ilustrada"
+  },
+  {
+    "theme": "Mercado",
+    "file": "assets/v0.6/mercado_gondolas_topo.png",
+    "index": 2,
+    "original_pixels": [
+      1536,
+      1024
+    ],
+    "crop_pixels": [
+      26.0,
+      586.0,
+      710.0,
+      886.0
+    ],
+    "used_pixels": [
+      684.0,
+      300.0
+    ],
+    "print_mm": [
+      64.98,
+      28.5
+    ],
+    "bbox_mm": [
+      451.51,
+      199.5,
+      64.98,
+      28.5
+    ],
+    "effective_ppi": 267.36842105263156,
+    "edition": "ilustrada"
+  },
+  {
+    "theme": "Mercado",
+    "file": "assets/v0.6/mercado_gondolas_topo.png",
+    "index": 1,
+    "original_pixels": [
+      1536,
+      1024
+    ],
+    "crop_pixels": [
+      830.0,
+      146.0,
+      1510.0,
+      438.0
+    ],
+    "used_pixels": [
+      680.0,
+      292.0
+    ],
+    "print_mm": [
+      58.219178082191775,
+      25.0
+    ],
+    "bbox_mm": [
+      24.890410958904113,
+      11.0,
+      58.219178082191775,
+      25.0
+    ],
+    "effective_ppi": 296.672,
+    "edition": "ilustrada"
+  },
+  {
+    "theme": "Mercado",
+    "file": "assets/v0.6/mercado_gondolas_topo.png",
+    "index": 0,
+    "original_pixels": [
+      1536,
+      1024
+    ],
+    "crop_pixels": [
+      26.0,
+      146.0,
+      710.0,
+      438.0
+    ],
+    "used_pixels": [
+      684.0,
+      292.0
+    ],
+    "print_mm": [
+      58.56164383561644,
+      25.0
+    ],
+    "bbox_mm": [
+      108.71917808219177,
+      11.0,
+      58.56164383561644,
+      25.0
+    ],
+    "effective_ppi": 296.672,
+    "edition": "ilustrada"
+  },
+  {
+    "theme": "Mercado",
+    "file": "assets/v0.6/mercado_gondolas_topo.png",
+    "index": 3,
+    "original_pixels": [
+      1536,
+      1024
+    ],
+    "crop_pixels": [
+      830.0,
+      582.0,
+      1506.0,
+      886.0
+    ],
+    "used_pixels": [
+      676.0,
+      304.0
+    ],
+    "print_mm": [
+      55.5921052631579,
+      25.0
+    ],
+    "bbox_mm": [
+      197.20394736842104,
+      11.0,
+      55.5921052631579,
+      25.0
+    ],
+    "effective_ppi": 308.864,
+    "edition": "ilustrada"
+  },
+  {
+    "theme": "Mercado",
+    "file": "assets/v0.6/mercado_gondolas_topo.png",
+    "index": 2,
+    "original_pixels": [
+      1536,
+      1024
+    ],
+    "crop_pixels": [
+      26.0,
+      586.0,
+      710.0,
+      886.0
+    ],
+    "used_pixels": [
+      684.0,
+      300.0
+    ],
+    "print_mm": [
+      59.28,
+      26.0
+    ],
+    "bbox_mm": [
+      313.36,
+      14.0,
+      59.28,
+      26.0
+    ],
+    "effective_ppi": 293.07692307692304,
+    "edition": "ilustrada"
+  },
+  {
+    "theme": "Mercado",
+    "file": "assets/v0.5/mapa_oficina.png",
+    "index": 1,
+    "original_pixels": [
+      1536,
+      1024
+    ],
+    "crop_pixels": [
+      768,
+      66.0,
+      1514.0,
+      446.0
+    ],
+    "used_pixels": [
+      746.0,
+      380.0
+    ],
+    "print_mm": [
+      56.93157894736842,
+      29.0
+    ],
+    "bbox_mm": [
+      24.53421052631579,
+      321.0,
+      56.93157894736842,
+      29.0
+    ],
+    "effective_ppi": 332.8275862068965,
+    "edition": "economica"
+  },
+  {
+    "theme": "Mercado",
+    "file": "assets/v0.5/mapa_mercado.png",
+    "index": 2,
+    "original_pixels": [
+      1536,
+      1024
+    ],
+    "crop_pixels": [
+      34.0,
+      558.0,
+      768,
+      898.0
+    ],
+    "used_pixels": [
+      734.0,
+      340.0
+    ],
+    "print_mm": [
+      38.858823529411765,
+      18.0
+    ],
+    "bbox_mm": [
+      31.570588235294117,
+      244.0,
+      38.858823529411765,
+      18.0
+    ],
+    "effective_ppi": 479.77777777777777,
+    "edition": "economica"
+  },
+  {
+    "theme": "Mercado",
+    "file": "assets/v0.6/mercado_topo.png",
+    "index": 1,
+    "original_pixels": [
+      1536,
+      1024
+    ],
+    "crop_pixels": [
+      822.0,
+      58.0,
+      1502.0,
+      512
+    ],
+    "used_pixels": [
+      680.0,
+      454.0
+    ],
+    "print_mm": [
+      46.43171806167401,
+      31.0
+    ],
+    "bbox_mm": [
+      216.784140969163,
+      248.0,
+      46.43171806167401,
+      31.0
+    ],
+    "effective_ppi": 371.9870967741935,
+    "edition": "economica"
+  },
+  {
+    "theme": "Mercado",
+    "file": "assets/v0.5/mapa_mercado.png",
+    "index": 3,
+    "original_pixels": [
+      1536,
+      1024
+    ],
+    "crop_pixels": [
+      842.0,
+      526.0,
+      1502.0,
+      942.0
+    ],
+    "used_pixels": [
+      660.0,
+      416.0
+    ],
+    "print_mm": [
+      68.22115384615384,
+      43.0
+    ],
+    "bbox_mm": [
+      304.3894230769231,
+      315.0,
+      68.22115384615384,
+      43.0
+    ],
+    "effective_ppi": 245.73023255813953,
+    "edition": "economica"
+  },
+  {
+    "theme": "Mercado",
+    "file": "assets/v0.6/mercado_topo.png",
+    "index": 3,
+    "original_pixels": [
+      1536,
+      1024
+    ],
+    "crop_pixels": [
+      838.0,
+      534.0,
+      1478.0,
+      958.0
+    ],
+    "used_pixels": [
+      640.0,
+      424.0
+    ],
+    "print_mm": [
+      72.45283018867924,
+      48.0
+    ],
+    "bbox_mm": [
+      451.27358490566036,
+      309.0,
+      72.45283018867924,
+      48.0
+    ],
+    "effective_ppi": 224.36666666666665,
+    "edition": "economica"
+  },
+  {
+    "theme": "Mercado",
+    "file": "assets/v0.6/mercado_gondolas_topo.png",
+    "index": 1,
+    "original_pixels": [
+      1536,
+      1024
+    ],
+    "crop_pixels": [
+      830.0,
+      146.0,
+      1510.0,
+      438.0
+    ],
+    "used_pixels": [
+      680.0,
+      292.0
+    ],
+    "print_mm": [
+      58.219178082191775,
+      25.0
+    ],
+    "bbox_mm": [
+      28.890410958904113,
+      153.0,
+      58.219178082191775,
+      25.0
+    ],
+    "effective_ppi": 296.672,
+    "edition": "economica"
+  },
+  {
+    "theme": "Mercado",
+    "file": "assets/v0.6/mercado_gondolas_topo.png",
+    "index": 2,
+    "original_pixels": [
+      1536,
+      1024
+    ],
+    "crop_pixels": [
+      26.0,
+      586.0,
+      710.0,
+      886.0
+    ],
+    "used_pixels": [
+      684.0,
+      300.0
+    ],
+    "print_mm": [
+      25.0,
+      57.0
+    ],
+    "bbox_mm": [
+      218.5,
+      110.0,
+      25.0,
+      57.0
+    ],
+    "effective_ppi": 304.8,
+    "edition": "economica",
+    "rotation": 90
+  },
+  {
+    "theme": "Mercado",
+    "file": "assets/v0.6/mercado_topo.png",
+    "index": 0,
+    "original_pixels": [
+      1536,
+      1024
+    ],
+    "crop_pixels": [
+      58.0,
+      22.0,
+      738.0,
+      470.0
+    ],
+    "used_pixels": [
+      680.0,
+      448.0
+    ],
+    "print_mm": [
+      54.642857142857146,
+      36.0
+    ],
+    "bbox_mm": [
+      29.178571428571427,
+      111.0,
+      54.642857142857146,
+      36.0
+    ],
+    "effective_ppi": 316.08888888888885,
+    "edition": "economica"
+  },
+  {
+    "theme": "Mercado",
+    "file": "assets/v0.5/mapa_mercado.png",
+    "index": 1,
+    "original_pixels": [
+      1536,
+      1024
+    ],
+    "crop_pixels": [
+      854.0,
+      90.0,
+      1518.0,
+      454.0
+    ],
+    "used_pixels": [
+      664.0,
+      364.0
+    ],
+    "print_mm": [
+      54.72527472527472,
+      30.0
+    ],
+    "bbox_mm": [
+      153.63736263736263,
+      112.0,
+      54.72527472527472,
+      30.0
+    ],
+    "effective_ppi": 308.18666666666667,
+    "edition": "economica"
+  },
+  {
+    "theme": "Mercado",
+    "file": "assets/v0.6/mercado_topo.png",
+    "index": 2,
+    "original_pixels": [
+      1536,
+      1024
+    ],
+    "crop_pixels": [
+      34.0,
+      542.0,
+      750.0,
+      966.0
+    ],
+    "used_pixels": [
+      716.0,
+      424.0
+    ],
+    "print_mm": [
+      67.54716981132076,
+      40.0
+    ],
+    "bbox_mm": [
+      311.22641509433964,
+      111.0,
+      67.54716981132076,
+      40.0
+    ],
+    "effective_ppi": 269.23999999999995,
+    "edition": "economica"
+  },
+  {
+    "theme": "Mercado",
+    "file": "assets/v0.5/mapa_mercado.png",
+    "index": 3,
+    "original_pixels": [
+      1536,
+      1024
+    ],
+    "crop_pixels": [
+      842.0,
+      526.0,
+      1502.0,
+      942.0
+    ],
+    "used_pixels": [
+      660.0,
+      416.0
+    ],
+    "print_mm": [
+      65.04807692307692,
+      41.0
+    ],
+    "bbox_mm": [
+      447.47596153846155,
+      111.0,
+      65.04807692307692,
+      41.0
+    ],
+    "effective_ppi": 257.7170731707317,
+    "edition": "economica"
+  },
+  {
+    "theme": "Mercado",
+    "file": "assets/v0.6/mercado_gondolas_topo.png",
+    "index": 0,
+    "original_pixels": [
+      1536,
+      1024
+    ],
+    "crop_pixels": [
+      26.0,
+      146.0,
+      710.0,
+      438.0
+    ],
+    "used_pixels": [
+      684.0,
+      292.0
+    ],
+    "print_mm": [
+      66.76027397260275,
+      28.5
+    ],
+    "bbox_mm": [
+      19.619863013698627,
+      199.5,
+      66.76027397260275,
+      28.5
+    ],
+    "effective_ppi": 260.23859649122807,
+    "edition": "economica"
+  },
+  {
+    "theme": "Mercado",
+    "file": "assets/v0.6/mercado_gondolas_topo.png",
+    "index": 3,
+    "original_pixels": [
+      1536,
+      1024
+    ],
+    "crop_pixels": [
+      830.0,
+      582.0,
+      1506.0,
+      886.0
+    ],
+    "used_pixels": [
+      676.0,
+      304.0
+    ],
+    "print_mm": [
+      63.375,
+      28.5
+    ],
+    "bbox_mm": [
+      106.3125,
+      199.5,
+      63.375,
+      28.5
+    ],
+    "effective_ppi": 270.93333333333334,
+    "edition": "economica"
+  },
+  {
+    "theme": "Mercado",
+    "file": "assets/v0.6/mercado_gondolas_topo.png",
+    "index": 2,
+    "original_pixels": [
+      1536,
+      1024
+    ],
+    "crop_pixels": [
+      26.0,
+      586.0,
+      710.0,
+      886.0
+    ],
+    "used_pixels": [
+      684.0,
+      300.0
+    ],
+    "print_mm": [
+      64.98,
+      28.5
+    ],
+    "bbox_mm": [
+      204.01,
+      199.5,
+      64.98,
+      28.5
+    ],
+    "effective_ppi": 267.36842105263156,
+    "edition": "economica"
+  },
+  {
+    "theme": "Mercado",
+    "file": "assets/v0.6/mercado_gondolas_topo.png",
+    "index": 1,
+    "original_pixels": [
+      1536,
+      1024
+    ],
+    "crop_pixels": [
+      830.0,
+      146.0,
+      1510.0,
+      438.0
+    ],
+    "used_pixels": [
+      680.0,
+      292.0
+    ],
+    "print_mm": [
+      66.36986301369863,
+      28.5
+    ],
+    "bbox_mm": [
+      308.8150684931507,
+      199.5,
+      66.36986301369863,
+      28.5
+    ],
+    "effective_ppi": 260.23859649122807,
+    "edition": "economica"
+  },
+  {
+    "theme": "Mercado",
+    "file": "assets/v0.6/mercado_gondolas_topo.png",
+    "index": 2,
+    "original_pixels": [
+      1536,
+      1024
+    ],
+    "crop_pixels": [
+      26.0,
+      586.0,
+      710.0,
+      886.0
+    ],
+    "used_pixels": [
+      684.0,
+      300.0
+    ],
+    "print_mm": [
+      64.98,
+      28.5
+    ],
+    "bbox_mm": [
+      451.51,
+      199.5,
+      64.98,
+      28.5
+    ],
+    "effective_ppi": 267.36842105263156,
+    "edition": "economica"
+  },
+  {
+    "theme": "Mercado",
+    "file": "assets/v0.6/mercado_gondolas_topo.png",
+    "index": 1,
+    "original_pixels": [
+      1536,
+      1024
+    ],
+    "crop_pixels": [
+      830.0,
+      146.0,
+      1510.0,
+      438.0
+    ],
+    "used_pixels": [
+      680.0,
+      292.0
+    ],
+    "print_mm": [
+      58.219178082191775,
+      25.0
+    ],
+    "bbox_mm": [
+      24.890410958904113,
+      11.0,
+      58.219178082191775,
+      25.0
+    ],
+    "effective_ppi": 296.672,
+    "edition": "economica"
+  },
+  {
+    "theme": "Mercado",
+    "file": "assets/v0.6/mercado_gondolas_topo.png",
+    "index": 0,
+    "original_pixels": [
+      1536,
+      1024
+    ],
+    "crop_pixels": [
+      26.0,
+      146.0,
+      710.0,
+      438.0
+    ],
+    "used_pixels": [
+      684.0,
+      292.0
+    ],
+    "print_mm": [
+      58.56164383561644,
+      25.0
+    ],
+    "bbox_mm": [
+      108.71917808219177,
+      11.0,
+      58.56164383561644,
+      25.0
+    ],
+    "effective_ppi": 296.672,
+    "edition": "economica"
+  },
+  {
+    "theme": "Mercado",
+    "file": "assets/v0.6/mercado_gondolas_topo.png",
+    "index": 3,
+    "original_pixels": [
+      1536,
+      1024
+    ],
+    "crop_pixels": [
+      830.0,
+      582.0,
+      1506.0,
+      886.0
+    ],
+    "used_pixels": [
+      676.0,
+      304.0
+    ],
+    "print_mm": [
+      55.5921052631579,
+      25.0
+    ],
+    "bbox_mm": [
+      197.20394736842104,
+      11.0,
+      55.5921052631579,
+      25.0
+    ],
+    "effective_ppi": 308.864,
+    "edition": "economica"
+  },
+  {
+    "theme": "Mercado",
+    "file": "assets/v0.6/mercado_gondolas_topo.png",
+    "index": 2,
+    "original_pixels": [
+      1536,
+      1024
+    ],
+    "crop_pixels": [
+      26.0,
+      586.0,
+      710.0,
+      886.0
+    ],
+    "used_pixels": [
+      684.0,
+      300.0
+    ],
+    "print_mm": [
+      59.28,
+      26.0
+    ],
+    "bbox_mm": [
+      313.36,
+      14.0,
+      59.28,
+      26.0
+    ],
+    "effective_ppi": 293.07692307692304,
+    "edition": "economica"
+  }
+]

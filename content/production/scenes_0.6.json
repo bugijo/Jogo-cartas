@@ -1,0 +1,2377 @@
+{
+  "Mercado": {
+    "surfaces": [
+      [
+        0,
+        0,
+        554,
+        380,
+        "tile",
+        "#e6e1ce"
+      ],
+      [
+        0,
+        285,
+        277,
+        95,
+        "asphalt",
+        "#aeb4a8"
+      ],
+      [
+        277,
+        285,
+        277,
+        95,
+        "concrete",
+        "#d4cfbb"
+      ],
+      [
+        416,
+        0,
+        138,
+        285,
+        "concrete",
+        "#d8d1bb"
+      ],
+      [
+        0,
+        95,
+        158,
+        132,
+        "wood",
+        "#ded0ae"
+      ],
+      [
+        277,
+        95,
+        139,
+        95,
+        "tile",
+        "#dbe3d4"
+      ]
+    ],
+    "paint": [
+      [
+        18,
+        307,
+        18,
+        366,
+        "#e0ce96",
+        0.7
+      ],
+      [
+        18,
+        307,
+        83,
+        307,
+        "#e0ce96",
+        0.7
+      ],
+      [
+        109,
+        307,
+        109,
+        366,
+        "#e0ce96",
+        0.7
+      ],
+      [
+        109,
+        307,
+        174,
+        307,
+        "#e0ce96",
+        0.7
+      ],
+      [
+        200,
+        307,
+        200,
+        366,
+        "#e0ce96",
+        0.7
+      ],
+      [
+        200,
+        307,
+        265,
+        307,
+        "#e0ce96",
+        0.7
+      ],
+      [
+        3,
+        290,
+        274,
+        290,
+        "#d4bb7d",
+        1.2
+      ],
+      [
+        284,
+        296,
+        547,
+        296,
+        "#b6a984",
+        0.7
+      ]
+    ],
+    "objects": [
+      {
+        "kind": "asset",
+        "box": [
+          23,
+          321,
+          60,
+          29
+        ],
+        "variant": "",
+        "file": "assets/v0.5/mapa_oficina.png",
+        "index": 1
+      },
+      {
+        "kind": "asset",
+        "box": [
+          28,
+          244,
+          46,
+          18
+        ],
+        "variant": "",
+        "file": "assets/v0.5/mapa_mercado.png",
+        "index": 2
+      },
+      {
+        "kind": "asset",
+        "box": [
+          214,
+          248,
+          52,
+          31
+        ],
+        "variant": "",
+        "file": "assets/v0.6/mercado_topo.png",
+        "index": 1
+      },
+      {
+        "kind": "cart",
+        "box": [
+          110,
+          307,
+          17,
+          12
+        ],
+        "variant": ""
+      },
+      {
+        "kind": "cart",
+        "box": [
+          130,
+          307,
+          17,
+          12
+        ],
+        "variant": "loaded"
+      },
+      {
+        "kind": "cart",
+        "box": [
+          151,
+          307,
+          17,
+          12
+        ],
+        "variant": ""
+      },
+      {
+        "kind": "asset",
+        "box": [
+          304,
+          315,
+          69,
+          43
+        ],
+        "variant": "",
+        "file": "assets/v0.5/mapa_mercado.png",
+        "index": 3
+      },
+      {
+        "kind": "asset",
+        "box": [
+          450,
+          309,
+          75,
+          48
+        ],
+        "variant": "",
+        "file": "assets/v0.6/mercado_topo.png",
+        "index": 3
+      },
+      {
+        "kind": "asset",
+        "box": [
+          14,
+          153,
+          88,
+          25
+        ],
+        "variant": "box",
+        "file": "assets/v0.6/mercado_gondolas_topo.png",
+        "index": 1
+      },
+      {
+        "kind": "asset",
+        "box": [
+          217,
+          110,
+          28,
+          57
+        ],
+        "variant": "bottle",
+        "file": "assets/v0.6/mercado_gondolas_topo.png",
+        "index": 2,
+        "rotation": 90
+      },
+      {
+        "kind": "asset",
+        "box": [
+          16,
+          111,
+          81,
+          36
+        ],
+        "variant": "",
+        "file": "assets/v0.6/mercado_topo.png",
+        "index": 0
+      },
+      {
+        "kind": "asset",
+        "box": [
+          151,
+          112,
+          60,
+          30
+        ],
+        "variant": "",
+        "file": "assets/v0.5/mapa_mercado.png",
+        "index": 1
+      },
+      {
+        "kind": "asset",
+        "file": "assets/v0.6/mercado_topo.png",
+        "index": 2,
+        "box": [
+          303,
+          111,
+          84,
+          40
+        ]
+      },
+      {
+        "kind": "asset",
+        "box": [
+          444,
+          111,
+          72,
+          41
+        ],
+        "variant": "",
+        "file": "assets/v0.5/mapa_mercado.png",
+        "index": 3
+      },
+      {
+        "kind": "crate",
+        "box": [
+          446,
+          18,
+          26,
+          18
+        ],
+        "variant": "open"
+      },
+      {
+        "kind": "crate",
+        "box": [
+          483,
+          18,
+          25,
+          19
+        ]
+      },
+      {
+        "kind": "crate",
+        "box": [
+          512,
+          25,
+          23,
+          16
+        ]
+      },
+      {
+        "kind": "cart",
+        "box": [
+          254,
+          112,
+          17,
+          12
+        ],
+        "variant": "loaded"
+      },
+      {
+        "kind": "crate",
+        "box": [
+          505,
+          256,
+          22,
+          14
+        ],
+        "variant": "open"
+      },
+      {
+        "kind": "drain",
+        "box": [
+          520,
+          302,
+          25,
+          6
+        ],
+        "variant": ""
+      },
+      {
+        "kind": "planter",
+        "box": [
+          4,
+          366,
+          100,
+          9
+        ],
+        "variant": ""
+      },
+      {
+        "kind": "asset",
+        "file": "assets/v0.6/mercado_gondolas_topo.png",
+        "index": 0,
+        "box": [
+          14,
+          199.5,
+          78,
+          28.5
+        ]
+      },
+      {
+        "kind": "asset",
+        "file": "assets/v0.6/mercado_gondolas_topo.png",
+        "index": 3,
+        "box": [
+          99,
+          199.5,
+          78,
+          28.5
+        ]
+      },
+      {
+        "kind": "asset",
+        "file": "assets/v0.6/mercado_gondolas_topo.png",
+        "index": 2,
+        "box": [
+          200,
+          199.5,
+          73,
+          28.5
+        ]
+      },
+      {
+        "kind": "asset",
+        "file": "assets/v0.6/mercado_gondolas_topo.png",
+        "index": 1,
+        "box": [
+          303,
+          199.5,
+          78,
+          28.5
+        ]
+      },
+      {
+        "kind": "asset",
+        "file": "assets/v0.6/mercado_gondolas_topo.png",
+        "index": 2,
+        "box": [
+          441,
+          199.5,
+          86,
+          28.5
+        ]
+      },
+      {
+        "kind": "asset",
+        "file": "assets/v0.6/mercado_gondolas_topo.png",
+        "index": 1,
+        "box": [
+          14,
+          11,
+          80,
+          25
+        ]
+      },
+      {
+        "kind": "asset",
+        "file": "assets/v0.6/mercado_gondolas_topo.png",
+        "index": 0,
+        "box": [
+          98,
+          11,
+          80,
+          25
+        ]
+      },
+      {
+        "kind": "asset",
+        "file": "assets/v0.6/mercado_gondolas_topo.png",
+        "index": 3,
+        "box": [
+          185,
+          11,
+          80,
+          25
+        ]
+      },
+      {
+        "kind": "asset",
+        "file": "assets/v0.6/mercado_gondolas_topo.png",
+        "index": 2,
+        "box": [
+          303,
+          14,
+          80,
+          26
+        ]
+      }
+    ],
+    "stories": [
+      {
+        "kind": "story",
+        "box": [
+          82,
+          250,
+          28,
+          16
+        ],
+        "variant": "purchase"
+      },
+      {
+        "kind": "story",
+        "box": [
+          108,
+          114,
+          28,
+          16
+        ],
+        "variant": "papers"
+      },
+      {
+        "kind": "story",
+        "box": [
+          442,
+          258,
+          28,
+          16
+        ],
+        "variant": "spill"
+      },
+      {
+        "kind": "story",
+        "box": [
+          388,
+          324,
+          28,
+          16
+        ],
+        "variant": "papers"
+      }
+    ]
+  },
+  "Hospital": {
+    "surfaces": [
+      [
+        0,
+        0,
+        554,
+        380,
+        "tile",
+        "#e6e1ce"
+      ],
+      [
+        0,
+        285,
+        138.5,
+        95,
+        "paver",
+        "#c7cbbd"
+      ],
+      [
+        138.5,
+        285,
+        415.5,
+        95,
+        "tile",
+        "#dce4d3"
+      ],
+      [
+        0,
+        0,
+        554,
+        285,
+        "tile",
+        "#e3e6d8"
+      ],
+      [
+        265,
+        0,
+        30,
+        285,
+        "tile",
+        "#cfddd2"
+      ]
+    ],
+    "objects": [
+      {
+        "kind": "asset",
+        "box": [
+          22,
+          321,
+          60,
+          26
+        ],
+        "variant": "",
+        "file": "assets/v0.5/mapa_oficina.png",
+        "index": 1
+      },
+      {
+        "kind": "asset",
+        "box": [
+          165,
+          310,
+          90,
+          45
+        ],
+        "variant": "",
+        "file": "assets/v0.6/hospital_topo.png",
+        "index": 1
+      },
+      {
+        "kind": "chairs",
+        "box": [
+          304,
+          326,
+          78,
+          15
+        ],
+        "variant": ""
+      },
+      {
+        "kind": "planter",
+        "box": [
+          445,
+          316,
+          74,
+          12
+        ],
+        "variant": ""
+      },
+      {
+        "kind": "asset",
+        "box": [
+          23,
+          207,
+          78,
+          43
+        ],
+        "variant": "",
+        "file": "assets/v0.6/hospital_topo.png",
+        "index": 0
+      },
+      {
+        "kind": "bed",
+        "box": [
+          175,
+          205,
+          21,
+          37
+        ],
+        "variant": ""
+      },
+      {
+        "kind": "bed",
+        "box": [
+          218,
+          205,
+          21,
+          37
+        ],
+        "variant": "#b5bea3"
+      },
+      {
+        "kind": "asset",
+        "box": [
+          309,
+          205,
+          77,
+          44
+        ],
+        "variant": "",
+        "file": "assets/v0.6/hospital_topo.png",
+        "index": 2
+      },
+      {
+        "kind": "asset",
+        "box": [
+          444,
+          207,
+          82,
+          40
+        ],
+        "variant": "",
+        "file": "assets/v0.6/hospital_topo.png",
+        "index": 3
+      },
+      {
+        "kind": "bed",
+        "box": [
+          25,
+          109,
+          21,
+          37
+        ],
+        "variant": ""
+      },
+      {
+        "kind": "bed",
+        "box": [
+          83,
+          109,
+          21,
+          37
+        ],
+        "variant": "#a8b3a0"
+      },
+      {
+        "kind": "asset",
+        "box": [
+          168,
+          110,
+          82,
+          40
+        ],
+        "variant": "",
+        "file": "assets/v0.6/hospital_topo.png",
+        "index": 3
+      },
+      {
+        "kind": "bed",
+        "box": [
+          310,
+          110,
+          21,
+          37
+        ],
+        "variant": ""
+      },
+      {
+        "kind": "bed",
+        "box": [
+          363,
+          110,
+          21,
+          37
+        ],
+        "variant": "#b5bea3"
+      },
+      {
+        "kind": "asset",
+        "box": [
+          444,
+          110,
+          77,
+          43
+        ],
+        "variant": "",
+        "file": "assets/v0.6/hospital_topo.png",
+        "index": 0
+      },
+      {
+        "kind": "asset",
+        "box": [
+          24,
+          14,
+          78,
+          41
+        ],
+        "variant": "",
+        "file": "assets/v0.6/hospital_topo.png",
+        "index": 2
+      },
+      {
+        "kind": "bench",
+        "box": [
+          167,
+          18,
+          90,
+          21
+        ],
+        "variant": "medical"
+      },
+      {
+        "kind": "bed",
+        "box": [
+          310,
+          16,
+          21,
+          37
+        ],
+        "variant": ""
+      },
+      {
+        "kind": "bed",
+        "box": [
+          366,
+          16,
+          21,
+          37
+        ],
+        "variant": "#b5bea3"
+      },
+      {
+        "kind": "gondola",
+        "box": [
+          441,
+          18,
+          85,
+          20
+        ],
+        "variant": "box"
+      },
+      {
+        "kind": "chairs",
+        "box": [
+          164,
+          344,
+          65,
+          13
+        ],
+        "variant": ""
+      },
+      {
+        "kind": "planter",
+        "box": [
+          6,
+          367,
+          112,
+          8
+        ],
+        "variant": ""
+      }
+    ],
+    "stories": [
+      {
+        "kind": "story",
+        "box": [
+          260,
+          311,
+          28,
+          16
+        ],
+        "variant": "papers"
+      },
+      {
+        "kind": "story",
+        "box": [
+          107,
+          111,
+          28,
+          16
+        ],
+        "variant": "papers"
+      },
+      {
+        "kind": "story",
+        "box": [
+          390,
+          213,
+          28,
+          16
+        ],
+        "variant": "spill"
+      },
+      {
+        "kind": "story",
+        "box": [
+          394,
+          18,
+          28,
+          16
+        ],
+        "variant": "papers"
+      }
+    ]
+  },
+  "Oficina": {
+    "surfaces": [
+      [
+        0,
+        0,
+        554,
+        380,
+        "tile",
+        "#e6e1ce"
+      ],
+      [
+        0,
+        285,
+        277,
+        95,
+        "concrete",
+        "#c5c8b9"
+      ],
+      [
+        277,
+        285,
+        277,
+        95,
+        "paver",
+        "#d6d0ba"
+      ],
+      [
+        0,
+        0,
+        554,
+        190,
+        "concrete",
+        "#d4d3c2"
+      ]
+    ],
+    "objects": [
+      {
+        "kind": "asset",
+        "box": [
+          21,
+          321,
+          60,
+          28
+        ],
+        "variant": "",
+        "file": "assets/v0.5/mapa_oficina.png",
+        "index": 1
+      },
+      {
+        "kind": "asset",
+        "box": [
+          173,
+          312,
+          78,
+          42
+        ],
+        "variant": "",
+        "file": "assets/v0.6/oficina_topo.png",
+        "index": 1
+      },
+      {
+        "kind": "asset",
+        "box": [
+          309,
+          316,
+          72,
+          34
+        ],
+        "variant": "",
+        "file": "assets/v0.5/mapa_oficina.png",
+        "index": 2
+      },
+      {
+        "kind": "bench",
+        "box": [
+          442,
+          319,
+          87,
+          24
+        ],
+        "variant": ""
+      },
+      {
+        "kind": "bay",
+        "box": [
+          16,
+          203,
+          98,
+          45
+        ],
+        "variant": ""
+      },
+      {
+        "kind": "asset",
+        "box": [
+          30,
+          211,
+          67,
+          28
+        ],
+        "variant": "",
+        "file": "assets/v0.5/mapa_oficina.png",
+        "index": 1
+      },
+      {
+        "kind": "asset",
+        "box": [
+          169,
+          204,
+          80,
+          48
+        ],
+        "variant": "",
+        "file": "assets/v0.6/oficina_topo.png",
+        "index": 0
+      },
+      {
+        "kind": "asset",
+        "box": [
+          309,
+          203,
+          81,
+          42
+        ],
+        "variant": "",
+        "file": "assets/v0.6/oficina_topo.png",
+        "index": 1
+      },
+      {
+        "kind": "asset",
+        "box": [
+          446,
+          204,
+          77,
+          43
+        ],
+        "variant": "",
+        "file": "assets/v0.6/oficina_topo.png",
+        "index": 3
+      },
+      {
+        "kind": "bench",
+        "box": [
+          15,
+          109,
+          101,
+          23
+        ],
+        "variant": ""
+      },
+      {
+        "kind": "asset",
+        "box": [
+          167,
+          111,
+          88,
+          41
+        ],
+        "variant": "",
+        "file": "assets/v0.6/oficina_topo.png",
+        "index": 2
+      },
+      {
+        "kind": "bay",
+        "box": [
+          302,
+          110,
+          84,
+          47
+        ],
+        "variant": ""
+      },
+      {
+        "kind": "asset",
+        "box": [
+          311,
+          116,
+          70,
+          35
+        ],
+        "variant": "",
+        "file": "assets/v0.6/oficina_topo.png",
+        "index": 0
+      },
+      {
+        "kind": "gondola",
+        "box": [
+          439,
+          113,
+          91,
+          20
+        ],
+        "variant": "box"
+      },
+      {
+        "kind": "asset",
+        "box": [
+          22,
+          14,
+          82,
+          36
+        ],
+        "variant": "",
+        "file": "assets/v0.6/oficina_topo.png",
+        "index": 3
+      },
+      {
+        "kind": "bench",
+        "box": [
+          169,
+          18,
+          85,
+          22
+        ],
+        "variant": ""
+      },
+      {
+        "kind": "asset",
+        "box": [
+          312,
+          16,
+          73,
+          30
+        ],
+        "variant": "",
+        "file": "assets/v0.5/mapa_oficina.png",
+        "index": 2
+      },
+      {
+        "kind": "asset",
+        "box": [
+          442,
+          16,
+          84,
+          34
+        ],
+        "variant": "",
+        "file": "assets/v0.6/oficina_topo.png",
+        "index": 2
+      },
+      {
+        "kind": "drain",
+        "box": [
+          118,
+          306,
+          13,
+          5
+        ],
+        "variant": ""
+      },
+      {
+        "kind": "crate",
+        "box": [
+          108,
+          166,
+          18,
+          13
+        ],
+        "variant": "open"
+      }
+    ],
+    "stories": [
+      {
+        "kind": "story",
+        "box": [
+          103,
+          212,
+          28,
+          16
+        ],
+        "variant": "repair"
+      },
+      {
+        "kind": "story",
+        "box": [
+          253,
+          112,
+          28,
+          16
+        ],
+        "variant": "papers"
+      },
+      {
+        "kind": "story",
+        "box": [
+          391,
+          320,
+          28,
+          16
+        ],
+        "variant": "spill"
+      },
+      {
+        "kind": "story",
+        "box": [
+          386,
+          19,
+          28,
+          16
+        ],
+        "variant": "repair"
+      }
+    ]
+  },
+  "Posto": {
+    "surfaces": [
+      [
+        0,
+        0,
+        554,
+        380,
+        "tile",
+        "#e6e1ce"
+      ],
+      [
+        0,
+        0,
+        152,
+        380,
+        "asphalt",
+        "#aeb7aa"
+      ],
+      [
+        152,
+        0,
+        264,
+        285,
+        "concrete",
+        "#d1d3c0"
+      ],
+      [
+        152,
+        285,
+        402,
+        95,
+        "tile",
+        "#dedac4"
+      ],
+      [
+        416,
+        0,
+        138,
+        285,
+        "paver",
+        "#d2ccba"
+      ]
+    ],
+    "paint": [
+      [
+        18,
+        13,
+        18,
+        366,
+        "#dfcd91",
+        1
+      ],
+      [
+        131,
+        13,
+        131,
+        366,
+        "#dfcd91",
+        1
+      ],
+      [
+        71,
+        18,
+        71,
+        45,
+        "#dfcd91",
+        1
+      ],
+      [
+        71,
+        110,
+        71,
+        137,
+        "#dfcd91",
+        1
+      ],
+      [
+        71,
+        210,
+        71,
+        237,
+        "#dfcd91",
+        1
+      ],
+      [
+        71,
+        318,
+        71,
+        345,
+        "#dfcd91",
+        1
+      ]
+    ],
+    "objects": [
+      {
+        "kind": "asset",
+        "box": [
+          23,
+          320,
+          60,
+          27
+        ],
+        "variant": "",
+        "file": "assets/v0.5/mapa_oficina.png",
+        "index": 1
+      },
+      {
+        "kind": "asset",
+        "box": [
+          166,
+          313,
+          90,
+          40
+        ],
+        "variant": "",
+        "file": "assets/v0.6/posto_topo.png",
+        "index": 2
+      },
+      {
+        "kind": "gondola",
+        "box": [
+          309,
+          319,
+          77,
+          20
+        ],
+        "variant": "bottle"
+      },
+      {
+        "kind": "gondola",
+        "box": [
+          442,
+          319,
+          85,
+          20
+        ],
+        "variant": "box"
+      },
+      {
+        "kind": "asset",
+        "box": [
+          171,
+          209,
+          81,
+          44
+        ],
+        "variant": "",
+        "file": "assets/v0.6/posto_topo.png",
+        "index": 0
+      },
+      {
+        "kind": "asset",
+        "box": [
+          307,
+          207,
+          82,
+          43
+        ],
+        "variant": "",
+        "file": "assets/v0.6/posto_topo.png",
+        "index": 1
+      },
+      {
+        "kind": "asset",
+        "box": [
+          445,
+          210,
+          78,
+          41
+        ],
+        "variant": "",
+        "file": "assets/v0.6/posto_topo.png",
+        "index": 3
+      },
+      {
+        "kind": "bay",
+        "box": [
+          19,
+          110,
+          95,
+          49
+        ],
+        "variant": ""
+      },
+      {
+        "kind": "asset",
+        "box": [
+          29,
+          119,
+          64,
+          29
+        ],
+        "variant": "",
+        "file": "assets/v0.5/mapa_oficina.png",
+        "index": 1
+      },
+      {
+        "kind": "asset",
+        "box": [
+          309,
+          110,
+          76,
+          42
+        ],
+        "variant": "",
+        "file": "assets/v0.6/posto_topo.png",
+        "index": 0
+      },
+      {
+        "kind": "bench",
+        "box": [
+          440,
+          113,
+          88,
+          21
+        ],
+        "variant": ""
+      },
+      {
+        "kind": "planter",
+        "box": [
+          21,
+          18,
+          93,
+          13
+        ],
+        "variant": ""
+      },
+      {
+        "kind": "gondola",
+        "box": [
+          168,
+          19,
+          86,
+          20
+        ],
+        "variant": "bottle"
+      },
+      {
+        "kind": "asset",
+        "box": [
+          308,
+          16,
+          80,
+          39
+        ],
+        "variant": "",
+        "file": "assets/v0.6/posto_topo.png",
+        "index": 3
+      },
+      {
+        "kind": "asset",
+        "box": [
+          444,
+          16,
+          78,
+          38
+        ],
+        "variant": "",
+        "file": "assets/v0.5/mapa_mercado.png",
+        "index": 3
+      },
+      {
+        "kind": "drain",
+        "box": [
+          111,
+          308,
+          17,
+          6
+        ],
+        "variant": ""
+      },
+      {
+        "kind": "cart",
+        "box": [
+          256,
+          319,
+          17,
+          12
+        ],
+        "variant": ""
+      }
+    ],
+    "stories": [
+      {
+        "kind": "story",
+        "box": [
+          257,
+          213,
+          28,
+          16
+        ],
+        "variant": "repair"
+      },
+      {
+        "kind": "story",
+        "box": [
+          393,
+          111,
+          28,
+          16
+        ],
+        "variant": "spill"
+      },
+      {
+        "kind": "story",
+        "box": [
+          107,
+          322,
+          28,
+          16
+        ],
+        "variant": "papers"
+      },
+      {
+        "kind": "story",
+        "box": [
+          393,
+          18,
+          28,
+          16
+        ],
+        "variant": "repair"
+      }
+    ]
+  },
+  "Condomínio": {
+    "surfaces": [
+      [
+        0,
+        0,
+        554,
+        380,
+        "tile",
+        "#e6e1ce"
+      ],
+      [
+        0,
+        285,
+        277,
+        95,
+        "paver",
+        "#cfcebb"
+      ],
+      [
+        277,
+        285,
+        277,
+        95,
+        "tile",
+        "#e5dcca"
+      ],
+      [
+        0,
+        95,
+        277,
+        190,
+        "wood",
+        "#d8cbb0"
+      ],
+      [
+        277,
+        0,
+        277,
+        285,
+        "paver",
+        "#d4d6bd"
+      ],
+      [
+        420,
+        0,
+        134,
+        95,
+        "grass",
+        "#cad1b7"
+      ]
+    ],
+    "objects": [
+      {
+        "kind": "asset",
+        "box": [
+          23,
+          320,
+          60,
+          27
+        ],
+        "variant": "",
+        "file": "assets/v0.5/mapa_oficina.png",
+        "index": 1
+      },
+      {
+        "kind": "asset",
+        "box": [
+          166,
+          309,
+          86,
+          44
+        ],
+        "variant": "",
+        "file": "assets/v0.6/condominio_topo.png",
+        "index": 0
+      },
+      {
+        "kind": "asset",
+        "box": [
+          307,
+          311,
+          80,
+          42
+        ],
+        "variant": "",
+        "file": "assets/v0.6/condominio_topo.png",
+        "index": 1
+      },
+      {
+        "kind": "chairs",
+        "box": [
+          443,
+          325,
+          77,
+          14
+        ],
+        "variant": ""
+      },
+      {
+        "kind": "asset",
+        "box": [
+          19,
+          203,
+          90,
+          45
+        ],
+        "variant": "",
+        "file": "assets/v0.6/condominio_topo.png",
+        "index": 3
+      },
+      {
+        "kind": "asset",
+        "box": [
+          168,
+          205,
+          82,
+          44
+        ],
+        "variant": "",
+        "file": "assets/v0.6/condominio_topo.png",
+        "index": 1
+      },
+      {
+        "kind": "asset",
+        "box": [
+          309,
+          205,
+          80,
+          44
+        ],
+        "variant": "",
+        "file": "assets/v0.6/condominio_topo.png",
+        "index": 2
+      },
+      {
+        "kind": "planter",
+        "box": [
+          441,
+          211,
+          86,
+          17
+        ],
+        "variant": ""
+      },
+      {
+        "kind": "rug",
+        "box": [
+          16,
+          110,
+          97,
+          48
+        ],
+        "variant": ""
+      },
+      {
+        "kind": "asset",
+        "box": [
+          24,
+          115,
+          80,
+          39
+        ],
+        "variant": "",
+        "file": "assets/v0.6/condominio_topo.png",
+        "index": 3
+      },
+      {
+        "kind": "asset",
+        "box": [
+          168,
+          109,
+          86,
+          45
+        ],
+        "variant": "",
+        "file": "assets/v0.6/condominio_topo.png",
+        "index": 3
+      },
+      {
+        "kind": "planter",
+        "box": [
+          311,
+          112,
+          74,
+          19
+        ],
+        "variant": ""
+      },
+      {
+        "kind": "asset",
+        "box": [
+          446,
+          111,
+          80,
+          43
+        ],
+        "variant": "",
+        "file": "assets/v0.6/condominio_topo.png",
+        "index": 2
+      },
+      {
+        "kind": "bench",
+        "box": [
+          18,
+          18,
+          94,
+          22
+        ],
+        "variant": ""
+      },
+      {
+        "kind": "crate",
+        "box": [
+          171,
+          20,
+          24,
+          17
+        ],
+        "variant": "open"
+      },
+      {
+        "kind": "crate",
+        "box": [
+          213,
+          19,
+          25,
+          17
+        ],
+        "variant": ""
+      },
+      {
+        "kind": "planter",
+        "box": [
+          305,
+          17,
+          78,
+          18
+        ],
+        "variant": ""
+      },
+      {
+        "kind": "planter",
+        "box": [
+          444,
+          17,
+          78,
+          22
+        ],
+        "variant": ""
+      },
+      {
+        "kind": "gondola",
+        "box": [
+          441,
+          309,
+          83,
+          17
+        ],
+        "variant": "box"
+      }
+    ],
+    "stories": [
+      {
+        "kind": "story",
+        "box": [
+          99,
+          312,
+          28,
+          16
+        ],
+        "variant": "papers"
+      },
+      {
+        "kind": "story",
+        "box": [
+          258,
+          113,
+          28,
+          16
+        ],
+        "variant": "purchase"
+      },
+      {
+        "kind": "story",
+        "box": [
+          395,
+          208,
+          28,
+          16
+        ],
+        "variant": "garden"
+      },
+      {
+        "kind": "story",
+        "box": [
+          259,
+          18,
+          28,
+          16
+        ],
+        "variant": "garden"
+      }
+    ]
+  },
+  "Estação": {
+    "surfaces": [
+      [
+        0,
+        0,
+        554,
+        380,
+        "tile",
+        "#e6e1ce"
+      ],
+      [
+        0,
+        0,
+        554,
+        380,
+        "concrete",
+        "#d5d7c3"
+      ],
+      [
+        0,
+        285,
+        277,
+        95,
+        "paver",
+        "#c6cdbb"
+      ],
+      [
+        0,
+        0,
+        138.5,
+        95,
+        "grass",
+        "#c6ceae"
+      ],
+      [
+        416,
+        95,
+        138,
+        190,
+        "tile",
+        "#dae0ce"
+      ]
+    ],
+    "paint": [
+      [
+        6,
+        302,
+        6,
+        364,
+        "#89a28c",
+        1.6
+      ],
+      [
+        151,
+        304,
+        262,
+        304,
+        "#89a28c",
+        1.6
+      ],
+      [
+        294,
+        302,
+        404,
+        302,
+        "#89a28c",
+        1.6
+      ],
+      [
+        431,
+        302,
+        543,
+        302,
+        "#89a28c",
+        1.6
+      ],
+      [
+        293,
+        99,
+        293,
+        183,
+        "#89a28c",
+        1.6
+      ]
+    ],
+    "objects": [
+      {
+        "kind": "asset",
+        "box": [
+          22,
+          311,
+          74,
+          43
+        ],
+        "variant": "",
+        "file": "assets/v0.5/mapa_estacao.png",
+        "index": 0
+      },
+      {
+        "kind": "basin",
+        "box": [
+          169,
+          311,
+          84,
+          43
+        ],
+        "variant": ""
+      },
+      {
+        "kind": "asset",
+        "box": [
+          309,
+          310,
+          77,
+          43
+        ],
+        "variant": "",
+        "file": "assets/v0.6/estacao_topo.png",
+        "index": 2
+      },
+      {
+        "kind": "asset",
+        "box": [
+          443,
+          311,
+          85,
+          43
+        ],
+        "variant": "",
+        "file": "assets/v0.6/estacao_topo.png",
+        "index": 3
+      },
+      {
+        "kind": "basin",
+        "box": [
+          19,
+          207,
+          93,
+          43
+        ],
+        "variant": ""
+      },
+      {
+        "kind": "bench",
+        "box": [
+          168,
+          211,
+          85,
+          23
+        ],
+        "variant": ""
+      },
+      {
+        "kind": "asset",
+        "box": [
+          309,
+          205,
+          79,
+          45
+        ],
+        "variant": "",
+        "file": "assets/v0.6/estacao_topo.png",
+        "index": 0
+      },
+      {
+        "kind": "asset",
+        "box": [
+          443,
+          207,
+          85,
+          44
+        ],
+        "variant": "",
+        "file": "assets/v0.6/estacao_topo.png",
+        "index": 1
+      },
+      {
+        "kind": "asset",
+        "box": [
+          24,
+          110,
+          79,
+          43
+        ],
+        "variant": "",
+        "file": "assets/v0.6/estacao_topo.png",
+        "index": 2
+      },
+      {
+        "kind": "basin",
+        "box": [
+          168,
+          111,
+          86,
+          42
+        ],
+        "variant": ""
+      },
+      {
+        "kind": "asset",
+        "box": [
+          309,
+          110,
+          78,
+          44
+        ],
+        "variant": "",
+        "file": "assets/v0.6/estacao_topo.png",
+        "index": 1
+      },
+      {
+        "kind": "asset",
+        "box": [
+          443,
+          111,
+          84,
+          42
+        ],
+        "variant": "",
+        "file": "assets/v0.6/estacao_topo.png",
+        "index": 3
+      },
+      {
+        "kind": "planter",
+        "box": [
+          20,
+          19,
+          92,
+          14
+        ],
+        "variant": ""
+      },
+      {
+        "kind": "asset",
+        "box": [
+          168,
+          14,
+          85,
+          40
+        ],
+        "variant": "",
+        "file": "assets/v0.6/estacao_topo.png",
+        "index": 1
+      },
+      {
+        "kind": "asset",
+        "box": [
+          309,
+          17,
+          75,
+          42
+        ],
+        "variant": "",
+        "file": "assets/v0.5/mapa_estacao.png",
+        "index": 0
+      },
+      {
+        "kind": "bench",
+        "box": [
+          441,
+          19,
+          87,
+          23
+        ],
+        "variant": ""
+      },
+      {
+        "kind": "drain",
+        "box": [
+          517,
+          309,
+          27,
+          5
+        ],
+        "variant": ""
+      }
+    ],
+    "stories": [
+      {
+        "kind": "story",
+        "box": [
+          105,
+          313,
+          28,
+          16
+        ],
+        "variant": "repair"
+      },
+      {
+        "kind": "story",
+        "box": [
+          259,
+          212,
+          28,
+          16
+        ],
+        "variant": "repair"
+      },
+      {
+        "kind": "story",
+        "box": [
+          393,
+          114,
+          28,
+          16
+        ],
+        "variant": "papers"
+      },
+      {
+        "kind": "story",
+        "box": [
+          395,
+          20,
+          28,
+          16
+        ],
+        "variant": "spill"
+      }
+    ]
+  },
+  "Comuns": {
+    "surfaces": [
+      [
+        0,
+        0,
+        554,
+        380,
+        "tile",
+        "#e6e1ce"
+      ],
+      [
+        0,
+        285,
+        277,
+        95,
+        "asphalt",
+        "#b1b8a9"
+      ],
+      [
+        277,
+        285,
+        277,
+        95,
+        "paver",
+        "#c9cbb6"
+      ],
+      [
+        0,
+        0,
+        277,
+        285,
+        "concrete",
+        "#d8d3be"
+      ],
+      [
+        277,
+        0,
+        277,
+        285,
+        "paver",
+        "#d0d2ba"
+      ]
+    ],
+    "objects": [
+      {
+        "kind": "asset",
+        "box": [
+          22,
+          320,
+          60,
+          27
+        ],
+        "variant": "",
+        "file": "assets/v0.5/mapa_oficina.png",
+        "index": 1
+      },
+      {
+        "kind": "planter",
+        "box": [
+          165,
+          319,
+          87,
+          15
+        ],
+        "variant": ""
+      },
+      {
+        "kind": "bench",
+        "box": [
+          309,
+          321,
+          81,
+          22
+        ],
+        "variant": ""
+      },
+      {
+        "kind": "crate",
+        "box": [
+          444,
+          317,
+          28,
+          20
+        ],
+        "variant": ""
+      },
+      {
+        "kind": "crate",
+        "box": [
+          491,
+          316,
+          25,
+          20
+        ],
+        "variant": "open"
+      },
+      {
+        "kind": "bench",
+        "box": [
+          18,
+          210,
+          94,
+          23
+        ],
+        "variant": ""
+      },
+      {
+        "kind": "asset",
+        "box": [
+          169,
+          210,
+          80,
+          34
+        ],
+        "variant": "",
+        "file": "assets/v0.5/mapa_oficina.png",
+        "index": 2
+      },
+      {
+        "kind": "asset",
+        "box": [
+          308,
+          207,
+          81,
+          42
+        ],
+        "variant": "",
+        "file": "assets/v0.5/mapa_mercado.png",
+        "index": 3
+      },
+      {
+        "kind": "planter",
+        "box": [
+          443,
+          211,
+          82,
+          18
+        ],
+        "variant": ""
+      },
+      {
+        "kind": "crate",
+        "box": [
+          22,
+          112,
+          31,
+          23
+        ],
+        "variant": "open"
+      },
+      {
+        "kind": "bench",
+        "box": [
+          167,
+          112,
+          87,
+          23
+        ],
+        "variant": ""
+      },
+      {
+        "kind": "chairs",
+        "box": [
+          309,
+          118,
+          78,
+          17
+        ],
+        "variant": ""
+      },
+      {
+        "kind": "crate",
+        "box": [
+          445,
+          114,
+          29,
+          18
+        ],
+        "variant": ""
+      },
+      {
+        "kind": "crate",
+        "box": [
+          493,
+          114,
+          27,
+          18
+        ],
+        "variant": ""
+      },
+      {
+        "kind": "planter",
+        "box": [
+          20,
+          19,
+          92,
+          16
+        ],
+        "variant": ""
+      },
+      {
+        "kind": "crate",
+        "box": [
+          171,
+          20,
+          27,
+          18
+        ],
+        "variant": "open"
+      },
+      {
+        "kind": "crate",
+        "box": [
+          217,
+          18,
+          24,
+          18
+        ],
+        "variant": ""
+      },
+      {
+        "kind": "bench",
+        "box": [
+          306,
+          20,
+          81,
+          24
+        ],
+        "variant": ""
+      },
+      {
+        "kind": "asset",
+        "box": [
+          444,
+          16,
+          79,
+          40
+        ],
+        "variant": "",
+        "file": "assets/v0.6/oficina_topo.png",
+        "index": 2
+      },
+      {
+        "kind": "drain",
+        "box": [
+          115,
+          308,
+          18,
+          5
+        ],
+        "variant": ""
+      },
+      {
+        "kind": "cart",
+        "box": [
+          256,
+          319,
+          17,
+          12
+        ],
+        "variant": ""
+      }
+    ],
+    "stories": [
+      {
+        "kind": "story",
+        "box": [
+          106,
+          320,
+          28,
+          16
+        ],
+        "variant": "papers"
+      },
+      {
+        "kind": "story",
+        "box": [
+          257,
+          212,
+          28,
+          16
+        ],
+        "variant": "repair"
+      },
+      {
+        "kind": "story",
+        "box": [
+          393,
+          116,
+          28,
+          16
+        ],
+        "variant": "papers"
+      },
+      {
+        "kind": "story",
+        "box": [
+          395,
+          20,
+          28,
+          16
+        ],
+        "variant": "garden"
+      }
+    ]
+  }
+}
