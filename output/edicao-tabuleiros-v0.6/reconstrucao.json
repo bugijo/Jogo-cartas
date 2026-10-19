@@ -1,0 +1,50 @@
+{
+  "version": "0.6",
+  "clean_directory": "/tmp/zz06-reconstrucao-final-qb4zvmyx",
+  "source_parts": 5,
+  "source_dependency_coverage": 81,
+  "commands": [
+    "python src/build_boards06.py",
+    "python src/validate_boards06.py",
+    "python src/proof_boards06.py",
+    "python -m unittest discover -s tests -p test_boards06.py",
+    "python src/document_boards06.py"
+  ],
+  "checks": 7536,
+  "passed": 7536,
+  "own_tests_passed": 10,
+  "changed_pages_rendered": 68,
+  "identical_render_files": 68,
+  "different_renders": [],
+  "generation_inputs_sha256": {
+    "src/build_boards06.py": "649ba39de1d581097fcde2331681ed7ecd2071badda43ac7dc712459832af1d7",
+    "src/board_art06.py": "6fd67ef573d05420fd2ec0987a28e5c8a0f7131980ad2127260431f8f3f42093",
+    "src/proof_boards06.py": "b41c4d4324ee1e1dc7834f9d124453718eec0e62f53944858c86e37e3779cb5d",
+    "src/validate_boards06.py": "fa58dbb88b3059b8dea8c5f1d3773aefa0588238418d669e6d25808688e1ae6b",
+    "src/document_boards06.py": "39de7ddd6182770cc91e56cba356500e7facce30eaa826f8516d5a53513b6368",
+    "src/package_boards06.py": "ea9e003f1ce93898b9d24c3a3c5c90036d85783016d7c826cb1a771d32e5b597",
+    "tests/test_boards06.py": "635b1adfd49993c08f6614a640d2a1807e2f051fe310ec7ab704e6bad1449b61",
+    "content/catalog.json": "ac1e9872c42e2d58522bcf6a69d4acaf232685f09ad3bb380c8d8543244bc54e",
+    "content/map_layouts.json": "c7972b4374cdb174954adc6af19a6acf74e8d9c815ddf927fc3d4e4aa4bff694",
+    "content/production/geometry_0.6.json": "c7972b4374cdb174954adc6af19a6acf74e8d9c815ddf927fc3d4e4aa4bff694",
+    "content/production/scenes_0.6.json": "78256375dc77ac70be89ec187855b42e9d727762859afb86005a7aa9c25f9b3d",
+    "content/production/crops_0.6.json": "bb7b50052011b1ab079b02740ee43f3c3ca4a937d153cfb030836c5588195c41",
+    "assets/v0.5/mapa_estacao.png": "97bad662c08d20efd40aa0a4bd511d257660f5d53b59624b946db5fcfb23ee88",
+    "assets/v0.5/mapa_mercado.png": "def0c0cab970189e9ffb072c8afdb0bf94d8a5dc8d715ea33cc5491627e69620",
+    "assets/v0.5/mapa_oficina.png": "e16260f4f3ffdbb9429185e87e05d80e3080ed70b685e39e42b1e1ae3694732b",
+    "assets/v0.6/bancada_topo.png": "84dbde536dcb6ebb9e54c5d77d7344ef9a84563bff9aac9362c42690d602b3d8",
+    "assets/v0.6/condominio_topo.png": "1dbfd03b8ea4bfddaa753cd4ecd77cbcec54aa9d1d323457daff5acdb46035cc",
+    "assets/v0.6/estacao_topo.png": "25c9b168c971a26eb742feb4d60eeefd109f564475ea95d25d2545a4b058d13d",
+    "assets/v0.6/hospital_topo.png": "840d0aa51b1858a3ee31af9c8ad8969d8e95c934c07c2416d47057097ca2cdc9",
+    "assets/v0.6/mercado_gondolas_topo.png": "0aa29d4470382631c0be445cc9304714a743a3020139ecb9adb4bc8bf01f241e",
+    "assets/v0.6/mercado_topo.png": "106a716890f95b1a1e9e84053a42925304f33beac9edf4d194e1c6d9037a7efd",
+    "assets/v0.6/oficina_topo.png": "c41125890e9caf76a79fb31589b2248a6a9ce9d5000a719b8658ecd70198e817",
+    "assets/v0.6/pisos_materiais.png": "c75f236ded8bbc6335197c2c4cf784160573f0d8d4738bf610ff10c3bffadbc6",
+    "assets/v0.6/posto_topo.png": "607d0fcc20217d1d88ad93cf244879ccd4baeb1517cb67ae8507d435903b208c"
+  },
+  "initial_issue_corrected": "O ensaio anterior encontrou duas provas PDF 0.5 ausentes. Incluídas nas fontes-base, com cobertura automática das 81 dependências; este novo ensaio foi iniciado em outra pasta vazia.",
+  "limitations": [
+    "Sem impressão física ou playtest humano.",
+    "24 marcadores planos de 29×29 mm não cabem sem sobreposição em uma zona; o ensaio máximo usa as bases preservadas de 22×12 mm."
+  ]
+}

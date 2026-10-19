@@ -30,7 +30,7 @@ md+=f'- [Código, JSON, arte nativa e geometria SVGZ]({raw}dist/ZZ_06_FONTES_COD
 # Source bases are grouped by a fixed 85 MiB uncompressed budget, matching the packager.
 for ed in ['ilustrada','economica']:
  files=sorted((b.BASE/ed).rglob('*.pdf'))+[b.BASE/ed/'00_LEIA_PRIMEIRO/manifesto.json']
- if ed=='ilustrada':files+=sorted((b.BASE/'amostras').rglob('*.pdf'))+[P/'output/edicao-fabricacao-v0.4/ilustrada/08_EXTRAS_OPCIONAIS/MERCADO_M01_M04_LADO_A.pdf']
+ if ed=='ilustrada':files+=sorted(f for f in b.BASE.rglob('*.pdf') if f.relative_to(b.BASE).parts[0] not in ['ilustrada','economica'])+[P/'output/edicao-fabricacao-v0.4/ilustrada/08_EXTRAS_OPCIONAIS/MERCADO_M01_M04_LADO_A.pdf']
  chunks=1;size=0
  for f in files:
   if size and size+f.stat().st_size>85*1024*1024:chunks+=1;size=0

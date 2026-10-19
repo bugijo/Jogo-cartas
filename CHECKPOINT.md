@@ -95,3 +95,8 @@ Sete mapas nas duas edições gerados e revisados, nove testes próprios aprovad
 
 ### Tabuleiros 0.6 — ciclo 3
 PDFs e índices fechados, todos os módulos em A4 paisagem uma face, 58/72 folhas mantidas. Exportação por recorte nativo sem redução resolve o limite GitHub; teste RGB confirma preservação dos pixels de uma peça representativa. Dez testes próprios aprovados, 68 páginas alteradas renderizadas; arte principal ≥215 ppi. ZIPs de mapas, completos, extras, fontes e provas separados; fontes divididas em CODE_ARTE e partes BASE05. Próximo: extrair todas as partes de fontes em pasta limpa, executar o fluxo de RECONSTRUIR_0.6.md, comparar as 68 capturas, registrar o resultado, atualizar os pacotes e fazer push sem merge.
+
+### Tabuleiros 0.6 — ciclo 4 concluído
+Fontes corrigidas após detectar duas provas PDF antigas ausentes; cobertura das 81 dependências exigida no empacotamento. Cinco partes extraídas em nova pasta limpa; fluxo completo passou: 7.536 verificações, dez testes próprios, 68 renderizações idênticas e 24 entradas de geração idênticas. Resultado em output/edicao-tabuleiros-v0.6/reconstrucao.json. Fontes editoriais em RECONSTRUIR_0.6.md; downloads por DOWNLOADS_0.6.md. Kit básico continua 58 duplex / 72 manual; quem tem 0.5 pode atualizar apenas quatro módulos, sem baixar cartas.
+
+Distribuição: arte/pnp-tabuleiros-v0-6; fechar commit e push sem merge, conferir os links públicos. Depois disso, o próximo passo humano é imprimir calibração e um módulo a 100%, medir 100 mm e o corte 277×190 mm, testar união e peões. A verificação digital não substitui essa prova. Não refazer cartas, peões, painel ou abrigo sem defeito concreto. Nenhuma atividade permanece em segundo plano após a entrega.

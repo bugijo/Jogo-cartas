@@ -1,9 +1,11 @@
 """Distribuição 0.6: atualização só de mapas e alternativas completas exclusivas."""
 from pathlib import Path
-import json,zipfile,hashlib,html
+import json,zipfile,hashlib,html,sys
 import build_boards06 as b
-P=b.P;O=b.O;DIST=P/'dist';DIST.mkdir(exist_ok=True);PACKAGES=[]
+P=b.P;O=b.O;DIST=P/'dist';DIST.mkdir(exist_ok=True);ONLY_SOURCES='--sources-only' in sys.argv
+PACKAGES=json.loads((O/'pacotes.json').read_text()) if ONLY_SOURCES and (O/'pacotes.json').exists() else []
 def make(name,items,note,entries=None):
+ if ONLY_SOURCES and not name.startswith('ZZ_06_FONTES_'):return
  path=DIST/name
  with zipfile.ZipFile(path,'w',zipfile.ZIP_DEFLATED,compresslevel=6) as z:
   for file,arc in items:z.write(file,arc)
@@ -17,6 +19,7 @@ def make(name,items,note,entries=None):
    z.writestr('00_LEIA_PRIMEIRO/IMPRIMA_ESTES.md',md)
  with zipfile.ZipFile(path) as z:assert z.testzip() is None
  assert path.stat().st_size<100*1024*1024,'Dividir pacote: '+str(path)
+ PACKAGES[:]=[p for p in PACKAGES if p['file']!=name]
  PACKAGES.append(dict(file=name,bytes=path.stat().st_size,sha256=hashlib.sha256(path.read_bytes()).hexdigest(),note=note));print(name,round(path.stat().st_size/1e6,1),'MB',flush=True)
 
 for ed in ['ilustrada','economica']:
@@ -44,15 +47,19 @@ for name in sorted(assets):source.append((P/name,name))
 for f in (P/'assets/v0.6/vetores').glob('*.svgz'):source.append((f,str(f.relative_to(P))))
 note='FONTES EDITÁVEIS 0.6. Python 3, requirements.txt e DejaVu Sans. Apenas mapas: python src/build_boards06.py --maps-only. Para reconstruir o kit completo/provas, extraia também todas as partes FONTES_BASE05 no mesmo diretório; execute build_boards06.py, validate_boards06.py, proof_boards06.py, document_boards06.py e package_boards06.py. Os componentes anteriores são copiados, nunca regenerados. Fontes das cartas/peões 0.5 continuam disponíveis no índice 0.5. Não imprimir estas partes.'
 make('ZZ_06_FONTES_CODIGO_ARTE.zip',source,note)
+SOURCE_PATHS={arc for file,arc in source}
 for ed in ['ilustrada','economica']:
  files=sorted((b.BASE/ed).rglob('*.pdf'))+[b.BASE/ed/'00_LEIA_PRIMEIRO/manifesto.json']
- if ed=='ilustrada':files+=sorted((b.BASE/'amostras').rglob('*.pdf'))+[P/'output/edicao-fabricacao-v0.4/ilustrada/08_EXTRAS_OPCIONAIS/MERCADO_M01_M04_LADO_A.pdf']
+ if ed=='ilustrada':files+=sorted(f for f in b.BASE.rglob('*.pdf') if f.relative_to(b.BASE).parts[0] not in ['ilustrada','economica'])+[P/'output/edicao-fabricacao-v0.4/ilustrada/08_EXTRAS_OPCIONAIS/MERCADO_M01_M04_LADO_A.pdf']
+ SOURCE_PATHS.update(str(f.relative_to(P)) for f in files)
  chunks=[];chunk=[];size=0
  for f in files:
   if chunk and size+f.stat().st_size>85*1024*1024:chunks.append(chunk);chunk=[];size=0
   chunk.append(f);size+=f.stat().st_size
  if chunk:chunks.append(chunk)
  for i,chunk in enumerate(chunks,1):make('ZZ_06_FONTES_BASE05_'+ed.upper()+f'_{i:02}.zip',[(f,str(f.relative_to(P))) for f in chunk],note)
+missing=set(json.loads((P/'content/production/baseline_0.6.json').read_text()))-SOURCE_PATHS
+assert not missing,'Dependências congeladas ausentes das fontes: '+str(sorted(missing))
 visual=[(f,str(f.relative_to(O))) for folder in ['evidencias','contatos'] for f in (O/folder).rglob('*') if f.is_file() and f.suffix!='.pdf']
 make('ZZ_06_PROVAS_VISUAIS.zip',visual,'Capturas extraídas dos PDFs A4 finais: versões 0.4/0.5/0.6, sete montagens, econômica, emenda e ocupação. Capturas não são componentes de jogo.')
 files=[f for f in (O/'evidencias').glob('*.pdf')]+[O/n for n in ['verificacao.json','resolucao_pdfs.json','asset_usage.json','RESOLUCAO_EFETIVA.csv','USOS_ASSETS.csv','encaixe.json','reconstrucao.json'] if (O/n).exists()]+[P/'VISUAL_QA.md',P/'ASSET_MANIFEST.md',P/'docs/TABULEIROS_0.6.md']
