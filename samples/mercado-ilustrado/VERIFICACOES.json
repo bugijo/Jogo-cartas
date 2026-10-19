@@ -1,0 +1,45 @@
+{
+  "base": "ec071e1",
+  "map_id": "ZC-MAP-0001",
+  "zones": 16,
+  "connections": 21,
+  "doors": 5,
+  "blocked": [
+    [
+      7,
+      8
+    ]
+  ],
+  "board_mm": [
+    554,
+    380
+  ],
+  "module_mm": [
+    277,
+    190
+  ],
+  "a4_landscape_pages": 4,
+  "native_pixels": [
+    1514,
+    1039
+  ],
+  "raster_effective_ppi_xy": [
+    69.414440433213,
+    69.44894736842105
+  ],
+  "target_150ppi_met": false,
+  "upscaling": false,
+  "all_final_pages_rendered": true,
+  "fonts_embedded": true,
+  "geometry_preserved": true,
+  "join_mean_difference_0_255": 0.11566121732530754,
+  "physical_printing": false,
+  "human_playtest": false,
+  "strict_orthographic_art": "partial: residual tilt in refrigerators and outer fixtures",
+  "visual_passage_15_16": "pending: crate display overlaps connector; does not change rules, but fails desired visual clearance",
+  "production_ready": false,
+  "image_calls": {
+    "proposals": 2,
+    "corrections": 2
+  }
+}

@@ -1,0 +1,202 @@
+[
+  {
+    "file": "ABRA_A_AMOSTRA.html",
+    "bytes": 1336,
+    "sha256": "5823ee3edbe9a7e32056c1b632b21391ad0af4b9fdf6c2a389ea71d92d73f285"
+  },
+  {
+    "file": "CHECKPOINT.md",
+    "bytes": 1658,
+    "sha256": "67a6f38e47d396b1832e8caf8f10227687f8ae75957e0e59056f88df333150ce"
+  },
+  {
+    "file": "COMPARACAO_06_CANDIDATA.jpg",
+    "bytes": 482098,
+    "sha256": "a48f1c5a2eb2f544cb9de85d4c9adfe7493e33146476bc6fec57782fc9e202e2"
+  },
+  {
+    "file": "DETALHE_100MM_A4.pdf",
+    "bytes": 4759800,
+    "sha256": "bd6b47467747e4e41ae0ff80569aab92acbdca6bf09ff71a4b41bd8a9c103b3b"
+  },
+  {
+    "file": "LEIA_PRIMEIRO.md",
+    "bytes": 3641,
+    "sha256": "8deccbbdd81e513af046e1c6fb235f760d759cd28b902f5e02ab210cd4402bea"
+  },
+  {
+    "file": "MERCADO_4_A4.pdf",
+    "bytes": 4715754,
+    "sha256": "8a4edb5a934a826dd92f16a6b37c8cca5b2346f8dbe3a59d5e7fb23a190a96ff"
+  },
+  {
+    "file": "MERCADO_COM_GEOMETRIA.png",
+    "bytes": 3569461,
+    "sha256": "42515f685d5d9763c63848082bcc99fed8632a0d40c6878655d4eb338a9c65ec"
+  },
+  {
+    "file": "MERCADO_SEM_INTERFACE.png",
+    "bytes": 3603844,
+    "sha256": "92a1550b8031e00770bcd2405d681627f5258763cb9e1735047f748b8f6507be"
+  },
+  {
+    "file": "PROPOSTAS_A_B.jpg",
+    "bytes": 512504,
+    "sha256": "e268515dda2dba9f7fb9a49e2b808ecb39f8842a4be622cbb7bd396807ec943c"
+  },
+  {
+    "file": "RELATORIO.md",
+    "bytes": 6798,
+    "sha256": "7a120c9a8b65acc7f03e2f76df02dfc7e746338c10daa534d790a29714bcfe80"
+  },
+  {
+    "file": "VERIFICACOES.json",
+    "bytes": 946,
+    "sha256": "9d34c98d22e54c1093c1a1f8240ff87dcedd334a6d12809d3ac59ad27e921ea0"
+  },
+  {
+    "file": "fontes/BASE_PRESERVADA.json",
+    "bytes": 560,
+    "sha256": "7a938cba6dc8ef3c3c472ff10e0c3c25549f3f8fc71ddfbea9b6ed4592baea66"
+  },
+  {
+    "file": "fontes/GERACOES.json",
+    "bytes": 1046,
+    "sha256": "675e1dbf345c84f034210bda8a1f5fc4586cafd7cac2d6c5b2c197efbd6791c6"
+  },
+  {
+    "file": "fontes/GUIA_ARTE.pdf",
+    "bytes": 3001,
+    "sha256": "be22bbb2188930bd7671ac26e915d480e1e143ae1ef5e38488e2339a7e1c93e0"
+  },
+  {
+    "file": "fontes/GUIA_ARTE.png",
+    "bytes": 28594,
+    "sha256": "ef1256586f57a7d2d9167cc1158ea1a267adc1cc0b483e1411424ded229b7d38"
+  },
+  {
+    "file": "fontes/MERCADO_ARTE_VETOR.pdf",
+    "bytes": 4626456,
+    "sha256": "633bc039dccbb7bc9f573ff2799a4d3daaad25a01ce2ac5ea185904c38e061b0"
+  },
+  {
+    "file": "fontes/MERCADO_FONTE.pdf",
+    "bytes": 4670276,
+    "sha256": "6858a8bfb4fb73ebcad7e520e6e2cf44d066ad3b55a22f491e2b91d6024c19d2"
+  },
+  {
+    "file": "fontes/MERCADO_REMONTADO.pdf",
+    "bytes": 4716365,
+    "sha256": "4edb8674e9ec8ef4ec53ea350ea6ee077d24cb3a40f246016b04ab2c1d2e8974"
+  },
+  {
+    "file": "fontes/ORIGINAIS.json",
+    "bytes": 1136,
+    "sha256": "79d5d30b6251f2db181c6c4cba7c2ae2a248ffff3d4b4517fceb0124093c19bf"
+  },
+  {
+    "file": "fontes/PLANTA_FUNCIONAL.pdf",
+    "bytes": 49894,
+    "sha256": "506ef25c7f439e322dec71a340941fa5fa7570d7c5d03ce5484f92088d2575b5"
+  },
+  {
+    "file": "fontes/PLANTA_FUNCIONAL.png",
+    "bytes": 43475,
+    "sha256": "5fd91deee0cb0e10e39f45bebb51ab70a5fba3da0ecae0b1ba15eb0a236c933c"
+  },
+  {
+    "file": "fontes/RECONSTRUCAO.json",
+    "bytes": 433,
+    "sha256": "80ac450a9ecb72c6504ec6edfcc26f2eed9d1e5e269c9f36bd3aaf1aa8d4a9d4"
+  },
+  {
+    "file": "fontes/build.py",
+    "bytes": 11554,
+    "sha256": "b6ea55dee0dfb10a743c0b05ba1d3ad88c0b2ec91a4cb9f9e6c3a4fdebdceb68"
+  },
+  {
+    "file": "fontes/geometria.json",
+    "bytes": 1195,
+    "sha256": "e69a92247b7196030cb3f16c5ab49d6dc8ebde36999f7f587740cd24f220a3fc"
+  },
+  {
+    "file": "fontes/segmentos.json",
+    "bytes": 12093,
+    "sha256": "3404cca2f71cdd118837e0609dbb6e140b872f66aa1cbcb4e97c6d6d83366a7b"
+  },
+  {
+    "file": "originais/CORRECAO_1.png",
+    "bytes": 2687724,
+    "sha256": "66f391091a919700fb0ea35303d60267a8abfee59ce6918f1c2cbe84f7d78901"
+  },
+  {
+    "file": "originais/CORRECAO_2_ESCOLHIDA.png",
+    "bytes": 2398117,
+    "sha256": "2ff7c12ccd634da62b376a8214a9af243377fa57b92e31057fdc283651f3c1c0"
+  },
+  {
+    "file": "originais/PROPOSTA_A.png",
+    "bytes": 3071737,
+    "sha256": "2fd750584fc64561a3e632fb22cf1d79a0cb4feaedbf1fe35316007c0fca34cd"
+  },
+  {
+    "file": "originais/PROPOSTA_B.png",
+    "bytes": 2936173,
+    "sha256": "53547fd79f264b155b5ce9173addd6a03ac6e952b77e432e3fb679a909768a35"
+  },
+  {
+    "file": "provas/CONTATO_4_A4.jpg",
+    "bytes": 368768,
+    "sha256": "4845f4694622c5cbdab358bd9ad2ea42e91399ac9582c0e4856917b4dc679d28"
+  },
+  {
+    "file": "provas/DETALHE_100MM.png",
+    "bytes": 160051,
+    "sha256": "1eee6677d23d0524a3a8a69def782fc04d0033ca376d1da161b16a2e7cf916ca"
+  },
+  {
+    "file": "provas/FOLHA_1.png",
+    "bytes": 916749,
+    "sha256": "d5dedc01e7f826a16d3174e812efe79c140281f7f22f3ef7e4485ce69059cdd3"
+  },
+  {
+    "file": "provas/FOLHA_2.png",
+    "bytes": 952855,
+    "sha256": "31c90b1989c8b4c6dd526c14f5aede085a00d5cdd0c1d5b92c75b7726f31d904"
+  },
+  {
+    "file": "provas/FOLHA_3.png",
+    "bytes": 767827,
+    "sha256": "34b2d3887c99b353abf496613f7cfe3858649d6c883897ba24370053cd18d7a1"
+  },
+  {
+    "file": "provas/FOLHA_4.png",
+    "bytes": 881232,
+    "sha256": "8dfdc46c7dc3b34bb88afb137e936bf6d9bab5a50862782fe5e13814535e2fa8"
+  },
+  {
+    "file": "provas/JUNCAO_CENTRAL.png",
+    "bytes": 252102,
+    "sha256": "c564e9839e16882bbe52dd6f335207494fab1d8d4939ac9ba643d41aefd64330"
+  },
+  {
+    "file": "provas/MERCADO_06.png",
+    "bytes": 2529020,
+    "sha256": "50790cd767167755a42201de48c39bf0aa21de1557733fb23b2533fe064ba3ce"
+  },
+  {
+    "file": "provas/OCUPACAO.png",
+    "bytes": 171409,
+    "sha256": "0beadc0a8b6a25c0f4d27c5d70348ae4a5b7a7caf90ae8d67cc53ac948cd72e9"
+  },
+  {
+    "file": "provas/OCUPACAO_A4.pdf",
+    "bytes": 12007412,
+    "sha256": "2131a4f7df39480a50af23d5fc276407e9bc9d96d9b007d9c5b82ded0c6cb21e"
+  },
+  {
+    "file": "provas/PASSAGEM_15_16_PENDENTE.png",
+    "bytes": 92314,
+    "sha256": "e523592ee697e7a93ede346056c0ffe5272efd56164aecad0329ed89bd890550"
+  }
+]

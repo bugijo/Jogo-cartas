@@ -1,0 +1,42 @@
+[
+  {
+    "file": "originais/CORRECAO_1.png",
+    "origin": "image_gen.imagegen integrado",
+    "native_pixels": [
+      1514,
+      1039
+    ],
+    "sha256": "66f391091a919700fb0ea35303d60267a8abfee59ce6918f1c2cbe84f7d78901",
+    "integration": "proposta / histórico da seleção"
+  },
+  {
+    "file": "originais/CORRECAO_2_ESCOLHIDA.png",
+    "origin": "image_gen.imagegen integrado",
+    "native_pixels": [
+      1514,
+      1039
+    ],
+    "sha256": "2ff7c12ccd634da62b376a8214a9af243377fa57b92e31057fdc283651f3c1c0",
+    "integration": "arte principal"
+  },
+  {
+    "file": "originais/PROPOSTA_A.png",
+    "origin": "image_gen.imagegen integrado",
+    "native_pixels": [
+      1514,
+      1039
+    ],
+    "sha256": "2fd750584fc64561a3e632fb22cf1d79a0cb4feaedbf1fe35316007c0fca34cd",
+    "integration": "proposta / histórico da seleção"
+  },
+  {
+    "file": "originais/PROPOSTA_B.png",
+    "origin": "image_gen.imagegen integrado",
+    "native_pixels": [
+      1514,
+      1039
+    ],
+    "sha256": "53547fd79f264b155b5ce9173addd6a03ac6e952b77e432e3fb679a909768a35",
+    "integration": "proposta / histórico da seleção"
+  }
+]

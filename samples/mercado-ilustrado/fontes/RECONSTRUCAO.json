@@ -1,0 +1,12 @@
+{
+  "standalone_directory": "/tmp/zz-mercado-amostra-cyhshe2z/samples/mercado-ilustrado",
+  "checks": {
+    "MERCADO_COM_GEOMETRIA.png": true,
+    "MERCADO_SEM_INTERFACE.png": true,
+    "provas/FOLHA_1.png": true,
+    "provas/FOLHA_2.png": true,
+    "provas/FOLHA_3.png": true,
+    "provas/FOLHA_4.png": true
+  },
+  "note": "Somente originais + geometria.json + build.py; PDFs e renders reconstruídos sem acessar imagens antigas."
+}

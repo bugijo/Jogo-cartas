@@ -1,0 +1,31 @@
+{
+  "tool": "image_gen.imagegen",
+  "external_api": false,
+  "note": "Resumo de produção, não transcrição literal dos prompts. Originais nativos preservados.",
+  "steps": [
+    {
+      "step": "A",
+      "mode": "generation from local geometry guide",
+      "goal": "daylight clear continuous market",
+      "file": "originais/PROPOSTA_A.png"
+    },
+    {
+      "step": "B",
+      "mode": "generation from same local geometry guide",
+      "goal": "atmospheric afternoon continuous market",
+      "file": "originais/PROPOSTA_B.png"
+    },
+    {
+      "step": "correction_1",
+      "mode": "edit B plus guide",
+      "goal": "move cart, freezer and receiving pallets; top-down perspective; wall alignment",
+      "file": "originais/CORRECAO_1.png"
+    },
+    {
+      "step": "correction_2",
+      "mode": "edit correction 1 plus guide",
+      "goal": "remove inaccurate raster walls for exact vector architecture, move bakery and free passage centers; reduce tilted perspective",
+      "file": "originais/CORRECAO_2_ESCOLHIDA.png"
+    }
+  ]
+}
