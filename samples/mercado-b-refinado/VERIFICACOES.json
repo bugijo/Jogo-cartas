@@ -1,0 +1,42 @@
+{
+  "base": "9d08b2f",
+  "map_id": "ZC-MAP-0001",
+  "zones": 16,
+  "connections": 21,
+  "doors": 5,
+  "blocked": [
+    [
+      7,
+      8
+    ]
+  ],
+  "board_mm": [
+    554,
+    380
+  ],
+  "module_mm": [
+    277,
+    190
+  ],
+  "a4_landscape_pages": 4,
+  "native_pixels": [
+    3817,
+    2618
+  ],
+  "raster_effective_ppi_xy": [
+    175.00324909747292,
+    174.99263157894737
+  ],
+  "target_150ppi_met": true,
+  "upscaling": false,
+  "all_final_pages_rendered": true,
+  "fonts_embedded": true,
+  "geometry_preserved": true,
+  "join_mean_difference_0_255": 2.8499376256491833,
+  "physical_printing": false,
+  "human_playtest": false,
+  "strict_orthographic_art": "corrigida nos refrigeradores e móveis principais; pequenas faces laterais residuais na decoração periférica",
+  "visual_passage_15_16": "livre na arte, sem etiqueta de ocultação",
+  "production_ready": "prova de impressão; aguarda avaliação visual do proprietário e impressão física",
+  "native_sources": 18
+}

@@ -1,0 +1,539 @@
+{
+  "print_mm": [
+    554,
+    380
+  ],
+  "composite_pixels": [
+    3817,
+    2618
+  ],
+  "composite_ppi_xy": [
+    175.00324909747292,
+    174.99263157894737
+  ],
+  "method": "9 reconstruções nativas; recorte por menor diferença nas sobreposições, transição de 4 pixels; reparo nativo de junção; apenas redução para composição",
+  "sources": [
+    {
+      "id": "R1C1",
+      "file": "originais/R1C1.png",
+      "native_pixels": [
+        1514,
+        1039
+      ],
+      "used_pixels": [
+        0,
+        0,
+        1514,
+        1039
+      ],
+      "print_box_mm": [
+        0.0,
+        0.0,
+        195.0343461030383,
+        136.78537054860442
+      ],
+      "effective_ppi_xy": [
+        197.17347620240992,
+        192.9343751759077
+      ],
+      "composition_pixels": [
+        1344,
+        942
+      ],
+      "upscaled": false,
+      "sha256": "ecfee7aea71d57508335429a3907b3210cf226a635d5d1e0ec7641b65d3e8d22",
+      "origin": "image_gen integrado / reconstrução ou edição nativa"
+    },
+    {
+      "id": "R1C2",
+      "file": "originais/R1C2.png",
+      "native_pixels": [
+        1536,
+        1024
+      ],
+      "used_pixels": [
+        0,
+        0,
+        1536,
+        1024
+      ],
+      "print_box_mm": [
+        174.5429326287979,
+        0.0,
+        379.45706737120213,
+        136.78537054860442
+      ],
+      "effective_ppi_xy": [
+        190.39389375966994,
+        190.14898958626515
+      ],
+      "composition_pixels": [
+        1411,
+        942
+      ],
+      "upscaled": false,
+      "sha256": "e87ed18fb80f842aa9de40a970c3563d41f39eb472d056859550ab3ee2f40ba8",
+      "origin": "image_gen integrado / reconstrução ou edição nativa"
+    },
+    {
+      "id": "R1C3",
+      "file": "originais/R1C3.png",
+      "native_pixels": [
+        1498,
+        1050
+      ],
+      "used_pixels": [
+        0,
+        0,
+        1498,
+        1050
+      ],
+      "print_box_mm": [
+        358.96565389696167,
+        0.0,
+        554.0,
+        136.78537054860442
+      ],
+      "effective_ppi_xy": [
+        195.08974065469616,
+        194.9769912749789
+      ],
+      "composition_pixels": [
+        1344,
+        942
+      ],
+      "upscaled": false,
+      "sha256": "8dab50565510b2a053ce537f094a1d57b167f14de581057dee8eb82d1ee62abb",
+      "origin": "image_gen integrado / reconstrução ou edição nativa"
+    },
+    {
+      "id": "R2C1",
+      "file": "originais/R2C1.png",
+      "native_pixels": [
+        1443,
+        1090
+      ],
+      "used_pixels": [
+        0,
+        0,
+        1443,
+        1090
+      ],
+      "print_box_mm": [
+        0.0,
+        116.3041385948027,
+        195.0343461030383,
+        263.6958614051973
+      ],
+      "effective_ppi_xy": [
+        187.9268997094303,
+        187.83958469374423
+      ],
+      "composition_pixels": [
+        1344,
+        1016
+      ],
+      "upscaled": false,
+      "sha256": "de8d9c1c4322a9b181f20a2669d5077f50e9d38b58f86dae69d329264629b9f2",
+      "origin": "image_gen integrado / reconstrução ou edição nativa"
+    },
+    {
+      "id": "R2C2",
+      "file": "originais/R2C2.png",
+      "native_pixels": [
+        1522,
+        1033
+      ],
+      "used_pixels": [
+        0,
+        0,
+        1522,
+        1033
+      ],
+      "print_box_mm": [
+        174.5429326287979,
+        116.3041385948027,
+        379.45706737120213,
+        263.6958614051973
+      ],
+      "effective_ppi_xy": [
+        188.6585327488396,
+        178.01678072352092
+      ],
+      "composition_pixels": [
+        1411,
+        1016
+      ],
+      "upscaled": false,
+      "sha256": "7e5ac7f8b07859567b6604048b91e77a4029a4cf6ab8bcf03fe3cdaa0590b473",
+      "origin": "image_gen integrado / reconstrução ou edição nativa"
+    },
+    {
+      "id": "R2C3",
+      "file": "originais/R2C3.png",
+      "native_pixels": [
+        1442,
+        1091
+      ],
+      "used_pixels": [
+        0,
+        0,
+        1442,
+        1091
+      ],
+      "print_box_mm": [
+        358.96565389696167,
+        116.3041385948027,
+        554.0,
+        263.6958614051973
+      ],
+      "effective_ppi_xy": [
+        187.79666623769816,
+        188.0119145879587
+      ],
+      "composition_pixels": [
+        1344,
+        1016
+      ],
+      "upscaled": false,
+      "sha256": "73f9cba9ad9c8f3e15fb8a020965666650bf7ac903d70cb09b8118984d970c5e",
+      "origin": "image_gen integrado / reconstrução ou edição nativa"
+    },
+    {
+      "id": "R3C1",
+      "file": "originais/R3C1.png",
+      "native_pixels": [
+        1498,
+        1050
+      ],
+      "used_pixels": [
+        0,
+        0,
+        1498,
+        1050
+      ],
+      "print_box_mm": [
+        0.0,
+        243.21462945139558,
+        195.0343461030383,
+        380.0
+      ],
+      "effective_ppi_xy": [
+        195.0897406546962,
+        194.9769912749789
+      ],
+      "composition_pixels": [
+        1344,
+        942
+      ],
+      "upscaled": false,
+      "sha256": "15e3f2841a8bfdf5376fc1097267c70a2d794c87a4dc755dc9cecf12a8b59e54",
+      "origin": "image_gen integrado / reconstrução ou edição nativa"
+    },
+    {
+      "id": "R3C2",
+      "file": "originais/R3C2.png",
+      "native_pixels": [
+        1536,
+        1024
+      ],
+      "used_pixels": [
+        0,
+        0,
+        1536,
+        1024
+      ],
+      "print_box_mm": [
+        174.5429326287979,
+        243.21462945139558,
+        379.45706737120213,
+        380.0
+      ],
+      "effective_ppi_xy": [
+        190.39389375966994,
+        190.14898958626515
+      ],
+      "composition_pixels": [
+        1411,
+        942
+      ],
+      "upscaled": false,
+      "sha256": "82c76906bf97972d0370746a4c69fdc9b3dbd6f8c0f97a7a29629222b94a2c98",
+      "origin": "image_gen integrado / reconstrução ou edição nativa"
+    },
+    {
+      "id": "R3C3",
+      "file": "originais/R3C3.png",
+      "native_pixels": [
+        1497,
+        1051
+      ],
+      "used_pixels": [
+        0,
+        0,
+        1497,
+        1051
+      ],
+      "print_box_mm": [
+        358.96565389696167,
+        243.21462945139558,
+        554.0,
+        380.0
+      ],
+      "effective_ppi_xy": [
+        194.95950718296405,
+        195.16268364762172
+      ],
+      "composition_pixels": [
+        1344,
+        942
+      ],
+      "upscaled": false,
+      "sha256": "946844cb42a10b7b7edf523abc529caa05097bcd7255497bdfe28731396022e2",
+      "origin": "image_gen integrado / reconstrução ou edição nativa"
+    },
+    {
+      "id": "reparo_juncao_piloto",
+      "file": "originais/JUNCAO_R3C2_R3C3.png",
+      "native_pixels": [
+        725,
+        2170
+      ],
+      "used_pixels": [
+        9,
+        0,
+        717,
+        2170
+      ],
+      "print_box_mm": [
+        346.6599637947062,
+        243.21462945139558,
+        391.3832868535643,
+        380
+      ],
+      "effective_ppi_xy": [
+        402.0989222185752,
+        402.9524486349564
+      ],
+      "upscaled": false,
+      "sha256": "229f4766930fbb8b0523b4d3dfb2667dabeaedab42c81fa2f71df6f14c95322d",
+      "origin": "image_gen integrado / reconstrução ou edição nativa"
+    },
+    {
+      "id": "P12L",
+      "file": "originais/P12L.png",
+      "native_pixels": [
+        1735,
+        907
+      ],
+      "used_pixels": [
+        0,
+        0,
+        1735,
+        907
+      ],
+      "print_box_mm": [
+        0.0,
+        91.43407122232917,
+        195.76618229854688,
+        193.84023099133782
+      ],
+      "effective_ppi_xy": [
+        225.1103815918216,
+        224.96498308270677
+      ],
+      "upscaled": false,
+      "sha256": "bbd82ef7a4eee63277e0b42362dd3bbd26dd24ead629cd22bac5d34a47e5a46a",
+      "origin": "image_gen integrado / reconstrução ou edição nativa"
+    },
+    {
+      "id": "P12M",
+      "file": "originais/P12M.png",
+      "native_pixels": [
+        1757,
+        895
+      ],
+      "used_pixels": [
+        0,
+        0,
+        1757,
+        895
+      ],
+      "print_box_mm": [
+        190.2774108322325,
+        98.7487969201155,
+        376.8956406869221,
+        193.84023099133782
+      ],
+      "effective_ppi_xy": [
+        239.13955262971612,
+        239.06464574898783
+      ],
+      "upscaled": false,
+      "sha256": "9337c91149d0d2485c592230713b4f4975d8f7bf938a5aedf217bbe933c70301",
+      "origin": "image_gen integrado / reconstrução ou edição nativa"
+    },
+    {
+      "id": "P12R",
+      "file": "originais/P12R.png",
+      "native_pixels": [
+        1435,
+        1096
+      ],
+      "used_pixels": [
+        0,
+        0,
+        1435,
+        1096
+      ],
+      "print_box_mm": [
+        376.8956406869221,
+        84.11934552454282,
+        554.0,
+        219.44177093359
+      ],
+      "effective_ppi_xy": [
+        205.8052107885551,
+        205.71904409672823
+      ],
+      "upscaled": false,
+      "sha256": "6faddef3cedd5593626e43c672fbf74df7988c07ac204031583e5632650605fc",
+      "origin": "image_gen integrado / reconstrução ou edição nativa"
+    },
+    {
+      "id": "P23L",
+      "file": "originais/P23L.png",
+      "native_pixels": [
+        1782,
+        883
+      ],
+      "used_pixels": [
+        0,
+        0,
+        1782,
+        883
+      ],
+      "print_box_mm": [
+        0.0,
+        213.95572666025026,
+        195.76618229854688,
+        310.87584215591914
+      ],
+      "effective_ppi_xy": [
+        231.20847262053377,
+        231.40913406156906
+      ],
+      "upscaled": false,
+      "sha256": "47cb62243e204b64fcf6c5b86575f60cf5f71e06396b1ad548fbf74a6491b66e",
+      "origin": "image_gen integrado / reconstrução ou edição nativa"
+    },
+    {
+      "id": "P23M",
+      "file": "originais/P23M.png",
+      "native_pixels": [
+        1926,
+        816
+      ],
+      "used_pixels": [
+        0,
+        0,
+        1926,
+        816
+      ],
+      "print_box_mm": [
+        195.76618229854688,
+        208.46968238691048,
+        376.8956406869221,
+        285.274302213667
+      ],
+      "effective_ppi_xy": [
+        270.0852773219559,
+        269.8587669172931
+      ],
+      "upscaled": false,
+      "sha256": "3f2cf670b72f8dbe61358825d03af78a3a34246e63a8b3d1afdafddc347df37d",
+      "origin": "image_gen integrado / reconstrução ou edição nativa"
+    },
+    {
+      "id": "P23R",
+      "file": "originais/P23R.png",
+      "native_pixels": [
+        1860,
+        845
+      ],
+      "used_pixels": [
+        0,
+        0,
+        1860,
+        845
+      ],
+      "print_box_mm": [
+        376.8956406869221,
+        215.78440808469682,
+        554.0,
+        296.2463907603465
+      ],
+      "effective_ppi_xy": [
+        266.7579735656533,
+        266.74709330143526
+      ],
+      "upscaled": false,
+      "sha256": "d6dcdb2ac67c9c05e5706fc3976edd76b16a2fbf8cbfb96db7ee7f7411f7e3f1",
+      "origin": "image_gen integrado / reconstrução ou edição nativa"
+    },
+    {
+      "id": "TOPO_CARGA",
+      "file": "originais/TOPO_CARGA.png",
+      "native_pixels": [
+        1742,
+        903
+      ],
+      "used_pixels": [
+        0,
+        0,
+        1742,
+        903
+      ],
+      "print_box_mm": [
+        398.85072655217965,
+        0.0,
+        554.0,
+        80.46198267564966
+      ],
+      "effective_ppi_xy": [
+        285.18857366664395,
+        285.0563612440191
+      ],
+      "upscaled": false,
+      "sha256": "dfa12edf8b6b99734ae80c6ce99fda714d9a17864d172f591d9bb1685ed64ddb",
+      "origin": "image_gen integrado / reconstrução ou edição nativa"
+    },
+    {
+      "id": "BEBIDAS",
+      "file": "originais/BEBIDAS.png",
+      "native_pixels": [
+        2170,
+        725
+      ],
+      "used_pixels": [
+        0,
+        0,
+        2170,
+        725
+      ],
+      "print_box_mm": [
+        174.5429326287979,
+        307.218479307026,
+        402.50990752972257,
+        380.0
+      ],
+      "effective_ppi_xy": [
+        241.78063521680934,
+        253.0175218196244
+      ],
+      "upscaled": false,
+      "sha256": "386d66c309796a1084d2c8e70af27bd80b181299a465ec5fdd9053813f70d46a",
+      "origin": "image_gen integrado / reconstrução ou edição nativa"
+    }
+  ]
+}
