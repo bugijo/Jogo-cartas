@@ -58,3 +58,14 @@ class Boards06(unittest.TestCase):
   self.assertEqual((g.BASE_WIDTH,g.BASE_DEPTH,g.MAX_ENEMIES),(22,12,24))
   self.assertLessEqual(6*g.BASE_WIDTH,138.5);self.assertLessEqual(5*g.BASE_DEPTH,95-21)
   self.assertLessEqual(3*29,138.5);self.assertLessEqual(2*29,95-21)
+ def test_pdf_embeds_native_cropped_pixels_losslessly(self):
+  from PIL import Image
+  import board_art06 as art
+  name='assets/v0.6/bancada_topo.png';box,size=art.crop(name,0)
+  with Image.open(P/name) as src:original=src.crop(box).convert('RGB')
+  doc=fitz.open(O/'ilustrada/06_TABULEIROS/COMUNS_M01_M04_LADO_A.pdf');matches=[]
+  for info in doc[0].get_images(full=True):
+   if tuple(info[2:4])==original.size:
+    pix=fitz.Pixmap(doc,info[0]);matches.append(pix.samples==original.tobytes())
+  self.assertTrue(matches,'A bancada deve estar incorporada no PDF distribuído')
+  self.assertTrue(all(matches),'Recorte mantém os pixels RGB nativos; não é JPEG nem reamostragem')

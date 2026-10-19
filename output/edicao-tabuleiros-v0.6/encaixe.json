@@ -1,0 +1,51 @@
+[
+  {
+    "theme": "Comuns",
+    "comparison_ppi": 72,
+    "decoder_cache_reset": true,
+    "mean_difference_0_255": 0.28501102425809166,
+    "passed": true
+  },
+  {
+    "theme": "Mercado",
+    "comparison_ppi": 72,
+    "decoder_cache_reset": true,
+    "mean_difference_0_255": 0.10820129220602077,
+    "passed": true
+  },
+  {
+    "theme": "Hospital",
+    "comparison_ppi": 72,
+    "decoder_cache_reset": true,
+    "mean_difference_0_255": 0.10840185851552588,
+    "passed": true
+  },
+  {
+    "theme": "Oficina",
+    "comparison_ppi": 72,
+    "decoder_cache_reset": true,
+    "mean_difference_0_255": 0.11758362276685456,
+    "passed": true
+  },
+  {
+    "theme": "Posto",
+    "comparison_ppi": 72,
+    "decoder_cache_reset": true,
+    "mean_difference_0_255": 0.5675910431298264,
+    "passed": true
+  },
+  {
+    "theme": "Condomínio",
+    "comparison_ppi": 72,
+    "decoder_cache_reset": true,
+    "mean_difference_0_255": 0.2674808595968912,
+    "passed": true
+  },
+  {
+    "theme": "Estação",
+    "comparison_ppi": 72,
+    "decoder_cache_reset": true,
+    "mean_difference_0_255": 0.13827875922083432,
+    "passed": true
+  }
+]

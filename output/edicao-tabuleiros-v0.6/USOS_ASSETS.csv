@@ -1,0 +1,215 @@
+arquivo,destino,edicao,originais_px,recorte_px,pixels_utilizados,tamanho_impresso_mm,ppi,papel
+assets/v0.6/pisos_materiais.png,material/tile,ilustrada,"[1536, 1024]","[1024.0, 0.0, 1536.0, 512.0]","[512.0, 512.0]","[60.0, 60.0]",216.75,material nativo repetido; não mobiliário
+assets/v0.6/pisos_materiais.png,material/asphalt,ilustrada,"[1536, 1024]","[512.0, 0.0, 1024.0, 512.0]","[512.0, 512.0]","[60.0, 60.0]",216.75,material nativo repetido; não mobiliário
+assets/v0.6/pisos_materiais.png,material/paver,ilustrada,"[1536, 1024]","[0.0, 512.0, 512.0, 1024.0]","[512.0, 512.0]","[60.0, 60.0]",216.75,material nativo repetido; não mobiliário
+assets/v0.6/pisos_materiais.png,material/concrete,ilustrada,"[1536, 1024]","[0.0, 0.0, 512.0, 512.0]","[512.0, 512.0]","[60.0, 60.0]",216.75,material nativo repetido; não mobiliário
+assets/v0.6/pisos_materiais.png,material/paver,ilustrada,"[1536, 1024]","[0.0, 512.0, 512.0, 1024.0]","[512.0, 512.0]","[60.0, 60.0]",216.75,material nativo repetido; não mobiliário
+assets/v0.5/mapa_oficina.png,Comuns,ilustrada,"[1536, 1024]","[768, 66, 1514, 446]","[746, 380]","[53.00526315789474, 27.0]",357.48,mobiliário nativo
+assets/v0.6/bancada_topo.png,Comuns,ilustrada,"[1536, 1024]","[56, 119, 1506, 888]","[1450, 769]","[73.5370611183355, 39.0]",500.84,mobiliário nativo
+assets/v0.6/hospital_topo.png,Comuns,ilustrada,"[1536, 1024]","[790, 58, 1510, 506]","[720, 448]","[61.07142857142858, 38.0]",299.45,mobiliário nativo
+assets/v0.5/mapa_oficina.png,Comuns,ilustrada,"[1536, 1024]","[30, 512, 758, 974]","[728, 462]","[53.57575757575758, 34.0]",345.14,mobiliário nativo
+assets/v0.5/mapa_mercado.png,Comuns,ilustrada,"[1536, 1024]","[842, 526, 1502, 942]","[660, 416]","[66.63461538461539, 42.0]",251.58,mobiliário nativo
+assets/v0.6/oficina_topo.png,Comuns,ilustrada,"[1536, 1024]","[828, 55, 1525, 505]","[697, 450]","[58.85777777777778, 38.0]",300.79,mobiliário nativo
+assets/v0.6/condominio_topo.png,Comuns,ilustrada,"[1536, 1024]","[26, 526, 754, 998]","[728, 472]","[58.61016949152542, 38.0]",315.49,mobiliário nativo
+assets/v0.6/bancada_topo.png,Comuns,ilustrada,"[1536, 1024]","[56, 119, 1506, 888]","[1450, 769]","[75.42262678803641, 40.0]",488.31,mobiliário nativo
+assets/v0.6/pisos_materiais.png,material/tile,ilustrada,"[1536, 1024]","[1024.0, 0.0, 1536.0, 512.0]","[512.0, 512.0]","[60.0, 60.0]",216.75,material nativo repetido; não mobiliário
+assets/v0.6/pisos_materiais.png,material/asphalt,ilustrada,"[1536, 1024]","[512.0, 0.0, 1024.0, 512.0]","[512.0, 512.0]","[60.0, 60.0]",216.75,material nativo repetido; não mobiliário
+assets/v0.6/pisos_materiais.png,material/concrete,ilustrada,"[1536, 1024]","[0.0, 0.0, 512.0, 512.0]","[512.0, 512.0]","[60.0, 60.0]",216.75,material nativo repetido; não mobiliário
+assets/v0.6/pisos_materiais.png,material/concrete,ilustrada,"[1536, 1024]","[0.0, 0.0, 512.0, 512.0]","[512.0, 512.0]","[60.0, 60.0]",216.75,material nativo repetido; não mobiliário
+assets/v0.6/pisos_materiais.png,material/wood,ilustrada,"[1536, 1024]","[512.0, 512.0, 1024.0, 1024.0]","[512.0, 512.0]","[60.0, 60.0]",216.75,material nativo repetido; não mobiliário
+assets/v0.6/pisos_materiais.png,material/tile,ilustrada,"[1536, 1024]","[1024.0, 0.0, 1536.0, 512.0]","[512.0, 512.0]","[60.0, 60.0]",216.75,material nativo repetido; não mobiliário
+assets/v0.5/mapa_oficina.png,Mercado,ilustrada,"[1536, 1024]","[768, 66, 1514, 446]","[746, 380]","[56.93157894736842, 29.0]",332.83,mobiliário nativo
+assets/v0.5/mapa_mercado.png,Mercado,ilustrada,"[1536, 1024]","[34, 558, 768, 898]","[734, 340]","[38.858823529411765, 18.0]",479.78,mobiliário nativo
+assets/v0.6/mercado_topo.png,Mercado,ilustrada,"[1536, 1024]","[822, 58, 1502, 512]","[680, 454]","[46.43171806167401, 31.0]",371.99,mobiliário nativo
+assets/v0.5/mapa_mercado.png,Mercado,ilustrada,"[1536, 1024]","[842, 526, 1502, 942]","[660, 416]","[68.22115384615384, 43.0]",245.73,mobiliário nativo
+assets/v0.6/mercado_topo.png,Mercado,ilustrada,"[1536, 1024]","[838, 534, 1478, 958]","[640, 424]","[72.45283018867924, 48.0]",224.37,mobiliário nativo
+assets/v0.6/mercado_gondolas_topo.png,Mercado,ilustrada,"[1536, 1024]","[830, 146, 1510, 438]","[680, 292]","[58.219178082191775, 25.0]",296.67,mobiliário nativo
+assets/v0.6/mercado_gondolas_topo.png,Mercado,ilustrada,"[1536, 1024]","[26, 586, 710, 886]","[684, 300]","[25.0, 57.0]",304.8,mobiliário nativo
+assets/v0.6/mercado_topo.png,Mercado,ilustrada,"[1536, 1024]","[58, 22, 738, 470]","[680, 448]","[54.642857142857146, 36.0]",316.09,mobiliário nativo
+assets/v0.5/mapa_mercado.png,Mercado,ilustrada,"[1536, 1024]","[854, 90, 1518, 454]","[664, 364]","[54.72527472527472, 30.0]",308.19,mobiliário nativo
+assets/v0.6/mercado_topo.png,Mercado,ilustrada,"[1536, 1024]","[34, 542, 750, 966]","[716, 424]","[67.54716981132076, 40.0]",269.24,mobiliário nativo
+assets/v0.5/mapa_mercado.png,Mercado,ilustrada,"[1536, 1024]","[842, 526, 1502, 942]","[660, 416]","[65.04807692307692, 41.0]",257.72,mobiliário nativo
+assets/v0.6/mercado_gondolas_topo.png,Mercado,ilustrada,"[1536, 1024]","[26, 146, 710, 438]","[684, 292]","[66.76027397260275, 28.5]",260.24,mobiliário nativo
+assets/v0.6/mercado_gondolas_topo.png,Mercado,ilustrada,"[1536, 1024]","[830, 582, 1506, 886]","[676, 304]","[63.375, 28.5]",270.93,mobiliário nativo
+assets/v0.6/mercado_gondolas_topo.png,Mercado,ilustrada,"[1536, 1024]","[26, 586, 710, 886]","[684, 300]","[64.98, 28.5]",267.37,mobiliário nativo
+assets/v0.6/mercado_gondolas_topo.png,Mercado,ilustrada,"[1536, 1024]","[830, 146, 1510, 438]","[680, 292]","[66.36986301369863, 28.5]",260.24,mobiliário nativo
+assets/v0.6/mercado_gondolas_topo.png,Mercado,ilustrada,"[1536, 1024]","[26, 586, 710, 886]","[684, 300]","[64.98, 28.5]",267.37,mobiliário nativo
+assets/v0.6/mercado_gondolas_topo.png,Mercado,ilustrada,"[1536, 1024]","[830, 146, 1510, 438]","[680, 292]","[58.219178082191775, 25.0]",296.67,mobiliário nativo
+assets/v0.6/mercado_gondolas_topo.png,Mercado,ilustrada,"[1536, 1024]","[26, 146, 710, 438]","[684, 292]","[58.56164383561644, 25.0]",296.67,mobiliário nativo
+assets/v0.6/mercado_gondolas_topo.png,Mercado,ilustrada,"[1536, 1024]","[830, 582, 1506, 886]","[676, 304]","[55.5921052631579, 25.0]",308.86,mobiliário nativo
+assets/v0.6/mercado_gondolas_topo.png,Mercado,ilustrada,"[1536, 1024]","[26, 586, 710, 886]","[684, 300]","[59.28, 26.0]",293.08,mobiliário nativo
+assets/v0.6/pisos_materiais.png,material/tile,ilustrada,"[1536, 1024]","[1024.0, 0.0, 1536.0, 512.0]","[512.0, 512.0]","[60.0, 60.0]",216.75,material nativo repetido; não mobiliário
+assets/v0.6/pisos_materiais.png,material/paver,ilustrada,"[1536, 1024]","[0.0, 512.0, 512.0, 1024.0]","[512.0, 512.0]","[60.0, 60.0]",216.75,material nativo repetido; não mobiliário
+assets/v0.6/pisos_materiais.png,material/tile,ilustrada,"[1536, 1024]","[1024.0, 0.0, 1536.0, 512.0]","[512.0, 512.0]","[60.0, 60.0]",216.75,material nativo repetido; não mobiliário
+assets/v0.6/pisos_materiais.png,material/tile,ilustrada,"[1536, 1024]","[1024.0, 0.0, 1536.0, 512.0]","[512.0, 512.0]","[60.0, 60.0]",216.75,material nativo repetido; não mobiliário
+assets/v0.6/pisos_materiais.png,material/tile,ilustrada,"[1536, 1024]","[1024.0, 0.0, 1536.0, 512.0]","[512.0, 512.0]","[60.0, 60.0]",216.75,material nativo repetido; não mobiliário
+assets/v0.5/mapa_oficina.png,Hospital,ilustrada,"[1536, 1024]","[768, 66, 1514, 446]","[746, 380]","[51.0421052631579, 26.0]",371.23,mobiliário nativo
+assets/v0.6/hospital_topo.png,Hospital,ilustrada,"[1536, 1024]","[790, 58, 1510, 506]","[720, 448]","[72.32142857142857, 45.0]",252.87,mobiliário nativo
+assets/v0.6/hospital_topo.png,Hospital,ilustrada,"[1536, 1024]","[54, 30, 678, 512]","[624, 482]","[55.66804979253112, 43.0]",284.72,mobiliário nativo
+assets/v0.6/hospital_topo.png,Hospital,ilustrada,"[1536, 1024]","[38, 526, 754, 1002]","[716, 476]","[66.18487394957984, 44.0]",274.78,mobiliário nativo
+assets/v0.6/hospital_topo.png,Hospital,ilustrada,"[1536, 1024]","[826, 598, 1490, 874]","[664, 276]","[78.44465116279069, 32.606511627906976]",215.0,mobiliário nativo
+assets/v0.6/hospital_topo.png,Hospital,ilustrada,"[1536, 1024]","[826, 598, 1490, 874]","[664, 276]","[78.44465116279069, 32.606511627906976]",215.0,mobiliário nativo
+assets/v0.6/hospital_topo.png,Hospital,ilustrada,"[1536, 1024]","[54, 30, 678, 512]","[624, 482]","[55.66804979253112, 43.0]",284.72,mobiliário nativo
+assets/v0.6/hospital_topo.png,Hospital,ilustrada,"[1536, 1024]","[38, 526, 754, 1002]","[716, 476]","[61.67226890756302, 41.0]",294.89,mobiliário nativo
+assets/v0.6/hospital_topo.png,Hospital,ilustrada,"[1536, 1024]","[826, 598, 1490, 874]","[664, 276]","[78.44465116279069, 32.606511627906976]",215.0,mobiliário nativo
+assets/v0.6/pisos_materiais.png,material/tile,ilustrada,"[1536, 1024]","[1024.0, 0.0, 1536.0, 512.0]","[512.0, 512.0]","[60.0, 60.0]",216.75,material nativo repetido; não mobiliário
+assets/v0.6/pisos_materiais.png,material/concrete,ilustrada,"[1536, 1024]","[0.0, 0.0, 512.0, 512.0]","[512.0, 512.0]","[60.0, 60.0]",216.75,material nativo repetido; não mobiliário
+assets/v0.6/pisos_materiais.png,material/paver,ilustrada,"[1536, 1024]","[0.0, 512.0, 512.0, 1024.0]","[512.0, 512.0]","[60.0, 60.0]",216.75,material nativo repetido; não mobiliário
+assets/v0.6/pisos_materiais.png,material/concrete,ilustrada,"[1536, 1024]","[0.0, 0.0, 512.0, 512.0]","[512.0, 512.0]","[60.0, 60.0]",216.75,material nativo repetido; não mobiliário
+assets/v0.5/mapa_oficina.png,Oficina,ilustrada,"[1536, 1024]","[768, 66, 1514, 446]","[746, 380]","[54.96842105263158, 27.999999999999996]",344.71,mobiliário nativo
+assets/v0.6/oficina_topo.png,Oficina,ilustrada,"[1536, 1024]","[828, 55, 1525, 505]","[697, 450]","[65.05333333333334, 42.0]",272.14,mobiliário nativo
+assets/v0.5/mapa_oficina.png,Oficina,ilustrada,"[1536, 1024]","[30, 512, 758, 974]","[728, 462]","[53.57575757575758, 34.0]",345.14,mobiliário nativo
+assets/v0.5/mapa_oficina.png,Oficina,ilustrada,"[1536, 1024]","[22, 34, 738, 474]","[716, 440]","[58.58181818181818, 36.0]",310.44,mobiliário nativo
+assets/v0.5/mapa_oficina.png,Oficina,ilustrada,"[1536, 1024]","[768, 66, 1514, 446]","[746, 380]","[54.96842105263158, 27.999999999999996]",344.71,mobiliário nativo
+assets/v0.6/oficina_topo.png,Oficina,ilustrada,"[1536, 1024]","[34, 22, 826, 505]","[792, 483]","[78.70807453416148, 48.0]",255.59,mobiliário nativo
+assets/v0.6/oficina_topo.png,Oficina,ilustrada,"[1536, 1024]","[828, 55, 1525, 505]","[697, 450]","[65.05333333333334, 42.0]",272.14,mobiliário nativo
+assets/v0.6/oficina_topo.png,Oficina,ilustrada,"[1536, 1024]","[852, 506, 1526, 1007]","[674, 501]","[57.84830339321358, 43.0]",295.94,mobiliário nativo
+assets/v0.6/bancada_topo.png,Oficina,ilustrada,"[1536, 1024]","[56, 119, 1506, 888]","[1450, 769]","[77.30819245773732, 41.0]",476.4,mobiliário nativo
+assets/v0.6/oficina_topo.png,Oficina,ilustrada,"[1536, 1024]","[34, 22, 826, 505]","[792, 483]","[57.391304347826086, 35.0]",350.52,mobiliário nativo
+assets/v0.6/oficina_topo.png,Oficina,ilustrada,"[1536, 1024]","[852, 506, 1526, 1007]","[674, 501]","[48.431137724550894, 36.0]",353.48,mobiliário nativo
+assets/v0.5/mapa_oficina.png,Oficina,ilustrada,"[1536, 1024]","[30, 512, 758, 974]","[728, 462]","[47.272727272727266, 29.999999999999996]",391.16,mobiliário nativo
+assets/v0.6/bancada_topo.png,Oficina,ilustrada,"[1536, 1024]","[56, 119, 1506, 888]","[1450, 769]","[64.10923276983095, 34.0]",574.49,mobiliário nativo
+assets/v0.6/pisos_materiais.png,material/tile,ilustrada,"[1536, 1024]","[1024.0, 0.0, 1536.0, 512.0]","[512.0, 512.0]","[60.0, 60.0]",216.75,material nativo repetido; não mobiliário
+assets/v0.6/pisos_materiais.png,material/asphalt,ilustrada,"[1536, 1024]","[512.0, 0.0, 1024.0, 512.0]","[512.0, 512.0]","[60.0, 60.0]",216.75,material nativo repetido; não mobiliário
+assets/v0.6/pisos_materiais.png,material/concrete,ilustrada,"[1536, 1024]","[0.0, 0.0, 512.0, 512.0]","[512.0, 512.0]","[60.0, 60.0]",216.75,material nativo repetido; não mobiliário
+assets/v0.6/pisos_materiais.png,material/tile,ilustrada,"[1536, 1024]","[1024.0, 0.0, 1536.0, 512.0]","[512.0, 512.0]","[60.0, 60.0]",216.75,material nativo repetido; não mobiliário
+assets/v0.6/pisos_materiais.png,material/paver,ilustrada,"[1536, 1024]","[0.0, 512.0, 512.0, 1024.0]","[512.0, 512.0]","[60.0, 60.0]",216.75,material nativo repetido; não mobiliário
+assets/v0.5/mapa_oficina.png,Posto,ilustrada,"[1536, 1024]","[768, 66, 1514, 446]","[746, 380]","[53.00526315789474, 27.0]",357.48,mobiliário nativo
+assets/v0.6/posto_topo.png,Posto,ilustrada,"[1536, 1024]","[54, 574, 714, 966]","[660, 392]","[67.34693877551021, 40.0]",248.92,mobiliário nativo
+assets/v0.6/mercado_gondolas_topo.png,Posto,ilustrada,"[1536, 1024]","[26, 586, 710, 886]","[684, 300]","[63.84, 28.0]",272.14,mobiliário nativo
+assets/v0.6/mercado_gondolas_topo.png,Posto,ilustrada,"[1536, 1024]","[26, 146, 710, 438]","[684, 292]","[65.58904109589041, 28.0]",264.89,mobiliário nativo
+assets/v0.6/posto_topo.png,Posto,ilustrada,"[1536, 1024]","[58, 86, 678, 450]","[620, 364]","[73.24651162790697, 43.00279069767441]",215.0,mobiliário nativo
+assets/v0.6/posto_topo.png,Posto,ilustrada,"[1536, 1024]","[768, 70, 1494, 458]","[726, 388]","[80.45876288659794, 43.0]",229.19,mobiliário nativo
+assets/v0.6/posto_topo.png,Posto,ilustrada,"[1536, 1024]","[782, 514, 1490, 946]","[708, 432]","[67.19444444444444, 41.0]",267.63,mobiliário nativo
+assets/v0.5/mapa_oficina.png,Posto,ilustrada,"[1536, 1024]","[768, 66, 1514, 446]","[746, 380]","[56.93157894736842, 29.0]",332.83,mobiliário nativo
+assets/v0.6/posto_topo.png,Posto,ilustrada,"[1536, 1024]","[58, 86, 678, 450]","[620, 364]","[71.53846153846155, 42.0]",220.13,mobiliário nativo
+assets/v0.5/mapa_oficina.png,Posto,ilustrada,"[1536, 1024]","[22, 34, 738, 474]","[716, 440]","[58.58181818181818, 36.0]",310.44,mobiliário nativo
+assets/v0.6/mercado_gondolas_topo.png,Posto,ilustrada,"[1536, 1024]","[830, 146, 1510, 438]","[680, 292]","[62.87671232876712, 27.0]",274.7,mobiliário nativo
+assets/v0.6/posto_topo.png,Posto,ilustrada,"[1536, 1024]","[782, 514, 1490, 946]","[708, 432]","[63.916666666666664, 39.0]",281.35,mobiliário nativo
+assets/v0.5/mapa_mercado.png,Posto,ilustrada,"[1536, 1024]","[842, 526, 1502, 942]","[660, 416]","[60.28846153846153, 38.0]",278.06,mobiliário nativo
+assets/v0.6/pisos_materiais.png,material/tile,ilustrada,"[1536, 1024]","[1024.0, 0.0, 1536.0, 512.0]","[512.0, 512.0]","[60.0, 60.0]",216.75,material nativo repetido; não mobiliário
+assets/v0.6/pisos_materiais.png,material/paver,ilustrada,"[1536, 1024]","[0.0, 512.0, 512.0, 1024.0]","[512.0, 512.0]","[60.0, 60.0]",216.75,material nativo repetido; não mobiliário
+assets/v0.6/pisos_materiais.png,material/tile,ilustrada,"[1536, 1024]","[1024.0, 0.0, 1536.0, 512.0]","[512.0, 512.0]","[60.0, 60.0]",216.75,material nativo repetido; não mobiliário
+assets/v0.6/pisos_materiais.png,material/wood,ilustrada,"[1536, 1024]","[512.0, 512.0, 1024.0, 1024.0]","[512.0, 512.0]","[60.0, 60.0]",216.75,material nativo repetido; não mobiliário
+assets/v0.6/pisos_materiais.png,material/paver,ilustrada,"[1536, 1024]","[0.0, 512.0, 512.0, 1024.0]","[512.0, 512.0]","[60.0, 60.0]",216.75,material nativo repetido; não mobiliário
+assets/v0.6/pisos_materiais.png,material/grass,ilustrada,"[1536, 1024]","[1024.0, 512.0, 1536.0, 1024.0]","[512.0, 512.0]","[60.0, 60.0]",216.75,material nativo repetido; não mobiliário
+assets/v0.5/mapa_oficina.png,Condomínio,ilustrada,"[1536, 1024]","[768, 66, 1514, 446]","[746, 380]","[53.00526315789474, 27.0]",357.48,mobiliário nativo
+assets/v0.6/condominio_topo.png,Condomínio,ilustrada,"[1536, 1024]","[10, 38, 762, 510]","[752, 472]","[70.10169491525424, 44.0]",272.47,mobiliário nativo
+assets/v0.6/condominio_topo.png,Condomínio,ilustrada,"[1536, 1024]","[846, 14, 1506, 494]","[660, 480]","[57.74999999999999, 42.0]",290.29,mobiliário nativo
+assets/v0.6/condominio_topo.png,Condomínio,ilustrada,"[1536, 1024]","[814, 512, 1506, 1002]","[692, 490]","[63.55102040816327, 45.0]",276.58,mobiliário nativo
+assets/v0.6/condominio_topo.png,Condomínio,ilustrada,"[1536, 1024]","[846, 14, 1506, 494]","[660, 480]","[60.49999999999999, 44.0]",277.09,mobiliário nativo
+assets/v0.6/condominio_topo.png,Condomínio,ilustrada,"[1536, 1024]","[26, 526, 754, 998]","[728, 472]","[67.86440677966102, 44.0]",272.47,mobiliário nativo
+assets/v0.6/condominio_topo.png,Condomínio,ilustrada,"[1536, 1024]","[814, 512, 1506, 1002]","[692, 490]","[55.07755102040816, 39.0]",319.13,mobiliário nativo
+assets/v0.6/condominio_topo.png,Condomínio,ilustrada,"[1536, 1024]","[814, 512, 1506, 1002]","[692, 490]","[63.55102040816327, 45.0]",276.58,mobiliário nativo
+assets/v0.6/condominio_topo.png,Condomínio,ilustrada,"[1536, 1024]","[26, 526, 754, 998]","[728, 472]","[66.32203389830508, 43.0]",278.81,mobiliário nativo
+assets/v0.6/pisos_materiais.png,material/tile,ilustrada,"[1536, 1024]","[1024.0, 0.0, 1536.0, 512.0]","[512.0, 512.0]","[60.0, 60.0]",216.75,material nativo repetido; não mobiliário
+assets/v0.6/pisos_materiais.png,material/concrete,ilustrada,"[1536, 1024]","[0.0, 0.0, 512.0, 512.0]","[512.0, 512.0]","[60.0, 60.0]",216.75,material nativo repetido; não mobiliário
+assets/v0.6/pisos_materiais.png,material/paver,ilustrada,"[1536, 1024]","[0.0, 512.0, 512.0, 1024.0]","[512.0, 512.0]","[60.0, 60.0]",216.75,material nativo repetido; não mobiliário
+assets/v0.6/pisos_materiais.png,material/grass,ilustrada,"[1536, 1024]","[1024.0, 512.0, 1536.0, 1024.0]","[512.0, 512.0]","[60.0, 60.0]",216.75,material nativo repetido; não mobiliário
+assets/v0.6/pisos_materiais.png,material/tile,ilustrada,"[1536, 1024]","[1024.0, 0.0, 1536.0, 512.0]","[512.0, 512.0]","[60.0, 60.0]",216.75,material nativo repetido; não mobiliário
+assets/v0.5/mapa_estacao.png,Estação,ilustrada,"[1536, 1024]","[34, 6, 702, 512]","[668, 506]","[56.76679841897233, 43.0]",298.89,mobiliário nativo
+assets/v0.6/estacao_topo.png,Estação,ilustrada,"[1536, 1024]","[34, 574, 730, 986]","[696, 412]","[72.64077669902912, 43.0]",243.37,mobiliário nativo
+assets/v0.6/estacao_topo.png,Estação,ilustrada,"[1536, 1024]","[768, 578, 1502, 922]","[734, 344]","[85.0, 39.83651226158038]",219.34,mobiliário nativo
+assets/v0.6/estacao_topo.png,Estação,ilustrada,"[1536, 1024]","[74, 34, 694, 512]","[620, 478]","[58.36820083682008, 45.0]",269.8,mobiliário nativo
+assets/v0.6/estacao_topo.png,Estação,ilustrada,"[1536, 1024]","[768, 58, 1522, 512]","[754, 454]","[73.0748898678414, 44.0]",262.08,mobiliário nativo
+assets/v0.6/estacao_topo.png,Estação,ilustrada,"[1536, 1024]","[34, 574, 730, 986]","[696, 412]","[72.64077669902912, 43.0]",243.37,mobiliário nativo
+assets/v0.6/estacao_topo.png,Estação,ilustrada,"[1536, 1024]","[768, 58, 1522, 512]","[754, 454]","[73.0748898678414, 44.0]",262.08,mobiliário nativo
+assets/v0.6/estacao_topo.png,Estação,ilustrada,"[1536, 1024]","[768, 578, 1502, 922]","[734, 344]","[84.0, 39.36784741144414]",221.95,mobiliário nativo
+assets/v0.6/estacao_topo.png,Estação,ilustrada,"[1536, 1024]","[768, 58, 1522, 512]","[754, 454]","[66.43171806167402, 40.0]",288.29,mobiliário nativo
+assets/v0.5/mapa_estacao.png,Estação,ilustrada,"[1536, 1024]","[34, 6, 702, 512]","[668, 506]","[55.44664031620554, 42.0]",306.01,mobiliário nativo
+assets/v0.5/mapa_estacao.png,Estação,ilustrada,"[1536, 1024]","[768, 554, 1514, 994]","[746, 440]","[67.81818181818181, 40.0]",279.4,mobiliário nativo
+output/edicao-tabuleiros-v0.6/miniaturas/ilustrada/MERCADO.png,Mercado,ilustrada,"[1339, 919]","[0, 0, 1339, 919]","[1339, 919]","[170, 116.60649819494584]",200.06,miniatura derivada de A–C; D–E continuam vetoriais
+output/edicao-tabuleiros-v0.6/miniaturas/ilustrada/HOSPITAL.png,Hospital,ilustrada,"[1339, 919]","[0, 0, 1339, 919]","[1339, 919]","[170, 116.60649819494584]",200.06,miniatura derivada de A–C; D–E continuam vetoriais
+output/edicao-tabuleiros-v0.6/miniaturas/ilustrada/OFICINA.png,Oficina,ilustrada,"[1339, 919]","[0, 0, 1339, 919]","[1339, 919]","[170, 116.60649819494584]",200.06,miniatura derivada de A–C; D–E continuam vetoriais
+output/edicao-tabuleiros-v0.6/miniaturas/ilustrada/POSTO.png,Posto,ilustrada,"[1339, 919]","[0, 0, 1339, 919]","[1339, 919]","[170, 116.60649819494584]",200.06,miniatura derivada de A–C; D–E continuam vetoriais
+output/edicao-tabuleiros-v0.6/miniaturas/ilustrada/CONDOMINIO.png,Condomínio,ilustrada,"[1339, 919]","[0, 0, 1339, 919]","[1339, 919]","[170, 116.60649819494584]",200.06,miniatura derivada de A–C; D–E continuam vetoriais
+output/edicao-tabuleiros-v0.6/miniaturas/ilustrada/ESTACAO.png,Estação,ilustrada,"[1339, 919]","[0, 0, 1339, 919]","[1339, 919]","[170, 116.60649819494584]",200.06,miniatura derivada de A–C; D–E continuam vetoriais
+assets/v0.5/mapa_oficina.png,Comuns,economica,"[1536, 1024]","[768, 66, 1514, 446]","[746, 380]","[53.00526315789474, 27.0]",357.48,mobiliário nativo
+assets/v0.6/bancada_topo.png,Comuns,economica,"[1536, 1024]","[56, 119, 1506, 888]","[1450, 769]","[73.5370611183355, 39.0]",500.84,mobiliário nativo
+assets/v0.6/hospital_topo.png,Comuns,economica,"[1536, 1024]","[790, 58, 1510, 506]","[720, 448]","[61.07142857142858, 38.0]",299.45,mobiliário nativo
+assets/v0.5/mapa_oficina.png,Comuns,economica,"[1536, 1024]","[30, 512, 758, 974]","[728, 462]","[53.57575757575758, 34.0]",345.14,mobiliário nativo
+assets/v0.5/mapa_mercado.png,Comuns,economica,"[1536, 1024]","[842, 526, 1502, 942]","[660, 416]","[66.63461538461539, 42.0]",251.58,mobiliário nativo
+assets/v0.6/oficina_topo.png,Comuns,economica,"[1536, 1024]","[828, 55, 1525, 505]","[697, 450]","[58.85777777777778, 38.0]",300.79,mobiliário nativo
+assets/v0.6/condominio_topo.png,Comuns,economica,"[1536, 1024]","[26, 526, 754, 998]","[728, 472]","[58.61016949152542, 38.0]",315.49,mobiliário nativo
+assets/v0.6/bancada_topo.png,Comuns,economica,"[1536, 1024]","[56, 119, 1506, 888]","[1450, 769]","[75.42262678803641, 40.0]",488.31,mobiliário nativo
+assets/v0.5/mapa_oficina.png,Mercado,economica,"[1536, 1024]","[768, 66, 1514, 446]","[746, 380]","[56.93157894736842, 29.0]",332.83,mobiliário nativo
+assets/v0.5/mapa_mercado.png,Mercado,economica,"[1536, 1024]","[34, 558, 768, 898]","[734, 340]","[38.858823529411765, 18.0]",479.78,mobiliário nativo
+assets/v0.6/mercado_topo.png,Mercado,economica,"[1536, 1024]","[822, 58, 1502, 512]","[680, 454]","[46.43171806167401, 31.0]",371.99,mobiliário nativo
+assets/v0.5/mapa_mercado.png,Mercado,economica,"[1536, 1024]","[842, 526, 1502, 942]","[660, 416]","[68.22115384615384, 43.0]",245.73,mobiliário nativo
+assets/v0.6/mercado_topo.png,Mercado,economica,"[1536, 1024]","[838, 534, 1478, 958]","[640, 424]","[72.45283018867924, 48.0]",224.37,mobiliário nativo
+assets/v0.6/mercado_gondolas_topo.png,Mercado,economica,"[1536, 1024]","[830, 146, 1510, 438]","[680, 292]","[58.219178082191775, 25.0]",296.67,mobiliário nativo
+assets/v0.6/mercado_gondolas_topo.png,Mercado,economica,"[1536, 1024]","[26, 586, 710, 886]","[684, 300]","[25.0, 57.0]",304.8,mobiliário nativo
+assets/v0.6/mercado_topo.png,Mercado,economica,"[1536, 1024]","[58, 22, 738, 470]","[680, 448]","[54.642857142857146, 36.0]",316.09,mobiliário nativo
+assets/v0.5/mapa_mercado.png,Mercado,economica,"[1536, 1024]","[854, 90, 1518, 454]","[664, 364]","[54.72527472527472, 30.0]",308.19,mobiliário nativo
+assets/v0.6/mercado_topo.png,Mercado,economica,"[1536, 1024]","[34, 542, 750, 966]","[716, 424]","[67.54716981132076, 40.0]",269.24,mobiliário nativo
+assets/v0.5/mapa_mercado.png,Mercado,economica,"[1536, 1024]","[842, 526, 1502, 942]","[660, 416]","[65.04807692307692, 41.0]",257.72,mobiliário nativo
+assets/v0.6/mercado_gondolas_topo.png,Mercado,economica,"[1536, 1024]","[26, 146, 710, 438]","[684, 292]","[66.76027397260275, 28.5]",260.24,mobiliário nativo
+assets/v0.6/mercado_gondolas_topo.png,Mercado,economica,"[1536, 1024]","[830, 582, 1506, 886]","[676, 304]","[63.375, 28.5]",270.93,mobiliário nativo
+assets/v0.6/mercado_gondolas_topo.png,Mercado,economica,"[1536, 1024]","[26, 586, 710, 886]","[684, 300]","[64.98, 28.5]",267.37,mobiliário nativo
+assets/v0.6/mercado_gondolas_topo.png,Mercado,economica,"[1536, 1024]","[830, 146, 1510, 438]","[680, 292]","[66.36986301369863, 28.5]",260.24,mobiliário nativo
+assets/v0.6/mercado_gondolas_topo.png,Mercado,economica,"[1536, 1024]","[26, 586, 710, 886]","[684, 300]","[64.98, 28.5]",267.37,mobiliário nativo
+assets/v0.6/mercado_gondolas_topo.png,Mercado,economica,"[1536, 1024]","[830, 146, 1510, 438]","[680, 292]","[58.219178082191775, 25.0]",296.67,mobiliário nativo
+assets/v0.6/mercado_gondolas_topo.png,Mercado,economica,"[1536, 1024]","[26, 146, 710, 438]","[684, 292]","[58.56164383561644, 25.0]",296.67,mobiliário nativo
+assets/v0.6/mercado_gondolas_topo.png,Mercado,economica,"[1536, 1024]","[830, 582, 1506, 886]","[676, 304]","[55.5921052631579, 25.0]",308.86,mobiliário nativo
+assets/v0.6/mercado_gondolas_topo.png,Mercado,economica,"[1536, 1024]","[26, 586, 710, 886]","[684, 300]","[59.28, 26.0]",293.08,mobiliário nativo
+assets/v0.5/mapa_oficina.png,Hospital,economica,"[1536, 1024]","[768, 66, 1514, 446]","[746, 380]","[51.0421052631579, 26.0]",371.23,mobiliário nativo
+assets/v0.6/hospital_topo.png,Hospital,economica,"[1536, 1024]","[790, 58, 1510, 506]","[720, 448]","[72.32142857142857, 45.0]",252.87,mobiliário nativo
+assets/v0.6/hospital_topo.png,Hospital,economica,"[1536, 1024]","[54, 30, 678, 512]","[624, 482]","[55.66804979253112, 43.0]",284.72,mobiliário nativo
+assets/v0.6/hospital_topo.png,Hospital,economica,"[1536, 1024]","[38, 526, 754, 1002]","[716, 476]","[66.18487394957984, 44.0]",274.78,mobiliário nativo
+assets/v0.6/hospital_topo.png,Hospital,economica,"[1536, 1024]","[826, 598, 1490, 874]","[664, 276]","[78.44465116279069, 32.606511627906976]",215.0,mobiliário nativo
+assets/v0.6/hospital_topo.png,Hospital,economica,"[1536, 1024]","[826, 598, 1490, 874]","[664, 276]","[78.44465116279069, 32.606511627906976]",215.0,mobiliário nativo
+assets/v0.6/hospital_topo.png,Hospital,economica,"[1536, 1024]","[54, 30, 678, 512]","[624, 482]","[55.66804979253112, 43.0]",284.72,mobiliário nativo
+assets/v0.6/hospital_topo.png,Hospital,economica,"[1536, 1024]","[38, 526, 754, 1002]","[716, 476]","[61.67226890756302, 41.0]",294.89,mobiliário nativo
+assets/v0.6/hospital_topo.png,Hospital,economica,"[1536, 1024]","[826, 598, 1490, 874]","[664, 276]","[78.44465116279069, 32.606511627906976]",215.0,mobiliário nativo
+assets/v0.5/mapa_oficina.png,Oficina,economica,"[1536, 1024]","[768, 66, 1514, 446]","[746, 380]","[54.96842105263158, 27.999999999999996]",344.71,mobiliário nativo
+assets/v0.6/oficina_topo.png,Oficina,economica,"[1536, 1024]","[828, 55, 1525, 505]","[697, 450]","[65.05333333333334, 42.0]",272.14,mobiliário nativo
+assets/v0.5/mapa_oficina.png,Oficina,economica,"[1536, 1024]","[30, 512, 758, 974]","[728, 462]","[53.57575757575758, 34.0]",345.14,mobiliário nativo
+assets/v0.5/mapa_oficina.png,Oficina,economica,"[1536, 1024]","[22, 34, 738, 474]","[716, 440]","[58.58181818181818, 36.0]",310.44,mobiliário nativo
+assets/v0.5/mapa_oficina.png,Oficina,economica,"[1536, 1024]","[768, 66, 1514, 446]","[746, 380]","[54.96842105263158, 27.999999999999996]",344.71,mobiliário nativo
+assets/v0.6/oficina_topo.png,Oficina,economica,"[1536, 1024]","[34, 22, 826, 505]","[792, 483]","[78.70807453416148, 48.0]",255.59,mobiliário nativo
+assets/v0.6/oficina_topo.png,Oficina,economica,"[1536, 1024]","[828, 55, 1525, 505]","[697, 450]","[65.05333333333334, 42.0]",272.14,mobiliário nativo
+assets/v0.6/oficina_topo.png,Oficina,economica,"[1536, 1024]","[852, 506, 1526, 1007]","[674, 501]","[57.84830339321358, 43.0]",295.94,mobiliário nativo
+assets/v0.6/bancada_topo.png,Oficina,economica,"[1536, 1024]","[56, 119, 1506, 888]","[1450, 769]","[77.30819245773732, 41.0]",476.4,mobiliário nativo
+assets/v0.6/oficina_topo.png,Oficina,economica,"[1536, 1024]","[34, 22, 826, 505]","[792, 483]","[57.391304347826086, 35.0]",350.52,mobiliário nativo
+assets/v0.6/oficina_topo.png,Oficina,economica,"[1536, 1024]","[852, 506, 1526, 1007]","[674, 501]","[48.431137724550894, 36.0]",353.48,mobiliário nativo
+assets/v0.5/mapa_oficina.png,Oficina,economica,"[1536, 1024]","[30, 512, 758, 974]","[728, 462]","[47.272727272727266, 29.999999999999996]",391.16,mobiliário nativo
+assets/v0.6/bancada_topo.png,Oficina,economica,"[1536, 1024]","[56, 119, 1506, 888]","[1450, 769]","[64.10923276983095, 34.0]",574.49,mobiliário nativo
+assets/v0.5/mapa_oficina.png,Posto,economica,"[1536, 1024]","[768, 66, 1514, 446]","[746, 380]","[53.00526315789474, 27.0]",357.48,mobiliário nativo
+assets/v0.6/posto_topo.png,Posto,economica,"[1536, 1024]","[54, 574, 714, 966]","[660, 392]","[67.34693877551021, 40.0]",248.92,mobiliário nativo
+assets/v0.6/mercado_gondolas_topo.png,Posto,economica,"[1536, 1024]","[26, 586, 710, 886]","[684, 300]","[63.84, 28.0]",272.14,mobiliário nativo
+assets/v0.6/mercado_gondolas_topo.png,Posto,economica,"[1536, 1024]","[26, 146, 710, 438]","[684, 292]","[65.58904109589041, 28.0]",264.89,mobiliário nativo
+assets/v0.6/posto_topo.png,Posto,economica,"[1536, 1024]","[58, 86, 678, 450]","[620, 364]","[73.24651162790697, 43.00279069767441]",215.0,mobiliário nativo
+assets/v0.6/posto_topo.png,Posto,economica,"[1536, 1024]","[768, 70, 1494, 458]","[726, 388]","[80.45876288659794, 43.0]",229.19,mobiliário nativo
+assets/v0.6/posto_topo.png,Posto,economica,"[1536, 1024]","[782, 514, 1490, 946]","[708, 432]","[67.19444444444444, 41.0]",267.63,mobiliário nativo
+assets/v0.5/mapa_oficina.png,Posto,economica,"[1536, 1024]","[768, 66, 1514, 446]","[746, 380]","[56.93157894736842, 29.0]",332.83,mobiliário nativo
+assets/v0.6/posto_topo.png,Posto,economica,"[1536, 1024]","[58, 86, 678, 450]","[620, 364]","[71.53846153846155, 42.0]",220.13,mobiliário nativo
+assets/v0.5/mapa_oficina.png,Posto,economica,"[1536, 1024]","[22, 34, 738, 474]","[716, 440]","[58.58181818181818, 36.0]",310.44,mobiliário nativo
+assets/v0.6/mercado_gondolas_topo.png,Posto,economica,"[1536, 1024]","[830, 146, 1510, 438]","[680, 292]","[62.87671232876712, 27.0]",274.7,mobiliário nativo
+assets/v0.6/posto_topo.png,Posto,economica,"[1536, 1024]","[782, 514, 1490, 946]","[708, 432]","[63.916666666666664, 39.0]",281.35,mobiliário nativo
+assets/v0.5/mapa_mercado.png,Posto,economica,"[1536, 1024]","[842, 526, 1502, 942]","[660, 416]","[60.28846153846153, 38.0]",278.06,mobiliário nativo
+assets/v0.5/mapa_oficina.png,Condomínio,economica,"[1536, 1024]","[768, 66, 1514, 446]","[746, 380]","[53.00526315789474, 27.0]",357.48,mobiliário nativo
+assets/v0.6/condominio_topo.png,Condomínio,economica,"[1536, 1024]","[10, 38, 762, 510]","[752, 472]","[70.10169491525424, 44.0]",272.47,mobiliário nativo
+assets/v0.6/condominio_topo.png,Condomínio,economica,"[1536, 1024]","[846, 14, 1506, 494]","[660, 480]","[57.74999999999999, 42.0]",290.29,mobiliário nativo
+assets/v0.6/condominio_topo.png,Condomínio,economica,"[1536, 1024]","[814, 512, 1506, 1002]","[692, 490]","[63.55102040816327, 45.0]",276.58,mobiliário nativo
+assets/v0.6/condominio_topo.png,Condomínio,economica,"[1536, 1024]","[846, 14, 1506, 494]","[660, 480]","[60.49999999999999, 44.0]",277.09,mobiliário nativo
+assets/v0.6/condominio_topo.png,Condomínio,economica,"[1536, 1024]","[26, 526, 754, 998]","[728, 472]","[67.86440677966102, 44.0]",272.47,mobiliário nativo
+assets/v0.6/condominio_topo.png,Condomínio,economica,"[1536, 1024]","[814, 512, 1506, 1002]","[692, 490]","[55.07755102040816, 39.0]",319.13,mobiliário nativo
+assets/v0.6/condominio_topo.png,Condomínio,economica,"[1536, 1024]","[814, 512, 1506, 1002]","[692, 490]","[63.55102040816327, 45.0]",276.58,mobiliário nativo
+assets/v0.6/condominio_topo.png,Condomínio,economica,"[1536, 1024]","[26, 526, 754, 998]","[728, 472]","[66.32203389830508, 43.0]",278.81,mobiliário nativo
+assets/v0.5/mapa_estacao.png,Estação,economica,"[1536, 1024]","[34, 6, 702, 512]","[668, 506]","[56.76679841897233, 43.0]",298.89,mobiliário nativo
+assets/v0.6/estacao_topo.png,Estação,economica,"[1536, 1024]","[34, 574, 730, 986]","[696, 412]","[72.64077669902912, 43.0]",243.37,mobiliário nativo
+assets/v0.6/estacao_topo.png,Estação,economica,"[1536, 1024]","[768, 578, 1502, 922]","[734, 344]","[85.0, 39.83651226158038]",219.34,mobiliário nativo
+assets/v0.6/estacao_topo.png,Estação,economica,"[1536, 1024]","[74, 34, 694, 512]","[620, 478]","[58.36820083682008, 45.0]",269.8,mobiliário nativo
+assets/v0.6/estacao_topo.png,Estação,economica,"[1536, 1024]","[768, 58, 1522, 512]","[754, 454]","[73.0748898678414, 44.0]",262.08,mobiliário nativo
+assets/v0.6/estacao_topo.png,Estação,economica,"[1536, 1024]","[34, 574, 730, 986]","[696, 412]","[72.64077669902912, 43.0]",243.37,mobiliário nativo
+assets/v0.6/estacao_topo.png,Estação,economica,"[1536, 1024]","[768, 58, 1522, 512]","[754, 454]","[73.0748898678414, 44.0]",262.08,mobiliário nativo
+assets/v0.6/estacao_topo.png,Estação,economica,"[1536, 1024]","[768, 578, 1502, 922]","[734, 344]","[84.0, 39.36784741144414]",221.95,mobiliário nativo
+assets/v0.6/estacao_topo.png,Estação,economica,"[1536, 1024]","[768, 58, 1522, 512]","[754, 454]","[66.43171806167402, 40.0]",288.29,mobiliário nativo
+assets/v0.5/mapa_estacao.png,Estação,economica,"[1536, 1024]","[34, 6, 702, 512]","[668, 506]","[55.44664031620554, 42.0]",306.01,mobiliário nativo
+assets/v0.5/mapa_estacao.png,Estação,economica,"[1536, 1024]","[768, 554, 1514, 994]","[746, 440]","[67.81818181818181, 40.0]",279.4,mobiliário nativo
+output/edicao-tabuleiros-v0.6/miniaturas/economica/MERCADO.png,Mercado,economica,"[1339, 919]","[0, 0, 1339, 919]","[1339, 919]","[170, 116.60649819494584]",200.06,miniatura derivada de A–C; D–E continuam vetoriais
+output/edicao-tabuleiros-v0.6/miniaturas/economica/HOSPITAL.png,Hospital,economica,"[1339, 919]","[0, 0, 1339, 919]","[1339, 919]","[170, 116.60649819494584]",200.06,miniatura derivada de A–C; D–E continuam vetoriais
+output/edicao-tabuleiros-v0.6/miniaturas/economica/OFICINA.png,Oficina,economica,"[1339, 919]","[0, 0, 1339, 919]","[1339, 919]","[170, 116.60649819494584]",200.06,miniatura derivada de A–C; D–E continuam vetoriais
+output/edicao-tabuleiros-v0.6/miniaturas/economica/POSTO.png,Posto,economica,"[1339, 919]","[0, 0, 1339, 919]","[1339, 919]","[170, 116.60649819494584]",200.06,miniatura derivada de A–C; D–E continuam vetoriais
+output/edicao-tabuleiros-v0.6/miniaturas/economica/CONDOMINIO.png,Condomínio,economica,"[1339, 919]","[0, 0, 1339, 919]","[1339, 919]","[170, 116.60649819494584]",200.06,miniatura derivada de A–C; D–E continuam vetoriais
+output/edicao-tabuleiros-v0.6/miniaturas/economica/ESTACAO.png,Estação,economica,"[1339, 919]","[0, 0, 1339, 919]","[1339, 919]","[170, 116.60649819494584]",200.06,miniatura derivada de A–C; D–E continuam vetoriais

@@ -49,6 +49,7 @@ def make(pilot=False):
  compare([('Oficina / 0.5',Image.frombytes('RGB',(pix.width,pix.height),pix.samples)),('Oficina / 0.6',theme_images['Oficina'])],E/'OFICINA_05_06.jpg')
  # Zoom da emenda real entre as quatro folhas, extraído do tabuleiro remontado.
  market=docs['Mercado'];clip=fitz.Rect(207*MM,135*MM,347*MM,245*MM);pix=market[0].get_pixmap(matrix=fitz.Matrix(2,2),clip=clip,alpha=False);pix.save(E/'JUNCAO_CENTRAL.png')
+ pix=market[0].get_pixmap(matrix=fitz.Matrix(2,2),clip=fitz.Rect(247*MM,17.5*MM,307*MM,77.5*MM),alpha=False);pix.save(E/'JUNCAO_COM_PASSAGEM.png')
  proof=a4_template('DETALHES REAIS / A4 / ESCALA 100%', ['Duas áreas de 100×100 mm extraídas dos PDFs finais. Não ajustar à página.'],False)
  for target,clip in [(fitz.Rect(55*MM,37*MM,155*MM,137*MM),fitz.Rect(20*MM,205*MM,120*MM,305*MM)),(fitz.Rect(55*MM,165*MM,155*MM,265*MM),fitz.Rect(227*MM,140*MM,327*MM,240*MM))]:proof[0].show_pdf_page(target,market,0,clip=clip)
  proof.save(E/'DETALHE_ESCALA_FISICA_A4.pdf',garbage=4,deflate=True);raster(proof,E/'DETALHE_ESCALA_FISICA_A4.png',1)
@@ -56,9 +57,13 @@ def make(pilot=False):
  seams=[]
  from PIL import ImageChops,ImageStat
  for theme,doc in docs.items():
-  full=fitz.open(O/'fontes_tabuleiros/ilustrada'/(b.KEYS[theme]+'.pdf'));a=doc[0].get_pixmap(matrix=fitz.Matrix(.4,.4),alpha=False);z=full[0].get_pixmap(matrix=fitz.Matrix(.4,.4),alpha=False)
-  im1=Image.frombytes('RGB',(a.width,a.height),a.samples);im2=Image.frombytes('RGB',(z.width,z.height),z.samples)
-  diff=sum(ImageStat.Stat(ImageChops.difference(im1,im2)).mean)/3;seams.append(dict(theme=theme,mean_difference_0_255=diff,passed=diff<1.0))
+  rel=('06_TABULEIROS/' if theme=='Comuns' else '08_EXTRAS_OPCIONAIS/')+b.KEYS[theme]+'_M01_M04_LADO_A.pdf'
+  # Evita comparar uma imagem já reamostrada no cache com outra decodificada nativa.
+  fitz.TOOLS.store_shrink(100);fresh=joined(O/'ilustrada'/rel);a=fresh[0].get_pixmap(matrix=fitz.Matrix(1,1),alpha=False)
+  im1=Image.frombytes('RGB',(a.width,a.height),a.samples)
+  fitz.TOOLS.store_shrink(100);full=fitz.open(O/'fontes_tabuleiros/ilustrada'/(b.KEYS[theme]+'.pdf'));z=full[0].get_pixmap(matrix=fitz.Matrix(1,1),alpha=False)
+  im2=Image.frombytes('RGB',(z.width,z.height),z.samples)
+  diff=sum(ImageStat.Stat(ImageChops.difference(im1,im2)).mean)/3;seams.append(dict(theme=theme,comparison_ppi=72,decoder_cache_reset=True,mean_difference_0_255=diff,passed=diff<1.0))
  (O/'encaixe.json').write_text(json.dumps(seams,ensure_ascii=False,indent=2));assert all(v['passed'] for v in seams),seams
  # Simulação superior de ocupação máxima: bases existentes de 22×12 mm, não peças novas.
  from reportlab.pdfgen import canvas
@@ -75,6 +80,17 @@ def make(pilot=False):
  hero=fitz.open(O/'ilustrada/04_PERSONAGENS_E_INIMIGOS/HEROIS_24_RECORTAR.pdf');proof[0].show_pdf_page(fitz.Rect(242*MM,44*MM,264*MM,102*MM),hero,0,clip=fitz.Rect(19*MM,78*MM,41*MM,136*MM))
  markers=fitz.open(O/'ilustrada/07_MARCADORES_E_DIVISORIAS/MARCADORES_INICIAIS.pdf');proof[0].show_pdf_page(fitz.Rect(242*MM,125*MM,271*MM,154*MM),markers,0,clip=fitz.Rect(74*MM,18*MM,103*MM,47*MM))
  proof.save(E/'ZONA_OCUPADA_A4.pdf',garbage=4,deflate=True);raster(proof,E/'ZONA_OCUPADA.png',1.4)
+ # Peças reais em escala: quatro inimigos e dois heróis planos, sem fabricar tokens novos.
+ mixed=a4_template('ZONA COM COMPONENTES REAIS / 100%', ['Exemplo de ocupação, não preparação inicial. Marcadores preservados de 29×29 mm.'])
+ mixed[0].show_pdf_page(fitz.Rect(10*MM,54*MM,148.5*MM,149*MM),market,0,clip=fitz.Rect(0,95*MM,138.5*MM,190*MM))
+ for i,slot in enumerate([2,3,4,5,0,1]):
+  row,col=divmod(slot,6);x=10+32*col;y=18+32*row;X=14+32*(i%3);Y=84+32*(i//3)
+  mixed[0].show_pdf_page(fitz.Rect(X*MM,Y*MM,(X+29)*MM,(Y+29)*MM),markers,0,clip=fitz.Rect(x*MM,y*MM,(x+29)*MM,(y+29)*MM))
+ for i,slot in enumerate([26,31,32]):
+  row,col=divmod(slot,6);x=10+32*col;y=18+32*row;X=164+i*40;Y=107
+  mixed[0].show_pdf_page(fitz.Rect(X*MM,Y*MM,(X+29)*MM,(Y+29)*MM),markers,0,clip=fitz.Rect(x*MM,y*MM,(x+29)*MM,(y+29)*MM))
+ mixed[0].show_pdf_page(fitz.Rect(164*MM,44*MM,186*MM,102*MM),hero,0,clip=fitz.Rect(19*MM,78*MM,41*MM,136*MM))
+ mixed.save(E/'ZONA_PECAS_REAIS_A4.pdf',garbage=4,deflate=True);raster(mixed,E/'ZONA_PECAS_REAIS.png',1.4)
  # Geometria editável separada. A cena completa é reproduzida pelo código/JSON e PNGs nativos.
  folder=P/'assets/v0.6/vetores';folder.mkdir(exist_ok=True)
  for theme in docs:

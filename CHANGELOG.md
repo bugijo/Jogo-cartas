@@ -38,3 +38,6 @@ Base ccff9c8 preservada; branch arte/pnp-fabricacao-v0-4. Cartas com efeito 9,5�
 ## 0.5 — acabamento
 
 Novos templates para as mesmas 114 cartas, artes nativas de armas/suprimentos/peças/viagens, painel de campo claro para equipamento real e sete plantas contínuas com arquitetura vetorial e mobiliário medido acima de 200 ppi. Fonte de efeito/valores ≥9,5 pt. Correções gráficas de unidade, recortes e forms PDF. Sem alterações mecânicas, novas cartas ou folhas obrigatórias. Preservadas 58/72 folhas e toda a edição 0.4.
+<!-- TABULEIROS06 -->
+## 0.6 / tabuleiros
+Sete cenas globais, duas edições, quatro módulos por mapa e seis diagramas. Arte nativa, circulação protegida, legendas vetoriais, miniaturas legíveis e pacote de atualização sem cartas. Corrigida aplicação dos bloqueios existentes aos módulos grandes. Demais componentes 0.5 copiados byte a byte; regras/campanha/dimensões/quantidades preservadas. Sem merge e sem apagar pacotes anteriores.

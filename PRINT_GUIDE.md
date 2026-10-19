@@ -61,3 +61,6 @@ Mapas: corte 277 × 190 mm, M1/M2 acima de M3/M4, todos LADO A, união sem sobre
 ## Acabamento 0.5
 
 [Índice](DOWNLOADS_0.5.md). Mesmo regime: 25+33=58 folhas duplex ou 33+39=72 manuais; uma edição e um método. Escala 100%, sem ajustar. Somente cartas/calibração duplex retrato, borda longa. Mapas e painéis paisagem: uma face. M1/M2 acima de M3/M4, cortar 277×190 mm e unir sem sobreposição. Símbolos de zona/porta atualizados nos diagramas sem mudar a geometria. Peões e abrigo preservados. Extras: painel 2 por jogador, peões 8, guia 3, bases 1, variante 4 por destino. Detalhe A4 de comparação é uma prova opcional, não componente obrigatório.
+<!-- TABULEIROS06 -->
+## Atualização 0.6
+Já tem a 0.5: baixe SOMENTE_MAPAS. Troque as quatro folhas comuns OU quatro folhas do destino escolhido. Diagramas novos são substitutos, podem ficar na tela. Cada mapa é A4 paisagem, uma face; 100%, sem ajustar; corte 277×190 mm e una sem sobreposição em 554×380 mm, M1/M2 acima, M3/M4 abaixo. Nenhuma face B. Cartas, calibração, peões, painel e abrigo da 0.5 continuam válidos. Kits completos conservam 58 duplex ou 72 manual; não misturar métodos. Miniaturas de guias não substituem os módulos na escala de jogo.

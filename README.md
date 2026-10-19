@@ -1,3 +1,7 @@
+# Tabuleiros 0.6 / atualização sem reimprimir cartas
+
+[Downloads 0.6](DOWNLOADS_0.6.md): mapas avulsos para quem já tem a 0.5, kits completos de 58/72 folhas, duas edições, fontes e provas. Cartas, personagens, peões, painel e abrigo preservados. Imprima quatro módulos comuns OU quatro de um destino. [Relatório visual](VISUAL_QA.md).
+
 # Acabamento 0.5 / arquivos para imprimir
 
 [Downloads 0.5](DOWNLOADS_0.5.md): ilustrada e econômica, mesmas 58 folhas duplex ou 72 para colar. Cartas com arte nativa, painel de campo opcional e tabuleiros contínuos com piso vetorial e mobiliário acima de 200 ppi medidos. Personagens, regras e campanha preservados. [Relatório visual](VISUAL_QA.md). Edições anteriores abaixo permanecem disponíveis.

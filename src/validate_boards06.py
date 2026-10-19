@@ -44,20 +44,32 @@ for ed in ['ilustrada','economica']:
     channels=im.split();ck('Econômica cinza '+label,ImageChops.difference(channels[0],channels[1]).getbbox() is None and ImageChops.difference(channels[1],channels[2]).getbbox() is None)
    out=O/'renders'/ed/Path(rel).with_suffix('');out.mkdir(parents=True,exist_ok=True);im.save(out/f'{page.number+1:03}.jpg',quality=90)
    im.thumbnail((285,202));thumbs.append(im)
-   spans=[s for block in page.get_text('dict')['blocks'] for line in block.get('lines',[]) for s in line['spans']]
+   regions=[fitz.Rect(10*MM,10*MM,287*MM,200*MM),fitz.Rect(10*MM,0,287*MM,10*MM)] if is_map else [page.rect]
+   spans=[s for region in regions for block in page.get_text('dict',flags=0,clip=region)['blocks'] for line in block.get('lines',[]) for s in line['spans']]
    used={s['font'].replace(' ','').replace('-','') for s in spans}
    for s in spans:
     x,y,X,Y=s['bbox'];ck('Texto dentro A4 '+label,x>=-.2 and y>=-.2 and X<=page.rect.width+.2 and Y<=page.rect.height+.2,s['text'])
    for font in page.get_fonts(full=True):
     name=font[3].split('+')[-1].replace(' ','').replace('-','')
     if name in used:ck('Fonte incorporada '+label+' '+name,bool(doc.extract_font(font[0])[3]))
-   for v in page.get_image_info(xrefs=True):
+   for v in page.get_image_info(xrefs=False):
     a,bb,c,d,*_=v['transform'];wx=(a*a+bb*bb)**.5/72;hy=(c*c+d*d)**.5/72;ppi=min(v['width']/wx,v['height']/hy)
     if is_map:ck('Raster ≥211,3 ppi '+label,ppi>=211.25,round(ppi,2))
-    res.append(dict(pdf=ed+'/'+rel,page=page.number+1,xref=v['xref'],pixels=[v['width'],v['height']],printed_mm=[round(wx*25.4,3),round(hy*25.4,3)],effective_ppi=round(ppi,2),main_map=is_map))
+    res.append(dict(pdf=ed+'/'+rel,page=page.number+1,image_number=v['number'],pixels=[v['width'],v['height']],printed_mm=[round(wx*25.4,3),round(hy*25.4,3)],effective_ppi=round(ppi,2),main_map=is_map))
   sheet=Image.new('RGB',(600,235*math.ceil(len(thumbs)/2)),'#d6d2c6');d=ImageDraw.Draw(sheet)
   for i,im in enumerate(thumbs):x=i%2*300;y=i//2*235;sheet.paste(im,(x,y));d.text((x+4,y+207),f'p{i+1} / {path.stem}',fill='black')
   out=O/'contatos'/ed;out.mkdir(parents=True,exist_ok=True);sheet.save(out/(path.stem+'.jpg'),quality=90)
+# Texto essencial da fonte deve caber inteiro em um módulo, nunca cruzar a emenda.
+for ed in ['ilustrada','economica']:
+ for theme in ['Comuns']+[m['name'] for m in b.MAPS]:
+  source=fitz.open(O/'fontes_tabuleiros'/ed/(b.KEYS[theme]+'.pdf'))
+  cuts=[fitz.Rect(x*MM,y*MM,(x+277)*MM,(y+190)*MM) for x,y in [(0,0),(277,0),(0,190),(277,190)]]
+  for block in source[0].get_text('dict',flags=0)['blocks']:
+   for line in block.get('lines',[]):
+    for span in line['spans']:ck('Texto não atravessa emenda '+ed+' '+theme,any(c.contains(fitz.Rect(span['bbox'])) for c in cuts),span['text'])
+for rel in b.CHANGED:
+ a=fitz.open(O/'ilustrada'/rel);z=fitz.open(O/'economica'/rel)
+ ck('Mesmas informações nas duas edições '+rel,[p.get_text() for p in a]==[p.get_text() for p in z])
 # Footprints are checked in the global drawing before any cuts. No image sets geometry.
 usages=json.loads((O/'asset_usage.json').read_text());collisions=[]
 for theme,scene in b.SCENES.items():
@@ -74,6 +86,6 @@ ck('Mobiliário fora das soleiras de 18×18 mm',not collisions,collisions)
 minimum=min(v['effective_ppi'] for v in res if v['main_map']);report=dict(version='0.6',checks=len(checks),passed=len(checks)-len(issues),failures=issues,changed_pages_rendered=pages,preserved_pdf_entries=preserved,main_map_minimum_ppi=minimum,doorway_collisions=collisions,limitations=['Revisão digital; sem impressão física, montagem física ou playtest humano.','Quantidade de testes não comprova qualidade artística ou equilíbrio.'],details=checks)
 (O/'resolucao_pdfs.json').write_text(json.dumps(res,ensure_ascii=False,indent=2));(O/'verificacao.json').write_text(json.dumps(report,ensure_ascii=False,indent=2))
 with (O/'RESOLUCAO_EFETIVA.csv').open('w') as f:
- w=csv.writer(f);w.writerow(['PDF','pagina','xref','pixels_x','pixels_y','largura_impressa_mm','altura_impressa_mm','ppi_efetivo'])
- for v in res:w.writerow([v['pdf'],v['page'],v['xref'],*v['pixels'],*v['printed_mm'],v['effective_ppi']])
+ w=csv.writer(f);w.writerow(['PDF','pagina','imagem_na_pagina','pixels_x','pixels_y','largura_impressa_mm','altura_impressa_mm','ppi_efetivo'])
+ for v in res:w.writerow([v['pdf'],v['page'],v['image_number'],*v['pixels'],*v['printed_mm'],v['effective_ppi']])
 print(json.dumps({k:v for k,v in report.items() if k!='details'},ensure_ascii=False,indent=2));sys.exit(bool(issues))

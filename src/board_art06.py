@@ -34,7 +34,8 @@ def shade(c,x,y,w,h):
 def crop(path,index):
  im=Image.open(P/path)
  curated=json.loads((P/'content/production/crops_0.6.json').read_text())
- if path in curated:return curated[path][index],im.size
+ if path in curated:
+  L,T,R,B=curated[path][index];return [math.floor(L),math.floor(T),math.ceil(R),math.ceil(B)],im.size
  iw,ih=im.size;l=index%2*iw//2;t=index//2*ih//2;r=l+iw//2;b=t+ih//2
  if im.mode=='RGBA':
   alpha=im.getchannel('A').crop((l,t,r,b));native=alpha.size
@@ -53,11 +54,12 @@ def crop(path,index):
    largest=max(g[0] for g in groups);keep=[g for g in groups if g[0]>=largest*.035 and (g[0]>=largest*.4 or (g[1]>0 and g[2]>0 and g[3]<192 and g[4]<128))]
    L=min(g[1] for g in keep);T=min(g[2] for g in keep);R=max(g[3] for g in keep);B=max(g[4] for g in keep)
    old_l,old_t=l,t;l=max(l,old_l+L*native[0]/192-2);t=max(t,old_t+T*native[1]/128-2);r=min(r,old_l+R*native[0]/192+2);b=min(b,old_t+B*native[1]/128+2)
- return [l,t,r,b],im.size
+ return [math.floor(l),math.floor(t),math.ceil(r),math.ceil(b)],im.size
 
 @lru_cache(maxsize=32)
-def image_reader(path,econ):
+def image_reader(path,econ,box=None):
  im=Image.open(P/path)
+ if box is not None:im=im.crop(box)  # recorte nativo sem reamostragem; originais intactos
  if econ:
   from PIL import ImageOps
   alpha=im.getchannel('A') if im.mode=='RGBA' else None
@@ -71,7 +73,7 @@ def asset(c,path,index,x,y,w,h,theme):
  scale=min(w/cw,h/ch,25.4/215)
  ww,hh=cw*scale,ch*scale;xx=x+(w-ww)/2;yy=y+(h-hh)/2
  c.saveState();clip=c.beginPath();clip.rect(xx,yy,ww,hh);c.clipPath(clip,stroke=0)
- c.drawImage(image_reader(path,ECON),xx-l*scale,yy-(size[1]-b)*scale,width=size[0]*scale,height=size[1]*scale,mask='auto');c.restoreState()
+ c.drawImage(image_reader(path,ECON,tuple(box)),xx,yy,width=ww,height=hh,mask='auto');c.restoreState()
  USES.append(dict(theme=theme,file=path,index=index,original_pixels=list(size),crop_pixels=box,used_pixels=[cw,ch],print_mm=[ww,hh],bbox_mm=[xx,yy,ww,hh],effective_ppi=25.4/scale,edition='economica' if ECON else 'ilustrada'))
 
 def material(c,x,y,w,h,kind):
@@ -88,7 +90,7 @@ def material(c,x,y,w,h,kind):
    if col%2:c.translate(tw,0);c.scale(-1,1)
    if row%2:c.translate(0,th);c.scale(1,-1)
    cut=c.beginPath();cut.rect(0,0,tw,th);c.clipPath(cut,stroke=0)
-   c.drawImage(image_reader(path,False),-l*scale,-(ih-bot)*scale,width=iw*scale,height=ih*scale);c.restoreState()
+   c.drawImage(image_reader(path,False,tuple([int(l),int(t),int(l+cw),int(bot)])),0,0,width=tw,height=th);c.restoreState()
  c.restoreState()
  USES.append(dict(theme='material/'+kind,file=path,index=index,original_pixels=[iw,ih],crop_pixels=[l,t,l+cw,bot],used_pixels=[cw,ch],print_mm=[tw,th],bbox_mm=[x,y,w,h],effective_ppi=25.4/scale,edition='ilustrada',role='material nativo repetido; não mobiliário'))
  return True

@@ -92,3 +92,6 @@ Base b99c470 conferida limpa e sem trabalho posterior no remoto. Branch arte/pnp
 
 ### Tabuleiros 0.6 — ciclo 2
 Sete mapas nas duas edições gerados e revisados, nove testes próprios aprovados. 7.536/7.536 verificações; 68 páginas alteradas renderizadas, 52 entradas PDF da 0.5 intactas. Arte principal ≥215 ppi; sem móveis nas soleiras protegidas. Bancada individual substituiu um agrupamento cortado; recortes da oficina foram curados pela posição real dos objetos. As sete remontagens conferem com a cena global. Próximo: fechar índices/pacotes, extrair todas as partes de fontes em pasta limpa e reconstruir. Não regenerar cartas/painéis/peões.
+
+### Tabuleiros 0.6 — ciclo 3
+PDFs e índices fechados, todos os módulos em A4 paisagem uma face, 58/72 folhas mantidas. Exportação por recorte nativo sem redução resolve o limite GitHub; teste RGB confirma preservação dos pixels de uma peça representativa. Dez testes próprios aprovados, 68 páginas alteradas renderizadas; arte principal ≥215 ppi. ZIPs de mapas, completos, extras, fontes e provas separados; fontes divididas em CODE_ARTE e partes BASE05. Próximo: extrair todas as partes de fontes em pasta limpa, executar o fluxo de RECONSTRUIR_0.6.md, comparar as 68 capturas, registrar o resultado, atualizar os pacotes e fazer push sem merge.

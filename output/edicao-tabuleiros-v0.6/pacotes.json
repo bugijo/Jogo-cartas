@@ -1,0 +1,116 @@
+[
+  {
+    "file": "ZZ_06_ILUSTRADA_SOMENTE_MAPAS.zip",
+    "bytes": 68505108,
+    "sha256": "678e6fbcfdf87b98d1255ef88098766d57381c609d19a587077b97baf8f24b17",
+    "note": "ATUALIZAÇÃO PARA QUEM JÁ TEM A 0.5: nenhuma carta, painel, peão ou regra precisa ser baixada/reimpressa. Troque somente as quatro folhas do tabuleiro escolhido: COMUNS OU uma variante temática. Seis diagramas novos substituem os antigos; podem ser consultados na tela. Este ZIP oferece 34 páginas A4: 4 comuns + 24 de seis variantes + 6 diagramas. NÃO é uma ordem para imprimir 34 folhas. Portas e bloqueios impressos mostram a preparação inicial; depois prevalecem marcadores e registro. Tudo uma face, paisagem. Corte 277×190 mm; M1/M2 acima, M3/M4 abaixo, sem girar nem sobrepor."
+  },
+  {
+    "file": "ZZ_06_ILUSTRADA_DUPLEX_COMPLETO.zip",
+    "bytes": 70834854,
+    "sha256": "e2249cf30a3bdf393fd191085caf6e1021f9e666a335553ae6850c1d79099973",
+    "note": "KIT COMPLETO ilustrada / duplex: 58 folhas A4. 25 iniciais + 33 complemento. Somente cartas/calibração duplex retrato, borda longa; restante uma face. Cartas e demais componentes preservados da 0.5; mapas atualizados. Escolha só este método, não imprima a outra alternativa."
+  },
+  {
+    "file": "ZZ_06_ILUSTRADA_DUPLEX_INICIAL.zip",
+    "bytes": 40353594,
+    "sha256": "1bf1dad6c59450f0e8a59a6863e3d930ac4d1aea22c75acc5bbdd32a8e2a9bee",
+    "note": "ilustrada / INICIAL: 25 folhas A4. Substitui essa etapa do completo; não imprimir ambos. Somente cartas/calibração duplex retrato, borda longa. Mapas uma face paisagem, 100%."
+  },
+  {
+    "file": "ZZ_06_ILUSTRADA_DUPLEX_COMPLEMENTO.zip",
+    "bytes": 30483214,
+    "sha256": "556bc88f5959be55215b34294bdf9b1bb19c83c1a6185284a37cc24b10610d2d",
+    "note": "ilustrada / COMPLEMENTO: 33 folhas A4. Substitui essa etapa do completo; não imprimir ambos. Somente cartas/calibração duplex retrato, borda longa. Mapas uma face paisagem, 100%."
+  },
+  {
+    "file": "ZZ_06_ILUSTRADA_MANUAL_COMPLETO.zip",
+    "bytes": 72546627,
+    "sha256": "896e63d15ded11a1e7744bb1ceed0182f7bd55e201718faba242113401cd6484",
+    "note": "KIT COMPLETO ilustrada / manual: 72 folhas A4. 33 iniciais + 39 complemento. Tudo uma face. Cole frente + miolo opaco + verso com topos iguais; elimine códigos fora do corte. Cartas e demais componentes preservados da 0.5; mapas atualizados. Escolha só este método, não imprima a outra alternativa."
+  },
+  {
+    "file": "ZZ_06_ILUSTRADA_EXTRAS_OPCIONAIS.zip",
+    "bytes": 21018968,
+    "sha256": "d960e8550cb95180ec544a6dac97d2ba12ed6ab74106e5f4afbaaa440c008bdf",
+    "note": "EXTRAS PRESERVADOS: escolha somente o que usar. Variantes atualizadas estão no ZIP SOMENTE_MAPAS. Painel: 2 folhas por jogador. Peões: 8 folhas. Fichas completas: 12. Guia: 3. Bases: 1. Não imprimir tudo como se fosse obrigatório. Mesmos IDs e limite de 24 inimigos."
+  },
+  {
+    "file": "ZZ_06_ECONOMICA_SOMENTE_MAPAS.zip",
+    "bytes": 18168613,
+    "sha256": "8f732f01ed7616459697580a0142b6646f4e23e3d1e2b30dfa1be5b2622210d8",
+    "note": "ATUALIZAÇÃO PARA QUEM JÁ TEM A 0.5: nenhuma carta, painel, peão ou regra precisa ser baixada/reimpressa. Troque somente as quatro folhas do tabuleiro escolhido: COMUNS OU uma variante temática. Seis diagramas novos substituem os antigos; podem ser consultados na tela. Este ZIP oferece 34 páginas A4: 4 comuns + 24 de seis variantes + 6 diagramas. NÃO é uma ordem para imprimir 34 folhas. Portas e bloqueios impressos mostram a preparação inicial; depois prevalecem marcadores e registro. Tudo uma face, paisagem. Corte 277×190 mm; M1/M2 acima, M3/M4 abaixo, sem girar nem sobrepor."
+  },
+  {
+    "file": "ZZ_06_ECONOMICA_DUPLEX_COMPLETO.zip",
+    "bytes": 30213432,
+    "sha256": "0e9c238bd29c761ee044f451f64511e6ef75fe677b5be80a0d9ae5462b4b67c3",
+    "note": "KIT COMPLETO economica / duplex: 58 folhas A4. 25 iniciais + 33 complemento. Somente cartas/calibração duplex retrato, borda longa; restante uma face. Cartas e demais componentes preservados da 0.5; mapas atualizados. Escolha só este método, não imprima a outra alternativa."
+  },
+  {
+    "file": "ZZ_06_ECONOMICA_DUPLEX_INICIAL.zip",
+    "bytes": 16933524,
+    "sha256": "d5b9083237e6f4743f21bff03bd40ceb4c442e0fb99e159ed9e48da821aa61ee",
+    "note": "economica / INICIAL: 25 folhas A4. Substitui essa etapa do completo; não imprimir ambos. Somente cartas/calibração duplex retrato, borda longa. Mapas uma face paisagem, 100%."
+  },
+  {
+    "file": "ZZ_06_ECONOMICA_DUPLEX_COMPLEMENTO.zip",
+    "bytes": 13281866,
+    "sha256": "f62a32658fd41bf3ffce7d1a0446c0f49f1bd8ae32bfe14936e3cbe995f679a0",
+    "note": "economica / COMPLEMENTO: 33 folhas A4. Substitui essa etapa do completo; não imprimir ambos. Somente cartas/calibração duplex retrato, borda longa. Mapas uma face paisagem, 100%."
+  },
+  {
+    "file": "ZZ_06_ECONOMICA_MANUAL_COMPLETO.zip",
+    "bytes": 31935913,
+    "sha256": "96208ce2116f0233f2fb2a534808bbeb9f16ed85f81dd91077d0ae18c279d7fc",
+    "note": "KIT COMPLETO economica / manual: 72 folhas A4. 33 iniciais + 39 complemento. Tudo uma face. Cole frente + miolo opaco + verso com topos iguais; elimine códigos fora do corte. Cartas e demais componentes preservados da 0.5; mapas atualizados. Escolha só este método, não imprima a outra alternativa."
+  },
+  {
+    "file": "ZZ_06_ECONOMICA_EXTRAS_OPCIONAIS.zip",
+    "bytes": 6876156,
+    "sha256": "77d514e67dcb802aa114b82abeb89c94463ffb8203407bdb9aaf1d4233f86e84",
+    "note": "EXTRAS PRESERVADOS: escolha somente o que usar. Variantes atualizadas estão no ZIP SOMENTE_MAPAS. Painel: 2 folhas por jogador. Peões: 8 folhas. Fichas completas: 12. Guia: 3. Bases: 1. Não imprimir tudo como se fosse obrigatório. Mesmos IDs e limite de 24 inimigos."
+  },
+  {
+    "file": "ZZ_06_FONTES_CODIGO_ARTE.zip",
+    "bytes": 35050503,
+    "sha256": "ff772dfbac4e71dfe01d80b219567b0a25db6feebad6bdd35e2093c94696009d",
+    "note": "FONTES EDITÁVEIS 0.6. Python 3, requirements.txt e DejaVu Sans. Apenas mapas: python src/build_boards06.py --maps-only. Para reconstruir o kit completo/provas, extraia também todas as partes FONTES_BASE05 no mesmo diretório; execute build_boards06.py, validate_boards06.py, proof_boards06.py, document_boards06.py e package_boards06.py. Os componentes anteriores são copiados, nunca regenerados. Fontes das cartas/peões 0.5 continuam disponíveis no índice 0.5. Não imprimir estas partes."
+  },
+  {
+    "file": "ZZ_06_FONTES_BASE05_ILUSTRADA_01.zip",
+    "bytes": 81130000,
+    "sha256": "a5e109ff0d12fe82efab9dc81b7a6b564d463a8bcc519fd3f81c4c5a499f63a2",
+    "note": "FONTES EDITÁVEIS 0.6. Python 3, requirements.txt e DejaVu Sans. Apenas mapas: python src/build_boards06.py --maps-only. Para reconstruir o kit completo/provas, extraia também todas as partes FONTES_BASE05 no mesmo diretório; execute build_boards06.py, validate_boards06.py, proof_boards06.py, document_boards06.py e package_boards06.py. Os componentes anteriores são copiados, nunca regenerados. Fontes das cartas/peões 0.5 continuam disponíveis no índice 0.5. Não imprimir estas partes."
+  },
+  {
+    "file": "ZZ_06_FONTES_BASE05_ILUSTRADA_02.zip",
+    "bytes": 77167182,
+    "sha256": "3a3866c2b24f336f351ae69830e88b5794affee5e848a8c218280d7b56ac81a1",
+    "note": "FONTES EDITÁVEIS 0.6. Python 3, requirements.txt e DejaVu Sans. Apenas mapas: python src/build_boards06.py --maps-only. Para reconstruir o kit completo/provas, extraia também todas as partes FONTES_BASE05 no mesmo diretório; execute build_boards06.py, validate_boards06.py, proof_boards06.py, document_boards06.py e package_boards06.py. Os componentes anteriores são copiados, nunca regenerados. Fontes das cartas/peões 0.5 continuam disponíveis no índice 0.5. Não imprimir estas partes."
+  },
+  {
+    "file": "ZZ_06_FONTES_BASE05_ILUSTRADA_03.zip",
+    "bytes": 1163454,
+    "sha256": "3681e4921c77b71a396b306f62c7c5a87ff228889f12af8c8c4bce83c253a12d",
+    "note": "FONTES EDITÁVEIS 0.6. Python 3, requirements.txt e DejaVu Sans. Apenas mapas: python src/build_boards06.py --maps-only. Para reconstruir o kit completo/provas, extraia também todas as partes FONTES_BASE05 no mesmo diretório; execute build_boards06.py, validate_boards06.py, proof_boards06.py, document_boards06.py e package_boards06.py. Os componentes anteriores são copiados, nunca regenerados. Fontes das cartas/peões 0.5 continuam disponíveis no índice 0.5. Não imprimir estas partes."
+  },
+  {
+    "file": "ZZ_06_FONTES_BASE05_ECONOMICA_01.zip",
+    "bytes": 72985150,
+    "sha256": "818b0d6c740c001a3b8d1a0ce7170e989b6128a765e052fdab40fc78d23b3901",
+    "note": "FONTES EDITÁVEIS 0.6. Python 3, requirements.txt e DejaVu Sans. Apenas mapas: python src/build_boards06.py --maps-only. Para reconstruir o kit completo/provas, extraia também todas as partes FONTES_BASE05 no mesmo diretório; execute build_boards06.py, validate_boards06.py, proof_boards06.py, document_boards06.py e package_boards06.py. Os componentes anteriores são copiados, nunca regenerados. Fontes das cartas/peões 0.5 continuam disponíveis no índice 0.5. Não imprimir estas partes."
+  },
+  {
+    "file": "ZZ_06_PROVAS_VISUAIS.zip",
+    "bytes": 19165926,
+    "sha256": "10de92561d281643e911848e82537e48ef110c4d3abbe97805162619fcf689b3",
+    "note": "Capturas extraídas dos PDFs A4 finais: versões 0.4/0.5/0.6, sete montagens, econômica, emenda e ocupação. Capturas não são componentes de jogo."
+  },
+  {
+    "file": "ZZ_06_PROVAS_ESCALA_RELATORIOS.zip",
+    "bytes": 53583368,
+    "sha256": "3da7b173c1ec8aa26c74d1077dfa409580e68aa56232fc341f23ea34a4321ef9",
+    "note": "Provas A4 de escala física e ocupação, relatórios de geometria, preservação, resolução e reconstrução. Uso opcional de conferência; não somar ao kit de 58/72 folhas. Não comprova impressão física."
+  }
+]

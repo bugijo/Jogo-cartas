@@ -1,0 +1,363 @@
+{
+  "version": "0.6",
+  "main_map_minimum_ppi": 215.0,
+  "main_geometry": "vetorial, catálogo congelado",
+  "assets": [
+    {
+      "file": "assets/v0.5/mapa_estacao.png",
+      "origin": "original existente 0.5",
+      "pixels": [
+        1536,
+        1024
+      ],
+      "destinations": [
+        "Estação"
+      ],
+      "integrated": true,
+      "sha256": "97bad662c08d20efd40aa0a4bd511d257660f5d53b59624b946db5fcfb23ee88",
+      "minimum_used_ppi": 279.4
+    },
+    {
+      "file": "assets/v0.5/mapa_mercado.png",
+      "origin": "original existente 0.5",
+      "pixels": [
+        1536,
+        1024
+      ],
+      "destinations": [
+        "Comuns",
+        "Mercado",
+        "Posto"
+      ],
+      "integrated": true,
+      "sha256": "def0c0cab970189e9ffb072c8afdb0bf94d8a5dc8d715ea33cc5491627e69620",
+      "minimum_used_ppi": 245.73
+    },
+    {
+      "file": "assets/v0.5/mapa_oficina.png",
+      "origin": "original existente 0.5",
+      "pixels": [
+        1536,
+        1024
+      ],
+      "destinations": [
+        "Comuns",
+        "Condomínio",
+        "Hospital",
+        "Mercado",
+        "Oficina",
+        "Posto"
+      ],
+      "integrated": true,
+      "sha256": "e16260f4f3ffdbb9429185e87e05d80e3080ed70b685e39e42b1e1ae3694732b",
+      "minimum_used_ppi": 310.44
+    },
+    {
+      "file": "assets/v0.6/bancada_topo.png",
+      "origin": "geração integrada de imagem original, com revisão de projeção/recorte",
+      "pixels": [
+        1536,
+        1024
+      ],
+      "destinations": [
+        "Comuns",
+        "Oficina"
+      ],
+      "integrated": true,
+      "sha256": "84dbde536dcb6ebb9e54c5d77d7344ef9a84563bff9aac9362c42690d602b3d8",
+      "minimum_used_ppi": 476.4
+    },
+    {
+      "file": "assets/v0.6/condominio_topo.png",
+      "origin": "geração integrada de imagem original, com revisão de projeção/recorte",
+      "pixels": [
+        1536,
+        1024
+      ],
+      "destinations": [
+        "Comuns",
+        "Condomínio"
+      ],
+      "integrated": true,
+      "sha256": "1dbfd03b8ea4bfddaa753cd4ecd77cbcec54aa9d1d323457daff5acdb46035cc",
+      "minimum_used_ppi": 272.47
+    },
+    {
+      "file": "assets/v0.6/estacao_topo.png",
+      "origin": "geração integrada de imagem original, com revisão de projeção/recorte",
+      "pixels": [
+        1536,
+        1024
+      ],
+      "destinations": [
+        "Estação"
+      ],
+      "integrated": true,
+      "sha256": "25c9b168c971a26eb742feb4d60eeefd109f564475ea95d25d2545a4b058d13d",
+      "minimum_used_ppi": 219.34
+    },
+    {
+      "file": "assets/v0.6/hospital_topo.png",
+      "origin": "geração integrada de imagem original, com revisão de projeção/recorte",
+      "pixels": [
+        1536,
+        1024
+      ],
+      "destinations": [
+        "Comuns",
+        "Hospital"
+      ],
+      "integrated": true,
+      "sha256": "840d0aa51b1858a3ee31af9c8ad8969d8e95c934c07c2416d47057097ca2cdc9",
+      "minimum_used_ppi": 215.0
+    },
+    {
+      "file": "assets/v0.6/mercado_gondolas_topo.png",
+      "origin": "geração integrada de imagem original, com revisão de projeção/recorte",
+      "pixels": [
+        1536,
+        1024
+      ],
+      "destinations": [
+        "Mercado",
+        "Posto"
+      ],
+      "integrated": true,
+      "sha256": "0aa29d4470382631c0be445cc9304714a743a3020139ecb9adb4bc8bf01f241e",
+      "minimum_used_ppi": 260.24
+    },
+    {
+      "file": "assets/v0.6/mercado_topo.png",
+      "origin": "geração integrada de imagem original, com revisão de projeção/recorte",
+      "pixels": [
+        1536,
+        1024
+      ],
+      "destinations": [
+        "Mercado"
+      ],
+      "integrated": true,
+      "sha256": "106a716890f95b1a1e9e84053a42925304f33beac9edf4d194e1c6d9037a7efd",
+      "minimum_used_ppi": 224.37
+    },
+    {
+      "file": "assets/v0.6/oficina_topo.png",
+      "origin": "geração integrada de imagem original, com revisão de projeção/recorte",
+      "pixels": [
+        1536,
+        1024
+      ],
+      "destinations": [
+        "Comuns",
+        "Oficina"
+      ],
+      "integrated": true,
+      "sha256": "c41125890e9caf76a79fb31589b2248a6a9ce9d5000a719b8658ecd70198e817",
+      "minimum_used_ppi": 255.59
+    },
+    {
+      "file": "assets/v0.6/pisos_materiais.png",
+      "origin": "geração integrada de imagem original, com revisão de projeção/recorte",
+      "pixels": [
+        1536,
+        1024
+      ],
+      "destinations": [
+        "material/asphalt",
+        "material/concrete",
+        "material/grass",
+        "material/paver",
+        "material/tile",
+        "material/wood"
+      ],
+      "integrated": true,
+      "sha256": "c75f236ded8bbc6335197c2c4cf784160573f0d8d4738bf610ff10c3bffadbc6",
+      "minimum_used_ppi": 216.75
+    },
+    {
+      "file": "assets/v0.6/posto_topo.png",
+      "origin": "geração integrada de imagem original, com revisão de projeção/recorte",
+      "pixels": [
+        1536,
+        1024
+      ],
+      "destinations": [
+        "Posto"
+      ],
+      "integrated": true,
+      "sha256": "607d0fcc20217d1d88ad93cf244879ccd4baeb1517cb67ae8507d435903b208c",
+      "minimum_used_ppi": 215.0
+    },
+    {
+      "file": "output/edicao-tabuleiros-v0.6/miniaturas/economica/CONDOMINIO.png",
+      "origin": "render de A–C a 200 ppi para miniatura; não inclui geometria/textos",
+      "pixels": [
+        1339,
+        919
+      ],
+      "destinations": [
+        "Condomínio"
+      ],
+      "integrated": true,
+      "sha256": "b7bde3e79affbad09e16c3fced8996a1651b33b85fb1f9db9ad445a2d184cba7",
+      "minimum_used_ppi": 200.06
+    },
+    {
+      "file": "output/edicao-tabuleiros-v0.6/miniaturas/economica/ESTACAO.png",
+      "origin": "render de A–C a 200 ppi para miniatura; não inclui geometria/textos",
+      "pixels": [
+        1339,
+        919
+      ],
+      "destinations": [
+        "Estação"
+      ],
+      "integrated": true,
+      "sha256": "d4667c296ad51b18681e2d6a6efce5091462853d06fb172e119405e6255b52a4",
+      "minimum_used_ppi": 200.06
+    },
+    {
+      "file": "output/edicao-tabuleiros-v0.6/miniaturas/economica/HOSPITAL.png",
+      "origin": "render de A–C a 200 ppi para miniatura; não inclui geometria/textos",
+      "pixels": [
+        1339,
+        919
+      ],
+      "destinations": [
+        "Hospital"
+      ],
+      "integrated": true,
+      "sha256": "ff93cfa02750473d68801d9f3816b0fb498dedcf2f93fe2176460d1e331cb074",
+      "minimum_used_ppi": 200.06
+    },
+    {
+      "file": "output/edicao-tabuleiros-v0.6/miniaturas/economica/MERCADO.png",
+      "origin": "render de A–C a 200 ppi para miniatura; não inclui geometria/textos",
+      "pixels": [
+        1339,
+        919
+      ],
+      "destinations": [
+        "Mercado"
+      ],
+      "integrated": true,
+      "sha256": "27d0f9d8bb184c761ef4f8de2a2e98a3eac8955b0ea1f106b8d49156f3f71b34",
+      "minimum_used_ppi": 200.06
+    },
+    {
+      "file": "output/edicao-tabuleiros-v0.6/miniaturas/economica/OFICINA.png",
+      "origin": "render de A–C a 200 ppi para miniatura; não inclui geometria/textos",
+      "pixels": [
+        1339,
+        919
+      ],
+      "destinations": [
+        "Oficina"
+      ],
+      "integrated": true,
+      "sha256": "498548c8d6b5e05fb0f6796408186ec6de70203c49171c816c58d5d55b33b5d9",
+      "minimum_used_ppi": 200.06
+    },
+    {
+      "file": "output/edicao-tabuleiros-v0.6/miniaturas/economica/POSTO.png",
+      "origin": "render de A–C a 200 ppi para miniatura; não inclui geometria/textos",
+      "pixels": [
+        1339,
+        919
+      ],
+      "destinations": [
+        "Posto"
+      ],
+      "integrated": true,
+      "sha256": "51d0fb14703410e61e4164ebb87059292e34cdba53ab91217c6c30fe63be7dfe",
+      "minimum_used_ppi": 200.06
+    },
+    {
+      "file": "output/edicao-tabuleiros-v0.6/miniaturas/ilustrada/CONDOMINIO.png",
+      "origin": "render de A–C a 200 ppi para miniatura; não inclui geometria/textos",
+      "pixels": [
+        1339,
+        919
+      ],
+      "destinations": [
+        "Condomínio"
+      ],
+      "integrated": true,
+      "sha256": "4ac8027efb659779a58920c1f406a958dbfa695de56ab001966fadc0e1de27d8",
+      "minimum_used_ppi": 200.06
+    },
+    {
+      "file": "output/edicao-tabuleiros-v0.6/miniaturas/ilustrada/ESTACAO.png",
+      "origin": "render de A–C a 200 ppi para miniatura; não inclui geometria/textos",
+      "pixels": [
+        1339,
+        919
+      ],
+      "destinations": [
+        "Estação"
+      ],
+      "integrated": true,
+      "sha256": "f0009c1cac3956bbbf94eb32ee9f423473c2f7b9dff5e452e995f1883a354b27",
+      "minimum_used_ppi": 200.06
+    },
+    {
+      "file": "output/edicao-tabuleiros-v0.6/miniaturas/ilustrada/HOSPITAL.png",
+      "origin": "render de A–C a 200 ppi para miniatura; não inclui geometria/textos",
+      "pixels": [
+        1339,
+        919
+      ],
+      "destinations": [
+        "Hospital"
+      ],
+      "integrated": true,
+      "sha256": "dffb361709f3a8c6e7643e8dd22b738635993771fd76069435fd412166f758bd",
+      "minimum_used_ppi": 200.06
+    },
+    {
+      "file": "output/edicao-tabuleiros-v0.6/miniaturas/ilustrada/MERCADO.png",
+      "origin": "render de A–C a 200 ppi para miniatura; não inclui geometria/textos",
+      "pixels": [
+        1339,
+        919
+      ],
+      "destinations": [
+        "Mercado"
+      ],
+      "integrated": true,
+      "sha256": "b584eae15ed7fc0e253c0bec5aacae472b4f136941a90b6eb357feb2fd29c141",
+      "minimum_used_ppi": 200.06
+    },
+    {
+      "file": "output/edicao-tabuleiros-v0.6/miniaturas/ilustrada/OFICINA.png",
+      "origin": "render de A–C a 200 ppi para miniatura; não inclui geometria/textos",
+      "pixels": [
+        1339,
+        919
+      ],
+      "destinations": [
+        "Oficina"
+      ],
+      "integrated": true,
+      "sha256": "ce616d1c7b2acf874eacd008f440fed8aeb1356c24c7613a2c8eda49dfc4f67a",
+      "minimum_used_ppi": 200.06
+    },
+    {
+      "file": "output/edicao-tabuleiros-v0.6/miniaturas/ilustrada/POSTO.png",
+      "origin": "render de A–C a 200 ppi para miniatura; não inclui geometria/textos",
+      "pixels": [
+        1339,
+        919
+      ],
+      "destinations": [
+        "Posto"
+      ],
+      "integrated": true,
+      "sha256": "890ca5279361f0755212de98fd16132a18f9c19253c2f735c65e01cb1a056d5a",
+      "minimum_used_ppi": 200.06
+    }
+  ],
+  "placements_file": "asset_usage.json",
+  "exceptions": "Miniaturas de ambientação dos diagramas: 200 ppi, texto e geometria vetoriais separados. Nenhuma exceção abaixo de 211,3 ppi nos mapas principais.",
+  "remaining_illustrations": []
+}
