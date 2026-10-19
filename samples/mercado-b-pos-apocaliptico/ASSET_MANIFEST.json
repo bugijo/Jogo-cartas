@@ -1,0 +1,512 @@
+{
+  "print_mm": [
+    554,
+    380
+  ],
+  "composite_pixels": [
+    3817,
+    2618
+  ],
+  "composite_ppi_xy": [
+    175.00324909747292,
+    174.99263157894737
+  ],
+  "method": "9 edições nativas da composição B; sobreposição por menor diferença, transição de 4 pixels; somente redução",
+  "sources": [
+    {
+      "id": "R1C1",
+      "file": "originais/R1C1.png",
+      "native_pixels": [
+        1498,
+        1050
+      ],
+      "used_pixels": [
+        0,
+        0,
+        1498,
+        1050
+      ],
+      "print_box_mm": [
+        0.0,
+        0.0,
+        195.0343461030383,
+        136.78537054860442
+      ],
+      "effective_ppi_xy": [
+        195.0897406546962,
+        194.9769912749789
+      ],
+      "composition_pixels": [
+        1344,
+        942
+      ],
+      "upscaled": false,
+      "sha256": "845de77dae5810005d69ff8131122cf6a6afc26e73dfeb4051a77172d24caaf6",
+      "origin": "image_gen integrado / reconstrução ou edição nativa"
+    },
+    {
+      "id": "R1C2",
+      "file": "originais/R1C2.png",
+      "native_pixels": [
+        1535,
+        1025
+      ],
+      "used_pixels": [
+        0,
+        0,
+        1535,
+        1025
+      ],
+      "print_box_mm": [
+        174.5429326287979,
+        0.0,
+        379.45706737120213,
+        136.78537054860442
+      ],
+      "effective_ppi_xy": [
+        190.26993940175348,
+        190.33468195890796
+      ],
+      "composition_pixels": [
+        1411,
+        942
+      ],
+      "upscaled": false,
+      "sha256": "b2944578a772c21ec72d466ce0e19603d7f37ab7c528d65ae35d38d81c044926",
+      "origin": "image_gen integrado / reconstrução ou edição nativa"
+    },
+    {
+      "id": "R1C3",
+      "file": "originais/R1C3.png",
+      "native_pixels": [
+        1498,
+        1050
+      ],
+      "used_pixels": [
+        0,
+        0,
+        1498,
+        1050
+      ],
+      "print_box_mm": [
+        358.96565389696167,
+        0.0,
+        554.0,
+        136.78537054860442
+      ],
+      "effective_ppi_xy": [
+        195.08974065469616,
+        194.9769912749789
+      ],
+      "composition_pixels": [
+        1344,
+        942
+      ],
+      "upscaled": false,
+      "sha256": "9cbcd11dfa40c88af91a3316264ee65bcda0ab22da673de0773d91825a2f0eb1",
+      "origin": "image_gen integrado / reconstrução ou edição nativa"
+    },
+    {
+      "id": "R2C1",
+      "file": "originais/R2C1.png",
+      "native_pixels": [
+        1443,
+        1090
+      ],
+      "used_pixels": [
+        0,
+        0,
+        1443,
+        1090
+      ],
+      "print_box_mm": [
+        0.0,
+        116.3041385948027,
+        195.0343461030383,
+        263.6958614051973
+      ],
+      "effective_ppi_xy": [
+        187.9268997094303,
+        187.83958469374423
+      ],
+      "composition_pixels": [
+        1344,
+        1016
+      ],
+      "upscaled": false,
+      "sha256": "fb03e6d76b6471af24b6de10b84df1cde9c2c393c2f9cc30cf3d59c3ad8861a1",
+      "origin": "image_gen integrado / reconstrução ou edição nativa"
+    },
+    {
+      "id": "R2C2",
+      "file": "originais/R2C2.png",
+      "native_pixels": [
+        1478,
+        1064
+      ],
+      "used_pixels": [
+        0,
+        0,
+        1478,
+        1064
+      ],
+      "print_box_mm": [
+        174.5429326287979,
+        116.3041385948027,
+        379.45706737120213,
+        263.6958614051973
+      ],
+      "effective_ppi_xy": [
+        183.20454100051572,
+        183.3590074441687
+      ],
+      "composition_pixels": [
+        1411,
+        1016
+      ],
+      "upscaled": false,
+      "sha256": "b8a72af7623646968e5f9028f88e898df37d098554705adc49138f6e1fe30cef",
+      "origin": "image_gen integrado / reconstrução ou edição nativa"
+    },
+    {
+      "id": "R2C3",
+      "file": "originais/R2C3.png",
+      "native_pixels": [
+        1443,
+        1090
+      ],
+      "used_pixels": [
+        0,
+        0,
+        1443,
+        1090
+      ],
+      "print_box_mm": [
+        358.96565389696167,
+        116.3041385948027,
+        554.0,
+        263.6958614051973
+      ],
+      "effective_ppi_xy": [
+        187.92689970943027,
+        187.83958469374423
+      ],
+      "composition_pixels": [
+        1344,
+        1016
+      ],
+      "upscaled": false,
+      "sha256": "05ab5afe69c979fa9fd88a6889e5ce477d142088f78e146b176427a9c786dbc2",
+      "origin": "image_gen integrado / reconstrução ou edição nativa"
+    },
+    {
+      "id": "R3C1",
+      "file": "originais/R3C1.png",
+      "native_pixels": [
+        1498,
+        1050
+      ],
+      "used_pixels": [
+        0,
+        0,
+        1498,
+        1050
+      ],
+      "print_box_mm": [
+        0.0,
+        243.21462945139558,
+        195.0343461030383,
+        380.0
+      ],
+      "effective_ppi_xy": [
+        195.0897406546962,
+        194.9769912749789
+      ],
+      "composition_pixels": [
+        1344,
+        942
+      ],
+      "upscaled": false,
+      "sha256": "ca6158a1e2461efb8de35c0b5bae09e6d70a8805f176f3f591b422e6c0a6bf1c",
+      "origin": "image_gen integrado / reconstrução ou edição nativa"
+    },
+    {
+      "id": "R3C2",
+      "file": "originais/R3C2.png",
+      "native_pixels": [
+        1535,
+        1025
+      ],
+      "used_pixels": [
+        0,
+        0,
+        1535,
+        1025
+      ],
+      "print_box_mm": [
+        174.5429326287979,
+        243.21462945139558,
+        379.45706737120213,
+        380.0
+      ],
+      "effective_ppi_xy": [
+        190.26993940175348,
+        190.33468195890796
+      ],
+      "composition_pixels": [
+        1411,
+        942
+      ],
+      "upscaled": false,
+      "sha256": "b9b4bc1a3c1536c0528d6bd325c2fbb20600de84258f5052ec2ce02df0f25899",
+      "origin": "image_gen integrado / reconstrução ou edição nativa"
+    },
+    {
+      "id": "R3C3",
+      "file": "originais/R3C3.png",
+      "native_pixels": [
+        1498,
+        1050
+      ],
+      "used_pixels": [
+        0,
+        0,
+        1498,
+        1050
+      ],
+      "print_box_mm": [
+        358.96565389696167,
+        243.21462945139558,
+        554.0,
+        380.0
+      ],
+      "effective_ppi_xy": [
+        195.08974065469616,
+        194.9769912749789
+      ],
+      "composition_pixels": [
+        1344,
+        942
+      ],
+      "upscaled": false,
+      "sha256": "8c0c204e3eb24c6a3b4e52ff3f7ce90dc68071643c4296a68509483cc6407e7c",
+      "origin": "image_gen integrado / reconstrução ou edição nativa"
+    },
+    {
+      "id": "P12L",
+      "file": "originais/P12L.png",
+      "native_pixels": [
+        1590,
+        989
+      ],
+      "used_pixels": [
+        0,
+        0,
+        1590,
+        989
+      ],
+      "print_box_mm": [
+        0,
+        72,
+        195.76618229854688,
+        193.84023099133782
+      ],
+      "effective_ppi_xy": [
+        206.2971220351564,
+        206.1765625
+      ],
+      "upscaled": false,
+      "sha256": "d43dee0b2ac8f9177231ee890ac1232c8592a2ef96245a14d087dc0bb5473d60",
+      "origin": "image_gen integrado / reconstrução ou edição nativa"
+    },
+    {
+      "id": "P12M",
+      "file": "originais/P12M.png",
+      "native_pixels": [
+        1758,
+        895
+      ],
+      "used_pixels": [
+        0,
+        0,
+        1758,
+        895
+      ],
+      "print_box_mm": [
+        190.2774108322325,
+        98.7487969201155,
+        376.8956406869221,
+        193.84023099133782
+      ],
+      "effective_ppi_xy": [
+        239.2756593756636,
+        239.06464574898783
+      ],
+      "upscaled": false,
+      "sha256": "fb4b9bf0b03a5eace4d9e8628dc6eacec471bf4790ed39c9329f9ce4366df839",
+      "origin": "image_gen integrado / reconstrução ou edição nativa"
+    },
+    {
+      "id": "P12R",
+      "file": "originais/P12R.png",
+      "native_pixels": [
+        1435,
+        1096
+      ],
+      "used_pixels": [
+        0,
+        0,
+        1435,
+        1096
+      ],
+      "print_box_mm": [
+        376.8956406869221,
+        84.11934552454282,
+        554.0,
+        219.44177093359
+      ],
+      "effective_ppi_xy": [
+        205.8052107885551,
+        205.71904409672823
+      ],
+      "upscaled": false,
+      "sha256": "cd90a573e1b14b8a3db048b68bc09373dac9e229653ead7cf20a417c3560e4f9",
+      "origin": "image_gen integrado / reconstrução ou edição nativa"
+    },
+    {
+      "id": "P23L",
+      "file": "originais/P23L.png",
+      "native_pixels": [
+        1781,
+        883
+      ],
+      "used_pixels": [
+        0,
+        0,
+        1781,
+        883
+      ],
+      "print_box_mm": [
+        0.0,
+        213.95572666025026,
+        195.76618229854688,
+        310.87584215591914
+      ],
+      "effective_ppi_xy": [
+        231.07872600290162,
+        231.40913406156906
+      ],
+      "upscaled": false,
+      "sha256": "37d68950081abd296872f17562c9da75acae950c817989068808abbd843cf56e",
+      "origin": "image_gen integrado / reconstrução ou edição nativa"
+    },
+    {
+      "id": "P23M",
+      "file": "originais/P23M.png",
+      "native_pixels": [
+        1926,
+        816
+      ],
+      "used_pixels": [
+        0,
+        0,
+        1926,
+        816
+      ],
+      "print_box_mm": [
+        195.76618229854688,
+        208.46968238691048,
+        376.8956406869221,
+        285.274302213667
+      ],
+      "effective_ppi_xy": [
+        270.0852773219559,
+        269.8587669172931
+      ],
+      "upscaled": false,
+      "sha256": "7ee79b8b100486c4750247130a51da7757d1bf5518649a0ca68f3f4c680a3207",
+      "origin": "image_gen integrado / reconstrução ou edição nativa"
+    },
+    {
+      "id": "P23R",
+      "file": "originais/P23R.png",
+      "native_pixels": [
+        1862,
+        845
+      ],
+      "used_pixels": [
+        0,
+        0,
+        1862,
+        845
+      ],
+      "print_box_mm": [
+        376.8956406869221,
+        215.78440808469682,
+        554.0,
+        296.2463907603465
+      ],
+      "effective_ppi_xy": [
+        267.0448100963691,
+        266.74709330143526
+      ],
+      "upscaled": false,
+      "sha256": "2a10be4b534b488df011054951c5ce17285a5f6de7d8ac32655b41379ea419c2",
+      "origin": "image_gen integrado / reconstrução ou edição nativa"
+    },
+    {
+      "id": "JUNCAO_ACESSO_1",
+      "file": "originais/JUNCAO_ACESSO_1.png",
+      "native_pixels": [
+        1356,
+        1159
+      ],
+      "used_pixels": [
+        0,
+        0,
+        1356,
+        1159
+      ],
+      "print_box_mm": [
+        150,
+        40,
+        220,
+        100
+      ],
+      "effective_ppi_xy": [
+        492.03428571428566,
+        490.6433333333333
+      ],
+      "upscaled": false,
+      "sha256": "1c663bce16dc9131b36833f85fcaa6c9af8b7a990c7c72edc5657762f4dc5a75",
+      "origin": "image_gen integrado / reconstrução ou edição nativa"
+    },
+    {
+      "id": "JUNCAO_ACESSO_2",
+      "file": "originais/JUNCAO_ACESSO_2.png",
+      "native_pixels": [
+        1355,
+        1161
+      ],
+      "used_pixels": [
+        0,
+        0,
+        1355,
+        1161
+      ],
+      "print_box_mm": [
+        335,
+        40,
+        405,
+        100
+      ],
+      "effective_ppi_xy": [
+        491.6714285714286,
+        491.49
+      ],
+      "upscaled": false,
+      "sha256": "f6d82be215150b377113e2ab031eb20f73925f8a66fb3a0b8dd8bc2e07865698",
+      "origin": "image_gen integrado / reconstrução ou edição nativa"
+    }
+  ]
+}

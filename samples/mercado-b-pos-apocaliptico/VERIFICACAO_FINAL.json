@@ -1,0 +1,21 @@
+{
+  "geometry_bytes_identical": true,
+  "functional_vector_functions_identical": true,
+  "new_raster_verified_by_decoded_pixel_hash": true,
+  "a4_landscape_pages": 4,
+  "comparison_a4_portrait_pages": 1,
+  "comparison_boxes_measured_mm": [
+    [
+      100.00000614590114,
+      99.99997923109265
+    ],
+    [
+      100.00000614590114,
+      99.99998999701604
+    ]
+  ],
+  "ruler_measured_mm": 100.00000614590114,
+  "fonts_embedded": true,
+  "minimum_native_ppi": 183.20454100051572,
+  "physical_printing": false
+}
