@@ -1,0 +1,458 @@
+[
+  {
+    "id": "ZC-HER-0001",
+    "file": "originais/PEOES_A.png",
+    "native_pixels": [
+      1536,
+      1024
+    ],
+    "crop": [
+      161,
+      4,
+      407,
+      512
+    ],
+    "print_mm": [
+      20.0,
+      41.30081300813008
+    ],
+    "effective_ppi": 312.42
+  },
+  {
+    "id": "ZC-HER-0002",
+    "file": "originais/PEOES_A.png",
+    "native_pixels": [
+      1536,
+      1024
+    ],
+    "crop": [
+      638,
+      4,
+      894,
+      511
+    ],
+    "print_mm": [
+      20.0,
+      39.609375
+    ],
+    "effective_ppi": 325.12
+  },
+  {
+    "id": "ZC-HER-0003",
+    "file": "originais/PEOES_A.png",
+    "native_pixels": [
+      1536,
+      1024
+    ],
+    "crop": [
+      1141,
+      7,
+      1373,
+      512
+    ],
+    "print_mm": [
+      20.0,
+      43.53448275862069
+    ],
+    "effective_ppi": 294.64
+  },
+  {
+    "id": "ZC-HER-0004",
+    "file": "originais/PEOES_A.png",
+    "native_pixels": [
+      1536,
+      1024
+    ],
+    "crop": [
+      157,
+      513,
+      416,
+      1018
+    ],
+    "print_mm": [
+      20.0,
+      38.996138996138995
+    ],
+    "effective_ppi": 328.93
+  },
+  {
+    "id": "ZC-HER-0005",
+    "file": "originais/PEOES_A.png",
+    "native_pixels": [
+      1536,
+      1024
+    ],
+    "crop": [
+      629,
+      514,
+      901,
+      1017
+    ],
+    "print_mm": [
+      20.0,
+      36.98529411764706
+    ],
+    "effective_ppi": 345.43999999999994
+  },
+  {
+    "id": "ZC-HER-0006",
+    "file": "originais/PEOES_A.png",
+    "native_pixels": [
+      1536,
+      1024
+    ],
+    "crop": [
+      1158,
+      513,
+      1400,
+      1016
+    ],
+    "print_mm": [
+      20.0,
+      41.570247933884296
+    ],
+    "effective_ppi": 307.34
+  },
+  {
+    "id": "ZC-HER-0007",
+    "file": "originais/PEOES_B.png",
+    "native_pixels": [
+      1536,
+      1024
+    ],
+    "crop": [
+      178,
+      9,
+      414,
+      512
+    ],
+    "print_mm": [
+      20.0,
+      42.62711864406779
+    ],
+    "effective_ppi": 299.71999999999997
+  },
+  {
+    "id": "ZC-HER-0008",
+    "file": "originais/PEOES_B.png",
+    "native_pixels": [
+      1536,
+      1024
+    ],
+    "crop": [
+      632,
+      7,
+      898,
+      512
+    ],
+    "print_mm": [
+      20.0,
+      37.96992481203007
+    ],
+    "effective_ppi": 337.82
+  },
+  {
+    "id": "ZC-HER-0009",
+    "file": "originais/PEOES_B.png",
+    "native_pixels": [
+      1536,
+      1024
+    ],
+    "crop": [
+      1130,
+      6,
+      1422,
+      511
+    ],
+    "print_mm": [
+      20.0,
+      34.58904109589041
+    ],
+    "effective_ppi": 370.84
+  },
+  {
+    "id": "ZC-HER-0010",
+    "file": "originais/PEOES_B.png",
+    "native_pixels": [
+      1536,
+      1024
+    ],
+    "crop": [
+      158,
+      513,
+      442,
+      1019
+    ],
+    "print_mm": [
+      20.0,
+      35.63380281690141
+    ],
+    "effective_ppi": 360.67999999999995
+  },
+  {
+    "id": "ZC-HER-0011",
+    "file": "originais/PEOES_B.png",
+    "native_pixels": [
+      1536,
+      1024
+    ],
+    "crop": [
+      630,
+      512,
+      928,
+      1020
+    ],
+    "print_mm": [
+      20.0,
+      34.09395973154363
+    ],
+    "effective_ppi": 378.46
+  },
+  {
+    "id": "ZC-HER-0012",
+    "file": "originais/PEOES_B.png",
+    "native_pixels": [
+      1536,
+      1024
+    ],
+    "crop": [
+      1117,
+      512,
+      1361,
+      1019
+    ],
+    "print_mm": [
+      20.0,
+      41.557377049180324
+    ],
+    "effective_ppi": 309.88
+  },
+  {
+    "id": "ZC-HER-0013",
+    "file": "originais/PEOES_C.png",
+    "native_pixels": [
+      1536,
+      1024
+    ],
+    "crop": [
+      174,
+      5,
+      369,
+      512
+    ],
+    "print_mm": [
+      16.923076923076923,
+      44.0
+    ],
+    "effective_ppi": 292.67727272727274
+  },
+  {
+    "id": "ZC-HER-0014",
+    "file": "originais/PEOES_C.png",
+    "native_pixels": [
+      1536,
+      1024
+    ],
+    "crop": [
+      661,
+      8,
+      885,
+      508
+    ],
+    "print_mm": [
+      19.712,
+      44.0
+    ],
+    "effective_ppi": 288.6363636363636
+  },
+  {
+    "id": "ZC-HER-0015",
+    "file": "originais/PEOES_C.png",
+    "native_pixels": [
+      1536,
+      1024
+    ],
+    "crop": [
+      1149,
+      3,
+      1392,
+      508
+    ],
+    "print_mm": [
+      20.0,
+      41.56378600823045
+    ],
+    "effective_ppi": 308.60999999999996
+  },
+  {
+    "id": "ZC-HER-0016",
+    "file": "originais/PEOES_C.png",
+    "native_pixels": [
+      1536,
+      1024
+    ],
+    "crop": [
+      131,
+      512,
+      405,
+      1019
+    ],
+    "print_mm": [
+      20.0,
+      37.00729927007299
+    ],
+    "effective_ppi": 347.98
+  },
+  {
+    "id": "ZC-HER-0017",
+    "file": "originais/PEOES_C.png",
+    "native_pixels": [
+      1536,
+      1024
+    ],
+    "crop": [
+      655,
+      512,
+      859,
+      1018
+    ],
+    "print_mm": [
+      17.73913043478261,
+      44.0
+    ],
+    "effective_ppi": 292.09999999999997
+  },
+  {
+    "id": "ZC-HER-0018",
+    "file": "originais/PEOES_C.png",
+    "native_pixels": [
+      1536,
+      1024
+    ],
+    "crop": [
+      1181,
+      512,
+      1414,
+      1016
+    ],
+    "print_mm": [
+      20.0,
+      43.261802575107296
+    ],
+    "effective_ppi": 295.90999999999997
+  },
+  {
+    "id": "ZC-HER-0019",
+    "file": "originais/PEOES_D.png",
+    "native_pixels": [
+      1024,
+      1536
+    ],
+    "crop": [
+      14,
+      10,
+      340,
+      760
+    ],
+    "print_mm": [
+      19.125333333333334,
+      44.0
+    ],
+    "effective_ppi": 432.95454545454544
+  },
+  {
+    "id": "ZC-HER-0020",
+    "file": "originais/PEOES_D.png",
+    "native_pixels": [
+      1024,
+      1536
+    ],
+    "crop": [
+      362,
+      10,
+      682,
+      757
+    ],
+    "print_mm": [
+      18.848728246318608,
+      44.0
+    ],
+    "effective_ppi": 431.2227272727273
+  },
+  {
+    "id": "ZC-HER-0021",
+    "file": "originais/PEOES_D.png",
+    "native_pixels": [
+      1024,
+      1536
+    ],
+    "crop": [
+      682,
+      11,
+      1020,
+      754
+    ],
+    "print_mm": [
+      20.0,
+      43.96449704142012
+    ],
+    "effective_ppi": 429.26
+  },
+  {
+    "id": "ZC-HER-0022",
+    "file": "originais/PEOES_D.png",
+    "native_pixels": [
+      1024,
+      1536
+    ],
+    "crop": [
+      6,
+      768,
+      341,
+      1522
+    ],
+    "print_mm": [
+      19.549071618037136,
+      44.0
+    ],
+    "effective_ppi": 435.26363636363635
+  },
+  {
+    "id": "ZC-HER-0023",
+    "file": "originais/PEOES_D.png",
+    "native_pixels": [
+      1024,
+      1536
+    ],
+    "crop": [
+      341,
+      768,
+      679,
+      1519
+    ],
+    "print_mm": [
+      19.802929427430094,
+      44.0
+    ],
+    "effective_ppi": 433.53181818181815
+  },
+  {
+    "id": "ZC-HER-0024",
+    "file": "originais/PEOES_D.png",
+    "native_pixels": [
+      1024,
+      1536
+    ],
+    "crop": [
+      700,
+      768,
+      1023,
+      1523
+    ],
+    "print_mm": [
+      18.82384105960265,
+      44.0
+    ],
+    "effective_ppi": 435.84090909090907
+  }
+]

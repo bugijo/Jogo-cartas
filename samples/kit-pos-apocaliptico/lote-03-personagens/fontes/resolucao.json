@@ -1,0 +1,686 @@
+[
+  {
+    "id": "ZC-HER-0007",
+    "file": "originais/RETRATOS_02.png",
+    "native_pixels": [
+      1437,
+      1095
+    ],
+    "crop_pixels": [
+      20,
+      16,
+      461,
+      515
+    ],
+    "printed_mm": [
+      52.14228456913828,
+      59.00000000000001
+    ],
+    "effective_ppi": 214.82372881355928
+  },
+  {
+    "id": "ZC-HER-0008",
+    "file": "originais/RETRATOS_02.png",
+    "native_pixels": [
+      1437,
+      1095
+    ],
+    "crop_pixels": [
+      500,
+      16,
+      937,
+      515
+    ],
+    "printed_mm": [
+      51.66933867735471,
+      59.00000000000001
+    ],
+    "effective_ppi": 214.82372881355928
+  },
+  {
+    "id": "ZC-HER-0009",
+    "file": "originais/RETRATOS_02.png",
+    "native_pixels": [
+      1437,
+      1095
+    ],
+    "crop_pixels": [
+      975,
+      16,
+      1417,
+      515
+    ],
+    "printed_mm": [
+      52.26052104208417,
+      59.00000000000001
+    ],
+    "effective_ppi": 214.82372881355928
+  },
+  {
+    "id": "ZC-HER-0010",
+    "file": "originais/RETRATOS_02.png",
+    "native_pixels": [
+      1437,
+      1095
+    ],
+    "crop_pixels": [
+      20,
+      553,
+      461,
+      1080
+    ],
+    "printed_mm": [
+      49.3719165085389,
+      59.00000000000001
+    ],
+    "effective_ppi": 226.87796610169488
+  },
+  {
+    "id": "ZC-HER-0011",
+    "file": "originais/RETRATOS_02.png",
+    "native_pixels": [
+      1437,
+      1095
+    ],
+    "crop_pixels": [
+      500,
+      553,
+      937,
+      1080
+    ],
+    "printed_mm": [
+      48.92409867172676,
+      59.00000000000001
+    ],
+    "effective_ppi": 226.87796610169488
+  },
+  {
+    "id": "ZC-HER-0012",
+    "file": "originais/RETRATOS_02.png",
+    "native_pixels": [
+      1437,
+      1095
+    ],
+    "crop_pixels": [
+      975,
+      553,
+      1417,
+      1080
+    ],
+    "printed_mm": [
+      49.483870967741936,
+      59.00000000000001
+    ],
+    "effective_ppi": 226.87796610169488
+  },
+  {
+    "id": "ZC-HER-0013",
+    "file": "originais/RETRATOS_03.png",
+    "native_pixels": [
+      1437,
+      1095
+    ],
+    "crop_pixels": [
+      18,
+      15,
+      460,
+      515
+    ],
+    "printed_mm": [
+      52.156,
+      59.00000000000001
+    ],
+    "effective_ppi": 215.25423728813556
+  },
+  {
+    "id": "ZC-HER-0014",
+    "file": "originais/RETRATOS_03.png",
+    "native_pixels": [
+      1437,
+      1095
+    ],
+    "crop_pixels": [
+      496,
+      15,
+      940,
+      515
+    ],
+    "printed_mm": [
+      52.391999999999996,
+      59.00000000000001
+    ],
+    "effective_ppi": 215.25423728813556
+  },
+  {
+    "id": "ZC-HER-0015",
+    "file": "originais/RETRATOS_03.png",
+    "native_pixels": [
+      1437,
+      1095
+    ],
+    "crop_pixels": [
+      975,
+      15,
+      1418,
+      515
+    ],
+    "printed_mm": [
+      52.274,
+      59.00000000000001
+    ],
+    "effective_ppi": 215.25423728813556
+  },
+  {
+    "id": "ZC-HER-0016",
+    "file": "originais/RETRATOS_03.png",
+    "native_pixels": [
+      1437,
+      1095
+    ],
+    "crop_pixels": [
+      18,
+      558,
+      460,
+      1074
+    ],
+    "printed_mm": [
+      50.538759689922486,
+      59.00000000000001
+    ],
+    "effective_ppi": 222.14237288135587
+  },
+  {
+    "id": "ZC-HER-0017",
+    "file": "originais/RETRATOS_03.png",
+    "native_pixels": [
+      1437,
+      1095
+    ],
+    "crop_pixels": [
+      496,
+      558,
+      940,
+      1074
+    ],
+    "printed_mm": [
+      50.76744186046512,
+      59.00000000000001
+    ],
+    "effective_ppi": 222.14237288135587
+  },
+  {
+    "id": "ZC-HER-0018",
+    "file": "originais/RETRATOS_03.png",
+    "native_pixels": [
+      1437,
+      1095
+    ],
+    "crop_pixels": [
+      975,
+      558,
+      1418,
+      1074
+    ],
+    "printed_mm": [
+      50.653100775193806,
+      59.00000000000001
+    ],
+    "effective_ppi": 222.14237288135587
+  },
+  {
+    "id": "ZC-HER-0019",
+    "file": "originais/RETRATOS_04.png",
+    "native_pixels": [
+      1437,
+      1095
+    ],
+    "crop_pixels": [
+      16,
+      16,
+      461,
+      503
+    ],
+    "printed_mm": [
+      53.91170431211499,
+      59.00000000000001
+    ],
+    "effective_ppi": 209.65762711864403
+  },
+  {
+    "id": "ZC-HER-0020",
+    "file": "originais/RETRATOS_04.png",
+    "native_pixels": [
+      1437,
+      1095
+    ],
+    "crop_pixels": [
+      495,
+      16,
+      941,
+      503
+    ],
+    "printed_mm": [
+      54.03285420944558,
+      59.00000000000001
+    ],
+    "effective_ppi": 209.65762711864403
+  },
+  {
+    "id": "ZC-HER-0021",
+    "file": "originais/RETRATOS_04.png",
+    "native_pixels": [
+      1437,
+      1095
+    ],
+    "crop_pixels": [
+      975,
+      16,
+      1419,
+      503
+    ],
+    "printed_mm": [
+      53.790554414784395,
+      59.00000000000001
+    ],
+    "effective_ppi": 209.65762711864403
+  },
+  {
+    "id": "ZC-HER-0022",
+    "file": "originais/RETRATOS_04.png",
+    "native_pixels": [
+      1437,
+      1095
+    ],
+    "crop_pixels": [
+      16,
+      540,
+      461,
+      1081
+    ],
+    "printed_mm": [
+      48.53049907578558,
+      59.00000000000001
+    ],
+    "effective_ppi": 232.90508474576268
+  },
+  {
+    "id": "ZC-HER-0023",
+    "file": "originais/RETRATOS_04.png",
+    "native_pixels": [
+      1437,
+      1095
+    ],
+    "crop_pixels": [
+      495,
+      540,
+      941,
+      1081
+    ],
+    "printed_mm": [
+      48.63955637707949,
+      59.00000000000001
+    ],
+    "effective_ppi": 232.90508474576268
+  },
+  {
+    "id": "ZC-HER-0024",
+    "file": "originais/RETRATOS_04.png",
+    "native_pixels": [
+      1437,
+      1095
+    ],
+    "crop_pixels": [
+      975,
+      540,
+      1419,
+      1081
+    ],
+    "printed_mm": [
+      48.42144177449168,
+      59.00000000000001
+    ],
+    "effective_ppi": 232.90508474576268
+  },
+  {
+    "id": "ZC-HER-0007",
+    "file": "originais/RETRATOS_02.png",
+    "native_pixels": [
+      1437,
+      1095
+    ],
+    "crop_pixels": [
+      20,
+      16,
+      461,
+      515
+    ],
+    "printed_mm": [
+      71.58517034068136,
+      81.0
+    ],
+    "effective_ppi": 156.47654320987652
+  },
+  {
+    "id": "ZC-HER-0008",
+    "file": "originais/RETRATOS_02.png",
+    "native_pixels": [
+      1437,
+      1095
+    ],
+    "crop_pixels": [
+      500,
+      16,
+      937,
+      515
+    ],
+    "printed_mm": [
+      70.93587174348697,
+      81.0
+    ],
+    "effective_ppi": 156.47654320987652
+  },
+  {
+    "id": "ZC-HER-0009",
+    "file": "originais/RETRATOS_02.png",
+    "native_pixels": [
+      1437,
+      1095
+    ],
+    "crop_pixels": [
+      975,
+      16,
+      1417,
+      515
+    ],
+    "printed_mm": [
+      71.74749498997996,
+      81.0
+    ],
+    "effective_ppi": 156.47654320987652
+  },
+  {
+    "id": "ZC-HER-0010",
+    "file": "originais/RETRATOS_02.png",
+    "native_pixels": [
+      1437,
+      1095
+    ],
+    "crop_pixels": [
+      20,
+      553,
+      461,
+      1080
+    ],
+    "printed_mm": [
+      67.78178368121442,
+      81.0
+    ],
+    "effective_ppi": 165.25679012345677
+  },
+  {
+    "id": "ZC-HER-0011",
+    "file": "originais/RETRATOS_02.png",
+    "native_pixels": [
+      1437,
+      1095
+    ],
+    "crop_pixels": [
+      500,
+      553,
+      937,
+      1080
+    ],
+    "printed_mm": [
+      67.16698292220113,
+      81.0
+    ],
+    "effective_ppi": 165.25679012345677
+  },
+  {
+    "id": "ZC-HER-0012",
+    "file": "originais/RETRATOS_02.png",
+    "native_pixels": [
+      1437,
+      1095
+    ],
+    "crop_pixels": [
+      975,
+      553,
+      1417,
+      1080
+    ],
+    "printed_mm": [
+      67.93548387096774,
+      81.0
+    ],
+    "effective_ppi": 165.25679012345677
+  },
+  {
+    "id": "ZC-HER-0013",
+    "file": "originais/RETRATOS_03.png",
+    "native_pixels": [
+      1437,
+      1095
+    ],
+    "crop_pixels": [
+      18,
+      15,
+      460,
+      515
+    ],
+    "printed_mm": [
+      71.604,
+      81.0
+    ],
+    "effective_ppi": 156.7901234567901
+  },
+  {
+    "id": "ZC-HER-0014",
+    "file": "originais/RETRATOS_03.png",
+    "native_pixels": [
+      1437,
+      1095
+    ],
+    "crop_pixels": [
+      496,
+      15,
+      940,
+      515
+    ],
+    "printed_mm": [
+      71.928,
+      81.0
+    ],
+    "effective_ppi": 156.7901234567901
+  },
+  {
+    "id": "ZC-HER-0015",
+    "file": "originais/RETRATOS_03.png",
+    "native_pixels": [
+      1437,
+      1095
+    ],
+    "crop_pixels": [
+      975,
+      15,
+      1418,
+      515
+    ],
+    "printed_mm": [
+      71.76599999999999,
+      81.0
+    ],
+    "effective_ppi": 156.7901234567901
+  },
+  {
+    "id": "ZC-HER-0016",
+    "file": "originais/RETRATOS_03.png",
+    "native_pixels": [
+      1437,
+      1095
+    ],
+    "crop_pixels": [
+      18,
+      558,
+      460,
+      1074
+    ],
+    "printed_mm": [
+      69.38372093023257,
+      81.0
+    ],
+    "effective_ppi": 161.80740740740737
+  },
+  {
+    "id": "ZC-HER-0017",
+    "file": "originais/RETRATOS_03.png",
+    "native_pixels": [
+      1437,
+      1095
+    ],
+    "crop_pixels": [
+      496,
+      558,
+      940,
+      1074
+    ],
+    "printed_mm": [
+      69.69767441860466,
+      81.0
+    ],
+    "effective_ppi": 161.80740740740737
+  },
+  {
+    "id": "ZC-HER-0018",
+    "file": "originais/RETRATOS_03.png",
+    "native_pixels": [
+      1437,
+      1095
+    ],
+    "crop_pixels": [
+      975,
+      558,
+      1418,
+      1074
+    ],
+    "printed_mm": [
+      69.54069767441861,
+      81.0
+    ],
+    "effective_ppi": 161.80740740740737
+  },
+  {
+    "id": "ZC-HER-0019",
+    "file": "originais/RETRATOS_04.png",
+    "native_pixels": [
+      1437,
+      1095
+    ],
+    "crop_pixels": [
+      16,
+      16,
+      461,
+      503
+    ],
+    "printed_mm": [
+      74.01437371663245,
+      81.0
+    ],
+    "effective_ppi": 152.71358024691355
+  },
+  {
+    "id": "ZC-HER-0020",
+    "file": "originais/RETRATOS_04.png",
+    "native_pixels": [
+      1437,
+      1095
+    ],
+    "crop_pixels": [
+      495,
+      16,
+      941,
+      503
+    ],
+    "printed_mm": [
+      74.18069815195072,
+      81.0
+    ],
+    "effective_ppi": 152.71358024691355
+  },
+  {
+    "id": "ZC-HER-0021",
+    "file": "originais/RETRATOS_04.png",
+    "native_pixels": [
+      1437,
+      1095
+    ],
+    "crop_pixels": [
+      975,
+      16,
+      1419,
+      503
+    ],
+    "printed_mm": [
+      73.84804928131418,
+      81.0
+    ],
+    "effective_ppi": 152.71358024691355
+  },
+  {
+    "id": "ZC-HER-0022",
+    "file": "originais/RETRATOS_04.png",
+    "native_pixels": [
+      1437,
+      1095
+    ],
+    "crop_pixels": [
+      16,
+      540,
+      461,
+      1081
+    ],
+    "printed_mm": [
+      66.62661737523105,
+      81.0
+    ],
+    "effective_ppi": 169.6469135802469
+  },
+  {
+    "id": "ZC-HER-0023",
+    "file": "originais/RETRATOS_04.png",
+    "native_pixels": [
+      1437,
+      1095
+    ],
+    "crop_pixels": [
+      495,
+      540,
+      941,
+      1081
+    ],
+    "printed_mm": [
+      66.77634011090574,
+      81.0
+    ],
+    "effective_ppi": 169.6469135802469
+  },
+  {
+    "id": "ZC-HER-0024",
+    "file": "originais/RETRATOS_04.png",
+    "native_pixels": [
+      1437,
+      1095
+    ],
+    "crop_pixels": [
+      975,
+      540,
+      1419,
+      1081
+    ],
+    "printed_mm": [
+      66.47689463955638,
+      81.0
+    ],
+    "effective_ppi": 169.6469135802469
+  }
+]

@@ -1,0 +1,1 @@
+18 retratos e 24 peões integrados em PDFs isolados; fontes mecânicas intactas. Próximo: concluir cartas contextualizadas e oficina contínua. Não regenerar estes retratos sem defeito concreto. Reproduzir com python fontes/build.py e python fontes/standees.py a partir do repositório.

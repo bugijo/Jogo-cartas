@@ -1,0 +1,704 @@
+[
+  {
+    "id": "ZC-HER-0007",
+    "name": "Duda",
+    "profession": "técnica em eletrônica",
+    "profession_status": "consolidada 0.2 (editorial D02)",
+    "profession_origin": "decisão editorial; fonte 2.0 não especifica",
+    "attributes": {
+      "Corpo": 1,
+      "Agilidade": 3,
+      "Técnica": 2
+    },
+    "ability": "Uma vez/visita, Lanterna não custa carga para você.",
+    "story": "Os rádios quebrados ainda têm alguma coisa a dizer.",
+    "initial": true,
+    "unlock": "Fundador: seleção inicial",
+    "progression": {
+      "3": [
+        "Circuito: +1 Técnica no reparo da van.",
+        "Reserva: capacidade 5 só para Ferramentas e peças."
+      ],
+      "6": [
+        "Aprimoramento: +1 em seu menor atributo (empate: escolha), máximo 3.",
+        "Preparação: +1 capacidade permanente."
+      ],
+      "9": [
+        "Veterano: uma rerrolagem de teste pessoal por dia, aceite segundo resultado.",
+        "Resiliência: ignore primeiro ferimento recebido no dia."
+      ]
+    },
+    "art": {
+      "path": "assets/portraits_01.png",
+      "col": 0,
+      "row": 2
+    },
+    "refs": [
+      "RULES.md §3",
+      "RULES.md §13"
+    ]
+  },
+  {
+    "id": "ZC-HER-0008",
+    "name": "Rosa",
+    "profession": "cozinheira escolar",
+    "profession_status": "consolidada 0.2 (editorial D02)",
+    "profession_origin": "decisão editorial; fonte 2.0 não especifica",
+    "attributes": {
+      "Corpo": 2,
+      "Agilidade": 1,
+      "Técnica": 3
+    },
+    "ability": "Quando trabalha no abrigo, pode conservar uma Carne: retire vencimento de uma carta/dia.",
+    "story": "Nunca serviu uma refeição sem saber quem ainda faltava.",
+    "initial": true,
+    "unlock": "Fundador: seleção inicial",
+    "progression": {
+      "3": [
+        "Despensa: capacidade +1 apenas para comida e água.",
+        "Caldo: cuidado de Assustado também remove 1 fadiga."
+      ],
+      "6": [
+        "Aprimoramento: +1 em seu menor atributo (empate: escolha), máximo 3.",
+        "Preparação: +1 capacidade permanente."
+      ],
+      "9": [
+        "Veterano: uma rerrolagem de teste pessoal por dia, aceite segundo resultado.",
+        "Resiliência: ignore primeiro ferimento recebido no dia."
+      ]
+    },
+    "art": {
+      "path": "assets/portraits_01.png",
+      "col": 1,
+      "row": 2
+    },
+    "refs": [
+      "RULES.md §3",
+      "RULES.md §13"
+    ]
+  },
+  {
+    "id": "ZC-HER-0009",
+    "name": "Joel",
+    "profession": "bombeiro civil",
+    "profession_status": "consolidada 0.2 (editorial D02)",
+    "profession_origin": "decisão editorial; fonte 2.0 não especifica",
+    "attributes": {
+      "Corpo": 3,
+      "Agilidade": 2,
+      "Técnica": 1
+    },
+    "ability": "Escoltar incapacitado ocupa só 1 carga em sua mochila.",
+    "story": "Voltar para buscar alguém sempre foi parte do serviço.",
+    "initial": true,
+    "unlock": "Fundador: seleção inicial",
+    "progression": {
+      "3": [
+        "Resgate: pode escoltar dois incapacitados.",
+        "Escudo: assuma dano de aliado na mesma zona, 1/rodada."
+      ],
+      "6": [
+        "Aprimoramento: +1 em seu menor atributo (empate: escolha), máximo 3.",
+        "Preparação: +1 capacidade permanente."
+      ],
+      "9": [
+        "Veterano: uma rerrolagem de teste pessoal por dia, aceite segundo resultado.",
+        "Resiliência: ignore primeiro ferimento recebido no dia."
+      ]
+    },
+    "art": {
+      "path": "assets/portraits_01.png",
+      "col": 2,
+      "row": 2
+    },
+    "refs": [
+      "RULES.md §3",
+      "RULES.md §13"
+    ]
+  },
+  {
+    "id": "ZC-HER-0010",
+    "name": "Yumi",
+    "profession": "técnica de laboratório",
+    "profession_status": "consolidada 0.2 (editorial D02)",
+    "profession_origin": "decisão editorial; fonte 2.0 não especifica",
+    "attributes": {
+      "Corpo": 1,
+      "Agilidade": 2,
+      "Técnica": 3
+    },
+    "ability": "Uma falha sua de objetivo pode ser repetida por 1 PA, uma vez/visita.",
+    "story": "Aprendeu a não confiar em água transparente.",
+    "initial": true,
+    "unlock": "Fundador: seleção inicial",
+    "progression": {
+      "3": [
+        "Amostra: +1 Técnica para Membrana/Bomba.",
+        "Protocolo: investigação sua conta 2 progressos, protege só a noite atual."
+      ],
+      "6": [
+        "Aprimoramento: +1 em seu menor atributo (empate: escolha), máximo 3.",
+        "Preparação: +1 capacidade permanente."
+      ],
+      "9": [
+        "Veterano: uma rerrolagem de teste pessoal por dia, aceite segundo resultado.",
+        "Resiliência: ignore primeiro ferimento recebido no dia."
+      ]
+    },
+    "art": {
+      "path": "assets/portraits_01.png",
+      "col": 0,
+      "row": 3
+    },
+    "refs": [
+      "RULES.md §3",
+      "RULES.md §13"
+    ]
+  },
+  {
+    "id": "ZC-HER-0011",
+    "name": "Téo",
+    "profession": "encanador",
+    "profession_status": "fonte p.10",
+    "profession_origin": "documento 2.0, p.10",
+    "attributes": {
+      "Corpo": 2,
+      "Agilidade": 1,
+      "Técnica": 3
+    },
+    "ability": "Quando trabalha no filtro, vale 2 trabalhos, mantendo teto 2/dia.",
+    "story": "Conhece Santa Aurora pelo que passa debaixo das ruas.",
+    "initial": true,
+    "unlock": "Fundador: seleção inicial",
+    "progression": {
+      "3": [
+        "Pressão: enchimento inicial do filtro ganha +4 água.",
+        "Junta: Bomba ocupa só 1 carga com ele."
+      ],
+      "6": [
+        "Aprimoramento: +1 em seu menor atributo (empate: escolha), máximo 3.",
+        "Preparação: +1 capacidade permanente."
+      ],
+      "9": [
+        "Veterano: uma rerrolagem de teste pessoal por dia, aceite segundo resultado.",
+        "Resiliência: ignore primeiro ferimento recebido no dia."
+      ]
+    },
+    "art": {
+      "path": "assets/portraits_01.png",
+      "col": 1,
+      "row": 3
+    },
+    "refs": [
+      "RULES.md §3",
+      "RULES.md §13"
+    ]
+  },
+  {
+    "id": "ZC-HER-0012",
+    "name": "Célia",
+    "profession": "professora",
+    "profession_status": "fonte p.10",
+    "profession_origin": "documento 2.0, p.10",
+    "attributes": {
+      "Corpo": 1,
+      "Agilidade": 3,
+      "Técnica": 2
+    },
+    "ability": "Seu trabalho de cuidado resolve dois Assustados no mesmo dia.",
+    "story": "Continua chamando cada pessoa pelo nome.",
+    "initial": true,
+    "unlock": "Fundador: seleção inicial",
+    "progression": {
+      "3": [
+        "Roda: ao cuidar de Assustado recupere 1 Moral, 1/campanha.",
+        "Arquivo: +1 progresso extra ao investigar, sem proteção futura."
+      ],
+      "6": [
+        "Aprimoramento: +1 em seu menor atributo (empate: escolha), máximo 3.",
+        "Preparação: +1 capacidade permanente."
+      ],
+      "9": [
+        "Veterano: uma rerrolagem de teste pessoal por dia, aceite segundo resultado.",
+        "Resiliência: ignore primeiro ferimento recebido no dia."
+      ]
+    },
+    "art": {
+      "path": "assets/portraits_01.png",
+      "col": 2,
+      "row": 3
+    },
+    "refs": [
+      "RULES.md §3",
+      "RULES.md §13"
+    ]
+  },
+  {
+    "id": "ZC-HER-0013",
+    "name": "Aline",
+    "profession": "veterinária",
+    "profession_status": "fonte p.10",
+    "profession_origin": "documento 2.0, p.10",
+    "attributes": {
+      "Corpo": 2,
+      "Agilidade": 2,
+      "Técnica": 3
+    },
+    "ability": "Seu cuidado pode reativar alerta de cão privado com 1 comida+1 água, na noite.",
+    "story": "Recusou trocar companheiros por utilidade.",
+    "initial": false,
+    "unlock": "Resgate: Hospital segunda visita ou Condomínio terceira; duas noites, vaga e aptidão.",
+    "progression": {
+      "3": [
+        "Vínculo: cão alerta +2 em vez de +1 se ela vigiar.",
+        "Clínica: +1 Técnica no socorro."
+      ],
+      "6": [
+        "Aprimoramento: +1 em seu menor atributo (empate: escolha), máximo 3.",
+        "Preparação: +1 capacidade permanente."
+      ],
+      "9": [
+        "Veterano: uma rerrolagem de teste pessoal por dia, aceite segundo resultado.",
+        "Resiliência: ignore primeiro ferimento recebido no dia."
+      ]
+    },
+    "art": {
+      "path": "assets/portraits_02.png",
+      "col": 0,
+      "row": 0
+    },
+    "refs": [
+      "RULES.md §3",
+      "RULES.md §13"
+    ]
+  },
+  {
+    "id": "ZC-HER-0014",
+    "name": "Samuel",
+    "profession": "carpinteiro",
+    "profession_status": "fonte p.10",
+    "profession_origin": "documento 2.0, p.10",
+    "attributes": {
+      "Corpo": 3,
+      "Agilidade": 1,
+      "Técnica": 2
+    },
+    "ability": "Ao construir Casa, reduza custo em 1 Material se você trabalhar nela.",
+    "story": "A primeira coisa que fez foi uma mesa para todos.",
+    "initial": false,
+    "unlock": "Resgate: Condomínio; duas noites, vaga e aptidão.",
+    "progression": {
+      "3": [
+        "Trave: torre sua exige 1 trabalho a menos.",
+        "Carga: Madeira ocupa 0 carga, máximo duas com ele."
+      ],
+      "6": [
+        "Aprimoramento: +1 em seu menor atributo (empate: escolha), máximo 3.",
+        "Preparação: +1 capacidade permanente."
+      ],
+      "9": [
+        "Veterano: uma rerrolagem de teste pessoal por dia, aceite segundo resultado.",
+        "Resiliência: ignore primeiro ferimento recebido no dia."
+      ]
+    },
+    "art": {
+      "path": "assets/portraits_02.png",
+      "col": 1,
+      "row": 0
+    },
+    "refs": [
+      "RULES.md §3",
+      "RULES.md §13"
+    ]
+  },
+  {
+    "id": "ZC-HER-0015",
+    "name": "Bruna",
+    "profession": "agricultora",
+    "profession_status": "fonte p.10",
+    "profession_origin": "documento 2.0, p.10",
+    "attributes": {
+      "Corpo": 2,
+      "Agilidade": 1,
+      "Técnica": 3
+    },
+    "ability": "Se trabalhar na horta ativa, produz 6 porções em vez de 4.",
+    "story": "Guardou sementes em envelopes de contas antigas.",
+    "initial": false,
+    "unlock": "Resgate: Condomínio; duas noites, vaga e aptidão.",
+    "progression": {
+      "3": [
+        "Mudas: horta exige 1 Material a menos com seu trabalho.",
+        "Solo: sua coleta de emergência gera 2 porções, ainda teto coletivo 2."
+      ],
+      "6": [
+        "Aprimoramento: +1 em seu menor atributo (empate: escolha), máximo 3.",
+        "Preparação: +1 capacidade permanente."
+      ],
+      "9": [
+        "Veterano: uma rerrolagem de teste pessoal por dia, aceite segundo resultado.",
+        "Resiliência: ignore primeiro ferimento recebido no dia."
+      ]
+    },
+    "art": {
+      "path": "assets/portraits_02.png",
+      "col": 2,
+      "row": 0
+    },
+    "refs": [
+      "RULES.md §3",
+      "RULES.md §13"
+    ]
+  },
+  {
+    "id": "ZC-HER-0016",
+    "name": "Raul",
+    "profession": "caminhoneiro",
+    "profession_status": "fonte p.10",
+    "profession_origin": "documento 2.0, p.10",
+    "attributes": {
+      "Corpo": 3,
+      "Agilidade": 2,
+      "Técnica": 1
+    },
+    "ability": "Van conduzida por ele gasta 1 combustível a menos no primeiro trecho do dia.",
+    "story": "Sabe o que uma carga vale quando a estrada fecha.",
+    "initial": false,
+    "unlock": "Resgate: Posto; duas noites, vaga e aptidão.",
+    "progression": {
+      "3": [
+        "Amarração: van ganha +2 cargas nesse dia.",
+        "Motorista: ignore a primeira fadiga noturna de viagem do dia."
+      ],
+      "6": [
+        "Aprimoramento: +1 em seu menor atributo (empate: escolha), máximo 3.",
+        "Preparação: +1 capacidade permanente."
+      ],
+      "9": [
+        "Veterano: uma rerrolagem de teste pessoal por dia, aceite segundo resultado.",
+        "Resiliência: ignore primeiro ferimento recebido no dia."
+      ]
+    },
+    "art": {
+      "path": "assets/portraits_02.png",
+      "col": 0,
+      "row": 1
+    },
+    "refs": [
+      "RULES.md §3",
+      "RULES.md §13"
+    ]
+  },
+  {
+    "id": "ZC-HER-0017",
+    "name": "Denise",
+    "profession": "médica",
+    "profession_status": "fonte p.10",
+    "profession_origin": "documento 2.0, p.10",
+    "attributes": {
+      "Corpo": 1,
+      "Agilidade": 2,
+      "Técnica": 3
+    },
+    "ability": "Seu socorro remove 2 ferimentos com um Medicamento, 1/rodada.",
+    "story": "Deixou o hospital carregando nomes, não prontuários.",
+    "initial": false,
+    "unlock": "Resgate: Hospital; duas noites, vaga e aptidão.",
+    "progression": {
+      "3": [
+        "Cirurgia: seu cuidado civil remove +1 ferimento.",
+        "Plantão: pode socorrer por 0 PA uma vez/dia."
+      ],
+      "6": [
+        "Aprimoramento: +1 em seu menor atributo (empate: escolha), máximo 3.",
+        "Preparação: +1 capacidade permanente."
+      ],
+      "9": [
+        "Veterano: uma rerrolagem de teste pessoal por dia, aceite segundo resultado.",
+        "Resiliência: ignore primeiro ferimento recebido no dia."
+      ]
+    },
+    "art": {
+      "path": "assets/portraits_02.png",
+      "col": 1,
+      "row": 1
+    },
+    "refs": [
+      "RULES.md §3",
+      "RULES.md §13"
+    ]
+  },
+  {
+    "id": "ZC-HER-0018",
+    "name": "Hugo",
+    "profession": "eletricista",
+    "profession_status": "fonte p.10",
+    "profession_origin": "documento 2.0, p.10",
+    "attributes": {
+      "Corpo": 2,
+      "Agilidade": 2,
+      "Técnica": 3
+    },
+    "ability": "Seu teste para recuperar van tem +1 Técnica.",
+    "story": "Luzes acesas ainda significam gente esperando.",
+    "initial": false,
+    "unlock": "Resgate: Condomínio segunda visita; duas noites, vaga e aptidão.",
+    "progression": {
+      "3": [
+        "Isolamento: ignore falha de reparo da van uma vez/campanha; não dá sucesso.",
+        "Fiação: quando trabalha em oficina, vale 2, teto normal."
+      ],
+      "6": [
+        "Aprimoramento: +1 em seu menor atributo (empate: escolha), máximo 3.",
+        "Preparação: +1 capacidade permanente."
+      ],
+      "9": [
+        "Veterano: uma rerrolagem de teste pessoal por dia, aceite segundo resultado.",
+        "Resiliência: ignore primeiro ferimento recebido no dia."
+      ]
+    },
+    "art": {
+      "path": "assets/portraits_02.png",
+      "col": 2,
+      "row": 1
+    },
+    "refs": [
+      "RULES.md §3",
+      "RULES.md §13"
+    ]
+  },
+  {
+    "id": "ZC-HER-0019",
+    "name": "Sol",
+    "profession": "guia",
+    "profession_status": "fonte p.10",
+    "profession_origin": "documento 2.0, p.10",
+    "attributes": {
+      "Corpo": 1,
+      "Agilidade": 3,
+      "Técnica": 2
+    },
+    "ability": "Uma vez/dia, após revelar Viagem, pode descartar e revelar outra, obrigatória.",
+    "story": "A cidade ficou irreconhecível, mas as encostas continuam iguais.",
+    "initial": false,
+    "unlock": "Resgate: Estação; duas noites, vaga e aptidão.",
+    "progression": {
+      "3": [
+        "Rastro: rota longa reduz mais um inimigo inicial.",
+        "Silêncio: ignore a primeira Horda noturna do capítulo."
+      ],
+      "6": [
+        "Aprimoramento: +1 em seu menor atributo (empate: escolha), máximo 3.",
+        "Preparação: +1 capacidade permanente."
+      ],
+      "9": [
+        "Veterano: uma rerrolagem de teste pessoal por dia, aceite segundo resultado.",
+        "Resiliência: ignore primeiro ferimento recebido no dia."
+      ]
+    },
+    "art": {
+      "path": "assets/portraits_02.png",
+      "col": 0,
+      "row": 2
+    },
+    "refs": [
+      "RULES.md §3",
+      "RULES.md §13"
+    ]
+  },
+  {
+    "id": "ZC-HER-0020",
+    "name": "Otávio",
+    "profession": "porteiro",
+    "profession_status": "fonte p.10",
+    "profession_origin": "documento 2.0, p.10",
+    "attributes": {
+      "Corpo": 3,
+      "Agilidade": 1,
+      "Técnica": 2
+    },
+    "ability": "Se vigiar, portão danificado ainda dá 1 Defesa nessa noite.",
+    "story": "Não abre uma porta sem saber como fechá-la.",
+    "initial": false,
+    "unlock": "Resgate: Posto; duas noites, vaga e aptidão.",
+    "progression": {
+      "3": [
+        "Chave: abre porta comum por 0 PA, 1/rodada.",
+        "Guarita: seu dado vigia tem sucesso em 3+."
+      ],
+      "6": [
+        "Aprimoramento: +1 em seu menor atributo (empate: escolha), máximo 3.",
+        "Preparação: +1 capacidade permanente."
+      ],
+      "9": [
+        "Veterano: uma rerrolagem de teste pessoal por dia, aceite segundo resultado.",
+        "Resiliência: ignore primeiro ferimento recebido no dia."
+      ]
+    },
+    "art": {
+      "path": "assets/portraits_02.png",
+      "col": 1,
+      "row": 2
+    },
+    "refs": [
+      "RULES.md §3",
+      "RULES.md §13"
+    ]
+  },
+  {
+    "id": "ZC-HER-0021",
+    "name": "Jana",
+    "profession": "cozinheira de campo",
+    "profession_status": "fonte p.10",
+    "profession_origin": "documento 2.0, p.10",
+    "attributes": {
+      "Corpo": 2,
+      "Agilidade": 2,
+      "Técnica": 2
+    },
+    "ability": "Sua tarefa no abrigo pode converter 1 Carne em Conserva sem mudar porções, 1/dia.",
+    "story": "Aprendeu a cozinhar quando parar era um risco.",
+    "initial": false,
+    "unlock": "Resgate: Mercado; duas noites, vaga e aptidão.",
+    "progression": {
+      "3": [
+        "Panela: converte duas cartas de Carne por tarefa.",
+        "Acolhida: cuidado seu remove Assustado e Fome se pagar 1 comida."
+      ],
+      "6": [
+        "Aprimoramento: +1 em seu menor atributo (empate: escolha), máximo 3.",
+        "Preparação: +1 capacidade permanente."
+      ],
+      "9": [
+        "Veterano: uma rerrolagem de teste pessoal por dia, aceite segundo resultado.",
+        "Resiliência: ignore primeiro ferimento recebido no dia."
+      ]
+    },
+    "art": {
+      "path": "assets/portraits_02.png",
+      "col": 2,
+      "row": 2
+    },
+    "refs": [
+      "RULES.md §3",
+      "RULES.md §13"
+    ]
+  },
+  {
+    "id": "ZC-HER-0022",
+    "name": "Miguel",
+    "profession": "socorrista",
+    "profession_status": "fonte p.10",
+    "profession_origin": "documento 2.0, p.10",
+    "attributes": {
+      "Corpo": 2,
+      "Agilidade": 3,
+      "Técnica": 1
+    },
+    "ability": "Primeiro socorro a incapacitado por dia custa 0 PA e consome Medicamento.",
+    "story": "Marca saídas com giz para lembrar a todos de voltar.",
+    "initial": false,
+    "unlock": "Resgate: Hospital; duas noites, vaga e aptidão.",
+    "progression": {
+      "3": [
+        "Maca: escolta incapacitado não ocupa carga com ele.",
+        "Pulso: +1 ferimento removido no primeiro socorro/dia."
+      ],
+      "6": [
+        "Aprimoramento: +1 em seu menor atributo (empate: escolha), máximo 3.",
+        "Preparação: +1 capacidade permanente."
+      ],
+      "9": [
+        "Veterano: uma rerrolagem de teste pessoal por dia, aceite segundo resultado.",
+        "Resiliência: ignore primeiro ferimento recebido no dia."
+      ]
+    },
+    "art": {
+      "path": "assets/portraits_02.png",
+      "col": 0,
+      "row": 3
+    },
+    "refs": [
+      "RULES.md §3",
+      "RULES.md §13"
+    ]
+  },
+  {
+    "id": "ZC-HER-0023",
+    "name": "Bia",
+    "profession": "mecânica",
+    "profession_status": "fonte p.10",
+    "profession_origin": "documento 2.0, p.10",
+    "attributes": {
+      "Corpo": 2,
+      "Agilidade": 1,
+      "Técnica": 3
+    },
+    "ability": "Recuperar van exige 1 PA a menos para você, mínimo 1.",
+    "story": "Ouviu uma van falhar e decidiu que não seria a última viagem.",
+    "initial": false,
+    "unlock": "Resgate: Oficina; duas noites, vaga e aptidão.",
+    "progression": {
+      "3": [
+        "Oficina: reparo de van no abrigo custa 1 Material.",
+        "Ajuste: van com ela tem +2 cargas."
+      ],
+      "6": [
+        "Aprimoramento: +1 em seu menor atributo (empate: escolha), máximo 3.",
+        "Preparação: +1 capacidade permanente."
+      ],
+      "9": [
+        "Veterano: uma rerrolagem de teste pessoal por dia, aceite segundo resultado.",
+        "Resiliência: ignore primeiro ferimento recebido no dia."
+      ]
+    },
+    "art": {
+      "path": "assets/portraits_02.png",
+      "col": 1,
+      "row": 3
+    },
+    "refs": [
+      "RULES.md §3",
+      "RULES.md §13"
+    ]
+  },
+  {
+    "id": "ZC-HER-0024",
+    "name": "Vicente",
+    "profession": "operador de rádio",
+    "profession_status": "fonte p.10",
+    "profession_origin": "documento 2.0, p.10",
+    "attributes": {
+      "Corpo": 1,
+      "Agilidade": 3,
+      "Técnica": 2
+    },
+    "ability": "Se trabalhar em vigilância, pode rerrolar seu dado uma vez.",
+    "story": "Repete o nome da cidade até alguém responder.",
+    "initial": false,
+    "unlock": "Resgate: Estação; duas noites, vaga e aptidão.",
+    "progression": {
+      "3": [
+        "Contato: missão Contato não requer rodada local.",
+        "Aviso: uma vez/campanha, reduza Força de um Cerco em 1 antes dos dados."
+      ],
+      "6": [
+        "Aprimoramento: +1 em seu menor atributo (empate: escolha), máximo 3.",
+        "Preparação: +1 capacidade permanente."
+      ],
+      "9": [
+        "Veterano: uma rerrolagem de teste pessoal por dia, aceite segundo resultado.",
+        "Resiliência: ignore primeiro ferimento recebido no dia."
+      ]
+    },
+    "art": {
+      "path": "assets/portraits_02.png",
+      "col": 2,
+      "row": 3
+    },
+    "refs": [
+      "RULES.md §3",
+      "RULES.md §13"
+    ]
+  }
+]

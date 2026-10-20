@@ -1,0 +1,30 @@
+{
+  "heroes": 18,
+  "hero_ids": [
+    "ZC-HER-0007",
+    "ZC-HER-0008",
+    "ZC-HER-0009",
+    "ZC-HER-0010",
+    "ZC-HER-0011",
+    "ZC-HER-0012",
+    "ZC-HER-0013",
+    "ZC-HER-0014",
+    "ZC-HER-0015",
+    "ZC-HER-0016",
+    "ZC-HER-0017",
+    "ZC-HER-0018",
+    "ZC-HER-0019",
+    "ZC-HER-0020",
+    "ZC-HER-0021",
+    "ZC-HER-0022",
+    "ZC-HER-0023",
+    "ZC-HER-0024"
+  ],
+  "sheet_pages": 9,
+  "contact_pages": 3,
+  "text_identical": true,
+  "a4": true,
+  "all_pages_rendered": true,
+  "physical_print": false,
+  "human_playtest": false
+}
