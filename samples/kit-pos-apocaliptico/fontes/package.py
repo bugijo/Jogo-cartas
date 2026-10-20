@@ -1,7 +1,7 @@
 """Empacota provas locais, sem publicar nem incluir caches/dependências."""
 from pathlib import Path
 import zipfile,subprocess,json,hashlib
-P=Path(__file__).resolve().parents[3];S=P/'samples/kit-pos-apocaliptico';O=Path('/mnt/data/zona-zero-provas');O.mkdir(parents=True,exist_ok=True)
+P=Path(__file__).resolve().parents[3];S=P/'samples/kit-pos-apocaliptico';O=P.parent/'entregas-zona-zero/provas-pos-apocalipticas';O.mkdir(parents=True,exist_ok=True)
 commit=subprocess.check_output(['git','rev-parse','HEAD'],cwd=P,text=True).strip()
 sets={
  'ZONA_ZERO_PROVAS_PDFS.zip':list((S/'pdfs').glob('*.pdf'))+list(S.glob('*.md')),
