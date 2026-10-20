@@ -6,8 +6,18 @@
       "a4": true
     },
     {
+      "file": "pdfs/COMPARACOES_100MM_A4.pdf",
+      "pages": 2,
+      "a4": true
+    },
+    {
       "file": "pdfs/FICHAS_SEIS_HEROIS.pdf",
       "pages": 3,
+      "a4": true
+    },
+    {
+      "file": "pdfs/HOSPITAL_4_A4.pdf",
+      "pages": 4,
       "a4": true
     },
     {
@@ -33,6 +43,11 @@
     {
       "file": "antes/FICHAS_SEIS_HEROIS.pdf",
       "pages": 3,
+      "a4": true
+    },
+    {
+      "file": "antes/HOSPITAL_4_A4.pdf",
+      "pages": 4,
       "a4": true
     },
     {

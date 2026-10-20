@@ -1,0 +1,64 @@
+{
+  "files": [
+    {
+      "file": "CARTAS_PROVA_DUPLEX.pdf",
+      "pages": 2,
+      "sheets": 1,
+      "min_effective_ppi": 249.24,
+      "duplex": true
+    },
+    {
+      "file": "COMPARACOES_100MM_A4.pdf",
+      "pages": 2,
+      "sheets": 2,
+      "min_effective_ppi": 215.0,
+      "duplex": false
+    },
+    {
+      "file": "FICHAS_SEIS_HEROIS.pdf",
+      "pages": 3,
+      "sheets": 3,
+      "min_effective_ppi": 221.71,
+      "duplex": false
+    },
+    {
+      "file": "HOSPITAL_4_A4.pdf",
+      "pages": 4,
+      "sheets": 4,
+      "min_effective_ppi": 215.0,
+      "duplex": false
+    },
+    {
+      "file": "INIMIGOS_PROVA_A4.pdf",
+      "pages": 1,
+      "sheets": 1,
+      "min_effective_ppi": 170.71,
+      "duplex": false
+    },
+    {
+      "file": "OFICINA_4_A4.pdf",
+      "pages": 4,
+      "sheets": 4,
+      "min_effective_ppi": 216.75,
+      "duplex": false
+    },
+    {
+      "file": "PERSONAGENS_PROVA_A4.pdf",
+      "pages": 1,
+      "sheets": 1,
+      "min_effective_ppi": 161.49,
+      "duplex": false
+    }
+  ],
+  "legacy_sources_unchanged": [
+    "RULES.md",
+    "CAMPAIGN.md",
+    "content/catalog.json",
+    "content/production/geometry_0.6.json",
+    "content/production/scenes_0.6.json",
+    "content/starter/01_guia.json"
+  ],
+  "duplex_back_identical": true,
+  "geometry_and_text_identical": true,
+  "assembly_mean_channel_difference_below_1": true
+}

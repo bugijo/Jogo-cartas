@@ -1,3 +1,5 @@
+> Provas locais de direção pós-apocalíptica: [samples/kit-pos-apocaliptico/README.md](samples/kit-pos-apocaliptico/README.md). Seis retratos, nove cartas, inimigos preservados, oficina e hospital. Trabalho parcial; edição distribuída intacta.
+
 # Tabuleiros 0.6 / atualização sem reimprimir cartas
 
 [Downloads 0.6](DOWNLOADS_0.6.md): mapas avulsos para quem já tem a 0.5, kits completos de 58/72 folhas, duas edições, fontes e provas. Cartas, personagens, peões, painel e abrigo preservados. Imprima quatro módulos comuns OU quatro de um destino. [Relatório visual](VISUAL_QA.md).

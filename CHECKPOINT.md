@@ -1,3 +1,9 @@
+# Retomada — provas pós-apocalípticas
+
+Branch local `arte/kit-pos-apocaliptico-provas`, base `48f5794`. [Checkpoint detalhado](samples/kit-pos-apocaliptico/CHECKPOINT.md). Quatro provas iniciais e lote do hospital gerados e verificados; restante do kit pendente. Sem push nem merge. Histórico abaixo preservado.
+
+---
+
 # Retomada atual — edição 0.2 — 18/10/2026
 
 Base auditada: db67f42, limpa, sem commits posteriores. Tag preservado/prototipo-0.1-db67f42. O ZIP antigo e PDFs 0.1 foram preservados.

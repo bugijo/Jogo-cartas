@@ -1150,5 +1150,444 @@
     ],
     "effective_ppi": 574.4882352941177,
     "edition": "ilustrada"
+  },
+  {
+    "theme": "material/tile",
+    "file": "assets/v0.6/pisos_materiais.png",
+    "index": 2,
+    "original_pixels": [
+      1536,
+      1024
+    ],
+    "crop_pixels": [
+      1024.0,
+      0.0,
+      1536.0,
+      512.0
+    ],
+    "used_pixels": [
+      512.0,
+      512.0
+    ],
+    "print_mm": [
+      60.0,
+      60.0
+    ],
+    "bbox_mm": [
+      0,
+      0,
+      554,
+      380
+    ],
+    "effective_ppi": 216.74666666666664,
+    "edition": "ilustrada",
+    "role": "material nativo repetido; não mobiliário"
+  },
+  {
+    "theme": "material/paver",
+    "file": "assets/v0.6/pisos_materiais.png",
+    "index": 3,
+    "original_pixels": [
+      1536,
+      1024
+    ],
+    "crop_pixels": [
+      0.0,
+      512.0,
+      512.0,
+      1024.0
+    ],
+    "used_pixels": [
+      512.0,
+      512.0
+    ],
+    "print_mm": [
+      60.0,
+      60.0
+    ],
+    "bbox_mm": [
+      0,
+      285,
+      138.5,
+      95
+    ],
+    "effective_ppi": 216.74666666666664,
+    "edition": "ilustrada",
+    "role": "material nativo repetido; não mobiliário"
+  },
+  {
+    "theme": "material/tile",
+    "file": "assets/v0.6/pisos_materiais.png",
+    "index": 2,
+    "original_pixels": [
+      1536,
+      1024
+    ],
+    "crop_pixels": [
+      1024.0,
+      0.0,
+      1536.0,
+      512.0
+    ],
+    "used_pixels": [
+      512.0,
+      512.0
+    ],
+    "print_mm": [
+      60.0,
+      60.0
+    ],
+    "bbox_mm": [
+      138.5,
+      285,
+      415.5,
+      95
+    ],
+    "effective_ppi": 216.74666666666664,
+    "edition": "ilustrada",
+    "role": "material nativo repetido; não mobiliário"
+  },
+  {
+    "theme": "material/tile",
+    "file": "assets/v0.6/pisos_materiais.png",
+    "index": 2,
+    "original_pixels": [
+      1536,
+      1024
+    ],
+    "crop_pixels": [
+      1024.0,
+      0.0,
+      1536.0,
+      512.0
+    ],
+    "used_pixels": [
+      512.0,
+      512.0
+    ],
+    "print_mm": [
+      60.0,
+      60.0
+    ],
+    "bbox_mm": [
+      0,
+      0,
+      554,
+      285
+    ],
+    "effective_ppi": 216.74666666666664,
+    "edition": "ilustrada",
+    "role": "material nativo repetido; não mobiliário"
+  },
+  {
+    "theme": "material/tile",
+    "file": "assets/v0.6/pisos_materiais.png",
+    "index": 2,
+    "original_pixels": [
+      1536,
+      1024
+    ],
+    "crop_pixels": [
+      1024.0,
+      0.0,
+      1536.0,
+      512.0
+    ],
+    "used_pixels": [
+      512.0,
+      512.0
+    ],
+    "print_mm": [
+      60.0,
+      60.0
+    ],
+    "bbox_mm": [
+      265,
+      0,
+      30,
+      285
+    ],
+    "effective_ppi": 216.74666666666664,
+    "edition": "ilustrada",
+    "role": "material nativo repetido; não mobiliário"
+  },
+  {
+    "theme": "Hospital",
+    "file": "assets/v0.5/mapa_oficina.png",
+    "index": 1,
+    "original_pixels": [
+      1536,
+      1024
+    ],
+    "crop_pixels": [
+      768,
+      66,
+      1514,
+      446
+    ],
+    "used_pixels": [
+      746,
+      380
+    ],
+    "print_mm": [
+      51.0421052631579,
+      26.0
+    ],
+    "bbox_mm": [
+      26.47894736842105,
+      321.0,
+      51.0421052631579,
+      26.0
+    ],
+    "effective_ppi": 371.23076923076917,
+    "edition": "ilustrada"
+  },
+  {
+    "theme": "Hospital",
+    "file": "samples/kit-pos-apocaliptico/originais/HOSPITAL.png",
+    "index": 1,
+    "original_pixels": [
+      1536,
+      1024
+    ],
+    "crop_pixels": [
+      790,
+      58,
+      1510,
+      506
+    ],
+    "used_pixels": [
+      720,
+      448
+    ],
+    "print_mm": [
+      72.32142857142857,
+      45.0
+    ],
+    "bbox_mm": [
+      173.83928571428572,
+      310.0,
+      72.32142857142857,
+      45.0
+    ],
+    "effective_ppi": 252.87111111111108,
+    "edition": "ilustrada"
+  },
+  {
+    "theme": "Hospital",
+    "file": "samples/kit-pos-apocaliptico/originais/HOSPITAL.png",
+    "index": 0,
+    "original_pixels": [
+      1536,
+      1024
+    ],
+    "crop_pixels": [
+      54,
+      30,
+      678,
+      512
+    ],
+    "used_pixels": [
+      624,
+      482
+    ],
+    "print_mm": [
+      55.66804979253112,
+      43.0
+    ],
+    "bbox_mm": [
+      34.16597510373444,
+      207.0,
+      55.66804979253112,
+      43.0
+    ],
+    "effective_ppi": 284.71627906976744,
+    "edition": "ilustrada"
+  },
+  {
+    "theme": "Hospital",
+    "file": "samples/kit-pos-apocaliptico/originais/HOSPITAL.png",
+    "index": 2,
+    "original_pixels": [
+      1536,
+      1024
+    ],
+    "crop_pixels": [
+      38,
+      526,
+      754,
+      1002
+    ],
+    "used_pixels": [
+      716,
+      476
+    ],
+    "print_mm": [
+      66.18487394957984,
+      44.0
+    ],
+    "bbox_mm": [
+      314.4075630252101,
+      205.0,
+      66.18487394957984,
+      44.0
+    ],
+    "effective_ppi": 274.78181818181815,
+    "edition": "ilustrada"
+  },
+  {
+    "theme": "Hospital",
+    "file": "samples/kit-pos-apocaliptico/originais/HOSPITAL.png",
+    "index": 3,
+    "original_pixels": [
+      1536,
+      1024
+    ],
+    "crop_pixels": [
+      826,
+      598,
+      1490,
+      874
+    ],
+    "used_pixels": [
+      664,
+      276
+    ],
+    "print_mm": [
+      78.44465116279069,
+      32.606511627906976
+    ],
+    "bbox_mm": [
+      445.77767441860465,
+      210.69674418604652,
+      78.44465116279069,
+      32.606511627906976
+    ],
+    "effective_ppi": 215.0,
+    "edition": "ilustrada"
+  },
+  {
+    "theme": "Hospital",
+    "file": "samples/kit-pos-apocaliptico/originais/HOSPITAL.png",
+    "index": 3,
+    "original_pixels": [
+      1536,
+      1024
+    ],
+    "crop_pixels": [
+      826,
+      598,
+      1490,
+      874
+    ],
+    "used_pixels": [
+      664,
+      276
+    ],
+    "print_mm": [
+      78.44465116279069,
+      32.606511627906976
+    ],
+    "bbox_mm": [
+      169.77767441860465,
+      113.69674418604652,
+      78.44465116279069,
+      32.606511627906976
+    ],
+    "effective_ppi": 215.0,
+    "edition": "ilustrada"
+  },
+  {
+    "theme": "Hospital",
+    "file": "samples/kit-pos-apocaliptico/originais/HOSPITAL.png",
+    "index": 0,
+    "original_pixels": [
+      1536,
+      1024
+    ],
+    "crop_pixels": [
+      54,
+      30,
+      678,
+      512
+    ],
+    "used_pixels": [
+      624,
+      482
+    ],
+    "print_mm": [
+      55.66804979253112,
+      43.0
+    ],
+    "bbox_mm": [
+      454.66597510373447,
+      110.0,
+      55.66804979253112,
+      43.0
+    ],
+    "effective_ppi": 284.71627906976744,
+    "edition": "ilustrada"
+  },
+  {
+    "theme": "Hospital",
+    "file": "samples/kit-pos-apocaliptico/originais/HOSPITAL.png",
+    "index": 2,
+    "original_pixels": [
+      1536,
+      1024
+    ],
+    "crop_pixels": [
+      38,
+      526,
+      754,
+      1002
+    ],
+    "used_pixels": [
+      716,
+      476
+    ],
+    "print_mm": [
+      61.67226890756302,
+      41.0
+    ],
+    "bbox_mm": [
+      32.16386554621849,
+      14.0,
+      61.67226890756302,
+      41.0
+    ],
+    "effective_ppi": 294.88780487804877,
+    "edition": "ilustrada"
+  },
+  {
+    "theme": "Hospital",
+    "file": "samples/kit-pos-apocaliptico/originais/HOSPITAL.png",
+    "index": 3,
+    "original_pixels": [
+      1536,
+      1024
+    ],
+    "crop_pixels": [
+      826,
+      598,
+      1490,
+      874
+    ],
+    "used_pixels": [
+      664,
+      276
+    ],
+    "print_mm": [
+      78.44465116279069,
+      32.606511627906976
+    ],
+    "bbox_mm": [
+      172.77767441860465,
+      17.196744186046512,
+      78.44465116279069,
+      32.606511627906976
+    ],
+    "effective_ppi": 215.0,
+    "edition": "ilustrada"
   }
 ]

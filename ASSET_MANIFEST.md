@@ -1,3 +1,9 @@
+# Atualização — provas pós-apocalípticas
+
+[Inventário, fontes nativas, integração e pendências](samples/kit-pos-apocaliptico/ASSET_MANIFEST.md). Cinco imagens aproveitadas e uma saída rejeitada; não representam revisão completa do kit. Catálogo e assets distribuídos preservados.
+
+---
+
 # Inventário de arte — edição 0.3
 
 Fontes anteriores preservadas: sete pranchas, 55 regiões. Foram produzidas e integradas três pranchas novas, **23 regiões ilustradas reais** (6 ambientes, 16 grupos de objetos e abrigo), além de arte vetorial funcional. Não se contam prompts como imagens. Detalhes por arquivo e região em [JSON](content/asset_manifest_0.3.json); edição anterior em content/asset_manifest.json.

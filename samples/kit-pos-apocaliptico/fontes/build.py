@@ -4,6 +4,8 @@ import sys,json,hashlib,copy,math
 P=Path(__file__).resolve().parents[3];S=P/'samples/kit-pos-apocaliptico'
 sys.path.insert(0,str(P/'src'))
 import fitz
+from reportlab import rl_config
+rl_config.invariant=True
 from PIL import Image,ImageOps,ImageDraw
 from reportlab.pdfgen import canvas
 from reportlab.lib.units import mm
@@ -83,22 +85,25 @@ def card_art(c,card,x,y,w,h):
 f.f.artwork=card_art
 f.f.cards_pdf(S/'pdfs',ids,'CARTAS_PROVA_DUPLEX.pdf',True)
 f.f.artwork=old_art
-# Complete workshop; same physical footprints, crops and native pixel count.
-boards.O=S/'antes';before=boards.full_board('Oficina');boards.split_board(before,S/'antes/OFICINA_4_A4.pdf','Oficina')
-source='assets/v0.5/mapa_oficina.png';target=str((S/'originais/OFICINA.png').relative_to(P))
-assert Image.open(P/source).size==Image.open(P/target).size
-old_reader=art.image_reader
-art.image_reader=lambda path,econ,box=None:old_reader(target if path==source else path,econ,box)
-boards.O=S/'fontes';art.USES.clear();after=boards.full_board('Oficina')
-boards.split_board(after,S/'pdfs/OFICINA_4_A4.pdf','Oficina')
-for u in art.USES:
- if u['file']==source:u['file']=target
-RES.extend(art.USES);art.image_reader=old_reader
-# Canonical geometry snapshot and effective emitted vectors/text must be identical.
-m=next(m for m in boards.MAPS if m['name']=='Oficina');dump(S/'fontes/geometria_oficina.json',m)
-a=fitz.open(before);b=fitz.open(after)
-assert a[0].get_text()==b[0].get_text()
-assert str(a[0].get_drawings())==str(b[0].get_drawings()),'Geometria vetorial mudou'
+# Whole map proofs, same physical footprints and native pixel dimensions.
+BOARDS={}
+for theme,source,filename in [('Oficina','assets/v0.5/mapa_oficina.png','OFICINA'),('Hospital','assets/v0.6/hospital_topo.png','HOSPITAL')]:
+ boards.O=S/'antes';before=boards.full_board(theme);boards.split_board(before,S/'antes'/f'{filename}_4_A4.pdf',theme)
+ target=str((S/'originais'/f'{filename}.png').relative_to(P))
+ assert Image.open(P/source).size==Image.open(P/target).size
+ old_reader=art.image_reader
+ art.image_reader=lambda path,econ,box=None:old_reader(target if path==source else path,econ,box)
+ boards.O=S/'fontes';art.USES.clear();after=boards.full_board(theme)
+ doc=fitz.open(after);meta=doc.metadata;meta['subject']='PROVA / base 48f5794 / raster SHA256='+sha(P/target)+' / geometria preservada';doc.set_metadata(meta);doc.saveIncr();doc.close()
+ boards.split_board(after,S/'pdfs'/f'{filename}_4_A4.pdf',theme)
+ for u in art.USES:
+  if u['file']==source:u['file']=target
+ RES.extend(copy.deepcopy(art.USES));art.image_reader=old_reader
+ m=next(m for m in boards.MAPS if m['name']==theme);dump(S/'fontes'/f'geometria_{filename.lower()}.json',m)
+ a=fitz.open(before);b=fitz.open(after)
+ assert a[0].get_text()==b[0].get_text()
+ assert str(a[0].get_drawings())==str(b[0].get_drawings()),'Geometria vetorial mudou'
+ BOARDS[filename]=(before,after)
 # Before/after PDFs have same card and hero mechanical text, including titles.
 for name in ['CARTAS_PROVA_DUPLEX.pdf','FICHAS_SEIS_HEROIS.pdf']:
  a=fitz.open(S/'antes'/name);b=fitz.open(S/'pdfs'/name)
@@ -117,16 +122,17 @@ for folder in [S/'pdfs',S/'antes']:
     if font[2]=='Type0' or 'DejaVu' in font[3]:assert doc.extract_font(font[0])[3],font
    thumbs.append((out,f'{folder.name} / {path.stem} / {i+1}'))
   checks.append(dict(file=str(path.relative_to(S)),pages=len(doc),a4=True))
-for label,path in [('ANTES',before),('DEPOIS',after)]:
- doc=fitz.open(path);doc[0].get_pixmap(matrix=fitz.Matrix(.75,.75)).save(S/'provas'/f'OFICINA_{label}_MONTADA.png')
- # 100 x 100 mm proof, actual crop at print scale; only upper repair sector.
- clip=fitz.Rect(5*mm,15*mm,105*mm,115*mm)
- doc[0].get_pixmap(matrix=fitz.Matrix(200/72,200/72),clip=clip).save(S/'provas'/f'OFICINA_{label}_DETALHE.png')
+for name,(before,after) in BOARDS.items():
+ for label,path in [('ANTES',before),('DEPOIS',after)]:
+  doc=fitz.open(path);doc[0].get_pixmap(matrix=fitz.Matrix(.75,.75)).save(S/'provas'/f'{name}_{label}_MONTADA.png')
+  clip=fitz.Rect(5*mm,15*mm,105*mm,115*mm)
+  doc[0].get_pixmap(matrix=fitz.Matrix(200/72,200/72),clip=clip).save(S/'provas'/f'{name}_{label}_DETALHE.png')
 # Comparisons themselves use only final/baseline PDF renderings.
 for title,left,right in [
  ('PERSONAGENS','antes_PERSONAGENS_PROVA_A4_01.png','pdfs_PERSONAGENS_PROVA_A4_01.png'),
  ('CARTAS','antes_CARTAS_PROVA_DUPLEX_01.png','pdfs_CARTAS_PROVA_DUPLEX_01.png'),
- ('OFICINA','OFICINA_ANTES_MONTADA.png','OFICINA_DEPOIS_MONTADA.png')]:
+ ('OFICINA','OFICINA_ANTES_MONTADA.png','OFICINA_DEPOIS_MONTADA.png'),
+ ('HOSPITAL','HOSPITAL_ANTES_MONTADA.png','HOSPITAL_DEPOIS_MONTADA.png')]:
  im1=Image.open(S/'provas'/left).convert('RGB');im2=Image.open(S/'provas'/right).convert('RGB')
  comp=Image.new('RGB',(im1.width+im2.width,max(im1.height,im2.height)+32),'white');comp.paste(im1,(0,32));comp.paste(im2,(im1.width,32));d=ImageDraw.Draw(comp);d.text((12,10),'ANTES',fill='black');d.text((im1.width+12,10),'PROVA ATUAL',fill='black');comp.save(S/'provas'/f'COMPARACAO_{title}.jpg',quality=92)
 # Grayscale diagnostic only, not a new economic kit.
@@ -145,7 +151,7 @@ for path in sorted((P/'assets').rglob('*')):
   with Image.open(path) as im:item.update(pixels=list(im.size),mode=im.mode)
  assets.append(item)
 for path in sorted((S/'originais').glob('*.png')):
- with Image.open(path) as im:assets.append(dict(file=str(path.relative_to(P)),pixels=list(im.size),origin='image_gen integrado / edição de arte existente',status='integrado apenas nas provas'))
+ with Image.open(path) as im:assets.append(dict(file=str(path.relative_to(P)),pixels=list(im.size),origin='image_gen integrado / edição de arte existente',status='rejeitado: fundo opaco; não integrado' if 'REJEITADO' in path.name else 'integrado apenas nas provas'))
 dump(S/'fontes/inventario_assets.json',assets)
 dump(S/'fontes/inventario_componentes.json',dict(catalog={k:len(DATA[k]) for k in ['heroes','cards','maps','tokens','modules']},selected_cards=len(sel),destinations=[m['name'] for m in DATA['maps']],pdfs_existing=[str(p.relative_to(P)) for p in sorted((P/'output').rglob('*.pdf'))]))
 print('Provas geradas em',S)

@@ -1173,6 +1173,24 @@
     "status": "integrado apenas nas provas"
   },
   {
+    "file": "samples/kit-pos-apocaliptico/originais/HOSPITAL.png",
+    "pixels": [
+      1536,
+      1024
+    ],
+    "origin": "image_gen integrado / edição de arte existente",
+    "status": "integrado apenas nas provas"
+  },
+  {
+    "file": "samples/kit-pos-apocaliptico/originais/HOSPITAL_FUNDO_REJEITADO.png",
+    "pixels": [
+      1536,
+      1024
+    ],
+    "origin": "image_gen integrado / edição de arte existente",
+    "status": "rejeitado: fundo opaco; não integrado"
+  },
+  {
     "file": "samples/kit-pos-apocaliptico/originais/OFICINA.png",
     "pixels": [
       1536,

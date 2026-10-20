@@ -1,3 +1,9 @@
+# Atualização — provas pós-apocalípticas
+
+[Relatório atual](samples/kit-pos-apocaliptico/VISUAL_QA.md): quatro lotes iniciais + hospital, comparações reais de PDFs, resolução efetiva, 39 testes existentes aprovados e verificações direcionadas. Cenários ainda não aprovados como composição final. Sem impressão física ou playtest.
+
+---
+
 # Conferência visual e de produção — edição 0.3
 
 Escopo: acabamento do kit Comece Aqui / Duas Pessoas, regras 0.2. Base real 9c38aa5, que acrescentara ZIPs ao b407e84. Branch própria arte/pnp-edicao-ilustrada-v0-3; edição anterior preservada, sem merge. Os quatro ciclos artísticos estão registrados no histórico; ciclo final reúne provas, arquivos e publicação.
