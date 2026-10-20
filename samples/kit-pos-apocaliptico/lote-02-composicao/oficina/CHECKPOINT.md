@@ -1,0 +1,1 @@
+Oficina e hospital têm novas composições contínuas e quatro A4 cada. Nove seções nativas por cenário, resolução final 175 ppi. Próximos cenários: estação de tratamento, posto, condomínio e módulos comuns, cada um com sua geometria canônica. Não aplicar automaticamente o bloqueio 3–7 da oficina a outros destinos. Mercado aprovado permanece intacto.
