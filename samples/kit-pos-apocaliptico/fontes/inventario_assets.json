@@ -1,0 +1,1202 @@
+[
+  {
+    "file": "assets/buildings.png",
+    "status": "existente; revisão individual pendente",
+    "pixels": [
+      1536,
+      1024
+    ],
+    "mode": "RGB"
+  },
+  {
+    "file": "assets/cover.png",
+    "status": "existente; revisão individual pendente",
+    "pixels": [
+      1024,
+      1536
+    ],
+    "mode": "RGB"
+  },
+  {
+    "file": "assets/encounters.png",
+    "status": "existente; revisão individual pendente",
+    "pixels": [
+      1024,
+      1536
+    ],
+    "mode": "RGB"
+  },
+  {
+    "file": "assets/enemies.png",
+    "status": "existente; revisão individual pendente",
+    "pixels": [
+      1222,
+      1287
+    ],
+    "mode": "RGB"
+  },
+  {
+    "file": "assets/equipment.png",
+    "status": "existente; revisão individual pendente",
+    "pixels": [
+      1536,
+      1024
+    ],
+    "mode": "RGB"
+  },
+  {
+    "file": "assets/icons.svg",
+    "status": "existente; revisão individual pendente"
+  },
+  {
+    "file": "assets/logo.svg",
+    "status": "existente; revisão individual pendente"
+  },
+  {
+    "file": "assets/portraits_01.png",
+    "status": "existente; revisão individual pendente",
+    "pixels": [
+      1024,
+      1536
+    ],
+    "mode": "RGB"
+  },
+  {
+    "file": "assets/portraits_02.png",
+    "status": "existente; revisão individual pendente",
+    "pixels": [
+      1024,
+      1536
+    ],
+    "mode": "RGB"
+  },
+  {
+    "file": "assets/v0.3/economica/buildings.png",
+    "status": "existente; revisão individual pendente",
+    "pixels": [
+      1536,
+      1024
+    ],
+    "mode": "L"
+  },
+  {
+    "file": "assets/v0.3/economica/encounters.png",
+    "status": "existente; revisão individual pendente",
+    "pixels": [
+      1024,
+      1536
+    ],
+    "mode": "L"
+  },
+  {
+    "file": "assets/v0.3/economica/enemies.png",
+    "status": "existente; revisão individual pendente",
+    "pixels": [
+      1222,
+      1287
+    ],
+    "mode": "L"
+  },
+  {
+    "file": "assets/v0.3/economica/environments.png",
+    "status": "existente; revisão individual pendente",
+    "pixels": [
+      1536,
+      1024
+    ],
+    "mode": "L"
+  },
+  {
+    "file": "assets/v0.3/economica/equipment.png",
+    "status": "existente; revisão individual pendente",
+    "pixels": [
+      1536,
+      1024
+    ],
+    "mode": "L"
+  },
+  {
+    "file": "assets/v0.3/economica/map_objects.png",
+    "status": "existente; revisão individual pendente",
+    "pixels": [
+      1536,
+      1024
+    ],
+    "mode": "L"
+  },
+  {
+    "file": "assets/v0.3/economica/map_objects_alpha.png",
+    "status": "existente; revisão individual pendente",
+    "pixels": [
+      1536,
+      1024
+    ],
+    "mode": "LA"
+  },
+  {
+    "file": "assets/v0.3/economica/portraits_01.png",
+    "status": "existente; revisão individual pendente",
+    "pixels": [
+      1024,
+      1536
+    ],
+    "mode": "L"
+  },
+  {
+    "file": "assets/v0.3/economica/portraits_02.png",
+    "status": "existente; revisão individual pendente",
+    "pixels": [
+      1024,
+      1536
+    ],
+    "mode": "L"
+  },
+  {
+    "file": "assets/v0.3/economica/shelter.png",
+    "status": "existente; revisão individual pendente",
+    "pixels": [
+      1536,
+      1024
+    ],
+    "mode": "L"
+  },
+  {
+    "file": "assets/v0.3/environments.png",
+    "status": "existente; revisão individual pendente",
+    "pixels": [
+      1536,
+      1024
+    ],
+    "mode": "RGB"
+  },
+  {
+    "file": "assets/v0.3/map_objects.png",
+    "status": "existente; revisão individual pendente",
+    "pixels": [
+      1536,
+      1024
+    ],
+    "mode": "RGB"
+  },
+  {
+    "file": "assets/v0.3/map_objects_alpha.png",
+    "status": "existente; revisão individual pendente",
+    "pixels": [
+      1536,
+      1024
+    ],
+    "mode": "RGBA"
+  },
+  {
+    "file": "assets/v0.3/shelter.png",
+    "status": "existente; revisão individual pendente",
+    "pixels": [
+      1536,
+      1024
+    ],
+    "mode": "RGB"
+  },
+  {
+    "file": "assets/v0.3/vetores/abrigo.svg",
+    "status": "existente; revisão individual pendente"
+  },
+  {
+    "file": "assets/v0.3/vetores/divisorias.svg",
+    "status": "existente; revisão individual pendente"
+  },
+  {
+    "file": "assets/v0.3/vetores/modulo_M1.svg",
+    "status": "existente; revisão individual pendente"
+  },
+  {
+    "file": "assets/v0.4/comum.png",
+    "status": "existente; revisão individual pendente",
+    "pixels": [
+      1514,
+      1039
+    ],
+    "mode": "RGB"
+  },
+  {
+    "file": "assets/v0.4/comum_ajustado.png",
+    "status": "existente; revisão individual pendente",
+    "pixels": [
+      1514,
+      1039
+    ],
+    "mode": "RGB"
+  },
+  {
+    "file": "assets/v0.4/condominio.png",
+    "status": "existente; revisão individual pendente",
+    "pixels": [
+      1515,
+      1038
+    ],
+    "mode": "RGB"
+  },
+  {
+    "file": "assets/v0.4/condominio_ajustado.png",
+    "status": "existente; revisão individual pendente",
+    "pixels": [
+      1514,
+      1039
+    ],
+    "mode": "RGB"
+  },
+  {
+    "file": "assets/v0.4/condominio_final.png",
+    "status": "existente; revisão individual pendente",
+    "pixels": [
+      1515,
+      1038
+    ],
+    "mode": "RGB"
+  },
+  {
+    "file": "assets/v0.4/economica/armas.png",
+    "status": "existente; revisão individual pendente",
+    "pixels": [
+      1536,
+      1024
+    ],
+    "mode": "LA"
+  },
+  {
+    "file": "assets/v0.4/economica/buildings.png",
+    "status": "existente; revisão individual pendente",
+    "pixels": [
+      1536,
+      1024
+    ],
+    "mode": "L"
+  },
+  {
+    "file": "assets/v0.4/economica/comum.png",
+    "status": "existente; revisão individual pendente",
+    "pixels": [
+      1514,
+      1039
+    ],
+    "mode": "L"
+  },
+  {
+    "file": "assets/v0.4/economica/comum_ajustado.png",
+    "status": "existente; revisão individual pendente",
+    "pixels": [
+      1514,
+      1039
+    ],
+    "mode": "L"
+  },
+  {
+    "file": "assets/v0.4/economica/condominio.png",
+    "status": "existente; revisão individual pendente",
+    "pixels": [
+      1515,
+      1038
+    ],
+    "mode": "L"
+  },
+  {
+    "file": "assets/v0.4/economica/condominio_ajustado.png",
+    "status": "existente; revisão individual pendente",
+    "pixels": [
+      1514,
+      1039
+    ],
+    "mode": "L"
+  },
+  {
+    "file": "assets/v0.4/economica/condominio_final.png",
+    "status": "existente; revisão individual pendente",
+    "pixels": [
+      1515,
+      1038
+    ],
+    "mode": "L"
+  },
+  {
+    "file": "assets/v0.4/economica/encounters.png",
+    "status": "existente; revisão individual pendente",
+    "pixels": [
+      1024,
+      1536
+    ],
+    "mode": "L"
+  },
+  {
+    "file": "assets/v0.4/economica/enemies.png",
+    "status": "existente; revisão individual pendente",
+    "pixels": [
+      1222,
+      1287
+    ],
+    "mode": "L"
+  },
+  {
+    "file": "assets/v0.4/economica/environments.png",
+    "status": "existente; revisão individual pendente",
+    "pixels": [
+      1536,
+      1024
+    ],
+    "mode": "L"
+  },
+  {
+    "file": "assets/v0.4/economica/equipment.png",
+    "status": "existente; revisão individual pendente",
+    "pixels": [
+      1536,
+      1024
+    ],
+    "mode": "L"
+  },
+  {
+    "file": "assets/v0.4/economica/estacao.png",
+    "status": "existente; revisão individual pendente",
+    "pixels": [
+      1515,
+      1038
+    ],
+    "mode": "L"
+  },
+  {
+    "file": "assets/v0.4/economica/estacao_ajustado.png",
+    "status": "existente; revisão individual pendente",
+    "pixels": [
+      1514,
+      1039
+    ],
+    "mode": "L"
+  },
+  {
+    "file": "assets/v0.4/economica/herois_a.png",
+    "status": "existente; revisão individual pendente",
+    "pixels": [
+      1536,
+      1024
+    ],
+    "mode": "LA"
+  },
+  {
+    "file": "assets/v0.4/economica/herois_b.png",
+    "status": "existente; revisão individual pendente",
+    "pixels": [
+      1536,
+      1024
+    ],
+    "mode": "LA"
+  },
+  {
+    "file": "assets/v0.4/economica/herois_c.png",
+    "status": "existente; revisão individual pendente",
+    "pixels": [
+      1536,
+      1024
+    ],
+    "mode": "LA"
+  },
+  {
+    "file": "assets/v0.4/economica/herois_d.png",
+    "status": "existente; revisão individual pendente",
+    "pixels": [
+      1024,
+      1536
+    ],
+    "mode": "LA"
+  },
+  {
+    "file": "assets/v0.4/economica/hospital.png",
+    "status": "existente; revisão individual pendente",
+    "pixels": [
+      1515,
+      1038
+    ],
+    "mode": "L"
+  },
+  {
+    "file": "assets/v0.4/economica/hospital_ajustado.png",
+    "status": "existente; revisão individual pendente",
+    "pixels": [
+      1514,
+      1039
+    ],
+    "mode": "L"
+  },
+  {
+    "file": "assets/v0.4/economica/itens_a.png",
+    "status": "existente; revisão individual pendente",
+    "pixels": [
+      1536,
+      1024
+    ],
+    "mode": "LA"
+  },
+  {
+    "file": "assets/v0.4/economica/itens_b.png",
+    "status": "existente; revisão individual pendente",
+    "pixels": [
+      1536,
+      1024
+    ],
+    "mode": "LA"
+  },
+  {
+    "file": "assets/v0.4/economica/map_objects_alpha.png",
+    "status": "existente; revisão individual pendente",
+    "pixels": [
+      1536,
+      1024
+    ],
+    "mode": "LA"
+  },
+  {
+    "file": "assets/v0.4/economica/mapa_condominio.png",
+    "status": "existente; revisão individual pendente",
+    "pixels": [
+      1536,
+      1024
+    ],
+    "mode": "LA"
+  },
+  {
+    "file": "assets/v0.4/economica/mapa_estacao.png",
+    "status": "existente; revisão individual pendente",
+    "pixels": [
+      1536,
+      1024
+    ],
+    "mode": "LA"
+  },
+  {
+    "file": "assets/v0.4/economica/mapa_hospital.png",
+    "status": "existente; revisão individual pendente",
+    "pixels": [
+      1536,
+      1024
+    ],
+    "mode": "LA"
+  },
+  {
+    "file": "assets/v0.4/economica/mapa_mercado.png",
+    "status": "existente; revisão individual pendente",
+    "pixels": [
+      1536,
+      1024
+    ],
+    "mode": "LA"
+  },
+  {
+    "file": "assets/v0.4/economica/mapa_oficina.png",
+    "status": "existente; revisão individual pendente",
+    "pixels": [
+      1536,
+      1024
+    ],
+    "mode": "LA"
+  },
+  {
+    "file": "assets/v0.4/economica/mapa_posto.png",
+    "status": "existente; revisão individual pendente",
+    "pixels": [
+      1536,
+      1024
+    ],
+    "mode": "LA"
+  },
+  {
+    "file": "assets/v0.4/economica/mercado.png",
+    "status": "existente; revisão individual pendente",
+    "pixels": [
+      1514,
+      1039
+    ],
+    "mode": "L"
+  },
+  {
+    "file": "assets/v0.4/economica/mercado_ajustado.png",
+    "status": "existente; revisão individual pendente",
+    "pixels": [
+      1514,
+      1039
+    ],
+    "mode": "L"
+  },
+  {
+    "file": "assets/v0.4/economica/oficina.png",
+    "status": "existente; revisão individual pendente",
+    "pixels": [
+      1514,
+      1039
+    ],
+    "mode": "L"
+  },
+  {
+    "file": "assets/v0.4/economica/oficina_ajustado.png",
+    "status": "existente; revisão individual pendente",
+    "pixels": [
+      1514,
+      1039
+    ],
+    "mode": "L"
+  },
+  {
+    "file": "assets/v0.4/economica/oficina_final.png",
+    "status": "existente; revisão individual pendente",
+    "pixels": [
+      1514,
+      1039
+    ],
+    "mode": "L"
+  },
+  {
+    "file": "assets/v0.4/economica/pecas_corrigidas.png",
+    "status": "existente; revisão individual pendente",
+    "pixels": [
+      1536,
+      1024
+    ],
+    "mode": "LA"
+  },
+  {
+    "file": "assets/v0.4/economica/portraits_02.png",
+    "status": "existente; revisão individual pendente",
+    "pixels": [
+      1024,
+      1536
+    ],
+    "mode": "L"
+  },
+  {
+    "file": "assets/v0.4/economica/posto.png",
+    "status": "existente; revisão individual pendente",
+    "pixels": [
+      1515,
+      1038
+    ],
+    "mode": "L"
+  },
+  {
+    "file": "assets/v0.4/economica/posto_ajustado.png",
+    "status": "existente; revisão individual pendente",
+    "pixels": [
+      1514,
+      1039
+    ],
+    "mode": "L"
+  },
+  {
+    "file": "assets/v0.4/economica/suprimentos.png",
+    "status": "existente; revisão individual pendente",
+    "pixels": [
+      1536,
+      1024
+    ],
+    "mode": "LA"
+  },
+  {
+    "file": "assets/v0.4/economica/toolbox.png",
+    "status": "existente; revisão individual pendente",
+    "pixels": [
+      1536,
+      1024
+    ],
+    "mode": "LA"
+  },
+  {
+    "file": "assets/v0.4/economica/viagens.png",
+    "status": "existente; revisão individual pendente",
+    "pixels": [
+      1536,
+      1024
+    ],
+    "mode": "L"
+  },
+  {
+    "file": "assets/v0.4/estacao.png",
+    "status": "existente; revisão individual pendente",
+    "pixels": [
+      1515,
+      1038
+    ],
+    "mode": "RGB"
+  },
+  {
+    "file": "assets/v0.4/estacao_ajustado.png",
+    "status": "existente; revisão individual pendente",
+    "pixels": [
+      1514,
+      1039
+    ],
+    "mode": "RGB"
+  },
+  {
+    "file": "assets/v0.4/herois_a.png",
+    "status": "existente; revisão individual pendente",
+    "pixels": [
+      1536,
+      1024
+    ],
+    "mode": "RGBA"
+  },
+  {
+    "file": "assets/v0.4/herois_b.png",
+    "status": "existente; revisão individual pendente",
+    "pixels": [
+      1536,
+      1024
+    ],
+    "mode": "RGBA"
+  },
+  {
+    "file": "assets/v0.4/herois_c.png",
+    "status": "existente; revisão individual pendente",
+    "pixels": [
+      1536,
+      1024
+    ],
+    "mode": "RGBA"
+  },
+  {
+    "file": "assets/v0.4/herois_d.png",
+    "status": "existente; revisão individual pendente",
+    "pixels": [
+      1024,
+      1536
+    ],
+    "mode": "RGBA"
+  },
+  {
+    "file": "assets/v0.4/hospital.png",
+    "status": "existente; revisão individual pendente",
+    "pixels": [
+      1515,
+      1038
+    ],
+    "mode": "RGB"
+  },
+  {
+    "file": "assets/v0.4/hospital_ajustado.png",
+    "status": "existente; revisão individual pendente",
+    "pixels": [
+      1514,
+      1039
+    ],
+    "mode": "RGB"
+  },
+  {
+    "file": "assets/v0.4/impressao/cinza_/comum_ajustado.jpg",
+    "status": "existente; revisão individual pendente",
+    "pixels": [
+      1514,
+      1039
+    ],
+    "mode": "L"
+  },
+  {
+    "file": "assets/v0.4/impressao/cinza_/condominio_final.jpg",
+    "status": "existente; revisão individual pendente",
+    "pixels": [
+      1515,
+      1038
+    ],
+    "mode": "L"
+  },
+  {
+    "file": "assets/v0.4/impressao/cinza_/estacao_ajustado.jpg",
+    "status": "existente; revisão individual pendente",
+    "pixels": [
+      1514,
+      1039
+    ],
+    "mode": "L"
+  },
+  {
+    "file": "assets/v0.4/impressao/cinza_/hospital_ajustado.jpg",
+    "status": "existente; revisão individual pendente",
+    "pixels": [
+      1514,
+      1039
+    ],
+    "mode": "L"
+  },
+  {
+    "file": "assets/v0.4/impressao/cinza_/mercado_ajustado.jpg",
+    "status": "existente; revisão individual pendente",
+    "pixels": [
+      1514,
+      1039
+    ],
+    "mode": "L"
+  },
+  {
+    "file": "assets/v0.4/impressao/cinza_/oficina_final.jpg",
+    "status": "existente; revisão individual pendente",
+    "pixels": [
+      1514,
+      1039
+    ],
+    "mode": "L"
+  },
+  {
+    "file": "assets/v0.4/impressao/cinza_/posto_ajustado.jpg",
+    "status": "existente; revisão individual pendente",
+    "pixels": [
+      1514,
+      1039
+    ],
+    "mode": "L"
+  },
+  {
+    "file": "assets/v0.4/impressao/cor_/comum_ajustado.jpg",
+    "status": "existente; revisão individual pendente",
+    "pixels": [
+      1514,
+      1039
+    ],
+    "mode": "RGB"
+  },
+  {
+    "file": "assets/v0.4/impressao/cor_/condominio_final.jpg",
+    "status": "existente; revisão individual pendente",
+    "pixels": [
+      1515,
+      1038
+    ],
+    "mode": "RGB"
+  },
+  {
+    "file": "assets/v0.4/impressao/cor_/estacao_ajustado.jpg",
+    "status": "existente; revisão individual pendente",
+    "pixels": [
+      1514,
+      1039
+    ],
+    "mode": "RGB"
+  },
+  {
+    "file": "assets/v0.4/impressao/cor_/hospital_ajustado.jpg",
+    "status": "existente; revisão individual pendente",
+    "pixels": [
+      1514,
+      1039
+    ],
+    "mode": "RGB"
+  },
+  {
+    "file": "assets/v0.4/impressao/cor_/mercado_ajustado.jpg",
+    "status": "existente; revisão individual pendente",
+    "pixels": [
+      1514,
+      1039
+    ],
+    "mode": "RGB"
+  },
+  {
+    "file": "assets/v0.4/impressao/cor_/oficina_final.jpg",
+    "status": "existente; revisão individual pendente",
+    "pixels": [
+      1514,
+      1039
+    ],
+    "mode": "RGB"
+  },
+  {
+    "file": "assets/v0.4/impressao/cor_/posto_ajustado.jpg",
+    "status": "existente; revisão individual pendente",
+    "pixels": [
+      1514,
+      1039
+    ],
+    "mode": "RGB"
+  },
+  {
+    "file": "assets/v0.4/itens_a.png",
+    "status": "existente; revisão individual pendente",
+    "pixels": [
+      1536,
+      1024
+    ],
+    "mode": "RGBA"
+  },
+  {
+    "file": "assets/v0.4/itens_b.png",
+    "status": "existente; revisão individual pendente",
+    "pixels": [
+      1536,
+      1024
+    ],
+    "mode": "RGBA"
+  },
+  {
+    "file": "assets/v0.4/mercado.png",
+    "status": "existente; revisão individual pendente",
+    "pixels": [
+      1514,
+      1039
+    ],
+    "mode": "RGB"
+  },
+  {
+    "file": "assets/v0.4/mercado_ajustado.png",
+    "status": "existente; revisão individual pendente",
+    "pixels": [
+      1514,
+      1039
+    ],
+    "mode": "RGB"
+  },
+  {
+    "file": "assets/v0.4/oficina.png",
+    "status": "existente; revisão individual pendente",
+    "pixels": [
+      1514,
+      1039
+    ],
+    "mode": "RGB"
+  },
+  {
+    "file": "assets/v0.4/oficina_ajustado.png",
+    "status": "existente; revisão individual pendente",
+    "pixels": [
+      1514,
+      1039
+    ],
+    "mode": "RGB"
+  },
+  {
+    "file": "assets/v0.4/oficina_final.png",
+    "status": "existente; revisão individual pendente",
+    "pixels": [
+      1514,
+      1039
+    ],
+    "mode": "RGB"
+  },
+  {
+    "file": "assets/v0.4/posto.png",
+    "status": "existente; revisão individual pendente",
+    "pixels": [
+      1515,
+      1038
+    ],
+    "mode": "RGB"
+  },
+  {
+    "file": "assets/v0.4/posto_ajustado.png",
+    "status": "existente; revisão individual pendente",
+    "pixels": [
+      1514,
+      1039
+    ],
+    "mode": "RGB"
+  },
+  {
+    "file": "assets/v0.5/armas.png",
+    "status": "existente; revisão individual pendente",
+    "pixels": [
+      1536,
+      1024
+    ],
+    "mode": "RGBA"
+  },
+  {
+    "file": "assets/v0.5/mapa_condominio.png",
+    "status": "existente; revisão individual pendente",
+    "pixels": [
+      1536,
+      1024
+    ],
+    "mode": "RGBA"
+  },
+  {
+    "file": "assets/v0.5/mapa_estacao.png",
+    "status": "existente; revisão individual pendente",
+    "pixels": [
+      1536,
+      1024
+    ],
+    "mode": "RGBA"
+  },
+  {
+    "file": "assets/v0.5/mapa_hospital.png",
+    "status": "existente; revisão individual pendente",
+    "pixels": [
+      1536,
+      1024
+    ],
+    "mode": "RGBA"
+  },
+  {
+    "file": "assets/v0.5/mapa_mercado.png",
+    "status": "existente; revisão individual pendente",
+    "pixels": [
+      1536,
+      1024
+    ],
+    "mode": "RGBA"
+  },
+  {
+    "file": "assets/v0.5/mapa_oficina.png",
+    "status": "existente; revisão individual pendente",
+    "pixels": [
+      1536,
+      1024
+    ],
+    "mode": "RGBA"
+  },
+  {
+    "file": "assets/v0.5/mapa_posto.png",
+    "status": "existente; revisão individual pendente",
+    "pixels": [
+      1536,
+      1024
+    ],
+    "mode": "RGBA"
+  },
+  {
+    "file": "assets/v0.5/pecas.png",
+    "status": "existente; revisão individual pendente",
+    "pixels": [
+      1536,
+      1024
+    ],
+    "mode": "RGBA"
+  },
+  {
+    "file": "assets/v0.5/pecas_corrigidas.png",
+    "status": "existente; revisão individual pendente",
+    "pixels": [
+      1536,
+      1024
+    ],
+    "mode": "RGBA"
+  },
+  {
+    "file": "assets/v0.5/rascunhos/COMUNS_M01_M04_LADO_A.svg",
+    "status": "existente; revisão individual pendente"
+  },
+  {
+    "file": "assets/v0.5/rascunhos/CONDOMINIO_M01_M04_LADO_A.svg",
+    "status": "existente; revisão individual pendente"
+  },
+  {
+    "file": "assets/v0.5/rascunhos/ESTACAO_M01_M04_LADO_A.svg",
+    "status": "existente; revisão individual pendente"
+  },
+  {
+    "file": "assets/v0.5/rascunhos/HOSPITAL_M01_M04_LADO_A.svg",
+    "status": "existente; revisão individual pendente"
+  },
+  {
+    "file": "assets/v0.5/rascunhos/MERCADO_M01_M04_LADO_A.svg",
+    "status": "existente; revisão individual pendente"
+  },
+  {
+    "file": "assets/v0.5/rascunhos/OFICINA_M01_M04_LADO_A.svg",
+    "status": "existente; revisão individual pendente"
+  },
+  {
+    "file": "assets/v0.5/rascunhos/POSTO_M01_M04_LADO_A.svg",
+    "status": "existente; revisão individual pendente"
+  },
+  {
+    "file": "assets/v0.5/suprimentos.png",
+    "status": "existente; revisão individual pendente",
+    "pixels": [
+      1536,
+      1024
+    ],
+    "mode": "RGBA"
+  },
+  {
+    "file": "assets/v0.5/toolbox.png",
+    "status": "existente; revisão individual pendente",
+    "pixels": [
+      1536,
+      1024
+    ],
+    "mode": "RGBA"
+  },
+  {
+    "file": "assets/v0.5/viagens.png",
+    "status": "existente; revisão individual pendente",
+    "pixels": [
+      1536,
+      1024
+    ],
+    "mode": "RGB"
+  },
+  {
+    "file": "assets/v0.6/bancada_topo.png",
+    "status": "existente; revisão individual pendente",
+    "pixels": [
+      1536,
+      1024
+    ],
+    "mode": "RGBA"
+  },
+  {
+    "file": "assets/v0.6/condominio_topo.png",
+    "status": "existente; revisão individual pendente",
+    "pixels": [
+      1536,
+      1024
+    ],
+    "mode": "RGBA"
+  },
+  {
+    "file": "assets/v0.6/estacao_topo.png",
+    "status": "existente; revisão individual pendente",
+    "pixels": [
+      1536,
+      1024
+    ],
+    "mode": "RGBA"
+  },
+  {
+    "file": "assets/v0.6/hospital_topo.png",
+    "status": "existente; revisão individual pendente",
+    "pixels": [
+      1536,
+      1024
+    ],
+    "mode": "RGBA"
+  },
+  {
+    "file": "assets/v0.6/mercado_gondolas_topo.png",
+    "status": "existente; revisão individual pendente",
+    "pixels": [
+      1536,
+      1024
+    ],
+    "mode": "RGBA"
+  },
+  {
+    "file": "assets/v0.6/mercado_topo.png",
+    "status": "existente; revisão individual pendente",
+    "pixels": [
+      1536,
+      1024
+    ],
+    "mode": "RGBA"
+  },
+  {
+    "file": "assets/v0.6/oficina_topo.png",
+    "status": "existente; revisão individual pendente",
+    "pixels": [
+      1536,
+      1024
+    ],
+    "mode": "RGBA"
+  },
+  {
+    "file": "assets/v0.6/pisos_materiais.png",
+    "status": "existente; revisão individual pendente",
+    "pixels": [
+      1536,
+      1024
+    ],
+    "mode": "RGB"
+  },
+  {
+    "file": "assets/v0.6/posto_topo.png",
+    "status": "existente; revisão individual pendente",
+    "pixels": [
+      1536,
+      1024
+    ],
+    "mode": "RGBA"
+  },
+  {
+    "file": "assets/v0.6/rascunhos/condominio_historia.png",
+    "status": "existente; revisão individual pendente",
+    "pixels": [
+      1536,
+      1024
+    ],
+    "mode": "RGBA"
+  },
+  {
+    "file": "assets/v0.6/rascunhos/estacao_historia.png",
+    "status": "existente; revisão individual pendente",
+    "pixels": [
+      1536,
+      1024
+    ],
+    "mode": "RGBA"
+  },
+  {
+    "file": "assets/v0.6/rascunhos/hospital_historia.png",
+    "status": "existente; revisão individual pendente",
+    "pixels": [
+      1536,
+      1024
+    ],
+    "mode": "RGBA"
+  },
+  {
+    "file": "assets/v0.6/rascunhos/mercado_historia.png",
+    "status": "existente; revisão individual pendente",
+    "pixels": [
+      1536,
+      1024
+    ],
+    "mode": "RGBA"
+  },
+  {
+    "file": "assets/v0.6/rascunhos/oficina_historia.png",
+    "status": "existente; revisão individual pendente",
+    "pixels": [
+      1536,
+      1024
+    ],
+    "mode": "RGBA"
+  },
+  {
+    "file": "assets/v0.6/rascunhos/posto_historia.png",
+    "status": "existente; revisão individual pendente",
+    "pixels": [
+      1536,
+      1024
+    ],
+    "mode": "RGBA"
+  },
+  {
+    "file": "samples/kit-pos-apocaliptico/originais/AGUA_ISOLADA.png",
+    "pixels": [
+      1145,
+      1374
+    ],
+    "origin": "image_gen integrado / edição de arte existente",
+    "status": "integrado apenas nas provas"
+  },
+  {
+    "file": "samples/kit-pos-apocaliptico/originais/OFICINA.png",
+    "pixels": [
+      1536,
+      1024
+    ],
+    "origin": "image_gen integrado / edição de arte existente",
+    "status": "integrado apenas nas provas"
+  },
+  {
+    "file": "samples/kit-pos-apocaliptico/originais/RETRATOS_01.png",
+    "pixels": [
+      1448,
+      1086
+    ],
+    "origin": "image_gen integrado / edição de arte existente",
+    "status": "integrado apenas nas provas"
+  },
+  {
+    "file": "samples/kit-pos-apocaliptico/originais/SUPRIMENTOS.png",
+    "pixels": [
+      1536,
+      1024
+    ],
+    "origin": "image_gen integrado / edição de arte existente",
+    "status": "integrado apenas nas provas"
+  }
+]

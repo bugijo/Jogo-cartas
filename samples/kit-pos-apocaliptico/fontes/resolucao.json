@@ -1,0 +1,1154 @@
+[
+  {
+    "file": "assets/portraits_01.png",
+    "component": "ZC-HER-0001",
+    "original_pixels": [
+      1024,
+      1536
+    ],
+    "crop_pixels": [
+      11,
+      9,
+      331,
+      374
+    ],
+    "used_pixels": [
+      320,
+      365
+    ],
+    "printed_image_mm": [
+      71.01369863013699,
+      81.0
+    ],
+    "visible_box_mm": [
+      55,
+      81
+    ],
+    "effective_ppi": 114.46
+  },
+  {
+    "file": "assets/portraits_01.png",
+    "component": "ZC-HER-0002",
+    "original_pixels": [
+      1024,
+      1536
+    ],
+    "crop_pixels": [
+      352,
+      9,
+      673,
+      374
+    ],
+    "used_pixels": [
+      321,
+      365
+    ],
+    "printed_image_mm": [
+      71.23561643835616,
+      81.0
+    ],
+    "visible_box_mm": [
+      55,
+      81
+    ],
+    "effective_ppi": 114.46
+  },
+  {
+    "file": "assets/portraits_01.png",
+    "component": "ZC-HER-0003",
+    "original_pixels": [
+      1024,
+      1536
+    ],
+    "crop_pixels": [
+      693,
+      9,
+      1016,
+      374
+    ],
+    "used_pixels": [
+      323,
+      365
+    ],
+    "printed_image_mm": [
+      71.67945205479452,
+      81.0
+    ],
+    "visible_box_mm": [
+      55,
+      81
+    ],
+    "effective_ppi": 114.46
+  },
+  {
+    "file": "assets/portraits_01.png",
+    "component": "ZC-HER-0004",
+    "original_pixels": [
+      1024,
+      1536
+    ],
+    "crop_pixels": [
+      11,
+      390,
+      331,
+      759
+    ],
+    "used_pixels": [
+      320,
+      369
+    ],
+    "printed_image_mm": [
+      70.2439024390244,
+      81.0
+    ],
+    "visible_box_mm": [
+      55,
+      81
+    ],
+    "effective_ppi": 115.71
+  },
+  {
+    "file": "assets/portraits_01.png",
+    "component": "ZC-HER-0005",
+    "original_pixels": [
+      1024,
+      1536
+    ],
+    "crop_pixels": [
+      352,
+      390,
+      673,
+      759
+    ],
+    "used_pixels": [
+      321,
+      369
+    ],
+    "printed_image_mm": [
+      70.46341463414635,
+      81.0
+    ],
+    "visible_box_mm": [
+      55,
+      81
+    ],
+    "effective_ppi": 115.71
+  },
+  {
+    "file": "assets/portraits_01.png",
+    "component": "ZC-HER-0006",
+    "original_pixels": [
+      1024,
+      1536
+    ],
+    "crop_pixels": [
+      693,
+      390,
+      1016,
+      759
+    ],
+    "used_pixels": [
+      323,
+      369
+    ],
+    "printed_image_mm": [
+      70.90243902439025,
+      81.0
+    ],
+    "visible_box_mm": [
+      55,
+      81
+    ],
+    "effective_ppi": 115.71
+  },
+  {
+    "file": "samples/kit-pos-apocaliptico/originais/RETRATOS_01.png",
+    "component": "ZC-HER-0001",
+    "original_pixels": [
+      1448,
+      1086
+    ],
+    "crop_pixels": [
+      16,
+      13,
+      467,
+      528
+    ],
+    "used_pixels": [
+      451,
+      515
+    ],
+    "printed_image_mm": [
+      70.93398058252427,
+      81.0
+    ],
+    "visible_box_mm": [
+      55,
+      81
+    ],
+    "effective_ppi": 161.49
+  },
+  {
+    "file": "samples/kit-pos-apocaliptico/originais/RETRATOS_01.png",
+    "component": "ZC-HER-0002",
+    "original_pixels": [
+      1448,
+      1086
+    ],
+    "crop_pixels": [
+      499,
+      13,
+      950,
+      528
+    ],
+    "used_pixels": [
+      451,
+      515
+    ],
+    "printed_image_mm": [
+      70.93398058252427,
+      81.0
+    ],
+    "visible_box_mm": [
+      55,
+      81
+    ],
+    "effective_ppi": 161.49
+  },
+  {
+    "file": "samples/kit-pos-apocaliptico/originais/RETRATOS_01.png",
+    "component": "ZC-HER-0003",
+    "original_pixels": [
+      1448,
+      1086
+    ],
+    "crop_pixels": [
+      981,
+      13,
+      1432,
+      528
+    ],
+    "used_pixels": [
+      451,
+      515
+    ],
+    "printed_image_mm": [
+      70.93398058252427,
+      81.0
+    ],
+    "visible_box_mm": [
+      55,
+      81
+    ],
+    "effective_ppi": 161.49
+  },
+  {
+    "file": "samples/kit-pos-apocaliptico/originais/RETRATOS_01.png",
+    "component": "ZC-HER-0004",
+    "original_pixels": [
+      1448,
+      1086
+    ],
+    "crop_pixels": [
+      16,
+      551,
+      467,
+      1070
+    ],
+    "used_pixels": [
+      451,
+      519
+    ],
+    "printed_image_mm": [
+      70.38728323699422,
+      81.0
+    ],
+    "visible_box_mm": [
+      55,
+      81
+    ],
+    "effective_ppi": 162.75
+  },
+  {
+    "file": "samples/kit-pos-apocaliptico/originais/RETRATOS_01.png",
+    "component": "ZC-HER-0005",
+    "original_pixels": [
+      1448,
+      1086
+    ],
+    "crop_pixels": [
+      499,
+      551,
+      950,
+      1070
+    ],
+    "used_pixels": [
+      451,
+      519
+    ],
+    "printed_image_mm": [
+      70.38728323699422,
+      81.0
+    ],
+    "visible_box_mm": [
+      55,
+      81
+    ],
+    "effective_ppi": 162.75
+  },
+  {
+    "file": "samples/kit-pos-apocaliptico/originais/RETRATOS_01.png",
+    "component": "ZC-HER-0006",
+    "original_pixels": [
+      1448,
+      1086
+    ],
+    "crop_pixels": [
+      981,
+      551,
+      1432,
+      1070
+    ],
+    "used_pixels": [
+      451,
+      519
+    ],
+    "printed_image_mm": [
+      70.38728323699422,
+      81.0
+    ],
+    "visible_box_mm": [
+      55,
+      81
+    ],
+    "effective_ppi": 162.75
+  },
+  {
+    "file": "samples/kit-pos-apocaliptico/originais/RETRATOS_01.png",
+    "component": "ZC-HER-0001",
+    "original_pixels": [
+      1448,
+      1086
+    ],
+    "crop_pixels": [
+      16,
+      13,
+      467,
+      528
+    ],
+    "used_pixels": [
+      451,
+      515
+    ],
+    "printed_image_mm": [
+      51.66796116504855,
+      59.00000000000001
+    ],
+    "visible_box_mm": [
+      40.0,
+      59.00000000000001
+    ],
+    "effective_ppi": 221.71
+  },
+  {
+    "file": "samples/kit-pos-apocaliptico/originais/RETRATOS_01.png",
+    "component": "ZC-HER-0002",
+    "original_pixels": [
+      1448,
+      1086
+    ],
+    "crop_pixels": [
+      499,
+      13,
+      950,
+      528
+    ],
+    "used_pixels": [
+      451,
+      515
+    ],
+    "printed_image_mm": [
+      51.66796116504855,
+      59.00000000000001
+    ],
+    "visible_box_mm": [
+      40.0,
+      59.00000000000001
+    ],
+    "effective_ppi": 221.71
+  },
+  {
+    "file": "samples/kit-pos-apocaliptico/originais/RETRATOS_01.png",
+    "component": "ZC-HER-0003",
+    "original_pixels": [
+      1448,
+      1086
+    ],
+    "crop_pixels": [
+      981,
+      13,
+      1432,
+      528
+    ],
+    "used_pixels": [
+      451,
+      515
+    ],
+    "printed_image_mm": [
+      51.66796116504855,
+      59.00000000000001
+    ],
+    "visible_box_mm": [
+      40.0,
+      59.00000000000001
+    ],
+    "effective_ppi": 221.71
+  },
+  {
+    "file": "samples/kit-pos-apocaliptico/originais/RETRATOS_01.png",
+    "component": "ZC-HER-0004",
+    "original_pixels": [
+      1448,
+      1086
+    ],
+    "crop_pixels": [
+      16,
+      551,
+      467,
+      1070
+    ],
+    "used_pixels": [
+      451,
+      519
+    ],
+    "printed_image_mm": [
+      51.26974951830444,
+      59.00000000000001
+    ],
+    "visible_box_mm": [
+      40.0,
+      59.00000000000001
+    ],
+    "effective_ppi": 223.43
+  },
+  {
+    "file": "samples/kit-pos-apocaliptico/originais/RETRATOS_01.png",
+    "component": "ZC-HER-0005",
+    "original_pixels": [
+      1448,
+      1086
+    ],
+    "crop_pixels": [
+      499,
+      551,
+      950,
+      1070
+    ],
+    "used_pixels": [
+      451,
+      519
+    ],
+    "printed_image_mm": [
+      51.26974951830444,
+      59.00000000000001
+    ],
+    "visible_box_mm": [
+      40.0,
+      59.00000000000001
+    ],
+    "effective_ppi": 223.43
+  },
+  {
+    "file": "samples/kit-pos-apocaliptico/originais/RETRATOS_01.png",
+    "component": "ZC-HER-0006",
+    "original_pixels": [
+      1448,
+      1086
+    ],
+    "crop_pixels": [
+      981,
+      551,
+      1432,
+      1070
+    ],
+    "used_pixels": [
+      451,
+      519
+    ],
+    "printed_image_mm": [
+      51.26974951830444,
+      59.00000000000001
+    ],
+    "visible_box_mm": [
+      40.0,
+      59.00000000000001
+    ],
+    "effective_ppi": 223.43
+  },
+  {
+    "file": "assets/enemies.png",
+    "component": "Errante",
+    "original_pixels": [
+      1222,
+      1287
+    ],
+    "crop_pixels": [
+      22,
+      0,
+      600,
+      600
+    ],
+    "used_pixels": [
+      578,
+      600
+    ],
+    "printed_image_mm": [
+      86.0,
+      89.27335640138409
+    ],
+    "visible_box_mm": [
+      86,
+      98
+    ],
+    "effective_ppi": 170.71
+  },
+  {
+    "file": "assets/enemies.png",
+    "component": "Corredor",
+    "original_pixels": [
+      1222,
+      1287
+    ],
+    "crop_pixels": [
+      623,
+      0,
+      1201,
+      600
+    ],
+    "used_pixels": [
+      578,
+      600
+    ],
+    "printed_image_mm": [
+      86.0,
+      89.27335640138409
+    ],
+    "visible_box_mm": [
+      86,
+      98
+    ],
+    "effective_ppi": 170.71
+  },
+  {
+    "file": "assets/enemies.png",
+    "component": "Bruto",
+    "original_pixels": [
+      1222,
+      1287
+    ],
+    "crop_pixels": [
+      22,
+      619,
+      600,
+      1267
+    ],
+    "used_pixels": [
+      578,
+      648
+    ],
+    "printed_image_mm": [
+      86.0,
+      96.41522491349481
+    ],
+    "visible_box_mm": [
+      86,
+      98
+    ],
+    "effective_ppi": 170.71
+  },
+  {
+    "file": "samples/kit-pos-apocaliptico/originais/SUPRIMENTOS.png",
+    "component": "ZC-SAQ-0001",
+    "original_pixels": [
+      1536,
+      1024
+    ],
+    "crop_pixels": [
+      970,
+      0,
+      1420,
+      445
+    ],
+    "used_pixels": [
+      450,
+      445
+    ],
+    "printed_image_mm": [
+      25.280898876404493,
+      25.0
+    ],
+    "visible_box_mm": [
+      55,
+      25
+    ],
+    "effective_ppi": 452.12
+  },
+  {
+    "file": "samples/kit-pos-apocaliptico/originais/AGUA_ISOLADA.png",
+    "component": "ZC-SAQ-0002",
+    "original_pixels": [
+      1145,
+      1374
+    ],
+    "crop_pixels": [
+      0,
+      12,
+      1117,
+      1358
+    ],
+    "used_pixels": [
+      1117,
+      1346
+    ],
+    "printed_image_mm": [
+      20.74665676077266,
+      25.0
+    ],
+    "visible_box_mm": [
+      55,
+      25
+    ],
+    "effective_ppi": 1367.54
+  },
+  {
+    "theme": "material/tile",
+    "file": "assets/v0.6/pisos_materiais.png",
+    "index": 2,
+    "original_pixels": [
+      1536,
+      1024
+    ],
+    "crop_pixels": [
+      1024.0,
+      0.0,
+      1536.0,
+      512.0
+    ],
+    "used_pixels": [
+      512.0,
+      512.0
+    ],
+    "print_mm": [
+      60.0,
+      60.0
+    ],
+    "bbox_mm": [
+      0,
+      0,
+      554,
+      380
+    ],
+    "effective_ppi": 216.74666666666664,
+    "edition": "ilustrada",
+    "role": "material nativo repetido; não mobiliário"
+  },
+  {
+    "theme": "material/concrete",
+    "file": "assets/v0.6/pisos_materiais.png",
+    "index": 0,
+    "original_pixels": [
+      1536,
+      1024
+    ],
+    "crop_pixels": [
+      0.0,
+      0.0,
+      512.0,
+      512.0
+    ],
+    "used_pixels": [
+      512.0,
+      512.0
+    ],
+    "print_mm": [
+      60.0,
+      60.0
+    ],
+    "bbox_mm": [
+      0,
+      285,
+      277,
+      95
+    ],
+    "effective_ppi": 216.74666666666664,
+    "edition": "ilustrada",
+    "role": "material nativo repetido; não mobiliário"
+  },
+  {
+    "theme": "material/paver",
+    "file": "assets/v0.6/pisos_materiais.png",
+    "index": 3,
+    "original_pixels": [
+      1536,
+      1024
+    ],
+    "crop_pixels": [
+      0.0,
+      512.0,
+      512.0,
+      1024.0
+    ],
+    "used_pixels": [
+      512.0,
+      512.0
+    ],
+    "print_mm": [
+      60.0,
+      60.0
+    ],
+    "bbox_mm": [
+      277,
+      285,
+      277,
+      95
+    ],
+    "effective_ppi": 216.74666666666664,
+    "edition": "ilustrada",
+    "role": "material nativo repetido; não mobiliário"
+  },
+  {
+    "theme": "material/concrete",
+    "file": "assets/v0.6/pisos_materiais.png",
+    "index": 0,
+    "original_pixels": [
+      1536,
+      1024
+    ],
+    "crop_pixels": [
+      0.0,
+      0.0,
+      512.0,
+      512.0
+    ],
+    "used_pixels": [
+      512.0,
+      512.0
+    ],
+    "print_mm": [
+      60.0,
+      60.0
+    ],
+    "bbox_mm": [
+      0,
+      0,
+      554,
+      190
+    ],
+    "effective_ppi": 216.74666666666664,
+    "edition": "ilustrada",
+    "role": "material nativo repetido; não mobiliário"
+  },
+  {
+    "theme": "Oficina",
+    "file": "samples/kit-pos-apocaliptico/originais/OFICINA.png",
+    "index": 1,
+    "original_pixels": [
+      1536,
+      1024
+    ],
+    "crop_pixels": [
+      768,
+      66,
+      1514,
+      446
+    ],
+    "used_pixels": [
+      746,
+      380
+    ],
+    "print_mm": [
+      54.96842105263158,
+      27.999999999999996
+    ],
+    "bbox_mm": [
+      23.51578947368421,
+      321.0,
+      54.96842105263158,
+      27.999999999999996
+    ],
+    "effective_ppi": 344.7142857142857,
+    "edition": "ilustrada"
+  },
+  {
+    "theme": "Oficina",
+    "file": "assets/v0.6/oficina_topo.png",
+    "index": 1,
+    "original_pixels": [
+      1536,
+      1024
+    ],
+    "crop_pixels": [
+      828,
+      55,
+      1525,
+      505
+    ],
+    "used_pixels": [
+      697,
+      450
+    ],
+    "print_mm": [
+      65.05333333333334,
+      42.0
+    ],
+    "bbox_mm": [
+      179.47333333333333,
+      312.0,
+      65.05333333333334,
+      42.0
+    ],
+    "effective_ppi": 272.1428571428571,
+    "edition": "ilustrada"
+  },
+  {
+    "theme": "Oficina",
+    "file": "samples/kit-pos-apocaliptico/originais/OFICINA.png",
+    "index": 2,
+    "original_pixels": [
+      1536,
+      1024
+    ],
+    "crop_pixels": [
+      30,
+      512,
+      758,
+      974
+    ],
+    "used_pixels": [
+      728,
+      462
+    ],
+    "print_mm": [
+      53.57575757575758,
+      34.0
+    ],
+    "bbox_mm": [
+      318.2121212121212,
+      316.0,
+      53.57575757575758,
+      34.0
+    ],
+    "effective_ppi": 345.14117647058816,
+    "edition": "ilustrada"
+  },
+  {
+    "theme": "Oficina",
+    "file": "samples/kit-pos-apocaliptico/originais/OFICINA.png",
+    "index": 0,
+    "original_pixels": [
+      1536,
+      1024
+    ],
+    "crop_pixels": [
+      22,
+      34,
+      738,
+      474
+    ],
+    "used_pixels": [
+      716,
+      440
+    ],
+    "print_mm": [
+      58.58181818181818,
+      36.0
+    ],
+    "bbox_mm": [
+      456.2090909090909,
+      315.0,
+      58.58181818181818,
+      36.0
+    ],
+    "effective_ppi": 310.44444444444446,
+    "edition": "ilustrada"
+  },
+  {
+    "theme": "Oficina",
+    "file": "samples/kit-pos-apocaliptico/originais/OFICINA.png",
+    "index": 1,
+    "original_pixels": [
+      1536,
+      1024
+    ],
+    "crop_pixels": [
+      768,
+      66,
+      1514,
+      446
+    ],
+    "used_pixels": [
+      746,
+      380
+    ],
+    "print_mm": [
+      54.96842105263158,
+      27.999999999999996
+    ],
+    "bbox_mm": [
+      36.01578947368421,
+      211.0,
+      54.96842105263158,
+      27.999999999999996
+    ],
+    "effective_ppi": 344.7142857142857,
+    "edition": "ilustrada"
+  },
+  {
+    "theme": "Oficina",
+    "file": "assets/v0.6/oficina_topo.png",
+    "index": 0,
+    "original_pixels": [
+      1536,
+      1024
+    ],
+    "crop_pixels": [
+      34,
+      22,
+      826,
+      505
+    ],
+    "used_pixels": [
+      792,
+      483
+    ],
+    "print_mm": [
+      78.70807453416148,
+      48.0
+    ],
+    "bbox_mm": [
+      169.64596273291926,
+      204.0,
+      78.70807453416148,
+      48.0
+    ],
+    "effective_ppi": 255.5875,
+    "edition": "ilustrada"
+  },
+  {
+    "theme": "Oficina",
+    "file": "assets/v0.6/oficina_topo.png",
+    "index": 1,
+    "original_pixels": [
+      1536,
+      1024
+    ],
+    "crop_pixels": [
+      828,
+      55,
+      1525,
+      505
+    ],
+    "used_pixels": [
+      697,
+      450
+    ],
+    "print_mm": [
+      65.05333333333334,
+      42.0
+    ],
+    "bbox_mm": [
+      316.97333333333336,
+      203.0,
+      65.05333333333334,
+      42.0
+    ],
+    "effective_ppi": 272.1428571428571,
+    "edition": "ilustrada"
+  },
+  {
+    "theme": "Oficina",
+    "file": "assets/v0.6/oficina_topo.png",
+    "index": 3,
+    "original_pixels": [
+      1536,
+      1024
+    ],
+    "crop_pixels": [
+      852,
+      506,
+      1526,
+      1007
+    ],
+    "used_pixels": [
+      674,
+      501
+    ],
+    "print_mm": [
+      57.84830339321358,
+      43.0
+    ],
+    "bbox_mm": [
+      455.57584830339323,
+      204.0,
+      57.84830339321358,
+      43.0
+    ],
+    "effective_ppi": 295.9395348837209,
+    "edition": "ilustrada"
+  },
+  {
+    "theme": "Oficina",
+    "file": "assets/v0.6/bancada_topo.png",
+    "index": 0,
+    "original_pixels": [
+      1536,
+      1024
+    ],
+    "crop_pixels": [
+      56,
+      119,
+      1506,
+      888
+    ],
+    "used_pixels": [
+      1450,
+      769
+    ],
+    "print_mm": [
+      77.30819245773732,
+      41.0
+    ],
+    "bbox_mm": [
+      172.34590377113133,
+      111.0,
+      77.30819245773732,
+      41.0
+    ],
+    "effective_ppi": 476.4048780487804,
+    "edition": "ilustrada"
+  },
+  {
+    "theme": "Oficina",
+    "file": "assets/v0.6/oficina_topo.png",
+    "index": 0,
+    "original_pixels": [
+      1536,
+      1024
+    ],
+    "crop_pixels": [
+      34,
+      22,
+      826,
+      505
+    ],
+    "used_pixels": [
+      792,
+      483
+    ],
+    "print_mm": [
+      57.391304347826086,
+      35.0
+    ],
+    "bbox_mm": [
+      317.30434782608694,
+      116.0,
+      57.391304347826086,
+      35.0
+    ],
+    "effective_ppi": 350.52,
+    "edition": "ilustrada"
+  },
+  {
+    "theme": "Oficina",
+    "file": "assets/v0.6/oficina_topo.png",
+    "index": 3,
+    "original_pixels": [
+      1536,
+      1024
+    ],
+    "crop_pixels": [
+      852,
+      506,
+      1526,
+      1007
+    ],
+    "used_pixels": [
+      674,
+      501
+    ],
+    "print_mm": [
+      48.431137724550894,
+      36.0
+    ],
+    "bbox_mm": [
+      38.78443113772455,
+      14.0,
+      48.431137724550894,
+      36.0
+    ],
+    "effective_ppi": 353.48333333333335,
+    "edition": "ilustrada"
+  },
+  {
+    "theme": "Oficina",
+    "file": "samples/kit-pos-apocaliptico/originais/OFICINA.png",
+    "index": 2,
+    "original_pixels": [
+      1536,
+      1024
+    ],
+    "crop_pixels": [
+      30,
+      512,
+      758,
+      974
+    ],
+    "used_pixels": [
+      728,
+      462
+    ],
+    "print_mm": [
+      47.272727272727266,
+      29.999999999999996
+    ],
+    "bbox_mm": [
+      324.8636363636364,
+      16.0,
+      47.272727272727266,
+      29.999999999999996
+    ],
+    "effective_ppi": 391.16,
+    "edition": "ilustrada"
+  },
+  {
+    "theme": "Oficina",
+    "file": "assets/v0.6/bancada_topo.png",
+    "index": 0,
+    "original_pixels": [
+      1536,
+      1024
+    ],
+    "crop_pixels": [
+      56,
+      119,
+      1506,
+      888
+    ],
+    "used_pixels": [
+      1450,
+      769
+    ],
+    "print_mm": [
+      64.10923276983095,
+      34.0
+    ],
+    "bbox_mm": [
+      451.94538361508455,
+      16.0,
+      64.10923276983095,
+      34.0
+    ],
+    "effective_ppi": 574.4882352941177,
+    "edition": "ilustrada"
+  }
+]

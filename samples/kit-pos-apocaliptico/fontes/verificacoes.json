@@ -1,0 +1,62 @@
+{
+  "pdfs": [
+    {
+      "file": "pdfs/CARTAS_PROVA_DUPLEX.pdf",
+      "pages": 2,
+      "a4": true
+    },
+    {
+      "file": "pdfs/FICHAS_SEIS_HEROIS.pdf",
+      "pages": 3,
+      "a4": true
+    },
+    {
+      "file": "pdfs/INIMIGOS_PROVA_A4.pdf",
+      "pages": 1,
+      "a4": true
+    },
+    {
+      "file": "pdfs/OFICINA_4_A4.pdf",
+      "pages": 4,
+      "a4": true
+    },
+    {
+      "file": "pdfs/PERSONAGENS_PROVA_A4.pdf",
+      "pages": 1,
+      "a4": true
+    },
+    {
+      "file": "antes/CARTAS_PROVA_DUPLEX.pdf",
+      "pages": 2,
+      "a4": true
+    },
+    {
+      "file": "antes/FICHAS_SEIS_HEROIS.pdf",
+      "pages": 3,
+      "a4": true
+    },
+    {
+      "file": "antes/OFICINA_4_A4.pdf",
+      "pages": 4,
+      "a4": true
+    },
+    {
+      "file": "antes/PERSONAGENS_PROVA_A4.pdf",
+      "pages": 1,
+      "a4": true
+    }
+  ],
+  "card_ids": [
+    "ZC-EQU-0007",
+    "ZC-SAQ-0001",
+    "ZC-SAQ-0002",
+    "ZC-EQU-0009",
+    "ZC-EQU-0014",
+    "ZC-PEC-0002",
+    "ZC-VIA-0005",
+    "ZC-INT-0001",
+    "ZC-HOR-0001"
+  ],
+  "geometry_equal": true,
+  "card_and_hero_text_equal": true
+}
