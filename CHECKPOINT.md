@@ -1,3 +1,9 @@
+# Lote 08 — posto de combustível
+
+[Quatro A4 e prova de 100 mm](samples/kit-pos-apocaliptico/lote-08-posto/RELATORIO.md): posto em ambiente contínuo, 175 ppi, com 21 conexões revisadas e passagens retocadas. Próximos: condomínio, módulos comuns e 39 IDs de cartas para revisão artística.
+
+---
+
 # Lote 07 — moradores nas cartas
 
 [Lote 07](samples/kit-pos-apocaliptico/lote-07-moradores/CHECKPOINT.md): oito cartas MOR atualizadas com retratos das fichas; textos e versos idênticos; 39 IDs seguem para revisão artística.

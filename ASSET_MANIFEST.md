@@ -1,3 +1,9 @@
+# Lote 08 — posto
+
+[Inventário e resolução efetiva](samples/kit-pos-apocaliptico/lote-08-posto/RELATORIO.md): nove seções e três reparos gerados por imagegen integrado, fonte global e composição editável; 3817 × 2618 px em 554 × 380 mm, 175 ppi. Geometria e texto vetoriais.
+
+---
+
 # Lote 07 — moradores nas cartas
 
 [Retratos nas cartas MOR](samples/kit-pos-apocaliptico/lote-07-moradores/fontes/resolucao.json): fontes nativas do lote 03, oito cartas integradas no PDF atual, resolução física por herói registrada.

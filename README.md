@@ -1,3 +1,5 @@
+> Prova artística atual: [Posto de combustível em quatro A4](samples/kit-pos-apocaliptico/lote-08-posto/POSTO_4_A4.pdf), [comparação](samples/kit-pos-apocaliptico/lote-08-posto/COMPARACAO_B_ANTES_DEPOIS.jpg) e [relatório](samples/kit-pos-apocaliptico/lote-08-posto/RELATORIO.md). Esta prova não substitui automaticamente o kit distribuído.
+
 # Lote 07 — moradores nas cartas
 
 [Retratos revisados nas oito cartas de moradores](samples/kit-pos-apocaliptico/lote-07-moradores/RELATORIO.md). Seleção preservada; 75/114 IDs com arte nova acumulada.

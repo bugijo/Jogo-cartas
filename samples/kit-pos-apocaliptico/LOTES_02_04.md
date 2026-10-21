@@ -23,6 +23,7 @@ Escala 100%, sem ajustar. Mapas: A4 paisagem, corte 277 × 190 mm, quatro peças
 
 - [Hospital](lote-02-composicao/hospital/COMPARACAO_B_ANTES_DEPOIS.jpg) · [100 mm em A4](lote-02-composicao/hospital/COMPARACAO_100MM_A4.pdf)
 - [Oficina](lote-02-composicao/oficina/COMPARACAO_B_ANTES_DEPOIS.jpg) · [100 mm em A4](lote-02-composicao/oficina/COMPARACAO_100MM_A4.pdf)
+- [Posto](lote-08-posto/COMPARACAO_B_ANTES_DEPOIS.jpg) · [quatro A4](lote-08-posto/POSTO_4_A4.pdf) · [relatório](lote-08-posto/RELATORIO.md)
 - [Estação](lote-05-estacao/COMPARACAO_B_ANTES_DEPOIS.jpg) · [100 mm em A4](lote-05-estacao/COMPARACAO_100MM_A4.pdf) · [relatório](lote-05-estacao/RELATORIO.md)
 - [Fichas e retratos](lote-03-personagens/provas/) · [Peões 1](lote-03-personagens/provas/COMPARACAO_PEOES_1.jpg) · [Peões 2](lote-03-personagens/provas/COMPARACAO_PEOES_2.jpg)
 - [Cartas de itens](lote-04-cartas/provas/COMPARACAO_CARTAS.jpg) · [Intenções](lote-04-cartas/provas/COMPARACAO_INTENCOES.jpg)
@@ -35,7 +36,7 @@ Hospital e oficina recompostos como ambientes contínuos, com 175 ppi reais a pa
 
 ## Pendente
 
-1. Posto, condomínio e módulos comuns com composição contínua e a mesma revisão em escala física.
+1. Condomínio e módulos comuns com composição contínua e a mesma revisão em escala física.
 2. Revisão dos 39 IDs de cartas que mantêm a arte anterior, priorizando eventos esquemáticos, suprimentos restantes e moradores/vínculos. Alguns já podem ser preservados, mas não foram aprovados como lote final.
 3. Retratos dos moradores já integrados nas oito cartas MOR, fichas e peões. Revisar cartas de vínculos genéricos e outros componentes ilustrados conforme necessidade; crianças, cão e civil seguem descritos na regra, sem retrato novo neste lote.
 4. Revisão conjunta de abrigo/painéis, inimigos e demais ilustrações, reaproveitando o que já atende. Inimigos existentes foram preservados na prova inicial; não houve nova geração deles neste lote.

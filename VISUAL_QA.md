@@ -1,3 +1,9 @@
+# Prova adicional: posto de combustível
+
+[PDF, comparação e contato das conexões](samples/kit-pos-apocaliptico/lote-08-posto/RELATORIO.md). Nove seções nativas e três reparos; composição a 175 ppi. Restam discretas faces laterais estilizadas, temperatura de luz mais quente que Mercado B e possível transição de textura vista ampliada. Impressão física pendente.
+
+---
+
 # Lote 07 — moradores nas cartas
 
 [Comparação das cartas de moradores](samples/kit-pos-apocaliptico/lote-07-moradores/provas/COMPARACAO_MORADORES_1.jpg): oito rostos/grupos reconhecíveis, mais desgaste e no mínimo 589,04 ppi nos retratos; crianças e cão permanecem informação textual como antes.
