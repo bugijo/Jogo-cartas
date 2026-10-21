@@ -66,10 +66,10 @@ for t in CAT['tokens']:
     add(t['id'], 'token compatível com regras', 'token existente', 'NEEDS_REVIEW',
         'content/catalog.json', token_pdf.relative_to(P), 'auditoria visual global pendente',t['kind'])
 
-common = P / 'output/edicao-tabuleiros-v0.6/ilustrada/06_TABULEIROS/COMUNS_M01_M04_LADO_A.pdf'
+common = S / 'lote-11-modulos-comuns/COMUNS_4_A4.pdf'
 for mod in CAT['modules']:
-    add(mod['id'], 'módulo comum com arte da edição final', 'módulo 0.6', 'PARTIAL',
-        'content/catalog.json', common.relative_to(P), 'arte pós-apocalíptica e junções pendentes',mod['name'])
+    add(mod['id'], 'módulo comum com arte da edição final', 'prova pós-apocalíptica' if common.exists() else 'módulo 0.6', 'READY' if common.exists() else 'PARTIAL',
+        'content/catalog.json', common.relative_to(P), 'geometria, junções e A4 conferidos; impressão física pendente',mod['name'])
 
 for label, relative in {
     'REGRAS': 'output/edicao-tabuleiros-v0.6/ilustrada/01_GUIA_E_REGRAS/MANUAL.pdf',

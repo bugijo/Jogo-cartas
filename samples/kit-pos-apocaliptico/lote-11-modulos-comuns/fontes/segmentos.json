@@ -1,0 +1,954 @@
+[
+  {
+    "zone": 1,
+    "neighbor": 2,
+    "side": "R",
+    "key": [
+      1,
+      2
+    ],
+    "connected": true,
+    "door": false,
+    "blocked": false,
+    "p1": [
+      138.5,
+      285
+    ],
+    "p2": [
+      138.5,
+      380
+    ],
+    "center": [
+      138.5,
+      332.5
+    ],
+    "gap_mm": 14
+  },
+  {
+    "zone": 1,
+    "neighbor": 5,
+    "side": "D",
+    "key": [
+      1,
+      5
+    ],
+    "connected": true,
+    "door": true,
+    "blocked": false,
+    "p1": [
+      0.0,
+      285
+    ],
+    "p2": [
+      138.5,
+      285
+    ],
+    "center": [
+      69.25,
+      285.0
+    ],
+    "gap_mm": 14
+  },
+  {
+    "zone": 1,
+    "neighbor": null,
+    "side": "L",
+    "key": null,
+    "connected": false,
+    "door": false,
+    "blocked": false,
+    "p1": [
+      0.0,
+      285
+    ],
+    "p2": [
+      0.0,
+      380
+    ],
+    "center": [
+      0.0,
+      332.5
+    ],
+    "gap_mm": 0
+  },
+  {
+    "zone": 1,
+    "neighbor": null,
+    "side": "U",
+    "key": null,
+    "connected": false,
+    "door": false,
+    "blocked": false,
+    "p1": [
+      0.0,
+      380
+    ],
+    "p2": [
+      138.5,
+      380
+    ],
+    "center": [
+      69.25,
+      380.0
+    ],
+    "gap_mm": 0
+  },
+  {
+    "zone": 2,
+    "neighbor": 3,
+    "side": "R",
+    "key": [
+      2,
+      3
+    ],
+    "connected": true,
+    "door": false,
+    "blocked": false,
+    "p1": [
+      277.0,
+      285
+    ],
+    "p2": [
+      277.0,
+      380
+    ],
+    "center": [
+      277.0,
+      332.5
+    ],
+    "gap_mm": 14
+  },
+  {
+    "zone": 2,
+    "neighbor": 6,
+    "side": "D",
+    "key": [
+      2,
+      6
+    ],
+    "connected": false,
+    "door": false,
+    "blocked": false,
+    "p1": [
+      138.5,
+      285
+    ],
+    "p2": [
+      277.0,
+      285
+    ],
+    "center": [
+      207.75,
+      285.0
+    ],
+    "gap_mm": 0
+  },
+  {
+    "zone": 2,
+    "neighbor": null,
+    "side": "U",
+    "key": null,
+    "connected": false,
+    "door": false,
+    "blocked": false,
+    "p1": [
+      138.5,
+      380
+    ],
+    "p2": [
+      277.0,
+      380
+    ],
+    "center": [
+      207.75,
+      380.0
+    ],
+    "gap_mm": 0
+  },
+  {
+    "zone": 3,
+    "neighbor": 4,
+    "side": "R",
+    "key": [
+      3,
+      4
+    ],
+    "connected": true,
+    "door": false,
+    "blocked": false,
+    "p1": [
+      415.5,
+      285
+    ],
+    "p2": [
+      415.5,
+      380
+    ],
+    "center": [
+      415.5,
+      332.5
+    ],
+    "gap_mm": 14
+  },
+  {
+    "zone": 3,
+    "neighbor": 7,
+    "side": "D",
+    "key": [
+      3,
+      7
+    ],
+    "connected": true,
+    "door": true,
+    "blocked": false,
+    "p1": [
+      277.0,
+      285
+    ],
+    "p2": [
+      415.5,
+      285
+    ],
+    "center": [
+      346.25,
+      285.0
+    ],
+    "gap_mm": 14
+  },
+  {
+    "zone": 3,
+    "neighbor": null,
+    "side": "U",
+    "key": null,
+    "connected": false,
+    "door": false,
+    "blocked": false,
+    "p1": [
+      277.0,
+      380
+    ],
+    "p2": [
+      415.5,
+      380
+    ],
+    "center": [
+      346.25,
+      380.0
+    ],
+    "gap_mm": 0
+  },
+  {
+    "zone": 4,
+    "neighbor": null,
+    "side": "R",
+    "key": null,
+    "connected": false,
+    "door": false,
+    "blocked": false,
+    "p1": [
+      554.0,
+      285
+    ],
+    "p2": [
+      554.0,
+      380
+    ],
+    "center": [
+      554.0,
+      332.5
+    ],
+    "gap_mm": 0
+  },
+  {
+    "zone": 4,
+    "neighbor": 8,
+    "side": "D",
+    "key": [
+      4,
+      8
+    ],
+    "connected": true,
+    "door": false,
+    "blocked": false,
+    "p1": [
+      415.5,
+      285
+    ],
+    "p2": [
+      554.0,
+      285
+    ],
+    "center": [
+      484.75,
+      285.0
+    ],
+    "gap_mm": 14
+  },
+  {
+    "zone": 4,
+    "neighbor": null,
+    "side": "U",
+    "key": null,
+    "connected": false,
+    "door": false,
+    "blocked": false,
+    "p1": [
+      415.5,
+      380
+    ],
+    "p2": [
+      554.0,
+      380
+    ],
+    "center": [
+      484.75,
+      380.0
+    ],
+    "gap_mm": 0
+  },
+  {
+    "zone": 5,
+    "neighbor": 6,
+    "side": "R",
+    "key": [
+      5,
+      6
+    ],
+    "connected": true,
+    "door": false,
+    "blocked": false,
+    "p1": [
+      138.5,
+      190
+    ],
+    "p2": [
+      138.5,
+      285
+    ],
+    "center": [
+      138.5,
+      237.5
+    ],
+    "gap_mm": 14
+  },
+  {
+    "zone": 5,
+    "neighbor": 9,
+    "side": "D",
+    "key": [
+      5,
+      9
+    ],
+    "connected": true,
+    "door": false,
+    "blocked": false,
+    "p1": [
+      0.0,
+      190
+    ],
+    "p2": [
+      138.5,
+      190
+    ],
+    "center": [
+      69.25,
+      190.0
+    ],
+    "gap_mm": 14
+  },
+  {
+    "zone": 5,
+    "neighbor": null,
+    "side": "L",
+    "key": null,
+    "connected": false,
+    "door": false,
+    "blocked": false,
+    "p1": [
+      0.0,
+      190
+    ],
+    "p2": [
+      0.0,
+      285
+    ],
+    "center": [
+      0.0,
+      237.5
+    ],
+    "gap_mm": 0
+  },
+  {
+    "zone": 6,
+    "neighbor": 7,
+    "side": "R",
+    "key": [
+      6,
+      7
+    ],
+    "connected": true,
+    "door": false,
+    "blocked": false,
+    "p1": [
+      277.0,
+      190
+    ],
+    "p2": [
+      277.0,
+      285
+    ],
+    "center": [
+      277.0,
+      237.5
+    ],
+    "gap_mm": 14
+  },
+  {
+    "zone": 6,
+    "neighbor": 10,
+    "side": "D",
+    "key": [
+      6,
+      10
+    ],
+    "connected": false,
+    "door": false,
+    "blocked": false,
+    "p1": [
+      138.5,
+      190
+    ],
+    "p2": [
+      277.0,
+      190
+    ],
+    "center": [
+      207.75,
+      190.0
+    ],
+    "gap_mm": 0
+  },
+  {
+    "zone": 7,
+    "neighbor": 8,
+    "side": "R",
+    "key": [
+      7,
+      8
+    ],
+    "connected": true,
+    "door": true,
+    "blocked": false,
+    "p1": [
+      415.5,
+      190
+    ],
+    "p2": [
+      415.5,
+      285
+    ],
+    "center": [
+      415.5,
+      237.5
+    ],
+    "gap_mm": 14
+  },
+  {
+    "zone": 7,
+    "neighbor": 11,
+    "side": "D",
+    "key": [
+      7,
+      11
+    ],
+    "connected": true,
+    "door": false,
+    "blocked": false,
+    "p1": [
+      277.0,
+      190
+    ],
+    "p2": [
+      415.5,
+      190
+    ],
+    "center": [
+      346.25,
+      190.0
+    ],
+    "gap_mm": 14
+  },
+  {
+    "zone": 8,
+    "neighbor": null,
+    "side": "R",
+    "key": null,
+    "connected": false,
+    "door": false,
+    "blocked": false,
+    "p1": [
+      554.0,
+      190
+    ],
+    "p2": [
+      554.0,
+      285
+    ],
+    "center": [
+      554.0,
+      237.5
+    ],
+    "gap_mm": 0
+  },
+  {
+    "zone": 8,
+    "neighbor": 12,
+    "side": "D",
+    "key": [
+      8,
+      12
+    ],
+    "connected": true,
+    "door": false,
+    "blocked": false,
+    "p1": [
+      415.5,
+      190
+    ],
+    "p2": [
+      554.0,
+      190
+    ],
+    "center": [
+      484.75,
+      190.0
+    ],
+    "gap_mm": 14
+  },
+  {
+    "zone": 9,
+    "neighbor": 10,
+    "side": "R",
+    "key": [
+      9,
+      10
+    ],
+    "connected": true,
+    "door": false,
+    "blocked": false,
+    "p1": [
+      138.5,
+      95
+    ],
+    "p2": [
+      138.5,
+      190
+    ],
+    "center": [
+      138.5,
+      142.5
+    ],
+    "gap_mm": 14
+  },
+  {
+    "zone": 9,
+    "neighbor": 13,
+    "side": "D",
+    "key": [
+      9,
+      13
+    ],
+    "connected": true,
+    "door": true,
+    "blocked": false,
+    "p1": [
+      0.0,
+      95
+    ],
+    "p2": [
+      138.5,
+      95
+    ],
+    "center": [
+      69.25,
+      95.0
+    ],
+    "gap_mm": 14
+  },
+  {
+    "zone": 9,
+    "neighbor": null,
+    "side": "L",
+    "key": null,
+    "connected": false,
+    "door": false,
+    "blocked": false,
+    "p1": [
+      0.0,
+      95
+    ],
+    "p2": [
+      0.0,
+      190
+    ],
+    "center": [
+      0.0,
+      142.5
+    ],
+    "gap_mm": 0
+  },
+  {
+    "zone": 10,
+    "neighbor": 11,
+    "side": "R",
+    "key": [
+      10,
+      11
+    ],
+    "connected": true,
+    "door": false,
+    "blocked": false,
+    "p1": [
+      277.0,
+      95
+    ],
+    "p2": [
+      277.0,
+      190
+    ],
+    "center": [
+      277.0,
+      142.5
+    ],
+    "gap_mm": 14
+  },
+  {
+    "zone": 10,
+    "neighbor": 14,
+    "side": "D",
+    "key": [
+      10,
+      14
+    ],
+    "connected": false,
+    "door": false,
+    "blocked": false,
+    "p1": [
+      138.5,
+      95
+    ],
+    "p2": [
+      277.0,
+      95
+    ],
+    "center": [
+      207.75,
+      95.0
+    ],
+    "gap_mm": 0
+  },
+  {
+    "zone": 11,
+    "neighbor": 12,
+    "side": "R",
+    "key": [
+      11,
+      12
+    ],
+    "connected": true,
+    "door": false,
+    "blocked": false,
+    "p1": [
+      415.5,
+      95
+    ],
+    "p2": [
+      415.5,
+      190
+    ],
+    "center": [
+      415.5,
+      142.5
+    ],
+    "gap_mm": 14
+  },
+  {
+    "zone": 11,
+    "neighbor": 15,
+    "side": "D",
+    "key": [
+      11,
+      15
+    ],
+    "connected": true,
+    "door": false,
+    "blocked": false,
+    "p1": [
+      277.0,
+      95
+    ],
+    "p2": [
+      415.5,
+      95
+    ],
+    "center": [
+      346.25,
+      95.0
+    ],
+    "gap_mm": 14
+  },
+  {
+    "zone": 12,
+    "neighbor": null,
+    "side": "R",
+    "key": null,
+    "connected": false,
+    "door": false,
+    "blocked": false,
+    "p1": [
+      554.0,
+      95
+    ],
+    "p2": [
+      554.0,
+      190
+    ],
+    "center": [
+      554.0,
+      142.5
+    ],
+    "gap_mm": 0
+  },
+  {
+    "zone": 12,
+    "neighbor": 16,
+    "side": "D",
+    "key": [
+      12,
+      16
+    ],
+    "connected": true,
+    "door": false,
+    "blocked": false,
+    "p1": [
+      415.5,
+      95
+    ],
+    "p2": [
+      554.0,
+      95
+    ],
+    "center": [
+      484.75,
+      95.0
+    ],
+    "gap_mm": 14
+  },
+  {
+    "zone": 13,
+    "neighbor": 14,
+    "side": "R",
+    "key": [
+      13,
+      14
+    ],
+    "connected": true,
+    "door": true,
+    "blocked": false,
+    "p1": [
+      138.5,
+      0
+    ],
+    "p2": [
+      138.5,
+      95
+    ],
+    "center": [
+      138.5,
+      47.5
+    ],
+    "gap_mm": 14
+  },
+  {
+    "zone": 13,
+    "neighbor": null,
+    "side": "D",
+    "key": null,
+    "connected": false,
+    "door": false,
+    "blocked": false,
+    "p1": [
+      0.0,
+      0
+    ],
+    "p2": [
+      138.5,
+      0
+    ],
+    "center": [
+      69.25,
+      0.0
+    ],
+    "gap_mm": 0
+  },
+  {
+    "zone": 13,
+    "neighbor": null,
+    "side": "L",
+    "key": null,
+    "connected": false,
+    "door": false,
+    "blocked": false,
+    "p1": [
+      0.0,
+      0
+    ],
+    "p2": [
+      0.0,
+      95
+    ],
+    "center": [
+      0.0,
+      47.5
+    ],
+    "gap_mm": 0
+  },
+  {
+    "zone": 14,
+    "neighbor": 15,
+    "side": "R",
+    "key": [
+      14,
+      15
+    ],
+    "connected": true,
+    "door": false,
+    "blocked": false,
+    "p1": [
+      277.0,
+      0
+    ],
+    "p2": [
+      277.0,
+      95
+    ],
+    "center": [
+      277.0,
+      47.5
+    ],
+    "gap_mm": 14
+  },
+  {
+    "zone": 14,
+    "neighbor": null,
+    "side": "D",
+    "key": null,
+    "connected": false,
+    "door": false,
+    "blocked": false,
+    "p1": [
+      138.5,
+      0
+    ],
+    "p2": [
+      277.0,
+      0
+    ],
+    "center": [
+      207.75,
+      0.0
+    ],
+    "gap_mm": 0
+  },
+  {
+    "zone": 15,
+    "neighbor": 16,
+    "side": "R",
+    "key": [
+      15,
+      16
+    ],
+    "connected": true,
+    "door": false,
+    "blocked": false,
+    "p1": [
+      415.5,
+      0
+    ],
+    "p2": [
+      415.5,
+      95
+    ],
+    "center": [
+      415.5,
+      47.5
+    ],
+    "gap_mm": 14
+  },
+  {
+    "zone": 15,
+    "neighbor": null,
+    "side": "D",
+    "key": null,
+    "connected": false,
+    "door": false,
+    "blocked": false,
+    "p1": [
+      277.0,
+      0
+    ],
+    "p2": [
+      415.5,
+      0
+    ],
+    "center": [
+      346.25,
+      0.0
+    ],
+    "gap_mm": 0
+  },
+  {
+    "zone": 16,
+    "neighbor": null,
+    "side": "R",
+    "key": null,
+    "connected": false,
+    "door": false,
+    "blocked": false,
+    "p1": [
+      554.0,
+      0
+    ],
+    "p2": [
+      554.0,
+      95
+    ],
+    "center": [
+      554.0,
+      47.5
+    ],
+    "gap_mm": 0
+  },
+  {
+    "zone": 16,
+    "neighbor": null,
+    "side": "D",
+    "key": null,
+    "connected": false,
+    "door": false,
+    "blocked": false,
+    "p1": [
+      415.5,
+      0
+    ],
+    "p2": [
+      554.0,
+      0
+    ],
+    "center": [
+      484.75,
+      0.0
+    ],
+    "gap_mm": 0
+  }
+]

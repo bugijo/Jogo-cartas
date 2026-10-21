@@ -9,8 +9,7 @@
   "tokens": 198,
   "matrix_rows": 359,
   "statuses": {
-    "READY": 144,
-    "NEEDS_REVIEW": 211,
-    "PARTIAL": 4
+    "READY": 148,
+    "NEEDS_REVIEW": 211
   }
 }
