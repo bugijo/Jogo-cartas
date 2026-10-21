@@ -1,3 +1,9 @@
+# Lote 06 — itens e cartas
+
+[Oito itens adicionais](samples/kit-pos-apocaliptico/lote-06-itens/RELATORIO.md): 29 IDs com cenas novas em duas pranchas nativas, 351,37 ppi mínimos; textos e versos iguais aos da versão anterior.
+
+---
+
 # Prova adicional: estação de tratamento
 
 [Relatório e PDF](samples/kit-pos-apocaliptico/lote-05-estacao/RELATORIO.md). Ambiente contínuo, 175 ppi, quatro A4, planta canônica preservada; seis interferências de arte localizadas e corrigidas antes da prova. Ainda requer impressão física e avaliação artística.

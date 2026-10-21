@@ -1,0 +1,1202 @@
+[
+  {
+    "id": "ZC-INT-0001",
+    "source": "samples/kit-pos-apocaliptico/lote-04-cartas/originais/INTENCOES_CENAS.png",
+    "crop_pixels": [
+      7,
+      7,
+      761,
+      505
+    ],
+    "printed_mm": [
+      54.50602409638554,
+      36.0
+    ],
+    "effective_ppi": 351.3666666666667,
+    "new_scene": false
+  },
+  {
+    "id": "ZC-INT-0002",
+    "source": "samples/kit-pos-apocaliptico/lote-04-cartas/originais/INTENCOES_CENAS.png",
+    "crop_pixels": [
+      7,
+      7,
+      761,
+      505
+    ],
+    "printed_mm": [
+      54.50602409638554,
+      36.0
+    ],
+    "effective_ppi": 351.3666666666667,
+    "new_scene": false
+  },
+  {
+    "id": "ZC-INT-0003",
+    "source": "samples/kit-pos-apocaliptico/lote-04-cartas/originais/INTENCOES_CENAS.png",
+    "crop_pixels": [
+      7,
+      7,
+      761,
+      505
+    ],
+    "printed_mm": [
+      54.50602409638554,
+      36.0
+    ],
+    "effective_ppi": 351.3666666666667,
+    "new_scene": false
+  },
+  {
+    "id": "ZC-INT-0004",
+    "source": "samples/kit-pos-apocaliptico/lote-04-cartas/originais/INTENCOES_CENAS.png",
+    "crop_pixels": [
+      7,
+      7,
+      761,
+      505
+    ],
+    "printed_mm": [
+      54.50602409638554,
+      36.0
+    ],
+    "effective_ppi": 351.3666666666667,
+    "new_scene": false
+  },
+  {
+    "id": "ZC-INT-0005",
+    "source": "samples/kit-pos-apocaliptico/lote-04-cartas/originais/INTENCOES_CENAS.png",
+    "crop_pixels": [
+      7,
+      7,
+      761,
+      505
+    ],
+    "printed_mm": [
+      54.50602409638554,
+      36.0
+    ],
+    "effective_ppi": 351.3666666666667,
+    "new_scene": false
+  },
+  {
+    "id": "ZC-INT-0006",
+    "source": "samples/kit-pos-apocaliptico/lote-04-cartas/originais/INTENCOES_CENAS.png",
+    "crop_pixels": [
+      7,
+      7,
+      761,
+      505
+    ],
+    "printed_mm": [
+      54.50602409638554,
+      36.0
+    ],
+    "effective_ppi": 351.3666666666667,
+    "new_scene": false
+  },
+  {
+    "id": "ZC-INT-0007",
+    "source": "samples/kit-pos-apocaliptico/lote-04-cartas/originais/INTENCOES_CENAS.png",
+    "crop_pixels": [
+      7,
+      7,
+      761,
+      505
+    ],
+    "printed_mm": [
+      54.50602409638554,
+      36.0
+    ],
+    "effective_ppi": 351.3666666666667,
+    "new_scene": false
+  },
+  {
+    "id": "ZC-INT-0008",
+    "source": "samples/kit-pos-apocaliptico/lote-04-cartas/originais/INTENCOES_CENAS.png",
+    "crop_pixels": [
+      775,
+      7,
+      1529,
+      505
+    ],
+    "printed_mm": [
+      54.50602409638554,
+      36.0
+    ],
+    "effective_ppi": 351.3666666666667,
+    "new_scene": false
+  },
+  {
+    "id": "ZC-INT-0009",
+    "source": "samples/kit-pos-apocaliptico/lote-04-cartas/originais/INTENCOES_CENAS.png",
+    "crop_pixels": [
+      775,
+      7,
+      1529,
+      505
+    ],
+    "printed_mm": [
+      54.50602409638554,
+      36.0
+    ],
+    "effective_ppi": 351.3666666666667,
+    "new_scene": false
+  },
+  {
+    "id": "ZC-INT-0010",
+    "source": "samples/kit-pos-apocaliptico/lote-04-cartas/originais/INTENCOES_CENAS.png",
+    "crop_pixels": [
+      775,
+      7,
+      1529,
+      505
+    ],
+    "printed_mm": [
+      54.50602409638554,
+      36.0
+    ],
+    "effective_ppi": 351.3666666666667,
+    "new_scene": false
+  },
+  {
+    "id": "ZC-INT-0011",
+    "source": "samples/kit-pos-apocaliptico/lote-04-cartas/originais/INTENCOES_CENAS.png",
+    "crop_pixels": [
+      7,
+      519,
+      761,
+      1017
+    ],
+    "printed_mm": [
+      54.50602409638554,
+      36.0
+    ],
+    "effective_ppi": 351.3666666666667,
+    "new_scene": false
+  },
+  {
+    "id": "ZC-INT-0012",
+    "source": "samples/kit-pos-apocaliptico/lote-04-cartas/originais/INTENCOES_CENAS.png",
+    "crop_pixels": [
+      775,
+      519,
+      1529,
+      1017
+    ],
+    "printed_mm": [
+      54.50602409638554,
+      36.0
+    ],
+    "effective_ppi": 351.3666666666667,
+    "new_scene": false
+  },
+  {
+    "id": "ZC-EQU-0007",
+    "source": "samples/kit-pos-apocaliptico/lote-04-cartas/originais/ARMAS_CENAS.png",
+    "crop_pixels": [
+      7,
+      7,
+      761,
+      505
+    ],
+    "printed_mm": [
+      54.50602409638554,
+      36.0
+    ],
+    "effective_ppi": 351.3666666666667,
+    "new_scene": false
+  },
+  {
+    "id": "ZC-EQU-0008",
+    "source": "samples/kit-pos-apocaliptico/lote-04-cartas/originais/ARMAS_CENAS.png",
+    "crop_pixels": [
+      7,
+      7,
+      761,
+      505
+    ],
+    "printed_mm": [
+      54.50602409638554,
+      36.0
+    ],
+    "effective_ppi": 351.3666666666667,
+    "new_scene": false
+  },
+  {
+    "id": "ZC-EQU-0014",
+    "source": "samples/kit-pos-apocaliptico/lote-04-cartas/originais/SUPRIMENTOS_CENAS.png",
+    "crop_pixels": [
+      7,
+      7,
+      754,
+      462
+    ],
+    "printed_mm": [
+      55.0,
+      33.50066934404284
+    ],
+    "effective_ppi": 344.9781818181818,
+    "new_scene": false
+  },
+  {
+    "id": "ZC-EQU-0017",
+    "source": "samples/kit-pos-apocaliptico/lote-06-itens/originais/UTILITARIOS_VEICULO.png",
+    "crop_pixels": [
+      7,
+      7,
+      761,
+      505
+    ],
+    "printed_mm": [
+      54.50602409638554,
+      36.0
+    ],
+    "effective_ppi": 351.3666666666667,
+    "new_scene": true
+  },
+  {
+    "id": "ZC-SAQ-0001",
+    "source": "samples/kit-pos-apocaliptico/lote-04-cartas/originais/SUPRIMENTOS_CENAS.png",
+    "crop_pixels": [
+      783,
+      7,
+      1529,
+      462
+    ],
+    "printed_mm": [
+      40.989010989010985,
+      25.0
+    ],
+    "effective_ppi": 462.28,
+    "new_scene": false
+  },
+  {
+    "id": "ZC-SAQ-0002",
+    "source": "samples/kit-pos-apocaliptico/lote-04-cartas/originais/SUPRIMENTOS_CENAS.png",
+    "crop_pixels": [
+      7,
+      485,
+      754,
+      1017
+    ],
+    "printed_mm": [
+      35.10338345864661,
+      25.0
+    ],
+    "effective_ppi": 540.512,
+    "new_scene": false
+  },
+  {
+    "id": "ZC-SAQ-0003",
+    "source": "samples/kit-pos-apocaliptico/lote-06-itens/originais/SAQUES_COMPLEMENTARES.png",
+    "crop_pixels": [
+      7,
+      7,
+      761,
+      505
+    ],
+    "printed_mm": [
+      37.851405622489956,
+      25.0
+    ],
+    "effective_ppi": 505.96799999999996,
+    "new_scene": true
+  },
+  {
+    "id": "ZC-SAQ-0004",
+    "source": "samples/kit-pos-apocaliptico/lote-06-itens/originais/SAQUES_COMPLEMENTARES.png",
+    "crop_pixels": [
+      775,
+      7,
+      1529,
+      505
+    ],
+    "printed_mm": [
+      37.851405622489956,
+      25.0
+    ],
+    "effective_ppi": 505.96799999999996,
+    "new_scene": true
+  },
+  {
+    "id": "ZC-SAQ-0005",
+    "source": "samples/kit-pos-apocaliptico/lote-06-itens/originais/SAQUES_COMPLEMENTARES.png",
+    "crop_pixels": [
+      7,
+      519,
+      761,
+      1017
+    ],
+    "printed_mm": [
+      37.851405622489956,
+      25.0
+    ],
+    "effective_ppi": 505.96799999999996,
+    "new_scene": true
+  },
+  {
+    "id": "ZC-SAQ-0006",
+    "source": "samples/kit-pos-apocaliptico/lote-06-itens/originais/SAQUES_COMPLEMENTARES.png",
+    "crop_pixels": [
+      775,
+      519,
+      1529,
+      1017
+    ],
+    "printed_mm": [
+      37.851405622489956,
+      25.0
+    ],
+    "effective_ppi": 505.96799999999996,
+    "new_scene": true
+  },
+  {
+    "id": "ZC-PEC-0001",
+    "source": "samples/kit-pos-apocaliptico/lote-04-cartas/originais/PECAS_CENAS.png",
+    "crop_pixels": [
+      7,
+      519,
+      761,
+      1017
+    ],
+    "printed_mm": [
+      54.50602409638554,
+      36.0
+    ],
+    "effective_ppi": 351.3666666666667,
+    "new_scene": false
+  },
+  {
+    "id": "ZC-PEC-0002",
+    "source": "samples/kit-pos-apocaliptico/lote-04-cartas/originais/PECAS_CENAS.png",
+    "crop_pixels": [
+      7,
+      7,
+      761,
+      505
+    ],
+    "printed_mm": [
+      54.50602409638554,
+      36.0
+    ],
+    "effective_ppi": 351.3666666666667,
+    "new_scene": false
+  },
+  {
+    "id": "ZC-PEC-0003",
+    "source": "samples/kit-pos-apocaliptico/lote-04-cartas/originais/PECAS_CENAS.png",
+    "crop_pixels": [
+      775,
+      7,
+      1529,
+      505
+    ],
+    "printed_mm": [
+      54.50602409638554,
+      36.0
+    ],
+    "effective_ppi": 351.3666666666667,
+    "new_scene": false
+  },
+  {
+    "id": "ZC-PEC-0004",
+    "source": "samples/kit-pos-apocaliptico/lote-04-cartas/originais/PECAS_CENAS.png",
+    "crop_pixels": [
+      775,
+      519,
+      1529,
+      1017
+    ],
+    "printed_mm": [
+      54.50602409638554,
+      36.0
+    ],
+    "effective_ppi": 351.3666666666667,
+    "new_scene": false
+  },
+  {
+    "id": "ZC-PEC-0005",
+    "source": "samples/kit-pos-apocaliptico/lote-06-itens/originais/UTILITARIOS_VEICULO.png",
+    "crop_pixels": [
+      775,
+      7,
+      1529,
+      505
+    ],
+    "printed_mm": [
+      54.50602409638554,
+      36.0
+    ],
+    "effective_ppi": 351.3666666666667,
+    "new_scene": true
+  },
+  {
+    "id": "ZC-PEC-0006",
+    "source": "samples/kit-pos-apocaliptico/lote-06-itens/originais/UTILITARIOS_VEICULO.png",
+    "crop_pixels": [
+      7,
+      519,
+      761,
+      1017
+    ],
+    "printed_mm": [
+      54.50602409638554,
+      36.0
+    ],
+    "effective_ppi": 351.3666666666667,
+    "new_scene": true
+  },
+  {
+    "id": "ZC-EQU-0009",
+    "source": "samples/kit-pos-apocaliptico/lote-04-cartas/originais/ARMAS_CENAS.png",
+    "crop_pixels": [
+      775,
+      7,
+      1529,
+      505
+    ],
+    "printed_mm": [
+      54.50602409638554,
+      36.0
+    ],
+    "effective_ppi": 351.3666666666667,
+    "new_scene": false
+  },
+  {
+    "id": "ZC-EQU-0010",
+    "source": "samples/kit-pos-apocaliptico/lote-04-cartas/originais/ARMAS_CENAS.png",
+    "crop_pixels": [
+      775,
+      7,
+      1529,
+      505
+    ],
+    "printed_mm": [
+      54.50602409638554,
+      36.0
+    ],
+    "effective_ppi": 351.3666666666667,
+    "new_scene": false
+  },
+  {
+    "id": "ZC-EQU-0011",
+    "source": "samples/kit-pos-apocaliptico/lote-04-cartas/originais/ARMAS_CENAS.png",
+    "crop_pixels": [
+      7,
+      519,
+      761,
+      1017
+    ],
+    "printed_mm": [
+      54.50602409638554,
+      36.0
+    ],
+    "effective_ppi": 351.3666666666667,
+    "new_scene": false
+  },
+  {
+    "id": "ZC-EQU-0012",
+    "source": "samples/kit-pos-apocaliptico/lote-04-cartas/originais/ARMAS_CENAS.png",
+    "crop_pixels": [
+      7,
+      519,
+      761,
+      1017
+    ],
+    "printed_mm": [
+      54.50602409638554,
+      36.0
+    ],
+    "effective_ppi": 351.3666666666667,
+    "new_scene": false
+  },
+  {
+    "id": "ZC-EQU-0013",
+    "source": "samples/kit-pos-apocaliptico/lote-04-cartas/originais/ARMAS_CENAS.png",
+    "crop_pixels": [
+      775,
+      519,
+      1529,
+      1017
+    ],
+    "printed_mm": [
+      54.50602409638554,
+      36.0
+    ],
+    "effective_ppi": 351.3666666666667,
+    "new_scene": false
+  },
+  {
+    "id": "ZC-EQU-0015",
+    "source": "samples/kit-pos-apocaliptico/lote-04-cartas/originais/SUPRIMENTOS_CENAS.png",
+    "crop_pixels": [
+      7,
+      7,
+      754,
+      462
+    ],
+    "printed_mm": [
+      55.0,
+      33.50066934404284
+    ],
+    "effective_ppi": 344.9781818181818,
+    "new_scene": false
+  },
+  {
+    "id": "ZC-EQU-0016",
+    "source": "samples/kit-pos-apocaliptico/lote-04-cartas/originais/SUPRIMENTOS_CENAS.png",
+    "crop_pixels": [
+      7,
+      7,
+      754,
+      462
+    ],
+    "printed_mm": [
+      55.0,
+      33.50066934404284
+    ],
+    "effective_ppi": 344.9781818181818,
+    "new_scene": false
+  },
+  {
+    "id": "ZC-EQU-0018",
+    "source": "samples/kit-pos-apocaliptico/lote-06-itens/originais/UTILITARIOS_VEICULO.png",
+    "crop_pixels": [
+      7,
+      7,
+      761,
+      505
+    ],
+    "printed_mm": [
+      54.50602409638554,
+      36.0
+    ],
+    "effective_ppi": 351.3666666666667,
+    "new_scene": true
+  },
+  {
+    "id": "ZC-SAQ-0007",
+    "source": "samples/kit-pos-apocaliptico/lote-04-cartas/originais/SUPRIMENTOS_CENAS.png",
+    "crop_pixels": [
+      783,
+      7,
+      1529,
+      462
+    ],
+    "printed_mm": [
+      40.989010989010985,
+      25.0
+    ],
+    "effective_ppi": 462.28,
+    "new_scene": false
+  },
+  {
+    "id": "ZC-SAQ-0008",
+    "source": "samples/kit-pos-apocaliptico/lote-04-cartas/originais/SUPRIMENTOS_CENAS.png",
+    "crop_pixels": [
+      7,
+      485,
+      754,
+      1017
+    ],
+    "printed_mm": [
+      35.10338345864661,
+      25.0
+    ],
+    "effective_ppi": 540.512,
+    "new_scene": false
+  },
+  {
+    "id": "ZC-SAQ-0009",
+    "source": "samples/kit-pos-apocaliptico/lote-06-itens/originais/SAQUES_COMPLEMENTARES.png",
+    "crop_pixels": [
+      7,
+      7,
+      761,
+      505
+    ],
+    "printed_mm": [
+      37.851405622489956,
+      25.0
+    ],
+    "effective_ppi": 505.96799999999996,
+    "new_scene": true
+  },
+  {
+    "id": "ZC-SAQ-0010",
+    "source": "samples/kit-pos-apocaliptico/lote-06-itens/originais/SAQUES_COMPLEMENTARES.png",
+    "crop_pixels": [
+      775,
+      7,
+      1529,
+      505
+    ],
+    "printed_mm": [
+      37.851405622489956,
+      25.0
+    ],
+    "effective_ppi": 505.96799999999996,
+    "new_scene": true
+  },
+  {
+    "id": "ZC-SAQ-0011",
+    "source": "samples/kit-pos-apocaliptico/lote-06-itens/originais/SAQUES_COMPLEMENTARES.png",
+    "crop_pixels": [
+      7,
+      519,
+      761,
+      1017
+    ],
+    "printed_mm": [
+      37.851405622489956,
+      25.0
+    ],
+    "effective_ppi": 505.96799999999996,
+    "new_scene": true
+  },
+  {
+    "id": "ZC-SAQ-0012",
+    "source": "samples/kit-pos-apocaliptico/lote-06-itens/originais/SAQUES_COMPLEMENTARES.png",
+    "crop_pixels": [
+      775,
+      519,
+      1529,
+      1017
+    ],
+    "printed_mm": [
+      37.851405622489956,
+      25.0
+    ],
+    "effective_ppi": 505.96799999999996,
+    "new_scene": true
+  },
+  {
+    "id": "ZC-SAQ-0013",
+    "source": "samples/kit-pos-apocaliptico/lote-04-cartas/originais/SUPRIMENTOS_CENAS.png",
+    "crop_pixels": [
+      783,
+      7,
+      1529,
+      462
+    ],
+    "printed_mm": [
+      40.989010989010985,
+      25.0
+    ],
+    "effective_ppi": 462.28,
+    "new_scene": false
+  },
+  {
+    "id": "ZC-SAQ-0014",
+    "source": "samples/kit-pos-apocaliptico/lote-04-cartas/originais/SUPRIMENTOS_CENAS.png",
+    "crop_pixels": [
+      7,
+      485,
+      754,
+      1017
+    ],
+    "printed_mm": [
+      35.10338345864661,
+      25.0
+    ],
+    "effective_ppi": 540.512,
+    "new_scene": false
+  },
+  {
+    "id": "ZC-SAQ-0015",
+    "source": "samples/kit-pos-apocaliptico/lote-06-itens/originais/SAQUES_COMPLEMENTARES.png",
+    "crop_pixels": [
+      7,
+      7,
+      761,
+      505
+    ],
+    "printed_mm": [
+      37.851405622489956,
+      25.0
+    ],
+    "effective_ppi": 505.96799999999996,
+    "new_scene": true
+  },
+  {
+    "id": "ZC-SAQ-0016",
+    "source": "samples/kit-pos-apocaliptico/lote-06-itens/originais/SAQUES_COMPLEMENTARES.png",
+    "crop_pixels": [
+      775,
+      7,
+      1529,
+      505
+    ],
+    "printed_mm": [
+      37.851405622489956,
+      25.0
+    ],
+    "effective_ppi": 505.96799999999996,
+    "new_scene": true
+  },
+  {
+    "id": "ZC-SAQ-0017",
+    "source": "samples/kit-pos-apocaliptico/lote-06-itens/originais/SAQUES_COMPLEMENTARES.png",
+    "crop_pixels": [
+      7,
+      519,
+      761,
+      1017
+    ],
+    "printed_mm": [
+      37.851405622489956,
+      25.0
+    ],
+    "effective_ppi": 505.96799999999996,
+    "new_scene": true
+  },
+  {
+    "id": "ZC-SAQ-0018",
+    "source": "samples/kit-pos-apocaliptico/lote-06-itens/originais/SAQUES_COMPLEMENTARES.png",
+    "crop_pixels": [
+      775,
+      519,
+      1529,
+      1017
+    ],
+    "printed_mm": [
+      37.851405622489956,
+      25.0
+    ],
+    "effective_ppi": 505.96799999999996,
+    "new_scene": true
+  },
+  {
+    "id": "ZC-SAQ-0019",
+    "source": "samples/kit-pos-apocaliptico/lote-04-cartas/originais/SUPRIMENTOS_CENAS.png",
+    "crop_pixels": [
+      783,
+      7,
+      1529,
+      462
+    ],
+    "printed_mm": [
+      40.989010989010985,
+      25.0
+    ],
+    "effective_ppi": 462.28,
+    "new_scene": false
+  },
+  {
+    "id": "ZC-SAQ-0020",
+    "source": "samples/kit-pos-apocaliptico/lote-04-cartas/originais/SUPRIMENTOS_CENAS.png",
+    "crop_pixels": [
+      7,
+      485,
+      754,
+      1017
+    ],
+    "printed_mm": [
+      35.10338345864661,
+      25.0
+    ],
+    "effective_ppi": 540.512,
+    "new_scene": false
+  },
+  {
+    "id": "ZC-SAQ-0021",
+    "source": "samples/kit-pos-apocaliptico/lote-06-itens/originais/SAQUES_COMPLEMENTARES.png",
+    "crop_pixels": [
+      7,
+      7,
+      761,
+      505
+    ],
+    "printed_mm": [
+      37.851405622489956,
+      25.0
+    ],
+    "effective_ppi": 505.96799999999996,
+    "new_scene": true
+  },
+  {
+    "id": "ZC-SAQ-0022",
+    "source": "samples/kit-pos-apocaliptico/lote-06-itens/originais/SAQUES_COMPLEMENTARES.png",
+    "crop_pixels": [
+      775,
+      7,
+      1529,
+      505
+    ],
+    "printed_mm": [
+      37.851405622489956,
+      25.0
+    ],
+    "effective_ppi": 505.96799999999996,
+    "new_scene": true
+  },
+  {
+    "id": "ZC-SAQ-0023",
+    "source": "samples/kit-pos-apocaliptico/lote-06-itens/originais/SAQUES_COMPLEMENTARES.png",
+    "crop_pixels": [
+      7,
+      519,
+      761,
+      1017
+    ],
+    "printed_mm": [
+      37.851405622489956,
+      25.0
+    ],
+    "effective_ppi": 505.96799999999996,
+    "new_scene": true
+  },
+  {
+    "id": "ZC-SAQ-0024",
+    "source": "samples/kit-pos-apocaliptico/lote-06-itens/originais/SAQUES_COMPLEMENTARES.png",
+    "crop_pixels": [
+      775,
+      519,
+      1529,
+      1017
+    ],
+    "printed_mm": [
+      37.851405622489956,
+      25.0
+    ],
+    "effective_ppi": 505.96799999999996,
+    "new_scene": true
+  },
+  {
+    "id": "ZC-SAQ-0025",
+    "source": "samples/kit-pos-apocaliptico/lote-04-cartas/originais/SUPRIMENTOS_CENAS.png",
+    "crop_pixels": [
+      783,
+      7,
+      1529,
+      462
+    ],
+    "printed_mm": [
+      40.989010989010985,
+      25.0
+    ],
+    "effective_ppi": 462.28,
+    "new_scene": false
+  },
+  {
+    "id": "ZC-SAQ-0026",
+    "source": "samples/kit-pos-apocaliptico/lote-04-cartas/originais/SUPRIMENTOS_CENAS.png",
+    "crop_pixels": [
+      7,
+      485,
+      754,
+      1017
+    ],
+    "printed_mm": [
+      35.10338345864661,
+      25.0
+    ],
+    "effective_ppi": 540.512,
+    "new_scene": false
+  },
+  {
+    "id": "ZC-SAQ-0027",
+    "source": "samples/kit-pos-apocaliptico/lote-06-itens/originais/SAQUES_COMPLEMENTARES.png",
+    "crop_pixels": [
+      7,
+      7,
+      761,
+      505
+    ],
+    "printed_mm": [
+      37.851405622489956,
+      25.0
+    ],
+    "effective_ppi": 505.96799999999996,
+    "new_scene": true
+  },
+  {
+    "id": "ZC-SAQ-0028",
+    "source": "samples/kit-pos-apocaliptico/lote-06-itens/originais/SAQUES_COMPLEMENTARES.png",
+    "crop_pixels": [
+      775,
+      7,
+      1529,
+      505
+    ],
+    "printed_mm": [
+      37.851405622489956,
+      25.0
+    ],
+    "effective_ppi": 505.96799999999996,
+    "new_scene": true
+  },
+  {
+    "id": "ZC-SAQ-0029",
+    "source": "samples/kit-pos-apocaliptico/lote-06-itens/originais/SAQUES_COMPLEMENTARES.png",
+    "crop_pixels": [
+      7,
+      519,
+      761,
+      1017
+    ],
+    "printed_mm": [
+      37.851405622489956,
+      25.0
+    ],
+    "effective_ppi": 505.96799999999996,
+    "new_scene": true
+  },
+  {
+    "id": "ZC-SAQ-0030",
+    "source": "samples/kit-pos-apocaliptico/lote-06-itens/originais/SAQUES_COMPLEMENTARES.png",
+    "crop_pixels": [
+      775,
+      519,
+      1529,
+      1017
+    ],
+    "printed_mm": [
+      37.851405622489956,
+      25.0
+    ],
+    "effective_ppi": 505.96799999999996,
+    "new_scene": true
+  },
+  {
+    "id": "ZC-SAQ-0031",
+    "source": "samples/kit-pos-apocaliptico/lote-04-cartas/originais/SUPRIMENTOS_CENAS.png",
+    "crop_pixels": [
+      783,
+      7,
+      1529,
+      462
+    ],
+    "printed_mm": [
+      40.989010989010985,
+      25.0
+    ],
+    "effective_ppi": 462.28,
+    "new_scene": false
+  },
+  {
+    "id": "ZC-SAQ-0032",
+    "source": "samples/kit-pos-apocaliptico/lote-04-cartas/originais/SUPRIMENTOS_CENAS.png",
+    "crop_pixels": [
+      7,
+      485,
+      754,
+      1017
+    ],
+    "printed_mm": [
+      35.10338345864661,
+      25.0
+    ],
+    "effective_ppi": 540.512,
+    "new_scene": false
+  },
+  {
+    "id": "ZC-SAQ-0033",
+    "source": "samples/kit-pos-apocaliptico/lote-06-itens/originais/SAQUES_COMPLEMENTARES.png",
+    "crop_pixels": [
+      7,
+      7,
+      761,
+      505
+    ],
+    "printed_mm": [
+      37.851405622489956,
+      25.0
+    ],
+    "effective_ppi": 505.96799999999996,
+    "new_scene": true
+  },
+  {
+    "id": "ZC-SAQ-0034",
+    "source": "samples/kit-pos-apocaliptico/lote-06-itens/originais/SAQUES_COMPLEMENTARES.png",
+    "crop_pixels": [
+      775,
+      7,
+      1529,
+      505
+    ],
+    "printed_mm": [
+      37.851405622489956,
+      25.0
+    ],
+    "effective_ppi": 505.96799999999996,
+    "new_scene": true
+  },
+  {
+    "id": "ZC-SAQ-0035",
+    "source": "samples/kit-pos-apocaliptico/lote-06-itens/originais/SAQUES_COMPLEMENTARES.png",
+    "crop_pixels": [
+      7,
+      519,
+      761,
+      1017
+    ],
+    "printed_mm": [
+      37.851405622489956,
+      25.0
+    ],
+    "effective_ppi": 505.96799999999996,
+    "new_scene": true
+  },
+  {
+    "id": "ZC-SAQ-0036",
+    "source": "samples/kit-pos-apocaliptico/lote-06-itens/originais/SAQUES_COMPLEMENTARES.png",
+    "crop_pixels": [
+      775,
+      519,
+      1529,
+      1017
+    ],
+    "printed_mm": [
+      37.851405622489956,
+      25.0
+    ],
+    "effective_ppi": 505.96799999999996,
+    "new_scene": true
+  },
+  {
+    "id": "ZC-VEI-0001",
+    "source": "samples/kit-pos-apocaliptico/lote-06-itens/originais/UTILITARIOS_VEICULO.png",
+    "crop_pixels": [
+      775,
+      519,
+      1529,
+      1017
+    ],
+    "printed_mm": [
+      19.0,
+      12.549071618037136
+    ],
+    "effective_ppi": 1007.9789473684209,
+    "new_scene": true
+  },
+  {
+    "id": "ZC-SAQ-0003",
+    "source": "samples/kit-pos-apocaliptico/lote-06-itens/originais/SAQUES_COMPLEMENTARES.png",
+    "crop_pixels": [
+      7,
+      7,
+      761,
+      505
+    ],
+    "printed_mm": [
+      37.851405622489956,
+      25.0
+    ],
+    "effective_ppi": 505.96799999999996,
+    "new_scene": true
+  },
+  {
+    "id": "ZC-SAQ-0004",
+    "source": "samples/kit-pos-apocaliptico/lote-06-itens/originais/SAQUES_COMPLEMENTARES.png",
+    "crop_pixels": [
+      775,
+      7,
+      1529,
+      505
+    ],
+    "printed_mm": [
+      37.851405622489956,
+      25.0
+    ],
+    "effective_ppi": 505.96799999999996,
+    "new_scene": true
+  },
+  {
+    "id": "ZC-SAQ-0005",
+    "source": "samples/kit-pos-apocaliptico/lote-06-itens/originais/SAQUES_COMPLEMENTARES.png",
+    "crop_pixels": [
+      7,
+      519,
+      761,
+      1017
+    ],
+    "printed_mm": [
+      37.851405622489956,
+      25.0
+    ],
+    "effective_ppi": 505.96799999999996,
+    "new_scene": true
+  },
+  {
+    "id": "ZC-SAQ-0006",
+    "source": "samples/kit-pos-apocaliptico/lote-06-itens/originais/SAQUES_COMPLEMENTARES.png",
+    "crop_pixels": [
+      775,
+      519,
+      1529,
+      1017
+    ],
+    "printed_mm": [
+      37.851405622489956,
+      25.0
+    ],
+    "effective_ppi": 505.96799999999996,
+    "new_scene": true
+  },
+  {
+    "id": "ZC-EQU-0017",
+    "source": "samples/kit-pos-apocaliptico/lote-06-itens/originais/UTILITARIOS_VEICULO.png",
+    "crop_pixels": [
+      7,
+      7,
+      761,
+      505
+    ],
+    "printed_mm": [
+      54.50602409638554,
+      36.0
+    ],
+    "effective_ppi": 351.3666666666667,
+    "new_scene": true
+  },
+  {
+    "id": "ZC-PEC-0005",
+    "source": "samples/kit-pos-apocaliptico/lote-06-itens/originais/UTILITARIOS_VEICULO.png",
+    "crop_pixels": [
+      775,
+      7,
+      1529,
+      505
+    ],
+    "printed_mm": [
+      54.50602409638554,
+      36.0
+    ],
+    "effective_ppi": 351.3666666666667,
+    "new_scene": true
+  },
+  {
+    "id": "ZC-PEC-0006",
+    "source": "samples/kit-pos-apocaliptico/lote-06-itens/originais/UTILITARIOS_VEICULO.png",
+    "crop_pixels": [
+      7,
+      519,
+      761,
+      1017
+    ],
+    "printed_mm": [
+      54.50602409638554,
+      36.0
+    ],
+    "effective_ppi": 351.3666666666667,
+    "new_scene": true
+  },
+  {
+    "id": "ZC-VEI-0001",
+    "source": "samples/kit-pos-apocaliptico/lote-06-itens/originais/UTILITARIOS_VEICULO.png",
+    "crop_pixels": [
+      775,
+      519,
+      1529,
+      1017
+    ],
+    "printed_mm": [
+      19.0,
+      12.549071618037136
+    ],
+    "effective_ppi": 1007.9789473684209,
+    "new_scene": true
+  }
+]

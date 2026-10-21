@@ -1,3 +1,9 @@
+# Lote 06 — itens e cartas
+
+[Oito itens adicionais nas cartas existentes](samples/kit-pos-apocaliptico/lote-06-itens/RELATORIO.md): 29 IDs com arte nova, 67/114 acumulados; PDFs duplex e alternativa manual.
+
+---
+
 ## Prova nova — estação de tratamento
 
 [Quatro A4 e comparação com a edição anterior](samples/kit-pos-apocaliptico/lote-05-estacao/RELATORIO.md). Fonte e resolução documentadas; mapa anterior e demais componentes preservados.

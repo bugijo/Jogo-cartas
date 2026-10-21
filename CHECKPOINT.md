@@ -1,3 +1,9 @@
+# Lote 06 — itens e cartas
+
+[Novo lote de itens](samples/kit-pos-apocaliptico/lote-06-itens/RELATORIO.md): 29 IDs atualizados, textos e versos conferidos; 47 IDs permanecem para revisão visual.
+
+---
+
 # Checkpoint adicional — estação de tratamento
 
 [Quatro A4, prova de detalhe e comparação](samples/kit-pos-apocaliptico/lote-05-estacao/RELATORIO.md). A estação foi recomposta em nove seções nativas a 175 ppi, com 21 conectores revisados e dois bloqueios preservados. Próximos: posto, condomínio, módulos comuns e integração dos retratos às cartas. Edições antigas preservadas.

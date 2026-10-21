@@ -1,3 +1,9 @@
+# Lote 06 — itens e cartas
+
+[Itens adicionais e resolução por carta](samples/kit-pos-apocaliptico/lote-06-itens/fontes/resolucao.json): duas pranchas nativas, oito tipos, 29 IDs integrados nos PDFs.
+
+---
+
 # Estação de tratamento: lote adicional
 
 Nove seções nativas, nove reparos e composto 3817 × 2618 px em 554 × 380 mm; resolução e origem por arquivo em [fontes/resolucao.json](samples/kit-pos-apocaliptico/lote-05-estacao/fontes/resolucao.json). Arte integrada ao [PDF de quatro A4](samples/kit-pos-apocaliptico/lote-05-estacao/ESTACAO_4_A4.pdf), sem substituir o mapa distribuído.
