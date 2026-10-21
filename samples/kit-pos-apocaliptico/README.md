@@ -1,3 +1,5 @@
+> Continuação: [lotes 02–04, PDFs e comparações](LOTES_02_04.md). O relato abaixo documenta as primeiras provas e permanece como histórico.
+
 # Zona Zero — provas pós-apocalípticas
 
 **Provas isoladas de arte, não uma nova edição completa.** Base conferida localmente e no remoto: `48f5794`. Branch `arte/kit-pos-apocaliptico-provas`. Nenhuma publicação ou substituição do kit de 58 folhas.

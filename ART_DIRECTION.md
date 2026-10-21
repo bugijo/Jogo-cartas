@@ -1,3 +1,7 @@
+## Continuação pós-apocalíptica — lotes 02–04
+
+Referência aprovada: Mercado B, 48f5794. Hospital/oficina usam composição contínua com seções nativas; retratos/peões recebem desgaste localizado mantendo identidade. Itens passam de objetos flutuantes a cenas de salvamento. Leitura permanece em caixas claras. [Provas e limites](samples/kit-pos-apocaliptico/LOTES_02_04.md).
+
 # Direção de arte
 Santa Aurora é uma cidade brasileira fictícia. Ilustração original em nanquim de graphic novel, equipamento reaproveitado, pessoas adultas de diferentes idades, origens e corpos. Paleta: petróleo #173C43; concreto #E7E9E6; verde #7E8971; ferrugem #995B3E; âmbar #C79B49. Fundo claro e tinta restrita; cor reforça palavras e símbolos, nunca substitui informação.
 

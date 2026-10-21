@@ -44,3 +44,8 @@ for path in sorted((S/'pdfs').rglob('*.pdf')):
    pix=doc[i].get_pixmap(matrix=fitz.Matrix(1.5,1.5));im=Image.frombytes('RGB',(pix.width,pix.height),pix.samples);im.thumbnail((600,850));comp.paste(im,(j*610,25));d.text((j*610+10,5),['ANTES','DEPOIS'][j],fill='black')
   comp.save(S/'provas'/('COMPARACAO_CARTAS.jpg' if path.name=='PROVA_9_CARTAS_DUPLEX.pdf' else 'COMPARACAO_INTENCOES.jpg'),quality=94)
 (S/'fontes/resolucao.json').write_text(json.dumps(res,ensure_ascii=False,indent=2));(S/'VERIFICACOES.json').write_text(json.dumps(dict(selected_ids=sel,changed_ids=sorted(set(x['id'] for x in res)),pdfs=checks,unchanged_backs=True,physical_print=False),ensure_ascii=False,indent=2));print('114 cartas preservadas; arquivos duplex e manual; versos idênticos.')
+# Contact must always be regenerated from the current final PDFs, never reused.
+files=sorted((S/'provas/02_CARTAS_DUPLEX').glob('*.png'));out=Image.new('RGB',(1800,math.ceil(len(files)/6)*425),'#eee8d9');d=ImageDraw.Draw(out)
+for i,p in enumerate(files):
+ im=Image.open(p);im.thumbnail((295,410));out.paste(im,(i%6*300,i//6*425+12));d.text((i%6*300,i//6*425),p.stem[-15:],fill='black')
+out.save(S/'provas/CONTATO_DUPLEX.jpg')

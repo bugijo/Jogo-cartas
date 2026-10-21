@@ -1,0 +1,362 @@
+[
+  {
+    "file": "samples/kit-pos-apocaliptico/lote-02-composicao/hospital/originais/R1C1_ANTES_CORRECAO.png",
+    "native_pixels": [
+      1498,
+      1050
+    ],
+    "origin": "image_gen integrado",
+    "integration": "guia/revisão, não usado como fundo final",
+    "exception": null
+  },
+  {
+    "file": "samples/kit-pos-apocaliptico/lote-02-composicao/hospital/originais/R3C3.png",
+    "native_pixels": [
+      1498,
+      1050
+    ],
+    "origin": "image_gen integrado",
+    "integration": "integrado em PDFs de prova; ver resolucao.json do lote",
+    "exception": null
+  },
+  {
+    "file": "samples/kit-pos-apocaliptico/lote-02-composicao/hospital/originais/R2C2.png",
+    "native_pixels": [
+      1479,
+      1064
+    ],
+    "origin": "image_gen integrado",
+    "integration": "integrado em PDFs de prova; ver resolucao.json do lote",
+    "exception": null
+  },
+  {
+    "file": "samples/kit-pos-apocaliptico/lote-02-composicao/hospital/originais/RECEPCAO.png",
+    "native_pixels": [
+      1926,
+      817
+    ],
+    "origin": "image_gen integrado",
+    "integration": "integrado em PDFs de prova; ver resolucao.json do lote",
+    "exception": null
+  },
+  {
+    "file": "samples/kit-pos-apocaliptico/lote-02-composicao/hospital/originais/COMPOSICAO_01.png",
+    "native_pixels": [
+      1514,
+      1039
+    ],
+    "origin": "image_gen integrado",
+    "integration": "guia/revisão, não usado como fundo final",
+    "exception": null
+  },
+  {
+    "file": "samples/kit-pos-apocaliptico/lote-02-composicao/hospital/originais/R2C1.png",
+    "native_pixels": [
+      1443,
+      1090
+    ],
+    "origin": "image_gen integrado",
+    "integration": "integrado em PDFs de prova; ver resolucao.json do lote",
+    "exception": null
+  },
+  {
+    "file": "samples/kit-pos-apocaliptico/lote-02-composicao/hospital/originais/R3C1.png",
+    "native_pixels": [
+      1498,
+      1050
+    ],
+    "origin": "image_gen integrado",
+    "integration": "integrado em PDFs de prova; ver resolucao.json do lote",
+    "exception": null
+  },
+  {
+    "file": "samples/kit-pos-apocaliptico/lote-02-composicao/hospital/originais/R1C3.png",
+    "native_pixels": [
+      1497,
+      1051
+    ],
+    "origin": "image_gen integrado",
+    "integration": "integrado em PDFs de prova; ver resolucao.json do lote",
+    "exception": null
+  },
+  {
+    "file": "samples/kit-pos-apocaliptico/lote-02-composicao/hospital/originais/R1C1.png",
+    "native_pixels": [
+      1498,
+      1050
+    ],
+    "origin": "image_gen integrado",
+    "integration": "integrado em PDFs de prova; ver resolucao.json do lote",
+    "exception": null
+  },
+  {
+    "file": "samples/kit-pos-apocaliptico/lote-02-composicao/hospital/originais/R2C3.png",
+    "native_pixels": [
+      1443,
+      1090
+    ],
+    "origin": "image_gen integrado",
+    "integration": "integrado em PDFs de prova; ver resolucao.json do lote",
+    "exception": null
+  },
+  {
+    "file": "samples/kit-pos-apocaliptico/lote-02-composicao/hospital/originais/R3C2.png",
+    "native_pixels": [
+      1536,
+      1024
+    ],
+    "origin": "image_gen integrado",
+    "integration": "integrado em PDFs de prova; ver resolucao.json do lote",
+    "exception": null
+  },
+  {
+    "file": "samples/kit-pos-apocaliptico/lote-02-composicao/hospital/originais/COMPOSICAO_02.png",
+    "native_pixels": [
+      1514,
+      1039
+    ],
+    "origin": "image_gen integrado",
+    "integration": "guia/revisão, não usado como fundo final",
+    "exception": null
+  },
+  {
+    "file": "samples/kit-pos-apocaliptico/lote-02-composicao/hospital/originais/R1C2.png",
+    "native_pixels": [
+      1536,
+      1024
+    ],
+    "origin": "image_gen integrado",
+    "integration": "integrado em PDFs de prova; ver resolucao.json do lote",
+    "exception": null
+  },
+  {
+    "file": "samples/kit-pos-apocaliptico/lote-02-composicao/hospital/originais/COMPOSICAO_ESCOLHIDA.png",
+    "native_pixels": [
+      1515,
+      1038
+    ],
+    "origin": "image_gen integrado",
+    "integration": "guia/revisão, não usado como fundo final",
+    "exception": null
+  },
+  {
+    "file": "samples/kit-pos-apocaliptico/lote-02-composicao/oficina/originais/R3C3.png",
+    "native_pixels": [
+      1498,
+      1050
+    ],
+    "origin": "image_gen integrado",
+    "integration": "integrado em PDFs de prova; ver resolucao.json do lote",
+    "exception": null
+  },
+  {
+    "file": "samples/kit-pos-apocaliptico/lote-02-composicao/oficina/originais/R2C2.png",
+    "native_pixels": [
+      1482,
+      1062
+    ],
+    "origin": "image_gen integrado",
+    "integration": "integrado em PDFs de prova; ver resolucao.json do lote",
+    "exception": null
+  },
+  {
+    "file": "samples/kit-pos-apocaliptico/lote-02-composicao/oficina/originais/COMPOSICAO_01.png",
+    "native_pixels": [
+      1514,
+      1039
+    ],
+    "origin": "image_gen integrado",
+    "integration": "guia/revisão, não usado como fundo final",
+    "exception": null
+  },
+  {
+    "file": "samples/kit-pos-apocaliptico/lote-02-composicao/oficina/originais/R2C1.png",
+    "native_pixels": [
+      1444,
+      1089
+    ],
+    "origin": "image_gen integrado",
+    "integration": "integrado em PDFs de prova; ver resolucao.json do lote",
+    "exception": null
+  },
+  {
+    "file": "samples/kit-pos-apocaliptico/lote-02-composicao/oficina/originais/R3C1.png",
+    "native_pixels": [
+      1498,
+      1050
+    ],
+    "origin": "image_gen integrado",
+    "integration": "integrado em PDFs de prova; ver resolucao.json do lote",
+    "exception": null
+  },
+  {
+    "file": "samples/kit-pos-apocaliptico/lote-02-composicao/oficina/originais/R1C3.png",
+    "native_pixels": [
+      1498,
+      1050
+    ],
+    "origin": "image_gen integrado",
+    "integration": "integrado em PDFs de prova; ver resolucao.json do lote",
+    "exception": null
+  },
+  {
+    "file": "samples/kit-pos-apocaliptico/lote-02-composicao/oficina/originais/R1C1.png",
+    "native_pixels": [
+      1498,
+      1050
+    ],
+    "origin": "image_gen integrado",
+    "integration": "integrado em PDFs de prova; ver resolucao.json do lote",
+    "exception": null
+  },
+  {
+    "file": "samples/kit-pos-apocaliptico/lote-02-composicao/oficina/originais/R2C3.png",
+    "native_pixels": [
+      1444,
+      1089
+    ],
+    "origin": "image_gen integrado",
+    "integration": "integrado em PDFs de prova; ver resolucao.json do lote",
+    "exception": null
+  },
+  {
+    "file": "samples/kit-pos-apocaliptico/lote-02-composicao/oficina/originais/R3C2.png",
+    "native_pixels": [
+      1536,
+      1024
+    ],
+    "origin": "image_gen integrado",
+    "integration": "integrado em PDFs de prova; ver resolucao.json do lote",
+    "exception": null
+  },
+  {
+    "file": "samples/kit-pos-apocaliptico/lote-02-composicao/oficina/originais/R1C2.png",
+    "native_pixels": [
+      1536,
+      1024
+    ],
+    "origin": "image_gen integrado",
+    "integration": "integrado em PDFs de prova; ver resolucao.json do lote",
+    "exception": null
+  },
+  {
+    "file": "samples/kit-pos-apocaliptico/lote-02-composicao/oficina/originais/COMPOSICAO_ESCOLHIDA.png",
+    "native_pixels": [
+      1515,
+      1038
+    ],
+    "origin": "image_gen integrado",
+    "integration": "guia/revisão, não usado como fundo final",
+    "exception": null
+  },
+  {
+    "file": "samples/kit-pos-apocaliptico/lote-03-personagens/originais/PEOES_C.png",
+    "native_pixels": [
+      1536,
+      1024
+    ],
+    "origin": "image_gen integrado",
+    "integration": "integrado em PDFs de prova; ver resolucao.json do lote",
+    "exception": null
+  },
+  {
+    "file": "samples/kit-pos-apocaliptico/lote-03-personagens/originais/RETRATOS_04.png",
+    "native_pixels": [
+      1437,
+      1095
+    ],
+    "origin": "image_gen integrado",
+    "integration": "integrado em PDFs de prova; ver resolucao.json do lote",
+    "exception": null
+  },
+  {
+    "file": "samples/kit-pos-apocaliptico/lote-03-personagens/originais/PEOES_D.png",
+    "native_pixels": [
+      1024,
+      1536
+    ],
+    "origin": "image_gen integrado",
+    "integration": "integrado em PDFs de prova; ver resolucao.json do lote",
+    "exception": null
+  },
+  {
+    "file": "samples/kit-pos-apocaliptico/lote-03-personagens/originais/RETRATOS_03.png",
+    "native_pixels": [
+      1437,
+      1095
+    ],
+    "origin": "image_gen integrado",
+    "integration": "integrado em PDFs de prova; ver resolucao.json do lote",
+    "exception": null
+  },
+  {
+    "file": "samples/kit-pos-apocaliptico/lote-03-personagens/originais/RETRATOS_02.png",
+    "native_pixels": [
+      1437,
+      1095
+    ],
+    "origin": "image_gen integrado",
+    "integration": "integrado em PDFs de prova; ver resolucao.json do lote",
+    "exception": null
+  },
+  {
+    "file": "samples/kit-pos-apocaliptico/lote-03-personagens/originais/PEOES_A.png",
+    "native_pixels": [
+      1536,
+      1024
+    ],
+    "origin": "image_gen integrado",
+    "integration": "integrado em PDFs de prova; ver resolucao.json do lote",
+    "exception": null
+  },
+  {
+    "file": "samples/kit-pos-apocaliptico/lote-03-personagens/originais/PEOES_B.png",
+    "native_pixels": [
+      1536,
+      1024
+    ],
+    "origin": "image_gen integrado",
+    "integration": "integrado em PDFs de prova; ver resolucao.json do lote",
+    "exception": null
+  },
+  {
+    "file": "samples/kit-pos-apocaliptico/lote-04-cartas/originais/SUPRIMENTOS_CENAS.png",
+    "native_pixels": [
+      1536,
+      1024
+    ],
+    "origin": "image_gen integrado",
+    "integration": "integrado em PDFs de prova; ver resolucao.json do lote",
+    "exception": "quadrante Combustível não selecionado no kit"
+  },
+  {
+    "file": "samples/kit-pos-apocaliptico/lote-04-cartas/originais/PECAS_CENAS.png",
+    "native_pixels": [
+      1536,
+      1024
+    ],
+    "origin": "image_gen integrado",
+    "integration": "integrado em PDFs de prova; ver resolucao.json do lote",
+    "exception": null
+  },
+  {
+    "file": "samples/kit-pos-apocaliptico/lote-04-cartas/originais/INTENCOES_CENAS.png",
+    "native_pixels": [
+      1536,
+      1024
+    ],
+    "origin": "image_gen integrado",
+    "integration": "integrado em PDFs de prova; ver resolucao.json do lote",
+    "exception": null
+  },
+  {
+    "file": "samples/kit-pos-apocaliptico/lote-04-cartas/originais/ARMAS_CENAS.png",
+    "native_pixels": [
+      1536,
+      1024
+    ],
+    "origin": "image_gen integrado",
+    "integration": "integrado em PDFs de prova; ver resolucao.json do lote",
+    "exception": null
+  }
+]

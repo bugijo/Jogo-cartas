@@ -1,3 +1,9 @@
+# Checkpoint atual — lotes 02–04
+
+Branch `arte/kit-pos-apocaliptico-provas`. [Estado e retomada](samples/kit-pos-apocaliptico/LOTES_02_04.md). Hospital e oficina em quatro A4 cada, 18 retratos nas fichas, 24 peões, 38/114 cartas com arte nova; demais pendências explicitadas no índice. 39 testes aprovados. Sem merge. A publicação destes checkpoints deve ser confirmada pelo SHA remoto. Histórico anterior abaixo, inclusive registros antigos de publicação.
+
+---
+
 # Retomada — provas pós-apocalípticas
 
 Branch local `arte/kit-pos-apocaliptico-provas`, base `48f5794`. [Checkpoint detalhado](samples/kit-pos-apocaliptico/CHECKPOINT.md). Quatro provas iniciais e lote do hospital gerados e verificados; restante do kit pendente. Sem push nem merge. Histórico abaixo preservado.

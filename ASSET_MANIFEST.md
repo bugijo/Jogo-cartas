@@ -1,3 +1,9 @@
+# Assets dos lotes pós-apocalípticos 02–04
+
+[Inventário nativo](samples/kit-pos-apocaliptico/fontes/inventario_lotes_02_04.json) e [índice de integração](samples/kit-pos-apocaliptico/LOTES_02_04.md). Fontes anteriores preservadas. Resolução por uso nas pastas fontes de cada lote.
+
+---
+
 # Atualização — provas pós-apocalípticas
 
 [Inventário, fontes nativas, integração e pendências](samples/kit-pos-apocaliptico/ASSET_MANIFEST.md). Cinco imagens aproveitadas e uma saída rejeitada; não representam revisão completa do kit. Catálogo e assets distribuídos preservados.

@@ -1,3 +1,9 @@
+# Revisão posterior das provas
+
+[Estado atual dos lotes 02–04](LOTES_02_04.md). A sobreposição de cadeiras da antiga prova hospitalar foi eliminada na nova composição contínua. Hospital e oficina agora têm nove seções nativas cada. Os defeitos descritos abaixo pertencem às provas históricas preservadas.
+
+---
+
 # Relatório visual e de impressão
 
 ## Resultado real

@@ -1,3 +1,9 @@
+# Atualização — provas pós-apocalípticas, lotes 02–04
+
+[Resultados e pendências reais](samples/kit-pos-apocaliptico/LOTES_02_04.md). As antigas provas de hospital/oficina não são o acabamento novo: composições contínuas estão em lote-02-composicao. A aprovação artística do kit inteiro continua pendente.
+
+---
+
 # Atualização — provas pós-apocalípticas
 
 [Relatório atual](samples/kit-pos-apocaliptico/VISUAL_QA.md): quatro lotes iniciais + hospital, comparações reais de PDFs, resolução efetiva, 39 testes existentes aprovados e verificações direcionadas. Cenários ainda não aprovados como composição final. Sem impressão física ou playtest.

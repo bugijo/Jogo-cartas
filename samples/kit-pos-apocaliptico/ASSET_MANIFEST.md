@@ -1,3 +1,5 @@
+> Atualização: [inventário dos lotes 02–04](fontes/inventario_lotes_02_04.json), [integração e resolução](LOTES_02_04.md). Tabela abaixo preserva as primeiras provas.
+
 # Inventário e integração
 
 Inventário completo de arquivos e dimensões: `fontes/inventario_assets.json`; componentes e PDFs existentes: `fontes/inventario_componentes.json`. Catálogo: 24 heróis, 324 cartas, seis destinos, 198 tokens e quatro módulos. Seleção do kit: 114 cartas. Esses números não mudaram.

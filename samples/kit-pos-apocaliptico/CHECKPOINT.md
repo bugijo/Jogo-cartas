@@ -1,3 +1,9 @@
+# Retomada mais recente
+
+Ver [LOTES_02_04.md](LOTES_02_04.md). Não repetir hospital, oficina, 18 retratos ou 24 peões. Próximos: estação, posto, condomínio, módulos comuns e 76 cartas ainda não revisadas. Publicação dos checkpoints novos deve ser conferida no remoto.
+
+---
+
 # Provas de direção pós-apocalíptica
 Base: 48f5794. Branch: arte/kit-pos-apocaliptico-provas. Sem publicação autorizada.
 

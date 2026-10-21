@@ -1,0 +1,47 @@
+test_actual_map_raster_density_not_worse_than_05 (test_boards06.Boards06.test_actual_map_raster_density_not_worse_than_05) ... ok
+test_fifty_eight_and_seventy_two_sheets_still_hold (test_boards06.Boards06.test_fifty_eight_and_seventy_two_sheets_still_hold) ... ok
+test_frozen_sources_and_previous_edition_untouched (test_boards06.Boards06.test_frozen_sources_and_previous_edition_untouched) ... ok
+test_functional_reference_exactly_matches_catalog (test_boards06.Boards06.test_functional_reference_exactly_matches_catalog) ... ok
+test_maps_are_new_four_a4_pages_without_renderer_errors (test_boards06.Boards06.test_maps_are_new_four_a4_pages_without_renderer_errors) ... ok
+test_pdf_embeds_native_cropped_pixels_losslessly (test_boards06.Boards06.test_pdf_embeds_native_cropped_pixels_losslessly) ... /workspace/zona-zero-comunidade/tests/test_boards06.py:64: ResourceWarning: unclosed file <_io.BufferedReader name='/workspace/zona-zero-comunidade/assets/v0.6/bancada_topo.png'>
+  name='assets/v0.6/bancada_topo.png';box,size=art.crop(name,0)
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+ok
+test_preserved_components_are_byte_identical (test_boards06.Boards06.test_preserved_components_are_byte_identical) ... ok
+test_real_component_footprints_fit_without_changing_the_zone (test_boards06.Boards06.test_real_component_footprints_fit_without_changing_the_zone) ... ok
+test_receiving_crop_does_not_include_neighbor_fragment (test_boards06.Boards06.test_receiving_crop_does_not_include_neighbor_fragment) ... ok
+test_the_actual_pdf_shows_every_canonical_blocked_door (test_boards06.Boards06.test_the_actual_pdf_shows_every_canonical_blocked_door) ... ok
+test_58_sheet_compatibility_and_manual_alternative (test_fabrication.FabricationTests.test_58_sheet_compatibility_and_manual_alternative) ... ok
+test_editable_archive_includes_proof_dependencies (test_fabrication.FabricationTests.test_editable_archive_includes_proof_dependencies) ... ok
+test_manual_calibration_marks_can_align_back_to_back (test_fabrication.FabricationTests.test_manual_calibration_marks_can_align_back_to_back) ... ok
+test_manual_pairs_do_not_inherit_duplex_mirroring (test_fabrication.FabricationTests.test_manual_pairs_do_not_inherit_duplex_mirroring) ... ok
+test_only_one_enemy_variant_per_existing_id (test_fabrication.FabricationTests.test_only_one_enemy_variant_per_existing_id) ... ok
+test_pawn_bases_fit_one_zone_without_reducing_enemy_cap (test_fabrication.FabricationTests.test_pawn_bases_fit_one_zone_without_reducing_enemy_cap) ... ok
+test_real_cards_fit_four_slots_without_overlap (test_fabrication.FabricationTests.test_real_cards_fit_four_slots_without_overlap) ... ok
+test_atlas_crop_excludes_neighbor_fragments (test_finish.FinishTests.test_atlas_crop_excludes_neighbor_fragments) ... ok
+test_delivered_maps_use_the_current_continuous_scene (test_finish.FinishTests.test_delivered_maps_use_the_current_continuous_scene) ... ok
+test_every_map_form_renders_including_accented_destinations (test_finish.FinishTests.test_every_map_form_renders_including_accented_destinations) ... ok
+test_good_pawns_and_faces_preserved_byte_for_byte (test_finish.FinishTests.test_good_pawns_and_faces_preserved_byte_for_byte) ... ok
+test_main_maps_have_no_low_resolution_raster (test_finish.FinishTests.test_main_maps_have_no_low_resolution_raster) ... ok
+test_only_food_and_water_are_labelled_as_portions (test_finish.FinishTests.test_only_food_and_water_are_labelled_as_portions) ... ok
+test_selected_114_cards_preserved (test_finish.FinishTests.test_selected_114_cards_preserved) ... ok
+test_structured_values_fit_the_card_safe_width (test_finish.FinishTests.test_structured_values_fit_the_card_safe_width) ... ok
+test_blocked_doors_are_printed_doors (test_revision.RevisionTests.test_blocked_doors_are_printed_doors) ... ok
+test_ten_professions_are_consolidated_with_provenance (test_revision.RevisionTests.test_ten_professions_are_consolidated_with_provenance) ... ok
+test_ambush_uses_actual_entry_module_zones (test_revision.StarterContentTests.test_ambush_uses_actual_entry_module_zones) ... ok
+test_five_days_replay_respects_cargo_clock_and_work (test_revision.StarterContentTests.test_five_days_replay_respects_cargo_clock_and_work) ... ok
+test_unique_filter_parts_can_be_recovered (test_revision.StarterContentTests.test_unique_filter_parts_can_be_recovered) ... ok
+test_ambush_cannot_be_skipped_from_entry (test_rules.CampaignRegressionTests.test_ambush_cannot_be_skipped_from_entry) ... ok
+test_all_initial_link_combinations_fit (test_rules.RulesTests.test_all_initial_link_combinations_fit) ... ok
+test_deprivation_reset_and_collapse_threshold (test_rules.RulesTests.test_deprivation_reset_and_collapse_threshold) ... ok
+test_intake_and_deadline (test_rules.RulesTests.test_intake_and_deadline) ... ok
+test_intent_protection_current_night (test_rules.RulesTests.test_intent_protection_current_night) ... ok
+test_night_return_and_overrun (test_rules.RulesTests.test_night_return_and_overrun) ... ok
+test_portions_and_expiry (test_rules.RulesTests.test_portions_and_expiry) ... ok
+test_pressure_queue_no_duplicate_at_three (test_rules.RulesTests.test_pressure_queue_no_duplicate_at_three) ... ok
+test_project_stock_conservation (test_rules.RulesTests.test_project_stock_conservation) ... ok
+
+----------------------------------------------------------------------
+Ran 39 tests in 6.963s
+
+OK
