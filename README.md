@@ -1,3 +1,7 @@
+## Prova nova — estação de tratamento
+
+[Quatro A4 e comparação com a edição anterior](samples/kit-pos-apocaliptico/lote-05-estacao/RELATORIO.md). Fonte e resolução documentadas; mapa anterior e demais componentes preservados.
+
 > Continuação das provas pós-apocalípticas: [PDFs, comparações e pendências](samples/kit-pos-apocaliptico/LOTES_02_04.md). Hospital/oficina contínuos, 18 retratos restantes, 24 peões e 38 cartas com nova arte. Kit completo ainda em revisão; edições anteriores preservadas.
 
 > Provas locais de direção pós-apocalíptica: [samples/kit-pos-apocaliptico/README.md](samples/kit-pos-apocaliptico/README.md). Seis retratos, nove cartas, inimigos preservados, oficina e hospital. Trabalho parcial; edição distribuída intacta.

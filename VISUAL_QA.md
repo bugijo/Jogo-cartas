@@ -1,3 +1,9 @@
+# Prova adicional: estação de tratamento
+
+[Relatório e PDF](samples/kit-pos-apocaliptico/lote-05-estacao/RELATORIO.md). Ambiente contínuo, 175 ppi, quatro A4, planta canônica preservada; seis interferências de arte localizadas e corrigidas antes da prova. Ainda requer impressão física e avaliação artística.
+
+---
+
 # Atualização — provas pós-apocalípticas, lotes 02–04
 
 [Resultados e pendências reais](samples/kit-pos-apocaliptico/LOTES_02_04.md). As antigas provas de hospital/oficina não são o acabamento novo: composições contínuas estão em lote-02-composicao. A aprovação artística do kit inteiro continua pendente.

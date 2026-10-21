@@ -1,0 +1,83 @@
+[
+  {
+    "id": "BOMBA_ESQUERDA",
+    "print_box_mm": [
+      12,
+      90,
+      125,
+      174
+    ]
+  },
+  {
+    "id": "BOMBA_DIREITA",
+    "print_box_mm": [
+      405,
+      87,
+      545,
+      185
+    ]
+  },
+  {
+    "id": "BANCADA_SUPERIOR",
+    "print_box_mm": [
+      183,
+      102,
+      351,
+      169
+    ]
+  },
+  {
+    "id": "LIBERAR_3_4",
+    "print_box_mm": [
+      392,
+      24,
+      453,
+      77
+    ]
+  },
+  {
+    "id": "LIBERAR_9_13",
+    "print_box_mm": [
+      30,
+      261,
+      115,
+      326
+    ]
+  },
+  {
+    "id": "LIBERAR_12_16",
+    "print_box_mm": [
+      469,
+      252,
+      537,
+      329
+    ]
+  },
+  {
+    "id": "ESTANTE_DIVISORIA",
+    "print_box_mm": [
+      139,
+      178,
+      186,
+      254
+    ]
+  },
+  {
+    "id": "JUNCAO_BASE_1",
+    "print_box_mm": [
+      165,
+      345,
+      225,
+      380
+    ]
+  },
+  {
+    "id": "JUNCAO_BASE_2",
+    "print_box_mm": [
+      340,
+      345,
+      400,
+      380
+    ]
+  }
+]

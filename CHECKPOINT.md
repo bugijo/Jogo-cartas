@@ -1,3 +1,9 @@
+# Checkpoint adicional — estação de tratamento
+
+[Quatro A4, prova de detalhe e comparação](samples/kit-pos-apocaliptico/lote-05-estacao/RELATORIO.md). A estação foi recomposta em nove seções nativas a 175 ppi, com 21 conectores revisados e dois bloqueios preservados. Próximos: posto, condomínio, módulos comuns e integração dos retratos às cartas. Edições antigas preservadas.
+
+---
+
 # Checkpoint atual — lotes 02–04
 
 Branch `arte/kit-pos-apocaliptico-provas`. [Estado e retomada](samples/kit-pos-apocaliptico/LOTES_02_04.md). Hospital e oficina em quatro A4 cada, 18 retratos nas fichas, 24 peões, 38/114 cartas com arte nova; demais pendências explicitadas no índice. 39 testes aprovados. Sem merge. A publicação destes checkpoints deve ser confirmada pelo SHA remoto. Histórico anterior abaixo, inclusive registros antigos de publicação.

@@ -1,3 +1,9 @@
+# Estação de tratamento: lote adicional
+
+Nove seções nativas, nove reparos e composto 3817 × 2618 px em 554 × 380 mm; resolução e origem por arquivo em [fontes/resolucao.json](samples/kit-pos-apocaliptico/lote-05-estacao/fontes/resolucao.json). Arte integrada ao [PDF de quatro A4](samples/kit-pos-apocaliptico/lote-05-estacao/ESTACAO_4_A4.pdf), sem substituir o mapa distribuído.
+
+---
+
 # Assets dos lotes pós-apocalípticos 02–04
 
 [Inventário nativo](samples/kit-pos-apocaliptico/fontes/inventario_lotes_02_04.json) e [índice de integração](samples/kit-pos-apocaliptico/LOTES_02_04.md). Fontes anteriores preservadas. Resolução por uso nas pastas fontes de cada lote.

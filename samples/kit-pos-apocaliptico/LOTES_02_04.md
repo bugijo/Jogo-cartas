@@ -8,6 +8,7 @@ Referência: Mercado B pós-apocalíptico, 48f5794. Branch `arte/kit-pos-apocali
 |---|---|---:|
 | Hospital contínuo | [4 A4](lote-02-composicao/hospital/HOSPITAL_4_A4.pdf) | 4 |
 | Oficina contínua | [4 A4](lote-02-composicao/oficina/OFICINA_4_A4.pdf) | 4 |
+| Estação de tratamento contínua | [4 A4](lote-05-estacao/ESTACAO_4_A4.pdf) | 4 |
 | 18 fichas revisadas, Duda a Vicente | [Fichas](lote-03-personagens/pdfs/FICHAS_18_HEROIS.pdf) | 9 |
 | 24 peões opcionais | [Recortar e dobrar](lote-03-personagens/pdfs/04_PERSONAGENS_E_INIMIGOS/HEROIS_24_RECORTAR.pdf) | 2 |
 | 114 cartas, alternativa duplex | [Inicial](lote-04-cartas/pdfs/02_CARTAS_DUPLEX/KIT_INICIAL_1_DUPLEX.pdf) · [Complemento](lote-04-cartas/pdfs/02_CARTAS_DUPLEX/KIT_COMPLEMENTO_2_DUPLEX.pdf) | 7 + 6 = 13 duplex |
@@ -20,6 +21,7 @@ Escala 100%, sem ajustar. Mapas: A4 paisagem, corte 277 × 190 mm, quatro peças
 
 - [Hospital](lote-02-composicao/hospital/COMPARACAO_B_ANTES_DEPOIS.jpg) · [100 mm em A4](lote-02-composicao/hospital/COMPARACAO_100MM_A4.pdf)
 - [Oficina](lote-02-composicao/oficina/COMPARACAO_B_ANTES_DEPOIS.jpg) · [100 mm em A4](lote-02-composicao/oficina/COMPARACAO_100MM_A4.pdf)
+- [Estação](lote-05-estacao/COMPARACAO_B_ANTES_DEPOIS.jpg) · [100 mm em A4](lote-05-estacao/COMPARACAO_100MM_A4.pdf) · [relatório](lote-05-estacao/RELATORIO.md)
 - [Fichas e retratos](lote-03-personagens/provas/) · [Peões 1](lote-03-personagens/provas/COMPARACAO_PEOES_1.jpg) · [Peões 2](lote-03-personagens/provas/COMPARACAO_PEOES_2.jpg)
 - [Cartas de itens](lote-04-cartas/provas/COMPARACAO_CARTAS.jpg) · [Intenções](lote-04-cartas/provas/COMPARACAO_INTENCOES.jpg)
 
@@ -29,7 +31,7 @@ Hospital e oficina recompostos como ambientes contínuos, com 175 ppi reais a pa
 
 ## Pendente
 
-1. Estação de tratamento, posto, condomínio e módulos comuns com composição contínua e a mesma revisão em escala física.
+1. Posto, condomínio e módulos comuns com composição contínua e a mesma revisão em escala física.
 2. Revisão dos 76 IDs de cartas que mantêm a arte anterior, priorizando eventos esquemáticos, suprimentos restantes e moradores/vínculos. Alguns já podem ser preservados, mas não foram aprovados como lote final.
 3. Integrar os novos retratos também nas cartas de moradores/vínculos e nos demais componentes correspondentes; as fichas e os peões já foram integrados.
 4. Revisão conjunta de abrigo/painéis, inimigos e demais ilustrações, reaproveitando o que já atende. Inimigos existentes foram preservados na prova inicial; não houve nova geração deles neste lote.
@@ -41,4 +43,4 @@ Hospital e oficina recompostos como ambientes contínuos, com 175 ppi reais a pa
 
 Resolução: mapas 175 ppi; retratos nas fichas 209,66–232,91; peões 288,64–435,84; novas artes de cartas ≥344,98 ppi. Contatos ampliados de retratos têm menor resolução e não são alegados como 300 ppi. Registros individuais nas pastas fontes/. Faces laterais estilizadas e pequenos desníveis de piso persistem nos mapas. Não houve impressão física nem playtest humano. Testes funcionais não comprovam aprovação artística.
 
-Próximo lote recomendado: estação de tratamento, começando pela planta canônica e pela narrativa do abastecimento; em paralelo apenas trabalho independente de revisão dos eventos restantes, sem regenerar retratos concluídos.
+A estação recebeu prova própria a 175 ppi e mantém seus dois bloqueios. Próximo lote recomendado: posto ou condomínio, começando pela planta canônica; revisar também eventos e cartas de moradores/vínculos com os retratos concluídos.
