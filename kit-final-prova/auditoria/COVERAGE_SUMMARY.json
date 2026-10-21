@@ -1,7 +1,7 @@
 {
   "selected_cards": 114,
-  "art_changed_cards": 75,
-  "cards_pending_art": 39,
+  "art_changed_cards": 114,
+  "cards_pending_art": 0,
   "maps_with_new_proofs": 6,
   "maps_expected": 6,
   "common_modules": 4,
@@ -9,8 +9,8 @@
   "tokens": 198,
   "matrix_rows": 359,
   "statuses": {
-    "PARTIAL": 43,
-    "READY": 105,
-    "NEEDS_REVIEW": 211
+    "READY": 144,
+    "NEEDS_REVIEW": 211,
+    "PARTIAL": 4
   }
 }

@@ -1,0 +1,1172 @@
+[
+  {
+    "id": "ZC-VIN-0001",
+    "source": "samples/kit-pos-apocaliptico/lote-10-cartas-restantes/originais/VIN_CENAS.png",
+    "crop_pixels": [
+      12,
+      12,
+      615,
+      615
+    ],
+    "print_box_mm": [
+      36.0,
+      36.0
+    ],
+    "effective_ppi": 425.4
+  },
+  {
+    "id": "ZC-VIN-0002",
+    "source": "samples/kit-pos-apocaliptico/lote-10-cartas-restantes/originais/VIN_CENAS.png",
+    "crop_pixels": [
+      12,
+      12,
+      615,
+      615
+    ],
+    "print_box_mm": [
+      36.0,
+      36.0
+    ],
+    "effective_ppi": 425.4
+  },
+  {
+    "id": "ZC-VIN-0003",
+    "source": "samples/kit-pos-apocaliptico/lote-10-cartas-restantes/originais/VIN_CENAS.png",
+    "crop_pixels": [
+      12,
+      12,
+      615,
+      615
+    ],
+    "print_box_mm": [
+      36.0,
+      36.0
+    ],
+    "effective_ppi": 425.4
+  },
+  {
+    "id": "ZC-VIN-0004",
+    "source": "samples/kit-pos-apocaliptico/lote-10-cartas-restantes/originais/VIN_CENAS.png",
+    "crop_pixels": [
+      12,
+      12,
+      615,
+      615
+    ],
+    "print_box_mm": [
+      36.0,
+      36.0
+    ],
+    "effective_ppi": 425.4
+  },
+  {
+    "id": "ZC-VIN-0005",
+    "source": "samples/kit-pos-apocaliptico/lote-10-cartas-restantes/originais/VIN_CENAS.png",
+    "crop_pixels": [
+      639,
+      12,
+      1242,
+      615
+    ],
+    "print_box_mm": [
+      36.0,
+      36.0
+    ],
+    "effective_ppi": 425.4
+  },
+  {
+    "id": "ZC-VIN-0006",
+    "source": "samples/kit-pos-apocaliptico/lote-10-cartas-restantes/originais/VIN_CENAS.png",
+    "crop_pixels": [
+      639,
+      12,
+      1242,
+      615
+    ],
+    "print_box_mm": [
+      36.0,
+      36.0
+    ],
+    "effective_ppi": 425.4
+  },
+  {
+    "id": "ZC-VIN-0007",
+    "source": "samples/kit-pos-apocaliptico/lote-10-cartas-restantes/originais/VIN_CENAS.png",
+    "crop_pixels": [
+      639,
+      12,
+      1242,
+      615
+    ],
+    "print_box_mm": [
+      36.0,
+      36.0
+    ],
+    "effective_ppi": 425.4
+  },
+  {
+    "id": "ZC-VIN-0008",
+    "source": "samples/kit-pos-apocaliptico/lote-10-cartas-restantes/originais/VIN_CENAS.png",
+    "crop_pixels": [
+      639,
+      12,
+      1242,
+      615
+    ],
+    "print_box_mm": [
+      36.0,
+      36.0
+    ],
+    "effective_ppi": 425.4
+  },
+  {
+    "id": "ZC-VIN-0009",
+    "source": "samples/kit-pos-apocaliptico/lote-10-cartas-restantes/originais/VIN_CENAS.png",
+    "crop_pixels": [
+      12,
+      639,
+      615,
+      1242
+    ],
+    "print_box_mm": [
+      36.0,
+      36.0
+    ],
+    "effective_ppi": 425.4
+  },
+  {
+    "id": "ZC-VIN-0010",
+    "source": "samples/kit-pos-apocaliptico/lote-10-cartas-restantes/originais/VIN_CENAS.png",
+    "crop_pixels": [
+      12,
+      639,
+      615,
+      1242
+    ],
+    "print_box_mm": [
+      36.0,
+      36.0
+    ],
+    "effective_ppi": 425.4
+  },
+  {
+    "id": "ZC-VIN-0011",
+    "source": "samples/kit-pos-apocaliptico/lote-10-cartas-restantes/originais/VIN_CENAS.png",
+    "crop_pixels": [
+      639,
+      639,
+      1242,
+      1242
+    ],
+    "print_box_mm": [
+      36.0,
+      36.0
+    ],
+    "effective_ppi": 425.4
+  },
+  {
+    "id": "ZC-VIN-0012",
+    "source": "samples/kit-pos-apocaliptico/lote-10-cartas-restantes/originais/VIN_CENAS.png",
+    "crop_pixels": [
+      639,
+      639,
+      1242,
+      1242
+    ],
+    "print_box_mm": [
+      36.0,
+      36.0
+    ],
+    "effective_ppi": 425.4
+  },
+  {
+    "id": "ZC-VIA-0001",
+    "source": "samples/kit-pos-apocaliptico/lote-10-cartas-restantes/originais/VIA_CENAS_01.png",
+    "crop_pixels": [
+      12,
+      12,
+      615,
+      615
+    ],
+    "print_box_mm": [
+      36.0,
+      36.0
+    ],
+    "effective_ppi": 425.4
+  },
+  {
+    "id": "ZC-VIA-0002",
+    "source": "samples/kit-pos-apocaliptico/lote-10-cartas-restantes/originais/VIA_CENAS_01.png",
+    "crop_pixels": [
+      639,
+      12,
+      1242,
+      615
+    ],
+    "print_box_mm": [
+      36.0,
+      36.0
+    ],
+    "effective_ppi": 425.4
+  },
+  {
+    "id": "ZC-VIA-0003",
+    "source": "samples/kit-pos-apocaliptico/lote-10-cartas-restantes/originais/VIA_CENAS_01.png",
+    "crop_pixels": [
+      12,
+      639,
+      615,
+      1242
+    ],
+    "print_box_mm": [
+      36.0,
+      36.0
+    ],
+    "effective_ppi": 425.4
+  },
+  {
+    "id": "ZC-VIA-0004",
+    "source": "samples/kit-pos-apocaliptico/lote-10-cartas-restantes/originais/VIA_CENAS_01.png",
+    "crop_pixels": [
+      639,
+      639,
+      1242,
+      1242
+    ],
+    "print_box_mm": [
+      36.0,
+      36.0
+    ],
+    "effective_ppi": 425.4
+  },
+  {
+    "id": "ZC-VIA-0005",
+    "source": "samples/kit-pos-apocaliptico/lote-10-cartas-restantes/originais/VIA_CENAS_02.png",
+    "crop_pixels": [
+      12,
+      12,
+      745,
+      508
+    ],
+    "print_box_mm": [
+      19.0,
+      12.86
+    ],
+    "effective_ppi": 979.9
+  },
+  {
+    "id": "ZC-VIA-0006",
+    "source": "samples/kit-pos-apocaliptico/lote-10-cartas-restantes/originais/VIA_CENAS_02.png",
+    "crop_pixels": [
+      769,
+      12,
+      1502,
+      508
+    ],
+    "print_box_mm": [
+      53.2,
+      36.0
+    ],
+    "effective_ppi": 350.0
+  },
+  {
+    "id": "ZC-VIA-0007",
+    "source": "samples/kit-pos-apocaliptico/lote-10-cartas-restantes/originais/VIA_CENAS_02.png",
+    "crop_pixels": [
+      12,
+      532,
+      745,
+      1027
+    ],
+    "print_box_mm": [
+      53.31,
+      36.0
+    ],
+    "effective_ppi": 349.2
+  },
+  {
+    "id": "ZC-VIA-0008",
+    "source": "samples/kit-pos-apocaliptico/lote-10-cartas-restantes/originais/VIA_CENAS_02.png",
+    "crop_pixels": [
+      769,
+      532,
+      1502,
+      1027
+    ],
+    "print_box_mm": [
+      53.31,
+      36.0
+    ],
+    "effective_ppi": 349.2
+  },
+  {
+    "id": "ZC-VIA-0009",
+    "source": "samples/kit-pos-apocaliptico/lote-10-cartas-restantes/originais/VIA_CENAS_03.png",
+    "crop_pixels": [
+      12,
+      12,
+      745,
+      508
+    ],
+    "print_box_mm": [
+      19.0,
+      12.86
+    ],
+    "effective_ppi": 979.9
+  },
+  {
+    "id": "ZC-VIA-0010",
+    "source": "samples/kit-pos-apocaliptico/lote-10-cartas-restantes/originais/VIA_CENAS_03.png",
+    "crop_pixels": [
+      769,
+      12,
+      1502,
+      508
+    ],
+    "print_box_mm": [
+      36.95,
+      25.0
+    ],
+    "effective_ppi": 503.9
+  },
+  {
+    "id": "ZC-VIA-0011",
+    "source": "samples/kit-pos-apocaliptico/lote-10-cartas-restantes/originais/VIA_CENAS_03.png",
+    "crop_pixels": [
+      12,
+      532,
+      745,
+      1027
+    ],
+    "print_box_mm": [
+      53.31,
+      36.0
+    ],
+    "effective_ppi": 349.2
+  },
+  {
+    "id": "ZC-VIA-0012",
+    "source": "samples/kit-pos-apocaliptico/lote-10-cartas-restantes/originais/VIA_CENAS_03.png",
+    "crop_pixels": [
+      769,
+      532,
+      1502,
+      1027
+    ],
+    "print_box_mm": [
+      53.31,
+      36.0
+    ],
+    "effective_ppi": 349.2
+  },
+  {
+    "id": "ZC-HOR-0001",
+    "source": "samples/kit-pos-apocaliptico/lote-10-cartas-restantes/originais/HOR_CENAS.png",
+    "crop_pixels": [
+      12,
+      12,
+      615,
+      615
+    ],
+    "print_box_mm": [
+      36.0,
+      36.0
+    ],
+    "effective_ppi": 425.4
+  },
+  {
+    "id": "ZC-HOR-0002",
+    "source": "samples/kit-pos-apocaliptico/lote-10-cartas-restantes/originais/HOR_CENAS.png",
+    "crop_pixels": [
+      12,
+      12,
+      615,
+      615
+    ],
+    "print_box_mm": [
+      36.0,
+      36.0
+    ],
+    "effective_ppi": 425.4
+  },
+  {
+    "id": "ZC-HOR-0003",
+    "source": "samples/kit-pos-apocaliptico/lote-10-cartas-restantes/originais/HOR_CENAS.png",
+    "crop_pixels": [
+      12,
+      12,
+      615,
+      615
+    ],
+    "print_box_mm": [
+      36.0,
+      36.0
+    ],
+    "effective_ppi": 425.4
+  },
+  {
+    "id": "ZC-HOR-0004",
+    "source": "samples/kit-pos-apocaliptico/lote-10-cartas-restantes/originais/HOR_CENAS.png",
+    "crop_pixels": [
+      12,
+      12,
+      615,
+      615
+    ],
+    "print_box_mm": [
+      36.0,
+      36.0
+    ],
+    "effective_ppi": 425.4
+  },
+  {
+    "id": "ZC-HOR-0005",
+    "source": "samples/kit-pos-apocaliptico/lote-10-cartas-restantes/originais/HOR_CENAS.png",
+    "crop_pixels": [
+      639,
+      12,
+      1242,
+      615
+    ],
+    "print_box_mm": [
+      36.0,
+      36.0
+    ],
+    "effective_ppi": 425.4
+  },
+  {
+    "id": "ZC-HOR-0006",
+    "source": "samples/kit-pos-apocaliptico/lote-10-cartas-restantes/originais/HOR_CENAS.png",
+    "crop_pixels": [
+      639,
+      12,
+      1242,
+      615
+    ],
+    "print_box_mm": [
+      36.0,
+      36.0
+    ],
+    "effective_ppi": 425.4
+  },
+  {
+    "id": "ZC-HOR-0007",
+    "source": "samples/kit-pos-apocaliptico/lote-10-cartas-restantes/originais/HOR_CENAS.png",
+    "crop_pixels": [
+      12,
+      639,
+      615,
+      1242
+    ],
+    "print_box_mm": [
+      36.0,
+      36.0
+    ],
+    "effective_ppi": 425.4
+  },
+  {
+    "id": "ZC-HOR-0008",
+    "source": "samples/kit-pos-apocaliptico/lote-10-cartas-restantes/originais/HOR_CENAS.png",
+    "crop_pixels": [
+      12,
+      639,
+      615,
+      1242
+    ],
+    "print_box_mm": [
+      36.0,
+      36.0
+    ],
+    "effective_ppi": 425.4
+  },
+  {
+    "id": "ZC-HOR-0009",
+    "source": "samples/kit-pos-apocaliptico/lote-10-cartas-restantes/originais/HOR_CENAS.png",
+    "crop_pixels": [
+      639,
+      639,
+      1242,
+      1242
+    ],
+    "print_box_mm": [
+      36.0,
+      36.0
+    ],
+    "effective_ppi": 425.4
+  },
+  {
+    "id": "ZC-CER-0001",
+    "source": "samples/kit-pos-apocaliptico/lote-10-cartas-restantes/originais/CER_CENAS_01.png",
+    "crop_pixels": [
+      12,
+      12,
+      745,
+      508
+    ],
+    "print_box_mm": [
+      36.95,
+      25.0
+    ],
+    "effective_ppi": 503.9
+  },
+  {
+    "id": "ZC-CER-0002",
+    "source": "samples/kit-pos-apocaliptico/lote-10-cartas-restantes/originais/CER_CENAS_01.png",
+    "crop_pixels": [
+      769,
+      12,
+      1502,
+      508
+    ],
+    "print_box_mm": [
+      36.95,
+      25.0
+    ],
+    "effective_ppi": 503.9
+  },
+  {
+    "id": "ZC-CER-0003",
+    "source": "samples/kit-pos-apocaliptico/lote-10-cartas-restantes/originais/CER_CENAS_01.png",
+    "crop_pixels": [
+      12,
+      532,
+      745,
+      1027
+    ],
+    "print_box_mm": [
+      37.02,
+      25.0
+    ],
+    "effective_ppi": 502.9
+  },
+  {
+    "id": "ZC-CER-0004",
+    "source": "samples/kit-pos-apocaliptico/lote-10-cartas-restantes/originais/CER_CENAS_01.png",
+    "crop_pixels": [
+      769,
+      532,
+      1502,
+      1027
+    ],
+    "print_box_mm": [
+      37.02,
+      25.0
+    ],
+    "effective_ppi": 502.9
+  },
+  {
+    "id": "ZC-CER-0005",
+    "source": "samples/kit-pos-apocaliptico/lote-10-cartas-restantes/originais/CER_CENAS_02.png",
+    "crop_pixels": [
+      12,
+      12,
+      745,
+      508
+    ],
+    "print_box_mm": [
+      36.95,
+      25.0
+    ],
+    "effective_ppi": 503.9
+  },
+  {
+    "id": "ZC-CER-0006",
+    "source": "samples/kit-pos-apocaliptico/lote-10-cartas-restantes/originais/CER_CENAS_02.png",
+    "crop_pixels": [
+      769,
+      12,
+      1502,
+      508
+    ],
+    "print_box_mm": [
+      19.0,
+      12.86
+    ],
+    "effective_ppi": 979.9
+  },
+  {
+    "id": "ZC-CER-0001",
+    "source": "samples/kit-pos-apocaliptico/lote-10-cartas-restantes/originais/CER_CENAS_01.png",
+    "crop_pixels": [
+      12,
+      12,
+      745,
+      508
+    ],
+    "print_box_mm": [
+      36.95,
+      25.0
+    ],
+    "effective_ppi": 503.9
+  },
+  {
+    "id": "ZC-CER-0002",
+    "source": "samples/kit-pos-apocaliptico/lote-10-cartas-restantes/originais/CER_CENAS_01.png",
+    "crop_pixels": [
+      769,
+      12,
+      1502,
+      508
+    ],
+    "print_box_mm": [
+      36.95,
+      25.0
+    ],
+    "effective_ppi": 503.9
+  },
+  {
+    "id": "ZC-CER-0003",
+    "source": "samples/kit-pos-apocaliptico/lote-10-cartas-restantes/originais/CER_CENAS_01.png",
+    "crop_pixels": [
+      12,
+      532,
+      745,
+      1027
+    ],
+    "print_box_mm": [
+      37.02,
+      25.0
+    ],
+    "effective_ppi": 502.9
+  },
+  {
+    "id": "ZC-CER-0004",
+    "source": "samples/kit-pos-apocaliptico/lote-10-cartas-restantes/originais/CER_CENAS_01.png",
+    "crop_pixels": [
+      769,
+      532,
+      1502,
+      1027
+    ],
+    "print_box_mm": [
+      37.02,
+      25.0
+    ],
+    "effective_ppi": 502.9
+  },
+  {
+    "id": "ZC-CER-0005",
+    "source": "samples/kit-pos-apocaliptico/lote-10-cartas-restantes/originais/CER_CENAS_02.png",
+    "crop_pixels": [
+      12,
+      12,
+      745,
+      508
+    ],
+    "print_box_mm": [
+      36.95,
+      25.0
+    ],
+    "effective_ppi": 503.9
+  },
+  {
+    "id": "ZC-CER-0006",
+    "source": "samples/kit-pos-apocaliptico/lote-10-cartas-restantes/originais/CER_CENAS_02.png",
+    "crop_pixels": [
+      769,
+      12,
+      1502,
+      508
+    ],
+    "print_box_mm": [
+      19.0,
+      12.86
+    ],
+    "effective_ppi": 979.9
+  },
+  {
+    "id": "ZC-HOR-0001",
+    "source": "samples/kit-pos-apocaliptico/lote-10-cartas-restantes/originais/HOR_CENAS.png",
+    "crop_pixels": [
+      12,
+      12,
+      615,
+      615
+    ],
+    "print_box_mm": [
+      36.0,
+      36.0
+    ],
+    "effective_ppi": 425.4
+  },
+  {
+    "id": "ZC-HOR-0002",
+    "source": "samples/kit-pos-apocaliptico/lote-10-cartas-restantes/originais/HOR_CENAS.png",
+    "crop_pixels": [
+      12,
+      12,
+      615,
+      615
+    ],
+    "print_box_mm": [
+      36.0,
+      36.0
+    ],
+    "effective_ppi": 425.4
+  },
+  {
+    "id": "ZC-HOR-0003",
+    "source": "samples/kit-pos-apocaliptico/lote-10-cartas-restantes/originais/HOR_CENAS.png",
+    "crop_pixels": [
+      12,
+      12,
+      615,
+      615
+    ],
+    "print_box_mm": [
+      36.0,
+      36.0
+    ],
+    "effective_ppi": 425.4
+  },
+  {
+    "id": "ZC-HOR-0004",
+    "source": "samples/kit-pos-apocaliptico/lote-10-cartas-restantes/originais/HOR_CENAS.png",
+    "crop_pixels": [
+      12,
+      12,
+      615,
+      615
+    ],
+    "print_box_mm": [
+      36.0,
+      36.0
+    ],
+    "effective_ppi": 425.4
+  },
+  {
+    "id": "ZC-HOR-0005",
+    "source": "samples/kit-pos-apocaliptico/lote-10-cartas-restantes/originais/HOR_CENAS.png",
+    "crop_pixels": [
+      639,
+      12,
+      1242,
+      615
+    ],
+    "print_box_mm": [
+      36.0,
+      36.0
+    ],
+    "effective_ppi": 425.4
+  },
+  {
+    "id": "ZC-HOR-0006",
+    "source": "samples/kit-pos-apocaliptico/lote-10-cartas-restantes/originais/HOR_CENAS.png",
+    "crop_pixels": [
+      639,
+      12,
+      1242,
+      615
+    ],
+    "print_box_mm": [
+      36.0,
+      36.0
+    ],
+    "effective_ppi": 425.4
+  },
+  {
+    "id": "ZC-HOR-0007",
+    "source": "samples/kit-pos-apocaliptico/lote-10-cartas-restantes/originais/HOR_CENAS.png",
+    "crop_pixels": [
+      12,
+      639,
+      615,
+      1242
+    ],
+    "print_box_mm": [
+      36.0,
+      36.0
+    ],
+    "effective_ppi": 425.4
+  },
+  {
+    "id": "ZC-HOR-0008",
+    "source": "samples/kit-pos-apocaliptico/lote-10-cartas-restantes/originais/HOR_CENAS.png",
+    "crop_pixels": [
+      12,
+      639,
+      615,
+      1242
+    ],
+    "print_box_mm": [
+      36.0,
+      36.0
+    ],
+    "effective_ppi": 425.4
+  },
+  {
+    "id": "ZC-HOR-0009",
+    "source": "samples/kit-pos-apocaliptico/lote-10-cartas-restantes/originais/HOR_CENAS.png",
+    "crop_pixels": [
+      639,
+      639,
+      1242,
+      1242
+    ],
+    "print_box_mm": [
+      36.0,
+      36.0
+    ],
+    "effective_ppi": 425.4
+  },
+  {
+    "id": "ZC-VIA-0001",
+    "source": "samples/kit-pos-apocaliptico/lote-10-cartas-restantes/originais/VIA_CENAS_01.png",
+    "crop_pixels": [
+      12,
+      12,
+      615,
+      615
+    ],
+    "print_box_mm": [
+      36.0,
+      36.0
+    ],
+    "effective_ppi": 425.4
+  },
+  {
+    "id": "ZC-VIA-0002",
+    "source": "samples/kit-pos-apocaliptico/lote-10-cartas-restantes/originais/VIA_CENAS_01.png",
+    "crop_pixels": [
+      639,
+      12,
+      1242,
+      615
+    ],
+    "print_box_mm": [
+      36.0,
+      36.0
+    ],
+    "effective_ppi": 425.4
+  },
+  {
+    "id": "ZC-VIA-0003",
+    "source": "samples/kit-pos-apocaliptico/lote-10-cartas-restantes/originais/VIA_CENAS_01.png",
+    "crop_pixels": [
+      12,
+      639,
+      615,
+      1242
+    ],
+    "print_box_mm": [
+      36.0,
+      36.0
+    ],
+    "effective_ppi": 425.4
+  },
+  {
+    "id": "ZC-VIA-0004",
+    "source": "samples/kit-pos-apocaliptico/lote-10-cartas-restantes/originais/VIA_CENAS_01.png",
+    "crop_pixels": [
+      639,
+      639,
+      1242,
+      1242
+    ],
+    "print_box_mm": [
+      36.0,
+      36.0
+    ],
+    "effective_ppi": 425.4
+  },
+  {
+    "id": "ZC-VIA-0005",
+    "source": "samples/kit-pos-apocaliptico/lote-10-cartas-restantes/originais/VIA_CENAS_02.png",
+    "crop_pixels": [
+      12,
+      12,
+      745,
+      508
+    ],
+    "print_box_mm": [
+      19.0,
+      12.86
+    ],
+    "effective_ppi": 979.9
+  },
+  {
+    "id": "ZC-VIA-0006",
+    "source": "samples/kit-pos-apocaliptico/lote-10-cartas-restantes/originais/VIA_CENAS_02.png",
+    "crop_pixels": [
+      769,
+      12,
+      1502,
+      508
+    ],
+    "print_box_mm": [
+      53.2,
+      36.0
+    ],
+    "effective_ppi": 350.0
+  },
+  {
+    "id": "ZC-VIA-0007",
+    "source": "samples/kit-pos-apocaliptico/lote-10-cartas-restantes/originais/VIA_CENAS_02.png",
+    "crop_pixels": [
+      12,
+      532,
+      745,
+      1027
+    ],
+    "print_box_mm": [
+      53.31,
+      36.0
+    ],
+    "effective_ppi": 349.2
+  },
+  {
+    "id": "ZC-VIA-0008",
+    "source": "samples/kit-pos-apocaliptico/lote-10-cartas-restantes/originais/VIA_CENAS_02.png",
+    "crop_pixels": [
+      769,
+      532,
+      1502,
+      1027
+    ],
+    "print_box_mm": [
+      53.31,
+      36.0
+    ],
+    "effective_ppi": 349.2
+  },
+  {
+    "id": "ZC-VIA-0009",
+    "source": "samples/kit-pos-apocaliptico/lote-10-cartas-restantes/originais/VIA_CENAS_03.png",
+    "crop_pixels": [
+      12,
+      12,
+      745,
+      508
+    ],
+    "print_box_mm": [
+      19.0,
+      12.86
+    ],
+    "effective_ppi": 979.9
+  },
+  {
+    "id": "ZC-VIA-0010",
+    "source": "samples/kit-pos-apocaliptico/lote-10-cartas-restantes/originais/VIA_CENAS_03.png",
+    "crop_pixels": [
+      769,
+      12,
+      1502,
+      508
+    ],
+    "print_box_mm": [
+      36.95,
+      25.0
+    ],
+    "effective_ppi": 503.9
+  },
+  {
+    "id": "ZC-VIA-0011",
+    "source": "samples/kit-pos-apocaliptico/lote-10-cartas-restantes/originais/VIA_CENAS_03.png",
+    "crop_pixels": [
+      12,
+      532,
+      745,
+      1027
+    ],
+    "print_box_mm": [
+      53.31,
+      36.0
+    ],
+    "effective_ppi": 349.2
+  },
+  {
+    "id": "ZC-VIA-0012",
+    "source": "samples/kit-pos-apocaliptico/lote-10-cartas-restantes/originais/VIA_CENAS_03.png",
+    "crop_pixels": [
+      769,
+      532,
+      1502,
+      1027
+    ],
+    "print_box_mm": [
+      53.31,
+      36.0
+    ],
+    "effective_ppi": 349.2
+  },
+  {
+    "id": "ZC-VIN-0001",
+    "source": "samples/kit-pos-apocaliptico/lote-10-cartas-restantes/originais/VIN_CENAS.png",
+    "crop_pixels": [
+      12,
+      12,
+      615,
+      615
+    ],
+    "print_box_mm": [
+      36.0,
+      36.0
+    ],
+    "effective_ppi": 425.4
+  },
+  {
+    "id": "ZC-VIN-0002",
+    "source": "samples/kit-pos-apocaliptico/lote-10-cartas-restantes/originais/VIN_CENAS.png",
+    "crop_pixels": [
+      12,
+      12,
+      615,
+      615
+    ],
+    "print_box_mm": [
+      36.0,
+      36.0
+    ],
+    "effective_ppi": 425.4
+  },
+  {
+    "id": "ZC-VIN-0003",
+    "source": "samples/kit-pos-apocaliptico/lote-10-cartas-restantes/originais/VIN_CENAS.png",
+    "crop_pixels": [
+      12,
+      12,
+      615,
+      615
+    ],
+    "print_box_mm": [
+      36.0,
+      36.0
+    ],
+    "effective_ppi": 425.4
+  },
+  {
+    "id": "ZC-VIN-0004",
+    "source": "samples/kit-pos-apocaliptico/lote-10-cartas-restantes/originais/VIN_CENAS.png",
+    "crop_pixels": [
+      12,
+      12,
+      615,
+      615
+    ],
+    "print_box_mm": [
+      36.0,
+      36.0
+    ],
+    "effective_ppi": 425.4
+  },
+  {
+    "id": "ZC-VIN-0005",
+    "source": "samples/kit-pos-apocaliptico/lote-10-cartas-restantes/originais/VIN_CENAS.png",
+    "crop_pixels": [
+      639,
+      12,
+      1242,
+      615
+    ],
+    "print_box_mm": [
+      36.0,
+      36.0
+    ],
+    "effective_ppi": 425.4
+  },
+  {
+    "id": "ZC-VIN-0006",
+    "source": "samples/kit-pos-apocaliptico/lote-10-cartas-restantes/originais/VIN_CENAS.png",
+    "crop_pixels": [
+      639,
+      12,
+      1242,
+      615
+    ],
+    "print_box_mm": [
+      36.0,
+      36.0
+    ],
+    "effective_ppi": 425.4
+  },
+  {
+    "id": "ZC-VIN-0007",
+    "source": "samples/kit-pos-apocaliptico/lote-10-cartas-restantes/originais/VIN_CENAS.png",
+    "crop_pixels": [
+      639,
+      12,
+      1242,
+      615
+    ],
+    "print_box_mm": [
+      36.0,
+      36.0
+    ],
+    "effective_ppi": 425.4
+  },
+  {
+    "id": "ZC-VIN-0008",
+    "source": "samples/kit-pos-apocaliptico/lote-10-cartas-restantes/originais/VIN_CENAS.png",
+    "crop_pixels": [
+      639,
+      12,
+      1242,
+      615
+    ],
+    "print_box_mm": [
+      36.0,
+      36.0
+    ],
+    "effective_ppi": 425.4
+  },
+  {
+    "id": "ZC-VIN-0009",
+    "source": "samples/kit-pos-apocaliptico/lote-10-cartas-restantes/originais/VIN_CENAS.png",
+    "crop_pixels": [
+      12,
+      639,
+      615,
+      1242
+    ],
+    "print_box_mm": [
+      36.0,
+      36.0
+    ],
+    "effective_ppi": 425.4
+  },
+  {
+    "id": "ZC-VIN-0010",
+    "source": "samples/kit-pos-apocaliptico/lote-10-cartas-restantes/originais/VIN_CENAS.png",
+    "crop_pixels": [
+      12,
+      639,
+      615,
+      1242
+    ],
+    "print_box_mm": [
+      36.0,
+      36.0
+    ],
+    "effective_ppi": 425.4
+  },
+  {
+    "id": "ZC-VIN-0011",
+    "source": "samples/kit-pos-apocaliptico/lote-10-cartas-restantes/originais/VIN_CENAS.png",
+    "crop_pixels": [
+      639,
+      639,
+      1242,
+      1242
+    ],
+    "print_box_mm": [
+      36.0,
+      36.0
+    ],
+    "effective_ppi": 425.4
+  },
+  {
+    "id": "ZC-VIN-0012",
+    "source": "samples/kit-pos-apocaliptico/lote-10-cartas-restantes/originais/VIN_CENAS.png",
+    "crop_pixels": [
+      639,
+      639,
+      1242,
+      1242
+    ],
+    "print_box_mm": [
+      36.0,
+      36.0
+    ],
+    "effective_ppi": 425.4
+  }
+]

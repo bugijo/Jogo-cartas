@@ -14,7 +14,7 @@ MAN = json.loads((P / 'output/comece-aqui-duas-pessoas/manifesto.json').read_tex
 SEL = MAN['initial_cards'] + MAN['supplement_cards']
 assert len(SEL) == len(set(SEL)) == 114
 CHANGED = set()
-for lot in ['lote-04-cartas', 'lote-06-itens', 'lote-07-moradores']:
+for lot in ['lote-04-cartas', 'lote-06-itens', 'lote-07-moradores', 'lote-10-cartas-restantes']:
     CHANGED.update(json.loads((S / lot / 'VERIFICACOES.json').read_text())['changed_ids'])
 assert CHANGED <= set(SEL)
 CARDS = {c['id']: c for c in CAT['cards']}
@@ -27,13 +27,13 @@ def add(component, expected, found, status, source, output, qa, notes=''):
                      STATUS=status, SOURCE=str(source), OUTPUT=str(output), QA=qa, NOTES=notes))
 
 
-card_pdf = S / 'lote-07-moradores/pdfs/02_CARTAS_DUPLEX/KIT_INICIAL_1_DUPLEX.pdf'
+card_pdf = S / 'lote-10-cartas-restantes/pdfs/02_CARTAS_DUPLEX/KIT_INICIAL_1_DUPLEX.pdf'
 for cid in SEL:
     card = CARDS[cid]
     art = cid in CHANGED
     add(cid, 'carta selecionada; arte revisada', 'carta e PDF; ' + ('arte nova' if art else 'arte anterior'),
         'READY' if art and card_pdf.exists() else 'PARTIAL', 'content/catalog.json',
-        card_pdf.relative_to(P) if card_pdf.exists() else '', 'texto/verso conferido no lote 07' if art else 'revisão artística pendente',
+        card_pdf.relative_to(P) if card_pdf.exists() else '', 'texto/verso conferido no lote 10' if art else 'revisão artística pendente',
         f"{card['family']} / {card['name']}")
 
 map_proofs = {
