@@ -2,15 +2,15 @@
   "selected_cards": 114,
   "art_changed_cards": 75,
   "cards_pending_art": 39,
-  "maps_with_new_proofs": 5,
+  "maps_with_new_proofs": 6,
   "maps_expected": 6,
   "common_modules": 4,
   "heroes": 24,
   "tokens": 198,
   "matrix_rows": 358,
   "statuses": {
-    "PARTIAL": 44,
-    "READY": 104,
+    "PARTIAL": 43,
+    "READY": 105,
     "NEEDS_REVIEW": 210
   }
 }

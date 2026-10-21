@@ -41,7 +41,7 @@ map_proofs = {
     'Hospital': S / 'lote-02-composicao/hospital/HOSPITAL_4_A4.pdf',
     'Oficina': S / 'lote-02-composicao/oficina/OFICINA_4_A4.pdf',
     'Posto': S / 'lote-08-posto/POSTO_4_A4.pdf',
-    'Condomínio': None,
+    'Condomínio': S / 'lote-09-condominio/CONDOMINIO_4_A4.pdf',
     'Estação': S / 'lote-05-estacao/ESTACAO_4_A4.pdf',
 }
 for m in CAT['maps']:
