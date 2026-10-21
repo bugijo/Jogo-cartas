@@ -1,0 +1,767 @@
+[
+  {
+    "id": "ZC-INT-0001",
+    "file": "originais/INTENCOES_CENAS.png",
+    "crop_pixels": [
+      7,
+      7,
+      761,
+      505
+    ],
+    "print_mm": [
+      54.50602409638554,
+      36.0
+    ],
+    "effective_ppi": 351.3666666666667
+  },
+  {
+    "id": "ZC-INT-0002",
+    "file": "originais/INTENCOES_CENAS.png",
+    "crop_pixels": [
+      7,
+      7,
+      761,
+      505
+    ],
+    "print_mm": [
+      54.50602409638554,
+      36.0
+    ],
+    "effective_ppi": 351.3666666666667
+  },
+  {
+    "id": "ZC-INT-0003",
+    "file": "originais/INTENCOES_CENAS.png",
+    "crop_pixels": [
+      7,
+      7,
+      761,
+      505
+    ],
+    "print_mm": [
+      54.50602409638554,
+      36.0
+    ],
+    "effective_ppi": 351.3666666666667
+  },
+  {
+    "id": "ZC-INT-0004",
+    "file": "originais/INTENCOES_CENAS.png",
+    "crop_pixels": [
+      7,
+      7,
+      761,
+      505
+    ],
+    "print_mm": [
+      54.50602409638554,
+      36.0
+    ],
+    "effective_ppi": 351.3666666666667
+  },
+  {
+    "id": "ZC-INT-0005",
+    "file": "originais/INTENCOES_CENAS.png",
+    "crop_pixels": [
+      7,
+      7,
+      761,
+      505
+    ],
+    "print_mm": [
+      54.50602409638554,
+      36.0
+    ],
+    "effective_ppi": 351.3666666666667
+  },
+  {
+    "id": "ZC-INT-0006",
+    "file": "originais/INTENCOES_CENAS.png",
+    "crop_pixels": [
+      7,
+      7,
+      761,
+      505
+    ],
+    "print_mm": [
+      54.50602409638554,
+      36.0
+    ],
+    "effective_ppi": 351.3666666666667
+  },
+  {
+    "id": "ZC-INT-0007",
+    "file": "originais/INTENCOES_CENAS.png",
+    "crop_pixels": [
+      7,
+      7,
+      761,
+      505
+    ],
+    "print_mm": [
+      54.50602409638554,
+      36.0
+    ],
+    "effective_ppi": 351.3666666666667
+  },
+  {
+    "id": "ZC-INT-0008",
+    "file": "originais/INTENCOES_CENAS.png",
+    "crop_pixels": [
+      775,
+      7,
+      1529,
+      505
+    ],
+    "print_mm": [
+      54.50602409638554,
+      36.0
+    ],
+    "effective_ppi": 351.3666666666667
+  },
+  {
+    "id": "ZC-INT-0009",
+    "file": "originais/INTENCOES_CENAS.png",
+    "crop_pixels": [
+      775,
+      7,
+      1529,
+      505
+    ],
+    "print_mm": [
+      54.50602409638554,
+      36.0
+    ],
+    "effective_ppi": 351.3666666666667
+  },
+  {
+    "id": "ZC-INT-0010",
+    "file": "originais/INTENCOES_CENAS.png",
+    "crop_pixels": [
+      775,
+      7,
+      1529,
+      505
+    ],
+    "print_mm": [
+      54.50602409638554,
+      36.0
+    ],
+    "effective_ppi": 351.3666666666667
+  },
+  {
+    "id": "ZC-INT-0011",
+    "file": "originais/INTENCOES_CENAS.png",
+    "crop_pixels": [
+      7,
+      519,
+      761,
+      1017
+    ],
+    "print_mm": [
+      54.50602409638554,
+      36.0
+    ],
+    "effective_ppi": 351.3666666666667
+  },
+  {
+    "id": "ZC-INT-0012",
+    "file": "originais/INTENCOES_CENAS.png",
+    "crop_pixels": [
+      775,
+      519,
+      1529,
+      1017
+    ],
+    "print_mm": [
+      54.50602409638554,
+      36.0
+    ],
+    "effective_ppi": 351.3666666666667
+  },
+  {
+    "id": "ZC-EQU-0007",
+    "file": "originais/ARMAS_CENAS.png",
+    "crop_pixels": [
+      7,
+      7,
+      761,
+      505
+    ],
+    "print_mm": [
+      54.50602409638554,
+      36.0
+    ],
+    "effective_ppi": 351.3666666666667
+  },
+  {
+    "id": "ZC-EQU-0008",
+    "file": "originais/ARMAS_CENAS.png",
+    "crop_pixels": [
+      7,
+      7,
+      761,
+      505
+    ],
+    "print_mm": [
+      54.50602409638554,
+      36.0
+    ],
+    "effective_ppi": 351.3666666666667
+  },
+  {
+    "id": "ZC-EQU-0014",
+    "file": "originais/SUPRIMENTOS_CENAS.png",
+    "crop_pixels": [
+      7,
+      7,
+      754,
+      462
+    ],
+    "print_mm": [
+      55.0,
+      33.50066934404284
+    ],
+    "effective_ppi": 344.9781818181818
+  },
+  {
+    "id": "ZC-SAQ-0001",
+    "file": "originais/SUPRIMENTOS_CENAS.png",
+    "crop_pixels": [
+      783,
+      7,
+      1529,
+      462
+    ],
+    "print_mm": [
+      40.989010989010985,
+      25.0
+    ],
+    "effective_ppi": 462.28
+  },
+  {
+    "id": "ZC-SAQ-0002",
+    "file": "originais/SUPRIMENTOS_CENAS.png",
+    "crop_pixels": [
+      7,
+      485,
+      754,
+      1017
+    ],
+    "print_mm": [
+      35.10338345864661,
+      25.0
+    ],
+    "effective_ppi": 540.512
+  },
+  {
+    "id": "ZC-PEC-0001",
+    "file": "originais/PECAS_CENAS.png",
+    "crop_pixels": [
+      7,
+      519,
+      761,
+      1017
+    ],
+    "print_mm": [
+      54.50602409638554,
+      36.0
+    ],
+    "effective_ppi": 351.3666666666667
+  },
+  {
+    "id": "ZC-PEC-0002",
+    "file": "originais/PECAS_CENAS.png",
+    "crop_pixels": [
+      7,
+      7,
+      761,
+      505
+    ],
+    "print_mm": [
+      54.50602409638554,
+      36.0
+    ],
+    "effective_ppi": 351.3666666666667
+  },
+  {
+    "id": "ZC-PEC-0003",
+    "file": "originais/PECAS_CENAS.png",
+    "crop_pixels": [
+      775,
+      7,
+      1529,
+      505
+    ],
+    "print_mm": [
+      54.50602409638554,
+      36.0
+    ],
+    "effective_ppi": 351.3666666666667
+  },
+  {
+    "id": "ZC-PEC-0004",
+    "file": "originais/PECAS_CENAS.png",
+    "crop_pixels": [
+      775,
+      519,
+      1529,
+      1017
+    ],
+    "print_mm": [
+      54.50602409638554,
+      36.0
+    ],
+    "effective_ppi": 351.3666666666667
+  },
+  {
+    "id": "ZC-EQU-0009",
+    "file": "originais/ARMAS_CENAS.png",
+    "crop_pixels": [
+      775,
+      7,
+      1529,
+      505
+    ],
+    "print_mm": [
+      54.50602409638554,
+      36.0
+    ],
+    "effective_ppi": 351.3666666666667
+  },
+  {
+    "id": "ZC-EQU-0010",
+    "file": "originais/ARMAS_CENAS.png",
+    "crop_pixels": [
+      775,
+      7,
+      1529,
+      505
+    ],
+    "print_mm": [
+      54.50602409638554,
+      36.0
+    ],
+    "effective_ppi": 351.3666666666667
+  },
+  {
+    "id": "ZC-EQU-0011",
+    "file": "originais/ARMAS_CENAS.png",
+    "crop_pixels": [
+      7,
+      519,
+      761,
+      1017
+    ],
+    "print_mm": [
+      54.50602409638554,
+      36.0
+    ],
+    "effective_ppi": 351.3666666666667
+  },
+  {
+    "id": "ZC-EQU-0012",
+    "file": "originais/ARMAS_CENAS.png",
+    "crop_pixels": [
+      7,
+      519,
+      761,
+      1017
+    ],
+    "print_mm": [
+      54.50602409638554,
+      36.0
+    ],
+    "effective_ppi": 351.3666666666667
+  },
+  {
+    "id": "ZC-EQU-0013",
+    "file": "originais/ARMAS_CENAS.png",
+    "crop_pixels": [
+      775,
+      519,
+      1529,
+      1017
+    ],
+    "print_mm": [
+      54.50602409638554,
+      36.0
+    ],
+    "effective_ppi": 351.3666666666667
+  },
+  {
+    "id": "ZC-EQU-0015",
+    "file": "originais/SUPRIMENTOS_CENAS.png",
+    "crop_pixels": [
+      7,
+      7,
+      754,
+      462
+    ],
+    "print_mm": [
+      55.0,
+      33.50066934404284
+    ],
+    "effective_ppi": 344.9781818181818
+  },
+  {
+    "id": "ZC-EQU-0016",
+    "file": "originais/SUPRIMENTOS_CENAS.png",
+    "crop_pixels": [
+      7,
+      7,
+      754,
+      462
+    ],
+    "print_mm": [
+      55.0,
+      33.50066934404284
+    ],
+    "effective_ppi": 344.9781818181818
+  },
+  {
+    "id": "ZC-SAQ-0007",
+    "file": "originais/SUPRIMENTOS_CENAS.png",
+    "crop_pixels": [
+      783,
+      7,
+      1529,
+      462
+    ],
+    "print_mm": [
+      40.989010989010985,
+      25.0
+    ],
+    "effective_ppi": 462.28
+  },
+  {
+    "id": "ZC-SAQ-0008",
+    "file": "originais/SUPRIMENTOS_CENAS.png",
+    "crop_pixels": [
+      7,
+      485,
+      754,
+      1017
+    ],
+    "print_mm": [
+      35.10338345864661,
+      25.0
+    ],
+    "effective_ppi": 540.512
+  },
+  {
+    "id": "ZC-SAQ-0013",
+    "file": "originais/SUPRIMENTOS_CENAS.png",
+    "crop_pixels": [
+      783,
+      7,
+      1529,
+      462
+    ],
+    "print_mm": [
+      40.989010989010985,
+      25.0
+    ],
+    "effective_ppi": 462.28
+  },
+  {
+    "id": "ZC-SAQ-0014",
+    "file": "originais/SUPRIMENTOS_CENAS.png",
+    "crop_pixels": [
+      7,
+      485,
+      754,
+      1017
+    ],
+    "print_mm": [
+      35.10338345864661,
+      25.0
+    ],
+    "effective_ppi": 540.512
+  },
+  {
+    "id": "ZC-SAQ-0019",
+    "file": "originais/SUPRIMENTOS_CENAS.png",
+    "crop_pixels": [
+      783,
+      7,
+      1529,
+      462
+    ],
+    "print_mm": [
+      40.989010989010985,
+      25.0
+    ],
+    "effective_ppi": 462.28
+  },
+  {
+    "id": "ZC-SAQ-0020",
+    "file": "originais/SUPRIMENTOS_CENAS.png",
+    "crop_pixels": [
+      7,
+      485,
+      754,
+      1017
+    ],
+    "print_mm": [
+      35.10338345864661,
+      25.0
+    ],
+    "effective_ppi": 540.512
+  },
+  {
+    "id": "ZC-SAQ-0025",
+    "file": "originais/SUPRIMENTOS_CENAS.png",
+    "crop_pixels": [
+      783,
+      7,
+      1529,
+      462
+    ],
+    "print_mm": [
+      40.989010989010985,
+      25.0
+    ],
+    "effective_ppi": 462.28
+  },
+  {
+    "id": "ZC-SAQ-0026",
+    "file": "originais/SUPRIMENTOS_CENAS.png",
+    "crop_pixels": [
+      7,
+      485,
+      754,
+      1017
+    ],
+    "print_mm": [
+      35.10338345864661,
+      25.0
+    ],
+    "effective_ppi": 540.512
+  },
+  {
+    "id": "ZC-SAQ-0031",
+    "file": "originais/SUPRIMENTOS_CENAS.png",
+    "crop_pixels": [
+      783,
+      7,
+      1529,
+      462
+    ],
+    "print_mm": [
+      40.989010989010985,
+      25.0
+    ],
+    "effective_ppi": 462.28
+  },
+  {
+    "id": "ZC-SAQ-0032",
+    "file": "originais/SUPRIMENTOS_CENAS.png",
+    "crop_pixels": [
+      7,
+      485,
+      754,
+      1017
+    ],
+    "print_mm": [
+      35.10338345864661,
+      25.0
+    ],
+    "effective_ppi": 540.512
+  },
+  {
+    "id": "ZC-EQU-0007",
+    "file": "originais/ARMAS_CENAS.png",
+    "crop_pixels": [
+      7,
+      7,
+      761,
+      505
+    ],
+    "print_mm": [
+      54.50602409638554,
+      36.0
+    ],
+    "effective_ppi": 351.3666666666667
+  },
+  {
+    "id": "ZC-EQU-0009",
+    "file": "originais/ARMAS_CENAS.png",
+    "crop_pixels": [
+      775,
+      7,
+      1529,
+      505
+    ],
+    "print_mm": [
+      54.50602409638554,
+      36.0
+    ],
+    "effective_ppi": 351.3666666666667
+  },
+  {
+    "id": "ZC-EQU-0014",
+    "file": "originais/SUPRIMENTOS_CENAS.png",
+    "crop_pixels": [
+      7,
+      7,
+      754,
+      462
+    ],
+    "print_mm": [
+      55.0,
+      33.50066934404284
+    ],
+    "effective_ppi": 344.9781818181818
+  },
+  {
+    "id": "ZC-SAQ-0001",
+    "file": "originais/SUPRIMENTOS_CENAS.png",
+    "crop_pixels": [
+      783,
+      7,
+      1529,
+      462
+    ],
+    "print_mm": [
+      40.989010989010985,
+      25.0
+    ],
+    "effective_ppi": 462.28
+  },
+  {
+    "id": "ZC-SAQ-0002",
+    "file": "originais/SUPRIMENTOS_CENAS.png",
+    "crop_pixels": [
+      7,
+      485,
+      754,
+      1017
+    ],
+    "print_mm": [
+      35.10338345864661,
+      25.0
+    ],
+    "effective_ppi": 540.512
+  },
+  {
+    "id": "ZC-PEC-0004",
+    "file": "originais/PECAS_CENAS.png",
+    "crop_pixels": [
+      775,
+      519,
+      1529,
+      1017
+    ],
+    "print_mm": [
+      54.50602409638554,
+      36.0
+    ],
+    "effective_ppi": 351.3666666666667
+  },
+  {
+    "id": "ZC-PEC-0002",
+    "file": "originais/PECAS_CENAS.png",
+    "crop_pixels": [
+      7,
+      7,
+      761,
+      505
+    ],
+    "print_mm": [
+      54.50602409638554,
+      36.0
+    ],
+    "effective_ppi": 351.3666666666667
+  },
+  {
+    "id": "ZC-PEC-0003",
+    "file": "originais/PECAS_CENAS.png",
+    "crop_pixels": [
+      775,
+      7,
+      1529,
+      505
+    ],
+    "print_mm": [
+      54.50602409638554,
+      36.0
+    ],
+    "effective_ppi": 351.3666666666667
+  },
+  {
+    "id": "ZC-PEC-0001",
+    "file": "originais/PECAS_CENAS.png",
+    "crop_pixels": [
+      7,
+      519,
+      761,
+      1017
+    ],
+    "print_mm": [
+      54.50602409638554,
+      36.0
+    ],
+    "effective_ppi": 351.3666666666667
+  },
+  {
+    "id": "ZC-INT-0001",
+    "file": "originais/INTENCOES_CENAS.png",
+    "crop_pixels": [
+      7,
+      7,
+      761,
+      505
+    ],
+    "print_mm": [
+      54.50602409638554,
+      36.0
+    ],
+    "effective_ppi": 351.3666666666667
+  },
+  {
+    "id": "ZC-INT-0008",
+    "file": "originais/INTENCOES_CENAS.png",
+    "crop_pixels": [
+      775,
+      7,
+      1529,
+      505
+    ],
+    "print_mm": [
+      54.50602409638554,
+      36.0
+    ],
+    "effective_ppi": 351.3666666666667
+  },
+  {
+    "id": "ZC-INT-0011",
+    "file": "originais/INTENCOES_CENAS.png",
+    "crop_pixels": [
+      7,
+      519,
+      761,
+      1017
+    ],
+    "print_mm": [
+      54.50602409638554,
+      36.0
+    ],
+    "effective_ppi": 351.3666666666667
+  },
+  {
+    "id": "ZC-INT-0012",
+    "file": "originais/INTENCOES_CENAS.png",
+    "crop_pixels": [
+      775,
+      519,
+      1529,
+      1017
+    ],
+    "print_mm": [
+      54.50602409638554,
+      36.0
+    ],
+    "effective_ppi": 351.3666666666667
+  }
+]
