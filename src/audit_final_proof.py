@@ -92,6 +92,7 @@ add('FICHAS_FUNDADORES_3_A_6', 'fichas imprimíveis para fundador além de Lia/I
     'NEEDS_REVIEW' if founders.exists() else 'MISSING', 'RULES.md / setup H=2..6',
     founders.relative_to(P), 'deve ser obrigatório no índice quando H>2; cópias exatas conforme seleção')
 for label, relative, note in [
+    ('PES_DE_CABRA_SEIS_FUNDADORES', 'kit-final-prova/componentes-condicionais/PES_DE_CABRA_SEIS_FUNDADORES_DUPLEX.pdf', 'seis IDs únicos 0001–0006; alternativa universal para H3–H6'),
     ('PES_DE_CABRA_H3_A_H6', 'kit-final-prova/componentes-condicionais/PES_DE_CABRA_H3_A_H6_DUPLEX.pdf', 'quatro IDs únicos 0003–0006; imprimir conforme H'),
     ('CARTAS_FORMULA_H3_A_H4', 'kit-final-prova/componentes-condicionais/REPOSICAO_H3_H4_DUPLEX.pdf', 'substituir VIA-0005, HOR-0007/0008, sem duplicar IDs'),
     ('CARTAS_FORMULA_H5_A_H6', 'kit-final-prova/componentes-condicionais/REPOSICAO_H5_H6_DUPLEX.pdf', 'substituir VIA-0005, HOR-0007/0008, sem duplicar IDs'),
