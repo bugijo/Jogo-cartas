@@ -1,3 +1,9 @@
+# Lote 07 — moradores nas cartas
+
+[Lote 07](samples/kit-pos-apocaliptico/lote-07-moradores/CHECKPOINT.md): oito cartas MOR atualizadas com retratos das fichas; textos e versos idênticos; 39 IDs seguem para revisão artística.
+
+---
+
 # Lote 06 — itens e cartas
 
 [Novo lote de itens](samples/kit-pos-apocaliptico/lote-06-itens/RELATORIO.md): 29 IDs atualizados, textos e versos conferidos; 47 IDs permanecem para revisão visual.

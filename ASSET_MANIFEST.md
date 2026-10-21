@@ -1,3 +1,9 @@
+# Lote 07 — moradores nas cartas
+
+[Retratos nas cartas MOR](samples/kit-pos-apocaliptico/lote-07-moradores/fontes/resolucao.json): fontes nativas do lote 03, oito cartas integradas no PDF atual, resolução física por herói registrada.
+
+---
+
 # Lote 06 — itens e cartas
 
 [Itens adicionais e resolução por carta](samples/kit-pos-apocaliptico/lote-06-itens/fontes/resolucao.json): duas pranchas nativas, oito tipos, 29 IDs integrados nos PDFs.

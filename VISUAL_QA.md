@@ -1,3 +1,9 @@
+# Lote 07 — moradores nas cartas
+
+[Comparação das cartas de moradores](samples/kit-pos-apocaliptico/lote-07-moradores/provas/COMPARACAO_MORADORES_1.jpg): oito rostos/grupos reconhecíveis, mais desgaste e no mínimo 589,04 ppi nos retratos; crianças e cão permanecem informação textual como antes.
+
+---
+
 # Lote 06 — itens e cartas
 
 [Oito itens adicionais](samples/kit-pos-apocaliptico/lote-06-itens/RELATORIO.md): 29 IDs com cenas novas em duas pranchas nativas, 351,37 ppi mínimos; textos e versos iguais aos da versão anterior.

@@ -1,3 +1,9 @@
+# Lote 07 — moradores nas cartas
+
+[Retratos revisados nas oito cartas de moradores](samples/kit-pos-apocaliptico/lote-07-moradores/RELATORIO.md). Seleção preservada; 75/114 IDs com arte nova acumulada.
+
+---
+
 # Lote 06 — itens e cartas
 
 [Oito itens adicionais nas cartas existentes](samples/kit-pos-apocaliptico/lote-06-itens/RELATORIO.md): 29 IDs com arte nova, 67/114 acumulados; PDFs duplex e alternativa manual.
