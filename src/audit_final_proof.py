@@ -105,11 +105,11 @@ for label, relative, note in [
 
 for h in range(2,7):
     add(f'CAMPANHA_H{h}', 'replay integral dos cinco dias com todos os efeitos e zonas',
-        'uma trajetória tática fixa de cinco dias; quinze ensaios de fases com sementes',
+        'trajetória tática fixa e uma escolha alternativa de Bia; 150 ensaios de fases com sementes',
         'PARTIAL', 'RULES.md / CAMPAIGN.md',
-        'kit-final-prova/auditoria/ROTEIROS_TATICOS_H2_H6.json',
-        'trajetória legal fixa; ramos/cartas alternativos e jogo humano pendentes',
-        f'H={h}: ver CAMPANHA_REPLAY_RELATORIO.md')
+        'kit-final-prova/auditoria/REVISAO_DIGITAL_FINAL.json',
+        'dois ramos de uma decisão; efeitos completos das demais cartas e jogo humano pendentes',
+        f'H={h}: ver REVISAO_DIGITAL_RELATORIO.md')
 
 OUT.mkdir(parents=True, exist_ok=True)
 with (OUT / 'COVERAGE_MATRIX.csv').open('w', newline='') as handle:

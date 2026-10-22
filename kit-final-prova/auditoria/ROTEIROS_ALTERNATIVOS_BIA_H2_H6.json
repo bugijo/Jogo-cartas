@@ -1,0 +1,3926 @@
+[
+  {
+    "heroes": 2,
+    "accept_bia": false,
+    "status": "route_completed",
+    "food": 11,
+    "water": 20,
+    "route": {
+      "heroes": 2,
+      "founders": [
+        "Lia",
+        "Ivo"
+      ],
+      "links": [
+        "Parceiro",
+        "Parceiro e cachorro"
+      ],
+      "consumers_initial": 5,
+      "capacity": 8,
+      "decision_bia": "deixar no destino",
+      "rescue_intention": null,
+      "searches": [],
+      "tactical": [
+        {
+          "destination": "Mercado",
+          "segments": 7,
+          "rounds": 5,
+          "delivered": {
+            "Conserva": 4,
+            "Água": 2
+          },
+          "health": {
+            "Lia": 3,
+            "Ivo": 3
+          },
+          "rescue": [],
+          "travel_cards": [
+            "ZC-VIA-0001",
+            "ZC-VIA-0011"
+          ],
+          "extra_night_travel": null,
+          "night_fatigue_per_hero": 0,
+          "horde_draws": [
+            "Arrastar",
+            "Arrastar"
+          ],
+          "peak_enemies": 2,
+          "round_log": [
+            {
+              "destination": "Mercado",
+              "round": 1,
+              "clock": 2,
+              "positions": {
+                "Lia": 3,
+                "Ivo": 9
+              },
+              "pa_remaining": {
+                "Lia": 0,
+                "Ivo": 0
+              },
+              "health": {
+                "Lia": 3,
+                "Ivo": 3
+              },
+              "loads": {
+                "Lia": 1,
+                "Ivo": 1
+              },
+              "enemies": [
+                {
+                  "id": 1,
+                  "kind": "Errante",
+                  "z": 16,
+                  "hp": 1
+                }
+              ]
+            },
+            {
+              "destination": "Mercado",
+              "round": 2,
+              "clock": 3,
+              "positions": {
+                "Lia": 7,
+                "Ivo": 13
+              },
+              "pa_remaining": {
+                "Lia": 0,
+                "Ivo": 0
+              },
+              "health": {
+                "Lia": 3,
+                "Ivo": 3
+              },
+              "loads": {
+                "Lia": 4,
+                "Ivo": 1
+              },
+              "enemies": [
+                {
+                  "id": 1,
+                  "kind": "Errante",
+                  "z": 12,
+                  "hp": 1
+                },
+                {
+                  "id": 2,
+                  "kind": "Errante",
+                  "z": 16,
+                  "hp": 1
+                }
+              ]
+            },
+            {
+              "destination": "Mercado",
+              "round": 3,
+              "clock": 4,
+              "positions": {
+                "Lia": 12,
+                "Ivo": 15
+              },
+              "pa_remaining": {
+                "Lia": 0,
+                "Ivo": 0
+              },
+              "health": {
+                "Lia": 3,
+                "Ivo": 3
+              },
+              "loads": {
+                "Lia": 4,
+                "Ivo": 3
+              },
+              "enemies": [
+                {
+                  "id": 2,
+                  "kind": "Errante",
+                  "z": 12,
+                  "hp": 1
+                }
+              ]
+            },
+            {
+              "destination": "Mercado",
+              "round": 4,
+              "clock": 5,
+              "positions": {
+                "Lia": 7,
+                "Ivo": 7
+              },
+              "pa_remaining": {
+                "Lia": 0,
+                "Ivo": 0
+              },
+              "health": {
+                "Lia": 3,
+                "Ivo": 3
+              },
+              "loads": {
+                "Lia": 4,
+                "Ivo": 4
+              },
+              "enemies": [
+                {
+                  "id": 3,
+                  "kind": "Errante",
+                  "z": 16,
+                  "hp": 1
+                }
+              ]
+            },
+            {
+              "destination": "Mercado",
+              "round": 5,
+              "clock": 6,
+              "positions": {
+                "Lia": 1,
+                "Ivo": 1
+              },
+              "pa_remaining": {
+                "Lia": 0,
+                "Ivo": 0
+              },
+              "health": {
+                "Lia": 3,
+                "Ivo": 3
+              },
+              "loads": {
+                "Lia": 4,
+                "Ivo": 4
+              },
+              "enemies": [
+                {
+                  "id": 3,
+                  "kind": "Errante",
+                  "z": 12,
+                  "hp": 1
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "destination": "Oficina",
+          "segments": 8,
+          "rounds": 6,
+          "delivered": {
+            "Conexões": 1,
+            "Bateria": 1,
+            "Conserva": 2,
+            "Água": 2
+          },
+          "health": {
+            "Lia": 3,
+            "Ivo": 3
+          },
+          "rescue": [],
+          "travel_cards": [
+            "ZC-VIA-0008",
+            "ZC-VIA-0012"
+          ],
+          "extra_night_travel": null,
+          "night_fatigue_per_hero": 0,
+          "horde_draws": [
+            "Arrastar",
+            "Arrastar",
+            "Aglomerado",
+            "Arrastar",
+            "Arrastar"
+          ],
+          "peak_enemies": 2,
+          "round_log": [
+            {
+              "destination": "Oficina",
+              "round": 1,
+              "clock": 2,
+              "positions": {
+                "Lia": 3,
+                "Ivo": 9
+              },
+              "pa_remaining": {
+                "Lia": 1,
+                "Ivo": 0
+              },
+              "health": {
+                "Lia": 3,
+                "Ivo": 3
+              },
+              "loads": {
+                "Lia": 1,
+                "Ivo": 1
+              },
+              "enemies": [
+                {
+                  "id": 4,
+                  "kind": "Errante",
+                  "z": 12,
+                  "hp": 1
+                }
+              ]
+            },
+            {
+              "destination": "Oficina",
+              "round": 2,
+              "clock": 3,
+              "positions": {
+                "Lia": 7,
+                "Ivo": 13
+              },
+              "pa_remaining": {
+                "Lia": 0,
+                "Ivo": 0
+              },
+              "health": {
+                "Lia": 3,
+                "Ivo": 3
+              },
+              "loads": {
+                "Lia": 1,
+                "Ivo": 1
+              },
+              "enemies": [
+                {
+                  "id": 4,
+                  "kind": "Errante",
+                  "z": 8,
+                  "hp": 1
+                },
+                {
+                  "id": 5,
+                  "kind": "Errante",
+                  "z": 16,
+                  "hp": 1
+                }
+              ]
+            },
+            {
+              "destination": "Oficina",
+              "round": 3,
+              "clock": 4,
+              "positions": {
+                "Lia": 8,
+                "Ivo": 15
+              },
+              "pa_remaining": {
+                "Lia": 0,
+                "Ivo": 0
+              },
+              "health": {
+                "Lia": 3,
+                "Ivo": 3
+              },
+              "loads": {
+                "Lia": 1,
+                "Ivo": 3
+              },
+              "enemies": [
+                {
+                  "id": 5,
+                  "kind": "Errante",
+                  "z": 15,
+                  "hp": 1
+                }
+              ]
+            },
+            {
+              "destination": "Oficina",
+              "round": 4,
+              "clock": 5,
+              "positions": {
+                "Lia": 7,
+                "Ivo": 7
+              },
+              "pa_remaining": {
+                "Lia": 0,
+                "Ivo": 0
+              },
+              "health": {
+                "Lia": 3,
+                "Ivo": 3
+              },
+              "loads": {
+                "Lia": 3,
+                "Ivo": 3
+              },
+              "enemies": [
+                {
+                  "id": 6,
+                  "kind": "Errante",
+                  "z": 16,
+                  "hp": 1
+                }
+              ]
+            },
+            {
+              "destination": "Oficina",
+              "round": 5,
+              "clock": 6,
+              "positions": {
+                "Lia": 3,
+                "Ivo": 2
+              },
+              "pa_remaining": {
+                "Lia": 1,
+                "Ivo": 0
+              },
+              "health": {
+                "Lia": 3,
+                "Ivo": 3
+              },
+              "loads": {
+                "Lia": 4,
+                "Ivo": 4
+              },
+              "enemies": [
+                {
+                  "id": 6,
+                  "kind": "Errante",
+                  "z": 12,
+                  "hp": 1
+                }
+              ]
+            },
+            {
+              "destination": "Oficina",
+              "round": 6,
+              "clock": 7,
+              "positions": {
+                "Lia": 1,
+                "Ivo": 1
+              },
+              "pa_remaining": {
+                "Lia": 1,
+                "Ivo": 2
+              },
+              "health": {
+                "Lia": 3,
+                "Ivo": 3
+              },
+              "loads": {
+                "Lia": 4,
+                "Ivo": 4
+              },
+              "enemies": [
+                {
+                  "id": 6,
+                  "kind": "Errante",
+                  "z": 8,
+                  "hp": 1
+                },
+                {
+                  "id": 7,
+                  "kind": "Errante",
+                  "z": 16,
+                  "hp": 1
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "destination": "Estação",
+          "segments": 9,
+          "rounds": 7,
+          "delivered": {
+            "Bomba": 1,
+            "Membrana": 1,
+            "Água": 2
+          },
+          "health": {
+            "Lia": 3,
+            "Ivo": 3
+          },
+          "rescue": [],
+          "travel_cards": [
+            "ZC-VIA-0006",
+            "ZC-VIA-0009"
+          ],
+          "extra_night_travel": "ZC-VIA-0002",
+          "night_fatigue_per_hero": 1,
+          "horde_draws": [
+            "Arrastar",
+            "Arrastar",
+            "Aglomerado",
+            "Arrastar",
+            "Arrastar",
+            "Aglomerado",
+            "Corrida",
+            "Corrida"
+          ],
+          "peak_enemies": 3,
+          "round_log": [
+            {
+              "destination": "Estação",
+              "round": 1,
+              "clock": 2,
+              "positions": {
+                "Lia": 3,
+                "Ivo": 9
+              },
+              "pa_remaining": {
+                "Lia": 0,
+                "Ivo": 0
+              },
+              "health": {
+                "Lia": 3,
+                "Ivo": 3
+              },
+              "loads": {
+                "Lia": 1,
+                "Ivo": 1
+              },
+              "enemies": [
+                {
+                  "id": 8,
+                  "kind": "Errante",
+                  "z": 12,
+                  "hp": 1
+                },
+                {
+                  "id": 9,
+                  "kind": "Bruto",
+                  "z": 14,
+                  "hp": 3
+                }
+              ]
+            },
+            {
+              "destination": "Estação",
+              "round": 2,
+              "clock": 3,
+              "positions": {
+                "Lia": 7,
+                "Ivo": 15
+              },
+              "pa_remaining": {
+                "Lia": 0,
+                "Ivo": 0
+              },
+              "health": {
+                "Lia": 3,
+                "Ivo": 3
+              },
+              "loads": {
+                "Lia": 3,
+                "Ivo": 1
+              },
+              "enemies": [
+                {
+                  "id": 8,
+                  "kind": "Errante",
+                  "z": 8,
+                  "hp": 1
+                },
+                {
+                  "id": 9,
+                  "kind": "Bruto",
+                  "z": 15,
+                  "hp": 3
+                },
+                {
+                  "id": 10,
+                  "kind": "Errante",
+                  "z": 16,
+                  "hp": 1
+                }
+              ]
+            },
+            {
+              "destination": "Estação",
+              "round": 3,
+              "clock": 4,
+              "positions": {
+                "Lia": 14,
+                "Ivo": 15
+              },
+              "pa_remaining": {
+                "Lia": 0,
+                "Ivo": 0
+              },
+              "health": {
+                "Lia": 3,
+                "Ivo": 3
+              },
+              "loads": {
+                "Lia": 3,
+                "Ivo": 1
+              },
+              "enemies": [
+                {
+                  "id": 8,
+                  "kind": "Errante",
+                  "z": 8,
+                  "hp": 1
+                },
+                {
+                  "id": 10,
+                  "kind": "Errante",
+                  "z": 15,
+                  "hp": 1
+                }
+              ]
+            },
+            {
+              "destination": "Estação",
+              "round": 4,
+              "clock": 5,
+              "positions": {
+                "Lia": 11,
+                "Ivo": 14
+              },
+              "pa_remaining": {
+                "Lia": 1,
+                "Ivo": 0
+              },
+              "health": {
+                "Lia": 3,
+                "Ivo": 3
+              },
+              "loads": {
+                "Lia": 3,
+                "Ivo": 2
+              },
+              "enemies": [
+                {
+                  "id": 8,
+                  "kind": "Errante",
+                  "z": 8,
+                  "hp": 1
+                },
+                {
+                  "id": 11,
+                  "kind": "Corredor",
+                  "z": 16,
+                  "hp": 1
+                }
+              ]
+            },
+            {
+              "destination": "Estação",
+              "round": 5,
+              "clock": 6,
+              "positions": {
+                "Lia": 2,
+                "Ivo": 11
+              },
+              "pa_remaining": {
+                "Lia": 0,
+                "Ivo": 0
+              },
+              "health": {
+                "Lia": 3,
+                "Ivo": 3
+              },
+              "loads": {
+                "Lia": 3,
+                "Ivo": 4
+              },
+              "enemies": [
+                {
+                  "id": 8,
+                  "kind": "Errante",
+                  "z": 7,
+                  "hp": 1
+                },
+                {
+                  "id": 11,
+                  "kind": "Corredor",
+                  "z": 11,
+                  "hp": 1
+                }
+              ]
+            },
+            {
+              "destination": "Estação",
+              "round": 6,
+              "clock": 7,
+              "positions": {
+                "Lia": 1,
+                "Ivo": 7
+              },
+              "pa_remaining": {
+                "Lia": 2,
+                "Ivo": 0
+              },
+              "health": {
+                "Lia": 3,
+                "Ivo": 3
+              },
+              "loads": {
+                "Lia": 3,
+                "Ivo": 4
+              },
+              "enemies": [
+                {
+                  "id": 12,
+                  "kind": "Corredor",
+                  "z": 16,
+                  "hp": 1
+                }
+              ]
+            },
+            {
+              "destination": "Estação",
+              "round": 7,
+              "clock": 8,
+              "positions": {
+                "Lia": 1,
+                "Ivo": 1
+              },
+              "pa_remaining": {
+                "Lia": 3,
+                "Ivo": 0
+              },
+              "health": {
+                "Lia": 3,
+                "Ivo": 3
+              },
+              "loads": {
+                "Lia": 3,
+                "Ivo": 4
+              },
+              "enemies": [
+                {
+                  "id": 12,
+                  "kind": "Corredor",
+                  "z": 8,
+                  "hp": 1
+                }
+              ]
+            }
+          ]
+        }
+      ],
+      "days": [
+        {
+          "day": 1,
+          "destination": "Mercado",
+          "people": 4,
+          "dogs": 1,
+          "food": 23,
+          "water": 15,
+          "materials": 3,
+          "medicine": 2,
+          "ammo": 2,
+          "bia_intention": "fora",
+          "expedition_night_fatigue": 0,
+          "fatigue_removed_next_dawn": 0,
+          "pressure": 0,
+          "filter_work": 0,
+          "filter_active": false,
+          "siege": null,
+          "health": 5,
+          "morale": 5
+        },
+        {
+          "day": 2,
+          "destination": "Oficina",
+          "people": 4,
+          "dogs": 1,
+          "food": 26,
+          "water": 18,
+          "materials": 3,
+          "medicine": 2,
+          "ammo": 2,
+          "bia_intention": "fora",
+          "expedition_night_fatigue": 0,
+          "fatigue_removed_next_dawn": 0,
+          "pressure": 1,
+          "filter_work": 0,
+          "filter_active": false,
+          "siege": null,
+          "health": 5,
+          "morale": 5
+        },
+        {
+          "day": 3,
+          "destination": "Estação",
+          "people": 4,
+          "dogs": 1,
+          "food": 21,
+          "water": 20,
+          "materials": 3,
+          "medicine": 2,
+          "ammo": 2,
+          "bia_intention": "fora",
+          "expedition_night_fatigue": 1,
+          "fatigue_removed_next_dawn": 0,
+          "pressure": 1,
+          "filter_work": 0,
+          "filter_active": false,
+          "siege": {
+            "kind": "missão",
+            "force": 4,
+            "defense": 4,
+            "dice": [
+              4,
+              2
+            ],
+            "bullets": 0
+          },
+          "health": 5,
+          "morale": 5
+        },
+        {
+          "day": 4,
+          "destination": null,
+          "people": 4,
+          "dogs": 1,
+          "food": 16,
+          "water": 15,
+          "materials": 0,
+          "medicine": 2,
+          "ammo": 2,
+          "bia_intention": "fora",
+          "expedition_night_fatigue": 0,
+          "fatigue_removed_next_dawn": 1,
+          "pressure": 2,
+          "filter_work": 2,
+          "filter_active": false,
+          "siege": null,
+          "health": 5,
+          "morale": 5
+        },
+        {
+          "day": 5,
+          "destination": null,
+          "people": 4,
+          "dogs": 1,
+          "food": 11,
+          "water": 20,
+          "materials": 0,
+          "medicine": 2,
+          "ammo": 2,
+          "bia_intention": "fora",
+          "expedition_night_fatigue": 0,
+          "fatigue_removed_next_dawn": 0,
+          "pressure": 1,
+          "filter_work": 4,
+          "filter_active": true,
+          "siege": {
+            "kind": "pressão ZC-CER-0001",
+            "force": 4,
+            "defense": 5,
+            "dice": [
+              4,
+              4
+            ],
+            "bullets": 0
+          },
+          "health": 5,
+          "morale": 5
+        }
+      ],
+      "result": "vitória nesta trajetória fixa",
+      "hero_xp": {
+        "Lia": 6,
+        "Ivo": 6
+      },
+      "progression_choices": {
+        "Lia": {
+          "3": "Curativo: socorro remove +1 ferimento, 1/dia.",
+          "6": "Preparação: +1 capacidade permanente."
+        },
+        "Ivo": {
+          "3": "Postura: ignore 1 dano, 1/expedição.",
+          "6": "Preparação: +1 capacidade permanente."
+        }
+      },
+      "final_wounds": {
+        "Lia": 0,
+        "Ivo": 0
+      },
+      "limitations": [
+        "Rolagens de combate 3 e cerco favorável pré-fixados; não mede probabilidade.",
+        "Viagem: seis cartas legalmente distintas e decisões de não aceitar trocas; outros arranjos não testados.",
+        "Busca: uma carta Mercado para H3–6; os demais resultados de Busca não foram testados.",
+        "Uma trajetória não valida equilíbrio nem todos os ramos da campanha."
+      ]
+    }
+  },
+  {
+    "heroes": 3,
+    "accept_bia": false,
+    "status": "route_completed",
+    "food": 11,
+    "water": 20,
+    "route": {
+      "heroes": 3,
+      "founders": [
+        "Lia",
+        "Ivo",
+        "Caio"
+      ],
+      "links": [
+        "Parceiro",
+        "Parceiro",
+        "Sozinho"
+      ],
+      "consumers_initial": 5,
+      "capacity": 8,
+      "decision_bia": "deixar no destino",
+      "rescue_intention": null,
+      "searches": [
+        "ZC-SAQ-0005"
+      ],
+      "tactical": [
+        {
+          "destination": "Mercado",
+          "segments": 8,
+          "rounds": 6,
+          "delivered": {
+            "Conserva": 4,
+            "Água": 2,
+            "Medicamento": 1
+          },
+          "health": {
+            "Lia": 2,
+            "Ivo": 3,
+            "Caio": 3
+          },
+          "rescue": [],
+          "travel_cards": [
+            "ZC-VIA-0001",
+            "ZC-VIA-0011"
+          ],
+          "extra_night_travel": null,
+          "night_fatigue_per_hero": 0,
+          "horde_draws": [
+            "Arrastar",
+            "Arrastar",
+            "Aglomerado"
+          ],
+          "peak_enemies": 3,
+          "round_log": [
+            {
+              "destination": "Mercado",
+              "round": 1,
+              "clock": 2,
+              "positions": {
+                "Lia": 3,
+                "Ivo": 9,
+                "Caio": 9
+              },
+              "pa_remaining": {
+                "Lia": 0,
+                "Ivo": 0,
+                "Caio": 0
+              },
+              "health": {
+                "Lia": 3,
+                "Ivo": 3,
+                "Caio": 3
+              },
+              "loads": {
+                "Lia": 1,
+                "Ivo": 1,
+                "Caio": 2
+              },
+              "enemies": [
+                {
+                  "id": 1,
+                  "kind": "Errante",
+                  "z": 16,
+                  "hp": 1
+                },
+                {
+                  "id": 2,
+                  "kind": "Errante",
+                  "z": 16,
+                  "hp": 1
+                }
+              ]
+            },
+            {
+              "destination": "Mercado",
+              "round": 2,
+              "clock": 3,
+              "positions": {
+                "Lia": 7,
+                "Ivo": 13,
+                "Caio": 12
+              },
+              "pa_remaining": {
+                "Lia": 0,
+                "Ivo": 0,
+                "Caio": 0
+              },
+              "health": {
+                "Lia": 3,
+                "Ivo": 3,
+                "Caio": 3
+              },
+              "loads": {
+                "Lia": 4,
+                "Ivo": 1,
+                "Caio": 2
+              },
+              "enemies": [
+                {
+                  "id": 1,
+                  "kind": "Errante",
+                  "z": 12,
+                  "hp": 1
+                },
+                {
+                  "id": 2,
+                  "kind": "Errante",
+                  "z": 12,
+                  "hp": 1
+                },
+                {
+                  "id": 3,
+                  "kind": "Errante",
+                  "z": 16,
+                  "hp": 1
+                }
+              ]
+            },
+            {
+              "destination": "Mercado",
+              "round": 3,
+              "clock": 4,
+              "positions": {
+                "Lia": 12,
+                "Ivo": 15,
+                "Caio": 12
+              },
+              "pa_remaining": {
+                "Lia": 0,
+                "Ivo": 0,
+                "Caio": 3
+              },
+              "health": {
+                "Lia": 2,
+                "Ivo": 3,
+                "Caio": 3
+              },
+              "loads": {
+                "Lia": 4,
+                "Ivo": 3,
+                "Caio": 2
+              },
+              "enemies": [
+                {
+                  "id": 2,
+                  "kind": "Errante",
+                  "z": 12,
+                  "hp": 1
+                },
+                {
+                  "id": 3,
+                  "kind": "Errante",
+                  "z": 12,
+                  "hp": 1
+                }
+              ]
+            },
+            {
+              "destination": "Mercado",
+              "round": 4,
+              "clock": 5,
+              "positions": {
+                "Lia": 7,
+                "Ivo": 7,
+                "Caio": 12
+              },
+              "pa_remaining": {
+                "Lia": 0,
+                "Ivo": 0,
+                "Caio": 2
+              },
+              "health": {
+                "Lia": 2,
+                "Ivo": 3,
+                "Caio": 3
+              },
+              "loads": {
+                "Lia": 4,
+                "Ivo": 4,
+                "Caio": 2
+              },
+              "enemies": [
+                {
+                  "id": 4,
+                  "kind": "Errante",
+                  "z": 16,
+                  "hp": 1
+                }
+              ]
+            },
+            {
+              "destination": "Mercado",
+              "round": 5,
+              "clock": 6,
+              "positions": {
+                "Lia": 1,
+                "Ivo": 1,
+                "Caio": 3
+              },
+              "pa_remaining": {
+                "Lia": 0,
+                "Ivo": 0,
+                "Caio": 0
+              },
+              "health": {
+                "Lia": 2,
+                "Ivo": 3,
+                "Caio": 3
+              },
+              "loads": {
+                "Lia": 4,
+                "Ivo": 4,
+                "Caio": 2
+              },
+              "enemies": [
+                {
+                  "id": 4,
+                  "kind": "Errante",
+                  "z": 12,
+                  "hp": 1
+                }
+              ]
+            },
+            {
+              "destination": "Mercado",
+              "round": 6,
+              "clock": 7,
+              "positions": {
+                "Lia": 1,
+                "Ivo": 1,
+                "Caio": 1
+              },
+              "pa_remaining": {
+                "Lia": 3,
+                "Ivo": 3,
+                "Caio": 1
+              },
+              "health": {
+                "Lia": 2,
+                "Ivo": 3,
+                "Caio": 3
+              },
+              "loads": {
+                "Lia": 4,
+                "Ivo": 4,
+                "Caio": 2
+              },
+              "enemies": [
+                {
+                  "id": 4,
+                  "kind": "Errante",
+                  "z": 8,
+                  "hp": 1
+                },
+                {
+                  "id": 5,
+                  "kind": "Errante",
+                  "z": 16,
+                  "hp": 1
+                },
+                {
+                  "id": 6,
+                  "kind": "Errante",
+                  "z": 16,
+                  "hp": 1
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "destination": "Oficina",
+          "segments": 8,
+          "rounds": 6,
+          "delivered": {
+            "Conexões": 1,
+            "Bateria": 1,
+            "Conserva": 2,
+            "Água": 2
+          },
+          "health": {
+            "Lia": 2,
+            "Ivo": 3,
+            "Caio": 3
+          },
+          "rescue": [],
+          "travel_cards": [
+            "ZC-VIA-0008",
+            "ZC-VIA-0012"
+          ],
+          "extra_night_travel": null,
+          "night_fatigue_per_hero": 0,
+          "horde_draws": [
+            "Arrastar",
+            "Arrastar",
+            "Aglomerado",
+            "Arrastar",
+            "Arrastar",
+            "Aglomerado"
+          ],
+          "peak_enemies": 3,
+          "round_log": [
+            {
+              "destination": "Oficina",
+              "round": 1,
+              "clock": 2,
+              "positions": {
+                "Lia": 3,
+                "Ivo": 9,
+                "Caio": 3
+              },
+              "pa_remaining": {
+                "Lia": 1,
+                "Ivo": 0,
+                "Caio": 1
+              },
+              "health": {
+                "Lia": 2,
+                "Ivo": 3,
+                "Caio": 3
+              },
+              "loads": {
+                "Lia": 1,
+                "Ivo": 1,
+                "Caio": 1
+              },
+              "enemies": [
+                {
+                  "id": 7,
+                  "kind": "Errante",
+                  "z": 12,
+                  "hp": 1
+                },
+                {
+                  "id": 8,
+                  "kind": "Errante",
+                  "z": 12,
+                  "hp": 1
+                }
+              ]
+            },
+            {
+              "destination": "Oficina",
+              "round": 2,
+              "clock": 3,
+              "positions": {
+                "Lia": 7,
+                "Ivo": 13,
+                "Caio": 7
+              },
+              "pa_remaining": {
+                "Lia": 0,
+                "Ivo": 0,
+                "Caio": 2
+              },
+              "health": {
+                "Lia": 2,
+                "Ivo": 3,
+                "Caio": 3
+              },
+              "loads": {
+                "Lia": 1,
+                "Ivo": 1,
+                "Caio": 1
+              },
+              "enemies": [
+                {
+                  "id": 7,
+                  "kind": "Errante",
+                  "z": 8,
+                  "hp": 1
+                },
+                {
+                  "id": 8,
+                  "kind": "Errante",
+                  "z": 8,
+                  "hp": 1
+                },
+                {
+                  "id": 9,
+                  "kind": "Errante",
+                  "z": 16,
+                  "hp": 1
+                }
+              ]
+            },
+            {
+              "destination": "Oficina",
+              "round": 3,
+              "clock": 4,
+              "positions": {
+                "Lia": 8,
+                "Ivo": 15,
+                "Caio": 8
+              },
+              "pa_remaining": {
+                "Lia": 0,
+                "Ivo": 0,
+                "Caio": 1
+              },
+              "health": {
+                "Lia": 2,
+                "Ivo": 3,
+                "Caio": 3
+              },
+              "loads": {
+                "Lia": 1,
+                "Ivo": 3,
+                "Caio": 1
+              },
+              "enemies": [
+                {
+                  "id": 9,
+                  "kind": "Errante",
+                  "z": 15,
+                  "hp": 1
+                }
+              ]
+            },
+            {
+              "destination": "Oficina",
+              "round": 4,
+              "clock": 5,
+              "positions": {
+                "Lia": 7,
+                "Ivo": 7,
+                "Caio": 8
+              },
+              "pa_remaining": {
+                "Lia": 0,
+                "Ivo": 0,
+                "Caio": 3
+              },
+              "health": {
+                "Lia": 2,
+                "Ivo": 3,
+                "Caio": 3
+              },
+              "loads": {
+                "Lia": 3,
+                "Ivo": 3,
+                "Caio": 1
+              },
+              "enemies": [
+                {
+                  "id": 10,
+                  "kind": "Errante",
+                  "z": 16,
+                  "hp": 1
+                }
+              ]
+            },
+            {
+              "destination": "Oficina",
+              "round": 5,
+              "clock": 6,
+              "positions": {
+                "Lia": 2,
+                "Ivo": 2,
+                "Caio": 2
+              },
+              "pa_remaining": {
+                "Lia": 0,
+                "Ivo": 0,
+                "Caio": 0
+              },
+              "health": {
+                "Lia": 2,
+                "Ivo": 3,
+                "Caio": 3
+              },
+              "loads": {
+                "Lia": 4,
+                "Ivo": 4,
+                "Caio": 1
+              },
+              "enemies": [
+                {
+                  "id": 10,
+                  "kind": "Errante",
+                  "z": 12,
+                  "hp": 1
+                }
+              ]
+            },
+            {
+              "destination": "Oficina",
+              "round": 6,
+              "clock": 7,
+              "positions": {
+                "Lia": 1,
+                "Ivo": 1,
+                "Caio": 1
+              },
+              "pa_remaining": {
+                "Lia": 2,
+                "Ivo": 2,
+                "Caio": 2
+              },
+              "health": {
+                "Lia": 2,
+                "Ivo": 3,
+                "Caio": 3
+              },
+              "loads": {
+                "Lia": 4,
+                "Ivo": 4,
+                "Caio": 1
+              },
+              "enemies": [
+                {
+                  "id": 10,
+                  "kind": "Errante",
+                  "z": 8,
+                  "hp": 1
+                },
+                {
+                  "id": 11,
+                  "kind": "Errante",
+                  "z": 16,
+                  "hp": 1
+                },
+                {
+                  "id": 12,
+                  "kind": "Errante",
+                  "z": 16,
+                  "hp": 1
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "destination": "Estação",
+          "segments": 9,
+          "rounds": 7,
+          "delivered": {
+            "Bomba": 1,
+            "Membrana": 1,
+            "Água": 2
+          },
+          "health": {
+            "Lia": 2,
+            "Ivo": 3,
+            "Caio": 3
+          },
+          "rescue": [],
+          "travel_cards": [
+            "ZC-VIA-0006",
+            "ZC-VIA-0009"
+          ],
+          "extra_night_travel": "ZC-VIA-0002",
+          "night_fatigue_per_hero": 1,
+          "horde_draws": [
+            "Arrastar",
+            "Arrastar",
+            "Aglomerado",
+            "Arrastar",
+            "Arrastar",
+            "Aglomerado",
+            "Corrida",
+            "Corrida",
+            "Peso morto"
+          ],
+          "peak_enemies": 4,
+          "round_log": [
+            {
+              "destination": "Estação",
+              "round": 1,
+              "clock": 2,
+              "positions": {
+                "Lia": 3,
+                "Ivo": 9,
+                "Caio": 3
+              },
+              "pa_remaining": {
+                "Lia": 0,
+                "Ivo": 0,
+                "Caio": 1
+              },
+              "health": {
+                "Lia": 2,
+                "Ivo": 3,
+                "Caio": 3
+              },
+              "loads": {
+                "Lia": 1,
+                "Ivo": 1,
+                "Caio": 1
+              },
+              "enemies": [
+                {
+                  "id": 13,
+                  "kind": "Errante",
+                  "z": 12,
+                  "hp": 1
+                },
+                {
+                  "id": 14,
+                  "kind": "Bruto",
+                  "z": 14,
+                  "hp": 3
+                },
+                {
+                  "id": 15,
+                  "kind": "Errante",
+                  "z": 12,
+                  "hp": 1
+                }
+              ]
+            },
+            {
+              "destination": "Estação",
+              "round": 2,
+              "clock": 3,
+              "positions": {
+                "Lia": 7,
+                "Ivo": 15,
+                "Caio": 7
+              },
+              "pa_remaining": {
+                "Lia": 0,
+                "Ivo": 0,
+                "Caio": 0
+              },
+              "health": {
+                "Lia": 2,
+                "Ivo": 3,
+                "Caio": 3
+              },
+              "loads": {
+                "Lia": 3,
+                "Ivo": 1,
+                "Caio": 1
+              },
+              "enemies": [
+                {
+                  "id": 13,
+                  "kind": "Errante",
+                  "z": 8,
+                  "hp": 1
+                },
+                {
+                  "id": 14,
+                  "kind": "Bruto",
+                  "z": 15,
+                  "hp": 3
+                },
+                {
+                  "id": 15,
+                  "kind": "Errante",
+                  "z": 8,
+                  "hp": 1
+                },
+                {
+                  "id": 16,
+                  "kind": "Corredor",
+                  "z": 16,
+                  "hp": 1
+                }
+              ]
+            },
+            {
+              "destination": "Estação",
+              "round": 3,
+              "clock": 4,
+              "positions": {
+                "Lia": 14,
+                "Ivo": 15,
+                "Caio": 8
+              },
+              "pa_remaining": {
+                "Lia": 0,
+                "Ivo": 0,
+                "Caio": 0
+              },
+              "health": {
+                "Lia": 2,
+                "Ivo": 3,
+                "Caio": 3
+              },
+              "loads": {
+                "Lia": 3,
+                "Ivo": 1,
+                "Caio": 1
+              },
+              "enemies": [
+                {
+                  "id": 16,
+                  "kind": "Corredor",
+                  "z": 15,
+                  "hp": 1
+                }
+              ]
+            },
+            {
+              "destination": "Estação",
+              "round": 4,
+              "clock": 5,
+              "positions": {
+                "Lia": 11,
+                "Ivo": 14,
+                "Caio": 3
+              },
+              "pa_remaining": {
+                "Lia": 1,
+                "Ivo": 0,
+                "Caio": 1
+              },
+              "health": {
+                "Lia": 2,
+                "Ivo": 3,
+                "Caio": 3
+              },
+              "loads": {
+                "Lia": 3,
+                "Ivo": 2,
+                "Caio": 1
+              },
+              "enemies": [
+                {
+                  "id": 17,
+                  "kind": "Corredor",
+                  "z": 16,
+                  "hp": 1
+                }
+              ]
+            },
+            {
+              "destination": "Estação",
+              "round": 5,
+              "clock": 6,
+              "positions": {
+                "Lia": 2,
+                "Ivo": 11,
+                "Caio": 1
+              },
+              "pa_remaining": {
+                "Lia": 0,
+                "Ivo": 0,
+                "Caio": 1
+              },
+              "health": {
+                "Lia": 2,
+                "Ivo": 3,
+                "Caio": 3
+              },
+              "loads": {
+                "Lia": 3,
+                "Ivo": 4,
+                "Caio": 1
+              },
+              "enemies": [
+                {
+                  "id": 17,
+                  "kind": "Corredor",
+                  "z": 11,
+                  "hp": 1
+                }
+              ]
+            },
+            {
+              "destination": "Estação",
+              "round": 6,
+              "clock": 7,
+              "positions": {
+                "Lia": 1,
+                "Ivo": 7,
+                "Caio": 1
+              },
+              "pa_remaining": {
+                "Lia": 2,
+                "Ivo": 1,
+                "Caio": 3
+              },
+              "health": {
+                "Lia": 2,
+                "Ivo": 3,
+                "Caio": 3
+              },
+              "loads": {
+                "Lia": 3,
+                "Ivo": 4,
+                "Caio": 1
+              },
+              "enemies": [
+                {
+                  "id": 18,
+                  "kind": "Bruto",
+                  "z": 16,
+                  "hp": 3
+                }
+              ]
+            },
+            {
+              "destination": "Estação",
+              "round": 7,
+              "clock": 8,
+              "positions": {
+                "Lia": 1,
+                "Ivo": 1,
+                "Caio": 1
+              },
+              "pa_remaining": {
+                "Lia": 3,
+                "Ivo": 0,
+                "Caio": 3
+              },
+              "health": {
+                "Lia": 2,
+                "Ivo": 3,
+                "Caio": 3
+              },
+              "loads": {
+                "Lia": 3,
+                "Ivo": 4,
+                "Caio": 1
+              },
+              "enemies": [
+                {
+                  "id": 18,
+                  "kind": "Bruto",
+                  "z": 12,
+                  "hp": 3
+                }
+              ]
+            }
+          ]
+        }
+      ],
+      "days": [
+        {
+          "day": 1,
+          "destination": "Mercado",
+          "people": 5,
+          "dogs": 0,
+          "food": 23,
+          "water": 15,
+          "materials": 3,
+          "medicine": 3,
+          "ammo": 2,
+          "bia_intention": "fora",
+          "expedition_night_fatigue": 0,
+          "fatigue_removed_next_dawn": 0,
+          "pressure": 0,
+          "filter_work": 0,
+          "filter_active": false,
+          "siege": null,
+          "health": 5,
+          "morale": 5
+        },
+        {
+          "day": 2,
+          "destination": "Oficina",
+          "people": 5,
+          "dogs": 0,
+          "food": 26,
+          "water": 18,
+          "materials": 3,
+          "medicine": 3,
+          "ammo": 2,
+          "bia_intention": "fora",
+          "expedition_night_fatigue": 0,
+          "fatigue_removed_next_dawn": 0,
+          "pressure": 1,
+          "filter_work": 0,
+          "filter_active": false,
+          "siege": null,
+          "health": 5,
+          "morale": 5
+        },
+        {
+          "day": 3,
+          "destination": "Estação",
+          "people": 5,
+          "dogs": 0,
+          "food": 21,
+          "water": 20,
+          "materials": 3,
+          "medicine": 3,
+          "ammo": 1,
+          "bia_intention": "fora",
+          "expedition_night_fatigue": 1,
+          "fatigue_removed_next_dawn": 0,
+          "pressure": 1,
+          "filter_work": 0,
+          "filter_active": false,
+          "siege": {
+            "kind": "missão",
+            "force": 4,
+            "defense": 4,
+            "dice": [
+              4,
+              2
+            ],
+            "bullets": 1
+          },
+          "health": 5,
+          "morale": 5
+        },
+        {
+          "day": 4,
+          "destination": null,
+          "people": 5,
+          "dogs": 0,
+          "food": 16,
+          "water": 15,
+          "materials": 0,
+          "medicine": 3,
+          "ammo": 1,
+          "bia_intention": "fora",
+          "expedition_night_fatigue": 0,
+          "fatigue_removed_next_dawn": 1,
+          "pressure": 2,
+          "filter_work": 2,
+          "filter_active": false,
+          "siege": null,
+          "health": 5,
+          "morale": 5
+        },
+        {
+          "day": 5,
+          "destination": null,
+          "people": 5,
+          "dogs": 0,
+          "food": 11,
+          "water": 20,
+          "materials": 0,
+          "medicine": 3,
+          "ammo": 1,
+          "bia_intention": "fora",
+          "expedition_night_fatigue": 0,
+          "fatigue_removed_next_dawn": 0,
+          "pressure": 1,
+          "filter_work": 4,
+          "filter_active": true,
+          "siege": {
+            "kind": "pressão ZC-CER-0001",
+            "force": 4,
+            "defense": 4,
+            "dice": [
+              4,
+              4,
+              2
+            ],
+            "bullets": 0
+          },
+          "health": 5,
+          "morale": 5
+        }
+      ],
+      "result": "vitória nesta trajetória fixa",
+      "hero_xp": {
+        "Lia": 6,
+        "Ivo": 6,
+        "Caio": 6
+      },
+      "progression_choices": {
+        "Lia": {
+          "3": "Curativo: socorro remove +1 ferimento, 1/dia.",
+          "6": "Preparação: +1 capacidade permanente."
+        },
+        "Ivo": {
+          "3": "Postura: ignore 1 dano, 1/expedição.",
+          "6": "Preparação: +1 capacidade permanente."
+        },
+        "Caio": {
+          "3": "Atalho: +1 Agilidade na primeira fuga/visita.",
+          "6": "Preparação: +1 capacidade permanente."
+        }
+      },
+      "final_wounds": {
+        "Lia": 1,
+        "Ivo": 0,
+        "Caio": 0
+      },
+      "limitations": [
+        "Rolagens de combate 3 e cerco favorável pré-fixados; não mede probabilidade.",
+        "Viagem: seis cartas legalmente distintas e decisões de não aceitar trocas; outros arranjos não testados.",
+        "Busca: uma carta Mercado para H3–6; os demais resultados de Busca não foram testados.",
+        "Uma trajetória não valida equilíbrio nem todos os ramos da campanha."
+      ]
+    }
+  },
+  {
+    "heroes": 4,
+    "accept_bia": false,
+    "status": "route_completed",
+    "food": 11,
+    "water": 20,
+    "route": {
+      "heroes": 4,
+      "founders": [
+        "Lia",
+        "Ivo",
+        "Caio",
+        "Mara"
+      ],
+      "links": [
+        "Parceiro",
+        "Sozinho",
+        "Sozinho",
+        "Sozinho"
+      ],
+      "consumers_initial": 5,
+      "capacity": 8,
+      "decision_bia": "deixar no destino",
+      "rescue_intention": null,
+      "searches": [
+        "ZC-SAQ-0005"
+      ],
+      "tactical": [
+        {
+          "destination": "Mercado",
+          "segments": 8,
+          "rounds": 6,
+          "delivered": {
+            "Conserva": 4,
+            "Água": 2,
+            "Medicamento": 1
+          },
+          "health": {
+            "Lia": 2,
+            "Ivo": 3,
+            "Caio": 3
+          },
+          "rescue": [],
+          "travel_cards": [
+            "ZC-VIA-0001",
+            "ZC-VIA-0011"
+          ],
+          "extra_night_travel": null,
+          "night_fatigue_per_hero": 0,
+          "horde_draws": [
+            "Arrastar",
+            "Arrastar",
+            "Aglomerado"
+          ],
+          "peak_enemies": 3,
+          "round_log": [
+            {
+              "destination": "Mercado",
+              "round": 1,
+              "clock": 2,
+              "positions": {
+                "Lia": 3,
+                "Ivo": 9,
+                "Caio": 9
+              },
+              "pa_remaining": {
+                "Lia": 0,
+                "Ivo": 0,
+                "Caio": 0
+              },
+              "health": {
+                "Lia": 3,
+                "Ivo": 3,
+                "Caio": 3
+              },
+              "loads": {
+                "Lia": 1,
+                "Ivo": 1,
+                "Caio": 2
+              },
+              "enemies": [
+                {
+                  "id": 1,
+                  "kind": "Errante",
+                  "z": 16,
+                  "hp": 1
+                },
+                {
+                  "id": 2,
+                  "kind": "Errante",
+                  "z": 16,
+                  "hp": 1
+                }
+              ]
+            },
+            {
+              "destination": "Mercado",
+              "round": 2,
+              "clock": 3,
+              "positions": {
+                "Lia": 7,
+                "Ivo": 13,
+                "Caio": 12
+              },
+              "pa_remaining": {
+                "Lia": 0,
+                "Ivo": 0,
+                "Caio": 0
+              },
+              "health": {
+                "Lia": 3,
+                "Ivo": 3,
+                "Caio": 3
+              },
+              "loads": {
+                "Lia": 4,
+                "Ivo": 1,
+                "Caio": 2
+              },
+              "enemies": [
+                {
+                  "id": 1,
+                  "kind": "Errante",
+                  "z": 12,
+                  "hp": 1
+                },
+                {
+                  "id": 2,
+                  "kind": "Errante",
+                  "z": 12,
+                  "hp": 1
+                },
+                {
+                  "id": 3,
+                  "kind": "Errante",
+                  "z": 16,
+                  "hp": 1
+                }
+              ]
+            },
+            {
+              "destination": "Mercado",
+              "round": 3,
+              "clock": 4,
+              "positions": {
+                "Lia": 12,
+                "Ivo": 15,
+                "Caio": 12
+              },
+              "pa_remaining": {
+                "Lia": 0,
+                "Ivo": 0,
+                "Caio": 3
+              },
+              "health": {
+                "Lia": 2,
+                "Ivo": 3,
+                "Caio": 3
+              },
+              "loads": {
+                "Lia": 4,
+                "Ivo": 3,
+                "Caio": 2
+              },
+              "enemies": [
+                {
+                  "id": 2,
+                  "kind": "Errante",
+                  "z": 12,
+                  "hp": 1
+                },
+                {
+                  "id": 3,
+                  "kind": "Errante",
+                  "z": 12,
+                  "hp": 1
+                }
+              ]
+            },
+            {
+              "destination": "Mercado",
+              "round": 4,
+              "clock": 5,
+              "positions": {
+                "Lia": 7,
+                "Ivo": 7,
+                "Caio": 12
+              },
+              "pa_remaining": {
+                "Lia": 0,
+                "Ivo": 0,
+                "Caio": 2
+              },
+              "health": {
+                "Lia": 2,
+                "Ivo": 3,
+                "Caio": 3
+              },
+              "loads": {
+                "Lia": 4,
+                "Ivo": 4,
+                "Caio": 2
+              },
+              "enemies": [
+                {
+                  "id": 4,
+                  "kind": "Errante",
+                  "z": 16,
+                  "hp": 1
+                }
+              ]
+            },
+            {
+              "destination": "Mercado",
+              "round": 5,
+              "clock": 6,
+              "positions": {
+                "Lia": 1,
+                "Ivo": 1,
+                "Caio": 3
+              },
+              "pa_remaining": {
+                "Lia": 0,
+                "Ivo": 0,
+                "Caio": 0
+              },
+              "health": {
+                "Lia": 2,
+                "Ivo": 3,
+                "Caio": 3
+              },
+              "loads": {
+                "Lia": 4,
+                "Ivo": 4,
+                "Caio": 2
+              },
+              "enemies": [
+                {
+                  "id": 4,
+                  "kind": "Errante",
+                  "z": 12,
+                  "hp": 1
+                }
+              ]
+            },
+            {
+              "destination": "Mercado",
+              "round": 6,
+              "clock": 7,
+              "positions": {
+                "Lia": 1,
+                "Ivo": 1,
+                "Caio": 1
+              },
+              "pa_remaining": {
+                "Lia": 3,
+                "Ivo": 3,
+                "Caio": 1
+              },
+              "health": {
+                "Lia": 2,
+                "Ivo": 3,
+                "Caio": 3
+              },
+              "loads": {
+                "Lia": 4,
+                "Ivo": 4,
+                "Caio": 2
+              },
+              "enemies": [
+                {
+                  "id": 4,
+                  "kind": "Errante",
+                  "z": 8,
+                  "hp": 1
+                },
+                {
+                  "id": 5,
+                  "kind": "Errante",
+                  "z": 16,
+                  "hp": 1
+                },
+                {
+                  "id": 6,
+                  "kind": "Errante",
+                  "z": 16,
+                  "hp": 1
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "destination": "Oficina",
+          "segments": 8,
+          "rounds": 6,
+          "delivered": {
+            "Conexões": 1,
+            "Bateria": 1,
+            "Conserva": 2,
+            "Água": 2
+          },
+          "health": {
+            "Lia": 2,
+            "Ivo": 3,
+            "Caio": 3
+          },
+          "rescue": [],
+          "travel_cards": [
+            "ZC-VIA-0008",
+            "ZC-VIA-0012"
+          ],
+          "extra_night_travel": null,
+          "night_fatigue_per_hero": 0,
+          "horde_draws": [
+            "Arrastar",
+            "Arrastar",
+            "Aglomerado",
+            "Arrastar",
+            "Arrastar",
+            "Aglomerado"
+          ],
+          "peak_enemies": 3,
+          "round_log": [
+            {
+              "destination": "Oficina",
+              "round": 1,
+              "clock": 2,
+              "positions": {
+                "Lia": 3,
+                "Ivo": 9,
+                "Caio": 3
+              },
+              "pa_remaining": {
+                "Lia": 1,
+                "Ivo": 0,
+                "Caio": 1
+              },
+              "health": {
+                "Lia": 2,
+                "Ivo": 3,
+                "Caio": 3
+              },
+              "loads": {
+                "Lia": 1,
+                "Ivo": 1,
+                "Caio": 1
+              },
+              "enemies": [
+                {
+                  "id": 7,
+                  "kind": "Errante",
+                  "z": 12,
+                  "hp": 1
+                },
+                {
+                  "id": 8,
+                  "kind": "Errante",
+                  "z": 12,
+                  "hp": 1
+                }
+              ]
+            },
+            {
+              "destination": "Oficina",
+              "round": 2,
+              "clock": 3,
+              "positions": {
+                "Lia": 7,
+                "Ivo": 13,
+                "Caio": 7
+              },
+              "pa_remaining": {
+                "Lia": 0,
+                "Ivo": 0,
+                "Caio": 2
+              },
+              "health": {
+                "Lia": 2,
+                "Ivo": 3,
+                "Caio": 3
+              },
+              "loads": {
+                "Lia": 1,
+                "Ivo": 1,
+                "Caio": 1
+              },
+              "enemies": [
+                {
+                  "id": 7,
+                  "kind": "Errante",
+                  "z": 8,
+                  "hp": 1
+                },
+                {
+                  "id": 8,
+                  "kind": "Errante",
+                  "z": 8,
+                  "hp": 1
+                },
+                {
+                  "id": 9,
+                  "kind": "Errante",
+                  "z": 16,
+                  "hp": 1
+                }
+              ]
+            },
+            {
+              "destination": "Oficina",
+              "round": 3,
+              "clock": 4,
+              "positions": {
+                "Lia": 8,
+                "Ivo": 15,
+                "Caio": 8
+              },
+              "pa_remaining": {
+                "Lia": 0,
+                "Ivo": 0,
+                "Caio": 1
+              },
+              "health": {
+                "Lia": 2,
+                "Ivo": 3,
+                "Caio": 3
+              },
+              "loads": {
+                "Lia": 1,
+                "Ivo": 3,
+                "Caio": 1
+              },
+              "enemies": [
+                {
+                  "id": 9,
+                  "kind": "Errante",
+                  "z": 15,
+                  "hp": 1
+                }
+              ]
+            },
+            {
+              "destination": "Oficina",
+              "round": 4,
+              "clock": 5,
+              "positions": {
+                "Lia": 7,
+                "Ivo": 7,
+                "Caio": 8
+              },
+              "pa_remaining": {
+                "Lia": 0,
+                "Ivo": 0,
+                "Caio": 3
+              },
+              "health": {
+                "Lia": 2,
+                "Ivo": 3,
+                "Caio": 3
+              },
+              "loads": {
+                "Lia": 3,
+                "Ivo": 3,
+                "Caio": 1
+              },
+              "enemies": [
+                {
+                  "id": 10,
+                  "kind": "Errante",
+                  "z": 16,
+                  "hp": 1
+                }
+              ]
+            },
+            {
+              "destination": "Oficina",
+              "round": 5,
+              "clock": 6,
+              "positions": {
+                "Lia": 2,
+                "Ivo": 2,
+                "Caio": 2
+              },
+              "pa_remaining": {
+                "Lia": 0,
+                "Ivo": 0,
+                "Caio": 0
+              },
+              "health": {
+                "Lia": 2,
+                "Ivo": 3,
+                "Caio": 3
+              },
+              "loads": {
+                "Lia": 4,
+                "Ivo": 4,
+                "Caio": 1
+              },
+              "enemies": [
+                {
+                  "id": 10,
+                  "kind": "Errante",
+                  "z": 12,
+                  "hp": 1
+                }
+              ]
+            },
+            {
+              "destination": "Oficina",
+              "round": 6,
+              "clock": 7,
+              "positions": {
+                "Lia": 1,
+                "Ivo": 1,
+                "Caio": 1
+              },
+              "pa_remaining": {
+                "Lia": 2,
+                "Ivo": 2,
+                "Caio": 2
+              },
+              "health": {
+                "Lia": 2,
+                "Ivo": 3,
+                "Caio": 3
+              },
+              "loads": {
+                "Lia": 4,
+                "Ivo": 4,
+                "Caio": 1
+              },
+              "enemies": [
+                {
+                  "id": 10,
+                  "kind": "Errante",
+                  "z": 8,
+                  "hp": 1
+                },
+                {
+                  "id": 11,
+                  "kind": "Errante",
+                  "z": 16,
+                  "hp": 1
+                },
+                {
+                  "id": 12,
+                  "kind": "Errante",
+                  "z": 16,
+                  "hp": 1
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "destination": "Estação",
+          "segments": 9,
+          "rounds": 7,
+          "delivered": {
+            "Bomba": 1,
+            "Membrana": 1,
+            "Água": 2
+          },
+          "health": {
+            "Lia": 2,
+            "Ivo": 3,
+            "Caio": 3
+          },
+          "rescue": [],
+          "travel_cards": [
+            "ZC-VIA-0006",
+            "ZC-VIA-0009"
+          ],
+          "extra_night_travel": "ZC-VIA-0002",
+          "night_fatigue_per_hero": 1,
+          "horde_draws": [
+            "Arrastar",
+            "Arrastar",
+            "Aglomerado",
+            "Arrastar",
+            "Arrastar",
+            "Aglomerado",
+            "Corrida",
+            "Corrida",
+            "Peso morto"
+          ],
+          "peak_enemies": 4,
+          "round_log": [
+            {
+              "destination": "Estação",
+              "round": 1,
+              "clock": 2,
+              "positions": {
+                "Lia": 3,
+                "Ivo": 9,
+                "Caio": 3
+              },
+              "pa_remaining": {
+                "Lia": 0,
+                "Ivo": 0,
+                "Caio": 1
+              },
+              "health": {
+                "Lia": 2,
+                "Ivo": 3,
+                "Caio": 3
+              },
+              "loads": {
+                "Lia": 1,
+                "Ivo": 1,
+                "Caio": 1
+              },
+              "enemies": [
+                {
+                  "id": 13,
+                  "kind": "Errante",
+                  "z": 12,
+                  "hp": 1
+                },
+                {
+                  "id": 14,
+                  "kind": "Bruto",
+                  "z": 14,
+                  "hp": 3
+                },
+                {
+                  "id": 15,
+                  "kind": "Errante",
+                  "z": 12,
+                  "hp": 1
+                }
+              ]
+            },
+            {
+              "destination": "Estação",
+              "round": 2,
+              "clock": 3,
+              "positions": {
+                "Lia": 7,
+                "Ivo": 15,
+                "Caio": 7
+              },
+              "pa_remaining": {
+                "Lia": 0,
+                "Ivo": 0,
+                "Caio": 0
+              },
+              "health": {
+                "Lia": 2,
+                "Ivo": 3,
+                "Caio": 3
+              },
+              "loads": {
+                "Lia": 3,
+                "Ivo": 1,
+                "Caio": 1
+              },
+              "enemies": [
+                {
+                  "id": 13,
+                  "kind": "Errante",
+                  "z": 8,
+                  "hp": 1
+                },
+                {
+                  "id": 14,
+                  "kind": "Bruto",
+                  "z": 15,
+                  "hp": 3
+                },
+                {
+                  "id": 15,
+                  "kind": "Errante",
+                  "z": 8,
+                  "hp": 1
+                },
+                {
+                  "id": 16,
+                  "kind": "Corredor",
+                  "z": 16,
+                  "hp": 1
+                }
+              ]
+            },
+            {
+              "destination": "Estação",
+              "round": 3,
+              "clock": 4,
+              "positions": {
+                "Lia": 14,
+                "Ivo": 15,
+                "Caio": 8
+              },
+              "pa_remaining": {
+                "Lia": 0,
+                "Ivo": 0,
+                "Caio": 0
+              },
+              "health": {
+                "Lia": 2,
+                "Ivo": 3,
+                "Caio": 3
+              },
+              "loads": {
+                "Lia": 3,
+                "Ivo": 1,
+                "Caio": 1
+              },
+              "enemies": [
+                {
+                  "id": 16,
+                  "kind": "Corredor",
+                  "z": 15,
+                  "hp": 1
+                }
+              ]
+            },
+            {
+              "destination": "Estação",
+              "round": 4,
+              "clock": 5,
+              "positions": {
+                "Lia": 11,
+                "Ivo": 14,
+                "Caio": 3
+              },
+              "pa_remaining": {
+                "Lia": 1,
+                "Ivo": 0,
+                "Caio": 1
+              },
+              "health": {
+                "Lia": 2,
+                "Ivo": 3,
+                "Caio": 3
+              },
+              "loads": {
+                "Lia": 3,
+                "Ivo": 2,
+                "Caio": 1
+              },
+              "enemies": [
+                {
+                  "id": 17,
+                  "kind": "Corredor",
+                  "z": 16,
+                  "hp": 1
+                }
+              ]
+            },
+            {
+              "destination": "Estação",
+              "round": 5,
+              "clock": 6,
+              "positions": {
+                "Lia": 2,
+                "Ivo": 11,
+                "Caio": 1
+              },
+              "pa_remaining": {
+                "Lia": 0,
+                "Ivo": 0,
+                "Caio": 1
+              },
+              "health": {
+                "Lia": 2,
+                "Ivo": 3,
+                "Caio": 3
+              },
+              "loads": {
+                "Lia": 3,
+                "Ivo": 4,
+                "Caio": 1
+              },
+              "enemies": [
+                {
+                  "id": 17,
+                  "kind": "Corredor",
+                  "z": 11,
+                  "hp": 1
+                }
+              ]
+            },
+            {
+              "destination": "Estação",
+              "round": 6,
+              "clock": 7,
+              "positions": {
+                "Lia": 1,
+                "Ivo": 7,
+                "Caio": 1
+              },
+              "pa_remaining": {
+                "Lia": 2,
+                "Ivo": 1,
+                "Caio": 3
+              },
+              "health": {
+                "Lia": 2,
+                "Ivo": 3,
+                "Caio": 3
+              },
+              "loads": {
+                "Lia": 3,
+                "Ivo": 4,
+                "Caio": 1
+              },
+              "enemies": [
+                {
+                  "id": 18,
+                  "kind": "Bruto",
+                  "z": 16,
+                  "hp": 3
+                }
+              ]
+            },
+            {
+              "destination": "Estação",
+              "round": 7,
+              "clock": 8,
+              "positions": {
+                "Lia": 1,
+                "Ivo": 1,
+                "Caio": 1
+              },
+              "pa_remaining": {
+                "Lia": 3,
+                "Ivo": 0,
+                "Caio": 3
+              },
+              "health": {
+                "Lia": 2,
+                "Ivo": 3,
+                "Caio": 3
+              },
+              "loads": {
+                "Lia": 3,
+                "Ivo": 4,
+                "Caio": 1
+              },
+              "enemies": [
+                {
+                  "id": 18,
+                  "kind": "Bruto",
+                  "z": 12,
+                  "hp": 3
+                }
+              ]
+            }
+          ]
+        }
+      ],
+      "days": [
+        {
+          "day": 1,
+          "destination": "Mercado",
+          "people": 5,
+          "dogs": 0,
+          "food": 23,
+          "water": 15,
+          "materials": 3,
+          "medicine": 3,
+          "ammo": 2,
+          "bia_intention": "fora",
+          "expedition_night_fatigue": 0,
+          "fatigue_removed_next_dawn": 0,
+          "pressure": 0,
+          "filter_work": 0,
+          "filter_active": false,
+          "siege": null,
+          "health": 5,
+          "morale": 5
+        },
+        {
+          "day": 2,
+          "destination": "Oficina",
+          "people": 5,
+          "dogs": 0,
+          "food": 26,
+          "water": 18,
+          "materials": 3,
+          "medicine": 3,
+          "ammo": 2,
+          "bia_intention": "fora",
+          "expedition_night_fatigue": 0,
+          "fatigue_removed_next_dawn": 0,
+          "pressure": 1,
+          "filter_work": 0,
+          "filter_active": false,
+          "siege": null,
+          "health": 5,
+          "morale": 5
+        },
+        {
+          "day": 3,
+          "destination": "Estação",
+          "people": 5,
+          "dogs": 0,
+          "food": 21,
+          "water": 20,
+          "materials": 3,
+          "medicine": 3,
+          "ammo": 1,
+          "bia_intention": "fora",
+          "expedition_night_fatigue": 1,
+          "fatigue_removed_next_dawn": 0,
+          "pressure": 1,
+          "filter_work": 0,
+          "filter_active": false,
+          "siege": {
+            "kind": "missão",
+            "force": 4,
+            "defense": 4,
+            "dice": [
+              4,
+              2
+            ],
+            "bullets": 1
+          },
+          "health": 5,
+          "morale": 5
+        },
+        {
+          "day": 4,
+          "destination": null,
+          "people": 5,
+          "dogs": 0,
+          "food": 16,
+          "water": 15,
+          "materials": 0,
+          "medicine": 3,
+          "ammo": 1,
+          "bia_intention": "fora",
+          "expedition_night_fatigue": 0,
+          "fatigue_removed_next_dawn": 1,
+          "pressure": 2,
+          "filter_work": 2,
+          "filter_active": false,
+          "siege": null,
+          "health": 5,
+          "morale": 5
+        },
+        {
+          "day": 5,
+          "destination": null,
+          "people": 5,
+          "dogs": 0,
+          "food": 11,
+          "water": 20,
+          "materials": 0,
+          "medicine": 3,
+          "ammo": 1,
+          "bia_intention": "fora",
+          "expedition_night_fatigue": 0,
+          "fatigue_removed_next_dawn": 0,
+          "pressure": 1,
+          "filter_work": 4,
+          "filter_active": true,
+          "siege": {
+            "kind": "pressão ZC-CER-0001",
+            "force": 4,
+            "defense": 4,
+            "dice": [
+              4,
+              4,
+              2
+            ],
+            "bullets": 0
+          },
+          "health": 5,
+          "morale": 5
+        }
+      ],
+      "result": "vitória nesta trajetória fixa",
+      "hero_xp": {
+        "Lia": 6,
+        "Ivo": 6,
+        "Caio": 6
+      },
+      "progression_choices": {
+        "Lia": {
+          "3": "Curativo: socorro remove +1 ferimento, 1/dia.",
+          "6": "Preparação: +1 capacidade permanente."
+        },
+        "Ivo": {
+          "3": "Postura: ignore 1 dano, 1/expedição.",
+          "6": "Preparação: +1 capacidade permanente."
+        },
+        "Caio": {
+          "3": "Atalho: +1 Agilidade na primeira fuga/visita.",
+          "6": "Preparação: +1 capacidade permanente."
+        }
+      },
+      "final_wounds": {
+        "Lia": 1,
+        "Ivo": 0,
+        "Caio": 0
+      },
+      "limitations": [
+        "Rolagens de combate 3 e cerco favorável pré-fixados; não mede probabilidade.",
+        "Viagem: seis cartas legalmente distintas e decisões de não aceitar trocas; outros arranjos não testados.",
+        "Busca: uma carta Mercado para H3–6; os demais resultados de Busca não foram testados.",
+        "Uma trajetória não valida equilíbrio nem todos os ramos da campanha."
+      ]
+    }
+  },
+  {
+    "heroes": 5,
+    "accept_bia": false,
+    "status": "route_completed",
+    "food": 6,
+    "water": 17,
+    "route": {
+      "heroes": 5,
+      "founders": [
+        "Lia",
+        "Ivo",
+        "Caio",
+        "Mara",
+        "Nara"
+      ],
+      "links": [
+        "Sozinho",
+        "Sozinho",
+        "Sozinho",
+        "Sozinho",
+        "Parceiro"
+      ],
+      "consumers_initial": 6,
+      "capacity": 10,
+      "decision_bia": "deixar no destino",
+      "rescue_intention": null,
+      "searches": [
+        "ZC-SAQ-0005"
+      ],
+      "tactical": [
+        {
+          "destination": "Mercado",
+          "segments": 8,
+          "rounds": 6,
+          "delivered": {
+            "Conserva": 4,
+            "Água": 2,
+            "Medicamento": 1
+          },
+          "health": {
+            "Lia": 2,
+            "Ivo": 3,
+            "Caio": 3
+          },
+          "rescue": [],
+          "travel_cards": [
+            "ZC-VIA-0001",
+            "ZC-VIA-0011"
+          ],
+          "extra_night_travel": null,
+          "night_fatigue_per_hero": 0,
+          "horde_draws": [
+            "Arrastar",
+            "Arrastar",
+            "Aglomerado"
+          ],
+          "peak_enemies": 4,
+          "round_log": [
+            {
+              "destination": "Mercado",
+              "round": 1,
+              "clock": 2,
+              "positions": {
+                "Lia": 3,
+                "Ivo": 9,
+                "Caio": 9
+              },
+              "pa_remaining": {
+                "Lia": 0,
+                "Ivo": 0,
+                "Caio": 0
+              },
+              "health": {
+                "Lia": 3,
+                "Ivo": 3,
+                "Caio": 3
+              },
+              "loads": {
+                "Lia": 1,
+                "Ivo": 1,
+                "Caio": 2
+              },
+              "enemies": [
+                {
+                  "id": 1,
+                  "kind": "Errante",
+                  "z": 16,
+                  "hp": 1
+                },
+                {
+                  "id": 2,
+                  "kind": "Errante",
+                  "z": 16,
+                  "hp": 1
+                },
+                {
+                  "id": 3,
+                  "kind": "Errante",
+                  "z": 16,
+                  "hp": 1
+                }
+              ]
+            },
+            {
+              "destination": "Mercado",
+              "round": 2,
+              "clock": 3,
+              "positions": {
+                "Lia": 7,
+                "Ivo": 13,
+                "Caio": 12
+              },
+              "pa_remaining": {
+                "Lia": 0,
+                "Ivo": 0,
+                "Caio": 0
+              },
+              "health": {
+                "Lia": 3,
+                "Ivo": 3,
+                "Caio": 3
+              },
+              "loads": {
+                "Lia": 4,
+                "Ivo": 1,
+                "Caio": 2
+              },
+              "enemies": [
+                {
+                  "id": 1,
+                  "kind": "Errante",
+                  "z": 12,
+                  "hp": 1
+                },
+                {
+                  "id": 2,
+                  "kind": "Errante",
+                  "z": 12,
+                  "hp": 1
+                },
+                {
+                  "id": 3,
+                  "kind": "Errante",
+                  "z": 12,
+                  "hp": 1
+                },
+                {
+                  "id": 4,
+                  "kind": "Errante",
+                  "z": 16,
+                  "hp": 1
+                }
+              ]
+            },
+            {
+              "destination": "Mercado",
+              "round": 3,
+              "clock": 4,
+              "positions": {
+                "Lia": 12,
+                "Ivo": 15,
+                "Caio": 12
+              },
+              "pa_remaining": {
+                "Lia": 0,
+                "Ivo": 0,
+                "Caio": 2
+              },
+              "health": {
+                "Lia": 2,
+                "Ivo": 3,
+                "Caio": 3
+              },
+              "loads": {
+                "Lia": 4,
+                "Ivo": 3,
+                "Caio": 2
+              },
+              "enemies": [
+                {
+                  "id": 3,
+                  "kind": "Errante",
+                  "z": 12,
+                  "hp": 1
+                },
+                {
+                  "id": 4,
+                  "kind": "Errante",
+                  "z": 12,
+                  "hp": 1
+                }
+              ]
+            },
+            {
+              "destination": "Mercado",
+              "round": 4,
+              "clock": 5,
+              "positions": {
+                "Lia": 7,
+                "Ivo": 7,
+                "Caio": 12
+              },
+              "pa_remaining": {
+                "Lia": 0,
+                "Ivo": 0,
+                "Caio": 2
+              },
+              "health": {
+                "Lia": 2,
+                "Ivo": 3,
+                "Caio": 3
+              },
+              "loads": {
+                "Lia": 4,
+                "Ivo": 4,
+                "Caio": 2
+              },
+              "enemies": [
+                {
+                  "id": 5,
+                  "kind": "Errante",
+                  "z": 16,
+                  "hp": 1
+                }
+              ]
+            },
+            {
+              "destination": "Mercado",
+              "round": 5,
+              "clock": 6,
+              "positions": {
+                "Lia": 1,
+                "Ivo": 1,
+                "Caio": 3
+              },
+              "pa_remaining": {
+                "Lia": 0,
+                "Ivo": 0,
+                "Caio": 0
+              },
+              "health": {
+                "Lia": 2,
+                "Ivo": 3,
+                "Caio": 3
+              },
+              "loads": {
+                "Lia": 4,
+                "Ivo": 4,
+                "Caio": 2
+              },
+              "enemies": [
+                {
+                  "id": 5,
+                  "kind": "Errante",
+                  "z": 12,
+                  "hp": 1
+                }
+              ]
+            },
+            {
+              "destination": "Mercado",
+              "round": 6,
+              "clock": 7,
+              "positions": {
+                "Lia": 1,
+                "Ivo": 1,
+                "Caio": 1
+              },
+              "pa_remaining": {
+                "Lia": 3,
+                "Ivo": 3,
+                "Caio": 1
+              },
+              "health": {
+                "Lia": 2,
+                "Ivo": 3,
+                "Caio": 3
+              },
+              "loads": {
+                "Lia": 4,
+                "Ivo": 4,
+                "Caio": 2
+              },
+              "enemies": [
+                {
+                  "id": 5,
+                  "kind": "Errante",
+                  "z": 8,
+                  "hp": 1
+                },
+                {
+                  "id": 6,
+                  "kind": "Errante",
+                  "z": 16,
+                  "hp": 1
+                },
+                {
+                  "id": 7,
+                  "kind": "Errante",
+                  "z": 16,
+                  "hp": 1
+                },
+                {
+                  "id": 8,
+                  "kind": "Errante",
+                  "z": 16,
+                  "hp": 1
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "destination": "Oficina",
+          "segments": 8,
+          "rounds": 6,
+          "delivered": {
+            "Conexões": 1,
+            "Bateria": 1,
+            "Conserva": 2,
+            "Água": 2
+          },
+          "health": {
+            "Lia": 1,
+            "Ivo": 3,
+            "Caio": 3
+          },
+          "rescue": [],
+          "travel_cards": [
+            "ZC-VIA-0008",
+            "ZC-VIA-0012"
+          ],
+          "extra_night_travel": null,
+          "night_fatigue_per_hero": 0,
+          "horde_draws": [
+            "Arrastar",
+            "Arrastar",
+            "Aglomerado",
+            "Arrastar",
+            "Arrastar",
+            "Aglomerado"
+          ],
+          "peak_enemies": 4,
+          "round_log": [
+            {
+              "destination": "Oficina",
+              "round": 1,
+              "clock": 2,
+              "positions": {
+                "Lia": 3,
+                "Ivo": 9,
+                "Caio": 3
+              },
+              "pa_remaining": {
+                "Lia": 1,
+                "Ivo": 0,
+                "Caio": 1
+              },
+              "health": {
+                "Lia": 2,
+                "Ivo": 3,
+                "Caio": 3
+              },
+              "loads": {
+                "Lia": 1,
+                "Ivo": 1,
+                "Caio": 1
+              },
+              "enemies": [
+                {
+                  "id": 9,
+                  "kind": "Errante",
+                  "z": 12,
+                  "hp": 1
+                },
+                {
+                  "id": 10,
+                  "kind": "Errante",
+                  "z": 12,
+                  "hp": 1
+                },
+                {
+                  "id": 11,
+                  "kind": "Errante",
+                  "z": 12,
+                  "hp": 1
+                }
+              ]
+            },
+            {
+              "destination": "Oficina",
+              "round": 2,
+              "clock": 3,
+              "positions": {
+                "Lia": 7,
+                "Ivo": 13,
+                "Caio": 7
+              },
+              "pa_remaining": {
+                "Lia": 0,
+                "Ivo": 0,
+                "Caio": 2
+              },
+              "health": {
+                "Lia": 2,
+                "Ivo": 3,
+                "Caio": 3
+              },
+              "loads": {
+                "Lia": 1,
+                "Ivo": 1,
+                "Caio": 1
+              },
+              "enemies": [
+                {
+                  "id": 9,
+                  "kind": "Errante",
+                  "z": 8,
+                  "hp": 1
+                },
+                {
+                  "id": 10,
+                  "kind": "Errante",
+                  "z": 8,
+                  "hp": 1
+                },
+                {
+                  "id": 11,
+                  "kind": "Errante",
+                  "z": 8,
+                  "hp": 1
+                },
+                {
+                  "id": 12,
+                  "kind": "Errante",
+                  "z": 16,
+                  "hp": 1
+                }
+              ]
+            },
+            {
+              "destination": "Oficina",
+              "round": 3,
+              "clock": 4,
+              "positions": {
+                "Lia": 8,
+                "Ivo": 15,
+                "Caio": 8
+              },
+              "pa_remaining": {
+                "Lia": 0,
+                "Ivo": 0,
+                "Caio": 1
+              },
+              "health": {
+                "Lia": 1,
+                "Ivo": 3,
+                "Caio": 3
+              },
+              "loads": {
+                "Lia": 1,
+                "Ivo": 3,
+                "Caio": 1
+              },
+              "enemies": [
+                {
+                  "id": 11,
+                  "kind": "Errante",
+                  "z": 8,
+                  "hp": 1
+                },
+                {
+                  "id": 12,
+                  "kind": "Errante",
+                  "z": 15,
+                  "hp": 1
+                }
+              ]
+            },
+            {
+              "destination": "Oficina",
+              "round": 4,
+              "clock": 5,
+              "positions": {
+                "Lia": 7,
+                "Ivo": 7,
+                "Caio": 8
+              },
+              "pa_remaining": {
+                "Lia": 0,
+                "Ivo": 0,
+                "Caio": 2
+              },
+              "health": {
+                "Lia": 1,
+                "Ivo": 3,
+                "Caio": 3
+              },
+              "loads": {
+                "Lia": 3,
+                "Ivo": 3,
+                "Caio": 1
+              },
+              "enemies": [
+                {
+                  "id": 13,
+                  "kind": "Errante",
+                  "z": 16,
+                  "hp": 1
+                }
+              ]
+            },
+            {
+              "destination": "Oficina",
+              "round": 5,
+              "clock": 6,
+              "positions": {
+                "Lia": 2,
+                "Ivo": 2,
+                "Caio": 2
+              },
+              "pa_remaining": {
+                "Lia": 0,
+                "Ivo": 0,
+                "Caio": 0
+              },
+              "health": {
+                "Lia": 1,
+                "Ivo": 3,
+                "Caio": 3
+              },
+              "loads": {
+                "Lia": 4,
+                "Ivo": 4,
+                "Caio": 1
+              },
+              "enemies": [
+                {
+                  "id": 13,
+                  "kind": "Errante",
+                  "z": 12,
+                  "hp": 1
+                }
+              ]
+            },
+            {
+              "destination": "Oficina",
+              "round": 6,
+              "clock": 7,
+              "positions": {
+                "Lia": 1,
+                "Ivo": 1,
+                "Caio": 1
+              },
+              "pa_remaining": {
+                "Lia": 2,
+                "Ivo": 2,
+                "Caio": 2
+              },
+              "health": {
+                "Lia": 1,
+                "Ivo": 3,
+                "Caio": 3
+              },
+              "loads": {
+                "Lia": 4,
+                "Ivo": 4,
+                "Caio": 1
+              },
+              "enemies": [
+                {
+                  "id": 13,
+                  "kind": "Errante",
+                  "z": 8,
+                  "hp": 1
+                },
+                {
+                  "id": 14,
+                  "kind": "Errante",
+                  "z": 16,
+                  "hp": 1
+                },
+                {
+                  "id": 15,
+                  "kind": "Errante",
+                  "z": 16,
+                  "hp": 1
+                },
+                {
+                  "id": 16,
+                  "kind": "Errante",
+                  "z": 16,
+                  "hp": 1
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "destination": "Estação",
+          "segments": 9,
+          "rounds": 7,
+          "delivered": {
+            "Bomba": 1,
+            "Membrana": 1,
+            "Água": 2
+          },
+          "health": {
+            "Lia": 1,
+            "Ivo": 3,
+            "Caio": 2
+          },
+          "rescue": [],
+          "travel_cards": [
+            "ZC-VIA-0006",
+            "ZC-VIA-0009"
+          ],
+          "extra_night_travel": "ZC-VIA-0002",
+          "night_fatigue_per_hero": 1,
+          "horde_draws": [
+            "Arrastar",
+            "Arrastar",
+            "Aglomerado",
+            "Arrastar",
+            "Arrastar",
+            "Aglomerado",
+            "Corrida",
+            "Corrida",
+            "Peso morto"
+          ],
+          "peak_enemies": 5,
+          "round_log": [
+            {
+              "destination": "Estação",
+              "round": 1,
+              "clock": 2,
+              "positions": {
+                "Lia": 3,
+                "Ivo": 9,
+                "Caio": 3
+              },
+              "pa_remaining": {
+                "Lia": 0,
+                "Ivo": 0,
+                "Caio": 1
+              },
+              "health": {
+                "Lia": 1,
+                "Ivo": 3,
+                "Caio": 3
+              },
+              "loads": {
+                "Lia": 1,
+                "Ivo": 1,
+                "Caio": 1
+              },
+              "enemies": [
+                {
+                  "id": 17,
+                  "kind": "Errante",
+                  "z": 12,
+                  "hp": 1
+                },
+                {
+                  "id": 18,
+                  "kind": "Bruto",
+                  "z": 14,
+                  "hp": 3
+                },
+                {
+                  "id": 19,
+                  "kind": "Errante",
+                  "z": 12,
+                  "hp": 1
+                },
+                {
+                  "id": 20,
+                  "kind": "Errante",
+                  "z": 12,
+                  "hp": 1
+                }
+              ]
+            },
+            {
+              "destination": "Estação",
+              "round": 2,
+              "clock": 3,
+              "positions": {
+                "Lia": 7,
+                "Ivo": 15,
+                "Caio": 7
+              },
+              "pa_remaining": {
+                "Lia": 0,
+                "Ivo": 0,
+                "Caio": 0
+              },
+              "health": {
+                "Lia": 1,
+                "Ivo": 3,
+                "Caio": 3
+              },
+              "loads": {
+                "Lia": 3,
+                "Ivo": 1,
+                "Caio": 1
+              },
+              "enemies": [
+                {
+                  "id": 17,
+                  "kind": "Errante",
+                  "z": 8,
+                  "hp": 1
+                },
+                {
+                  "id": 18,
+                  "kind": "Bruto",
+                  "z": 15,
+                  "hp": 3
+                },
+                {
+                  "id": 19,
+                  "kind": "Errante",
+                  "z": 8,
+                  "hp": 1
+                },
+                {
+                  "id": 20,
+                  "kind": "Errante",
+                  "z": 8,
+                  "hp": 1
+                },
+                {
+                  "id": 21,
+                  "kind": "Corredor",
+                  "z": 16,
+                  "hp": 1
+                }
+              ]
+            },
+            {
+              "destination": "Estação",
+              "round": 3,
+              "clock": 4,
+              "positions": {
+                "Lia": 14,
+                "Ivo": 15,
+                "Caio": 8
+              },
+              "pa_remaining": {
+                "Lia": 0,
+                "Ivo": 0,
+                "Caio": 0
+              },
+              "health": {
+                "Lia": 1,
+                "Ivo": 3,
+                "Caio": 2
+              },
+              "loads": {
+                "Lia": 3,
+                "Ivo": 1,
+                "Caio": 1
+              },
+              "enemies": [
+                {
+                  "id": 20,
+                  "kind": "Errante",
+                  "z": 8,
+                  "hp": 1
+                },
+                {
+                  "id": 21,
+                  "kind": "Corredor",
+                  "z": 15,
+                  "hp": 1
+                }
+              ]
+            },
+            {
+              "destination": "Estação",
+              "round": 4,
+              "clock": 5,
+              "positions": {
+                "Lia": 11,
+                "Ivo": 14,
+                "Caio": 3
+              },
+              "pa_remaining": {
+                "Lia": 1,
+                "Ivo": 0,
+                "Caio": 0
+              },
+              "health": {
+                "Lia": 1,
+                "Ivo": 3,
+                "Caio": 2
+              },
+              "loads": {
+                "Lia": 3,
+                "Ivo": 2,
+                "Caio": 1
+              },
+              "enemies": [
+                {
+                  "id": 22,
+                  "kind": "Corredor",
+                  "z": 16,
+                  "hp": 1
+                }
+              ]
+            },
+            {
+              "destination": "Estação",
+              "round": 5,
+              "clock": 6,
+              "positions": {
+                "Lia": 2,
+                "Ivo": 11,
+                "Caio": 1
+              },
+              "pa_remaining": {
+                "Lia": 0,
+                "Ivo": 0,
+                "Caio": 1
+              },
+              "health": {
+                "Lia": 1,
+                "Ivo": 3,
+                "Caio": 2
+              },
+              "loads": {
+                "Lia": 3,
+                "Ivo": 4,
+                "Caio": 1
+              },
+              "enemies": [
+                {
+                  "id": 22,
+                  "kind": "Corredor",
+                  "z": 11,
+                  "hp": 1
+                }
+              ]
+            },
+            {
+              "destination": "Estação",
+              "round": 6,
+              "clock": 7,
+              "positions": {
+                "Lia": 1,
+                "Ivo": 7,
+                "Caio": 1
+              },
+              "pa_remaining": {
+                "Lia": 2,
+                "Ivo": 1,
+                "Caio": 3
+              },
+              "health": {
+                "Lia": 1,
+                "Ivo": 3,
+                "Caio": 2
+              },
+              "loads": {
+                "Lia": 3,
+                "Ivo": 4,
+                "Caio": 1
+              },
+              "enemies": [
+                {
+                  "id": 23,
+                  "kind": "Bruto",
+                  "z": 16,
+                  "hp": 3
+                }
+              ]
+            },
+            {
+              "destination": "Estação",
+              "round": 7,
+              "clock": 8,
+              "positions": {
+                "Lia": 1,
+                "Ivo": 1,
+                "Caio": 1
+              },
+              "pa_remaining": {
+                "Lia": 3,
+                "Ivo": 0,
+                "Caio": 3
+              },
+              "health": {
+                "Lia": 1,
+                "Ivo": 3,
+                "Caio": 2
+              },
+              "loads": {
+                "Lia": 3,
+                "Ivo": 4,
+                "Caio": 1
+              },
+              "enemies": [
+                {
+                  "id": 23,
+                  "kind": "Bruto",
+                  "z": 12,
+                  "hp": 3
+                }
+              ]
+            }
+          ]
+        }
+      ],
+      "days": [
+        {
+          "day": 1,
+          "destination": "Mercado",
+          "people": 6,
+          "dogs": 0,
+          "food": 22,
+          "water": 14,
+          "materials": 3,
+          "medicine": 3,
+          "ammo": 2,
+          "bia_intention": "fora",
+          "expedition_night_fatigue": 0,
+          "fatigue_removed_next_dawn": 0,
+          "pressure": 0,
+          "filter_work": 0,
+          "filter_active": false,
+          "siege": null,
+          "health": 5,
+          "morale": 5
+        },
+        {
+          "day": 2,
+          "destination": "Oficina",
+          "people": 6,
+          "dogs": 0,
+          "food": 24,
+          "water": 16,
+          "materials": 3,
+          "medicine": 3,
+          "ammo": 2,
+          "bia_intention": "fora",
+          "expedition_night_fatigue": 0,
+          "fatigue_removed_next_dawn": 0,
+          "pressure": 1,
+          "filter_work": 0,
+          "filter_active": false,
+          "siege": null,
+          "health": 5,
+          "morale": 5
+        },
+        {
+          "day": 3,
+          "destination": "Estação",
+          "people": 6,
+          "dogs": 0,
+          "food": 18,
+          "water": 17,
+          "materials": 3,
+          "medicine": 3,
+          "ammo": 1,
+          "bia_intention": "fora",
+          "expedition_night_fatigue": 1,
+          "fatigue_removed_next_dawn": 0,
+          "pressure": 1,
+          "filter_work": 0,
+          "filter_active": false,
+          "siege": {
+            "kind": "missão",
+            "force": 4,
+            "defense": 4,
+            "dice": [
+              4,
+              2,
+              2
+            ],
+            "bullets": 1
+          },
+          "health": 5,
+          "morale": 5
+        },
+        {
+          "day": 4,
+          "destination": null,
+          "people": 6,
+          "dogs": 0,
+          "food": 12,
+          "water": 11,
+          "materials": 0,
+          "medicine": 3,
+          "ammo": 1,
+          "bia_intention": "fora",
+          "expedition_night_fatigue": 0,
+          "fatigue_removed_next_dawn": 1,
+          "pressure": 2,
+          "filter_work": 2,
+          "filter_active": false,
+          "siege": null,
+          "health": 5,
+          "morale": 5
+        },
+        {
+          "day": 5,
+          "destination": null,
+          "people": 6,
+          "dogs": 0,
+          "food": 6,
+          "water": 17,
+          "materials": 0,
+          "medicine": 3,
+          "ammo": 1,
+          "bia_intention": "fora",
+          "expedition_night_fatigue": 0,
+          "fatigue_removed_next_dawn": 0,
+          "pressure": 1,
+          "filter_work": 4,
+          "filter_active": true,
+          "siege": {
+            "kind": "pressão ZC-CER-0001",
+            "force": 4,
+            "defense": 4,
+            "dice": [
+              4,
+              4,
+              2
+            ],
+            "bullets": 0
+          },
+          "health": 5,
+          "morale": 5
+        }
+      ],
+      "result": "vitória nesta trajetória fixa",
+      "hero_xp": {
+        "Lia": 6,
+        "Ivo": 6,
+        "Caio": 6
+      },
+      "progression_choices": {
+        "Lia": {
+          "3": "Curativo: socorro remove +1 ferimento, 1/dia.",
+          "6": "Preparação: +1 capacidade permanente."
+        },
+        "Ivo": {
+          "3": "Postura: ignore 1 dano, 1/expedição.",
+          "6": "Preparação: +1 capacidade permanente."
+        },
+        "Caio": {
+          "3": "Atalho: +1 Agilidade na primeira fuga/visita.",
+          "6": "Preparação: +1 capacidade permanente."
+        }
+      },
+      "final_wounds": {
+        "Lia": 2,
+        "Ivo": 0,
+        "Caio": 1
+      },
+      "limitations": [
+        "Rolagens de combate 3 e cerco favorável pré-fixados; não mede probabilidade.",
+        "Viagem: seis cartas legalmente distintas e decisões de não aceitar trocas; outros arranjos não testados.",
+        "Busca: uma carta Mercado para H3–6; os demais resultados de Busca não foram testados.",
+        "Uma trajetória não valida equilíbrio nem todos os ramos da campanha."
+      ]
+    }
+  },
+  {
+    "heroes": 6,
+    "accept_bia": true,
+    "status": "route_blocked",
+    "evidence": "AssertionError((6, 5, -4, 11))"
+  }
+]

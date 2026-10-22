@@ -27,7 +27,7 @@ try:
                 col=i if not back else 2-i
                 x=8.5+65*col;y=297-14.5-88
                 (b.card_back(pdf,card['family'],x,y) if back else b.card_front(pdf,card,x,y,False))
-            pdf.setFont('Helvetica',8)
+            pdf.setFont('Body',8)
             pdf.drawString(8.5*mm,288*mm,f'ZONA ZERO / H{lo}–H{hi} / '+('VERSOS / borda longa' if back else 'FRENTES')+' / 100%')
             pdf.showPage()
         pdf.save()

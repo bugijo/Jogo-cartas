@@ -149,7 +149,7 @@ def play_day(r,name,rounds,expected):
                 horde_draws=r.draws.copy(),peak_enemies=peak,round_log=r.logs[start_log:])
 
 
-def run(h):
+def run(h, accept_bia=None):
     assert h in (2,3,4,5,6)
     travel=[cid for leg in TRAVEL_DRAWS.values() for cid in leg]
     assert len(travel)==len(set(travel))==6
@@ -168,11 +168,14 @@ def run(h):
     dogs=sum(x in ('Cachorro','Parceiro e cachorro') for x in links)
     cap=2*max(4,h)
     assert people<=cap
-    rescued=h<6
+    rescued=(h<6) if accept_bia is None else accept_bia
     r=SizedReplay(h)
     market=play_day(r,'Mercado',rounds_market_2() if h==2 else rounds_market(h),
                     Counter({'Conserva':4,'Água':2} if h==2 else {'Conserva':4,'Água':2,'Medicamento':1}))
-    workshop=play_day(r,'Oficina',rounds_workshop_2() if h==2 else rounds_workshop(rescued),Counter({'Conexões':1,'Bateria':1,'Conserva':2,'Água':2}))
+    workshop_rounds=rounds_workshop_2() if h==2 else rounds_workshop(rescued)
+    if h==2 and not rescued:
+        workshop_rounds=[[(name,[a for a in actions if a[0]!='contact']) for name,actions in row] for row in workshop_rounds]
+    workshop=play_day(r,'Oficina',workshop_rounds,Counter({'Conexões':1,'Bateria':1,'Conserva':2,'Água':2}))
     station=play_day(r,'Estação',rounds_station_2() if h==2 else rounds_station(),Counter({'Bomba':1,'Membrana':1,'Água':2}))
     assert (r.rescues==['Bia'])==rescued
     active=['Lia','Ivo']+(['Caio'] if h>=3 else [])
@@ -236,7 +239,8 @@ def run(h):
                          siege=siege,health=health,morale=morale))
     assert rescued is False or people<=cap
     return dict(heroes=h,founders=(['Lia','Ivo'] if h==2 else ['Lia','Ivo','Caio']+['Mara','Nara','Bento'][:h-3]),
-                links=links,consumers_initial=consumers,capacity=cap,rescue_intention='ZC-INT-0001 Solidário' if rescued else None,
+                links=links,consumers_initial=consumers,capacity=cap,decision_bia='acolher' if rescued else 'deixar no destino',
+                rescue_intention='ZC-INT-0001 Solidário' if rescued else None,
                 searches=list(r.searches),tactical=[market,workshop,station],days=days,result='vitória nesta trajetória fixa',
                 hero_xp=xp,progression_choices=progression,final_wounds={name:3-hp for name,hp in r.health.items()},
                 limitations=['Rolagens de combate 3 e cerco favorável pré-fixados; não mede probabilidade.',

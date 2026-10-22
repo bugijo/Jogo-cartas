@@ -23,7 +23,7 @@ def make(path, cards, preview):
             x = 8.5 + 65*col
             y = 297 - 14.5 - 88 - 90*row
             (b.card_back(c, 'EQU', x, y) if back else b.card_front(c, card, x, y, False))
-        c.setFont('Helvetica', 8)
+        c.setFont('Body', 8)
         c.drawString(8.5*mm, 288*mm, 'ZONA ZERO / H3–H6 / ' + ('VERSOS / borda longa' if back else 'FRENTES') + ' / 100%')
         c.showPage()
     c.save()
