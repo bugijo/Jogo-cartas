@@ -1,4 +1,12 @@
-# Checkpoint atual — revisão digital e preparo do playtest
+# Checkpoint atual — pacote da primeira sessão humana
+
+Base local/remota confirmada em `7a08625429d4cc259940146cb73c533478e274cb`, branch `arte/kit-pos-apocaliptico-provas`, árvore limpa antes de editar. [Guia rápido A4](kit-final-prova/playtest/PRIMEIRA_PARTIDA_DUAS_PESSOAS.pdf) e [digital](kit-final-prova/playtest/PRIMEIRA_PARTIDA_DUAS_PESSOAS.md) listam os 18 PDFs/58 folhas duplex para a dupla. [Ficha do observador](kit-final-prova/playtest/OBSERVADOR_E_DEVOLUTIVA.pdf), [modelo de devolutiva](kit-final-prova/playtest/DEVOLUTIVA_APOS_SESSAO.md), [auditoria editorial](kit-final-prova/playtest/AUDITORIA_PRE_MESA.md) e [caso H6+Bia](kit-final-prova/playtest/H6_BIA_ANALISE.md) completam a preparação. A coleta de duas porções nos dias 4 e 5 cobre o déficit de quatro da rota H6+Bia **sob os pressupostos fixos**, com trabalho disponível; nenhuma regra, PDF artístico ou kit anterior foi alterado.
+
+Próximo passo humano: imprimir a calibração, escolher **somente** o conjunto duplex de 58 folhas do índice, preparar Lia/Ivo pelo guia, jogar o Dia 1 e continuar até onde a mesa conseguir. Imprimir opcionais: guia 3 páginas, página 2 do registro diário cinco vezes e observador 2 páginas (10 folhas); se desejado, calibração adicional uma folha duplex. Anotar tempos, dúvidas, decisões, pausas, problemas de impressão e opiniões separadas. Impressão física, alinhamento, montagem e partida humana continuam pendentes. As seções abaixo são histórico.
+
+---
+
+# Checkpoint anterior — revisão digital e preparo do playtest
 
 Branch `arte/kit-pos-apocaliptico-provas`, base conferida `f02de29`. [Relatório atual](kit-final-prova/auditoria/REVISAO_DIGITAL_RELATORIO.md), [dados e sementes](kit-final-prova/auditoria/REVISAO_DIGITAL_FINAL.json), [índice](kit-final-prova/INDICE_IMPRESSAO_CONSOLIDADO.md), [calibração](kit-final-prova/playtest/CALIBRACAO_FRENTE_VERSO_A4.pdf) e [roteiro de mesa](kit-final-prova/playtest/ROTEIRO_E_REGISTRO_PLAYTEST.pdf). Foram auditadas as 2.497 combinações iniciais; cinco rotas táticas antigas e cinco ramos alternativos de acolhimento; 750 ensaios de fases com hipóteses explícitas. A escolha de acolher Bia na rota fixa H6 falta quatro porções na quinta refeição; nenhum equilíbrio foi alterado. PDFs selecionados e fontes usados foram verificados; as folhas condicionais tiveram apenas cabeçalhos recompostos com fonte incorporada, texto idêntico. O material está preparado para playtest exploratório; simulação tática ampla, impressão física, duplex real, corte e playtest permanecem pendentes.
 

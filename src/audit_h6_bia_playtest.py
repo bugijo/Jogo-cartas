@@ -13,6 +13,8 @@ OUT=ROOT/'kit-final-prova/playtest/H6_BIA_SALDOS.json'
 ROUTES=json.loads((ROOT/'kit-final-prova/auditoria/ROTEIROS_TATICOS_H2_H6.json').read_text())
 BASE=next(x for x in ROUTES if x['heroes']==6)
 assert BASE['consumers_initial']==8 and BASE['founders']==['Lia','Ivo','Caio','Mara','Nara','Bento']
+assert all(wounds<3 for wounds in BASE['final_wounds'].values())
+assert BASE['days'][3]['fatigue_removed_next_dawn']==1
 
 
 def ledger(accept_bia:bool,collection_days=()):

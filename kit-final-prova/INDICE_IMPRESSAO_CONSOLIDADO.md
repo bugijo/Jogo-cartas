@@ -111,8 +111,12 @@ As provas e comparações dos lotes são documentos de revisão; **não são com
 
 ## Provas opcionais antes da partida
 
-- [CALIBRACAO_FRENTE_VERSO_A4.pdf](playtest/CALIBRACAO_FRENTE_VERSO_A4.pdf): uma folha duplex adicional; confira as marcas e a régua de 100 mm na própria impressora. Não substitui a calibração já incluída nas contagens.
-- [ROTEIRO_E_REGISTRO_PLAYTEST.pdf](playtest/ROTEIRO_E_REGISTRO_PLAYTEST.pdf): página 1 uma cópia, página 2 cinco cópias, página 3 uma cópia só para 3–6 pessoas. São 6 folhas opcionais para solo/dupla, 7 para 3–6.
+Para duas pessoas, siga [o guia rápido digital](playtest/PRIMEIRA_PARTIDA_DUAS_PESSOAS.md). A seleção de 58 folhas acima permanece obrigatória; as folhas abaixo são extras.
+
+- [PRIMEIRA_PARTIDA_DUAS_PESSOAS.pdf](playtest/PRIMEIRA_PARTIDA_DUAS_PESSOAS.pdf): 3 páginas de uma face. Lista os 18 arquivos selecionados e a ordem de preparação.
+- [ROTEIRO_E_REGISTRO_PLAYTEST.pdf](playtest/ROTEIRO_E_REGISTRO_PLAYTEST.pdf): imprima **somente a página 2, cinco vezes** para acompanhar o guia novo.
+- [OBSERVADOR_E_DEVOLUTIVA.pdf](playtest/OBSERVADOR_E_DEVOLUTIVA.pdf): 2 páginas de uma face. Guia 3 + registros 5 + observador 2 = **10 folhas opcionais** para a primeira sessão de duas pessoas. A página 1 do roteiro antigo repete a preparação.
+- [CALIBRACAO_FRENTE_VERSO_A4.pdf](playtest/CALIBRACAO_FRENTE_VERSO_A4.pdf): uma folha duplex adicional; confira as marcas e a régua de 100 mm na própria impressora. Não substitui a calibração já incluída nas contagens. Para 3–6 pessoas, a página 3 do roteiro anterior continua disponível como orientação extra.
 
 ## Limites desta seleção
 
