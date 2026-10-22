@@ -1,0 +1,212 @@
+{
+  "source": "RULES.md §§2,4,8,12; CAMPAIGN.md Construção principal e Vitória",
+  "initial_consumers": 8,
+  "accepted_consumer_from_day": 2,
+  "routes": {
+    "sem_bia": [
+      {
+        "day": 1,
+        "humans": 7,
+        "dogs": 1,
+        "collected_food": 0,
+        "meal_due": 8,
+        "food_balance": 24,
+        "food_shortage": 0,
+        "water_balance": 16,
+        "water_shortage": 0
+      },
+      {
+        "day": 2,
+        "humans": 7,
+        "dogs": 1,
+        "collected_food": 0,
+        "meal_due": 8,
+        "food_balance": 24,
+        "food_shortage": 0,
+        "water_balance": 16,
+        "water_shortage": 0
+      },
+      {
+        "day": 3,
+        "humans": 7,
+        "dogs": 1,
+        "collected_food": 0,
+        "meal_due": 8,
+        "food_balance": 16,
+        "food_shortage": 0,
+        "water_balance": 15,
+        "water_shortage": 0
+      },
+      {
+        "day": 4,
+        "humans": 7,
+        "dogs": 1,
+        "collected_food": 0,
+        "meal_due": 8,
+        "food_balance": 8,
+        "food_shortage": 0,
+        "water_balance": 7,
+        "water_shortage": 0
+      },
+      {
+        "day": 5,
+        "humans": 7,
+        "dogs": 1,
+        "collected_food": 0,
+        "meal_due": 8,
+        "food_balance": 0,
+        "food_shortage": 0,
+        "water_balance": 15,
+        "water_shortage": 0
+      }
+    ],
+    "bia_sem_coleta": [
+      {
+        "day": 1,
+        "humans": 7,
+        "dogs": 1,
+        "collected_food": 0,
+        "meal_due": 8,
+        "food_balance": 24,
+        "food_shortage": 0,
+        "water_balance": 16,
+        "water_shortage": 0
+      },
+      {
+        "day": 2,
+        "humans": 8,
+        "dogs": 1,
+        "collected_food": 0,
+        "meal_due": 9,
+        "food_balance": 23,
+        "food_shortage": 0,
+        "water_balance": 15,
+        "water_shortage": 0
+      },
+      {
+        "day": 3,
+        "humans": 8,
+        "dogs": 1,
+        "collected_food": 0,
+        "meal_due": 9,
+        "food_balance": 14,
+        "food_shortage": 0,
+        "water_balance": 13,
+        "water_shortage": 0
+      },
+      {
+        "day": 4,
+        "humans": 8,
+        "dogs": 1,
+        "collected_food": 0,
+        "meal_due": 9,
+        "food_balance": 5,
+        "food_shortage": 0,
+        "water_balance": 4,
+        "water_shortage": 0
+      },
+      {
+        "day": 5,
+        "humans": 8,
+        "dogs": 1,
+        "collected_food": 0,
+        "meal_due": 9,
+        "food_balance": -4,
+        "food_shortage": 4,
+        "water_balance": 11,
+        "water_shortage": 0
+      }
+    ],
+    "bia_com_coleta_dias_4_5": [
+      {
+        "day": 1,
+        "humans": 7,
+        "dogs": 1,
+        "collected_food": 0,
+        "meal_due": 8,
+        "food_balance": 24,
+        "food_shortage": 0,
+        "water_balance": 16,
+        "water_shortage": 0
+      },
+      {
+        "day": 2,
+        "humans": 8,
+        "dogs": 1,
+        "collected_food": 0,
+        "meal_due": 9,
+        "food_balance": 23,
+        "food_shortage": 0,
+        "water_balance": 15,
+        "water_shortage": 0
+      },
+      {
+        "day": 3,
+        "humans": 8,
+        "dogs": 1,
+        "collected_food": 0,
+        "meal_due": 9,
+        "food_balance": 14,
+        "food_shortage": 0,
+        "water_balance": 13,
+        "water_shortage": 0
+      },
+      {
+        "day": 4,
+        "humans": 8,
+        "dogs": 1,
+        "collected_food": 2,
+        "meal_due": 9,
+        "food_balance": 7,
+        "food_shortage": 0,
+        "water_balance": 4,
+        "water_shortage": 0
+      },
+      {
+        "day": 5,
+        "humans": 8,
+        "dogs": 1,
+        "collected_food": 2,
+        "meal_due": 9,
+        "food_balance": 0,
+        "food_shortage": 0,
+        "water_balance": 11,
+        "water_shortage": 0
+      }
+    ]
+  },
+  "workers": {
+    "day_4": {
+      "filter": [
+        "Mara",
+        "Nara"
+      ],
+      "collection": [
+        "Bento",
+        "adulto parceiro"
+      ],
+      "vigils": []
+    },
+    "day_5": {
+      "filter": [
+        "Mara",
+        "Nara"
+      ],
+      "collection": [
+        "Bento",
+        "adulto parceiro"
+      ],
+      "vigils": [
+        "Lia",
+        "Ivo",
+        "Caio"
+      ]
+    }
+  },
+  "assumptions": [
+    "Mesmas entregas, rolagens, cercos e intenção Solidário da rota fixa H6.",
+    "Os sete adultos fundadores/confiáveis permanecem no abrigo nos dias 4 e 5.",
+    "Coleta gera porções, não cartas; nenhuma provisão é renovada.",
+    "A rota ainda depende das rolagens e escolhas favoráveis fixadas; não estima probabilidade."
+  ]
+}
