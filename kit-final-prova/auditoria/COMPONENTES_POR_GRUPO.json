@@ -12,6 +12,9 @@
       "crowbar_ids": "0001–0002 nas fichas",
       "enemy_markers": 24,
       "conditional": null,
+      "tactical_peak_enemies": 3,
+      "tactical_rescue": "ZC-INT-0001 Solidário",
+      "tactical_searches": [],
       "duplex_sheets": 58,
       "manual_sheets": 72,
       "modeled_exhaustions": []
@@ -28,6 +31,11 @@
         "initial_crowbars": 3,
         "formula_errantes": 2
       },
+      "tactical_peak_enemies": 4,
+      "tactical_rescue": "ZC-INT-0001 Solidário",
+      "tactical_searches": [
+        "ZC-SAQ-0005"
+      ],
       "duplex_sheets": 67,
       "manual_sheets": 83,
       "modeled_exhaustions": []
@@ -44,6 +52,11 @@
         "initial_crowbars": 4,
         "formula_errantes": 2
       },
+      "tactical_peak_enemies": 4,
+      "tactical_rescue": "ZC-INT-0001 Solidário",
+      "tactical_searches": [
+        "ZC-SAQ-0005"
+      ],
       "duplex_sheets": 67,
       "manual_sheets": 83,
       "modeled_exhaustions": []
@@ -60,6 +73,11 @@
         "initial_crowbars": 5,
         "formula_errantes": 3
       },
+      "tactical_peak_enemies": 5,
+      "tactical_rescue": "ZC-INT-0001 Solidário",
+      "tactical_searches": [
+        "ZC-SAQ-0005"
+      ],
       "duplex_sheets": 67,
       "manual_sheets": 83,
       "modeled_exhaustions": []
@@ -76,6 +94,11 @@
         "initial_crowbars": 6,
         "formula_errantes": 3
       },
+      "tactical_peak_enemies": 5,
+      "tactical_rescue": null,
+      "tactical_searches": [
+        "ZC-SAQ-0005"
+      ],
       "duplex_sheets": 67,
       "manual_sheets": 83,
       "modeled_exhaustions": []

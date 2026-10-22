@@ -6,6 +6,7 @@ import fitz
 
 from campaign_seeded_review import ROOT, HEROES, run_matrix
 from final_kit_audit import run as print_audit
+from scaled_tactical_replay import run as tactical_run
 
 
 def text(path):
@@ -41,11 +42,14 @@ def run():
     records=[]
     for h in range(2,7):
         runs=[x for x in matrix['runs'] if x['heroes']==h]
+        tactical=tactical_run(h)
         assert len(runs)==3 and all(len(x['days'])==5 for x in runs)
         records.append(dict(heroes=h,founder_cards=h,hero_sheets='1 Lia/Ivo + 6 resgatáveis' if h==2 else '12 folhas de 24 heróis',
                             hero_pawns='marcadores planos Lia/Ivo' if h==2 else '2 folhas de 24 peões',
                             crowbar_ids='0001–0002 nas fichas' if h==2 else '0001–0006, use somente 0001..000H',
                             enemy_markers=enemy_count,conditional=conditionals.get(h),
+                            tactical_peak_enemies=max(x['peak_enemies'] for x in tactical['tactical']),
+                            tactical_rescue=tactical['rescue_intention'],tactical_searches=tactical['searches'],
                             duplex_sheets=by_h[h]['duplex_sheets'],manual_sheets=by_h[h]['manual_sheets'],
                             modeled_exhaustions=[z for r in runs for z in r['component_exhaustion']]))
     result=dict(cards=114,hero_sheets_complete=True,hero_pawns_complete=True,enemies_printed=enemy_count,

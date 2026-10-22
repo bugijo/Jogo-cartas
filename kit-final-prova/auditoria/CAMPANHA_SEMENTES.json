@@ -90,6 +90,9 @@
           "cargo_needed": 3,
           "cargo_capacity": 6,
           "initial_enemies": 1,
+          "night_fatigue_per_expedition_hero": 0,
+          "extra_night_travel": null,
+          "additional_travel": null,
           "sampled_combat": [
             {
               "enemy": "Errante",
@@ -152,6 +155,9 @@
           "cargo_needed": 4,
           "cargo_capacity": 6,
           "initial_enemies": 1,
+          "night_fatigue_per_expedition_hero": 0,
+          "extra_night_travel": null,
+          "additional_travel": null,
           "sampled_combat": [
             {
               "enemy": "Errante",
@@ -214,6 +220,9 @@
           "cargo_needed": 4,
           "cargo_capacity": 6,
           "initial_enemies": 1,
+          "night_fatigue_per_expedition_hero": 1,
+          "extra_night_travel": "ZC-VIA-0002",
+          "additional_travel": null,
           "sampled_combat": [
             {
               "enemy": "Errante",
@@ -269,7 +278,7 @@
           },
           "stock_after": {
             "food": 11,
-            "water": 11,
+            "water": 10,
             "materials": 3,
             "ammo": 0
           },
@@ -296,19 +305,22 @@
           "cargo_needed": 0,
           "cargo_capacity": 0,
           "initial_enemies": 0,
+          "night_fatigue_per_expedition_hero": 0,
+          "extra_night_travel": null,
+          "additional_travel": null,
           "sampled_combat": [],
           "hordes": [],
           "rescue_card": null,
           "siege": null,
           "stock_before": {
             "food": 11,
-            "water": 11,
+            "water": 10,
             "materials": 3,
             "ammo": 0
           },
           "stock_after": {
             "food": 8,
-            "water": 8,
+            "water": 7,
             "materials": 0,
             "ammo": 0
           },
@@ -335,6 +347,9 @@
           "cargo_needed": 0,
           "cargo_capacity": 0,
           "initial_enemies": 0,
+          "night_fatigue_per_expedition_hero": 0,
+          "extra_night_travel": null,
+          "additional_travel": null,
           "sampled_combat": [],
           "hordes": [],
           "rescue_card": null,
@@ -353,13 +368,13 @@
           },
           "stock_before": {
             "food": 8,
-            "water": 8,
+            "water": 7,
             "materials": 0,
             "ammo": 0
           },
           "stock_after": {
             "food": 1,
-            "water": 7,
+            "water": 6,
             "materials": 0,
             "ammo": 0
           },
@@ -427,6 +442,9 @@
           "cargo_needed": 3,
           "cargo_capacity": 6,
           "initial_enemies": 1,
+          "night_fatigue_per_expedition_hero": 0,
+          "extra_night_travel": null,
+          "additional_travel": null,
           "sampled_combat": [
             {
               "enemy": "Errante",
@@ -489,6 +507,9 @@
           "cargo_needed": 4,
           "cargo_capacity": 6,
           "initial_enemies": 1,
+          "night_fatigue_per_expedition_hero": 0,
+          "extra_night_travel": null,
+          "additional_travel": "ZC-VIA-0007",
           "sampled_combat": [
             {
               "enemy": "Errante",
@@ -537,7 +558,7 @@
           ],
           "filter_work": 0,
           "filter_active": false,
-          "pressure": 1,
+          "pressure": 2,
           "pending": [],
           "health": 5,
           "morale": 5
@@ -551,6 +572,9 @@
           "cargo_needed": 4,
           "cargo_capacity": 6,
           "initial_enemies": 1,
+          "night_fatigue_per_expedition_hero": 1,
+          "extra_night_travel": "ZC-VIA-0002",
+          "additional_travel": null,
           "sampled_combat": [
             {
               "enemy": "Errante",
@@ -609,7 +633,7 @@
           },
           "stock_after": {
             "food": 2,
-            "water": 2,
+            "water": 1,
             "materials": 3,
             "ammo": 1
           },
@@ -622,7 +646,7 @@
           ],
           "filter_work": 0,
           "filter_active": false,
-          "pressure": 1,
+          "pressure": 2,
           "pending": [],
           "health": 5,
           "morale": 5
@@ -636,45 +660,9 @@
           "cargo_needed": 0,
           "cargo_capacity": 0,
           "initial_enemies": 0,
-          "sampled_combat": [],
-          "hordes": [],
-          "rescue_card": null,
-          "siege": null,
-          "stock_before": {
-            "food": 2,
-            "water": 2,
-            "materials": 3,
-            "ammo": 1
-          },
-          "stock_after": {
-            "food": 0,
-            "water": 0,
-            "materials": 0,
-            "ammo": 1
-          },
-          "people": 6,
-          "dogs": 0,
-          "capacity": 8,
-          "shortage": [
-            4,
-            4
-          ],
-          "filter_work": 2,
-          "filter_active": false,
-          "pressure": 2,
-          "pending": [],
-          "health": 4,
-          "morale": 5
-        },
-        {
-          "day": 5,
-          "event_pressure": 1,
-          "destination": null,
-          "expedition_heroes": 0,
-          "clock": 0,
-          "cargo_needed": 0,
-          "cargo_capacity": 0,
-          "initial_enemies": 0,
+          "night_fatigue_per_expedition_hero": 0,
+          "extra_night_travel": null,
+          "additional_travel": null,
           "sampled_combat": [],
           "hordes": [],
           "rescue_card": null,
@@ -694,10 +682,52 @@
             ]
           },
           "stock_before": {
+            "food": 2,
+            "water": 1,
+            "materials": 3,
+            "ammo": 1
+          },
+          "stock_after": {
             "food": 0,
             "water": 0,
             "materials": 0,
-            "ammo": 1
+            "ammo": 0
+          },
+          "people": 6,
+          "dogs": 0,
+          "capacity": 8,
+          "shortage": [
+            6,
+            5
+          ],
+          "filter_work": 2,
+          "filter_active": false,
+          "pressure": 1,
+          "pending": [],
+          "health": 4,
+          "morale": 5
+        },
+        {
+          "day": 5,
+          "event_pressure": 1,
+          "destination": null,
+          "expedition_heroes": 0,
+          "clock": 0,
+          "cargo_needed": 0,
+          "cargo_capacity": 0,
+          "initial_enemies": 0,
+          "night_fatigue_per_expedition_hero": 0,
+          "extra_night_travel": null,
+          "additional_travel": null,
+          "sampled_combat": [],
+          "hordes": [],
+          "rescue_card": null,
+          "siege": null,
+          "stock_before": {
+            "food": 0,
+            "water": 0,
+            "materials": 0,
+            "ammo": 0
           },
           "stock_after": {
             "food": 0,
@@ -714,7 +744,7 @@
           ],
           "filter_work": 4,
           "filter_active": true,
-          "pressure": 1,
+          "pressure": 2,
           "pending": [],
           "health": 3,
           "morale": 5
@@ -777,6 +807,9 @@
           "cargo_needed": 6,
           "cargo_capacity": 6,
           "initial_enemies": 1,
+          "night_fatigue_per_expedition_hero": 0,
+          "extra_night_travel": null,
+          "additional_travel": null,
           "sampled_combat": [
             {
               "enemy": "Errante",
@@ -839,6 +872,9 @@
           "cargo_needed": 6,
           "cargo_capacity": 6,
           "initial_enemies": 1,
+          "night_fatigue_per_expedition_hero": 0,
+          "extra_night_travel": null,
+          "additional_travel": null,
           "sampled_combat": [
             {
               "enemy": "Errante",
@@ -901,6 +937,9 @@
           "cargo_needed": 5,
           "cargo_capacity": 6,
           "initial_enemies": 1,
+          "night_fatigue_per_expedition_hero": 1,
+          "extra_night_travel": "ZC-VIA-0002",
+          "additional_travel": null,
           "sampled_combat": [
             {
               "enemy": "Errante",
@@ -959,7 +998,7 @@
           },
           "stock_after": {
             "food": 11,
-            "water": 11,
+            "water": 10,
             "materials": 3,
             "ammo": 2
           },
@@ -986,19 +1025,22 @@
           "cargo_needed": 0,
           "cargo_capacity": 0,
           "initial_enemies": 0,
+          "night_fatigue_per_expedition_hero": 0,
+          "extra_night_travel": null,
+          "additional_travel": null,
           "sampled_combat": [],
           "hordes": [],
           "rescue_card": null,
           "siege": null,
           "stock_before": {
             "food": 11,
-            "water": 11,
+            "water": 10,
             "materials": 3,
             "ammo": 2
           },
           "stock_after": {
             "food": 0,
-            "water": 1,
+            "water": 0,
             "materials": 0,
             "ammo": 2
           },
@@ -1025,6 +1067,9 @@
           "cargo_needed": 0,
           "cargo_capacity": 0,
           "initial_enemies": 0,
+          "night_fatigue_per_expedition_hero": 0,
+          "extra_night_travel": null,
+          "additional_travel": null,
           "sampled_combat": [],
           "hordes": [],
           "rescue_card": null,
@@ -1043,13 +1088,13 @@
           },
           "stock_before": {
             "food": 0,
-            "water": 1,
+            "water": 0,
             "materials": 0,
             "ammo": 2
           },
           "stock_after": {
             "food": 0,
-            "water": 3,
+            "water": 2,
             "materials": 0,
             "ammo": 2
           },
@@ -1145,6 +1190,9 @@
           "cargo_needed": 6,
           "cargo_capacity": 6,
           "initial_enemies": 2,
+          "night_fatigue_per_expedition_hero": 0,
+          "extra_night_travel": null,
+          "additional_travel": null,
           "sampled_combat": [
             {
               "enemy": "Errante",
@@ -1213,6 +1261,9 @@
           "cargo_needed": 6,
           "cargo_capacity": 6,
           "initial_enemies": 2,
+          "night_fatigue_per_expedition_hero": 0,
+          "extra_night_travel": null,
+          "additional_travel": null,
           "sampled_combat": [
             {
               "enemy": "Errante",
@@ -1281,6 +1332,9 @@
           "cargo_needed": 5,
           "cargo_capacity": 6,
           "initial_enemies": 2,
+          "night_fatigue_per_expedition_hero": 1,
+          "extra_night_travel": "ZC-VIA-0002",
+          "additional_travel": null,
           "sampled_combat": [
             {
               "enemy": "Errante",
@@ -1344,7 +1398,7 @@
           },
           "stock_after": {
             "food": 21,
-            "water": 21,
+            "water": 20,
             "materials": 3,
             "ammo": 2
           },
@@ -1371,19 +1425,22 @@
           "cargo_needed": 0,
           "cargo_capacity": 0,
           "initial_enemies": 0,
+          "night_fatigue_per_expedition_hero": 0,
+          "extra_night_travel": null,
+          "additional_travel": null,
           "sampled_combat": [],
           "hordes": [],
           "rescue_card": null,
           "siege": null,
           "stock_before": {
             "food": 21,
-            "water": 21,
+            "water": 20,
             "materials": 3,
             "ammo": 2
           },
           "stock_after": {
             "food": 16,
-            "water": 16,
+            "water": 15,
             "materials": 0,
             "ammo": 2
           },
@@ -1410,6 +1467,9 @@
           "cargo_needed": 0,
           "cargo_capacity": 0,
           "initial_enemies": 0,
+          "night_fatigue_per_expedition_hero": 0,
+          "extra_night_travel": null,
+          "additional_travel": null,
           "sampled_combat": [],
           "hordes": [],
           "rescue_card": null,
@@ -1427,13 +1487,13 @@
           },
           "stock_before": {
             "food": 16,
-            "water": 16,
+            "water": 15,
             "materials": 0,
             "ammo": 2
           },
           "stock_after": {
             "food": 11,
-            "water": 21,
+            "water": 20,
             "materials": 0,
             "ammo": 2
           },
@@ -1503,6 +1563,9 @@
           "cargo_needed": 3,
           "cargo_capacity": 6,
           "initial_enemies": 2,
+          "night_fatigue_per_expedition_hero": 0,
+          "extra_night_travel": null,
+          "additional_travel": null,
           "sampled_combat": [
             {
               "enemy": "Errante",
@@ -1571,6 +1634,9 @@
           "cargo_needed": 4,
           "cargo_capacity": 6,
           "initial_enemies": 2,
+          "night_fatigue_per_expedition_hero": 0,
+          "extra_night_travel": null,
+          "additional_travel": "ZC-VIA-0007",
           "sampled_combat": [
             {
               "enemy": "Errante",
@@ -1625,7 +1691,7 @@
           ],
           "filter_work": 0,
           "filter_active": false,
-          "pressure": 1,
+          "pressure": 2,
           "pending": [],
           "health": 5,
           "morale": 5
@@ -1639,6 +1705,9 @@
           "cargo_needed": 4,
           "cargo_capacity": 6,
           "initial_enemies": 2,
+          "night_fatigue_per_expedition_hero": 1,
+          "extra_night_travel": "ZC-VIA-0002",
+          "additional_travel": null,
           "sampled_combat": [
             {
               "enemy": "Errante",
@@ -1702,7 +1771,7 @@
           },
           "stock_after": {
             "food": 2,
-            "water": 2,
+            "water": 1,
             "materials": 3,
             "ammo": 0
           },
@@ -1715,7 +1784,7 @@
           ],
           "filter_work": 0,
           "filter_active": false,
-          "pressure": 1,
+          "pressure": 2,
           "pending": [],
           "health": 5,
           "morale": 5
@@ -1729,45 +1798,9 @@
           "cargo_needed": 0,
           "cargo_capacity": 0,
           "initial_enemies": 0,
-          "sampled_combat": [],
-          "hordes": [],
-          "rescue_card": null,
-          "siege": null,
-          "stock_before": {
-            "food": 2,
-            "water": 2,
-            "materials": 3,
-            "ammo": 0
-          },
-          "stock_after": {
-            "food": 0,
-            "water": 0,
-            "materials": 0,
-            "ammo": 0
-          },
-          "people": 6,
-          "dogs": 0,
-          "capacity": 8,
-          "shortage": [
-            4,
-            4
-          ],
-          "filter_work": 2,
-          "filter_active": false,
-          "pressure": 2,
-          "pending": [],
-          "health": 4,
-          "morale": 5
-        },
-        {
-          "day": 5,
-          "event_pressure": 1,
-          "destination": null,
-          "expedition_heroes": 0,
-          "clock": 0,
-          "cargo_needed": 0,
-          "cargo_capacity": 0,
-          "initial_enemies": 0,
+          "night_fatigue_per_expedition_hero": 0,
+          "extra_night_travel": null,
+          "additional_travel": null,
           "sampled_combat": [],
           "hordes": [],
           "rescue_card": null,
@@ -1786,6 +1819,48 @@
               "Depósito"
             ]
           },
+          "stock_before": {
+            "food": 2,
+            "water": 1,
+            "materials": 3,
+            "ammo": 0
+          },
+          "stock_after": {
+            "food": 0,
+            "water": 0,
+            "materials": 0,
+            "ammo": 0
+          },
+          "people": 6,
+          "dogs": 0,
+          "capacity": 8,
+          "shortage": [
+            6,
+            6
+          ],
+          "filter_work": 2,
+          "filter_active": false,
+          "pressure": 1,
+          "pending": [],
+          "health": 4,
+          "morale": 4
+        },
+        {
+          "day": 5,
+          "event_pressure": 1,
+          "destination": null,
+          "expedition_heroes": 0,
+          "clock": 0,
+          "cargo_needed": 0,
+          "cargo_capacity": 0,
+          "initial_enemies": 0,
+          "night_fatigue_per_expedition_hero": 0,
+          "extra_night_travel": null,
+          "additional_travel": null,
+          "sampled_combat": [],
+          "hordes": [],
+          "rescue_card": null,
+          "siege": null,
           "stock_before": {
             "food": 0,
             "water": 0,
@@ -1807,7 +1882,7 @@
           ],
           "filter_work": 4,
           "filter_active": true,
-          "pressure": 1,
+          "pressure": 2,
           "pending": [],
           "health": 3,
           "morale": 4
@@ -1875,6 +1950,9 @@
           "cargo_needed": 6,
           "cargo_capacity": 6,
           "initial_enemies": 2,
+          "night_fatigue_per_expedition_hero": 0,
+          "extra_night_travel": null,
+          "additional_travel": null,
           "sampled_combat": [
             {
               "enemy": "Errante",
@@ -1943,6 +2021,9 @@
           "cargo_needed": 6,
           "cargo_capacity": 6,
           "initial_enemies": 2,
+          "night_fatigue_per_expedition_hero": 0,
+          "extra_night_travel": null,
+          "additional_travel": null,
           "sampled_combat": [
             {
               "enemy": "Errante",
@@ -2011,6 +2092,9 @@
           "cargo_needed": 5,
           "cargo_capacity": 6,
           "initial_enemies": 2,
+          "night_fatigue_per_expedition_hero": 1,
+          "extra_night_travel": "ZC-VIA-0002",
+          "additional_travel": null,
           "sampled_combat": [
             {
               "enemy": "Errante",
@@ -2076,7 +2160,7 @@
           },
           "stock_after": {
             "food": 11,
-            "water": 11,
+            "water": 10,
             "materials": 3,
             "ammo": 2
           },
@@ -2103,6 +2187,9 @@
           "cargo_needed": 0,
           "cargo_capacity": 0,
           "initial_enemies": 0,
+          "night_fatigue_per_expedition_hero": 0,
+          "extra_night_travel": null,
+          "additional_travel": null,
           "sampled_combat": [],
           "hordes": [],
           "rescue_card": null,
@@ -2122,13 +2209,13 @@
           },
           "stock_before": {
             "food": 11,
-            "water": 11,
+            "water": 10,
             "materials": 3,
             "ammo": 2
           },
           "stock_after": {
             "food": 1,
-            "water": 1,
+            "water": 0,
             "materials": 0,
             "ammo": 0
           },
@@ -2155,19 +2242,22 @@
           "cargo_needed": 0,
           "cargo_capacity": 0,
           "initial_enemies": 0,
+          "night_fatigue_per_expedition_hero": 0,
+          "extra_night_travel": null,
+          "additional_travel": null,
           "sampled_combat": [],
           "hordes": [],
           "rescue_card": null,
           "siege": null,
           "stock_before": {
             "food": 1,
-            "water": 1,
+            "water": 0,
             "materials": 0,
             "ammo": 0
           },
           "stock_after": {
             "food": 0,
-            "water": 5,
+            "water": 4,
             "materials": 0,
             "ammo": 0
           },
@@ -2267,6 +2357,9 @@
           "cargo_needed": 9,
           "cargo_capacity": 9,
           "initial_enemies": 2,
+          "night_fatigue_per_expedition_hero": 0,
+          "extra_night_travel": null,
+          "additional_travel": null,
           "sampled_combat": [
             {
               "enemy": "Errante",
@@ -2335,6 +2428,9 @@
           "cargo_needed": 8,
           "cargo_capacity": 9,
           "initial_enemies": 2,
+          "night_fatigue_per_expedition_hero": 0,
+          "extra_night_travel": null,
+          "additional_travel": null,
           "sampled_combat": [
             {
               "enemy": "Errante",
@@ -2403,6 +2499,9 @@
           "cargo_needed": 6,
           "cargo_capacity": 6,
           "initial_enemies": 2,
+          "night_fatigue_per_expedition_hero": 1,
+          "extra_night_travel": "ZC-VIA-0002",
+          "additional_travel": null,
           "sampled_combat": [
             {
               "enemy": "Errante",
@@ -2468,7 +2567,7 @@
           },
           "stock_after": {
             "food": 29,
-            "water": 29,
+            "water": 28,
             "materials": 3,
             "ammo": 2
           },
@@ -2495,19 +2594,22 @@
           "cargo_needed": 0,
           "cargo_capacity": 0,
           "initial_enemies": 0,
+          "night_fatigue_per_expedition_hero": 0,
+          "extra_night_travel": null,
+          "additional_travel": null,
           "sampled_combat": [],
           "hordes": [],
           "rescue_card": null,
           "siege": null,
           "stock_before": {
             "food": 29,
-            "water": 29,
+            "water": 28,
             "materials": 3,
             "ammo": 2
           },
           "stock_after": {
             "food": 20,
-            "water": 20,
+            "water": 19,
             "materials": 0,
             "ammo": 2
           },
@@ -2534,6 +2636,9 @@
           "cargo_needed": 0,
           "cargo_capacity": 0,
           "initial_enemies": 0,
+          "night_fatigue_per_expedition_hero": 0,
+          "extra_night_travel": null,
+          "additional_travel": null,
           "sampled_combat": [],
           "hordes": [],
           "rescue_card": null,
@@ -2555,13 +2660,13 @@
           },
           "stock_before": {
             "food": 20,
-            "water": 20,
+            "water": 19,
             "materials": 0,
             "ammo": 2
           },
           "stock_after": {
             "food": 7,
-            "water": 29,
+            "water": 28,
             "materials": 0,
             "ammo": 0
           },
@@ -2634,6 +2739,9 @@
           "cargo_needed": 6,
           "cargo_capacity": 6,
           "initial_enemies": 2,
+          "night_fatigue_per_expedition_hero": 0,
+          "extra_night_travel": null,
+          "additional_travel": null,
           "sampled_combat": [
             {
               "enemy": "Errante",
@@ -2702,6 +2810,9 @@
           "cargo_needed": 6,
           "cargo_capacity": 6,
           "initial_enemies": 2,
+          "night_fatigue_per_expedition_hero": 0,
+          "extra_night_travel": null,
+          "additional_travel": "ZC-VIA-0007",
           "sampled_combat": [
             {
               "enemy": "Errante",
@@ -2756,7 +2867,7 @@
           ],
           "filter_work": 0,
           "filter_active": false,
-          "pressure": 1,
+          "pressure": 2,
           "pending": [],
           "health": 5,
           "morale": 5
@@ -2770,6 +2881,9 @@
           "cargo_needed": 5,
           "cargo_capacity": 6,
           "initial_enemies": 2,
+          "night_fatigue_per_expedition_hero": 1,
+          "extra_night_travel": "ZC-VIA-0002",
+          "additional_travel": null,
           "sampled_combat": [
             {
               "enemy": "Errante",
@@ -2834,7 +2948,7 @@
           },
           "stock_after": {
             "food": 15,
-            "water": 15,
+            "water": 14,
             "materials": 3,
             "ammo": 1
           },
@@ -2847,7 +2961,7 @@
           ],
           "filter_work": 0,
           "filter_active": false,
-          "pressure": 1,
+          "pressure": 2,
           "pending": [],
           "health": 5,
           "morale": 5
@@ -2861,45 +2975,9 @@
           "cargo_needed": 0,
           "cargo_capacity": 0,
           "initial_enemies": 0,
-          "sampled_combat": [],
-          "hordes": [],
-          "rescue_card": null,
-          "siege": null,
-          "stock_before": {
-            "food": 15,
-            "water": 15,
-            "materials": 3,
-            "ammo": 1
-          },
-          "stock_after": {
-            "food": 8,
-            "water": 8,
-            "materials": 0,
-            "ammo": 1
-          },
-          "people": 7,
-          "dogs": 0,
-          "capacity": 8,
-          "shortage": [
-            0,
-            0
-          ],
-          "filter_work": 2,
-          "filter_active": false,
-          "pressure": 2,
-          "pending": [],
-          "health": 5,
-          "morale": 5
-        },
-        {
-          "day": 5,
-          "event_pressure": 1,
-          "destination": null,
-          "expedition_heroes": 0,
-          "clock": 0,
-          "cargo_needed": 0,
-          "cargo_capacity": 0,
-          "initial_enemies": 0,
+          "night_fatigue_per_expedition_hero": 0,
+          "extra_night_travel": null,
+          "additional_travel": null,
           "sampled_combat": [],
           "hordes": [],
           "rescue_card": null,
@@ -2919,14 +2997,56 @@
             ]
           },
           "stock_before": {
-            "food": 8,
-            "water": 8,
-            "materials": 0,
+            "food": 15,
+            "water": 14,
+            "materials": 3,
             "ammo": 1
           },
           "stock_after": {
+            "food": 4,
+            "water": 7,
+            "materials": 0,
+            "ammo": 0
+          },
+          "people": 7,
+          "dogs": 0,
+          "capacity": 8,
+          "shortage": [
+            0,
+            0
+          ],
+          "filter_work": 2,
+          "filter_active": false,
+          "pressure": 1,
+          "pending": [],
+          "health": 5,
+          "morale": 5
+        },
+        {
+          "day": 5,
+          "event_pressure": 1,
+          "destination": null,
+          "expedition_heroes": 0,
+          "clock": 0,
+          "cargo_needed": 0,
+          "cargo_capacity": 0,
+          "initial_enemies": 0,
+          "night_fatigue_per_expedition_hero": 0,
+          "extra_night_travel": null,
+          "additional_travel": null,
+          "sampled_combat": [],
+          "hordes": [],
+          "rescue_card": null,
+          "siege": null,
+          "stock_before": {
+            "food": 4,
+            "water": 7,
+            "materials": 0,
+            "ammo": 0
+          },
+          "stock_after": {
             "food": 0,
-            "water": 11,
+            "water": 10,
             "materials": 0,
             "ammo": 0
           },
@@ -2939,7 +3059,7 @@
           ],
           "filter_work": 4,
           "filter_active": true,
-          "pressure": 1,
+          "pressure": 2,
           "pending": [],
           "health": 4,
           "morale": 5
@@ -3008,6 +3128,9 @@
           "cargo_needed": 9,
           "cargo_capacity": 9,
           "initial_enemies": 2,
+          "night_fatigue_per_expedition_hero": 0,
+          "extra_night_travel": null,
+          "additional_travel": null,
           "sampled_combat": [
             {
               "enemy": "Errante",
@@ -3076,6 +3199,9 @@
           "cargo_needed": 8,
           "cargo_capacity": 9,
           "initial_enemies": 2,
+          "night_fatigue_per_expedition_hero": 0,
+          "extra_night_travel": null,
+          "additional_travel": null,
           "sampled_combat": [
             {
               "enemy": "Errante",
@@ -3144,6 +3270,9 @@
           "cargo_needed": 6,
           "cargo_capacity": 6,
           "initial_enemies": 2,
+          "night_fatigue_per_expedition_hero": 1,
+          "extra_night_travel": "ZC-VIA-0002",
+          "additional_travel": null,
           "sampled_combat": [
             {
               "enemy": "Errante",
@@ -3209,7 +3338,7 @@
           },
           "stock_after": {
             "food": 23,
-            "water": 23,
+            "water": 22,
             "materials": 3,
             "ammo": 2
           },
@@ -3236,19 +3365,22 @@
           "cargo_needed": 0,
           "cargo_capacity": 0,
           "initial_enemies": 0,
+          "night_fatigue_per_expedition_hero": 0,
+          "extra_night_travel": null,
+          "additional_travel": null,
           "sampled_combat": [],
           "hordes": [],
           "rescue_card": null,
           "siege": null,
           "stock_before": {
             "food": 23,
-            "water": 23,
+            "water": 22,
             "materials": 3,
             "ammo": 2
           },
           "stock_after": {
             "food": 12,
-            "water": 12,
+            "water": 11,
             "materials": 0,
             "ammo": 2
           },
@@ -3275,6 +3407,9 @@
           "cargo_needed": 0,
           "cargo_capacity": 0,
           "initial_enemies": 0,
+          "night_fatigue_per_expedition_hero": 0,
+          "extra_night_travel": null,
+          "additional_travel": null,
           "sampled_combat": [],
           "hordes": [],
           "rescue_card": null,
@@ -3294,13 +3429,13 @@
           },
           "stock_before": {
             "food": 12,
-            "water": 12,
+            "water": 11,
             "materials": 0,
             "ammo": 2
           },
           "stock_after": {
             "food": 1,
-            "water": 19,
+            "water": 18,
             "materials": 0,
             "ammo": 0
           },
@@ -3384,6 +3519,9 @@
           "cargo_needed": 6,
           "cargo_capacity": 6,
           "initial_enemies": 3,
+          "night_fatigue_per_expedition_hero": 0,
+          "extra_night_travel": null,
+          "additional_travel": null,
           "sampled_combat": [
             {
               "enemy": "Errante",
@@ -3458,6 +3596,9 @@
           "cargo_needed": 6,
           "cargo_capacity": 6,
           "initial_enemies": 3,
+          "night_fatigue_per_expedition_hero": 0,
+          "extra_night_travel": null,
+          "additional_travel": null,
           "sampled_combat": [
             {
               "enemy": "Errante",
@@ -3532,6 +3673,9 @@
           "cargo_needed": 5,
           "cargo_capacity": 6,
           "initial_enemies": 3,
+          "night_fatigue_per_expedition_hero": 1,
+          "extra_night_travel": "ZC-VIA-0002",
+          "additional_travel": null,
           "sampled_combat": [
             {
               "enemy": "Errante",
@@ -3603,7 +3747,7 @@
           },
           "stock_after": {
             "food": 19,
-            "water": 19,
+            "water": 18,
             "materials": 3,
             "ammo": 2
           },
@@ -3630,19 +3774,22 @@
           "cargo_needed": 0,
           "cargo_capacity": 0,
           "initial_enemies": 0,
+          "night_fatigue_per_expedition_hero": 0,
+          "extra_night_travel": null,
+          "additional_travel": null,
           "sampled_combat": [],
           "hordes": [],
           "rescue_card": null,
           "siege": null,
           "stock_before": {
             "food": 19,
-            "water": 19,
+            "water": 18,
             "materials": 3,
             "ammo": 2
           },
           "stock_after": {
             "food": 12,
-            "water": 12,
+            "water": 11,
             "materials": 0,
             "ammo": 2
           },
@@ -3669,6 +3816,9 @@
           "cargo_needed": 0,
           "cargo_capacity": 0,
           "initial_enemies": 0,
+          "night_fatigue_per_expedition_hero": 0,
+          "extra_night_travel": null,
+          "additional_travel": null,
           "sampled_combat": [],
           "hordes": [],
           "rescue_card": null,
@@ -3688,13 +3838,13 @@
           },
           "stock_before": {
             "food": 12,
-            "water": 12,
+            "water": 11,
             "materials": 0,
             "ammo": 2
           },
           "stock_after": {
             "food": 5,
-            "water": 19,
+            "water": 18,
             "materials": 0,
             "ammo": 2
           },
@@ -3769,6 +3919,9 @@
           "cargo_needed": 9,
           "cargo_capacity": 9,
           "initial_enemies": 3,
+          "night_fatigue_per_expedition_hero": 0,
+          "extra_night_travel": null,
+          "additional_travel": null,
           "sampled_combat": [
             {
               "enemy": "Errante",
@@ -3843,6 +3996,9 @@
           "cargo_needed": 8,
           "cargo_capacity": 9,
           "initial_enemies": 3,
+          "night_fatigue_per_expedition_hero": 0,
+          "extra_night_travel": null,
+          "additional_travel": "ZC-VIA-0007",
           "sampled_combat": [
             {
               "enemy": "Errante",
@@ -3903,7 +4059,7 @@
           ],
           "filter_work": 0,
           "filter_active": false,
-          "pressure": 1,
+          "pressure": 2,
           "pending": [],
           "health": 5,
           "morale": 5
@@ -3917,6 +4073,9 @@
           "cargo_needed": 6,
           "cargo_capacity": 6,
           "initial_enemies": 3,
+          "night_fatigue_per_expedition_hero": 1,
+          "extra_night_travel": "ZC-VIA-0002",
+          "additional_travel": null,
           "sampled_combat": [
             {
               "enemy": "Errante",
@@ -3988,7 +4147,7 @@
           },
           "stock_after": {
             "food": 23,
-            "water": 23,
+            "water": 22,
             "materials": 3,
             "ammo": 2
           },
@@ -4001,7 +4160,7 @@
           ],
           "filter_work": 0,
           "filter_active": false,
-          "pressure": 1,
+          "pressure": 2,
           "pending": [],
           "health": 5,
           "morale": 5
@@ -4015,45 +4174,9 @@
           "cargo_needed": 0,
           "cargo_capacity": 0,
           "initial_enemies": 0,
-          "sampled_combat": [],
-          "hordes": [],
-          "rescue_card": null,
-          "siege": null,
-          "stock_before": {
-            "food": 23,
-            "water": 23,
-            "materials": 3,
-            "ammo": 2
-          },
-          "stock_after": {
-            "food": 12,
-            "water": 12,
-            "materials": 0,
-            "ammo": 2
-          },
-          "people": 10,
-          "dogs": 1,
-          "capacity": 10,
-          "shortage": [
-            0,
-            0
-          ],
-          "filter_work": 2,
-          "filter_active": false,
-          "pressure": 2,
-          "pending": [],
-          "health": 5,
-          "morale": 5
-        },
-        {
-          "day": 5,
-          "event_pressure": 1,
-          "destination": null,
-          "expedition_heroes": 0,
-          "clock": 0,
-          "cargo_needed": 0,
-          "cargo_capacity": 0,
-          "initial_enemies": 0,
+          "night_fatigue_per_expedition_hero": 0,
+          "extra_night_travel": null,
+          "additional_travel": null,
           "sampled_combat": [],
           "hordes": [],
           "rescue_card": null,
@@ -4072,14 +4195,56 @@
             "damaged": []
           },
           "stock_before": {
-            "food": 12,
-            "water": 12,
-            "materials": 0,
+            "food": 23,
+            "water": 22,
+            "materials": 3,
             "ammo": 2
           },
           "stock_after": {
+            "food": 12,
+            "water": 11,
+            "materials": 0,
+            "ammo": 1
+          },
+          "people": 10,
+          "dogs": 1,
+          "capacity": 10,
+          "shortage": [
+            0,
+            0
+          ],
+          "filter_work": 2,
+          "filter_active": false,
+          "pressure": 1,
+          "pending": [],
+          "health": 5,
+          "morale": 5
+        },
+        {
+          "day": 5,
+          "event_pressure": 1,
+          "destination": null,
+          "expedition_heroes": 0,
+          "clock": 0,
+          "cargo_needed": 0,
+          "cargo_capacity": 0,
+          "initial_enemies": 0,
+          "night_fatigue_per_expedition_hero": 0,
+          "extra_night_travel": null,
+          "additional_travel": null,
+          "sampled_combat": [],
+          "hordes": [],
+          "rescue_card": null,
+          "siege": null,
+          "stock_before": {
+            "food": 12,
+            "water": 11,
+            "materials": 0,
+            "ammo": 1
+          },
+          "stock_after": {
             "food": 1,
-            "water": 19,
+            "water": 18,
             "materials": 0,
             "ammo": 1
           },
@@ -4092,7 +4257,7 @@
           ],
           "filter_work": 4,
           "filter_active": true,
-          "pressure": 1,
+          "pressure": 2,
           "pending": [],
           "health": 5,
           "morale": 5
@@ -4161,6 +4326,9 @@
           "cargo_needed": 9,
           "cargo_capacity": 9,
           "initial_enemies": 3,
+          "night_fatigue_per_expedition_hero": 0,
+          "extra_night_travel": null,
+          "additional_travel": null,
           "sampled_combat": [
             {
               "enemy": "Errante",
@@ -4235,6 +4403,9 @@
           "cargo_needed": 8,
           "cargo_capacity": 9,
           "initial_enemies": 3,
+          "night_fatigue_per_expedition_hero": 0,
+          "extra_night_travel": null,
+          "additional_travel": null,
           "sampled_combat": [
             {
               "enemy": "Errante",
@@ -4309,6 +4480,9 @@
           "cargo_needed": 6,
           "cargo_capacity": 6,
           "initial_enemies": 3,
+          "night_fatigue_per_expedition_hero": 1,
+          "extra_night_travel": "ZC-VIA-0002",
+          "additional_travel": null,
           "sampled_combat": [
             {
               "enemy": "Errante",
@@ -4380,7 +4554,7 @@
           },
           "stock_after": {
             "food": 21,
-            "water": 21,
+            "water": 20,
             "materials": 3,
             "ammo": 2
           },
@@ -4407,19 +4581,22 @@
           "cargo_needed": 0,
           "cargo_capacity": 0,
           "initial_enemies": 0,
+          "night_fatigue_per_expedition_hero": 0,
+          "extra_night_travel": null,
+          "additional_travel": null,
           "sampled_combat": [],
           "hordes": [],
           "rescue_card": null,
           "siege": null,
           "stock_before": {
             "food": 21,
-            "water": 21,
+            "water": 20,
             "materials": 3,
             "ammo": 2
           },
           "stock_after": {
             "food": 8,
-            "water": 8,
+            "water": 7,
             "materials": 0,
             "ammo": 2
           },
@@ -4446,6 +4623,9 @@
           "cargo_needed": 0,
           "cargo_capacity": 0,
           "initial_enemies": 0,
+          "night_fatigue_per_expedition_hero": 0,
+          "extra_night_travel": null,
+          "additional_travel": null,
           "sampled_combat": [],
           "hordes": [],
           "rescue_card": null,
@@ -4465,13 +4645,13 @@
           },
           "stock_before": {
             "food": 8,
-            "water": 8,
+            "water": 7,
             "materials": 0,
             "ammo": 2
           },
           "stock_after": {
             "food": 0,
-            "water": 17,
+            "water": 16,
             "materials": 0,
             "ammo": 0
           },
@@ -4558,6 +4738,9 @@
           "cargo_needed": 9,
           "cargo_capacity": 9,
           "initial_enemies": 3,
+          "night_fatigue_per_expedition_hero": 0,
+          "extra_night_travel": null,
+          "additional_travel": null,
           "sampled_combat": [
             {
               "enemy": "Errante",
@@ -4632,6 +4815,9 @@
           "cargo_needed": 8,
           "cargo_capacity": 9,
           "initial_enemies": 3,
+          "night_fatigue_per_expedition_hero": 0,
+          "extra_night_travel": null,
+          "additional_travel": null,
           "sampled_combat": [
             {
               "enemy": "Errante",
@@ -4706,6 +4892,9 @@
           "cargo_needed": 6,
           "cargo_capacity": 6,
           "initial_enemies": 3,
+          "night_fatigue_per_expedition_hero": 1,
+          "extra_night_travel": "ZC-VIA-0002",
+          "additional_travel": null,
           "sampled_combat": [
             {
               "enemy": "Errante",
@@ -4777,7 +4966,7 @@
           },
           "stock_after": {
             "food": 27,
-            "water": 27,
+            "water": 26,
             "materials": 3,
             "ammo": 2
           },
@@ -4804,19 +4993,22 @@
           "cargo_needed": 0,
           "cargo_capacity": 0,
           "initial_enemies": 0,
+          "night_fatigue_per_expedition_hero": 0,
+          "extra_night_travel": null,
+          "additional_travel": null,
           "sampled_combat": [],
           "hordes": [],
           "rescue_card": null,
           "siege": null,
           "stock_before": {
             "food": 27,
-            "water": 27,
+            "water": 26,
             "materials": 3,
             "ammo": 2
           },
           "stock_after": {
             "food": 16,
-            "water": 16,
+            "water": 15,
             "materials": 0,
             "ammo": 2
           },
@@ -4843,6 +5035,9 @@
           "cargo_needed": 0,
           "cargo_capacity": 0,
           "initial_enemies": 0,
+          "night_fatigue_per_expedition_hero": 0,
+          "extra_night_travel": null,
+          "additional_travel": null,
           "sampled_combat": [],
           "hordes": [],
           "rescue_card": null,
@@ -4862,13 +5057,13 @@
           },
           "stock_before": {
             "food": 16,
-            "water": 16,
+            "water": 15,
             "materials": 0,
             "ammo": 2
           },
           "stock_after": {
             "food": 5,
-            "water": 27,
+            "water": 26,
             "materials": 0,
             "ammo": 0
           },
@@ -4946,6 +5141,9 @@
           "cargo_needed": 9,
           "cargo_capacity": 9,
           "initial_enemies": 3,
+          "night_fatigue_per_expedition_hero": 0,
+          "extra_night_travel": null,
+          "additional_travel": null,
           "sampled_combat": [
             {
               "enemy": "Errante",
@@ -5020,6 +5218,9 @@
           "cargo_needed": 8,
           "cargo_capacity": 9,
           "initial_enemies": 3,
+          "night_fatigue_per_expedition_hero": 0,
+          "extra_night_travel": null,
+          "additional_travel": "ZC-VIA-0007",
           "sampled_combat": [
             {
               "enemy": "Errante",
@@ -5080,7 +5281,7 @@
           ],
           "filter_work": 0,
           "filter_active": false,
-          "pressure": 1,
+          "pressure": 2,
           "pending": [],
           "health": 5,
           "morale": 5
@@ -5094,6 +5295,9 @@
           "cargo_needed": 6,
           "cargo_capacity": 6,
           "initial_enemies": 3,
+          "night_fatigue_per_expedition_hero": 1,
+          "extra_night_travel": "ZC-VIA-0002",
+          "additional_travel": null,
           "sampled_combat": [
             {
               "enemy": "Errante",
@@ -5165,7 +5369,7 @@
           },
           "stock_after": {
             "food": 21,
-            "water": 21,
+            "water": 20,
             "materials": 3,
             "ammo": 2
           },
@@ -5178,7 +5382,7 @@
           ],
           "filter_work": 0,
           "filter_active": false,
-          "pressure": 1,
+          "pressure": 2,
           "pending": [],
           "health": 5,
           "morale": 5
@@ -5192,45 +5396,9 @@
           "cargo_needed": 0,
           "cargo_capacity": 0,
           "initial_enemies": 0,
-          "sampled_combat": [],
-          "hordes": [],
-          "rescue_card": null,
-          "siege": null,
-          "stock_before": {
-            "food": 21,
-            "water": 21,
-            "materials": 3,
-            "ammo": 2
-          },
-          "stock_after": {
-            "food": 8,
-            "water": 8,
-            "materials": 0,
-            "ammo": 2
-          },
-          "people": 12,
-          "dogs": 1,
-          "capacity": 12,
-          "shortage": [
-            0,
-            0
-          ],
-          "filter_work": 2,
-          "filter_active": false,
-          "pressure": 2,
-          "pending": [],
-          "health": 5,
-          "morale": 5
-        },
-        {
-          "day": 5,
-          "event_pressure": 1,
-          "destination": null,
-          "expedition_heroes": 0,
-          "clock": 0,
-          "cargo_needed": 0,
-          "cargo_capacity": 0,
-          "initial_enemies": 0,
+          "night_fatigue_per_expedition_hero": 0,
+          "extra_night_travel": null,
+          "additional_travel": null,
           "sampled_combat": [],
           "hordes": [],
           "rescue_card": null,
@@ -5249,14 +5417,56 @@
             "damaged": []
           },
           "stock_before": {
-            "food": 8,
-            "water": 8,
-            "materials": 0,
+            "food": 21,
+            "water": 20,
+            "materials": 3,
             "ammo": 2
           },
           "stock_after": {
+            "food": 8,
+            "water": 7,
+            "materials": 0,
+            "ammo": 1
+          },
+          "people": 12,
+          "dogs": 1,
+          "capacity": 12,
+          "shortage": [
+            0,
+            0
+          ],
+          "filter_work": 2,
+          "filter_active": false,
+          "pressure": 1,
+          "pending": [],
+          "health": 5,
+          "morale": 5
+        },
+        {
+          "day": 5,
+          "event_pressure": 1,
+          "destination": null,
+          "expedition_heroes": 0,
+          "clock": 0,
+          "cargo_needed": 0,
+          "cargo_capacity": 0,
+          "initial_enemies": 0,
+          "night_fatigue_per_expedition_hero": 0,
+          "extra_night_travel": null,
+          "additional_travel": null,
+          "sampled_combat": [],
+          "hordes": [],
+          "rescue_card": null,
+          "siege": null,
+          "stock_before": {
+            "food": 8,
+            "water": 7,
+            "materials": 0,
+            "ammo": 1
+          },
+          "stock_after": {
             "food": 0,
-            "water": 17,
+            "water": 16,
             "materials": 0,
             "ammo": 1
           },
@@ -5269,7 +5479,7 @@
           ],
           "filter_work": 4,
           "filter_active": true,
-          "pressure": 1,
+          "pressure": 2,
           "pending": [],
           "health": 4,
           "morale": 5
@@ -5343,6 +5553,9 @@
           "cargo_needed": 12,
           "cargo_capacity": 12,
           "initial_enemies": 3,
+          "night_fatigue_per_expedition_hero": 0,
+          "extra_night_travel": null,
+          "additional_travel": null,
           "sampled_combat": [
             {
               "enemy": "Errante",
@@ -5417,6 +5630,9 @@
           "cargo_needed": 10,
           "cargo_capacity": 12,
           "initial_enemies": 3,
+          "night_fatigue_per_expedition_hero": 0,
+          "extra_night_travel": null,
+          "additional_travel": null,
           "sampled_combat": [
             {
               "enemy": "Errante",
@@ -5491,6 +5707,9 @@
           "cargo_needed": 7,
           "cargo_capacity": 9,
           "initial_enemies": 3,
+          "night_fatigue_per_expedition_hero": 1,
+          "extra_night_travel": "ZC-VIA-0002",
+          "additional_travel": null,
           "sampled_combat": [
             {
               "enemy": "Errante",
@@ -5562,7 +5781,7 @@
           },
           "stock_after": {
             "food": 31,
-            "water": 31,
+            "water": 30,
             "materials": 3,
             "ammo": 2
           },
@@ -5589,19 +5808,22 @@
           "cargo_needed": 0,
           "cargo_capacity": 0,
           "initial_enemies": 0,
+          "night_fatigue_per_expedition_hero": 0,
+          "extra_night_travel": null,
+          "additional_travel": null,
           "sampled_combat": [],
           "hordes": [],
           "rescue_card": null,
           "siege": null,
           "stock_before": {
             "food": 31,
-            "water": 31,
+            "water": 30,
             "materials": 3,
             "ammo": 2
           },
           "stock_after": {
             "food": 16,
-            "water": 16,
+            "water": 15,
             "materials": 0,
             "ammo": 2
           },
@@ -5628,6 +5850,9 @@
           "cargo_needed": 0,
           "cargo_capacity": 0,
           "initial_enemies": 0,
+          "night_fatigue_per_expedition_hero": 0,
+          "extra_night_travel": null,
+          "additional_travel": null,
           "sampled_combat": [],
           "hordes": [],
           "rescue_card": null,
@@ -5647,13 +5872,13 @@
           },
           "stock_before": {
             "food": 16,
-            "water": 16,
+            "water": 15,
             "materials": 0,
             "ammo": 2
           },
           "stock_after": {
             "food": 1,
-            "water": 27,
+            "water": 26,
             "materials": 0,
             "ammo": 1
           },
@@ -5702,6 +5927,6 @@
     "plano_de_fases_possivel": 7,
     "derrota_ou_bloqueio_na_amostra": 8
   },
-  "full_tactical_replays": 0,
+  "tactical_replays_within_phase_model": 0,
   "campaign_validated": false
 }

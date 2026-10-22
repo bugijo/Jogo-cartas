@@ -8,6 +8,8 @@ Lote 10 concluiu a revisão artística das 39 cartas pendentes e gerou os dois P
 
 `src/build_campaign_report.py` reproduz 15 ensaios de fases de cinco dias com sementes H=2–6 e registra o replay tático antigo em `kit-final-prova/auditoria/CAMPANHA_REPLAY_RELATORIO.md`. Todos os vínculos de H=2–6 cabem; folhas condicionais e suporte impresso foram conferidos. O roteiro Lia/Ivo só é tático para H=2; com os inimigos iniciais de H=3–6, falta 1 PA a Lia no Mercado/rodada 4. Isso exige novo roteiro para os heróis adicionais, sem alterar dificuldade. Guia de preenchimento do registro H3–6 atualizado. Sem impressão física nem playtest.
 
+Atualização do mesmo lote: `src/scaled_tactical_replay.py` acrescentou um roteiro novo com Caio para H3–6, Hordas `Aglomerado` escaladas, busca do Mercado e resgate de Bia em H2–5. Cinco trajetórias fixas de cinco dias chegaram à vitória sob dados/ordem favoráveis. O bloqueio acima pertence **somente ao roteiro antigo**, preservado como diagnóstico. Efeitos alternativos e equilíbrio permanecem sem validação.
+
 
 Ver [LOTES_02_04.md](LOTES_02_04.md). Não repetir hospital, oficina, 18 retratos ou 24 peões. Próximos: estação, posto, condomínio, módulos comuns e 76 cartas ainda não revisadas. Publicação dos checkpoints novos deve ser conferida no remoto.
 

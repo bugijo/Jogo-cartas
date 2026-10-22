@@ -155,9 +155,13 @@ def phase_replay(h: int, seed: int, profile: str):
                     rescue=take_intent(day,1,'Bia')
             else:
                 state['parts'].update(('Bomba','Membrana'))
-                stock['water']+=4*lot
+                stock['water']+=4*lot-1  # retorno no segmento 9: Viagem extra VIA-0002, opção −1 água levada
                 if profile=='limite' and state['people']+2<=cap+2:
                     rescue=take_intent(day,2,'Vicente e Sol')
+            if profile=='dificil' and day==2:
+                # VIA-0007: Ruído distante (+1 Pressão externa) nesta ida.
+                old=state['pressure'];state['pressure']=min(3,old+1)
+                if old<3 and state['pressure']==3:state['pending'].append('Pressão')
         # Uma ameaça por noite, antes dos trabalhos; excedentes ficam pendentes.
         siege=None
         if state['pending']:
@@ -195,6 +199,9 @@ def phase_replay(h: int, seed: int, profile: str):
             state['health']-=1;state['morale']-=1
         logs.append(dict(day=day,event_pressure=event_pressure,destination=dest,expedition_heroes=team,
                          clock=clock,cargo_needed=loads,cargo_capacity=3*team,initial_enemies=ceil(h/2) if dest else 0,
+                         night_fatigue_per_expedition_hero=(1 if day==3 else 0),
+                         extra_night_travel=('ZC-VIA-0002' if day==3 else None),
+                         additional_travel=('ZC-VIA-0007' if profile=='dificil' and day==2 else None),
                          sampled_combat=combat,hordes=hordes,rescue_card=rescue,siege=siege,
                          stock_before=before,stock_after=dict(stock),people=state['people'],dogs=state['dogs'],
                          capacity=cap,shortage=shortage,filter_work=state['filter_work'],
@@ -222,7 +229,7 @@ def run_matrix():
         for profile,offset in (('favoravel',101),('dificil',202),('limite',303)):
             rows.append(phase_replay(h,h*1000+offset,profile))
     return dict(setups=check_all_setups(),runs=rows,summary=Counter(x['result'] for x in rows),
-                full_tactical_replays=0,campaign_validated=False)
+                tactical_replays_within_phase_model=0,campaign_validated=False)
 
 
 if __name__=='__main__':
