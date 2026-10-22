@@ -5,6 +5,7 @@ from pathlib import Path
 sys.path.insert(0, str(Path(__file__).resolve().parents[1] / 'src'))
 from final_digital_review import setups, independent_route_ledgers, pdf_index_check, wilson
 from scaled_tactical_replay import run
+from campaign_seeded_review import phase_replay
 
 
 class FinalDigitalReviewTest(unittest.TestCase):
@@ -31,6 +32,11 @@ class FinalDigitalReviewTest(unittest.TestCase):
     def test_interval_is_about_model_sampling(self):
         self.assertEqual(wilson(0, 10)[0], 0)
         self.assertEqual(wilson(10, 10)[1], 1)
+
+    def test_phase_seed_is_reproducible_but_not_a_tactical_replay(self):
+        a=phase_replay(3,32027,'dificil')
+        self.assertEqual(a,phase_replay(3,32027,'dificil'))
+        self.assertFalse(a['tactical_verified'])
 
 
 if __name__ == '__main__': unittest.main()

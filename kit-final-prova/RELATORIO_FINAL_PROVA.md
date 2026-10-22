@@ -1,3 +1,5 @@
+> Revisão posterior: [relatório digital e limites](auditoria/REVISAO_DIGITAL_RELATORIO.md), [750 sementes](auditoria/REVISAO_DIGITAL_FINAL.json) e [roteiro de playtest](playtest/ROTEIRO_E_REGISTRO_PLAYTEST.pdf). Este fechamento artístico permanece como registro histórico; resultados de simulação aqui podem estar superados pela revisão posterior.
+
 # Fechamento digital da seleção pós-apocalíptica
 
 Esta é uma **prova de seleção**, preservada ao lado da edição 0.6. As 39 cartas restantes (lote 10) completam 114/114 IDs selecionados com arte revista. Os quatro módulos comuns (lote 11) completam sete alternativas de mapa: seis destinos temáticos e uma montagem comum reutilizável. Nenhuma regra ou texto de carta foi alterado nesses lotes.

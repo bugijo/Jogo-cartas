@@ -109,8 +109,13 @@ Os quatro módulos comuns revisados já estão incluídos na contagem. Servem ao
 
 As provas e comparações dos lotes são documentos de revisão; **não são componentes adicionais**. Use uma cópia por PDF listado. Reimpressão de registro consumido é opcional e não foi somada.
 
+## Provas opcionais antes da partida
+
+- [CALIBRACAO_FRENTE_VERSO_A4.pdf](playtest/CALIBRACAO_FRENTE_VERSO_A4.pdf): uma folha duplex adicional; confira as marcas e a régua de 100 mm na própria impressora. Não substitui a calibração já incluída nas contagens.
+- [ROTEIRO_E_REGISTRO_PLAYTEST.pdf](playtest/ROTEIRO_E_REGISTRO_PLAYTEST.pdf): página 1 uma cópia, página 2 cinco cópias, página 3 uma cópia só para 3–6 pessoas. São 6 folhas opcionais para solo/dupla, 7 para 3–6.
+
 ## Limites desta seleção
 
-- A análise de preparo cobre todas as combinações de vínculos para H=2–6; a simulação completa de cinco dias, impressão física e playtest humano continuam pendentes.
+- A análise de preparo cobre as 2.497 combinações de vínculos para H=2–6. Há cinco trajetórias táticas fixas de cinco dias e ensaios de fases com sementes; decisões/cartas alternativas não foram reproduzidas integralmente zona por zona. Impressão física e playtest humano continuam pendentes.
 - Dados d6 (três), lápis, tesoura e envelopes/sleeves opacos são materiais de mesa externos.
 - O método manual H>2 usa frente/verso condicionais separados. Mantenha o verso secreto sem IDs visíveis.

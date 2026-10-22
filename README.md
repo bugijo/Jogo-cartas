@@ -1,4 +1,6 @@
-> Prova artística atual: [Posto de combustível em quatro A4](samples/kit-pos-apocaliptico/lote-08-posto/POSTO_4_A4.pdf), [comparação](samples/kit-pos-apocaliptico/lote-08-posto/COMPARACAO_B_ANTES_DEPOIS.jpg) e [relatório](samples/kit-pos-apocaliptico/lote-08-posto/RELATORIO.md). Esta prova não substitui automaticamente o kit distribuído.
+> Estado atual da branch de provas: [índice de impressão](kit-final-prova/INDICE_IMPRESSAO_CONSOLIDADO.md), [revisão digital](kit-final-prova/auditoria/REVISAO_DIGITAL_RELATORIO.md) e [pacote de playtest](kit-final-prova/playtest/ROTEIRO_E_REGISTRO_PLAYTEST.pdf). O restante desta página registra etapas anteriores; use esses três documentos para a seleção atual. Nenhum playtest humano ou alinhamento físico foi realizado.
+
+> Prova artística anterior: [Posto de combustível em quatro A4](samples/kit-pos-apocaliptico/lote-08-posto/POSTO_4_A4.pdf), [comparação](samples/kit-pos-apocaliptico/lote-08-posto/COMPARACAO_B_ANTES_DEPOIS.jpg) e [relatório](samples/kit-pos-apocaliptico/lote-08-posto/RELATORIO.md).
 
 # Lote 07 — moradores nas cartas
 

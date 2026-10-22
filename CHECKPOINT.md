@@ -1,3 +1,11 @@
+# Checkpoint atual — revisão digital e preparo do playtest
+
+Branch `arte/kit-pos-apocaliptico-provas`, base conferida `f02de29`. [Relatório atual](kit-final-prova/auditoria/REVISAO_DIGITAL_RELATORIO.md), [dados e sementes](kit-final-prova/auditoria/REVISAO_DIGITAL_FINAL.json), [índice](kit-final-prova/INDICE_IMPRESSAO_CONSOLIDADO.md), [calibração](kit-final-prova/playtest/CALIBRACAO_FRENTE_VERSO_A4.pdf) e [roteiro de mesa](kit-final-prova/playtest/ROTEIRO_E_REGISTRO_PLAYTEST.pdf). Foram auditadas as 2.497 combinações iniciais; cinco rotas táticas antigas e cinco ramos alternativos de acolhimento; 750 ensaios de fases com hipóteses explícitas. A escolha de acolher Bia na rota fixa H6 falta quatro porções na quinta refeição; nenhum equilíbrio foi alterado. PDFs selecionados e fontes usados foram verificados; as folhas condicionais tiveram apenas cabeçalhos recompostos com fonte incorporada, texto idêntico. O material está preparado para playtest exploratório; simulação tática ampla, impressão física, duplex real, corte e playtest permanecem pendentes.
+
+Retomada: executar uma partida humana de duas pessoas com o PDF de registro, medir a folha de calibração na impressora, documentar toda dúvida por dia/fase/ID. Não reabrir arte aprovada sem defeito concreto. Os checkpoints abaixo são históricos e podem mencionar pendências artísticas já resolvidas.
+
+---
+
 # Lote 08 — posto de combustível
 
 [Quatro A4 e prova de 100 mm](samples/kit-pos-apocaliptico/lote-08-posto/RELATORIO.md): posto em ambiente contínuo, 175 ppi, com 21 conexões revisadas e passagens retocadas. Próximos: condomínio, módulos comuns e 39 IDs de cartas para revisão artística.

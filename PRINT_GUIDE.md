@@ -70,3 +70,9 @@ Para esta seleção, consulte [INDICE_IMPRESSAO_CONSOLIDADO.md](kit-final-prova/
 
 Para H>2, o campo `Local` do registro aceita o ID ou nome de qualquer herói; as letras `L/I` impressas são exemplos de Lia e Ivo. Para H5/H6, anote as barracas iniciais adicionais em T08/T09. Isso explicita o preenchimento da ficha existente, sem mudar custo, capacidade ou terreno.
 
+## Prova da impressora e próxima partida humana
+
+Antes do kit, imprima [CALIBRACAO_FRENTE_VERSO_A4.pdf](kit-final-prova/playtest/CALIBRACAO_FRENTE_VERSO_A4.pdf) em uma folha A4 duplex, retrato, virada na borda longa, 100% sem ajustar. Meça a régua de 100 mm e observe as quatro marcas frente/verso por transparência. Essa folha é opcional e adicional ao kit selecionado; não substitui o teste real de corte e opacidade.
+
+Use [ROTEIRO_E_REGISTRO_PLAYTEST.pdf](kit-final-prova/playtest/ROTEIRO_E_REGISTRO_PLAYTEST.pdf): página 1 uma vez e página 2 cinco vezes para solo/dupla (6 folhas adicionais); para 3–6 pessoas, acrescente a página 3 (7 folhas). O roteiro explica o que separar, como registrar as fases e como fotografar uma dúvida sem riscar componentes. O [relatório digital](kit-final-prova/auditoria/REVISAO_DIGITAL_RELATORIO.md) registra os testes e limites atuais. Impressão física e playtest ainda não ocorreram.
+
