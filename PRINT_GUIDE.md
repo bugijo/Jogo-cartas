@@ -64,3 +64,7 @@ Mapas: corte 277 × 190 mm, M1/M2 acima de M3/M4, todos LADO A, união sem sobre
 <!-- TABULEIROS06 -->
 ## Atualização 0.6
 Já tem a 0.5: baixe SOMENTE_MAPAS. Troque as quatro folhas comuns OU quatro folhas do destino escolhido. Diagramas novos são substitutos, podem ficar na tela. Cada mapa é A4 paisagem, uma face; 100%, sem ajustar; corte 277×190 mm e una sem sobreposição em 554×380 mm, M1/M2 acima, M3/M4 abaixo. Nenhuma face B. Cartas, calibração, peões, painel e abrigo da 0.5 continuam válidos. Kits completos conservam 58 duplex ou 72 manual; não misturar métodos. Miniaturas de guias não substituem os módulos na escala de jogo.
+# Seleção pós-apocalíptica atual
+
+Para esta seleção, consulte [INDICE_IMPRESSAO_CONSOLIDADO.md](kit-final-prova/INDICE_IMPRESSAO_CONSOLIDADO.md). Solo/dupla: 58 folhas duplex ou 72 folhas recortar e colar. Para 3–6 pessoas: 67 ou 83 folhas, respectivamente, usando as fichas de 24 heróis, peões recortáveis e duas folhas condicionais (quatro no método manual). Escolha um método, imprima a 100% sem ajustar, e teste primeiro a calibração. Mapas temáticos substituem as quatro folhas comuns para uma sessão; não são folhas obrigatórias adicionais. O relatório digital e seus limites estão em [RELATORIO_FINAL_PROVA.md](kit-final-prova/RELATORIO_FINAL_PROVA.md).
+

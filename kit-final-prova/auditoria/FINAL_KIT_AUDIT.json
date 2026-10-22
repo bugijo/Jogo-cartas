@@ -1,0 +1,931 @@
+{
+  "base_sheets": {
+    "duplex": {
+      "initial": 25,
+      "supplement": 33
+    },
+    "manual": {
+      "initial": 33,
+      "supplement": 39
+    }
+  },
+  "files": [
+    {
+      "stage": "initial",
+      "method": "both",
+      "sheets": 6,
+      "kind": "guia",
+      "path": "output/edicao-tabuleiros-v0.6/ilustrada/01_GUIA_E_REGRAS/COMECE_AQUI.pdf",
+      "pages": 6,
+      "expected_pages": 6,
+      "pages_ok": true,
+      "a4": true,
+      "duplex_even": true,
+      "sizes_mm": [
+        [
+          210.0,
+          297.0
+        ]
+      ],
+      "text_outside_page": [],
+      "fontless_text_pages": []
+    },
+    {
+      "stage": "initial",
+      "method": "both",
+      "sheets": 1,
+      "kind": "fichas compactas",
+      "path": "output/edicao-tabuleiros-v0.6/ilustrada/05_PAINEIS/FICHAS_LIA_IVO.pdf",
+      "pages": 1,
+      "expected_pages": 1,
+      "pages_ok": true,
+      "a4": true,
+      "duplex_even": true,
+      "sizes_mm": [
+        [
+          210.0,
+          297.0
+        ]
+      ],
+      "text_outside_page": [],
+      "fontless_text_pages": []
+    },
+    {
+      "stage": "initial",
+      "method": "both",
+      "sheets": 3,
+      "kind": "abrigo e registros",
+      "path": "output/edicao-tabuleiros-v0.6/ilustrada/05_PAINEIS/ABRIGO_MORADORES_ESTOQUE.pdf",
+      "pages": 3,
+      "expected_pages": 3,
+      "pages_ok": true,
+      "a4": true,
+      "duplex_even": true,
+      "sizes_mm": [
+        [
+          297.0,
+          210.0
+        ]
+      ],
+      "text_outside_page": [],
+      "fontless_text_pages": []
+    },
+    {
+      "stage": "initial",
+      "method": "both",
+      "sheets": 1,
+      "kind": "marcadores planos",
+      "path": "output/edicao-tabuleiros-v0.6/ilustrada/07_MARCADORES_E_DIVISORIAS/MARCADORES_INICIAIS.pdf",
+      "pages": 1,
+      "expected_pages": 1,
+      "pages_ok": true,
+      "a4": true,
+      "duplex_even": true,
+      "sizes_mm": [
+        [
+          210.0,
+          297.0
+        ]
+      ],
+      "text_outside_page": [],
+      "fontless_text_pages": []
+    },
+    {
+      "stage": "initial",
+      "method": "both",
+      "sheets": 1,
+      "kind": "divisórias",
+      "path": "output/edicao-tabuleiros-v0.6/ilustrada/07_MARCADORES_E_DIVISORIAS/DIVISORIAS.pdf",
+      "pages": 1,
+      "expected_pages": 1,
+      "pages_ok": true,
+      "a4": true,
+      "duplex_even": true,
+      "sizes_mm": [
+        [
+          210.0,
+          297.0
+        ]
+      ],
+      "text_outside_page": [],
+      "fontless_text_pages": []
+    },
+    {
+      "stage": "initial",
+      "method": "duplex",
+      "sheets": 1,
+      "kind": "calibração",
+      "path": "output/edicao-tabuleiros-v0.6/ilustrada/02_CARTAS_DUPLEX/CALIBRACAO_DUPLEX.pdf",
+      "pages": 2,
+      "expected_pages": 2,
+      "pages_ok": true,
+      "a4": true,
+      "duplex_even": true,
+      "sizes_mm": [
+        [
+          210.0,
+          297.0
+        ]
+      ],
+      "text_outside_page": [],
+      "fontless_text_pages": []
+    },
+    {
+      "stage": "supplement",
+      "method": "both",
+      "sheets": 6,
+      "kind": "fichas compactas",
+      "path": "output/edicao-tabuleiros-v0.6/ilustrada/05_PAINEIS/FICHAS_RESGATAVEIS.pdf",
+      "pages": 6,
+      "expected_pages": 6,
+      "pages_ok": true,
+      "a4": true,
+      "duplex_even": true,
+      "sizes_mm": [
+        [
+          210.0,
+          297.0
+        ]
+      ],
+      "text_outside_page": [],
+      "fontless_text_pages": []
+    },
+    {
+      "stage": "supplement",
+      "method": "both",
+      "sheets": 8,
+      "kind": "manual",
+      "path": "output/edicao-tabuleiros-v0.6/ilustrada/01_GUIA_E_REGRAS/MANUAL.pdf",
+      "pages": 8,
+      "expected_pages": 8,
+      "pages_ok": true,
+      "a4": true,
+      "duplex_even": true,
+      "sizes_mm": [
+        [
+          210.0,
+          297.0
+        ]
+      ],
+      "text_outside_page": [],
+      "fontless_text_pages": []
+    },
+    {
+      "stage": "supplement",
+      "method": "both",
+      "sheets": 3,
+      "kind": "campanha",
+      "path": "output/edicao-tabuleiros-v0.6/ilustrada/01_GUIA_E_REGRAS/CAMPANHA.pdf",
+      "pages": 3,
+      "expected_pages": 3,
+      "pages_ok": true,
+      "a4": true,
+      "duplex_even": true,
+      "sizes_mm": [
+        [
+          210.0,
+          297.0
+        ]
+      ],
+      "text_outside_page": [],
+      "fontless_text_pages": []
+    },
+    {
+      "stage": "supplement",
+      "method": "both",
+      "sheets": 1,
+      "kind": "rotas",
+      "path": "output/edicao-tabuleiros-v0.6/ilustrada/06_TABULEIROS/SANTA_AURORA_ROTAS.pdf",
+      "pages": 1,
+      "expected_pages": 1,
+      "pages_ok": true,
+      "a4": true,
+      "duplex_even": true,
+      "sizes_mm": [
+        [
+          297.0,
+          210.0
+        ]
+      ],
+      "text_outside_page": [],
+      "fontless_text_pages": []
+    },
+    {
+      "stage": "supplement",
+      "method": "both",
+      "sheets": 2,
+      "kind": "registro",
+      "path": "output/edicao-tabuleiros-v0.6/ilustrada/05_PAINEIS/REGISTRO_ADICIONAL.pdf",
+      "pages": 2,
+      "expected_pages": 2,
+      "pages_ok": true,
+      "a4": true,
+      "duplex_even": true,
+      "sizes_mm": [
+        [
+          297.0,
+          210.0
+        ]
+      ],
+      "text_outside_page": [],
+      "fontless_text_pages": []
+    },
+    {
+      "stage": "supplement",
+      "method": "both",
+      "sheets": 1,
+      "kind": "marcadores planos",
+      "path": "output/edicao-tabuleiros-v0.6/ilustrada/07_MARCADORES_E_DIVISORIAS/MARCADORES_RESGATAVEIS.pdf",
+      "pages": 1,
+      "expected_pages": 1,
+      "pages_ok": true,
+      "a4": true,
+      "duplex_even": true,
+      "sizes_mm": [
+        [
+          210.0,
+          297.0
+        ]
+      ],
+      "text_outside_page": [],
+      "fontless_text_pages": []
+    },
+    {
+      "stage": "supplement",
+      "method": "both",
+      "sheets": 1,
+      "kind": "moradores",
+      "path": "output/edicao-tabuleiros-v0.6/ilustrada/05_PAINEIS/MORADORES_ADICIONAL.pdf",
+      "pages": 1,
+      "expected_pages": 1,
+      "pages_ok": true,
+      "a4": true,
+      "duplex_even": true,
+      "sizes_mm": [
+        [
+          297.0,
+          210.0
+        ]
+      ],
+      "text_outside_page": [],
+      "fontless_text_pages": []
+    },
+    {
+      "stage": "initial",
+      "method": "duplex",
+      "sheets": 7,
+      "kind": "cartas",
+      "path": "samples/kit-pos-apocaliptico/lote-10-cartas-restantes/pdfs/02_CARTAS_DUPLEX/KIT_INICIAL_1_DUPLEX.pdf",
+      "pages": 14,
+      "expected_pages": 14,
+      "pages_ok": true,
+      "a4": true,
+      "duplex_even": true,
+      "sizes_mm": [
+        [
+          210.0,
+          297.0
+        ]
+      ],
+      "text_outside_page": [],
+      "fontless_text_pages": []
+    },
+    {
+      "stage": "initial",
+      "method": "manual",
+      "sheets": 7,
+      "kind": "cartas",
+      "path": "samples/kit-pos-apocaliptico/lote-10-cartas-restantes/pdfs/03_CARTAS_RECORTAR_E_COLAR/KIT_INICIAL_1_FRENTES.pdf",
+      "pages": 7,
+      "expected_pages": 7,
+      "pages_ok": true,
+      "a4": true,
+      "duplex_even": true,
+      "sizes_mm": [
+        [
+          210.0,
+          297.0
+        ]
+      ],
+      "text_outside_page": [],
+      "fontless_text_pages": []
+    },
+    {
+      "stage": "initial",
+      "method": "manual",
+      "sheets": 7,
+      "kind": "cartas",
+      "path": "samples/kit-pos-apocaliptico/lote-10-cartas-restantes/pdfs/03_CARTAS_RECORTAR_E_COLAR/KIT_INICIAL_1_VERSOS.pdf",
+      "pages": 7,
+      "expected_pages": 7,
+      "pages_ok": true,
+      "a4": true,
+      "duplex_even": true,
+      "sizes_mm": [
+        [
+          210.0,
+          297.0
+        ]
+      ],
+      "text_outside_page": [],
+      "fontless_text_pages": []
+    },
+    {
+      "stage": "supplement",
+      "method": "duplex",
+      "sheets": 6,
+      "kind": "cartas",
+      "path": "samples/kit-pos-apocaliptico/lote-10-cartas-restantes/pdfs/02_CARTAS_DUPLEX/KIT_COMPLEMENTO_2_DUPLEX.pdf",
+      "pages": 12,
+      "expected_pages": 12,
+      "pages_ok": true,
+      "a4": true,
+      "duplex_even": true,
+      "sizes_mm": [
+        [
+          210.0,
+          297.0
+        ]
+      ],
+      "text_outside_page": [],
+      "fontless_text_pages": []
+    },
+    {
+      "stage": "supplement",
+      "method": "manual",
+      "sheets": 6,
+      "kind": "cartas",
+      "path": "samples/kit-pos-apocaliptico/lote-10-cartas-restantes/pdfs/03_CARTAS_RECORTAR_E_COLAR/KIT_COMPLEMENTO_2_FRENTES.pdf",
+      "pages": 6,
+      "expected_pages": 6,
+      "pages_ok": true,
+      "a4": true,
+      "duplex_even": true,
+      "sizes_mm": [
+        [
+          210.0,
+          297.0
+        ]
+      ],
+      "text_outside_page": [],
+      "fontless_text_pages": []
+    },
+    {
+      "stage": "supplement",
+      "method": "manual",
+      "sheets": 6,
+      "kind": "cartas",
+      "path": "samples/kit-pos-apocaliptico/lote-10-cartas-restantes/pdfs/03_CARTAS_RECORTAR_E_COLAR/KIT_COMPLEMENTO_2_VERSOS.pdf",
+      "pages": 6,
+      "expected_pages": 6,
+      "pages_ok": true,
+      "a4": true,
+      "duplex_even": true,
+      "sizes_mm": [
+        [
+          210.0,
+          297.0
+        ]
+      ],
+      "text_outside_page": [],
+      "fontless_text_pages": []
+    },
+    {
+      "stage": "initial",
+      "method": "both",
+      "sheets": 4,
+      "kind": "módulos comuns",
+      "path": "samples/kit-pos-apocaliptico/lote-11-modulos-comuns/COMUNS_4_A4.pdf",
+      "pages": 4,
+      "expected_pages": 4,
+      "pages_ok": true,
+      "a4": true,
+      "duplex_even": true,
+      "sizes_mm": [
+        [
+          297.0,
+          210.0
+        ]
+      ],
+      "text_outside_page": [],
+      "fontless_text_pages": []
+    },
+    {
+      "stage": "initial",
+      "method": "both",
+      "sheets": 1,
+      "kind": "montagem",
+      "path": "output/edicao-tabuleiros-v0.6/ilustrada/06_TABULEIROS/MERCADO_MONTAGEM.pdf",
+      "pages": 1,
+      "expected_pages": 1,
+      "pages_ok": true,
+      "a4": true,
+      "duplex_even": true,
+      "sizes_mm": [
+        [
+          297.0,
+          210.0
+        ]
+      ],
+      "text_outside_page": [],
+      "fontless_text_pages": []
+    },
+    {
+      "stage": "supplement",
+      "method": "both",
+      "sheets": 5,
+      "kind": "montagens",
+      "path": "output/edicao-tabuleiros-v0.6/ilustrada/06_TABULEIROS/DEMAIS_DESTINOS_MONTAGENS.pdf",
+      "pages": 5,
+      "expected_pages": 5,
+      "pages_ok": true,
+      "a4": true,
+      "duplex_even": true,
+      "sizes_mm": [
+        [
+          297.0,
+          210.0
+        ]
+      ],
+      "text_outside_page": [],
+      "fontless_text_pages": []
+    },
+    {
+      "stage": "initial",
+      "method": "manual",
+      "sheets": 2,
+      "kind": "calibração manual",
+      "path": "output/edicao-tabuleiros-v0.6/ilustrada/03_CARTAS_RECORTAR_E_COLAR/CALIBRACAO_COLAGEM.pdf",
+      "pages": 2,
+      "expected_pages": 2,
+      "pages_ok": true,
+      "a4": true,
+      "duplex_even": true,
+      "sizes_mm": [
+        [
+          210.0,
+          297.0
+        ]
+      ],
+      "text_outside_page": [],
+      "fontless_text_pages": []
+    }
+  ],
+  "maps": [
+    {
+      "path": "samples/mercado-b-pos-apocaliptico/MERCADO_4_A4.pdf",
+      "pages": 4,
+      "expected_pages": 4,
+      "pages_ok": true,
+      "a4": true,
+      "duplex_even": true,
+      "sizes_mm": [
+        [
+          297.0,
+          210.0
+        ]
+      ],
+      "text_outside_page": [],
+      "fontless_text_pages": []
+    },
+    {
+      "path": "samples/kit-pos-apocaliptico/lote-02-composicao/hospital/HOSPITAL_4_A4.pdf",
+      "pages": 4,
+      "expected_pages": 4,
+      "pages_ok": true,
+      "a4": true,
+      "duplex_even": true,
+      "sizes_mm": [
+        [
+          297.0,
+          210.0
+        ]
+      ],
+      "text_outside_page": [],
+      "fontless_text_pages": []
+    },
+    {
+      "path": "samples/kit-pos-apocaliptico/lote-02-composicao/oficina/OFICINA_4_A4.pdf",
+      "pages": 4,
+      "expected_pages": 4,
+      "pages_ok": true,
+      "a4": true,
+      "duplex_even": true,
+      "sizes_mm": [
+        [
+          297.0,
+          210.0
+        ]
+      ],
+      "text_outside_page": [],
+      "fontless_text_pages": []
+    },
+    {
+      "path": "samples/kit-pos-apocaliptico/lote-08-posto/POSTO_4_A4.pdf",
+      "pages": 4,
+      "expected_pages": 4,
+      "pages_ok": true,
+      "a4": true,
+      "duplex_even": true,
+      "sizes_mm": [
+        [
+          297.0,
+          210.0
+        ]
+      ],
+      "text_outside_page": [],
+      "fontless_text_pages": []
+    },
+    {
+      "path": "samples/kit-pos-apocaliptico/lote-09-condominio/CONDOMINIO_4_A4.pdf",
+      "pages": 4,
+      "expected_pages": 4,
+      "pages_ok": true,
+      "a4": true,
+      "duplex_even": true,
+      "sizes_mm": [
+        [
+          297.0,
+          210.0
+        ]
+      ],
+      "text_outside_page": [],
+      "fontless_text_pages": []
+    },
+    {
+      "path": "samples/kit-pos-apocaliptico/lote-05-estacao/ESTACAO_4_A4.pdf",
+      "pages": 4,
+      "expected_pages": 4,
+      "pages_ok": true,
+      "a4": true,
+      "duplex_even": true,
+      "sizes_mm": [
+        [
+          297.0,
+          210.0
+        ]
+      ],
+      "text_outside_page": [],
+      "fontless_text_pages": []
+    },
+    {
+      "path": "samples/kit-pos-apocaliptico/lote-11-modulos-comuns/COMUNS_4_A4.pdf",
+      "pages": 4,
+      "expected_pages": 4,
+      "pages_ok": true,
+      "a4": true,
+      "duplex_even": true,
+      "sizes_mm": [
+        [
+          297.0,
+          210.0
+        ]
+      ],
+      "text_outside_page": [],
+      "fontless_text_pages": []
+    }
+  ],
+  "geometry": {
+    "Mercado": {
+      "source": "samples/mercado-b-pos-apocaliptico/fontes/geometria.json",
+      "differences": [],
+      "zones": 16,
+      "edges": 21,
+      "doors": 5,
+      "blocked": 1
+    },
+    "Hospital": {
+      "source": "samples/kit-pos-apocaliptico/lote-02-composicao/hospital/fontes/geometria.json",
+      "differences": [],
+      "zones": 16,
+      "edges": 21,
+      "doors": 5,
+      "blocked": 1
+    },
+    "Oficina": {
+      "source": "samples/kit-pos-apocaliptico/lote-02-composicao/oficina/fontes/geometria.json",
+      "differences": [],
+      "zones": 16,
+      "edges": 21,
+      "doors": 5,
+      "blocked": 1
+    },
+    "Posto": {
+      "source": "samples/kit-pos-apocaliptico/lote-08-posto/fontes/geometria.json",
+      "differences": [],
+      "zones": 16,
+      "edges": 21,
+      "doors": 5,
+      "blocked": 0
+    },
+    "Condomínio": {
+      "source": "samples/kit-pos-apocaliptico/lote-09-condominio/fontes/geometria.json",
+      "differences": [],
+      "zones": 16,
+      "edges": 21,
+      "doors": 5,
+      "blocked": 1
+    },
+    "Estação": {
+      "source": "samples/kit-pos-apocaliptico/lote-05-estacao/fontes/geometria.json",
+      "differences": [],
+      "zones": 16,
+      "edges": 21,
+      "doors": 5,
+      "blocked": 2
+    },
+    "Comuns": {
+      "source": "samples/kit-pos-apocaliptico/lote-11-modulos-comuns/fontes/geometria.json",
+      "differences": [],
+      "zones": 16,
+      "edges": 21,
+      "doors": 5,
+      "blocked": 0
+    }
+  },
+  "conditionals": [
+    {
+      "path": "kit-final-prova/componentes-condicionais/PES_DE_CABRA_SEIS_FUNDADORES_DUPLEX.pdf",
+      "pages": 2,
+      "expected_pages": 2,
+      "pages_ok": true,
+      "a4": true,
+      "duplex_even": true,
+      "sizes_mm": [
+        [
+          210.0,
+          297.0
+        ]
+      ],
+      "text_outside_page": [],
+      "fontless_text_pages": []
+    },
+    {
+      "path": "kit-final-prova/componentes-condicionais/REPOSICAO_H3_H4_DUPLEX.pdf",
+      "pages": 2,
+      "expected_pages": 2,
+      "pages_ok": true,
+      "a4": true,
+      "duplex_even": true,
+      "sizes_mm": [
+        [
+          210.0,
+          297.0
+        ]
+      ],
+      "text_outside_page": [],
+      "fontless_text_pages": []
+    },
+    {
+      "path": "kit-final-prova/componentes-condicionais/REPOSICAO_H5_H6_DUPLEX.pdf",
+      "pages": 2,
+      "expected_pages": 2,
+      "pages_ok": true,
+      "a4": true,
+      "duplex_even": true,
+      "sizes_mm": [
+        [
+          210.0,
+          297.0
+        ]
+      ],
+      "text_outside_page": [],
+      "fontless_text_pages": []
+    },
+    {
+      "path": "kit-final-prova/componentes-condicionais/manual/PES_DE_CABRA_SEIS_FUNDADORES_FRENTES.pdf",
+      "pages": 1,
+      "expected_pages": 1,
+      "pages_ok": true,
+      "a4": true,
+      "duplex_even": true,
+      "sizes_mm": [
+        [
+          210.0,
+          297.0
+        ]
+      ],
+      "text_outside_page": [],
+      "fontless_text_pages": []
+    },
+    {
+      "path": "kit-final-prova/componentes-condicionais/manual/PES_DE_CABRA_SEIS_FUNDADORES_VERSOS.pdf",
+      "pages": 1,
+      "expected_pages": 1,
+      "pages_ok": true,
+      "a4": true,
+      "duplex_even": true,
+      "sizes_mm": [
+        [
+          210.0,
+          297.0
+        ]
+      ],
+      "text_outside_page": [],
+      "fontless_text_pages": []
+    },
+    {
+      "path": "kit-final-prova/componentes-condicionais/manual/REPOSICAO_H3_H4_FRENTES.pdf",
+      "pages": 1,
+      "expected_pages": 1,
+      "pages_ok": true,
+      "a4": true,
+      "duplex_even": true,
+      "sizes_mm": [
+        [
+          210.0,
+          297.0
+        ]
+      ],
+      "text_outside_page": [],
+      "fontless_text_pages": []
+    },
+    {
+      "path": "kit-final-prova/componentes-condicionais/manual/REPOSICAO_H3_H4_VERSOS.pdf",
+      "pages": 1,
+      "expected_pages": 1,
+      "pages_ok": true,
+      "a4": true,
+      "duplex_even": true,
+      "sizes_mm": [
+        [
+          210.0,
+          297.0
+        ]
+      ],
+      "text_outside_page": [],
+      "fontless_text_pages": []
+    },
+    {
+      "path": "kit-final-prova/componentes-condicionais/manual/REPOSICAO_H5_H6_FRENTES.pdf",
+      "pages": 1,
+      "expected_pages": 1,
+      "pages_ok": true,
+      "a4": true,
+      "duplex_even": true,
+      "sizes_mm": [
+        [
+          210.0,
+          297.0
+        ]
+      ],
+      "text_outside_page": [],
+      "fontless_text_pages": []
+    },
+    {
+      "path": "kit-final-prova/componentes-condicionais/manual/REPOSICAO_H5_H6_VERSOS.pdf",
+      "pages": 1,
+      "expected_pages": 1,
+      "pages_ok": true,
+      "a4": true,
+      "duplex_even": true,
+      "sizes_mm": [
+        [
+          210.0,
+          297.0
+        ]
+      ],
+      "text_outside_page": [],
+      "fontless_text_pages": []
+    }
+  ],
+  "setup_simulations": [
+    {
+      "participants": 1,
+      "heroes": 2,
+      "barracks": 4,
+      "family_combinations": 66,
+      "all_fit": true,
+      "humans_range": [
+        2,
+        4
+      ],
+      "consumers_range": [
+        2,
+        5
+      ],
+      "initial_food_water_cards_range": [
+        1,
+        3
+      ],
+      "starting_errantes": 1,
+      "duplex_sheets": 58,
+      "manual_sheets": 72
+    },
+    {
+      "participants": 2,
+      "heroes": 2,
+      "barracks": 4,
+      "family_combinations": 66,
+      "all_fit": true,
+      "humans_range": [
+        2,
+        4
+      ],
+      "consumers_range": [
+        2,
+        5
+      ],
+      "initial_food_water_cards_range": [
+        1,
+        3
+      ],
+      "starting_errantes": 1,
+      "duplex_sheets": 58,
+      "manual_sheets": 72
+    },
+    {
+      "participants": 3,
+      "heroes": 3,
+      "barracks": 4,
+      "family_combinations": 220,
+      "all_fit": true,
+      "humans_range": [
+        3,
+        6
+      ],
+      "consumers_range": [
+        3,
+        7
+      ],
+      "initial_food_water_cards_range": [
+        2,
+        4
+      ],
+      "starting_errantes": 2,
+      "duplex_sheets": 67,
+      "manual_sheets": 83
+    },
+    {
+      "participants": 4,
+      "heroes": 4,
+      "barracks": 4,
+      "family_combinations": 495,
+      "all_fit": true,
+      "humans_range": [
+        4,
+        8
+      ],
+      "consumers_range": [
+        4,
+        9
+      ],
+      "initial_food_water_cards_range": [
+        2,
+        5
+      ],
+      "starting_errantes": 2,
+      "duplex_sheets": 67,
+      "manual_sheets": 83
+    },
+    {
+      "participants": 5,
+      "heroes": 5,
+      "barracks": 5,
+      "family_combinations": 792,
+      "all_fit": true,
+      "humans_range": [
+        5,
+        10
+      ],
+      "consumers_range": [
+        6,
+        11
+      ],
+      "initial_food_water_cards_range": [
+        3,
+        6
+      ],
+      "starting_errantes": 3,
+      "duplex_sheets": 67,
+      "manual_sheets": 83
+    },
+    {
+      "participants": 6,
+      "heroes": 6,
+      "barracks": 6,
+      "family_combinations": 924,
+      "all_fit": true,
+      "humans_range": [
+        7,
+        12
+      ],
+      "consumers_range": [
+        8,
+        13
+      ],
+      "initial_food_water_cards_range": [
+        4,
+        7
+      ],
+      "starting_errantes": 3,
+      "duplex_sheets": 67,
+      "manual_sheets": 83
+    }
+  ],
+  "limitations": [
+    "Modelo combinatório de preparo, não simulação estocástica dos cinco dias.",
+    "H3–6 usa peões recortáveis para fundadores; marcadores planos existentes só trazem Lia/Ivo e resgatáveis.",
+    "Compatibilidade gráfica digital não valida alinhamento da impressora nem playtest."
+  ]
+}

@@ -73,3 +73,7 @@ Pisos e arquitetura vetoriais; imagens de mobiliário medem pelo menos 211,3 ppi
 <!-- TABULEIROS06 -->
 ## Tabuleiros 0.6
 Inventário em output/edicao-tabuleiros-v0.6/ASSET_MANIFEST.json. Usos por arquivo, recorte nativo, pixels, tamanho físico e ppi em USOS_ASSETS.csv; medição independente do PDF em RESOLUCAO_EFETIVA.csv. O mínimo principal medido é 215.0 ppi. Novas pranchas e materiais originais em assets/v0.6; artes 0.5 boas mantidas, sem reamostragem. Miniaturas dos diagramas são derivadas de A–C a 200 ppi; D–E permanecem vetoriais, com rótulos próprios legíveis. Geometria SVGZ é separada da arte, não se apresenta como mapa inteiro ilustrado. Cenas completas editáveis em Python/JSON e PNGs. Rascunhos rejeitados não entram nos pacotes. Nenhum prompt contado como imagem e nenhuma referência privada distribuída.
+# Atualização de provas: lotes 10 e 11
+
+As 39 cartas VIN/VIA/HOR/CER revisadas, suas sete imagens nativas, resolução mínima e integração constam de `samples/kit-pos-apocaliptico/lote-10-cartas-restantes/RELATORIO.md` e `VERIFICACOES.json`. Os quatro módulos comuns, 16 fontes nativas, 3817 × 2618 px e 175 ppi efetivos constam de `samples/kit-pos-apocaliptico/lote-11-modulos-comuns/RELATORIO.md` e `VERIFICACOES.json`. Os componentes anteriores não foram substituídos. Seleção atual: `kit-final-prova/INDICE_IMPRESSAO_CONSOLIDADO.md`.
+

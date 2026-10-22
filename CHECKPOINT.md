@@ -136,3 +136,7 @@ PDFs e índices fechados, todos os módulos em A4 paisagem uma face, 58/72 folha
 Fontes corrigidas após detectar duas provas PDF antigas ausentes; cobertura das 81 dependências exigida no empacotamento. Cinco partes extraídas em nova pasta limpa; fluxo completo passou: 7.536 verificações, dez testes próprios, 68 renderizações idênticas e 24 entradas de geração idênticas. Resultado em output/edicao-tabuleiros-v0.6/reconstrucao.json. Fontes editoriais em RECONSTRUIR_0.6.md; downloads por DOWNLOADS_0.6.md. Kit básico continua 58 duplex / 72 manual; quem tem 0.5 pode atualizar apenas quatro módulos, sem baixar cartas.
 
 Distribuição: arte/pnp-tabuleiros-v0-6; fechar commit e push sem merge, conferir os links públicos. Depois disso, o próximo passo humano é imprimir calibração e um módulo a 100%, medir 100 mm e o corte 277×190 mm, testar união e peões. A verificação digital não substitui essa prova. Não refazer cartas, peões, painel ou abrigo sem defeito concreto. Nenhuma atividade permanece em segundo plano após a entrega.
+# Retomada da seleção pós-apocalíptica
+
+Na branch `arte/kit-pos-apocaliptico-provas`, os lotes 10 e 11 completaram as 39 cartas e os quatro módulos comuns. Índice consolidado, auditoria, contato de 136 páginas e relatório em `kit-final-prova/`. Executar `python src/build_final_print_index.py`, `python src/render_final_qa.py`, `python src/review_five_days.py` e `python -m unittest discover -s tests -q` ao retomar. Pendência principal: replay integral H=3–6, impressão física e playtest. Não fazer merge na main.
+
