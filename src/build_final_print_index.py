@@ -50,7 +50,9 @@ def main():
             paths = [f'componentes-condicionais/{x}' for x in files]
         else:
             files = [f'{stem}_{side}.pdf' for stem in ('PES_DE_CABRA_SEIS_FUNDADORES','REPOSICAO_H3_H4','REPOSICAO_H5_H6') for side in ('FRENTES','VERSOS')]
-            note = 'Escolha o par Pés de cabra + um par de reposição: quatro folhas A4 de uma face; una com miolo opaco.'
+            note = ('Escolha o par Pés de cabra + um par de reposição: quatro folhas A4 de uma face. '
+                    'Ao colar, espelhe as colunas do verso (esquerda↔direita), mantenha as linhas e a família; '
+                    'una frente, miolo opaco e verso. IDs não aparecem no verso secreto.')
             paths = [f'componentes-condicionais/manual/{x}' for x in files]
         lines += ['', f'### Folhas condicionais {method}', '', note, '']
         lines += [f'- [{name}]({path})' for name,path in zip(files,paths)]

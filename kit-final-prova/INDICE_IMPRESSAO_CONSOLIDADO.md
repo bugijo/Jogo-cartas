@@ -87,7 +87,7 @@ Escolha 1ª + (2ª **ou** 3ª): duas folhas A4 duplex.
 
 ### Folhas condicionais manual
 
-Escolha o par Pés de cabra + um par de reposição: quatro folhas A4 de uma face; una com miolo opaco.
+Escolha o par Pés de cabra + um par de reposição: quatro folhas A4 de uma face. Ao colar, espelhe as colunas do verso (esquerda↔direita), mantenha as linhas e a família; una frente, miolo opaco e verso. IDs não aparecem no verso secreto.
 
 - [PES_DE_CABRA_SEIS_FUNDADORES_FRENTES.pdf](componentes-condicionais/manual/PES_DE_CABRA_SEIS_FUNDADORES_FRENTES.pdf)
 - [PES_DE_CABRA_SEIS_FUNDADORES_VERSOS.pdf](componentes-condicionais/manual/PES_DE_CABRA_SEIS_FUNDADORES_VERSOS.pdf)
