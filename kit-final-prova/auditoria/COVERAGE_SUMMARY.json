@@ -7,9 +7,11 @@
   "common_modules": 4,
   "heroes": 24,
   "tokens": 198,
-  "matrix_rows": 359,
+  "matrix_rows": 364,
   "statuses": {
-    "READY": 148,
-    "NEEDS_REVIEW": 211
+    "READY": 152,
+    "NEEDS_REVIEW": 206,
+    "NOT_APPLICABLE": 1,
+    "PARTIAL": 5
   }
 }

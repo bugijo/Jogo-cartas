@@ -68,3 +68,5 @@ Já tem a 0.5: baixe SOMENTE_MAPAS. Troque as quatro folhas comuns OU quatro fol
 
 Para esta seleção, consulte [INDICE_IMPRESSAO_CONSOLIDADO.md](kit-final-prova/INDICE_IMPRESSAO_CONSOLIDADO.md). Solo/dupla: 58 folhas duplex ou 72 folhas recortar e colar. Para 3–6 pessoas: 67 ou 83 folhas, respectivamente, usando as fichas de 24 heróis, peões recortáveis e duas folhas condicionais (quatro no método manual). Escolha um método, imprima a 100% sem ajustar, e teste primeiro a calibração. Mapas temáticos substituem as quatro folhas comuns para uma sessão; não são folhas obrigatórias adicionais. O relatório digital e seus limites estão em [RELATORIO_FINAL_PROVA.md](kit-final-prova/RELATORIO_FINAL_PROVA.md).
 
+Para H>2, o campo `Local` do registro aceita o ID ou nome de qualquer herói; as letras `L/I` impressas são exemplos de Lia e Ivo. Para H5/H6, anote as barracas iniciais adicionais em T08/T09. Isso explicita o preenchimento da ficha existente, sem mudar custo, capacidade ou terreno.
+

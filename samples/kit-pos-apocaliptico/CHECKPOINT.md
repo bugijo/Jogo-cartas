@@ -4,6 +4,10 @@
 
 Lote 10 concluiu a revisão artística das 39 cartas pendentes e gerou os dois PDFs duplex/pares para recortar e colar. Lote 11 produziu os quatro módulos comuns contínuos em quatro A4. Ambos os lotes têm comparações, fontes e verificações próprias. A seleção sem duplicação de folhas está em `kit-final-prova/INDICE_IMPRESSAO_CONSOLIDADO.md`; a auditoria reproduzível fica em `src/final_kit_audit.py` e `kit-final-prova/auditoria/FINAL_KIT_AUDIT.json`. O relatório de limites fica em `kit-final-prova/RELATORIO_FINAL_PROVA.md`. Próxima tarefa: replay completo H=3–6 com resgates e componentes físicos, impressão e playtest humano. Não declarar a caixa final aprovada.
 
+## Atualização 2026-10-22 — revisão da campanha
+
+`src/build_campaign_report.py` reproduz 15 ensaios de fases de cinco dias com sementes H=2–6 e registra o replay tático antigo em `kit-final-prova/auditoria/CAMPANHA_REPLAY_RELATORIO.md`. Todos os vínculos de H=2–6 cabem; folhas condicionais e suporte impresso foram conferidos. O roteiro Lia/Ivo só é tático para H=2; com os inimigos iniciais de H=3–6, falta 1 PA a Lia no Mercado/rodada 4. Isso exige novo roteiro para os heróis adicionais, sem alterar dificuldade. Guia de preenchimento do registro H3–6 atualizado. Sem impressão física nem playtest.
+
 
 Ver [LOTES_02_04.md](LOTES_02_04.md). Não repetir hospital, oficina, 18 retratos ou 24 peões. Próximos: estação, posto, condomínio, módulos comuns e 76 cartas ainda não revisadas. Publicação dos checkpoints novos deve ser conferida no remoto.
 

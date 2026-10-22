@@ -73,7 +73,7 @@ Total: 33 inicial + 39 complemento = **72 folhas**.
 
 ## Para 3–6 pessoas
 
-Em vez das folhas `FICHAS_LIA_IVO.pdf` (1) e `FICHAS_RESGATAVEIS.pdf` (6), imprima [FICHAS_24_HEROIS.pdf](../output/edicao-tabuleiros-v0.6/ilustrada/08_EXTRAS_OPCIONAIS/FICHAS_24_HEROIS.pdf) (12 folhas) da edição 0.6. Imprima também [HEROIS_24_RECORTAR.pdf](../output/edicao-tabuleiros-v0.6/ilustrada/04_PERSONAGENS_E_INIMIGOS/HEROIS_24_RECORTAR.pdf) (2 folhas) para os peões dos fundadores; os marcadores planos preservados trazem só Lia/Ivo e os 12 resgatáveis. Separe os peões duplicados, sem colocá-los simultaneamente no jogo.
+Em vez das folhas `FICHAS_LIA_IVO.pdf` (1) e `FICHAS_RESGATAVEIS.pdf` (6), imprima [FICHAS_24_HEROIS.pdf](../output/edicao-tabuleiros-v0.6/ilustrada/08_EXTRAS_OPCIONAIS/FICHAS_24_HEROIS.pdf) (12 folhas) da edição 0.6. Imprima também [HEROIS_24_RECORTAR.pdf](../output/edicao-tabuleiros-v0.6/ilustrada/04_PERSONAGENS_E_INIMIGOS/HEROIS_24_RECORTAR.pdf) (2 folhas) para os peões dos fundadores; os marcadores planos preservados trazem só Lia/Ivo e os 12 resgatáveis. Separe os peões duplicados, sem colocá-los simultaneamente no jogo. No painel, marque as barracas adicionais em T08 (H5) e T09 (H6). Na coluna Local dos registros, escreva o ID/nome do herói extra; L/I são apenas os exemplos Lia/Ivo.
 
 Escolha **uma** folha de seis pés de cabra e **uma** folha de reposição de Viagem/Horda. H=3–4: reposição H3_H4; H=5–6: H5_H6. A folha antiga de quatro pés de cabra é apenas alternativa se Lia e Ivo já tiverem as cartas 0001/0002; não a acumule com a universal.
 

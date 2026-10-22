@@ -1,0 +1,96 @@
+{
+  "cards": 114,
+  "hero_sheets_complete": true,
+  "hero_pawns_complete": true,
+  "enemies_printed": 24,
+  "group_components": [
+    {
+      "heroes": 2,
+      "founder_cards": 2,
+      "hero_sheets": "1 Lia/Ivo + 6 resgatáveis",
+      "hero_pawns": "marcadores planos Lia/Ivo",
+      "crowbar_ids": "0001–0002 nas fichas",
+      "enemy_markers": 24,
+      "conditional": null,
+      "duplex_sheets": 58,
+      "manual_sheets": 72,
+      "modeled_exhaustions": []
+    },
+    {
+      "heroes": 3,
+      "founder_cards": 3,
+      "hero_sheets": "12 folhas de 24 heróis",
+      "hero_pawns": "2 folhas de 24 peões",
+      "crowbar_ids": "0001–0006, use somente 0001..000H",
+      "enemy_markers": 24,
+      "conditional": {
+        "file": "REPOSICAO_H3_H4_DUPLEX.pdf",
+        "initial_crowbars": 3,
+        "formula_errantes": 2
+      },
+      "duplex_sheets": 67,
+      "manual_sheets": 83,
+      "modeled_exhaustions": []
+    },
+    {
+      "heroes": 4,
+      "founder_cards": 4,
+      "hero_sheets": "12 folhas de 24 heróis",
+      "hero_pawns": "2 folhas de 24 peões",
+      "crowbar_ids": "0001–0006, use somente 0001..000H",
+      "enemy_markers": 24,
+      "conditional": {
+        "file": "REPOSICAO_H3_H4_DUPLEX.pdf",
+        "initial_crowbars": 4,
+        "formula_errantes": 2
+      },
+      "duplex_sheets": 67,
+      "manual_sheets": 83,
+      "modeled_exhaustions": []
+    },
+    {
+      "heroes": 5,
+      "founder_cards": 5,
+      "hero_sheets": "12 folhas de 24 heróis",
+      "hero_pawns": "2 folhas de 24 peões",
+      "crowbar_ids": "0001–0006, use somente 0001..000H",
+      "enemy_markers": 24,
+      "conditional": {
+        "file": "REPOSICAO_H5_H6_DUPLEX.pdf",
+        "initial_crowbars": 5,
+        "formula_errantes": 3
+      },
+      "duplex_sheets": 67,
+      "manual_sheets": 83,
+      "modeled_exhaustions": []
+    },
+    {
+      "heroes": 6,
+      "founder_cards": 6,
+      "hero_sheets": "12 folhas de 24 heróis",
+      "hero_pawns": "2 folhas de 24 peões",
+      "crowbar_ids": "0001–0006, use somente 0001..000H",
+      "enemy_markers": 24,
+      "conditional": {
+        "file": "REPOSICAO_H5_H6_DUPLEX.pdf",
+        "initial_crowbars": 6,
+        "formula_errantes": 3
+      },
+      "duplex_sheets": 67,
+      "manual_sheets": 83,
+      "modeled_exhaustions": []
+    }
+  ],
+  "documented_fallbacks": [
+    "Recursos em lotes/parciais: registro numerado de saldos; cartas vazias voltam à reserva.",
+    "Inimigo 25 simultâneo: expedição perdida e retirada de emergência (RULES.md §6).",
+    "Se reserva de inimigos acabar antes do limite, usar tokens numerados e registrar excedentes.",
+    "Se lotes excederem cartas físicas disponíveis, ficha numerada anotada do mesmo valor (RULES.md §7)."
+  ],
+  "actual_exhaustion_in_phase_runs": false,
+  "limitations": [
+    "Contagem de suporte não comprova todas as interações táticas.",
+    "O registro impresso nomeia L/I; para fundadores adicionais escreva ID/nome na coluna Local.",
+    "Três dados d6, lápis, tesoura e envelopes opacos são externos ao papel."
+  ]
+}

@@ -89,8 +89,8 @@ for label, relative in {
 founders = P / 'output/edicao-tabuleiros-v0.6/ilustrada/08_EXTRAS_OPCIONAIS/FICHAS_24_HEROIS.pdf'
 add('FICHAS_FUNDADORES_3_A_6', 'fichas imprimíveis para fundador além de Lia/Ivo',
     'PDF opcional 0.6 existente' if founders.exists() else 'ausente',
-    'NEEDS_REVIEW' if founders.exists() else 'MISSING', 'RULES.md / setup H=2..6',
-    founders.relative_to(P), 'deve ser obrigatório no índice quando H>2; cópias exatas conforme seleção')
+    'READY' if founders.exists() else 'MISSING', 'RULES.md / setup H=2..6',
+    founders.relative_to(P), 'indexado para H>2; nomes conferidos; impressão física pendente')
 for label, relative, note in [
     ('PES_DE_CABRA_SEIS_FUNDADORES', 'kit-final-prova/componentes-condicionais/PES_DE_CABRA_SEIS_FUNDADORES_DUPLEX.pdf', 'seis IDs únicos 0001–0006; alternativa universal para H3–H6'),
     ('PES_DE_CABRA_H3_A_H6', 'kit-final-prova/componentes-condicionais/PES_DE_CABRA_H3_A_H6_DUPLEX.pdf', 'quatro IDs únicos 0003–0006; imprimir conforme H'),
@@ -98,9 +98,18 @@ for label, relative, note in [
     ('CARTAS_FORMULA_H5_A_H6', 'kit-final-prova/componentes-condicionais/REPOSICAO_H5_H6_DUPLEX.pdf', 'substituir VIA-0005, HOR-0007/0008, sem duplicar IDs'),
 ]:
     path=P/relative
+    selected=label!='PES_DE_CABRA_H3_A_H6'
     add(label, 'suplemento condicional sem alterar a regra', 'PDF gerado' if path.exists() else 'ausente',
-        'NEEDS_REVIEW' if path.exists() else 'MISSING', 'content/catalog.json / RULES.md',
-        relative, 'dimensão e texto conferidos; indexação no pacote ainda pendente', note)
+        ('READY' if selected else 'NOT_APPLICABLE') if path.exists() else 'MISSING', 'content/catalog.json / RULES.md',
+        relative, 'dimensão, texto e seleção conferidos; alternativa antiga fora da seleção' if not selected else 'dimensão, texto e índice conferidos; impressão física pendente', note)
+
+for h in range(2,7):
+    add(f'CAMPANHA_H{h}', 'replay integral dos cinco dias com todos os efeitos e zonas',
+        'roteiro tático H2' if h==2 else 'cinco dias de fases; roteiro tático antigo bloqueia no Mercado',
+        'PARTIAL', 'RULES.md / CAMPAIGN.md',
+        'kit-final-prova/auditoria/CAMPANHA_SEMENTES.json',
+        'semente e estados registrados; simulação tática integral pendente',
+        f'H={h}: ver ROTEIRO_TATICO_ESCALA.json')
 
 OUT.mkdir(parents=True, exist_ok=True)
 with (OUT / 'COVERAGE_MATRIX.csv').open('w', newline='') as handle:

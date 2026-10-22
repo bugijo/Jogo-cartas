@@ -1,5 +1,7 @@
 # Auditoria inicial da prova pós-apocalíptica
 
+**Histórico anterior aos lotes 10/11 e à revisão de campanha.** Para o estado vigente, leia [CAMPANHA_REPLAY_RELATORIO.md](CAMPANHA_REPLAY_RELATORIO.md), [COVERAGE_SUMMARY.json](COVERAGE_SUMMARY.json) e o [índice de impressão](../INDICE_IMPRESSAO_CONSOLIDADO.md). Os 39 IDs e módulos comuns apontados abaixo como pendentes já foram produzidos; mantenha este texto apenas para rastrear a auditoria inicial.
+
 Matriz gerada por `python src/audit_final_proof.py` a partir do catálogo, seleção de impressão e verificações de lotes; consulte [CSV](COVERAGE_MATRIX.csv) e [resumo JSON](COVERAGE_SUMMARY.json). Os estados READY indicam arte/PDF de prova presente, não impressão física nem aprovação artística global.
 
 Há 114 cartas selecionadas: 75 IDs com arte revista nos lotes 04, 06 e 07 e 39 ainda com arte anterior. Os 39 são VIN 12, VIA 12, HOR 9 e CER 6. Há cinco provas temáticas novas em seis destinos; condomínio só tem versão 0.6. Os quatro módulos comuns também ainda usam 0.6. Personagens: 24 fichas existentes, 18 retratos atualizados no lote 03. Existem 198 tokens no catálogo; a matriz exige revisão visual global deles, não os declara ausentes.

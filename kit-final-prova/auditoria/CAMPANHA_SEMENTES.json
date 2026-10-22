@@ -1,0 +1,5707 @@
+{
+  "setups": [
+    {
+      "participants": 1,
+      "heroes": 2,
+      "combinations": 66,
+      "capacity": 8,
+      "all_fit": true,
+      "consumers_min": 2,
+      "consumers_max": 5
+    },
+    {
+      "participants": 2,
+      "heroes": 2,
+      "combinations": 66,
+      "capacity": 8,
+      "all_fit": true,
+      "consumers_min": 2,
+      "consumers_max": 5
+    },
+    {
+      "participants": 3,
+      "heroes": 3,
+      "combinations": 220,
+      "capacity": 8,
+      "all_fit": true,
+      "consumers_min": 3,
+      "consumers_max": 7
+    },
+    {
+      "participants": 4,
+      "heroes": 4,
+      "combinations": 495,
+      "capacity": 8,
+      "all_fit": true,
+      "consumers_min": 4,
+      "consumers_max": 9
+    },
+    {
+      "participants": 5,
+      "heroes": 5,
+      "combinations": 792,
+      "capacity": 10,
+      "all_fit": true,
+      "consumers_min": 6,
+      "consumers_max": 11
+    },
+    {
+      "participants": 6,
+      "heroes": 6,
+      "combinations": 924,
+      "capacity": 12,
+      "all_fit": true,
+      "consumers_min": 8,
+      "consumers_max": 13
+    }
+  ],
+  "runs": [
+    {
+      "heroes": 2,
+      "seed": 2101,
+      "profile": "favoravel",
+      "setup": {
+        "participants": 2,
+        "heroes": 2,
+        "founders": [
+          "Lia",
+          "Ivo"
+        ],
+        "links": [
+          "Sozinho",
+          "Filho"
+        ],
+        "humans": 3,
+        "dogs": 0,
+        "consumers": 3,
+        "tents": 4,
+        "capacity": 8,
+        "lot_cards": 1,
+        "initial_full_cards": 2,
+        "initial_errantes": 1
+      },
+      "days": [
+        {
+          "day": 1,
+          "event_pressure": 0,
+          "destination": "Mercado",
+          "expedition_heroes": 2,
+          "clock": 7,
+          "cargo_needed": 3,
+          "cargo_capacity": 6,
+          "initial_enemies": 1,
+          "sampled_combat": [
+            {
+              "enemy": "Errante",
+              "die": 2,
+              "body": 2,
+              "hit": false
+            }
+          ],
+          "hordes": [
+            {
+              "id": "ZC-HOR-0003",
+              "name": "Arrastar",
+              "tokens": 1
+            },
+            {
+              "id": "ZC-HOR-0002",
+              "name": "Arrastar",
+              "tokens": 1
+            },
+            {
+              "id": "ZC-HOR-0007",
+              "name": "Aglomerado",
+              "tokens": 1
+            }
+          ],
+          "rescue_card": null,
+          "siege": null,
+          "stock_before": {
+            "food": 8,
+            "water": 8,
+            "materials": 3,
+            "ammo": 2
+          },
+          "stock_after": {
+            "food": 13,
+            "water": 9,
+            "materials": 3,
+            "ammo": 2
+          },
+          "people": 3,
+          "dogs": 0,
+          "capacity": 8,
+          "shortage": [
+            0,
+            0
+          ],
+          "filter_work": 0,
+          "filter_active": false,
+          "pressure": 0,
+          "pending": [],
+          "health": 5,
+          "morale": 5
+        },
+        {
+          "day": 2,
+          "event_pressure": 1,
+          "destination": "Oficina",
+          "expedition_heroes": 2,
+          "clock": 8,
+          "cargo_needed": 4,
+          "cargo_capacity": 6,
+          "initial_enemies": 1,
+          "sampled_combat": [
+            {
+              "enemy": "Errante",
+              "die": 5,
+              "body": 2,
+              "hit": true
+            }
+          ],
+          "hordes": [
+            {
+              "id": "ZC-HOR-0004",
+              "name": "Arrastar",
+              "tokens": 1
+            },
+            {
+              "id": "ZC-HOR-0006",
+              "name": "Corrida",
+              "tokens": 1
+            },
+            {
+              "id": "ZC-HOR-0005",
+              "name": "Corrida",
+              "tokens": 1
+            }
+          ],
+          "rescue_card": null,
+          "siege": null,
+          "stock_before": {
+            "food": 13,
+            "water": 9,
+            "materials": 3,
+            "ammo": 2
+          },
+          "stock_after": {
+            "food": 14,
+            "water": 10,
+            "materials": 3,
+            "ammo": 2
+          },
+          "people": 3,
+          "dogs": 0,
+          "capacity": 8,
+          "shortage": [
+            0,
+            0
+          ],
+          "filter_work": 0,
+          "filter_active": false,
+          "pressure": 1,
+          "pending": [],
+          "health": 5,
+          "morale": 5
+        },
+        {
+          "day": 3,
+          "event_pressure": 0,
+          "destination": "Estação",
+          "expedition_heroes": 2,
+          "clock": 9,
+          "cargo_needed": 4,
+          "cargo_capacity": 6,
+          "initial_enemies": 1,
+          "sampled_combat": [
+            {
+              "enemy": "Errante",
+              "die": 2,
+              "body": 2,
+              "hit": false
+            },
+            {
+              "enemy": "Bruto",
+              "die": 6,
+              "body": 3,
+              "hit": true
+            }
+          ],
+          "hordes": [
+            {
+              "id": "ZC-HOR-0009",
+              "name": "Peso morto",
+              "tokens": 1
+            },
+            {
+              "id": "ZC-HOR-0008",
+              "name": "Aglomerado",
+              "tokens": 1
+            },
+            {
+              "id": "ZC-HOR-0008",
+              "name": "Aglomerado",
+              "tokens": 1
+            },
+            {
+              "id": "ZC-HOR-0009",
+              "name": "Peso morto",
+              "tokens": 1
+            }
+          ],
+          "rescue_card": null,
+          "siege": {
+            "kind": "Missão dia 3",
+            "force": 4,
+            "defense": 4,
+            "vigils": 0,
+            "rolls": [],
+            "ammo": 2,
+            "gap": 0,
+            "damaged": []
+          },
+          "stock_before": {
+            "food": 14,
+            "water": 10,
+            "materials": 3,
+            "ammo": 2
+          },
+          "stock_after": {
+            "food": 11,
+            "water": 11,
+            "materials": 3,
+            "ammo": 0
+          },
+          "people": 3,
+          "dogs": 0,
+          "capacity": 8,
+          "shortage": [
+            0,
+            0
+          ],
+          "filter_work": 0,
+          "filter_active": false,
+          "pressure": 1,
+          "pending": [],
+          "health": 5,
+          "morale": 5
+        },
+        {
+          "day": 4,
+          "event_pressure": 1,
+          "destination": null,
+          "expedition_heroes": 0,
+          "clock": 0,
+          "cargo_needed": 0,
+          "cargo_capacity": 0,
+          "initial_enemies": 0,
+          "sampled_combat": [],
+          "hordes": [],
+          "rescue_card": null,
+          "siege": null,
+          "stock_before": {
+            "food": 11,
+            "water": 11,
+            "materials": 3,
+            "ammo": 0
+          },
+          "stock_after": {
+            "food": 8,
+            "water": 8,
+            "materials": 0,
+            "ammo": 0
+          },
+          "people": 3,
+          "dogs": 0,
+          "capacity": 8,
+          "shortage": [
+            0,
+            0
+          ],
+          "filter_work": 2,
+          "filter_active": false,
+          "pressure": 2,
+          "pending": [],
+          "health": 5,
+          "morale": 5
+        },
+        {
+          "day": 5,
+          "event_pressure": 1,
+          "destination": null,
+          "expedition_heroes": 0,
+          "clock": 0,
+          "cargo_needed": 0,
+          "cargo_capacity": 0,
+          "initial_enemies": 0,
+          "sampled_combat": [],
+          "hordes": [],
+          "rescue_card": null,
+          "siege": {
+            "kind": "Pressão",
+            "force": 6,
+            "defense": 2,
+            "vigils": 0,
+            "rolls": [],
+            "ammo": 0,
+            "gap": 4,
+            "damaged": [
+              "Portão",
+              "Depósito"
+            ]
+          },
+          "stock_before": {
+            "food": 8,
+            "water": 8,
+            "materials": 0,
+            "ammo": 0
+          },
+          "stock_after": {
+            "food": 1,
+            "water": 7,
+            "materials": 0,
+            "ammo": 0
+          },
+          "people": 3,
+          "dogs": 0,
+          "capacity": 8,
+          "shortage": [
+            0,
+            0
+          ],
+          "filter_work": 4,
+          "filter_active": true,
+          "pressure": 1,
+          "pending": [],
+          "health": 5,
+          "morale": 4
+        }
+      ],
+      "security": [],
+      "result": "plano_de_fases_possivel",
+      "groups": [],
+      "wounds": {
+        "Lia": 2
+      },
+      "component_exhaustion": [],
+      "incapacitated": false,
+      "tactical_verified": false,
+      "limitations": [
+        "Combate é amostra de dados/valores; falta movimento, PA e IA zona a zona.",
+        "Viagem, busca, cerco e resgate têm efeitos de cartas não completamente executados.",
+        "Resultado é cenário de fases, não partida integral certificada."
+      ]
+    },
+    {
+      "heroes": 2,
+      "seed": 2202,
+      "profile": "dificil",
+      "setup": {
+        "participants": 2,
+        "heroes": 2,
+        "founders": [
+          "Lia",
+          "Ivo"
+        ],
+        "links": [
+          "Parceiro",
+          "Parceiro"
+        ],
+        "humans": 4,
+        "dogs": 0,
+        "consumers": 4,
+        "tents": 4,
+        "capacity": 8,
+        "lot_cards": 1,
+        "initial_full_cards": 2,
+        "initial_errantes": 1
+      },
+      "days": [
+        {
+          "day": 1,
+          "event_pressure": 0,
+          "destination": "Mercado",
+          "expedition_heroes": 2,
+          "clock": 7,
+          "cargo_needed": 3,
+          "cargo_capacity": 6,
+          "initial_enemies": 1,
+          "sampled_combat": [
+            {
+              "enemy": "Errante",
+              "die": 3,
+              "body": 2,
+              "hit": true
+            }
+          ],
+          "hordes": [
+            {
+              "id": "ZC-HOR-0008",
+              "name": "Aglomerado",
+              "tokens": 1
+            },
+            {
+              "id": "ZC-HOR-0006",
+              "name": "Corrida",
+              "tokens": 1
+            },
+            {
+              "id": "ZC-HOR-0008",
+              "name": "Aglomerado",
+              "tokens": 1
+            }
+          ],
+          "rescue_card": "ZC-INT-0007",
+          "siege": null,
+          "stock_before": {
+            "food": 8,
+            "water": 8,
+            "materials": 3,
+            "ammo": 2
+          },
+          "stock_after": {
+            "food": 10,
+            "water": 6,
+            "materials": 3,
+            "ammo": 2
+          },
+          "people": 6,
+          "dogs": 0,
+          "capacity": 8,
+          "shortage": [
+            0,
+            0
+          ],
+          "filter_work": 0,
+          "filter_active": false,
+          "pressure": 0,
+          "pending": [],
+          "health": 5,
+          "morale": 5
+        },
+        {
+          "day": 2,
+          "event_pressure": 1,
+          "destination": "Oficina",
+          "expedition_heroes": 2,
+          "clock": 8,
+          "cargo_needed": 4,
+          "cargo_capacity": 6,
+          "initial_enemies": 1,
+          "sampled_combat": [
+            {
+              "enemy": "Errante",
+              "die": 6,
+              "body": 2,
+              "hit": true
+            }
+          ],
+          "hordes": [
+            {
+              "id": "ZC-HOR-0002",
+              "name": "Arrastar",
+              "tokens": 1
+            },
+            {
+              "id": "ZC-HOR-0006",
+              "name": "Corrida",
+              "tokens": 1
+            },
+            {
+              "id": "ZC-HOR-0004",
+              "name": "Arrastar",
+              "tokens": 1
+            }
+          ],
+          "rescue_card": null,
+          "siege": null,
+          "stock_before": {
+            "food": 10,
+            "water": 6,
+            "materials": 3,
+            "ammo": 2
+          },
+          "stock_after": {
+            "food": 8,
+            "water": 4,
+            "materials": 3,
+            "ammo": 2
+          },
+          "people": 6,
+          "dogs": 0,
+          "capacity": 8,
+          "shortage": [
+            0,
+            0
+          ],
+          "filter_work": 0,
+          "filter_active": false,
+          "pressure": 1,
+          "pending": [],
+          "health": 5,
+          "morale": 5
+        },
+        {
+          "day": 3,
+          "event_pressure": 0,
+          "destination": "Estação",
+          "expedition_heroes": 2,
+          "clock": 9,
+          "cargo_needed": 4,
+          "cargo_capacity": 6,
+          "initial_enemies": 1,
+          "sampled_combat": [
+            {
+              "enemy": "Errante",
+              "die": 4,
+              "body": 2,
+              "hit": true
+            },
+            {
+              "enemy": "Bruto",
+              "die": 6,
+              "body": 3,
+              "hit": true
+            }
+          ],
+          "hordes": [
+            {
+              "id": "ZC-HOR-0007",
+              "name": "Aglomerado",
+              "tokens": 1
+            },
+            {
+              "id": "ZC-HOR-0006",
+              "name": "Corrida",
+              "tokens": 1
+            },
+            {
+              "id": "ZC-HOR-0006",
+              "name": "Corrida",
+              "tokens": 1
+            },
+            {
+              "id": "ZC-HOR-0006",
+              "name": "Corrida",
+              "tokens": 1
+            }
+          ],
+          "rescue_card": null,
+          "siege": {
+            "kind": "Missão dia 3",
+            "force": 4,
+            "defense": 4,
+            "vigils": 2,
+            "rolls": [
+              3,
+              5
+            ],
+            "ammo": 1,
+            "gap": 0,
+            "damaged": []
+          },
+          "stock_before": {
+            "food": 8,
+            "water": 4,
+            "materials": 3,
+            "ammo": 2
+          },
+          "stock_after": {
+            "food": 2,
+            "water": 2,
+            "materials": 3,
+            "ammo": 1
+          },
+          "people": 6,
+          "dogs": 0,
+          "capacity": 8,
+          "shortage": [
+            0,
+            0
+          ],
+          "filter_work": 0,
+          "filter_active": false,
+          "pressure": 1,
+          "pending": [],
+          "health": 5,
+          "morale": 5
+        },
+        {
+          "day": 4,
+          "event_pressure": 1,
+          "destination": null,
+          "expedition_heroes": 0,
+          "clock": 0,
+          "cargo_needed": 0,
+          "cargo_capacity": 0,
+          "initial_enemies": 0,
+          "sampled_combat": [],
+          "hordes": [],
+          "rescue_card": null,
+          "siege": null,
+          "stock_before": {
+            "food": 2,
+            "water": 2,
+            "materials": 3,
+            "ammo": 1
+          },
+          "stock_after": {
+            "food": 0,
+            "water": 0,
+            "materials": 0,
+            "ammo": 1
+          },
+          "people": 6,
+          "dogs": 0,
+          "capacity": 8,
+          "shortage": [
+            4,
+            4
+          ],
+          "filter_work": 2,
+          "filter_active": false,
+          "pressure": 2,
+          "pending": [],
+          "health": 4,
+          "morale": 5
+        },
+        {
+          "day": 5,
+          "event_pressure": 1,
+          "destination": null,
+          "expedition_heroes": 0,
+          "clock": 0,
+          "cargo_needed": 0,
+          "cargo_capacity": 0,
+          "initial_enemies": 0,
+          "sampled_combat": [],
+          "hordes": [],
+          "rescue_card": null,
+          "siege": {
+            "kind": "Pressão",
+            "force": 6,
+            "defense": 4,
+            "vigils": 2,
+            "rolls": [
+              1,
+              6
+            ],
+            "ammo": 1,
+            "gap": 2,
+            "damaged": [
+              "Portão"
+            ]
+          },
+          "stock_before": {
+            "food": 0,
+            "water": 0,
+            "materials": 0,
+            "ammo": 1
+          },
+          "stock_after": {
+            "food": 0,
+            "water": 2,
+            "materials": 0,
+            "ammo": 0
+          },
+          "people": 6,
+          "dogs": 0,
+          "capacity": 8,
+          "shortage": [
+            6,
+            0
+          ],
+          "filter_work": 4,
+          "filter_active": true,
+          "pressure": 1,
+          "pending": [],
+          "health": 3,
+          "morale": 5
+        }
+      ],
+      "security": [],
+      "result": "derrota_ou_bloqueio_na_amostra",
+      "groups": [
+        {
+          "name": "Jana e criança",
+          "size": 2,
+          "day": 1,
+          "intention": "Solidário",
+          "id": "ZC-INT-0007",
+          "revealed": true,
+          "verified": false
+        }
+      ],
+      "wounds": {},
+      "component_exhaustion": [],
+      "incapacitated": false,
+      "tactical_verified": false,
+      "limitations": [
+        "Combate é amostra de dados/valores; falta movimento, PA e IA zona a zona.",
+        "Viagem, busca, cerco e resgate têm efeitos de cartas não completamente executados.",
+        "Resultado é cenário de fases, não partida integral certificada."
+      ]
+    },
+    {
+      "heroes": 2,
+      "seed": 2303,
+      "profile": "limite",
+      "setup": {
+        "participants": 2,
+        "heroes": 2,
+        "founders": [
+          "Lia",
+          "Ivo"
+        ],
+        "links": [
+          "Parceiro e cachorro",
+          "Parceiro"
+        ],
+        "humans": 4,
+        "dogs": 1,
+        "consumers": 5,
+        "tents": 4,
+        "capacity": 8,
+        "lot_cards": 2,
+        "initial_full_cards": 3,
+        "initial_errantes": 1
+      },
+      "days": [
+        {
+          "day": 1,
+          "event_pressure": 0,
+          "destination": "Mercado",
+          "expedition_heroes": 2,
+          "clock": 7,
+          "cargo_needed": 6,
+          "cargo_capacity": 6,
+          "initial_enemies": 1,
+          "sampled_combat": [
+            {
+              "enemy": "Errante",
+              "die": 6,
+              "body": 2,
+              "hit": true
+            }
+          ],
+          "hordes": [
+            {
+              "id": "ZC-HOR-0006",
+              "name": "Corrida",
+              "tokens": 1
+            },
+            {
+              "id": "ZC-HOR-0009",
+              "name": "Peso morto",
+              "tokens": 1
+            },
+            {
+              "id": "ZC-HOR-0009",
+              "name": "Peso morto",
+              "tokens": 1
+            }
+          ],
+          "rescue_card": "ZC-INT-0008",
+          "siege": null,
+          "stock_before": {
+            "food": 12,
+            "water": 12,
+            "materials": 3,
+            "ammo": 2
+          },
+          "stock_after": {
+            "food": 21,
+            "water": 13,
+            "materials": 3,
+            "ammo": 2
+          },
+          "people": 6,
+          "dogs": 1,
+          "capacity": 8,
+          "shortage": [
+            0,
+            0
+          ],
+          "filter_work": 0,
+          "filter_active": false,
+          "pressure": 0,
+          "pending": [],
+          "health": 5,
+          "morale": 5
+        },
+        {
+          "day": 2,
+          "event_pressure": 1,
+          "destination": "Oficina",
+          "expedition_heroes": 2,
+          "clock": 8,
+          "cargo_needed": 6,
+          "cargo_capacity": 6,
+          "initial_enemies": 1,
+          "sampled_combat": [
+            {
+              "enemy": "Errante",
+              "die": 6,
+              "body": 2,
+              "hit": true
+            }
+          ],
+          "hordes": [
+            {
+              "id": "ZC-HOR-0009",
+              "name": "Peso morto",
+              "tokens": 1
+            },
+            {
+              "id": "ZC-HOR-0006",
+              "name": "Corrida",
+              "tokens": 1
+            },
+            {
+              "id": "ZC-HOR-0001",
+              "name": "Arrastar",
+              "tokens": 1
+            }
+          ],
+          "rescue_card": "ZC-INT-0004",
+          "siege": null,
+          "stock_before": {
+            "food": 21,
+            "water": 13,
+            "materials": 3,
+            "ammo": 2
+          },
+          "stock_after": {
+            "food": 21,
+            "water": 13,
+            "materials": 3,
+            "ammo": 2
+          },
+          "people": 7,
+          "dogs": 1,
+          "capacity": 8,
+          "shortage": [
+            0,
+            0
+          ],
+          "filter_work": 0,
+          "filter_active": false,
+          "pressure": 1,
+          "pending": [],
+          "health": 5,
+          "morale": 5
+        },
+        {
+          "day": 3,
+          "event_pressure": 0,
+          "destination": "Estação",
+          "expedition_heroes": 2,
+          "clock": 9,
+          "cargo_needed": 5,
+          "cargo_capacity": 6,
+          "initial_enemies": 1,
+          "sampled_combat": [
+            {
+              "enemy": "Errante",
+              "die": 5,
+              "body": 2,
+              "hit": true
+            },
+            {
+              "enemy": "Bruto",
+              "die": 3,
+              "body": 3,
+              "hit": true
+            }
+          ],
+          "hordes": [
+            {
+              "id": "ZC-HOR-0003",
+              "name": "Arrastar",
+              "tokens": 1
+            },
+            {
+              "id": "ZC-HOR-0004",
+              "name": "Arrastar",
+              "tokens": 1
+            },
+            {
+              "id": "ZC-HOR-0005",
+              "name": "Corrida",
+              "tokens": 1
+            },
+            {
+              "id": "ZC-HOR-0001",
+              "name": "Arrastar",
+              "tokens": 1
+            }
+          ],
+          "rescue_card": "ZC-INT-0011",
+          "siege": {
+            "kind": "Missão dia 3",
+            "force": 4,
+            "defense": 4,
+            "vigils": 2,
+            "rolls": [
+              5,
+              3
+            ],
+            "ammo": 0,
+            "gap": 0,
+            "damaged": []
+          },
+          "stock_before": {
+            "food": 21,
+            "water": 13,
+            "materials": 3,
+            "ammo": 2
+          },
+          "stock_after": {
+            "food": 11,
+            "water": 11,
+            "materials": 3,
+            "ammo": 2
+          },
+          "people": 9,
+          "dogs": 1,
+          "capacity": 8,
+          "shortage": [
+            0,
+            0
+          ],
+          "filter_work": 0,
+          "filter_active": false,
+          "pressure": 1,
+          "pending": [],
+          "health": 4,
+          "morale": 4
+        },
+        {
+          "day": 4,
+          "event_pressure": 1,
+          "destination": null,
+          "expedition_heroes": 0,
+          "clock": 0,
+          "cargo_needed": 0,
+          "cargo_capacity": 0,
+          "initial_enemies": 0,
+          "sampled_combat": [],
+          "hordes": [],
+          "rescue_card": null,
+          "siege": null,
+          "stock_before": {
+            "food": 11,
+            "water": 11,
+            "materials": 3,
+            "ammo": 2
+          },
+          "stock_after": {
+            "food": 0,
+            "water": 1,
+            "materials": 0,
+            "ammo": 2
+          },
+          "people": 7,
+          "dogs": 1,
+          "capacity": 8,
+          "shortage": [
+            0,
+            0
+          ],
+          "filter_work": 2,
+          "filter_active": false,
+          "pressure": 2,
+          "pending": [],
+          "health": 4,
+          "morale": 4
+        },
+        {
+          "day": 5,
+          "event_pressure": 1,
+          "destination": null,
+          "expedition_heroes": 0,
+          "clock": 0,
+          "cargo_needed": 0,
+          "cargo_capacity": 0,
+          "initial_enemies": 0,
+          "sampled_combat": [],
+          "hordes": [],
+          "rescue_card": null,
+          "siege": {
+            "kind": "Pressão",
+            "force": 4,
+            "defense": 5,
+            "vigils": 2,
+            "rolls": [
+              5,
+              5
+            ],
+            "ammo": 0,
+            "gap": 0,
+            "damaged": []
+          },
+          "stock_before": {
+            "food": 0,
+            "water": 1,
+            "materials": 0,
+            "ammo": 2
+          },
+          "stock_after": {
+            "food": 0,
+            "water": 3,
+            "materials": 0,
+            "ammo": 2
+          },
+          "people": 7,
+          "dogs": 1,
+          "capacity": 8,
+          "shortage": [
+            8,
+            0
+          ],
+          "filter_work": 4,
+          "filter_active": true,
+          "pressure": 1,
+          "pending": [],
+          "health": 3,
+          "morale": 4
+        }
+      ],
+      "security": [],
+      "result": "derrota_ou_bloqueio_na_amostra",
+      "groups": [
+        {
+          "name": "Jana e criança",
+          "size": 2,
+          "day": 1,
+          "intention": "Assustado",
+          "id": "ZC-INT-0008",
+          "revealed": true,
+          "verified": false
+        },
+        {
+          "name": "Bia",
+          "size": 1,
+          "day": 2,
+          "intention": "Solidário",
+          "id": "ZC-INT-0004",
+          "revealed": true,
+          "verified": false
+        },
+        {
+          "name": "Vicente e Sol",
+          "size": 2,
+          "day": 3,
+          "intention": "Oportunista",
+          "id": "ZC-INT-0011",
+          "revealed": true,
+          "verified": false
+        }
+      ],
+      "wounds": {},
+      "component_exhaustion": [],
+      "incapacitated": false,
+      "tactical_verified": false,
+      "limitations": [
+        "Combate é amostra de dados/valores; falta movimento, PA e IA zona a zona.",
+        "Viagem, busca, cerco e resgate têm efeitos de cartas não completamente executados.",
+        "Resultado é cenário de fases, não partida integral certificada."
+      ]
+    },
+    {
+      "heroes": 3,
+      "seed": 3101,
+      "profile": "favoravel",
+      "setup": {
+        "participants": 3,
+        "heroes": 3,
+        "founders": [
+          "Lia",
+          "Ivo",
+          "Mara"
+        ],
+        "links": [
+          "Filho",
+          "Cachorro",
+          "Sozinho"
+        ],
+        "humans": 4,
+        "dogs": 1,
+        "consumers": 5,
+        "tents": 4,
+        "capacity": 8,
+        "lot_cards": 2,
+        "initial_full_cards": 3,
+        "initial_errantes": 2
+      },
+      "days": [
+        {
+          "day": 1,
+          "event_pressure": 0,
+          "destination": "Mercado",
+          "expedition_heroes": 2,
+          "clock": 7,
+          "cargo_needed": 6,
+          "cargo_capacity": 6,
+          "initial_enemies": 2,
+          "sampled_combat": [
+            {
+              "enemy": "Errante",
+              "die": 4,
+              "body": 2,
+              "hit": true
+            },
+            {
+              "enemy": "Errante",
+              "die": 1,
+              "body": 3,
+              "hit": false
+            }
+          ],
+          "hordes": [
+            {
+              "id": "ZC-HOR-0009",
+              "name": "Peso morto",
+              "tokens": 1
+            },
+            {
+              "id": "ZC-HOR-0006",
+              "name": "Corrida",
+              "tokens": 1
+            },
+            {
+              "id": "ZC-HOR-0008",
+              "name": "Aglomerado",
+              "tokens": 2
+            }
+          ],
+          "rescue_card": null,
+          "siege": null,
+          "stock_before": {
+            "food": 12,
+            "water": 12,
+            "materials": 3,
+            "ammo": 2
+          },
+          "stock_after": {
+            "food": 23,
+            "water": 15,
+            "materials": 3,
+            "ammo": 2
+          },
+          "people": 4,
+          "dogs": 1,
+          "capacity": 8,
+          "shortage": [
+            0,
+            0
+          ],
+          "filter_work": 0,
+          "filter_active": false,
+          "pressure": 0,
+          "pending": [],
+          "health": 5,
+          "morale": 5
+        },
+        {
+          "day": 2,
+          "event_pressure": 1,
+          "destination": "Oficina",
+          "expedition_heroes": 2,
+          "clock": 8,
+          "cargo_needed": 6,
+          "cargo_capacity": 6,
+          "initial_enemies": 2,
+          "sampled_combat": [
+            {
+              "enemy": "Errante",
+              "die": 3,
+              "body": 2,
+              "hit": true
+            },
+            {
+              "enemy": "Errante",
+              "die": 3,
+              "body": 3,
+              "hit": true
+            }
+          ],
+          "hordes": [
+            {
+              "id": "ZC-HOR-0002",
+              "name": "Arrastar",
+              "tokens": 1
+            },
+            {
+              "id": "ZC-HOR-0007",
+              "name": "Aglomerado",
+              "tokens": 2
+            },
+            {
+              "id": "ZC-HOR-0007",
+              "name": "Aglomerado",
+              "tokens": 2
+            }
+          ],
+          "rescue_card": null,
+          "siege": null,
+          "stock_before": {
+            "food": 23,
+            "water": 15,
+            "materials": 3,
+            "ammo": 2
+          },
+          "stock_after": {
+            "food": 26,
+            "water": 18,
+            "materials": 3,
+            "ammo": 2
+          },
+          "people": 4,
+          "dogs": 1,
+          "capacity": 8,
+          "shortage": [
+            0,
+            0
+          ],
+          "filter_work": 0,
+          "filter_active": false,
+          "pressure": 1,
+          "pending": [],
+          "health": 5,
+          "morale": 5
+        },
+        {
+          "day": 3,
+          "event_pressure": 0,
+          "destination": "Estação",
+          "expedition_heroes": 2,
+          "clock": 9,
+          "cargo_needed": 5,
+          "cargo_capacity": 6,
+          "initial_enemies": 2,
+          "sampled_combat": [
+            {
+              "enemy": "Errante",
+              "die": 6,
+              "body": 2,
+              "hit": true
+            },
+            {
+              "enemy": "Errante",
+              "die": 5,
+              "body": 3,
+              "hit": true
+            },
+            {
+              "enemy": "Bruto",
+              "die": 4,
+              "body": 2,
+              "hit": true
+            }
+          ],
+          "hordes": [
+            {
+              "id": "ZC-HOR-0007",
+              "name": "Aglomerado",
+              "tokens": 2
+            },
+            {
+              "id": "ZC-HOR-0004",
+              "name": "Arrastar",
+              "tokens": 1
+            },
+            {
+              "id": "ZC-HOR-0001",
+              "name": "Arrastar",
+              "tokens": 1
+            },
+            {
+              "id": "ZC-HOR-0006",
+              "name": "Corrida",
+              "tokens": 1
+            }
+          ],
+          "rescue_card": null,
+          "siege": {
+            "kind": "Missão dia 3",
+            "force": 4,
+            "defense": 4,
+            "vigils": 1,
+            "rolls": [
+              5
+            ],
+            "ammo": 0,
+            "gap": 0,
+            "damaged": []
+          },
+          "stock_before": {
+            "food": 26,
+            "water": 18,
+            "materials": 3,
+            "ammo": 2
+          },
+          "stock_after": {
+            "food": 21,
+            "water": 21,
+            "materials": 3,
+            "ammo": 2
+          },
+          "people": 4,
+          "dogs": 1,
+          "capacity": 8,
+          "shortage": [
+            0,
+            0
+          ],
+          "filter_work": 0,
+          "filter_active": false,
+          "pressure": 1,
+          "pending": [],
+          "health": 5,
+          "morale": 5
+        },
+        {
+          "day": 4,
+          "event_pressure": 1,
+          "destination": null,
+          "expedition_heroes": 0,
+          "clock": 0,
+          "cargo_needed": 0,
+          "cargo_capacity": 0,
+          "initial_enemies": 0,
+          "sampled_combat": [],
+          "hordes": [],
+          "rescue_card": null,
+          "siege": null,
+          "stock_before": {
+            "food": 21,
+            "water": 21,
+            "materials": 3,
+            "ammo": 2
+          },
+          "stock_after": {
+            "food": 16,
+            "water": 16,
+            "materials": 0,
+            "ammo": 2
+          },
+          "people": 4,
+          "dogs": 1,
+          "capacity": 8,
+          "shortage": [
+            0,
+            0
+          ],
+          "filter_work": 2,
+          "filter_active": false,
+          "pressure": 2,
+          "pending": [],
+          "health": 5,
+          "morale": 5
+        },
+        {
+          "day": 5,
+          "event_pressure": 1,
+          "destination": null,
+          "expedition_heroes": 0,
+          "clock": 0,
+          "cargo_needed": 0,
+          "cargo_capacity": 0,
+          "initial_enemies": 0,
+          "sampled_combat": [],
+          "hordes": [],
+          "rescue_card": null,
+          "siege": {
+            "kind": "Pressão",
+            "force": 4,
+            "defense": 4,
+            "vigils": 1,
+            "rolls": [
+              4
+            ],
+            "ammo": 0,
+            "gap": 0,
+            "damaged": []
+          },
+          "stock_before": {
+            "food": 16,
+            "water": 16,
+            "materials": 0,
+            "ammo": 2
+          },
+          "stock_after": {
+            "food": 11,
+            "water": 21,
+            "materials": 0,
+            "ammo": 2
+          },
+          "people": 4,
+          "dogs": 1,
+          "capacity": 8,
+          "shortage": [
+            0,
+            0
+          ],
+          "filter_work": 4,
+          "filter_active": true,
+          "pressure": 1,
+          "pending": [],
+          "health": 5,
+          "morale": 5
+        }
+      ],
+      "security": [],
+      "result": "plano_de_fases_possivel",
+      "groups": [],
+      "wounds": {
+        "Ivo": 1
+      },
+      "component_exhaustion": [],
+      "incapacitated": false,
+      "tactical_verified": false,
+      "limitations": [
+        "Combate é amostra de dados/valores; falta movimento, PA e IA zona a zona.",
+        "Viagem, busca, cerco e resgate têm efeitos de cartas não completamente executados.",
+        "Resultado é cenário de fases, não partida integral certificada."
+      ]
+    },
+    {
+      "heroes": 3,
+      "seed": 3202,
+      "profile": "dificil",
+      "setup": {
+        "participants": 3,
+        "heroes": 3,
+        "founders": [
+          "Lia",
+          "Ivo",
+          "Mara"
+        ],
+        "links": [
+          "Sozinho",
+          "Sozinho",
+          "Filho"
+        ],
+        "humans": 4,
+        "dogs": 0,
+        "consumers": 4,
+        "tents": 4,
+        "capacity": 8,
+        "lot_cards": 1,
+        "initial_full_cards": 2,
+        "initial_errantes": 2
+      },
+      "days": [
+        {
+          "day": 1,
+          "event_pressure": 0,
+          "destination": "Mercado",
+          "expedition_heroes": 2,
+          "clock": 7,
+          "cargo_needed": 3,
+          "cargo_capacity": 6,
+          "initial_enemies": 2,
+          "sampled_combat": [
+            {
+              "enemy": "Errante",
+              "die": 5,
+              "body": 2,
+              "hit": true
+            },
+            {
+              "enemy": "Errante",
+              "die": 5,
+              "body": 3,
+              "hit": true
+            }
+          ],
+          "hordes": [
+            {
+              "id": "ZC-HOR-0001",
+              "name": "Arrastar",
+              "tokens": 1
+            },
+            {
+              "id": "ZC-HOR-0007",
+              "name": "Aglomerado",
+              "tokens": 2
+            },
+            {
+              "id": "ZC-HOR-0005",
+              "name": "Corrida",
+              "tokens": 1
+            }
+          ],
+          "rescue_card": "ZC-INT-0004",
+          "siege": null,
+          "stock_before": {
+            "food": 8,
+            "water": 8,
+            "materials": 3,
+            "ammo": 2
+          },
+          "stock_after": {
+            "food": 10,
+            "water": 6,
+            "materials": 3,
+            "ammo": 2
+          },
+          "people": 6,
+          "dogs": 0,
+          "capacity": 8,
+          "shortage": [
+            0,
+            0
+          ],
+          "filter_work": 0,
+          "filter_active": false,
+          "pressure": 0,
+          "pending": [],
+          "health": 5,
+          "morale": 5
+        },
+        {
+          "day": 2,
+          "event_pressure": 1,
+          "destination": "Oficina",
+          "expedition_heroes": 2,
+          "clock": 8,
+          "cargo_needed": 4,
+          "cargo_capacity": 6,
+          "initial_enemies": 2,
+          "sampled_combat": [
+            {
+              "enemy": "Errante",
+              "die": 1,
+              "body": 2,
+              "hit": false
+            },
+            {
+              "enemy": "Errante",
+              "die": 1,
+              "body": 3,
+              "hit": false
+            }
+          ],
+          "hordes": [
+            {
+              "id": "ZC-HOR-0005",
+              "name": "Corrida",
+              "tokens": 1
+            },
+            {
+              "id": "ZC-HOR-0008",
+              "name": "Aglomerado",
+              "tokens": 2
+            },
+            {
+              "id": "ZC-HOR-0005",
+              "name": "Corrida",
+              "tokens": 1
+            }
+          ],
+          "rescue_card": null,
+          "siege": null,
+          "stock_before": {
+            "food": 10,
+            "water": 6,
+            "materials": 3,
+            "ammo": 2
+          },
+          "stock_after": {
+            "food": 8,
+            "water": 4,
+            "materials": 3,
+            "ammo": 2
+          },
+          "people": 6,
+          "dogs": 0,
+          "capacity": 8,
+          "shortage": [
+            0,
+            0
+          ],
+          "filter_work": 0,
+          "filter_active": false,
+          "pressure": 1,
+          "pending": [],
+          "health": 5,
+          "morale": 5
+        },
+        {
+          "day": 3,
+          "event_pressure": 0,
+          "destination": "Estação",
+          "expedition_heroes": 2,
+          "clock": 9,
+          "cargo_needed": 4,
+          "cargo_capacity": 6,
+          "initial_enemies": 2,
+          "sampled_combat": [
+            {
+              "enemy": "Errante",
+              "die": 2,
+              "body": 2,
+              "hit": false
+            },
+            {
+              "enemy": "Errante",
+              "die": 5,
+              "body": 3,
+              "hit": true
+            },
+            {
+              "enemy": "Bruto",
+              "die": 1,
+              "body": 2,
+              "hit": false
+            }
+          ],
+          "hordes": [
+            {
+              "id": "ZC-HOR-0008",
+              "name": "Aglomerado",
+              "tokens": 2
+            },
+            {
+              "id": "ZC-HOR-0009",
+              "name": "Peso morto",
+              "tokens": 1
+            },
+            {
+              "id": "ZC-HOR-0003",
+              "name": "Arrastar",
+              "tokens": 1
+            },
+            {
+              "id": "ZC-HOR-0008",
+              "name": "Aglomerado",
+              "tokens": 2
+            }
+          ],
+          "rescue_card": null,
+          "siege": {
+            "kind": "Missão dia 3",
+            "force": 4,
+            "defense": 4,
+            "vigils": 1,
+            "rolls": [
+              1
+            ],
+            "ammo": 2,
+            "gap": 0,
+            "damaged": []
+          },
+          "stock_before": {
+            "food": 8,
+            "water": 4,
+            "materials": 3,
+            "ammo": 2
+          },
+          "stock_after": {
+            "food": 2,
+            "water": 2,
+            "materials": 3,
+            "ammo": 0
+          },
+          "people": 6,
+          "dogs": 0,
+          "capacity": 8,
+          "shortage": [
+            0,
+            0
+          ],
+          "filter_work": 0,
+          "filter_active": false,
+          "pressure": 1,
+          "pending": [],
+          "health": 5,
+          "morale": 5
+        },
+        {
+          "day": 4,
+          "event_pressure": 1,
+          "destination": null,
+          "expedition_heroes": 0,
+          "clock": 0,
+          "cargo_needed": 0,
+          "cargo_capacity": 0,
+          "initial_enemies": 0,
+          "sampled_combat": [],
+          "hordes": [],
+          "rescue_card": null,
+          "siege": null,
+          "stock_before": {
+            "food": 2,
+            "water": 2,
+            "materials": 3,
+            "ammo": 0
+          },
+          "stock_after": {
+            "food": 0,
+            "water": 0,
+            "materials": 0,
+            "ammo": 0
+          },
+          "people": 6,
+          "dogs": 0,
+          "capacity": 8,
+          "shortage": [
+            4,
+            4
+          ],
+          "filter_work": 2,
+          "filter_active": false,
+          "pressure": 2,
+          "pending": [],
+          "health": 4,
+          "morale": 5
+        },
+        {
+          "day": 5,
+          "event_pressure": 1,
+          "destination": null,
+          "expedition_heroes": 0,
+          "clock": 0,
+          "cargo_needed": 0,
+          "cargo_capacity": 0,
+          "initial_enemies": 0,
+          "sampled_combat": [],
+          "hordes": [],
+          "rescue_card": null,
+          "siege": {
+            "kind": "Pressão",
+            "force": 6,
+            "defense": 3,
+            "vigils": 1,
+            "rolls": [
+              6
+            ],
+            "ammo": 0,
+            "gap": 3,
+            "damaged": [
+              "Portão",
+              "Depósito"
+            ]
+          },
+          "stock_before": {
+            "food": 0,
+            "water": 0,
+            "materials": 0,
+            "ammo": 0
+          },
+          "stock_after": {
+            "food": 0,
+            "water": 2,
+            "materials": 0,
+            "ammo": 0
+          },
+          "people": 6,
+          "dogs": 0,
+          "capacity": 8,
+          "shortage": [
+            6,
+            0
+          ],
+          "filter_work": 4,
+          "filter_active": true,
+          "pressure": 1,
+          "pending": [],
+          "health": 3,
+          "morale": 4
+        }
+      ],
+      "security": [],
+      "result": "derrota_ou_bloqueio_na_amostra",
+      "groups": [
+        {
+          "name": "Jana e criança",
+          "size": 2,
+          "day": 1,
+          "intention": "Solidário",
+          "id": "ZC-INT-0004",
+          "revealed": true,
+          "verified": false
+        }
+      ],
+      "wounds": {
+        "Lia": 3,
+        "Ivo": 1
+      },
+      "component_exhaustion": [],
+      "incapacitated": true,
+      "tactical_verified": false,
+      "limitations": [
+        "Combate é amostra de dados/valores; falta movimento, PA e IA zona a zona.",
+        "Viagem, busca, cerco e resgate têm efeitos de cartas não completamente executados.",
+        "Resultado é cenário de fases, não partida integral certificada."
+      ]
+    },
+    {
+      "heroes": 3,
+      "seed": 3303,
+      "profile": "limite",
+      "setup": {
+        "participants": 3,
+        "heroes": 3,
+        "founders": [
+          "Lia",
+          "Ivo",
+          "Mara"
+        ],
+        "links": [
+          "Parceiro e cachorro",
+          "Parceiro",
+          "Parceiro"
+        ],
+        "humans": 6,
+        "dogs": 1,
+        "consumers": 7,
+        "tents": 4,
+        "capacity": 8,
+        "lot_cards": 2,
+        "initial_full_cards": 4,
+        "initial_errantes": 2
+      },
+      "days": [
+        {
+          "day": 1,
+          "event_pressure": 0,
+          "destination": "Mercado",
+          "expedition_heroes": 2,
+          "clock": 7,
+          "cargo_needed": 6,
+          "cargo_capacity": 6,
+          "initial_enemies": 2,
+          "sampled_combat": [
+            {
+              "enemy": "Errante",
+              "die": 4,
+              "body": 2,
+              "hit": true
+            },
+            {
+              "enemy": "Errante",
+              "die": 2,
+              "body": 3,
+              "hit": true
+            }
+          ],
+          "hordes": [
+            {
+              "id": "ZC-HOR-0001",
+              "name": "Arrastar",
+              "tokens": 1
+            },
+            {
+              "id": "ZC-HOR-0005",
+              "name": "Corrida",
+              "tokens": 1
+            },
+            {
+              "id": "ZC-HOR-0008",
+              "name": "Aglomerado",
+              "tokens": 2
+            }
+          ],
+          "rescue_card": "ZC-INT-0012",
+          "siege": null,
+          "stock_before": {
+            "food": 16,
+            "water": 16,
+            "materials": 3,
+            "ammo": 2
+          },
+          "stock_after": {
+            "food": 23,
+            "water": 15,
+            "materials": 3,
+            "ammo": 2
+          },
+          "people": 8,
+          "dogs": 1,
+          "capacity": 8,
+          "shortage": [
+            0,
+            0
+          ],
+          "filter_work": 0,
+          "filter_active": false,
+          "pressure": 0,
+          "pending": [],
+          "health": 5,
+          "morale": 5
+        },
+        {
+          "day": 2,
+          "event_pressure": 1,
+          "destination": "Oficina",
+          "expedition_heroes": 2,
+          "clock": 8,
+          "cargo_needed": 6,
+          "cargo_capacity": 6,
+          "initial_enemies": 2,
+          "sampled_combat": [
+            {
+              "enemy": "Errante",
+              "die": 6,
+              "body": 2,
+              "hit": true
+            },
+            {
+              "enemy": "Errante",
+              "die": 6,
+              "body": 3,
+              "hit": true
+            }
+          ],
+          "hordes": [
+            {
+              "id": "ZC-HOR-0004",
+              "name": "Arrastar",
+              "tokens": 1
+            },
+            {
+              "id": "ZC-HOR-0008",
+              "name": "Aglomerado",
+              "tokens": 2
+            },
+            {
+              "id": "ZC-HOR-0004",
+              "name": "Arrastar",
+              "tokens": 1
+            }
+          ],
+          "rescue_card": "ZC-INT-0008",
+          "siege": null,
+          "stock_before": {
+            "food": 23,
+            "water": 15,
+            "materials": 3,
+            "ammo": 2
+          },
+          "stock_after": {
+            "food": 21,
+            "water": 13,
+            "materials": 3,
+            "ammo": 2
+          },
+          "people": 7,
+          "dogs": 1,
+          "capacity": 8,
+          "shortage": [
+            0,
+            0
+          ],
+          "filter_work": 0,
+          "filter_active": false,
+          "pressure": 2,
+          "pending": [],
+          "health": 5,
+          "morale": 5
+        },
+        {
+          "day": 3,
+          "event_pressure": 0,
+          "destination": "Estação",
+          "expedition_heroes": 2,
+          "clock": 9,
+          "cargo_needed": 5,
+          "cargo_capacity": 6,
+          "initial_enemies": 2,
+          "sampled_combat": [
+            {
+              "enemy": "Errante",
+              "die": 6,
+              "body": 2,
+              "hit": true
+            },
+            {
+              "enemy": "Errante",
+              "die": 1,
+              "body": 3,
+              "hit": false
+            },
+            {
+              "enemy": "Bruto",
+              "die": 6,
+              "body": 2,
+              "hit": true
+            }
+          ],
+          "hordes": [
+            {
+              "id": "ZC-HOR-0004",
+              "name": "Arrastar",
+              "tokens": 1
+            },
+            {
+              "id": "ZC-HOR-0004",
+              "name": "Arrastar",
+              "tokens": 1
+            },
+            {
+              "id": "ZC-HOR-0004",
+              "name": "Arrastar",
+              "tokens": 1
+            },
+            {
+              "id": "ZC-HOR-0006",
+              "name": "Corrida",
+              "tokens": 1
+            }
+          ],
+          "rescue_card": "ZC-INT-0002",
+          "siege": {
+            "kind": "Missão dia 3",
+            "force": 4,
+            "defense": 4,
+            "vigils": 3,
+            "rolls": [
+              2,
+              2,
+              4
+            ],
+            "ammo": 0,
+            "gap": 0,
+            "damaged": []
+          },
+          "stock_before": {
+            "food": 21,
+            "water": 13,
+            "materials": 3,
+            "ammo": 2
+          },
+          "stock_after": {
+            "food": 11,
+            "water": 11,
+            "materials": 3,
+            "ammo": 2
+          },
+          "people": 9,
+          "dogs": 1,
+          "capacity": 8,
+          "shortage": [
+            0,
+            0
+          ],
+          "filter_work": 0,
+          "filter_active": false,
+          "pressure": 2,
+          "pending": [],
+          "health": 5,
+          "morale": 5
+        },
+        {
+          "day": 4,
+          "event_pressure": 1,
+          "destination": null,
+          "expedition_heroes": 0,
+          "clock": 0,
+          "cargo_needed": 0,
+          "cargo_capacity": 0,
+          "initial_enemies": 0,
+          "sampled_combat": [],
+          "hordes": [],
+          "rescue_card": null,
+          "siege": {
+            "kind": "Pressão",
+            "force": 6,
+            "defense": 6,
+            "vigils": 3,
+            "rolls": [
+              3,
+              4,
+              3
+            ],
+            "ammo": 2,
+            "gap": 0,
+            "damaged": []
+          },
+          "stock_before": {
+            "food": 11,
+            "water": 11,
+            "materials": 3,
+            "ammo": 2
+          },
+          "stock_after": {
+            "food": 1,
+            "water": 1,
+            "materials": 0,
+            "ammo": 0
+          },
+          "people": 9,
+          "dogs": 1,
+          "capacity": 8,
+          "shortage": [
+            0,
+            0
+          ],
+          "filter_work": 2,
+          "filter_active": false,
+          "pressure": 1,
+          "pending": [],
+          "health": 4,
+          "morale": 4
+        },
+        {
+          "day": 5,
+          "event_pressure": 1,
+          "destination": null,
+          "expedition_heroes": 0,
+          "clock": 0,
+          "cargo_needed": 0,
+          "cargo_capacity": 0,
+          "initial_enemies": 0,
+          "sampled_combat": [],
+          "hordes": [],
+          "rescue_card": null,
+          "siege": null,
+          "stock_before": {
+            "food": 1,
+            "water": 1,
+            "materials": 0,
+            "ammo": 0
+          },
+          "stock_after": {
+            "food": 0,
+            "water": 5,
+            "materials": 0,
+            "ammo": 0
+          },
+          "people": 9,
+          "dogs": 1,
+          "capacity": 8,
+          "shortage": [
+            9,
+            0
+          ],
+          "filter_work": 4,
+          "filter_active": true,
+          "pressure": 2,
+          "pending": [],
+          "health": 2,
+          "morale": 3
+        }
+      ],
+      "security": [],
+      "result": "derrota_ou_bloqueio_na_amostra",
+      "groups": [
+        {
+          "name": "Jana e criança",
+          "size": 2,
+          "day": 1,
+          "intention": "Infiltrado",
+          "id": "ZC-INT-0012",
+          "revealed": true,
+          "verified": false
+        },
+        {
+          "name": "Bia",
+          "size": 1,
+          "day": 2,
+          "intention": "Assustado",
+          "id": "ZC-INT-0008",
+          "revealed": true,
+          "verified": false
+        },
+        {
+          "name": "Vicente e Sol",
+          "size": 2,
+          "day": 3,
+          "intention": "Solidário",
+          "id": "ZC-INT-0002",
+          "revealed": true,
+          "verified": false
+        }
+      ],
+      "wounds": {
+        "Ivo": 1
+      },
+      "component_exhaustion": [],
+      "incapacitated": false,
+      "tactical_verified": false,
+      "limitations": [
+        "Combate é amostra de dados/valores; falta movimento, PA e IA zona a zona.",
+        "Viagem, busca, cerco e resgate têm efeitos de cartas não completamente executados.",
+        "Resultado é cenário de fases, não partida integral certificada."
+      ]
+    },
+    {
+      "heroes": 4,
+      "seed": 4101,
+      "profile": "favoravel",
+      "setup": {
+        "participants": 4,
+        "heroes": 4,
+        "founders": [
+          "Lia",
+          "Ivo",
+          "Mara",
+          "Caio"
+        ],
+        "links": [
+          "Parceiro",
+          "Parceiro e cachorro",
+          "Cachorro",
+          "Parceiro"
+        ],
+        "humans": 7,
+        "dogs": 2,
+        "consumers": 9,
+        "tents": 4,
+        "capacity": 8,
+        "lot_cards": 3,
+        "initial_full_cards": 5,
+        "initial_errantes": 2
+      },
+      "days": [
+        {
+          "day": 1,
+          "event_pressure": 0,
+          "destination": "Mercado",
+          "expedition_heroes": 3,
+          "clock": 7,
+          "cargo_needed": 9,
+          "cargo_capacity": 9,
+          "initial_enemies": 2,
+          "sampled_combat": [
+            {
+              "enemy": "Errante",
+              "die": 6,
+              "body": 2,
+              "hit": true
+            },
+            {
+              "enemy": "Errante",
+              "die": 4,
+              "body": 3,
+              "hit": true
+            }
+          ],
+          "hordes": [
+            {
+              "id": "ZC-HOR-0009",
+              "name": "Peso morto",
+              "tokens": 1
+            },
+            {
+              "id": "ZC-HOR-0003",
+              "name": "Arrastar",
+              "tokens": 1
+            },
+            {
+              "id": "ZC-HOR-0002",
+              "name": "Arrastar",
+              "tokens": 1
+            }
+          ],
+          "rescue_card": null,
+          "siege": null,
+          "stock_before": {
+            "food": 20,
+            "water": 20,
+            "materials": 3,
+            "ammo": 2
+          },
+          "stock_after": {
+            "food": 35,
+            "water": 23,
+            "materials": 3,
+            "ammo": 2
+          },
+          "people": 7,
+          "dogs": 2,
+          "capacity": 8,
+          "shortage": [
+            0,
+            0
+          ],
+          "filter_work": 0,
+          "filter_active": false,
+          "pressure": 0,
+          "pending": [],
+          "health": 5,
+          "morale": 5
+        },
+        {
+          "day": 2,
+          "event_pressure": 1,
+          "destination": "Oficina",
+          "expedition_heroes": 3,
+          "clock": 8,
+          "cargo_needed": 8,
+          "cargo_capacity": 9,
+          "initial_enemies": 2,
+          "sampled_combat": [
+            {
+              "enemy": "Errante",
+              "die": 5,
+              "body": 2,
+              "hit": true
+            },
+            {
+              "enemy": "Errante",
+              "die": 2,
+              "body": 3,
+              "hit": true
+            }
+          ],
+          "hordes": [
+            {
+              "id": "ZC-HOR-0007",
+              "name": "Aglomerado",
+              "tokens": 2
+            },
+            {
+              "id": "ZC-HOR-0007",
+              "name": "Aglomerado",
+              "tokens": 2
+            },
+            {
+              "id": "ZC-HOR-0004",
+              "name": "Arrastar",
+              "tokens": 1
+            }
+          ],
+          "rescue_card": null,
+          "siege": null,
+          "stock_before": {
+            "food": 35,
+            "water": 23,
+            "materials": 3,
+            "ammo": 2
+          },
+          "stock_after": {
+            "food": 38,
+            "water": 26,
+            "materials": 3,
+            "ammo": 2
+          },
+          "people": 7,
+          "dogs": 2,
+          "capacity": 8,
+          "shortage": [
+            0,
+            0
+          ],
+          "filter_work": 0,
+          "filter_active": false,
+          "pressure": 1,
+          "pending": [],
+          "health": 5,
+          "morale": 5
+        },
+        {
+          "day": 3,
+          "event_pressure": 0,
+          "destination": "Estação",
+          "expedition_heroes": 2,
+          "clock": 9,
+          "cargo_needed": 6,
+          "cargo_capacity": 6,
+          "initial_enemies": 2,
+          "sampled_combat": [
+            {
+              "enemy": "Errante",
+              "die": 2,
+              "body": 2,
+              "hit": false
+            },
+            {
+              "enemy": "Errante",
+              "die": 1,
+              "body": 3,
+              "hit": false
+            },
+            {
+              "enemy": "Bruto",
+              "die": 2,
+              "body": 2,
+              "hit": false
+            }
+          ],
+          "hordes": [
+            {
+              "id": "ZC-HOR-0008",
+              "name": "Aglomerado",
+              "tokens": 2
+            },
+            {
+              "id": "ZC-HOR-0007",
+              "name": "Aglomerado",
+              "tokens": 2
+            },
+            {
+              "id": "ZC-HOR-0001",
+              "name": "Arrastar",
+              "tokens": 1
+            },
+            {
+              "id": "ZC-HOR-0008",
+              "name": "Aglomerado",
+              "tokens": 2
+            }
+          ],
+          "rescue_card": null,
+          "siege": {
+            "kind": "Missão dia 3",
+            "force": 4,
+            "defense": 5,
+            "vigils": 3,
+            "rolls": [
+              3,
+              4,
+              6
+            ],
+            "ammo": 0,
+            "gap": 0,
+            "damaged": []
+          },
+          "stock_before": {
+            "food": 38,
+            "water": 26,
+            "materials": 3,
+            "ammo": 2
+          },
+          "stock_after": {
+            "food": 29,
+            "water": 29,
+            "materials": 3,
+            "ammo": 2
+          },
+          "people": 7,
+          "dogs": 2,
+          "capacity": 8,
+          "shortage": [
+            0,
+            0
+          ],
+          "filter_work": 0,
+          "filter_active": false,
+          "pressure": 1,
+          "pending": [],
+          "health": 5,
+          "morale": 5
+        },
+        {
+          "day": 4,
+          "event_pressure": 1,
+          "destination": null,
+          "expedition_heroes": 0,
+          "clock": 0,
+          "cargo_needed": 0,
+          "cargo_capacity": 0,
+          "initial_enemies": 0,
+          "sampled_combat": [],
+          "hordes": [],
+          "rescue_card": null,
+          "siege": null,
+          "stock_before": {
+            "food": 29,
+            "water": 29,
+            "materials": 3,
+            "ammo": 2
+          },
+          "stock_after": {
+            "food": 20,
+            "water": 20,
+            "materials": 0,
+            "ammo": 2
+          },
+          "people": 7,
+          "dogs": 2,
+          "capacity": 8,
+          "shortage": [
+            0,
+            0
+          ],
+          "filter_work": 2,
+          "filter_active": false,
+          "pressure": 2,
+          "pending": [],
+          "health": 5,
+          "morale": 5
+        },
+        {
+          "day": 5,
+          "event_pressure": 1,
+          "destination": null,
+          "expedition_heroes": 0,
+          "clock": 0,
+          "cargo_needed": 0,
+          "cargo_capacity": 0,
+          "initial_enemies": 0,
+          "sampled_combat": [],
+          "hordes": [],
+          "rescue_card": null,
+          "siege": {
+            "kind": "Pressão",
+            "force": 6,
+            "defense": 5,
+            "vigils": 3,
+            "rolls": [
+              1,
+              3,
+              2
+            ],
+            "ammo": 2,
+            "gap": 1,
+            "damaged": [
+              "Portão"
+            ]
+          },
+          "stock_before": {
+            "food": 20,
+            "water": 20,
+            "materials": 0,
+            "ammo": 2
+          },
+          "stock_after": {
+            "food": 7,
+            "water": 29,
+            "materials": 0,
+            "ammo": 0
+          },
+          "people": 7,
+          "dogs": 2,
+          "capacity": 8,
+          "shortage": [
+            0,
+            0
+          ],
+          "filter_work": 4,
+          "filter_active": true,
+          "pressure": 1,
+          "pending": [],
+          "health": 5,
+          "morale": 5
+        }
+      ],
+      "security": [],
+      "result": "plano_de_fases_possivel",
+      "groups": [],
+      "wounds": {
+        "Lia": 2,
+        "Ivo": 1
+      },
+      "component_exhaustion": [],
+      "incapacitated": false,
+      "tactical_verified": false,
+      "limitations": [
+        "Combate é amostra de dados/valores; falta movimento, PA e IA zona a zona.",
+        "Viagem, busca, cerco e resgate têm efeitos de cartas não completamente executados.",
+        "Resultado é cenário de fases, não partida integral certificada."
+      ]
+    },
+    {
+      "heroes": 4,
+      "seed": 4202,
+      "profile": "dificil",
+      "setup": {
+        "participants": 4,
+        "heroes": 4,
+        "founders": [
+          "Lia",
+          "Ivo",
+          "Mara",
+          "Caio"
+        ],
+        "links": [
+          "Sozinho",
+          "Sozinho",
+          "Sozinho",
+          "Filho"
+        ],
+        "humans": 5,
+        "dogs": 0,
+        "consumers": 5,
+        "tents": 4,
+        "capacity": 8,
+        "lot_cards": 2,
+        "initial_full_cards": 3,
+        "initial_errantes": 2
+      },
+      "days": [
+        {
+          "day": 1,
+          "event_pressure": 0,
+          "destination": "Mercado",
+          "expedition_heroes": 2,
+          "clock": 7,
+          "cargo_needed": 6,
+          "cargo_capacity": 6,
+          "initial_enemies": 2,
+          "sampled_combat": [
+            {
+              "enemy": "Errante",
+              "die": 2,
+              "body": 2,
+              "hit": false
+            },
+            {
+              "enemy": "Errante",
+              "die": 2,
+              "body": 3,
+              "hit": true
+            }
+          ],
+          "hordes": [
+            {
+              "id": "ZC-HOR-0004",
+              "name": "Arrastar",
+              "tokens": 1
+            },
+            {
+              "id": "ZC-HOR-0007",
+              "name": "Aglomerado",
+              "tokens": 2
+            },
+            {
+              "id": "ZC-HOR-0009",
+              "name": "Peso morto",
+              "tokens": 1
+            }
+          ],
+          "rescue_card": "ZC-INT-0001",
+          "siege": null,
+          "stock_before": {
+            "food": 12,
+            "water": 12,
+            "materials": 3,
+            "ammo": 2
+          },
+          "stock_after": {
+            "food": 21,
+            "water": 13,
+            "materials": 3,
+            "ammo": 2
+          },
+          "people": 7,
+          "dogs": 0,
+          "capacity": 8,
+          "shortage": [
+            0,
+            0
+          ],
+          "filter_work": 0,
+          "filter_active": false,
+          "pressure": 0,
+          "pending": [],
+          "health": 5,
+          "morale": 5
+        },
+        {
+          "day": 2,
+          "event_pressure": 1,
+          "destination": "Oficina",
+          "expedition_heroes": 2,
+          "clock": 8,
+          "cargo_needed": 6,
+          "cargo_capacity": 6,
+          "initial_enemies": 2,
+          "sampled_combat": [
+            {
+              "enemy": "Errante",
+              "die": 2,
+              "body": 2,
+              "hit": false
+            },
+            {
+              "enemy": "Errante",
+              "die": 6,
+              "body": 3,
+              "hit": true
+            }
+          ],
+          "hordes": [
+            {
+              "id": "ZC-HOR-0003",
+              "name": "Arrastar",
+              "tokens": 1
+            },
+            {
+              "id": "ZC-HOR-0003",
+              "name": "Arrastar",
+              "tokens": 1
+            },
+            {
+              "id": "ZC-HOR-0006",
+              "name": "Corrida",
+              "tokens": 1
+            }
+          ],
+          "rescue_card": null,
+          "siege": null,
+          "stock_before": {
+            "food": 21,
+            "water": 13,
+            "materials": 3,
+            "ammo": 2
+          },
+          "stock_after": {
+            "food": 22,
+            "water": 14,
+            "materials": 3,
+            "ammo": 2
+          },
+          "people": 7,
+          "dogs": 0,
+          "capacity": 8,
+          "shortage": [
+            0,
+            0
+          ],
+          "filter_work": 0,
+          "filter_active": false,
+          "pressure": 1,
+          "pending": [],
+          "health": 5,
+          "morale": 5
+        },
+        {
+          "day": 3,
+          "event_pressure": 0,
+          "destination": "Estação",
+          "expedition_heroes": 2,
+          "clock": 9,
+          "cargo_needed": 5,
+          "cargo_capacity": 6,
+          "initial_enemies": 2,
+          "sampled_combat": [
+            {
+              "enemy": "Errante",
+              "die": 5,
+              "body": 2,
+              "hit": true
+            },
+            {
+              "enemy": "Errante",
+              "die": 6,
+              "body": 3,
+              "hit": true
+            },
+            {
+              "enemy": "Bruto",
+              "die": 3,
+              "body": 2,
+              "hit": false
+            }
+          ],
+          "hordes": [
+            {
+              "id": "ZC-HOR-0001",
+              "name": "Arrastar",
+              "tokens": 1
+            },
+            {
+              "id": "ZC-HOR-0006",
+              "name": "Corrida",
+              "tokens": 1
+            },
+            {
+              "id": "ZC-HOR-0007",
+              "name": "Aglomerado",
+              "tokens": 2
+            },
+            {
+              "id": "ZC-HOR-0003",
+              "name": "Arrastar",
+              "tokens": 1
+            }
+          ],
+          "rescue_card": null,
+          "siege": {
+            "kind": "Missão dia 3",
+            "force": 4,
+            "defense": 4,
+            "vigils": 2,
+            "rolls": [
+              3,
+              6
+            ],
+            "ammo": 1,
+            "gap": 0,
+            "damaged": []
+          },
+          "stock_before": {
+            "food": 22,
+            "water": 14,
+            "materials": 3,
+            "ammo": 2
+          },
+          "stock_after": {
+            "food": 15,
+            "water": 15,
+            "materials": 3,
+            "ammo": 1
+          },
+          "people": 7,
+          "dogs": 0,
+          "capacity": 8,
+          "shortage": [
+            0,
+            0
+          ],
+          "filter_work": 0,
+          "filter_active": false,
+          "pressure": 1,
+          "pending": [],
+          "health": 5,
+          "morale": 5
+        },
+        {
+          "day": 4,
+          "event_pressure": 1,
+          "destination": null,
+          "expedition_heroes": 0,
+          "clock": 0,
+          "cargo_needed": 0,
+          "cargo_capacity": 0,
+          "initial_enemies": 0,
+          "sampled_combat": [],
+          "hordes": [],
+          "rescue_card": null,
+          "siege": null,
+          "stock_before": {
+            "food": 15,
+            "water": 15,
+            "materials": 3,
+            "ammo": 1
+          },
+          "stock_after": {
+            "food": 8,
+            "water": 8,
+            "materials": 0,
+            "ammo": 1
+          },
+          "people": 7,
+          "dogs": 0,
+          "capacity": 8,
+          "shortage": [
+            0,
+            0
+          ],
+          "filter_work": 2,
+          "filter_active": false,
+          "pressure": 2,
+          "pending": [],
+          "health": 5,
+          "morale": 5
+        },
+        {
+          "day": 5,
+          "event_pressure": 1,
+          "destination": null,
+          "expedition_heroes": 0,
+          "clock": 0,
+          "cargo_needed": 0,
+          "cargo_capacity": 0,
+          "initial_enemies": 0,
+          "sampled_combat": [],
+          "hordes": [],
+          "rescue_card": null,
+          "siege": {
+            "kind": "Pressão",
+            "force": 6,
+            "defense": 4,
+            "vigils": 2,
+            "rolls": [
+              5,
+              3
+            ],
+            "ammo": 1,
+            "gap": 2,
+            "damaged": [
+              "Portão"
+            ]
+          },
+          "stock_before": {
+            "food": 8,
+            "water": 8,
+            "materials": 0,
+            "ammo": 1
+          },
+          "stock_after": {
+            "food": 0,
+            "water": 11,
+            "materials": 0,
+            "ammo": 0
+          },
+          "people": 7,
+          "dogs": 0,
+          "capacity": 8,
+          "shortage": [
+            3,
+            0
+          ],
+          "filter_work": 4,
+          "filter_active": true,
+          "pressure": 1,
+          "pending": [],
+          "health": 4,
+          "morale": 5
+        }
+      ],
+      "security": [],
+      "result": "derrota_ou_bloqueio_na_amostra",
+      "groups": [
+        {
+          "name": "Jana e criança",
+          "size": 2,
+          "day": 1,
+          "intention": "Solidário",
+          "id": "ZC-INT-0001",
+          "revealed": true,
+          "verified": false
+        }
+      ],
+      "wounds": {
+        "Lia": 3
+      },
+      "component_exhaustion": [],
+      "incapacitated": true,
+      "tactical_verified": false,
+      "limitations": [
+        "Combate é amostra de dados/valores; falta movimento, PA e IA zona a zona.",
+        "Viagem, busca, cerco e resgate têm efeitos de cartas não completamente executados.",
+        "Resultado é cenário de fases, não partida integral certificada."
+      ]
+    },
+    {
+      "heroes": 4,
+      "seed": 4303,
+      "profile": "limite",
+      "setup": {
+        "participants": 4,
+        "heroes": 4,
+        "founders": [
+          "Lia",
+          "Ivo",
+          "Mara",
+          "Caio"
+        ],
+        "links": [
+          "Parceiro e cachorro",
+          "Parceiro",
+          "Parceiro",
+          "Parceiro"
+        ],
+        "humans": 8,
+        "dogs": 1,
+        "consumers": 9,
+        "tents": 4,
+        "capacity": 8,
+        "lot_cards": 3,
+        "initial_full_cards": 5,
+        "initial_errantes": 2
+      },
+      "days": [
+        {
+          "day": 1,
+          "event_pressure": 0,
+          "destination": "Mercado",
+          "expedition_heroes": 3,
+          "clock": 7,
+          "cargo_needed": 9,
+          "cargo_capacity": 9,
+          "initial_enemies": 2,
+          "sampled_combat": [
+            {
+              "enemy": "Errante",
+              "die": 6,
+              "body": 2,
+              "hit": true
+            },
+            {
+              "enemy": "Errante",
+              "die": 6,
+              "body": 3,
+              "hit": true
+            }
+          ],
+          "hordes": [
+            {
+              "id": "ZC-HOR-0008",
+              "name": "Aglomerado",
+              "tokens": 2
+            },
+            {
+              "id": "ZC-HOR-0005",
+              "name": "Corrida",
+              "tokens": 1
+            },
+            {
+              "id": "ZC-HOR-0005",
+              "name": "Corrida",
+              "tokens": 1
+            }
+          ],
+          "rescue_card": "ZC-INT-0006",
+          "siege": null,
+          "stock_before": {
+            "food": 20,
+            "water": 20,
+            "materials": 3,
+            "ammo": 2
+          },
+          "stock_after": {
+            "food": 33,
+            "water": 21,
+            "materials": 3,
+            "ammo": 2
+          },
+          "people": 10,
+          "dogs": 1,
+          "capacity": 8,
+          "shortage": [
+            0,
+            0
+          ],
+          "filter_work": 0,
+          "filter_active": false,
+          "pressure": 0,
+          "pending": [],
+          "health": 5,
+          "morale": 5
+        },
+        {
+          "day": 2,
+          "event_pressure": 1,
+          "destination": "Oficina",
+          "expedition_heroes": 3,
+          "clock": 8,
+          "cargo_needed": 8,
+          "cargo_capacity": 9,
+          "initial_enemies": 2,
+          "sampled_combat": [
+            {
+              "enemy": "Errante",
+              "die": 6,
+              "body": 2,
+              "hit": true
+            },
+            {
+              "enemy": "Errante",
+              "die": 3,
+              "body": 3,
+              "hit": true
+            }
+          ],
+          "hordes": [
+            {
+              "id": "ZC-HOR-0005",
+              "name": "Corrida",
+              "tokens": 1
+            },
+            {
+              "id": "ZC-HOR-0008",
+              "name": "Aglomerado",
+              "tokens": 2
+            },
+            {
+              "id": "ZC-HOR-0009",
+              "name": "Peso morto",
+              "tokens": 1
+            }
+          ],
+          "rescue_card": null,
+          "siege": null,
+          "stock_before": {
+            "food": 33,
+            "water": 21,
+            "materials": 3,
+            "ammo": 2
+          },
+          "stock_after": {
+            "food": 34,
+            "water": 22,
+            "materials": 3,
+            "ammo": 2
+          },
+          "people": 10,
+          "dogs": 1,
+          "capacity": 8,
+          "shortage": [
+            0,
+            0
+          ],
+          "filter_work": 0,
+          "filter_active": false,
+          "pressure": 1,
+          "pending": [],
+          "health": 5,
+          "morale": 5
+        },
+        {
+          "day": 3,
+          "event_pressure": 0,
+          "destination": "Estação",
+          "expedition_heroes": 2,
+          "clock": 9,
+          "cargo_needed": 6,
+          "cargo_capacity": 6,
+          "initial_enemies": 2,
+          "sampled_combat": [
+            {
+              "enemy": "Errante",
+              "die": 6,
+              "body": 2,
+              "hit": true
+            },
+            {
+              "enemy": "Errante",
+              "die": 6,
+              "body": 3,
+              "hit": true
+            },
+            {
+              "enemy": "Bruto",
+              "die": 3,
+              "body": 2,
+              "hit": false
+            }
+          ],
+          "hordes": [
+            {
+              "id": "ZC-HOR-0001",
+              "name": "Arrastar",
+              "tokens": 1
+            },
+            {
+              "id": "ZC-HOR-0005",
+              "name": "Corrida",
+              "tokens": 1
+            },
+            {
+              "id": "ZC-HOR-0006",
+              "name": "Corrida",
+              "tokens": 1
+            },
+            {
+              "id": "ZC-HOR-0006",
+              "name": "Corrida",
+              "tokens": 1
+            }
+          ],
+          "rescue_card": null,
+          "siege": {
+            "kind": "Missão dia 3",
+            "force": 4,
+            "defense": 5,
+            "vigils": 3,
+            "rolls": [
+              5,
+              6,
+              3
+            ],
+            "ammo": 0,
+            "gap": 0,
+            "damaged": []
+          },
+          "stock_before": {
+            "food": 34,
+            "water": 22,
+            "materials": 3,
+            "ammo": 2
+          },
+          "stock_after": {
+            "food": 23,
+            "water": 23,
+            "materials": 3,
+            "ammo": 2
+          },
+          "people": 10,
+          "dogs": 1,
+          "capacity": 8,
+          "shortage": [
+            0,
+            0
+          ],
+          "filter_work": 0,
+          "filter_active": false,
+          "pressure": 1,
+          "pending": [],
+          "health": 4,
+          "morale": 4
+        },
+        {
+          "day": 4,
+          "event_pressure": 1,
+          "destination": null,
+          "expedition_heroes": 0,
+          "clock": 0,
+          "cargo_needed": 0,
+          "cargo_capacity": 0,
+          "initial_enemies": 0,
+          "sampled_combat": [],
+          "hordes": [],
+          "rescue_card": null,
+          "siege": null,
+          "stock_before": {
+            "food": 23,
+            "water": 23,
+            "materials": 3,
+            "ammo": 2
+          },
+          "stock_after": {
+            "food": 12,
+            "water": 12,
+            "materials": 0,
+            "ammo": 2
+          },
+          "people": 10,
+          "dogs": 1,
+          "capacity": 8,
+          "shortage": [
+            0,
+            0
+          ],
+          "filter_work": 2,
+          "filter_active": false,
+          "pressure": 2,
+          "pending": [],
+          "health": 3,
+          "morale": 3
+        },
+        {
+          "day": 5,
+          "event_pressure": 1,
+          "destination": null,
+          "expedition_heroes": 0,
+          "clock": 0,
+          "cargo_needed": 0,
+          "cargo_capacity": 0,
+          "initial_enemies": 0,
+          "sampled_combat": [],
+          "hordes": [],
+          "rescue_card": null,
+          "siege": {
+            "kind": "Pressão",
+            "force": 5,
+            "defense": 5,
+            "vigils": 3,
+            "rolls": [
+              2,
+              1,
+              1
+            ],
+            "ammo": 2,
+            "gap": 0,
+            "damaged": []
+          },
+          "stock_before": {
+            "food": 12,
+            "water": 12,
+            "materials": 0,
+            "ammo": 2
+          },
+          "stock_after": {
+            "food": 1,
+            "water": 19,
+            "materials": 0,
+            "ammo": 0
+          },
+          "people": 10,
+          "dogs": 1,
+          "capacity": 8,
+          "shortage": [
+            0,
+            0
+          ],
+          "filter_work": 4,
+          "filter_active": true,
+          "pressure": 1,
+          "pending": [],
+          "health": 2,
+          "morale": 2
+        }
+      ],
+      "security": [],
+      "result": "plano_de_fases_possivel",
+      "groups": [
+        {
+          "name": "Jana e criança",
+          "size": 2,
+          "day": 1,
+          "intention": "Solidário",
+          "id": "ZC-INT-0006",
+          "revealed": true,
+          "verified": false
+        }
+      ],
+      "wounds": {
+        "Lia": 1
+      },
+      "component_exhaustion": [],
+      "incapacitated": false,
+      "tactical_verified": false,
+      "limitations": [
+        "Combate é amostra de dados/valores; falta movimento, PA e IA zona a zona.",
+        "Viagem, busca, cerco e resgate têm efeitos de cartas não completamente executados.",
+        "Resultado é cenário de fases, não partida integral certificada."
+      ]
+    },
+    {
+      "heroes": 5,
+      "seed": 5101,
+      "profile": "favoravel",
+      "setup": {
+        "participants": 5,
+        "heroes": 5,
+        "founders": [
+          "Lia",
+          "Ivo",
+          "Mara",
+          "Caio",
+          "Nara"
+        ],
+        "links": [
+          "Filho",
+          "Sozinho",
+          "Parceiro",
+          "Sozinho",
+          "Sozinho"
+        ],
+        "humans": 7,
+        "dogs": 0,
+        "consumers": 7,
+        "tents": 5,
+        "capacity": 10,
+        "lot_cards": 2,
+        "initial_full_cards": 4,
+        "initial_errantes": 3
+      },
+      "days": [
+        {
+          "day": 1,
+          "event_pressure": 0,
+          "destination": "Mercado",
+          "expedition_heroes": 2,
+          "clock": 7,
+          "cargo_needed": 6,
+          "cargo_capacity": 6,
+          "initial_enemies": 3,
+          "sampled_combat": [
+            {
+              "enemy": "Errante",
+              "die": 6,
+              "body": 2,
+              "hit": true
+            },
+            {
+              "enemy": "Errante",
+              "die": 5,
+              "body": 3,
+              "hit": true
+            },
+            {
+              "enemy": "Errante",
+              "die": 4,
+              "body": 2,
+              "hit": true
+            }
+          ],
+          "hordes": [
+            {
+              "id": "ZC-HOR-0009",
+              "name": "Peso morto",
+              "tokens": 1
+            },
+            {
+              "id": "ZC-HOR-0009",
+              "name": "Peso morto",
+              "tokens": 1
+            },
+            {
+              "id": "ZC-HOR-0005",
+              "name": "Corrida",
+              "tokens": 1
+            }
+          ],
+          "rescue_card": null,
+          "siege": null,
+          "stock_before": {
+            "food": 16,
+            "water": 16,
+            "materials": 3,
+            "ammo": 2
+          },
+          "stock_after": {
+            "food": 25,
+            "water": 17,
+            "materials": 3,
+            "ammo": 2
+          },
+          "people": 7,
+          "dogs": 0,
+          "capacity": 10,
+          "shortage": [
+            0,
+            0
+          ],
+          "filter_work": 0,
+          "filter_active": false,
+          "pressure": 0,
+          "pending": [],
+          "health": 5,
+          "morale": 5
+        },
+        {
+          "day": 2,
+          "event_pressure": 1,
+          "destination": "Oficina",
+          "expedition_heroes": 2,
+          "clock": 8,
+          "cargo_needed": 6,
+          "cargo_capacity": 6,
+          "initial_enemies": 3,
+          "sampled_combat": [
+            {
+              "enemy": "Errante",
+              "die": 1,
+              "body": 2,
+              "hit": false
+            },
+            {
+              "enemy": "Errante",
+              "die": 5,
+              "body": 3,
+              "hit": true
+            },
+            {
+              "enemy": "Errante",
+              "die": 2,
+              "body": 2,
+              "hit": false
+            }
+          ],
+          "hordes": [
+            {
+              "id": "ZC-HOR-0001",
+              "name": "Arrastar",
+              "tokens": 1
+            },
+            {
+              "id": "ZC-HOR-0004",
+              "name": "Arrastar",
+              "tokens": 1
+            },
+            {
+              "id": "ZC-HOR-0009",
+              "name": "Peso morto",
+              "tokens": 1
+            }
+          ],
+          "rescue_card": null,
+          "siege": null,
+          "stock_before": {
+            "food": 25,
+            "water": 17,
+            "materials": 3,
+            "ammo": 2
+          },
+          "stock_after": {
+            "food": 26,
+            "water": 18,
+            "materials": 3,
+            "ammo": 2
+          },
+          "people": 7,
+          "dogs": 0,
+          "capacity": 10,
+          "shortage": [
+            0,
+            0
+          ],
+          "filter_work": 0,
+          "filter_active": false,
+          "pressure": 1,
+          "pending": [],
+          "health": 5,
+          "morale": 5
+        },
+        {
+          "day": 3,
+          "event_pressure": 0,
+          "destination": "Estação",
+          "expedition_heroes": 2,
+          "clock": 9,
+          "cargo_needed": 5,
+          "cargo_capacity": 6,
+          "initial_enemies": 3,
+          "sampled_combat": [
+            {
+              "enemy": "Errante",
+              "die": 2,
+              "body": 2,
+              "hit": false
+            },
+            {
+              "enemy": "Errante",
+              "die": 5,
+              "body": 3,
+              "hit": true
+            },
+            {
+              "enemy": "Errante",
+              "die": 4,
+              "body": 2,
+              "hit": true
+            },
+            {
+              "enemy": "Bruto",
+              "die": 1,
+              "body": 3,
+              "hit": false
+            }
+          ],
+          "hordes": [
+            {
+              "id": "ZC-HOR-0003",
+              "name": "Arrastar",
+              "tokens": 1
+            },
+            {
+              "id": "ZC-HOR-0007",
+              "name": "Aglomerado",
+              "tokens": 3
+            },
+            {
+              "id": "ZC-HOR-0008",
+              "name": "Aglomerado",
+              "tokens": 3
+            },
+            {
+              "id": "ZC-HOR-0005",
+              "name": "Corrida",
+              "tokens": 1
+            }
+          ],
+          "rescue_card": null,
+          "siege": {
+            "kind": "Missão dia 3",
+            "force": 4,
+            "defense": 4,
+            "vigils": 3,
+            "rolls": [
+              3,
+              4,
+              4
+            ],
+            "ammo": 0,
+            "gap": 0,
+            "damaged": []
+          },
+          "stock_before": {
+            "food": 26,
+            "water": 18,
+            "materials": 3,
+            "ammo": 2
+          },
+          "stock_after": {
+            "food": 19,
+            "water": 19,
+            "materials": 3,
+            "ammo": 2
+          },
+          "people": 7,
+          "dogs": 0,
+          "capacity": 10,
+          "shortage": [
+            0,
+            0
+          ],
+          "filter_work": 0,
+          "filter_active": false,
+          "pressure": 1,
+          "pending": [],
+          "health": 5,
+          "morale": 5
+        },
+        {
+          "day": 4,
+          "event_pressure": 1,
+          "destination": null,
+          "expedition_heroes": 0,
+          "clock": 0,
+          "cargo_needed": 0,
+          "cargo_capacity": 0,
+          "initial_enemies": 0,
+          "sampled_combat": [],
+          "hordes": [],
+          "rescue_card": null,
+          "siege": null,
+          "stock_before": {
+            "food": 19,
+            "water": 19,
+            "materials": 3,
+            "ammo": 2
+          },
+          "stock_after": {
+            "food": 12,
+            "water": 12,
+            "materials": 0,
+            "ammo": 2
+          },
+          "people": 7,
+          "dogs": 0,
+          "capacity": 10,
+          "shortage": [
+            0,
+            0
+          ],
+          "filter_work": 2,
+          "filter_active": false,
+          "pressure": 2,
+          "pending": [],
+          "health": 5,
+          "morale": 5
+        },
+        {
+          "day": 5,
+          "event_pressure": 1,
+          "destination": null,
+          "expedition_heroes": 0,
+          "clock": 0,
+          "cargo_needed": 0,
+          "cargo_capacity": 0,
+          "initial_enemies": 0,
+          "sampled_combat": [],
+          "hordes": [],
+          "rescue_card": null,
+          "siege": {
+            "kind": "Pressão",
+            "force": 4,
+            "defense": 4,
+            "vigils": 3,
+            "rolls": [
+              6,
+              3,
+              4
+            ],
+            "ammo": 0,
+            "gap": 0,
+            "damaged": []
+          },
+          "stock_before": {
+            "food": 12,
+            "water": 12,
+            "materials": 0,
+            "ammo": 2
+          },
+          "stock_after": {
+            "food": 5,
+            "water": 19,
+            "materials": 0,
+            "ammo": 2
+          },
+          "people": 7,
+          "dogs": 0,
+          "capacity": 10,
+          "shortage": [
+            0,
+            0
+          ],
+          "filter_work": 4,
+          "filter_active": true,
+          "pressure": 1,
+          "pending": [],
+          "health": 5,
+          "morale": 5
+        }
+      ],
+      "security": [],
+      "result": "derrota_ou_bloqueio_na_amostra",
+      "groups": [],
+      "wounds": {
+        "Lia": 3,
+        "Ivo": 1
+      },
+      "component_exhaustion": [],
+      "incapacitated": true,
+      "tactical_verified": false,
+      "limitations": [
+        "Combate é amostra de dados/valores; falta movimento, PA e IA zona a zona.",
+        "Viagem, busca, cerco e resgate têm efeitos de cartas não completamente executados.",
+        "Resultado é cenário de fases, não partida integral certificada."
+      ]
+    },
+    {
+      "heroes": 5,
+      "seed": 5202,
+      "profile": "dificil",
+      "setup": {
+        "participants": 5,
+        "heroes": 5,
+        "founders": [
+          "Lia",
+          "Ivo",
+          "Mara",
+          "Caio",
+          "Nara"
+        ],
+        "links": [
+          "Parceiro",
+          "Parceiro e cachorro",
+          "Sozinho",
+          "Sozinho",
+          "Parceiro"
+        ],
+        "humans": 8,
+        "dogs": 1,
+        "consumers": 9,
+        "tents": 5,
+        "capacity": 10,
+        "lot_cards": 3,
+        "initial_full_cards": 5,
+        "initial_errantes": 3
+      },
+      "days": [
+        {
+          "day": 1,
+          "event_pressure": 0,
+          "destination": "Mercado",
+          "expedition_heroes": 3,
+          "clock": 7,
+          "cargo_needed": 9,
+          "cargo_capacity": 9,
+          "initial_enemies": 3,
+          "sampled_combat": [
+            {
+              "enemy": "Errante",
+              "die": 5,
+              "body": 2,
+              "hit": true
+            },
+            {
+              "enemy": "Errante",
+              "die": 5,
+              "body": 3,
+              "hit": true
+            },
+            {
+              "enemy": "Errante",
+              "die": 4,
+              "body": 1,
+              "hit": true
+            }
+          ],
+          "hordes": [
+            {
+              "id": "ZC-HOR-0008",
+              "name": "Aglomerado",
+              "tokens": 3
+            },
+            {
+              "id": "ZC-HOR-0002",
+              "name": "Arrastar",
+              "tokens": 1
+            },
+            {
+              "id": "ZC-HOR-0007",
+              "name": "Aglomerado",
+              "tokens": 3
+            }
+          ],
+          "rescue_card": "ZC-INT-0008",
+          "siege": null,
+          "stock_before": {
+            "food": 20,
+            "water": 20,
+            "materials": 3,
+            "ammo": 2
+          },
+          "stock_after": {
+            "food": 33,
+            "water": 21,
+            "materials": 3,
+            "ammo": 2
+          },
+          "people": 10,
+          "dogs": 1,
+          "capacity": 10,
+          "shortage": [
+            0,
+            0
+          ],
+          "filter_work": 0,
+          "filter_active": false,
+          "pressure": 0,
+          "pending": [],
+          "health": 5,
+          "morale": 5
+        },
+        {
+          "day": 2,
+          "event_pressure": 1,
+          "destination": "Oficina",
+          "expedition_heroes": 3,
+          "clock": 8,
+          "cargo_needed": 8,
+          "cargo_capacity": 9,
+          "initial_enemies": 3,
+          "sampled_combat": [
+            {
+              "enemy": "Errante",
+              "die": 6,
+              "body": 2,
+              "hit": true
+            },
+            {
+              "enemy": "Errante",
+              "die": 6,
+              "body": 3,
+              "hit": true
+            },
+            {
+              "enemy": "Errante",
+              "die": 4,
+              "body": 1,
+              "hit": true
+            }
+          ],
+          "hordes": [
+            {
+              "id": "ZC-HOR-0001",
+              "name": "Arrastar",
+              "tokens": 1
+            },
+            {
+              "id": "ZC-HOR-0006",
+              "name": "Corrida",
+              "tokens": 1
+            },
+            {
+              "id": "ZC-HOR-0001",
+              "name": "Arrastar",
+              "tokens": 1
+            }
+          ],
+          "rescue_card": null,
+          "siege": null,
+          "stock_before": {
+            "food": 33,
+            "water": 21,
+            "materials": 3,
+            "ammo": 2
+          },
+          "stock_after": {
+            "food": 34,
+            "water": 22,
+            "materials": 3,
+            "ammo": 2
+          },
+          "people": 10,
+          "dogs": 1,
+          "capacity": 10,
+          "shortage": [
+            0,
+            0
+          ],
+          "filter_work": 0,
+          "filter_active": false,
+          "pressure": 1,
+          "pending": [],
+          "health": 5,
+          "morale": 5
+        },
+        {
+          "day": 3,
+          "event_pressure": 0,
+          "destination": "Estação",
+          "expedition_heroes": 2,
+          "clock": 9,
+          "cargo_needed": 6,
+          "cargo_capacity": 6,
+          "initial_enemies": 3,
+          "sampled_combat": [
+            {
+              "enemy": "Errante",
+              "die": 4,
+              "body": 2,
+              "hit": true
+            },
+            {
+              "enemy": "Errante",
+              "die": 5,
+              "body": 3,
+              "hit": true
+            },
+            {
+              "enemy": "Errante",
+              "die": 5,
+              "body": 2,
+              "hit": true
+            },
+            {
+              "enemy": "Bruto",
+              "die": 6,
+              "body": 3,
+              "hit": true
+            }
+          ],
+          "hordes": [
+            {
+              "id": "ZC-HOR-0009",
+              "name": "Peso morto",
+              "tokens": 1
+            },
+            {
+              "id": "ZC-HOR-0002",
+              "name": "Arrastar",
+              "tokens": 1
+            },
+            {
+              "id": "ZC-HOR-0008",
+              "name": "Aglomerado",
+              "tokens": 3
+            },
+            {
+              "id": "ZC-HOR-0008",
+              "name": "Aglomerado",
+              "tokens": 3
+            }
+          ],
+          "rescue_card": null,
+          "siege": {
+            "kind": "Missão dia 3",
+            "force": 4,
+            "defense": 6,
+            "vigils": 3,
+            "rolls": [
+              5,
+              6,
+              6
+            ],
+            "ammo": 0,
+            "gap": 0,
+            "damaged": []
+          },
+          "stock_before": {
+            "food": 34,
+            "water": 22,
+            "materials": 3,
+            "ammo": 2
+          },
+          "stock_after": {
+            "food": 23,
+            "water": 23,
+            "materials": 3,
+            "ammo": 2
+          },
+          "people": 10,
+          "dogs": 1,
+          "capacity": 10,
+          "shortage": [
+            0,
+            0
+          ],
+          "filter_work": 0,
+          "filter_active": false,
+          "pressure": 1,
+          "pending": [],
+          "health": 5,
+          "morale": 5
+        },
+        {
+          "day": 4,
+          "event_pressure": 1,
+          "destination": null,
+          "expedition_heroes": 0,
+          "clock": 0,
+          "cargo_needed": 0,
+          "cargo_capacity": 0,
+          "initial_enemies": 0,
+          "sampled_combat": [],
+          "hordes": [],
+          "rescue_card": null,
+          "siege": null,
+          "stock_before": {
+            "food": 23,
+            "water": 23,
+            "materials": 3,
+            "ammo": 2
+          },
+          "stock_after": {
+            "food": 12,
+            "water": 12,
+            "materials": 0,
+            "ammo": 2
+          },
+          "people": 10,
+          "dogs": 1,
+          "capacity": 10,
+          "shortage": [
+            0,
+            0
+          ],
+          "filter_work": 2,
+          "filter_active": false,
+          "pressure": 2,
+          "pending": [],
+          "health": 5,
+          "morale": 5
+        },
+        {
+          "day": 5,
+          "event_pressure": 1,
+          "destination": null,
+          "expedition_heroes": 0,
+          "clock": 0,
+          "cargo_needed": 0,
+          "cargo_capacity": 0,
+          "initial_enemies": 0,
+          "sampled_combat": [],
+          "hordes": [],
+          "rescue_card": null,
+          "siege": {
+            "kind": "Pressão",
+            "force": 5,
+            "defense": 5,
+            "vigils": 3,
+            "rolls": [
+              3,
+              4,
+              1
+            ],
+            "ammo": 1,
+            "gap": 0,
+            "damaged": []
+          },
+          "stock_before": {
+            "food": 12,
+            "water": 12,
+            "materials": 0,
+            "ammo": 2
+          },
+          "stock_after": {
+            "food": 1,
+            "water": 19,
+            "materials": 0,
+            "ammo": 1
+          },
+          "people": 10,
+          "dogs": 1,
+          "capacity": 10,
+          "shortage": [
+            0,
+            0
+          ],
+          "filter_work": 4,
+          "filter_active": true,
+          "pressure": 1,
+          "pending": [],
+          "health": 5,
+          "morale": 5
+        }
+      ],
+      "security": [],
+      "result": "plano_de_fases_possivel",
+      "groups": [
+        {
+          "name": "Jana e criança",
+          "size": 2,
+          "day": 1,
+          "intention": "Assustado",
+          "id": "ZC-INT-0008",
+          "revealed": true,
+          "verified": false
+        }
+      ],
+      "wounds": {},
+      "component_exhaustion": [],
+      "incapacitated": false,
+      "tactical_verified": false,
+      "limitations": [
+        "Combate é amostra de dados/valores; falta movimento, PA e IA zona a zona.",
+        "Viagem, busca, cerco e resgate têm efeitos de cartas não completamente executados.",
+        "Resultado é cenário de fases, não partida integral certificada."
+      ]
+    },
+    {
+      "heroes": 5,
+      "seed": 5303,
+      "profile": "limite",
+      "setup": {
+        "participants": 5,
+        "heroes": 5,
+        "founders": [
+          "Lia",
+          "Ivo",
+          "Mara",
+          "Caio",
+          "Nara"
+        ],
+        "links": [
+          "Parceiro e cachorro",
+          "Parceiro",
+          "Parceiro",
+          "Parceiro",
+          "Parceiro"
+        ],
+        "humans": 10,
+        "dogs": 1,
+        "consumers": 11,
+        "tents": 5,
+        "capacity": 10,
+        "lot_cards": 3,
+        "initial_full_cards": 6,
+        "initial_errantes": 3
+      },
+      "days": [
+        {
+          "day": 1,
+          "event_pressure": 0,
+          "destination": "Mercado",
+          "expedition_heroes": 3,
+          "clock": 7,
+          "cargo_needed": 9,
+          "cargo_capacity": 9,
+          "initial_enemies": 3,
+          "sampled_combat": [
+            {
+              "enemy": "Errante",
+              "die": 5,
+              "body": 2,
+              "hit": true
+            },
+            {
+              "enemy": "Errante",
+              "die": 2,
+              "body": 3,
+              "hit": true
+            },
+            {
+              "enemy": "Errante",
+              "die": 1,
+              "body": 1,
+              "hit": false
+            }
+          ],
+          "hordes": [
+            {
+              "id": "ZC-HOR-0002",
+              "name": "Arrastar",
+              "tokens": 1
+            },
+            {
+              "id": "ZC-HOR-0003",
+              "name": "Arrastar",
+              "tokens": 1
+            },
+            {
+              "id": "ZC-HOR-0005",
+              "name": "Corrida",
+              "tokens": 1
+            }
+          ],
+          "rescue_card": "ZC-INT-0010",
+          "siege": null,
+          "stock_before": {
+            "food": 24,
+            "water": 24,
+            "materials": 3,
+            "ammo": 2
+          },
+          "stock_after": {
+            "food": 35,
+            "water": 23,
+            "materials": 3,
+            "ammo": 2
+          },
+          "people": 12,
+          "dogs": 1,
+          "capacity": 10,
+          "shortage": [
+            0,
+            0
+          ],
+          "filter_work": 0,
+          "filter_active": false,
+          "pressure": 0,
+          "pending": [],
+          "health": 5,
+          "morale": 5
+        },
+        {
+          "day": 2,
+          "event_pressure": 1,
+          "destination": "Oficina",
+          "expedition_heroes": 3,
+          "clock": 8,
+          "cargo_needed": 8,
+          "cargo_capacity": 9,
+          "initial_enemies": 3,
+          "sampled_combat": [
+            {
+              "enemy": "Errante",
+              "die": 3,
+              "body": 2,
+              "hit": true
+            },
+            {
+              "enemy": "Errante",
+              "die": 2,
+              "body": 3,
+              "hit": true
+            },
+            {
+              "enemy": "Errante",
+              "die": 5,
+              "body": 1,
+              "hit": true
+            }
+          ],
+          "hordes": [
+            {
+              "id": "ZC-HOR-0002",
+              "name": "Arrastar",
+              "tokens": 1
+            },
+            {
+              "id": "ZC-HOR-0009",
+              "name": "Peso morto",
+              "tokens": 1
+            },
+            {
+              "id": "ZC-HOR-0005",
+              "name": "Corrida",
+              "tokens": 1
+            }
+          ],
+          "rescue_card": null,
+          "siege": null,
+          "stock_before": {
+            "food": 35,
+            "water": 23,
+            "materials": 3,
+            "ammo": 2
+          },
+          "stock_after": {
+            "food": 34,
+            "water": 22,
+            "materials": 3,
+            "ammo": 2
+          },
+          "people": 12,
+          "dogs": 1,
+          "capacity": 10,
+          "shortage": [
+            0,
+            0
+          ],
+          "filter_work": 0,
+          "filter_active": false,
+          "pressure": 1,
+          "pending": [],
+          "health": 5,
+          "morale": 5
+        },
+        {
+          "day": 3,
+          "event_pressure": 0,
+          "destination": "Estação",
+          "expedition_heroes": 2,
+          "clock": 9,
+          "cargo_needed": 6,
+          "cargo_capacity": 6,
+          "initial_enemies": 3,
+          "sampled_combat": [
+            {
+              "enemy": "Errante",
+              "die": 2,
+              "body": 2,
+              "hit": false
+            },
+            {
+              "enemy": "Errante",
+              "die": 3,
+              "body": 3,
+              "hit": true
+            },
+            {
+              "enemy": "Errante",
+              "die": 5,
+              "body": 2,
+              "hit": true
+            },
+            {
+              "enemy": "Bruto",
+              "die": 4,
+              "body": 3,
+              "hit": true
+            }
+          ],
+          "hordes": [
+            {
+              "id": "ZC-HOR-0008",
+              "name": "Aglomerado",
+              "tokens": 3
+            },
+            {
+              "id": "ZC-HOR-0004",
+              "name": "Arrastar",
+              "tokens": 1
+            },
+            {
+              "id": "ZC-HOR-0004",
+              "name": "Arrastar",
+              "tokens": 1
+            },
+            {
+              "id": "ZC-HOR-0003",
+              "name": "Arrastar",
+              "tokens": 1
+            }
+          ],
+          "rescue_card": null,
+          "siege": {
+            "kind": "Missão dia 3",
+            "force": 4,
+            "defense": 4,
+            "vigils": 3,
+            "rolls": [
+              3,
+              4,
+              1
+            ],
+            "ammo": 0,
+            "gap": 0,
+            "damaged": []
+          },
+          "stock_before": {
+            "food": 34,
+            "water": 22,
+            "materials": 3,
+            "ammo": 2
+          },
+          "stock_after": {
+            "food": 21,
+            "water": 21,
+            "materials": 3,
+            "ammo": 2
+          },
+          "people": 12,
+          "dogs": 1,
+          "capacity": 10,
+          "shortage": [
+            0,
+            0
+          ],
+          "filter_work": 0,
+          "filter_active": false,
+          "pressure": 1,
+          "pending": [],
+          "health": 4,
+          "morale": 4
+        },
+        {
+          "day": 4,
+          "event_pressure": 1,
+          "destination": null,
+          "expedition_heroes": 0,
+          "clock": 0,
+          "cargo_needed": 0,
+          "cargo_capacity": 0,
+          "initial_enemies": 0,
+          "sampled_combat": [],
+          "hordes": [],
+          "rescue_card": null,
+          "siege": null,
+          "stock_before": {
+            "food": 21,
+            "water": 21,
+            "materials": 3,
+            "ammo": 2
+          },
+          "stock_after": {
+            "food": 8,
+            "water": 8,
+            "materials": 0,
+            "ammo": 2
+          },
+          "people": 12,
+          "dogs": 1,
+          "capacity": 10,
+          "shortage": [
+            0,
+            0
+          ],
+          "filter_work": 2,
+          "filter_active": false,
+          "pressure": 2,
+          "pending": [],
+          "health": 3,
+          "morale": 3
+        },
+        {
+          "day": 5,
+          "event_pressure": 1,
+          "destination": null,
+          "expedition_heroes": 0,
+          "clock": 0,
+          "cargo_needed": 0,
+          "cargo_capacity": 0,
+          "initial_enemies": 0,
+          "sampled_combat": [],
+          "hordes": [],
+          "rescue_card": null,
+          "siege": {
+            "kind": "Pressão",
+            "force": 5,
+            "defense": 5,
+            "vigils": 3,
+            "rolls": [
+              2,
+              1,
+              1
+            ],
+            "ammo": 2,
+            "gap": 0,
+            "damaged": []
+          },
+          "stock_before": {
+            "food": 8,
+            "water": 8,
+            "materials": 0,
+            "ammo": 2
+          },
+          "stock_after": {
+            "food": 0,
+            "water": 17,
+            "materials": 0,
+            "ammo": 0
+          },
+          "people": 12,
+          "dogs": 1,
+          "capacity": 10,
+          "shortage": [
+            5,
+            0
+          ],
+          "filter_work": 4,
+          "filter_active": true,
+          "pressure": 1,
+          "pending": [],
+          "health": 1,
+          "morale": 2
+        }
+      ],
+      "security": [],
+      "result": "derrota_ou_bloqueio_na_amostra",
+      "groups": [
+        {
+          "name": "Jana e criança",
+          "size": 2,
+          "day": 1,
+          "intention": "Assustado",
+          "id": "ZC-INT-0010",
+          "revealed": true,
+          "verified": false
+        }
+      ],
+      "wounds": {
+        "Mara": 1,
+        "Lia": 1
+      },
+      "component_exhaustion": [],
+      "incapacitated": false,
+      "tactical_verified": false,
+      "limitations": [
+        "Combate é amostra de dados/valores; falta movimento, PA e IA zona a zona.",
+        "Viagem, busca, cerco e resgate têm efeitos de cartas não completamente executados.",
+        "Resultado é cenário de fases, não partida integral certificada."
+      ]
+    },
+    {
+      "heroes": 6,
+      "seed": 6101,
+      "profile": "favoravel",
+      "setup": {
+        "participants": 6,
+        "heroes": 6,
+        "founders": [
+          "Lia",
+          "Ivo",
+          "Mara",
+          "Caio",
+          "Nara",
+          "Bento"
+        ],
+        "links": [
+          "Sozinho",
+          "Sozinho",
+          "Cachorro",
+          "Parceiro e cachorro",
+          "Filho",
+          "Parceiro"
+        ],
+        "humans": 9,
+        "dogs": 2,
+        "consumers": 11,
+        "tents": 6,
+        "capacity": 12,
+        "lot_cards": 3,
+        "initial_full_cards": 6,
+        "initial_errantes": 3
+      },
+      "days": [
+        {
+          "day": 1,
+          "event_pressure": 0,
+          "destination": "Mercado",
+          "expedition_heroes": 3,
+          "clock": 7,
+          "cargo_needed": 9,
+          "cargo_capacity": 9,
+          "initial_enemies": 3,
+          "sampled_combat": [
+            {
+              "enemy": "Errante",
+              "die": 4,
+              "body": 2,
+              "hit": true
+            },
+            {
+              "enemy": "Errante",
+              "die": 3,
+              "body": 3,
+              "hit": true
+            },
+            {
+              "enemy": "Errante",
+              "die": 2,
+              "body": 1,
+              "hit": false
+            }
+          ],
+          "hordes": [
+            {
+              "id": "ZC-HOR-0007",
+              "name": "Aglomerado",
+              "tokens": 3
+            },
+            {
+              "id": "ZC-HOR-0003",
+              "name": "Arrastar",
+              "tokens": 1
+            },
+            {
+              "id": "ZC-HOR-0008",
+              "name": "Aglomerado",
+              "tokens": 3
+            }
+          ],
+          "rescue_card": null,
+          "siege": null,
+          "stock_before": {
+            "food": 24,
+            "water": 24,
+            "materials": 3,
+            "ammo": 2
+          },
+          "stock_after": {
+            "food": 37,
+            "water": 25,
+            "materials": 3,
+            "ammo": 2
+          },
+          "people": 9,
+          "dogs": 2,
+          "capacity": 12,
+          "shortage": [
+            0,
+            0
+          ],
+          "filter_work": 0,
+          "filter_active": false,
+          "pressure": 0,
+          "pending": [],
+          "health": 5,
+          "morale": 5
+        },
+        {
+          "day": 2,
+          "event_pressure": 1,
+          "destination": "Oficina",
+          "expedition_heroes": 3,
+          "clock": 8,
+          "cargo_needed": 8,
+          "cargo_capacity": 9,
+          "initial_enemies": 3,
+          "sampled_combat": [
+            {
+              "enemy": "Errante",
+              "die": 6,
+              "body": 2,
+              "hit": true
+            },
+            {
+              "enemy": "Errante",
+              "die": 2,
+              "body": 3,
+              "hit": true
+            },
+            {
+              "enemy": "Errante",
+              "die": 6,
+              "body": 1,
+              "hit": true
+            }
+          ],
+          "hordes": [
+            {
+              "id": "ZC-HOR-0005",
+              "name": "Corrida",
+              "tokens": 1
+            },
+            {
+              "id": "ZC-HOR-0003",
+              "name": "Arrastar",
+              "tokens": 1
+            },
+            {
+              "id": "ZC-HOR-0003",
+              "name": "Arrastar",
+              "tokens": 1
+            }
+          ],
+          "rescue_card": null,
+          "siege": null,
+          "stock_before": {
+            "food": 37,
+            "water": 25,
+            "materials": 3,
+            "ammo": 2
+          },
+          "stock_after": {
+            "food": 38,
+            "water": 26,
+            "materials": 3,
+            "ammo": 2
+          },
+          "people": 9,
+          "dogs": 2,
+          "capacity": 12,
+          "shortage": [
+            0,
+            0
+          ],
+          "filter_work": 0,
+          "filter_active": false,
+          "pressure": 1,
+          "pending": [],
+          "health": 5,
+          "morale": 5
+        },
+        {
+          "day": 3,
+          "event_pressure": 0,
+          "destination": "Estação",
+          "expedition_heroes": 2,
+          "clock": 9,
+          "cargo_needed": 6,
+          "cargo_capacity": 6,
+          "initial_enemies": 3,
+          "sampled_combat": [
+            {
+              "enemy": "Errante",
+              "die": 3,
+              "body": 2,
+              "hit": true
+            },
+            {
+              "enemy": "Errante",
+              "die": 5,
+              "body": 3,
+              "hit": true
+            },
+            {
+              "enemy": "Errante",
+              "die": 1,
+              "body": 2,
+              "hit": false
+            },
+            {
+              "enemy": "Bruto",
+              "die": 2,
+              "body": 3,
+              "hit": false
+            }
+          ],
+          "hordes": [
+            {
+              "id": "ZC-HOR-0008",
+              "name": "Aglomerado",
+              "tokens": 3
+            },
+            {
+              "id": "ZC-HOR-0004",
+              "name": "Arrastar",
+              "tokens": 1
+            },
+            {
+              "id": "ZC-HOR-0002",
+              "name": "Arrastar",
+              "tokens": 1
+            },
+            {
+              "id": "ZC-HOR-0003",
+              "name": "Arrastar",
+              "tokens": 1
+            }
+          ],
+          "rescue_card": null,
+          "siege": {
+            "kind": "Missão dia 3",
+            "force": 4,
+            "defense": 4,
+            "vigils": 3,
+            "rolls": [
+              3,
+              1,
+              4
+            ],
+            "ammo": 0,
+            "gap": 0,
+            "damaged": []
+          },
+          "stock_before": {
+            "food": 38,
+            "water": 26,
+            "materials": 3,
+            "ammo": 2
+          },
+          "stock_after": {
+            "food": 27,
+            "water": 27,
+            "materials": 3,
+            "ammo": 2
+          },
+          "people": 9,
+          "dogs": 2,
+          "capacity": 12,
+          "shortage": [
+            0,
+            0
+          ],
+          "filter_work": 0,
+          "filter_active": false,
+          "pressure": 1,
+          "pending": [],
+          "health": 5,
+          "morale": 5
+        },
+        {
+          "day": 4,
+          "event_pressure": 1,
+          "destination": null,
+          "expedition_heroes": 0,
+          "clock": 0,
+          "cargo_needed": 0,
+          "cargo_capacity": 0,
+          "initial_enemies": 0,
+          "sampled_combat": [],
+          "hordes": [],
+          "rescue_card": null,
+          "siege": null,
+          "stock_before": {
+            "food": 27,
+            "water": 27,
+            "materials": 3,
+            "ammo": 2
+          },
+          "stock_after": {
+            "food": 16,
+            "water": 16,
+            "materials": 0,
+            "ammo": 2
+          },
+          "people": 9,
+          "dogs": 2,
+          "capacity": 12,
+          "shortage": [
+            0,
+            0
+          ],
+          "filter_work": 2,
+          "filter_active": false,
+          "pressure": 2,
+          "pending": [],
+          "health": 5,
+          "morale": 5
+        },
+        {
+          "day": 5,
+          "event_pressure": 1,
+          "destination": null,
+          "expedition_heroes": 0,
+          "clock": 0,
+          "cargo_needed": 0,
+          "cargo_capacity": 0,
+          "initial_enemies": 0,
+          "sampled_combat": [],
+          "hordes": [],
+          "rescue_card": null,
+          "siege": {
+            "kind": "Pressão",
+            "force": 6,
+            "defense": 6,
+            "vigils": 3,
+            "rolls": [
+              6,
+              3,
+              1
+            ],
+            "ammo": 2,
+            "gap": 0,
+            "damaged": []
+          },
+          "stock_before": {
+            "food": 16,
+            "water": 16,
+            "materials": 0,
+            "ammo": 2
+          },
+          "stock_after": {
+            "food": 5,
+            "water": 27,
+            "materials": 0,
+            "ammo": 0
+          },
+          "people": 9,
+          "dogs": 2,
+          "capacity": 12,
+          "shortage": [
+            0,
+            0
+          ],
+          "filter_work": 4,
+          "filter_active": true,
+          "pressure": 1,
+          "pending": [],
+          "health": 5,
+          "morale": 5
+        }
+      ],
+      "security": [],
+      "result": "plano_de_fases_possivel",
+      "groups": [],
+      "wounds": {
+        "Mara": 1,
+        "Lia": 1,
+        "Ivo": 1
+      },
+      "component_exhaustion": [],
+      "incapacitated": false,
+      "tactical_verified": false,
+      "limitations": [
+        "Combate é amostra de dados/valores; falta movimento, PA e IA zona a zona.",
+        "Viagem, busca, cerco e resgate têm efeitos de cartas não completamente executados.",
+        "Resultado é cenário de fases, não partida integral certificada."
+      ]
+    },
+    {
+      "heroes": 6,
+      "seed": 6202,
+      "profile": "dificil",
+      "setup": {
+        "participants": 6,
+        "heroes": 6,
+        "founders": [
+          "Lia",
+          "Ivo",
+          "Mara",
+          "Caio",
+          "Nara",
+          "Bento"
+        ],
+        "links": [
+          "Filho",
+          "Parceiro",
+          "Sozinho",
+          "Sozinho",
+          "Parceiro",
+          "Parceiro e cachorro"
+        ],
+        "humans": 10,
+        "dogs": 1,
+        "consumers": 11,
+        "tents": 6,
+        "capacity": 12,
+        "lot_cards": 3,
+        "initial_full_cards": 6,
+        "initial_errantes": 3
+      },
+      "days": [
+        {
+          "day": 1,
+          "event_pressure": 0,
+          "destination": "Mercado",
+          "expedition_heroes": 3,
+          "clock": 7,
+          "cargo_needed": 9,
+          "cargo_capacity": 9,
+          "initial_enemies": 3,
+          "sampled_combat": [
+            {
+              "enemy": "Errante",
+              "die": 3,
+              "body": 2,
+              "hit": true
+            },
+            {
+              "enemy": "Errante",
+              "die": 1,
+              "body": 3,
+              "hit": false
+            },
+            {
+              "enemy": "Errante",
+              "die": 1,
+              "body": 1,
+              "hit": false
+            }
+          ],
+          "hordes": [
+            {
+              "id": "ZC-HOR-0008",
+              "name": "Aglomerado",
+              "tokens": 3
+            },
+            {
+              "id": "ZC-HOR-0004",
+              "name": "Arrastar",
+              "tokens": 1
+            },
+            {
+              "id": "ZC-HOR-0003",
+              "name": "Arrastar",
+              "tokens": 1
+            }
+          ],
+          "rescue_card": "ZC-INT-0009",
+          "siege": null,
+          "stock_before": {
+            "food": 24,
+            "water": 24,
+            "materials": 3,
+            "ammo": 2
+          },
+          "stock_after": {
+            "food": 35,
+            "water": 23,
+            "materials": 3,
+            "ammo": 2
+          },
+          "people": 12,
+          "dogs": 1,
+          "capacity": 12,
+          "shortage": [
+            0,
+            0
+          ],
+          "filter_work": 0,
+          "filter_active": false,
+          "pressure": 0,
+          "pending": [],
+          "health": 5,
+          "morale": 5
+        },
+        {
+          "day": 2,
+          "event_pressure": 1,
+          "destination": "Oficina",
+          "expedition_heroes": 3,
+          "clock": 8,
+          "cargo_needed": 8,
+          "cargo_capacity": 9,
+          "initial_enemies": 3,
+          "sampled_combat": [
+            {
+              "enemy": "Errante",
+              "die": 5,
+              "body": 2,
+              "hit": true
+            },
+            {
+              "enemy": "Errante",
+              "die": 2,
+              "body": 3,
+              "hit": true
+            },
+            {
+              "enemy": "Errante",
+              "die": 4,
+              "body": 1,
+              "hit": true
+            }
+          ],
+          "hordes": [
+            {
+              "id": "ZC-HOR-0005",
+              "name": "Corrida",
+              "tokens": 1
+            },
+            {
+              "id": "ZC-HOR-0001",
+              "name": "Arrastar",
+              "tokens": 1
+            },
+            {
+              "id": "ZC-HOR-0003",
+              "name": "Arrastar",
+              "tokens": 1
+            }
+          ],
+          "rescue_card": null,
+          "siege": null,
+          "stock_before": {
+            "food": 35,
+            "water": 23,
+            "materials": 3,
+            "ammo": 2
+          },
+          "stock_after": {
+            "food": 34,
+            "water": 22,
+            "materials": 3,
+            "ammo": 2
+          },
+          "people": 12,
+          "dogs": 1,
+          "capacity": 12,
+          "shortage": [
+            0,
+            0
+          ],
+          "filter_work": 0,
+          "filter_active": false,
+          "pressure": 1,
+          "pending": [],
+          "health": 5,
+          "morale": 5
+        },
+        {
+          "day": 3,
+          "event_pressure": 0,
+          "destination": "Estação",
+          "expedition_heroes": 2,
+          "clock": 9,
+          "cargo_needed": 6,
+          "cargo_capacity": 6,
+          "initial_enemies": 3,
+          "sampled_combat": [
+            {
+              "enemy": "Errante",
+              "die": 4,
+              "body": 2,
+              "hit": true
+            },
+            {
+              "enemy": "Errante",
+              "die": 5,
+              "body": 3,
+              "hit": true
+            },
+            {
+              "enemy": "Errante",
+              "die": 5,
+              "body": 2,
+              "hit": true
+            },
+            {
+              "enemy": "Bruto",
+              "die": 3,
+              "body": 3,
+              "hit": true
+            }
+          ],
+          "hordes": [
+            {
+              "id": "ZC-HOR-0004",
+              "name": "Arrastar",
+              "tokens": 1
+            },
+            {
+              "id": "ZC-HOR-0001",
+              "name": "Arrastar",
+              "tokens": 1
+            },
+            {
+              "id": "ZC-HOR-0003",
+              "name": "Arrastar",
+              "tokens": 1
+            },
+            {
+              "id": "ZC-HOR-0006",
+              "name": "Corrida",
+              "tokens": 1
+            }
+          ],
+          "rescue_card": null,
+          "siege": {
+            "kind": "Missão dia 3",
+            "force": 4,
+            "defense": 4,
+            "vigils": 3,
+            "rolls": [
+              1,
+              1,
+              5
+            ],
+            "ammo": 0,
+            "gap": 0,
+            "damaged": []
+          },
+          "stock_before": {
+            "food": 34,
+            "water": 22,
+            "materials": 3,
+            "ammo": 2
+          },
+          "stock_after": {
+            "food": 21,
+            "water": 21,
+            "materials": 3,
+            "ammo": 2
+          },
+          "people": 12,
+          "dogs": 1,
+          "capacity": 12,
+          "shortage": [
+            0,
+            0
+          ],
+          "filter_work": 0,
+          "filter_active": false,
+          "pressure": 1,
+          "pending": [],
+          "health": 5,
+          "morale": 5
+        },
+        {
+          "day": 4,
+          "event_pressure": 1,
+          "destination": null,
+          "expedition_heroes": 0,
+          "clock": 0,
+          "cargo_needed": 0,
+          "cargo_capacity": 0,
+          "initial_enemies": 0,
+          "sampled_combat": [],
+          "hordes": [],
+          "rescue_card": null,
+          "siege": null,
+          "stock_before": {
+            "food": 21,
+            "water": 21,
+            "materials": 3,
+            "ammo": 2
+          },
+          "stock_after": {
+            "food": 8,
+            "water": 8,
+            "materials": 0,
+            "ammo": 2
+          },
+          "people": 12,
+          "dogs": 1,
+          "capacity": 12,
+          "shortage": [
+            0,
+            0
+          ],
+          "filter_work": 2,
+          "filter_active": false,
+          "pressure": 2,
+          "pending": [],
+          "health": 5,
+          "morale": 5
+        },
+        {
+          "day": 5,
+          "event_pressure": 1,
+          "destination": null,
+          "expedition_heroes": 0,
+          "clock": 0,
+          "cargo_needed": 0,
+          "cargo_capacity": 0,
+          "initial_enemies": 0,
+          "sampled_combat": [],
+          "hordes": [],
+          "rescue_card": null,
+          "siege": {
+            "kind": "Pressão",
+            "force": 5,
+            "defense": 5,
+            "vigils": 3,
+            "rolls": [
+              6,
+              2,
+              3
+            ],
+            "ammo": 1,
+            "gap": 0,
+            "damaged": []
+          },
+          "stock_before": {
+            "food": 8,
+            "water": 8,
+            "materials": 0,
+            "ammo": 2
+          },
+          "stock_after": {
+            "food": 0,
+            "water": 17,
+            "materials": 0,
+            "ammo": 1
+          },
+          "people": 12,
+          "dogs": 1,
+          "capacity": 12,
+          "shortage": [
+            5,
+            0
+          ],
+          "filter_work": 4,
+          "filter_active": true,
+          "pressure": 1,
+          "pending": [],
+          "health": 4,
+          "morale": 5
+        }
+      ],
+      "security": [],
+      "result": "derrota_ou_bloqueio_na_amostra",
+      "groups": [
+        {
+          "name": "Jana e criança",
+          "size": 2,
+          "day": 1,
+          "intention": "Assustado",
+          "id": "ZC-INT-0009",
+          "revealed": true,
+          "verified": false
+        }
+      ],
+      "wounds": {
+        "Ivo": 1,
+        "Mara": 1
+      },
+      "component_exhaustion": [],
+      "incapacitated": false,
+      "tactical_verified": false,
+      "limitations": [
+        "Combate é amostra de dados/valores; falta movimento, PA e IA zona a zona.",
+        "Viagem, busca, cerco e resgate têm efeitos de cartas não completamente executados.",
+        "Resultado é cenário de fases, não partida integral certificada."
+      ]
+    },
+    {
+      "heroes": 6,
+      "seed": 6303,
+      "profile": "limite",
+      "setup": {
+        "participants": 6,
+        "heroes": 6,
+        "founders": [
+          "Lia",
+          "Ivo",
+          "Mara",
+          "Caio",
+          "Nara",
+          "Bento"
+        ],
+        "links": [
+          "Parceiro e cachorro",
+          "Parceiro",
+          "Parceiro",
+          "Parceiro",
+          "Parceiro",
+          "Filho"
+        ],
+        "humans": 12,
+        "dogs": 1,
+        "consumers": 13,
+        "tents": 6,
+        "capacity": 12,
+        "lot_cards": 4,
+        "initial_full_cards": 7,
+        "initial_errantes": 3
+      },
+      "days": [
+        {
+          "day": 1,
+          "event_pressure": 0,
+          "destination": "Mercado",
+          "expedition_heroes": 4,
+          "clock": 7,
+          "cargo_needed": 12,
+          "cargo_capacity": 12,
+          "initial_enemies": 3,
+          "sampled_combat": [
+            {
+              "enemy": "Errante",
+              "die": 4,
+              "body": 2,
+              "hit": true
+            },
+            {
+              "enemy": "Errante",
+              "die": 5,
+              "body": 3,
+              "hit": true
+            },
+            {
+              "enemy": "Errante",
+              "die": 4,
+              "body": 1,
+              "hit": true
+            }
+          ],
+          "hordes": [
+            {
+              "id": "ZC-HOR-0002",
+              "name": "Arrastar",
+              "tokens": 1
+            },
+            {
+              "id": "ZC-HOR-0002",
+              "name": "Arrastar",
+              "tokens": 1
+            },
+            {
+              "id": "ZC-HOR-0007",
+              "name": "Aglomerado",
+              "tokens": 3
+            }
+          ],
+          "rescue_card": "ZC-INT-0003",
+          "siege": null,
+          "stock_before": {
+            "food": 28,
+            "water": 28,
+            "materials": 3,
+            "ammo": 2
+          },
+          "stock_after": {
+            "food": 45,
+            "water": 29,
+            "materials": 3,
+            "ammo": 2
+          },
+          "people": 14,
+          "dogs": 1,
+          "capacity": 12,
+          "shortage": [
+            0,
+            0
+          ],
+          "filter_work": 0,
+          "filter_active": false,
+          "pressure": 0,
+          "pending": [],
+          "health": 5,
+          "morale": 5
+        },
+        {
+          "day": 2,
+          "event_pressure": 1,
+          "destination": "Oficina",
+          "expedition_heroes": 4,
+          "clock": 8,
+          "cargo_needed": 10,
+          "cargo_capacity": 12,
+          "initial_enemies": 3,
+          "sampled_combat": [
+            {
+              "enemy": "Errante",
+              "die": 3,
+              "body": 2,
+              "hit": true
+            },
+            {
+              "enemy": "Errante",
+              "die": 4,
+              "body": 3,
+              "hit": true
+            },
+            {
+              "enemy": "Errante",
+              "die": 6,
+              "body": 1,
+              "hit": true
+            }
+          ],
+          "hordes": [
+            {
+              "id": "ZC-HOR-0009",
+              "name": "Peso morto",
+              "tokens": 1
+            },
+            {
+              "id": "ZC-HOR-0006",
+              "name": "Corrida",
+              "tokens": 1
+            },
+            {
+              "id": "ZC-HOR-0007",
+              "name": "Aglomerado",
+              "tokens": 3
+            }
+          ],
+          "rescue_card": null,
+          "siege": null,
+          "stock_before": {
+            "food": 45,
+            "water": 29,
+            "materials": 3,
+            "ammo": 2
+          },
+          "stock_after": {
+            "food": 46,
+            "water": 30,
+            "materials": 3,
+            "ammo": 2
+          },
+          "people": 14,
+          "dogs": 1,
+          "capacity": 12,
+          "shortage": [
+            0,
+            0
+          ],
+          "filter_work": 0,
+          "filter_active": false,
+          "pressure": 1,
+          "pending": [],
+          "health": 5,
+          "morale": 5
+        },
+        {
+          "day": 3,
+          "event_pressure": 0,
+          "destination": "Estação",
+          "expedition_heroes": 3,
+          "clock": 9,
+          "cargo_needed": 7,
+          "cargo_capacity": 9,
+          "initial_enemies": 3,
+          "sampled_combat": [
+            {
+              "enemy": "Errante",
+              "die": 4,
+              "body": 2,
+              "hit": true
+            },
+            {
+              "enemy": "Errante",
+              "die": 3,
+              "body": 3,
+              "hit": true
+            },
+            {
+              "enemy": "Errante",
+              "die": 6,
+              "body": 1,
+              "hit": true
+            },
+            {
+              "enemy": "Bruto",
+              "die": 2,
+              "body": 2,
+              "hit": false
+            }
+          ],
+          "hordes": [
+            {
+              "id": "ZC-HOR-0008",
+              "name": "Aglomerado",
+              "tokens": 3
+            },
+            {
+              "id": "ZC-HOR-0002",
+              "name": "Arrastar",
+              "tokens": 1
+            },
+            {
+              "id": "ZC-HOR-0006",
+              "name": "Corrida",
+              "tokens": 1
+            },
+            {
+              "id": "ZC-HOR-0004",
+              "name": "Arrastar",
+              "tokens": 1
+            }
+          ],
+          "rescue_card": null,
+          "siege": {
+            "kind": "Missão dia 3",
+            "force": 4,
+            "defense": 4,
+            "vigils": 3,
+            "rolls": [
+              4,
+              3,
+              3
+            ],
+            "ammo": 0,
+            "gap": 0,
+            "damaged": []
+          },
+          "stock_before": {
+            "food": 46,
+            "water": 30,
+            "materials": 3,
+            "ammo": 2
+          },
+          "stock_after": {
+            "food": 31,
+            "water": 31,
+            "materials": 3,
+            "ammo": 2
+          },
+          "people": 14,
+          "dogs": 1,
+          "capacity": 12,
+          "shortage": [
+            0,
+            0
+          ],
+          "filter_work": 0,
+          "filter_active": false,
+          "pressure": 1,
+          "pending": [],
+          "health": 4,
+          "morale": 4
+        },
+        {
+          "day": 4,
+          "event_pressure": 1,
+          "destination": null,
+          "expedition_heroes": 0,
+          "clock": 0,
+          "cargo_needed": 0,
+          "cargo_capacity": 0,
+          "initial_enemies": 0,
+          "sampled_combat": [],
+          "hordes": [],
+          "rescue_card": null,
+          "siege": null,
+          "stock_before": {
+            "food": 31,
+            "water": 31,
+            "materials": 3,
+            "ammo": 2
+          },
+          "stock_after": {
+            "food": 16,
+            "water": 16,
+            "materials": 0,
+            "ammo": 2
+          },
+          "people": 14,
+          "dogs": 1,
+          "capacity": 12,
+          "shortage": [
+            0,
+            0
+          ],
+          "filter_work": 2,
+          "filter_active": false,
+          "pressure": 2,
+          "pending": [],
+          "health": 3,
+          "morale": 3
+        },
+        {
+          "day": 5,
+          "event_pressure": 1,
+          "destination": null,
+          "expedition_heroes": 0,
+          "clock": 0,
+          "cargo_needed": 0,
+          "cargo_capacity": 0,
+          "initial_enemies": 0,
+          "sampled_combat": [],
+          "hordes": [],
+          "rescue_card": null,
+          "siege": {
+            "kind": "Pressão",
+            "force": 6,
+            "defense": 6,
+            "vigils": 3,
+            "rolls": [
+              4,
+              4,
+              2
+            ],
+            "ammo": 1,
+            "gap": 0,
+            "damaged": []
+          },
+          "stock_before": {
+            "food": 16,
+            "water": 16,
+            "materials": 0,
+            "ammo": 2
+          },
+          "stock_after": {
+            "food": 1,
+            "water": 27,
+            "materials": 0,
+            "ammo": 1
+          },
+          "people": 14,
+          "dogs": 1,
+          "capacity": 12,
+          "shortage": [
+            0,
+            0
+          ],
+          "filter_work": 4,
+          "filter_active": true,
+          "pressure": 1,
+          "pending": [],
+          "health": 2,
+          "morale": 2
+        }
+      ],
+      "security": [],
+      "result": "plano_de_fases_possivel",
+      "groups": [
+        {
+          "name": "Jana e criança",
+          "size": 2,
+          "day": 1,
+          "intention": "Solidário",
+          "id": "ZC-INT-0003",
+          "revealed": true,
+          "verified": false
+        }
+      ],
+      "wounds": {
+        "Lia": 1
+      },
+      "component_exhaustion": [],
+      "incapacitated": false,
+      "tactical_verified": false,
+      "limitations": [
+        "Combate é amostra de dados/valores; falta movimento, PA e IA zona a zona.",
+        "Viagem, busca, cerco e resgate têm efeitos de cartas não completamente executados.",
+        "Resultado é cenário de fases, não partida integral certificada."
+      ]
+    }
+  ],
+  "summary": {
+    "plano_de_fases_possivel": 7,
+    "derrota_ou_bloqueio_na_amostra": 8
+  },
+  "full_tactical_replays": 0,
+  "campaign_validated": false
+}

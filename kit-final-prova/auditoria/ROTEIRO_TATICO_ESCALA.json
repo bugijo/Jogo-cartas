@@ -1,0 +1,31 @@
+[
+  {
+    "heroes": 2,
+    "status": "PASS",
+    "note": "Roteiro de dois heróis conseguiu chegar ao fim."
+  },
+  {
+    "heroes": 3,
+    "status": "BLOCKED",
+    "evidence": "('Mercado', 4, 'Lia', 'PA', 0, 1)",
+    "note": "O roteiro de Lia/Ivo não escala automaticamente; criar ações para a equipe adicional."
+  },
+  {
+    "heroes": 4,
+    "status": "BLOCKED",
+    "evidence": "('Mercado', 4, 'Lia', 'PA', 0, 1)",
+    "note": "O roteiro de Lia/Ivo não escala automaticamente; criar ações para a equipe adicional."
+  },
+  {
+    "heroes": 5,
+    "status": "BLOCKED",
+    "evidence": "('Mercado', 4, 'Lia', 'PA', 0, 1)",
+    "note": "O roteiro de Lia/Ivo não escala automaticamente; criar ações para a equipe adicional."
+  },
+  {
+    "heroes": 6,
+    "status": "BLOCKED",
+    "evidence": "('Mercado', 4, 'Lia', 'PA', 0, 1)",
+    "note": "O roteiro de Lia/Ivo não escala automaticamente; criar ações para a equipe adicional."
+  }
+]
