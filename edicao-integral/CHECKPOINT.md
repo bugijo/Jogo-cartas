@@ -39,3 +39,7 @@ O estado experimental agora registra três ações por herói. Trocar equipament
 ## Unidade 8 — equipe com NPCs
 
 NPCs podem acompanhar expedição e deixam de produzir no abrigo enquanto viajam. Motorista reduz em um segmento a viagem com veículo (mínimo um); explorador acrescenta sua experiência a um achado existente, limitado pela carga, sem criar busca extra. Vagas de veículo incluem tripulação. O retorno restaura as posições de heróis e NPCs. Vinte e oito testes experimentais passaram. Permanecem a integração das 70 habilidades, as cartas imprimíveis, inimigos, missões e validação de equilíbrio.
+
+## Unidade 9 — encontro tático de Mercado (experimental)
+
+A geometria funcional de 16 zonas, 21 conexões, cinco portas, entrada, saída, surgimento e objetivos foi copiada do catálogo 0.2 para `data/tactics.json` sem mudar o kit anterior. `tactics.py` mantém posições, inimigos com vida, portas, ruído, hordas comuns/especiais/surpresa, perseguição por caminhos transitáveis, ataque e armadura; estado entra no salvamento do mundo. Retirada exige voltar à saída e fechar o encontro, registrando inimigos restantes. Seis testes táticos e 34 testes novos ao todo passaram. Isto é apenas um encontro experimental, sem campanha ou cartas prontas.

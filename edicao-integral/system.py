@@ -54,6 +54,7 @@ class World:
     camp_xp: int = 0
     clues: int = 0
     used_structure_actions: dict[str, int] = field(default_factory=dict)
+    encounters: dict[str, dict] = field(default_factory=dict)
     rng_state: object = None
     log: list[dict] = field(default_factory=list)
 
@@ -492,7 +493,7 @@ class World:
 
     def begin_return(self, expedition_id: str) -> None:
         exp = self.expeditions[expedition_id]
-        if exp.remaining != 0 or exp.returning:
+        if exp.remaining != 0 or exp.returning or expedition_id in self.encounters:
             raise ValueError('Retorno indisponível')
         exp.returning = True
         exp.remaining = exp.segment_cost

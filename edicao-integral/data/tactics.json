@@ -1,0 +1,210 @@
+{
+  "schema": 1,
+  "maps": {
+    "market_intro": {
+      "zones": [
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11,
+        12,
+        13,
+        14,
+        15,
+        16
+      ],
+      "edges": [
+        [
+          1,
+          2
+        ],
+        [
+          1,
+          5
+        ],
+        [
+          2,
+          3
+        ],
+        [
+          3,
+          4
+        ],
+        [
+          3,
+          7
+        ],
+        [
+          4,
+          8
+        ],
+        [
+          5,
+          6
+        ],
+        [
+          5,
+          9
+        ],
+        [
+          6,
+          7
+        ],
+        [
+          7,
+          8
+        ],
+        [
+          7,
+          11
+        ],
+        [
+          8,
+          12
+        ],
+        [
+          9,
+          10
+        ],
+        [
+          9,
+          13
+        ],
+        [
+          10,
+          11
+        ],
+        [
+          11,
+          12
+        ],
+        [
+          11,
+          15
+        ],
+        [
+          12,
+          16
+        ],
+        [
+          13,
+          14
+        ],
+        [
+          14,
+          15
+        ],
+        [
+          15,
+          16
+        ]
+      ],
+      "entry": 1,
+      "exit": 1,
+      "spawn": 16,
+      "search": [
+        5,
+        12
+      ],
+      "objectives": [
+        7,
+        14
+      ],
+      "doors": [
+        {
+          "edge": [
+            1,
+            5
+          ],
+          "resistance": 2,
+          "blocked": false
+        },
+        {
+          "edge": [
+            3,
+            7
+          ],
+          "resistance": 2,
+          "blocked": false
+        },
+        {
+          "edge": [
+            7,
+            8
+          ],
+          "resistance": 3,
+          "blocked": true
+        },
+        {
+          "edge": [
+            9,
+            13
+          ],
+          "resistance": 2,
+          "blocked": false
+        },
+        {
+          "edge": [
+            13,
+            14
+          ],
+          "resistance": 2,
+          "blocked": false
+        }
+      ]
+    }
+  },
+  "enemies": {
+    "slow": {
+      "health": 1,
+      "attack": 1,
+      "move": 1,
+      "sight": 2,
+      "xp": 1
+    },
+    "runner": {
+      "health": 1,
+      "attack": 1,
+      "move": 2,
+      "sight": 3,
+      "xp": 2
+    },
+    "brute": {
+      "health": 3,
+      "attack": 2,
+      "move": 1,
+      "sight": 2,
+      "xp": 3
+    }
+  },
+  "hordes": {
+    "common": {
+      "units": [
+        "slow",
+        "slow"
+      ],
+      "announced_delay": 1
+    },
+    "special": {
+      "units": [
+        "slow",
+        "runner",
+        "brute"
+      ],
+      "announced_delay": 1
+    },
+    "surprise": {
+      "units": [
+        "runner"
+      ],
+      "announced_delay": 0
+    }
+  }
+}
