@@ -119,3 +119,7 @@ O estado 0.2 recusa avançar o dia sem refeição, com cerco ainda não resolvid
 ## Unidade 27 — bloqueio de combustível reproduzido
 
 Novo teste percorre todas as três buscas de combustível da Oficina, retorna, recupera o furgão e confirma saldo de uma unidade, insuficiente para as seis exigidas na viagem militar. `CAMPAIGN_BLOCKERS.md` registra a evidência e a adaptação proposta do Posto canônico sem aplicar recurso extra. O sistema segue fail-closed: não há emissor de `verified_victory`, portanto nenhuma campanha completa sem injeção foi demonstrada. O conjunto experimental tem 84 testes aprovados; suíte legada final ainda em execução neste checkpoint.
+
+## Unidade 28 — cinco dias reconciliados com replay legado
+
+`replay_cistern02_fixed.py` importa o replay tático antigo e projeta as entregas realmente registradas por ele no estado novo. H2–H6 completam cinco dias com saldos idênticos de comida, água, Materiais, Pressão e filtro; o resultado fica em `REPLAY_CISTERNA_FIXO.json`. São cinco trajetórias **fixas**, todas sem acolher Bia e com dados favoráveis, que produzem apenas `candidate_victory`. Não emitem certificado da campanha nem desbloqueiam o arco seguinte. O conjunto experimental tem 85 testes aprovados. A expedição tática ainda não foi portada ao motor novo.

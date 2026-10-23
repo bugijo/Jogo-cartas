@@ -1,0 +1,287 @@
+[
+  {
+    "heroes": 2,
+    "oracle_result": "vitória nesta trajetória fixa",
+    "ported_result": "candidate_victory",
+    "days": [
+      {
+        "day": 1,
+        "food": 23,
+        "water": 15,
+        "materials": 3,
+        "pressure": 0,
+        "filter_active": false,
+        "food_missing": 0,
+        "water_missing": 0
+      },
+      {
+        "day": 2,
+        "food": 26,
+        "water": 18,
+        "materials": 3,
+        "pressure": 1,
+        "filter_active": false,
+        "food_missing": 0,
+        "water_missing": 0
+      },
+      {
+        "day": 3,
+        "food": 21,
+        "water": 20,
+        "materials": 3,
+        "pressure": 1,
+        "filter_active": false,
+        "food_missing": 0,
+        "water_missing": 0
+      },
+      {
+        "day": 4,
+        "food": 16,
+        "water": 15,
+        "materials": 0,
+        "pressure": 2,
+        "filter_active": false,
+        "food_missing": 0,
+        "water_missing": 0
+      },
+      {
+        "day": 5,
+        "food": 11,
+        "water": 20,
+        "materials": 0,
+        "pressure": 1,
+        "filter_active": true,
+        "food_missing": 0,
+        "water_missing": 0
+      }
+    ]
+  },
+  {
+    "heroes": 3,
+    "oracle_result": "vitória nesta trajetória fixa",
+    "ported_result": "candidate_victory",
+    "days": [
+      {
+        "day": 1,
+        "food": 23,
+        "water": 15,
+        "materials": 3,
+        "pressure": 0,
+        "filter_active": false,
+        "food_missing": 0,
+        "water_missing": 0
+      },
+      {
+        "day": 2,
+        "food": 26,
+        "water": 18,
+        "materials": 3,
+        "pressure": 1,
+        "filter_active": false,
+        "food_missing": 0,
+        "water_missing": 0
+      },
+      {
+        "day": 3,
+        "food": 21,
+        "water": 20,
+        "materials": 3,
+        "pressure": 1,
+        "filter_active": false,
+        "food_missing": 0,
+        "water_missing": 0
+      },
+      {
+        "day": 4,
+        "food": 16,
+        "water": 15,
+        "materials": 0,
+        "pressure": 2,
+        "filter_active": false,
+        "food_missing": 0,
+        "water_missing": 0
+      },
+      {
+        "day": 5,
+        "food": 11,
+        "water": 20,
+        "materials": 0,
+        "pressure": 1,
+        "filter_active": true,
+        "food_missing": 0,
+        "water_missing": 0
+      }
+    ]
+  },
+  {
+    "heroes": 4,
+    "oracle_result": "vitória nesta trajetória fixa",
+    "ported_result": "candidate_victory",
+    "days": [
+      {
+        "day": 1,
+        "food": 23,
+        "water": 15,
+        "materials": 3,
+        "pressure": 0,
+        "filter_active": false,
+        "food_missing": 0,
+        "water_missing": 0
+      },
+      {
+        "day": 2,
+        "food": 26,
+        "water": 18,
+        "materials": 3,
+        "pressure": 1,
+        "filter_active": false,
+        "food_missing": 0,
+        "water_missing": 0
+      },
+      {
+        "day": 3,
+        "food": 21,
+        "water": 20,
+        "materials": 3,
+        "pressure": 1,
+        "filter_active": false,
+        "food_missing": 0,
+        "water_missing": 0
+      },
+      {
+        "day": 4,
+        "food": 16,
+        "water": 15,
+        "materials": 0,
+        "pressure": 2,
+        "filter_active": false,
+        "food_missing": 0,
+        "water_missing": 0
+      },
+      {
+        "day": 5,
+        "food": 11,
+        "water": 20,
+        "materials": 0,
+        "pressure": 1,
+        "filter_active": true,
+        "food_missing": 0,
+        "water_missing": 0
+      }
+    ]
+  },
+  {
+    "heroes": 5,
+    "oracle_result": "vitória nesta trajetória fixa",
+    "ported_result": "candidate_victory",
+    "days": [
+      {
+        "day": 1,
+        "food": 22,
+        "water": 14,
+        "materials": 3,
+        "pressure": 0,
+        "filter_active": false,
+        "food_missing": 0,
+        "water_missing": 0
+      },
+      {
+        "day": 2,
+        "food": 24,
+        "water": 16,
+        "materials": 3,
+        "pressure": 1,
+        "filter_active": false,
+        "food_missing": 0,
+        "water_missing": 0
+      },
+      {
+        "day": 3,
+        "food": 18,
+        "water": 17,
+        "materials": 3,
+        "pressure": 1,
+        "filter_active": false,
+        "food_missing": 0,
+        "water_missing": 0
+      },
+      {
+        "day": 4,
+        "food": 12,
+        "water": 11,
+        "materials": 0,
+        "pressure": 2,
+        "filter_active": false,
+        "food_missing": 0,
+        "water_missing": 0
+      },
+      {
+        "day": 5,
+        "food": 6,
+        "water": 17,
+        "materials": 0,
+        "pressure": 1,
+        "filter_active": true,
+        "food_missing": 0,
+        "water_missing": 0
+      }
+    ]
+  },
+  {
+    "heroes": 6,
+    "oracle_result": "vitória nesta trajetória fixa",
+    "ported_result": "candidate_victory",
+    "days": [
+      {
+        "day": 1,
+        "food": 24,
+        "water": 16,
+        "materials": 3,
+        "pressure": 0,
+        "filter_active": false,
+        "food_missing": 0,
+        "water_missing": 0
+      },
+      {
+        "day": 2,
+        "food": 24,
+        "water": 16,
+        "materials": 3,
+        "pressure": 1,
+        "filter_active": false,
+        "food_missing": 0,
+        "water_missing": 0
+      },
+      {
+        "day": 3,
+        "food": 16,
+        "water": 15,
+        "materials": 3,
+        "pressure": 1,
+        "filter_active": false,
+        "food_missing": 0,
+        "water_missing": 0
+      },
+      {
+        "day": 4,
+        "food": 8,
+        "water": 7,
+        "materials": 0,
+        "pressure": 2,
+        "filter_active": false,
+        "food_missing": 0,
+        "water_missing": 0
+      },
+      {
+        "day": 5,
+        "food": 0,
+        "water": 15,
+        "materials": 0,
+        "pressure": 1,
+        "filter_active": true,
+        "food_missing": 0,
+        "water_missing": 0
+      }
+    ]
+  }
+]

@@ -215,7 +215,9 @@ class Cistern02:
 
     def plan_guards(self,heroes:list[str]) -> None:
         if (len(heroes)>3 or len(set(heroes))!=len(heroes)
-                or any(hero not in self.founders for hero in heroes)):
+                or any(not any(p['id']==hero and p['kind'] in ('hero','adult')
+                               and p['wounds']<3 and not p['hungry'] and not p['thirsty']
+                               for p in self.people) for hero in heroes)):
             raise ValueError('Vigias inválidos')
         self.planned_guards=list(heroes)
 
@@ -370,7 +372,7 @@ class Cistern02:
             raise ValueError('Cerco da noite não resolvido')
         if any(group['status']!='left' for group in self.groups) and self.intentions_day!=self.day:
             raise ValueError('Intenções e superlotação da noite pendentes')
-        self.day+=1;self.clock=0;self.works_today=0
+        self.day+=1;self.clock=0;self.works_today=0;self.planned_guards=[]
         if self.filter_active:
             self.water.extend(self._lots(self.initial_consumers))
 
