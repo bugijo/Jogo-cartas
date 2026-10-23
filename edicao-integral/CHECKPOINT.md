@@ -55,3 +55,7 @@ Os 14 tipos de bônus presentes nos 70 marcos agora têm operação concreta em 
 ## Unidade 12 — persistência de locais e XP por expedição
 
 Retirada arquiva inimigos, portas e horda pendente por local; revisita restaura o mapa com entrada renovada dos heróis. Salvamento entre visitas preserva isso. O limite de 8 XP de combate agora persiste por toda a expedição, inclusive entre dias, e zera no retorno. `PROVA_CICLO_17.json` demonstra um ciclo com resultado de missão e hash idêntico após restaurar. Quarenta e nove testes experimentais passaram; os 1.250 ensaios agregados permaneceram iguais.
+
+## Unidade 13 — portões do segundo arco
+
+`arc2.py` executa código de rádio, cartão de acesso, entrada com furgão/combustível e transporte de transmissor único, com flags e carga salvas. `data/last_transmission.json` contém cinco cartas; a defesa final está marcada pendente e lança erro explícito. Um sexto destino regional abstrato foi adicionado, sem mapa local. `validate_data.py` confirma 125 IDs e sete cartas experimentais. Cinquenta e dois testes novos passaram; os 1.250 replays do cenário de um dia permaneceram iguais. O capítulo 0.2 continua intocado. `ARC2_STATUS.md` descreve limites.

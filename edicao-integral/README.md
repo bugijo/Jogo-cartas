@@ -15,3 +15,5 @@ Os nomes de dez protagonistas foram preservados do catálogo 0.2. Os outros 14 h
 O ensaio expandido é `python edicao-integral/simulate_system.py --seed 20261023 --seeds 100`; resultados e pressupostos estão em `VALIDATION.md`. `system.py` é o motor principal deste experimento; `engine.py` permanece como primeiro protótipo isolado para comparação e não deve ser usado como fonte das regras novas.
 
 Validar referências e custos: `python edicao-integral/validate_data.py`. O relatório imprime contagens reais de IDs; essa validação não substitui revisão de conteúdo ou impressão.
+
+O cenário de um dia está em `campaign.py`; sua prova em `PROVA_CICLO_17.json`. Os portões parciais do segundo arco estão em `arc2.py` e `ARC2_STATUS.md`. A defesa final e o modo sobrevivência livre ainda não existem.

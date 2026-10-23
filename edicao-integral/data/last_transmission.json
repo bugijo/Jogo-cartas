@@ -1,0 +1,23 @@
+{
+  "schema": 1,
+  "status": "arco experimental em progresso; defesa final e mapa militar pendentes",
+  "cards": [
+    {"id":"EXP-MIS-102","family":"mission","name":"Decifrar a frequência",
+     "location":"camp","requires":{"cistern_complete":true,"clues":2},
+     "cost":{"clues":2},"effects":[{"kind":"flag","key":"radio_code","value":true}]},
+    {"id":"EXP-MIS-103","family":"mission","name":"Cartão na estação",
+     "location":"EXP-LOC-05","requires":{"searches_used":1},
+     "cost":{},"effects":[{"kind":"flag","key":"access_card","value":true}]},
+    {"id":"EXP-MIS-104","family":"mission","name":"Acesso militar",
+     "location":"EXP-LOC-06","requires":{"radio_code":true,"access_card":true,
+        "vehicle":true,"fuel_round_trip":6},"cost":{"fuel":6},
+     "effects":[{"kind":"flag","key":"military_access","value":true}]},
+    {"id":"EXP-MIS-105","family":"mission","name":"Transporte do transmissor",
+     "location":"EXP-LOC-06","requires":{"military_access":true,"cargo_capacity":1},
+     "cost":{},"effects":[{"kind":"special_cargo","item":"transmitter"}]},
+    {"id":"EXP-MIS-106","family":"mission","name":"Defesa da última transmissão",
+     "location":"camp","requires":{"transmitter":true,"final_defense":true},
+     "cost":{},"effects":[{"kind":"campaign_mode","value":"free_survival"}],
+     "implementation":"pending_tactical_defense_map"}
+  ]
+}

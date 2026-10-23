@@ -98,6 +98,7 @@ locations = [
     ('workshop','Oficina','urban',3,{'scrap':2,'fuel':1},'medium'),
     ('hospital','Hospital','urban',3,{'medicine':2,'water':1},'medium'),
     ('station','Estação','urban',2,{'water':2,'scrap':1},'far'),
+    ('military','Instalação militar','urban',0,{},'far'),
 ]
 locations = [{'id':f'EXP-LOC-{i:02d}','kind':kind,'name':name,'renewal':renewal,
               'searches':searches,'loot':loot,'distance':distance}

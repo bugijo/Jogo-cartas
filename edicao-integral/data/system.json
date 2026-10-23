@@ -1070,6 +1070,15 @@
         "scrap": 1
       },
       "distance": "far"
+    },
+    {
+      "id": "EXP-LOC-06",
+      "kind": "military",
+      "name": "Instalação militar",
+      "renewal": "urban",
+      "searches": 0,
+      "loot": {},
+      "distance": "far"
     }
   ],
   "crises": [

@@ -322,8 +322,8 @@ class SystemTests(unittest.TestCase):
     def test_catalog_validation_and_full_state_roundtrip(self):
         spec3=importlib.util.spec_from_file_location('integral_validator',ROOT/'validate_data.py')
         module=importlib.util.module_from_spec(spec3);spec3.loader.exec_module(module)
-        self.assertEqual(module.validate()['unique_ids'],119)
-        self.assertEqual(module.validate()['cards'],2)
+        self.assertEqual(module.validate()['unique_ids'],125)
+        self.assertEqual(module.validate()['cards'],7)
         self.assertEqual(module.validate()['tactical_maps'],1)
         w=world(seed=9,stock={'food':6,'water':6,'wood':6,'scrap':6,'fuel':3,'ammo':1,'medicine':1})
         hero=next(iter(w.heroes))

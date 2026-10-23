@@ -6,7 +6,8 @@ ROOT=Path(__file__).resolve().parent
 DATA=json.loads((ROOT/'data/system.json').read_text(encoding='utf-8'))
 GEAR=json.loads((ROOT/'data/equipment.json').read_text(encoding='utf-8'))
 TACTICS=json.loads((ROOT/'data/tactics.json').read_text(encoding='utf-8'))
-CARDS=json.loads((ROOT/'data/cycle_cards.json').read_text(encoding='utf-8'))['cards']
+CARDS=(json.loads((ROOT/'data/cycle_cards.json').read_text(encoding='utf-8'))['cards']
+       +json.loads((ROOT/'data/last_transmission.json').read_text(encoding='utf-8'))['cards'])
 RESOURCES={'food','water','wood','scrap','medicine','fuel','ammo'}
 OPERATIONS={'medicine','water','rescue','defense','attack','noise','infection',
             'travel','search','repair','build','craft','food','storage','research'}
@@ -87,7 +88,8 @@ def validate() -> dict:
                 if any(effect['kind'] not in ('cargo','clues') for effect in choice['effects']):
                     raise ValueError('Efeito de carta desconhecido')
         elif card['family']=='mission':
-            if card['requirements']['destination'] not in loc_kinds:
+            target=card.get('requirements',{}).get('destination',card.get('location'))
+            if target not in loc_kinds|{'camp'}:
                 raise ValueError('Missão sem destino')
         else:
             raise ValueError('Família de carta desconhecida')

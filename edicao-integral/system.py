@@ -34,6 +34,7 @@ class Expedition:
     vehicle_id: str | None = None
     crew: list[str] = field(default_factory=list)
     segment_cost: int = 0
+    special_cargo: list[str] = field(default_factory=list)
 
 
 @dataclass
@@ -58,6 +59,8 @@ class World:
     encounters: dict[str, dict] = field(default_factory=dict)
     decisions: dict[str, str] = field(default_factory=dict)
     site_states: dict[str, dict] = field(default_factory=dict)
+    flags: dict[str, bool] = field(default_factory=dict)
+    special_stock: list[str] = field(default_factory=list)
     garden_worker: str | None = None
     guarding: dict[str, int] = field(default_factory=dict)
     rng_state: object = None
@@ -126,13 +129,14 @@ class World:
                     or any(n not in self.npcs or self.npcs[n]['location'] != key
                            for n in exp.crew)
                     or any(r not in RESOURCES or n < 0 for r,n in exp.cargo.items())
-                    or (exp.vehicle_id is None and sum(exp.cargo.values()) > 6 * len(exp.heroes))):
+                    or any(item!='transmitter' for item in exp.special_cargo)
+                    or (exp.vehicle_id is None and sum(exp.cargo.values())+len(exp.special_cargo) > 6 * len(exp.heroes))):
                 raise ValueError('Expedição/carga inválida')
             if exp.vehicle_id is not None:
                 if (exp.vehicle_id not in self.vehicles
                         or self.vehicles[exp.vehicle_id]['location'] != key
                         or len(exp.heroes)+len(exp.crew) > VEHICLES[exp.vehicle_id]['seats']
-                        or sum(exp.cargo.values()) > VEHICLES[exp.vehicle_id]['cargo_capacity']):
+                        or sum(exp.cargo.values())+len(exp.special_cargo) > VEHICLES[exp.vehicle_id]['cargo_capacity']):
                     raise ValueError('Veículo/carga inválidos')
             active_heroes.update(exp.heroes)
         if any(h['location'] != 'camp' for hero_id,h in self.heroes.items()
@@ -146,6 +150,11 @@ class World:
                or not 0 <= state['health'] <= VEHICLES[vid]['health']
                for vid,state in self.vehicles.items()):
             raise ValueError('Veículo inválido')
+        if any(item!='transmitter' for item in self.special_stock):
+            raise ValueError('Peça de missão desconhecida')
+        if self.special_stock.count('transmitter')+sum(exp.special_cargo.count('transmitter')
+                                                      for exp in self.expeditions.values())>1:
+            raise ValueError('Peça única duplicada')
         for expedition_id, encounter in self.encounters.items():
             if expedition_id not in self.expeditions or encounter.get('map') not in TACTICS_DATA['maps']:
                 raise ValueError('Encontro sem expedição/mapa')
@@ -560,6 +569,7 @@ class World:
             exp.remaining = 0
             return 'arrived'
         delivered = {resource:self.deposit(resource,amount) for resource,amount in exp.cargo.items()}
+        self.special_stock.extend(exp.special_cargo)
         left_behind = {resource:amount-delivered[resource] for resource,amount in exp.cargo.items()
                        if amount > delivered[resource]}
         self.log.append({'day':self.day,'expedition':expedition_id,'delivered':delivered,
