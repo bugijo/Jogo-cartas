@@ -24,6 +24,18 @@ class CycleTests(unittest.TestCase):
             p=Path(d)/'save.json';w.save(p);copy=World.load(p)
             self.assertEqual(copy.decisions,w.decisions)
 
+    def test_unique_event_cannot_be_farmed_by_renaming_expedition(self):
+        w=World.new(12,['ZC-HER-0001'],{'food':3,'water':3})
+        hero='ZC-HER-0001'
+        w.open_expedition('first',[hero],'EXP-LOC-02')
+        w.advance_expedition('first')
+        apply_event(w,'first','EXP-EVT-001','ignore',hero)
+        w.begin_return('first');w.advance_expedition('first')
+        w.open_expedition('second',[hero],'EXP-LOC-02')
+        w.advance_expedition('second')
+        with self.assertRaises(ValueError):
+            apply_event(w,'second','EXP-EVT-001','ignore',hero)
+
     def test_replay_complete_day_and_restore(self):
         result=play_market_day(17,'balanced')
         self.assertEqual(result['phases'],['preparation','travel','exploration','event',

@@ -19,7 +19,7 @@ def apply_event(world:World,expedition_id:str,card_id:str,choice_id:str,hero_id:
         raise ValueError('Equipe fora do local')
     if hero_id not in world.expeditions[expedition_id].heroes:
         raise ValueError('Herói fora da equipe')
-    key=f'{expedition_id}:{card_id}'
+    key=card_id
     if key in world.decisions:
         raise ValueError('Escolha já resolvida')
     choice=next((c for c in CARDS[card_id]['choices'] if c['id']==choice_id),None)
