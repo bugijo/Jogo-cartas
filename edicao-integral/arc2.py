@@ -38,8 +38,12 @@ class Arc2:
         if (not self.world.flags.get('radio_code') or not self.world.flags.get('access_card')
                 or self.world.flags.get('military_access')):
             raise ValueError('Código/cartão/missão ausente')
-        self.world.open_expedition(expedition_id,hero_ids,card['location'],vehicle_id=vehicle_id)
         self.world.flags['military_access']=True
+        try:
+            self.world.open_expedition(expedition_id,hero_ids,card['location'],vehicle_id=vehicle_id)
+        except ValueError:
+            del self.world.flags['military_access']
+            raise
         self.world.log.append({'day':self.world.day,'mission':card['id'],'result':'authorized'})
 
     def load_transmitter(self,expedition_id:str) -> None:

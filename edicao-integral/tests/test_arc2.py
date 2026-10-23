@@ -14,16 +14,24 @@ class Arc2Tests(unittest.TestCase):
         w=World.new(1,['ZC-HER-0001'],{'food':2,'water':2})
         with self.assertRaises(NotImplementedError):Arc2(w).final_defense()
 
-    def test_transmitter_cannot_be_loaded_by_two_teams(self):
+    def test_transmitter_cannot_be_loaded_twice(self):
         heroes=['ZC-HER-0001','ZC-HER-0002']
-        w=World.new(1,heroes,{'food':4,'water':4})
+        w=World.new(1,heroes,{'food':4,'water':4,'fuel':6})
         w.flags['military_access']=True
-        for label,hero in zip(('a','b'),heroes):
-            w.open_expedition(label,[hero],'EXP-LOC-06')
-            for _ in range(3):w.advance_expedition(label)
+        w.flags['radio_code']=True
+        w.flags['access_card']=True
+        w.vehicles['EXP-VEI-01']={'location':'camp','health':3}
+        w.open_expedition('a',[heroes[0]],'EXP-LOC-06',vehicle_id='EXP-VEI-01')
+        for _ in range(3):w.advance_expedition('a')
         arc=Arc2(w)
         arc.load_transmitter('a')
-        with self.assertRaises(ValueError):arc.load_transmitter('b')
+        with self.assertRaises(ValueError):arc.load_transmitter('a')
+
+    def test_direct_military_trip_cannot_bypass_card_and_code(self):
+        w=World.new(1,['ZC-HER-0001'],{'food':2,'water':2,'fuel':6})
+        w.vehicles['EXP-VEI-01']={'location':'camp','health':3}
+        with self.assertRaises(ValueError):
+            w.open_expedition('illegal',['ZC-HER-0001'],'EXP-LOC-06',vehicle_id='EXP-VEI-01')
 
     def test_code_card_access_and_transport_persist(self):
         w=World.new(8,['ZC-HER-0001','ZC-HER-0002'],

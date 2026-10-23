@@ -530,6 +530,9 @@ class World:
     def open_expedition(self, expedition_id: str, hero_ids: list[str], location_id: str,
                         vehicle_id: str | None = None, npc_ids: list[str] | None = None) -> None:
         npc_ids = npc_ids or []
+        if location_id=='EXP-LOC-06' and (not vehicle_id or not all(
+                self.flags.get(key) for key in ('radio_code','access_card','military_access'))):
+            raise ValueError('Instalação exige código, cartão, missão e veículo')
         if expedition_id in self.expeditions or not hero_ids or len(set(hero_ids)) != len(hero_ids) or location_id not in LOCATIONS:
             raise ValueError('Expedição inválida')
         if any(h not in self.heroes or self.heroes[h]['location'] != 'camp' for h in hero_ids):

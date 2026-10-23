@@ -63,3 +63,7 @@ Retirada arquiva inimigos, portas e horda pendente por local; revisita restaura 
 ## Unidade 14 — percepção dos inimigos e preparação física
 
 A ativação zumbi agora persegue heróis apenas dentro de alcance e linha de visão, ou ruído médio/alto; um teste reproduz o zumbi parado sem pista e em movimento após ruído. Cinquenta e três testes experimentais passaram e os 1.250 replays agregados permaneceram byte a byte iguais. `PRINT_PREP.md` registra as medidas de cartas e a divisão preliminar das 16 placas de 20 × 20 cm em 32 metades A4; nenhum PDF, arte de placas ou molde de caixa foi produzido. O kit 0.2 segue intacto.
+
+## Unidade 15 — gate militar sem atalho
+
+`World.open_expedition` agora recusa ida direta à instalação militar sem código, cartão, autorização de missão e veículo. `Arc2.authorize_installation` abre o gate com rollback da flag se a viagem falhar. O teste do atalho falhou antes da correção e passou depois. Cinquenta e quatro testes experimentais e 51 testes legados passaram. A suíte legada registrou apenas `ResourceWarning` preexistente em `tests/test_boards06.py:64`. Os 1.250 replays de um dia permaneceram idênticos. O estado segue incompleto para campanha total e impressão.

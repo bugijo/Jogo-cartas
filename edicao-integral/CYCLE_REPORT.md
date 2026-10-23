@@ -13,3 +13,5 @@ Pendências: os 70 marcos estão ligados a operações, mas ainda não têm esco
 O limite de 8 XP de combate foi corrigido para persistir entre dias da mesma expedição e zerar no retorno. A revisita mantém inimigos e portas também após salvar/restaurar. Uma prova reproduzível da semente 17 está em `PROVA_CICLO_17.json`.
 
 O estado e os limites de Última Transmissão estão em `ARC2_STATUS.md`. A suíte experimental atual tem 52 testes; os 1.250 replays de um dia permanecem idênticos.
+
+A IA zumbi foi limitada por visão/alcance ou ruído médio/alto; o cenário da semente 17 continua com resultado idêntico. O portão militar no método geral foi fechado contra acesso sem missão.
