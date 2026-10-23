@@ -27,6 +27,18 @@ class SystemTests(unittest.TestCase):
         self.assertEqual(w.award_xp(h,20,True),8)
         self.assertEqual(w.award_xp(h,20,True),0)
 
+    def test_all_seventy_skill_thresholds_activate_typed_bonus(self):
+        for profile in system.DATA['heroes']:
+            w=system.World.new(1,[profile['id']],{'food':2,'water':2})
+            for skill in profile['skills']:
+                old=w.skill_bonus(profile['id'],skill['operation'])
+                if skill['xp']:
+                    w.award_xp(profile['id'],skill['xp']-w.heroes[profile['id']]['xp'])
+                    self.assertEqual(w.skill_bonus(profile['id'],skill['operation']),
+                                     old+skill['bonus'])
+                else:
+                    self.assertGreaterEqual(old,skill['bonus'])
+
     def test_storage_and_lodging_limits(self):
         w=world(); self.assertEqual(w.deposit('food',100),6)
         self.assertEqual(sum(w.stock.values()),w.storage)
@@ -94,6 +106,40 @@ class SystemTests(unittest.TestCase):
         self.assertTrue(w.work_project('garden',1,hero_id=bento))
         self.assertIn('garden',w.structures)
 
+    def test_skill_resource_travel_search_repair_and_storage_hooks(self):
+        w=world(n=8,stock={'food':8,'water':8,'wood':2,'scrap':2,'fuel':4})
+        rosa='ZC-HER-0008';nara='ZC-HER-0005';caio='ZC-HER-0004';duda='ZC-HER-0007'
+        w.award_xp(rosa,12)
+        self.assertGreater(w.storage,system.DATA['rules']['storage_base'])
+        w.structures['reservoir']={'health':3,'age':0}
+        self.assertTrue(w.use_structure('reservoir',nara))
+        self.assertGreaterEqual(w.stock['water'],9)
+        w.structures['workshop']={'health':1,'age':0}
+        w.repair_structure('workshop',hero_id=duda)
+        self.assertEqual(w.structures['workshop']['health'],3)
+        w.award_xp(caio,12)
+        w.open_expedition('fast',[caio],'EXP-LOC-03')
+        self.assertEqual(w.expeditions['fast'].segment_cost,1)
+        w.advance_expedition('fast')
+        self.assertGreaterEqual(w.search('fast',hero_id=caio)['scrap'],3)
+
+    def test_food_rescue_defense_and_infection_skills(self):
+        rosa='ZC-HER-0008';lia='ZC-HER-0001';ivo='ZC-HER-0002';yumi='ZC-HER-0010'
+        w=system.World.new(17,[lia,ivo,rosa,yumi],
+                           {'food':10,'water':10,'medicine':2,'wood':2,'scrap':1})
+        self.assertTrue(w.start_project('garden'))
+        w.work_project('garden',2)
+        w.assign_garden(rosa)
+        w.award_xp(lia,20)
+        w.heroes[ivo]['health']=0
+        self.assertEqual(w.rescue_hero(lia,ivo),2)
+        w.guard(ivo)
+        self.assertEqual(w.receive_damage(ivo,2)['health'],2)
+        result=w.roll_infection(yumi)
+        self.assertEqual(result['adjusted'],min(6,result['roll']+w.skill_bonus(yumi,'infection')))
+        days=[w.end_day() for _ in range(4)]
+        self.assertGreaterEqual(days[-1]['produced']['food'],3)
+
     def test_search_urban_depletion_natural_renewal(self):
         w=world(n=3,stock={'food':6,'water':6})
         urban='EXP-LOC-02'; natural='EXP-LOC-01'
@@ -129,7 +175,7 @@ class SystemTests(unittest.TestCase):
         w.open_expedition('B',heroes[2:],'EXP-LOC-03')
         with self.assertRaises(ValueError): w.open_expedition('C',heroes[:1],'EXP-LOC-01')
         self.assertEqual(w.advance_expedition('A'),'arrived')
-        self.assertEqual(w.advance_expedition('B'),'travel')
+        self.assertEqual(w.expeditions['B'].segment_cost,1)  # Caio: viagem +1
         self.assertEqual(w.advance_expedition('B'),'arrived')
         w.begin_return('A');self.assertEqual(w.advance_expedition('A'),'returned')
         self.assertEqual(w.heroes[heroes[0]]['location'],'camp')

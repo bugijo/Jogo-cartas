@@ -105,5 +105,23 @@ class TacticalTests(unittest.TestCase):
             path.write_text(json.dumps(payload),encoding='utf-8')
             with self.assertRaises(ValueError):World.load(path)
 
+    def test_noise_skill_reduces_marker_intensity(self):
+        w=self.setup_world()
+        hero='ZC-HER-0002';w.award_xp(hero,20)
+        game=TacticalGame.start(w,'m','market_intro')
+        enemy=game.spawn('brute',zone=1)
+        game.attack(hero,'crowbar',enemy)
+        self.assertEqual(game.state['noise'][-1]['intensity'],1)
+
+    def test_zombie_hit_rolls_persistent_infection(self):
+        w=self.setup_world(seed=3)
+        game=TacticalGame.start(w,'m','market_intro')
+        game.spawn('slow',zone=1)
+        result=game.activate()
+        self.assertEqual(len(result['attacks']),1)
+        self.assertIn('infection',result['attacks'][0])
+        self.assertEqual(result['attacks'][0]['infection']['infected'],
+                         w.heroes[result['attacks'][0]['hero']]['infected'])
+
 
 if __name__=='__main__':unittest.main()

@@ -47,3 +47,7 @@ A geometria funcional de 16 zonas, 21 conexões, cinco portas, entrada, saída, 
 ## Unidade 10 — ciclo de um dia e cartas estruturadas
 
 `campaign.py` usa as duas cartas de `data/cycle_cards.json` para executar e salvar um dia completo no Mercado. A busca no encontro exige um herói vivo em zona marcada; retirada por quebra de equipamento não contabiliza busca. `simulate_cycle.py` executou 1.250 replays de um dia para H2–H6 e cinco estratégias, com zero divergências de restauração. Ver `CYCLE_REPORT.md` para resultados e limitações: ainda não é campanha completa ou balanceada. `validate_data.py` confirmou 119 IDs e conectividade da planta. Quarenta e dois testes experimentais passaram nesta unidade.
+
+## Unidade 11 — 70 marcos ligados ao motor
+
+Os 14 tipos de bônus presentes nos 70 marcos agora têm operação concreta em `system.py`/`tactics.py`: enfermaria, reservatório, resgate, guarda, ataque, ruído, infecção, viagem, busca, reparo, obra, fabricação, horta e depósito. Os textos do catálogo foram tornados específicos. O teste percorre todos os limiares de XP e os testes de contexto exercitam os principais efeitos. Quarenta e sete testes experimentais passaram; os 1.250 replays do cenário de um dia permaneceram byte a byte iguais. Ainda faltam escolhas ramificadas nas árvores e avaliação humana/balanceamento.

@@ -139,7 +139,9 @@ class TacticalGame:
             self.world.award_xp(hero_id,TACTICS['enemies'][enemy['kind']]['xp'],combat=True)
             del self.state['enemies'][enemy_id]
         intensity={'baixo':1,'médio':2,'alto':3}[result['noise']]
-        self.noise(start,intensity)
+        intensity=max(0,intensity-self.world.skill_bonus(hero_id,'noise'))
+        if intensity:
+            self.noise(start,intensity)
         return dict(result,enemy_health=enemy['health'])
 
     def finish(self,retreat=False):
@@ -194,8 +196,10 @@ class TacticalGame:
                 armor=next((iid for iid,item in self.world.gear[hero_id].items()
                             if item['slot'] in ('head','torso','legs')
                             and 'armor' in ITEMS[item['template']] and item['durability']>0),None)
+                prior=self.world.heroes[hero_id]['health']
                 harm=self.world.receive_damage(hero_id,spec['attack'],armor)
-                attacks.append({'enemy':eid,'hero':hero_id,**harm})
+                infection=self.world.roll_infection(hero_id) if harm['health']<prior else None
+                attacks.append({'enemy':eid,'hero':hero_id,**harm,'infection':infection})
         self.state['noise']=[]
         self.state['round']+=1
         self.world.begin_round()

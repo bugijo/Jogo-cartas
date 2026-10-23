@@ -56,49 +56,49 @@
           "xp": 0,
           "operation": "medicine",
           "bonus": 1,
-          "text": "Medicine: +1 ao teste ou rendimento correspondente."
+          "text": "Ao usar a enfermaria, cure +1 vida (máximo 3)."
         },
         {
           "id": "EXP-SKL-01-01",
           "xp": 5,
           "operation": "water",
           "bonus": 1,
-          "text": "Water: +1 ao teste ou rendimento correspondente."
+          "text": "Ao operar o reservatório, produza +1 água."
         },
         {
           "id": "EXP-SKL-01-02",
           "xp": 12,
           "operation": "medicine",
           "bonus": 1,
-          "text": "Medicine: +1 ao teste ou rendimento correspondente."
+          "text": "Ao usar a enfermaria, cure +1 vida (máximo 3)."
         },
         {
           "id": "EXP-SKL-01-03",
           "xp": 20,
           "operation": "rescue",
           "bonus": 1,
-          "text": "Rescue: +1 ao teste ou rendimento correspondente."
+          "text": "Ao socorrer com medicamento, recupere +1 vida (máximo 3)."
         },
         {
           "id": "EXP-SKL-01-04",
           "xp": 35,
           "operation": "medicine",
           "bonus": 2,
-          "text": "Medicine: +2 ao teste ou rendimento correspondente."
+          "text": "Ao usar a enfermaria, cure +2 vida (máximo 3)."
         },
         {
           "id": "EXP-SKL-01-05",
           "xp": 50,
           "operation": "rescue",
           "bonus": 2,
-          "text": "Rescue: +2 ao teste ou rendimento correspondente."
+          "text": "Ao socorrer com medicamento, recupere +2 vida (máximo 3)."
         },
         {
           "id": "EXP-SKL-01-06",
           "xp": 75,
           "operation": "medicine",
           "bonus": 2,
-          "text": "Medicine: +2 ao teste ou rendimento correspondente."
+          "text": "Ao usar a enfermaria, cure +2 vida (máximo 3)."
         }
       ]
     },
@@ -121,49 +121,49 @@
           "xp": 0,
           "operation": "defense",
           "bonus": 1,
-          "text": "Defense: +1 ao teste ou rendimento correspondente."
+          "text": "Ao gastar uma ação para guardar, previna +1 dano."
         },
         {
           "id": "EXP-SKL-02-01",
           "xp": 5,
           "operation": "attack",
           "bonus": 1,
-          "text": "Attack: +1 ao teste ou rendimento correspondente."
+          "text": "Ao acertar com arma, cause +1 dano."
         },
         {
           "id": "EXP-SKL-02-02",
           "xp": 12,
           "operation": "defense",
           "bonus": 1,
-          "text": "Defense: +1 ao teste ou rendimento correspondente."
+          "text": "Ao gastar uma ação para guardar, previna +1 dano."
         },
         {
           "id": "EXP-SKL-02-03",
           "xp": 20,
           "operation": "noise",
           "bonus": 1,
-          "text": "Noise: +1 ao teste ou rendimento correspondente."
+          "text": "Ao atacar, reduza o ruído em 1 intensidade (mínimo zero)."
         },
         {
           "id": "EXP-SKL-02-04",
           "xp": 35,
           "operation": "attack",
           "bonus": 2,
-          "text": "Attack: +2 ao teste ou rendimento correspondente."
+          "text": "Ao acertar com arma, cause +2 dano."
         },
         {
           "id": "EXP-SKL-02-05",
           "xp": 50,
           "operation": "defense",
           "bonus": 2,
-          "text": "Defense: +2 ao teste ou rendimento correspondente."
+          "text": "Ao gastar uma ação para guardar, previna +2 dano."
         },
         {
           "id": "EXP-SKL-02-06",
           "xp": 75,
           "operation": "attack",
           "bonus": 2,
-          "text": "Attack: +2 ao teste ou rendimento correspondente."
+          "text": "Ao acertar com arma, cause +2 dano."
         }
       ]
     },
@@ -186,49 +186,49 @@
           "xp": 0,
           "operation": "medicine",
           "bonus": 1,
-          "text": "Medicine: +1 ao teste ou rendimento correspondente."
+          "text": "Ao usar a enfermaria, cure +1 vida (máximo 3)."
         },
         {
           "id": "EXP-SKL-03-01",
           "xp": 5,
           "operation": "rescue",
           "bonus": 1,
-          "text": "Rescue: +1 ao teste ou rendimento correspondente."
+          "text": "Ao socorrer com medicamento, recupere +1 vida (máximo 3)."
         },
         {
           "id": "EXP-SKL-03-02",
           "xp": 12,
           "operation": "medicine",
           "bonus": 1,
-          "text": "Medicine: +1 ao teste ou rendimento correspondente."
+          "text": "Ao usar a enfermaria, cure +1 vida (máximo 3)."
         },
         {
           "id": "EXP-SKL-03-03",
           "xp": 20,
           "operation": "infection",
           "bonus": 1,
-          "text": "Infection: +1 ao teste ou rendimento correspondente."
+          "text": "Some +1 ao D6 de infecção (máximo 6)."
         },
         {
           "id": "EXP-SKL-03-04",
           "xp": 35,
           "operation": "rescue",
           "bonus": 2,
-          "text": "Rescue: +2 ao teste ou rendimento correspondente."
+          "text": "Ao socorrer com medicamento, recupere +2 vida (máximo 3)."
         },
         {
           "id": "EXP-SKL-03-05",
           "xp": 50,
           "operation": "medicine",
           "bonus": 2,
-          "text": "Medicine: +2 ao teste ou rendimento correspondente."
+          "text": "Ao usar a enfermaria, cure +2 vida (máximo 3)."
         },
         {
           "id": "EXP-SKL-03-06",
           "xp": 75,
           "operation": "infection",
           "bonus": 2,
-          "text": "Infection: +2 ao teste ou rendimento correspondente."
+          "text": "Some +2 ao D6 de infecção (máximo 6)."
         }
       ]
     },
@@ -251,49 +251,49 @@
           "xp": 0,
           "operation": "travel",
           "bonus": 1,
-          "text": "Travel: +1 ao teste ou rendimento correspondente."
+          "text": "Reduza a viagem em 1 segmento(s) (mínimo um)."
         },
         {
           "id": "EXP-SKL-04-01",
           "xp": 5,
           "operation": "search",
           "bonus": 1,
-          "text": "Search: +1 ao teste ou rendimento correspondente."
+          "text": "Na busca, obtenha +1 unidade(s) do primeiro recurso, se houver carga."
         },
         {
           "id": "EXP-SKL-04-02",
           "xp": 12,
           "operation": "travel",
           "bonus": 1,
-          "text": "Travel: +1 ao teste ou rendimento correspondente."
+          "text": "Reduza a viagem em 1 segmento(s) (mínimo um)."
         },
         {
           "id": "EXP-SKL-04-03",
           "xp": 20,
           "operation": "noise",
           "bonus": 1,
-          "text": "Noise: +1 ao teste ou rendimento correspondente."
+          "text": "Ao atacar, reduza o ruído em 1 intensidade (mínimo zero)."
         },
         {
           "id": "EXP-SKL-04-04",
           "xp": 35,
           "operation": "search",
           "bonus": 2,
-          "text": "Search: +2 ao teste ou rendimento correspondente."
+          "text": "Na busca, obtenha +2 unidade(s) do primeiro recurso, se houver carga."
         },
         {
           "id": "EXP-SKL-04-05",
           "xp": 50,
           "operation": "travel",
           "bonus": 2,
-          "text": "Travel: +2 ao teste ou rendimento correspondente."
+          "text": "Reduza a viagem em 2 segmento(s) (mínimo um)."
         },
         {
           "id": "EXP-SKL-04-06",
           "xp": 75,
           "operation": "search",
           "bonus": 2,
-          "text": "Search: +2 ao teste ou rendimento correspondente."
+          "text": "Na busca, obtenha +2 unidade(s) do primeiro recurso, se houver carga."
         }
       ]
     },
@@ -316,49 +316,49 @@
           "xp": 0,
           "operation": "water",
           "bonus": 1,
-          "text": "Water: +1 ao teste ou rendimento correspondente."
+          "text": "Ao operar o reservatório, produza +1 água."
         },
         {
           "id": "EXP-SKL-05-01",
           "xp": 5,
           "operation": "repair",
           "bonus": 1,
-          "text": "Repair: +1 ao teste ou rendimento correspondente."
+          "text": "Ao reparar uma estrutura, recupere +1 vida dela (máximo normal)."
         },
         {
           "id": "EXP-SKL-05-02",
           "xp": 12,
           "operation": "water",
           "bonus": 1,
-          "text": "Water: +1 ao teste ou rendimento correspondente."
+          "text": "Ao operar o reservatório, produza +1 água."
         },
         {
           "id": "EXP-SKL-05-03",
           "xp": 20,
           "operation": "search",
           "bonus": 1,
-          "text": "Search: +1 ao teste ou rendimento correspondente."
+          "text": "Na busca, obtenha +1 unidade(s) do primeiro recurso, se houver carga."
         },
         {
           "id": "EXP-SKL-05-04",
           "xp": 35,
           "operation": "water",
           "bonus": 2,
-          "text": "Water: +2 ao teste ou rendimento correspondente."
+          "text": "Ao operar o reservatório, produza +2 água."
         },
         {
           "id": "EXP-SKL-05-05",
           "xp": 50,
           "operation": "repair",
           "bonus": 2,
-          "text": "Repair: +2 ao teste ou rendimento correspondente."
+          "text": "Ao reparar uma estrutura, recupere +2 vida dela (máximo normal)."
         },
         {
           "id": "EXP-SKL-05-06",
           "xp": 75,
           "operation": "water",
           "bonus": 2,
-          "text": "Water: +2 ao teste ou rendimento correspondente."
+          "text": "Ao operar o reservatório, produza +2 água."
         }
       ]
     },
@@ -381,49 +381,49 @@
           "xp": 0,
           "operation": "build",
           "bonus": 1,
-          "text": "Build: +1 ao teste ou rendimento correspondente."
+          "text": "Ao trabalhar em projeto, aplique +1 trabalho."
         },
         {
           "id": "EXP-SKL-06-01",
           "xp": 5,
           "operation": "repair",
           "bonus": 1,
-          "text": "Repair: +1 ao teste ou rendimento correspondente."
+          "text": "Ao reparar uma estrutura, recupere +1 vida dela (máximo normal)."
         },
         {
           "id": "EXP-SKL-06-02",
           "xp": 12,
           "operation": "build",
           "bonus": 1,
-          "text": "Build: +1 ao teste ou rendimento correspondente."
+          "text": "Ao trabalhar em projeto, aplique +1 trabalho."
         },
         {
           "id": "EXP-SKL-06-03",
           "xp": 20,
           "operation": "defense",
           "bonus": 1,
-          "text": "Defense: +1 ao teste ou rendimento correspondente."
+          "text": "Ao gastar uma ação para guardar, previna +1 dano."
         },
         {
           "id": "EXP-SKL-06-04",
           "xp": 35,
           "operation": "repair",
           "bonus": 2,
-          "text": "Repair: +2 ao teste ou rendimento correspondente."
+          "text": "Ao reparar uma estrutura, recupere +2 vida dela (máximo normal)."
         },
         {
           "id": "EXP-SKL-06-05",
           "xp": 50,
           "operation": "build",
           "bonus": 2,
-          "text": "Build: +2 ao teste ou rendimento correspondente."
+          "text": "Ao trabalhar em projeto, aplique +2 trabalho."
         },
         {
           "id": "EXP-SKL-06-06",
           "xp": 75,
           "operation": "repair",
           "bonus": 2,
-          "text": "Repair: +2 ao teste ou rendimento correspondente."
+          "text": "Ao reparar uma estrutura, recupere +2 vida dela (máximo normal)."
         }
       ]
     },
@@ -446,49 +446,49 @@
           "xp": 0,
           "operation": "repair",
           "bonus": 1,
-          "text": "Repair: +1 ao teste ou rendimento correspondente."
+          "text": "Ao reparar uma estrutura, recupere +1 vida dela (máximo normal)."
         },
         {
           "id": "EXP-SKL-07-01",
           "xp": 5,
           "operation": "craft",
           "bonus": 1,
-          "text": "Craft: +1 ao teste ou rendimento correspondente."
+          "text": "Ao usar a oficina, fabrique +1 munição."
         },
         {
           "id": "EXP-SKL-07-02",
           "xp": 12,
           "operation": "repair",
           "bonus": 1,
-          "text": "Repair: +1 ao teste ou rendimento correspondente."
+          "text": "Ao reparar uma estrutura, recupere +1 vida dela (máximo normal)."
         },
         {
           "id": "EXP-SKL-07-03",
           "xp": 20,
           "operation": "search",
           "bonus": 1,
-          "text": "Search: +1 ao teste ou rendimento correspondente."
+          "text": "Na busca, obtenha +1 unidade(s) do primeiro recurso, se houver carga."
         },
         {
           "id": "EXP-SKL-07-04",
           "xp": 35,
           "operation": "craft",
           "bonus": 2,
-          "text": "Craft: +2 ao teste ou rendimento correspondente."
+          "text": "Ao usar a oficina, fabrique +2 munição."
         },
         {
           "id": "EXP-SKL-07-05",
           "xp": 50,
           "operation": "repair",
           "bonus": 2,
-          "text": "Repair: +2 ao teste ou rendimento correspondente."
+          "text": "Ao reparar uma estrutura, recupere +2 vida dela (máximo normal)."
         },
         {
           "id": "EXP-SKL-07-06",
           "xp": 75,
           "operation": "craft",
           "bonus": 2,
-          "text": "Craft: +2 ao teste ou rendimento correspondente."
+          "text": "Ao usar a oficina, fabrique +2 munição."
         }
       ]
     },
@@ -511,49 +511,49 @@
           "xp": 0,
           "operation": "food",
           "bonus": 1,
-          "text": "Food: +1 ao teste ou rendimento correspondente."
+          "text": "Na colheita da horta madura, produza +1 comida se designado."
         },
         {
           "id": "EXP-SKL-08-01",
           "xp": 5,
           "operation": "storage",
           "bonus": 1,
-          "text": "Storage: +1 ao teste ou rendimento correspondente."
+          "text": "A capacidade do depósito aumenta em 1 enquanto este herói participa."
         },
         {
           "id": "EXP-SKL-08-02",
           "xp": 12,
           "operation": "food",
           "bonus": 1,
-          "text": "Food: +1 ao teste ou rendimento correspondente."
+          "text": "Na colheita da horta madura, produza +1 comida se designado."
         },
         {
           "id": "EXP-SKL-08-03",
           "xp": 20,
           "operation": "rescue",
           "bonus": 1,
-          "text": "Rescue: +1 ao teste ou rendimento correspondente."
+          "text": "Ao socorrer com medicamento, recupere +1 vida (máximo 3)."
         },
         {
           "id": "EXP-SKL-08-04",
           "xp": 35,
           "operation": "food",
           "bonus": 2,
-          "text": "Food: +2 ao teste ou rendimento correspondente."
+          "text": "Na colheita da horta madura, produza +2 comida se designado."
         },
         {
           "id": "EXP-SKL-08-05",
           "xp": 50,
           "operation": "storage",
           "bonus": 2,
-          "text": "Storage: +2 ao teste ou rendimento correspondente."
+          "text": "A capacidade do depósito aumenta em 2 enquanto este herói participa."
         },
         {
           "id": "EXP-SKL-08-06",
           "xp": 75,
           "operation": "food",
           "bonus": 2,
-          "text": "Food: +2 ao teste ou rendimento correspondente."
+          "text": "Na colheita da horta madura, produza +2 comida se designado."
         }
       ]
     },
@@ -576,49 +576,49 @@
           "xp": 0,
           "operation": "defense",
           "bonus": 1,
-          "text": "Defense: +1 ao teste ou rendimento correspondente."
+          "text": "Ao gastar uma ação para guardar, previna +1 dano."
         },
         {
           "id": "EXP-SKL-09-01",
           "xp": 5,
           "operation": "rescue",
           "bonus": 1,
-          "text": "Rescue: +1 ao teste ou rendimento correspondente."
+          "text": "Ao socorrer com medicamento, recupere +1 vida (máximo 3)."
         },
         {
           "id": "EXP-SKL-09-02",
           "xp": 12,
           "operation": "defense",
           "bonus": 1,
-          "text": "Defense: +1 ao teste ou rendimento correspondente."
+          "text": "Ao gastar uma ação para guardar, previna +1 dano."
         },
         {
           "id": "EXP-SKL-09-03",
           "xp": 20,
           "operation": "repair",
           "bonus": 1,
-          "text": "Repair: +1 ao teste ou rendimento correspondente."
+          "text": "Ao reparar uma estrutura, recupere +1 vida dela (máximo normal)."
         },
         {
           "id": "EXP-SKL-09-04",
           "xp": 35,
           "operation": "rescue",
           "bonus": 2,
-          "text": "Rescue: +2 ao teste ou rendimento correspondente."
+          "text": "Ao socorrer com medicamento, recupere +2 vida (máximo 3)."
         },
         {
           "id": "EXP-SKL-09-05",
           "xp": 50,
           "operation": "defense",
           "bonus": 2,
-          "text": "Defense: +2 ao teste ou rendimento correspondente."
+          "text": "Ao gastar uma ação para guardar, previna +2 dano."
         },
         {
           "id": "EXP-SKL-09-06",
           "xp": 75,
           "operation": "rescue",
           "bonus": 2,
-          "text": "Rescue: +2 ao teste ou rendimento correspondente."
+          "text": "Ao socorrer com medicamento, recupere +2 vida (máximo 3)."
         }
       ]
     },
@@ -641,49 +641,49 @@
           "xp": 0,
           "operation": "infection",
           "bonus": 1,
-          "text": "Infection: +1 ao teste ou rendimento correspondente."
+          "text": "Some +1 ao D6 de infecção (máximo 6)."
         },
         {
           "id": "EXP-SKL-10-01",
           "xp": 5,
           "operation": "medicine",
           "bonus": 1,
-          "text": "Medicine: +1 ao teste ou rendimento correspondente."
+          "text": "Ao usar a enfermaria, cure +1 vida (máximo 3)."
         },
         {
           "id": "EXP-SKL-10-02",
           "xp": 12,
           "operation": "infection",
           "bonus": 1,
-          "text": "Infection: +1 ao teste ou rendimento correspondente."
+          "text": "Some +1 ao D6 de infecção (máximo 6)."
         },
         {
           "id": "EXP-SKL-10-03",
           "xp": 20,
           "operation": "search",
           "bonus": 1,
-          "text": "Search: +1 ao teste ou rendimento correspondente."
+          "text": "Na busca, obtenha +1 unidade(s) do primeiro recurso, se houver carga."
         },
         {
           "id": "EXP-SKL-10-04",
           "xp": 35,
           "operation": "medicine",
           "bonus": 2,
-          "text": "Medicine: +2 ao teste ou rendimento correspondente."
+          "text": "Ao usar a enfermaria, cure +2 vida (máximo 3)."
         },
         {
           "id": "EXP-SKL-10-05",
           "xp": 50,
           "operation": "infection",
           "bonus": 2,
-          "text": "Infection: +2 ao teste ou rendimento correspondente."
+          "text": "Some +2 ao D6 de infecção (máximo 6)."
         },
         {
           "id": "EXP-SKL-10-06",
           "xp": 75,
           "operation": "medicine",
           "bonus": 2,
-          "text": "Medicine: +2 ao teste ou rendimento correspondente."
+          "text": "Ao usar a enfermaria, cure +2 vida (máximo 3)."
         }
       ]
     }

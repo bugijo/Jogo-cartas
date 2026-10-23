@@ -57,6 +57,8 @@ class World:
     used_structure_actions: dict[str, int] = field(default_factory=dict)
     encounters: dict[str, dict] = field(default_factory=dict)
     decisions: dict[str, str] = field(default_factory=dict)
+    garden_worker: str | None = None
+    guarding: dict[str, int] = field(default_factory=dict)
     rng_state: object = None
     log: list[dict] = field(default_factory=list)
 
@@ -65,7 +67,8 @@ class World:
         if not hero_ids or len(set(hero_ids)) != len(hero_ids) or any(h not in HEROES for h in hero_ids):
             raise ValueError('Heróis iniciais inválidos')
         world = cls(seed=seed)
-        world.heroes = {h:{'xp':0,'health':3,'combat_xp':0,'location':'camp'} for h in hero_ids}
+        world.heroes = {h:{'xp':0,'health':3,'combat_xp':0,'location':'camp',
+                          'infected':False} for h in hero_ids}
         for hero in world.heroes.values():
             hero['actions']=DATA['rules']['actions']
         world.gear = {h:{} for h in hero_ids}
@@ -81,7 +84,8 @@ class World:
 
     @property
     def storage(self) -> int:
-        return DATA['rules']['storage_base'] + sum(STRUCTURES[k]['storage_bonus'] for k in self.structures)
+        skill=max((self.skill_bonus(hero_id,'storage') for hero_id in self.heroes),default=0)
+        return DATA['rules']['storage_base'] + sum(STRUCTURES[k]['storage_bonus'] for k in self.structures)+skill
 
     @property
     def residents(self) -> int:
@@ -104,6 +108,10 @@ class World:
                or not 0 <= state['actions'] <= DATA['rules']['actions']
                for h,state in self.heroes.items()):
             raise ValueError('Herói inválido')
+        if self.garden_worker is not None and self.garden_worker not in self.heroes:
+            raise ValueError('Trabalhador de horta inválido')
+        if any(hero not in self.heroes or points<0 for hero,points in self.guarding.items()):
+            raise ValueError('Guarda inválida')
         if any(n not in NPCS or not 1 <= state['level'] <= 3 for n,state in self.npcs.items()):
             raise ValueError('NPC inválido')
         active_heroes = set()
@@ -224,6 +232,38 @@ class World:
     def begin_round(self) -> None:
         for hero in self.heroes.values():
             hero['actions']=DATA['rules']['actions']
+        self.guarding.clear()
+
+    def guard(self,hero_id:str) -> int:
+        hero=self.heroes[hero_id]
+        if hero['health']<1 or hero['actions']<1:
+            raise ValueError('Guarda indisponível')
+        hero['actions']-=1
+        points=1+self.skill_bonus(hero_id,'defense')
+        self.guarding[hero_id]=self.guarding.get(hero_id,0)+points
+        return points
+
+    def rescue_hero(self,rescuer_id:str,target_id:str) -> int:
+        rescuer=self.heroes[rescuer_id];target=self.heroes[target_id]
+        if (rescuer['health']<1 or rescuer['actions']<1 or self.stock['medicine']<1
+                or rescuer['location']!=target['location'] or target['health']>=3):
+            raise ValueError('Resgate indisponível')
+        self.stock['medicine']-=1
+        rescuer['actions']-=1
+        target['health']=min(3,target['health']+1+self.skill_bonus(rescuer_id,'rescue'))
+        return target['health']
+
+    def roll_infection(self,hero_id:str) -> dict:
+        roll=self._d6()[0]
+        adjusted=min(6,roll+self.skill_bonus(hero_id,'infection'))
+        infected=adjusted<=2
+        self.heroes[hero_id]['infected']=self.heroes[hero_id]['infected'] or infected
+        return {'roll':roll,'adjusted':adjusted,'infected':infected}
+
+    def assign_garden(self,hero_id:str) -> None:
+        if hero_id not in self.heroes or self.heroes[hero_id]['location']!='camp':
+            raise ValueError('Trabalhador indisponível')
+        self.garden_worker=hero_id
 
     def _d6(self, count: int = 1) -> list[int]:
         rng=random.Random();rng.setstate(_tuples(self.rng_state))
@@ -252,17 +292,22 @@ class World:
     def receive_damage(self, hero_id: str, damage: int, armor_instance: str | None = None) -> dict:
         if damage<0:
             raise ValueError('Dano negativo')
-        absorbed=0
+        guard_absorbed=min(damage,self.guarding.get(hero_id,0))
+        self.guarding[hero_id]=self.guarding.get(hero_id,0)-guard_absorbed
+        damage-=guard_absorbed
+        absorbed=guard_absorbed
         if armor_instance is not None:
             item=self.gear[hero_id][armor_instance]
             spec=ITEMS[item['template']]
             if item['slot'] not in ('head','torso','legs') or item['durability']<1 or 'armor' not in spec:
                 raise ValueError('Armadura indisponível')
-            absorbed=min(damage,spec['armor'])
-            if absorbed:
+            armor_absorbed=min(damage,spec['armor'])
+            if armor_absorbed:
                 item['durability']-=1
+                absorbed+=armor_absorbed
+                damage-=armor_absorbed
         hero=self.heroes[hero_id]
-        hero['health']=max(0,hero['health']-(damage-absorbed))
+        hero['health']=max(0,hero['health']-damage)
         return {'absorbed':absorbed,'health':hero['health']}
 
     def deposit(self, resource: str, amount: int) -> int:
@@ -344,11 +389,13 @@ class World:
             raise ValueError('Estrutura/dano inválido')
         self.structures[kind]['health'] = max(0,self.structures[kind]['health']-amount)
 
-    def repair_structure(self, kind: str) -> bool:
+    def repair_structure(self, kind: str, hero_id: str | None = None) -> bool:
         if kind not in self.structures or self.stock['scrap'] < 1 or self.structures[kind]['health'] >= STRUCTURES[kind]['max_health']:
             return False
         self.stock['scrap'] -= 1
-        self.structures[kind]['health'] += 1
+        bonus=self.skill_bonus(hero_id,'repair') if hero_id is not None else 0
+        self.structures[kind]['health']=min(STRUCTURES[kind]['max_health'],
+                                           self.structures[kind]['health']+1+bonus)
         return True
 
     def use_structure(self, kind: str, hero_id: str | None = None) -> bool:
@@ -359,12 +406,19 @@ class World:
             return False
         if any(self.stock[r] < n for r,n in spec['cost'].items()):
             return False
+        if hero_id is not None and (hero_id not in self.heroes or self.heroes[hero_id]['location']!='camp'):
+            raise ValueError('Operador ausente do abrigo')
         if spec['kind']=='heal':
             if hero_id not in self.heroes or self.heroes[hero_id]['health'] >= 3:
                 return False
-            self.heroes[hero_id]['health']=min(3,self.heroes[hero_id]['health']+spec['health'])
+            self.heroes[hero_id]['health']=min(3,self.heroes[hero_id]['health']+spec['health']
+                                               +self.skill_bonus(hero_id,'medicine'))
         else:
-            output=spec['output']
+            output=dict(spec['output'])
+            if hero_id is not None:
+                operation={'pump':'water','craft':'craft'}[spec['kind']]
+                first=next(iter(output))
+                output[first]+=self.skill_bonus(hero_id,operation)
             if sum(self.stock.values())-sum(spec['cost'].values())+sum(output.values())>self.storage:
                 return False
             for resource,amount in output.items():
@@ -413,10 +467,12 @@ class World:
         self.stock['ammo'] -= stopped
         return threat-stopped
 
-    def search(self, expedition_id: str) -> dict[str,int]:
+    def search(self, expedition_id: str, hero_id: str | None = None) -> dict[str,int]:
         if expedition_id not in self.expeditions:
             raise ValueError('Expedição inexistente')
         exp = self.expeditions[expedition_id]
+        if hero_id is not None and hero_id not in exp.heroes:
+            raise ValueError('Herói fora da expedição')
         if exp.remaining != 0 or exp.returning:
             raise ValueError('Equipe não está explorando o local')
         encounter=self.encounters.get(expedition_id)
@@ -436,6 +492,7 @@ class World:
         found = {}
         scouts=sum(self.npcs[n]['level'] for n in exp.crew
                    if self.npcs[n]['job']=='scouting')
+        scouts+=self.skill_bonus(hero_id,'search') if hero_id else 0
         for resource,amount in loot.items():
             amount += scouts
             found[resource] = min(amount,capacity)
@@ -471,6 +528,7 @@ class World:
             raise ValueError('NPC indisponível')
         distance = LOCATIONS[location_id]['distance']
         segments = DATA['rules']['travel_segments'][distance]
+        segments=max(1,segments-max(self.skill_bonus(h,'travel') for h in hero_ids))
         if vehicle_id is not None:
             driver=any(self.npcs[n]['job']=='driving' for n in npc_ids)
             if driver:
@@ -549,7 +607,9 @@ class World:
             garden = self.structures['garden']
             garden['age'] += 1
             if garden['age'] >= DATA['rules']['garden_growth_days']:
-                produced['food'] += self.deposit('food',DATA['rules']['garden_food_per_harvest'])
+                bonus=(self.skill_bonus(self.garden_worker,'food') if self.garden_worker
+                       and self.heroes[self.garden_worker]['location']=='camp' else 0)
+                produced['food'] += self.deposit('food',DATA['rules']['garden_food_per_harvest']+bonus)
         need = self.residents
         missing = {}
         for resource in ('food','water'):

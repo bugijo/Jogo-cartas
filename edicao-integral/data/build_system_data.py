@@ -23,6 +23,22 @@ tracks = [
     ('defense', 'rescue', 'defense', 'repair', 'rescue', 'defense', 'rescue'),
     ('infection', 'medicine', 'infection', 'search', 'medicine', 'infection', 'medicine'),
 ]
+skill_text = {
+    'medicine':'Ao usar a enfermaria, cure +{bonus} vida (máximo 3).',
+    'water':'Ao operar o reservatório, produza +{bonus} água.',
+    'rescue':'Ao socorrer com medicamento, recupere +{bonus} vida (máximo 3).',
+    'defense':'Ao gastar uma ação para guardar, previna +{bonus} dano.',
+    'attack':'Ao acertar com arma, cause +{bonus} dano.',
+    'noise':'Ao atacar, reduza o ruído em {bonus} intensidade (mínimo zero).',
+    'infection':'Some +{bonus} ao D6 de infecção (máximo 6).',
+    'travel':'Reduza a viagem em {bonus} segmento(s) (mínimo um).',
+    'search':'Na busca, obtenha +{bonus} unidade(s) do primeiro recurso, se houver carga.',
+    'repair':'Ao reparar uma estrutura, recupere +{bonus} vida dela (máximo normal).',
+    'build':'Ao trabalhar em projeto, aplique +{bonus} trabalho.',
+    'craft':'Ao usar a oficina, fabrique +{bonus} munição.',
+    'food':'Na colheita da horta madura, produza +{bonus} comida se designado.',
+    'storage':'A capacidade do depósito aumenta em {bonus} enquanto este herói participa.'
+}
 heroes = []
 for index, hero in enumerate(base['heroes']):
     profile = dict(hero)
@@ -31,7 +47,7 @@ for index, hero in enumerate(base['heroes']):
     profile['skills'] = [
         {'id': f"EXP-SKL-{index+1:02d}-{n:02d}", 'xp': xp, 'operation': op,
          'bonus': 1 if n < 4 else 2,
-         'text': f"{op.capitalize()}: +{1 if n < 4 else 2} ao teste ou rendimento correspondente."}
+         'text': skill_text[op].format(bonus=1 if n < 4 else 2)}
         for n, (xp, op) in enumerate(zip(base['skill_unlock_xp'], tracks[index]))
     ]
     heroes.append(profile)

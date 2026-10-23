@@ -8,6 +8,6 @@ Decisão: congelar a geometria do Mercado antigo como cenário de teste; adicion
 - [x] Encontro persistente: movimento, porta, alcance/visão, ataque, ruído, ativação e surgimento.
 - [x] Um evento e um objetivo estruturados ligam busca e combate ao retorno.
 - [x] Replay determinístico de um dia para H2–H6 e cinco estratégias, com salvamento/restauração.
-- [ ] Testes novos, suíte legada, relatório, checkpoint e commits progressivos.
+- [ ] Rodar suíte legada final, revisar relatório/checkpoint e publicar commits finais.
 
 Bloqueadores previstos: habilidades existentes têm tipos genéricos sem efeitos para todas as operações; nova campanha e impressão 20 × 20 cm não estão definidas. Não atribuir taxa de vitória às simulações até modelar todos os eventos e decisões.
