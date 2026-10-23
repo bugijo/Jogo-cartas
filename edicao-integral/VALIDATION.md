@@ -1,5 +1,9 @@
 # Validação digital da evolução experimental
 
+# Registro histórico das primeiras unidades
+
+As contagens e pendências abaixo descrevem a fase anterior de 28 testes. **Estado atual:** ver `CHECKPOINT.md`, `ARC2_STATUS.md`, `DEFENSE_REPORT.md` e `CAMPAIGN_INTEGRATION.md`. Nenhuma simulação executa ainda os dois arcos completos.
+
 Data: 23/10/2026. Fonte: `data/system.json`; testes: `python -m unittest discover -s edicao-integral/tests -q`. Repetir o ensaio: `python edicao-integral/simulate_system.py --seed 20261023 --seeds 100`.
 
 ## Cobertura real

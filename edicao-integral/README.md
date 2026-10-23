@@ -1,15 +1,16 @@
-# Zona Zero — evolução experimental do motor
+# Zona Zero — motor experimental
 
-Esta pasta é separada do kit físico 0.2. `RULES.md`, `CAMPAIGN.md`, cartas, artes e PDFs antigos continuam canônicos para a primeira partida humana; nada aqui os substitui. A evolução já executa **um cenário de um dia** de preparação → viagem → evento → combate → busca → retorno → produção/consumo → salvamento/restauração. Não executa os dois arcos completos e não possui PDFs novos.
+Esta pasta não substitui o kit físico 0.2. `../RULES.md`, `../CAMPAIGN.md`, `../content/catalog.json` e os PDFs antigos seguem como fontes da primeira caixa. O motor executa um cenário de **um dia** com viagem, evento, combate, busca, retorno, economia e salvamento. O segundo arco tem portões narrativos, instalação tática e defesa final isoladamente executáveis. Os dois arcos **não** formam ainda uma campanha contínua jogável: A Cisterna não foi portada, e a preparação/combustível para chegar legalmente ao segundo arco não está fechada.
 
-Fontes editáveis: `data/build_system_data.py` gera `data/system.json`; `data/build_tactics_data.py` gera `data/tactics.json` a partir da geometria antiga; `data/equipment.json`, `data/cycle_cards.json` e `data/last_transmission.json` guardam itens e cartas experimentais. O motor atual é `system.py`, com `tactics.py`, `campaign.py` e `arc2.py`. `engine.py` e `simulate.py` são o primeiro protótipo histórico, não a fonte das regras novas.
+Arquivos estruturados: `data/system.json`, `data/equipment.json`, `data/cycle_cards.json`, `data/last_transmission.json` e `data/tactics.json`. Os geradores `data/build_system_data.py` e `data/build_tactics_data.py` são editáveis. `tactics.json` inclui as seis geometrias exatas do catálogo 0.2 e dois mapas experimentais; Posto e Condomínio são apenas referência até existir destino regional correspondente. Os motores são `system.py`, `tactics.py`, `campaign.py` e `arc2.py`.
 
-Verificar:
+Verificações:
 
 ```bash
 python edicao-integral/validate_data.py
 python -m unittest discover -s edicao-integral/tests -q
-python edicao-integral/simulate_cycle.py --seed 20261023 --seeds 50
+python -m unittest discover -s tests -q
+python edicao-integral/simulate_defense.py --seeds 50 --seed 20261023
 ```
 
-Leia `CYCLE_REPORT.md` para o cenário e os 1.250 replays de um dia, `SKILL_RULES.md` para os 70 marcos, `ARC2_STATUS.md` para os quatro portões implementados e a defesa final pendente, `PRINT_PREP.md` para medidas preliminares e `CHECKPOINT.md` para retomar. A edição ainda precisa de mapa militar, defesa final, duração real de mesa, playtest humano, artes, quantidade física de componentes e diagramação antes de virar Print & Play distribuível.
+`CYCLE_REPORT.md` descreve 1.250 replays de um dia. `DEFENSE_REPORT.md` e `ENSAIO_DEFESA_20261023.json` descrevem 250 defesas isoladas, com pré-requisitos injetados. `CAMPAIGN_INTEGRATION.md` documenta diferenças impeditivas entre os motores. `ARC2_STATUS.md` detalha o arco experimental e `CHECKPOINT.md` registra a próxima unidade. Ainda não foram gerados PDFs desta edição, nem ocorreu impressão física ou playtest humano.

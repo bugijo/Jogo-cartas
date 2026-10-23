@@ -87,3 +87,7 @@ A carta `EXP-EVT-001` agora é marcada globalmente no estado da campanha; criar 
 ## Unidade 20 — gerador reproduzível e plantas canônicas
 
 `data/build_tactics_data.py` agora reproduz os oito registros de `tactics.json`: seis plantas extraídas do catálogo 0.2 sem mudar zonas, 21 conexões, portas, bloqueios, buscas, objetivos, entradas ou saídas; mais perímetro e instalação militar experimentais. Mercado, Hospital, Oficina e Estação têm destino regional; Posto e Condomínio são apenas referências até existir conteúdo correspondente no motor e são recusados como encontros. O teste compara todas as seis plantas, inclusive bloqueios, com `content/catalog.json`. Sessenta e seis testes experimentais passaram. A geometria portada não equivale a missões, recursos ou regras do capítulo 0.2 portados.
+
+## Fechamento da rodada
+
+Após as unidades 16–20 e o bloqueio de avanço de dia durante defesa ativa: 66 testes experimentais e 51 testes legados aprovados. O único aviso legado é `ResourceWarning` preexistente em `tests/test_boards06.py:64`. `validate_data.py` confirma 125 IDs únicos, sete cartas experimentais e oito plantas funcionais (duas experimentais; duas do catálogo apenas como referência sem destino regional). Os 1.250 replays de um dia ficaram reproduzíveis; 250 defesas isoladas constam do relatório. Não houve replay de campanha completa, impressão, PDF novo ou playtest humano. Não alterar a flag de Cisterna para fingir integração; a próxima implementação deve portar as regras oficiais e fechar a economia do segundo arco.
