@@ -1,0 +1,1087 @@
+{
+  "edition": "experimental-1",
+  "attributes": [
+    "Força",
+    "Agilidade",
+    "Percepção",
+    "Intelecto",
+    "Carisma",
+    "Resistência"
+  ],
+  "rules": {
+    "actions": 3,
+    "health": 3,
+    "xp_cap": 100,
+    "combat_xp_cap": 8,
+    "skill_unlock_xp": [
+      0,
+      5,
+      12,
+      20,
+      35,
+      50,
+      75
+    ],
+    "storage_base": 30,
+    "beds_base": 8,
+    "terrain_base": 7,
+    "garden_growth_days": 4,
+    "garden_food_per_harvest": 2,
+    "daily_food_per_resident": 1,
+    "daily_water_per_resident": 1,
+    "crisis_chance_denominator": 12,
+    "travel_segments": {
+      "near": 1,
+      "medium": 2,
+      "far": 3
+    }
+  },
+  "heroes": [
+    {
+      "id": "ZC-HER-0001",
+      "name": "Lia",
+      "profession": "agente comunitária de saúde",
+      "attributes": {
+        "Força": 1,
+        "Agilidade": 2,
+        "Percepção": 2,
+        "Intelecto": 3,
+        "Carisma": 3,
+        "Resistência": 2
+      },
+      "health": 3,
+      "skills": [
+        {
+          "id": "EXP-SKL-01-00",
+          "xp": 0,
+          "operation": "medicine",
+          "bonus": 1,
+          "text": "Medicine: +1 ao teste ou rendimento correspondente."
+        },
+        {
+          "id": "EXP-SKL-01-01",
+          "xp": 5,
+          "operation": "water",
+          "bonus": 1,
+          "text": "Water: +1 ao teste ou rendimento correspondente."
+        },
+        {
+          "id": "EXP-SKL-01-02",
+          "xp": 12,
+          "operation": "medicine",
+          "bonus": 1,
+          "text": "Medicine: +1 ao teste ou rendimento correspondente."
+        },
+        {
+          "id": "EXP-SKL-01-03",
+          "xp": 20,
+          "operation": "rescue",
+          "bonus": 1,
+          "text": "Rescue: +1 ao teste ou rendimento correspondente."
+        },
+        {
+          "id": "EXP-SKL-01-04",
+          "xp": 35,
+          "operation": "medicine",
+          "bonus": 2,
+          "text": "Medicine: +2 ao teste ou rendimento correspondente."
+        },
+        {
+          "id": "EXP-SKL-01-05",
+          "xp": 50,
+          "operation": "rescue",
+          "bonus": 2,
+          "text": "Rescue: +2 ao teste ou rendimento correspondente."
+        },
+        {
+          "id": "EXP-SKL-01-06",
+          "xp": 75,
+          "operation": "medicine",
+          "bonus": 2,
+          "text": "Medicine: +2 ao teste ou rendimento correspondente."
+        }
+      ]
+    },
+    {
+      "id": "ZC-HER-0002",
+      "name": "Ivo",
+      "profession": "vigilante",
+      "attributes": {
+        "Força": 3,
+        "Agilidade": 2,
+        "Percepção": 2,
+        "Intelecto": 1,
+        "Carisma": 2,
+        "Resistência": 3
+      },
+      "health": 3,
+      "skills": [
+        {
+          "id": "EXP-SKL-02-00",
+          "xp": 0,
+          "operation": "defense",
+          "bonus": 1,
+          "text": "Defense: +1 ao teste ou rendimento correspondente."
+        },
+        {
+          "id": "EXP-SKL-02-01",
+          "xp": 5,
+          "operation": "attack",
+          "bonus": 1,
+          "text": "Attack: +1 ao teste ou rendimento correspondente."
+        },
+        {
+          "id": "EXP-SKL-02-02",
+          "xp": 12,
+          "operation": "defense",
+          "bonus": 1,
+          "text": "Defense: +1 ao teste ou rendimento correspondente."
+        },
+        {
+          "id": "EXP-SKL-02-03",
+          "xp": 20,
+          "operation": "noise",
+          "bonus": 1,
+          "text": "Noise: +1 ao teste ou rendimento correspondente."
+        },
+        {
+          "id": "EXP-SKL-02-04",
+          "xp": 35,
+          "operation": "attack",
+          "bonus": 2,
+          "text": "Attack: +2 ao teste ou rendimento correspondente."
+        },
+        {
+          "id": "EXP-SKL-02-05",
+          "xp": 50,
+          "operation": "defense",
+          "bonus": 2,
+          "text": "Defense: +2 ao teste ou rendimento correspondente."
+        },
+        {
+          "id": "EXP-SKL-02-06",
+          "xp": 75,
+          "operation": "attack",
+          "bonus": 2,
+          "text": "Attack: +2 ao teste ou rendimento correspondente."
+        }
+      ]
+    },
+    {
+      "id": "ZC-HER-0003",
+      "name": "Mara",
+      "profession": "técnica de enfermagem",
+      "attributes": {
+        "Força": 1,
+        "Agilidade": 2,
+        "Percepção": 2,
+        "Intelecto": 3,
+        "Carisma": 2,
+        "Resistência": 3
+      },
+      "health": 3,
+      "skills": [
+        {
+          "id": "EXP-SKL-03-00",
+          "xp": 0,
+          "operation": "medicine",
+          "bonus": 1,
+          "text": "Medicine: +1 ao teste ou rendimento correspondente."
+        },
+        {
+          "id": "EXP-SKL-03-01",
+          "xp": 5,
+          "operation": "rescue",
+          "bonus": 1,
+          "text": "Rescue: +1 ao teste ou rendimento correspondente."
+        },
+        {
+          "id": "EXP-SKL-03-02",
+          "xp": 12,
+          "operation": "medicine",
+          "bonus": 1,
+          "text": "Medicine: +1 ao teste ou rendimento correspondente."
+        },
+        {
+          "id": "EXP-SKL-03-03",
+          "xp": 20,
+          "operation": "infection",
+          "bonus": 1,
+          "text": "Infection: +1 ao teste ou rendimento correspondente."
+        },
+        {
+          "id": "EXP-SKL-03-04",
+          "xp": 35,
+          "operation": "rescue",
+          "bonus": 2,
+          "text": "Rescue: +2 ao teste ou rendimento correspondente."
+        },
+        {
+          "id": "EXP-SKL-03-05",
+          "xp": 50,
+          "operation": "medicine",
+          "bonus": 2,
+          "text": "Medicine: +2 ao teste ou rendimento correspondente."
+        },
+        {
+          "id": "EXP-SKL-03-06",
+          "xp": 75,
+          "operation": "infection",
+          "bonus": 2,
+          "text": "Infection: +2 ao teste ou rendimento correspondente."
+        }
+      ]
+    },
+    {
+      "id": "ZC-HER-0004",
+      "name": "Caio",
+      "profession": "entregador ciclista",
+      "attributes": {
+        "Força": 2,
+        "Agilidade": 3,
+        "Percepção": 3,
+        "Intelecto": 1,
+        "Carisma": 2,
+        "Resistência": 2
+      },
+      "health": 3,
+      "skills": [
+        {
+          "id": "EXP-SKL-04-00",
+          "xp": 0,
+          "operation": "travel",
+          "bonus": 1,
+          "text": "Travel: +1 ao teste ou rendimento correspondente."
+        },
+        {
+          "id": "EXP-SKL-04-01",
+          "xp": 5,
+          "operation": "search",
+          "bonus": 1,
+          "text": "Search: +1 ao teste ou rendimento correspondente."
+        },
+        {
+          "id": "EXP-SKL-04-02",
+          "xp": 12,
+          "operation": "travel",
+          "bonus": 1,
+          "text": "Travel: +1 ao teste ou rendimento correspondente."
+        },
+        {
+          "id": "EXP-SKL-04-03",
+          "xp": 20,
+          "operation": "noise",
+          "bonus": 1,
+          "text": "Noise: +1 ao teste ou rendimento correspondente."
+        },
+        {
+          "id": "EXP-SKL-04-04",
+          "xp": 35,
+          "operation": "search",
+          "bonus": 2,
+          "text": "Search: +2 ao teste ou rendimento correspondente."
+        },
+        {
+          "id": "EXP-SKL-04-05",
+          "xp": 50,
+          "operation": "travel",
+          "bonus": 2,
+          "text": "Travel: +2 ao teste ou rendimento correspondente."
+        },
+        {
+          "id": "EXP-SKL-04-06",
+          "xp": 75,
+          "operation": "search",
+          "bonus": 2,
+          "text": "Search: +2 ao teste ou rendimento correspondente."
+        }
+      ]
+    },
+    {
+      "id": "ZC-HER-0005",
+      "name": "Nara",
+      "profession": "técnica de saneamento",
+      "attributes": {
+        "Força": 2,
+        "Agilidade": 2,
+        "Percepção": 3,
+        "Intelecto": 3,
+        "Carisma": 1,
+        "Resistência": 2
+      },
+      "health": 3,
+      "skills": [
+        {
+          "id": "EXP-SKL-05-00",
+          "xp": 0,
+          "operation": "water",
+          "bonus": 1,
+          "text": "Water: +1 ao teste ou rendimento correspondente."
+        },
+        {
+          "id": "EXP-SKL-05-01",
+          "xp": 5,
+          "operation": "repair",
+          "bonus": 1,
+          "text": "Repair: +1 ao teste ou rendimento correspondente."
+        },
+        {
+          "id": "EXP-SKL-05-02",
+          "xp": 12,
+          "operation": "water",
+          "bonus": 1,
+          "text": "Water: +1 ao teste ou rendimento correspondente."
+        },
+        {
+          "id": "EXP-SKL-05-03",
+          "xp": 20,
+          "operation": "search",
+          "bonus": 1,
+          "text": "Search: +1 ao teste ou rendimento correspondente."
+        },
+        {
+          "id": "EXP-SKL-05-04",
+          "xp": 35,
+          "operation": "water",
+          "bonus": 2,
+          "text": "Water: +2 ao teste ou rendimento correspondente."
+        },
+        {
+          "id": "EXP-SKL-05-05",
+          "xp": 50,
+          "operation": "repair",
+          "bonus": 2,
+          "text": "Repair: +2 ao teste ou rendimento correspondente."
+        },
+        {
+          "id": "EXP-SKL-05-06",
+          "xp": 75,
+          "operation": "water",
+          "bonus": 2,
+          "text": "Water: +2 ao teste ou rendimento correspondente."
+        }
+      ]
+    },
+    {
+      "id": "ZC-HER-0006",
+      "name": "Bento",
+      "profession": "pedreiro",
+      "attributes": {
+        "Força": 3,
+        "Agilidade": 1,
+        "Percepção": 2,
+        "Intelecto": 2,
+        "Carisma": 2,
+        "Resistência": 3
+      },
+      "health": 3,
+      "skills": [
+        {
+          "id": "EXP-SKL-06-00",
+          "xp": 0,
+          "operation": "build",
+          "bonus": 1,
+          "text": "Build: +1 ao teste ou rendimento correspondente."
+        },
+        {
+          "id": "EXP-SKL-06-01",
+          "xp": 5,
+          "operation": "repair",
+          "bonus": 1,
+          "text": "Repair: +1 ao teste ou rendimento correspondente."
+        },
+        {
+          "id": "EXP-SKL-06-02",
+          "xp": 12,
+          "operation": "build",
+          "bonus": 1,
+          "text": "Build: +1 ao teste ou rendimento correspondente."
+        },
+        {
+          "id": "EXP-SKL-06-03",
+          "xp": 20,
+          "operation": "defense",
+          "bonus": 1,
+          "text": "Defense: +1 ao teste ou rendimento correspondente."
+        },
+        {
+          "id": "EXP-SKL-06-04",
+          "xp": 35,
+          "operation": "repair",
+          "bonus": 2,
+          "text": "Repair: +2 ao teste ou rendimento correspondente."
+        },
+        {
+          "id": "EXP-SKL-06-05",
+          "xp": 50,
+          "operation": "build",
+          "bonus": 2,
+          "text": "Build: +2 ao teste ou rendimento correspondente."
+        },
+        {
+          "id": "EXP-SKL-06-06",
+          "xp": 75,
+          "operation": "repair",
+          "bonus": 2,
+          "text": "Repair: +2 ao teste ou rendimento correspondente."
+        }
+      ]
+    },
+    {
+      "id": "ZC-HER-0007",
+      "name": "Duda",
+      "profession": "técnica em eletrônica",
+      "attributes": {
+        "Força": 1,
+        "Agilidade": 2,
+        "Percepção": 3,
+        "Intelecto": 3,
+        "Carisma": 2,
+        "Resistência": 2
+      },
+      "health": 3,
+      "skills": [
+        {
+          "id": "EXP-SKL-07-00",
+          "xp": 0,
+          "operation": "repair",
+          "bonus": 1,
+          "text": "Repair: +1 ao teste ou rendimento correspondente."
+        },
+        {
+          "id": "EXP-SKL-07-01",
+          "xp": 5,
+          "operation": "craft",
+          "bonus": 1,
+          "text": "Craft: +1 ao teste ou rendimento correspondente."
+        },
+        {
+          "id": "EXP-SKL-07-02",
+          "xp": 12,
+          "operation": "repair",
+          "bonus": 1,
+          "text": "Repair: +1 ao teste ou rendimento correspondente."
+        },
+        {
+          "id": "EXP-SKL-07-03",
+          "xp": 20,
+          "operation": "search",
+          "bonus": 1,
+          "text": "Search: +1 ao teste ou rendimento correspondente."
+        },
+        {
+          "id": "EXP-SKL-07-04",
+          "xp": 35,
+          "operation": "craft",
+          "bonus": 2,
+          "text": "Craft: +2 ao teste ou rendimento correspondente."
+        },
+        {
+          "id": "EXP-SKL-07-05",
+          "xp": 50,
+          "operation": "repair",
+          "bonus": 2,
+          "text": "Repair: +2 ao teste ou rendimento correspondente."
+        },
+        {
+          "id": "EXP-SKL-07-06",
+          "xp": 75,
+          "operation": "craft",
+          "bonus": 2,
+          "text": "Craft: +2 ao teste ou rendimento correspondente."
+        }
+      ]
+    },
+    {
+      "id": "ZC-HER-0008",
+      "name": "Rosa",
+      "profession": "cozinheira escolar",
+      "attributes": {
+        "Força": 2,
+        "Agilidade": 1,
+        "Percepção": 2,
+        "Intelecto": 2,
+        "Carisma": 3,
+        "Resistência": 3
+      },
+      "health": 3,
+      "skills": [
+        {
+          "id": "EXP-SKL-08-00",
+          "xp": 0,
+          "operation": "food",
+          "bonus": 1,
+          "text": "Food: +1 ao teste ou rendimento correspondente."
+        },
+        {
+          "id": "EXP-SKL-08-01",
+          "xp": 5,
+          "operation": "storage",
+          "bonus": 1,
+          "text": "Storage: +1 ao teste ou rendimento correspondente."
+        },
+        {
+          "id": "EXP-SKL-08-02",
+          "xp": 12,
+          "operation": "food",
+          "bonus": 1,
+          "text": "Food: +1 ao teste ou rendimento correspondente."
+        },
+        {
+          "id": "EXP-SKL-08-03",
+          "xp": 20,
+          "operation": "rescue",
+          "bonus": 1,
+          "text": "Rescue: +1 ao teste ou rendimento correspondente."
+        },
+        {
+          "id": "EXP-SKL-08-04",
+          "xp": 35,
+          "operation": "food",
+          "bonus": 2,
+          "text": "Food: +2 ao teste ou rendimento correspondente."
+        },
+        {
+          "id": "EXP-SKL-08-05",
+          "xp": 50,
+          "operation": "storage",
+          "bonus": 2,
+          "text": "Storage: +2 ao teste ou rendimento correspondente."
+        },
+        {
+          "id": "EXP-SKL-08-06",
+          "xp": 75,
+          "operation": "food",
+          "bonus": 2,
+          "text": "Food: +2 ao teste ou rendimento correspondente."
+        }
+      ]
+    },
+    {
+      "id": "ZC-HER-0009",
+      "name": "Joel",
+      "profession": "bombeiro civil",
+      "attributes": {
+        "Força": 3,
+        "Agilidade": 2,
+        "Percepção": 2,
+        "Intelecto": 2,
+        "Carisma": 1,
+        "Resistência": 3
+      },
+      "health": 3,
+      "skills": [
+        {
+          "id": "EXP-SKL-09-00",
+          "xp": 0,
+          "operation": "defense",
+          "bonus": 1,
+          "text": "Defense: +1 ao teste ou rendimento correspondente."
+        },
+        {
+          "id": "EXP-SKL-09-01",
+          "xp": 5,
+          "operation": "rescue",
+          "bonus": 1,
+          "text": "Rescue: +1 ao teste ou rendimento correspondente."
+        },
+        {
+          "id": "EXP-SKL-09-02",
+          "xp": 12,
+          "operation": "defense",
+          "bonus": 1,
+          "text": "Defense: +1 ao teste ou rendimento correspondente."
+        },
+        {
+          "id": "EXP-SKL-09-03",
+          "xp": 20,
+          "operation": "repair",
+          "bonus": 1,
+          "text": "Repair: +1 ao teste ou rendimento correspondente."
+        },
+        {
+          "id": "EXP-SKL-09-04",
+          "xp": 35,
+          "operation": "rescue",
+          "bonus": 2,
+          "text": "Rescue: +2 ao teste ou rendimento correspondente."
+        },
+        {
+          "id": "EXP-SKL-09-05",
+          "xp": 50,
+          "operation": "defense",
+          "bonus": 2,
+          "text": "Defense: +2 ao teste ou rendimento correspondente."
+        },
+        {
+          "id": "EXP-SKL-09-06",
+          "xp": 75,
+          "operation": "rescue",
+          "bonus": 2,
+          "text": "Rescue: +2 ao teste ou rendimento correspondente."
+        }
+      ]
+    },
+    {
+      "id": "ZC-HER-0010",
+      "name": "Yumi",
+      "profession": "técnica de laboratório",
+      "attributes": {
+        "Força": 1,
+        "Agilidade": 2,
+        "Percepção": 3,
+        "Intelecto": 3,
+        "Carisma": 2,
+        "Resistência": 2
+      },
+      "health": 3,
+      "skills": [
+        {
+          "id": "EXP-SKL-10-00",
+          "xp": 0,
+          "operation": "infection",
+          "bonus": 1,
+          "text": "Infection: +1 ao teste ou rendimento correspondente."
+        },
+        {
+          "id": "EXP-SKL-10-01",
+          "xp": 5,
+          "operation": "medicine",
+          "bonus": 1,
+          "text": "Medicine: +1 ao teste ou rendimento correspondente."
+        },
+        {
+          "id": "EXP-SKL-10-02",
+          "xp": 12,
+          "operation": "infection",
+          "bonus": 1,
+          "text": "Infection: +1 ao teste ou rendimento correspondente."
+        },
+        {
+          "id": "EXP-SKL-10-03",
+          "xp": 20,
+          "operation": "search",
+          "bonus": 1,
+          "text": "Search: +1 ao teste ou rendimento correspondente."
+        },
+        {
+          "id": "EXP-SKL-10-04",
+          "xp": 35,
+          "operation": "medicine",
+          "bonus": 2,
+          "text": "Medicine: +2 ao teste ou rendimento correspondente."
+        },
+        {
+          "id": "EXP-SKL-10-05",
+          "xp": 50,
+          "operation": "infection",
+          "bonus": 2,
+          "text": "Infection: +2 ao teste ou rendimento correspondente."
+        },
+        {
+          "id": "EXP-SKL-10-06",
+          "xp": 75,
+          "operation": "medicine",
+          "bonus": 2,
+          "text": "Medicine: +2 ao teste ou rendimento correspondente."
+        }
+      ]
+    }
+  ],
+  "npcs": [
+    {
+      "id": "EXP-NPC-01",
+      "source_hero_id": "ZC-HER-0011",
+      "name": "Téo",
+      "profession": "encanador",
+      "job": "plumbing",
+      "output": "water",
+      "level": 1,
+      "max_level": 3,
+      "task_per_day": 1,
+      "food_cost": 1,
+      "water_cost": 1
+    },
+    {
+      "id": "EXP-NPC-02",
+      "source_hero_id": "ZC-HER-0012",
+      "name": "Célia",
+      "profession": "professora",
+      "job": "teaching",
+      "output": "research",
+      "level": 1,
+      "max_level": 3,
+      "task_per_day": 1,
+      "food_cost": 1,
+      "water_cost": 1
+    },
+    {
+      "id": "EXP-NPC-03",
+      "source_hero_id": "ZC-HER-0013",
+      "name": "Aline",
+      "profession": "veterinária",
+      "job": "veterinary",
+      "output": "medicine",
+      "level": 1,
+      "max_level": 3,
+      "task_per_day": 1,
+      "food_cost": 1,
+      "water_cost": 1
+    },
+    {
+      "id": "EXP-NPC-04",
+      "source_hero_id": "ZC-HER-0014",
+      "name": "Samuel",
+      "profession": "carpinteiro",
+      "job": "carpentry",
+      "output": "build",
+      "level": 1,
+      "max_level": 3,
+      "task_per_day": 1,
+      "food_cost": 1,
+      "water_cost": 1
+    },
+    {
+      "id": "EXP-NPC-05",
+      "source_hero_id": "ZC-HER-0015",
+      "name": "Bruna",
+      "profession": "agricultora",
+      "job": "farming",
+      "output": "food",
+      "level": 1,
+      "max_level": 3,
+      "task_per_day": 1,
+      "food_cost": 1,
+      "water_cost": 1
+    },
+    {
+      "id": "EXP-NPC-06",
+      "source_hero_id": "ZC-HER-0016",
+      "name": "Raul",
+      "profession": "caminhoneiro",
+      "job": "driving",
+      "output": "travel",
+      "level": 1,
+      "max_level": 3,
+      "task_per_day": 1,
+      "food_cost": 1,
+      "water_cost": 1
+    },
+    {
+      "id": "EXP-NPC-07",
+      "source_hero_id": "ZC-HER-0017",
+      "name": "Denise",
+      "profession": "médica",
+      "job": "medicine",
+      "output": "medicine",
+      "level": 1,
+      "max_level": 3,
+      "task_per_day": 1,
+      "food_cost": 1,
+      "water_cost": 1
+    },
+    {
+      "id": "EXP-NPC-08",
+      "source_hero_id": "ZC-HER-0018",
+      "name": "Hugo",
+      "profession": "eletricista",
+      "job": "electricity",
+      "output": "repair",
+      "level": 1,
+      "max_level": 3,
+      "task_per_day": 1,
+      "food_cost": 1,
+      "water_cost": 1
+    },
+    {
+      "id": "EXP-NPC-09",
+      "source_hero_id": "ZC-HER-0019",
+      "name": "Sol",
+      "profession": "guia",
+      "job": "scouting",
+      "output": "search",
+      "level": 1,
+      "max_level": 3,
+      "task_per_day": 1,
+      "food_cost": 1,
+      "water_cost": 1
+    },
+    {
+      "id": "EXP-NPC-10",
+      "source_hero_id": "ZC-HER-0020",
+      "name": "Otávio",
+      "profession": "porteiro",
+      "job": "guard",
+      "output": "defense",
+      "level": 1,
+      "max_level": 3,
+      "task_per_day": 1,
+      "food_cost": 1,
+      "water_cost": 1
+    },
+    {
+      "id": "EXP-NPC-11",
+      "source_hero_id": "ZC-HER-0021",
+      "name": "Jana",
+      "profession": "cozinheira de campo",
+      "job": "cooking",
+      "output": "food",
+      "level": 1,
+      "max_level": 3,
+      "task_per_day": 1,
+      "food_cost": 1,
+      "water_cost": 1
+    },
+    {
+      "id": "EXP-NPC-12",
+      "source_hero_id": "ZC-HER-0022",
+      "name": "Miguel",
+      "profession": "socorrista",
+      "job": "rescue",
+      "output": "rescue",
+      "level": 1,
+      "max_level": 3,
+      "task_per_day": 1,
+      "food_cost": 1,
+      "water_cost": 1
+    },
+    {
+      "id": "EXP-NPC-13",
+      "source_hero_id": "ZC-HER-0023",
+      "name": "Bia",
+      "profession": "mecânica",
+      "job": "mechanics",
+      "output": "repair",
+      "level": 1,
+      "max_level": 3,
+      "task_per_day": 1,
+      "food_cost": 1,
+      "water_cost": 1
+    },
+    {
+      "id": "EXP-NPC-14",
+      "source_hero_id": "ZC-HER-0024",
+      "name": "Vicente",
+      "profession": "operador de rádio",
+      "job": "radio",
+      "output": "research",
+      "level": 1,
+      "max_level": 3,
+      "task_per_day": 1,
+      "food_cost": 1,
+      "water_cost": 1
+    },
+    {
+      "id": "EXP-NPC-15",
+      "source_hero_id": null,
+      "name": "Lúcia",
+      "profession": "zeladora de escola",
+      "job": "maintenance",
+      "output": "repair",
+      "level": 1,
+      "max_level": 3,
+      "task_per_day": 1,
+      "food_cost": 1,
+      "water_cost": 1
+    }
+  ],
+  "structures": [
+    {
+      "id": "EXP-BLD-01",
+      "kind": "garden",
+      "name": "Horta",
+      "cost": {
+        "wood": 2,
+        "scrap": 1
+      },
+      "work": 2,
+      "terrain": 2,
+      "storage_bonus": 0,
+      "beds_bonus": 0,
+      "max_health": 3
+    },
+    {
+      "id": "EXP-BLD-02",
+      "kind": "workshop",
+      "name": "Oficina",
+      "cost": {
+        "wood": 2,
+        "scrap": 3
+      },
+      "work": 3,
+      "terrain": 2,
+      "storage_bonus": 0,
+      "beds_bonus": 0,
+      "max_health": 3
+    },
+    {
+      "id": "EXP-BLD-03",
+      "kind": "infirmary",
+      "name": "Enfermaria",
+      "cost": {
+        "wood": 2,
+        "scrap": 2,
+        "medicine": 1
+      },
+      "work": 3,
+      "terrain": 2,
+      "storage_bonus": 0,
+      "beds_bonus": 0,
+      "max_health": 3
+    },
+    {
+      "id": "EXP-BLD-04",
+      "kind": "watch",
+      "name": "Vigia",
+      "cost": {
+        "wood": 2,
+        "scrap": 2
+      },
+      "work": 2,
+      "terrain": 2,
+      "storage_bonus": 0,
+      "beds_bonus": 0,
+      "max_health": 3
+    },
+    {
+      "id": "EXP-BLD-05",
+      "kind": "storage",
+      "name": "Depósito",
+      "cost": {
+        "wood": 3,
+        "scrap": 2
+      },
+      "work": 3,
+      "terrain": 2,
+      "storage_bonus": 12,
+      "beds_bonus": 0,
+      "max_health": 3
+    },
+    {
+      "id": "EXP-BLD-06",
+      "kind": "reservoir",
+      "name": "Reservatório",
+      "cost": {
+        "wood": 2,
+        "scrap": 3
+      },
+      "work": 3,
+      "terrain": 2,
+      "storage_bonus": 0,
+      "beds_bonus": 0,
+      "max_health": 3
+    },
+    {
+      "id": "EXP-BLD-07",
+      "kind": "lodging",
+      "name": "Alojamento",
+      "cost": {
+        "wood": 4,
+        "scrap": 2
+      },
+      "work": 3,
+      "terrain": 2,
+      "storage_bonus": 0,
+      "beds_bonus": 4,
+      "max_health": 3
+    }
+  ],
+  "locations": [
+    {
+      "id": "EXP-LOC-01",
+      "kind": "garden_edge",
+      "name": "Horta abandonada",
+      "renewal": "natural",
+      "searches": 3,
+      "loot": {
+        "food": 2
+      },
+      "distance": "near"
+    },
+    {
+      "id": "EXP-LOC-02",
+      "kind": "market",
+      "name": "Mercado",
+      "renewal": "urban",
+      "searches": 4,
+      "loot": {
+        "food": 2,
+        "water": 1
+      },
+      "distance": "near"
+    },
+    {
+      "id": "EXP-LOC-03",
+      "kind": "workshop",
+      "name": "Oficina",
+      "renewal": "urban",
+      "searches": 3,
+      "loot": {
+        "scrap": 2,
+        "fuel": 1
+      },
+      "distance": "medium"
+    },
+    {
+      "id": "EXP-LOC-04",
+      "kind": "hospital",
+      "name": "Hospital",
+      "renewal": "urban",
+      "searches": 3,
+      "loot": {
+        "medicine": 2,
+        "water": 1
+      },
+      "distance": "medium"
+    },
+    {
+      "id": "EXP-LOC-05",
+      "kind": "station",
+      "name": "Estação",
+      "renewal": "urban",
+      "searches": 2,
+      "loot": {
+        "water": 2,
+        "scrap": 1
+      },
+      "distance": "far"
+    }
+  ],
+  "crises": [
+    {
+      "id": "EXP-CRI-01",
+      "kind": "garden_damage",
+      "name": "Horta danificada",
+      "target": "garden",
+      "cooldown_days": 2
+    },
+    {
+      "id": "EXP-CRI-02",
+      "kind": "locusts",
+      "name": "Gafanhotos",
+      "target": "garden",
+      "cooldown_days": 3
+    },
+    {
+      "id": "EXP-CRI-03",
+      "kind": "termites",
+      "name": "Cupins",
+      "target": "storage",
+      "cooldown_days": 3
+    },
+    {
+      "id": "EXP-CRI-04",
+      "kind": "contaminated_water",
+      "name": "Água contaminada",
+      "target": "reservoir",
+      "cooldown_days": 3
+    },
+    {
+      "id": "EXP-CRI-05",
+      "kind": "structural_damage",
+      "name": "Estrutura comprometida",
+      "target": "lodging",
+      "cooldown_days": 2
+    }
+  ]
+}
