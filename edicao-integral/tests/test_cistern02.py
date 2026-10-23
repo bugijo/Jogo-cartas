@@ -86,6 +86,8 @@ class Cistern02Tests(unittest.TestCase):
         with self.assertRaises(ValueError):game.work(2)
         self.assertEqual(game.stage_work,0)
         self.assertEqual(game.works_today,0)
+        game.work(1);game.meal()
+        with self.assertRaises(ValueError):game.work(1)
 
     def test_individual_deprivation_and_dog_alert(self):
         game=Cistern02.new(STARTERS[:2],[LINK_IDS[10],LINK_IDS[0]])
@@ -163,12 +165,23 @@ class Cistern02Tests(unittest.TestCase):
     def test_hidden_intention_reveals_on_second_night_without_duplication(self):
         game=Cistern02.new(STARTERS[:2],LINK_IDS[:2],seed=3)
         game.rescue('ZC-MOR-0002','welcome')
-        game.meal();self.assertEqual(game.night_intentions(),[])
+        game.meal()
+        with self.assertRaises(ValueError):game.next_day()
+        self.assertEqual(game.night_intentions(),[])
         game.next_day();game.meal()
         revealed=game.night_intentions()
         self.assertEqual(len(revealed),1)
         self.assertEqual(revealed[0]['id'],'ZC-MOR-0002')
         with self.assertRaises(ValueError):game.night_intentions()
+
+    def test_pending_siege_must_resolve_one_per_night(self):
+        game=Cistern02.new(STARTERS[:2],LINK_IDS[:2])
+        game.queue_siege('Missão dia 3')
+        with self.assertRaises(ValueError):game.next_day()
+        with self.assertRaises(ValueError):game.meal()
+        game.resolve_siege(4,[],[],0,['Portão'])
+        game.meal()
+        game.next_day()
 
     def test_verified_opportunist_leaves_without_stealing(self):
         game=Cistern02.new(STARTERS[:2],LINK_IDS[:2])

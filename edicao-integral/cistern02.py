@@ -220,7 +220,8 @@ class Cistern02:
 
     def resolve_siege(self,strength:int,guards:list[str],rolls:list[int],ammo:int,
                       damage_targets:list[str]) -> dict:
-        if (not self.pending_sieges or self.siege_day==self.day or strength<0
+        if (not self.pending_sieges or self.siege_day==self.day or self.meal_day==self.day
+                or strength<0
                 or guards!=self.planned_guards or len(rolls)!=len(guards)
                 or any(not 1<=die<=6 for die in rolls)
                 or not 0<=ammo<=min(2,self.ammo)):
@@ -267,6 +268,8 @@ class Cistern02:
         """Resolve por pessoa; prioridades expressam a escolha do grupo na escassez."""
         if self.meal_day==self.day:
             raise ValueError('Refeição do dia já resolvida')
+        if self.pending_sieges and self.siege_day!=self.day:
+            raise ValueError('Cerco precede a refeição')
         ids=[person['id'] for person in self.people]
         food_priority=ids.copy() if food_priority is None else food_priority
         water_priority=ids.copy() if water_priority is None else water_priority
@@ -323,6 +326,9 @@ class Cistern02:
     def work(self,units:int) -> None:
         if units<1 or self.works_today+units>2:
             raise ValueError('Limite de dois trabalhos diários')
+        if self.meal_day==self.day:raise ValueError('Trabalho ocorre antes da refeição')
+        if self.pending_sieges and self.siege_day!=self.day:
+            raise ValueError('Cerco precede os trabalhos')
         expected=self.stage;progress=self.stage_work
         for _ in range(units):
             if expected not in self.reserved or expected=='done':
@@ -347,6 +353,10 @@ class Cistern02:
     def next_day(self) -> None:
         if self.day>=5:raise ValueError('Prazo encerrado')
         if self.meal_day!=self.day:raise ValueError('Refeição diária pendente')
+        if self.pending_sieges and self.siege_day!=self.day:
+            raise ValueError('Cerco da noite não resolvido')
+        if any(group['status']!='left' for group in self.groups) and self.intentions_day!=self.day:
+            raise ValueError('Intenções e superlotação da noite pendentes')
         self.day+=1;self.clock=0;self.works_today=0
         if self.filter_active:
             self.water.extend(self._lots(self.initial_consumers))

@@ -107,3 +107,7 @@ O estado canônico parcial registra grupos inteiros de oito encontros existentes
 ## Unidade 24 — paridade independente da preparação
 
 O teste das 2.497 combinações H2–H6 agora compara os resultados de `cistern02.py` com o oráculo legado `src/rules_engine.py` além das fórmulas do manual. A leitura do catálogo 0.2 segue direta e os PDFs/regras originais permanecem intocados. Próxima prioridade: ligar objetivos e carga ao relógio e ao mapa sem substituir PA, portas ou dados da edição 0.2 por valores experimentais.
+
+## Unidade 25 — ordem mínima das fases noturnas
+
+O estado 0.2 recusa avançar o dia sem refeição, com cerco ainda não resolvido naquela noite, ou com intenção/superlotação pendente de grupo ativo. Cerco precede trabalhos e refeição; trabalhos precedem a refeição. Isto fecha atalhos de consumo e revelação, mas não implementa o relógio de expedição inteiro nem os eventos fixos dos cinco dias. O teste experimental atual tem 80 casos aprovados.
