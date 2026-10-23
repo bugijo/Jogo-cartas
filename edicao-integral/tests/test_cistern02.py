@@ -235,5 +235,24 @@ class Cistern02Tests(unittest.TestCase):
         self.assertEqual(game.close_chapter(),'candidate_victory')
         self.assertNotIn('cistern_complete',game.__dict__)
 
+    def test_siege_can_disable_completed_filter(self):
+        game=Cistern02.new(STARTERS[:2],LINK_IDS[:2])
+        game.receive_part('Conexões');game.meal();game.next_day()
+        game.reserve('A');game.work(1)
+        game.receive_part('Bomba');game.receive_part('Membrana')
+        game.meal();game.next_day()
+        game.reserve('B');game.reserve('C');game.work(2)
+        game.meal();game.next_day();game.work(1)
+        self.assertIn('Filtro',game.structures)
+        game.meal();game.next_day()
+        game.queue_siege('Pressão')
+        game.resolve_siege(4,[],[],0,['Filtro'])
+        self.assertFalse(game.filter_active)
+        water_before=sum(game.water)
+        game.materials+=2  # Materiais recuperados: fixture de reparo, não rota de busca.
+        game.repair_filter()
+        self.assertTrue(game.filter_active)
+        self.assertEqual(sum(game.water),water_before)
+
 
 if __name__=='__main__':unittest.main()

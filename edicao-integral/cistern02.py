@@ -57,6 +57,7 @@ class Cistern02:
     works_today: int = 0
     meal_day: int = 0
     filter_active: bool = False
+    filter_completed: bool = False
     morale: int = 5
     health: int = 5
     pressure: int = 0
@@ -242,7 +243,9 @@ class Cistern02:
                 or any(name not in eligible for name in damage_targets)):
             raise ValueError('Escolha de estruturas danificadas inválida')
         self.ammo-=ammo
-        for name in damage_targets:self.structures.remove(name)
+        for name in damage_targets:
+            self.structures.remove(name)
+            if name=='Filtro':self.filter_active=False
         food_lost=0;water_lost=0
         if gap:
             food_lost=self._take(self.food,4)
@@ -358,8 +361,19 @@ class Cistern02:
                 self.stage_work=0
                 if self.stage=='C':
                     self.filter_active=True
+                    self.filter_completed=True
+                    self.structures.append('Filtro')
                     self.water.extend(self._lots(2*self.initial_consumers))
                 else:self.stage='B' if self.stage=='A' else 'C'
+
+    def repair_filter(self) -> None:
+        if (not self.filter_completed or self.filter_active
+                or self.materials<2 or self.works_today>=2 or self.meal_day==self.day
+                or self.pending_sieges and self.siege_day!=self.day):
+            raise ValueError('Reparo do filtro indisponível')
+        self.materials-=2;self.works_today+=1
+        self.filter_active=True
+        self.structures.append('Filtro')
 
     @staticmethod
     def _lots(amount:int) -> list[int]:

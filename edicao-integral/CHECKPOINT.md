@@ -123,3 +123,7 @@ Novo teste percorre todas as três buscas de combustível da Oficina, retorna, r
 ## Unidade 28 — cinco dias reconciliados com replay legado
 
 `replay_cistern02_fixed.py` importa o replay tático antigo e projeta as entregas realmente registradas por ele no estado novo. H2–H6 completam cinco dias com saldos idênticos de comida, água, Materiais, Pressão e filtro; o resultado fica em `REPLAY_CISTERNA_FIXO.json`. São cinco trajetórias **fixas**, todas sem acolher Bia e com dados favoráveis, que produzem apenas `candidate_victory`. Não emitem certificado da campanha nem desbloqueiam o arco seguinte. O conjunto experimental tem 85 testes aprovados. A expedição tática ainda não foi portada ao motor novo.
+
+## Unidade 29 — dano e reparo do filtro
+
+O filtro concluído agora pode ser alvo de cerco. Dano o desativa; reparo consome 2 Materiais e um trabalho antes da refeição, sem repetir o enchimento único. O novo teste cobre dano e reparo; os cinco replays fixos continuam byte a byte iguais. `CAMPAIGN_BLOCKERS.md` também explicita a contradição entre 12 fundadores possíveis no kit 0.2 e dez protagonistas no motor experimental. O conjunto experimental tem 86 testes aprovados.
