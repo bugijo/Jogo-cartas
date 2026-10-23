@@ -1,32 +1,31 @@
 # Campanha contínua experimental
 
-`IntegratedCampaign` é a fronteira operacional entre a caixa 0.2 e o motor
-experimental. Ela não altera `RULES.md`, `CAMPAIGN.md`, `content/catalog.json`
-ou os PDFs existentes.
+`IntegratedCampaign` é uma fronteira **incompleta e bloqueada** entre a caixa
+0.2 e o motor experimental. Ela não altera `RULES.md`, `CAMPAIGN.md`,
+`content/catalog.json` ou os PDFs existentes.
 
 ## Fluxo
 
 1. `new(seed, founders, links)` usa a preparação canônica de `Cistern02`.
-2. Cada peça (`Conexões`, `Bomba`, `Membrana`) só é obtida por
-   `collect_part(..., choice="search")`; a escolha é persistida e não pode ser
-   repetida.
+2. `collect_part()` recusa entregar qualquer peça. O método antigo debitava
+   dois segmentos sem entrada, PA, teste, carga ou retorno e foi bloqueado.
 3. O relógio, refeições, reservas e trabalho continuam sendo validados por
    `Cistern02`. O filtro só é considerado concluído quando A/B/C realmente
    terminam.
-4. `complete_cistern()` cria o `World` com os mesmos protagonistas, conserva
-   recursos disponíveis dentro do depósito do motor e registra a recompensa uma
-   única vez. A flag usada por `Arc2` não pode ser injetada pela API pública.
-5. A Última Transmissão segue os portões existentes: rádio, cartão, acesso
-   militar, transporte do transmissor e defesa. Vitória, derrota, retirada e
-   impossibilidade são estados terminais persistentes.
+4. `complete_cistern()` também permanece bloqueado. A antiga versão aceitava
+   `candidate_victory`, descartava moradores, vínculos, ferimentos e outros
+   estados, truncava porções e criava duas pistas sem ação comprovada. Além
+   disso, não emitia o `cistern_record` exigido por `Arc2`.
+5. A Última Transmissão **não é alcançável** por campanha legítima nesta
+   integração. Testes isolados do segundo arco usam fixtures sintéticas.
 
 ## Limites conhecidos
 
-O adaptador não reescreve as regras 0.2 de cercos, privação individual,
-resgates e vínculos; essas regras seguem nos arquivos canônicos e ainda exigem
-portabilidade específica antes de uma edição física final. A defesa e seus
-mapas continuam conteúdo experimental, devendo receber playtest humano antes
-de qualquer afirmação de equilíbrio ou prontidão de impressão.
+O adaptador precisa receber recibos verificáveis de expedição e migrar todo o
+estado canônico antes de emitir `verified_victory`. Há incompatibilidade entre
+12 fundadores possíveis no kit 0.2 e dez protagonistas experimentais. O Posto
+e sua economia de combustível ainda faltam no fluxo regional. A defesa e seus
+mapas continuam experimentais.
 
 O estado completo é salvo em JSON com schema próprio, incluindo o `World`, a
 Cisterna, decisões, recompensas e motivo terminal. `load()` valida o estado

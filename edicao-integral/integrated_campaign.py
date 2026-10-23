@@ -16,9 +16,9 @@ from system import Expedition, World
 
 
 PART_MISSIONS = {
-    "Conexões": {"id": "CIS-MIS-A", "location": "EXP-LOC-01", "cost": 2},
-    "Bomba": {"id": "CIS-MIS-B", "location": "EXP-LOC-03", "cost": 2},
-    "Membrana": {"id": "CIS-MIS-C", "location": "EXP-LOC-04", "cost": 2},
+    "Conexões": {"id": "CIS-MIS-A", "location": "EXP-LOC-03", "cost": 1},
+    "Bomba": {"id": "CIS-MIS-B", "location": "EXP-LOC-05", "cost": 2},
+    "Membrana": {"id": "CIS-MIS-C", "location": "EXP-LOC-05", "cost": 1},
 }
 
 
@@ -85,27 +85,14 @@ class IntegratedCampaign:
         self.decisions[decision_id] = choice
 
     def collect_part(self, part: str, choice: str = "search") -> dict:
-        """Resolve uma missão de obtenção de peça sem aceitar injeção de peça.
-
-        A peça só entra pelo local/decisão desta camada; ``receive_part`` do
-        modelo 0.2 permanece disponível para compatibilidade de testes e não é
-        usado pela transição automática.
-        """
+        """Indisponível até haver recibo verificável de coleta e retorno tático."""
         self._require_running()
         if self.world is not None:
             raise ValueError("Peças só podem ser coletadas no arco da Cisterna")
-        if part not in PART_MISSIONS or part in self.cistern.parts:
+        if part not in PART_MISSIONS:
             raise ValueError("Missão de peça indisponível")
-        if choice != "search":
-            raise ValueError("Escolha não obtém a peça")
-        mission = PART_MISSIONS[part]
-        if self.cistern.clock + mission["cost"] > 10:
-            raise ValueError("Relógio insuficiente para a missão")
-        self.cistern.spend_segments(mission["cost"])
-        self.cistern.receive_part(part)
-        self.decisions[mission["id"]] = choice
-        return {"mission": mission["id"], "part": part,
-                "location": mission["location"], "day": self.cistern.day}
+        raise NotImplementedError(
+            "Coleta exige expedição 0.2, PA, carga e retorno; integração pendente")
 
     def meal(self) -> dict:
         self._require_running()
@@ -120,23 +107,12 @@ class IntegratedCampaign:
         self.cistern.next_day()
 
     def complete_cistern(self) -> None:
-        """Transfere apenas um filtro realmente concluído para o motor novo."""
+        """Bloqueia transição enquanto não há vitória e migração verificadas."""
         self._require_running()
         if self.world is not None or not self.cistern.filter_completed:
             raise ValueError("Filtro da Cisterna ainda não está concluído")
-        if self.cistern.close_chapter() != "candidate_victory":
-            raise ValueError("Vitória canônica da Cisterna não certificada")
-        food = sum(self.cistern.food)
-        water = sum(self.cistern.water)
-        # O modelo novo conserva identidade dos protagonistas; porções
-        # excedentes ficam limitadas ao depósito experimental, não são criadas.
-        self.world = World.new(self.seed, self.founders,
-                               {"food": min(food, 30), "water": min(water, 30)})
-        self.world.flags["cistern_complete"] = True
-        self.world.clues = 2
-        self.world.log.append({"day": self.world.day, "campaign": self.campaign_id,
-                               "result": "cistern_complete"})
-        self.rewards.append("cistern_complete")
+        raise NotImplementedError(
+            "Vitória candidata não certifica expedições; migração integral pendente")
 
     def _arc(self) -> Arc2:
         self._require_running()

@@ -1,5 +1,20 @@
 # Checkpoint — 23/10/2026
 
+## Unidade 30 — auditoria do avanço remoto e fechamento de atalhos
+
+O remoto avançou de `0a0ab0d` para `8700073` e foi incorporado por
+fast-forward. A camada `integrated_campaign.py` nova permitia criar Conexões,
+Bomba e Membrana por chamada direta de `collect_part()` gastando apenas dois
+segmentos, sem presença em destino, PA, teste, carga ou retorno. Também
+aceitava `candidate_victory` para transição, descartava estado e concedia duas
+pistas, enquanto `Arc2` seguia exigindo `cistern_record` verificado. A API agora
+recusa coleta e transição até haver prova tática e migração completa; os IDs de
+local das missões foram corrigidos para Oficina/Estação. Testes novos reproduzem
+os atalhos antigos e confirmam o bloqueio. `TACTICAL_FUEL_AUDIT.md` registra
+paridade canônica e decisões pendentes. Uma implementação isolada de expedição
+0.2 está em andamento em `cistern_tactics02.py`; ainda não certifica vitória.
+
+
 Base preservada: `cebb76a` em `arte/kit-pos-apocaliptico-provas`. Nova branch: `evolucao/zona-zero-sistema-v1`. Branch padrão remota: `fisico/antes-que-a-agua-acabe`; nenhuma delas foi alterada por merge.
 
 Estado: implementar e testar primeiro o núcleo determinístico independente. Fonte de dados em `data/core.json`, motor em `engine.py`, testes em `tests/`. A campanha, as habilidades individualizadas, os 15 NPCs completos, as 16 placas, os 12 interiores e a diagramação continuam pendentes. Não tratar as constantes desta pasta como regras aprovadas.

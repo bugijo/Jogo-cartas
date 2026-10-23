@@ -13,6 +13,6 @@ Diferenças materiais que impedem ligar os arcos por uma flag sem perder regras:
 | Objetivo | filtro em etapas A/B/C até dia 5, peças Conexões/Bomba/Membrana | flag `cistern_complete`, sem ficha de projeto ou peças |
 | Lugares | seis destinos e quatro módulos impressos por destino | seis locais regionais diferentes, oito plantas funcionais, incluindo as seis geometrias canônicas; Posto e Condomínio ainda sem destino regional |
 
-`Arc2.decode_radio()` continua exigindo a flag `cistern_complete`, mas agora ela só é produzida por `integrated_campaign.py` após o filtro A/B/C e o encerramento canônico em `candidate_victory`. Essa interface **não afirma** que todos os subsistemas físicos 0.2 foram digitalizados: coleta/expedição, resgates, cercos e privação individual continuam dependentes dos componentes canônicos. Não foi aplicada conversão silenciosa nem alteração aos textos oficiais.
+`Arc2.decode_radio()` exige um `cistern_record` com `verified_victory`, que o modelo parcial não emite. A tentativa antiga de transição por `candidate_victory` foi bloqueada: ela não comprovava coleta/expedição e perdia estado na conversão. Nenhum texto oficial foi alterado.
 
 A defesa final já é executável no fluxo contínuo após a transição, mas as ondas e o mapa linear são conteúdo experimental; o ensaio `ENSAIO_DEFESA_20261023.json` ainda injeta requisitos e equipamento e, portanto, não é evidência de equilíbrio.
