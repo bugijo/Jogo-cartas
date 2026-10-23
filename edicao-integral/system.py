@@ -11,6 +11,7 @@ from pathlib import Path
 
 DATA = json.loads((Path(__file__).parent / 'data/system.json').read_text(encoding='utf-8'))
 EQUIPMENT = json.loads((Path(__file__).parent / 'data/equipment.json').read_text(encoding='utf-8'))
+TACTICS_DATA = json.loads((Path(__file__).parent / 'data/tactics.json').read_text(encoding='utf-8'))
 ITEMS = {item['id']:item for item in EQUIPMENT['items']}
 HEROES = {h['id']: h for h in DATA['heroes']}
 NPCS = {n['id']: n for n in DATA['npcs']}
@@ -55,6 +56,7 @@ class World:
     clues: int = 0
     used_structure_actions: dict[str, int] = field(default_factory=dict)
     encounters: dict[str, dict] = field(default_factory=dict)
+    decisions: dict[str, str] = field(default_factory=dict)
     rng_state: object = None
     log: list[dict] = field(default_factory=list)
 
@@ -135,6 +137,22 @@ class World:
                or not 0 <= state['health'] <= VEHICLES[vid]['health']
                for vid,state in self.vehicles.items()):
             raise ValueError('Veículo inválido')
+        for expedition_id, encounter in self.encounters.items():
+            if expedition_id not in self.expeditions or encounter.get('map') not in TACTICS_DATA['maps']:
+                raise ValueError('Encontro sem expedição/mapa')
+            map_data=TACTICS_DATA['maps'][encounter['map']]
+            zones=set(map_data['zones'])
+            exp=self.expeditions[expedition_id]
+            if (exp.remaining!=0 or exp.returning
+                    or set(encounter['heroes'])!=set(exp.heroes)
+                    or any(zone not in zones for zone in encounter['heroes'].values())
+                    or encounter.get('search_zones')!=map_data['search']):
+                raise ValueError('Posições do encontro inválidas')
+            for enemy in encounter['enemies'].values():
+                kind=enemy.get('kind')
+                if (kind not in TACTICS_DATA['enemies'] or enemy.get('zone') not in zones
+                        or not 0<enemy.get('health',0)<=TACTICS_DATA['enemies'][kind]['health']):
+                    raise ValueError('Inimigo inválido')
         if any(loc not in LOCATIONS or state['health'] < 0 or state['health'] > 3
                for loc,state in self.outposts.items()):
             raise ValueError('Posto avançado inválido')
@@ -401,6 +419,11 @@ class World:
         exp = self.expeditions[expedition_id]
         if exp.remaining != 0 or exp.returning:
             raise ValueError('Equipe não está explorando o local')
+        encounter=self.encounters.get(expedition_id)
+        if encounter and not any(zone in encounter['search_zones']
+                                 and self.heroes[hero_id]['health']>0
+                                 for hero_id,zone in encounter['heroes'].items()):
+            raise ValueError('Equipe fora da área de busca')
         location_id = exp.destination
         if self.searches[location_id] <= 0:
             return {}

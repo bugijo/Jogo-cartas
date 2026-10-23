@@ -1,0 +1,11 @@
+# Cenário integrado: Patrulha do Mercado
+
+Implementado nesta edição experimental, sem alterar `RULES.md`, `CAMPAIGN.md` ou o kit físico 0.2. Usa a geometria funcional do Mercado congelada de `content/catalog.json`; as regras novas estão em `data/tactics.json` e duas cartas estruturadas em `data/cycle_cards.json`. Não é o capítulo canônico “A Cisterna”.
+
+A função `play_market_day(seed, strategy, team_size)` executa preparação de 2–6 heróis, recrutamento condicionado de uma agricultora, viagem curta, entrada no Mercado, escolha de evento, combate contra uma ameaça, abertura de porta, deslocamento à zona 5, busca, saída, retorno, produção/consumo, salvamento JSON e restauração. Arma quebrada ou retirada encerram a exploração sem criar uma busca fictícia. O teste da semente 17 completa as fases; a semente 2 exercita a retirada.
+
+`python edicao-integral/simulate_cycle.py --seed 20261023 --seeds 50` gerou 1.250 replays (50 sementes × cinco estratégias × H2–H6). O JSON está em `ENSAIO_CICLO_20261023.json`. Cada célula teve 47 conclusões da missão de **um dia**, três retiradas e zero divergências entre o estado salvo e restaurado. Os resultados iguais entre tamanhos e quase iguais entre estratégias revelam a limitação do roteiro: apenas um inimigo, um atacante principal e nenhum escalonamento. Não são taxas de vitória da campanha, evidência de equilíbrio ou duração de mesa. Explorador fez até duas buscas e construtor iniciou horta; conservador e combatente ainda não exibem decisões suficientemente diferentes nesse encontro.
+
+O catálogo validado contém 119 IDs únicos: 10 protagonistas, 70 habilidades, 15 NPCs, sete estruturas, cinco locais, cinco crises, um veículo, quatro modelos de equipamento e **duas cartas experimentais**. Há três tipos de inimigo, três tipos de horda e uma planta tática; estes não são cartas diagramadas. PDFs novos: zero.
+
+Pendências: efeitos dos 70 marcos não estão todos ligados às operações; inimigos não possuem IA de múltiplas zonas complexas nem regras de surpresa completas; escolhas narrativas são apenas uma carta; a missão “Última Transmissão”, instalação militar e fim de campanha não existem nesta edição; preparação, impressão, ícones, marcadores e playtest humano seguem abertos.

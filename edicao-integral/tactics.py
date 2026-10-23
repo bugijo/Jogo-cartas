@@ -28,6 +28,7 @@ class TacticalGame:
         map_data=TACTICS['maps'][map_id]
         world.encounters[expedition_id]={
             'map':map_id,'heroes':{h:map_data['entry'] for h in world.expeditions[expedition_id].heroes},
+            'search_zones':list(map_data['search']),
             'enemies':{},'next_enemy':1,
             'doors':{edge(*d['edge']):{'open':False,'resistance':d['resistance'],
                                       'blocked':d['blocked']} for d in map_data['doors']},

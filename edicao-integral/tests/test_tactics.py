@@ -85,5 +85,25 @@ class TacticalTests(unittest.TestCase):
             self.assertEqual(new[key],market[key])
         self.assertEqual([d['edge'] for d in new['doors']],market['doors'])
 
+    def test_search_requires_marked_zone_during_encounter(self):
+        w=self.setup_world()
+        game=TacticalGame.start(w,'m','market_intro')
+        with self.assertRaises(ValueError):w.search('m')
+        game.breach('ZC-HER-0002',1,5,'crowbar')
+        game.move('ZC-HER-0002',5)
+        self.assertTrue(w.search('m'))
+
+    def test_corrupt_encounter_cannot_be_restored(self):
+        w=self.setup_world()
+        game=TacticalGame.start(w,'m','market_intro')
+        game.state['heroes']['ZC-HER-0001']=999
+        with tempfile.TemporaryDirectory() as directory:
+            path=Path(directory)/'broken.json'
+            import json
+            from dataclasses import asdict
+            payload=asdict(w);payload['schema']=1
+            path.write_text(json.dumps(payload),encoding='utf-8')
+            with self.assertRaises(ValueError):World.load(path)
+
 
 if __name__=='__main__':unittest.main()

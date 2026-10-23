@@ -1,0 +1,23 @@
+{
+  "schema": 1,
+  "status": "cenário experimental; não substitui a campanha canônica A Cisterna",
+  "cards": [
+    {
+      "id": "EXP-EVT-001", "family": "event", "name": "Carrinho abandonado",
+      "moment": "exploration", "text": "Um carrinho bloqueia a vista de uma prateleira saqueada.",
+      "choices": [
+        {"id": "inspect", "name": "Inspecionar", "requires": {"attribute": "Percepção", "minimum": 2},
+         "effects": [{"kind": "cargo", "resource": "scrap", "amount": 1}]},
+        {"id": "ignore", "name": "Contornar", "requires": {},
+         "effects": [{"kind": "clues", "amount": 1}]}
+      ]
+    },
+    {
+      "id": "EXP-MIS-001", "family": "mission", "name": "Patrulha do Mercado",
+      "moment": "day_end", "text": "Volte com ao menos uma busca após enfrentar a ameaça inicial.",
+      "requirements": {"destination": "EXP-LOC-02", "searches_min": 1,
+                       "enemy_defeated_min": 1, "all_heroes_alive": true},
+      "reward": {"camp_xp": 2}
+    }
+  ]
+}

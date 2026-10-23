@@ -43,3 +43,7 @@ NPCs podem acompanhar expedição e deixam de produzir no abrigo enquanto viajam
 ## Unidade 9 — encontro tático de Mercado (experimental)
 
 A geometria funcional de 16 zonas, 21 conexões, cinco portas, entrada, saída, surgimento e objetivos foi copiada do catálogo 0.2 para `data/tactics.json` sem mudar o kit anterior. `tactics.py` mantém posições, inimigos com vida, portas, ruído, hordas comuns/especiais/surpresa, perseguição por caminhos transitáveis, ataque e armadura; estado entra no salvamento do mundo. Retirada exige voltar à saída e fechar o encontro, registrando inimigos restantes. Seis testes táticos e 34 testes novos ao todo passaram. Isto é apenas um encontro experimental, sem campanha ou cartas prontas.
+
+## Unidade 10 — ciclo de um dia e cartas estruturadas
+
+`campaign.py` usa as duas cartas de `data/cycle_cards.json` para executar e salvar um dia completo no Mercado. A busca no encontro exige um herói vivo em zona marcada; retirada por quebra de equipamento não contabiliza busca. `simulate_cycle.py` executou 1.250 replays de um dia para H2–H6 e cinco estratégias, com zero divergências de restauração. Ver `CYCLE_REPORT.md` para resultados e limitações: ainda não é campanha completa ou balanceada. `validate_data.py` confirmou 119 IDs e conectividade da planta. Quarenta e dois testes experimentais passaram nesta unidade.

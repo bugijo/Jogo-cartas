@@ -1,0 +1,283 @@
+{
+  "start_seed": 20261023,
+  "seeds_per_group": 50,
+  "total_replays": 1250,
+  "groups": {
+    "H2:conservative": {
+      "runs": 50,
+      "outcomes": {
+        "mission_complete": 47,
+        "retreated": 3
+      },
+      "searches_total": 47,
+      "food_shortage_runs": 0,
+      "water_shortage_runs": 0,
+      "restore_mismatch": 0
+    },
+    "H2:explorer": {
+      "runs": 50,
+      "outcomes": {
+        "mission_complete": 47,
+        "retreated": 3
+      },
+      "searches_total": 94,
+      "food_shortage_runs": 0,
+      "water_shortage_runs": 0,
+      "restore_mismatch": 0
+    },
+    "H2:builder": {
+      "runs": 50,
+      "outcomes": {
+        "mission_complete": 47,
+        "retreated": 3
+      },
+      "searches_total": 47,
+      "food_shortage_runs": 0,
+      "water_shortage_runs": 0,
+      "restore_mismatch": 0
+    },
+    "H2:fighter": {
+      "runs": 50,
+      "outcomes": {
+        "mission_complete": 47,
+        "retreated": 3
+      },
+      "searches_total": 47,
+      "food_shortage_runs": 0,
+      "water_shortage_runs": 0,
+      "restore_mismatch": 0
+    },
+    "H2:balanced": {
+      "runs": 50,
+      "outcomes": {
+        "mission_complete": 47,
+        "retreated": 3
+      },
+      "searches_total": 47,
+      "food_shortage_runs": 0,
+      "water_shortage_runs": 0,
+      "restore_mismatch": 0
+    },
+    "H3:conservative": {
+      "runs": 50,
+      "outcomes": {
+        "mission_complete": 47,
+        "retreated": 3
+      },
+      "searches_total": 47,
+      "food_shortage_runs": 0,
+      "water_shortage_runs": 0,
+      "restore_mismatch": 0
+    },
+    "H3:explorer": {
+      "runs": 50,
+      "outcomes": {
+        "mission_complete": 47,
+        "retreated": 3
+      },
+      "searches_total": 94,
+      "food_shortage_runs": 0,
+      "water_shortage_runs": 0,
+      "restore_mismatch": 0
+    },
+    "H3:builder": {
+      "runs": 50,
+      "outcomes": {
+        "mission_complete": 47,
+        "retreated": 3
+      },
+      "searches_total": 47,
+      "food_shortage_runs": 0,
+      "water_shortage_runs": 0,
+      "restore_mismatch": 0
+    },
+    "H3:fighter": {
+      "runs": 50,
+      "outcomes": {
+        "mission_complete": 47,
+        "retreated": 3
+      },
+      "searches_total": 47,
+      "food_shortage_runs": 0,
+      "water_shortage_runs": 0,
+      "restore_mismatch": 0
+    },
+    "H3:balanced": {
+      "runs": 50,
+      "outcomes": {
+        "mission_complete": 47,
+        "retreated": 3
+      },
+      "searches_total": 47,
+      "food_shortage_runs": 0,
+      "water_shortage_runs": 0,
+      "restore_mismatch": 0
+    },
+    "H4:conservative": {
+      "runs": 50,
+      "outcomes": {
+        "mission_complete": 47,
+        "retreated": 3
+      },
+      "searches_total": 47,
+      "food_shortage_runs": 0,
+      "water_shortage_runs": 0,
+      "restore_mismatch": 0
+    },
+    "H4:explorer": {
+      "runs": 50,
+      "outcomes": {
+        "mission_complete": 47,
+        "retreated": 3
+      },
+      "searches_total": 94,
+      "food_shortage_runs": 0,
+      "water_shortage_runs": 0,
+      "restore_mismatch": 0
+    },
+    "H4:builder": {
+      "runs": 50,
+      "outcomes": {
+        "mission_complete": 47,
+        "retreated": 3
+      },
+      "searches_total": 47,
+      "food_shortage_runs": 0,
+      "water_shortage_runs": 0,
+      "restore_mismatch": 0
+    },
+    "H4:fighter": {
+      "runs": 50,
+      "outcomes": {
+        "mission_complete": 47,
+        "retreated": 3
+      },
+      "searches_total": 47,
+      "food_shortage_runs": 0,
+      "water_shortage_runs": 0,
+      "restore_mismatch": 0
+    },
+    "H4:balanced": {
+      "runs": 50,
+      "outcomes": {
+        "mission_complete": 47,
+        "retreated": 3
+      },
+      "searches_total": 47,
+      "food_shortage_runs": 0,
+      "water_shortage_runs": 0,
+      "restore_mismatch": 0
+    },
+    "H5:conservative": {
+      "runs": 50,
+      "outcomes": {
+        "mission_complete": 47,
+        "retreated": 3
+      },
+      "searches_total": 47,
+      "food_shortage_runs": 0,
+      "water_shortage_runs": 0,
+      "restore_mismatch": 0
+    },
+    "H5:explorer": {
+      "runs": 50,
+      "outcomes": {
+        "mission_complete": 47,
+        "retreated": 3
+      },
+      "searches_total": 94,
+      "food_shortage_runs": 0,
+      "water_shortage_runs": 0,
+      "restore_mismatch": 0
+    },
+    "H5:builder": {
+      "runs": 50,
+      "outcomes": {
+        "mission_complete": 47,
+        "retreated": 3
+      },
+      "searches_total": 47,
+      "food_shortage_runs": 0,
+      "water_shortage_runs": 0,
+      "restore_mismatch": 0
+    },
+    "H5:fighter": {
+      "runs": 50,
+      "outcomes": {
+        "mission_complete": 47,
+        "retreated": 3
+      },
+      "searches_total": 47,
+      "food_shortage_runs": 0,
+      "water_shortage_runs": 0,
+      "restore_mismatch": 0
+    },
+    "H5:balanced": {
+      "runs": 50,
+      "outcomes": {
+        "mission_complete": 47,
+        "retreated": 3
+      },
+      "searches_total": 47,
+      "food_shortage_runs": 0,
+      "water_shortage_runs": 0,
+      "restore_mismatch": 0
+    },
+    "H6:conservative": {
+      "runs": 50,
+      "outcomes": {
+        "mission_complete": 47,
+        "retreated": 3
+      },
+      "searches_total": 47,
+      "food_shortage_runs": 0,
+      "water_shortage_runs": 0,
+      "restore_mismatch": 0
+    },
+    "H6:explorer": {
+      "runs": 50,
+      "outcomes": {
+        "mission_complete": 47,
+        "retreated": 3
+      },
+      "searches_total": 94,
+      "food_shortage_runs": 0,
+      "water_shortage_runs": 0,
+      "restore_mismatch": 0
+    },
+    "H6:builder": {
+      "runs": 50,
+      "outcomes": {
+        "mission_complete": 47,
+        "retreated": 3
+      },
+      "searches_total": 47,
+      "food_shortage_runs": 0,
+      "water_shortage_runs": 0,
+      "restore_mismatch": 0
+    },
+    "H6:fighter": {
+      "runs": 50,
+      "outcomes": {
+        "mission_complete": 47,
+        "retreated": 3
+      },
+      "searches_total": 47,
+      "food_shortage_runs": 0,
+      "water_shortage_runs": 0,
+      "restore_mismatch": 0
+    },
+    "H6:balanced": {
+      "runs": 50,
+      "outcomes": {
+        "mission_complete": 47,
+        "retreated": 3
+      },
+      "searches_total": 47,
+      "food_shortage_runs": 0,
+      "water_shortage_runs": 0,
+      "restore_mismatch": 0
+    }
+  },
+  "scope": "cenário experimental de um dia; não é campanha completa, equilíbrio nem playtest"
+}
