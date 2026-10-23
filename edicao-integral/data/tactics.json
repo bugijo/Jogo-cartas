@@ -159,6 +159,12 @@
           "blocked": false
         }
       ]
+    },
+    "camp_final": {
+      "zones": [1, 2, 3, 4],
+      "edges": [[1, 2], [2, 3], [3, 4]],
+      "entry": 1, "exit": 1, "spawn": 4,
+      "search": [], "objectives": [1], "doors": []
     }
   },
   "enemies": {

@@ -1,6 +1,7 @@
 {
   "schema": 1,
-  "status": "arco experimental em progresso; defesa final e mapa militar pendentes",
+  "status": "arco experimental em progresso; defesa do acampamento funcional, mapa militar pendente",
+  "final_defense": {"map":"camp_final","waves":[["slow","slow"],["runner","slow"],["brute"]],"objective_integrity":3},
   "cards": [
     {"id":"EXP-MIS-102","family":"mission","name":"Decifrar a frequência",
      "location":"camp","requires":{"cistern_complete":true,"clues":2},
@@ -18,6 +19,6 @@
     {"id":"EXP-MIS-106","family":"mission","name":"Defesa da última transmissão",
      "location":"camp","requires":{"transmitter":true,"final_defense":true},
      "cost":{},"effects":[{"kind":"campaign_mode","value":"free_survival"}],
-     "implementation":"pending_tactical_defense_map"}
+     "implementation":"experimental_camp_defense"}
   ]
 }

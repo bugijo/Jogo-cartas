@@ -324,7 +324,7 @@ class SystemTests(unittest.TestCase):
         module=importlib.util.module_from_spec(spec3);spec3.loader.exec_module(module)
         self.assertEqual(module.validate()['unique_ids'],125)
         self.assertEqual(module.validate()['cards'],7)
-        self.assertEqual(module.validate()['tactical_maps'],1)
+        self.assertEqual(module.validate()['tactical_maps'],2)
         w=world(seed=9,stock={'food':6,'water':6,'wood':6,'scrap':6,'fuel':3,'ammo':1,'medicine':1})
         hero=next(iter(w.heroes))
         w.give_item(hero,'bag-01','EXP-EQU-003','torso')

@@ -61,6 +61,7 @@ class World:
     site_states: dict[str, dict] = field(default_factory=dict)
     flags: dict[str, bool] = field(default_factory=dict)
     special_stock: list[str] = field(default_factory=list)
+    final_defense: dict | None = None
     garden_worker: str | None = None
     guarding: dict[str, int] = field(default_factory=dict)
     rng_state: object = None
@@ -155,6 +156,13 @@ class World:
         if self.special_stock.count('transmitter')+sum(exp.special_cargo.count('transmitter')
                                                       for exp in self.expeditions.values())>1:
             raise ValueError('Peça única duplicada')
+        if self.final_defense is not None:
+            defense=self.final_defense
+            if (defense.get('status') not in ('active','won','lost','retreated')
+                    or defense.get('integrity',-1)<0
+                    or defense.get('wave',-1)<0
+                    or any(h not in self.heroes for h in defense.get('heroes',{}))):
+                raise ValueError('Defesa final inválida')
         for expedition_id, encounter in self.encounters.items():
             if expedition_id not in self.expeditions or encounter.get('map') not in TACTICS_DATA['maps']:
                 raise ValueError('Encontro sem expedição/mapa')

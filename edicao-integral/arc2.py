@@ -1,8 +1,9 @@
-"""Portões persistentes de Última Transmissão; defesa final ainda não implementada."""
+"""Portões e defesa final persistente de Última Transmissão (edição experimental)."""
 import json
+from collections import deque
 from pathlib import Path
 
-from system import DATA, World
+from system import DATA, ITEMS, TACTICS_DATA, World
 
 ARC_DATA=json.loads((Path(__file__).parent/'data/last_transmission.json').read_text(encoding='utf-8'))
 ARC_CARDS={card['id']:card for card in ARC_DATA['cards']}
@@ -62,5 +63,107 @@ class Arc2:
         exp.special_cargo.append('transmitter')
         self.world.log.append({'day':self.world.day,'mission':card['id'],'result':'loaded'})
 
-    def final_defense(self) -> None:
-        raise NotImplementedError('Mapa do perímetro, horda final e condição de vitória pendentes')
+    def final_defense(self) -> dict:
+        w=self.world
+        if (w.final_defense is not None or w.expeditions or w.encounters
+                or 'transmitter' not in w.special_stock
+                or not all(w.flags.get(key) for key in
+                           ('cistern_complete','radio_code','access_card','military_access'))
+                or not any(h['health']>0 for h in w.heroes.values())):
+            raise ValueError('Defesa final indisponível')
+        w.final_defense={'status':'active','map':'camp_final','integrity':3,'wave':1,
+                         'heroes':{h:1 for h,state in w.heroes.items() if state['health']>0},
+                         'enemies':{},'next_enemy':1,'round':0}
+        self._spawn_wave()
+        w.log.append({'day':w.day,'mission':'EXP-MIS-106','result':'started'})
+        return w.final_defense
+
+    def _active_defense(self) -> dict:
+        defense=self.world.final_defense
+        if not defense or defense['status']!='active':
+            raise ValueError('Defesa final não ativa')
+        return defense
+
+    def _spawn_wave(self) -> None:
+        defense=self._active_defense()
+        spec=ARC_DATA['final_defense']
+        for kind in spec['waves'][defense['wave']-1]:
+            eid=f"E{defense['next_enemy']:03d}"
+            defense['next_enemy']+=1
+            defense['enemies'][eid]={'kind':kind,'zone':4,
+                                     'health':TACTICS_DATA['enemies'][kind]['health']}
+
+    @staticmethod
+    def _distance(start:int,end:int) -> int:
+        edges=TACTICS_DATA['maps']['camp_final']['edges']
+        todo=deque([(start,0)]);seen={start}
+        while todo:
+            zone,distance=todo.popleft()
+            if zone==end:return distance
+            for a,b in edges:
+                nxt=b if a==zone else a if b==zone else None
+                if nxt is not None and nxt not in seen:
+                    seen.add(nxt);todo.append((nxt,distance+1))
+        raise ValueError('Zona desconectada')
+
+    def defense_move(self,hero_id:str,zone:int) -> None:
+        defense=self._active_defense()
+        if (hero_id not in defense['heroes'] or zone not in TACTICS_DATA['maps']['camp_final']['zones']
+                or self._distance(defense['heroes'][hero_id],zone)!=1
+                or self.world.heroes[hero_id]['health']<1
+                or self.world.heroes[hero_id]['actions']<1):
+            raise ValueError('Movimento de defesa indisponível')
+        self.world.heroes[hero_id]['actions']-=1
+        defense['heroes'][hero_id]=zone
+
+    def defense_attack(self,hero_id:str,item_id:str,enemy_id:str) -> dict:
+        defense=self._active_defense()
+        if (hero_id not in defense['heroes'] or enemy_id not in defense['enemies']
+                or item_id not in self.world.gear[hero_id]):
+            raise ValueError('Ataque de defesa inválido')
+        item=self.world.gear[hero_id][item_id]
+        combat=ITEMS[item['template']]['combat']
+        reach=combat.get('range',1) if combat else 0
+        enemy=defense['enemies'][enemy_id]
+        if self._distance(defense['heroes'][hero_id],enemy['zone'])>reach:
+            raise ValueError('Inimigo fora de alcance')
+        result=self.world.attack_with_item(hero_id,item_id)
+        enemy['health']=max(0,enemy['health']-result['damage'])
+        if enemy['health']==0:
+            self.world.award_xp(hero_id,TACTICS_DATA['enemies'][enemy['kind']]['xp'],combat=True)
+            del defense['enemies'][enemy_id]
+        return dict(result,enemy_health=enemy['health'])
+
+    def defense_activate(self) -> dict:
+        defense=self._active_defense()
+        waves=ARC_DATA['final_defense']['waves']
+        if not defense['enemies']:
+            if defense['wave']==len(waves):
+                defense['status']='won'
+                self.world.flags['free_survival']=True
+                self.world.log.append({'day':self.world.day,'mission':'EXP-MIS-106','result':'won'})
+                return {'status':'won','integrity':defense['integrity']}
+            defense['wave']+=1
+            self._spawn_wave()
+        for enemy in defense['enemies'].values():
+            for _ in range(TACTICS_DATA['enemies'][enemy['kind']]['move']):
+                if enemy['zone']>1:enemy['zone']-=1
+            if enemy['zone']==1:
+                victims=[h for h,z in defense['heroes'].items()
+                         if z==1 and self.world.heroes[h]['health']>0]
+                if victims:
+                    self.world.receive_damage(sorted(victims)[0],
+                                              TACTICS_DATA['enemies'][enemy['kind']]['attack'])
+                defense['integrity']=max(0,defense['integrity']-1)
+        defense['round']+=1
+        self.world.begin_round()
+        if defense['integrity']==0 or not any(self.world.heroes[h]['health']>0 for h in defense['heroes']):
+            defense['status']='lost'
+            self.world.log.append({'day':self.world.day,'mission':'EXP-MIS-106','result':'lost'})
+        return {'status':defense['status'],'integrity':defense['integrity'],
+                'wave':defense['wave'],'round':defense['round']}
+
+    def defense_retreat(self) -> None:
+        defense=self._active_defense()
+        defense['status']='retreated'
+        self.world.log.append({'day':self.world.day,'mission':'EXP-MIS-106','result':'retreated'})

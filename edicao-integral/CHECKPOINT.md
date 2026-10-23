@@ -67,3 +67,7 @@ A ativação zumbi agora persegue heróis apenas dentro de alcance e linha de vi
 ## Unidade 15 — gate militar sem atalho
 
 `World.open_expedition` agora recusa ida direta à instalação militar sem código, cartão, autorização de missão e veículo. `Arc2.authorize_installation` abre o gate com rollback da flag se a viagem falhar. O teste do atalho falhou antes da correção e passou depois. Cinquenta e quatro testes experimentais e 51 testes legados passaram. A suíte legada registrou apenas `ResourceWarning` preexistente em `tests/test_boards06.py:64`. Os 1.250 replays de um dia permaneceram idênticos. O estado segue incompleto para campanha total e impressão.
+
+## Unidade 16 — defesa final experimental
+
+`Arc2.final_defense` abre defesa no abrigo apenas após os portões narrativos e retorno do transmissor. O mapa funcional `camp_final` tem quatro zonas; três ondas catalogadas, movimento, ataques, integridade do objetivo, vitória, derrota, retirada e salvamento foram implementados. Foram aprovados 57 testes experimentais e o validador confirmou 125 IDs, sete cartas e dois mapas táticos. A prova de vitória isolou a progressão das ondas e **não** equivale a uma vitória tática completa. Faltam mapa militar local, ligação canônica com A Cisterna e prova de viabilidade dos equipamentos contra todas as ondas. A edição 0.2 permanece intacta.
