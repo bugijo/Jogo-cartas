@@ -14,14 +14,15 @@ class Arc2Tests(unittest.TestCase):
     def defense_world(self):
         w=World.new(1,['ZC-HER-0001','ZC-HER-0002'],{'food':4,'water':4})
         w.flags.update(cistern_complete=True,radio_code=True,access_card=True,military_access=True)
+        w.cistern_record={'status':'verified_victory','source':'cistern02'}
         w.special_stock.append('transmitter')
         w.give_item('ZC-HER-0001','crowbar','EXP-EQU-002','hand')
         return w
 
     def test_final_defense_requires_completed_chain(self):
-        w=self.defense_world();w.flags['cistern_complete']=False
+        w=self.defense_world();w.cistern_record=None
         with self.assertRaises(ValueError):Arc2(w).final_defense()
-        w.flags['cistern_complete']=True
+        w.cistern_record={'status':'verified_victory','source':'cistern02'}
         state=Arc2(w).final_defense()
         self.assertEqual(state['status'],'active')
         with self.assertRaises(ValueError):Arc2(w).final_defense()
@@ -89,6 +90,7 @@ class Arc2Tests(unittest.TestCase):
         w.flags['military_access']=True
         w.flags['radio_code']=True
         w.flags['access_card']=True
+        w.cistern_record={'status':'verified_victory','source':'cistern02'}
         w.vehicles['EXP-VEI-01']={'location':'camp','health':3}
         w.give_item(heroes[0],'crowbar','EXP-EQU-002','hand')
         w.open_expedition('a',[heroes[0]],'EXP-LOC-06',vehicle_id='EXP-VEI-01')
@@ -135,6 +137,11 @@ class Arc2Tests(unittest.TestCase):
         with self.assertRaises(ValueError):arc.decode_radio()
         w.flags['cistern_complete']=True
         w.clues=2
+        with self.assertRaises(ValueError):arc.decode_radio()
+        w.cistern_record={'status':'candidate_victory','source':'cistern02'}
+        with self.assertRaises(ValueError):arc.decode_radio()
+        # Fixture isolada do segundo arco; a campanha 0.2 ainda não emite certificado.
+        w.cistern_record={'status':'verified_victory','source':'cistern02'}
         arc.decode_radio()
         self.assertTrue(w.flags['radio_code'])
         with self.assertRaises(ValueError):arc.recover_access_card('trip')

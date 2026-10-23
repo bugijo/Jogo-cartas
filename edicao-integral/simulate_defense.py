@@ -14,6 +14,7 @@ def replay(seed: int, team_size: int) -> dict:
     # Pré-condições injetadas: este ensaio NÃO demonstra que foram obtidas legalmente.
     world.flags.update(cistern_complete=True,radio_code=True,
                        access_card=True,military_access=True)
+    world.cistern_record={'status':'verified_victory','source':'cistern02'}  # fixture sintética
     world.special_stock.append('transmitter')
     for index,hero in enumerate(heroes):
         world.give_item(hero,f'crowbar{index}','EXP-EQU-002','hand')
@@ -43,7 +44,7 @@ def replay(seed: int, team_size: int) -> dict:
 def aggregate(seeds: int = 50, base_seed: int = 20261023) -> dict:
     if seeds<1:raise ValueError('Quantidade de sementes inválida')
     runs=[replay(base_seed+i,team) for team in range(2,7) for i in range(seeds)]
-    return {'scope':'defesa isolada; quatro flags, transmissor e um pé de cabra por herói injetados',
+    return {'scope':'defesa isolada; certificado sintético, portões, transmissor e um pé de cabra por herói injetados',
             'seed_start':base_seed,'seeds_per_team':seeds,'runs':runs,
             'counts':{str(team):dict(Counter(r['status'] for r in runs if r['heroes']==team))
                       for team in range(2,7)}}

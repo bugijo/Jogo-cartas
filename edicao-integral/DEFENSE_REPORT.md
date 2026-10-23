@@ -2,7 +2,7 @@
 
 Comando: `python edicao-integral/simulate_defense.py --seeds 50 --seed 20261023 --output edicao-integral/ENSAIO_DEFESA_20261023.json`.
 
-Foram executadas 250 defesas, 50 sementes consecutivas por equipe de 2 a 6 heróis. Uma única política aproxima-se do inimigo mais perto do objetivo e ataca com pé de cabra. Em **cada** partida, os quatro portões, o transmissor e um pé de cabra por herói foram injetados. A aquisição legal deles, o consumo dos dias anteriores e as decisões dos arcos não foram simulados.
+Foram executadas 250 defesas, 50 sementes consecutivas por equipe de 2 a 6 heróis. Uma única política aproxima-se do inimigo mais perto do objetivo e ataca com pé de cabra. Em **cada** partida, um certificado sintético da Cisterna, os portões, o transmissor e um pé de cabra por herói foram injetados. A aquisição legal deles, o consumo dos dias anteriores e as decisões dos arcos não foram simulados.
 
 | Heróis | Vitória | Derrota |
 | ---: | ---: | ---: |

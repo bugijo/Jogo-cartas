@@ -69,6 +69,7 @@ class Cistern02:
     groups: list[dict] = field(default_factory=list)
     rescue_history: dict[str,str] = field(default_factory=dict)
     intentions_day: int = 0
+    result: str | None = None
 
     @classmethod
     def new(cls,founders:list[str] | tuple[str,...],links:list[str] | tuple[str,...],
@@ -219,9 +220,10 @@ class Cistern02:
         self.planned_guards=list(heroes)
 
     def resolve_siege(self,strength:int,guards:list[str],rolls:list[int],ammo:int,
-                      damage_targets:list[str]) -> dict:
-        if (not self.pending_sieges or self.siege_day==self.day or self.meal_day==self.day
-                or strength<0
+                      damage_targets:list[str],security:bool=False) -> dict:
+        valid_phase=(self.day==5 and self.meal_day==5) if security else (
+            self.siege_day!=self.day and self.meal_day!=self.day)
+        if (not self.pending_sieges or not valid_phase or strength<0
                 or guards!=self.planned_guards or len(rolls)!=len(guards)
                 or any(not 1<=die<=6 for die in rolls)
                 or not 0<=ammo<=min(2,self.ammo)):
@@ -253,6 +255,17 @@ class Cistern02:
         return {'trigger':trigger,'strength':strength,'defense':defense,'gap':gap,
                 'food_lost':food_lost,'water_lost':water_lost,
                 'damaged':damage_targets.copy(),'health':self.health,'morale':self.morale}
+
+    def close_chapter(self) -> str:
+        """Candidato lógico; não certifica origem tática de peças ou provisões."""
+        if (self.day!=5 or self.meal_day!=5 or self.pending_sieges
+                or any(g['status']!='left' for g in self.groups)
+                   and self.intentions_day!=5 or self.result is not None):
+            raise ValueError('Capítulo ainda não pode ser encerrado')
+        supplied=all(not p['hungry'] and not p['thirsty'] for p in self.people)
+        self.result=('candidate_victory' if self.filter_active and self.health>=1
+                     and self.morale>=1 and supplied else 'partial_defeat')
+        return self.result
 
     @staticmethod
     def _take(lots:list[int],amount:int) -> int:

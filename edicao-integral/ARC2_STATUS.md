@@ -1,6 +1,6 @@
 # Última Transmissão — estado experimental
 
-O capítulo oficial “Antes que a água acabe” permanece em `CAMPAIGN.md` e não foi convertido nem alterado. A evolução experimental ainda registra sua conclusão por `world.flags['cistern_complete']`; não há ponte verificada com o capítulo antigo.
+O capítulo oficial “Antes que a água acabe” permanece em `CAMPAIGN.md` e não foi convertido nem alterado. A flag externa `cistern_complete` não libera mais o rádio, a viagem militar ou a defesa. O arco exige `world.cistern_record` com status `verified_victory` da fonte `cistern02`. Nenhum fluxo jogável emite esse certificado ainda: as provas isoladas usam fixture sintética declarada. Portanto a sequência completa permanece bloqueada com segurança.
 
 As cinco cartas em `data/last_transmission.json` alimentam os portões de código de rádio, cartão, instalação e transporte, além da defesa final. A viagem militar exige furgão e combustível de ida e volta. O transmissor é peça única e persiste no transporte e no estoque do abrigo.
 

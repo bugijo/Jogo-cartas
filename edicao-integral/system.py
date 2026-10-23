@@ -62,6 +62,7 @@ class World:
     flags: dict[str, bool] = field(default_factory=dict)
     special_stock: list[str] = field(default_factory=list)
     final_defense: dict | None = None
+    cistern_record: dict | None = None
     garden_worker: str | None = None
     guarding: dict[str, int] = field(default_factory=dict)
     rng_state: object = None
@@ -95,6 +96,12 @@ class World:
     @property
     def residents(self) -> int:
         return len(self.heroes) + len(self.npcs)
+
+    @property
+    def cistern_verified(self) -> bool:
+        return bool(self.cistern_record
+                    and self.cistern_record.get('status')=='verified_victory'
+                    and self.cistern_record.get('source')=='cistern02')
 
     @property
     def free_terrain(self) -> int:
@@ -547,7 +554,7 @@ class World:
     def open_expedition(self, expedition_id: str, hero_ids: list[str], location_id: str,
                         vehicle_id: str | None = None, npc_ids: list[str] | None = None) -> None:
         npc_ids = npc_ids or []
-        if location_id=='EXP-LOC-06' and (not vehicle_id or not all(
+        if location_id=='EXP-LOC-06' and (not self.cistern_verified or not vehicle_id or not all(
                 self.flags.get(key) for key in ('radio_code','access_card','military_access'))):
             raise ValueError('Instalação exige código, cartão, missão e veículo')
         if expedition_id in self.expeditions or not hero_ids or len(set(hero_ids)) != len(hero_ids) or location_id not in LOCATIONS:

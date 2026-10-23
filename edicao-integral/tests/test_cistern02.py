@@ -204,5 +204,36 @@ class Cistern02Tests(unittest.TestCase):
             self.assertEqual(game.morale,expected)
             if game.day<3:game.next_day()
 
+    def test_day_five_cannot_claim_victory_without_filter(self):
+        game=Cistern02.new(STARTERS[:2],LINK_IDS[:2])
+        game.food.extend([4,4,4]);game.water.extend([4,4,4])
+        for _ in range(4):game.meal();game.next_day()
+        game.meal()
+        self.assertEqual(game.close_chapter(),'partial_defeat')
+
+    def test_pending_security_night_blocks_final_result(self):
+        game=Cistern02.new(STARTERS[:2],LINK_IDS[:2])
+        game.food.extend([4,4,4]);game.water.extend([4,4,4])
+        for _ in range(4):game.meal();game.next_day()
+        game.queue_siege('Pressão')
+        game.resolve_siege(2,[],[],0,[])
+        game.meal()
+        game.queue_siege('Infiltrado tardio')
+        with self.assertRaises(ValueError):game.close_chapter()
+        game.resolve_siege(2,[],[],0,[],security=True)
+        self.assertEqual(game.close_chapter(),'partial_defeat')
+
+    def test_filter_and_full_last_meal_yield_only_provisional_result(self):
+        game=Cistern02.new(STARTERS[:2],LINK_IDS[:2])
+        game.food.extend([4,4,4]);game.water.extend([4,4,4])
+        game.receive_part('Conexões')
+        game.meal();game.next_day();game.reserve('A');game.work(1)
+        game.receive_part('Bomba');game.receive_part('Membrana')
+        game.meal();game.next_day();game.reserve('B');game.reserve('C');game.work(2)
+        game.meal();game.next_day();game.work(1)
+        game.meal();game.next_day();game.meal()
+        self.assertEqual(game.close_chapter(),'candidate_victory')
+        self.assertNotIn('cistern_complete',game.__dict__)
+
 
 if __name__=='__main__':unittest.main()

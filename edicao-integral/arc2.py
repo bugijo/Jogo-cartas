@@ -15,7 +15,7 @@ class Arc2:
 
     def decode_radio(self) -> None:
         card=ARC_CARDS['EXP-MIS-102']
-        if (not self.world.flags.get('cistern_complete')
+        if (not self.world.cistern_verified
                 or self.world.clues<card['requires']['clues']
                 or self.world.flags.get('radio_code')):
             raise ValueError('Frequência indisponível')
@@ -38,7 +38,8 @@ class Arc2:
 
     def authorize_installation(self,expedition_id:str,hero_ids:list[str],vehicle_id:str) -> None:
         card=ARC_CARDS['EXP-MIS-104']
-        if (not self.world.flags.get('radio_code') or not self.world.flags.get('access_card')
+        if (not self.world.cistern_verified or not self.world.flags.get('radio_code')
+                or not self.world.flags.get('access_card')
                 or self.world.flags.get('military_access')):
             raise ValueError('Código/cartão/missão ausente')
         self.world.flags['military_access']=True
@@ -78,8 +79,9 @@ class Arc2:
         w=self.world
         if (w.final_defense is not None or w.expeditions or w.encounters
                 or 'transmitter' not in w.special_stock
+                or not w.cistern_verified
                 or not all(w.flags.get(key) for key in
-                           ('cistern_complete','radio_code','access_card','military_access'))
+                           ('radio_code','access_card','military_access'))
                 or not any(h['health']>0 for h in w.heroes.values())):
             raise ValueError('Defesa final indisponível')
         w.final_defense={'status':'active','map':'camp_final','integrity':3,'wave':1,

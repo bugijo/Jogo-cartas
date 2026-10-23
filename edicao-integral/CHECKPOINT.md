@@ -111,3 +111,7 @@ O teste das 2.497 combinações H2–H6 agora compara os resultados de `cistern0
 ## Unidade 25 — ordem mínima das fases noturnas
 
 O estado 0.2 recusa avançar o dia sem refeição, com cerco ainda não resolvido naquela noite, ou com intenção/superlotação pendente de grupo ativo. Cerco precede trabalhos e refeição; trabalhos precedem a refeição. Isto fecha atalhos de consumo e revelação, mas não implementa o relógio de expedição inteiro nem os eventos fixos dos cinco dias. O teste experimental atual tem 80 casos aprovados.
+
+## Unidade 26 — encerramento provisório e portão fail-closed
+
+`Cistern02.close_chapter()` só calcula `candidate_victory` ou `partial_defeat` após a refeição do dia 5 e a resolução dos cercos pendentes, incluindo Noite de segurança sem nova produção. Uma vitória candidata não certifica a origem das peças, nem promessas. `Arc2.decode_radio`, acesso militar e defesa final agora rejeitam a antiga flag `cistern_complete`; exigem um certificado `verified_victory` que o motor parcial **não emite**. As provas isoladas de Última Transmissão e o ensaio de 250 defesas usam fixture sintética explícita. Isso impede declarar campanha completa por injeção de flag, mas deixa a transição normal bloqueada até implementar exploração/objetivos e prova integral do capítulo. O conjunto experimental tem 83 testes passando.
