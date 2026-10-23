@@ -1,0 +1,29 @@
+{
+  "edition": "experimental-1",
+  "attributes": ["Força", "Agilidade", "Percepção", "Intelecto", "Carisma", "Resistência"],
+  "turn_actions": 3,
+  "hero_health": 3,
+  "xp_cap": 100,
+  "xp_bands": [0, 10, 25],
+  "skill_unlock_xp": [0, 5, 12, 20, 35, 50, 75],
+  "combat_xp_cap_per_expedition": 8,
+  "camp_level_xp": [0, 50, 100],
+  "initial_pockets": 2,
+  "daily_consumption_per_resident": {"food": 1, "water": 1},
+  "garden_first_harvest_days": 4,
+  "infection_die_sides": 6,
+  "infection_results": [1, 2],
+  "noise": ["silencioso", "baixo", "médio", "alto"],
+  "heroes": [
+    {"id":"ZC-HER-0001","name":"Lia","profession":"agente comunitária de saúde"},
+    {"id":"ZC-HER-0002","name":"Ivo","profession":"vigilante"},
+    {"id":"ZC-HER-0003","name":"Mara","profession":"técnica de enfermagem"},
+    {"id":"ZC-HER-0004","name":"Caio","profession":"entregador ciclista"},
+    {"id":"ZC-HER-0005","name":"Nara","profession":"técnica de saneamento"},
+    {"id":"ZC-HER-0006","name":"Bento","profession":"pedreiro"},
+    {"id":"ZC-HER-0007","name":"Duda","profession":"técnica em eletrônica"},
+    {"id":"ZC-HER-0008","name":"Rosa","profession":"cozinheira escolar"},
+    {"id":"ZC-HER-0009","name":"Joel","profession":"bombeiro civil"},
+    {"id":"ZC-HER-0010","name":"Yumi","profession":"técnica de laboratório"}
+  ]
+}

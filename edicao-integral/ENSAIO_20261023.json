@@ -1,0 +1,8 @@
+{
+  "seed": 20261023,
+  "runs": 1000,
+  "attack_defeats": 1224,
+  "infection_rolls_positive": 1720,
+  "shortage_days": 0,
+  "scope": "5 ataques e 5 refeições por ensaio; não é partida nem taxa de vitória"
+}
