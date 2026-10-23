@@ -139,5 +139,15 @@ class TacticalTests(unittest.TestCase):
         self.assertIn(enemy,resumed.state['enemies'])
         self.assertTrue(resumed.state['doors']['1-5']['open'])
 
+    def test_zombie_needs_sight_or_noise_to_pursue(self):
+        w=self.setup_world()
+        game=TacticalGame.start(w,'m','market_intro')
+        enemy=game.spawn('slow',zone=16)
+        game.activate()
+        self.assertEqual(game.state['enemies'][enemy]['zone'],16)
+        game.noise(1,3)
+        game.activate()
+        self.assertNotEqual(game.state['enemies'][enemy]['zone'],16)
+
 
 if __name__=='__main__':unittest.main()

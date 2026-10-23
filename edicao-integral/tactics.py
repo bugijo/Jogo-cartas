@@ -198,7 +198,11 @@ class TacticalGame:
                 if victims:break
                 targets=[n['zone'] for n in self.state['noise'] if n['intensity']>=2]
                 if not targets:
-                    targets=list(self.state['heroes'].values())
+                    targets=[zone for hero_id,zone in self.state['heroes'].items()
+                             if self.world.heroes[hero_id]['health']>0
+                             and self.line_of_sight(enemy['zone'],zone)
+                             and abs((enemy['zone']-1)//4-(zone-1)//4)
+                                 +abs((enemy['zone']-1)%4-(zone-1)%4)<=spec['sight']]
                 paths=[self._path(enemy['zone'],z) for z in targets]
                 paths=[p for p in paths if p]
                 if not paths:break

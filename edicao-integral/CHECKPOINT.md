@@ -59,3 +59,7 @@ Retirada arquiva inimigos, portas e horda pendente por local; revisita restaura 
 ## Unidade 13 — portões do segundo arco
 
 `arc2.py` executa código de rádio, cartão de acesso, entrada com furgão/combustível e transporte de transmissor único, com flags e carga salvas. `data/last_transmission.json` contém cinco cartas; a defesa final está marcada pendente e lança erro explícito. Um sexto destino regional abstrato foi adicionado, sem mapa local. `validate_data.py` confirma 125 IDs e sete cartas experimentais. Cinquenta e dois testes novos passaram; os 1.250 replays do cenário de um dia permaneceram iguais. O capítulo 0.2 continua intocado. `ARC2_STATUS.md` descreve limites.
+
+## Unidade 14 — percepção dos inimigos e preparação física
+
+A ativação zumbi agora persegue heróis apenas dentro de alcance e linha de visão, ou ruído médio/alto; um teste reproduz o zumbi parado sem pista e em movimento após ruído. Cinquenta e três testes experimentais passaram e os 1.250 replays agregados permaneceram byte a byte iguais. `PRINT_PREP.md` registra as medidas de cartas e a divisão preliminar das 16 placas de 20 × 20 cm em 32 metades A4; nenhum PDF, arte de placas ou molde de caixa foi produzido. O kit 0.2 segue intacto.
