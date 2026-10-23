@@ -7,6 +7,58 @@ from dataclasses import asdict, dataclass, field
 from pathlib import Path
 
 DATA = json.loads((Path(__file__).parent / "data/core.json").read_text(encoding="utf-8"))
+EQUIPMENT = json.loads((Path(__file__).parent / "data/equipment.json").read_text(encoding="utf-8"))
+ITEMS = {item["id"]: item for item in EQUIPMENT["items"]}
+
+
+@dataclass
+class Inventory:
+    """Modelo físico mínimo: dois bolsos, duas mãos e espaços de roupa.
+
+    A grade da mochila usa coordenadas de célula; mochila é item de tronco.
+    Equipar/trocar durante combate consome 1 PA no controlador da rodada.
+    """
+    pockets: list[str | None] = field(default_factory=lambda: [None, None])
+    hands: list[str | None] = field(default_factory=lambda: [None, None])
+    head: str | None = None
+    torso: str | None = None
+    legs: str | None = None
+    backpack: dict[str, tuple[int, int]] = field(default_factory=dict)
+
+    def place(self, item_id: str, slot: str, index: int = 0, x: int = 0, y: int = 0) -> None:
+        item = ITEMS[item_id]
+        if slot not in item["slots"]:
+            raise ValueError("Item incompatível com espaço")
+        if item_id in self.all_items():
+            raise ValueError("Carta já está no inventário")
+        if slot in ("pocket", "hand"):
+            cells = self.pockets if slot == "pocket" else self.hands
+            if not 0 <= index < len(cells) or cells[index] is not None:
+                raise ValueError("Espaço indisponível")
+            cells[index] = item_id
+        elif slot == "backpack":
+            if self.torso != "EXP-EQU-003":
+                raise ValueError("Mochila não equipada")
+            width, height = item["size"]
+            cols, rows = EQUIPMENT["backpack_grid"]
+            if min(x, y) < 0 or x + width > cols or y + height > rows:
+                raise ValueError("Item fora da grade")
+            occupied = {(cx, cy) for old_id, (ox, oy) in self.backpack.items()
+                        for cx in range(ox, ox + ITEMS[old_id]["size"][0])
+                        for cy in range(oy, oy + ITEMS[old_id]["size"][1])}
+            if any((cx, cy) in occupied for cx in range(x, x + width) for cy in range(y, y + height)):
+                raise ValueError("Itens sobrepostos")
+            self.backpack[item_id] = (x, y)
+        elif slot in ("head", "torso", "legs"):
+            if getattr(self, slot) is not None:
+                raise ValueError("Espaço ocupado")
+            setattr(self, slot, item_id)
+        else:
+            raise ValueError("Espaço desconhecido")
+
+    def all_items(self) -> list[str]:
+        return [i for i in self.pockets + self.hands + [self.head, self.torso, self.legs]
+                if i is not None] + list(self.backpack)
 
 
 @dataclass

@@ -1,0 +1,11 @@
+{
+  "schema": 1,
+  "status": "amostra experimental; não substitui cartas EQU da edição 0.2",
+  "backpack_grid": [2, 3],
+  "items": [
+    {"id":"EXP-EQU-001","name":"Faca de cozinha usada","size":[1,1],"slots":["hand","pocket","backpack"],"combat":{"dice":1,"hit_on":4,"damage":1,"noise":"baixo"},"breach":0,"durability":3},
+    {"id":"EXP-EQU-002","name":"Pé de cabra","size":[1,2],"slots":["hand","backpack"],"combat":{"dice":1,"hit_on":4,"damage":1,"noise":"médio"},"breach":2,"durability":5},
+    {"id":"EXP-EQU-003","name":"Mochila remendada","size":[2,2],"slots":["torso"],"combat":null,"breach":0,"durability":4},
+    {"id":"EXP-EQU-004","name":"Capacete de obra","size":[1,1],"slots":["head","backpack"],"combat":null,"breach":0,"durability":3,"armor":1}
+  ]
+}

@@ -13,6 +13,26 @@ SPEC.loader.exec_module(engine)
 
 
 class EngineTests(unittest.TestCase):
+    def test_equipment_ids_and_slots(self):
+        self.assertEqual(len(engine.ITEMS), len(engine.EQUIPMENT["items"]))
+        inv = engine.Inventory()
+        inv.place("EXP-EQU-001", "pocket", index=0)
+        inv.place("EXP-EQU-003", "torso")
+        inv.place("EXP-EQU-002", "backpack", x=0, y=0)
+        inv.place("EXP-EQU-004", "backpack", x=1, y=0)
+        self.assertEqual(len(inv.all_items()), 4)
+        with self.assertRaises(ValueError):
+            inv.place("EXP-EQU-001", "hand", index=0)
+
+    def test_backpack_requires_equipment_and_no_overlap(self):
+        inv = engine.Inventory()
+        with self.assertRaises(ValueError):
+            inv.place("EXP-EQU-002", "backpack")
+        inv.place("EXP-EQU-003", "torso")
+        inv.place("EXP-EQU-002", "backpack", x=0, y=0)
+        with self.assertRaises(ValueError):
+            inv.place("EXP-EQU-004", "backpack", x=0, y=0)
+
     def test_heroes_preserve_existing_id_name_profession(self):
         import json
         old = json.loads((ROOT.parent / "content/catalog.json").read_text(encoding="utf-8"))

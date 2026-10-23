@@ -5,3 +5,5 @@
 - O PRNG de Python recebe semente explícita. O arquivo de salvamento guarda estado de heróis e acampamento, mas ainda não guarda o estado interno do PRNG, inventários, mapas ou missões; portanto **não garante retomada idêntica da campanha**.
 - O ensaio agregado possui cinco ataques e cinco refeições por execução. Não estima vitórias, mortalidade ou tempo de mesa.
 - A ausência de artes e PDFs novos é deliberada enquanto geometria, componentes e paginação da nova escala não estiverem especificados e validados.
+
+- Os quatro IDs de equipamento da amostra são instâncias únicas; multiplicidade, grade 2 × 3 da mochila e valores de combate são hipóteses de design, ainda não compatibilizadas com as cartas EQU 0.2. O motor recusa colocar a mesma instância em dois espaços.
