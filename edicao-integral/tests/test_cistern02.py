@@ -125,5 +125,61 @@ class Cistern02Tests(unittest.TestCase):
         self.assertEqual(result['defense'],4)
         self.assertEqual(game.ammo,1)
 
+    def test_rescue_capacity_group_integrity_and_portions(self):
+        game=Cistern02.new(STARTERS[:4],LINK_IDS[:4],seed=7)
+        self.assertEqual(game.capacity,8)
+        result=game.rescue('ZC-MOR-0001','welcome')
+        self.assertEqual(result['humans'],2)
+        self.assertEqual(game.humans,6)
+        self.assertEqual(game.consumers,6)
+        with self.assertRaises(ValueError):game.rescue('ZC-MOR-0001','welcome')
+        game.rescue('ZC-MOR-0005','welcome')
+        self.assertEqual(game.humans,9)
+        self.assertEqual(game.temporary_excess,1)
+        with self.assertRaises(ValueError):game.rescue('ZC-MOR-0006','welcome')
+        game.rescue('ZC-MOR-0006','aid')
+        self.assertEqual(game.humans,9)
+        self.assertEqual(sum(game.food),5)
+        self.assertEqual(sum(game.water),5)
+
+    def test_declined_group_remains_available_without_penalty(self):
+        game=Cistern02.new(STARTERS[:2],LINK_IDS[:2])
+        before=(game.morale,game.health,len(game.intent_deck))
+        game.rescue('ZC-MOR-0002','decline')
+        self.assertEqual((game.morale,game.health,len(game.intent_deck)),before)
+        game.rescue('ZC-MOR-0002','welcome')
+        self.assertEqual(game.humans,3)
+
+    def test_hidden_intention_reveals_on_second_night_without_duplication(self):
+        game=Cistern02.new(STARTERS[:2],LINK_IDS[:2],seed=3)
+        game.rescue('ZC-MOR-0002','welcome')
+        game.meal();self.assertEqual(game.night_intentions(),[])
+        game.next_day();game.meal()
+        revealed=game.night_intentions()
+        self.assertEqual(len(revealed),1)
+        self.assertEqual(revealed[0]['id'],'ZC-MOR-0002')
+        with self.assertRaises(ValueError):game.night_intentions()
+
+    def test_verified_opportunist_leaves_without_stealing(self):
+        game=Cistern02.new(STARTERS[:2],LINK_IDS[:2])
+        game.intent_deck[0]='ZC-INT-0011'
+        game.rescue('ZC-MOR-0002','welcome')
+        game.investigate('ZC-MOR-0002',2)
+        before=sum(game.food)
+        game.meal();result=game.night_intentions()
+        self.assertEqual(result[0]['effect'],'left_verified')
+        self.assertEqual(game.humans,2)
+        self.assertEqual(sum(game.food),before-3)
+
+    def test_temporary_overcrowding_cost_starts_third_night(self):
+        game=Cistern02.new(STARTERS[:4],LINK_IDS[:4])
+        game.intent_deck[:2]=['ZC-INT-0001','ZC-INT-0002']
+        game.rescue('ZC-MOR-0001','welcome')
+        game.rescue('ZC-MOR-0005','welcome')
+        for expected in (5,5,4):
+            game.meal();game.night_intentions()
+            self.assertEqual(game.morale,expected)
+            if game.day<3:game.next_day()
+
 
 if __name__=='__main__':unittest.main()

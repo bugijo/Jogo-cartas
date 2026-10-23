@@ -5,6 +5,7 @@ Não substitui RULES.md/CAMPAIGN.md nem implementa exploração e cercos.
 from __future__ import annotations
 
 import json
+import random
 from collections import Counter
 from dataclasses import asdict, dataclass, field
 from math import ceil
@@ -20,6 +21,17 @@ LINK_PEOPLE={**{link:(0,0) for link in LINK_IDS[:4]},
 STAGES={'A':{'materials':1,'part':'Conexões','work':1},
         'B':{'materials':1,'part':'Bomba','work':1},
         'C':{'materials':1,'part':'Membrana','work':2}}
+RESCUE_GROUPS={
+    'ZC-MOR-0001':('adult','child'),
+    'ZC-MOR-0002':('adult',),
+    'ZC-MOR-0003':('adult','adult'),
+    'ZC-MOR-0004':('adult','adult'),
+    'ZC-MOR-0005':('adult','adult','adult'),
+    'ZC-MOR-0006':('adult','adult','child'),
+    'ZC-MOR-0007':('adult','dog'),
+    'ZC-MOR-0008':('adult',),
+}
+INTENT_IDS=tuple(card['id'] for card in CATALOG['cards'] if card['family']=='INT')
 
 
 @dataclass
@@ -32,6 +44,7 @@ class Cistern02:
     capacity: int
     food: list[int]
     water: list[int]
+    seed: int = 0
     people: list[dict] = field(default_factory=list)
     meat: list[int] = field(default_factory=list)
     materials: int = 3
@@ -52,9 +65,14 @@ class Cistern02:
     pending_sieges: list[str] = field(default_factory=list)
     planned_guards: list[str] = field(default_factory=list)
     siege_day: int = 0
+    intent_deck: list[str] = field(default_factory=list)
+    groups: list[dict] = field(default_factory=list)
+    rescue_history: dict[str,str] = field(default_factory=dict)
+    intentions_day: int = 0
 
     @classmethod
-    def new(cls,founders:list[str] | tuple[str,...],links:list[str] | tuple[str,...]) -> 'Cistern02':
+    def new(cls,founders:list[str] | tuple[str,...],links:list[str] | tuple[str,...],
+            seed:int=0) -> 'Cistern02':
         founders=list(founders);links=list(links)
         if (not 2<=len(founders)<=6 or len(links)!=len(founders)
                 or len(set(founders))!=len(founders) or any(hero not in STARTERS for hero in founders)
@@ -77,7 +95,9 @@ class Cistern02:
             if LINK_PEOPLE[link][1]:
                 dog_no+=1
                 people.append(cls._person(f'D{dog_no:02d}','dog',hero))
-        return cls(founders,links,consumers,humans,dogs,capacity,lots.copy(),lots.copy(),people)
+        deck=list(INTENT_IDS);random.Random(seed).shuffle(deck)
+        return cls(founders,links,consumers,humans,dogs,capacity,lots.copy(),lots.copy(),
+                   seed=seed,people=people,intent_deck=deck)
 
     @staticmethod
     def _person(identifier:str,kind:str,family:str) -> dict:
@@ -106,6 +126,91 @@ class Cistern02:
     def queue_siege(self,trigger:str) -> None:
         if not trigger:raise ValueError('Gatilho vazio')
         self.pending_sieges.append(trigger)
+
+    @property
+    def temporary_excess(self) -> int:
+        return max(0,self.humans-self.capacity)
+
+    def rescue(self,group_id:str,decision:str) -> dict:
+        """Registra decisão no abrigo; contato/retorno tático ainda não ligados."""
+        if group_id not in RESCUE_GROUPS or group_id in self.rescue_history:
+            raise ValueError('Grupo inexistente ou já resolvido')
+        if decision not in ('welcome','aid','decline'):
+            raise ValueError('Decisão de resgate inválida')
+        kinds=RESCUE_GROUPS[group_id]
+        humans=sum(kind!='dog' for kind in kinds)
+        dogs=sum(kind=='dog' for kind in kinds)
+        if decision=='decline':
+            return {'id':group_id,'decision':decision,'humans':humans,'dogs':dogs}
+        if decision=='welcome' and self.humans+humans>self.capacity+2:
+            raise ValueError('Recepção sem vagas para o grupo inteiro')
+        if decision=='aid' and (sum(self.food)+sum(self.meat)<humans
+                                or sum(self.water)<humans):
+            raise ValueError('Ajuda sem porções suficientes')
+        if decision=='aid':
+            meat_paid=self._take(self.meat,humans)
+            self._take(self.food,humans-meat_paid)
+            self._take(self.water,humans)
+        if decision=='welcome':
+            intent=self.intent_deck.pop(0)
+            resident_no=sum(p['id'].startswith('R') for p in self.people)
+            dog_no=sum(p['id'].startswith('D') for p in self.people)
+            for kind in kinds:
+                if kind=='dog':
+                    dog_no+=1;person_id=f'D{dog_no:02d}'
+                else:
+                    resident_no+=1;person_id=f'R{resident_no:02d}'
+                self.people.append(self._person(person_id,kind,group_id))
+            self.humans+=humans;self.dogs+=dogs
+            self.groups.append({'id':group_id,'arrival_day':self.day,'intent':intent,
+                                'status':'observing','investigation':0,'verified_day':0,
+                                'revealed':False})
+        self.rescue_history[group_id]=decision
+        return {'id':group_id,'decision':decision,'humans':humans,'dogs':dogs}
+
+    def investigate(self,group_id:str,workers:int=1) -> None:
+        group=next((g for g in self.groups if g['id']==group_id),None)
+        if (group is None or group['status']!='observing' or not 1<=workers<=2
+                or self.intentions_day==self.day):
+            raise ValueError('Investigação indisponível')
+        group['investigation']+=workers
+        group['verified_day']=self.day
+
+    def night_intentions(self) -> list[dict]:
+        if self.meal_day!=self.day or self.intentions_day==self.day:
+            raise ValueError('Fase de intenções indisponível')
+        revealed=[]
+        for group in self.groups:
+            if group['status']!='observing':continue
+            age=self.day-group['arrival_day']+1
+            if not group['revealed'] and (age>=2 or group['investigation']>=2):
+                group['revealed']=True
+                intent=group['intent']
+                verified=group['verified_day']==self.day
+                effect='stays'
+                if intent=='ZC-INT-0011':
+                    if not verified:self._take(self.food,4)
+                    effect='left_verified' if verified else 'stole_and_left'
+                elif intent=='ZC-INT-0012':
+                    if not verified:self.raise_pressure(1)
+                    effect='left_verified' if verified else 'pressure_and_left'
+                if intent in ('ZC-INT-0011','ZC-INT-0012'):
+                    leaving=[p for p in self.people if p['family']==group['id']]
+                    self.humans-=sum(p['kind']!='dog' for p in leaving)
+                    self.dogs-=sum(p['kind']=='dog' for p in leaving)
+                    self.people=[p for p in self.people if p['family']!=group['id']]
+                    group['status']='left'
+                elif age>=2:
+                    group['status']='frightened' if intent in ('ZC-INT-0008','ZC-INT-0009','ZC-INT-0010') else 'trusted'
+                revealed.append({'id':group['id'],'intent':intent,'effect':effect})
+            elif group['revealed'] and age>=2:
+                group['status']='frightened' if group['intent'] in ('ZC-INT-0008','ZC-INT-0009','ZC-INT-0010') else 'trusted'
+        if self.temporary_excess and any(g['status']!='left' and self.day>=g['arrival_day']+2
+                                         for g in self.groups):
+            self.morale=max(0,self.morale-1)
+            self.health=max(0,self.health-1)
+        self.intentions_day=self.day
+        return revealed
 
     def plan_guards(self,heroes:list[str]) -> None:
         if (len(heroes)>3 or len(set(heroes))!=len(heroes)
