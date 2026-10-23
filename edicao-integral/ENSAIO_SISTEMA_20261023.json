@@ -6,9 +6,9 @@
   "by_hero_count": {
     "2": {
       "runs": 100,
-      "food_shortage_runs": 0,
+      "food_shortage_runs": 7,
       "water_shortage_runs": 100,
-      "food_shortage_total": 0,
+      "food_shortage_total": 11,
       "water_shortage_total": 750,
       "crises": {
         "EXP-CRI-01": 19,
@@ -19,7 +19,7 @@
       "runs": 100,
       "food_shortage_runs": 100,
       "water_shortage_runs": 100,
-      "food_shortage_total": 300,
+      "food_shortage_total": 311,
       "water_shortage_total": 1050,
       "crises": {
         "EXP-CRI-01": 19,
@@ -30,7 +30,7 @@
       "runs": 100,
       "food_shortage_runs": 100,
       "water_shortage_runs": 100,
-      "food_shortage_total": 600,
+      "food_shortage_total": 611,
       "water_shortage_total": 1350,
       "crises": {
         "EXP-CRI-01": 19,
@@ -41,7 +41,7 @@
       "runs": 100,
       "food_shortage_runs": 100,
       "water_shortage_runs": 100,
-      "food_shortage_total": 900,
+      "food_shortage_total": 911,
       "water_shortage_total": 1650,
       "crises": {
         "EXP-CRI-01": 19,
@@ -52,7 +52,7 @@
       "runs": 100,
       "food_shortage_runs": 100,
       "water_shortage_runs": 100,
-      "food_shortage_total": 1200,
+      "food_shortage_total": 1211,
       "water_shortage_total": 1950,
       "crises": {
         "EXP-CRI-01": 19,

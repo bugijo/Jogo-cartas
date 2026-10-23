@@ -68,6 +68,14 @@ structures = [{'id': f'EXP-BLD-{i:02d}', 'kind': kind, 'name': name,
                'storage_bonus': storage, 'beds_bonus': beds,
                'max_health': 3} for i,(kind,name,cost,work,terrain,storage,beds)
               in enumerate(structures,1)]
+actions = {
+    'workshop': {'kind':'craft','cost':{'scrap':2},'output':{'ammo':1}},
+    'infirmary': {'kind':'heal','cost':{'medicine':1},'health':1},
+    'reservoir': {'kind':'pump','cost':{'fuel':1},'output':{'water':2}}
+}
+for structure in structures:
+    if structure['kind'] in actions:
+        structure['action'] = actions[structure['kind']]
 locations = [
     ('garden_edge','Horta abandonada','natural',3,{'food':2},'near'),
     ('market','Mercado','urban',4,{'food':2,'water':1},'near'),
@@ -87,6 +95,15 @@ crises = [
 ]
 crises = [{'id':f'EXP-CRI-{i:02d}','kind':kind,'name':name,'target':target,
            'cooldown_days':cooldown} for i,(kind,name,target,cooldown) in enumerate(crises,1)]
+crisis_effects = {
+    'garden_damage': {'damage':1,'loss':{}},
+    'locusts': {'damage':2,'loss':{'food':1}},
+    'termites': {'damage':1,'loss':{'wood':1}},
+    'contaminated_water': {'damage':1,'loss':{'water':2}},
+    'structural_damage': {'damage':2,'loss':{}}
+}
+for crisis in crises:
+    crisis['effect'] = crisis_effects[crisis['kind']]
 data = {'edition':'experimental-1','attributes':base['attributes'],
         'rules': {'actions':3,'health':3,'xp_cap':100,'combat_xp_cap':8,
                   'skill_unlock_xp':base['skill_unlock_xp'],'storage_base':30,
@@ -95,5 +112,8 @@ data = {'edition':'experimental-1','attributes':base['attributes'],
                   'daily_water_per_resident':1,'crisis_chance_denominator':12,
                   'travel_segments':{'near':1,'medium':2,'far':3}},
         'heroes':heroes,'npcs':npcs,'structures':structures,
-        'locations':locations,'crises':crises}
+        'locations':locations,'crises':crises,
+        'vehicles':[{'id':'EXP-VEI-01','name':'Furgão recuperado',
+                     'seats':4,'cargo_capacity':12,'fuel_per_segment':1,
+                     'health':3}]}
 (root / 'system.json').write_text(json.dumps(data,ensure_ascii=False,indent=2)+'\n',encoding='utf-8')

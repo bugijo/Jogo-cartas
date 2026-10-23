@@ -912,7 +912,16 @@
       "terrain": 2,
       "storage_bonus": 0,
       "beds_bonus": 0,
-      "max_health": 3
+      "max_health": 3,
+      "action": {
+        "kind": "craft",
+        "cost": {
+          "scrap": 2
+        },
+        "output": {
+          "ammo": 1
+        }
+      }
     },
     {
       "id": "EXP-BLD-03",
@@ -927,7 +936,14 @@
       "terrain": 2,
       "storage_bonus": 0,
       "beds_bonus": 0,
-      "max_health": 3
+      "max_health": 3,
+      "action": {
+        "kind": "heal",
+        "cost": {
+          "medicine": 1
+        },
+        "health": 1
+      }
     },
     {
       "id": "EXP-BLD-04",
@@ -969,7 +985,16 @@
       "terrain": 2,
       "storage_bonus": 0,
       "beds_bonus": 0,
-      "max_health": 3
+      "max_health": 3,
+      "action": {
+        "kind": "pump",
+        "cost": {
+          "fuel": 1
+        },
+        "output": {
+          "water": 2
+        }
+      }
     },
     {
       "id": "EXP-BLD-07",
@@ -1053,35 +1078,71 @@
       "kind": "garden_damage",
       "name": "Horta danificada",
       "target": "garden",
-      "cooldown_days": 2
+      "cooldown_days": 2,
+      "effect": {
+        "damage": 1,
+        "loss": {}
+      }
     },
     {
       "id": "EXP-CRI-02",
       "kind": "locusts",
       "name": "Gafanhotos",
       "target": "garden",
-      "cooldown_days": 3
+      "cooldown_days": 3,
+      "effect": {
+        "damage": 2,
+        "loss": {
+          "food": 1
+        }
+      }
     },
     {
       "id": "EXP-CRI-03",
       "kind": "termites",
       "name": "Cupins",
       "target": "storage",
-      "cooldown_days": 3
+      "cooldown_days": 3,
+      "effect": {
+        "damage": 1,
+        "loss": {
+          "wood": 1
+        }
+      }
     },
     {
       "id": "EXP-CRI-04",
       "kind": "contaminated_water",
       "name": "Água contaminada",
       "target": "reservoir",
-      "cooldown_days": 3
+      "cooldown_days": 3,
+      "effect": {
+        "damage": 1,
+        "loss": {
+          "water": 2
+        }
+      }
     },
     {
       "id": "EXP-CRI-05",
       "kind": "structural_damage",
       "name": "Estrutura comprometida",
       "target": "lodging",
-      "cooldown_days": 2
+      "cooldown_days": 2,
+      "effect": {
+        "damage": 2,
+        "loss": {}
+      }
+    }
+  ],
+  "vehicles": [
+    {
+      "id": "EXP-VEI-01",
+      "name": "Furgão recuperado",
+      "seats": 4,
+      "cargo_capacity": 12,
+      "fuel_per_segment": 1,
+      "health": 3
     }
   ]
 }

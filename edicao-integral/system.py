@@ -17,6 +17,7 @@ NPCS = {n['id']: n for n in DATA['npcs']}
 STRUCTURES = {s['kind']: s for s in DATA['structures']}
 LOCATIONS = {l['id']: l for l in DATA['locations']}
 CRISES = {c['id']: c for c in DATA['crises']}
+VEHICLES = {v['id']: v for v in DATA['vehicles']}
 RESOURCES = ('food', 'water', 'wood', 'scrap', 'medicine', 'fuel', 'ammo')
 
 
@@ -29,6 +30,7 @@ class Expedition:
     remaining: int
     returning: bool = False
     cargo: dict[str, int] = field(default_factory=dict)
+    vehicle_id: str | None = None
 
 
 @dataclass
@@ -45,9 +47,11 @@ class World:
     active_crises: list[str] = field(default_factory=list)
     expeditions: dict[str, Expedition] = field(default_factory=dict)
     outposts: dict[str, dict] = field(default_factory=dict)
+    vehicles: dict[str, dict] = field(default_factory=dict)
     gear: dict[str, dict] = field(default_factory=dict)
     camp_xp: int = 0
     clues: int = 0
+    used_structure_actions: dict[str, int] = field(default_factory=dict)
     rng_state: object = None
     log: list[dict] = field(default_factory=list)
 
@@ -101,12 +105,22 @@ class World:
                     or any(h not in self.heroes or self.heroes[h]['location'] != key
                            for h in exp.heroes)
                     or any(r not in RESOURCES or n < 0 for r,n in exp.cargo.items())
-                    or sum(exp.cargo.values()) > 6 * len(exp.heroes)):
+                    or (exp.vehicle_id is None and sum(exp.cargo.values()) > 6 * len(exp.heroes))):
                 raise ValueError('Expedição/carga inválida')
+            if exp.vehicle_id is not None:
+                if (exp.vehicle_id not in self.vehicles
+                        or self.vehicles[exp.vehicle_id]['location'] != key
+                        or len(exp.heroes) > VEHICLES[exp.vehicle_id]['seats']
+                        or sum(exp.cargo.values()) > VEHICLES[exp.vehicle_id]['cargo_capacity']):
+                    raise ValueError('Veículo/carga inválidos')
             active_heroes.update(exp.heroes)
         if any(h['location'] != 'camp' for hero_id,h in self.heroes.items()
                if hero_id not in active_heroes):
             raise ValueError('Herói fora de expedição')
+        if any(vid not in VEHICLES or state['location'] not in ('camp',*(self.expeditions.keys()))
+               or not 0 <= state['health'] <= VEHICLES[vid]['health']
+               for vid,state in self.vehicles.items()):
+            raise ValueError('Veículo inválido')
         if any(loc not in LOCATIONS or state['health'] < 0 or state['health'] > 3
                for loc,state in self.outposts.items()):
             raise ValueError('Posto avançado inválido')
@@ -255,6 +269,29 @@ class World:
         self.structures[kind]['health'] += 1
         return True
 
+    def use_structure(self, kind: str, hero_id: str | None = None) -> bool:
+        if kind not in self.structures or self.structures[kind]['health'] == 0:
+            return False
+        spec=STRUCTURES[kind].get('action')
+        if not spec or self.used_structure_actions.get(kind) == self.day:
+            return False
+        if any(self.stock[r] < n for r,n in spec['cost'].items()):
+            return False
+        if spec['kind']=='heal':
+            if hero_id not in self.heroes or self.heroes[hero_id]['health'] >= 3:
+                return False
+            self.heroes[hero_id]['health']=min(3,self.heroes[hero_id]['health']+spec['health'])
+        else:
+            output=spec['output']
+            if sum(self.stock.values())-sum(spec['cost'].values())+sum(output.values())>self.storage:
+                return False
+            for resource,amount in output.items():
+                self.stock[resource]+=amount
+        for resource,amount in spec['cost'].items():
+            self.stock[resource]-=amount
+        self.used_structure_actions[kind]=self.day
+        return True
+
     def establish_outpost(self, location_id: str, npc_id: str) -> bool:
         """Local esgotado representa a limpeza; responsável fica vinculado ao posto."""
         if (location_id not in LOCATIONS or location_id in self.outposts
@@ -302,7 +339,8 @@ class World:
         location_id = exp.destination
         if self.searches[location_id] <= 0:
             return {}
-        capacity = 6 * len(exp.heroes) - sum(exp.cargo.values())
+        maximum = VEHICLES[exp.vehicle_id]['cargo_capacity'] if exp.vehicle_id else 6 * len(exp.heroes)
+        capacity = maximum - sum(exp.cargo.values())
         if capacity <= 0:
             return {}
         self.searches[location_id] -= 1
@@ -314,14 +352,41 @@ class World:
             capacity -= found[resource]
         return found
 
-    def open_expedition(self, expedition_id: str, hero_ids: list[str], location_id: str) -> None:
+    def recover_vehicle(self, vehicle_id: str, expedition_id: str) -> bool:
+        if vehicle_id not in VEHICLES or vehicle_id in self.vehicles or expedition_id not in self.expeditions:
+            return False
+        exp=self.expeditions[expedition_id]
+        spec=VEHICLES[vehicle_id]
+        fuel=DATA['rules']['travel_segments'][exp.distance]*spec['fuel_per_segment']
+        if (exp.destination != 'EXP-LOC-03' or exp.remaining != 0 or exp.returning
+                or len(exp.heroes)>spec['seats'] or sum(exp.cargo.values())>spec['cargo_capacity']
+                or self.stock['fuel']<fuel):
+            return False
+        self.stock['fuel']-=fuel
+        self.vehicles[vehicle_id]={'location':expedition_id,'health':spec['health']}
+        exp.vehicle_id=vehicle_id
+        return True
+
+    def open_expedition(self, expedition_id: str, hero_ids: list[str], location_id: str,
+                        vehicle_id: str | None = None) -> None:
         if expedition_id in self.expeditions or not hero_ids or len(set(hero_ids)) != len(hero_ids) or location_id not in LOCATIONS:
             raise ValueError('Expedição inválida')
         if any(h not in self.heroes or self.heroes[h]['location'] != 'camp' for h in hero_ids):
             raise ValueError('Herói indisponível')
         distance = LOCATIONS[location_id]['distance']
         segments = DATA['rules']['travel_segments'][distance]
-        self.expeditions[expedition_id] = Expedition(expedition_id,hero_ids,location_id,distance,segments)
+        if vehicle_id is not None:
+            if (vehicle_id not in self.vehicles or self.vehicles[vehicle_id]['location'] != 'camp'
+                    or self.vehicles[vehicle_id]['health'] == 0
+                    or len(hero_ids) > VEHICLES[vehicle_id]['seats']):
+                raise ValueError('Veículo indisponível')
+            fuel = 2 * segments * VEHICLES[vehicle_id]['fuel_per_segment']
+            if self.stock['fuel'] < fuel:
+                raise ValueError('Combustível insuficiente para ida e volta')
+            self.stock['fuel'] -= fuel
+            self.vehicles[vehicle_id]['location'] = expedition_id
+        self.expeditions[expedition_id] = Expedition(expedition_id,hero_ids,location_id,distance,segments,
+                                                    vehicle_id=vehicle_id)
         for h in hero_ids:
             self.heroes[h]['location'] = expedition_id
 
@@ -340,6 +405,8 @@ class World:
                          'left_behind':left_behind})
         for h in exp.heroes:
             self.heroes[h]['location'] = 'camp'
+        if exp.vehicle_id:
+            self.vehicles[exp.vehicle_id]['location']='camp'
         del self.expeditions[expedition_id]
         return 'returned'
 
@@ -407,7 +474,10 @@ class World:
         if chosen:
             self.crises_last_day[chosen['id']] = self.day
             self.active_crises.append(chosen['id'])
-            self.damage_structure(chosen['target'])
+            effect=chosen['effect']
+            self.damage_structure(chosen['target'],effect['damage'])
+            for resource,amount in effect['loss'].items():
+                self.stock[resource]=max(0,self.stock[resource]-amount)
             return chosen['id']
         return None
 

@@ -114,6 +114,22 @@ class SystemTests(unittest.TestCase):
         self.assertEqual(w.heroes[heroes[0]]['location'],'camp')
         self.assertIn('B',w.expeditions)
 
+    def test_vehicle_recovery_fuel_and_round_trip(self):
+        w=world(stock={'food':4,'water':4,'fuel':5})
+        h=next(iter(w.heroes))
+        w.open_expedition('repair',[h],'EXP-LOC-03')
+        w.advance_expedition('repair');w.advance_expedition('repair')
+        self.assertTrue(w.recover_vehicle('EXP-VEI-01','repair'))
+        self.assertEqual(w.stock['fuel'],3)
+        w.begin_return('repair')
+        w.advance_expedition('repair');w.advance_expedition('repair')
+        self.assertEqual(w.vehicles['EXP-VEI-01']['location'],'camp')
+        w.open_expedition('drive',[h],'EXP-LOC-01',vehicle_id='EXP-VEI-01')
+        self.assertEqual(w.stock['fuel'],1)
+        with self.assertRaises(ValueError):
+            w.open_expedition('other',[list(w.heroes)[1]],'EXP-LOC-05',vehicle_id='EXP-VEI-01')
+        w.validate()
+
     def test_rng_save_replay_and_crisis_cooldown(self):
         w=world(seed=2)
         w.structures['garden']={'health':3,'age':0}
@@ -163,6 +179,20 @@ class SystemTests(unittest.TestCase):
         self.assertEqual(w.clues,1)
         self.assertEqual(w.heroes[hero]['health'],3)
         self.assertEqual(w.stock['medicine'],0)
+
+    def test_structure_actions_cost_limit_and_effect(self):
+        w=world(stock={'food':4,'water':4,'scrap':3,'fuel':1,'medicine':1})
+        for kind in ('workshop','infirmary','reservoir'):
+            w.structures[kind]={'health':3,'age':0}
+        hero=next(iter(w.heroes));w.heroes[hero]['health']=2
+        self.assertTrue(w.use_structure('workshop'))
+        self.assertEqual((w.stock['scrap'],w.stock['ammo']),(1,1))
+        self.assertFalse(w.use_structure('workshop'))
+        self.assertTrue(w.use_structure('infirmary',hero))
+        self.assertEqual(w.heroes[hero]['health'],3)
+        self.assertTrue(w.use_structure('reservoir'))
+        self.assertEqual((w.stock['fuel'],w.stock['water']),(0,6))
+        w.validate()
 
     def test_data_rebuild_deterministic(self):
         before=(ROOT/'data/system.json').read_bytes()

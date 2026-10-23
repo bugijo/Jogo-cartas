@@ -10,6 +10,6 @@ Os nomes de dez protagonistas foram preservados do catálogo 0.2. Os outros 14 h
 
 ## Sistema expandido
 
-`data/system.json` é reconstruído por `python edicao-integral/data/build_system_data.py`; `system.py` fornece um estado de campanha experimental. Os 10 protagonistas têm 70 marcos tipados, mas os textos e efeitos ainda não foram aprovados como regras de mesa. Quinze NPCs possuem perfil, nível e tarefa; apenas produção de recursos, reparo e defesa têm efeitos de motor neste lote. Estruturas, viagens e crises são cenários de teste, não campanha pronta.
+`data/system.json` é reconstruído por `python edicao-integral/data/build_system_data.py`; `system.py` fornece um estado de campanha experimental. Os 10 protagonistas têm 70 marcos tipados, mas os textos e efeitos ainda não foram aprovados como regras de mesa. Quinze NPCs possuem perfil, nível e tarefa; produção de recursos, construção, reparo, investigação, resgate clínico e defesa têm efeitos de motor neste lote. Estruturas, viagens e crises são cenários de teste, não campanha pronta.
 
 O ensaio expandido é `python edicao-integral/simulate_system.py --seed 20261023 --seeds 100`; resultados e pressupostos estão em `VALIDATION.md`. `system.py` é o motor principal deste experimento; `engine.py` permanece como primeiro protótipo isolado para comparação e não deve ser usado como fonte das regras novas.
