@@ -11,7 +11,7 @@ Diferenças materiais que impedem ligar os arcos por uma flag sem perder regras:
 | Abrigo | Moral, Saúde, Pressão, cercos, acolhimento temporário | estruturas, crises e estoque, sem aqueles três indicadores |
 | Tempo | dez segmentos compartilhados por viagem e combate | segmentos regionais, rodadas táticas independentes |
 | Objetivo | filtro em etapas A/B/C até dia 5, peças Conexões/Bomba/Membrana | flag `cistern_complete`, sem ficha de projeto ou peças |
-| Lugares | seis destinos e quatro módulos impressos por destino | seis locais regionais diferentes, três mapas táticos, só Mercado se sobrepõe |
+| Lugares | seis destinos e quatro módulos impressos por destino | seis locais regionais diferentes, oito plantas funcionais, incluindo as seis geometrias canônicas; Posto e Condomínio ainda sem destino regional |
 
 `Arc2.decode_radio()` ainda aceita `cistern_complete` como dado externo. Essa interface **não prova** vitória no capítulo 0.2. Uma integração fiel precisa portar identidade/vínculos, relógio, estoque de porções, resgates, filtro e cerco, com testes cruzados contra os replays existentes, antes de aceitar a transição automaticamente. Não foi aplicada conversão silenciosa nem alteração aos textos oficiais.
 

@@ -612,6 +612,8 @@ class World:
         exp.remaining = exp.segment_cost
 
     def end_day(self) -> dict:
+        if self.final_defense is not None and self.final_defense['status']=='active':
+            raise ValueError('Resolva a defesa final antes do próximo dia')
         self.day += 1
         produced = dict.fromkeys(RESOURCES,0)
         # Especialistas geram apenas suas tarefas previstas; saídas abstratas não criam recurso.

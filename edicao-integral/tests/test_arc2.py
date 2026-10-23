@@ -77,6 +77,12 @@ class Arc2Tests(unittest.TestCase):
         enemy['zone']=99
         with self.assertRaises(ValueError):w.validate()
 
+    def test_day_cannot_advance_while_final_defense_is_active(self):
+        w=self.defense_world();Arc2(w).final_defense()
+        before=w.day
+        with self.assertRaises(ValueError):w.end_day()
+        self.assertEqual(w.day,before)
+
     def test_transmitter_cannot_be_loaded_twice(self):
         heroes=['ZC-HER-0001','ZC-HER-0002']
         w=World.new(1,heroes,{'food':4,'water':4,'fuel':6})
