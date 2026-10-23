@@ -64,7 +64,8 @@ def validate() -> dict:
             raise ValueError('Combate inválido')
     for map_data in TACTICS['maps'].values():
         zones=set(map_data['zones'])
-        if (len(zones)!=len(map_data['zones']) or map_data['entry'] not in zones
+        if (map_data.get('location') is not None and map_data['location'] not in loc_kinds
+                or len(zones)!=len(map_data['zones']) or map_data['entry'] not in zones
                 or map_data['exit'] not in zones or map_data['spawn'] not in zones
                 or any(a not in zones or b not in zones or a==b for a,b in map_data['edges'])
                 or any(door['edge'] not in map_data['edges'] for door in map_data['doors'])

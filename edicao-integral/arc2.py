@@ -27,9 +27,11 @@ class Arc2:
         card=ARC_CARDS['EXP-MIS-103']
         exp=self.world.expeditions.get(expedition_id)
         location=card['location']
-        maximum=next(loc['searches'] for loc in DATA['locations'] if loc['id']==location)
         if (not exp or exp.destination!=location or exp.remaining!=0 or exp.returning
-                or self.world.searches[location]>=maximum or self.world.flags.get('access_card')):
+                or not any(entry.get('expedition')==expedition_id
+                           and entry.get('location')==location and entry.get('action')=='search'
+                           for entry in self.world.log)
+                or self.world.flags.get('access_card')):
             raise ValueError('Cartão inacessível')
         self.world.flags['access_card']=True
         self.world.log.append({'day':self.world.day,'mission':card['id'],'result':'card'})
@@ -56,10 +58,19 @@ class Arc2:
                 or any('transmitter' in other.special_cargo
                        for other in self.world.expeditions.values())):
             raise ValueError('Transmissor inacessível')
+        encounter=self.world.encounters.get(expedition_id)
+        operator=next((hero_id for hero_id,zone in encounter['heroes'].items()
+                       if zone==6 and self.world.heroes[hero_id]['health']>0
+                       and self.world.heroes[hero_id]['actions']>0),None) if encounter else None
+        if (not encounter or encounter['map']!='military_installation'
+                or operator is None
+                or any(enemy['zone']==6 for enemy in encounter['enemies'].values())):
+            raise ValueError('Objetivo militar fora de alcance ou ocupado')
         capacity=(6*len(exp.heroes) if not exp.vehicle_id else
                   next(v['cargo_capacity'] for v in DATA['vehicles'] if v['id']==exp.vehicle_id))
         if sum(exp.cargo.values())+len(exp.special_cargo)+1>capacity:
             raise ValueError('Carga insuficiente')
+        self.world.heroes[operator]['actions']-=1
         exp.special_cargo.append('transmitter')
         self.world.log.append({'day':self.world.day,'mission':card['id'],'result':'loaded'})
 

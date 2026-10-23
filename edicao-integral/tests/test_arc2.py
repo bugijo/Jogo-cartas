@@ -7,6 +7,7 @@ ROOT=Path(__file__).resolve().parents[1]
 sys.path.insert(0,str(ROOT))
 from system import World
 from arc2 import Arc2, ARC_CARDS
+from tactics import TacticalGame
 
 
 class Arc2Tests(unittest.TestCase):
@@ -69,9 +70,16 @@ class Arc2Tests(unittest.TestCase):
         w.flags['radio_code']=True
         w.flags['access_card']=True
         w.vehicles['EXP-VEI-01']={'location':'camp','health':3}
+        w.give_item(heroes[0],'crowbar','EXP-EQU-002','hand')
         w.open_expedition('a',[heroes[0]],'EXP-LOC-06',vehicle_id='EXP-VEI-01')
         for _ in range(3):w.advance_expedition('a')
         arc=Arc2(w)
+        with self.assertRaises(ValueError):arc.load_transmitter('a')
+        game=TacticalGame.start(w,'a','military_installation')
+        game.move(heroes[0],2)
+        w.begin_round()
+        game.breach(heroes[0],2,6,'crowbar')
+        game.move(heroes[0],6)
         arc.load_transmitter('a')
         with self.assertRaises(ValueError):arc.load_transmitter('a')
 
@@ -80,6 +88,25 @@ class Arc2Tests(unittest.TestCase):
         w.vehicles['EXP-VEI-01']={'location':'camp','health':3}
         with self.assertRaises(ValueError):
             w.open_expedition('illegal',['ZC-HER-0001'],'EXP-LOC-06',vehicle_id='EXP-VEI-01')
+
+    def test_access_card_requires_search_by_current_team(self):
+        w=World.new(2,['ZC-HER-0001','ZC-HER-0002'],{'food':4,'water':4})
+        w.open_expedition('first',['ZC-HER-0001'],'EXP-LOC-05')
+        for _ in range(3):w.advance_expedition('first')
+        w.search('first')
+        w.begin_return('first')
+        for _ in range(3):w.advance_expedition('first')
+        w.open_expedition('second',['ZC-HER-0002'],'EXP-LOC-05')
+        for _ in range(3):w.advance_expedition('second')
+        with self.assertRaises(ValueError):Arc2(w).recover_access_card('second')
+
+    def test_military_map_cannot_be_substituted(self):
+        w=self.defense_world();w.stock['fuel']=6
+        w.flags['military_access']=False
+        w.vehicles['EXP-VEI-01']={'location':'camp','health':3}
+        Arc2(w).authorize_installation('military',['ZC-HER-0001'],'EXP-VEI-01')
+        for _ in range(3):w.advance_expedition('military')
+        with self.assertRaises(ValueError):TacticalGame.start(w,'military','market_intro')
 
     def test_code_card_access_and_transport_persist(self):
         w=World.new(8,['ZC-HER-0001','ZC-HER-0002'],
@@ -99,9 +126,16 @@ class Arc2Tests(unittest.TestCase):
         w.begin_return('trip')
         for _ in range(3):w.advance_expedition('trip')
         w.vehicles['EXP-VEI-01']={'location':'camp','health':3}
+        w.give_item(hero,'crowbar','EXP-EQU-002','hand')
         arc.authorize_installation('military',[hero],'EXP-VEI-01')
         for _ in range(3):w.advance_expedition('military')
+        game=TacticalGame.start(w,'military','military_installation')
+        game.move(hero,2)
+        w.begin_round()
+        game.breach(hero,2,6,'crowbar')
+        game.move(hero,6)
         arc.load_transmitter('military')
+        w.begin_round();game.move(hero,2);game.move(hero,1);game.finish()
         w.begin_return('military')
         with tempfile.TemporaryDirectory() as directory:
             path=Path(directory)/'arc.json';w.save(path)

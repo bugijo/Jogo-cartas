@@ -506,6 +506,8 @@ class World:
         if capacity <= 0:
             return {}
         self.searches[location_id] -= 1
+        self.log.append({'day':self.day,'expedition':expedition_id,
+                         'location':location_id,'action':'search'})
         loot = LOCATIONS[location_id]['loot']
         found = {}
         scouts=sum(self.npcs[n]['level'] for n in exp.crew

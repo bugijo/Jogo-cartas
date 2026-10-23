@@ -71,3 +71,7 @@ A ativação zumbi agora persegue heróis apenas dentro de alcance e linha de vi
 ## Unidade 16 — defesa final experimental
 
 `Arc2.final_defense` abre defesa no abrigo apenas após os portões narrativos e retorno do transmissor. O mapa funcional `camp_final` tem quatro zonas; três ondas catalogadas, movimento, ataques, integridade do objetivo, vitória, derrota, retirada e salvamento foram implementados. Foram aprovados 57 testes experimentais e o validador confirmou 125 IDs, sete cartas e dois mapas táticos. A prova de vitória isolou a progressão das ondas e **não** equivale a uma vitória tática completa. Faltam mapa militar local, ligação canônica com A Cisterna e prova de viabilidade dos equipamentos contra todas as ondas. A edição 0.2 permanece intacta.
+
+## Unidade 17 — instalação militar explorável
+
+`military_installation` é uma planta funcional de 16 zonas, objetivo 6 e porta 2–6. O transmissor exige encontro ativo, herói vivo com PA no objetivo e zona livre, com custo de uma ação; o mapa militar não pode ser substituído pelo Mercado. O cartão da estação exige busca feita pela expedição atual, eliminando um atalho por busca anterior de outra equipe. Foram aprovados 59 testes experimentais; o validador confirma três mapas táticos e 125 IDs. Falta arte/PDF e prova completa de campanha.

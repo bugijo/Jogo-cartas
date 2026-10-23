@@ -28,6 +28,10 @@ class TacticalGame:
             raise ValueError('Não pode iniciar encontro')
         map_data=TACTICS['maps'][map_id]
         destination=world.expeditions[expedition_id].destination
+        if map_data.get('location') and map_data['location']!=destination:
+            raise ValueError('Mapa incompatível com o destino')
+        if destination=='EXP-LOC-06' and map_id!='military_installation':
+            raise ValueError('Instalação exige mapa militar')
         if any(other.destination==destination and other_id in world.encounters
                for other_id,other in world.expeditions.items()):
             raise ValueError('Local já em uso por outra equipe')
