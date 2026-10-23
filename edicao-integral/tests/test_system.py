@@ -221,5 +221,37 @@ class SystemTests(unittest.TestCase):
         self.assertEqual(module.aggregate(123,3),module.aggregate(123,3))
         self.assertEqual(module.aggregate(123,3)['total_replays'],15)
 
+    def test_catalog_validation_and_full_state_roundtrip(self):
+        spec3=importlib.util.spec_from_file_location('integral_validator',ROOT/'validate_data.py')
+        module=importlib.util.module_from_spec(spec3);spec3.loader.exec_module(module)
+        self.assertEqual(module.validate()['unique_ids'],117)
+        w=world(seed=9,stock={'food':6,'water':6,'wood':6,'scrap':6,'fuel':3,'ammo':1,'medicine':1})
+        hero=next(iter(w.heroes))
+        w.give_item(hero,'bag-01','EXP-EQU-003','torso')
+        w.give_item(hero,'knife-01','EXP-EQU-001','backpack',x=0,y=0)
+        self.assertTrue(w.recruit('EXP-NPC-10'))
+        w.assign('EXP-NPC-10','guard')
+        self.assertTrue(w.start_project('garden'))
+        w.work_project('garden',2)
+        self.assertTrue(w.start_project('workshop'))
+        w.work_project('workshop')
+        w.searches['EXP-LOC-05']=0
+        self.assertTrue(w.establish_outpost('EXP-LOC-05','EXP-NPC-10'))
+        w.active_crises.append('EXP-CRI-01')
+        w.crises_last_day['EXP-CRI-01']=0
+        w.damage_structure('garden')
+        w.open_expedition('e',[hero],'EXP-LOC-03')
+        w.advance_expedition('e');w.advance_expedition('e')
+        w.search('e')
+        self.assertTrue(w.recover_vehicle('EXP-VEI-01','e'))
+        w.begin_return('e')
+        with tempfile.TemporaryDirectory() as directory:
+            path=Path(directory)/'state.json';w.save(path)
+            loaded=system.World.load(path)
+            self.assertEqual(loaded,w)
+            for obj in (w,loaded):
+                obj.advance_expedition('e');obj.advance_expedition('e');obj.end_day()
+            self.assertEqual(loaded,w)
+
 
 if __name__=='__main__':unittest.main()

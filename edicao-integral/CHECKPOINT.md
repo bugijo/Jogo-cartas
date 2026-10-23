@@ -27,3 +27,7 @@ Retomar por `python -m unittest discover -s edicao-integral/tests -q` e `python 
 O veículo recuperado na oficina volta com a equipe e requer combustível; viagens futuras reservam combustível de ida e volta. Oficina fabrica munição, enfermaria cura um ferimento e reservatório bombeia água, cada qual com custo e limite diário definidos no catálogo. Crises agora têm perdas e danos próprios, com cooldown e sem repetição enquanto ativas. Vinte e cinco testes experimentais passaram; o ensaio de 500 rotas foi regenerado e descrito em `VALIDATION.md`. Essas receitas e efeitos ainda são hipóteses da edição experimental.
 
 Verificação final desta rodada: `git diff --check` limpo; 25 testes novos e 51 testes legados aprovados. Ensaio de 500 trajetórias reproduzido com semente inicial 20261023. O teste legado registrou apenas `ResourceWarning` de arquivo de imagem não fechado em `tests/test_boards06.py:64`; não há alteração no código antigo. Nenhuma impressão, partida humana ou campanha completa foi executada.
+
+## Unidade 6 — validação cruzada
+
+`validate_data.py` confirma 117 IDs globais únicos, atributos e 70 marcos, limites de NPC, referências de crises, custos, receitas e equipamento. Novo teste salva/restaura um estado combinado com dois heróis, NPC de defesa, equipamento na mochila, construção concluída, projeto em curso, crise ativa, posto avançado, busca, carga e veículo em retorno; o estado e o dia seguinte são idênticos após carregar. Total: 26 testes experimentais aprovados. O teste não transforma os perfis e missões pendentes em conteúdo jogável.
