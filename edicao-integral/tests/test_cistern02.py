@@ -77,5 +77,53 @@ class Cistern02Tests(unittest.TestCase):
         self.assertEqual(game.stage_work,0)
         self.assertEqual(game.works_today,0)
 
+    def test_individual_deprivation_and_dog_alert(self):
+        game=Cistern02.new(STARTERS[:2],[LINK_IDS[10],LINK_IDS[0]])
+        self.assertEqual(len(game.people),3)
+        dog=next(person for person in game.people if person['kind']=='dog')
+        humans=[person for person in game.people if person['kind']=='hero']
+        game.food=[1];game.water=[1]
+        order=[humans[0]['id'],humans[1]['id'],dog['id']]
+        first=game.meal(food_priority=order,water_priority=order)
+        self.assertEqual((first['food_missing'],first['water_missing']),(2,2))
+        self.assertFalse(dog['alert'])
+        self.assertEqual(humans[1]['streak'],1)
+        game.next_day();game.food=[];game.water=[]
+        game.meal()
+        self.assertEqual(humans[1]['wounds'],1)
+        game.next_day();game.meal()
+        self.assertEqual(game.health,0)
+        self.assertTrue(humans[1]['hungry'])
+        self.assertTrue(humans[1]['thirsty'])
+
+    def test_priority_must_list_each_consumer_once(self):
+        game=Cistern02.new(STARTERS[:2],LINK_IDS[:2])
+        with self.assertRaises(ValueError):game.meal(food_priority=[STARTERS[0]]*2)
+        self.assertEqual(game.meal_day,0)
+
+    def test_pressure_queue_and_canonical_siege_losses(self):
+        game=Cistern02.new(STARTERS[:2],[LINK_IDS[10],LINK_IDS[0]])
+        game.raise_pressure(3)
+        game.raise_pressure(1)
+        self.assertEqual(game.pending_sieges,['Pressão'])
+        result=game.resolve_siege(strength=5,guards=[],rolls=[],ammo=0,
+                                  damage_targets=['Portão'])
+        self.assertEqual(result['gap'],2)
+        self.assertEqual(game.pressure,1)
+        self.assertEqual(game.pending_sieges,[])
+        self.assertNotIn('Portão',game.structures)
+        self.assertEqual(sum(game.food),4)
+        with self.assertRaises(ValueError):game.resolve_siege(4,[],[],0,[])
+
+    def test_siege_must_use_preallocated_guards_and_ammo(self):
+        game=Cistern02.new(STARTERS[:2],LINK_IDS[:2])
+        game.queue_siege('Missão dia 3')
+        game.plan_guards([STARTERS[0]])
+        with self.assertRaises(ValueError):
+            game.resolve_siege(4,[STARTERS[0]],[5],3,[])
+        result=game.resolve_siege(4,[STARTERS[0]],[5],1,[])
+        self.assertEqual(result['defense'],4)
+        self.assertEqual(game.ammo,1)
+
 
 if __name__=='__main__':unittest.main()

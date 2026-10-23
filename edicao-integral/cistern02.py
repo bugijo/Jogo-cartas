@@ -32,6 +32,7 @@ class Cistern02:
     capacity: int
     food: list[int]
     water: list[int]
+    people: list[dict] = field(default_factory=list)
     meat: list[int] = field(default_factory=list)
     materials: int = 3
     day: int = 1
@@ -46,6 +47,11 @@ class Cistern02:
     morale: int = 5
     health: int = 5
     pressure: int = 0
+    ammo: int = 2
+    structures: list[str] = field(default_factory=lambda:['Portão','Cozinha','Depósito'])
+    pending_sieges: list[str] = field(default_factory=list)
+    planned_guards: list[str] = field(default_factory=list)
+    siege_day: int = 0
 
     @classmethod
     def new(cls,founders:list[str] | tuple[str,...],links:list[str] | tuple[str,...]) -> 'Cistern02':
@@ -61,7 +67,22 @@ class Cistern02:
         if humans>capacity:raise ValueError('Barracas insuficientes')
         consumers=humans+dogs
         lots=[4]*ceil(2*consumers/4)
-        return cls(founders,links,consumers,humans,dogs,capacity,lots.copy(),lots.copy())
+        people=[];resident_no=0;dog_no=0
+        for hero,link in zip(founders,links):
+            people.append(cls._person(hero,'hero',hero))
+            if LINK_PEOPLE[link][0]:
+                resident_no+=1
+                kind='child' if link in LINK_IDS[8:10] else 'adult'
+                people.append(cls._person(f'R{resident_no:02d}',kind,hero))
+            if LINK_PEOPLE[link][1]:
+                dog_no+=1
+                people.append(cls._person(f'D{dog_no:02d}','dog',hero))
+        return cls(founders,links,consumers,humans,dogs,capacity,lots.copy(),lots.copy(),people)
+
+    @staticmethod
+    def _person(identifier:str,kind:str,family:str) -> dict:
+        return {'id':identifier,'kind':kind,'family':family,'hungry':False,
+                'thirsty':False,'streak':0,'wounds':0,'alert':kind=='dog'}
 
     @property
     def consumers(self) -> int:
@@ -76,6 +97,57 @@ class Cistern02:
             raise ValueError('Relógio diário excedido')
         self.clock+=amount
 
+    def raise_pressure(self,amount:int) -> None:
+        if amount<0:raise ValueError('Pressão negativa')
+        old=self.pressure
+        self.pressure=min(3,self.pressure+amount)
+        if old<3 and self.pressure==3:self.pending_sieges.append('Pressão')
+
+    def queue_siege(self,trigger:str) -> None:
+        if not trigger:raise ValueError('Gatilho vazio')
+        self.pending_sieges.append(trigger)
+
+    def plan_guards(self,heroes:list[str]) -> None:
+        if (len(heroes)>3 or len(set(heroes))!=len(heroes)
+                or any(hero not in self.founders for hero in heroes)):
+            raise ValueError('Vigias inválidos')
+        self.planned_guards=list(heroes)
+
+    def resolve_siege(self,strength:int,guards:list[str],rolls:list[int],ammo:int,
+                      damage_targets:list[str]) -> dict:
+        if (not self.pending_sieges or self.siege_day==self.day or strength<0
+                or guards!=self.planned_guards or len(rolls)!=len(guards)
+                or any(not 1<=die<=6 for die in rolls)
+                or not 0<=ammo<=min(2,self.ammo)):
+            raise ValueError('Cerco não pode ser resolvido nesta noite')
+        defense=(2 if 'Portão' in self.structures else 0)
+        defense+=int('Torre' in self.structures)
+        defense+=int(any(person['kind']=='dog' and person['alert'] for person in self.people))
+        defense+=sum(die>=4 for die in rolls)+ammo
+        gap=max(0,strength-defense)
+        target_count=0 if gap==0 else 1 if gap<=2 else 2
+        eligible=[name for name in self.structures if name not in ('Barraca','Casa simples')]
+        if (len(damage_targets)!=min(target_count,len(eligible))
+                or len(set(damage_targets))!=len(damage_targets)
+                or any(name not in eligible for name in damage_targets)):
+            raise ValueError('Escolha de estruturas danificadas inválida')
+        self.ammo-=ammo
+        for name in damage_targets:self.structures.remove(name)
+        food_lost=0;water_lost=0
+        if gap:
+            food_lost=self._take(self.food,4)
+            food_lost+=self._take(self.meat,4-food_lost)
+            if gap>=3:
+                water_lost=self._take(self.water,4)
+                self.morale=max(0,self.morale-1)
+            self.health=max(0,self.health-(target_count-len(damage_targets)))
+        trigger=self.pending_sieges.pop(0)
+        if trigger=='Pressão':self.pressure=1
+        self.siege_day=self.day
+        return {'trigger':trigger,'strength':strength,'defense':defense,'gap':gap,
+                'food_lost':food_lost,'water_lost':water_lost,
+                'damaged':damage_targets.copy(),'health':self.health,'morale':self.morale}
+
     @staticmethod
     def _take(lots:list[int],amount:int) -> int:
         taken=0
@@ -85,20 +157,49 @@ class Cistern02:
             if lots[0]==0:lots.pop(0)
         return taken
 
-    def meal(self) -> dict:
-        """Consumo agregado; destinatários da escassez ainda requerem portabilidade."""
+    def meal(self,food_priority:list[str] | None=None,
+             water_priority:list[str] | None=None) -> dict:
+        """Resolve por pessoa; prioridades expressam a escolha do grupo na escassez."""
         if self.meal_day==self.day:
             raise ValueError('Refeição do dia já resolvida')
-        need=self.consumers
-        meat_used=self._take(self.meat,need)
-        food_used=self._take(self.food,need-meat_used)
-        water_used=self._take(self.water,need)
+        ids=[person['id'] for person in self.people]
+        food_priority=ids.copy() if food_priority is None else food_priority
+        water_priority=ids.copy() if water_priority is None else water_priority
+        if (len(set(ids))!=len(ids) or len(food_priority)!=len(ids)
+                or len(water_priority)!=len(ids)
+                or set(food_priority)!=set(ids) or set(water_priority)!=set(ids)
+                or len(set(food_priority))!=len(ids) or len(set(water_priority))!=len(ids)):
+            raise ValueError('Prioridade deve conter cada consumidor uma vez')
+        fed=set();watered=set();meat_used=0;food_used=0;water_used=0
+        for identifier in food_priority:
+            meat_portion=self._take(self.meat,1)
+            food_portion=0 if meat_portion else self._take(self.food,1)
+            meat_used+=meat_portion;food_used+=food_portion
+            if meat_portion or food_portion:fed.add(identifier)
+        for identifier in water_priority:
+            received=self._take(self.water,1)
+            water_used+=received
+            if received:watered.add(identifier)
         expired=sum(self.meat)
         self.meat.clear()
+        for person in self.people:
+            identifier=person['id']
+            person['hungry']=identifier not in fed
+            person['thirsty']=identifier not in watered
+            deprived=person['hungry'] or person['thirsty']
+            person['streak']=person['streak']+1 if deprived else 0
+            if person['kind']=='dog':person['alert']=not deprived
+            elif person['streak']>=2:
+                person['wounds']=min(3,person['wounds']+1)
+        if sum(person['kind']!='dog' and person['streak']>=3
+               for person in self.people)>=ceil(self.humans/4):
+            self.health=0
         self.meal_day=self.day
-        return {'consumers':need,'meat_used':meat_used,'food_used':food_used,
-                'water_used':water_used,'food_missing':need-meat_used-food_used,
-                'water_missing':need-water_used,'meat_expired':expired}
+        return {'consumers':self.consumers,'meat_used':meat_used,'food_used':food_used,
+                'water_used':water_used,'food_missing':self.consumers-len(fed),
+                'water_missing':self.consumers-len(watered),'meat_expired':expired,
+                'hungry':[p['id'] for p in self.people if p['hungry']],
+                'thirsty':[p['id'] for p in self.people if p['thirsty']]}
 
     def receive_part(self,name:str) -> None:
         if name not in {stage['part'] for stage in STAGES.values()} or name in self.parts:
