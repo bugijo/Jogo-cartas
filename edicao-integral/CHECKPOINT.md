@@ -14,6 +14,19 @@ os atalhos antigos e confirmam o bloqueio. `TACTICAL_FUEL_AUDIT.md` registra
 paridade canônica e decisões pendentes. Uma implementação isolada de expedição
 0.2 está em andamento em `cistern_tactics02.py`; ainda não certifica vitória.
 
+## Unidade 31 — expedição tática parcial e entrega comprovada
+
+`cistern_tactics02.py` usa as seis plantas canônicas (16 zonas, 21 conectores,
+cinco portas), cobra viagem e rodadas no relógio 0.2 e executa PA, movimento,
+portas, ataque, ativação inimiga, Horda e saída. Oficina/Estação exigem presença
+em O1/O2, PA, carga e teste da Bomba para retirar as peças. A camada integrada
+salva/resta a expedição e só registra a peça após retorno legal; emergência não
+entrega carga e limita a uma expedição por dia. `collect_part()` segue fechado.
+Este lote **não** inclui ainda Saque, provisões, resgates, cartas de Viagem,
+van/Posto ou estado persistente do mapa em revisitas; não permite campanha
+completa nem `verified_victory`. Os testes experimentais cobrem o núcleo e
+regressões de salvamento/entrega; suíte legada permanece sem alteração.
+
 
 Base preservada: `cebb76a` em `arte/kit-pos-apocaliptico-provas`. Nova branch: `evolucao/zona-zero-sistema-v1`. Branch padrão remota: `fisico/antes-que-a-agua-acabe`; nenhuma delas foi alterada por merge.
 

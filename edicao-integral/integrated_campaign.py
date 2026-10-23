@@ -12,6 +12,7 @@ from pathlib import Path
 
 from arc2 import Arc2
 from cistern02 import Cistern02, LINK_IDS, STARTERS
+from cistern_tactics02 import Tactical02
 from system import Expedition, World
 
 
@@ -52,6 +53,10 @@ class IntegratedCampaign:
     rewards: list[str] = field(default_factory=list)
     world: World | None = None
     terminal_reason: str | None = None
+    tactical: Tactical02 | None = None
+    expedition_days: list[int] = field(default_factory=list)
+    visited_destinations: list[str] = field(default_factory=list)
+    delivered_objectives: list[str] = field(default_factory=list)
 
     STATUSES = {"RUNNING", "VICTORY", "DEFEAT", "IMPOSSIBLE", "PAUSED"}
 
@@ -94,16 +99,61 @@ class IntegratedCampaign:
         raise NotImplementedError(
             "Coleta exige expedição 0.2, PA, carga e retorno; integração pendente")
 
+    def start_expedition(self, destination: str, team: list[str],
+                         route: str = "short") -> Tactical02:
+        self._require_running()
+        if self.world is not None or self.tactical is not None:
+            raise ValueError("Expedição indisponível nesta fase")
+        if self.cistern.day in self.expedition_days:
+            raise ValueError("Limite de uma expedição por dia")
+        tactical = Tactical02.start(
+            self.cistern, destination, team, route,
+            taken_before=self.delivered_objectives,
+            first_visit=destination.lower() not in self.visited_destinations)
+        self.tactical = tactical
+        self.expedition_days.append(self.cistern.day)
+        self.visited_destinations.append(destination.lower())
+        return tactical
+
+    def return_expedition(self) -> list[dict]:
+        self._require_running()
+        if self.tactical is None:
+            raise ValueError("Nenhuma expedição ativa")
+        tactical = self.tactical
+        if not tactical.finished:
+            tactical.finish()
+        proof = tactical.delivery_proof()
+        for receipt in proof:
+            key = f"{receipt['destination']}:{receipt['part']}"
+            if key in self.delivered_objectives:
+                raise ValueError("Objetivo já entregue")
+            if receipt['part'] in PART_MISSIONS:
+                self.cistern.receive_part(receipt['part'])
+            self.delivered_objectives.append(key)
+        self.tactical = None
+        return proof
+
+    def emergency_return(self) -> None:
+        self._require_running()
+        if self.tactical is None:
+            raise ValueError("Nenhuma expedição ativa")
+        self.tactical.emergency()
+        self.tactical = None
+
     def meal(self) -> dict:
         self._require_running()
         if self.world is not None:
             raise ValueError("Use advance_day no arco da Última Transmissão")
+        if self.tactical is not None:
+            raise ValueError("Resolva a expedição antes da refeição")
         return self.cistern.meal()
 
     def next_cistern_day(self) -> None:
         self._require_running()
         if self.world is not None:
             raise ValueError("A Cisterna já foi concluída")
+        if self.tactical is not None:
+            raise ValueError("Expedição ainda não retornou")
         self.cistern.next_day()
 
     def complete_cistern(self) -> None:
@@ -166,6 +216,7 @@ class IntegratedCampaign:
             raise ValueError("Estado de campanha inválido")
         payload = asdict(self)
         payload["cistern"] = asdict(self.cistern)
+        payload["tactical"] = self.tactical.snapshot() if self.tactical else None
         payload["world"] = _world_payload(self.world) if self.world is not None else None
         payload["world"] = {"schema": 1, **payload["world"]} if payload["world"] else None
         path.write_text(json.dumps(payload, ensure_ascii=False, indent=2) + "\n",
@@ -177,6 +228,9 @@ class IntegratedCampaign:
         if payload.pop("schema", None) != 1:
             raise ValueError("Esquema de campanha desconhecido")
         payload["cistern"] = Cistern02(**payload["cistern"])
+        if payload.get("tactical") is not None:
+            payload["tactical"] = Tactical02.from_snapshot(payload["cistern"],
+                                                           payload["tactical"])
         if payload.get("world") is not None:
             payload["world"] = _world_from_payload(payload["world"])
         campaign = cls(schema=1, **payload)

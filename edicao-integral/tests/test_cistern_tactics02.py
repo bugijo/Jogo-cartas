@@ -1,0 +1,135 @@
+"""Testes da expedição tática 0.2 sem dependências externas."""
+import json
+import sys
+import unittest
+from pathlib import Path
+
+sys.path.insert(0, str(Path(__file__).resolve().parents[1]))
+from cistern02 import Cistern02, LINK_IDS, STARTERS
+from cistern_tactics02 import Tactical02, MAPS
+
+
+def chapter():
+    return Cistern02.new(list(STARTERS[:2]), list(LINK_IDS[:2]))
+
+
+class Tactical02Tests(unittest.TestCase):
+    def test_invalid_equipment_does_not_spend_travel_time(self):
+        c = chapter(); h = STARTERS[0]
+        with self.assertRaises(ValueError):
+            Tactical02.start(c, 'Mercado', [h], equipment={h: ['Faca'] * 5})
+        self.assertEqual(c.clock, 0)
+
+    def test_six_maps_clock_and_geometry(self):
+        for name, m in MAPS.items():
+            with self.subTest(name=name):
+                c = chapter(); t = Tactical02.start(c, name, list(STARTERS[:2]))
+                self.assertEqual((len(m['zones']), len(m['edges']), len(m['doors'])), (16,21,5))
+                self.assertEqual((c.clock,t.round_no), (2,1))
+                self.assertTrue(all(z == m['entry'] for z in t.positions.values()))
+                self.assertEqual(len(t.enemies), 2 if name == 'estação' else 1)
+
+    def test_movement_door_and_ap(self):
+        c = chapter(); h = STARTERS[0]; t = Tactical02.start(c,'Mercado',[h])
+        with self.assertRaises(ValueError): t.move(h,5)
+        t.open_door(h,5); t.move(h,5)
+        self.assertEqual((t.positions[h],t.ap[h]), (5,1))
+        with self.assertRaises(ValueError): t.move(h,7)
+        with self.assertRaises(ValueError): t.open_door(h,1)
+
+    def test_blocked_door(self):
+        c = chapter(); h = STARTERS[0]; t = Tactical02.start(c,'Mercado',[h])
+        t.positions[h] = 7
+        with self.assertRaises(ValueError): t.open_door(h,8)
+        t.open_door(h,8,'Pé de cabra')
+        self.assertEqual(t.ap[h],1)
+        self.assertIn([7,8],t.doors_open)
+
+    def test_combat_natural_rolls_and_ammo(self):
+        c = chapter(); h = STARTERS[0]; t = Tactical02.start(c,'Mercado',[h])
+        t.enemies.clear(); t._spawn('Bruto',1); target=t.enemies[0]['id']
+        self.assertFalse(t.attack(h,target,'Pé de cabra',1))
+        self.assertTrue(t.attack(h,target,'Pé de cabra',6))
+        self.assertEqual(t.enemies[0]['hp'],2)
+        with self.assertRaises(ValueError): t.attack(h,target,'Pistola',6)
+        t.equipment[h].append('Pistola')
+        self.assertTrue(t.attack(h,target,'Pistola',6))
+        self.assertEqual(c.ammo,1)
+
+    def test_complete_round_horde_and_exit(self):
+        c = chapter(); h = STARTERS[0]; t = Tactical02.start(c,'Mercado',[h])
+        self.assertFalse(t.can_exit()); t.end_round(); self.assertTrue(t.can_exit())
+        with self.assertRaises(ValueError): t.move(h,2)
+        t.begin_round(); t.end_round()
+        self.assertTrue(any(x['event']=='horde' for x in t.log))
+        t.finish(); self.assertEqual(c.clock,4)
+
+    def test_first_market_round_protects_only_first_visit(self):
+        c = chapter(); h = STARTERS[0]
+        first=Tactical02.start(c,'Mercado',[h])
+        first.enemies[0]['zone']=1
+        first.end_round()
+        self.assertEqual(next(p for p in c.people if p['id']==h)['wounds'],0)
+        self.assertEqual(first.local_pressure,1)
+        c2=chapter(); later=Tactical02.start(c2,'Mercado',[h],first_visit=False)
+        later.enemies[0]['zone']=1
+        later.end_round()
+        self.assertEqual(next(p for p in c2.people if p['id']==h)['wounds'],1)
+
+    def test_snapshot_and_emergency(self):
+        c = chapter(); h = STARTERS[0]; t = Tactical02.start(c,'Mercado',[h])
+        restored=Tactical02.from_snapshot(c,json.loads(json.dumps(t.snapshot())))
+        self.assertEqual(restored.snapshot(),t.snapshot())
+        restored.emergency()
+        self.assertEqual(restored.fatigue[h],3)
+        self.assertEqual(next(p for p in c.people if p['id']==h)['wounds'],1)
+
+    def test_long_route(self):
+        c = chapter(); h = STARTERS[0]; t = Tactical02.start(c,'Oficina',[h],'long')
+        self.assertEqual((c.clock,len(t.enemies)),(3,0))
+        t.end_round(); t.finish(); self.assertEqual(c.clock,5)
+
+    def test_part_requires_objective_action_and_safe_return(self):
+        c = chapter(); h = STARTERS[0]; t = Tactical02.start(c,'Oficina',[h],'long')
+        with self.assertRaises(ValueError): t.pickup_part(h,'Conexões')
+        t.move(h,2); t.move(h,3)
+        t.end_round(); t.begin_round(); t.open_door(h,7,'Pé de cabra'); t.move(h,7)
+        t.end_round(); t.begin_round()
+        self.assertTrue(t.pickup_part(h,'Conexões'))
+        self.assertEqual(t.delivery_proof(),[])
+        t.end_round(); t.begin_round(); t.move(h,3); t.move(h,2); t.move(h,1)
+        t.end_round(); t.finish()
+        proof=t.delivery_proof()
+        self.assertEqual([(p['part'],p['zone']) for p in proof],[('Conexões',7)])
+        self.assertEqual(c.parts,{})  # integrador aceita certificado uma vez
+
+    def test_pump_failure_costs_ap_and_pressure(self):
+        c = chapter(); h = STARTERS[0]; t = Tactical02.start(c,'Estação',[h])
+        t.positions[h]=7
+        self.assertFalse(t.pickup_part(h,'Bomba',1))
+        self.assertEqual((t.ap[h],c.pressure),(1,1))
+        with self.assertRaises(ValueError): t.pickup_part(h,'Bomba',6)
+
+    def test_enemy_breaks_door_before_crossing(self):
+        c = chapter(); h = STARTERS[0]; t = Tactical02.start(c,'Mercado',[h],first_visit=False)
+        t.enemies.clear(); t._spawn('Errante',5)
+        t.end_round()
+        self.assertEqual(t.enemies[0]['zone'],5)
+        self.assertIn([1,5],t.doors_open)
+        t.begin_round(); t.end_round()
+        self.assertEqual(t.enemies[0]['zone'],1)
+        self.assertEqual(next(p for p in c.people if p['id']==h)['wounds'],0)
+
+    def test_two_shots_spawn_one_errant_not_next_round(self):
+        c = chapter(); h=STARTERS[0]; t=Tactical02.start(c,'Mercado',[h],
+            equipment={h:['Pé de cabra','Pistola']},first_visit=False)
+        t.enemies.clear(); t._spawn('Bruto',1)
+        enemy=t.enemies[0]['id']
+        t.attack(h,enemy,'Pistola',1); t.attack(h,enemy,'Pistola',1)
+        t.end_round()
+        self.assertEqual(len(t.enemies),2)
+        self.assertEqual(t.enemies[-1]['zone'],16)
+        self.assertEqual(c.ammo,0)
+
+
+if __name__ == '__main__': unittest.main()

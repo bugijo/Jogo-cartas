@@ -7,8 +7,11 @@
 ## Fluxo
 
 1. `new(seed, founders, links)` usa a preparação canônica de `Cistern02`.
-2. `collect_part()` recusa entregar qualquer peça. O método antigo debitava
-   dois segmentos sem entrada, PA, teste, carga ou retorno e foi bloqueado.
+2. `collect_part()` continua bloqueado. `start_expedition()` abre uma viagem
+   pelo mapa canônico; `Tactical02.pickup_part()` exige zona, PA, carga e teste
+   da Bomba; `return_expedition()` entrega uma peça apenas após saída legal e
+   retorno. Retirada de emergência não entrega carga. O método antigo debitava
+   dois segmentos sem essas operações.
 3. O relógio, refeições, reservas e trabalho continuam sendo validados por
    `Cistern02`. O filtro só é considerado concluído quando A/B/C realmente
    terminam.
@@ -21,8 +24,10 @@
 
 ## Limites conhecidos
 
-O adaptador precisa receber recibos verificáveis de expedição e migrar todo o
-estado canônico antes de emitir `verified_victory`. Há incompatibilidade entre
+O núcleo tático ainda não cobre busca de provisões, resgates, cartas de Viagem,
+veículo, estado de revisita e fila completa do dia. O adaptador precisa
+comprovar também essas operações e migrar todo o estado canônico antes de
+emitir `verified_victory`. Há incompatibilidade entre
 12 fundadores possíveis no kit 0.2 e dez protagonistas experimentais. O Posto
 e sua economia de combustível ainda faltam no fluxo regional. A defesa e seus
 mapas continuam experimentais.
