@@ -23,7 +23,7 @@ class IntegratedCampaignTests(unittest.TestCase):
         game.cistern.reserve("B"); game.cistern.work(1)
         game.cistern.reserve("C")
         game.meal(); game.next_cistern_day(); game.cistern.work(2)
-        game.meal(); game.next_cistern_day(); game.meal()
+        game.meal()
         return game
 
     def test_parts_require_mission_and_choices_are_persistent(self):
