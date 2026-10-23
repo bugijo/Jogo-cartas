@@ -57,6 +57,7 @@ class World:
     used_structure_actions: dict[str, int] = field(default_factory=dict)
     encounters: dict[str, dict] = field(default_factory=dict)
     decisions: dict[str, str] = field(default_factory=dict)
+    site_states: dict[str, dict] = field(default_factory=dict)
     garden_worker: str | None = None
     guarding: dict[str, int] = field(default_factory=dict)
     rng_state: object = None
@@ -565,6 +566,7 @@ class World:
                          'left_behind':left_behind})
         for h in exp.heroes:
             self.heroes[h]['location'] = 'camp'
+            self.heroes[h]['combat_xp'] = 0
         for n in exp.crew:
             self.npcs[n]['location'] = 'camp'
         if exp.vehicle_id:
@@ -619,7 +621,8 @@ class World:
             if loc['renewal'] == 'natural' and self.searches[loc_id] < loc['searches']:
                 self.searches[loc_id] += 1
         for hero in self.heroes.values():
-            hero['combat_xp'] = 0
+            if hero['location']=='camp':
+                hero['combat_xp'] = 0
         crisis = self._roll_crisis()
         result = {'day':self.day,'produced':produced,'missing':missing,'stock':dict(self.stock),'crisis':crisis}
         self.log.append(result)

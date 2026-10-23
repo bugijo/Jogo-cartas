@@ -39,6 +39,18 @@ class SystemTests(unittest.TestCase):
                 else:
                     self.assertGreaterEqual(old,skill['bonus'])
 
+    def test_combat_xp_cap_persists_across_days_until_expedition_returns(self):
+        w=world(stock={'food':8,'water':8})
+        hero=next(iter(w.heroes))
+        w.open_expedition('long',[hero],'EXP-LOC-05')
+        self.assertEqual(w.award_xp(hero,20,combat=True),8)
+        w.end_day()
+        self.assertEqual(w.award_xp(hero,1,combat=True),0)
+        for _ in range(3):w.advance_expedition('long')
+        w.begin_return('long')
+        for _ in range(3):w.advance_expedition('long')
+        self.assertEqual(w.award_xp(hero,1,combat=True),1)
+
     def test_storage_and_lodging_limits(self):
         w=world(); self.assertEqual(w.deposit('food',100),6)
         self.assertEqual(sum(w.stock.values()),w.storage)

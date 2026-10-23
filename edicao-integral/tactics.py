@@ -1,5 +1,6 @@
 """Mapa tático experimental. Geometria congelada do Mercado; regras novas isoladas."""
 import json
+from copy import deepcopy
 from collections import deque
 from pathlib import Path
 
@@ -26,13 +27,24 @@ class TacticalGame:
                 or expedition_id in world.encounters):
             raise ValueError('Não pode iniciar encontro')
         map_data=TACTICS['maps'][map_id]
-        world.encounters[expedition_id]={
+        destination=world.expeditions[expedition_id].destination
+        if any(other.destination==destination and other_id in world.encounters
+               for other_id,other in world.expeditions.items()):
+            raise ValueError('Local já em uso por outra equipe')
+        state={
             'map':map_id,'heroes':{h:map_data['entry'] for h in world.expeditions[expedition_id].heroes},
             'search_zones':list(map_data['search']),
             'enemies':{},'next_enemy':1,
             'doors':{edge(*d['edge']):{'open':False,'resistance':d['resistance'],
                                       'blocked':d['blocked']} for d in map_data['doors']},
             'noise':[],'announced':[],'round':0}
+        previous=world.site_states.get(destination)
+        if previous:
+            if previous['map']!=map_id:
+                raise ValueError('Mapa incompatível com a revisita')
+            for key in ('enemies','next_enemy','doors','announced','round'):
+                state[key]=deepcopy(previous[key])
+        world.encounters[expedition_id]=state
         return cls(world,expedition_id)
 
     @property
@@ -151,6 +163,9 @@ class TacticalGame:
             raise ValueError('Ameaças ainda presentes')
         self.world.log.append({'day':self.world.day,'encounter':self.id,
                                'retreat':bool(retreat),'enemies_remaining':len(self.state['enemies'])})
+        destination=self.world.expeditions[self.id].destination
+        self.world.site_states[destination]=deepcopy({key:self.state[key] for key in
+                                                     ('map','enemies','next_enemy','doors','announced','round')})
         del self.world.encounters[self.id]
 
     def noise(self,zone,intensity):

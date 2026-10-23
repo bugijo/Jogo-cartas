@@ -8,4 +8,6 @@ A função `play_market_day(seed, strategy, team_size)` executa preparação de 
 
 O catálogo validado contém 119 IDs únicos: 10 protagonistas, 70 habilidades, 15 NPCs, sete estruturas, cinco locais, cinco crises, um veículo, quatro modelos de equipamento e **duas cartas experimentais**. Há três tipos de inimigo, três tipos de horda e uma planta tática; estes não são cartas diagramadas. PDFs novos: zero.
 
-Pendências: efeitos dos 70 marcos não estão todos ligados às operações; inimigos não possuem IA de múltiplas zonas complexas nem regras de surpresa completas; escolhas narrativas são apenas uma carta; a missão “Última Transmissão”, instalação militar e fim de campanha não existem nesta edição; preparação, impressão, ícones, marcadores e playtest humano seguem abertos.
+Pendências: os 70 marcos estão ligados a operações, mas ainda não têm escolhas ramificadas nem validação humana; inimigos não possuem IA de múltiplas zonas complexas nem regras de surpresa completas; escolhas narrativas são apenas uma carta; a missão “Última Transmissão”, instalação militar e fim de campanha não existem nesta edição; preparação, impressão, ícones, marcadores e playtest humano seguem abertos.
+
+O limite de 8 XP de combate foi corrigido para persistir entre dias da mesma expedição e zerar no retorno. A revisita mantém inimigos e portas também após salvar/restaurar. Uma prova reproduzível da semente 17 está em `PROVA_CICLO_17.json`.

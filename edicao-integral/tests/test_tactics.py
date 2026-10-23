@@ -123,5 +123,21 @@ class TacticalTests(unittest.TestCase):
         self.assertEqual(result['attacks'][0]['infection']['infected'],
                          w.heroes[result['attacks'][0]['hero']]['infected'])
 
+    def test_retreat_keeps_enemy_and_door_for_revisit(self):
+        w=self.setup_world()
+        game=TacticalGame.start(w,'m','market_intro')
+        game.breach('ZC-HER-0002',1,5,'crowbar')
+        enemy=game.spawn('slow',zone=12)
+        game.finish(retreat=True)
+        with tempfile.TemporaryDirectory() as directory:
+            path=Path(directory)/'retreat.json';w.save(path)
+            w=World.load(path)
+        w.begin_return('m');w.advance_expedition('m')
+        w.open_expedition('again',list(w.heroes),'EXP-LOC-02')
+        w.advance_expedition('again')
+        resumed=TacticalGame.start(w,'again','market_intro')
+        self.assertIn(enemy,resumed.state['enemies'])
+        self.assertTrue(resumed.state['doors']['1-5']['open'])
+
 
 if __name__=='__main__':unittest.main()

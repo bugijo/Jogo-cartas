@@ -51,3 +51,7 @@ A geometria funcional de 16 zonas, 21 conexões, cinco portas, entrada, saída, 
 ## Unidade 11 — 70 marcos ligados ao motor
 
 Os 14 tipos de bônus presentes nos 70 marcos agora têm operação concreta em `system.py`/`tactics.py`: enfermaria, reservatório, resgate, guarda, ataque, ruído, infecção, viagem, busca, reparo, obra, fabricação, horta e depósito. Os textos do catálogo foram tornados específicos. O teste percorre todos os limiares de XP e os testes de contexto exercitam os principais efeitos. Quarenta e sete testes experimentais passaram; os 1.250 replays do cenário de um dia permaneceram byte a byte iguais. Ainda faltam escolhas ramificadas nas árvores e avaliação humana/balanceamento.
+
+## Unidade 12 — persistência de locais e XP por expedição
+
+Retirada arquiva inimigos, portas e horda pendente por local; revisita restaura o mapa com entrada renovada dos heróis. Salvamento entre visitas preserva isso. O limite de 8 XP de combate agora persiste por toda a expedição, inclusive entre dias, e zera no retorno. `PROVA_CICLO_17.json` demonstra um ciclo com resultado de missão e hash idêntico após restaurar. Quarenta e nove testes experimentais passaram; os 1.250 ensaios agregados permaneceram iguais.
