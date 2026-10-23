@@ -10,6 +10,8 @@ from dataclasses import asdict, dataclass, field
 from pathlib import Path
 
 DATA = json.loads((Path(__file__).parent / 'data/system.json').read_text(encoding='utf-8'))
+EQUIPMENT = json.loads((Path(__file__).parent / 'data/equipment.json').read_text(encoding='utf-8'))
+ITEMS = {item['id']:item for item in EQUIPMENT['items']}
 HEROES = {h['id']: h for h in DATA['heroes']}
 NPCS = {n['id']: n for n in DATA['npcs']}
 STRUCTURES = {s['kind']: s for s in DATA['structures']}
@@ -43,7 +45,9 @@ class World:
     active_crises: list[str] = field(default_factory=list)
     expeditions: dict[str, Expedition] = field(default_factory=dict)
     outposts: dict[str, dict] = field(default_factory=dict)
+    gear: dict[str, dict] = field(default_factory=dict)
     camp_xp: int = 0
+    clues: int = 0
     rng_state: object = None
     log: list[dict] = field(default_factory=list)
 
@@ -53,6 +57,7 @@ class World:
             raise ValueError('Heróis iniciais inválidos')
         world = cls(seed=seed)
         world.heroes = {h:{'xp':0,'health':3,'combat_xp':0,'location':'camp'} for h in hero_ids}
+        world.gear = {h:{} for h in hero_ids}
         world.searches = {key:loc['searches'] for key,loc in LOCATIONS.items()}
         world.stock.update(stock or {})
         world.rng_state = _lists(random.Random(seed).getstate())
@@ -88,9 +93,81 @@ class World:
             raise ValueError('Herói inválido')
         if any(n not in NPCS or not 1 <= state['level'] <= 3 for n,state in self.npcs.items()):
             raise ValueError('NPC inválido')
+        active_heroes = set()
+        for key, exp in self.expeditions.items():
+            if (key != exp.id or exp.destination not in LOCATIONS or exp.remaining < 0
+                    or len(set(exp.heroes)) != len(exp.heroes)
+                    or active_heroes.intersection(exp.heroes)
+                    or any(h not in self.heroes or self.heroes[h]['location'] != key
+                           for h in exp.heroes)
+                    or any(r not in RESOURCES or n < 0 for r,n in exp.cargo.items())
+                    or sum(exp.cargo.values()) > 6 * len(exp.heroes)):
+                raise ValueError('Expedição/carga inválida')
+            active_heroes.update(exp.heroes)
+        if any(h['location'] != 'camp' for hero_id,h in self.heroes.items()
+               if hero_id not in active_heroes):
+            raise ValueError('Herói fora de expedição')
         if any(loc not in LOCATIONS or state['health'] < 0 or state['health'] > 3
                for loc,state in self.outposts.items()):
             raise ValueError('Posto avançado inválido')
+        if set(self.gear) != set(self.heroes):
+            raise ValueError('Inventário sem herói')
+        seen = set()
+        for hero_id, instances in self.gear.items():
+            occupied = set()
+            slots = set()
+            has_bag = any(i['template']=='EXP-EQU-003' and i['slot']=='torso' for i in instances.values())
+            for instance_id, item in instances.items():
+                if instance_id in seen or item['template'] not in ITEMS:
+                    raise ValueError('Instância duplicada/desconhecida')
+                seen.add(instance_id)
+                spec = ITEMS[item['template']]
+                slot = item['slot']
+                if slot not in spec['slots']:
+                    raise ValueError('Slot incompatível')
+                if slot == 'backpack':
+                    if not has_bag:
+                        raise ValueError('Mochila ausente')
+                    x,y = item['x'],item['y']
+                    width,height = spec['size']
+                    cols,rows = EQUIPMENT['backpack_grid']
+                    if min(x,y)<0 or x+width>cols or y+height>rows:
+                        raise ValueError('Fora da grade')
+                    cells = {(cx,cy) for cx in range(x,x+width) for cy in range(y,y+height)}
+                    if occupied & cells:
+                        raise ValueError('Sobreposição na mochila')
+                    occupied |= cells
+                else:
+                    key = (slot,item.get('index',0))
+                    if key in slots or (slot in ('pocket','hand') and not 0<=key[1]<2):
+                        raise ValueError('Slot ocupado')
+                    slots.add(key)
+
+    def give_item(self, hero_id: str, instance_id: str, template_id: str,
+                  slot: str, index: int = 0, x: int = 0, y: int = 0) -> None:
+        if hero_id not in self.heroes or template_id not in ITEMS:
+            raise ValueError('Herói/item inválido')
+        if any(instance_id in inventory for inventory in self.gear.values()):
+            raise ValueError('Instância já usada')
+        item={'template':template_id,'slot':slot,'index':index,'x':x,'y':y,
+              'durability':ITEMS[template_id]['durability']}
+        self.gear[hero_id][instance_id]=item
+        try:
+            self.validate()
+        except ValueError:
+            del self.gear[hero_id][instance_id]
+            raise
+
+    def move_item(self, hero_id: str, instance_id: str, slot: str,
+                  index: int = 0, x: int = 0, y: int = 0) -> None:
+        item=self.gear[hero_id][instance_id]
+        old=dict(item)
+        item.update(slot=slot,index=index,x=x,y=y)
+        try:
+            self.validate()
+        except ValueError:
+            item.clear();item.update(old)
+            raise
 
     def deposit(self, resource: str, amount: int) -> int:
         if resource not in RESOURCES or amount < 0:
@@ -100,7 +177,9 @@ class World:
         return accepted
 
     def recruit(self, npc_id: str) -> bool:
-        if npc_id not in NPCS or npc_id in self.npcs or self.residents >= self.beds:
+        if (npc_id not in NPCS or npc_id in self.npcs or self.residents >= self.beds
+                or self.stock['food'] < self.residents + 1
+                or self.stock['water'] < self.residents + 1):
             return False
         self.npcs[npc_id] = {'level':1,'job':None,'health':3}
         return True
@@ -119,6 +198,13 @@ class World:
     def unlocked_skills(self, hero_id: str) -> list[str]:
         xp = self.heroes[hero_id]['xp']
         return [skill['id'] for skill in HEROES[hero_id]['skills'] if xp >= skill['xp']]
+
+    def skill_bonus(self, hero_id: str, operation: str) -> int:
+        if hero_id not in self.heroes:
+            raise ValueError('Herói indisponível')
+        xp = self.heroes[hero_id]['xp']
+        return sum(skill['bonus'] for skill in HEROES[hero_id]['skills']
+                   if skill['operation'] == operation and xp >= skill['xp'])
 
     def award_xp(self, hero_id: str, amount: int, combat: bool = False) -> int:
         if amount < 0:
@@ -143,9 +229,13 @@ class World:
         self.projects[kind] = 0
         return True
 
-    def work_project(self, kind: str, units: int = 1) -> bool:
+    def work_project(self, kind: str, units: int = 1, hero_id: str | None = None) -> bool:
         if kind not in self.projects or units <= 0:
             raise ValueError('Projeto/trabalho inválido')
+        if hero_id is not None:
+            if hero_id not in self.heroes or self.heroes[hero_id]['location'] != 'camp':
+                raise ValueError('Herói fora do abrigo')
+            units += self.skill_bonus(hero_id,'build')
         self.projects[kind] += units
         if self.projects[kind] >= STRUCTURES[kind]['work']:
             self.structures[kind] = {'health': STRUCTURES[kind]['max_health'],'age':0}
@@ -275,6 +365,15 @@ class World:
                                 if structure['health'] < STRUCTURES[kind]['max_health']),None)
                 if damaged:
                     self.repair_structure(damaged)
+            elif output == 'build' and self.projects:
+                self.work_project(next(iter(self.projects)),state['level'])
+            elif output == 'research':
+                self.clues += state['level']
+            elif output == 'rescue' and self.stock['medicine']:
+                injured = next((hero for hero in self.heroes.values() if hero['health'] < 3),None)
+                if injured:
+                    self.stock['medicine'] -= 1
+                    injured['health'] += 1
         if 'garden' in self.structures and self.structures['garden']['health'] > 0:
             garden = self.structures['garden']
             garden['age'] += 1
@@ -301,6 +400,7 @@ class World:
         rng.setstate(_tuples(self.rng_state))
         trigger = rng.randrange(DATA['rules']['crisis_chance_denominator']) == 0
         eligible = [c for c in CRISES.values() if c['target'] in self.structures
+                    and c['id'] not in self.active_crises
                     and self.day-self.crises_last_day.get(c['id'],-999) > c['cooldown_days']]
         chosen = rng.choice(eligible) if trigger and eligible else None
         self.rng_state = _lists(rng.getstate())

@@ -1,0 +1,63 @@
+{
+  "start_seed": 20261023,
+  "seeds_per_group": 100,
+  "total_replays": 500,
+  "scope": "cinco dias de economia e uma busca; sem campanha, combate tático, vitória ou duração de mesa",
+  "by_hero_count": {
+    "2": {
+      "runs": 100,
+      "food_shortage_runs": 0,
+      "water_shortage_runs": 100,
+      "food_shortage_total": 0,
+      "water_shortage_total": 750,
+      "crises": {
+        "EXP-CRI-01": 19,
+        "EXP-CRI-02": 23
+      }
+    },
+    "3": {
+      "runs": 100,
+      "food_shortage_runs": 100,
+      "water_shortage_runs": 100,
+      "food_shortage_total": 300,
+      "water_shortage_total": 1050,
+      "crises": {
+        "EXP-CRI-01": 19,
+        "EXP-CRI-02": 23
+      }
+    },
+    "4": {
+      "runs": 100,
+      "food_shortage_runs": 100,
+      "water_shortage_runs": 100,
+      "food_shortage_total": 600,
+      "water_shortage_total": 1350,
+      "crises": {
+        "EXP-CRI-01": 19,
+        "EXP-CRI-02": 23
+      }
+    },
+    "5": {
+      "runs": 100,
+      "food_shortage_runs": 100,
+      "water_shortage_runs": 100,
+      "food_shortage_total": 900,
+      "water_shortage_total": 1650,
+      "crises": {
+        "EXP-CRI-01": 19,
+        "EXP-CRI-02": 23
+      }
+    },
+    "6": {
+      "runs": 100,
+      "food_shortage_runs": 100,
+      "water_shortage_runs": 100,
+      "food_shortage_total": 1200,
+      "water_shortage_total": 1950,
+      "crises": {
+        "EXP-CRI-01": 19,
+        "EXP-CRI-02": 23
+      }
+    }
+  }
+}

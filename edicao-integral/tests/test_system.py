@@ -33,6 +33,23 @@ class SystemTests(unittest.TestCase):
         for npc_id in list(system.NPCS)[:6]: self.assertTrue(w.recruit(npc_id))
         self.assertFalse(w.recruit(list(system.NPCS)[6]))
 
+    def test_multiple_equipment_instances_save_and_spatial_rules(self):
+        w=world(stock={'food':4,'water':4})
+        a,b=list(w.heroes)
+        w.give_item(a,'knife-1','EXP-EQU-001','pocket',index=0)
+        w.give_item(b,'knife-2','EXP-EQU-001','pocket',index=0)
+        w.give_item(a,'bag-1','EXP-EQU-003','torso')
+        w.give_item(a,'crowbar-1','EXP-EQU-002','backpack',x=0,y=0)
+        with self.assertRaises(ValueError):
+            w.give_item(a,'helmet-1','EXP-EQU-004','backpack',x=0,y=0)
+        w.give_item(a,'helmet-1','EXP-EQU-004','backpack',x=1,y=0)
+        with self.assertRaises(ValueError):
+            w.move_item(a,'bag-1','backpack')
+        with tempfile.TemporaryDirectory() as directory:
+            path=Path(directory)/'world.json';w.save(path)
+            restored=system.World.load(path)
+            self.assertEqual(restored.gear,w.gear)
+
     def test_project_work_repair_and_npc(self):
         w=world(stock={'food':8,'water':8,'wood':4,'scrap':4})
         self.assertTrue(w.start_project('garden'))
@@ -47,6 +64,14 @@ class SystemTests(unittest.TestCase):
         days=[w.end_day() for _ in range(4)]
         self.assertGreaterEqual(days[-1]['produced']['food'],2)
         self.assertEqual(w.structures['garden']['age'],4)
+
+    def test_individual_builder_skill_applies_to_project(self):
+        w=world(n=6,stock={'food':8,'water':8,'wood':2,'scrap':2})
+        self.assertTrue(w.start_project('garden'))
+        bento='ZC-HER-0006'
+        self.assertEqual(w.skill_bonus(bento,'build'),1)
+        self.assertTrue(w.work_project('garden',1,hero_id=bento))
+        self.assertIn('garden',w.structures)
 
     def test_search_urban_depletion_natural_renewal(self):
         w=world(n=3,stock={'food':6,'water':6})
@@ -123,11 +148,48 @@ class SystemTests(unittest.TestCase):
         w.damage_structure('watch',3)
         self.assertEqual(w.npc_defense(2,True),2)
 
+    def test_npc_build_research_and_rescue_daily(self):
+        w=world(stock={'food':8,'water':8,'wood':4,'scrap':4,'medicine':1})
+        self.assertTrue(w.recruit('EXP-NPC-04'))
+        self.assertTrue(w.recruit('EXP-NPC-14'))
+        self.assertTrue(w.recruit('EXP-NPC-12'))
+        w.assign('EXP-NPC-04','carpentry')
+        w.assign('EXP-NPC-14','radio')
+        w.assign('EXP-NPC-12','rescue')
+        self.assertTrue(w.start_project('garden'))
+        hero=next(iter(w.heroes));w.heroes[hero]['health']=2
+        w.end_day()
+        self.assertEqual(w.projects['garden'],1)
+        self.assertEqual(w.clues,1)
+        self.assertEqual(w.heroes[hero]['health'],3)
+        self.assertEqual(w.stock['medicine'],0)
+
     def test_data_rebuild_deterministic(self):
         before=(ROOT/'data/system.json').read_bytes()
         import subprocess
         subprocess.run([sys.executable,str(ROOT/'data/build_system_data.py')],check=True)
         self.assertEqual(before,(ROOT/'data/system.json').read_bytes())
+
+    def test_save_mid_expedition_preserves_cargo_and_rng(self):
+        w=world(seed=71,stock={'food':4,'water':4})
+        h=next(iter(w.heroes))
+        w.open_expedition('x',[h],'EXP-LOC-02')
+        w.advance_expedition('x');w.search('x');w.begin_return('x')
+        with tempfile.TemporaryDirectory() as directory:
+            path=Path(directory)/'world.json';w.save(path)
+            restored=system.World.load(path)
+            self.assertEqual(restored.expeditions['x'].cargo,w.expeditions['x'].cargo)
+            self.assertEqual(restored.advance_expedition('x'),w.advance_expedition('x'))
+            self.assertEqual(restored.end_day(),w.end_day())
+
+    def test_integrated_replay_is_reproducible(self):
+        spec2=importlib.util.spec_from_file_location('integral_sim',ROOT/'simulate_system.py')
+        module=importlib.util.module_from_spec(spec2)
+        sys.path.insert(0,str(ROOT))
+        try: spec2.loader.exec_module(module)
+        finally: sys.path.pop(0)
+        self.assertEqual(module.aggregate(123,3),module.aggregate(123,3))
+        self.assertEqual(module.aggregate(123,3)['total_replays'],15)
 
 
 if __name__=='__main__':unittest.main()
