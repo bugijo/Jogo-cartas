@@ -7,7 +7,9 @@ from pathlib import Path
 
 ROOT=Path(__file__).resolve().parents[1]
 sys.path.insert(0,str(ROOT))
+sys.path.insert(0,str(ROOT.parent/'src'))
 from cistern02 import Cistern02, LINK_IDS, STARTERS
+from rules_engine import consume, family_setup
 
 
 class Cistern02Tests(unittest.TestCase):
@@ -26,6 +28,13 @@ class Cistern02Tests(unittest.TestCase):
                 self.assertEqual(len(game.food),ceil(2*consumers/4))
                 self.assertEqual(len(game.water),ceil(2*consumers/4))
                 self.assertTrue(all(lot==4 for lot in game.food+game.water))
+                oracle=family_setup(heroes,[
+                    (int(link in LINK_IDS[4:10] or link==LINK_IDS[11]),
+                     int(link in LINK_IDS[10:])) for link in draw])
+                self.assertEqual(oracle['humans'],game.humans)
+                self.assertEqual(oracle['dogs'],game.dogs)
+                self.assertEqual(oracle['capacity'],game.capacity)
+                self.assertEqual(oracle['food'],sum(game.food))
                 checked+=1
         self.assertEqual(checked,2497)
 
@@ -37,6 +46,7 @@ class Cistern02Tests(unittest.TestCase):
         self.assertEqual(meal['water_missing'],0)
         self.assertEqual(meal['meat_expired'],2)
         self.assertEqual(game.food,[4])
+        self.assertEqual(consume(4,4,2),(4,0,2))
         with self.assertRaises(ValueError):game.meal()
         game.spend_segments(8)
         self.assertEqual(game.night_segments,0)

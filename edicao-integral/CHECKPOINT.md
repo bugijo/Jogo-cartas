@@ -103,3 +103,7 @@ Cada fundador, civil, criança e cão da preparação agora tem estado individua
 ## Unidade 23 — acolhimento e intenções, ainda sem contato tático
 
 O estado canônico parcial registra grupos inteiros de oito encontros existentes, recusa acolhimento acima das duas vagas temporárias, cobra ajuda por humano, mantém recusa sem punição e sorteia Intenção por semente no acolhimento. A fase noturna revela na segunda noite ou após duas investigações, aplica roubo/Pressão somente sem Verificado atual, retira grupos que partem e cobra superlotação desde a terceira noite. Setenta e nove testes experimentais passaram. **Limite:** `rescue()` é chamada diretamente; não prova contato em O1/O2, custo de PA, carga/retorno ou trabalhador realmente disponível para investigar. O estado ainda não autoriza a transição entre campanhas.
+
+## Unidade 24 — paridade independente da preparação
+
+O teste das 2.497 combinações H2–H6 agora compara os resultados de `cistern02.py` com o oráculo legado `src/rules_engine.py` além das fórmulas do manual. A leitura do catálogo 0.2 segue direta e os PDFs/regras originais permanecem intocados. Próxima prioridade: ligar objetivos e carga ao relógio e ao mapa sem substituir PA, portas ou dados da edição 0.2 por valores experimentais.

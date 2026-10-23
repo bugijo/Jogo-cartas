@@ -1,6 +1,6 @@
 # Fronteira entre A Cisterna 0.2 e Última Transmissão experimental
 
-Fontes oficiais do capítulo inicial: `../RULES.md`, `../CAMPAIGN.md` e `../content/catalog.json`. O motor de `edicao-integral/` não substitui esses arquivos. A primeira caixa ainda pode ser jogada com seus PDFs existentes; ela não foi importada para `World`.
+Fontes oficiais do capítulo inicial: `../RULES.md`, `../CAMPAIGN.md` e `../content/catalog.json`. O motor de `edicao-integral/` não substitui esses arquivos. A primeira caixa ainda pode ser jogada com seus PDFs existentes. `cistern02.py` porta preparação, porções, relógio, filtro, privação, acolhimento e parte dos cercos/intenções em um estado separado; ainda não há fluxo completo nem importação para `World`.
 
 Diferenças materiais que impedem ligar os arcos por uma flag sem perder regras:
 

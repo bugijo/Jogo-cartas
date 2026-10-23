@@ -2,7 +2,7 @@
 
 Esta pasta não substitui o kit físico 0.2. `../RULES.md`, `../CAMPAIGN.md`, `../content/catalog.json` e os PDFs antigos seguem como fontes da primeira caixa. O motor executa um cenário de **um dia** com viagem, evento, combate, busca, retorno, economia e salvamento. O segundo arco tem portões narrativos, instalação tática e defesa final isoladamente executáveis. Os dois arcos **não** formam ainda uma campanha contínua jogável: A Cisterna não foi portada, e a preparação/combustível para chegar legalmente ao segundo arco não está fechada.
 
-Arquivos estruturados: `data/system.json`, `data/equipment.json`, `data/cycle_cards.json`, `data/last_transmission.json` e `data/tactics.json`. Os geradores `data/build_system_data.py` e `data/build_tactics_data.py` são editáveis. `tactics.json` inclui as seis geometrias exatas do catálogo 0.2 e dois mapas experimentais; Posto e Condomínio são apenas referência até existir destino regional correspondente. Os motores são `system.py`, `tactics.py`, `campaign.py` e `arc2.py`.
+Arquivos estruturados: `data/system.json`, `data/equipment.json`, `data/cycle_cards.json`, `data/last_transmission.json` e `data/tactics.json`. Os geradores `data/build_system_data.py` e `data/build_tactics_data.py` são editáveis. `tactics.json` inclui as seis geometrias exatas do catálogo 0.2 e dois mapas experimentais; Posto e Condomínio são apenas referência até existir destino regional correspondente. Os motores são `system.py`, `tactics.py`, `campaign.py` e `arc2.py`. `cistern02.py` é uma porta parcial e isolada das regras oficiais; ainda não autoriza a transição narrativa.
 
 Verificações:
 
