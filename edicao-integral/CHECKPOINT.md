@@ -115,3 +115,7 @@ O estado 0.2 recusa avançar o dia sem refeição, com cerco ainda não resolvid
 ## Unidade 26 — encerramento provisório e portão fail-closed
 
 `Cistern02.close_chapter()` só calcula `candidate_victory` ou `partial_defeat` após a refeição do dia 5 e a resolução dos cercos pendentes, incluindo Noite de segurança sem nova produção. Uma vitória candidata não certifica a origem das peças, nem promessas. `Arc2.decode_radio`, acesso militar e defesa final agora rejeitam a antiga flag `cistern_complete`; exigem um certificado `verified_victory` que o motor parcial **não emite**. As provas isoladas de Última Transmissão e o ensaio de 250 defesas usam fixture sintética explícita. Isso impede declarar campanha completa por injeção de flag, mas deixa a transição normal bloqueada até implementar exploração/objetivos e prova integral do capítulo. O conjunto experimental tem 83 testes passando.
+
+## Unidade 27 — bloqueio de combustível reproduzido
+
+Novo teste percorre todas as três buscas de combustível da Oficina, retorna, recupera o furgão e confirma saldo de uma unidade, insuficiente para as seis exigidas na viagem militar. `CAMPAIGN_BLOCKERS.md` registra a evidência e a adaptação proposta do Posto canônico sem aplicar recurso extra. O sistema segue fail-closed: não há emissor de `verified_victory`, portanto nenhuma campanha completa sem injeção foi demonstrada. O conjunto experimental tem 84 testes aprovados; suíte legada final ainda em execução neste checkpoint.

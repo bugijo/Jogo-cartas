@@ -130,6 +130,26 @@ class Arc2Tests(unittest.TestCase):
         for _ in range(3):w.advance_expedition('military')
         with self.assertRaises(ValueError):TacticalGame.start(w,'military','market_intro')
 
+    def test_catalog_fuel_cannot_pay_recovery_and_military_trip(self):
+        w=World.new(23,['ZC-HER-0001','ZC-HER-0002'],{'food':4,'water':4})
+        team=list(w.heroes)
+        w.open_expedition('parts',team,'EXP-LOC-03')
+        for _ in range(2):w.advance_expedition('parts')
+        for _ in range(3):w.search('parts')
+        w.begin_return('parts')
+        for _ in range(2):w.advance_expedition('parts')
+        self.assertEqual(w.stock['fuel'],3)
+        w.open_expedition('van',team,'EXP-LOC-03')
+        for _ in range(2):w.advance_expedition('van')
+        self.assertTrue(w.recover_vehicle('EXP-VEI-01','van'))
+        w.begin_return('van')
+        for _ in range(2):w.advance_expedition('van')
+        self.assertEqual(w.stock['fuel'],1)
+        w.cistern_record={'status':'verified_victory','source':'cistern02'}
+        w.flags.update(radio_code=True,access_card=True)
+        with self.assertRaises(ValueError):
+            Arc2(w).authorize_installation('military',team,'EXP-VEI-01')
+
     def test_code_card_access_and_transport_persist(self):
         w=World.new(8,['ZC-HER-0001','ZC-HER-0002'],
                     {'food':6,'water':6,'fuel':6,'ammo':2})
