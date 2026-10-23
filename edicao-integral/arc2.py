@@ -159,12 +159,19 @@ class Arc2:
         for enemy in defense['enemies'].values():
             for _ in range(TACTICS_DATA['enemies'][enemy['kind']]['move']):
                 if enemy['zone']>1:enemy['zone']-=1
+            victims=[h for h,z in defense['heroes'].items()
+                     if z==enemy['zone'] and self.world.heroes[h]['health']>0]
+            if victims:
+                hero_id=sorted(victims)[0]
+                armor=next((iid for iid,item in self.world.gear[hero_id].items()
+                            if item['slot'] in ('head','torso','legs')
+                            and 'armor' in ITEMS[item['template']] and item['durability']>0),None)
+                prior=self.world.heroes[hero_id]['health']
+                self.world.receive_damage(hero_id,
+                                          TACTICS_DATA['enemies'][enemy['kind']]['attack'],armor)
+                if self.world.heroes[hero_id]['health']<prior:
+                    self.world.roll_infection(hero_id)
             if enemy['zone']==1:
-                victims=[h for h,z in defense['heroes'].items()
-                         if z==1 and self.world.heroes[h]['health']>0]
-                if victims:
-                    self.world.receive_damage(sorted(victims)[0],
-                                              TACTICS_DATA['enemies'][enemy['kind']]['attack'])
                 defense['integrity']=max(0,defense['integrity']-1)
         defense['round']+=1
         self.world.begin_round()

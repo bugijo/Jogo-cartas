@@ -1,0 +1,2277 @@
+{
+  "scope": "defesa isolada; quatro flags, transmissor e um pé de cabra por herói injetados",
+  "seed_start": 20261023,
+  "seeds_per_team": 50,
+  "runs": [
+    {
+      "seed": 20261023,
+      "heroes": 2,
+      "status": "lost",
+      "rounds": 6,
+      "integrity": 0,
+      "incapacitated": 1,
+      "wave": 2
+    },
+    {
+      "seed": 20261024,
+      "heroes": 2,
+      "status": "lost",
+      "rounds": 7,
+      "integrity": 0,
+      "incapacitated": 1,
+      "wave": 3
+    },
+    {
+      "seed": 20261025,
+      "heroes": 2,
+      "status": "lost",
+      "rounds": 6,
+      "integrity": 0,
+      "incapacitated": 1,
+      "wave": 3
+    },
+    {
+      "seed": 20261026,
+      "heroes": 2,
+      "status": "lost",
+      "rounds": 8,
+      "integrity": 0,
+      "incapacitated": 1,
+      "wave": 3
+    },
+    {
+      "seed": 20261027,
+      "heroes": 2,
+      "status": "lost",
+      "rounds": 5,
+      "integrity": 0,
+      "incapacitated": 1,
+      "wave": 2
+    },
+    {
+      "seed": 20261028,
+      "heroes": 2,
+      "status": "lost",
+      "rounds": 6,
+      "integrity": 0,
+      "incapacitated": 1,
+      "wave": 3
+    },
+    {
+      "seed": 20261029,
+      "heroes": 2,
+      "status": "won",
+      "rounds": 3,
+      "integrity": 3,
+      "incapacitated": 1,
+      "wave": 3
+    },
+    {
+      "seed": 20261030,
+      "heroes": 2,
+      "status": "lost",
+      "rounds": 7,
+      "integrity": 0,
+      "incapacitated": 1,
+      "wave": 3
+    },
+    {
+      "seed": 20261031,
+      "heroes": 2,
+      "status": "lost",
+      "rounds": 6,
+      "integrity": 0,
+      "incapacitated": 1,
+      "wave": 2
+    },
+    {
+      "seed": 20261032,
+      "heroes": 2,
+      "status": "won",
+      "rounds": 3,
+      "integrity": 3,
+      "incapacitated": 1,
+      "wave": 3
+    },
+    {
+      "seed": 20261033,
+      "heroes": 2,
+      "status": "lost",
+      "rounds": 6,
+      "integrity": 0,
+      "incapacitated": 1,
+      "wave": 3
+    },
+    {
+      "seed": 20261034,
+      "heroes": 2,
+      "status": "lost",
+      "rounds": 7,
+      "integrity": 0,
+      "incapacitated": 1,
+      "wave": 3
+    },
+    {
+      "seed": 20261035,
+      "heroes": 2,
+      "status": "lost",
+      "rounds": 8,
+      "integrity": 0,
+      "incapacitated": 1,
+      "wave": 3
+    },
+    {
+      "seed": 20261036,
+      "heroes": 2,
+      "status": "lost",
+      "rounds": 6,
+      "integrity": 0,
+      "incapacitated": 0,
+      "wave": 2
+    },
+    {
+      "seed": 20261037,
+      "heroes": 2,
+      "status": "lost",
+      "rounds": 6,
+      "integrity": 0,
+      "incapacitated": 0,
+      "wave": 2
+    },
+    {
+      "seed": 20261038,
+      "heroes": 2,
+      "status": "lost",
+      "rounds": 6,
+      "integrity": 0,
+      "incapacitated": 1,
+      "wave": 2
+    },
+    {
+      "seed": 20261039,
+      "heroes": 2,
+      "status": "lost",
+      "rounds": 6,
+      "integrity": 0,
+      "incapacitated": 1,
+      "wave": 3
+    },
+    {
+      "seed": 20261040,
+      "heroes": 2,
+      "status": "lost",
+      "rounds": 7,
+      "integrity": 0,
+      "incapacitated": 1,
+      "wave": 3
+    },
+    {
+      "seed": 20261041,
+      "heroes": 2,
+      "status": "lost",
+      "rounds": 7,
+      "integrity": 0,
+      "incapacitated": 1,
+      "wave": 3
+    },
+    {
+      "seed": 20261042,
+      "heroes": 2,
+      "status": "lost",
+      "rounds": 6,
+      "integrity": 0,
+      "incapacitated": 1,
+      "wave": 3
+    },
+    {
+      "seed": 20261043,
+      "heroes": 2,
+      "status": "won",
+      "rounds": 3,
+      "integrity": 3,
+      "incapacitated": 1,
+      "wave": 3
+    },
+    {
+      "seed": 20261044,
+      "heroes": 2,
+      "status": "won",
+      "rounds": 4,
+      "integrity": 3,
+      "incapacitated": 1,
+      "wave": 3
+    },
+    {
+      "seed": 20261045,
+      "heroes": 2,
+      "status": "lost",
+      "rounds": 6,
+      "integrity": 0,
+      "incapacitated": 1,
+      "wave": 3
+    },
+    {
+      "seed": 20261046,
+      "heroes": 2,
+      "status": "lost",
+      "rounds": 7,
+      "integrity": 0,
+      "incapacitated": 1,
+      "wave": 3
+    },
+    {
+      "seed": 20261047,
+      "heroes": 2,
+      "status": "lost",
+      "rounds": 7,
+      "integrity": 0,
+      "incapacitated": 1,
+      "wave": 3
+    },
+    {
+      "seed": 20261048,
+      "heroes": 2,
+      "status": "lost",
+      "rounds": 7,
+      "integrity": 0,
+      "incapacitated": 1,
+      "wave": 3
+    },
+    {
+      "seed": 20261049,
+      "heroes": 2,
+      "status": "lost",
+      "rounds": 7,
+      "integrity": 0,
+      "incapacitated": 1,
+      "wave": 3
+    },
+    {
+      "seed": 20261050,
+      "heroes": 2,
+      "status": "lost",
+      "rounds": 7,
+      "integrity": 0,
+      "incapacitated": 1,
+      "wave": 3
+    },
+    {
+      "seed": 20261051,
+      "heroes": 2,
+      "status": "lost",
+      "rounds": 6,
+      "integrity": 0,
+      "incapacitated": 1,
+      "wave": 3
+    },
+    {
+      "seed": 20261052,
+      "heroes": 2,
+      "status": "lost",
+      "rounds": 6,
+      "integrity": 0,
+      "incapacitated": 1,
+      "wave": 3
+    },
+    {
+      "seed": 20261053,
+      "heroes": 2,
+      "status": "lost",
+      "rounds": 7,
+      "integrity": 0,
+      "incapacitated": 1,
+      "wave": 3
+    },
+    {
+      "seed": 20261054,
+      "heroes": 2,
+      "status": "lost",
+      "rounds": 7,
+      "integrity": 0,
+      "incapacitated": 0,
+      "wave": 2
+    },
+    {
+      "seed": 20261055,
+      "heroes": 2,
+      "status": "lost",
+      "rounds": 6,
+      "integrity": 0,
+      "incapacitated": 1,
+      "wave": 3
+    },
+    {
+      "seed": 20261056,
+      "heroes": 2,
+      "status": "lost",
+      "rounds": 7,
+      "integrity": 0,
+      "incapacitated": 1,
+      "wave": 3
+    },
+    {
+      "seed": 20261057,
+      "heroes": 2,
+      "status": "won",
+      "rounds": 4,
+      "integrity": 3,
+      "incapacitated": 1,
+      "wave": 3
+    },
+    {
+      "seed": 20261058,
+      "heroes": 2,
+      "status": "won",
+      "rounds": 4,
+      "integrity": 3,
+      "incapacitated": 1,
+      "wave": 3
+    },
+    {
+      "seed": 20261059,
+      "heroes": 2,
+      "status": "won",
+      "rounds": 4,
+      "integrity": 3,
+      "incapacitated": 1,
+      "wave": 3
+    },
+    {
+      "seed": 20261060,
+      "heroes": 2,
+      "status": "lost",
+      "rounds": 7,
+      "integrity": 0,
+      "incapacitated": 1,
+      "wave": 3
+    },
+    {
+      "seed": 20261061,
+      "heroes": 2,
+      "status": "lost",
+      "rounds": 7,
+      "integrity": 0,
+      "incapacitated": 1,
+      "wave": 3
+    },
+    {
+      "seed": 20261062,
+      "heroes": 2,
+      "status": "lost",
+      "rounds": 7,
+      "integrity": 0,
+      "incapacitated": 1,
+      "wave": 3
+    },
+    {
+      "seed": 20261063,
+      "heroes": 2,
+      "status": "lost",
+      "rounds": 7,
+      "integrity": 0,
+      "incapacitated": 1,
+      "wave": 3
+    },
+    {
+      "seed": 20261064,
+      "heroes": 2,
+      "status": "lost",
+      "rounds": 6,
+      "integrity": 0,
+      "incapacitated": 0,
+      "wave": 2
+    },
+    {
+      "seed": 20261065,
+      "heroes": 2,
+      "status": "lost",
+      "rounds": 6,
+      "integrity": 0,
+      "incapacitated": 1,
+      "wave": 3
+    },
+    {
+      "seed": 20261066,
+      "heroes": 2,
+      "status": "lost",
+      "rounds": 6,
+      "integrity": 0,
+      "incapacitated": 1,
+      "wave": 2
+    },
+    {
+      "seed": 20261067,
+      "heroes": 2,
+      "status": "lost",
+      "rounds": 7,
+      "integrity": 0,
+      "incapacitated": 1,
+      "wave": 3
+    },
+    {
+      "seed": 20261068,
+      "heroes": 2,
+      "status": "lost",
+      "rounds": 6,
+      "integrity": 0,
+      "incapacitated": 1,
+      "wave": 2
+    },
+    {
+      "seed": 20261069,
+      "heroes": 2,
+      "status": "lost",
+      "rounds": 6,
+      "integrity": 0,
+      "incapacitated": 1,
+      "wave": 2
+    },
+    {
+      "seed": 20261070,
+      "heroes": 2,
+      "status": "lost",
+      "rounds": 7,
+      "integrity": 0,
+      "incapacitated": 1,
+      "wave": 3
+    },
+    {
+      "seed": 20261071,
+      "heroes": 2,
+      "status": "lost",
+      "rounds": 6,
+      "integrity": 0,
+      "incapacitated": 1,
+      "wave": 3
+    },
+    {
+      "seed": 20261072,
+      "heroes": 2,
+      "status": "lost",
+      "rounds": 7,
+      "integrity": 0,
+      "incapacitated": 1,
+      "wave": 3
+    },
+    {
+      "seed": 20261023,
+      "heroes": 3,
+      "status": "lost",
+      "rounds": 8,
+      "integrity": 0,
+      "incapacitated": 1,
+      "wave": 3
+    },
+    {
+      "seed": 20261024,
+      "heroes": 3,
+      "status": "won",
+      "rounds": 2,
+      "integrity": 3,
+      "incapacitated": 1,
+      "wave": 3
+    },
+    {
+      "seed": 20261025,
+      "heroes": 3,
+      "status": "won",
+      "rounds": 3,
+      "integrity": 3,
+      "incapacitated": 1,
+      "wave": 3
+    },
+    {
+      "seed": 20261026,
+      "heroes": 3,
+      "status": "lost",
+      "rounds": 7,
+      "integrity": 0,
+      "incapacitated": 1,
+      "wave": 3
+    },
+    {
+      "seed": 20261027,
+      "heroes": 3,
+      "status": "lost",
+      "rounds": 7,
+      "integrity": 0,
+      "incapacitated": 1,
+      "wave": 3
+    },
+    {
+      "seed": 20261028,
+      "heroes": 3,
+      "status": "won",
+      "rounds": 2,
+      "integrity": 3,
+      "incapacitated": 1,
+      "wave": 3
+    },
+    {
+      "seed": 20261029,
+      "heroes": 3,
+      "status": "won",
+      "rounds": 2,
+      "integrity": 3,
+      "incapacitated": 1,
+      "wave": 3
+    },
+    {
+      "seed": 20261030,
+      "heroes": 3,
+      "status": "won",
+      "rounds": 3,
+      "integrity": 3,
+      "incapacitated": 1,
+      "wave": 3
+    },
+    {
+      "seed": 20261031,
+      "heroes": 3,
+      "status": "lost",
+      "rounds": 7,
+      "integrity": 0,
+      "incapacitated": 1,
+      "wave": 3
+    },
+    {
+      "seed": 20261032,
+      "heroes": 3,
+      "status": "won",
+      "rounds": 3,
+      "integrity": 3,
+      "incapacitated": 1,
+      "wave": 3
+    },
+    {
+      "seed": 20261033,
+      "heroes": 3,
+      "status": "won",
+      "rounds": 2,
+      "integrity": 3,
+      "incapacitated": 1,
+      "wave": 3
+    },
+    {
+      "seed": 20261034,
+      "heroes": 3,
+      "status": "lost",
+      "rounds": 7,
+      "integrity": 0,
+      "incapacitated": 1,
+      "wave": 3
+    },
+    {
+      "seed": 20261035,
+      "heroes": 3,
+      "status": "lost",
+      "rounds": 7,
+      "integrity": 0,
+      "incapacitated": 1,
+      "wave": 3
+    },
+    {
+      "seed": 20261036,
+      "heroes": 3,
+      "status": "lost",
+      "rounds": 6,
+      "integrity": 0,
+      "incapacitated": 1,
+      "wave": 3
+    },
+    {
+      "seed": 20261037,
+      "heroes": 3,
+      "status": "won",
+      "rounds": 3,
+      "integrity": 3,
+      "incapacitated": 1,
+      "wave": 3
+    },
+    {
+      "seed": 20261038,
+      "heroes": 3,
+      "status": "lost",
+      "rounds": 7,
+      "integrity": 0,
+      "incapacitated": 1,
+      "wave": 3
+    },
+    {
+      "seed": 20261039,
+      "heroes": 3,
+      "status": "won",
+      "rounds": 2,
+      "integrity": 3,
+      "incapacitated": 1,
+      "wave": 3
+    },
+    {
+      "seed": 20261040,
+      "heroes": 3,
+      "status": "won",
+      "rounds": 2,
+      "integrity": 3,
+      "incapacitated": 1,
+      "wave": 3
+    },
+    {
+      "seed": 20261041,
+      "heroes": 3,
+      "status": "won",
+      "rounds": 2,
+      "integrity": 3,
+      "incapacitated": 1,
+      "wave": 3
+    },
+    {
+      "seed": 20261042,
+      "heroes": 3,
+      "status": "won",
+      "rounds": 3,
+      "integrity": 3,
+      "incapacitated": 1,
+      "wave": 3
+    },
+    {
+      "seed": 20261043,
+      "heroes": 3,
+      "status": "won",
+      "rounds": 2,
+      "integrity": 3,
+      "incapacitated": 1,
+      "wave": 3
+    },
+    {
+      "seed": 20261044,
+      "heroes": 3,
+      "status": "won",
+      "rounds": 4,
+      "integrity": 3,
+      "incapacitated": 1,
+      "wave": 3
+    },
+    {
+      "seed": 20261045,
+      "heroes": 3,
+      "status": "won",
+      "rounds": 2,
+      "integrity": 3,
+      "incapacitated": 1,
+      "wave": 3
+    },
+    {
+      "seed": 20261046,
+      "heroes": 3,
+      "status": "won",
+      "rounds": 3,
+      "integrity": 3,
+      "incapacitated": 1,
+      "wave": 3
+    },
+    {
+      "seed": 20261047,
+      "heroes": 3,
+      "status": "lost",
+      "rounds": 6,
+      "integrity": 0,
+      "incapacitated": 1,
+      "wave": 3
+    },
+    {
+      "seed": 20261048,
+      "heroes": 3,
+      "status": "won",
+      "rounds": 3,
+      "integrity": 3,
+      "incapacitated": 1,
+      "wave": 3
+    },
+    {
+      "seed": 20261049,
+      "heroes": 3,
+      "status": "won",
+      "rounds": 3,
+      "integrity": 3,
+      "incapacitated": 1,
+      "wave": 3
+    },
+    {
+      "seed": 20261050,
+      "heroes": 3,
+      "status": "won",
+      "rounds": 3,
+      "integrity": 3,
+      "incapacitated": 1,
+      "wave": 3
+    },
+    {
+      "seed": 20261051,
+      "heroes": 3,
+      "status": "won",
+      "rounds": 3,
+      "integrity": 3,
+      "incapacitated": 1,
+      "wave": 3
+    },
+    {
+      "seed": 20261052,
+      "heroes": 3,
+      "status": "lost",
+      "rounds": 6,
+      "integrity": 0,
+      "incapacitated": 1,
+      "wave": 3
+    },
+    {
+      "seed": 20261053,
+      "heroes": 3,
+      "status": "won",
+      "rounds": 3,
+      "integrity": 3,
+      "incapacitated": 1,
+      "wave": 3
+    },
+    {
+      "seed": 20261054,
+      "heroes": 3,
+      "status": "lost",
+      "rounds": 7,
+      "integrity": 0,
+      "incapacitated": 1,
+      "wave": 3
+    },
+    {
+      "seed": 20261055,
+      "heroes": 3,
+      "status": "lost",
+      "rounds": 6,
+      "integrity": 0,
+      "incapacitated": 1,
+      "wave": 3
+    },
+    {
+      "seed": 20261056,
+      "heroes": 3,
+      "status": "lost",
+      "rounds": 7,
+      "integrity": 0,
+      "incapacitated": 1,
+      "wave": 3
+    },
+    {
+      "seed": 20261057,
+      "heroes": 3,
+      "status": "won",
+      "rounds": 2,
+      "integrity": 3,
+      "incapacitated": 1,
+      "wave": 3
+    },
+    {
+      "seed": 20261058,
+      "heroes": 3,
+      "status": "won",
+      "rounds": 3,
+      "integrity": 3,
+      "incapacitated": 1,
+      "wave": 3
+    },
+    {
+      "seed": 20261059,
+      "heroes": 3,
+      "status": "won",
+      "rounds": 3,
+      "integrity": 3,
+      "incapacitated": 1,
+      "wave": 3
+    },
+    {
+      "seed": 20261060,
+      "heroes": 3,
+      "status": "won",
+      "rounds": 4,
+      "integrity": 3,
+      "incapacitated": 1,
+      "wave": 3
+    },
+    {
+      "seed": 20261061,
+      "heroes": 3,
+      "status": "won",
+      "rounds": 3,
+      "integrity": 3,
+      "incapacitated": 1,
+      "wave": 3
+    },
+    {
+      "seed": 20261062,
+      "heroes": 3,
+      "status": "lost",
+      "rounds": 7,
+      "integrity": 0,
+      "incapacitated": 1,
+      "wave": 3
+    },
+    {
+      "seed": 20261063,
+      "heroes": 3,
+      "status": "won",
+      "rounds": 2,
+      "integrity": 3,
+      "incapacitated": 1,
+      "wave": 3
+    },
+    {
+      "seed": 20261064,
+      "heroes": 3,
+      "status": "won",
+      "rounds": 3,
+      "integrity": 3,
+      "incapacitated": 1,
+      "wave": 3
+    },
+    {
+      "seed": 20261065,
+      "heroes": 3,
+      "status": "won",
+      "rounds": 3,
+      "integrity": 3,
+      "incapacitated": 1,
+      "wave": 3
+    },
+    {
+      "seed": 20261066,
+      "heroes": 3,
+      "status": "won",
+      "rounds": 4,
+      "integrity": 3,
+      "incapacitated": 1,
+      "wave": 3
+    },
+    {
+      "seed": 20261067,
+      "heroes": 3,
+      "status": "won",
+      "rounds": 3,
+      "integrity": 3,
+      "incapacitated": 1,
+      "wave": 3
+    },
+    {
+      "seed": 20261068,
+      "heroes": 3,
+      "status": "won",
+      "rounds": 3,
+      "integrity": 3,
+      "incapacitated": 1,
+      "wave": 3
+    },
+    {
+      "seed": 20261069,
+      "heroes": 3,
+      "status": "lost",
+      "rounds": 6,
+      "integrity": 0,
+      "incapacitated": 1,
+      "wave": 2
+    },
+    {
+      "seed": 20261070,
+      "heroes": 3,
+      "status": "lost",
+      "rounds": 7,
+      "integrity": 0,
+      "incapacitated": 1,
+      "wave": 3
+    },
+    {
+      "seed": 20261071,
+      "heroes": 3,
+      "status": "won",
+      "rounds": 3,
+      "integrity": 3,
+      "incapacitated": 1,
+      "wave": 3
+    },
+    {
+      "seed": 20261072,
+      "heroes": 3,
+      "status": "won",
+      "rounds": 3,
+      "integrity": 3,
+      "incapacitated": 1,
+      "wave": 3
+    },
+    {
+      "seed": 20261023,
+      "heroes": 4,
+      "status": "won",
+      "rounds": 4,
+      "integrity": 3,
+      "incapacitated": 1,
+      "wave": 3
+    },
+    {
+      "seed": 20261024,
+      "heroes": 4,
+      "status": "won",
+      "rounds": 2,
+      "integrity": 3,
+      "incapacitated": 1,
+      "wave": 3
+    },
+    {
+      "seed": 20261025,
+      "heroes": 4,
+      "status": "won",
+      "rounds": 2,
+      "integrity": 3,
+      "incapacitated": 1,
+      "wave": 3
+    },
+    {
+      "seed": 20261026,
+      "heroes": 4,
+      "status": "won",
+      "rounds": 3,
+      "integrity": 3,
+      "incapacitated": 1,
+      "wave": 3
+    },
+    {
+      "seed": 20261027,
+      "heroes": 4,
+      "status": "won",
+      "rounds": 3,
+      "integrity": 3,
+      "incapacitated": 1,
+      "wave": 3
+    },
+    {
+      "seed": 20261028,
+      "heroes": 4,
+      "status": "won",
+      "rounds": 2,
+      "integrity": 3,
+      "incapacitated": 1,
+      "wave": 3
+    },
+    {
+      "seed": 20261029,
+      "heroes": 4,
+      "status": "won",
+      "rounds": 2,
+      "integrity": 3,
+      "incapacitated": 1,
+      "wave": 3
+    },
+    {
+      "seed": 20261030,
+      "heroes": 4,
+      "status": "won",
+      "rounds": 2,
+      "integrity": 3,
+      "incapacitated": 1,
+      "wave": 3
+    },
+    {
+      "seed": 20261031,
+      "heroes": 4,
+      "status": "won",
+      "rounds": 2,
+      "integrity": 3,
+      "incapacitated": 1,
+      "wave": 3
+    },
+    {
+      "seed": 20261032,
+      "heroes": 4,
+      "status": "won",
+      "rounds": 3,
+      "integrity": 3,
+      "incapacitated": 1,
+      "wave": 3
+    },
+    {
+      "seed": 20261033,
+      "heroes": 4,
+      "status": "won",
+      "rounds": 2,
+      "integrity": 3,
+      "incapacitated": 1,
+      "wave": 3
+    },
+    {
+      "seed": 20261034,
+      "heroes": 4,
+      "status": "won",
+      "rounds": 2,
+      "integrity": 3,
+      "incapacitated": 1,
+      "wave": 3
+    },
+    {
+      "seed": 20261035,
+      "heroes": 4,
+      "status": "won",
+      "rounds": 4,
+      "integrity": 3,
+      "incapacitated": 1,
+      "wave": 3
+    },
+    {
+      "seed": 20261036,
+      "heroes": 4,
+      "status": "won",
+      "rounds": 3,
+      "integrity": 3,
+      "incapacitated": 1,
+      "wave": 3
+    },
+    {
+      "seed": 20261037,
+      "heroes": 4,
+      "status": "won",
+      "rounds": 3,
+      "integrity": 3,
+      "incapacitated": 1,
+      "wave": 3
+    },
+    {
+      "seed": 20261038,
+      "heroes": 4,
+      "status": "won",
+      "rounds": 3,
+      "integrity": 3,
+      "incapacitated": 1,
+      "wave": 3
+    },
+    {
+      "seed": 20261039,
+      "heroes": 4,
+      "status": "won",
+      "rounds": 2,
+      "integrity": 3,
+      "incapacitated": 1,
+      "wave": 3
+    },
+    {
+      "seed": 20261040,
+      "heroes": 4,
+      "status": "won",
+      "rounds": 2,
+      "integrity": 3,
+      "incapacitated": 1,
+      "wave": 3
+    },
+    {
+      "seed": 20261041,
+      "heroes": 4,
+      "status": "won",
+      "rounds": 2,
+      "integrity": 3,
+      "incapacitated": 1,
+      "wave": 3
+    },
+    {
+      "seed": 20261042,
+      "heroes": 4,
+      "status": "won",
+      "rounds": 2,
+      "integrity": 3,
+      "incapacitated": 1,
+      "wave": 3
+    },
+    {
+      "seed": 20261043,
+      "heroes": 4,
+      "status": "won",
+      "rounds": 2,
+      "integrity": 3,
+      "incapacitated": 1,
+      "wave": 3
+    },
+    {
+      "seed": 20261044,
+      "heroes": 4,
+      "status": "won",
+      "rounds": 2,
+      "integrity": 3,
+      "incapacitated": 1,
+      "wave": 3
+    },
+    {
+      "seed": 20261045,
+      "heroes": 4,
+      "status": "won",
+      "rounds": 2,
+      "integrity": 3,
+      "incapacitated": 1,
+      "wave": 3
+    },
+    {
+      "seed": 20261046,
+      "heroes": 4,
+      "status": "won",
+      "rounds": 2,
+      "integrity": 3,
+      "incapacitated": 1,
+      "wave": 3
+    },
+    {
+      "seed": 20261047,
+      "heroes": 4,
+      "status": "lost",
+      "rounds": 6,
+      "integrity": 0,
+      "incapacitated": 1,
+      "wave": 3
+    },
+    {
+      "seed": 20261048,
+      "heroes": 4,
+      "status": "won",
+      "rounds": 2,
+      "integrity": 3,
+      "incapacitated": 1,
+      "wave": 3
+    },
+    {
+      "seed": 20261049,
+      "heroes": 4,
+      "status": "won",
+      "rounds": 3,
+      "integrity": 3,
+      "incapacitated": 1,
+      "wave": 3
+    },
+    {
+      "seed": 20261050,
+      "heroes": 4,
+      "status": "won",
+      "rounds": 3,
+      "integrity": 3,
+      "incapacitated": 1,
+      "wave": 3
+    },
+    {
+      "seed": 20261051,
+      "heroes": 4,
+      "status": "won",
+      "rounds": 3,
+      "integrity": 3,
+      "incapacitated": 1,
+      "wave": 3
+    },
+    {
+      "seed": 20261052,
+      "heroes": 4,
+      "status": "won",
+      "rounds": 2,
+      "integrity": 3,
+      "incapacitated": 1,
+      "wave": 3
+    },
+    {
+      "seed": 20261053,
+      "heroes": 4,
+      "status": "won",
+      "rounds": 2,
+      "integrity": 3,
+      "incapacitated": 1,
+      "wave": 3
+    },
+    {
+      "seed": 20261054,
+      "heroes": 4,
+      "status": "won",
+      "rounds": 3,
+      "integrity": 3,
+      "incapacitated": 1,
+      "wave": 3
+    },
+    {
+      "seed": 20261055,
+      "heroes": 4,
+      "status": "lost",
+      "rounds": 6,
+      "integrity": 0,
+      "incapacitated": 1,
+      "wave": 3
+    },
+    {
+      "seed": 20261056,
+      "heroes": 4,
+      "status": "won",
+      "rounds": 2,
+      "integrity": 3,
+      "incapacitated": 1,
+      "wave": 3
+    },
+    {
+      "seed": 20261057,
+      "heroes": 4,
+      "status": "won",
+      "rounds": 2,
+      "integrity": 3,
+      "incapacitated": 1,
+      "wave": 3
+    },
+    {
+      "seed": 20261058,
+      "heroes": 4,
+      "status": "won",
+      "rounds": 2,
+      "integrity": 3,
+      "incapacitated": 1,
+      "wave": 3
+    },
+    {
+      "seed": 20261059,
+      "heroes": 4,
+      "status": "won",
+      "rounds": 2,
+      "integrity": 3,
+      "incapacitated": 1,
+      "wave": 3
+    },
+    {
+      "seed": 20261060,
+      "heroes": 4,
+      "status": "won",
+      "rounds": 3,
+      "integrity": 3,
+      "incapacitated": 1,
+      "wave": 3
+    },
+    {
+      "seed": 20261061,
+      "heroes": 4,
+      "status": "won",
+      "rounds": 2,
+      "integrity": 3,
+      "incapacitated": 1,
+      "wave": 3
+    },
+    {
+      "seed": 20261062,
+      "heroes": 4,
+      "status": "won",
+      "rounds": 2,
+      "integrity": 3,
+      "incapacitated": 1,
+      "wave": 3
+    },
+    {
+      "seed": 20261063,
+      "heroes": 4,
+      "status": "won",
+      "rounds": 2,
+      "integrity": 3,
+      "incapacitated": 1,
+      "wave": 3
+    },
+    {
+      "seed": 20261064,
+      "heroes": 4,
+      "status": "won",
+      "rounds": 2,
+      "integrity": 3,
+      "incapacitated": 1,
+      "wave": 3
+    },
+    {
+      "seed": 20261065,
+      "heroes": 4,
+      "status": "won",
+      "rounds": 2,
+      "integrity": 3,
+      "incapacitated": 1,
+      "wave": 3
+    },
+    {
+      "seed": 20261066,
+      "heroes": 4,
+      "status": "won",
+      "rounds": 3,
+      "integrity": 3,
+      "incapacitated": 1,
+      "wave": 3
+    },
+    {
+      "seed": 20261067,
+      "heroes": 4,
+      "status": "won",
+      "rounds": 2,
+      "integrity": 3,
+      "incapacitated": 1,
+      "wave": 3
+    },
+    {
+      "seed": 20261068,
+      "heroes": 4,
+      "status": "won",
+      "rounds": 3,
+      "integrity": 3,
+      "incapacitated": 1,
+      "wave": 3
+    },
+    {
+      "seed": 20261069,
+      "heroes": 4,
+      "status": "lost",
+      "rounds": 7,
+      "integrity": 0,
+      "incapacitated": 1,
+      "wave": 3
+    },
+    {
+      "seed": 20261070,
+      "heroes": 4,
+      "status": "won",
+      "rounds": 3,
+      "integrity": 3,
+      "incapacitated": 1,
+      "wave": 3
+    },
+    {
+      "seed": 20261071,
+      "heroes": 4,
+      "status": "won",
+      "rounds": 3,
+      "integrity": 3,
+      "incapacitated": 1,
+      "wave": 3
+    },
+    {
+      "seed": 20261072,
+      "heroes": 4,
+      "status": "won",
+      "rounds": 2,
+      "integrity": 3,
+      "incapacitated": 1,
+      "wave": 3
+    },
+    {
+      "seed": 20261023,
+      "heroes": 5,
+      "status": "won",
+      "rounds": 3,
+      "integrity": 3,
+      "incapacitated": 1,
+      "wave": 3
+    },
+    {
+      "seed": 20261024,
+      "heroes": 5,
+      "status": "won",
+      "rounds": 2,
+      "integrity": 3,
+      "incapacitated": 1,
+      "wave": 3
+    },
+    {
+      "seed": 20261025,
+      "heroes": 5,
+      "status": "won",
+      "rounds": 2,
+      "integrity": 3,
+      "incapacitated": 1,
+      "wave": 3
+    },
+    {
+      "seed": 20261026,
+      "heroes": 5,
+      "status": "won",
+      "rounds": 2,
+      "integrity": 3,
+      "incapacitated": 1,
+      "wave": 3
+    },
+    {
+      "seed": 20261027,
+      "heroes": 5,
+      "status": "won",
+      "rounds": 3,
+      "integrity": 3,
+      "incapacitated": 1,
+      "wave": 3
+    },
+    {
+      "seed": 20261028,
+      "heroes": 5,
+      "status": "won",
+      "rounds": 2,
+      "integrity": 3,
+      "incapacitated": 1,
+      "wave": 3
+    },
+    {
+      "seed": 20261029,
+      "heroes": 5,
+      "status": "won",
+      "rounds": 2,
+      "integrity": 3,
+      "incapacitated": 1,
+      "wave": 3
+    },
+    {
+      "seed": 20261030,
+      "heroes": 5,
+      "status": "won",
+      "rounds": 2,
+      "integrity": 3,
+      "incapacitated": 1,
+      "wave": 3
+    },
+    {
+      "seed": 20261031,
+      "heroes": 5,
+      "status": "won",
+      "rounds": 2,
+      "integrity": 3,
+      "incapacitated": 1,
+      "wave": 3
+    },
+    {
+      "seed": 20261032,
+      "heroes": 5,
+      "status": "won",
+      "rounds": 2,
+      "integrity": 3,
+      "incapacitated": 1,
+      "wave": 3
+    },
+    {
+      "seed": 20261033,
+      "heroes": 5,
+      "status": "won",
+      "rounds": 2,
+      "integrity": 3,
+      "incapacitated": 1,
+      "wave": 3
+    },
+    {
+      "seed": 20261034,
+      "heroes": 5,
+      "status": "won",
+      "rounds": 2,
+      "integrity": 3,
+      "incapacitated": 1,
+      "wave": 3
+    },
+    {
+      "seed": 20261035,
+      "heroes": 5,
+      "status": "won",
+      "rounds": 2,
+      "integrity": 3,
+      "incapacitated": 1,
+      "wave": 3
+    },
+    {
+      "seed": 20261036,
+      "heroes": 5,
+      "status": "won",
+      "rounds": 2,
+      "integrity": 3,
+      "incapacitated": 1,
+      "wave": 3
+    },
+    {
+      "seed": 20261037,
+      "heroes": 5,
+      "status": "won",
+      "rounds": 2,
+      "integrity": 3,
+      "incapacitated": 1,
+      "wave": 3
+    },
+    {
+      "seed": 20261038,
+      "heroes": 5,
+      "status": "won",
+      "rounds": 3,
+      "integrity": 3,
+      "incapacitated": 1,
+      "wave": 3
+    },
+    {
+      "seed": 20261039,
+      "heroes": 5,
+      "status": "won",
+      "rounds": 2,
+      "integrity": 3,
+      "incapacitated": 1,
+      "wave": 3
+    },
+    {
+      "seed": 20261040,
+      "heroes": 5,
+      "status": "won",
+      "rounds": 2,
+      "integrity": 3,
+      "incapacitated": 1,
+      "wave": 3
+    },
+    {
+      "seed": 20261041,
+      "heroes": 5,
+      "status": "won",
+      "rounds": 2,
+      "integrity": 3,
+      "incapacitated": 1,
+      "wave": 3
+    },
+    {
+      "seed": 20261042,
+      "heroes": 5,
+      "status": "won",
+      "rounds": 2,
+      "integrity": 3,
+      "incapacitated": 1,
+      "wave": 3
+    },
+    {
+      "seed": 20261043,
+      "heroes": 5,
+      "status": "won",
+      "rounds": 2,
+      "integrity": 3,
+      "incapacitated": 1,
+      "wave": 3
+    },
+    {
+      "seed": 20261044,
+      "heroes": 5,
+      "status": "won",
+      "rounds": 2,
+      "integrity": 3,
+      "incapacitated": 1,
+      "wave": 3
+    },
+    {
+      "seed": 20261045,
+      "heroes": 5,
+      "status": "won",
+      "rounds": 2,
+      "integrity": 3,
+      "incapacitated": 1,
+      "wave": 3
+    },
+    {
+      "seed": 20261046,
+      "heroes": 5,
+      "status": "won",
+      "rounds": 2,
+      "integrity": 3,
+      "incapacitated": 1,
+      "wave": 3
+    },
+    {
+      "seed": 20261047,
+      "heroes": 5,
+      "status": "won",
+      "rounds": 3,
+      "integrity": 3,
+      "incapacitated": 1,
+      "wave": 3
+    },
+    {
+      "seed": 20261048,
+      "heroes": 5,
+      "status": "won",
+      "rounds": 2,
+      "integrity": 3,
+      "incapacitated": 1,
+      "wave": 3
+    },
+    {
+      "seed": 20261049,
+      "heroes": 5,
+      "status": "won",
+      "rounds": 3,
+      "integrity": 3,
+      "incapacitated": 1,
+      "wave": 3
+    },
+    {
+      "seed": 20261050,
+      "heroes": 5,
+      "status": "won",
+      "rounds": 3,
+      "integrity": 3,
+      "incapacitated": 1,
+      "wave": 3
+    },
+    {
+      "seed": 20261051,
+      "heroes": 5,
+      "status": "won",
+      "rounds": 2,
+      "integrity": 3,
+      "incapacitated": 1,
+      "wave": 3
+    },
+    {
+      "seed": 20261052,
+      "heroes": 5,
+      "status": "won",
+      "rounds": 2,
+      "integrity": 3,
+      "incapacitated": 1,
+      "wave": 3
+    },
+    {
+      "seed": 20261053,
+      "heroes": 5,
+      "status": "won",
+      "rounds": 2,
+      "integrity": 3,
+      "incapacitated": 1,
+      "wave": 3
+    },
+    {
+      "seed": 20261054,
+      "heroes": 5,
+      "status": "won",
+      "rounds": 3,
+      "integrity": 3,
+      "incapacitated": 1,
+      "wave": 3
+    },
+    {
+      "seed": 20261055,
+      "heroes": 5,
+      "status": "won",
+      "rounds": 3,
+      "integrity": 3,
+      "incapacitated": 1,
+      "wave": 3
+    },
+    {
+      "seed": 20261056,
+      "heroes": 5,
+      "status": "won",
+      "rounds": 2,
+      "integrity": 3,
+      "incapacitated": 1,
+      "wave": 3
+    },
+    {
+      "seed": 20261057,
+      "heroes": 5,
+      "status": "won",
+      "rounds": 2,
+      "integrity": 3,
+      "incapacitated": 1,
+      "wave": 3
+    },
+    {
+      "seed": 20261058,
+      "heroes": 5,
+      "status": "won",
+      "rounds": 2,
+      "integrity": 3,
+      "incapacitated": 1,
+      "wave": 3
+    },
+    {
+      "seed": 20261059,
+      "heroes": 5,
+      "status": "won",
+      "rounds": 2,
+      "integrity": 3,
+      "incapacitated": 1,
+      "wave": 3
+    },
+    {
+      "seed": 20261060,
+      "heroes": 5,
+      "status": "won",
+      "rounds": 3,
+      "integrity": 3,
+      "incapacitated": 1,
+      "wave": 3
+    },
+    {
+      "seed": 20261061,
+      "heroes": 5,
+      "status": "won",
+      "rounds": 2,
+      "integrity": 3,
+      "incapacitated": 1,
+      "wave": 3
+    },
+    {
+      "seed": 20261062,
+      "heroes": 5,
+      "status": "won",
+      "rounds": 2,
+      "integrity": 3,
+      "incapacitated": 1,
+      "wave": 3
+    },
+    {
+      "seed": 20261063,
+      "heroes": 5,
+      "status": "won",
+      "rounds": 2,
+      "integrity": 3,
+      "incapacitated": 1,
+      "wave": 3
+    },
+    {
+      "seed": 20261064,
+      "heroes": 5,
+      "status": "won",
+      "rounds": 2,
+      "integrity": 3,
+      "incapacitated": 1,
+      "wave": 3
+    },
+    {
+      "seed": 20261065,
+      "heroes": 5,
+      "status": "won",
+      "rounds": 2,
+      "integrity": 3,
+      "incapacitated": 1,
+      "wave": 3
+    },
+    {
+      "seed": 20261066,
+      "heroes": 5,
+      "status": "won",
+      "rounds": 3,
+      "integrity": 3,
+      "incapacitated": 1,
+      "wave": 3
+    },
+    {
+      "seed": 20261067,
+      "heroes": 5,
+      "status": "won",
+      "rounds": 2,
+      "integrity": 3,
+      "incapacitated": 1,
+      "wave": 3
+    },
+    {
+      "seed": 20261068,
+      "heroes": 5,
+      "status": "won",
+      "rounds": 3,
+      "integrity": 3,
+      "incapacitated": 1,
+      "wave": 3
+    },
+    {
+      "seed": 20261069,
+      "heroes": 5,
+      "status": "won",
+      "rounds": 2,
+      "integrity": 3,
+      "incapacitated": 1,
+      "wave": 3
+    },
+    {
+      "seed": 20261070,
+      "heroes": 5,
+      "status": "won",
+      "rounds": 2,
+      "integrity": 3,
+      "incapacitated": 1,
+      "wave": 3
+    },
+    {
+      "seed": 20261071,
+      "heroes": 5,
+      "status": "won",
+      "rounds": 2,
+      "integrity": 3,
+      "incapacitated": 1,
+      "wave": 3
+    },
+    {
+      "seed": 20261072,
+      "heroes": 5,
+      "status": "won",
+      "rounds": 2,
+      "integrity": 3,
+      "incapacitated": 1,
+      "wave": 3
+    },
+    {
+      "seed": 20261023,
+      "heroes": 6,
+      "status": "won",
+      "rounds": 3,
+      "integrity": 3,
+      "incapacitated": 1,
+      "wave": 3
+    },
+    {
+      "seed": 20261024,
+      "heroes": 6,
+      "status": "won",
+      "rounds": 2,
+      "integrity": 3,
+      "incapacitated": 1,
+      "wave": 3
+    },
+    {
+      "seed": 20261025,
+      "heroes": 6,
+      "status": "won",
+      "rounds": 2,
+      "integrity": 3,
+      "incapacitated": 1,
+      "wave": 3
+    },
+    {
+      "seed": 20261026,
+      "heroes": 6,
+      "status": "won",
+      "rounds": 2,
+      "integrity": 3,
+      "incapacitated": 1,
+      "wave": 3
+    },
+    {
+      "seed": 20261027,
+      "heroes": 6,
+      "status": "won",
+      "rounds": 3,
+      "integrity": 3,
+      "incapacitated": 1,
+      "wave": 3
+    },
+    {
+      "seed": 20261028,
+      "heroes": 6,
+      "status": "won",
+      "rounds": 2,
+      "integrity": 3,
+      "incapacitated": 1,
+      "wave": 3
+    },
+    {
+      "seed": 20261029,
+      "heroes": 6,
+      "status": "won",
+      "rounds": 2,
+      "integrity": 3,
+      "incapacitated": 1,
+      "wave": 3
+    },
+    {
+      "seed": 20261030,
+      "heroes": 6,
+      "status": "won",
+      "rounds": 2,
+      "integrity": 3,
+      "incapacitated": 1,
+      "wave": 3
+    },
+    {
+      "seed": 20261031,
+      "heroes": 6,
+      "status": "won",
+      "rounds": 2,
+      "integrity": 3,
+      "incapacitated": 1,
+      "wave": 3
+    },
+    {
+      "seed": 20261032,
+      "heroes": 6,
+      "status": "won",
+      "rounds": 2,
+      "integrity": 3,
+      "incapacitated": 1,
+      "wave": 3
+    },
+    {
+      "seed": 20261033,
+      "heroes": 6,
+      "status": "won",
+      "rounds": 2,
+      "integrity": 3,
+      "incapacitated": 1,
+      "wave": 3
+    },
+    {
+      "seed": 20261034,
+      "heroes": 6,
+      "status": "won",
+      "rounds": 2,
+      "integrity": 3,
+      "incapacitated": 1,
+      "wave": 3
+    },
+    {
+      "seed": 20261035,
+      "heroes": 6,
+      "status": "won",
+      "rounds": 2,
+      "integrity": 3,
+      "incapacitated": 1,
+      "wave": 3
+    },
+    {
+      "seed": 20261036,
+      "heroes": 6,
+      "status": "won",
+      "rounds": 2,
+      "integrity": 3,
+      "incapacitated": 1,
+      "wave": 3
+    },
+    {
+      "seed": 20261037,
+      "heroes": 6,
+      "status": "won",
+      "rounds": 2,
+      "integrity": 3,
+      "incapacitated": 1,
+      "wave": 3
+    },
+    {
+      "seed": 20261038,
+      "heroes": 6,
+      "status": "won",
+      "rounds": 3,
+      "integrity": 3,
+      "incapacitated": 1,
+      "wave": 3
+    },
+    {
+      "seed": 20261039,
+      "heroes": 6,
+      "status": "won",
+      "rounds": 2,
+      "integrity": 3,
+      "incapacitated": 1,
+      "wave": 3
+    },
+    {
+      "seed": 20261040,
+      "heroes": 6,
+      "status": "won",
+      "rounds": 2,
+      "integrity": 3,
+      "incapacitated": 1,
+      "wave": 3
+    },
+    {
+      "seed": 20261041,
+      "heroes": 6,
+      "status": "won",
+      "rounds": 2,
+      "integrity": 3,
+      "incapacitated": 1,
+      "wave": 3
+    },
+    {
+      "seed": 20261042,
+      "heroes": 6,
+      "status": "won",
+      "rounds": 2,
+      "integrity": 3,
+      "incapacitated": 1,
+      "wave": 3
+    },
+    {
+      "seed": 20261043,
+      "heroes": 6,
+      "status": "won",
+      "rounds": 2,
+      "integrity": 3,
+      "incapacitated": 1,
+      "wave": 3
+    },
+    {
+      "seed": 20261044,
+      "heroes": 6,
+      "status": "won",
+      "rounds": 2,
+      "integrity": 3,
+      "incapacitated": 1,
+      "wave": 3
+    },
+    {
+      "seed": 20261045,
+      "heroes": 6,
+      "status": "won",
+      "rounds": 2,
+      "integrity": 3,
+      "incapacitated": 1,
+      "wave": 3
+    },
+    {
+      "seed": 20261046,
+      "heroes": 6,
+      "status": "won",
+      "rounds": 2,
+      "integrity": 3,
+      "incapacitated": 1,
+      "wave": 3
+    },
+    {
+      "seed": 20261047,
+      "heroes": 6,
+      "status": "won",
+      "rounds": 2,
+      "integrity": 3,
+      "incapacitated": 1,
+      "wave": 3
+    },
+    {
+      "seed": 20261048,
+      "heroes": 6,
+      "status": "won",
+      "rounds": 2,
+      "integrity": 3,
+      "incapacitated": 1,
+      "wave": 3
+    },
+    {
+      "seed": 20261049,
+      "heroes": 6,
+      "status": "won",
+      "rounds": 2,
+      "integrity": 3,
+      "incapacitated": 1,
+      "wave": 3
+    },
+    {
+      "seed": 20261050,
+      "heroes": 6,
+      "status": "won",
+      "rounds": 3,
+      "integrity": 3,
+      "incapacitated": 1,
+      "wave": 3
+    },
+    {
+      "seed": 20261051,
+      "heroes": 6,
+      "status": "won",
+      "rounds": 2,
+      "integrity": 3,
+      "incapacitated": 1,
+      "wave": 3
+    },
+    {
+      "seed": 20261052,
+      "heroes": 6,
+      "status": "won",
+      "rounds": 2,
+      "integrity": 3,
+      "incapacitated": 1,
+      "wave": 3
+    },
+    {
+      "seed": 20261053,
+      "heroes": 6,
+      "status": "won",
+      "rounds": 2,
+      "integrity": 3,
+      "incapacitated": 1,
+      "wave": 3
+    },
+    {
+      "seed": 20261054,
+      "heroes": 6,
+      "status": "won",
+      "rounds": 3,
+      "integrity": 3,
+      "incapacitated": 1,
+      "wave": 3
+    },
+    {
+      "seed": 20261055,
+      "heroes": 6,
+      "status": "won",
+      "rounds": 3,
+      "integrity": 3,
+      "incapacitated": 1,
+      "wave": 3
+    },
+    {
+      "seed": 20261056,
+      "heroes": 6,
+      "status": "won",
+      "rounds": 2,
+      "integrity": 3,
+      "incapacitated": 1,
+      "wave": 3
+    },
+    {
+      "seed": 20261057,
+      "heroes": 6,
+      "status": "won",
+      "rounds": 2,
+      "integrity": 3,
+      "incapacitated": 1,
+      "wave": 3
+    },
+    {
+      "seed": 20261058,
+      "heroes": 6,
+      "status": "won",
+      "rounds": 2,
+      "integrity": 3,
+      "incapacitated": 1,
+      "wave": 3
+    },
+    {
+      "seed": 20261059,
+      "heroes": 6,
+      "status": "won",
+      "rounds": 2,
+      "integrity": 3,
+      "incapacitated": 1,
+      "wave": 3
+    },
+    {
+      "seed": 20261060,
+      "heroes": 6,
+      "status": "won",
+      "rounds": 2,
+      "integrity": 3,
+      "incapacitated": 1,
+      "wave": 3
+    },
+    {
+      "seed": 20261061,
+      "heroes": 6,
+      "status": "won",
+      "rounds": 2,
+      "integrity": 3,
+      "incapacitated": 1,
+      "wave": 3
+    },
+    {
+      "seed": 20261062,
+      "heroes": 6,
+      "status": "won",
+      "rounds": 2,
+      "integrity": 3,
+      "incapacitated": 1,
+      "wave": 3
+    },
+    {
+      "seed": 20261063,
+      "heroes": 6,
+      "status": "won",
+      "rounds": 2,
+      "integrity": 3,
+      "incapacitated": 1,
+      "wave": 3
+    },
+    {
+      "seed": 20261064,
+      "heroes": 6,
+      "status": "won",
+      "rounds": 2,
+      "integrity": 3,
+      "incapacitated": 1,
+      "wave": 3
+    },
+    {
+      "seed": 20261065,
+      "heroes": 6,
+      "status": "won",
+      "rounds": 2,
+      "integrity": 3,
+      "incapacitated": 1,
+      "wave": 3
+    },
+    {
+      "seed": 20261066,
+      "heroes": 6,
+      "status": "won",
+      "rounds": 3,
+      "integrity": 3,
+      "incapacitated": 1,
+      "wave": 3
+    },
+    {
+      "seed": 20261067,
+      "heroes": 6,
+      "status": "won",
+      "rounds": 2,
+      "integrity": 3,
+      "incapacitated": 1,
+      "wave": 3
+    },
+    {
+      "seed": 20261068,
+      "heroes": 6,
+      "status": "won",
+      "rounds": 2,
+      "integrity": 3,
+      "incapacitated": 1,
+      "wave": 3
+    },
+    {
+      "seed": 20261069,
+      "heroes": 6,
+      "status": "won",
+      "rounds": 2,
+      "integrity": 3,
+      "incapacitated": 1,
+      "wave": 3
+    },
+    {
+      "seed": 20261070,
+      "heroes": 6,
+      "status": "won",
+      "rounds": 2,
+      "integrity": 3,
+      "incapacitated": 1,
+      "wave": 3
+    },
+    {
+      "seed": 20261071,
+      "heroes": 6,
+      "status": "won",
+      "rounds": 2,
+      "integrity": 3,
+      "incapacitated": 1,
+      "wave": 3
+    },
+    {
+      "seed": 20261072,
+      "heroes": 6,
+      "status": "won",
+      "rounds": 2,
+      "integrity": 3,
+      "incapacitated": 1,
+      "wave": 3
+    }
+  ],
+  "counts": {
+    "2": {
+      "lost": 43,
+      "won": 7
+    },
+    "3": {
+      "lost": 16,
+      "won": 34
+    },
+    "4": {
+      "won": 47,
+      "lost": 3
+    },
+    "5": {
+      "won": 50
+    },
+    "6": {
+      "won": 50
+    }
+  }
+}

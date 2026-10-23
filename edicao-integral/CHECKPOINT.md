@@ -75,3 +75,7 @@ A ativação zumbi agora persegue heróis apenas dentro de alcance e linha de vi
 ## Unidade 17 — instalação militar explorável
 
 `military_installation` é uma planta funcional de 16 zonas, objetivo 6 e porta 2–6. O transmissor exige encontro ativo, herói vivo com PA no objetivo e zona livre, com custo de uma ação; o mapa militar não pode ser substituído pelo Mercado. O cartão da estação exige busca feita pela expedição atual, eliminando um atalho por busca anterior de outra equipe. Foram aprovados 59 testes experimentais; o validador confirma três mapas táticos e 125 IDs. Falta arte/PDF e prova completa de campanha.
+
+## Unidade 18 — defesa, ensaio isolado e fronteira de compatibilidade
+
+Inimigos da defesa agora ferem heróis ao alcançar qualquer zona ocupada, com armadura e possível infecção; o transmissor perde integridade apenas quando eles chegam à zona 1. Salvamentos rejeitam inimigos fora da planta. `simulate_defense.py` gerou 250 defesas reproduzíveis (H2–H6, 50 sementes). O relatório documenta resultados e pré-condições injetadas; nenhum equilíbrio foi alterado. `CAMPAIGN_INTEGRATION.md` registra diferenças materiais entre o capítulo 0.2 e o motor novo. Não marque A Cisterna como implementada nem use a flag externa como prova de vitória. Próxima unidade: portar preparação, porções, relógio e etapas do filtro com testes de paridade antes de ligar os arcos.

@@ -158,10 +158,17 @@ class World:
             raise ValueError('Peça única duplicada')
         if self.final_defense is not None:
             defense=self.final_defense
+            defense_zones=set(TACTICS_DATA['maps']['camp_final']['zones'])
             if (defense.get('status') not in ('active','won','lost','retreated')
-                    or defense.get('integrity',-1)<0
-                    or defense.get('wave',-1)<0
-                    or any(h not in self.heroes for h in defense.get('heroes',{}))):
+                    or not 0<=defense.get('integrity',-1)<=3
+                    or not 1<=defense.get('wave',-1)<=3
+                    or defense.get('map')!='camp_final'
+                    or any(h not in self.heroes or zone not in defense_zones
+                           for h,zone in defense.get('heroes',{}).items())
+                    or any(enemy.get('kind') not in TACTICS_DATA['enemies']
+                           or enemy.get('zone') not in defense_zones
+                           or not 0<enemy.get('health',0)<=TACTICS_DATA['enemies'][enemy['kind']]['health']
+                           for enemy in defense.get('enemies',{}).values())):
                 raise ValueError('Defesa final inválida')
         for expedition_id, encounter in self.encounters.items():
             if expedition_id not in self.expeditions or encounter.get('map') not in TACTICS_DATA['maps']:

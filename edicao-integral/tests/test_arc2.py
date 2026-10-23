@@ -63,6 +63,20 @@ class Arc2Tests(unittest.TestCase):
         w.final_defense['enemies']={'E999':{'kind':'runner','zone':2,'health':1}}
         self.assertEqual(arc.defense_activate()['status'],'lost')
 
+    def test_enemy_attacks_defender_before_reaching_transmitter(self):
+        w=self.defense_world();arc=Arc2(w);arc.final_defense()
+        w.final_defense['heroes']['ZC-HER-0001']=3
+        w.final_defense['enemies']={'E999':{'kind':'slow','zone':4,'health':1}}
+        result=arc.defense_activate()
+        self.assertEqual(result['integrity'],3)
+        self.assertEqual(w.heroes['ZC-HER-0001']['health'],2)
+
+    def test_invalid_saved_defense_enemy_is_rejected(self):
+        w=self.defense_world();Arc2(w).final_defense()
+        enemy=next(iter(w.final_defense['enemies'].values()))
+        enemy['zone']=99
+        with self.assertRaises(ValueError):w.validate()
+
     def test_transmitter_cannot_be_loaded_twice(self):
         heroes=['ZC-HER-0001','ZC-HER-0002']
         w=World.new(1,heroes,{'food':4,'water':4,'fuel':6})
