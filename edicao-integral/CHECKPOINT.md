@@ -35,3 +35,7 @@ Verificação final desta rodada: `git diff --check` limpo; 25 testes novos e 51
 ## Unidade 7 — equipamento em rodada
 
 O estado experimental agora registra três ações por herói. Trocar equipamento durante combate custa uma ação; ataque com arma na mão rola D6 usando o PRNG persistente, retorna ruído, dano e durabilidade remanescente; armadura equipada absorve dano e perde durabilidade. Um teste salva/restaura no meio da rodada e confirma o mesmo dado seguinte. Vinte e sete testes experimentais passaram. Não há ainda alvo inimigo persistente, ativação de horda, portas, alcance ou consequência de ruído; portanto isto não é combate tático completo.
+
+## Unidade 8 — equipe com NPCs
+
+NPCs podem acompanhar expedição e deixam de produzir no abrigo enquanto viajam. Motorista reduz em um segmento a viagem com veículo (mínimo um); explorador acrescenta sua experiência a um achado existente, limitado pela carga, sem criar busca extra. Vagas de veículo incluem tripulação. O retorno restaura as posições de heróis e NPCs. Vinte e oito testes experimentais passaram. Permanecem a integração das 70 habilidades, as cartas imprimíveis, inimigos, missões e validação de equilíbrio.

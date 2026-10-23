@@ -31,6 +31,8 @@ class Expedition:
     returning: bool = False
     cargo: dict[str, int] = field(default_factory=dict)
     vehicle_id: str | None = None
+    crew: list[str] = field(default_factory=list)
+    segment_cost: int = 0
 
 
 @dataclass
@@ -105,22 +107,29 @@ class World:
         for key, exp in self.expeditions.items():
             if (key != exp.id or exp.destination not in LOCATIONS or exp.remaining < 0
                     or len(set(exp.heroes)) != len(exp.heroes)
+                    or len(set(exp.crew)) != len(exp.crew)
                     or active_heroes.intersection(exp.heroes)
                     or any(h not in self.heroes or self.heroes[h]['location'] != key
                            for h in exp.heroes)
+                    or any(n not in self.npcs or self.npcs[n]['location'] != key
+                           for n in exp.crew)
                     or any(r not in RESOURCES or n < 0 for r,n in exp.cargo.items())
                     or (exp.vehicle_id is None and sum(exp.cargo.values()) > 6 * len(exp.heroes))):
                 raise ValueError('Expedição/carga inválida')
             if exp.vehicle_id is not None:
                 if (exp.vehicle_id not in self.vehicles
                         or self.vehicles[exp.vehicle_id]['location'] != key
-                        or len(exp.heroes) > VEHICLES[exp.vehicle_id]['seats']
+                        or len(exp.heroes)+len(exp.crew) > VEHICLES[exp.vehicle_id]['seats']
                         or sum(exp.cargo.values()) > VEHICLES[exp.vehicle_id]['cargo_capacity']):
                     raise ValueError('Veículo/carga inválidos')
             active_heroes.update(exp.heroes)
         if any(h['location'] != 'camp' for hero_id,h in self.heroes.items()
                if hero_id not in active_heroes):
             raise ValueError('Herói fora de expedição')
+        active_npcs={n for exp in self.expeditions.values() for n in exp.crew}
+        if any(n['location'] != 'camp' for npc_id,n in self.npcs.items()
+               if npc_id not in active_npcs):
+            raise ValueError('NPC fora de expedição')
         if any(vid not in VEHICLES or state['location'] not in ('camp',*(self.expeditions.keys()))
                or not 0 <= state['health'] <= VEHICLES[vid]['health']
                for vid,state in self.vehicles.items()):
@@ -249,7 +258,7 @@ class World:
                 or self.stock['food'] < self.residents + 1
                 or self.stock['water'] < self.residents + 1):
             return False
-        self.npcs[npc_id] = {'level':1,'job':None,'health':3}
+        self.npcs[npc_id] = {'level':1,'job':None,'health':3,'location':'camp'}
         return True
 
     def assign(self, npc_id: str, job: str) -> None:
@@ -379,7 +388,8 @@ class World:
         if not line_of_sight or 'watch' not in self.structures or self.structures['watch']['health'] == 0:
             return threat
         guards = sum(state['level'] for npc_id,state in self.npcs.items()
-                     if state['job'] == 'guard' and NPCS[npc_id]['output'] == 'defense')
+                     if state['job'] == 'guard' and state['location']=='camp'
+                     and NPCS[npc_id]['output'] == 'defense')
         stopped = min(threat,guards,self.stock['ammo'])
         self.stock['ammo'] -= stopped
         return threat-stopped
@@ -400,10 +410,14 @@ class World:
         self.searches[location_id] -= 1
         loot = LOCATIONS[location_id]['loot']
         found = {}
+        scouts=sum(self.npcs[n]['level'] for n in exp.crew
+                   if self.npcs[n]['job']=='scouting')
         for resource,amount in loot.items():
+            amount += scouts
             found[resource] = min(amount,capacity)
             exp.cargo[resource] = exp.cargo.get(resource,0) + found[resource]
             capacity -= found[resource]
+            scouts=0
         return found
 
     def recover_vehicle(self, vehicle_id: str, expedition_id: str) -> bool:
@@ -413,7 +427,8 @@ class World:
         spec=VEHICLES[vehicle_id]
         fuel=DATA['rules']['travel_segments'][exp.distance]*spec['fuel_per_segment']
         if (exp.destination != 'EXP-LOC-03' or exp.remaining != 0 or exp.returning
-                or len(exp.heroes)>spec['seats'] or sum(exp.cargo.values())>spec['cargo_capacity']
+                or len(exp.heroes)+len(exp.crew)>spec['seats']
+                or sum(exp.cargo.values())>spec['cargo_capacity']
                 or self.stock['fuel']<fuel):
             return False
         self.stock['fuel']-=fuel
@@ -422,17 +437,23 @@ class World:
         return True
 
     def open_expedition(self, expedition_id: str, hero_ids: list[str], location_id: str,
-                        vehicle_id: str | None = None) -> None:
+                        vehicle_id: str | None = None, npc_ids: list[str] | None = None) -> None:
+        npc_ids = npc_ids or []
         if expedition_id in self.expeditions or not hero_ids or len(set(hero_ids)) != len(hero_ids) or location_id not in LOCATIONS:
             raise ValueError('Expedição inválida')
         if any(h not in self.heroes or self.heroes[h]['location'] != 'camp' for h in hero_ids):
             raise ValueError('Herói indisponível')
+        if len(set(npc_ids))!=len(npc_ids) or any(n not in self.npcs or self.npcs[n]['location']!='camp' for n in npc_ids):
+            raise ValueError('NPC indisponível')
         distance = LOCATIONS[location_id]['distance']
         segments = DATA['rules']['travel_segments'][distance]
         if vehicle_id is not None:
+            driver=any(self.npcs[n]['job']=='driving' for n in npc_ids)
+            if driver:
+                segments=max(1,segments-1)
             if (vehicle_id not in self.vehicles or self.vehicles[vehicle_id]['location'] != 'camp'
                     or self.vehicles[vehicle_id]['health'] == 0
-                    or len(hero_ids) > VEHICLES[vehicle_id]['seats']):
+                    or len(hero_ids)+len(npc_ids) > VEHICLES[vehicle_id]['seats']):
                 raise ValueError('Veículo indisponível')
             fuel = 2 * segments * VEHICLES[vehicle_id]['fuel_per_segment']
             if self.stock['fuel'] < fuel:
@@ -440,9 +461,12 @@ class World:
             self.stock['fuel'] -= fuel
             self.vehicles[vehicle_id]['location'] = expedition_id
         self.expeditions[expedition_id] = Expedition(expedition_id,hero_ids,location_id,distance,segments,
-                                                    vehicle_id=vehicle_id)
+                                                    vehicle_id=vehicle_id,crew=npc_ids,
+                                                    segment_cost=segments)
         for h in hero_ids:
             self.heroes[h]['location'] = expedition_id
+        for n in npc_ids:
+            self.npcs[n]['location'] = expedition_id
 
     def advance_expedition(self, expedition_id: str) -> str:
         exp = self.expeditions[expedition_id]
@@ -459,6 +483,8 @@ class World:
                          'left_behind':left_behind})
         for h in exp.heroes:
             self.heroes[h]['location'] = 'camp'
+        for n in exp.crew:
+            self.npcs[n]['location'] = 'camp'
         if exp.vehicle_id:
             self.vehicles[exp.vehicle_id]['location']='camp'
         del self.expeditions[expedition_id]
@@ -469,14 +495,14 @@ class World:
         if exp.remaining != 0 or exp.returning:
             raise ValueError('Retorno indisponível')
         exp.returning = True
-        exp.remaining = DATA['rules']['travel_segments'][exp.distance]
+        exp.remaining = exp.segment_cost
 
     def end_day(self) -> dict:
         self.day += 1
         produced = dict.fromkeys(RESOURCES,0)
         # Especialistas geram apenas suas tarefas previstas; saídas abstratas não criam recurso.
         for npc_id,state in self.npcs.items():
-            if state['job'] is None:
+            if state['job'] is None or state['location']!='camp':
                 continue
             output = NPCS[npc_id]['output']
             if output in RESOURCES:

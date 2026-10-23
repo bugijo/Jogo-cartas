@@ -151,6 +151,25 @@ class SystemTests(unittest.TestCase):
             w.open_expedition('other',[list(w.heroes)[1]],'EXP-LOC-05',vehicle_id='EXP-VEI-01')
         w.validate()
 
+    def test_driver_and_scout_crew_are_absent_from_camp_jobs(self):
+        w=world(stock={'food':8,'water':8,'fuel':4})
+        self.assertTrue(w.recruit('EXP-NPC-06'))
+        self.assertTrue(w.recruit('EXP-NPC-09'))
+        w.assign('EXP-NPC-06','driving')
+        w.assign('EXP-NPC-09','scouting')
+        w.vehicles['EXP-VEI-01']={'location':'camp','health':3}
+        h=next(iter(w.heroes))
+        w.open_expedition('crew',[h],'EXP-LOC-03',vehicle_id='EXP-VEI-01',
+                          npc_ids=['EXP-NPC-06','EXP-NPC-09'])
+        self.assertEqual(w.expeditions['crew'].segment_cost,1)
+        self.assertEqual(w.stock['fuel'],2)
+        self.assertEqual(w.advance_expedition('crew'),'arrived')
+        self.assertEqual(w.search('crew'),{'scrap':3,'fuel':1})
+        w.begin_return('crew');w.advance_expedition('crew')
+        self.assertEqual(w.npcs['EXP-NPC-06']['location'],'camp')
+        self.assertEqual(w.npcs['EXP-NPC-09']['location'],'camp')
+        w.validate()
+
     def test_rng_save_replay_and_crisis_cooldown(self):
         w=world(seed=2)
         w.structures['garden']={'health':3,'age':0}
