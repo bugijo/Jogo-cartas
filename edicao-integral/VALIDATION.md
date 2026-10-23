@@ -29,6 +29,8 @@ O déficit mostra que **esta rota fixa não abastece o grupo**. Ela só busca um
 
 Prioridade 1: fechar inventário na rodada tática (PA, troca de equipamentos, durabilidade), consumo de combustível e capacidade de veículo. Prioridade 2: tornar os 70 marcos e os 15 trabalhos integralmente executáveis e diferenciar crises. Prioridade 3: ligar missão e eventos aos dados, implementar os dois arcos e condições de vitória/derrota. Prioridade 4: só então diagramar e validar peças de 20 × 20 cm, fichas e cartas. Impressão física e playtest humano não ocorreram nesta evolução.
 
-Resultado de regressão: 25 testes experimentais e 51 testes existentes aprovados. A suíte existente emitiu um `ResourceWarning` conhecido por arquivo de imagem não fechado em `tests/test_boards06.py:64`; não é falha de teste nem foi alterado neste lote.
+Resultado de regressão: 27 testes experimentais e 51 testes existentes aprovados. A suíte existente emitiu um `ResourceWarning` conhecido por arquivo de imagem não fechado em `tests/test_boards06.py:64`; não é falha de teste nem foi alterado neste lote.
 
 O resultado foi regenerado após distinguir danos das crises: a perda pontual de comida por gafanhotos afeta 7/100 ensaios H2. Não houve ajuste de custos, probabilidades ou preparação para eliminar esses déficits.
+
+Uma prova adicional de rodada cobre troca por 1 ação, arma com durabilidade, D6 e ruído, absorção por capacete e reexecução do próximo ataque após restaurar o estado do PRNG. A unidade de combate ainda não possui alvo/horda/alcance e não entra nos 500 ensaios econômicos.

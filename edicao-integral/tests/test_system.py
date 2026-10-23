@@ -50,6 +50,27 @@ class SystemTests(unittest.TestCase):
             restored=system.World.load(path)
             self.assertEqual(restored.gear,w.gear)
 
+    def test_combat_actions_durability_noise_and_armor(self):
+        w=world(seed=42,stock={'food':4,'water':4})
+        hero=next(iter(w.heroes))
+        w.give_item(hero,'knife','EXP-EQU-001','pocket')
+        w.give_item(hero,'helmet','EXP-EQU-004','head')
+        w.move_item(hero,'knife','hand',in_combat=True)
+        self.assertEqual(w.heroes[hero]['actions'],2)
+        result=w.attack_with_item(hero,'knife')
+        self.assertEqual(result['noise'],'baixo')
+        self.assertEqual(len(result['rolls']),1)
+        self.assertEqual(result['durability'],2)
+        self.assertEqual(w.heroes[hero]['actions'],1)
+        self.assertEqual(w.receive_damage(hero,2,'helmet'),{'absorbed':1,'health':2})
+        self.assertEqual(w.gear[hero]['helmet']['durability'],2)
+        w.begin_round()
+        self.assertEqual(w.heroes[hero]['actions'],3)
+        with tempfile.TemporaryDirectory() as directory:
+            path=Path(directory)/'combat.json';w.save(path)
+            copy=system.World.load(path)
+            self.assertEqual(copy.attack_with_item(hero,'knife'),w.attack_with_item(hero,'knife'))
+
     def test_project_work_repair_and_npc(self):
         w=world(stock={'food':8,'water':8,'wood':4,'scrap':4})
         self.assertTrue(w.start_project('garden'))

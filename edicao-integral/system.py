@@ -61,6 +61,8 @@ class World:
             raise ValueError('Heróis iniciais inválidos')
         world = cls(seed=seed)
         world.heroes = {h:{'xp':0,'health':3,'combat_xp':0,'location':'camp'} for h in hero_ids}
+        for hero in world.heroes.values():
+            hero['actions']=DATA['rules']['actions']
         world.gear = {h:{} for h in hero_ids}
         world.searches = {key:loc['searches'] for key,loc in LOCATIONS.items()}
         world.stock.update(stock or {})
@@ -93,7 +95,9 @@ class World:
             raise ValueError('Capacidade excedida')
         if any(v < 0 for v in self.searches.values()):
             raise ValueError('Contador de busca negativo')
-        if any(h not in HEROES or state['xp'] > 100 or state['health'] < 0 for h,state in self.heroes.items()):
+        if any(h not in HEROES or state['xp'] > 100 or state['health'] < 0
+               or not 0 <= state['actions'] <= DATA['rules']['actions']
+               for h,state in self.heroes.items()):
             raise ValueError('Herói inválido')
         if any(n not in NPCS or not 1 <= state['level'] <= 3 for n,state in self.npcs.items()):
             raise ValueError('NPC inválido')
@@ -136,6 +140,8 @@ class World:
                     raise ValueError('Instância duplicada/desconhecida')
                 seen.add(instance_id)
                 spec = ITEMS[item['template']]
+                if not 0 <= item['durability'] <= spec['durability']:
+                    raise ValueError('Durabilidade inválida')
                 slot = item['slot']
                 if slot not in spec['slots']:
                     raise ValueError('Slot incompatível')
@@ -173,7 +179,9 @@ class World:
             raise
 
     def move_item(self, hero_id: str, instance_id: str, slot: str,
-                  index: int = 0, x: int = 0, y: int = 0) -> None:
+                  index: int = 0, x: int = 0, y: int = 0, in_combat: bool = False) -> None:
+        if in_combat and self.heroes[hero_id]['actions'] < 1:
+            raise ValueError('Sem ações para troca')
         item=self.gear[hero_id][instance_id]
         old=dict(item)
         item.update(slot=slot,index=index,x=x,y=y)
@@ -182,6 +190,52 @@ class World:
         except ValueError:
             item.clear();item.update(old)
             raise
+        if in_combat:
+            self.heroes[hero_id]['actions']-=1
+
+    def begin_round(self) -> None:
+        for hero in self.heroes.values():
+            hero['actions']=DATA['rules']['actions']
+
+    def _d6(self, count: int = 1) -> list[int]:
+        rng=random.Random();rng.setstate(_tuples(self.rng_state))
+        rolls=[rng.randint(1,6) for _ in range(count)]
+        self.rng_state=_lists(rng.getstate())
+        return rolls
+
+    def attack_with_item(self, hero_id: str, instance_id: str) -> dict:
+        hero=self.heroes[hero_id]
+        item=self.gear[hero_id][instance_id]
+        spec=ITEMS[item['template']]
+        combat=spec.get('combat')
+        if (hero['actions']<1 or item['slot']!='hand' or item['durability']<1
+                or not combat):
+            raise ValueError('Ataque indisponível')
+        rolls=self._d6(combat['dice'])
+        hits=sum(roll>=combat['hit_on'] for roll in rolls)
+        damage=hits*combat['damage']
+        if hits:
+            damage+=self.skill_bonus(hero_id,'attack')
+        hero['actions']-=1
+        item['durability']-=1
+        return {'rolls':rolls,'hits':hits,'damage':damage,'noise':combat['noise'],
+                'durability':item['durability']}
+
+    def receive_damage(self, hero_id: str, damage: int, armor_instance: str | None = None) -> dict:
+        if damage<0:
+            raise ValueError('Dano negativo')
+        absorbed=0
+        if armor_instance is not None:
+            item=self.gear[hero_id][armor_instance]
+            spec=ITEMS[item['template']]
+            if item['slot'] not in ('head','torso','legs') or item['durability']<1 or 'armor' not in spec:
+                raise ValueError('Armadura indisponível')
+            absorbed=min(damage,spec['armor'])
+            if absorbed:
+                item['durability']-=1
+        hero=self.heroes[hero_id]
+        hero['health']=max(0,hero['health']-(damage-absorbed))
+        return {'absorbed':absorbed,'health':hero['health']}
 
     def deposit(self, resource: str, amount: int) -> int:
         if resource not in RESOURCES or amount < 0:

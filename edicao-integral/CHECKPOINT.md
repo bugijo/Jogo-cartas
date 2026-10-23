@@ -31,3 +31,7 @@ Verificação final desta rodada: `git diff --check` limpo; 25 testes novos e 51
 ## Unidade 6 — validação cruzada
 
 `validate_data.py` confirma 117 IDs globais únicos, atributos e 70 marcos, limites de NPC, referências de crises, custos, receitas e equipamento. Novo teste salva/restaura um estado combinado com dois heróis, NPC de defesa, equipamento na mochila, construção concluída, projeto em curso, crise ativa, posto avançado, busca, carga e veículo em retorno; o estado e o dia seguinte são idênticos após carregar. Total: 26 testes experimentais aprovados. O teste não transforma os perfis e missões pendentes em conteúdo jogável.
+
+## Unidade 7 — equipamento em rodada
+
+O estado experimental agora registra três ações por herói. Trocar equipamento durante combate custa uma ação; ataque com arma na mão rola D6 usando o PRNG persistente, retorna ruído, dano e durabilidade remanescente; armadura equipada absorve dano e perde durabilidade. Um teste salva/restaura no meio da rodada e confirma o mesmo dado seguinte. Vinte e sete testes experimentais passaram. Não há ainda alvo inimigo persistente, ativação de horda, portas, alcance ou consequência de ruído; portanto isto não é combate tático completo.
