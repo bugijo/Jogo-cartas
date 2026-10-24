@@ -67,8 +67,8 @@
         "edicao-integral/tests/test_ambush02.py"
       ],
       "status": "em_execucao",
-      "commit": "b399d41",
-      "blocker": "Carga física reserva e devolve cartas/cursors parciais; sapato VIA persistente, reshuffle somente após esgotamento real, integridade estrutural dos snapshots e recibos de retorno passam testes locais. Commit/push do último ajuste pendente. Ainda faltam carta extra por segmento noturno, portadores individuais, efeitos mecânicos de rota/Ponte, promessas, cercos e ciclo noturno. Saves não são assinados contra edição manual"
+      "commit": "06b03f4",
+      "blocker": "Carga física reserva e devolve cartas/cursors parciais; sapato VIA persistente, reshuffle somente após esgotamento real e integridade estrutural dos snapshots estão publicados e cobertos por testes. Ainda faltam carta extra por segmento noturno, portadores individuais, efeitos mecânicos de rota/Ponte, promessas, cercos e ciclo noturno. Saves não são assinados contra edição manual"
     },
     {
       "id": "P0-NIGHT-TRAVEL",

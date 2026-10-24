@@ -2,8 +2,9 @@
 
 ## Estado atual — 2026-10-24
 
-- HEAD de início: local e remoto `931d572e6cb318f76933af8498e79549190a97e3`;
-  branch `evolucao/zona-zero-sistema-v1`, árvore limpa. Kit físico 0.2,
+- HEAD de início: `931d572e6cb318f76933af8498e79549190a97e3`; HEAD publicado
+  atual `06b03f45ccb9234e25e8b0318e210c2d84f16a8b` na branch
+  `evolucao/zona-zero-sistema-v1`, árvore limpa. Kit físico 0.2,
   `RULES.md`, `CAMPAIGN.md`
   e `content/catalog.json` permanecem intactos. Os cinco pontos de coleta de
   equipamento foram estruturados em `edicao-integral/data/equipment_pickups02.json`.
@@ -47,8 +48,7 @@
   limite atual comprova espaço total disponível, não transferência tática de
   provisões entre heróis.
 - O lote M1/retorno está em `931d572`; sapato e correções em `b399d41`, testes
-  de ida/volta em `1ca150e`; validação de saves adulterados e reshuffle
-  aguardam auditoria final e publicação.
+  de ida/volta em `1ca150e`, e reshuffle/snapshot em `06b03f4`.
 - Não foram executadas campanhas completas, simulações de vitória, impressão
   física ou playtest humano.
 

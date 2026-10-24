@@ -215,3 +215,4 @@ passaram se o gate de campanha ainda estiver fechado.
   acima de 10 segmentos, e os relatórios agora declaram expressamente que saves
   são editáveis e não têm assinatura anti-falsificação. Testes experimentais
   atuais: 201/201; regressão legada: 51/51.
+- Publicado em `06b03f45ccb9234e25e8b0318e210c2d84f16a8b`; branch remota alinhada.

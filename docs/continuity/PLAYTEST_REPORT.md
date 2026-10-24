@@ -141,3 +141,6 @@ Playtest humano segue pendente.
   snapshots não são assinados criptograficamente. A validação rejeita estados
   inconsistentes e duração de M1 impossível, mas não pode provar que uma pessoa
   não editou manualmente um recibo sintaticamente plausível.
+- Estado após ampliar as invariantes: 201 testes experimentais e 51 testes
+  legados passaram; as alterações foram publicadas em `06b03f45`. A campanha
+  completa continua sem replay automatizado e sem playtest humano.

@@ -235,3 +235,8 @@ campanha completa. Impressão, equilíbrio e playtest humano não foram feitos.
   duração de M1 maior que os 10 segmentos possíveis, mas o formato não tem
   assinatura criptográfica e não promete resistência a edição manual. Isso não
   afeta o fluxo normal da API; campanhas não recebem selo anti-falsificação.
+- Estado de publicação: correção do reshuffle, invariantes de snapshot e limite
+  de duração de M1 foram commitados e enviados em `06b03f45` na branch
+  experimental. A revisão independente não achou falso rejeite nos snapshots
+  válidos cobertos; saves editados manualmente continuam sem autenticidade
+  criptográfica.
