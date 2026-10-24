@@ -81,6 +81,13 @@ class Tactical02Tests(unittest.TestCase):
             Tactical02.start(c, 'Mercado', [h], equipment={h: ['Faca'] * 5})
         self.assertEqual(c.clock, 0)
 
+    def test_equipment_loadout_cannot_carry_three_weapons(self):
+        c = chapter(); hero = STARTERS[0]
+        with self.assertRaisesRegex(ValueError, 'duas armas'):
+            Tactical02.start(c, 'Mercado', [hero], equipment={hero: [
+                'Pé de cabra', 'Faca', 'Machado']})
+        self.assertEqual(c.clock, 0)
+
     def test_six_maps_clock_and_geometry(self):
         for name, m in MAPS.items():
             with self.subTest(name=name):
@@ -219,6 +226,17 @@ class Tactical02Tests(unittest.TestCase):
         self.assertEqual(len(t.enemies),2)
         self.assertEqual(t.enemies[-1]['zone'],16)
         self.assertEqual(c.ammo,0)
+
+    def test_tactical_damage_never_exceeds_three_wounds(self):
+        for initial in (2, 3):
+            with self.subTest(initial=initial):
+                c = chapter(); h = STARTERS[0]
+                t = Tactical02.start(c, 'Hospital', [h], first_visit=False)
+                person = next(p for p in c.people if p['id'] == h)
+                person['wounds'] = initial
+                t.enemies.clear(); t._spawn('Bruto', t.positions[h])
+                t.end_round()
+                self.assertEqual(person['wounds'], 3)
 
 
 if __name__ == '__main__': unittest.main()

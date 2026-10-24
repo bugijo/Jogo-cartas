@@ -10,6 +10,7 @@ from __future__ import annotations
 from copy import deepcopy
 from dataclasses import asdict, dataclass, field
 from random import Random
+from collections import Counter
 
 from cistern02 import CATALOG
 
@@ -22,6 +23,77 @@ CARDS = {
     }
     for card in CATALOG["cards"] if card["family"] == "VIA"
 }
+
+
+@dataclass
+class TravelShoe02:
+    """Baralho persistente de Viagem da campanha, com descarte próprio.
+
+    Um mapa de estrada recebe uma cópia ordenada do sapato atual. Ao encerrar
+    a ida/volta (ou uma retirada), somente as cartas realmente reveladas vão
+    ao descarte. A cópia permite salvar o estado do encontro sem avançar o
+    sapato duas vezes.
+    """
+
+    seed: int
+    deck: list[str]
+    discard: list[str] = field(default_factory=list)
+    reshuffles: int = 0
+
+    @classmethod
+    def new(cls, seed: int) -> "TravelShoe02":
+        deck = list(CARDS)
+        Random(seed).shuffle(deck)
+        return cls(seed=seed, deck=deck)
+
+    def ensure_available(self, count: int) -> None:
+        if not isinstance(count, int) or count < 1:
+            raise ValueError("Quantidade de cartas necessária inválida")
+        if len(self.deck) < count and self.discard:
+            recycled = self.discard.copy()
+            Random(self.seed + 1_000_003 * (self.reshuffles + 1)).shuffle(recycled)
+            self.reshuffles += 1
+            self.deck.extend(recycled)
+            self.discard.clear()
+        if len(self.deck) < count:
+            raise ValueError("Sapato de Viagem não tem cartas suficientes")
+
+    def prepare_trip(self, count: int) -> list[str]:
+        self.ensure_available(count)
+        return self.deck.copy()
+
+    def finish_trip(self, trip: "Travel02") -> None:
+        if trip.deck != self.deck:
+            raise ValueError("A ordem da viagem não corresponde ao sapato ativo")
+        if (trip.pending_resolution is not None or trip.pending_choices
+                or trip.pending_ambush is not None):
+            raise ValueError("Resolva a ocorrência antes de descartar o sapato")
+        drawn = [event["card_id"] for event in trip.events
+                 if event.get("card_id") is not None]
+        if (trip.index != len(drawn) or trip.index > len(self.deck)
+                or drawn != self.deck[:trip.index]):
+            raise ValueError("A viagem não prova as cartas reveladas do sapato")
+        self.discard.extend(drawn)
+        self.deck = self.deck[trip.index:]
+        self.validate()
+
+    def validate(self) -> None:
+        if (not isinstance(self.seed, int) or not isinstance(self.reshuffles, int)
+                or self.reshuffles < 0
+                or any(card not in CARDS for card in self.deck + self.discard)
+                or Counter(self.deck + self.discard) != Counter(CARDS.keys())):
+            raise ValueError("Estado do sapato de Viagem inválido")
+
+    def snapshot(self) -> dict:
+        return deepcopy(asdict(self))
+
+    @classmethod
+    def from_snapshot(cls, snapshot: dict) -> "TravelShoe02":
+        if set(snapshot) != {"seed", "deck", "discard", "reshuffles"}:
+            raise ValueError("Snapshot do sapato de Viagem incompatível")
+        shoe = cls(**deepcopy(snapshot))
+        shoe.validate()
+        return shoe
 CHOICES = {
     "ZC-VIA-0002": {"water": {"water_loss": 1},
                     "fatigue": {"fatigue": 1}},
@@ -349,4 +421,4 @@ class Travel02:
         return trip
 
 
-__all__ = ["CARDS", "Travel02", "TravelContext"]
+__all__ = ["CARDS", "Travel02", "TravelContext", "TravelShoe02"]

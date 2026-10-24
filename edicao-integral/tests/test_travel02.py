@@ -1,13 +1,74 @@
 """Regressão do baralho e dos recibos de Viagem da Cisterna 0.2."""
 import sys
 import unittest
+from types import SimpleNamespace
 from pathlib import Path
 
 sys.path.insert(0, str(Path(__file__).resolve().parents[1]))
-from travel02 import Travel02, TravelContext
+from travel02 import CARDS, Travel02, TravelContext, TravelShoe02
 
 
 class Travel02Tests(unittest.TestCase):
+    @staticmethod
+    def _finish_first_card(shoe):
+        trip = Travel02.from_deck(shoe.prepare_trip(1), "short")
+        event = trip.reveal("outbound")
+        context = TravelContext(food=10, water=10, materials=10,
+                                fatigue={"h": 0}, eligible_dog_adoption=True)
+        if event["ambush"]:
+            trip.complete_ambush(event["event_id"], SimpleNamespace(
+                returned=True, failed=False, round_no=1, completed_rounds=1,
+                positions={"h": 1}, enemies=[]))
+        elif trip.pending_choices:
+            choices = {"ZC-VIA-0002": "fatigue",
+                       "ZC-VIA-0004": "pressure",
+                       "ZC-VIA-0006": "decline",
+                       "ZC-VIA-0009": "decline"}
+            trip.apply(event["event_id"], context,
+                       choices.get(event["card_id"], "decline"))
+        else:
+            trip.apply(event["event_id"], context)
+        shoe.finish_trip(trip)
+        return event["card_id"], trip
+
+    def test_campaign_shoe_discards_only_revealed_cards_and_rejects_double_commit(self):
+        shoe = TravelShoe02.new(77)
+        card_id, trip = self._finish_first_card(shoe)
+        self.assertEqual(len(shoe.deck), len(CARDS) - 1)
+        self.assertEqual(shoe.discard, [card_id])
+        with self.assertRaises(ValueError):
+            shoe.finish_trip(trip)
+
+    def test_via_0003_skip_pays_return_segment_without_drawing_shoe_card(self):
+        shoe = TravelShoe02.new(79)
+        shoe.deck = ["ZC-VIA-0003"] + [card for card in shoe.deck
+                                       if card != "ZC-VIA-0003"]
+        trip = Travel02.from_deck(shoe.prepare_trip(2), "short")
+        context = TravelContext(food=0, water=0, materials=0,
+                                fatigue={"h": 0})
+        outbound = trip.reveal("outbound")
+        trip.apply(outbound["event_id"], context)
+        skipped = trip.reveal("return", context)
+        self.assertTrue(skipped["skipped"])
+        self.assertEqual(trip.index, 1)
+        shoe.finish_trip(trip)
+        self.assertEqual(shoe.discard, ["ZC-VIA-0003"])
+
+    def test_campaign_shoe_reshuffles_discard_reproducibly_and_round_trips(self):
+        left = TravelShoe02.new(78)
+        right = TravelShoe02.from_snapshot(left.snapshot())
+        # Consume the whole shoe in one-card trips, keeping the same explicit
+        # card sequence used by each shoe.
+        while left.deck:
+            for shoe in (left, right):
+                self._finish_first_card(shoe)
+        left.ensure_available(1)
+        right.ensure_available(1)
+        self.assertEqual(left.snapshot(), right.snapshot())
+        self.assertEqual(len(left.deck), len(CARDS))
+        resumed = TravelShoe02.from_snapshot(left.snapshot())
+        self.assertEqual(resumed.snapshot(), left.snapshot())
+
     def test_same_seed_reveals_same_cards_and_route_has_exact_legs(self):
         deck = ["ZC-VIA-0001", "ZC-VIA-0008", "ZC-VIA-0012", "ZC-VIA-0011"]
         left = Travel02.from_deck(deck, "long")

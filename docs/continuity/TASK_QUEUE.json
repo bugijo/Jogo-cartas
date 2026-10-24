@@ -22,7 +22,7 @@
       ],
       "status": "em_execucao",
       "commit": "afdc82c",
-      "blocker": "M1/Horda/armas/ruído/fadiga e emergência de retorno estão cobertos por testes; ciclo de ativação segue restrito aos eventos implementados, e ainda faltam promessas, cercos e fila noturna completa"
+      "blocker": "M1/Horda/armas/ruído/fadiga e emergência de retorno têm cobertura; teto de ferimentos e limite de duas armas corrigidos com testes nesta rodada. Ainda faltam promessas, cercos, eventos diários e fila noturna completa"
     },
     {
       "id": "P0-UNIQUE-PART-RECOVERY",
@@ -68,7 +68,29 @@
       ],
       "status": "em_execucao",
       "commit": "9aeb935",
-      "blocker": "Carga física reserva e devolve cartas/cursors parciais, skip VIA-0003, cães elegíveis, fadiga e retiradas M1 são persistidos; ainda é carga agregada sem portadores individuais. Falta deck global de Viagem entre dias, efeito mecânico de rota/Ponte, promessas, cercos e ciclo noturno"
+      "blocker": "Carga física reserva e devolve cartas/cursors parciais; sapato global de Viagem, descarte e reshuffle determinístico passam testes de sequência, skip, retirada e save/load. Commit/push pendente. Ainda faltam carta extra por segmento noturno, portadores individuais, efeitos mecânicos de rota/Ponte, promessas, cercos e ciclo noturno"
+    },
+    {
+      "id": "P0-NIGHT-TRAVEL",
+      "priority": 0,
+      "responsible": "motor de viagem + relógio compartilhado",
+      "depends_on": ["P0-TRAVEL-INTEGRATION"],
+      "objective": "Resolver trecho a trecho a viagem, incluindo a carta extra de estrada nos segmentos 9–10, fadiga e M1 sem cobrar tempo duas vezes.",
+      "acceptance": [
+        "transições 8→9 e 9→10 reproduzíveis",
+        "carta extra não avança o relógio",
+        "carta de emboscada consome somente rodadas reais da M1",
+        "fadiga aplicada uma vez por segmento noturno",
+        "save/load não duplica trecho nem ocorrência"
+      ],
+      "tests": [
+        "edicao-integral/tests/test_travel02.py",
+        "edicao-integral/tests/test_integrated_tactical.py",
+        "edicao-integral/tests/test_ambush02.py"
+      ],
+      "status": "pendente",
+      "commit": null,
+      "blocker": "O integrador ainda paga trechos em bloco e não associa cada ocorrência ao relógio 9/10"
     },
     {
       "id": "P1-MIGRATE-CISTERN",

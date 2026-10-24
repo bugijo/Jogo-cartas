@@ -186,3 +186,30 @@ campanha completa. Impressão, equilíbrio e playtest humano não foram feitos.
   excesso de porções; por isso `[3,3]` para solicitação 4 leva os dois lotes
   (6 porções) sem criar recurso. O hash do catálogo voltou a coincidir com o
   baseline congelado.
+
+## Revisão independente e extensão de estrada — 2026-10-24
+
+- Auditoria independente no HEAD `931d572` confirmou o gap de sapato: cada
+  `start_travel()` recriava todas as cartas e não mantinha descarte entre dias.
+  O lote atual introduz `TravelShoe02`, compartilhado por campanha, com monte,
+  descarte, reshuffle determinístico, validação de sequência e snapshot.
+  Cartas explícitas usadas por testes permanecem fixtures isoladas.
+- Auditoria encontrou ainda que a regra `RULES.md` seção 6 permitia ao motor
+  acumular ferimentos acima do máximo 3; o combate tático agora limita dano no
+  teto canônico. A M1 já fazia esse limite. Teste reproduziu Bruto com 2 e 3
+  ferimentos iniciais.
+- O motor aceitava três armas por herói apesar do limite de duas armas
+  transportadas em `RULES.md` seção 6. O gate foi acrescentado à preparação
+  integrada e tática, sem reduzir as quatro cargas gerais; teste confirma que
+  o estoque não é reservado quando a preparação é rejeitada.
+- A revisão encontrou ambiguidade sobre munição: o ataque tático desconta
+  `Cistern02.ammo` global, enquanto a regra diz que cada tiro gasta uma munição,
+  mas não define transporte de munição pela expedição. Não foi aplicada
+  interpretação mecânica silenciosa. Clarificar documentação e carga antes de
+  alterar esse comportamento.
+- Permanecem sem cobertura: carta extra de Viagem no segmento noturno (§33),
+  uso mecânico dos marcadores Ponte/rota, encaminhamento/Contato, promessas,
+  eventos/noites/cercos integrados e qualquer replay de campanha completa.
+- Os testes independentes (60 testes de estrada/integrador e 75 de
+  tática/M1 no estado pré-lote) passaram. Isso foi revisão automatizada, não
+  simulação de campanha nem playtest.

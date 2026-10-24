@@ -17,7 +17,7 @@ from cistern02 import Cistern02, LINK_IDS, STARTERS
 from ambush02 import Ambush02
 from cistern_tactics02 import Tactical02, WEAPONS
 from horde_deck02 import HordeDeck02
-from travel02 import Travel02, TravelContext
+from travel02 import Travel02, TravelContext, TravelShoe02
 from system import Expedition, World
 
 
@@ -80,6 +80,8 @@ class IntegratedCampaign:
     route_known: bool = False
     bridge_known: bool = False
     equipment_inventory: dict[str, list[str]] = field(default_factory=dict)
+    travel_shoe: dict = field(default_factory=dict)
+    travel_uses_shoe: bool = False
 
     STATUSES = {"RUNNING", "VICTORY", "DEFEAT", "IMPOSSIBLE", "PAUSED"}
 
@@ -94,6 +96,7 @@ class IntegratedCampaign:
         game = cls(1, f"zona-zero-{seed}", seed, "RUNNING", cistern,
                    list(founders), list(links))
         game.horde_deck = HordeDeck02.new(seed + 8102)
+        game.travel_shoe = TravelShoe02.new(seed + 6801).snapshot()
         game.equipment_inventory = {hero: ["Pé de cabra"] for hero in founders}
         return game
 
@@ -114,6 +117,8 @@ class IntegratedCampaign:
         for hero, items in loadout.items():
             if len(items) > 4 or any(item not in allowed for item in items):
                 raise ValueError("Equipamento inválido ou excede quatro cargas")
+            if sum(item in WEAPONS for item in items) > 2:
+                raise ValueError("Cada herói transporta no máximo duas armas")
             requested = Counter(items)
             owned = Counter(self.equipment_inventory.get(hero, []))
             for item, count in requested.items():
@@ -227,9 +232,15 @@ class IntegratedCampaign:
                for hero in team):
             raise ValueError("Herói incapacitado ou exausto não viaja")
         if deck is None:
-            trip = Travel02.new(self.seed + self.cistern.day, route)
+            shoe = (TravelShoe02.from_snapshot(self.travel_shoe)
+                    if self.travel_shoe else TravelShoe02.new(self.seed + 6801))
+            trip = Travel02.from_deck(
+                shoe.prepare_trip(2 * (1 if route == "short" else 2)), route)
+            self.travel_shoe = shoe.snapshot()
+            self.travel_uses_shoe = True
         else:
             trip = Travel02.from_deck(deck, route)
+            self.travel_uses_shoe = False
         trip.reveal("outbound")
         # O contexto representa carga física da equipe. Reserve-a agora para
         # que a estrada não possa gastar o mesmo estoque duas vezes.
@@ -401,6 +412,17 @@ class IntegratedCampaign:
             raise ValueError("Saldo físico de carga inválido na estrada")
         self.return_settlement_delta = self._travel_arrival_delta(context)
 
+    def _settle_travel_shoe(self, trip: Travel02) -> None:
+        """Consome uma única vez as cartas efetivamente reveladas na viagem."""
+        if not self.travel_uses_shoe:
+            return
+        if not self.travel_shoe:
+            raise ValueError("Baralho persistente de Viagem ausente")
+        shoe = TravelShoe02.from_snapshot(self.travel_shoe)
+        shoe.finish_trip(trip)
+        self.travel_shoe = shoe.snapshot()
+        self.travel_uses_shoe = False
+
     def return_expedition(self, by_van: bool = False) -> list[dict]:
         """Liquida o retorno em cópia e publica apenas um resultado completo.
 
@@ -499,6 +521,8 @@ class IntegratedCampaign:
                 self.delivered_objectives.append(receipt["id"])
         delta = self.return_settlement_delta or {}
         self._apply_travel_arrival(delta)
+        if self.return_travel is not None:
+            self._settle_travel_shoe(self.return_travel)
         self.return_settlement_delta = None
         self.return_travel = None
         self.return_context = None
@@ -629,6 +653,7 @@ class IntegratedCampaign:
             encounter = self.ambush
             encounter.emergency_return()
             trip.complete_emergency_ambush(trip.pending_ambush, encounter)
+            self._settle_travel_shoe(trip)
             people = {person["id"]: person for person in self.cistern.people}
             for hero in encounter.team:
                 people[hero]["wounds"] = min(
@@ -662,6 +687,8 @@ class IntegratedCampaign:
             raise ValueError("Nenhuma expedição ativa")
         self._record_lost_tactical_cargo(self.tactical)
         self.tactical.emergency()
+        if self.return_travel is not None:
+            self._settle_travel_shoe(self.return_travel)
         self.horde_deck = self.tactical.horde_deck
         self.site_states[self.tactical.destination] = self.tactical.site_snapshot()
         if self.return_context is not None:
@@ -811,6 +838,14 @@ class IntegratedCampaign:
         # Campos de chegada de estrada adicionados na mesma versão do save.
         payload.setdefault("route_known", False)
         payload.setdefault("bridge_known", False)
+        payload.setdefault("travel_shoe", TravelShoe02.new(
+            int(payload.get("seed", 0)) + 6801).snapshot())
+        payload.setdefault("travel_uses_shoe", False)
+        shoe = TravelShoe02.from_snapshot(payload["travel_shoe"])
+        active_trip = payload.get("travel") or payload.get("return_travel")
+        if payload["travel_uses_shoe"] and (
+                active_trip is None or active_trip.deck != shoe.deck):
+            raise ValueError("Sapato persistente não corresponde à viagem ativa")
         payload.setdefault("equipment_inventory", {
             hero: ["Pé de cabra"] for hero in payload.get("founders", [])})
         campaign = cls(schema=1, **payload)

@@ -154,6 +154,9 @@ class Tactical02:
         supplies = deepcopy(equipment) if equipment is not None else {h: ['Pé de cabra'] for h in team}
         if set(supplies) != set(team) or any(len(items) > 4 for items in supplies.values()):
             raise ValueError('Equipamentos da equipe inválidos')
+        if any(sum(item in WEAPONS for item in items) > 2
+               for items in supplies.values()):
+            raise ValueError('Cada herói transporta no máximo duas armas')
         people = {p['id']: p for p in chapter.people}
         if any(people[h]['wounds'] >= 3 for h in team):
             raise ValueError('Herói incapacitado não sai')
@@ -536,7 +539,8 @@ class Tactical02:
             if not targets: continue
             _, _, hero = targets[0]
             if enemy['zone'] == self.positions[hero]:
-                people[hero]['wounds'] += ENEMIES[enemy['kind']][2]
+                people[hero]['wounds'] = min(
+                    3, people[hero]['wounds'] + ENEMIES[enemy['kind']][2])
                 self.log.append({'event': 'wound', 'hero': hero, 'enemy': enemy['id']})
                 continue
             for _ in range(ENEMIES[enemy['kind']][3]):

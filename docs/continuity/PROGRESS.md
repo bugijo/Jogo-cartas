@@ -180,3 +180,20 @@ passaram se o gate de campanha ainda estiver fechado.
   `git diff --check` aprovados.
 - A certificação positiva de uma campanha completa ainda não foi declarada:
   eventos, cercos, cinco noites e migração de estado continuam pendentes.
+
+## 2026-10-24 — sapato persistente de Viagem e auditoria adversarial
+
+- Auditoria independente encontrou que cada expedição recriava o baralho VIA.
+  `TravelShoe02` agora compartilha monte/descarte por campanha, reembaralha o
+  descarte com semente determinística ao faltar espaço para o próximo trajeto,
+  valida o prefixo revelado e salva/restaura. Retirada e retorno concluem o
+  sapato sem descarte duplicado; decks explícitos de fixture não o alteram.
+- A mesma revisão encontrou dano tático acima do máximo 3 e loadout com três
+  armas. Os dois gates foram alinhados a `RULES.md` e ganharam regressão.
+- Testes focados: `test_travel02.py` 14/14, `test_cistern_tactics02.py`
+  22/22, `test_integrated_tactical.py` 45/45. Suíte experimental completa:
+  196/196; compileall, validador de dados (125 IDs) e `git diff --check`
+  passaram.
+- Não houve simulação de campanha completa, impressão física ou playtest
+  humano. Munição levada e carta extra de estrada à noite ainda precisam de
+  regra/integração explícita; rota/Ponte, promessas e noites permanecem abertas.

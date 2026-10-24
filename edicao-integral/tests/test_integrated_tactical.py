@@ -10,6 +10,55 @@ from travel02 import TravelContext
 
 
 class IntegratedTacticalTests(unittest.TestCase):
+    def test_campaign_default_trip_uses_and_saves_shared_travel_shoe(self):
+        hero = STARTERS[0]
+        game = IntegratedCampaign.new(130, STARTERS[:2], LINK_IDS[:2])
+        first_card = game.travel_shoe["deck"][0]
+        trip = game.start_travel(
+            "Mercado", [hero], "short",
+            context=TravelContext(food=0, water=0, materials=0,
+                                  fatigue={hero: 0}))
+        self.assertTrue(game.travel_uses_shoe)
+        self.assertEqual(trip.events[0]["card_id"], first_card)
+        self.assertEqual(trip.deck, game.travel_shoe["deck"])
+        with tempfile.TemporaryDirectory() as directory:
+            path = Path(directory) / "campaign.json"
+            game.save(path)
+            resumed = IntegratedCampaign.load(path)
+        self.assertEqual(resumed.travel_shoe, game.travel_shoe)
+        self.assertEqual(resumed.travel.snapshot(), trip.snapshot())
+        self.assertTrue(resumed.travel_uses_shoe)
+
+    def test_campaign_rejects_three_carried_weapons_before_reserving_stock(self):
+        hero = STARTERS[0]
+        game = IntegratedCampaign.new(131, STARTERS[:2], LINK_IDS[:2])
+        weapons = ['Pé de cabra', 'Faca', 'Machado']
+        game.equipment_inventory[hero] = weapons.copy()
+        food, water, material = (game.cistern.food.copy(),
+                                 game.cistern.water.copy(),
+                                 game.cistern.materials)
+        with self.assertRaisesRegex(ValueError, 'duas armas'):
+            game.start_travel(
+                'Mercado', [hero], context=TravelContext(
+                    food=0, water=0, materials=0, fatigue={hero: 0}),
+                equipment={hero: weapons})
+        self.assertEqual(game.cistern.food, food)
+        self.assertEqual(game.cistern.water, water)
+        self.assertEqual(game.cistern.materials, material)
+
+    def test_campaign_shoe_commits_draw_after_legal_m1_emergency(self):
+        hero = STARTERS[0]
+        game = IntegratedCampaign.new(132, STARTERS[:2], LINK_IDS[:2])
+        game.travel_shoe["deck"] = ["ZC-VIA-0005"] + [card for card in
+            game.travel_shoe["deck"] if card != "ZC-VIA-0005"]
+        game.start_travel("Mercado", [hero], "short",
+            context=TravelContext(food=0, water=0, materials=0,
+                                  fatigue={hero: 0}))
+        game.start_travel_ambush()
+        game.emergency_return()
+        self.assertEqual(game.travel_shoe["discard"], ["ZC-VIA-0005"])
+        self.assertFalse(game.travel_uses_shoe)
+
     def test_travel_entry_requires_resolution_before_entering_map(self):
         hero = STARTERS[0]
         game = IntegratedCampaign.new(114, STARTERS[:2], LINK_IDS[:2])

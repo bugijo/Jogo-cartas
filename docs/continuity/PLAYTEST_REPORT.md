@@ -112,3 +112,20 @@ Playtest humano segue pendente.
   pendentes nesta rodada.
 - A regressão de 51 testes do repositório passou após restaurar o catálogo
   congelado. O renderer legado ainda emite um `ResourceWarning` conhecido.
+
+## Revisão estática e regressão de combate/Viagem — 2026-10-24
+
+- Um revisor independente comparou a implementação com `RULES.md`: encontrou
+  dano tático acima do teto de 3 ferimentos e três armas aceitas em um único
+  loadout. Ambos foram corrigidos e cobertos por testes.
+- O sapato de Viagem agora persiste monte e descarte entre expedições e saves.
+  Os testes verificam sequência determinística, reshuffle reproduzível, skip
+  VIA-0003 sem compra falsa e retirada M1 sem reaplicar uma carta.
+- Verificação atual: 196 testes experimentais e 51 testes legados passaram;
+  `compileall`, validação de dados e `git diff --check` também passaram. O
+  renderer legado ainda emite o `ResourceWarning` conhecido. São testes de
+  unidade/integração, não partidas completas, avaliação de dificuldade ou
+  playtest humano.
+- Um ponto de regra continua ambíguo: se munição global do abrigo pode ser
+  disparada em expedição ou precisa ser carregada fisicamente. Nenhuma decisão
+  mecânica foi inventada nesta revisão.
