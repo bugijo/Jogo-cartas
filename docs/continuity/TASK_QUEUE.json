@@ -10,7 +10,7 @@
       "depends_on": [],
       "acceptance": ["recibos legais", "salvamento", "sem recompensa duplicada", "paridade 0.2"],
       "tests": ["edicao-integral/tests/test_cistern_tactics02.py", "novo teste de fases"],
-      "status": "blocked",
+      "status": "em_execucao",
       "commit": null,
       "blocker": "Viagem, emboscadas, resgates, promessas e fila final ainda incompletos"
     },
@@ -21,7 +21,7 @@
       "depends_on": ["P0-EXPEDITION-COMPLETE"],
       "acceptance": ["verified_victory legal", "12 fundadores tratados explicitamente", "recursos preservados"],
       "tests": ["campanha contínua H2-H6", "round-trip save/load"],
-      "status": "blocked",
+      "status": "bloqueada",
       "commit": null,
       "blocker": "Modelos de personagens incompatíveis e certificado ainda não emitido"
     },
@@ -32,7 +32,7 @@
       "depends_on": ["P1-MIGRATE-CISTERN"],
       "acceptance": ["H2-H6", "decisões registradas", "resultados reproduzíveis"],
       "tests": ["simulador completo", "auditoria adversarial"],
-      "status": "blocked",
+      "status": "bloqueada",
       "commit": null,
       "blocker": "Campanha contínua ainda não alcançável legalmente"
     },
@@ -43,7 +43,7 @@
       "depends_on": ["P2-PLAYER-CAMPAIGNS"],
       "acceptance": ["catálogo", "PDFs inspecionados", "plano de playtest humano"],
       "tests": ["auditoria de PDFs", "dimensões e frente/verso"],
-      "status": "blocked",
+      "status": "bloqueada",
       "commit": null,
       "blocker": "Prioridade absoluta continua sendo P0/P1"
     }
