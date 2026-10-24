@@ -17,7 +17,7 @@ o save de origem também contém vínculos, pessoas adultas/crianças/cães, car
 de porções, Saúde/Moral/Pressão, estruturas, ferimentos e estado próprio de
 campanha. Não converter por descarte nem criar pessoas/recursos implicitamente.
 
-Commits publicados nesta unidade: `c8a4a0f`, `cdc8222`, `d032d99`.
+Commits publicados nesta unidade: `c8a4a0f`, `cdc8222`, `d032d99`, `2924633`.
 O restante deste arquivo é histórico de unidades anteriores, não deve ser lido
 como estado atual quando contradizer este bloco.
 
