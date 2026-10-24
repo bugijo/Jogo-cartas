@@ -1,162 +1,37 @@
 {
   "schema": 1,
   "branch": "evolucao/zona-zero-sistema-v1",
-  "updated_at": "2026-10-24",
+  "updated_at": "2026-10-23",
   "tasks": [
-    {
-      "id": "P0-CISTERN-NIGHT-CYCLE",
-      "priority": 0,
-      "responsible": "motor de campanha + auditoria independente",
-      "depends_on": [
-        "P0-EXPEDITION-COMPLETE",
-        "P0-TRAVEL-INTEGRATION"
-      ],
-      "objective": "Executar ações legais de expedição, entregas e sequência diária/nocturna para completar A Cisterna.",
-      "acceptance": [
-        "cinco dias completos desde preparação",
-        "sem peças ou recursos injetados",
-        "eventos e cercos na ordem canônica",
-        "recibo de noite final",
-        "verified_victory pelo integrador"
-      ],
-      "tests": [
-        "replay legal H2 reproduzível",
-        "save/load em transições críticas",
-        "verificação de IDs de saques e entregas"
-      ],
-      "status": "em_execucao",
-      "commit": null,
-      "blocker": "Uma expedição integrada legal de Oficina no dia 2 passa com sapato aleatório seeded e entrega Conexões após retorno. Ainda falta Mercado para recursos, Estação para Bomba/Membrana, controle de noite/cerco/refeição e o replay de cinco dias."
-    },
     {
       "id": "P0-EXPEDITION-COMPLETE",
       "priority": 0,
-      "responsible": "motor tático + regras",
-      "depends_on": [],
       "objective": "Completar fases e consequências restantes da expedição 0.2.",
-      "acceptance": [
-        "recibos legais",
-        "salvamento",
-        "sem recompensa duplicada",
-        "paridade 0.2"
-      ],
-      "tests": [
-        "edicao-integral/tests/test_cistern_tactics02.py",
-        "edicao-integral/tests/test_travel02.py",
-        "teste integrado de fases"
-      ],
-      "status": "em_execucao",
-      "commit": "6dfe141",
-      "blocker": "Eventos diários EVE e cartas CER foram ligados ao estado da Cisterna; força/recibo persistem. Um teste percorre uma expedição legal de Oficina. Ainda faltam sequência integrada de Mercado/Estação, promessas, trabalhos/resgates, noites e replay completo."
-    },
-    {
-      "id": "P0-UNIQUE-PART-RECOVERY",
-      "priority": 0,
-      "responsible": "motor tático / QA independente",
       "depends_on": [],
-      "objective": "Preservar peças únicas perdidas na emergência e permitir recuperação no ponto original.",
-      "acceptance": [
-        "local persistente",
-        "custo de 1 PA",
-        "sem duplicação",
-        "entrega após retorno",
-        "save/load"
-      ],
-      "tests": [
-        "test_unique_part_dropped_by_emergency_is_recovered_once_at_same_zone",
-        "test_emergency_drops_unique_part_and_next_expedition_delivers_same_piece"
-      ],
-      "status": "verificado_publicado",
-      "commit": "d3d7390",
-      "blocker": "Sem defeito conhecido; cobertura pós-recuperação save/load adicionada em lote subsequente"
-    },
-    {
-      "id": "P0-TRAVEL-INTEGRATION",
-      "priority": 0,
-      "responsible": "motor de campanha / regras",
-      "depends_on": [
-        "P0-EXPEDITION-COMPLETE"
-      ],
-      "objective": "Ligar Travel02 ao relógio e à expedição sem dupla cobrança.",
-      "acceptance": [
-        "uma carta por trecho",
-        "segmento cobrado uma vez",
-        "efeitos canônicos aplicados",
-        "save/load idempotente",
-        "M1 executável"
-      ],
-      "tests": [
-        "edicao-integral/tests/test_travel02.py",
-        "edicao-integral/tests/test_integrated_campaign.py",
-        "edicao-integral/tests/test_cistern_tactics02.py",
-        "edicao-integral/tests/test_ambush02.py"
-      ],
+      "acceptance": ["recibos legais", "salvamento", "sem recompensa duplicada", "paridade 0.2"],
+      "tests": ["edicao-integral/tests/test_cistern_tactics02.py", "novo teste de fases"],
       "status": "em_execucao",
-      "commit": "06b03f4",
-      "blocker": "Viagem paga cada trecho e eventos, incluindo extras 9–10; retorno tem liquidação. Ponte/rota não afetam ainda todas as escolhas/forças, promessas e ciclo noturno completo pendentes."
-    },
-    {
-      "id": "P0-NIGHT-TRAVEL",
-      "priority": 0,
-      "responsible": "motor de viagem + relógio compartilhado",
-      "depends_on": [
-        "P0-TRAVEL-INTEGRATION"
-      ],
-      "objective": "Resolver trecho a trecho a viagem, incluindo a carta extra de estrada nos segmentos 9–10, fadiga e M1 sem cobrar tempo duas vezes.",
-      "acceptance": [
-        "transições 8→9 e 9→10 reproduzíveis",
-        "carta extra não avança o relógio",
-        "carta de emboscada consome somente rodadas reais da M1",
-        "fadiga aplicada uma vez por segmento noturno",
-        "save/load não duplica trecho nem ocorrência"
-      ],
-      "tests": [
-        "edicao-integral/tests/test_travel02.py",
-        "edicao-integral/tests/test_integrated_tactical.py",
-        "edicao-integral/tests/test_ambush02.py"
-      ],
-      "status": "verificado_publicado",
-      "commit": "57a75cc",
-      "blocker": "A carta extra noturna e cobrança por trecho estão implementadas; persistem rota/Ponte, promessas e continuidade integral."
+      "commit": null,
+      "blocker": "Viagem, emboscadas, resgates, promessas e fila final ainda incompletos"
     },
     {
       "id": "P1-MIGRATE-CISTERN",
       "priority": 1,
-      "responsible": "motor de campanha / conteúdo",
-      "depends_on": [
-        "P0-EXPEDITION-COMPLETE"
-      ],
       "objective": "Migrar vitória e estado canônicos para Última Transmissão.",
-      "acceptance": [
-        "verified_victory legal",
-        "12 fundadores tratados explicitamente",
-        "recursos preservados"
-      ],
-      "tests": [
-        "campanha contínua H2-H6",
-        "round-trip save/load"
-      ],
+      "depends_on": ["P0-EXPEDITION-COMPLETE"],
+      "acceptance": ["verified_victory legal", "12 fundadores tratados explicitamente", "recursos preservados"],
+      "tests": ["campanha contínua H2-H6", "round-trip save/load"],
       "status": "bloqueada",
-      "commit": "7787e48",
-      "blocker": "Continua bloqueada: nenhuma campanha legal emite verified_victory; a migração não pode começar antes do replay integral."
+      "commit": null,
+      "blocker": "Modelos de personagens incompatíveis e certificado ainda não emitido"
     },
     {
       "id": "P2-PLAYER-CAMPAIGNS",
       "priority": 2,
-      "responsible": "simulação / QA",
-      "depends_on": [
-        "P1-MIGRATE-CISTERN"
-      ],
       "objective": "Executar oito políticas adaptativas em campanhas completas.",
-      "acceptance": [
-        "H2-H6",
-        "decisões registradas",
-        "resultados reproduzíveis"
-      ],
-      "tests": [
-        "simulador completo",
-        "auditoria adversarial"
-      ],
+      "depends_on": ["P1-MIGRATE-CISTERN"],
+      "acceptance": ["H2-H6", "decisões registradas", "resultados reproduzíveis"],
+      "tests": ["simulador completo", "auditoria adversarial"],
       "status": "bloqueada",
       "commit": null,
       "blocker": "Campanha contínua ainda não alcançável legalmente"
@@ -164,23 +39,13 @@
     {
       "id": "P3-PHYSICAL-EDITION",
       "priority": 3,
-      "responsible": "produção física / QA visual",
-      "depends_on": [
-        "P2-PLAYER-CAMPAIGNS"
-      ],
       "objective": "Consolidar e validar a edição física após as campanhas.",
-      "acceptance": [
-        "catálogo",
-        "PDFs inspecionados",
-        "plano de playtest humano"
-      ],
-      "tests": [
-        "auditoria de PDFs",
-        "dimensões e frente/verso"
-      ],
+      "depends_on": ["P2-PLAYER-CAMPAIGNS"],
+      "acceptance": ["catálogo", "PDFs inspecionados", "plano de playtest humano"],
+      "tests": ["auditoria de PDFs", "dimensões e frente/verso"],
       "status": "bloqueada",
       "commit": null,
-      "blocker": "Prioridade ativa permanece P0/P1"
+      "blocker": "Prioridade absoluta continua sendo P0/P1"
     }
   ]
 }

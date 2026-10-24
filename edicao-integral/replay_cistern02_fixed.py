@@ -35,25 +35,9 @@ def replay(team_size:int) -> dict:
     founders=[NAME_TO_ID[name] for name in oracle['founders'][:team_size]]
     game=Cistern02.new(founders,_draw(oracle['links']))
     days=[]
-    def settle_siege() -> dict:
-        encounter=game.reveal_siege()
-        force=encounter['force']
-        guards=[p['id'] for p in game.people if p['kind'] in ('hero','adult')
-                and p['wounds']<3 and not p['hungry'] and not p['thirsty']][:3]
-        game.plan_guards(guards)
-        base=(2 if 'Portão' in game.structures else 0)+int('Torre' in game.structures)
-        base+=int(any(p['kind']=='dog' and p['alert'] for p in game.people))
-        successes=len(guards)  # declarado pelo roteiro fixo como rolagens 4+
-        ammo=min(2,game.ammo,max(0,force-base-successes))
-        defense=base+successes+ammo
-        gap=max(0,force-defense)
-        eligible=[name for name in game.structures if name not in ('Barraca','Casa simples')]
-        count=min(len(eligible),0 if gap==0 else 1 if gap<=2 else 2)
-        preferred=['Depósito','Cozinha','Portão','Filtro']
-        targets=[name for name in preferred if name in eligible][:count]
-        return game.resolve_siege(force,guards,[4]*len(guards),ammo,targets)
     for day in range(1,6):
         if day>1:game.next_day()
+        if day in (2,4,5):game.raise_pressure(1)
         if day<=3:
             tactical=oracle['tactical'][day-1]
             game.spend_segments(tactical['segments'])
@@ -64,12 +48,20 @@ def replay(team_size:int) -> dict:
             if day==2:game.receive_part('Conexões')
             if day==3:
                 game.receive_part('Bomba');game.receive_part('Membrana')
-                settle_siege()
+                game.queue_siege('Missão dia 3')
+                guards=[p['id'] for p in game.people if p['kind']=='adult'][:3]
+                game.plan_guards(guards)
+                base=2+int(game.dogs>0)+len(guards)
+                ammo=max(0,4-base)
+                game.resolve_siege(4,guards,[4]*len(guards),ammo,[])
         if day==4:
             for stage in ('A','B','C'):game.reserve(stage)
             game.work(2)
         if day==5:
-            settle_siege()
+            guards=[p['id'] for p in game.people if p['kind']=='adult']
+            guards=(guards+[h for h in founders if h not in founders[:2]])[:3]
+            game.plan_guards(guards)
+            game.resolve_siege(4,guards,[4]*len(guards),max(0,4-(2+int(game.dogs>0)+len(guards))),[])
             game.work(2)
         meal=game.meal()
         expected=oracle['days'][day-1]

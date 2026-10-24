@@ -32,7 +32,6 @@ RESCUE_GROUPS={
     'ZC-MOR-0008':('adult',),
 }
 INTENT_IDS=tuple(card['id'] for card in CATALOG['cards'] if card['family']=='INT')
-SIEGE_CARDS={card['id']:card for card in CATALOG['cards'] if card['family']=='CER'}
 
 
 @dataclass
@@ -73,15 +72,6 @@ class Cistern02:
     rescue_history: dict[str,str] = field(default_factory=dict)
     intentions_day: int = 0
     result: str | None = None
-    event_queue: list[str] = field(default_factory=list)
-    event_history: list[str] = field(default_factory=list)
-    siege_deck: list[str] = field(default_factory=list)
-    siege_discard: list[str] = field(default_factory=list)
-    active_siege: dict | None = None
-    siege_receipts: list[dict] = field(default_factory=list)
-    bridge_relation: int = 0
-    day5_guard_plan_locked: bool = False
-    chapter_receipt: dict | None = None
 
     @classmethod
     def new(cls,founders:list[str] | tuple[str,...],links:list[str] | tuple[str,...],
@@ -109,32 +99,8 @@ class Cistern02:
                 dog_no+=1
                 people.append(cls._person(f'D{dog_no:02d}','dog',hero))
         deck=list(INTENT_IDS);random.Random(seed).shuffle(deck)
-        events=sorted((card for card in CATALOG['cards'] if card['family']=='EVE'),
-                      key=lambda card: card['day'])
-        siege_deck=list(SIEGE_CARDS)
-        random.Random(seed ^ 0x5A17).shuffle(siege_deck)
-        game=cls(founders,links,consumers,humans,dogs,capacity,lots.copy(),lots.copy(),
-                 seed=seed,people=people,intent_deck=deck,
-                 event_queue=[card['id'] for card in events],siege_deck=siege_deck)
-        game.apply_daily_event()
-        return game
-
-    def apply_daily_event(self) -> dict:
-        """Aplica a carta fixa do dia uma vez, na ordem canônica da campanha."""
-        if not self.event_queue:
-            raise ValueError('Fila de eventos diários esgotada antes do prazo')
-        event_id=self.event_queue[0]
-        card=next((item for item in CATALOG['cards'] if item['id']==event_id),None)
-        if (card is None or card['family']!='EVE' or card.get('day')!=self.day
-                or event_id in self.event_history):
-            raise ValueError('Evento diário fora da ordem canônica')
-        if event_id in ('ZC-EVE-0002','ZC-EVE-0004','ZC-EVE-0005'):
-            self.raise_pressure(1)
-        elif event_id=='ZC-EVE-0003':
-            self.pending_sieges.append('Barulho no vale')
-        self.event_queue.pop(0)
-        self.event_history.append(event_id)
-        return {'id':event_id,'day':self.day}
+        return cls(founders,links,consumers,humans,dogs,capacity,lots.copy(),lots.copy(),
+                   seed=seed,people=people,intent_deck=deck)
 
     @staticmethod
     def _person(identifier:str,kind:str,family:str) -> dict:
@@ -162,40 +128,8 @@ class Cistern02:
         if old<3 and self.pressure==3:self.pending_sieges.append('Pressão')
 
     def queue_siege(self,trigger:str) -> None:
-        raise ValueError('Não injete cercos; Pressão e eventos da missão os enfileiram')
-
-    def reveal_siege(self) -> dict:
-        """Revela e persiste a ocorrência que resolve o primeiro gatilho da fila."""
-        if not self.pending_sieges:
-            raise ValueError('Não há cerco pendente')
-        trigger=self.pending_sieges[0]
-        if trigger=='Barulho no vale':
-            return {'trigger':trigger,'card_id':None,'force':4,'kind':'mission'}
-        if self.active_siege is not None:
-            if self.active_siege.get('trigger')!=trigger:
-                raise ValueError('Carta ativa não corresponde ao gatilho')
-            return self.active_siege.copy()
-        if trigger!='Pressão':
-            raise ValueError('Gatilho de cerco desconhecido')
-        if not self.siege_deck:
-            if not self.siege_discard:
-                raise ValueError('Baralho de Cerco sem cartas disponíveis')
-            self.siege_deck=self.siege_discard.copy()
-            self.siege_discard.clear()
-            cycle=len(self.siege_receipts)//len(SIEGE_CARDS)
-            random.Random(self.seed ^ (0x5A17+cycle)).shuffle(self.siege_deck)
-        card_id=self.siege_deck.pop(0)
-        card=SIEGE_CARDS[card_id]
-        force=card['force']
-        if card_id=='ZC-CER-0005':
-            force+=1 if self.bridge_relation==-2 else -1 if self.bridge_relation==2 else 0
-        self.active_siege={'trigger':trigger,'card_id':card_id,'force':force,'kind':'card'}
-        return self.active_siege.copy()
-
-    def adjust_bridge_relation(self,amount:int) -> int:
-        if not isinstance(amount,int):raise ValueError('Ajuste de relação inválido')
-        self.bridge_relation=max(-2,min(2,self.bridge_relation+amount))
-        return self.bridge_relation
+        if not trigger:raise ValueError('Gatilho vazio')
+        self.pending_sieges.append(trigger)
 
     @property
     def temporary_excess(self) -> int:
@@ -283,8 +217,7 @@ class Cistern02:
         return revealed
 
     def plan_guards(self,heroes:list[str]) -> None:
-        if (self.day5_guard_plan_locked or self.day==5 and self.meal_day==5
-                or len(heroes)>3 or len(set(heroes))!=len(heroes)
+        if (len(heroes)>3 or len(set(heroes))!=len(heroes)
                 or any(not any(p['id']==hero and p['kind'] in ('hero','adult')
                                and p['wounds']<3 and not p['hungry'] and not p['thirsty']
                                for p in self.people) for hero in heroes)):
@@ -292,41 +225,13 @@ class Cistern02:
         self.planned_guards=list(heroes)
 
     def resolve_siege(self,strength:int,guards:list[str],rolls:list[int],ammo:int,
-                      damage_targets:list[str],security:bool=False,
-                      cancel_rivals:bool=False) -> dict:
+                      damage_targets:list[str],security:bool=False) -> dict:
         valid_phase=(self.day==5 and self.meal_day==5) if security else (
             self.siege_day!=self.day and self.meal_day!=self.day)
         if (not self.pending_sieges or not valid_phase or strength<0
+                or guards!=self.planned_guards or len(rolls)!=len(guards)
+                or any(not 1<=die<=6 for die in rolls)
                 or not 0<=ammo<=min(2,self.ammo)):
-            raise ValueError('Cerco não pode ser resolvido nesta noite')
-        if self.pending_sieges[0]=='Barulho no vale':
-            encounter=self.reveal_siege()
-        elif self.active_siege is not None:
-            encounter=self.active_siege.copy()
-        else:
-            raise ValueError('Revele a carta de Cerco antes da resolução')
-        if self.pending_sieges[0]=='Barulho no vale' and strength!=4:
-            raise ValueError('Barulho no vale usa Força fixa 4')
-        if strength!=encounter['force']:
-            raise ValueError(f"Força do Cerco revelado é {encounter['force']}")
-        if cancel_rivals:
-            if (encounter['card_id']!='ZC-CER-0006' or sum(self.food)<4
-                    or sum(self.water)<4 or rolls or ammo or damage_targets):
-                raise ValueError('Cancelamento de Caravana hostil indisponível')
-            self._take(self.food,4);self._take(self.water,4)
-            trigger=self.pending_sieges.pop(0)
-            if encounter['card_id']:
-                self.siege_discard.append(encounter['card_id'])
-            self.siege_receipts.append({'day':self.day,'trigger':trigger,
-                                        'card_id':encounter['card_id'],'cancelled':True,
-                                        'force':encounter['force']})
-            self.active_siege=None
-            self.siege_day=self.day
-            if self.day==5:self.day5_guard_plan_locked=True
-            return {'trigger':trigger,'card_id':encounter['card_id'],'cancelled':True,
-                    'food_lost':4,'water_lost':4,'strength':encounter['force']}
-        if (guards!=self.planned_guards or len(rolls)!=len(guards)
-                or any(not 1<=die<=6 for die in rolls)):
             raise ValueError('Cerco não pode ser resolvido nesta noite')
         defense=(2 if 'Portão' in self.structures else 0)
         defense+=int('Torre' in self.structures)
@@ -352,95 +257,22 @@ class Cistern02:
                 self.morale=max(0,self.morale-1)
             self.health=max(0,self.health-(target_count-len(damage_targets)))
         trigger=self.pending_sieges.pop(0)
-        card_id=encounter['card_id']
-        if card_id:self.siege_discard.append(card_id)
-        self.siege_receipts.append({'day':self.day,'trigger':trigger,'card_id':card_id,
-                                    'cancelled':False,'force':encounter['force'],
-                                    'defense':defense,'gap':gap})
-        self.active_siege=None
         if trigger=='Pressão':self.pressure=1
         self.siege_day=self.day
-        if self.day==5:self.day5_guard_plan_locked=True
         return {'trigger':trigger,'strength':strength,'defense':defense,'gap':gap,
-                'card_id':card_id,
                 'food_lost':food_lost,'water_lost':water_lost,
                 'damaged':damage_targets.copy(),'health':self.health,'morale':self.morale}
 
     def close_chapter(self) -> str:
         """Candidato lógico; não certifica origem tática de peças ou provisões."""
-        event_ids=[card['id'] for card in sorted(
-            (card for card in CATALOG['cards'] if card['family']=='EVE'),
-            key=lambda card:card['day'])]
         if (self.day!=5 or self.meal_day!=5 or self.pending_sieges
-                or self.event_queue or self.event_history!=event_ids
                 or any(g['status']!='left' for g in self.groups)
                    and self.intentions_day!=5 or self.result is not None):
             raise ValueError('Capítulo ainda não pode ser encerrado')
         supplied=all(not p['hungry'] and not p['thirsty'] for p in self.people)
         self.result=('candidate_victory' if self.filter_active and self.health>=1
                      and self.morale>=1 and supplied else 'partial_defeat')
-        self.chapter_receipt={
-            'day':self.day,'meal_day':self.meal_day,
-            'events':self.event_history.copy(),'event_queue':self.event_queue.copy(),
-            'pending_sieges':self.pending_sieges.copy(),
-            'siege_receipts':len(self.siege_receipts),
-            'filter_active':self.filter_active,'health':self.health,'morale':self.morale,
-            'supplied':supplied,'result':self.result,
-        }
         return self.result
-
-    def validate_snapshot(self) -> None:
-        if not 1<=self.day<=5 or not 0<=self.meal_day<=5:
-            raise ValueError('Dia/consumo inválido no save da Cisterna')
-        ordered_events=[card['id'] for card in sorted(
-            (card for card in CATALOG['cards'] if card['family']=='EVE'),
-            key=lambda card:card['day'])]
-        if (self.event_history!=ordered_events[:self.day]
-                or self.event_queue!=ordered_events[self.day:]):
-            raise ValueError('Cursor de eventos não corresponde ao dia salvo')
-        cards=self.siege_deck+self.siege_discard
-        if self.active_siege and self.active_siege.get('card_id'):
-            cards.append(self.active_siege['card_id'])
-        if (Counter(cards)!=Counter(SIEGE_CARDS.keys())
-                or not -2<=self.bridge_relation<=2):
-            raise ValueError('Baralho/relação de Cerco inválidos no save')
-        if self.result in ('candidate_victory','partial_defeat','verified_victory'):
-            receipt=self.chapter_receipt
-            if not receipt or receipt.get('day')!=5 or receipt.get('meal_day')!=5:
-                raise ValueError('Resultado final sem recibo da quinta noite')
-            if (receipt.get('events')!=self.event_history
-                    or receipt.get('event_queue')!=self.event_queue
-                    or receipt.get('pending_sieges')!=self.pending_sieges
-                    or receipt.get('siege_receipts')!=len(self.siege_receipts)
-                    or receipt.get('filter_active')!=self.filter_active
-                    or receipt.get('health')!=self.health or receipt.get('morale')!=self.morale
-                    or receipt.get('result')!=self.result
-                    or receipt.get('supplied')!=all(
-                        not person['hungry'] and not person['thirsty']
-                        for person in self.people)):
-                raise ValueError('Recibo final diverge do estado salvo')
-            if (self.day!=5 or self.meal_day!=5 or self.event_queue or self.pending_sieges
-                    or self.event_history!=[f'ZC-EVE-{n:04d}' for n in range(1,6)]):
-                raise ValueError('Estado final não percorreu os cinco eventos/noites')
-
-    def certify_victory(self, legal_objectives:list[str]) -> dict:
-        """Emite certificado somente após candidato, filtro e peças registradas.
-
-        A lista de nomes é uma referência de auditoria, não prova por si só:
-        cada peça também precisa existir no estado persistente da Cisterna.
-        O integrador ainda exige os recibos táticos de retorno.
-        """
-        required={"Oficina:Conexões","Estação:Bomba","Estação:Membrana"}
-        parts={"Conexões","Bomba","Membrana"}
-        if (self.result!='candidate_victory' or not self.filter_completed
-                or not parts.issubset(self.parts)
-                or not required.issubset(set(legal_objectives))):
-            raise ValueError('Vitória não possui prova legal suficiente')
-        self.validate_snapshot()
-        self.result='verified_victory'
-        self.chapter_receipt['result']='verified_victory'
-        return {'status':'verified_victory','source':'cistern02',
-                'objectives':sorted(required)}
 
     @staticmethod
     def _take(lots:list[int],amount:int) -> int:
@@ -560,7 +392,6 @@ class Cistern02:
             if not person['hungry'] and not person['thirsty']:
                 person['fatigue']=max(0,person.get('fatigue',0)-1)
         self.day+=1;self.clock=0;self.works_today=0;self.planned_guards=[]
-        self.apply_daily_event()
         if self.filter_active:
             self.water.extend(self._lots(self.initial_consumers))
 
@@ -572,6 +403,4 @@ class Cistern02:
     def load(cls,path:Path) -> 'Cistern02':
         payload=json.loads(path.read_text(encoding='utf-8'))
         if payload.get('schema')!=1:raise ValueError('Esquema inválido')
-        game=cls(**payload['state'])
-        game.validate_snapshot()
-        return game
+        return cls(**payload['state'])
