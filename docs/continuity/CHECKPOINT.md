@@ -27,7 +27,7 @@
   fecha o estado e aplica perda de carga/peças no chão; retirada pode ser
   escolhida mesmo no relógio 10.
 - Verificação desta sessão: `python -m unittest discover -s
-  edicao-integral/tests -q` (196 testes); `compileall`, validação (125 IDs,
+  edicao-integral/tests -q` (197 testes); `compileall`, validação (125 IDs,
   10 heróis, 70 habilidades, 15 NPCs, 8 mapas e 5 pontos de coleta) e
   `git diff --check`.
 - Regressão de preservação: `python -m unittest discover -s tests -q` passou

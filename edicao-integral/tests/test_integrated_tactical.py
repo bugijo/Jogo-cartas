@@ -59,6 +59,27 @@ class IntegratedTacticalTests(unittest.TestCase):
         self.assertEqual(game.travel_shoe["discard"], ["ZC-VIA-0005"])
         self.assertFalse(game.travel_uses_shoe)
 
+    def test_campaign_shoe_commits_normal_outbound_and_return_only_once(self):
+        hero = STARTERS[0]
+        game = IntegratedCampaign.new(133, STARTERS[:2], LINK_IDS[:2])
+        first = ["ZC-VIA-0001", "ZC-VIA-0007"]
+        game.travel_shoe["deck"] = first + [card for card in
+            game.travel_shoe["deck"] if card not in set(first)]
+        trip = game.start_travel(
+            "Mercado", [hero], context=TravelContext(
+                food=0, water=0, materials=0, fatigue={hero: 0}))
+        game.resolve_travel_choice(trip.events[-1]["event_id"], None)
+        tactical = game.enter_expedition()
+        tactical.positions[hero] = 1
+        tactical.enemies.clear()
+        tactical.end_round()
+        game.return_expedition()
+        self.assertEqual(game.travel_shoe["discard"], first)
+        self.assertFalse(game.travel_uses_shoe)
+        with self.assertRaises(ValueError):
+            game.return_expedition()
+        self.assertEqual(game.travel_shoe["discard"], first)
+
     def test_travel_entry_requires_resolution_before_entering_map(self):
         hero = STARTERS[0]
         game = IntegratedCampaign.new(114, STARTERS[:2], LINK_IDS[:2])

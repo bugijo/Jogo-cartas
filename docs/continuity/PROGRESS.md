@@ -191,10 +191,12 @@ passaram se o gate de campanha ainda estiver fechado.
 - A mesma revisão encontrou dano tático acima do máximo 3 e loadout com três
   armas. Os dois gates foram alinhados a `RULES.md` e ganharam regressão.
 - Testes focados: `test_travel02.py` 14/14, `test_cistern_tactics02.py`
-  22/22, `test_integrated_tactical.py` 45/45. Suíte experimental completa:
-  196/196; compileall, validador de dados (125 IDs) e `git diff --check`
+  22/22, `test_integrated_tactical.py` 46/46. Suíte experimental completa:
+  197/197; compileall, validador de dados (125 IDs) e `git diff --check`
   passaram.
 - Não houve simulação de campanha completa, impressão física ou playtest
   humano. Munição levada e carta extra de estrada à noite ainda precisam de
   regra/integração explícita; rota/Ponte, promessas e noites permanecem abertas.
 - Publicado em `b399d4139a27ae1634d2fe002ef6d4edb8db80c1` na branch experimental.
+- Regressão adicional confirma sapato avançando após ida/volta normal e M1 de
+  retirada, sem dupla liquidação. O teste do lote recém-publicado é 197/197.

@@ -213,3 +213,6 @@ campanha completa. Impressão, equilíbrio e playtest humano não foram feitos.
 - Os testes independentes (60 testes de estrada/integrador e 75 de
   tática/M1 no estado pré-lote) passaram. Isso foi revisão automatizada, não
   simulação de campanha nem playtest.
+- Após as correções, teste integrado percorre ida/volta comum e retirada M1 e
+  confirma descarte de duas cartas, cursor persistente e ausência de segunda
+  liquidação. A suíte experimental passou com 197 testes.

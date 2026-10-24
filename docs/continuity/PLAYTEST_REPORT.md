@@ -120,8 +120,8 @@ Playtest humano segue pendente.
   loadout. Ambos foram corrigidos e cobertos por testes.
 - O sapato de Viagem agora persiste monte e descarte entre expedições e saves.
   Os testes verificam sequência determinística, reshuffle reproduzível, skip
-  VIA-0003 sem compra falsa e retirada M1 sem reaplicar uma carta.
-- Verificação atual: 196 testes experimentais e 51 testes legados passaram;
+  VIA-0003 sem compra falsa, retirada M1 e retorno normal sem reaplicar cartas.
+- Verificação atual: 197 testes experimentais e 51 testes legados passaram;
   `compileall`, validação de dados e `git diff --check` também passaram. O
   renderer legado ainda emite o `ResourceWarning` conhecido. São testes de
   unidade/integração, não partidas completas, avaliação de dificuldade ou
