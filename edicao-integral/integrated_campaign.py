@@ -69,6 +69,10 @@ class IntegratedCampaign:
     travel_request: dict | None = None
     ambush: Ambush02 | None = None
     travel_segments_paid: int = 0
+    return_travel: Travel02 | None = None
+    return_context: TravelContext | None = None
+    return_context_initial: dict | None = None
+    return_settlement_delta: dict | None = None
 
     STATUSES = {"RUNNING", "VICTORY", "DEFEAT", "IMPOSSIBLE", "PAUSED"}
 
@@ -171,9 +175,11 @@ class IntegratedCampaign:
         return self.travel.reveal("outbound")
 
     def resolve_travel_choice(self, event_id: str, choice: str) -> dict:
-        if self.travel is None or self.travel_context is None:
+        trip = self.travel if self.travel is not None else self.return_travel
+        context = self.travel_context if self.travel is not None else self.return_context
+        if trip is None or context is None:
             raise ValueError("Nenhuma viagem preparada")
-        return self.travel.apply(event_id, self.travel_context, choice)
+        return trip.apply(event_id, context, choice)
 
     def start_travel_ambush(self) -> Ambush02:
         if (self.travel is None or self.travel.pending_ambush is None
@@ -219,11 +225,43 @@ class IntegratedCampaign:
         tactical = self.start_expedition(
             request["destination"], request["team"], request["route"],
             request["equipment"], self.travel_segments_paid)
+        return_trip = self.travel
+        return_context = self.travel_context
         self.travel = None
         self.travel_context = None
         self.travel_request = None
         self.travel_segments_paid = 0
+        self.return_travel = return_trip
+        self.return_context = return_context
+        self.return_context_initial = return_context.snapshot() if return_context else None
         return tactical
+
+    def _settle_return_travel(self) -> None:
+        """Revela e liquida a volta antes de entregar qualquer recibo."""
+        if self.return_travel is None or self.return_context is None:
+            return
+        trip = self.return_travel
+        context = self.return_context
+        if trip.pending_resolution is not None or trip.pending_ambush is not None:
+            raise ValueError("Resolva a carta de retorno pendente")
+        while trip.remaining("return"):
+            event = trip.reveal("return", context)
+            if event.get("ambush"):
+                raise ValueError("Emboscada de retorno exige M1 antes da entrega")
+            if trip.pending_choices:
+                raise ValueError("Escolha da carta de retorno pendente")
+            trip.apply(event["event_id"], context)
+        initial = self.return_context_initial or context.snapshot()
+        self.return_settlement_delta = {
+            "food": context.food - initial.get("food", context.food),
+            "water": context.water - initial.get("water", context.water),
+            "materials": context.materials - initial.get("materials", context.materials),
+            "pressure": context.pressure - initial.get("pressure", context.pressure),
+            "moral": context.moral - initial.get("moral", context.moral),
+        }
+        self.return_travel = None
+        self.return_context = None
+        self.return_context_initial = None
 
     def return_expedition(self, by_van: bool = False) -> list[dict]:
         self._require_running()
@@ -232,6 +270,7 @@ class IntegratedCampaign:
         tactical = self.tactical
         if not tactical.finished:
             tactical.finish(by_van=by_van)
+        self._settle_return_travel()
         proof = tactical.delivery_proof()
         keys = [
             (receipt["group_id"] if receipt["event"] == "rescue" else
@@ -278,6 +317,16 @@ class IntegratedCampaign:
                     else:
                         raise ValueError("Recompensa regional desconhecida")
                 self.delivered_objectives.append(receipt["id"])
+        delta = self.return_settlement_delta or {}
+        for lots, key in ((self.cistern.food, "food"), (self.cistern.water, "water")):
+            loss = max(0, -delta.get(key, 0))
+            if loss and self.cistern._take(lots, loss) != loss:
+                raise ValueError("Estoque insuficiente para liquidar efeito de retorno")
+        self.cistern.materials += max(0, delta.get("materials", 0))
+        if delta.get("pressure", 0):
+            self.cistern.raise_pressure(delta["pressure"])
+        self.cistern.morale = max(0, min(5, self.cistern.morale + delta.get("moral", 0)))
+        self.return_settlement_delta = None
         if any(receipt["event"] == "repair_van" and receipt["success"]
                for receipt in tactical.log):
             self.battery_available = False
@@ -384,6 +433,11 @@ class IntegratedCampaign:
         payload["travel_context"] = (self.travel_context.snapshot()
                                       if self.travel_context else None)
         payload["ambush"] = self.ambush.snapshot() if self.ambush else None
+        payload["return_travel"] = (self.return_travel.snapshot()
+                                     if self.return_travel else None)
+        payload["return_context"] = (self.return_context.snapshot()
+                                      if self.return_context else None)
+        payload["return_context_initial"] = self.return_context_initial
         payload["world"] = _world_payload(self.world) if self.world is not None else None
         payload["world"] = {"schema": 1, **payload["world"]} if payload["world"] else None
         path.write_text(json.dumps(payload, ensure_ascii=False, indent=2) + "\n",
@@ -404,6 +458,10 @@ class IntegratedCampaign:
             payload["travel_context"] = TravelContext(**payload["travel_context"])
         if payload.get("ambush") is not None:
             payload["ambush"] = Ambush02.from_snapshot(payload["ambush"])
+        if payload.get("return_travel") is not None:
+            payload["return_travel"] = Travel02.from_snapshot(payload["return_travel"])
+        if payload.get("return_context") is not None:
+            payload["return_context"] = TravelContext(**payload["return_context"])
         if payload.get("world") is not None:
             payload["world"] = _world_from_payload(payload["world"])
         campaign = cls(schema=1, **payload)

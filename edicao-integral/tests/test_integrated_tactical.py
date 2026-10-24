@@ -99,6 +99,45 @@ class IntegratedTacticalTests(unittest.TestCase):
         event_id=resumed.travel.events[-1]['event_id']
         resumed.resolve_travel_choice(event_id, "water")
         self.assertEqual(resumed.enter_expedition().destination, "mercado")
+
+    def test_return_travel_applies_ferragens_to_stock_after_legal_return(self):
+        hero = STARTERS[0]
+        game = IntegratedCampaign.new(119, STARTERS[:2], LINK_IDS[:2])
+        initial = game.cistern.materials
+        game.start_travel(
+            "Mercado", [hero], "short",
+            deck=["ZC-VIA-0001", "ZC-VIA-0010"],
+            context=TravelContext(food=0, water=0, materials=0,
+                                  fatigue={hero: 0}))
+        game.resolve_travel_choice(game.travel.events[-1]['event_id'], None)
+        game.enter_expedition()
+        tactical = game.tactical
+        tactical.positions[hero] = 1
+        tactical.enemies.clear()
+        tactical.end_round()
+        game.return_expedition()
+        self.assertEqual(game.cistern.materials, initial + 1)
+
+    def test_return_choice_blocks_stock_settlement_until_resolved(self):
+        hero = STARTERS[0]
+        game = IntegratedCampaign.new(120, STARTERS[:2], LINK_IDS[:2])
+        game.start_travel(
+            "Mercado", [hero], "short",
+            deck=["ZC-VIA-0001", "ZC-VIA-0006"],
+            context=TravelContext(food=1, water=1, materials=0,
+                                  fatigue={hero: 0}))
+        game.resolve_travel_choice(game.travel.events[-1]['event_id'], None)
+        game.enter_expedition()
+        tactical = game.tactical
+        tactical.positions[hero] = 1
+        tactical.enemies.clear()
+        tactical.end_round()
+        with self.assertRaises(ValueError):
+            game.return_expedition()
+        event_id = game.return_travel.events[-1]['event_id']
+        game.resolve_travel_choice(event_id, "help")
+        game.return_expedition()
+        self.assertEqual(game.cistern.morale, 5)
     def test_legal_trip_delivers_once_and_survives_save(self):
         hero = STARTERS[0]
         game = IntegratedCampaign.new(103, STARTERS[:2], LINK_IDS[:2])

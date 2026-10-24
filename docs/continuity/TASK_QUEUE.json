@@ -67,8 +67,8 @@
         "edicao-integral/tests/test_ambush02.py"
       ],
       "status": "em_execucao",
-      "commit": "2e7c725",
-      "blocker": "Entrada/ida e recibo M1 estão integrados; faltam Horda/ruído/fadiga noturna, resolução da viagem de volta, liquidação real de efeitos/recursos, promessas e fila final"
+      "commit": "pendente neste commit",
+      "blocker": "Ida, M1 e retorno básico estão cobertos; Emboscada de retorno, cão/Ponte persistentes, promessas e fila final ainda incompletos"
     },
     {
       "id": "P1-MIGRATE-CISTERN",

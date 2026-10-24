@@ -141,3 +141,16 @@ passaram se o gate de campanha ainda estiver fechado.
   playtest humano não ocorreram.
 - Este checkpoint local ainda não está publicado; conferir o remoto antes do
   commit/push.
+
+## 2026-10-24 — unidade P0: retorno e liquidação de estoque
+
+- A campanha preserva o estado `Travel02` após entrar no mapa e o retoma na
+  volta. Cada trecho de retorno é revelado uma vez; escolhas pendentes impedem
+  a entrega até resolução explícita.
+- O efeito de Ferragens agora incrementa Materiais somente depois do retorno
+  tático legal. Perdas de comida/água, pressão e moral ficam liquidadas no
+  abrigo a partir do delta do contexto de carga.
+- Testes focados de retorno automático e retorno com escolha pendente; suíte
+  experimental: 153 aprovados, 0 falhas.
+- Ainda faltam Emboscada de retorno, efeitos de cão/Ponte persistentes e a
+  integração das cinco noites.
