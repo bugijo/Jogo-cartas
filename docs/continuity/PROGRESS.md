@@ -94,6 +94,9 @@ passaram se o gate de campanha ainda estiver fechado.
   canônico para esse save. A migração não fabrica efeitos retroativos.
 - O replay fixo H2–H6 foi reconciliado com os eventos canônicos e passa de novo;
   continua sendo uma rota roteirizada, não um replay integral de ações legais.
+- Uma prova de expedição individual agora usa seed 22 e o baralho natural: Viagem
+  para a Oficina, coleta legal de Conexões e retorno, sem substituir a ordem do
+  sapato. Isso demonstra um objetivo tático isolado, não a campanha completa.
 - Testes após a recuperação e migração: `220 passed`; `validate_data.py`,
   `compileall` e `git diff --check` passaram. Impressão e playtest humano não
   ocorreram. `RECOVERY_AUDIT.md` contém o inventário de SHAs, decisões e limites.

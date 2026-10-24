@@ -57,6 +57,11 @@ continuam pendentes. A emissão de `verified_victory` segue protegida e não foi
 demonstrada nesta unidade. Migração para Última Transmissão e campanha contínua
 também não foram demonstradas.
 
+Foi acrescentada uma expedição legal isolada com seed 22: a ordem natural do
+sapato leva a Oficina, o herói retira Conexões por ação tática e retorna; o
+descarte registra apenas as duas cartas realmente reveladas. Isso não é uma
+trajetória de campanha completa.
+
 Impressão física, playtest humano e equilíbrio seguem pendentes. Saves JSON
 editáveis pelo proprietário não têm proteção criptográfica: validação detecta
 inconsistências, mas não autentica autoria.
