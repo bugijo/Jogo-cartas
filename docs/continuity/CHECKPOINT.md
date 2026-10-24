@@ -43,7 +43,7 @@ Commits desta recuperação:
 - `6f48cf7` — módulos de Viagem e Emboscada M1, com testes.
 - `8318291` — eventos canônicos, cercos, tática e recibos da Cisterna.
 - `37ff095` — integração da ida/volta, decks únicos e replay H2–H6 corrigido.
-- `PENDENTE` — relatório de recuperação e checkpoints atualizados.
+- `8bae492` — relatório de recuperação e checkpoints atualizados.
 
 Publicar somente por fast-forward em `origin/evolucao/zona-zero-sistema-v1`,
 sem merge ou force.
