@@ -61,6 +61,7 @@ class IntegratedCampaign:
     fuel_cards: list[str] = field(default_factory=list)
     battery_available: bool = False
     van_state: str = "abandoned"
+    site_states: dict[str, dict] = field(default_factory=dict)
 
     STATUSES = {"RUNNING", "VICTORY", "DEFEAT", "IMPOSSIBLE", "PAUSED"}
 
@@ -125,7 +126,8 @@ class IntegratedCampaign:
             self.cistern, destination, team, route,
             taken_before=self.delivered_objectives + self.lost_objectives,
             first_visit=destination.lower() not in self.visited_destinations,
-            equipment=loadout)
+            equipment=loadout,
+            prior_state=self.site_states.get(destination.lower()))
         self.tactical = tactical
         self.expedition_days.append(self.cistern.day)
         self.visited_destinations.append(destination.lower())
@@ -161,6 +163,23 @@ class IntegratedCampaign:
                 self.delivered_objectives.append(receipt["id"])
             elif receipt["event"] == "deliver_van":
                 self.van_state = "operational"
+            elif receipt["event"] == "search_reward":
+                for kind, count in receipt["reward"].items():
+                    if kind == "Conserva":
+                        self.cistern.food.extend([4] * count)
+                    elif kind == "Água":
+                        self.cistern.water.extend([4] * count)
+                    elif kind == "Carne":
+                        self.cistern.meat.extend([4] * count)
+                    elif kind == "Material":
+                        self.cistern.materials += count
+                    elif kind == "Munição":
+                        self.cistern.ammo += count
+                    elif kind == "Medicamento":
+                        self.cistern.medicine += count
+                    else:
+                        raise ValueError("Recompensa regional desconhecida")
+                self.delivered_objectives.append(receipt["id"])
         if any(receipt["event"] == "repair_van" and receipt["success"]
                for receipt in tactical.log):
             self.battery_available = False
@@ -169,6 +188,7 @@ class IntegratedCampaign:
         self.lost_objectives.extend(
             receipt["id"] for receipt in tactical.log
             if receipt["event"] == "fuel_spent")
+        self.site_states[tactical.destination] = tactical.site_snapshot()
         self.tactical = None
         return proof
 
@@ -180,6 +200,7 @@ class IntegratedCampaign:
             if receipt["event"] == "pickup_supply":
                 self.lost_objectives.append(receipt["id"])
         self.tactical.emergency()
+        self.site_states[self.tactical.destination] = self.tactical.site_snapshot()
         self.tactical = None
 
     def meal(self) -> dict:

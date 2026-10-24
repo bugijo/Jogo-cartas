@@ -162,6 +162,43 @@ class IntegratedTacticalTests(unittest.TestCase):
         self.assertEqual(game.cistern.clock, 8)
         self.assertFalse(game.battery_available)
         self.assertEqual(len(game.lost_objectives), 4)
+        game.meal(); game.next_cistern_day()
+        revisit = game.start_expedition("Posto", [h1], "long")
+        self.assertEqual(revisit.van_state, "away")
+
+    def test_revisit_keeps_open_door_and_does_not_repeat_initial_spawn(self):
+        hero = STARTERS[0]
+        game = IntegratedCampaign.new(110, STARTERS[:2], LINK_IDS[:2])
+        first = game.start_expedition("Mercado", [hero])
+        first.open_door(hero, 5)
+        first.end_round(); game.return_expedition()
+        game.meal(); game.next_cistern_day()
+        later = game.start_expedition("Mercado", [hero])
+        self.assertIn([1, 5], later.doors_open)
+        self.assertEqual(len(later.enemies), 1)
+
+    def test_regional_search_reward_enters_shelter_only_after_return(self):
+        hero = STARTERS[0]
+        game = IntegratedCampaign.new(111, STARTERS[:2], LINK_IDS[:2])
+        tactical = game.start_expedition("Mercado", [hero], "long")
+        tactical.open_door(hero, 5); tactical.move(hero, 5)
+        found = tactical.search(hero)
+        self.assertTrue(found['carried'])
+        self.assertEqual(game.delivered_objectives, [])
+        before = {'Conserva':sum(game.cistern.food), 'Água':sum(game.cistern.water),
+                  'Carne':sum(game.cistern.meat), 'Material':game.cistern.materials,
+                  'Munição':game.cistern.ammo, 'Medicamento':game.cistern.medicine}
+        tactical.end_round(); tactical.begin_round()
+        tactical.move(hero, 1); tactical.end_round()
+        game.return_expedition()
+        self.assertIn(found['id'], game.delivered_objectives)
+        after = {'Conserva':sum(game.cistern.food), 'Água':sum(game.cistern.water),
+                 'Carne':sum(game.cistern.meat), 'Material':game.cistern.materials,
+                 'Munição':game.cistern.ammo, 'Medicamento':game.cistern.medicine}
+        for kind in before:
+            unit = 4 if kind in ('Conserva','Água','Carne') else 1
+            self.assertEqual(after[kind]-before[kind], unit*found['reward'].get(kind,0))
+        self.assertEqual(len(game.site_states['mercado']['search_deck']), 5)
 
 
 if __name__ == "__main__":

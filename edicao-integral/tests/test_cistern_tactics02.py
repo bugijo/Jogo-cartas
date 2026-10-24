@@ -14,6 +14,24 @@ def chapter():
 
 
 class Tactical02Tests(unittest.TestCase):
+    def test_search_uses_card_from_regional_deck_and_preserves_ground(self):
+        c = chapter(); h = STARTERS[0]
+        t = Tactical02.start(c, 'Mercado', [h], route='long')
+        t.positions[h] = 5  # Unidade de regra B1; movimento é testado à parte.
+        found = t.search(h)
+        self.assertTrue(found['id'].startswith('ZC-SAQ-'))
+        self.assertEqual(t.search_uses['5'], 2)
+        self.assertEqual(len(t.search_deck), 5)
+        with self.assertRaises(ValueError):
+            t.search(h)  # Cada ponto, no máximo uma busca por rodada.
+
+    def test_prior_site_snapshot_from_before_search_feature_loads(self):
+        c = chapter(); h = STARTERS[0]
+        old = {'doors_open': [[1,5]], 'enemies': [], 'next_enemy': 2}
+        t = Tactical02.start(c, 'Mercado', [h], prior_state=old,
+                             first_visit=False)
+        self.assertEqual(len(t.search_deck), 6)
+        self.assertEqual(t.search_uses, {'5':3, '12':3})
     def test_posto_van_consumes_carried_fuel_and_battery(self):
         c = chapter(); h = STARTERS[0]
         t = Tactical02.start(c, 'Posto', [h], equipment={h: ['Pé de cabra', 'Bateria']})

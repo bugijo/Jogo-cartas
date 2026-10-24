@@ -62,6 +62,7 @@ class Cistern02:
     health: int = 5
     pressure: int = 0
     ammo: int = 2
+    medicine: int = 2
     structures: list[str] = field(default_factory=lambda:['Portão','Cozinha','Depósito'])
     pending_sieges: list[str] = field(default_factory=list)
     planned_guards: list[str] = field(default_factory=list)

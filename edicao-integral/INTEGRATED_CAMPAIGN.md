@@ -24,8 +24,8 @@
 
 ## Limites conhecidos
 
-O núcleo tático já cobre lotes de provisões e combustível fixos, mas ainda não
-cobre Saque, resgates, cartas de Viagem, estado de revisita e fila completa do
+O núcleo tático já cobre lotes fixos, Saque regional finito e estado de mapa
+entre visitas, mas ainda não cobre resgates, cartas de Viagem e fila completa do
 dia. A van pode ser reparada e retornar no Posto; seu estado ainda não migra ao
 segundo arco. O adaptador precisa
 comprovar também essas operações e migrar todo o estado canônico antes de

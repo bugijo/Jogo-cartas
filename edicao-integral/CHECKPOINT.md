@@ -62,6 +62,32 @@ contabilidade de combustível. Fadiga 3 da emergência agora pertence à pessoa
 e reduz uma unidade no amanhecer após refeição completa. A saída após a fase
 de refeição foi bloqueada.
 
+## Unidade 33 — Saque finito e estado de revisita
+
+As seis cartas canônicas de Saque por destino são embaralhadas com semente
+reproduzível. `search()` exige B1/B2, cobra 1 PA, um dos três usos do ponto e
+no máximo uma busca do grupo por ponto/visita. A recompensa usa os dados de
+`content/catalog.json`; se não couber na carga, fica registrada no chão e
+pode ser recolhida por 1 PA. Saque, usos, chão, portas, inimigos e estado da van
+persistem entre visitas e no salvamento. O abrigo só recebe cartas carregadas
+após retorno legal; emergência perde carga comum sem repor o monte. Um teste
+reproduz a busca no Mercado por ações de mapa e confere o delta exato de
+Conserva, Água, Carne, Material, Munição ou Medicamento conforme a carta.
+
+Isso ainda não fecha os cinco dias: faltam eventos de Viagem e emboscadas,
+resgates/acolhimento ligados ao mapa, equipamentos achados, trabalho civil,
+promessas e ordem completa de cercos, além da migração ao segundo arco.
+
+Verificação desta unidade: 124 testes experimentais, 51 testes legados e
+`validate_data.py` passaram; o aviso antigo de imagem não fechada em
+`tests/test_boards06.py:64` permanece. O catálogo experimental tem 125 IDs,
+sete cartas do novo motor e oito plantas táticas; as 36 cartas de Saque 0.2
+são lidas do catálogo legado e **não** se tornam 36 novas cartas da edição
+experimental. Nenhum PDF novo foi gerado. Os PDFs de referência enviados em
+conversas anteriores não estão disponíveis em `/tmp/codex-remote-attachments`
+nesta sessão; o acabamento físico não começou porque a campanha legal ainda
+não foi comprovada.
+
 
 Base preservada: `cebb76a` em `arte/kit-pos-apocaliptico-provas`. Nova branch: `evolucao/zona-zero-sistema-v1`. Branch padrão remota: `fisico/antes-que-a-agua-acabe`; nenhuma delas foi alterada por merge.
 

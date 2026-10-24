@@ -9,6 +9,7 @@ from collections import deque
 from copy import deepcopy
 from dataclasses import dataclass, field
 from math import ceil
+from random import Random
 
 from cistern02 import CATALOG, Cistern02
 
@@ -31,6 +32,16 @@ SUPPLY_LOTS = {
     'condomínio': {'Conserva': (7, 1), 'Água': (14, 1)},
     'estação': {'Água': (14, 2)},
 }
+REGIONS = {'mercado':'MER', 'hospital':'HOS', 'oficina':'OFI',
+           'posto':'POS', 'condomínio':'CON', 'estação':'EST'}
+SEARCH_CARDS = {c['id']: c for c in CATALOG['cards'] if c['family']=='SAQ'}
+
+
+def initial_search_deck(destination: str, seed: int) -> list[str]:
+    cards = [c['id'] for c in SEARCH_CARDS.values()
+             if c['region']==REGIONS[destination]]
+    Random(seed + sum(map(ord,destination))).shuffle(cards)
+    return cards
 
 
 def edge(a: int, b: int) -> tuple[int, int]:
@@ -69,13 +80,19 @@ class Tactical02:
     van_state: str = 'abandoned'
     van_attempts: list[str] = field(default_factory=list)
     van_returned: bool = False
+    search_deck: list[str] = field(default_factory=list)
+    search_uses: dict[str, int] = field(default_factory=lambda: {'5':3, '12':3})
+    searched_this_visit: list[int] = field(default_factory=list)
+    search_cargo: dict[str, list[dict]] = field(default_factory=dict)
+    search_ground: list[dict] = field(default_factory=list)
 
     @classmethod
     def start(cls, chapter: Cistern02, destination: str, team: list[str],
               route: str = 'short', horde_order: list[str] | None = None,
               taken_before: list[str] | None = None,
               first_visit: bool = True,
-              equipment: dict[str, list[str]] | None = None) -> 'Tactical02':
+              equipment: dict[str, list[str]] | None = None,
+              prior_state: dict | None = None) -> 'Tactical02':
         if destination.lower() not in MAPS or route not in ('short', 'long'):
             raise ValueError('Destino ou rota inválidos')
         if not team or len(set(team)) != len(team) or any(h not in chapter.founders for h in team):
@@ -102,11 +119,25 @@ class Tactical02:
         obj.positions = {h: obj.map['entry'] for h in team}
         obj.carried = {h: [] for h in team}
         obj.supply_cargo = {h: [] for h in team}
+        obj.search_cargo = {h: [] for h in team}
         obj.equipment = supplies
         obj.fatigue = {h: people[h].get('fatigue',0) for h in team}
-        count = max(0, ceil(len(team)/2) - (route == 'long'))
-        for _ in range(count): obj._spawn('Errante', obj.map['spawn'])
-        if obj.destination == 'estação': obj._spawn('Bruto', 14)
+        if prior_state is not None:
+            obj.doors_open = deepcopy(prior_state['doors_open'])
+            obj.enemies = deepcopy(prior_state['enemies'])
+            obj.next_enemy = prior_state['next_enemy']
+            obj.horde_index = prior_state.get('horde_index', 0)
+            obj.van_state = prior_state.get('van_state', 'abandoned')
+            obj.search_deck = deepcopy(prior_state.get(
+                'search_deck', initial_search_deck(obj.destination, chapter.seed)))
+            obj.search_uses = deepcopy(prior_state.get(
+                'search_uses', {'5':3, '12':3}))
+            obj.search_ground = deepcopy(prior_state.get('search_ground', []))
+        else:
+            count = max(0, ceil(len(team)/2) - (route == 'long'))
+            for _ in range(count): obj._spawn('Errante', obj.map['spawn'])
+            if obj.destination == 'estação': obj._spawn('Bruto', 14)
+            obj.search_deck = initial_search_deck(obj.destination, chapter.seed)
         obj._night_fatigue()
         obj.begin_round()
         return obj
@@ -266,7 +297,40 @@ class Tactical02:
         part_place = next((name for name in PARTS if name.lower() == self.destination), None)
         part_load = sum(PARTS[part_place][p][1] for p in self.carried[hero]) if part_place else 0
         return (len(self.equipment[hero]) + part_load
-                + sum(item['cards'] for item in self.supply_cargo[hero]))
+                + sum(item['cards'] for item in self.supply_cargo[hero])
+                + sum(item['cards'] for item in self.search_cargo[hero]))
+
+    def search(self, hero: str) -> dict:
+        if hero not in self.positions or self.positions[hero] not in (5,12):
+            raise ValueError('Busca exige presença em B1/B2')
+        zone = self.positions[hero]
+        if (zone in self.searched_this_visit or self.search_uses[str(zone)] < 1
+                or not self.search_deck):
+            raise ValueError('Busca esgotada nesta visita ou campanha')
+        self._pay(hero,1)
+        card_id = self.search_deck.pop(0)
+        card = SEARCH_CARDS[card_id]
+        count = sum(card['reward'].values())
+        found = {'id':card_id, 'reward':card['reward'].copy(), 'cards':count,
+                 'zone':zone, 'hero':hero}
+        self.search_uses[str(zone)] -= 1
+        self.searched_this_visit.append(zone)
+        carried = self._load(hero)+count <= 4
+        (self.search_cargo[hero] if carried else self.search_ground).append(found)
+        self.log.append({'event':'search', 'id':card_id, 'hero':hero,
+                         'zone':zone, 'carried':carried})
+        return {**found, 'carried':carried}
+
+    def collect_ground(self, hero: str, card_id: str) -> None:
+        found = next((x for x in self.search_ground if x['id']==card_id),None)
+        if (hero not in self.positions or found is None
+                or self.positions[hero] != found['zone']
+                or self._load(hero)+found['cards'] > 4):
+            raise ValueError('Achado no chão indisponível ou sem carga')
+        self._pay(hero,1)
+        self.search_ground.remove(found)
+        self.search_cargo[hero].append({**found,'hero':hero})
+        self.log.append({'event':'collect_ground','id':card_id,'hero':hero})
 
     def pickup_supply(self, hero: str, kind: str, lot: int) -> dict:
         """Retira um lote inteiro de 4 porções por carta, ou uma carta de combustível."""
@@ -327,6 +391,8 @@ class Tactical02:
         if self.van_returned:
             proof.append({'event': 'deliver_van', 'destination': 'posto',
                           'state': 'operational'})
+        proof.extend({'event':'search_reward', **item.copy()}
+                     for items in self.search_cargo.values() for item in items)
         return proof
 
     def _spent_fuel_ids(self) -> set[str]:
@@ -431,6 +497,7 @@ class Tactical02:
         self.failed = True; self.finished = True
         self.carried = {hero: [] for hero in self.team}
         self.supply_cargo = {hero: [] for hero in self.team}
+        self.search_cargo = {hero: [] for hero in self.team}
         self.log.append({'event': 'emergency', 'clock': self.chapter.clock})
 
     def snapshot(self) -> dict:
@@ -440,8 +507,17 @@ class Tactical02:
                   'horde_index','next_enemy','finished','failed','log','knife_used',
                   'shotgun_used','horde_order','carried','taken_before','pump_attempts',
                   'first_market_visit','equipment','supply_cargo','van_state',
-                  'van_attempts','van_returned')
+                  'van_attempts','van_returned','search_deck','search_uses',
+                  'searched_this_visit','search_cargo','search_ground')
         return deepcopy({name: getattr(self, name) for name in fields})
+
+    def site_snapshot(self) -> dict:
+        """Elementos que permanecem no destino entre visitas."""
+        return deepcopy({'doors_open': self.doors_open, 'enemies': self.enemies,
+                         'next_enemy': self.next_enemy, 'horde_index': self.horde_index,
+                         'van_state': 'away' if self.van_returned else self.van_state,
+                         'search_deck': self.search_deck, 'search_uses': self.search_uses,
+                         'search_ground': self.search_ground})
 
     @classmethod
     def from_snapshot(cls, chapter: Cistern02, snap: dict) -> 'Tactical02':
