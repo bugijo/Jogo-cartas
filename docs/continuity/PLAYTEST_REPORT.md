@@ -43,6 +43,9 @@ Playtest humano segue pendente.
   7 estruturas, 6 locais, 5 crises, 1 veículo, 8 mapas táticos.
 - Caso adversarial corrigido: retirada com peça única, salvamento do estado do
   local, nova expedição, recuperação por 1 PA e entrega sem duplicação.
+- A cobertura inclui save/load após a recuperação e antes do retorno ao abrigo,
+  verificando que a carga persiste, não pode ser recolhida de novo e é entregue
+  uma única vez.
 - `Travel02` mantém testes próprios de sequência, escolha explícita, emboscada
   pendente e restauração. Não está conectado ao fluxo de expedição.
 - O resgate no mapa tem recibo e entrega integrados por `afdc82c`; promessas e

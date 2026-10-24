@@ -41,9 +41,9 @@
         "test_unique_part_dropped_by_emergency_is_recovered_once_at_same_zone",
         "test_emergency_drops_unique_part_and_next_expedition_delivers_same_piece"
       ],
-      "status": "verificado_local",
-      "commit": null,
-      "blocker": "Aguardar commit e push deste lote"
+      "status": "verificado_publicado",
+      "commit": "d3d7390",
+      "blocker": "Sem defeito conhecido; cobertura pós-recuperação save/load adicionada em lote subsequente"
     },
     {
       "id": "P0-TRAVEL-INTEGRATION",

@@ -57,6 +57,10 @@ catálogo legado `content/catalog.json`, regras `RULES.md` e campanha
   no abrigo após retorno legal.
 - Prova: testes tático e integrado cobrem emergência, local original, uma
   recuperação única, PA, entrega, round-trip de salvamento e ausência de cópia.
+- O auditor independente confirmou não haver exploit no fluxo canônico. Ele
+  apontou a ausência de save/load depois da recuperação e antes da entrega; o
+  teste integrado agora cobre esse limite, impedindo nova coleta após restauração
+  e comprovando uma única entrega.
 - A suíte experimental após a integração remota de resgates passou com 135
   testes; a suíte legada está em reexecução antes da publicação deste lote.
 - O teste que fora adicionado esperando `Tactical02.travel_log` foi removido,

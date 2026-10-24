@@ -22,7 +22,8 @@
 - Falha corrigida localmente: uma peça única carregada numa retirada de
   emergência fica no objetivo canônico, bloqueia a cópia original, é recuperada
   por 1 PA e só chega ao abrigo com retorno legal; o teste faz save/load entre
-  as visitas e verifica entrega única.
+  as visitas e verifica entrega única. Também verifica save/load após recuperar
+  a peça e antes de entregar o recibo.
 - `Travel02` e os recibos de resgate estão publicados, mas não completam ainda
   o fluxo da expedição.
 
@@ -37,9 +38,9 @@
 
 ## Próxima retomada
 
-1. Obter revisão independente final da recuperação de peças únicas; corrigir se
-   houver reproducer.
-2. Commit/push do lote de emergência e atualizações do escritório.
+1. A auditoria independente não encontrou exploit no caminho canônico; sua
+   lacuna de cobertura de save/load pós-recuperação foi adicionada ao teste.
+2. Commit/push da cobertura pós-recuperação e atualização do escritório.
 3. Integrar `Travel02` à expedição: um segmento e uma ocorrência por vez,
    efeitos canônicos aplicados e estado pendente persistente.
 4. Integrar M1 ao trecho já pago com uma rodada obrigatória e salvar/restaurar

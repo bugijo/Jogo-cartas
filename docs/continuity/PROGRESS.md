@@ -93,3 +93,6 @@ passaram se o gate de campanha ainda estiver fechado.
   é infraestrutura isolada e não integra relógio, efeitos ou M1.
 - A auditoria da peça única continua pendente de resposta independente final;
   nenhuma campanha completa foi rodada neste lote.
+- A revisão independente não encontrou exploração no caminho canônico, mas
+  pediu cobertura do save/load depois da recuperação e antes da entrega. O teste
+  integrado agora salva/restaura nesse ponto e verifica a entrega única.

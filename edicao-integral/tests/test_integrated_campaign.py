@@ -66,6 +66,13 @@ class IntegratedCampaignTests(unittest.TestCase):
         second.positions[STARTERS[1]]=7
         second.pickup_part(STARTERS[1],'Conexões')
         with self.assertRaises(ValueError): second.pickup_part(STARTERS[1],'Conexões')
+        with tempfile.TemporaryDirectory() as directory:
+            path=Path(directory)/'campaign-after-recovery.json'
+            game.save(path)
+            game=IntegratedCampaign.load(path)
+        second=game.tactical
+        self.assertEqual(second.carried[STARTERS[1]],['Conexões'])
+        with self.assertRaises(ValueError): second.pickup_part(STARTERS[1],'Conexões')
         second.positions[STARTERS[1]]=second.map['exit']
         second.enemies.clear(); second.end_round(); second.finish()
         receipts=game.return_expedition()
