@@ -1,5 +1,13 @@
 # Última Transmissão — estado experimental
 
+**Atualização 24/10/2026:** um replay H2 legal da Cisterna (seed 22) agora
+emite e reproduz `verified_victory`; consulte
+[`CAMPAIGN_INTEGRATION.md`](CAMPAIGN_INTEGRATION.md). A frase abaixo sobre
+nenhum fluxo emitir o certificado descreve o estado anterior e está supersedida.
+O bloqueio atual é a migração: `IntegratedCampaign.world` segue `None` após a
+vitória e não há conversor que preserve moradores, cães, vínculos, ferimentos,
+itens e porções na estrutura `World`.
+
 O capítulo oficial “Antes que a água acabe” permanece em `CAMPAIGN.md` e não foi convertido nem alterado. A flag externa `cistern_complete` não libera mais o rádio, a viagem militar ou a defesa. O arco exige `world.cistern_record` com status `verified_victory` da fonte `cistern02`. Nenhum fluxo jogável emite esse certificado ainda: as provas isoladas usam fixture sintética declarada. Portanto a sequência completa permanece bloqueada com segurança.
 
 As cinco cartas em `data/last_transmission.json` alimentam os portões de código de rádio, cartão, instalação e transporte, além da defesa final. A viagem militar exige furgão e combustível de ida e volta. O transmissor é peça única e persiste no transporte e no estoque do abrigo.

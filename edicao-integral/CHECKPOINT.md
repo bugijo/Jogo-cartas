@@ -1,4 +1,27 @@
-# Checkpoint — 23/10/2026
+# Checkpoint — última atualização 24/10/2026
+
+## Estado atual: primeira vitória legal H2 e próximo bloqueio
+
+Em `evolucao/zona-zero-sistema-v1`, o replay
+`replays/cisterna_h2_seed22.json` conclui legalmente A Cisterna em seed 22 e
+recebe `verified_victory`. Use `python edicao-integral/verify_campaign_player02.py`
+para reproduzir o log e reabrir o save terminal. O estado detalhado e limitações
+estão em [`CAMPAIGN_INTEGRATION.md`](CAMPAIGN_INTEGRATION.md).
+
+Ainda não há migração de `IntegratedCampaign` para `World`: `complete_cistern()`
+certifica a Cisterna, mas deixa `world=None` e `phase="cistern"`. Uma chamada
+imediata a `final_defense()` resulta em `ValueError: Conclua A Cisterna antes da
+Última Transmissão`. Essa é a primeira barreira concreta para a campanha
+contínua. O modelo de destino tem dez heróis, NPCs tipados e estoque numérico;
+o save de origem também contém vínculos, pessoas adultas/crianças/cães, cartas
+de porções, Saúde/Moral/Pressão, estruturas, ferimentos e estado próprio de
+campanha. Não converter por descarte nem criar pessoas/recursos implicitamente.
+
+Commits publicados nesta unidade: `c8a4a0f`, `cdc8222`, `d032d99`.
+O restante deste arquivo é histórico de unidades anteriores, não deve ser lido
+como estado atual quando contradizer este bloco.
+
+---
 
 ## Unidade 30 — auditoria do avanço remoto e fechamento de atalhos
 

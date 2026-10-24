@@ -1,5 +1,11 @@
 # Auditoria independente: expedição 0.2, Posto e transição
 
+> **Snapshot histórico da branch `8700073`.** Esta auditoria antecede a
+> integração subsequente de Viagem/expedição e o replay H2 `verified_victory`.
+> Use `CAMPAIGN_INTEGRATION.md` para o estado atual. As diferenças de Posto,
+> combustível e migração entre modelos continuam pertinentes; alegações abaixo
+> de que nenhuma expedição ou certificado legal existe estão supersedidas.
+
 Base examinada: `RULES.md`, `CAMPAIGN.md`, `content/catalog.json`, `cistern02.py`, `integrated_campaign.py`, `system.py`, `arc2.py`, `data/tactics.json` e `data/system.json`, com a branch em `8700073`. Este relatório descreve paridade de regras; não certifica uma campanha jogada.
 
 ## Contrato canônico que a expedição precisa demonstrar

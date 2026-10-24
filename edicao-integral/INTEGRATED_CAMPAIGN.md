@@ -1,5 +1,11 @@
 # Campanha contínua experimental
 
+> **Relatório histórico.** Este documento registra o estado anterior ao replay
+> H2 legal de 24/10/2026. `verified_victory` já foi obtido para seed 22; o
+> estado atual e a evidência reproduzível estão em
+> [`CAMPAIGN_INTEGRATION.md`](CAMPAIGN_INTEGRATION.md). A migração para
+> `World` e a sequência completa até Última Transmissão continuam bloqueadas.
+
 `IntegratedCampaign` é uma fronteira **incompleta e bloqueada** entre a caixa
 0.2 e o motor experimental. Ela não altera `RULES.md`, `CAMPAIGN.md`,
 `content/catalog.json` ou os PDFs existentes.
