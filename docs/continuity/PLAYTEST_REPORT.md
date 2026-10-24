@@ -50,6 +50,13 @@ Playtest humano segue pendente.
 - A M1 segue incompleta quanto a surgimento/Horda, pressão, Horda noturna,
   fadiga noturna, combate equipado e ruído. Campanhas completas H2–H6,
   impressão física e playtest humano permanecem pendentes.
+- Após o fast-forward remoto até `49cb7cc`, a suíte experimental passou com
+  156 testes. Foi acrescentado teste contra certificação falsa usando apenas
+  nomes de objetivos; isso é verificação de segurança do método, não replay de
+  campanha.
+- Uma auditoria de viagem de retorno encontrou situações que travam ou deixam
+  liquidação parcial. Portanto nem os novos recibos nem os testes de módulo
+  devem ser interpretados como prova de campanha contínua.
 
 ## Incremento 2026-10-24 — QA de persistência e política de informação
 

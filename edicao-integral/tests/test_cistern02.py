@@ -242,6 +242,16 @@ class Cistern02Tests(unittest.TestCase):
             game.certify_victory([])
         self.assertEqual(game.result,'candidate_victory')
 
+    def test_objective_names_alone_cannot_certify_missing_parts_or_filter(self):
+        game=Cistern02.new(STARTERS[:2],LINK_IDS[:2])
+        game.result='candidate_victory'
+        claimed=['Oficina:Conexões','Estação:Bomba','Estação:Membrana']
+        with self.assertRaises(ValueError):
+            game.certify_victory(claimed)
+        self.assertEqual(game.result,'candidate_victory')
+        self.assertEqual(game.parts,{})
+        self.assertFalse(game.filter_completed)
+
     def test_siege_can_disable_completed_filter(self):
         game=Cistern02.new(STARTERS[:2],LINK_IDS[:2])
         game.receive_part('Conexões');game.meal();game.next_day()

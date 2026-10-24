@@ -139,8 +139,22 @@ passaram se o gate de campanha ainda estiver fechado.
   de surgimento/Horda, ruído, fadiga noturna, combate equipado, retorno da
   viagem, eventos diários e vitória da Cisterna permanece pendente. Impressão e
   playtest humano não ocorreram.
-- Este checkpoint local ainda não está publicado; conferir o remoto antes do
-  commit/push.
+- O lote foi publicado no commit `d6acc24`; os commits seguintes do remoto
+  incluíram retorno de Viagem e certificação legal da Cisterna.
+
+## 2026-10-24 — fecha caminho direto de vitória falsa
+
+- O remoto avançou e foi integrado por fast-forward até `49cb7cc`, incluindo
+  liquidação básica da viagem de retorno e emissão de `verified_victory` pelo
+  integrador.
+- Auditoria adversarial reproduziu um bypass no método baixo nível:
+  `certify_victory(['Oficina:Conexões','Estação:Bomba','Estação:Membrana'])`
+  aceitava strings sem peças e sem filtro concluído.
+- O método agora valida também `filter_completed` e as três peças no estado
+  `Cistern02`. Teste regressivo dedicado reproduziu e bloqueou o ataque.
+- Suíte experimental: 156 testes passaram nesta base; o relatório de impressão
+  e simulações segue sem atualização de campanha. Revisão não certifica partida
+  completa.
 
 ## 2026-10-24 — unidade P0: retorno e liquidação de estoque
 

@@ -275,9 +275,17 @@ class Cistern02:
         return self.result
 
     def certify_victory(self, legal_objectives:list[str]) -> dict:
-        """Emite certificado somente após o candidato e os três recibos legais."""
+        """Emite certificado somente após candidato, filtro e peças registradas.
+
+        A lista de nomes é uma referência de auditoria, não prova por si só:
+        cada peça também precisa existir no estado persistente da Cisterna.
+        O integrador ainda exige os recibos táticos de retorno.
+        """
         required={"Oficina:Conexões","Estação:Bomba","Estação:Membrana"}
-        if self.result!='candidate_victory' or not required.issubset(set(legal_objectives)):
+        parts={"Conexões","Bomba","Membrana"}
+        if (self.result!='candidate_victory' or not self.filter_completed
+                or not parts.issubset(self.parts)
+                or not required.issubset(set(legal_objectives))):
             raise ValueError('Vitória não possui prova legal suficiente')
         self.result='verified_victory'
         return {'status':'verified_victory','source':'cistern02',

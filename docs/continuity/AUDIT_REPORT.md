@@ -113,3 +113,21 @@ campanha completa. Impressão, equilíbrio e playtest humano não foram feitos.
 - Escopo desta verificação é revisão de código e testes automatizados. Nenhuma
   partida completa, simulação de equilíbrio, impressão ou sessão humana foi
   executada.
+
+## Auditoria adversarial da certificação — 2026-10-24
+
+- O auditor encontrou um bypass reproduzível em `Cistern02.certify_victory()`:
+  com `result='candidate_victory'`, chamar o método com três nomes de missão
+  emitia vitória mesmo com `parts={}` e `filter_completed=False`.
+- Corrigido: a certificação agora exige o candidato, filtro concluído, as três
+  peças presentes no estado persistente e as referências de objetivos. O
+  integrador também exige seus recibos de entrega. Um novo teste reproduz o
+  payload forjado e confirma que o resultado permanece candidato.
+- Este bloqueio não prova, sozinho, origem tática das peças se um chamador
+  adulterar diretamente todo o estado em memória; o gate de campanha continua
+  dependendo dos recibos integrados e da ausência de mutação administrativa.
+- Auditoria separada do retorno aponta P0 ainda aberto: Emboscada na volta pode
+  deixar a expedição fechada sem retomada; efeitos da ida se perdem; liquidação
+  pode mutar parcialmente o estoque antes de falhar; faltam estado persistente
+  para cão/rota/Ponte e baralho de Viagem por campanha. Nenhuma correção desses
+  itens foi incluída neste lote.
