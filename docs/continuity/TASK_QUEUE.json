@@ -22,7 +22,7 @@
       ],
       "status": "em_execucao",
       "commit": "afdc82c",
-      "blocker": "Travel02 tem recibos, escolhas e efeitos aplicáveis; integração ao relógio, recursos carregados, M1, promessas e fila final ainda incompletos"
+      "blocker": "Ida curta/longa e M1 básica estão ligadas ao relógio; permanecem Horda/surgimento, pressão, combate equipado/ruído, efeitos e recursos da volta, promessas, cercos e fila final"
     },
     {
       "id": "P0-UNIQUE-PART-RECOVERY",
@@ -68,7 +68,7 @@
       ],
       "status": "em_execucao",
       "commit": "2e7c725",
-      "blocker": "Entrada de ida e M1 estão integradas e cobertas; retorno, efeitos no estoque real, promessas e fila final ainda incompletos"
+      "blocker": "Entrada/ida e recibo M1 estão integrados; faltam Horda/ruído/fadiga noturna, resolução da viagem de volta, liquidação real de efeitos/recursos, promessas e fila final"
     },
     {
       "id": "P1-MIGRATE-CISTERN",

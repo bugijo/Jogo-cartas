@@ -34,6 +34,23 @@ após salvamento/restauração.
 
 Playtest humano segue pendente.
 
+## Regressão do motor, 2026-10-24
+
+- `python -m unittest discover -s edicao-integral/tests -q`: 151 testes
+  passaram, incluindo relógio de viagem curta/longa, pré-condições da M1,
+  movimento por grafo, porta M1 e persistência de ferimentos no retorno.
+- `python -m unittest discover -s tests -v`: 51 testes passaram em 77 s; o
+  teste de renderização legado emitiu `ResourceWarning` por não fechar
+  `assets/v0.6/bancada_topo.png` (`tests/test_boards06.py:64`).
+- `python -m compileall -q edicao-integral src`, validação do catálogo e
+  `git diff --check` passaram.
+- Estes testes são unitários/de integração de módulos. Não são jogadores
+  automatizados concluindo campanha: não foram medidos vitórias, derrotas,
+  duração de mesa, escassez de campanha, diversão ou equilíbrio.
+- A M1 segue incompleta quanto a surgimento/Horda, pressão, Horda noturna,
+  fadiga noturna, combate equipado e ruído. Campanhas completas H2–H6,
+  impressão física e playtest humano permanecem pendentes.
+
 ## Incremento 2026-10-24 — QA de persistência e política de informação
 
 - Suíte experimental após integrar recibos de resgate da base remota mais

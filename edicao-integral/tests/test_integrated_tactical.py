@@ -20,7 +20,8 @@ class IntegratedTacticalTests(unittest.TestCase):
                                   fatigue={hero: 0}))
         with self.assertRaises(ValueError):
             game.enter_expedition()
-        game.resolve_travel_choice("travel-001", "water")
+        event_id=game.travel.events[-1]['event_id']
+        game.resolve_travel_choice(event_id, "water")
         self.assertEqual(game.enter_expedition().destination, "mercado")
         self.assertEqual(game.cistern.clock, 2)  # trecho + primeira rodada.
 
@@ -42,7 +43,45 @@ class IntegratedTacticalTests(unittest.TestCase):
         ambush.finish()
         game.finish_travel_ambush()
         game.enter_expedition()
-        self.assertEqual(game.cistern.clock, 2)
+        self.assertEqual(game.cistern.clock, 3)  # trecho + M1 + rodada local.
+
+    def test_long_ambush_pays_each_started_outbound_segment_once(self):
+        hero=STARTERS[0]
+        game=IntegratedCampaign.new(117,STARTERS[:2],LINK_IDS[:2])
+        game.start_travel("Mercado",[hero],"long",
+            deck=["ZC-VIA-0001","ZC-VIA-0005"],
+            context=TravelContext(food=0,water=0,materials=0,fatigue={hero:0}))
+        event=game.travel.events[-1]
+        game.travel.apply(event['event_id'],game.travel_context)
+        ambush_event=game.reveal_travel()
+        self.assertEqual(game.cistern.clock,0)
+        self.assertTrue(ambush_event['ambush'])
+        ambush=game.start_travel_ambush()
+        self.assertEqual(game.cistern.clock,2)  # Os dois trechos foram iniciados.
+        ambush.begin_round(); ambush.end_round()
+        ambush.positions[hero]=1; ambush.enemies.clear(); ambush.finish()
+        game.finish_travel_ambush(); game.enter_expedition()
+        self.assertEqual(game.cistern.clock,4)  # Trechos + M1 + rodada local.
+
+    def test_ambush_wounds_persist_to_the_founder_on_return(self):
+        hero = STARTERS[0]
+        game = IntegratedCampaign.new(118, STARTERS[:2], LINK_IDS[:2])
+        game.start_travel(
+            "Mercado", [hero], "short", deck=["ZC-VIA-0005"],
+            context=TravelContext(food=0, water=0, materials=0,
+                                  fatigue={hero: 0}))
+        ambush = game.start_travel_ambush()
+        ambush.enemies[0]["zone"] = 1
+        ambush.begin_round()
+        ambush.end_round()
+        self.assertEqual(ambush.wounds[hero], 1)
+        ambush.begin_round()
+        ambush.attack(hero, 1, 6)
+        ambush.end_round()
+        ambush.finish()
+        game.finish_travel_ambush()
+        person = next(p for p in game.cistern.people if p["id"] == hero)
+        self.assertEqual(person["wounds"], 1)
 
     def test_pending_travel_round_trips_through_campaign_save(self):
         hero = STARTERS[0]
@@ -57,7 +96,8 @@ class IntegratedTacticalTests(unittest.TestCase):
             game.save(path)
             resumed = IntegratedCampaign.load(path)
         self.assertIsNotNone(resumed.travel)
-        resumed.resolve_travel_choice("travel-001", "water")
+        event_id=resumed.travel.events[-1]['event_id']
+        resumed.resolve_travel_choice(event_id, "water")
         self.assertEqual(resumed.enter_expedition().destination, "mercado")
     def test_legal_trip_delivers_once_and_survives_save(self):
         hero = STARTERS[0]

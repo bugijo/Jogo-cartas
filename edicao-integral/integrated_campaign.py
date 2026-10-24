@@ -68,7 +68,7 @@ class IntegratedCampaign:
     travel_context: TravelContext | None = None
     travel_request: dict | None = None
     ambush: Ambush02 | None = None
-    travel_segment_paid: bool = False
+    travel_segments_paid: int = 0
 
     STATUSES = {"RUNNING", "VICTORY", "DEFEAT", "IMPOSSIBLE", "PAUSED"}
 
@@ -114,7 +114,7 @@ class IntegratedCampaign:
     def start_expedition(self, destination: str, team: list[str],
                          route: str = "short",
                          equipment: dict[str, list[str]] | None = None,
-                         travel_paid: bool = False) -> Tactical02:
+                         travel_segments_paid: int = 0) -> Tactical02:
         self._require_running()
         if self.world is not None or self.tactical is not None:
             raise ValueError("Expedição indisponível nesta fase")
@@ -136,7 +136,7 @@ class IntegratedCampaign:
             first_visit=destination.lower() not in self.visited_destinations,
             equipment=loadout,
             prior_state=self.site_states.get(destination.lower()),
-            travel_paid=travel_paid)
+            travel_segments_paid=travel_segments_paid)
         self.tactical = tactical
         self.expedition_days.append(self.cistern.day)
         self.visited_destinations.append(destination.lower())
@@ -179,6 +179,11 @@ class IntegratedCampaign:
         if (self.travel is None or self.travel.pending_ambush is None
                 or self.travel_request is None or self.ambush is not None):
             raise ValueError("Nenhuma Emboscada pendente")
+        unpaid = self.travel.outbound_segments - self.travel_segments_paid
+        if unpaid < 1 or self.cistern.clock + unpaid + 1 > 10:
+            raise ValueError("Sem segmento reservado para o trecho e a Emboscada")
+        self.cistern.spend_segments(unpaid)
+        self.travel_segments_paid += unpaid
         self.ambush = Ambush02.start(self.travel_request["team"], self.cistern.clock)
         return self.ambush
 
@@ -188,27 +193,36 @@ class IntegratedCampaign:
         event_id = self.travel.pending_ambush
         if event_id is None:
             raise ValueError("Emboscada já resolvida")
-        self.travel.resolve_ambush(event_id)
         if self.ambush.clock < self.cistern.clock:
             raise ValueError("Relógio da Emboscada retrocedeu")
+        people = {person["id"]: person for person in self.cistern.people}
+        if (set(self.ambush.wounds) != set(self.ambush.team)
+                or any(hero not in people for hero in self.ambush.team)
+                or any(not isinstance(count, int) or count < 0
+                       for count in self.ambush.wounds.values())):
+            raise ValueError("Ferimentos da Emboscada incompatíveis com os fundadores")
+        self.travel.resolve_ambush(event_id)
+        self.travel.complete_ambush(event_id, self.ambush)
+        for hero, wounds in self.ambush.wounds.items():
+            people[hero]["wounds"] = min(3, people[hero]["wounds"] + wounds)
         self.cistern.clock = self.ambush.clock
-        self.travel_segment_paid = True
         self.ambush = None
 
     def enter_expedition(self) -> Tactical02:
         if self.travel is None or self.travel_request is None:
             raise ValueError("Prepare a viagem antes de entrar no mapa")
         if (self.travel.remaining("outbound") or self.travel.pending_choices
+                or self.travel.pending_resolution is not None
                 or self.travel.pending_ambush is not None or self.ambush is not None):
             raise ValueError("Viagem ainda não foi resolvida")
         request = self.travel_request
         tactical = self.start_expedition(
             request["destination"], request["team"], request["route"],
-            request["equipment"], self.travel_segment_paid)
+            request["equipment"], self.travel_segments_paid)
         self.travel = None
         self.travel_context = None
         self.travel_request = None
-        self.travel_segment_paid = False
+        self.travel_segments_paid = 0
         return tactical
 
     def return_expedition(self, by_van: bool = False) -> list[dict]:

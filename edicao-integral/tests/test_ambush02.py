@@ -43,6 +43,23 @@ class Ambush02Tests(unittest.TestCase):
         with self.assertRaises(ValueError):
             resumed.finish()
 
+    def test_enemy_uses_map_path_instead_of_numeric_zone_distance(self):
+        ambush = Ambush02.start(["ZC-HER-0001"], clock=3)
+        ambush.positions["ZC-HER-0001"] = 1
+        ambush.begin_round()
+        ambush.end_round()
+        # Z6 reaches Z1 through Z2; numeric zone labels are irrelevant.
+        self.assertEqual(ambush.enemies[0]["zone"], 2)
+
+    def test_enemy_opens_closed_door_on_its_graph_path(self):
+        ambush = Ambush02.start(["ZC-HER-0001"], clock=3)
+        ambush.positions["ZC-HER-0001"] = 5
+        ambush.enemies[0]["zone"] = 1
+        ambush.begin_round()
+        ambush.end_round()
+        self.assertTrue(ambush.door_open)
+        self.assertEqual(ambush.enemies[0]["zone"], 1)
+
 
 if __name__ == "__main__":
     unittest.main()

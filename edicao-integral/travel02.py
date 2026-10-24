@@ -56,6 +56,8 @@ class TravelContext:
     route_known: bool = False
     bridge_known: bool = False
     skip_return_card: int = 0
+    dogs: int = 0
+    eligible_dog_adoption: bool = False
 
     def snapshot(self) -> dict:
         return deepcopy(asdict(self))
@@ -79,6 +81,8 @@ class Travel02:
     resolved: dict[str, dict] = field(default_factory=dict)
     pending_choices: list[str] = field(default_factory=list)
     pending_ambush: str | None = None
+    pending_resolution: str | None = None
+    skip_return_card: int = 0
 
     @classmethod
     def new(cls, seed: int, route: str = "short") -> "Travel02":
@@ -110,20 +114,36 @@ class Travel02:
         used = self.outbound_segments if direction == "outbound" else self.return_segments
         return self.leg_size - used
 
-    def reveal(self, direction: str) -> dict:
+    def reveal(self, direction: str, context: TravelContext | None = None) -> dict:
         if direction not in ("outbound", "return"):
             raise ValueError("Direção inválida")
         if direction == "return" and self.outbound_segments != self.leg_size:
             raise ValueError("Retorno exige completar a ida")
         if self.remaining(direction) <= 0:
             raise ValueError("Trechos da direção já revelados")
-        if self.pending_choices or self.pending_ambush is not None:
+        if (self.pending_resolution is not None or self.pending_choices
+                or self.pending_ambush is not None):
             raise ValueError("Resolva o evento de Viagem pendente")
+        if direction == "return" and self.skip_return_card:
+            if self.skip_return_card < 1:
+                raise ValueError("Contador de carta de retorno inválido")
+            self.skip_return_card -= 1
+            if context is not None and context.skip_return_card:
+                context.skip_return_card -= 1
+            self.return_segments += 1
+            event_id = f"travel-return-{self.return_segments:03d}"
+            skipped = {"event_id":event_id, "card_id":None, "direction":direction,
+                       "skipped":True, "text":"Ignore a próxima Viagem normal; pague o trecho."}
+            self.events.append(skipped)
+            self.resolved[event_id] = {"skipped":True}
+            return deepcopy(skipped)
         if self.index >= len(self.deck):
             raise ValueError("Baralho de Viagem esgotado")
         card_id = self.deck[self.index]
         self.index += 1
-        event_id = f"travel-{self.index:03d}"
+        segment_no = (self.outbound_segments if direction == "outbound"
+                      else self.return_segments) + 1
+        event_id = f"travel-{direction}-{segment_no:03d}"
         card = CARDS[card_id]
         event = {
             "event_id": event_id, "card_id": card_id, "name": card["name"],
@@ -132,6 +152,7 @@ class Travel02:
             "minimum_rounds": card["minimum_rounds"],
         }
         self.events.append(event)
+        self.pending_resolution = event_id
         if direction == "outbound":
             self.outbound_segments += 1
         else:
@@ -150,23 +171,42 @@ class Travel02:
             raise ValueError("Evento de Viagem já resolvido")
         return event, event["card_id"]
 
-    def resolve(self, event_id: str, choice: str) -> dict:
-        event, card_id = self._event(event_id)
-        if event_id not in self.pending_choices or choice not in CHOICES[card_id]:
-            raise ValueError("Escolha de Viagem inválida")
-        effect = deepcopy(CHOICES[card_id][choice])
-        self.pending_choices.remove(event_id)
-        self.resolved[event_id] = {"choice": choice, "effect": effect}
-        return effect
+    def resolve(self, event_id: str, choice: str,
+                context: TravelContext) -> dict:
+        """Resolve escolha e aplica o custo/efeito atomicamente ao contexto."""
+        return self.apply(event_id, context, choice)
 
     def resolve_ambush(self, event_id: str) -> dict:
+        """Retorna a especificação M1 sem liberar a viagem.
+
+        A pendência só pode ser encerrada após o motor tático registrar a rodada
+        obrigatória e a saída segura. Como M1 ainda não está ligado ao motor,
+        este método falha fechado e mantém o evento pendente.
+        """
         event, _ = self._event(event_id)
-        if self.pending_ambush != event_id or not event["ambush"]:
+        if (self.pending_ambush != event_id or self.pending_resolution != event_id
+                or not event["ambush"]):
             raise ValueError("Emboscada não está pendente")
         result = {"map": "ZC-MOD-0001", "rounds_required": event["minimum_rounds"]}
-        self.pending_ambush = None
-        self.resolved[event_id] = {"ambush": result}
         return deepcopy(result)
+
+    def complete_ambush(self, event_id: str, encounter) -> dict:
+        """Finaliza só com recibo do motor após rodada e retorno seguros."""
+        event, _ = self._event(event_id)
+        required = event["minimum_rounds"]
+        if (self.pending_ambush != event_id or self.pending_resolution != event_id
+                or not event["ambush"] or not getattr(encounter,"returned",False)
+                or getattr(encounter,"round_no",0) < required
+                or getattr(encounter,"completed_rounds",0) != getattr(encounter,"round_no",-1)
+                or any(zone != 1 for zone in getattr(encounter,"positions",{}).values())
+                or any(enemy.get("zone") == 1 for enemy in getattr(encounter,"enemies",[]))):
+            raise ValueError("Recibo da Emboscada não prova a rodada e saída seguras")
+        result={"map":"ZC-MOD-0001","rounds":encounter.completed_rounds,
+                "returned":True}
+        self.pending_ambush=None
+        self.pending_resolution=None
+        self.resolved[event_id]={"ambush":deepcopy(result)}
+        return result
 
     def apply(self, event_id: str, context: TravelContext,
               choice: str | None = None) -> dict:
@@ -176,6 +216,8 @@ class Travel02:
         recurso não deixe metade de um efeito aplicada.
         """
         event, card_id = self._event(event_id)
+        if self.pending_resolution != event_id:
+            raise ValueError("Resolva a ocorrência atual antes de outra")
         if event["ambush"]:
             raise ValueError("Resolva a Emboscada no mapa tático")
         if card_id in CHOICES:
@@ -190,7 +232,10 @@ class Travel02:
                 effect = {"material_gain": 1}
         water_loss = effect.get("water_loss", 0)
         food_loss = effect.get("food_loss", 0)
-        material_loss = effect.get("material_loss", 0)
+        material_loss = effect.get("material_loss", effect.get("material_drop", 0))
+        if (card_id == "ZC-VIA-0009" and choice == "accept"
+                and not context.eligible_dog_adoption):
+            raise ValueError("Nenhuma família elegível para acolher o cão")
         if context.water < water_loss or context.food < food_loss:
             raise ValueError("Recurso levado insuficiente para Viagem")
         if context.materials < material_loss:
@@ -199,6 +244,7 @@ class Travel02:
         context.food -= food_loss
         context.materials -= material_loss
         context.materials += effect.get("material_gain", 0)
+        context.dogs += effect.get("dog", 0)
         context.pressure += effect.get("pressure", 0)
         context.moral = min(5, context.moral + effect.get("moral", 0))
         for hero in context.fatigue:
@@ -206,8 +252,10 @@ class Travel02:
         context.route_known |= bool(effect.get("route_known"))
         context.bridge_known |= bool(effect.get("bridge_known"))
         context.skip_return_card += effect.get("skip_return_card", 0)
+        self.skip_return_card += effect.get("skip_return_card", 0)
         self.pending_choices = [item for item in self.pending_choices
                                 if item != event_id]
+        self.pending_resolution = None
         self.resolved[event_id] = {"choice": choice, "effect": deepcopy(effect)}
         return effect
 
@@ -218,13 +266,16 @@ class Travel02:
             "return_segments": self.return_segments, "events": self.events,
             "resolved": self.resolved, "pending_choices": self.pending_choices,
             "pending_ambush": self.pending_ambush,
+            "pending_resolution": self.pending_resolution,
+            "skip_return_card": self.skip_return_card,
         })
 
     @classmethod
     def from_snapshot(cls, snapshot: dict) -> "Travel02":
         required = {"route", "deck", "index", "outbound_segments",
                     "return_segments", "events", "resolved",
-                    "pending_choices", "pending_ambush"}
+                    "pending_choices", "pending_ambush", "pending_resolution",
+                    "skip_return_card"}
         if set(snapshot) != required:
             raise ValueError("Snapshot de Viagem incompatível")
         trip = cls(**deepcopy(snapshot))

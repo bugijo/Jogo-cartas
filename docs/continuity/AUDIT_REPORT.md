@@ -86,3 +86,30 @@ campanha completa. Impressão, equilíbrio e playtest humano não foram feitos.
   efeitos e execução tática da Emboscada M1.
 - Uma decisão automatizada sem ferramenta para arrombar porta bloqueada foi
   identificada e coberta por teste; equipamento agora consta no recorte público.
+
+## Auditoria incremental — viagem/M1, 2026-10-24
+
+- Reproduzido o defeito de cobrança: uma emboscada em rota longa podia iniciar
+  sem registrar todos os trechos revelados. O estado passou a contar trechos
+  pagos; antes da M1, o integrador cobra a diferença da ida e reserva uma
+  rodada, evitando dupla cobrança ao entrar no destino. Testes de rota curta e
+  longa verificam o relógio.
+- Reproduzida perseguição pelo rótulo numérico de zona, que não representa
+  distância. M1 agora procura o caminho mínimo no grafo canônico e desempata
+  alvos por zona/ID; uma porta comum fechada consome uma ativação para abrir.
+  Revisão independente leu `RULES.md` §38 e confirmou correspondência no trecho
+  alterado; não executou testes próprios.
+- Reproduzida perda de ferimentos M1 ao voltar ao `Cistern02`. O recibo agora
+  transfere ferimentos ao fundador, limitado ao máximo de 3. Teste integrado
+  reproduz dano, retorno e persistência.
+- A suíte experimental passou com 151 testes; o kit legado, com 51. A validação
+  de conteúdo, `compileall` e `git diff --check` também passaram.
+- Lacunas críticas restantes na M1: surgimento inicial/Horda, pressão local,
+  Hordas por pressão e noite, fadiga nos segmentos 9–10, armas/munição/ruído.
+  Não certificar a M1 até implementar a sequência canônica completa.
+- Lacunas críticas restantes na campanha: retorno de Viagem e liquidação de
+  recursos/efeitos, promessas, trabalho, eventos e cercos dos cinco dias,
+  certificação de vitória e transição legal para Última Transmissão.
+- Escopo desta verificação é revisão de código e testes automatizados. Nenhuma
+  partida completa, simulação de equilíbrio, impressão ou sessão humana foi
+  executada.

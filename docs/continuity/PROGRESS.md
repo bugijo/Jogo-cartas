@@ -118,3 +118,26 @@ passaram se o gate de campanha ainda estiver fechado.
   aprovados, 0 falhas.
 - O retorno ainda não consome o baralho de volta nem aplica todos os efeitos
   ao estoque real; a certificação da campanha continua bloqueada.
+
+## 2026-10-24 — correções de relógio, grafo e ferimentos da M1
+
+- A ida longa agora registra quantos trechos foram efetivamente iniciados e
+  cobra os trechos restantes na entrada tática. Uma emboscada cobra os trechos
+  revelados antes de começar, mais uma rodada M1; o teste cobre o percurso longo.
+- A perseguição da Emboscada agora usa as conexões reais de M1; inimigos diante
+  da porta comum fechada 1–5 gastam uma ativação para abri-la. Auditoria
+  independente confirmou a topologia e a regra da porta.
+- Ferimentos da Emboscada são transferidos aos fundadores ao completar o recibo
+  de retorno. Um teste reproduz o ferimento e verifica persistência no estado da
+  campanha.
+- Travel02 bloqueia nova carta até aplicar a ocorrência anterior; testes
+  cobrem autoefeitos, opções de retorno, material e cão elegível no contexto.
+- Testes: suíte experimental 151/151; kit legado 51/51 (77 s; persiste o aviso
+  de recurso aberto em `tests/test_boards06.py:64`); `compileall`, validação do
+  catálogo (125 IDs únicos) e `git diff --check` passaram.
+- Não foram executadas partidas completas/simulações de campanha. A integração
+  de surgimento/Horda, ruído, fadiga noturna, combate equipado, retorno da
+  viagem, eventos diários e vitória da Cisterna permanece pendente. Impressão e
+  playtest humano não ocorreram.
+- Este checkpoint local ainda não está publicado; conferir o remoto antes do
+  commit/push.

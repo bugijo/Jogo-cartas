@@ -1,58 +1,77 @@
 # Retomada do desenvolvimento experimental
 
-## Base e estado
+## Estado da branch
 
 - Branch: `evolucao/zona-zero-sistema-v1`.
-- Base reconciliada em `e6af1f730289c80ae60f45535b9dd0be4ec3c68c`, com
-  commits de Viagem (`ad297a9`) e integração de resgates (`afdc82c`). O commit
-  `052ada0` de observações sem informação oculta também está na história.
-- O kit físico 0.2 e seus PDFs não foram alterados.
-- Trabalho local: recuperar peças únicas caídas após emergência, aplicar os
-  recibos no integrador e cobrir save/load/duplicação. Documentos locais
-  aguardam commit/push após completar a reconciliação.
+- Base remota conferida nesta rodada: `91ca01146d04cd1c240f3ac7b93a1ca62d5127fc`.
+- O lote local atual ainda precisa de commit e push; confirme novamente o remoto
+  antes de publicar, pois a branch tem avançado durante as sessões.
+- Kit físico 0.2, `RULES.md`, `CAMPAIGN.md` e catálogo canônico permanecem
+  preservados.
 
-## Evidência atual
+## Entregue nesta rodada (local)
 
-- `python -m unittest discover -s edicao-integral/tests -q`: 135 testes passaram
-  após integrar `afdc82c`.
-- `python -m compileall -q edicao-integral src`, `git diff --check` e
-  `python edicao-integral/validate_data.py` passaram.
-- `python -m unittest discover -s tests -q`: 51 testes passaram nesta base;
-  houve um `ResourceWarning` em `tests/test_boards06.py:64`.
-- Falha corrigida localmente: uma peça única carregada numa retirada de
-  emergência fica no objetivo canônico, bloqueia a cópia original, é recuperada
-  por 1 PA e só chega ao abrigo com retorno legal; o teste faz save/load entre
-  as visitas e verifica entrega única. Também verifica save/load após recuperar
-  a peça e antes de entregar o recibo.
-- `Travel02` e os recibos de resgate estão publicados, mas não completam ainda
-  o fluxo da expedição.
+- A viagem de ida paga cada trecho iniciado uma única vez antes da Emboscada;
+  a entrada tática recebe apenas os trechos ainda não pagos.
+- A entrada na expedição é bloqueada enquanto houver escolha, efeito automático
+  ou Emboscada pendente.
+- O recibo de Emboscada requer uma rodada completa e retorno seguro em Z1.
+- Movimento inimigo da M1 agora usa o grafo real (Z1–Z2, Z1–Z5, Z2–Z6,
+  Z5–Z6), e inimigos gastam a ativação abrindo a porta comum fechada 1–5.
+- Ferimentos sofridos na M1 agora persistem no fundador ao concluir o retorno.
+- Travel02 exige resolver cada ocorrência; testes cobrem eventos automáticos,
+  efeitos, retorno ignorado, carga e save/load.
+
+## Verificação executada
+
+- `python -m unittest discover -s edicao-integral/tests -q`: 151 passaram.
+- `python -m unittest discover -s tests -v`: 51 passaram; 1 aviso conhecido de
+  arquivo PNG aberto em `tests/test_boards06.py:64`; levou 77 s.
+- `python -m compileall -q edicao-integral src`: passou.
+- `python edicao-integral/validate_data.py`: passou (125 IDs únicos, 10
+  protagonistas, 70 habilidades, 15 NPCs, 8 mapas táticos).
+- `git diff --check`: passou.
+- Auditoria independente somente leitura confirmou que a perseguição segue a
+  topologia M1 e a regra de porta; apontou surgimento/Horda e fadiga noturna
+  ainda ausentes.
 
 ## Bloqueios ativos
 
-- `Travel02` não está integrado ao relógio/fluxo tático, não aplica efeitos ao
-  abrigo, e M1 ainda não é uma emboscada jogável ligada ao trecho pago.
-- Promessas, sequência completa dos cinco dias, rotina de cercos e certificação
-  legal da vitória da Cisterna continuam incompletos.
-- Migração para Última Transmissão e campanhas completas H2–H6 estão bloqueadas.
-- PDFs novos, impressão física e playtest humano não ocorreram.
+- M1 ainda não aplica surgimento/Horda inicial, pressão local, Horda por
+  pressão/noite ou fadiga nos segmentos noturnos. Ataques não usam armas,
+  munição ou ruído. Ferimentos agora persistem, mas a integração segue parcial.
+- Viagem ainda não está integrada por completo ao retorno: custos e efeitos não
+  são todos liquidados no estoque real e efeitos contextuais como material
+  deixado no caminho precisam de representação física persistente.
+- Resgates, promessas, trabalho, eventos diários, cercos e encerramento dos
+  cinco dias não formam ainda um ciclo completo executável.
+- Não há trajetória legal comprovada desde preparação até vitória da Cisterna
+  e transição para Última Transmissão; campanhas H2–H6 não foram executadas.
+- Nenhuma simulação de campanha completa, produção de PDF novo, impressão,
+  montagem física ou playtest humano foi feita nesta rodada.
 
 ## Próxima retomada
 
-1. A auditoria independente não encontrou exploit no caminho canônico; sua
-   lacuna de cobertura de save/load pós-recuperação foi adicionada ao teste.
-2. Commit/push da cobertura pós-recuperação e atualização do escritório.
-3. Integrar `Travel02` à expedição: um segmento e uma ocorrência por vez,
-   efeitos canônicos aplicados e estado pendente persistente.
-4. Integrar M1 ao trecho já pago com uma rodada obrigatória e salvar/restaurar
-   durante a emboscada.
+1. Conferir `git status`, `git fetch origin evolucao/zona-zero-sistema-v1` e
+   reconciliar eventual avanço remoto sem reescrever histórico.
+2. Concluir o fluxo de Horda/ruído/fadiga da M1 com estado de baralho
+   persistente e regras canônicas, incluindo teste de salvar/restaurar.
+3. Integrar arma, munição e desgaste real da expedição à Emboscada sem criar
+   carga ou recursos.
+4. Integrar ida e volta de Viagem, recursos carregados e efeitos ao estado do
+   abrigo; então auditar resgates e sequência dos cinco dias.
+5. Somente após um ciclo legal reproduzível, desbloquear replays completos e
+   preparar a edição física experimental.
 
-Comandos de retomada:
+Comando de retomada:
 
 ```bash
+git status --short --branch
 git fetch origin evolucao/zona-zero-sistema-v1
 git merge --ff-only origin/evolucao/zona-zero-sistema-v1
 python -m unittest discover -s edicao-integral/tests -q
 python -m unittest discover -s tests -q
 python -m compileall -q edicao-integral src
+python edicao-integral/validate_data.py
 git diff --check
 ```

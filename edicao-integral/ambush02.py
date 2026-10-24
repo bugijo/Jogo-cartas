@@ -3,6 +3,7 @@ from __future__ import annotations
 
 from copy import deepcopy
 from dataclasses import dataclass, field
+from collections import deque
 from math import ceil
 
 from cistern_tactics02 import HEROES
@@ -89,23 +90,52 @@ class Ambush02:
                          "die": die, "hit": hit})
         return hit
 
+    @staticmethod
+    def _path(start: int, target: int) -> list[int]:
+        """Shortest route on M1; zone labels have no distance semantics."""
+        graph = {zone: [] for zone in (1, 2, 5, 6)}
+        for a, b in EDGES:
+            graph[a].append(b)
+            graph[b].append(a)
+        queue = deque([(start, [start])])
+        seen = {start}
+        while queue:
+            zone, path = queue.popleft()
+            if zone == target:
+                return path
+            for neighbor in sorted(graph[zone]):
+                if neighbor not in seen:
+                    seen.add(neighbor)
+                    queue.append((neighbor, path + [neighbor]))
+        return []
+
     def end_round(self) -> None:
         if self.returned or self.completed_rounds == self.round_no:
             raise ValueError("Rodada de Emboscada já encerrada")
         for enemy in self.enemies:
-            targets = sorted((abs(enemy["zone"] - zone), hero)
-                             for hero, zone in self.positions.items())
+            targets = sorted((len(path) - 1, zone, hero, path)
+                             for hero, zone in self.positions.items()
+                             if (path := self._path(enemy["zone"], zone)))
             if not targets:
                 continue
-            _, hero = targets[0]
-            if enemy["zone"] == self.positions[hero]:
+            _, _, hero, path = targets[0]
+            if len(path) == 1:
                 self.wounds[hero] += 1
                 self.log.append({"event": "wound", "hero": hero,
                                  "enemy": enemy["id"]})
-            elif enemy["zone"] == 6 and self.positions[hero] == 2:
-                enemy["zone"] = 2
-            elif enemy["zone"] == 2 and self.positions[hero] == 1:
-                enemy["zone"] = 1
+                continue
+            next_zone = path[1]
+            pair = tuple(sorted((enemy["zone"], next_zone)))
+            if pair == DOOR and not self.door_open:
+                # The M1 door is a common door: the first enemy activation
+                # against it opens it, matching the canonical tactical rule.
+                self.door_open = True
+                self.log.append({"event": "enemy_open_door", "enemy": enemy["id"],
+                                 "edge": list(pair)})
+            else:
+                enemy["zone"] = next_zone
+                self.log.append({"event": "enemy_move", "enemy": enemy["id"],
+                                 "from": path[0], "to": next_zone})
         self.completed_rounds += 1
         self.log.append({"event": "end_round", "number": self.round_no,
                          "enemies": len(self.enemies)})
