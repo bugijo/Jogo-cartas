@@ -11,7 +11,7 @@ from dataclasses import dataclass, field
 from math import ceil
 from random import Random
 
-from cistern02 import CATALOG, Cistern02
+from cistern02 import CATALOG, Cistern02, RESCUE_GROUPS
 
 
 MAPS = {m['name'].lower(): m for m in CATALOG['maps']}
@@ -34,6 +34,12 @@ SUPPLY_LOTS = {
 }
 REGIONS = {'mercado':'MER', 'hospital':'HOS', 'oficina':'OFI',
            'posto':'POS', 'condomínio':'CON', 'estação':'EST'}
+RESCUE_SITES = {
+    'ZC-MOR-0001': ('mercado', 7), 'ZC-MOR-0002': ('oficina', 7),
+    'ZC-MOR-0003': ('estação', 14), 'ZC-MOR-0004': ('posto', 14),
+    'ZC-MOR-0005': ('hospital', 14), 'ZC-MOR-0006': ('condomínio', 14),
+    'ZC-MOR-0007': ('hospital', 14), 'ZC-MOR-0008': ('condomínio', 14),
+}
 SEARCH_CARDS = {c['id']: c for c in CATALOG['cards'] if c['family']=='SAQ'}
 
 
@@ -382,11 +388,26 @@ class Tactical02:
                          'battery_consumed': hit})
         return hit
 
+    def rescue(self, hero: str, group_id: str, decision: str) -> dict:
+        """Registra contato de um grupo somente na zona do mapa canônico."""
+        site = RESCUE_SITES.get(group_id)
+        if (site is None or group_id not in RESCUE_GROUPS or decision not in
+                ('welcome', 'aid', 'decline') or site[0] != self.destination
+                or hero not in self.positions or self.positions[hero] != site[1]
+                or any(item.get('group_id') == group_id for item in self.log)):
+            raise ValueError('Resgate indisponível neste mapa ou zona')
+        self._pay(hero, 1)
+        receipt = {'event': 'rescue', 'group_id': group_id,
+                   'decision': decision, 'hero': hero, 'zone': site[1]}
+        self.log.append(receipt)
+        return receipt.copy()
+
     def delivery_proof(self) -> list[dict]:
         """Certificado derivado apenas de retirada legal e retorno concluído."""
         if not self.finished or self.failed or not any(x['event'] == 'return' for x in self.log):
             return []
-        proof = [x.copy() for x in self.log if x['event'] in ('pickup_part','pickup_supply')
+        proof = [x.copy() for x in self.log if x['event'] in
+                 ('pickup_part','pickup_supply','rescue')
                  and (x['event'] != 'pickup_supply' or x['id'] not in self._spent_fuel_ids())]
         if self.van_returned:
             proof.append({'event': 'deliver_van', 'destination': 'posto',

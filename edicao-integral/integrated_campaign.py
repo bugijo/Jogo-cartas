@@ -141,12 +141,18 @@ class IntegratedCampaign:
         if not tactical.finished:
             tactical.finish(by_van=by_van)
         proof = tactical.delivery_proof()
-        keys = [receipt.get("id", f"{receipt.get('destination')}:{receipt.get('part')}")
-                for receipt in proof if receipt["event"] != "deliver_van"]
+        keys = [
+            (receipt["group_id"] if receipt["event"] == "rescue" else
+             receipt.get("id", f"{receipt.get('destination')}:{receipt.get('part')}"))
+            for receipt in proof if receipt["event"] != "deliver_van"
+        ]
         if len(keys) != len(set(keys)) or any(key in self.delivered_objectives for key in keys):
             raise ValueError("Objetivo já entregue")
         for receipt in proof:
-            if receipt["event"] == "pickup_part":
+            if receipt["event"] == "rescue":
+                self.cistern.rescue(receipt["group_id"], receipt["decision"])
+                self.delivered_objectives.append(receipt["group_id"])
+            elif receipt["event"] == "pickup_part":
                 part = receipt["part"]
                 if part in PART_MISSIONS:
                     self.cistern.receive_part(part)

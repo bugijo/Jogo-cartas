@@ -11,8 +11,8 @@
       "acceptance": ["recibos legais", "salvamento", "sem recompensa duplicada", "paridade 0.2"],
       "tests": ["edicao-integral/tests/test_cistern_tactics02.py", "edicao-integral/tests/test_travel02.py", "novo teste de fases"],
       "status": "em_execucao",
-      "commit": "ad297a9",
-      "blocker": "Recibos de Viagem agora são determinísticos e salváveis; integração dos efeitos, Emboscada tática, resgates, promessas e fila final ainda incompletas"
+      "commit": "pendente neste commit",
+      "blocker": "Recibos de Viagem e resgates vinculados ao mapa estão cobertos; integração dos efeitos, Emboscada tática, promessas e fila final ainda incompletas"
     },
     {
       "id": "P1-MIGRATE-CISTERN",

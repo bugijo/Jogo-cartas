@@ -200,6 +200,29 @@ class IntegratedTacticalTests(unittest.TestCase):
             self.assertEqual(after[kind]-before[kind], unit*found['reward'].get(kind,0))
         self.assertEqual(len(game.site_states['mercado']['search_deck']), 5)
 
+    def test_rescue_is_bound_to_map_zone_and_enters_shelter_on_return(self):
+        hero = STARTERS[0]
+        game = IntegratedCampaign.new(112, STARTERS[:2], LINK_IDS[:2])
+        tactical = game.start_expedition("Mercado", [hero])
+        tactical.positions[hero] = 7  # O1 canônico do Mercado.
+        receipt = tactical.rescue(hero, "ZC-MOR-0001", "welcome")
+        self.assertEqual(receipt["event"], "rescue")
+        self.assertEqual(game.cistern.rescue_history, {})
+        tactical.positions[hero] = 1
+        tactical.end_round()
+        game.return_expedition()
+        self.assertEqual(game.cistern.rescue_history["ZC-MOR-0001"], "welcome")
+
+    def test_rescue_rejects_wrong_map_or_zone(self):
+        hero = STARTERS[0]
+        game = IntegratedCampaign.new(113, STARTERS[:2], LINK_IDS[:2])
+        tactical = game.start_expedition("Mercado", [hero])
+        with self.assertRaises(ValueError):
+            tactical.rescue(hero, "ZC-MOR-0001", "welcome")
+        tactical.positions[hero] = 7
+        with self.assertRaises(ValueError):
+            tactical.rescue(hero, "ZC-MOR-0002", "welcome")
+
 
 if __name__ == "__main__":
     unittest.main()
