@@ -153,6 +153,69 @@ class IntegratedTacticalTests(unittest.TestCase):
         self.assertEqual(game.cistern.travel_deck['discard'],
                          ['ZC-VIA-0001','ZC-VIA-0010'])
 
+    def test_aid_rescue_spends_carried_portions_not_abrigo_stock(self):
+        hero=STARTERS[0]
+        game=IntegratedCampaign.new(223,STARTERS[:2],LINK_IDS[:2])
+        trip=game.start_travel('Mercado',[hero],deck=['ZC-VIA-0001']*2,
+            context=TravelContext(food=2,water=2,materials=0,fatigue={hero:0}))
+        game.resolve_travel_choice(trip.events[-1]['event_id'],None)
+        tactical=game.enter_expedition()
+        tactical.positions[hero]=7
+        receipt=tactical.rescue(hero,'ZC-MOR-0001','aid')
+        self.assertEqual(receipt['aid_paid'],{'food':2,'water':2})
+        self.assertEqual(receipt['aid_from_road'],{'food':2,'water':2})
+        with tempfile.TemporaryDirectory() as directory:
+            path=Path(directory)/'aid-pending-return.json'
+            game.save(path);game=IntegratedCampaign.load(path)
+        tactical=game.tactical
+        tactical.positions[hero]=1
+        tactical.enemies.clear();tactical.end_round()
+        game._settle_road_aid_costs()
+        self.assertEqual((game.return_context.food,game.return_context.water),(2,2))
+        game._settle_road_aid_costs()  # Repetir a liquidação precisa ser idempotente.
+        self.assertEqual((game.return_context.food,game.return_context.water),(2,2))
+        game.return_expedition()
+        self.assertEqual(sum(game.cistern.food),2)
+        self.assertEqual(sum(game.cistern.water),2)
+        self.assertEqual(game.cistern.rescue_history['ZC-MOR-0001'],'aid')
+
+    def test_decline_does_not_hide_group_from_a_later_visit(self):
+        hero=STARTERS[0]
+        game=IntegratedCampaign.new(224,STARTERS[:2],LINK_IDS[:2])
+        trip=game.start_travel('Mercado',[hero],deck=['ZC-VIA-0001']*2,
+            context=TravelContext(food=0,water=0,materials=0,fatigue={hero:0}))
+        game.resolve_travel_choice(trip.events[-1]['event_id'],None)
+        tactical=game.enter_expedition()
+        tactical.positions[hero]=7
+        tactical.rescue(hero,'ZC-MOR-0001','decline')
+        tactical.positions[hero]=1
+        tactical.enemies.clear();tactical.end_round()
+        game.return_expedition()
+        self.assertNotIn('ZC-MOR-0001',game.delivered_objectives)
+        self.assertEqual(game.cistern.rescue_history['ZC-MOR-0001'],'decline')
+
+    def test_named_filter_worker_stays_home_and_work_resolves_only_after_return(self):
+        away,worker=STARTERS[:2]
+        game=IntegratedCampaign.new(225,STARTERS[:2],LINK_IDS[:2])
+        game.cistern.parts['Conexões']=0  # Fixture da unidade de fase/trabalho.
+        game.cistern.reserve('A')
+        game.plan_filter_work([worker])
+        trip=game.start_travel('Mercado',[away],deck=['ZC-VIA-0001']*2,
+            context=TravelContext(food=0,water=0,materials=0,fatigue={away:0}))
+        self.assertEqual(game.cistern.away_today,[away])
+        with self.assertRaisesRegex(ValueError,'após o retorno'):
+            game.resolve_filter_work()
+        game.resolve_travel_choice(trip.events[-1]['event_id'],None)
+        tactical=game.enter_expedition()
+        with self.assertRaisesRegex(ValueError,'após o retorno'):
+            game.resolve_filter_work()
+        tactical.positions[away]=1;tactical.enemies.clear();tactical.end_round()
+        game.return_expedition()
+        receipt=game.resolve_filter_work()
+        self.assertEqual(receipt['workers'],[worker])
+        self.assertEqual(receipt['expedition_team'],[away])
+        self.assertEqual(game.cistern.stage,'B')
+
     def test_outbound_travel_fatigue_choice_persists_to_local_encounter(self):
         hero = STARTERS[0]
         game = IntegratedCampaign.new(123, STARTERS[:2], LINK_IDS[:2])

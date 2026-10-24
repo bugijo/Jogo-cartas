@@ -10,6 +10,27 @@ from integrated_campaign import IntegratedCampaign, LINK_IDS, STARTERS, PART_MIS
 
 
 class IntegratedCampaignTests(unittest.TestCase):
+    def test_public_night_cycle_resolves_mission_siege_before_meal(self):
+        game=IntegratedCampaign.new(226,STARTERS[:2],LINK_IDS[:2])
+        for _ in range(2):
+            game.meal()
+            game.resolve_intentions()
+            game.next_cistern_day()
+        self.assertEqual(game.cistern.day,3)
+        game.plan_guards(STARTERS[:2])
+        with self.assertRaises(ValueError):
+            game.meal()
+        self.assertFalse(game.work_phase_resolved)
+        siege=game.reveal_siege()
+        self.assertEqual((siege['trigger'],siege['force']),('Barulho no vale',4))
+        result=game.resolve_siege([4,4],[])
+        self.assertEqual(result['gap'],0)
+        game.resolve_filter_work()
+        game.meal()
+        game.resolve_intentions()
+        game.next_cistern_day()
+        self.assertEqual(game.cistern.day,4)
+
     def test_mission_references_match_canonical_locations(self):
         self.assertEqual(PART_MISSIONS["Conexões"]["location"], "EXP-LOC-03")
         self.assertEqual(PART_MISSIONS["Bomba"]["location"], "EXP-LOC-05")

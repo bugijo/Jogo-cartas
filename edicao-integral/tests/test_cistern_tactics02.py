@@ -14,6 +14,22 @@ def chapter():
 
 
 class Tactical02Tests(unittest.TestCase):
+    def test_rescue_aid_cannot_spend_the_abrigo_stock_at_the_destination(self):
+        c=chapter();h=STARTERS[0]
+        t=Tactical02.start(c,'Mercado',[h])
+        t.positions[h]=7
+        before=(t.ap[h],list(c.food),list(c.water))
+        with self.assertRaisesRegex(ValueError,'carga levada'):
+            t.rescue(h,'ZC-MOR-0001','aid')
+        self.assertEqual((t.ap[h],c.food,c.water),before)
+
+    def test_rescue_rejects_group_already_resolved_in_prior_visit(self):
+        c=chapter();h=STARTERS[0]
+        t=Tactical02.start(c,'Mercado',[h],taken_before=['ZC-MOR-0001'])
+        t.positions[h]=7
+        with self.assertRaisesRegex(ValueError,'já resolvido'):
+            t.rescue(h,'ZC-MOR-0001','welcome')
+
     def test_each_night_segment_spent_on_long_route_adds_fatigue_once(self):
         c = chapter(); h = STARTERS[0]; c.clock = 7
         t = Tactical02.start(c, 'Mercado', [h], route='long')

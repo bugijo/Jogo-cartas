@@ -402,6 +402,49 @@ class Tactical02:
                          'zone':zone, 'carried':carried})
         return {**found, 'carried':carried}
 
+    def load_road_cargo(self, food_lots:list[int], water_lots:list[int],
+                        materials:int) -> None:
+        """Aloca a carga reservada na Viagem aos espaços reais dos heróis."""
+        if (self.completed_rounds or any(item.get('source')=='road'
+                for items in self.supply_cargo.values() for item in items)
+                or any(not isinstance(lot,int) or not 1<=lot<=4
+                       for lot in food_lots+water_lots)
+                or not isinstance(materials,int) or materials<0):
+            raise ValueError('Carga de estrada inválida ou já alocada')
+        cargo=[]
+        for kind,lots in (('Conserva',food_lots),('Água',water_lots)):
+            cargo.extend({'id':f'road:{kind}:{index+1}','kind':kind,
+                          'cards':1,'portions':lot,'source':'road'}
+                         for index,lot in enumerate(lots))
+        cargo.extend({'id':f'road:Material:{index+1}','kind':'Material',
+                      'cards':1,'portions':1,'source':'road'}
+                     for index in range(materials))
+        for item in cargo:
+            hero=next((candidate for candidate in self.team
+                       if self._load(candidate)+1<=4),None)
+            if hero is None:
+                raise ValueError('Carga de estrada excede os espaços do grupo')
+            self.supply_cargo[hero].append({**item,'hero':hero})
+
+    def _available_portions(self,kind:str) -> int:
+        return sum(item.get('portions',0) for items in self.supply_cargo.values()
+                   for item in items if item.get('kind')==kind)
+
+    def _consume_portions(self,kind:str,amount:int) -> int:
+        """Consome porções, devolvendo quantas vieram da carga da estrada."""
+        remaining=amount;from_road=0
+        for hero in self.team:
+            items=self.supply_cargo[hero]
+            for item in list(items):
+                if item.get('kind')!=kind or remaining==0:continue
+                take=min(item.get('portions',0),remaining)
+                item['portions']-=take;remaining-=take
+                if item.get('source')=='road':from_road+=take
+                if item['portions']==0:items.remove(item)
+        if remaining:
+            raise ValueError('Porções físicas insuficientes')
+        return from_road
+
     def collect_ground(self, hero: str, card_id: str) -> None:
         found = next((x for x in self.search_ground if x['id']==card_id),None)
         if (hero not in self.positions or found is None
@@ -488,14 +531,26 @@ class Tactical02:
     def rescue(self, hero: str, group_id: str, decision: str) -> dict:
         """Registra contato de um grupo somente na zona do mapa canônico."""
         site = RESCUE_SITES.get(group_id)
+        if decision!='decline' and group_id in self.taken_before:
+            raise ValueError('Grupo já resolvido em visita anterior')
         if (site is None or group_id not in RESCUE_GROUPS or decision not in
                 ('welcome', 'aid', 'decline') or site[0] != self.destination
                 or hero not in self.positions or self.positions[hero] != site[1]
                 or any(item.get('group_id') == group_id for item in self.log)):
             raise ValueError('Resgate indisponível neste mapa ou zona')
+        humans=sum(kind!='dog' for kind in RESCUE_GROUPS[group_id])
+        if decision=='aid' and (self._available_portions('Conserva')<humans
+                                or self._available_portions('Água')<humans):
+            raise ValueError('Ajuda exige porções na carga levada')
         self._pay(hero, 1)
         receipt = {'event': 'rescue', 'group_id': group_id,
                    'decision': decision, 'hero': hero, 'zone': site[1]}
+        if decision=='aid':
+            receipt['humans']=humans
+            receipt['aid_paid']={'food':humans,'water':humans}
+            receipt['aid_from_road']={
+                'food':self._consume_portions('Conserva',humans),
+                'water':self._consume_portions('Água',humans)}
         self.log.append(receipt)
         return receipt.copy()
 

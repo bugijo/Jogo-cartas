@@ -59,6 +59,10 @@ class Cistern02:
     stage: str = 'A'
     stage_work: int = 0
     works_today: int = 0
+    filter_workers_plan: list[str] = field(default_factory=list)
+    away_today: list[str] = field(default_factory=list)
+    work_plan_locked: bool = False
+    work_receipts: list[dict] = field(default_factory=list)
     meal_day: int = 0
     filter_active: bool = False
     filter_completed: bool = False
@@ -230,9 +234,11 @@ class Cistern02:
     def temporary_excess(self) -> int:
         return max(0,self.humans-self.capacity)
 
-    def rescue(self,group_id:str,decision:str) -> dict:
+    def rescue(self,group_id:str,decision:str,
+               aid_paid:dict | None = None) -> dict:
         """Registra decisão no abrigo; contato/retorno tático ainda não ligados."""
-        if group_id not in RESCUE_GROUPS or group_id in self.rescue_history:
+        if (group_id not in RESCUE_GROUPS
+                or self.rescue_history.get(group_id) not in (None,'decline')):
             raise ValueError('Grupo inexistente ou já resolvido')
         if decision not in ('welcome','aid','decline'):
             raise ValueError('Decisão de resgate inválida')
@@ -240,13 +246,17 @@ class Cistern02:
         humans=sum(kind!='dog' for kind in kinds)
         dogs=sum(kind=='dog' for kind in kinds)
         if decision=='decline':
+            self.rescue_history[group_id]='decline'
             return {'id':group_id,'decision':decision,'humans':humans,'dogs':dogs}
         if decision=='welcome' and self.humans+humans>self.capacity+2:
             raise ValueError('Recepção sem vagas para o grupo inteiro')
-        if decision=='aid' and (sum(self.food)+sum(self.meat)<humans
-                                or sum(self.water)<humans):
+        if decision=='aid' and aid_paid is None and (
+                sum(self.food)+sum(self.meat)<humans or sum(self.water)<humans):
             raise ValueError('Ajuda sem porções suficientes')
-        if decision=='aid':
+        if decision=='aid' and aid_paid is not None and aid_paid != {
+                'food':humans,'water':humans}:
+            raise ValueError('Recibo de ajuda não cobre a carga exigida')
+        if decision=='aid' and aid_paid is None:
             meat_paid=self._take(self.meat,humans)
             self._take(self.food,humans-meat_paid)
             self._take(self.water,humans)
@@ -312,8 +322,10 @@ class Cistern02:
         return revealed
 
     def plan_guards(self,heroes:list[str]) -> None:
-        if (self.day5_guard_plan_locked or self.day==5 and self.meal_day==5
+        if (self.work_plan_locked or self.day5_guard_plan_locked
+                or self.day==5 and self.meal_day==5
                 or len(heroes)>3 or len(set(heroes))!=len(heroes)
+                or set(heroes)&(set(self.filter_workers_plan)|set(self.away_today))
                 or any(not any(p['id']==hero and p['kind'] in ('hero','adult')
                                and p['wounds']<3 and not p['hungry'] and not p['thirsty']
                                for p in self.people) for hero in heroes)):
@@ -537,7 +549,7 @@ class Cistern02:
         self.parts[name]=self.day
 
     def reserve(self,stage:str) -> None:
-        if (stage not in STAGES or stage in self.reserved or self.filter_active
+        if (self.work_plan_locked or stage not in STAGES or stage in self.reserved or self.filter_active
                 or STAGES[stage]['part'] not in self.parts
                 or self.parts[STAGES[stage]['part']]>=self.day
                 or self.materials<STAGES[stage]['materials']):
@@ -545,12 +557,68 @@ class Cistern02:
         self.materials-=STAGES[stage]['materials']
         self.reserved.append(stage)
 
+    def plan_filter_work(self,workers:list[str],
+                         expedition_team:list[str]|None=None) -> None:
+        """Nomeia quem fará trabalho no filtro antes da expedição do dia."""
+        team=list(expedition_team or [])
+        if (self.work_plan_locked or self.meal_day==self.day
+                or not isinstance(workers,list) or not 1<=len(workers)<=2
+                or len(set(workers))!=len(workers)
+                or len(set(team))!=len(team)
+                or any(hero not in self.founders for hero in team)):
+            raise ValueError('Plano de trabalho inválido')
+        if set(workers)&set(team):
+            raise ValueError('Trabalhador não pode sair em expedição')
+        if self.filter_workers_plan or self.works_today+len(workers)>2:
+            raise ValueError('Trabalho do filtro já planejado ou acima do limite')
+        repairable=(self.filter_completed and not self.filter_active
+                    and self.materials>=2)
+        if (not self.reserved or self.stage=='done') and not repairable:
+            raise ValueError('Nenhuma etapa do filtro reservada para trabalho')
+        people={person['id']:person for person in self.people}
+        groups={group['id']:group for group in self.groups}
+        for worker in workers:
+            person=people.get(worker)
+            if (person is None or person['kind'] not in ('hero','adult')
+                    or person['wounds']>=3 or person.get('fatigue',0)>=3
+                    or person['hungry'] or person['thirsty']):
+                raise ValueError('Trabalhador indisponível')
+            if worker in self.planned_guards or worker in self.away_today:
+                raise ValueError('Trabalhador já alocado')
+            group=groups.get(person['family'])
+            if group is not None and (group['status']!='trusted'
+                                      or self.temporary_excess>0):
+                raise ValueError('Morador ainda não está apto ao trabalho')
+        self.filter_workers_plan=workers.copy()
+
+    def lock_work_plan(self,expedition_team:list[str]) -> None:
+        """Fecha a alocação do dia quando a equipe sai ou fica no abrigo."""
+        team=list(expedition_team)
+        if (not isinstance(team,list) or len(set(team))!=len(team)
+                or any(hero not in self.founders for hero in team)):
+            raise ValueError('Equipe diária inválida')
+        if self.work_plan_locked:
+            if self.away_today!=team:
+                raise ValueError('Plano diário já foi travado para outra equipe')
+            return
+        if set(self.filter_workers_plan)&set(team):
+            raise ValueError('Trabalhador não pode sair em expedição')
+        if set(self.planned_guards)&set(team):
+            raise ValueError('Vigia não pode sair em expedição')
+        self.away_today=team
+        self.work_plan_locked=True
+
     def work(self,units:int) -> None:
-        if units<1 or self.works_today+units>2:
+        if (not self.work_plan_locked or units<1
+                or len(self.filter_workers_plan)!=units
+                or self.works_today+units>2):
+            if not self.work_plan_locked or len(self.filter_workers_plan)!=units:
+                raise ValueError('Trabalhos exigem trabalhadores nomeados antes da expedição')
             raise ValueError('Limite de dois trabalhos diários')
         if self.meal_day==self.day:raise ValueError('Trabalho ocorre antes da refeição')
         if self.pending_sieges and self.siege_day!=self.day:
             raise ValueError('Cerco precede os trabalhos')
+        original_stage=self.stage
         expected=self.stage;progress=self.stage_work
         for _ in range(units):
             if expected not in self.reserved or expected=='done':
@@ -559,7 +627,9 @@ class Cistern02:
             if progress==STAGES[expected]['work']:
                 progress=0
                 expected={'A':'B','B':'C','C':'done'}[expected]
+        steps=[]
         for _ in range(units):
+            before=self.stage
             self.stage_work+=1;self.works_today+=1
             if self.stage_work==STAGES[self.stage]['work']:
                 self.stage_work=0
@@ -569,15 +639,28 @@ class Cistern02:
                     self.structures.append('Filtro')
                     self.water.extend(self._lots(2*self.initial_consumers))
                 else:self.stage='B' if self.stage=='A' else 'C'
+            steps.append({'from':before,'to':self.stage})
+        self.work_receipts.append({'day':self.day,'task':'filter',
+                                   'workers':self.filter_workers_plan.copy(),
+                                   'units':units,'stage_before':original_stage,
+                                   'stage_after':self.stage,'steps':steps,
+                                   'expedition_team':self.away_today.copy()})
+        self.filter_workers_plan=[]
 
     def repair_filter(self) -> None:
         if (not self.filter_completed or self.filter_active
                 or self.materials<2 or self.works_today>=2 or self.meal_day==self.day
+                or not self.work_plan_locked or len(self.filter_workers_plan)!=1
                 or self.pending_sieges and self.siege_day!=self.day):
             raise ValueError('Reparo do filtro indisponível')
         self.materials-=2;self.works_today+=1
         self.filter_active=True
         self.structures.append('Filtro')
+        self.work_receipts.append({'day':self.day,'task':'repair_filter',
+                                   'workers':self.filter_workers_plan.copy(),
+                                   'units':1,
+                                   'expedition_team':self.away_today.copy()})
+        self.filter_workers_plan=[]
 
     @staticmethod
     def _lots(amount:int) -> list[int]:
@@ -594,6 +677,7 @@ class Cistern02:
             if not person['hungry'] and not person['thirsty']:
                 person['fatigue']=max(0,person.get('fatigue',0)-1)
         self.day+=1;self.clock=0;self.works_today=0;self.planned_guards=[]
+        self.filter_workers_plan=[];self.away_today=[];self.work_plan_locked=False
         self.apply_daily_event()
         if self.filter_active:
             self.water.extend(self._lots(self.initial_consumers))

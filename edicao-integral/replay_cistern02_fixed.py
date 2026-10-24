@@ -30,6 +30,19 @@ def _draw(names:list[str]) -> list[str]:
     return result
 
 
+def _work_filter(game,units:int) -> None:
+    """O replay usa trabalhadores nomeados, mas não é um plano de campanha legal."""
+    workers=game.founders[:units]
+    # A rota histórica injeta condição de aptidão para comparar o subsistema;
+    # não conta como prova econômica ou campanha legal.
+    for person in game.people:
+        if person['id'] in workers:
+            person['hungry']=person['thirsty']=False
+    game.plan_filter_work(workers)
+    game.lock_work_plan([])
+    game.work(units)
+
+
 def replay(team_size:int) -> dict:
     oracle=run(team_size,accept_bia=False)
     founders=[NAME_TO_ID[name] for name in oracle['founders'][:team_size]]
@@ -55,7 +68,7 @@ def replay(team_size:int) -> dict:
                 game.resolve_siege(4,guards,[4]*len(guards),ammo,[])
         if day==4:
             for stage in ('A','B','C'):game.reserve(stage)
-            game.work(2)
+            _work_filter(game,2)
         if day==5:
             guards=[p['id'] for p in game.people if p['kind']=='adult']
             guards=(guards+[h for h in founders if h not in founders[:2]])[:3]
@@ -64,7 +77,7 @@ def replay(team_size:int) -> dict:
                 encounter=game.reveal_siege()
                 game.resolve_siege(encounter['force'],guards,[4]*len(guards),
                                    max(0,encounter['force']-(2+int(game.dogs>0)+len(guards))),[])
-            game.work(2)
+            _work_filter(game,2)
         meal=game.meal()
         expected=oracle['days'][day-1]
         snapshot={'day':day,'food':sum(game.food),'water':sum(game.water),

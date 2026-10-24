@@ -103,6 +103,8 @@ class IntegratedCampaign:
     bridge_known: bool = False
     equipment_inventory: dict[str, list[str]] = field(default_factory=dict)
     travel_uses_shoe: bool = False
+    road_aid_settled: bool = False
+    work_phase_resolved: bool = False
 
     STATUSES = {"RUNNING", "VICTORY", "DEFEAT", "IMPOSSIBLE", "PAUSED"}
 
@@ -218,6 +220,8 @@ class IntegratedCampaign:
             raise ValueError("Viagem indisponível nesta fase")
         if self.cistern.meal_day == self.cistern.day or self.cistern.day in self.expedition_days:
             raise ValueError("Expedição indisponível após refeição ou já usada no dia")
+        if self.work_phase_resolved:
+            raise ValueError("Planejamento diário já foi resolvido")
         if (not team or len(set(team)) != len(team)
                 or any(hero not in self.cistern.founders for hero in team)):
             raise ValueError("Equipe de viagem inválida")
@@ -273,6 +277,7 @@ class IntegratedCampaign:
             self.travel_uses_shoe = False
         if self.cistern.clock >= 10:
             raise ValueError("Sem segmento para iniciar a Viagem")
+        self.cistern.lock_work_plan(team)
         # O contexto representa carga física da equipe. Reserve-a agora para
         # que a estrada não possa gastar o mesmo estoque duas vezes.
         self.cistern.food = [lot for i, lot in enumerate(self.cistern.food)
@@ -444,12 +449,16 @@ class IntegratedCampaign:
             _prepared_travel=True)
         return_trip = self.travel
         return_context = self.travel_context
+        tactical.load_road_cargo(return_context.food_lots,
+                                 return_context.water_lots,
+                                 return_context.materials)
         self.travel = None
         self.travel_context = None
         self.travel_request = None
         self.travel_segments_paid = 0
         self.return_travel = return_trip
         self.return_context = return_context
+        self.road_aid_settled = False
         if self.return_context_initial is None and return_context:
             self.return_context_initial = return_context.snapshot()
         return tactical
@@ -476,6 +485,25 @@ class IntegratedCampaign:
             raise ValueError("Saldo físico de carga inválido na estrada")
         self.return_settlement_delta = self._travel_arrival_delta(context)
 
+    def _settle_road_aid_costs(self) -> None:
+        """Deduct aid consumed at the destination before return-road effects."""
+        if self.road_aid_settled or self.tactical is None or self.return_context is None:
+            return
+        aid_receipts=[receipt for receipt in self.tactical.log
+                      if receipt.get('event')=='rescue'
+                      and receipt.get('decision')=='aid']
+        if not aid_receipts:
+            return
+        for receipt in aid_receipts:
+            paid=receipt.get('aid_from_road',{})
+            for kind in ('food','water'):
+                amount=paid.get(kind,0)
+                if not isinstance(amount,int) or amount<0:
+                    raise ValueError('Recibo de ajuda rodoviária inválido')
+                if amount:
+                    self.return_context.consume(kind,amount)
+        self.road_aid_settled=True
+
     def _settle_travel_shoe(self, trip: Travel02) -> None:
         """Consome uma única vez as cartas efetivamente reveladas na viagem."""
         if not self.travel_uses_shoe:
@@ -500,6 +528,7 @@ class IntegratedCampaign:
             paid = (self.return_travel.leg_size
                     if self.return_travel is not None else 0)
             self.tactical.finish(by_van=by_van, travel_segments_paid=paid)
+        self._settle_road_aid_costs()
         if (self.tactical is not None and self.return_context is not None
                 and self.return_travel is not None
                 and self.return_travel.return_segments == 0):
@@ -544,8 +573,25 @@ class IntegratedCampaign:
             raise ValueError("Objetivo já entregue")
         for receipt in proof:
             if receipt["event"] == "rescue":
-                self.cistern.rescue(receipt["group_id"], receipt["decision"])
-                self.delivered_objectives.append(receipt["group_id"])
+                decision = receipt["decision"]
+                if decision == "aid":
+                    if self.return_context is None:
+                        raise ValueError("Ajuda sem carga de retorno")
+                    paid = receipt.get("aid_paid")
+                    if paid != {"food": receipt["humans"],
+                                "water": receipt["humans"]}:
+                        raise ValueError("Recibo de ajuda tática inválido")
+                    # A carga da estrada já foi debitada antes de resolver a
+                    # volta, para que eventos de retorno vejam o saldo real.
+                    # Não debite o mesmo recibo novamente nesta liquidação.
+                    road = receipt.get("aid_from_road", {})
+                    if (not self.road_aid_settled
+                            and any(road.get(kind, 0) for kind in ("food", "water"))):
+                        raise ValueError("Custo de ajuda rodoviária ainda não liquidado")
+                self.cistern.rescue(receipt["group_id"], decision,
+                                    aid_paid=receipt.get("aid_paid"))
+                if decision != "decline":
+                    self.delivered_objectives.append(receipt["group_id"])
             elif receipt["event"] in ("pickup_part", "recover_part"):
                 part = receipt["part"]
                 if part in PART_MISSIONS:
@@ -680,6 +726,7 @@ class IntegratedCampaign:
             amount -= lot
 
     def emergency_return(self) -> None:
+        self._settle_road_aid_costs()
         candidate = deepcopy(self)
         candidate._emergency_return_mutating()
         for name in self.__dataclass_fields__:
@@ -843,7 +890,92 @@ class IntegratedCampaign:
             raise ValueError("Resolva a expedição antes da refeição")
         if self.travel is not None or self.return_travel is not None or self.ambush is not None:
             raise ValueError("Resolva ou encerre a viagem antes da refeição")
+        if self.cistern.pending_sieges and self.cistern.siege_day!=self.cistern.day:
+            raise ValueError("Resolva o cerco antes da refeição")
+        if not self.work_phase_resolved:
+            if self.cistern.filter_workers_plan:
+                raise ValueError("Resolva os trabalhos planejados antes da refeição")
+            self.resolve_filter_work()
         return self.cistern.meal()
+
+    def plan_filter_work(self,workers:list[str],
+                         expedition_team:list[str]|None=None) -> None:
+        """Ação pública para alocar trabalho nominal antes de sair."""
+        self._require_running()
+        if self.world is not None or self.cistern.meal_day==self.cistern.day:
+            raise ValueError("Planejamento de trabalho indisponível nesta fase")
+        self.cistern.plan_filter_work(workers,expedition_team)
+
+    def reserve_filter_stage(self,stage:str) -> None:
+        """Reserva materiais e peça no amanhecer, antes de qualquer expedição."""
+        self._require_running()
+        if (self.world is not None or self.tactical is not None
+                or self.travel is not None or self.return_travel is not None
+                or self.ambush is not None or self.cistern.meal_day==self.cistern.day):
+            raise ValueError("Reserva do filtro indisponível nesta fase")
+        self.cistern.reserve(stage)
+
+    def plan_guards(self,heroes:list[str]) -> None:
+        """Registra vigias antes da saída, pela interface da campanha."""
+        self._require_running()
+        if (self.world is not None or self.tactical is not None
+                or self.travel is not None or self.return_travel is not None
+                or self.ambush is not None or self.cistern.meal_day==self.cistern.day):
+            raise ValueError("Planejamento de vigias indisponível nesta fase")
+        self.cistern.plan_guards(heroes)
+
+    def reveal_siege(self) -> dict:
+        """Revela apenas o próximo cerco que já entrou na fila canônica."""
+        self._require_running()
+        if (self.world is not None or self.tactical is not None
+                or self.travel is not None or self.return_travel is not None
+                or self.ambush is not None):
+            raise ValueError("Cerco indisponível enquanto há expedição ativa")
+        return self.cistern.reveal_siege()
+
+    def resolve_siege(self,rolls:list[int],damage_targets:list[str],
+                      ammo:int=0) -> dict:
+        """Resolve o cerco revelado; Força e gatilho vêm do estado persistente."""
+        self._require_running()
+        if (self.world is not None or self.tactical is not None
+                or self.travel is not None or self.return_travel is not None
+                or self.ambush is not None or not self.cistern.pending_sieges
+                or (self.cistern.active_siege is None
+                    and self.cistern.pending_sieges[0] != "Barulho no vale")):
+            raise ValueError("Cerco ainda não foi revelado ou há expedição ativa")
+        encounter=(self.cistern.active_siege or self.cistern.reveal_siege())
+        return self.cistern.resolve_siege(
+            encounter["force"], self.cistern.planned_guards.copy(),
+            rolls, ammo, damage_targets,
+            security=self.cistern.day==5 and self.cistern.meal_day==self.cistern.day)
+
+    def resolve_intentions(self) -> list[dict]:
+        """Resolve gatilhos de intenção após a refeição, sem expor cartas antes."""
+        self._require_running()
+        if (self.world is not None or self.tactical is not None
+                or self.travel is not None or self.return_travel is not None
+                or self.ambush is not None):
+            raise ValueError("Intenções só podem ser resolvidas no abrigo")
+        return self.cistern.night_intentions()
+
+    def resolve_filter_work(self) -> dict:
+        """Resolve a alocação no abrigo, somente depois do retorno da equipe."""
+        self._require_running()
+        if (self.world is not None or self.tactical is not None or self.travel is not None
+                or self.return_travel is not None or self.ambush is not None):
+            raise ValueError("Trabalho só pode ser resolvido após o retorno")
+        if self.work_phase_resolved:
+            raise ValueError("Fase de trabalhos já foi resolvida")
+        if not self.cistern.work_plan_locked:
+            self.cistern.lock_work_plan([])
+        units=len(self.cistern.filter_workers_plan)
+        if units==0:
+            self.work_phase_resolved=True
+            return {"workers":[],"units":0,"day":self.cistern.day}
+        receipt_start=len(self.cistern.work_receipts)
+        self.cistern.work(units)
+        self.work_phase_resolved=True
+        return deepcopy(self.cistern.work_receipts[receipt_start])
 
     def next_cistern_day(self) -> None:
         self._require_running()
@@ -853,7 +985,10 @@ class IntegratedCampaign:
             raise ValueError("Expedição ainda não retornou")
         if self.travel is not None or self.return_travel is not None or self.ambush is not None:
             raise ValueError("Resolva ou encerre a viagem antes de avançar o dia")
+        if not self.work_phase_resolved:
+            raise ValueError("Fase de trabalhos diária pendente")
         self.cistern.next_day()
+        self.work_phase_resolved=False
 
     def complete_cistern(self) -> dict:
         """Certifica a Cisterna; a migração para o segundo arco é posterior."""
@@ -997,8 +1132,13 @@ class IntegratedCampaign:
         payload.setdefault("route_known", False)
         payload.setdefault("bridge_known", False)
         payload.setdefault("travel_uses_shoe", False)
+        payload.setdefault("road_aid_settled", False)
+        payload.setdefault("work_phase_resolved", False)
         if not isinstance(payload["travel_uses_shoe"], bool):
             raise ValueError("Marcador de sapato de Viagem inválido")
+        if (not isinstance(payload["road_aid_settled"], bool)
+                or not isinstance(payload["work_phase_resolved"], bool)):
+            raise ValueError("Marcador de fase de campanha inválido")
         shoe = TravelDeck02.from_snapshot(payload["cistern"].travel_deck)
         active_trip = payload.get("travel") or payload.get("return_travel")
         if payload["travel_uses_shoe"] and (

@@ -14,6 +14,28 @@ from cistern02 import Cistern02, LINK_IDS, STARTERS
 from rules_engine import consume, family_setup
 
 
+def _filter_work(game,units):
+    # Replays legacy de filtro isolam o custo/progresso e injetam apenas a
+    # condição física de aptidão do trabalhador, não demonstram economia legal.
+    workers=game.founders[:units]
+    for person in game.people:
+        if person['id'] in workers:
+            person['hungry']=person['thirsty']=False
+    game.plan_filter_work(workers)
+    game.lock_work_plan([])
+    game.work(units)
+
+
+def _filter_repair(game):
+    worker=game.founders[0]
+    for person in game.people:
+        if person['id']==worker:
+            person['hungry']=person['thirsty']=False
+    game.plan_filter_work([worker])
+    game.lock_work_plan([])
+    game.repair_filter()
+
+
 class Cistern02Tests(unittest.TestCase):
     @staticmethod
     def _resolve_day_three_event(game):
@@ -90,17 +112,17 @@ class Cistern02Tests(unittest.TestCase):
         game.meal()
         game.next_day()
         game.reserve('A')
-        game.work(1)
+        _filter_work(game,1)
         self.assertEqual(game.stage,'B')
         self.assertEqual(game.materials,2)
         game.receive_part('Bomba');game.receive_part('Membrana')
         with self.assertRaises(ValueError):game.reserve('B')
         game.meal()
         game.next_day();self._resolve_day_three_event(game);game.reserve('B');game.reserve('C')
-        game.work(2)
+        _filter_work(game,2)
         self.assertEqual(game.stage,'C')
         game.meal()
-        game.next_day();self._resolve_day_three_event(game);game.work(1)
+        game.next_day();self._resolve_day_three_event(game);_filter_work(game,1)
         self.assertTrue(game.filter_active)
         self.assertEqual(sum(game.water),4)
         with tempfile.TemporaryDirectory() as directory:
@@ -115,8 +137,19 @@ class Cistern02Tests(unittest.TestCase):
         with self.assertRaises(ValueError):game.work(2)
         self.assertEqual(game.stage_work,0)
         self.assertEqual(game.works_today,0)
-        game.work(1);game.meal()
+        _filter_work(game,1);game.meal()
         with self.assertRaises(ValueError):game.work(1)
+
+    def test_filter_work_requires_a_named_eligible_worker_not_on_expedition(self):
+        game=Cistern02.new(STARTERS[:2],LINK_IDS[:2])
+        game.parts['Conexões']=0  # Precondição da unidade de alocação.
+        game.reserve('A')
+        with self.assertRaisesRegex(ValueError,'trabalhadores'):
+            game.work(1)
+        with self.assertRaisesRegex(ValueError,'expedição'):
+            game.plan_filter_work([STARTERS[0]],expedition_team=[STARTERS[0]])
+        self.assertEqual(game.works_today,0)
+        self.assertEqual(game.stage_work,0)
 
     def test_individual_deprivation_and_dog_alert(self):
         game=Cistern02.new(STARTERS[:2],[LINK_IDS[10],LINK_IDS[0]])
@@ -274,10 +307,10 @@ class Cistern02Tests(unittest.TestCase):
         # Isolated shelter-state fixture with enough reserve for both mandatory sieges.
         game.food.extend([4,4,4,4]);game.water.extend([4,4,4])
         game.receive_part('Conexões')
-        game.meal();game.next_day();game.reserve('A');game.work(1)
+        game.meal();game.next_day();game.reserve('A');_filter_work(game,1)
         game.receive_part('Bomba');game.receive_part('Membrana')
-        game.meal();game.next_day();self._resolve_day_three_event(game);game.reserve('B');game.reserve('C');game.work(2)
-        game.meal();game.next_day();self._resolve_day_three_event(game);game.work(1)
+        game.meal();game.next_day();self._resolve_day_three_event(game);game.reserve('B');game.reserve('C');_filter_work(game,2)
+        game.meal();game.next_day();self._resolve_day_three_event(game);_filter_work(game,1)
         game.meal();game.next_day();self._resolve_day_three_event(game);game.meal()
         self.assertEqual(game.close_chapter(),'candidate_victory')
         self.assertNotIn('cistern_complete',game.__dict__)
@@ -302,11 +335,11 @@ class Cistern02Tests(unittest.TestCase):
     def test_siege_can_disable_completed_filter(self):
         game=Cistern02.new(STARTERS[:2],LINK_IDS[:2])
         game.receive_part('Conexões');game.meal();game.next_day()
-        game.reserve('A');game.work(1)
+        game.reserve('A');_filter_work(game,1)
         game.receive_part('Bomba');game.receive_part('Membrana')
         game.meal();game.next_day();self._resolve_day_three_event(game)
-        game.reserve('B');game.reserve('C');game.work(2)
-        game.meal();game.next_day();self._resolve_day_three_event(game);game.work(1)
+        game.reserve('B');game.reserve('C');_filter_work(game,2)
+        game.meal();game.next_day();self._resolve_day_three_event(game);_filter_work(game,1)
         self.assertIn('Filtro',game.structures)
         game.meal();game.next_day()
         self.assertEqual(game.pending_sieges,['Pressão'])
@@ -317,7 +350,7 @@ class Cistern02Tests(unittest.TestCase):
         self.assertFalse(game.filter_active)
         water_before=sum(game.water)
         game.materials+=2  # Materiais recuperados: fixture de reparo, não rota de busca.
-        game.repair_filter()
+        _filter_repair(game)
         self.assertTrue(game.filter_active)
         self.assertEqual(sum(game.water),water_before)
 
