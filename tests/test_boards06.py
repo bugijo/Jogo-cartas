@@ -63,9 +63,10 @@ class Boards06(unittest.TestCase):
   import board_art06 as art
   name='assets/v0.6/bancada_topo.png';box,size=art.crop(name,0)
   with Image.open(P/name) as src:original=src.crop(box).convert('RGB')
-  doc=fitz.open(O/'ilustrada/06_TABULEIROS/COMUNS_M01_M04_LADO_A.pdf');matches=[]
-  for info in doc[0].get_images(full=True):
-   if tuple(info[2:4])==original.size:
-    pix=fitz.Pixmap(doc,info[0]);matches.append(pix.samples==original.tobytes())
+  matches=[]
+  with fitz.open(O/'ilustrada/06_TABULEIROS/COMUNS_M01_M04_LADO_A.pdf') as doc:
+   for info in doc[0].get_images(full=True):
+    if tuple(info[2:4])==original.size:
+     pix=fitz.Pixmap(doc,info[0]);matches.append(pix.samples==original.tobytes())
   self.assertTrue(matches,'A bancada deve estar incorporada no PDF distribuído')
   self.assertTrue(all(matches),'Recorte mantém os pixels RGB nativos; não é JPEG nem reamostragem')

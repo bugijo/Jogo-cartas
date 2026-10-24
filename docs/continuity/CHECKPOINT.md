@@ -1,3 +1,29 @@
+# Retomada prioritária — ciclo diário/Cerco e bloqueio do replay (2026-10-24)
+
+## Estado de código nesta retomada
+
+- Base remota confirmada em `4add0b3c2c86cbb89ed19119bcd7826fafe9b486`; entrega desta retomada publicada em `6dfe141` na branch `evolucao/zona-zero-sistema-v1`; sem divergência remota.
+- `Cistern02` aplica EVE-0001..0005 uma vez, na ordem de dia. EVE-0003 enfileira Barulho no vale (Força 4); eventos de pressão seguem `raise_pressure`.
+- Cartas CER usam baralho determinístico e persistente; força normal vem da carta revelada, CER-0005 considera relação Ponte e CER-0006 permite cancelamento apenas mediante pagamento de quatro porções de comida e água. A resolução grava descarte/recibo; um gatilho arbitrário não pode ser injetado pela API.
+- O plano de vigias do dia 5 fica bloqueado após refeição/resolução; recibo final da quinta noite é exigido para `verified_victory`. Saves passam por checagem estrutural de calendário, cerco, baralho e certificado. Isso não autentica saves editados manualmente.
+- A API pública `start_expedition()` agora recusa entrada sem Viagem; a abertura privada `start_tactical_fixture` aparece somente nas provas isoladas. `start_travel → resolver ocorrências → enter_expedition` continua sendo o caminho integrado.
+- O teste adversarial de um save de dia 1 com flags/peças/nomes falsos agora falha ao certificar/carregar.
+- Suíte experimental: 220 passou; suíte legada: 51 passou; `compileall`, validador (125 IDs) e `git diff --check` passaram. O teste do PNG/PDF com `ResourceWarning` elevado a erro também passou. O teste legado foi corrigido para fechar o documento PyMuPDF.
+
+## Resultado do pedido de campanha
+
+- Dias completos reproduzidos pelo executor legal integrado: **0/5**.
+- Foi executada **1 expedição integrada legal** em teste focado (Dia 2, Oficina, seed 14), com Viagem do sapato, ações táticas e entrega de Conexões só após retorno. Não é replay de campanha.
+- Os cinco perfis do `replay_cistern02_fixed.py` continuam alimentados por entregas do oráculo antigo e são apenas testes de paridade, não partidas legais.
+- Eventos EVE: cinco eventos são aplicados pelo estado. O evento fixo do dia 3 e cartas CER têm APIs persistentes e testes de fase; ainda não há controlador integrado que coordene expedição, retorno, trabalho, cerco, refeição, intenção e resultado numa noite jogável.
+- `verified_victory`: não emitido por campanha real. Migração para Última Transmissão: não ocorreu.
+
+## Primeiro bloqueio concreto restante
+
+A integração não possui executor de noite/expedição que gere recibos táticos legais de Conexões, Bomba e Membrana, devolva-os ao abrigo e então execute os cinco dias. Os métodos de `Cistern02` para as peças ainda são estado de baixo nível; falta um controlador integrado de Cerco/Evento/Noite e uma trajetória de Estação completa. Próxima tarefa: criar testes failing para um único ciclo legal H2 (Mercado→retorno; Oficina→Conexões e retorno; Estação→Bomba/Membrana e retorno), ligando a fase de cerco e consumo antes de ampliar o roteiro.
+
+O método `Cistern02.receive_part()` ainda é uma entrada administrativa de baixo nível e não prova coleta; a rota normal integrada precisa chamar apenas entrega de recibos táticos. O resultado de revisão do save é estrutural, não criptográfico: JSON pode ser editado e um estado sintaticamente consistente ainda pode ser forjado. Não prometer resistência a adulteração manual. Kit físico 0.2, regras oficiais e catálogo não foram alterados. Nenhuma impressão física ou sessão humana ocorreu.
+
 # Retomada do desenvolvimento experimental
 
 ## Estado atual — 2026-10-24

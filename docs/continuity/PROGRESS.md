@@ -216,3 +216,13 @@ passaram se o gate de campanha ainda estiver fechado.
   são editáveis e não têm assinatura anti-falsificação. Testes experimentais
   atuais: 201/201; regressão legada: 51/51.
 - Publicado em `06b03f45ccb9234e25e8b0318e210c2d84f16a8b`; branch remota alinhada.
+
+## 2026-10-24 — eventos diários, cartas de Cerco e entrada legal do mapa
+
+- Apliquei eventos EVE na inicialização/avanço do dia sem duplicar a pressão do replay legado. Barulho no vale usa Força fixa 4 e não compra carta CER.
+- Cercos de Pressão agora exigem revelar uma carta CER do baralho determinístico salvo; força não pode ser escolhida pelo chamador. CER-0005 ajusta força pela relação Ponte; CER-0006 pode ser cancelado só pagando o estoque indicado. A resolução registra carta, resultado e descarte.
+- O plano de vigias fica travado para a Noite de segurança; a API pública de expedição direta foi fechada. Provas isoladas usam explicitamente o helper privado de fixture.
+- O certificado final exige recibo de quinta noite e calendário completo; save de dia 1 com flags, partes e nomes de objetivo falsos é rejeitado estruturalmente. Isso não é assinatura contra edição manual.
+- 219 testes experimentais passaram; validação de dados, compileall e diff-check passaram. O teste legado de PNG/PDF passou com `ResourceWarning` tratado como erro.
+- O replay fixo continua parcial e pré-alimentado por resultados táticos; nenhum dia completo ou campanha legal foi executado. Um teste focado completa uma expedição legal de Oficina no dia 2 e entrega Conexões após retorno, sem provar os cinco dias. Não houve vitória ou migração para Última Transmissão.
+- Próxima unidade: integrar retorno tático de peças + fase noturna em um ciclo legal H2 e reproduzir o primeiro erro concreto antes de estender aos cinco dias.

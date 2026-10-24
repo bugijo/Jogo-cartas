@@ -144,3 +144,8 @@ Playtest humano segue pendente.
 - Estado após ampliar as invariantes: 201 testes experimentais e 51 testes
   legados passaram; as alterações foram publicadas em `06b03f45`. A campanha
   completa continua sem replay automatizado e sem playtest humano.
+
+
+## Reprodução desta retomada — 2026-10-24
+
+Não houve campanha executada. Há 0/5 dias completos no executor e 1 expedição integrada legal em teste focado (Oficina, dia 2, seed 14), com retorno e entrega de Conexões. Os testes cobrem progressão de calendário, cartas CER determinísticas, força fixa do evento do dia 3, cancelamento caro, trava de vigias, recusa de gatilhos artificiais e round-trip estrutural de save. `replay_cistern02_fixed.py` confirma paridade de saldos contra um oráculo tático preexistente para H2–H6; os itens e resultados de mapa ainda são fornecidos pelo oráculo e não podem ser contados como replay legal. Não há taxa de vitória, equilíbrio, tempo de mesa nem satisfação de jogadores inferidos.

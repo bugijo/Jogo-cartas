@@ -240,3 +240,13 @@ campanha completa. Impressão, equilíbrio e playtest humano não foram feitos.
   experimental. A revisão independente não achou falso rejeite nos snapshots
   válidos cobertos; saves editados manualmente continuam sem autenticidade
   criptográfica.
+
+
+## Auditoria de campanha — eventos e cercos, 2026-10-24
+
+- Revisor independente confirmou duplicação de pressão no replay antigo, gatilhos arbitrários e força de Cerco escolhida pelo chamador. Corrigido no estado: evento automático único; Barulho no vale fixo em 4; Cerco normal derivado da carta CER; deck/active/discard/recibos salvos; relação Ponte em CER-0005; cancelamento CER-0006 exige 4 comida + 4 água.
+- O mesmo auditor apontou vigias reatribuíveis após refeição. Agora `plan_guards` recusa mudança após a trava de dia 5.
+- Auditor independente de estado reproduziu emissão de `verified_victory` em save de dia 1 alterado com flags e strings. Foi adicionado recibo final e validação cronológica/estrutural; a reprodução simples agora falha. Um JSON não assinado ainda pode ser reescrito em todas as suas estruturas; a validação não é proteção criptográfica.
+- O ingresso público `start_expedition` foi fechado porque permitia omitir cartas/custos de estrada. Testes de mapas que ignoram viagem foram renomeados como fixtures privadas, não prova de campanha.
+- Uma unidade anterior do gerador de mapa e este ciclo fecharam o `ResourceWarning` do Pillow; revisão mais recente localizou também o documento PyMuPDF aberto no teste legado. Context manager adicionado; teste isolado sob `-W error::ResourceWarning` passou.
+- Suíte experimental local: 220 aprovada; replay H2-H6 ainda só valida saldos com resultados táticos injetados. Bloqueio P0: executor legal integrado de expedição→entrega→noite.

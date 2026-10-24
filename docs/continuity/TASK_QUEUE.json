@@ -4,6 +4,31 @@
   "updated_at": "2026-10-24",
   "tasks": [
     {
+      "id": "P0-CISTERN-NIGHT-CYCLE",
+      "priority": 0,
+      "responsible": "motor de campanha + auditoria independente",
+      "depends_on": [
+        "P0-EXPEDITION-COMPLETE",
+        "P0-TRAVEL-INTEGRATION"
+      ],
+      "objective": "Executar ações legais de expedição, entregas e sequência diária/nocturna para completar A Cisterna.",
+      "acceptance": [
+        "cinco dias completos desde preparação",
+        "sem peças ou recursos injetados",
+        "eventos e cercos na ordem canônica",
+        "recibo de noite final",
+        "verified_victory pelo integrador"
+      ],
+      "tests": [
+        "replay legal H2 reproduzível",
+        "save/load em transições críticas",
+        "verificação de IDs de saques e entregas"
+      ],
+      "status": "em_execucao",
+      "commit": null,
+      "blocker": "Uma expedição integrada legal de Oficina no dia 2 passa com sapato aleatório seeded e entrega Conexões após retorno. Ainda falta Mercado para recursos, Estação para Bomba/Membrana, controle de noite/cerco/refeição e o replay de cinco dias."
+    },
+    {
       "id": "P0-EXPEDITION-COMPLETE",
       "priority": 0,
       "responsible": "motor tático + regras",
@@ -21,8 +46,8 @@
         "teste integrado de fases"
       ],
       "status": "em_execucao",
-      "commit": "afdc82c",
-      "blocker": "M1/Horda/armas/ruído/fadiga e emergência de retorno têm cobertura; teto de ferimentos e limite de duas armas corrigidos com testes nesta rodada. Ainda faltam promessas, cercos, eventos diários e fila noturna completa"
+      "commit": "6dfe141",
+      "blocker": "Eventos diários EVE e cartas CER foram ligados ao estado da Cisterna; força/recibo persistem. Um teste percorre uma expedição legal de Oficina. Ainda faltam sequência integrada de Mercado/Estação, promessas, trabalhos/resgates, noites e replay completo."
     },
     {
       "id": "P0-UNIQUE-PART-RECOVERY",
@@ -68,13 +93,15 @@
       ],
       "status": "em_execucao",
       "commit": "06b03f4",
-      "blocker": "Carga física reserva e devolve cartas/cursors parciais; sapato VIA persistente, reshuffle somente após esgotamento real e integridade estrutural dos snapshots estão publicados e cobertos por testes. Ainda faltam carta extra por segmento noturno, portadores individuais, efeitos mecânicos de rota/Ponte, promessas, cercos e ciclo noturno. Saves não são assinados contra edição manual"
+      "blocker": "Viagem paga cada trecho e eventos, incluindo extras 9–10; retorno tem liquidação. Ponte/rota não afetam ainda todas as escolhas/forças, promessas e ciclo noturno completo pendentes."
     },
     {
       "id": "P0-NIGHT-TRAVEL",
       "priority": 0,
       "responsible": "motor de viagem + relógio compartilhado",
-      "depends_on": ["P0-TRAVEL-INTEGRATION"],
+      "depends_on": [
+        "P0-TRAVEL-INTEGRATION"
+      ],
       "objective": "Resolver trecho a trecho a viagem, incluindo a carta extra de estrada nos segmentos 9–10, fadiga e M1 sem cobrar tempo duas vezes.",
       "acceptance": [
         "transições 8→9 e 9→10 reproduzíveis",
@@ -88,9 +115,9 @@
         "edicao-integral/tests/test_integrated_tactical.py",
         "edicao-integral/tests/test_ambush02.py"
       ],
-      "status": "pendente",
-      "commit": null,
-      "blocker": "O integrador ainda paga trechos em bloco e não associa cada ocorrência ao relógio 9/10"
+      "status": "verificado_publicado",
+      "commit": "57a75cc",
+      "blocker": "A carta extra noturna e cobrança por trecho estão implementadas; persistem rota/Ponte, promessas e continuidade integral."
     },
     {
       "id": "P1-MIGRATE-CISTERN",
@@ -111,7 +138,7 @@
       ],
       "status": "bloqueada",
       "commit": "7787e48",
-      "blocker": "Certificado agora exige recibos legais; migração de personagens, recursos e World ainda não implementada"
+      "blocker": "Continua bloqueada: nenhuma campanha legal emite verified_victory; a migração não pode começar antes do replay integral."
     },
     {
       "id": "P2-PLAYER-CAMPAIGNS",
