@@ -34,6 +34,17 @@
 - O próximo bloqueio de P0 é integrar esses recibos à expedição sem escolher
   efeitos implicitamente; P1/P2/P3 continuam bloqueadas.
 
+## 2026-10-24 — unidade P0: efeitos de Viagem
+
+- `TravelContext` agora aplica efeitos automáticos e escolhas das cartas VIA
+  por direção, com validação antecipada de comida, água e material, sem
+  mutação parcial em falhas.
+- São registrados pressão, moral, fadiga, rota conhecida, Ponte, material
+  deixado/recuperado e carta de retorno ignorada quando aplicável.
+- Testes focados: 7 aprovados. Suíte experimental: 134 aprovados, 0 falhas.
+- Próximo bloqueio: conectar o contexto aos recursos carregados da expedição
+  e resolver a Emboscada no mapa M1.
+
 - Fila persistente criada em `docs/continuity/`; P0 marcado como
   `em_execucao`, P1–P3 como `bloqueada` por dependências verificadas.
 

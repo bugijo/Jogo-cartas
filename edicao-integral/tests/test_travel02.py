@@ -4,7 +4,7 @@ import unittest
 from pathlib import Path
 
 sys.path.insert(0, str(Path(__file__).resolve().parents[1]))
-from travel02 import Travel02
+from travel02 import Travel02, TravelContext
 
 
 class Travel02Tests(unittest.TestCase):
@@ -58,6 +58,30 @@ class Travel02Tests(unittest.TestCase):
         trip.reveal("outbound")
         with self.assertRaises(ValueError):
             trip.reveal("return")
+
+    def test_directional_effects_are_explicit_and_applied_once(self):
+        trip = Travel02.from_deck(["ZC-VIA-0003", "ZC-VIA-0010",
+                                   "ZC-VIA-0011"], "long")
+        context = TravelContext(food=2, water=2, materials=1,
+                                fatigue={"h1": 0})
+        first = trip.reveal("outbound")
+        self.assertEqual(trip.apply(first["event_id"], context),
+                         {"skip_return_card": 1})
+        second = trip.reveal("outbound")
+        self.assertEqual(trip.apply(second["event_id"], context),
+                         {"material_drop": 1})
+        with self.assertRaises(ValueError):
+            trip.apply(second["event_id"], context)
+
+    def test_effect_refuses_missing_carried_resource_without_partial_change(self):
+        trip = Travel02.from_deck(["ZC-VIA-0004"], "short")
+        context = TravelContext(food=0, water=0, materials=0,
+                                fatigue={"h1": 0})
+        event = trip.reveal("outbound")
+        before = context.snapshot()
+        with self.assertRaises(ValueError):
+            trip.apply(event["event_id"], context, "material")
+        self.assertEqual(context.snapshot(), before)
 
 
 if __name__ == "__main__":

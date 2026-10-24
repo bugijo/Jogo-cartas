@@ -8,7 +8,7 @@ do integrador, para não transformar uma revelação em recompensa implícita.
 from __future__ import annotations
 
 from copy import deepcopy
-from dataclasses import dataclass, field
+from dataclasses import asdict, dataclass, field
 from random import Random
 
 from cistern02 import CATALOG
@@ -32,6 +32,33 @@ CHOICES = {
                     "decline": {}},
     "ZC-VIA-0009": {"accept": {"dog": 1}, "decline": {}},
 }
+AUTO_EFFECTS = {
+    "ZC-VIA-0001": {},
+    "ZC-VIA-0003": {"skip_return_card": 1},
+    "ZC-VIA-0007": {"pressure": 1},
+    "ZC-VIA-0008": {"route_known": 1},
+    "ZC-VIA-0010": {"material_drop": 1},
+    "ZC-VIA-0011": {"bridge_known": 1},
+    "ZC-VIA-0012": {},
+}
+
+
+@dataclass
+class TravelContext:
+    """Recursos levados e marcadores alterados na estrada."""
+
+    food: int
+    water: int
+    materials: int
+    fatigue: dict[str, int]
+    pressure: int = 0
+    moral: int = 5
+    route_known: bool = False
+    bridge_known: bool = False
+    skip_return_card: int = 0
+
+    def snapshot(self) -> dict:
+        return deepcopy(asdict(self))
 
 
 @dataclass
@@ -141,6 +168,49 @@ class Travel02:
         self.resolved[event_id] = {"ambush": result}
         return deepcopy(result)
 
+    def apply(self, event_id: str, context: TravelContext,
+              choice: str | None = None) -> dict:
+        """Aplica um efeito depois de validar todos os custos.
+
+        O recibo é gravado apenas depois da validação, para que falta de
+        recurso não deixe metade de um efeito aplicada.
+        """
+        event, card_id = self._event(event_id)
+        if event["ambush"]:
+            raise ValueError("Resolva a Emboscada no mapa tático")
+        if card_id in CHOICES:
+            if event_id not in self.pending_choices or choice not in CHOICES[card_id]:
+                raise ValueError("Escolha de Viagem inválida")
+            effect = deepcopy(CHOICES[card_id][choice])
+        else:
+            if event_id in self.pending_choices or choice is not None:
+                raise ValueError("Carta de Viagem não aceita escolha")
+            effect = deepcopy(AUTO_EFFECTS.get(card_id, {}))
+            if card_id == "ZC-VIA-0010" and event["direction"] == "return":
+                effect = {"material_gain": 1}
+        water_loss = effect.get("water_loss", 0)
+        food_loss = effect.get("food_loss", 0)
+        material_loss = effect.get("material_loss", 0)
+        if context.water < water_loss or context.food < food_loss:
+            raise ValueError("Recurso levado insuficiente para Viagem")
+        if context.materials < material_loss:
+            raise ValueError("Material levado insuficiente para Viagem")
+        context.water -= water_loss
+        context.food -= food_loss
+        context.materials -= material_loss
+        context.materials += effect.get("material_gain", 0)
+        context.pressure += effect.get("pressure", 0)
+        context.moral = min(5, context.moral + effect.get("moral", 0))
+        for hero in context.fatigue:
+            context.fatigue[hero] += effect.get("fatigue", 0)
+        context.route_known |= bool(effect.get("route_known"))
+        context.bridge_known |= bool(effect.get("bridge_known"))
+        context.skip_return_card += effect.get("skip_return_card", 0)
+        self.pending_choices = [item for item in self.pending_choices
+                                if item != event_id]
+        self.resolved[event_id] = {"choice": choice, "effect": deepcopy(effect)}
+        return effect
+
     def snapshot(self) -> dict:
         return deepcopy({
             "route": self.route, "deck": self.deck, "index": self.index,
@@ -165,4 +235,4 @@ class Travel02:
         return trip
 
 
-__all__ = ["CARDS", "Travel02"]
+__all__ = ["CARDS", "Travel02", "TravelContext"]
