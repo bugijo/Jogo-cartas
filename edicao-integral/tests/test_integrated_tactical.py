@@ -125,13 +125,10 @@ class IntegratedTacticalTests(unittest.TestCase):
         self.assertEqual(game.enter_expedition().destination, "mercado")
         self.assertEqual(game.cistern.clock, 2)  # trecho + primeira rodada.
 
-    def test_legal_workshop_expedition_delivers_connection_only_after_return(self):
+    def test_seeded_legal_workshop_expedition_delivers_connection_after_return(self):
         hero=STARTERS[0]
-        game=IntegratedCampaign.new(14,STARTERS[:2],LINK_IDS[:2])
+        game=IntegratedCampaign.new(22,STARTERS[:2],LINK_IDS[:2])
         game.meal();game.next_cistern_day()  # Dia 2: oficina e evento de pressão aplicados.
-        game.cistern.travel_deck['deck'] = ['ZC-VIA-0001'] + [
-            card for card in game.cistern.travel_deck['deck']
-            if card != 'ZC-VIA-0001']
         trip=game.start_travel(
             'Oficina',[hero],'short',
             context=TravelContext(food=0,water=0,materials=0,fatigue={hero:0}))
@@ -153,6 +150,8 @@ class IntegratedTacticalTests(unittest.TestCase):
         self.assertEqual([receipt['part'] for receipt in receipts],['Conexões'])
         self.assertEqual(game.cistern.parts,{'Conexões':2})
         self.assertEqual(game.cistern.clock,6)
+        self.assertEqual(game.cistern.travel_deck['discard'],
+                         ['ZC-VIA-0001','ZC-VIA-0010'])
 
     def test_outbound_travel_fatigue_choice_persists_to_local_encounter(self):
         hero = STARTERS[0]
