@@ -78,3 +78,25 @@ passaram se o gate de campanha ainda estiver fechado.
 - Limite explícito: o estado de viagem ainda não compra automaticamente uma
   carta por trecho, não aplica efeitos das cartas e não executa M1. Portanto
   não há expedição completa nem vitória certificada.
+
+## 2026-10-24 — recuperação seletiva após auditoria Git
+
+- Conferidos local/remoto `94b6e7c`; os oito SHAs pedidos existem e são
+  ancestrais da branch. `9773da5` é o revert que removeu seus arquivos da
+  árvore. Não foi feito cherry-pick em massa nem alterada a `main`.
+- Recuperados seletivamente Viagem por trecho, Emboscada M1, movimentação e
+  combate tático, recursos/equipamentos coletáveis, liquidação de retorno,
+  eventos diários, cercos e recibos/certificação da Cisterna. As cartas atuais
+  de Horda e Viagem continuam como fontes únicas; duplicações históricas foram
+  rejeitadas.
+- Migração adicional cobre saves anteriores ao cursor diário: assinala eventos
+  passados não auditáveis, aplica somente o evento atual e bloqueia certificado
+  canônico para esse save. A migração não fabrica efeitos retroativos.
+- O replay fixo H2–H6 foi reconciliado com os eventos canônicos e passa de novo;
+  continua sendo uma rota roteirizada, não um replay integral de ações legais.
+- Testes após a recuperação e migração: `220 passed`; `validate_data.py`,
+  `compileall` e `git diff --check` passaram. Impressão e playtest humano não
+  ocorreram. `RECOVERY_AUDIT.md` contém o inventário de SHAs, decisões e limites.
+- Próximo bloqueio: ligar o fluxo público a um executor legal de campanha que
+  recolha as peças e retorne com recibos; depois validar as cinco noites e
+  emitir `verified_victory` apenas se essa trajetória passar.

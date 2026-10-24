@@ -1,7 +1,7 @@
 {
   "schema": 1,
   "branch": "evolucao/zona-zero-sistema-v1",
-  "updated_at": "2026-10-23",
+  "updated_at": "2026-10-24",
   "tasks": [
     {
       "id": "P0-EXPEDITION-COMPLETE",
@@ -11,8 +11,8 @@
       "acceptance": ["recibos legais", "salvamento", "sem recompensa duplicada", "paridade 0.2"],
       "tests": ["edicao-integral/tests/test_cistern_tactics02.py", "novo teste de fases"],
       "status": "em_execucao",
-      "commit": null,
-      "blocker": "Sapatos de Horda e Viagem agora persistem; ainda falta revelar Viagem por trecho, resolver efeitos/emboscadas no relógio, ligar resgates/promessas e concluir consequências e fila final"
+      "commit": "37ff095",
+      "blocker": "Viagem por trecho, M1, liquidação de retorno, eventos e cercos foram recuperados e integrados seletivamente. Falta um replay público legal de cinco dias que colete/entregue as três peças, feche A/B/C, processe resgates/promessas e encerre sem fixtures ou mutação administrativa"
     },
     {
       "id": "P1-MIGRATE-CISTERN",

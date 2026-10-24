@@ -1,22 +1,20 @@
 # Retomada
 
-Estado conhecido: branch `evolucao/zona-zero-sistema-v1`, HEAD remoto observado
-`c4c1911` antes desta unidade. Esse commit reverteu explicitamente
-alterações posteriores ao checkpoint `690a597`; o histórico anterior foi
-preservado e a unidade de baralho de Hordas abaixo foi implementada sobre a
-base remota atual. Nunca reaplicar automaticamente arquivos removidos por essa
-reversão.
+Estado inicial da unidade: branch `evolucao/zona-zero-sistema-v1`, HEAD local e
+remoto `94b6e7c7a397fb009d733d95af825c53a5728cee`. Veja os commits desta
+recuperação abaixo e `RECOVERY_AUDIT.md`; as implementações foram integradas
+seletivamente, não por cherry-pick cego.
 
-Unidade desta sessão: sapato de Hordas único por campanha, com seed, snapshot,
-validação e migração determinística de saves sem esse campo. Expedições táticas
-consomem o baralho compartilhado, salvo quando um teste injeta explicitamente
-uma ordem fixa. Isso não completa viagens, cercos ou a campanha.
+O trabalho anterior de baralhos persistentes de Hordas e Viagem foi preservado.
+Os novos módulos recuperados usam esses baralhos como fonte única; saves sem
+cursores introduzidos depois são migrados de forma explícita e conservadora.
 
-Também foi persistido o sapato canônico de Viagem a partir dos IDs `VIA` do
-catálogo (12 cartas na versão atual), com descarte, reembaralhamento, migração
-de saves antigos e round-trip no save integrado. O código ainda não revela uma
-carta por trecho nem aplica efeitos de rota; não confundir persistência do
-baralho com sistema de viagem executável.
+O estado recuperado agora inclui Viagem por trecho e Emboscada M1, tática de
+expedição, liquidação do retorno, eventos diários, cercos e recibos da Cisterna.
+Os baralhos recentes de Horda e Viagem permanecem a única fonte persistente.
+Saves pré-eventos preservam recursos e estado, registram eventos passados como
+lacuna não auditável, aplicam só o evento atual e ficam inelegíveis para
+certificação canônica.
 
 Comando idempotente:
 
@@ -29,12 +27,23 @@ python3 -m compileall -q edicao-integral src
 git diff --check
 ```
 
-Próxima tarefa desbloqueável: `P0-EXPEDITION-COMPLETE`, mas somente nas áreas
-que não dependem de decisão sobre a migração de personagens. Não executar Meta,
-publicação, impressão final ou emitir `verified_victory` enquanto a fila marca
-P0/P1 como bloqueada.
+Validação desta unidade: 220 testes experimentais passaram, junto com
+`validate_data.py`, `compileall` e `git diff --check`. O replay roteirizado
+H2–H6 cobre cinco dias, mas não usa apenas ações legais e não demonstra
+`verified_victory`.
 
-Próximo passo concreto: implementar o estado de trecho ida/volta que consome
-cartas do sapato persistente, cobra o segmento canônico e encaminha escolhas,
-ocorrências noturnas e emboscadas ao relógio compartilhado; manter o certificado
-de vitória fechado até provar o ciclo completo.
+Próximo passo: criar um executor de campanha que use exclusivamente a API
+pública Viagem → escolha/Emboscada → mapa → recibos táticos → retorno. Hoje
+`collect_part()` continua bloqueado e o caminho completo não comprova a coleta
+e entrega das três peças sem fixture. Manter `verified_victory` fechado até
+esse replay passar desde preparação legítima.
+
+Commits desta recuperação:
+
+- `6f48cf7` — módulos de Viagem e Emboscada M1, com testes.
+- `8318291` — eventos canônicos, cercos, tática e recibos da Cisterna.
+- `37ff095` — integração da ida/volta, decks únicos e replay H2–H6 corrigido.
+- `PENDENTE` — relatório de recuperação e checkpoints atualizados.
+
+Publicar somente por fast-forward em `origin/evolucao/zona-zero-sistema-v1`,
+sem merge ou force.
