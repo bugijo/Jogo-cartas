@@ -15,6 +15,18 @@
 - Bloqueios P0/P1 permanecem ativos; nenhuma publicação física nova foi
   declarada pronta.
 
+## 2026-10-24 — unidade P0: baralho de Viagem
+
+- Criado `edicao-integral/travel02.py`, derivado das 12 cartas VIA do catálogo
+  canônico.
+- A unidade registra trechos curtos/longos, cartas reveladas, escolhas
+  pendentes, Emboscada com mapa e rodada mínima, snapshot e resolução
+  idempotente. Não concede recursos nem substitui a resolução tática.
+- Testes focados: 5 aprovados. Suíte experimental completa: 129 aprovados,
+  0 falhas. `compileall` e `git diff --check`: aprovados.
+- O próximo bloqueio de P0 é integrar esses recibos à expedição sem escolher
+  efeitos implicitamente; P1/P2/P3 continuam bloqueadas.
+
 - Fila persistente criada em `docs/continuity/`; P0 marcado como
   `em_execucao`, P1–P3 como `bloqueada` por dependências verificadas.
 
