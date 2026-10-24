@@ -48,6 +48,7 @@ class IntegratedCampaignTests(unittest.TestCase):
 
     def test_save_resume_preserves_shared_horde_mid_expedition(self):
         game = IntegratedCampaign.new(608, STARTERS[:2], LINK_IDS[:2])
+        game.cistern.draw_travel_card()
         tactical = game.start_expedition("Mercado", [STARTERS[0]])
         tactical._horde()
         with tempfile.TemporaryDirectory() as directory:
@@ -55,10 +56,12 @@ class IntegratedCampaignTests(unittest.TestCase):
             game.save(path)
             resumed = IntegratedCampaign.load(path)
         self.assertEqual(resumed.cistern.horde_deck, game.cistern.horde_deck)
+        self.assertEqual(resumed.cistern.travel_deck, game.cistern.travel_deck)
         self.assertEqual(resumed.tactical.snapshot(), game.tactical.snapshot())
         resumed.tactical._horde()
         game.tactical._horde()
         self.assertEqual(resumed.cistern.horde_deck, game.cistern.horde_deck)
+        self.assertEqual(resumed.cistern.travel_deck, game.cistern.travel_deck)
         self.assertEqual(resumed.tactical.snapshot(), game.tactical.snapshot())
 
     def test_terminal_states_persist(self):

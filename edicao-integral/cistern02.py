@@ -12,6 +12,7 @@ from math import ceil
 from pathlib import Path
 
 from horde_deck02 import HordeDeck02
+from travel_deck02 import TravelDeck02
 
 ROOT=Path(__file__).resolve().parent.parent
 CATALOG=json.loads((ROOT/'content/catalog.json').read_text(encoding='utf-8'))
@@ -75,6 +76,7 @@ class Cistern02:
     intentions_day: int = 0
     result: str | None = None
     horde_deck: dict | None = None
+    travel_deck: dict | None = None
 
     def __post_init__(self) -> None:
         # Older saves predate the campaign-wide horde shoe. Migrate them
@@ -83,12 +85,22 @@ class Cistern02:
             self.horde_deck = HordeDeck02.new(self.seed + 8102).snapshot()
         else:
             self.horde_deck = HordeDeck02.from_snapshot(self.horde_deck).snapshot()
+        if self.travel_deck is None:
+            self.travel_deck = TravelDeck02.new(self.seed + 8103).snapshot()
+        else:
+            self.travel_deck = TravelDeck02.from_snapshot(self.travel_deck).snapshot()
 
     def draw_horde(self) -> str:
         deck = HordeDeck02.from_snapshot(self.horde_deck)
         card = deck.draw()
         self.horde_deck = deck.snapshot()
         return card
+
+    def draw_travel_card(self) -> str:
+        deck = TravelDeck02.from_snapshot(self.travel_deck)
+        card_id = deck.draw()
+        self.travel_deck = deck.snapshot()
+        return card_id
 
     @classmethod
     def new(cls,founders:list[str] | tuple[str,...],links:list[str] | tuple[str,...],
@@ -422,4 +434,5 @@ class Cistern02:
         if payload.get('schema')!=1:raise ValueError('Esquema inválido')
         game=cls(**payload['state'])
         HordeDeck02.from_snapshot(game.horde_deck)
+        TravelDeck02.from_snapshot(game.travel_deck)
         return game

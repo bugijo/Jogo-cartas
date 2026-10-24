@@ -1,3 +1,4 @@
+import json
 import sys
 import tempfile
 import unittest
@@ -37,11 +38,17 @@ class Cistern02Tests(unittest.TestCase):
         game=Cistern02.new(STARTERS[:2],LINK_IDS[:2],seed=77)
         legacy=asdict(game)
         legacy.pop('horde_deck')
-        migrated=Cistern02(**legacy)
+        legacy.pop('travel_deck')
+        with tempfile.TemporaryDirectory() as directory:
+            path=Path(directory)/'legacy-schema-1.json'
+            path.write_text(json.dumps({'schema':1,'state':legacy}),encoding='utf-8')
+            migrated=Cistern02.load(path)
         same_seed=Cistern02.new(STARTERS[:2],LINK_IDS[:2],seed=77)
         self.assertEqual(migrated.horde_deck,same_seed.horde_deck)
         self.assertEqual([migrated.draw_horde() for _ in range(9)],
                          [same_seed.draw_horde() for _ in range(9)])
+        self.assertEqual([migrated.draw_travel_card() for _ in range(12)],
+                         [same_seed.draw_travel_card() for _ in range(12)])
 
     def test_malformed_campaign_horde_save_is_rejected_as_invalid(self):
         game=Cistern02.new(STARTERS[:2],LINK_IDS[:2],seed=77)
@@ -52,6 +59,22 @@ class Cistern02Tests(unittest.TestCase):
                 {"seed":77,"deck":[],"discard":[],"reshuffles":-1}):
             with self.subTest(malformed=malformed), self.assertRaises(ValueError):
                 Cistern02(**{**asdict(game),"horde_deck":malformed})
+
+    def test_campaign_travel_deck_is_canonical_seeded_and_saved(self):
+        game=Cistern02.new(STARTERS[:2],LINK_IDS[:2],seed=608)
+        first=[game.draw_travel_card() for _ in range(4)]
+        same_seed=Cistern02.new(STARTERS[:2],LINK_IDS[:2],seed=608)
+        self.assertEqual(first,[same_seed.draw_travel_card() for _ in range(4)])
+        with tempfile.TemporaryDirectory() as directory:
+            path=Path(directory)/'cistern.json'
+            game.save(path)
+            resumed=Cistern02.load(path)
+        rest=[game.draw_travel_card() for _ in range(20)]
+        from travel_deck02 import CARD_IDS
+        self.assertEqual(Counter(first+rest[:8]),Counter(CARD_IDS))
+        self.assertEqual(rest,[resumed.draw_travel_card() for _ in range(20)])
+        self.assertEqual(game.travel_deck,resumed.travel_deck)
+        self.assertEqual(game.travel_deck['reshuffles'],1)
 
     def test_all_2497_link_draws_match_canonical_preparation(self):
         checked=0

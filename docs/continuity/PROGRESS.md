@@ -60,3 +60,21 @@ passaram se o gate de campanha ainda estiver fechado.
   reproduz e cobre os formatos malformados. Validação de dados, compilação e
   whitespace passaram. A suíte legada com warnings como erro passou `51/51`
   após a correção do fechamento de PNG.
+
+## 2026-10-24 — sapato canônico de Viagem
+
+- Adicionado `TravelDeck02`, cuja composição deriva dos 12 IDs de família `VIA`
+  presentes atualmente em `content/catalog.json`; cada carta aparece uma vez
+  até o descarte completo. Seed, descarte e contador de reembaralhamentos são
+  determinísticos e salvos dentro de `Cistern02`.
+- Saves legados sem os sapatos de Horda e Viagem migram por offsets estáveis da
+  seed da campanha. O teste integrado salva/restaura os dois sapatos e uma
+  expedição tática suspensa; a migração também foi verificada por arquivo JSON
+  schema 1 legado com ambos os campos ausentes.
+- Suíte experimental: `130 passed`; validação de dados, `compileall` e
+  `git diff --check` passaram.
+- Revisão independente somente leitura: nenhum defeito reproduzível no sapato;
+  as 12 cartas `VIA` têm IDs únicos no catálogo.
+- Limite explícito: o estado de viagem ainda não compra automaticamente uma
+  carta por trecho, não aplica efeitos das cartas e não executa M1. Portanto
+  não há expedição completa nem vitória certificada.
