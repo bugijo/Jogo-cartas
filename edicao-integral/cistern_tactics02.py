@@ -5,16 +5,27 @@ precisam de ações de busca/interação/porte e integração explícita posteri
 """
 from __future__ import annotations
 
+import json
 from collections import deque
 from copy import deepcopy
 from dataclasses import dataclass, field
 from math import ceil
+from pathlib import Path
 from random import Random
 
 from cistern02 import CATALOG, Cistern02, RESCUE_GROUPS
+from horde_deck02 import HordeDeck02
 
 
 MAPS = {m['name'].lower(): m for m in CATALOG['maps']}
+EQUIPMENT_PICKUP_DATA = json.loads(
+    (Path(__file__).resolve().parent / 'data/equipment_pickups02.json')
+    .read_text(encoding='utf-8'))
+EQUIPMENT_PICKUPS = {
+    item['destination'].lower(): {
+        'zone': item['zone'], 'item': item['item'], 'count': item['count']}
+    for item in EQUIPMENT_PICKUP_DATA
+}
 HEROES = {h['id']: h for h in CATALOG['heroes']}
 ENEMIES = {'Errante': (1, 5, 1, 1), 'Corredor': (1, 6, 1, 2),
            'Bruto': (3, 6, 2, 1)}  # vida, defesa, dano, passos
@@ -92,6 +103,7 @@ class Tactical02:
     search_cargo: dict[str, list[dict]] = field(default_factory=dict)
     search_ground: list[dict] = field(default_factory=list)
     part_ground: list[dict] = field(default_factory=list)
+    horde_deck: dict | None = None
 
     def __post_init__(self) -> None:
         if not isinstance(self.part_ground, list):
@@ -119,7 +131,9 @@ class Tactical02:
               first_visit: bool = True,
               equipment: dict[str, list[str]] | None = None,
               prior_state: dict | None = None,
-              travel_segments_paid: int = 0) -> 'Tactical02':
+              travel_segments_paid: int = 0,
+              horde_deck: dict | None = None,
+              starting_fatigue: dict[str, int] | None = None) -> 'Tactical02':
         if destination.lower() not in MAPS or route not in ('short', 'long'):
             raise ValueError('Destino ou rota inválidos')
         if not team or len(set(team)) != len(team) or any(h not in chapter.founders for h in team):
@@ -147,6 +161,7 @@ class Tactical02:
                   horde_order=list(horde_order) if horde_order else list(HORDE),
                   taken_before=list(taken_before or []),
                   first_market_visit=destination.lower() == 'mercado' and first_visit)
+        clock_before_route = chapter.clock
         if unpaid_travel:
             chapter.spend_segments(unpaid_travel)
         obj.positions = {h: obj.map['entry'] for h in team}
@@ -155,6 +170,14 @@ class Tactical02:
         obj.search_cargo = {h: [] for h in team}
         obj.equipment = supplies
         obj.fatigue = {h: people[h].get('fatigue',0) for h in team}
+        if starting_fatigue is not None:
+            if (set(starting_fatigue) != set(team)
+                    or any(not isinstance(value, int) or not 0 <= value <= 3
+                           for value in starting_fatigue.values())):
+                raise ValueError('Fadiga inicial de viagem inválida')
+            obj.fatigue = deepcopy(starting_fatigue)
+            for hero in team:
+                people[hero]['fatigue'] = obj.fatigue[hero]
         if prior_state is not None:
             obj.doors_open = deepcopy(prior_state['doors_open'])
             obj.enemies = deepcopy(prior_state['enemies'])
@@ -173,7 +196,11 @@ class Tactical02:
             for _ in range(count): obj._spawn('Errante', obj.map['spawn'])
             if obj.destination == 'estação': obj._spawn('Bruto', 14)
             obj.search_deck = initial_search_deck(obj.destination, chapter.seed)
-        obj._night_fatigue()
+        obj.horde_deck = HordeDeck02.validate(
+            horde_deck if horde_deck is not None else
+            (prior_state.get('horde_deck') if prior_state else None)
+            or HordeDeck02.new(chapter.seed))
+        obj._night_fatigue(clock_before_route, chapter.clock)
         obj.begin_round()
         return obj
 
@@ -189,12 +216,13 @@ class Tactical02:
     def opened(self) -> set[tuple[int, int]]:
         return {edge(*e) for e in self.doors_open}
 
-    def _night_fatigue(self) -> None:
-        if self.chapter.clock > 8:
-            people = {p['id']: p for p in self.chapter.people}
-            for hero in self.team:
-                self.fatigue[hero] = min(3, self.fatigue[hero]+1)
-                people[hero]['fatigue'] = self.fatigue[hero]
+    def _night_fatigue(self, before: int, after: int) -> None:
+        people = {p['id']: p for p in self.chapter.people}
+        for segment in range(before + 1, after + 1):
+            if segment >= 9:
+                for hero in self.team:
+                    self.fatigue[hero] = min(3, self.fatigue[hero] + 1)
+                    people[hero]['fatigue'] = self.fatigue[hero]
 
     def _spawn(self, kind: str, zone: int) -> None:
         if kind not in ENEMIES: raise ValueError('Inimigo inválido')
@@ -211,8 +239,9 @@ class Tactical02:
         if self.finished or self.failed: raise ValueError('Expedição encerrada')
         if self.round_no != self.completed_rounds:
             raise ValueError('Rodada anterior não encerrada')
+        clock_before_round = self.chapter.clock
         self.chapter.spend_segments(1)
-        self._night_fatigue()
+        self._night_fatigue(clock_before_round, self.chapter.clock)
         self.round_no += 1
         self.shots = 0
         self.knife_used = []
@@ -405,6 +434,28 @@ class Tactical02:
         self.log.append({'event': 'pickup_supply', **item, 'clock': self.chapter.clock})
         return item.copy()
 
+    def pickup_equipment(self, hero: str, item: str, lot: int) -> dict:
+        """Retira um dos equipamentos únicos definidos na campanha 0.2."""
+        spec = EQUIPMENT_PICKUPS.get(self.destination, {})
+        if (hero not in self.positions or item != spec.get('item')
+                or not isinstance(lot, int) or not 1 <= lot <= spec.get('count', 0)
+                or self.positions[hero] != spec.get('zone')):
+            raise ValueError('Equipamento indisponível neste local/zona')
+        identifier = f'{self.destination}:{item}:{lot}'
+        if (identifier in self.taken_before
+                or any(entry.get('event') == 'pickup_equipment'
+                       and entry.get('id') == identifier for entry in self.log)
+                or self._load(hero) >= 4):
+            raise ValueError('Equipamento já retirado ou sem carga')
+        self._pay(hero, 1)
+        self.equipment[hero].append(item)
+        receipt = {'event': 'pickup_equipment', 'id': identifier,
+                   'destination': self.destination.title(), 'item': item,
+                   'lot': lot, 'hero': hero, 'zone': spec['zone'],
+                   'clock': self.chapter.clock}
+        self.log.append(receipt)
+        return receipt.copy()
+
     def inspect_van(self, hero: str) -> None:
         if self.destination != 'posto' or hero not in self.positions or self.positions[hero] != 7:
             raise ValueError('Van fora de alcance')
@@ -452,7 +503,7 @@ class Tactical02:
         if not self.finished or self.failed or not any(x['event'] == 'return' for x in self.log):
             return []
         proof = [x.copy() for x in self.log if x['event'] in
-                 ('pickup_part','recover_part','pickup_supply','rescue')
+                 ('pickup_part','recover_part','pickup_supply','pickup_equipment','rescue')
                  and (x['event'] != 'pickup_supply' or x['id'] not in self._spent_fuel_ids())]
         if self.van_returned:
             proof.append({'event': 'deliver_van', 'destination': 'posto',
@@ -503,13 +554,14 @@ class Tactical02:
                 if nxt == self.positions[hero]: break
 
     def _horde(self) -> None:
-        card = self.horde_order[self.horde_index % len(self.horde_order)]
+        card_id, self.horde_deck = HordeDeck02.draw(self.horde_deck)
+        card = HordeDeck02.card_type(card_id)
         self.horde_index += 1
         kind, count = {'Arrastar': ('Errante', 1), 'Corrida': ('Corredor', 1),
                        'Aglomerado': ('Errante', ceil(len(self.team)/2)),
                        'Peso morto': ('Bruto', 1)}[card]
         for _ in range(count): self._spawn(kind, self.map['spawn'])
-        self.log.append({'event': 'horde', 'card': card})
+        self.log.append({'event': 'horde', 'card': card, 'card_id': card_id})
 
     def end_round(self) -> None:
         if self.finished or self.failed: raise ValueError('Expedição encerrada')
@@ -548,8 +600,9 @@ class Tactical02:
                 self.supply_cargo[hero].remove(item)
                 self.log.append({'event': 'fuel_spent', 'id': item['id'], 'hero': hero})
             self.van_returned = True
+        clock_before_return = self.chapter.clock
         self.chapter.spend_segments(self.travel_cost)
-        self._night_fatigue()
+        self._night_fatigue(clock_before_return, self.chapter.clock)
         self.finished = True
         self.log.append({'event': 'return', 'clock': self.chapter.clock})
 
@@ -569,14 +622,51 @@ class Tactical02:
                 if key not in self.taken_before:
                     self.taken_before.append(key)
         for hero in self.team:
-            people[hero]['wounds'] += 1
+            people[hero]['wounds'] = min(3, people[hero]['wounds'] + 1)
             self.fatigue[hero] = 3
             people[hero]['fatigue'] = 3
+        self._discard_found_equipment()
         self.failed = True; self.finished = True
         self.carried = {hero: [] for hero in self.team}
         self.supply_cargo = {hero: [] for hero in self.team}
         self.search_cargo = {hero: [] for hero in self.team}
         self.log.append({'event': 'emergency', 'clock': self.chapter.clock})
+
+    def lose_cargo_after_return_ambush(self) -> None:
+        """Aplica perda de carga quando uma emboscada da estrada força retirada.
+
+        O mapa local já foi encerrado e o custo de retorno já foi pago. A
+        Emboscada aplica ferimento/fadiga; este método só descarta a carga,
+        registra peças únicas no chão e marca a expedição como falha.
+        """
+        if not self.finished or self.failed:
+            raise ValueError('Retirada rodoviária exige mapa local encerrado')
+        for hero, parts in self.carried.items():
+            for part in parts:
+                place = next(name for name, items in PARTS.items() if part in items)
+                key = f'{place}:{part}'
+                ground = {'part': part, 'destination': place.lower(),
+                          'zone': PARTS[place][part][0],
+                          'load': PARTS[place][part][1]}
+                if not any(item['destination'] == ground['destination']
+                           and item['part'] == part for item in self.part_ground):
+                    self.part_ground.append(ground)
+                if key not in self.taken_before:
+                    self.taken_before.append(key)
+        self.carried = {hero: [] for hero in self.team}
+        self.supply_cargo = {hero: [] for hero in self.team}
+        self.search_cargo = {hero: [] for hero in self.team}
+        self._discard_found_equipment()
+        self.failed = True
+        self.log.append({'event': 'emergency_return_loss', 'clock': self.chapter.clock})
+
+    def _discard_found_equipment(self) -> None:
+        for receipt in self.log:
+            if receipt.get('event') != 'pickup_equipment':
+                continue
+            hero, item = receipt['hero'], receipt['item']
+            if item in self.equipment.get(hero, []):
+                self.equipment[hero].remove(item)
 
     def snapshot(self) -> dict:
         """Estado tático serializável; salvar também Cistern02.save separadamente."""
@@ -586,7 +676,8 @@ class Tactical02:
                   'shotgun_used','horde_order','carried','taken_before','pump_attempts',
                   'first_market_visit','equipment','supply_cargo','van_state',
                   'van_attempts','van_returned','search_deck','search_uses',
-                  'searched_this_visit','search_cargo','search_ground','part_ground')
+                  'searched_this_visit','search_cargo','search_ground','part_ground',
+                  'horde_deck')
         return deepcopy({name: getattr(self, name) for name in fields})
 
     def site_snapshot(self) -> dict:
@@ -596,10 +687,17 @@ class Tactical02:
                          'van_state': 'away' if self.van_returned else self.van_state,
                          'search_deck': self.search_deck, 'search_uses': self.search_uses,
                          'search_ground': self.search_ground,
+                         'horde_deck': self.horde_deck,
                          'part_ground': self.part_ground})
 
     @classmethod
     def from_snapshot(cls, chapter: Cistern02, snap: dict) -> 'Tactical02':
         if snap['destination'] not in MAPS or any(h not in chapter.founders for h in snap['team']):
             raise ValueError('Snapshot incompatível')
-        return cls(chapter=chapter, **deepcopy(snap))
+        payload = deepcopy(snap)
+        if 'horde_deck' not in payload or payload['horde_deck'] is None:
+            deck = HordeDeck02.new(chapter.seed)
+            for _ in range(max(0, payload.get('horde_index', 0))):
+                _, deck = HordeDeck02.draw(deck)
+            payload['horde_deck'] = deck
+        return cls(chapter=chapter, **payload)

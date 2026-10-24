@@ -1,5 +1,56 @@
 # Retomada do desenvolvimento experimental
 
+## Incremento local em revisão — M1/Horda e ciclo de estrada (2026-10-24)
+
+- Base: remoto e local `79b5e9aa8c6e8d9878eaa0ac13fbf7ea2d93d317`; branch
+  `evolucao/zona-zero-sistema-v1`. Kit físico 0.2, `RULES.md`, `CAMPAIGN.md`
+  e `content/catalog.json` permanecem intactos. Os cinco pontos de coleta de
+  equipamento foram estruturados em `edicao-integral/data/equipment_pickups02.json`.
+- Implementado `HordeDeck02`: compra determinística, descarte, embaralhamento
+  reproduzível ao esgotar e validação de snapshot. Campanha, expedição e M1
+  compartilham e salvam o mesmo sapato de Horda; snapshots antigos migram.
+- M1 agora usa o grafo/porta, equipamentos e munição existentes, registra
+  tiros/ruído, ativa inimigos, aumenta pressão, compra Hordas por pressão/noite
+  e aplica fadiga em cada segmento 9–10. Entrada sem Emboscada preserva fadiga
+  da escolha de Viagem. A lista de equipamentos de coleta está no catálogo e
+  o inventário do herói persiste após entrega; emergência perde o item novo.
+- Viagem reserva comida, água e materiais do estoque físico no início, impede
+  declaração acima do estoque ou da capacidade. A reserva escolhe cartas
+  físicas inteiras pelos cursors reais (inclusive cartas parciais) e devolve
+  os mesmos cursors restantes uma vez após retorno legal.
+  Escolhas de fadiga e rota são transferidas ao estado persistente; VIA-0003
+  pula corretamente o trecho de retorno. Cães VIA-0009 chegam vinculados a uma
+  família elegível. Viagem/retorno pendente bloqueia nova expedição e avanço.
+- A liquidação do retorno roda em cópia e só publica recebimentos completos;
+  cartas/decisões pendentes permanecem retomáveis. A retirada na M1 de retorno
+  fecha o estado e aplica perda de carga/peças no chão; retirada pode ser
+  escolhida mesmo no relógio 10.
+- Verificação local atual: `python -m unittest discover -s
+  edicao-integral/tests -q` (188 testes); `compileall`, validação (125 IDs,
+  10 heróis, 70 habilidades, 15 NPCs, 8 mapas e 5 pontos de coleta) e
+  `git diff --check`.
+- Regressão de preservação: `python -m unittest discover -s tests -q` passou
+  (51 testes). Um `ResourceWarning` preexistente aponta arquivo aberto em
+  `tests/test_boards06.py:64`; não houve falha. A primeira execução durante a
+  edição falhou somente porque o catálogo congelado havia sido alterado; a
+  fonte foi restaurada exatamente ao HEAD e a suíte passou na repetição.
+- Pendências: efeito mecânico de rota/Ponte ainda não está ligado a navegação;
+  deck global de Viagem não foi integrado entre dias; promessas, eventos, noites,
+  cercos e sequência completa da campanha continuam incompletos. A M1 usa as
+  armas legais disponíveis no inventário, mas isso não valida o balanceamento.
+- O saldo de viagem é agregado para a equipe; fichas individuais de portadores
+  e movimentação de carga dentro da expedição ainda não estão integradas. O
+  limite atual comprova espaço total disponível, não transferência tática de
+  provisões entre heróis.
+- O lote ainda não foi commitado/publicado neste checkpoint; requer confirmação
+  final da auditoria e push.
+- Não foram executadas campanhas completas, simulações de vitória, impressão
+  física ou playtest humano.
+
+Próximo passo: confirmar a revisão independente, executar regressão legada,
+registrar e publicar o lote; depois implementar o fluxo persistente de eventos,
+promessas e fases noturnas da Cisterna.
+
 ## Estado da branch
 
 - Branch: `evolucao/zona-zero-sistema-v1`.

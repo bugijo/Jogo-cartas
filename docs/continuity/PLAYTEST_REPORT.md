@@ -86,3 +86,29 @@ Playtest humano segue pendente.
 - Simulações de campanha completas não foram executadas, pois o motor ainda não
   integra o fluxo de Viagem e a campanha não é alcançável por trajetória legal
   comprovada. Os testes acima são regressões de módulos, não resultados de jogo.
+
+## Lote M1/Horda e carga física — 2026-10-24
+
+- 175 testes de unidade/integração da edição experimental passaram, incluindo
+  combate/ruído, pressão e Hordas da M1, fadiga noturna, persistência do sapato
+  de Horda, carga reservada e retorno idempotente.
+- Oito políticas de jogadores continuam sem capacidade de completar esta
+  sequência: nenhuma campanha completa nem lote de simulação foi executado
+  neste incremento.
+- As contagens de testes não estimam vitória, equilíbrio, tempo de mesa ou
+  diversão. A próxima verificação automática de campanha depende de retirada
+  completa em M1 de retorno, eventos/noites e sequência legal desde a preparação.
+- A impressão física e o playtest humano continuam pendentes.
+
+### Regressão após revisão adversarial
+
+- 188 testes experimentais passaram após corrigir skip VIA-0003, carga por
+  cartas físicas e seus cursors, adoção de cão por família elegível, coleta
+  persistente de equipamentos e fadiga dos segmentos de retorno.
+- Estes testes exercitam módulos e transições do integrador com estados de teste;
+  não representam uma campanha completa. Não há taxas de vitória ou avaliação
+  de diversão/ritmo.
+- Revisão legada do kit físico 0.2, impressão e playtest humano seguem
+  pendentes nesta rodada.
+- A regressão de 51 testes do repositório passou após restaurar o catálogo
+  congelado. O renderer legado ainda emite um `ResourceWarning` conhecido.

@@ -131,3 +131,58 @@ campanha completa. Impressão, equilíbrio e playtest humano não foram feitos.
   pode mutar parcialmente o estoque antes de falhar; faltam estado persistente
   para cão/rota/Ponte e baralho de Viagem por campanha. Nenhuma correção desses
   itens foi incluída neste lote.
+
+## Primeira reauditoria M1/Horda e carga — 2026-10-24 (estado anterior)
+
+- Implementado baralho compartilhado de Horda com descarte/embaralhamento
+  determinístico, snapshots e migração de save legado; a M1 persiste estado
+  junto às expedições.
+- M1 agora resolve movimento no grafo, abertura de porta, combate equipado,
+  munição, ruído, surgimento por disparos, pressão local, Horda por pressão e
+  por noite, fadiga por segmento noturno e penalidade de PA. A revisão da regra
+  não tratou Z6 como compra inicial adicional: `RULES.md` §30 define o ponto de
+  surgimento, enquanto §§33 e 39 definem os momentos de Horda.
+- Viagem reserva os recursos declarados do estoque ao partir e devolve o saldo
+  restante após retorno. Liquidação de recibos no retorno é transacional.
+- Auditoria independente repetiu o teste de falha parcial e confirmou que
+  recibos, estoque e referência tática permanecem íntegros quando a liquidação
+  falha. A falta de recursos reais na preparação é rejeitada.
+- Pendente P0: retirada durante Emboscada M1 de retorno ainda falha; a auditoria
+  reproduziu `ValueError` ao tentar usar o recibo de `return_travel`. Também
+  faltam efeitos persistentes para cão/rota/Ponte, efeitos da estrada durante
+  emergência, promessas, noites, cercos e campanha completa.
+- Verificação local não publicada neste registro: 175 testes experimentais
+  passaram; validação de dados, `compileall` e `git diff --check` passaram.
+- Estes são testes de módulos e integração, não trajetórias completas nem
+  estimativas de equilíbrio. Não houve simulação completa, impressão ou
+  playtest humano.
+
+## Fechamento de achados de estrada/M1 — 2026-10-24
+
+- Após essa reauditoria, foram corrigidos: retorno VIA-0003 (skip sem reaplicar),
+  capacidade pelas cartas físicas escolhidas (cada cursor parcial ocupa carga), M1 de retorno em
+  emergência inclusive no relógio 10, segundo cão em família distinta, fadiga
+  VIA-0002 no retorno e sincronização de fadiga antes/depois da M1 de retorno.
+- O auditor de viagem também encontrou que um teste antigo considerava
+  incorretamente 2 comida + 1 água + 1 Material impossível para um herói com
+  Pé-de-cabra; o teste agora cobre o limite legal e um excesso real de carga.
+- Implementados locais de coleta de equipamentos canônicos em
+  `edicao-integral/data/equipment_pickups02.json` e inventário persistente por
+  herói. A coleta/emergência impedem recuperar o mesmo item como cópia nova.
+- Testes após essas correções: 188 testes experimentais, validação de dados
+  (inclui cinco locais de coleta), `compileall` e `git diff --check` passaram.
+- Revisões independentes apontam ainda que a carga é agregada na preparação
+  (não há ficha de portador individual para suprimentos), o baralho de Viagem
+  ainda não é um sapato persistente entre dias e efeitos de rota/Ponte não têm
+  uso mecânico. Eventos/noites/cercos também não formam ciclo completo.
+- Nenhuma campanha completa foi simulada; não há inferência de equilíbrio,
+  duração ou diversão. Impressão e playtest humano permanecem pendentes.
+- Regressão legada repetida após restaurar `content/catalog.json`: 51 passaram.
+  Permanece um aviso `ResourceWarning` já conhecido em
+  `tests/test_boards06.py:64`.
+- Auditor M1 independente verificou o caso de cartas parciais: quatro cartas
+  `[1,1,1,1]` são rejeitadas com um Pé-de-cabra (estoque não muda), três cartas
+  `[1,1,1]` cabem exatamente. A seleção minimiza número de cartas e, depois,
+  excesso de porções; por isso `[3,3]` para solicitação 4 leva os dois lotes
+  (6 porções) sem criar recurso. O hash do catálogo voltou a coincidir com o
+  baseline congelado.

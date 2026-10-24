@@ -3,6 +3,9 @@ import json
 from pathlib import Path
 
 ROOT=Path(__file__).resolve().parent
+CANONICAL=json.loads((ROOT.parent/'content/catalog.json').read_text(encoding='utf-8'))
+EQUIPMENT_PICKUPS=json.loads(
+    (ROOT/'data/equipment_pickups02.json').read_text(encoding='utf-8'))
 DATA=json.loads((ROOT/'data/system.json').read_text(encoding='utf-8'))
 GEAR=json.loads((ROOT/'data/equipment.json').read_text(encoding='utf-8'))
 TACTICS=json.loads((ROOT/'data/tactics.json').read_text(encoding='utf-8'))
@@ -24,6 +27,16 @@ def validate() -> dict:
         raise ValueError('IDs duplicados')
     if len(DATA['heroes'])!=10 or len(DATA['npcs'])!=15:
         raise ValueError('Elenco incompleto')
+    equipment_pickups = EQUIPMENT_PICKUPS
+    seen_pickups=set()
+    for pickup in equipment_pickups:
+        map_data=next((m for m in CANONICAL['maps']
+                       if m['name']==pickup['destination']),None)
+        key=(pickup['destination'],pickup['item'])
+        if (map_data is None or key in seen_pickups or pickup['count']<=0
+                or pickup['zone'] not in map_data['zones']):
+            raise ValueError('Equipamento de mapa inválido ou duplicado')
+        seen_pickups.add(key)
     for hero in DATA['heroes']:
         if set(hero['attributes'])!=set(DATA['attributes']) or any(not 1<=v<=3 for v in hero['attributes'].values()):
             raise ValueError('Atributos inválidos')
@@ -99,7 +112,8 @@ def validate() -> dict:
             'locations':len(DATA['locations']),'crises':len(DATA['crises']),
             'vehicles':len(DATA['vehicles']),'equipment_templates':len(GEAR['items']),
             'cards':len(CARDS),'tactical_maps':len(TACTICS['maps']),
-            'enemy_types':len(TACTICS['enemies']),'horde_types':len(TACTICS['hordes'])}
+            'enemy_types':len(TACTICS['enemies']),'horde_types':len(TACTICS['hordes']),
+            'equipment_pickup_sites':len(equipment_pickups)}
 
 
 if __name__=='__main__':

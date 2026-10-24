@@ -58,6 +58,52 @@ class TravelContext:
     skip_return_card: int = 0
     dogs: int = 0
     eligible_dog_adoption: bool = False
+    dog_family: str | None = None
+    food_lots: list[int] = field(default_factory=list)
+    water_lots: list[int] = field(default_factory=list)
+
+    def __post_init__(self) -> None:
+        if (not isinstance(self.food, int) or self.food < 0
+                or not isinstance(self.water, int) or self.water < 0
+                or not isinstance(self.materials, int) or self.materials < 0):
+            raise ValueError("Carga de viagem inválida")
+        # Migra saves/contextos legados: saldos agregados viram cursors
+        # parciais sem inventar porções, mantendo cada carta como uma carga.
+        if not self.food_lots and self.food:
+            self.food_lots = self._pack(self.food)
+        if not self.water_lots and self.water:
+            self.water_lots = self._pack(self.water)
+        if any(not isinstance(lot, int) or not 1 <= lot <= 4
+               for lot in self.food_lots + self.water_lots):
+            raise ValueError("Cursor de carta de porções inválido")
+        self.food = sum(self.food_lots)
+        self.water = sum(self.water_lots)
+
+    @staticmethod
+    def _pack(amount: int) -> list[int]:
+        if not isinstance(amount, int) or amount < 0:
+            raise ValueError("Saldo de porções inválido")
+        lots=[]
+        while amount:
+            cursor=min(4,amount)
+            lots.append(cursor)
+            amount-=cursor
+        return lots
+
+    def consume(self, kind: str, amount: int) -> None:
+        if kind not in ("food", "water") or amount < 0:
+            raise ValueError("Consumo de carga inválido")
+        lots = self.food_lots if kind == "food" else self.water_lots
+        remaining = amount
+        while remaining and lots:
+            used = min(remaining, lots[0])
+            lots[0] -= used
+            remaining -= used
+            if lots[0] == 0:
+                lots.pop(0)
+        if remaining:
+            raise ValueError("Porções insuficientes na carga da viagem")
+        setattr(self, kind, sum(lots))
 
     def snapshot(self) -> dict:
         return deepcopy(asdict(self))
@@ -196,6 +242,7 @@ class Travel02:
         required = event["minimum_rounds"]
         if (self.pending_ambush != event_id or self.pending_resolution != event_id
                 or not event["ambush"] or not getattr(encounter,"returned",False)
+                or getattr(encounter,"failed",False)
                 or getattr(encounter,"round_no",0) < required
                 or getattr(encounter,"completed_rounds",0) != getattr(encounter,"round_no",-1)
                 or any(zone != 1 for zone in getattr(encounter,"positions",{}).values())
@@ -206,6 +253,22 @@ class Travel02:
         self.pending_ambush=None
         self.pending_resolution=None
         self.resolved[event_id]={"ambush":deepcopy(result)}
+        return result
+
+    def complete_emergency_ambush(self, event_id: str, encounter) -> dict:
+        """Registra retirada e falha local sem falsificar saída segura."""
+        event, _ = self._event(event_id)
+        if (self.pending_ambush != event_id or self.pending_resolution != event_id
+                or not event["ambush"] or not getattr(encounter, "returned", False)
+                or not getattr(encounter, "failed", False)
+                or not any(entry.get("event") == "emergency"
+                           for entry in getattr(encounter, "log", []))):
+            raise ValueError("Recibo não prova retirada de emergência")
+        result = {"map": "ZC-MOD-0001", "failed": True,
+                  "rounds": getattr(encounter, "completed_rounds", 0)}
+        self.pending_ambush = None
+        self.pending_resolution = None
+        self.resolved[event_id] = {"ambush": deepcopy(result)}
         return result
 
     def apply(self, event_id: str, context: TravelContext,
@@ -240,8 +303,8 @@ class Travel02:
             raise ValueError("Recurso levado insuficiente para Viagem")
         if context.materials < material_loss:
             raise ValueError("Material levado insuficiente para Viagem")
-        context.water -= water_loss
-        context.food -= food_loss
+        context.consume("water", water_loss)
+        context.consume("food", food_loss)
         context.materials -= material_loss
         context.materials += effect.get("material_gain", 0)
         context.dogs += effect.get("dog", 0)

@@ -14,6 +14,22 @@ def chapter():
 
 
 class Tactical02Tests(unittest.TestCase):
+    def test_each_night_segment_spent_on_long_route_adds_fatigue_once(self):
+        c = chapter(); h = STARTERS[0]; c.clock = 7
+        t = Tactical02.start(c, 'Mercado', [h], route='long')
+        # Travel spends segments 8–9; the opening map round spends segment 10.
+        self.assertEqual(c.clock, 10)
+        self.assertEqual(t.fatigue[h], 2)
+        self.assertEqual(c.people[0]['fatigue'], 2)
+
+    def test_legacy_tactical_save_gets_deterministic_horde_shoe(self):
+        c = chapter(); t = Tactical02.start(c, 'Mercado', [STARTERS[0]])
+        snapshot = t.snapshot()
+        snapshot.pop('horde_deck')
+        resumed = Tactical02.from_snapshot(c, snapshot)
+        self.assertEqual(resumed.horde_deck['seed'], c.seed)
+        self.assertEqual(len(resumed.horde_deck['draw_pile']), 9)
+
     def test_search_uses_card_from_regional_deck_and_preserves_ground(self):
         c = chapter(); h = STARTERS[0]
         t = Tactical02.start(c, 'Mercado', [h], route='long')
