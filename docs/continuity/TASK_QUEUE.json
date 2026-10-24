@@ -63,11 +63,12 @@
       "tests": [
         "edicao-integral/tests/test_travel02.py",
         "edicao-integral/tests/test_integrated_campaign.py",
-        "edicao-integral/tests/test_cistern_tactics02.py"
+        "edicao-integral/tests/test_cistern_tactics02.py",
+        "edicao-integral/tests/test_ambush02.py"
       ],
       "status": "em_execucao",
-      "commit": "482fb0e",
-      "blocker": "TravelContext está implementado; expedição ainda não cria/consome viagens nem executa Emboscada M1"
+      "commit": "pendente neste commit",
+      "blocker": "TravelContext e Ambush02 estão testados isoladamente; expedição ainda não cria/consome viagens nem integra a Emboscada M1"
     },
     {
       "id": "P1-MIGRATE-CISTERN",

@@ -45,6 +45,16 @@
 - Próximo bloqueio: conectar o contexto aos recursos carregados da expedição
   e resolver a Emboscada no mapa M1.
 
+## 2026-10-24 — unidade P0: Emboscada M1
+
+- Criado `edicao-integral/ambush02.py` com mapa reduzido canônico, equipes na
+  zona 1, Errantes em zona 6, porta 1–5 fechada, PA, movimento, combate,
+  ativação inimiga, ferimentos, rodada obrigatória, retorno sem cobrança
+  adicional e save/load.
+- Testes focados: 3 aprovados. Suíte experimental: 140 aprovados, 0 falhas.
+- O módulo ainda aguarda ligação ao `Travel02` e ao relógio da expedição; não
+  foi usado para fabricar uma vitória de campanha.
+
 - Fila persistente criada em `docs/continuity/`; P0 marcado como
   `em_execucao`, P1–P3 como `bloqueada` por dependências verificadas.
 
