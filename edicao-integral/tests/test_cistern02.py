@@ -43,6 +43,16 @@ class Cistern02Tests(unittest.TestCase):
         self.assertEqual([migrated.draw_horde() for _ in range(9)],
                          [same_seed.draw_horde() for _ in range(9)])
 
+    def test_malformed_campaign_horde_save_is_rejected_as_invalid(self):
+        game=Cistern02.new(STARTERS[:2],LINK_IDS[:2],seed=77)
+        for malformed in (
+                {"seed":77,"deck":[[]],"discard":[],"reshuffles":0},
+                {"seed":77,"deck":"Arrastar","discard":[],"reshuffles":0},
+                {"seed":True,"deck":[],"discard":[],"reshuffles":0},
+                {"seed":77,"deck":[],"discard":[],"reshuffles":-1}):
+            with self.subTest(malformed=malformed), self.assertRaises(ValueError):
+                Cistern02(**{**asdict(game),"horde_deck":malformed})
+
     def test_all_2497_link_draws_match_canonical_preparation(self):
         checked=0
         for heroes in range(2,7):

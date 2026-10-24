@@ -49,3 +49,14 @@ passaram se o gate de campanha ainda estiver fechado.
 - Sem campanha completa, sem `verified_victory` e sem validação física.
 - Próximo bloqueio: Viagem/retorno legais, emboscada e ligação dos recibos de
   expedição ao ciclo de cinco dias.
+
+### Hardening de save
+
+- A auditoria de dados não confiáveis encontrou que listas malformadas no
+  snapshot do sapato poderiam escapar como `TypeError`. `HordeDeck02` agora
+  valida tipo de pilha e valores antes de contar cartas, e rejeita estados
+  inválidos com `ValueError`.
+- Testes regressivos: experimental `129 passed`; o teste adversarial novo
+  reproduz e cobre os formatos malformados. Validação de dados, compilação e
+  whitespace passaram. A suíte legada com warnings como erro passou `51/51`
+  após a correção do fechamento de PNG.

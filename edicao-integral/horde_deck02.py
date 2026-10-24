@@ -39,8 +39,13 @@ class HordeDeck02:
 
     def validate(self) -> None:
         if (not isinstance(self.seed, int) or isinstance(self.seed, bool)
-                or not isinstance(self.reshuffles, int) or self.reshuffles < 0
-                or Counter(self.deck + self.discard) != Counter(CARD_TYPES)):
+                or not isinstance(self.reshuffles, int) or isinstance(self.reshuffles, bool)
+                or self.reshuffles < 0 or not isinstance(self.deck, list)
+                or not isinstance(self.discard, list)):
+            raise ValueError("Estado do baralho de Horda inválido")
+        cards = self.deck + self.discard
+        if (any(not isinstance(card, str) or card not in CARD_TYPES for card in cards)
+                or Counter(cards) != Counter(CARD_TYPES)):
             raise ValueError("Estado do baralho de Horda inválido")
 
     def snapshot(self) -> dict:
