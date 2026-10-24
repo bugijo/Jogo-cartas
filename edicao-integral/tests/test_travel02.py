@@ -260,8 +260,10 @@ class Travel02Tests(unittest.TestCase):
             "ZC-VIA-0001", "ZC-VIA-0008", "ZC-VIA-0001"], "short")
         context = TravelContext(food=0, water=0, materials=0,
                                 fatigue={"h": 0})
-        normal = trip.reveal("outbound")
+        normal = trip.reveal("outbound", clock_segment=9)
         trip.apply(normal["event_id"], context)
+        with self.assertRaisesRegex(ValueError, "extra noturna"):
+            trip.reveal("outbound")
         extra = trip.reveal_night_extra("outbound")
         self.assertEqual(extra["card_id"], "ZC-VIA-0008")
         self.assertEqual(extra["segment_event_id"], normal["event_id"])
@@ -280,7 +282,7 @@ class Travel02Tests(unittest.TestCase):
             "ZC-VIA-0001", "ZC-VIA-0002", "ZC-VIA-0001"], "long")
         context = TravelContext(food=0, water=1, materials=0,
                                 fatigue={"h": 0})
-        normal = trip.reveal("outbound")
+        normal = trip.reveal("outbound", clock_segment=10)
         trip.apply(normal["event_id"], context)
         extra = trip.reveal_night_extra("outbound")
         saved = Travel02.from_snapshot(trip.snapshot())

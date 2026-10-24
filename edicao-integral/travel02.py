@@ -257,9 +257,16 @@ class Travel02:
         used = self.outbound_segments if direction == "outbound" else self.return_segments
         return self.leg_size - used
 
-    def reveal(self, direction: str, context: TravelContext | None = None) -> dict:
+    def reveal(self, direction: str, context: TravelContext | None = None,
+               clock_segment: int | None = None) -> dict:
         if direction not in ("outbound", "return"):
             raise ValueError("Direção inválida")
+        if self.requires_night_extra(direction):
+            raise ValueError("Resolva a extra noturna antes do próximo trecho")
+        if (clock_segment is not None and
+                (not isinstance(clock_segment, int) or isinstance(clock_segment, bool)
+                 or not 1 <= clock_segment <= 10)):
+            raise ValueError("Segmento do relógio inválido")
         if direction == "return" and self.outbound_segments != self.leg_size:
             raise ValueError("Retorno exige completar a ida")
         if self.remaining(direction) <= 0:
@@ -277,6 +284,8 @@ class Travel02:
             event_id = f"travel-return-{self.return_segments:03d}"
             skipped = {"event_id":event_id, "card_id":None, "direction":direction,
                        "skipped":True, "text":"Ignore a próxima Viagem normal; pague o trecho."}
+            if clock_segment is not None:
+                skipped["clock_segment"] = clock_segment
             self.events.append(skipped)
             self.resolved[event_id] = {"skipped":True}
             return deepcopy(skipped)
@@ -294,6 +303,8 @@ class Travel02:
             "ambush": card_id == "ZC-VIA-0005",
             "minimum_rounds": card["minimum_rounds"],
         }
+        if clock_segment is not None:
+            event["clock_segment"] = clock_segment
         self.events.append(event)
         self.pending_resolution = event_id
         if direction == "outbound":
@@ -306,7 +317,23 @@ class Travel02:
             self.pending_ambush = event_id
         return deepcopy(event)
 
-    def reveal_night_extra(self, direction: str) -> dict:
+    def requires_night_extra(self, direction: str) -> bool:
+        """True quando o último trecho pago cruzou o relógio em 9 ou 10."""
+        segment_no = (self.outbound_segments if direction == "outbound"
+                      else self.return_segments if direction == "return" else 0)
+        if not segment_no:
+            return False
+        segment_id = f"travel-{direction}-{segment_no:03d}"
+        normal = next((event for event in self.events
+                       if event.get("event_id") == segment_id), None)
+        if not normal or normal.get("clock_segment", 0) < 9:
+            return False
+        return not any(event.get("extra") is True
+                       and event.get("segment_event_id") == segment_id
+                       for event in self.events)
+
+    def reveal_night_extra(self, direction: str,
+                           clock_segment: int | None = None) -> dict:
         """Revela a carta adicional de um trecho já pago nos segmentos 9–10.
 
         Esta ocorrência não incrementa o contador de trechos. O integrador é
@@ -326,8 +353,15 @@ class Travel02:
         segment_event_id = f"travel-{direction}-{segment_no:03d}"
         normal = next((event for event in self.events
                        if event.get("event_id") == segment_event_id), None)
-        if normal is None or normal.get("skipped"):
+        if normal is None:
             raise ValueError("Carta extra exige trecho normal revelado")
+        segment_clock = (normal.get("clock_segment") if clock_segment is None
+                         else clock_segment)
+        if (not isinstance(segment_clock, int) or isinstance(segment_clock, bool)
+                or not 9 <= segment_clock <= 10
+                or (normal.get("clock_segment") is not None
+                    and segment_clock != normal["clock_segment"])):
+            raise ValueError("Carta extra exige segmento noturno 9 ou 10")
         event_id = f"{segment_event_id}-extra"
         if any(event.get("event_id") == event_id for event in self.events):
             raise ValueError("extra noturna já revelada para este trecho")
@@ -342,6 +376,7 @@ class Travel02:
             "ambush": card_id == "ZC-VIA-0005",
             "minimum_rounds": card["minimum_rounds"], "extra": True,
             "segment_event_id": segment_event_id,
+            "clock_segment": segment_clock,
         }
         self.events.append(event)
         self.pending_resolution = event_id
@@ -541,6 +576,12 @@ class Travel02:
                 expected = {"event_id": event_id, "card_id": None,
                             "direction": "return", "skipped": True,
                             "text": "Ignore a próxima Viagem normal; pague o trecho."}
+                if "clock_segment" in event:
+                    expected["clock_segment"] = event["clock_segment"]
+                    if (not isinstance(event["clock_segment"], int)
+                            or isinstance(event["clock_segment"], bool)
+                            or not 1 <= event["clock_segment"] <= 10):
+                        raise ValueError("Segmento do relógio inválido no evento")
                 if event != expected:
                     raise ValueError("Trecho ignorado adulterado")
             else:
@@ -556,6 +597,20 @@ class Travel02:
                 if event.get("extra") is True:
                     expected.update({"extra": True,
                                      "segment_event_id": event_id.removesuffix("-extra")})
+                    expected["clock_segment"] = event.get("clock_segment")
+                    segment_event = segment_event_ids.get(expected["segment_event_id"])
+                    if (segment_event is None
+                            or segment_event.get("clock_segment") != expected["clock_segment"]
+                            or not isinstance(expected["clock_segment"], int)
+                            or isinstance(expected["clock_segment"], bool)
+                            or not 9 <= expected["clock_segment"] <= 10):
+                        raise ValueError("Carta extra não corresponde ao segmento noturno")
+                elif "clock_segment" in event:
+                    expected["clock_segment"] = event["clock_segment"]
+                    if (not isinstance(event["clock_segment"], int)
+                            or isinstance(event["clock_segment"], bool)
+                            or not 1 <= event["clock_segment"] <= 10):
+                        raise ValueError("Segmento do relógio inválido no evento")
                 if event != expected:
                     raise ValueError("Conteúdo do evento de Viagem adulterado")
                 drawn.append(card_id)

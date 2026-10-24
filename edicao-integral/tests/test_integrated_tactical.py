@@ -200,10 +200,10 @@ class IntegratedTacticalTests(unittest.TestCase):
         event=game.travel.events[-1]
         game.travel.apply(event['event_id'],game.travel_context)
         ambush_event=game.reveal_travel()
-        self.assertEqual(game.cistern.clock,0)
+        self.assertEqual(game.cistern.clock,2)  # Os dois trechos foram pagos ao avançar.
         self.assertTrue(ambush_event['ambush'])
         ambush=game.start_travel_ambush()
-        self.assertEqual(game.cistern.clock,2)  # Os dois trechos foram iniciados.
+        self.assertEqual(game.cistern.clock,2)  # M1 só paga rodadas reais.
         ambush.begin_round(); ambush.end_round()
         ambush.positions[hero]=1; ambush.enemies.clear(); ambush.finish()
         game.finish_travel_ambush(); game.enter_expedition()
@@ -232,11 +232,11 @@ class IntegratedTacticalTests(unittest.TestCase):
     def test_m1_shares_persistent_horde_shoe_and_each_night_segment_adds_fatigue(self):
         hero = STARTERS[0]
         game = IntegratedCampaign.new(119, STARTERS[:2], LINK_IDS[:2])
+        game.cistern.clock = 7
         game.start_travel(
             "Mercado", [hero], "short", deck=["ZC-VIA-0005"],
             context=TravelContext(food=0, water=0, materials=0,
                                   fatigue={hero: 0}))
-        game.cistern.clock = 7
         ambush = game.start_travel_ambush()
         self.assertEqual(game.cistern.clock, 8)
         ambush.begin_round()  # Segmento 9: uma fadiga e uma Horda noturna.
@@ -353,8 +353,9 @@ class IntegratedTacticalTests(unittest.TestCase):
         tactical.chapter.clock = 9
         with self.assertRaises(ValueError):
             game.return_expedition()  # Route payment ends at 10; M1 cannot start.
-        with self.assertRaises(ValueError):
-            game.start_travel_ambush()
+        ambush = game.start_travel_ambush()  # Clock 10 permits only withdrawal.
+        with self.assertRaisesRegex(ValueError, "Relógio excedido na Emboscada"):
+            ambush.begin_round()
         game.emergency_return()  # Can still choose the canonical emergency.
         self.assertIsNone(game.return_travel)
         self.assertEqual(next(p for p in game.cistern.people if p["id"] == hero)["fatigue"], 3)
@@ -510,7 +511,8 @@ class IntegratedTacticalTests(unittest.TestCase):
         game = IntegratedCampaign.new(139, STARTERS[:2], LINK_IDS[:2])
         game.cistern.clock = 6
         game.start_travel(
-            "Mercado", [hero], "short", deck=["ZC-VIA-0001", "ZC-VIA-0005"],
+            "Mercado", [hero], "short", deck=["ZC-VIA-0001", "ZC-VIA-0005",
+                                              "ZC-VIA-0001"],
             context=TravelContext(food=0, water=0, materials=0,
                                   fatigue={hero: 0}))
         game.resolve_travel_choice(game.travel.events[-1]["event_id"], None)
@@ -520,7 +522,7 @@ class IntegratedTacticalTests(unittest.TestCase):
         tactical.enemies.clear()
         tactical.end_round()
         with self.assertRaises(ValueError):
-            game.return_expedition()  # Finish reaches segment 9.
+            game.return_expedition()  # Return segment 9 begins M1.
         self.assertEqual(tactical.fatigue[hero], 1)
         ambush = game.start_travel_ambush()
         self.assertEqual(ambush.fatigue[hero], 1)
@@ -874,6 +876,130 @@ class IntegratedTacticalTests(unittest.TestCase):
         tactical.positions[hero] = 7
         with self.assertRaises(ValueError):
             tactical.rescue(hero, "ZC-MOR-0002", "welcome")
+
+
+    def test_paid_return_segment_nine_creates_extra_without_clock_or_fatigue_double(self):
+        hero = STARTERS[0]
+        game = IntegratedCampaign.new(170, STARTERS[:2], LINK_IDS[:2])
+        game.cistern.clock = 6
+        game.start_travel(
+            "Mercado", [hero], "short",
+            deck=["ZC-VIA-0001", "ZC-VIA-0001", "ZC-VIA-0002"],
+            context=TravelContext(food=0, water=1, materials=0,
+                                  fatigue={hero: 0}))
+        self.assertEqual(game.cistern.clock, 7)
+        game.resolve_travel_choice(game.travel.events[-1]["event_id"], None)
+        tactical = game.enter_expedition()
+        tactical.positions[hero] = 1
+        tactical.enemies.clear()
+        tactical.end_round()  # clock 8
+        with self.assertRaisesRegex(ValueError, "Escolha da carta de retorno"):
+            game.return_expedition()  # road segment reaches 9, then extra draw
+        self.assertEqual(game.cistern.clock, 9)
+        self.assertEqual(game.return_context.fatigue[hero], 1)
+        self.assertEqual(tactical.fatigue[hero], 1)
+        extra = game.return_travel.events[-1]
+        self.assertTrue(extra["extra"])
+        self.assertEqual(extra["segment_event_id"], "travel-return-001")
+        before = game.cistern.clock
+        with tempfile.TemporaryDirectory() as directory:
+            path = Path(directory) / "campaign.json"
+            game.save(path)
+            game = IntegratedCampaign.load(path)
+        self.assertEqual(game.cistern.clock, before)
+        self.assertTrue(game.return_travel.events[-1]["extra"])
+        game.resolve_travel_choice(extra["event_id"], "water")
+        game.return_expedition()
+        self.assertIsNone(game.return_travel)
+        self.assertEqual(game.cistern.clock, 9)
+
+    def test_night_extra_ambush_at_clock_ten_can_only_end_in_emergency(self):
+        hero = STARTERS[0]
+        game = IntegratedCampaign.new(171, STARTERS[:2], LINK_IDS[:2])
+        game.cistern.clock = 7
+        game.start_travel(
+            "Mercado", [hero], "short",
+            deck=["ZC-VIA-0001", "ZC-VIA-0001", "ZC-VIA-0005"],
+            context=TravelContext(food=0, water=0, materials=0,
+                                  fatigue={hero: 0}))
+        game.resolve_travel_choice(game.travel.events[-1]["event_id"], None)
+        tactical = game.enter_expedition()
+        tactical.positions[hero] = 1
+        tactical.enemies.clear()
+        tactical.end_round()  # local clock reaches 9
+        with self.assertRaises(ValueError):
+            game.return_expedition()  # return road reaches 10; extra M1 pending
+        extra = game.return_travel.events[-1]
+        self.assertTrue(extra["extra"])
+        self.assertEqual(game.cistern.clock, 10)
+        ambush = game.start_travel_ambush()
+        with self.assertRaisesRegex(ValueError, "Relógio excedido"):
+            ambush.begin_round()
+        game.emergency_return()
+        self.assertIsNone(game.return_travel)
+        self.assertIsNone(game.tactical)
+        self.assertTrue(any(item.get("event") == "emergency"
+                            for item in game.rewards) is False)
+
+
+    def test_trip_preflight_rejects_no_time_for_local_entry_without_reserving_stock(self):
+        hero = STARTERS[0]
+        for clock, route in ((9, "short"), (8, "long")):
+            with self.subTest(clock=clock, route=route):
+                game = IntegratedCampaign.new(180 + clock, STARTERS[:2], LINK_IDS[:2])
+                game.cistern.clock = clock
+                food = game.cistern.food.copy()
+                water = game.cistern.water.copy()
+                materials = game.cistern.materials
+                shoe = game.travel_shoe.copy()
+                with self.assertRaisesRegex(ValueError, "tempo para ida e entrada"):
+                    game.start_travel(
+                        "Mercado", [hero], route,
+                        context=TravelContext(food=0, water=0, materials=0,
+                                              fatigue={hero: 0}))
+                self.assertEqual(game.cistern.clock, clock)
+                self.assertEqual(game.cistern.food, food)
+                self.assertEqual(game.cistern.water, water)
+                self.assertEqual(game.cistern.materials, materials)
+                self.assertEqual(game.travel_shoe, shoe)
+                self.assertIsNone(game.travel)
+
+    def test_successful_extra_night_ambush_can_retreat_if_long_return_cannot_finish(self):
+        hero = STARTERS[0]
+        game = IntegratedCampaign.new(181, STARTERS[:2], LINK_IDS[:2])
+        game.cistern.clock = 5
+        game.start_travel(
+            "Mercado", [hero], "long",
+            deck=["ZC-VIA-0001", "ZC-VIA-0001", "ZC-VIA-0001",
+                  "ZC-VIA-0005", "ZC-VIA-0001", "ZC-VIA-0001"],
+            context=TravelContext(food=0, water=0, materials=0,
+                                  fatigue={hero: 0}))
+        game.resolve_travel_choice(game.travel.events[-1]["event_id"], None)
+        game.resolve_travel_choice(game.reveal_travel()["event_id"], None)
+        tactical = game.enter_expedition()
+        tactical.positions[hero] = tactical.map["exit"]
+        tactical.enemies.clear()
+        tactical.end_round()
+        with self.assertRaisesRegex(ValueError, "M1"):
+            game.return_expedition()
+        extra = game.return_travel.events[-1]
+        self.assertTrue(extra["extra"])
+        self.assertTrue(extra["ambush"])
+        ambush = game.start_travel_ambush()
+        ambush.begin_round()  # segment 10; M1 minimum one real round
+        ambush.enemies.clear()
+        ambush.positions[hero] = 1
+        ambush.end_round()
+        ambush.finish()
+        game.finish_travel_ambush()
+        with self.assertRaisesRegex(ValueError, "Relógio sem segmento"):
+            game.return_expedition()
+        game.emergency_return()
+        self.assertIsNone(game.return_travel)
+        self.assertIsNone(game.tactical)
+        person = next(p for p in game.cistern.people if p["id"] == hero)
+        self.assertEqual(person["fatigue"], 3)
+        self.assertEqual(person["wounds"], 1)
 
 
 if __name__ == "__main__":

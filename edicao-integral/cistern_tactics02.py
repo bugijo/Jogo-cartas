@@ -589,9 +589,15 @@ class Tactical02:
                 and not any(e['zone'] == self.map['exit'] for e in self.enemies)
                 and not self.failed and not self.finished)
 
-    def finish(self, by_van: bool = False) -> None:
+    def finish(self, by_van: bool = False,
+               travel_segments_paid: int = 0) -> None:
         if not self.can_exit(): raise ValueError('Saída não liberada')
-        if self.chapter.clock + self.travel_cost > 10:
+        if (not isinstance(travel_segments_paid, int)
+                or isinstance(travel_segments_paid, bool)
+                or not 0 <= travel_segments_paid <= self.travel_cost):
+            raise ValueError('Trechos pagos do retorno inválidos')
+        unpaid_travel = self.travel_cost - travel_segments_paid
+        if self.chapter.clock + unpaid_travel > 10:
             raise ValueError('Retorno excede o relógio; use emergency')
         if by_van:
             if self.destination != 'posto' or self.van_state != 'operational':
@@ -605,13 +611,24 @@ class Tactical02:
                 self.log.append({'event': 'fuel_spent', 'id': item['id'], 'hero': hero})
             self.van_returned = True
         clock_before_return = self.chapter.clock
-        self.chapter.spend_segments(self.travel_cost)
-        self._night_fatigue(clock_before_return, self.chapter.clock)
+        if unpaid_travel:
+            self.chapter.spend_segments(unpaid_travel)
+            self._night_fatigue(clock_before_return, self.chapter.clock)
         self.finished = True
         self.log.append({'event': 'return', 'clock': self.chapter.clock})
 
     def emergency(self) -> None:
-        if self.finished: raise ValueError('Expedição já encerrada')
+        self._emergency(allow_finished=False, event_name='emergency')
+
+    def emergency_after_return(self) -> None:
+        """Retira o grupo quando uma M1 segura esgota o relógio da volta."""
+        self._emergency(allow_finished=True, event_name='emergency_return_loss')
+
+    def _emergency(self, allow_finished: bool, event_name: str) -> None:
+        if self.finished and not allow_finished:
+            raise ValueError('Expedição já encerrada')
+        if self.failed:
+            raise ValueError('Expedição já está perdida')
         people = {p['id']: p for p in self.chapter.people}
         for hero, parts in self.carried.items():
             for part in parts:
@@ -634,7 +651,7 @@ class Tactical02:
         self.carried = {hero: [] for hero in self.team}
         self.supply_cargo = {hero: [] for hero in self.team}
         self.search_cargo = {hero: [] for hero in self.team}
-        self.log.append({'event': 'emergency', 'clock': self.chapter.clock})
+        self.log.append({'event': event_name, 'clock': self.chapter.clock})
 
     def lose_cargo_after_return_ambush(self) -> None:
         """Aplica perda de carga quando uma emboscada da estrada força retirada.

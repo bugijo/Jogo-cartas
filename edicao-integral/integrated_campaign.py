@@ -192,6 +192,10 @@ class IntegratedCampaign:
         if (not team or len(set(team)) != len(team)
                 or any(hero not in self.cistern.founders for hero in team)):
             raise ValueError("Equipe de viagem inválida")
+        route_segments = 1 if route == "short" else 2 if route == "long" else 0
+        if (not route_segments
+                or self.cistern.clock + route_segments + 1 > 10):
+            raise ValueError("Sem tempo para ida e entrada no destino")
         if context is None or set(context.fatigue) != set(team):
             raise ValueError("Contexto de carga da viagem é obrigatório")
         people = {person["id"]: person for person in self.cistern.people}
@@ -235,13 +239,14 @@ class IntegratedCampaign:
             shoe = (TravelShoe02.from_snapshot(self.travel_shoe)
                     if self.travel_shoe else TravelShoe02.new(self.seed + 6801))
             trip = Travel02.from_deck(
-                shoe.prepare_trip(2 * (1 if route == "short" else 2)), route)
+                shoe.prepare_trip(2 * (1 if route == "short" else 2) + 2), route)
             self.travel_shoe = shoe.snapshot()
             self.travel_uses_shoe = True
         else:
             trip = Travel02.from_deck(deck, route)
             self.travel_uses_shoe = False
-        trip.reveal("outbound")
+        if self.cistern.clock >= 10:
+            raise ValueError("Sem segmento para iniciar a Viagem")
         # O contexto representa carga física da equipe. Reserve-a agora para
         # que a estrada não possa gastar o mesmo estoque duas vezes.
         self.cistern.food = [lot for i, lot in enumerate(self.cistern.food)
@@ -259,12 +264,47 @@ class IntegratedCampaign:
         self.travel_request = {"destination": destination, "team": list(team),
                                "route": route,
                                "equipment": deepcopy(loadout)}
+        self.travel_segments_paid = 0
+        self._advance_road_segment("outbound")
         return trip
 
     def reveal_travel(self) -> dict:
         if self.travel is None:
             raise ValueError("Nenhuma viagem preparada")
-        return self.travel.reveal("outbound")
+        return self._advance_road_segment("outbound")
+
+    def _advance_road_segment(self, direction: str) -> dict:
+        """Paga exatamente um trecho, aplica fadiga e revela sua ocorrência.
+
+        Se o trecho cruza para o relógio 9 ou 10, a próxima chamada revela a
+        ocorrência extra sem cobrar outro segmento.
+        """
+        trip = self.travel if direction == "outbound" else self.return_travel
+        context = self.travel_context if direction == "outbound" else self.return_context
+        if trip is None or context is None:
+            raise ValueError("Viagem ou carga de estrada ausente")
+        if trip.pending_resolution is not None or trip.pending_choices or trip.pending_ambush:
+            raise ValueError("Resolva a ocorrência de estrada pendente")
+        if trip.requires_night_extra(direction):
+            return trip.reveal_night_extra(direction)
+        if trip.remaining(direction) <= 0:
+            raise ValueError("Não há outro trecho nesta direção")
+        if self.cistern.clock >= 10:
+            raise ValueError("Relógio sem segmento para continuar a Viagem")
+        self.cistern.spend_segments(1)
+        if self.cistern.clock >= 9:
+            for hero in context.fatigue:
+                context.fatigue[hero] = min(3, context.fatigue[hero] + 1)
+                people = {person["id"]: person for person in self.cistern.people}
+                if hero in people:
+                    people[hero]["fatigue"] = context.fatigue[hero]
+                if direction == "return" and self.tactical is not None:
+                    self.tactical.fatigue[hero] = context.fatigue[hero]
+        if direction == "outbound":
+            self.travel_segments_paid += 1
+        event = trip.reveal(direction, context,
+                            clock_segment=self.cistern.clock)
+        return event
 
     @staticmethod
     def _select_physical_lots(stock: list[int], requested: int) -> tuple[list[int] | None, list[int]]:
@@ -308,24 +348,18 @@ class IntegratedCampaign:
                 or (not returning and self.travel_request is None)
                 or (returning and self.tactical is None)):
             raise ValueError("Nenhuma Emboscada pendente")
+        event = next((entry for entry in trip.events
+                      if entry.get("event_id") == trip.pending_ambush), None)
+        if not event or not isinstance(event.get("clock_segment"), int):
+            raise ValueError("Emboscada sem trecho de estrada pago")
+        if self.cistern.clock < event["clock_segment"]:
+            raise ValueError("Emboscada antecede o trecho de estrada")
         if returning:
-            if self.cistern.clock + 1 > 10:
-                raise ValueError("Sem segmento para resolver a Emboscada de retorno")
             team = self.tactical.team
             equipment = self.tactical.equipment
         else:
-            unpaid = trip.outbound_segments - self.travel_segments_paid
-            if unpaid < 1 or self.cistern.clock + unpaid + 1 > 10:
-                raise ValueError("Sem segmento reservado para o trecho e a Emboscada")
-            old_clock = self.cistern.clock
-            self.cistern.spend_segments(unpaid)
-            self.travel_segments_paid += unpaid
             team = self.travel_request["team"]
             equipment = self.travel_request["equipment"]
-            for segment in range(old_clock + 1, self.cistern.clock + 1):
-                if segment >= 9:
-                    for hero in team:
-                        context.fatigue[hero] = min(3, context.fatigue[hero] + 1)
         people = {person["id"]: person for person in self.cistern.people}
         self.ambush = Ambush02.start(
             team, self.cistern.clock,
@@ -334,7 +368,8 @@ class IntegratedCampaign:
             fatigue=context.fatigue,
             ap_penalty={hero: int(people[hero]["hungry"])
                         + int(people[hero]["thirsty"])
-                        for hero in team})
+                        for hero in team},
+            allow_emergency_at_limit=self.cistern.clock == 10)
         return self.ambush
 
     def finish_travel_ambush(self) -> None:
@@ -368,7 +403,10 @@ class IntegratedCampaign:
     def enter_expedition(self) -> Tactical02:
         if self.travel is None or self.travel_request is None:
             raise ValueError("Prepare a viagem antes de entrar no mapa")
-        if (self.travel.remaining("outbound") or self.travel.pending_choices
+        if (self.travel.remaining("outbound")
+                or self.travel_segments_paid != self.travel.leg_size
+                or self.travel.requires_night_extra("outbound")
+                or self.travel.pending_choices
                 or self.travel.pending_resolution is not None
                 or self.travel.pending_ambush is not None or self.ambush is not None):
             raise ValueError("Viagem ainda não foi resolvida")
@@ -398,8 +436,8 @@ class IntegratedCampaign:
         context = self.return_context
         if trip.pending_resolution is not None or trip.pending_ambush is not None:
             raise ValueError("Resolva a carta de retorno pendente")
-        while trip.remaining("return"):
-            event = trip.reveal("return", context)
+        while trip.remaining("return") or trip.requires_night_extra("return"):
+            event = self._advance_road_segment("return")
             if event.get("skipped"):
                 continue
             if event.get("ambush"):
@@ -433,7 +471,9 @@ class IntegratedCampaign:
         if self.tactical is not None and not self.tactical.finished:
             # O mapa local terminou; isso persiste mesmo enquanto a estrada
             # de retorno exige uma escolha ou uma Emboscada adicional.
-            self.tactical.finish(by_van=by_van)
+            paid = (self.return_travel.leg_size
+                    if self.return_travel is not None else 0)
+            self.tactical.finish(by_van=by_van, travel_segments_paid=paid)
         if (self.tactical is not None and self.return_context is not None
                 and self.return_travel is not None
                 and self.return_travel.return_segments == 0):
@@ -465,7 +505,9 @@ class IntegratedCampaign:
             raise ValueError("Nenhuma expedição ativa")
         tactical = self.tactical
         if not tactical.finished:
-            tactical.finish(by_van=by_van)
+            paid = (self.return_travel.return_segments
+                    if self.return_travel is not None else 0)
+            tactical.finish(by_van=by_van, travel_segments_paid=paid)
         proof = tactical.delivery_proof()
         keys = [
             (receipt["group_id"] if receipt["event"] == "rescue" else
@@ -685,6 +727,30 @@ class IntegratedCampaign:
             return
         if self.tactical is None:
             raise ValueError("Nenhuma expedição ativa")
+        if self.tactical.finished:
+            trip = self.return_travel
+            if (trip is None or self.cistern.clock < 10
+                    or not (trip.remaining("return")
+                            or trip.requires_night_extra("return"))
+                    or trip.pending_resolution is not None
+                    or trip.pending_choices or trip.pending_ambush):
+                raise ValueError("Retirada rodoviária indisponível neste estado")
+            self._record_lost_tactical_cargo(self.tactical)
+            self.tactical.emergency_after_return()
+            self._settle_travel_shoe(trip)
+            self.horde_deck = self.tactical.horde_deck
+            self.site_states[self.tactical.destination] = self.tactical.site_snapshot()
+            if self.return_context is not None:
+                for hero in self.tactical.team:
+                    self.return_context.fatigue[hero] = self.tactical.fatigue[hero]
+                self._apply_travel_arrival(
+                    self._travel_arrival_delta(self.return_context))
+            self.return_travel = None
+            self.return_context = None
+            self.return_context_initial = None
+            self.return_settlement_delta = None
+            self.tactical = None
+            return
         self._record_lost_tactical_cargo(self.tactical)
         self.tactical.emergency()
         if self.return_travel is not None:
