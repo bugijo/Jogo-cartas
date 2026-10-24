@@ -24,6 +24,9 @@
   idempotente. Não concede recursos nem substitui a resolução tática.
 - Testes focados: 5 aprovados. Suíte experimental completa: 129 aprovados,
   0 falhas. `compileall` e `git diff --check`: aprovados.
+- Suíte física/legada repetida após a unidade: 51 aprovados, 1 ignorado,
+  0 falhas em 169,824 s; permaneceu apenas o `ResourceWarning` conhecido em
+  `tests/test_boards06.py:64`.
 - O próximo bloqueio de P0 é integrar esses recibos à expedição sem escolher
   efeitos implicitamente; P1/P2/P3 continuam bloqueadas.
 
