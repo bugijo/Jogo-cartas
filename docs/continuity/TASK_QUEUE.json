@@ -67,7 +67,7 @@
         "edicao-integral/tests/test_ambush02.py"
       ],
       "status": "em_execucao",
-      "commit": "pendente neste commit",
+      "commit": "2e7c725",
       "blocker": "Entrada de ida e M1 estão integradas e cobertas; retorno, efeitos no estoque real, promessas e fila final ainda incompletos"
     },
     {
