@@ -67,7 +67,7 @@
         "edicao-integral/tests/test_ambush02.py"
       ],
       "status": "em_execucao",
-      "commit": "pendente neste commit",
+      "commit": "9aeb935",
       "blocker": "Ida, M1 e retorno básico estão cobertos; Emboscada de retorno, cão/Ponte persistentes, promessas e fila final ainda incompletos"
     },
     {
@@ -88,7 +88,7 @@
         "round-trip save/load"
       ],
       "status": "bloqueada",
-      "commit": "pendente neste commit",
+      "commit": "7787e48",
       "blocker": "Certificado agora exige recibos legais; migração de personagens, recursos e World ainda não implementada"
     },
     {
