@@ -11,7 +11,7 @@ from player_policies02 import PROFILES, ProgrammedPlayer, observe_campaign, obse
 class Policies02Tests(unittest.TestCase):
     def test_observations_hide_unrevealed_deck_order(self):
         game = IntegratedCampaign.new(112, STARTERS[:2], LINK_IDS[:2])
-        game.start_expedition('Mercado', [STARTERS[0]], 'long')
+        game._start_tactical_fixture('Mercado', [STARTERS[0]], 'long')
         tactical = game.tactical
         campaign_view = observe_campaign(game)
         tactical_view = observe_tactical(tactical)
@@ -40,7 +40,7 @@ class Policies02Tests(unittest.TestCase):
                     decision = player.choose_expedition(game)
                     self.assertEqual(decision, ProgrammedPlayer(name, 998).choose_expedition(game))
                     self.assertTrue(set(decision.args[1]).issubset(set(game.founders)))
-                    game.start_expedition(*decision.args)
+                    game._start_tactical_fixture(*decision.args)
 
     def test_policy_excludes_incapacitated_and_uses_memory(self):
         game = IntegratedCampaign.new(113, STARTERS[:3], LINK_IDS[:3])
@@ -53,7 +53,7 @@ class Policies02Tests(unittest.TestCase):
 
     def test_local_choice_is_executable_without_hidden_information(self):
         game = IntegratedCampaign.new(114, STARTERS[:2], LINK_IDS[:2])
-        tactical = game.start_expedition('Mercado', [STARTERS[0]], 'long')
+        tactical = game._start_tactical_fixture('Mercado', [STARTERS[0]], 'long')
         player = ProgrammedPlayer('Iniciante', 9)
         action = player.choose_local(tactical)
         self.assertIn(action.kind, {'move', 'open_door', 'end_round', 'return'})

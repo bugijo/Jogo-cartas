@@ -152,6 +152,16 @@ class IntegratedCampaign:
                          travel_segments_paid: int = 0,
                          starting_fatigue: dict[str, int] | None = None,
                          _prepared_travel: bool = False) -> Tactical02:
+        """A abertura pública do mapa sempre exige a sequência de Viagem."""
+        raise ValueError("Use start_travel → resolva as ocorrências → enter_expedition")
+
+    def _start_tactical_fixture(self, destination: str, team: list[str],
+                         route: str = "short",
+                         equipment: dict[str, list[str]] | None = None,
+                         travel_segments_paid: int = 0,
+                         starting_fatigue: dict[str, int] | None = None,
+                         _prepared_travel: bool = False) -> Tactical02:
+        """Abertura interna do mapa; chamadas de teste não provam uma Viagem legal."""
         self._require_running()
         if (self.world is not None or self.tactical is not None
                 or (self.travel is not None and not _prepared_travel)
@@ -411,7 +421,7 @@ class IntegratedCampaign:
                 or self.travel.pending_ambush is not None or self.ambush is not None):
             raise ValueError("Viagem ainda não foi resolvida")
         request = self.travel_request
-        tactical = self.start_expedition(
+        tactical = self._start_tactical_fixture(
             request["destination"], request["team"], request["route"],
             request["equipment"], self.travel_segments_paid,
             starting_fatigue=self.travel_context.fatigue,
@@ -950,6 +960,7 @@ class IntegratedCampaign:
         campaign = cls(schema=1, **payload)
         if campaign.status not in cls.STATUSES:
             raise ValueError("Status de campanha desconhecido")
+        campaign.cistern.validate_snapshot()
         return campaign
 
 

@@ -124,6 +124,32 @@ class IntegratedTacticalTests(unittest.TestCase):
         self.assertEqual(game.enter_expedition().destination, "mercado")
         self.assertEqual(game.cistern.clock, 2)  # trecho + primeira rodada.
 
+    def test_legal_workshop_expedition_delivers_connection_only_after_return(self):
+        hero=STARTERS[0]
+        game=IntegratedCampaign.new(14,STARTERS[:2],LINK_IDS[:2])
+        game.meal();game.next_cistern_day()  # Dia 2: oficina e evento de pressão aplicados.
+        trip=game.start_travel(
+            'Oficina',[hero],'short',
+            context=TravelContext(food=0,water=0,materials=0,fatigue={hero:0}))
+        self.assertTrue(game.travel_uses_shoe)
+        self.assertEqual(trip.events[-1]['card_id'],'ZC-VIA-0001')
+        game.resolve_travel_choice(trip.events[-1]['event_id'],None)
+        tactical=game.enter_expedition()
+        self.assertEqual(game.cistern.parts,{})
+        tactical.move(hero,2);tactical.move(hero,3)
+        tactical.end_round();tactical.begin_round()
+        tactical.open_door(hero,7,'Pé de cabra');tactical.move(hero,7)
+        tactical.end_round();tactical.begin_round()
+        tactical.pickup_part(hero,'Conexões')
+        self.assertEqual(game.cistern.parts,{})
+        tactical.end_round();tactical.begin_round()
+        tactical.move(hero,3);tactical.move(hero,2);tactical.move(hero,1)
+        tactical.end_round()
+        receipts=game.return_expedition()
+        self.assertEqual([receipt['part'] for receipt in receipts],['Conexões'])
+        self.assertEqual(game.cistern.parts,{'Conexões':2})
+        self.assertEqual(game.cistern.clock,6)
+
     def test_outbound_travel_fatigue_choice_persists_to_local_encounter(self):
         hero = STARTERS[0]
         game = IntegratedCampaign.new(123, STARTERS[:2], LINK_IDS[:2])
@@ -583,7 +609,7 @@ class IntegratedTacticalTests(unittest.TestCase):
     def test_equipment_pickup_is_delivered_and_persists_in_loadout(self):
         hero = STARTERS[0]
         game = IntegratedCampaign.new(132, STARTERS[:2], LINK_IDS[:2])
-        tactical = game.start_expedition("Mercado", [hero])
+        tactical = game._start_tactical_fixture("Mercado", [hero])
         tactical.positions[hero] = 7
         receipt = tactical.pickup_equipment(hero, "Faca", 1)
         self.assertEqual(receipt["id"], "mercado:Faca:1")
@@ -595,13 +621,13 @@ class IntegratedTacticalTests(unittest.TestCase):
         self.assertIn("Faca", game.equipment_inventory[hero])
         game.meal()
         game.next_cistern_day()
-        again = game.start_expedition("Mercado", [hero])
+        again = game._start_tactical_fixture("Mercado", [hero])
         self.assertIn("Faca", again.equipment[hero])
 
     def test_equipment_lost_in_emergency_is_not_delivered_or_replenished(self):
         hero = STARTERS[0]
         game = IntegratedCampaign.new(133, STARTERS[:2], LINK_IDS[:2])
-        tactical = game.start_expedition("Mercado", [hero])
+        tactical = game._start_tactical_fixture("Mercado", [hero])
         tactical.positions[hero] = 7
         tactical.pickup_equipment(hero, "Faca", 1)
         game.emergency_return()
@@ -663,10 +689,10 @@ class IntegratedTacticalTests(unittest.TestCase):
         game.resolve_travel_choice(event_id, "help")
         game.return_expedition()
         self.assertEqual(game.cistern.morale, 5)
-    def test_legal_trip_delivers_once_and_survives_save(self):
+    def test_fixture_tactical_delivers_once_and_survives_save(self):
         hero = STARTERS[0]
         game = IntegratedCampaign.new(103, STARTERS[:2], LINK_IDS[:2])
-        tactical = game.start_expedition("Oficina", [hero], "long")
+        tactical = game._start_tactical_fixture("Oficina", [hero], "long")
         tactical.move(hero, 2); tactical.move(hero, 3)
         tactical.end_round(); tactical.begin_round()
         tactical.open_door(hero, 7, "Pé de cabra"); tactical.move(hero, 7)
@@ -687,12 +713,12 @@ class IntegratedTacticalTests(unittest.TestCase):
         self.assertEqual(game.cistern.parts["Conexões"], 1)
         self.assertTrue(game.battery_available)
         with self.assertRaises(ValueError): game.return_expedition()
-        with self.assertRaises(ValueError): game.start_expedition("Estação", [hero])
+        with self.assertRaises(ValueError): game._start_tactical_fixture("Estação", [hero])
 
     def test_emergency_does_not_deliver_part(self):
         hero = STARTERS[0]
         game = IntegratedCampaign.new(103, STARTERS[:2], LINK_IDS[:2])
-        tactical = game.start_expedition("Oficina", [hero], "long")
+        tactical = game._start_tactical_fixture("Oficina", [hero], "long")
         tactical.move(hero, 2); tactical.move(hero, 3)
         tactical.end_round(); tactical.begin_round()
         tactical.open_door(hero, 7, "Pé de cabra"); tactical.move(hero, 7)
@@ -701,10 +727,10 @@ class IntegratedTacticalTests(unittest.TestCase):
         game.emergency_return()
         self.assertEqual(game.cistern.parts, {})
 
-    def test_return_without_loot_is_legal(self):
+    def test_fixture_return_without_loot(self):
         hero = STARTERS[0]
         game = IntegratedCampaign.new(104, STARTERS[:2], LINK_IDS[:2])
-        tactical = game.start_expedition("Mercado", [hero], "long")
+        tactical = game._start_tactical_fixture("Mercado", [hero], "long")
         tactical.end_round()
         self.assertEqual(game.return_expedition(), [])
         self.assertIsNone(game.tactical)
@@ -714,13 +740,13 @@ class IntegratedTacticalTests(unittest.TestCase):
         game = IntegratedCampaign.new(104, STARTERS[:2], LINK_IDS[:2])
         game.meal()
         with self.assertRaises(ValueError):
-            game.start_expedition("Mercado", [hero])
+            game._start_tactical_fixture("Mercado", [hero])
 
     def test_supply_requires_pickup_and_returns_as_four_portion_cards(self):
         hero = STARTERS[0]
         game = IntegratedCampaign.new(105, STARTERS[:2], LINK_IDS[:2])
         initial_food = sum(game.cistern.food)
-        tactical = game.start_expedition("Oficina", [hero], "long")
+        tactical = game._start_tactical_fixture("Oficina", [hero], "long")
         tactical.move(hero, 2); tactical.move(hero, 3)
         tactical.end_round(); tactical.begin_round()
         tactical.open_door(hero, 7, "Pé de cabra"); tactical.move(hero, 7)
@@ -737,7 +763,7 @@ class IntegratedTacticalTests(unittest.TestCase):
     def test_supply_lost_in_emergency_does_not_respawn(self):
         hero = STARTERS[0]
         game = IntegratedCampaign.new(106, STARTERS[:2], LINK_IDS[:2])
-        tactical = game.start_expedition("Oficina", [hero], "long")
+        tactical = game._start_tactical_fixture("Oficina", [hero], "long")
         tactical.move(hero, 2); tactical.move(hero, 3)
         tactical.end_round(); tactical.begin_round()
         tactical.open_door(hero, 7, "Pé de cabra"); tactical.move(hero, 7)
@@ -746,7 +772,7 @@ class IntegratedTacticalTests(unittest.TestCase):
         game.emergency_return()
         self.assertIn("oficina:Conserva:1", game.lost_objectives)
         game.meal(); game.next_cistern_day()
-        revisit = game.start_expedition("Oficina", [hero], "long")
+        revisit = game._start_tactical_fixture("Oficina", [hero], "long")
         revisit.positions[hero] = 7  # Isola a persistência do lote perdido.
         with self.assertRaises(ValueError):
             revisit.pickup_supply(hero, "Conserva", 1)
@@ -755,7 +781,7 @@ class IntegratedTacticalTests(unittest.TestCase):
         hero = STARTERS[0]
         game = IntegratedCampaign.new(107, STARTERS[:2], LINK_IDS[:2])
         with self.assertRaises(ValueError):
-            game.start_expedition("Posto", [hero], equipment={hero: ["Pé de cabra", "Bateria"]})
+            game._start_tactical_fixture("Posto", [hero], equipment={hero: ["Pé de cabra", "Bateria"]})
         self.assertEqual(game.cistern.clock, 0)
 
     def test_spent_posto_fuel_cannot_reappear(self):
@@ -763,7 +789,7 @@ class IntegratedTacticalTests(unittest.TestCase):
         hero = STARTERS[0]
         game = IntegratedCampaign.new(108, STARTERS[:2], LINK_IDS[:2])
         game.battery_available = True
-        tactical = game.start_expedition(
+        tactical = game._start_tactical_fixture(
             "Posto", [hero], equipment={hero: ["Pé de cabra", "Bateria"]})
         tactical.positions[hero] = 7
         tactical.inspect_van(hero)
@@ -780,10 +806,10 @@ class IntegratedTacticalTests(unittest.TestCase):
         self.assertIn("posto:Combustível:1", game.lost_objectives)
         self.assertIn("posto:Combustível:2", game.lost_objectives)
 
-    def test_workshop_battery_then_posto_van_uses_legal_map_actions(self):
+    def test_fixture_workshop_then_posto_uses_legal_map_actions(self):
         h1, h2 = STARTERS[:2]
         game = IntegratedCampaign.new(109, STARTERS[:2], LINK_IDS[:2])
-        workshop = game.start_expedition("Oficina", [h1], "long")
+        workshop = game._start_tactical_fixture("Oficina", [h1], "long")
         workshop.move(h1, 2); workshop.move(h1, 3)
         workshop.end_round(); workshop.begin_round()
         workshop.open_door(h1, 7, "Pé de cabra"); workshop.move(h1, 7)
@@ -795,7 +821,7 @@ class IntegratedTacticalTests(unittest.TestCase):
         self.assertTrue(game.battery_available)
         game.meal(); game.next_cistern_day()
 
-        posto = game.start_expedition("Posto", [h1, h2], "long",
+        posto = game._start_tactical_fixture("Posto", [h1, h2], "long",
             equipment={h1: ["Pé de cabra", "Bateria"], h2: ["Pé de cabra"]})
         for hero in (h1, h2):
             posto.move(hero, 2); posto.move(hero, 3)
@@ -817,24 +843,24 @@ class IntegratedTacticalTests(unittest.TestCase):
         self.assertFalse(game.battery_available)
         self.assertEqual(len(game.lost_objectives), 4)
         game.meal(); game.next_cistern_day()
-        revisit = game.start_expedition("Posto", [h1], "long")
+        revisit = game._start_tactical_fixture("Posto", [h1], "long")
         self.assertEqual(revisit.van_state, "away")
 
     def test_revisit_keeps_open_door_and_does_not_repeat_initial_spawn(self):
         hero = STARTERS[0]
         game = IntegratedCampaign.new(110, STARTERS[:2], LINK_IDS[:2])
-        first = game.start_expedition("Mercado", [hero])
+        first = game._start_tactical_fixture("Mercado", [hero])
         first.open_door(hero, 5)
         first.end_round(); game.return_expedition()
         game.meal(); game.next_cistern_day()
-        later = game.start_expedition("Mercado", [hero])
+        later = game._start_tactical_fixture("Mercado", [hero])
         self.assertIn([1, 5], later.doors_open)
         self.assertEqual(len(later.enemies), 1)
 
     def test_regional_search_reward_enters_shelter_only_after_return(self):
         hero = STARTERS[0]
         game = IntegratedCampaign.new(111, STARTERS[:2], LINK_IDS[:2])
-        tactical = game.start_expedition("Mercado", [hero], "long")
+        tactical = game._start_tactical_fixture("Mercado", [hero], "long")
         tactical.open_door(hero, 5); tactical.move(hero, 5)
         found = tactical.search(hero)
         self.assertTrue(found['carried'])
@@ -857,7 +883,7 @@ class IntegratedTacticalTests(unittest.TestCase):
     def test_rescue_is_bound_to_map_zone_and_enters_shelter_on_return(self):
         hero = STARTERS[0]
         game = IntegratedCampaign.new(112, STARTERS[:2], LINK_IDS[:2])
-        tactical = game.start_expedition("Mercado", [hero])
+        tactical = game._start_tactical_fixture("Mercado", [hero])
         tactical.positions[hero] = 7  # O1 canônico do Mercado.
         receipt = tactical.rescue(hero, "ZC-MOR-0001", "welcome")
         self.assertEqual(receipt["event"], "rescue")
@@ -870,7 +896,7 @@ class IntegratedTacticalTests(unittest.TestCase):
     def test_rescue_rejects_wrong_map_or_zone(self):
         hero = STARTERS[0]
         game = IntegratedCampaign.new(113, STARTERS[:2], LINK_IDS[:2])
-        tactical = game.start_expedition("Mercado", [hero])
+        tactical = game._start_tactical_fixture("Mercado", [hero])
         with self.assertRaises(ValueError):
             tactical.rescue(hero, "ZC-MOR-0001", "welcome")
         tactical.positions[hero] = 7

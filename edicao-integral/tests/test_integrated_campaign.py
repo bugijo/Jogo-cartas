@@ -23,12 +23,20 @@ class IntegratedCampaignTests(unittest.TestCase):
         self.assertEqual(game.cistern.clock, 0)
         self.assertEqual(game.decisions, {})
 
+    def test_public_expedition_entry_cannot_skip_travel(self):
+        game=IntegratedCampaign.new(40,STARTERS[:2],LINK_IDS[:2])
+        before=(game.cistern.clock,game.tactical,game.travel,game.travel_request.copy()
+                if game.travel_request else None)
+        with self.assertRaisesRegex(ValueError,'start_travel'):
+            game.start_expedition('Mercado',[STARTERS[0]])
+        self.assertEqual((game.cistern.clock,game.tactical,game.travel,game.travel_request),before)
+
     def test_candidate_cannot_drop_state_during_transition(self):
         game = IntegratedCampaign.new(41, STARTERS[:2], LINK_IDS[:2])
         game.cistern.filter_completed = True
         game.cistern.filter_active = True
         game.cistern.day = game.cistern.meal_day = 5
-        with self.assertRaises(NotImplementedError):
+        with self.assertRaises((ValueError,NotImplementedError)):
             game.complete_cistern()
         self.assertIsNone(game.world)
         self.assertEqual(game.rewards, [])
@@ -41,6 +49,20 @@ class IntegratedCampaignTests(unittest.TestCase):
         with self.assertRaises((ValueError, NotImplementedError)):
             game.complete_cistern()
         self.assertEqual(game.cistern.result, 'candidate_victory')
+
+    def test_candidate_flags_in_a_day_one_save_cannot_certify_cistern(self):
+        game=IntegratedCampaign.new(991,STARTERS[:2],LINK_IDS[:2])
+        game.cistern.result='candidate_victory'
+        game.cistern.filter_completed=True
+        game.cistern.filter_active=True
+        game.cistern.parts={'Conexões':1,'Bomba':1,'Membrana':1}
+        game.delivered_objectives=['Oficina:Conexões','Estação:Bomba','Estação:Membrana']
+        with self.assertRaises(ValueError):
+            game.complete_cistern()
+        self.assertEqual(game.cistern.result,'candidate_victory')
+        with tempfile.TemporaryDirectory() as directory:
+            path=Path(directory)/'forged.json';game.save(path)
+            with self.assertRaises(ValueError):IntegratedCampaign.load(path)
 
     def test_save_resume_preserves_partial_campaign(self):
         game = IntegratedCampaign.new(41, STARTERS[:2], LINK_IDS[:2])
@@ -55,9 +77,9 @@ class IntegratedCampaignTests(unittest.TestCase):
         self.assertEqual(resumed.cistern.water, game.cistern.water)
         self.assertIsNone(resumed.world)
 
-    def test_emergency_drops_unique_part_and_next_expedition_delivers_same_piece(self):
+    def test_fixture_emergency_drops_unique_part_and_next_map_delivers_same_piece(self):
         game=IntegratedCampaign.new(41,STARTERS[:2],LINK_IDS[:2])
-        first=game.start_expedition('Oficina',[STARTERS[0]])
+        first=game._start_tactical_fixture('Oficina',[STARTERS[0]])
         first.positions[STARTERS[0]]=7
         first.pickup_part(STARTERS[0],'Conexões')
         game.emergency_return()
@@ -71,7 +93,7 @@ class IntegratedCampaignTests(unittest.TestCase):
             game=IntegratedCampaign.load(path)
         self.assertIn(key,game.lost_objectives)
         game.meal(); game.next_cistern_day()
-        second=game.start_expedition('Oficina',[STARTERS[1]])
+        second=game._start_tactical_fixture('Oficina',[STARTERS[1]])
         second.positions[STARTERS[1]]=7
         second.pickup_part(STARTERS[1],'Conexões')
         with self.assertRaises(ValueError): second.pickup_part(STARTERS[1],'Conexões')
