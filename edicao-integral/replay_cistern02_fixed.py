@@ -37,7 +37,6 @@ def replay(team_size:int) -> dict:
     days=[]
     for day in range(1,6):
         if day>1:game.next_day()
-        if day in (2,4,5):game.raise_pressure(1)
         if day<=3:
             tactical=oracle['tactical'][day-1]
             game.spend_segments(tactical['segments'])
@@ -48,7 +47,7 @@ def replay(team_size:int) -> dict:
             if day==2:game.receive_part('Conexões')
             if day==3:
                 game.receive_part('Bomba');game.receive_part('Membrana')
-                game.queue_siege('Missão dia 3')
+                game.reveal_siege()
                 guards=[p['id'] for p in game.people if p['kind']=='adult'][:3]
                 game.plan_guards(guards)
                 base=2+int(game.dogs>0)+len(guards)
@@ -61,7 +60,10 @@ def replay(team_size:int) -> dict:
             guards=[p['id'] for p in game.people if p['kind']=='adult']
             guards=(guards+[h for h in founders if h not in founders[:2]])[:3]
             game.plan_guards(guards)
-            game.resolve_siege(4,guards,[4]*len(guards),max(0,4-(2+int(game.dogs>0)+len(guards))),[])
+            if game.pending_sieges:
+                encounter=game.reveal_siege()
+                game.resolve_siege(encounter['force'],guards,[4]*len(guards),
+                                   max(0,encounter['force']-(2+int(game.dogs>0)+len(guards))),[])
             game.work(2)
         meal=game.meal()
         expected=oracle['days'][day-1]
