@@ -23,3 +23,29 @@
 Cada unidade deve registrar comando, resultado, commit e próximo bloqueio.
 Não registrar como concluída uma tarefa apenas porque seus testes unitários
 passaram se o gate de campanha ainda estiver fechado.
+
+## 2026-10-24 — baralho persistente de Hordas (base `9773da5`)
+
+- O remoto avançou para `9773da5` com uma reversão explícita das integrações
+  posteriores a `690a597`. A branch foi fast-forwardada; nenhum histórico,
+  kit físico ou `main` foi alterado. As mudanças revertidas não foram
+  reaplicadas. Um replay local não publicado, dependente dos módulos removidos,
+  ficou preservado em stash e não foi usado como evidência.
+- Implementado `edicao-integral/horde_deck02.py`: composição canônica de nove
+  cartas, embaralhamento reproduzível, descarte, reshuffle determinístico e
+  validação do estado.
+- `Cistern02` mantém o estado do sapato no save. Saves anteriores sem o campo
+  migram determinísticamente de `seed + 8102`.
+- `Tactical02` agora usa o sapato compartilhado entre locais. Ordem de cartas
+  injetável continua disponível somente para fixtures explícitas de teste.
+- Testes: suíte experimental `128 passed`; round-trip do `IntegratedCampaign`
+  durante uma expedição também passou. `compileall`, validação do catálogo e
+  `git diff --check` aprovados.
+- A revisão independente apontou a cobertura integrada que faltava; ela foi
+  adicionada. Também foi corrigido o fechamento do PNG em `board_art06.crop()`;
+  os testes direcionados passaram com `ResourceWarning` tratado como erro.
+- Suíte legada pós-correção: `51 passed` com `ResourceWarning` promovido a
+  erro. `compileall`, validação do catálogo e `git diff --check` passaram.
+- Sem campanha completa, sem `verified_victory` e sem validação física.
+- Próximo bloqueio: Viagem/retorno legais, emboscada e ligação dos recibos de
+  expedição ao ciclo de cinco dias.

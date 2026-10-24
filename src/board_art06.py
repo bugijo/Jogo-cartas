@@ -32,13 +32,16 @@ def shade(c,x,y,w,h):
 
 @lru_cache(maxsize=128)
 def crop(path,index):
- im=Image.open(P/path)
+ with Image.open(P/path) as source:
+  iw,ih=source.size;mode=source.mode
+  alpha=source.getchannel('A') if mode=='RGBA' else None
+  if alpha is not None:alpha.load()
  curated=json.loads((P/'content/production/crops_0.6.json').read_text())
  if path in curated:
-  L,T,R,B=curated[path][index];return [math.floor(L),math.floor(T),math.ceil(R),math.ceil(B)],im.size
- iw,ih=im.size;l=index%2*iw//2;t=index//2*ih//2;r=l+iw//2;b=t+ih//2
- if im.mode=='RGBA':
-  alpha=im.getchannel('A').crop((l,t,r,b));native=alpha.size
+  L,T,R,B=curated[path][index];return [math.floor(L),math.floor(T),math.ceil(R),math.ceil(B)],(iw,ih)
+ l=index%2*iw//2;t=index//2*ih//2;r=l+iw//2;b=t+ih//2
+ if alpha is not None:
+  alpha=alpha.crop((l,t,r,b));native=alpha.size
   # Miniatura somente para analisar componentes de alfa; impressão usa os pixels originais.
   mask=alpha.resize((192,128),Image.Resampling.NEAREST);px=mask.load();seen=set();groups=[]
   for yy in range(128):
@@ -54,7 +57,7 @@ def crop(path,index):
    largest=max(g[0] for g in groups);keep=[g for g in groups if g[0]>=largest*.035 and (g[0]>=largest*.4 or (g[1]>0 and g[2]>0 and g[3]<192 and g[4]<128))]
    L=min(g[1] for g in keep);T=min(g[2] for g in keep);R=max(g[3] for g in keep);B=max(g[4] for g in keep)
    old_l,old_t=l,t;l=max(l,old_l+L*native[0]/192-2);t=max(t,old_t+T*native[1]/128-2);r=min(r,old_l+R*native[0]/192+2);b=min(b,old_t+B*native[1]/128+2)
- return [math.floor(l),math.floor(t),math.ceil(r),math.ceil(b)],im.size
+ return [math.floor(l),math.floor(t),math.ceil(r),math.ceil(b)],(iw,ih)
 
 @lru_cache(maxsize=32)
 def image_reader(path,econ,box=None):

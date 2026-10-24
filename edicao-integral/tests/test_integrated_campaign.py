@@ -46,6 +46,21 @@ class IntegratedCampaignTests(unittest.TestCase):
         self.assertEqual(resumed.cistern.water, game.cistern.water)
         self.assertIsNone(resumed.world)
 
+    def test_save_resume_preserves_shared_horde_mid_expedition(self):
+        game = IntegratedCampaign.new(608, STARTERS[:2], LINK_IDS[:2])
+        tactical = game.start_expedition("Mercado", [STARTERS[0]])
+        tactical._horde()
+        with tempfile.TemporaryDirectory() as directory:
+            path = Path(directory) / "campaign.json"
+            game.save(path)
+            resumed = IntegratedCampaign.load(path)
+        self.assertEqual(resumed.cistern.horde_deck, game.cistern.horde_deck)
+        self.assertEqual(resumed.tactical.snapshot(), game.tactical.snapshot())
+        resumed.tactical._horde()
+        game.tactical._horde()
+        self.assertEqual(resumed.cistern.horde_deck, game.cistern.horde_deck)
+        self.assertEqual(resumed.tactical.snapshot(), game.tactical.snapshot())
+
     def test_terminal_states_persist(self):
         game = IntegratedCampaign.new(2, STARTERS[:2], LINK_IDS[:2])
         with self.assertRaises(ValueError):

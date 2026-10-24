@@ -12,7 +12,7 @@
       "tests": ["edicao-integral/tests/test_cistern_tactics02.py", "novo teste de fases"],
       "status": "em_execucao",
       "commit": null,
-      "blocker": "Viagem, emboscadas, resgates, promessas e fila final ainda incompletos"
+      "blocker": "Sapato de Hordas compartilhado e persistente implementado nesta unidade; Viagem, emboscadas, resgates, promessas, consequências integradas e fila final continuam incompletos"
     },
     {
       "id": "P1-MIGRATE-CISTERN",

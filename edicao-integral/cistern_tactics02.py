@@ -70,7 +70,9 @@ class Tactical02:
     log: list[dict] = field(default_factory=list)
     knife_used: list[str] = field(default_factory=list)
     shotgun_used: list[str] = field(default_factory=list)
-    horde_order: list[str] = field(default_factory=lambda: list(HORDE))
+    # None means use the one campaign-wide shoe. A list is retained only for
+    # deterministic tactical fixtures and backwards-compatible snapshots.
+    horde_order: list[str] | None = None
     carried: dict[str, list[str]] = field(default_factory=dict)
     equipment: dict[str, list[str]] = field(default_factory=dict)
     taken_before: list[str] = field(default_factory=list)
@@ -112,7 +114,7 @@ class Tactical02:
         if any(people[h]['wounds'] >= 3 for h in team):
             raise ValueError('Herói incapacitado não sai')
         obj = cls(chapter, destination.lower(), list(team), route,
-                  horde_order=list(horde_order) if horde_order else list(HORDE),
+                  horde_order=list(horde_order) if horde_order is not None else None,
                   taken_before=list(taken_before or []),
                   first_market_visit=destination.lower() == 'mercado' and first_visit)
         chapter.spend_segments(obj.travel_cost)
@@ -437,7 +439,10 @@ class Tactical02:
                 if nxt == self.positions[hero]: break
 
     def _horde(self) -> None:
-        card = self.horde_order[self.horde_index % len(self.horde_order)]
+        if self.horde_order is None:
+            card = self.chapter.draw_horde()
+        else:
+            card = self.horde_order[self.horde_index % len(self.horde_order)]
         self.horde_index += 1
         kind, count = {'Arrastar': ('Errante', 1), 'Corrida': ('Corredor', 1),
                        'Aglomerado': ('Errante', ceil(len(self.team)/2)),

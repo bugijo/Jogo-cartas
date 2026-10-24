@@ -107,7 +107,26 @@ class Tactical02Tests(unittest.TestCase):
         with self.assertRaises(ValueError): t.move(h,2)
         t.begin_round(); t.end_round()
         self.assertTrue(any(x['event']=='horde' for x in t.log))
+        self.assertEqual(len(c.horde_deck['discard']), 1)
         t.finish(); self.assertEqual(c.clock,4)
+
+    def test_horde_shoe_is_shared_across_sites_and_tactical_save(self):
+        c = chapter(); h = STARTERS[0]
+        market = Tactical02.start(c, 'Mercado', [h])
+        market._horde()
+        self.assertEqual(len(c.horde_deck['discard']), 1)
+        restored = Tactical02.from_snapshot(c, json.loads(json.dumps(market.snapshot())))
+        restored._horde()
+        self.assertEqual(len(c.horde_deck['discard']), 2)
+        self.assertEqual([x['card'] for x in restored.log if x['event']=='horde'],
+                         [x['card'] for x in market.log if x['event']=='horde'] +
+                         [c.horde_deck['discard'][-1]])
+        # A later expedition in a different destination consumes the same
+        # campaign shoe, not a newly shuffled site-local copy.
+        station = Tactical02.start(c, 'Estação', [h], route='long')
+        station._horde()
+        self.assertEqual(len(c.horde_deck['discard']), 3)
+        self.assertIsNone(station.horde_order)
 
     def test_first_market_round_protects_only_first_visit(self):
         c = chapter(); h = STARTERS[0]

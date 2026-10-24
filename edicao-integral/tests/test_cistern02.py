@@ -1,6 +1,8 @@
 import sys
 import tempfile
 import unittest
+from collections import Counter
+from dataclasses import asdict
 from itertools import combinations
 from math import ceil
 from pathlib import Path
@@ -13,6 +15,34 @@ from rules_engine import consume, family_setup
 
 
 class Cistern02Tests(unittest.TestCase):
+    def test_campaign_horde_shoe_is_seeded_shared_and_saved(self):
+        game=Cistern02.new(STARTERS[:2],LINK_IDS[:2],seed=608)
+        first=[game.draw_horde() for _ in range(3)]
+        same_seed=Cistern02.new(STARTERS[:2],LINK_IDS[:2],seed=608)
+        self.assertEqual(first,[same_seed.draw_horde() for _ in range(3)])
+        with tempfile.TemporaryDirectory() as directory:
+            path=Path(directory)/'cistern.json'
+            game.save(path)
+            resumed=Cistern02.load(path)
+        future=[game.draw_horde() for _ in range(8)]
+        resumed_future=[resumed.draw_horde() for _ in range(8)]
+        self.assertEqual(future,resumed_future)
+        self.assertEqual(game.horde_deck,resumed.horde_deck)
+        all_drawn=first+future
+        expected=Counter({'Arrastar':4,'Corrida':2,'Aglomerado':2,'Peso morto':1})
+        self.assertEqual(Counter(all_drawn[:9]),expected)
+        self.assertEqual(game.horde_deck['reshuffles'],1)
+
+    def test_legacy_save_migrates_horde_shoe_from_campaign_seed(self):
+        game=Cistern02.new(STARTERS[:2],LINK_IDS[:2],seed=77)
+        legacy=asdict(game)
+        legacy.pop('horde_deck')
+        migrated=Cistern02(**legacy)
+        same_seed=Cistern02.new(STARTERS[:2],LINK_IDS[:2],seed=77)
+        self.assertEqual(migrated.horde_deck,same_seed.horde_deck)
+        self.assertEqual([migrated.draw_horde() for _ in range(9)],
+                         [same_seed.draw_horde() for _ in range(9)])
+
     def test_all_2497_link_draws_match_canonical_preparation(self):
         checked=0
         for heroes in range(2,7):

@@ -11,6 +11,8 @@ from dataclasses import asdict, dataclass, field
 from math import ceil
 from pathlib import Path
 
+from horde_deck02 import HordeDeck02
+
 ROOT=Path(__file__).resolve().parent.parent
 CATALOG=json.loads((ROOT/'content/catalog.json').read_text(encoding='utf-8'))
 STARTERS=tuple(hero['id'] for hero in CATALOG['heroes'] if hero['initial'])
@@ -72,6 +74,21 @@ class Cistern02:
     rescue_history: dict[str,str] = field(default_factory=dict)
     intentions_day: int = 0
     result: str | None = None
+    horde_deck: dict | None = None
+
+    def __post_init__(self) -> None:
+        # Older saves predate the campaign-wide horde shoe. Migrate them
+        # deterministically from the campaign seed when first loaded.
+        if self.horde_deck is None:
+            self.horde_deck = HordeDeck02.new(self.seed + 8102).snapshot()
+        else:
+            self.horde_deck = HordeDeck02.from_snapshot(self.horde_deck).snapshot()
+
+    def draw_horde(self) -> str:
+        deck = HordeDeck02.from_snapshot(self.horde_deck)
+        card = deck.draw()
+        self.horde_deck = deck.snapshot()
+        return card
 
     @classmethod
     def new(cls,founders:list[str] | tuple[str,...],links:list[str] | tuple[str,...],
@@ -403,4 +420,6 @@ class Cistern02:
     def load(cls,path:Path) -> 'Cistern02':
         payload=json.loads(path.read_text(encoding='utf-8'))
         if payload.get('schema')!=1:raise ValueError('Esquema inválido')
-        return cls(**payload['state'])
+        game=cls(**payload['state'])
+        HordeDeck02.from_snapshot(game.horde_deck)
+        return game
