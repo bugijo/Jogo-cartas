@@ -1002,5 +1002,52 @@ class IntegratedTacticalTests(unittest.TestCase):
         self.assertEqual(person["wounds"], 1)
 
 
+    def test_outbound_m1_that_uses_last_segment_allows_road_emergency(self):
+        hero = STARTERS[0]
+        for cards in (("ZC-VIA-0005", "ZC-VIA-0001"),
+                      ("ZC-VIA-0001", "ZC-VIA-0005")):
+            with self.subTest(cards=cards):
+                game = IntegratedCampaign.new(190, STARTERS[:2], LINK_IDS[:2])
+                game.cistern.clock = 8
+                shoe = game.travel_shoe
+                order = list(cards) + [card for card in shoe["deck"]
+                                       if card not in cards]
+                game.travel_shoe["deck"] = order
+                game.start_travel(
+                    "Mercado", [hero], "short",
+                    context=TravelContext(food=0, water=0, materials=0,
+                                          fatigue={hero: 0}))
+                event = game.travel.events[-1]
+                if cards[0] != "ZC-VIA-0005":
+                    game.resolve_travel_choice(event["event_id"], None)
+                    event = game.reveal_travel()
+                    self.assertTrue(event["extra"])
+                ambush = game.start_travel_ambush()
+                ambush.begin_round()  # clock 10; the M1 is paid by its real round
+                ambush.enemies.clear()
+                ambush.positions[hero] = 1
+                ambush.end_round()
+                ambush.finish()
+                game.finish_travel_ambush()
+                if cards[0] == "ZC-VIA-0005":
+                    extra = game.reveal_travel()
+                    self.assertTrue(extra["extra"])
+                    game.resolve_travel_choice(extra["event_id"], None)
+                with self.assertRaisesRegex(ValueError, "tempo para entrar"):
+                    game.enter_expedition()
+                with tempfile.TemporaryDirectory() as directory:
+                    path = Path(directory) / "campaign.json"
+                    game.save(path)
+                    game = IntegratedCampaign.load(path)
+                game.emergency_return()
+                self.assertIsNone(game.travel)
+                self.assertIsNone(game.tactical)
+                person = next(p for p in game.cistern.people if p["id"] == hero)
+                self.assertEqual(person["wounds"], 1)
+                self.assertEqual(person["fatigue"], 3)
+                self.assertEqual(game.travel_shoe["discard"], list(cards))
+                self.assertFalse(game.travel_uses_shoe)
+
+
 if __name__ == "__main__":
     unittest.main()

@@ -725,6 +725,37 @@ class IntegratedCampaign:
             self.return_context_initial = None
             self.return_settlement_delta = None
             return
+        if self.travel is not None and self.tactical is None:
+            trip = self.travel
+            context = self.travel_context
+            request = self.travel_request
+            if (context is None or request is None or self.ambush is not None
+                    or self.cistern.clock < 10
+                    or trip.remaining("outbound")
+                    or self.travel_segments_paid != trip.leg_size
+                    or trip.requires_night_extra("outbound")
+                    or trip.pending_resolution is not None
+                    or trip.pending_choices or trip.pending_ambush
+                    or not any(event.get("card_id") == "ZC-VIA-0005"
+                               and event.get("event_id") in trip.resolved
+                               for event in trip.events)
+                    or self.cistern.clock + 1 <= 10):
+                raise ValueError("Retirada rodoviária sem M1 concluída ou sem bloqueio de relógio")
+            self._settle_travel_shoe(trip)
+            people = {person["id"]: person for person in self.cistern.people}
+            for hero in request["team"]:
+                people[hero]["wounds"] = min(3, people[hero]["wounds"] + 1)
+                people[hero]["fatigue"] = 3
+                context.fatigue[hero] = 3
+            self._apply_travel_arrival(self._travel_arrival_delta(context))
+            if self.cistern.day not in self.expedition_days:
+                self.expedition_days.append(self.cistern.day)
+            self.travel = None
+            self.travel_context = None
+            self.travel_request = None
+            self.travel_segments_paid = 0
+            self.return_context_initial = None
+            return
         if self.tactical is None:
             raise ValueError("Nenhuma expedição ativa")
         if self.tactical.finished:
