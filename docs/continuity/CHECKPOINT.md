@@ -1,8 +1,8 @@
 # Retomada
 
 Estado conhecido: branch `evolucao/zona-zero-sistema-v1`, HEAD esperado
-`690a597` ou descendente fast-forward. A unidade de Viagem adicionada nesta
-retomada ainda precisa ser publicada no próximo commit.
+`ad297a9` ou descendente fast-forward. A unidade de Viagem está publicada
+localmente neste checkpoint.
 
 Comando idempotente:
 
