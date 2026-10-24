@@ -24,8 +24,10 @@
 
 ## Limites conhecidos
 
-O núcleo tático ainda não cobre busca de provisões, resgates, cartas de Viagem,
-veículo, estado de revisita e fila completa do dia. O adaptador precisa
+O núcleo tático já cobre lotes de provisões e combustível fixos, mas ainda não
+cobre Saque, resgates, cartas de Viagem, estado de revisita e fila completa do
+dia. A van pode ser reparada e retornar no Posto; seu estado ainda não migra ao
+segundo arco. O adaptador precisa
 comprovar também essas operações e migrar todo o estado canônico antes de
 emitir `verified_victory`. Há incompatibilidade entre
 12 fundadores possíveis no kit 0.2 e dez protagonistas experimentais. O Posto

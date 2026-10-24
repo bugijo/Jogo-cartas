@@ -104,7 +104,8 @@ class Cistern02:
     @staticmethod
     def _person(identifier:str,kind:str,family:str) -> dict:
         return {'id':identifier,'kind':kind,'family':family,'hungry':False,
-                'thirsty':False,'streak':0,'wounds':0,'alert':kind=='dog'}
+                'thirsty':False,'streak':0,'wounds':0,'fatigue':0,
+                'alert':kind=='dog'}
 
     @property
     def consumers(self) -> int:
@@ -386,6 +387,9 @@ class Cistern02:
             raise ValueError('Cerco da noite não resolvido')
         if any(group['status']!='left' for group in self.groups) and self.intentions_day!=self.day:
             raise ValueError('Intenções e superlotação da noite pendentes')
+        for person in self.people:
+            if not person['hungry'] and not person['thirsty']:
+                person['fatigue']=max(0,person.get('fatigue',0)-1)
         self.day+=1;self.clock=0;self.works_today=0;self.planned_guards=[]
         if self.filter_active:
             self.water.extend(self._lots(self.initial_consumers))

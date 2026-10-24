@@ -27,6 +27,41 @@ van/Posto ou estado persistente do mapa em revisitas; não permite campanha
 completa nem `verified_victory`. Os testes experimentais cobrem o núcleo e
 regressões de salvamento/entrega; suíte legada permanece sem alteração.
 
+## Unidade 32 — provisões, Posto e oito políticas iniciais
+
+`Tactical02.pickup_supply()` cobra PA em O1/O2, carga física por carta e os
+lotes finitos da campanha; o integrador só acrescenta porções ao abrigo no
+retorno e registra cartas perdidas na emergência. O Posto agora permite
+inspecionar van, retirar até oito cartas únicas de Combustível, tentar reparo
+com Bateria carregada e pagar duas cartas por trecho ao voltar com a van.
+Combustível gasto não reaparece em revisitas. Um teste isolado do retorno com
+van usa Bateria sintética **apenas para verificar contabilidade**; não é
+campanha completa. A Bateria obtida legalmente na Oficina pode ser entregue e
+alocada na expedição seguinte; isso ainda precisa de replay contínuo.
+
+`player_policies02.py` contém oito **políticas programáticas**, com prioridades
+de destino/equipe/rota, memória curta e escolha local pública básica. O agente
+delegado que iniciou os testes de políticas atingiu limite de uso antes de
+produzir o módulo; a implementação foi concluída pelo agente principal. Os
+testes cobrem 40 escolhas iniciais reproduzíveis (oito perfis × H2–H6), não
+partidas de cinco dias. Não houve simulação de campanha nem playtest humano.
+
+Bloqueios para vitória certificada: busca de Saque, cartas Viagem e emboscadas,
+resgates, encontros, estados de mapas em revisitas, promessas/eventos e fila
+completa do abrigo; migração sem perda de 12 fundadores/civis/cães ao novo
+motor; economia e veículo entre os dois arcos. Não iniciar produção de PDFs da
+edição experimental com base neste checkpoint.
+
+Um teste adicional percorre **ações no mapa**, sem teleporte, da Oficina no
+dia 1 até a entrega da Bateria e do Posto no dia 2 até a volta com a van:
+porta, movimento, inspeção, reparo com dado 6, quatro cartas de Combustível
+retiradas por PA e pagas por dois trechos de rota longa. É uma trajetória fixa
+favorável de duas expedições, não uma campanha de cinco dias nem estimativa de
+equilíbrio. Outro teste isolado usa Bateria sintética apenas para exercer a
+contabilidade de combustível. Fadiga 3 da emergência agora pertence à pessoa
+e reduz uma unidade no amanhecer após refeição completa. A saída após a fase
+de refeição foi bloqueada.
+
 
 Base preservada: `cebb76a` em `arte/kit-pos-apocaliptico-provas`. Nova branch: `evolucao/zona-zero-sistema-v1`. Branch padrão remota: `fisico/antes-que-a-agua-acabe`; nenhuma delas foi alterada por merge.
 

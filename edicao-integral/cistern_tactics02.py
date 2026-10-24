@@ -23,6 +23,14 @@ WEAPONS = {'Pé de cabra': (1, 1, False), 'Faca': (1, 1, False),
 HORDE = ('Arrastar',) * 4 + ('Corrida',) * 2 + ('Aglomerado',) * 2 + ('Peso morto',)
 PARTS = {'Oficina': {'Conexões': (7, 1), 'Bateria': (7, 1)},
          'Estação': {'Bomba': (7, 2), 'Membrana': (14, 1)}}
+SUPPLY_LOTS = {
+    'mercado': {'Conserva': (7, 2), 'Água': (14, 2)},
+    'hospital': {'Conserva': (7, 1), 'Água': (14, 1)},
+    'oficina': {'Conserva': (7, 1), 'Água': (14, 1)},
+    'posto': {'Conserva': (14, 1), 'Água': (14, 1), 'Combustível': (7, 8)},
+    'condomínio': {'Conserva': (7, 1), 'Água': (14, 1)},
+    'estação': {'Água': (14, 2)},
+}
 
 
 def edge(a: int, b: int) -> tuple[int, int]:
@@ -57,6 +65,10 @@ class Tactical02:
     taken_before: list[str] = field(default_factory=list)
     pump_attempts: list[str] = field(default_factory=list)
     first_market_visit: bool = False
+    supply_cargo: dict[str, list[dict]] = field(default_factory=dict)
+    van_state: str = 'abandoned'
+    van_attempts: list[str] = field(default_factory=list)
+    van_returned: bool = False
 
     @classmethod
     def start(cls, chapter: Cistern02, destination: str, team: list[str],
@@ -68,6 +80,9 @@ class Tactical02:
             raise ValueError('Destino ou rota inválidos')
         if not team or len(set(team)) != len(team) or any(h not in chapter.founders for h in team):
             raise ValueError('Equipe inválida')
+        people = {p['id']: p for p in chapter.people}
+        if any(people[h]['wounds'] >= 3 or people[h].get('fatigue',0) >= 3 for h in team):
+            raise ValueError('Herói incapacitado ou exausto')
         if chapter.result or chapter.clock + (1 if route == 'short' else 2) + 1 > 10:
             raise ValueError('Sem tempo para entrar no mapa')
         if horde_order is not None and (len(horde_order) != 9 or
@@ -86,8 +101,9 @@ class Tactical02:
         chapter.spend_segments(obj.travel_cost)
         obj.positions = {h: obj.map['entry'] for h in team}
         obj.carried = {h: [] for h in team}
+        obj.supply_cargo = {h: [] for h in team}
         obj.equipment = supplies
-        obj.fatigue = {h: 0 for h in team}
+        obj.fatigue = {h: people[h].get('fatigue',0) for h in team}
         count = max(0, ceil(len(team)/2) - (route == 'long'))
         for _ in range(count): obj._spawn('Errante', obj.map['spawn'])
         if obj.destination == 'estação': obj._spawn('Bruto', 14)
@@ -109,7 +125,10 @@ class Tactical02:
 
     def _night_fatigue(self) -> None:
         if self.chapter.clock > 8:
-            for hero in self.team: self.fatigue[hero] = min(3, self.fatigue[hero]+1)
+            people = {p['id']: p for p in self.chapter.people}
+            for hero in self.team:
+                self.fatigue[hero] = min(3, self.fatigue[hero]+1)
+                people[hero]['fatigue'] = self.fatigue[hero]
 
     def _spawn(self, kind: str, zone: int) -> None:
         if kind not in ENEMIES: raise ValueError('Inimigo inválido')
@@ -222,8 +241,7 @@ class Tactical02:
         if (hero not in self.positions or spec is None or self.positions[hero] != spec[0]
                 or key in self.taken_before or any(part in items for items in self.carried.values())):
             raise ValueError('Peça indisponível ou herói fora do objetivo')
-        if (len(self.equipment[hero]) + sum(PARTS[place][p][1] for p in self.carried[hero])
-                + spec[1] > 4):
+        if self._load(hero) + spec[1] > 4:
             raise ValueError('Carga acima da capacidade')
         if part == 'Bomba':
             if hero in self.pump_attempts or die is None or not 1 <= die <= 6:
@@ -244,11 +262,75 @@ class Tactical02:
                          'clock': self.chapter.clock})
         return True
 
+    def _load(self, hero: str) -> int:
+        part_place = next((name for name in PARTS if name.lower() == self.destination), None)
+        part_load = sum(PARTS[part_place][p][1] for p in self.carried[hero]) if part_place else 0
+        return (len(self.equipment[hero]) + part_load
+                + sum(item['cards'] for item in self.supply_cargo[hero]))
+
+    def pickup_supply(self, hero: str, kind: str, lot: int) -> dict:
+        """Retira um lote inteiro de 4 porções por carta, ou uma carta de combustível."""
+        spec = SUPPLY_LOTS.get(self.destination, {}).get(kind)
+        if hero not in self.positions or spec is None or not isinstance(lot, int):
+            raise ValueError('Saque inválido')
+        zone, count = spec
+        key = f'{self.destination}:{kind}:{lot}'
+        if (not 1 <= lot <= count or self.positions[hero] != zone
+                or key in self.taken_before
+                or any(item['id'] == key for items in self.supply_cargo.values() for item in items)):
+            raise ValueError('Lote indisponível ou zona incorreta')
+        cards = 1 if kind == 'Combustível' else ceil(self.chapter.initial_consumers/4)
+        if self._load(hero) + cards > 4:
+            raise ValueError('Lote excede capacidade de carga')
+        self._pay(hero, 1)
+        item = {'id': key, 'kind': kind, 'lot': lot, 'cards': cards,
+                'portions': 0 if kind == 'Combustível' else 4*cards,
+                'zone': zone, 'hero': hero}
+        self.supply_cargo[hero].append(item)
+        self.log.append({'event': 'pickup_supply', **item, 'clock': self.chapter.clock})
+        return item.copy()
+
+    def inspect_van(self, hero: str) -> None:
+        if self.destination != 'posto' or hero not in self.positions or self.positions[hero] != 7:
+            raise ValueError('Van fora de alcance')
+        if self.van_state != 'abandoned': raise ValueError('Van já inspecionada')
+        self._pay(hero, 1)
+        self.van_state = 'incomplete'
+        self.log.append({'event': 'inspect_van', 'hero': hero, 'zone': 7})
+
+    def repair_van(self, hero: str, die: int) -> bool:
+        if (self.destination != 'posto' or hero not in self.positions
+                or self.positions[hero] != 7 or self.van_state != 'incomplete'
+                or hero in self.van_attempts or not 1 <= die <= 6):
+            raise ValueError('Reparo inválido')
+        battery_in_cargo = 'Bateria' in self.carried[hero]
+        battery_in_equipment = 'Bateria' in self.equipment[hero]
+        if not (battery_in_cargo or battery_in_equipment):
+            raise ValueError('Bateria necessária')
+        self._pay(hero, 2)
+        self.van_attempts.append(hero)
+        score = die + HEROES[hero]['attributes']['Técnica']
+        hit = die == 6 or (die != 1 and score >= 6)
+        if hit:
+            (self.carried if battery_in_cargo else self.equipment)[hero].remove('Bateria')
+            self.van_state = 'operational'
+        self.log.append({'event': 'repair_van', 'hero': hero, 'die': die, 'success': hit,
+                         'battery_consumed': hit})
+        return hit
+
     def delivery_proof(self) -> list[dict]:
         """Certificado derivado apenas de retirada legal e retorno concluído."""
         if not self.finished or self.failed or not any(x['event'] == 'return' for x in self.log):
             return []
-        return [x.copy() for x in self.log if x['event'] == 'pickup_part']
+        proof = [x.copy() for x in self.log if x['event'] in ('pickup_part','pickup_supply')
+                 and (x['event'] != 'pickup_supply' or x['id'] not in self._spent_fuel_ids())]
+        if self.van_returned:
+            proof.append({'event': 'deliver_van', 'destination': 'posto',
+                          'state': 'operational'})
+        return proof
+
+    def _spent_fuel_ids(self) -> set[str]:
+        return {x['id'] for x in self.log if x['event'] == 'fuel_spent'}
 
     def _path(self, start: int, target: int) -> list[int]:
         graph = {z: [] for z in self.map['zones']}
@@ -319,10 +401,21 @@ class Tactical02:
                 and not any(e['zone'] == self.map['exit'] for e in self.enemies)
                 and not self.failed and not self.finished)
 
-    def finish(self) -> None:
+    def finish(self, by_van: bool = False) -> None:
         if not self.can_exit(): raise ValueError('Saída não liberada')
         if self.chapter.clock + self.travel_cost > 10:
             raise ValueError('Retorno excede o relógio; use emergency')
+        if by_van:
+            if self.destination != 'posto' or self.van_state != 'operational':
+                raise ValueError('Van indisponível para retorno')
+            fuel = [(hero, item) for hero, items in self.supply_cargo.items()
+                    for item in items if item['kind'] == 'Combustível']
+            if len(fuel) < 2*self.travel_cost:
+                raise ValueError('Combustível insuficiente para retornar com a van')
+            for hero, item in fuel[:2*self.travel_cost]:
+                self.supply_cargo[hero].remove(item)
+                self.log.append({'event': 'fuel_spent', 'id': item['id'], 'hero': hero})
+            self.van_returned = True
         self.chapter.spend_segments(self.travel_cost)
         self._night_fatigue()
         self.finished = True
@@ -334,8 +427,10 @@ class Tactical02:
         for hero in self.team:
             people[hero]['wounds'] += 1
             self.fatigue[hero] = 3
+            people[hero]['fatigue'] = 3
         self.failed = True; self.finished = True
         self.carried = {hero: [] for hero in self.team}
+        self.supply_cargo = {hero: [] for hero in self.team}
         self.log.append({'event': 'emergency', 'clock': self.chapter.clock})
 
     def snapshot(self) -> dict:
@@ -344,7 +439,8 @@ class Tactical02:
                   'fatigue','round_no','completed_rounds','local_pressure','shots',
                   'horde_index','next_enemy','finished','failed','log','knife_used',
                   'shotgun_used','horde_order','carried','taken_before','pump_attempts',
-                  'first_market_visit','equipment')
+                  'first_market_visit','equipment','supply_cargo','van_state',
+                  'van_attempts','van_returned')
         return deepcopy({name: getattr(self, name) for name in fields})
 
     @classmethod

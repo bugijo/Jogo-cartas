@@ -14,6 +14,33 @@ def chapter():
 
 
 class Tactical02Tests(unittest.TestCase):
+    def test_posto_van_consumes_carried_fuel_and_battery(self):
+        c = chapter(); h = STARTERS[0]
+        t = Tactical02.start(c, 'Posto', [h], equipment={h: ['Pé de cabra', 'Bateria']})
+        t.positions[h] = 7  # Isola custos e estoque; navegação tem teste próprio.
+        t.inspect_van(h)
+        t.pickup_supply(h, 'Combustível', 1)
+        t.pickup_supply(h, 'Combustível', 2)
+        t.end_round(); t.begin_round()
+        self.assertTrue(t.repair_van(h, 6))
+        self.assertNotIn('Bateria', t.equipment[h])
+        t.positions[h] = 1
+        t.end_round(); t.finish(by_van=True)
+        self.assertEqual(len([x for x in t.log if x['event']=='fuel_spent']), 2)
+        self.assertEqual([x['event'] for x in t.delivery_proof()], ['deliver_van'])
+
+    def test_emergency_fatigue_belongs_to_person_and_blocks_next_dawn(self):
+        c = chapter(); h = STARTERS[0]
+        t = Tactical02.start(c, 'Mercado', [h])
+        t.emergency()
+        person = next(p for p in c.people if p['id'] == h)
+        self.assertEqual(person['fatigue'], 3)
+        with self.assertRaises(ValueError):
+            Tactical02.start(c, 'Mercado', [h], first_visit=False)
+        c.meal(); c.next_day()
+        self.assertEqual(person['fatigue'], 2)
+        Tactical02.start(c, 'Mercado', [h], first_visit=False)
+
     def test_invalid_equipment_does_not_spend_travel_time(self):
         c = chapter(); h = STARTERS[0]
         with self.assertRaises(ValueError):

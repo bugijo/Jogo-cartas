@@ -57,6 +57,10 @@ class IntegratedCampaign:
     expedition_days: list[int] = field(default_factory=list)
     visited_destinations: list[str] = field(default_factory=list)
     delivered_objectives: list[str] = field(default_factory=list)
+    lost_objectives: list[str] = field(default_factory=list)
+    fuel_cards: list[str] = field(default_factory=list)
+    battery_available: bool = False
+    van_state: str = "abandoned"
 
     STATUSES = {"RUNNING", "VICTORY", "DEFEAT", "IMPOSSIBLE", "PAUSED"}
 
@@ -100,36 +104,71 @@ class IntegratedCampaign:
             "Coleta exige expedição 0.2, PA, carga e retorno; integração pendente")
 
     def start_expedition(self, destination: str, team: list[str],
-                         route: str = "short") -> Tactical02:
+                         route: str = "short",
+                         equipment: dict[str, list[str]] | None = None) -> Tactical02:
         self._require_running()
         if self.world is not None or self.tactical is not None:
             raise ValueError("Expedição indisponível nesta fase")
+        if self.cistern.meal_day == self.cistern.day:
+            raise ValueError("Expedição ocorre antes da refeição noturna")
         if self.cistern.day in self.expedition_days:
             raise ValueError("Limite de uma expedição por dia")
+        loadout = equipment if equipment is not None else {hero: ["Pé de cabra"] for hero in team}
+        if (set(loadout) != set(team)
+                or any(items.count("Pé de cabra") > 1 or items.count("Bateria") > 1
+                       or any(item not in ("Pé de cabra", "Bateria") for item in items)
+                       for items in loadout.values())
+                or sum(items.count("Bateria") for items in loadout.values())
+                   > int(self.battery_available)):
+            raise ValueError("Equipamento não disponível no estoque")
         tactical = Tactical02.start(
             self.cistern, destination, team, route,
-            taken_before=self.delivered_objectives,
-            first_visit=destination.lower() not in self.visited_destinations)
+            taken_before=self.delivered_objectives + self.lost_objectives,
+            first_visit=destination.lower() not in self.visited_destinations,
+            equipment=loadout)
         self.tactical = tactical
         self.expedition_days.append(self.cistern.day)
         self.visited_destinations.append(destination.lower())
         return tactical
 
-    def return_expedition(self) -> list[dict]:
+    def return_expedition(self, by_van: bool = False) -> list[dict]:
         self._require_running()
         if self.tactical is None:
             raise ValueError("Nenhuma expedição ativa")
         tactical = self.tactical
         if not tactical.finished:
-            tactical.finish()
+            tactical.finish(by_van=by_van)
         proof = tactical.delivery_proof()
+        keys = [receipt.get("id", f"{receipt.get('destination')}:{receipt.get('part')}")
+                for receipt in proof if receipt["event"] != "deliver_van"]
+        if len(keys) != len(set(keys)) or any(key in self.delivered_objectives for key in keys):
+            raise ValueError("Objetivo já entregue")
         for receipt in proof:
-            key = f"{receipt['destination']}:{receipt['part']}"
-            if key in self.delivered_objectives:
-                raise ValueError("Objetivo já entregue")
-            if receipt['part'] in PART_MISSIONS:
-                self.cistern.receive_part(receipt['part'])
-            self.delivered_objectives.append(key)
+            if receipt["event"] == "pickup_part":
+                part = receipt["part"]
+                if part in PART_MISSIONS:
+                    self.cistern.receive_part(part)
+                elif part == "Bateria":
+                    self.battery_available = True
+                self.delivered_objectives.append(f"{receipt['destination']}:{part}")
+            elif receipt["event"] == "pickup_supply":
+                if receipt["kind"] == "Conserva":
+                    self.cistern.food.extend([4] * receipt["cards"])
+                elif receipt["kind"] == "Água":
+                    self.cistern.water.extend([4] * receipt["cards"])
+                elif receipt["kind"] == "Combustível":
+                    self.fuel_cards.append(receipt["id"])
+                self.delivered_objectives.append(receipt["id"])
+            elif receipt["event"] == "deliver_van":
+                self.van_state = "operational"
+        if any(receipt["event"] == "repair_van" and receipt["success"]
+               for receipt in tactical.log):
+            self.battery_available = False
+            if not tactical.van_returned:
+                self.van_state = "operational_at_posto"
+        self.lost_objectives.extend(
+            receipt["id"] for receipt in tactical.log
+            if receipt["event"] == "fuel_spent")
         self.tactical = None
         return proof
 
@@ -137,6 +176,9 @@ class IntegratedCampaign:
         self._require_running()
         if self.tactical is None:
             raise ValueError("Nenhuma expedição ativa")
+        for receipt in self.tactical.log:
+            if receipt["event"] == "pickup_supply":
+                self.lost_objectives.append(receipt["id"])
         self.tactical.emergency()
         self.tactical = None
 
