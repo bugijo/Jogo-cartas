@@ -42,6 +42,36 @@ class TravelDeck02:
         self.validate()
         return card_id
 
+    def preview(self, count: int) -> list[str]:
+        """Retorna a ordem provável sem avançar o sapato persistido."""
+        if not isinstance(count, int) or isinstance(count, bool) or count < 1:
+            raise ValueError("Quantidade de cartas necessária inválida")
+        shoe = type(self).from_snapshot(self.snapshot())
+        return [shoe.draw() for _ in range(count)]
+
+    def prepare_trip(self, count: int) -> list[str]:
+        return self.preview(count)
+
+    def matches_trip(self, trip) -> bool:
+        try:
+            return trip.deck == self.preview(len(trip.deck))
+        except (AttributeError, TypeError, ValueError):
+            return False
+
+    def finish_trip(self, trip) -> None:
+        """Consome somente as cartas reveladas, na ordem do sapato ativo."""
+        if (not self.matches_trip(trip) or trip.pending_resolution is not None
+                or trip.pending_choices or trip.pending_ambush is not None):
+            raise ValueError("A viagem não corresponde ao sapato ou tem efeito pendente")
+        drawn = [event["card_id"] for event in trip.events
+                 if event.get("card_id") is not None]
+        if (trip.index != len(drawn) or trip.index > len(trip.deck)
+                or drawn != trip.deck[:trip.index]):
+            raise ValueError("A viagem não prova as cartas reveladas")
+        for expected in drawn:
+            if self.draw() != expected:
+                raise ValueError("Ordem do sapato mudou durante a viagem")
+
     def validate(self) -> None:
         if (not isinstance(self.seed, int) or isinstance(self.seed, bool)
                 or not isinstance(self.reshuffles, int)
