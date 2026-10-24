@@ -29,7 +29,8 @@
   `tests/test_boards06.py:64`.
 - Unidade seguinte de P0: resgate agora exige grupo, mapa e zona canônicos,
   consome 1 PA, gera recibo e só altera o abrigo no retorno. Suíte
-  experimental após a mudança: 131 aprovados, 0 falhas.
+  experimental após a mudança: 132 aprovados, 0 falhas (inclui o commit
+  remoto `052ada0`, que adicionou uma proteção de ordem futura).
 - O próximo bloqueio de P0 é integrar esses recibos à expedição sem escolher
   efeitos implicitamente; P1/P2/P3 continuam bloqueadas.
 
