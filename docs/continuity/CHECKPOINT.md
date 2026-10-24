@@ -45,8 +45,8 @@
   e movimentação de carga dentro da expedição ainda não estão integradas. O
   limite atual comprova espaço total disponível, não transferência tática de
   provisões entre heróis.
-- O lote M1/retorno foi publicado em `931d572`; os testes do lote desta sessão
-  passaram e faltam commit/push.
+- O lote M1/retorno está em `931d572`; esta unidade foi publicada em
+  `b399d4139a27ae1634d2fe002ef6d4edb8db80c1`.
 - Não foram executadas campanhas completas, simulações de vitória, impressão
   física ou playtest humano.
 

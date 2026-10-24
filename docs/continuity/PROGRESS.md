@@ -197,3 +197,4 @@ passaram se o gate de campanha ainda estiver fechado.
 - Não houve simulação de campanha completa, impressão física ou playtest
   humano. Munição levada e carta extra de estrada à noite ainda precisam de
   regra/integração explícita; rota/Ponte, promessas e noites permanecem abertas.
+- Publicado em `b399d4139a27ae1634d2fe002ef6d4edb8db80c1` na branch experimental.

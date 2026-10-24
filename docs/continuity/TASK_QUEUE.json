@@ -67,8 +67,8 @@
         "edicao-integral/tests/test_ambush02.py"
       ],
       "status": "em_execucao",
-      "commit": "9aeb935",
-      "blocker": "Carga física reserva e devolve cartas/cursors parciais; sapato global de Viagem, descarte e reshuffle determinístico passam testes de sequência, skip, retirada e save/load. Commit/push pendente. Ainda faltam carta extra por segmento noturno, portadores individuais, efeitos mecânicos de rota/Ponte, promessas, cercos e ciclo noturno"
+      "commit": "b399d41",
+      "blocker": "Carga física reserva e devolve cartas/cursors parciais; sapato global de Viagem, descarte e reshuffle determinístico passaram testes de sequência, skip, retirada e save/load e estão publicados em b399d41. Ainda faltam carta extra por segmento noturno, portadores individuais, efeitos mecânicos de rota/Ponte, promessas, cercos e ciclo noturno"
     },
     {
       "id": "P0-NIGHT-TRAVEL",
