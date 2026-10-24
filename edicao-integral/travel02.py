@@ -163,9 +163,16 @@ class TravelContext:
             self.food_lots = self._pack(self.food)
         if not self.water_lots and self.water:
             self.water_lots = self._pack(self.water)
+        if (self.food != sum(self.food_lots)
+                or self.water != sum(self.water_lots)):
+            raise ValueError("Saldo de porções diverge das cartas carregadas")
         if any(not isinstance(lot, int) or not 1 <= lot <= 4
                for lot in self.food_lots + self.water_lots):
             raise ValueError("Cursor de carta de porções inválido")
+        if (not isinstance(self.fatigue, dict)
+                or any(not isinstance(value, int) or isinstance(value, bool)
+                       or not 0 <= value <= 3 for value in self.fatigue.values())):
+            raise ValueError("Fadiga na carga de Viagem inválida")
         self.food = sum(self.food_lots)
         self.water = sum(self.water_lots)
 
@@ -299,6 +306,51 @@ class Travel02:
             self.pending_ambush = event_id
         return deepcopy(event)
 
+    def reveal_night_extra(self, direction: str) -> dict:
+        """Revela a carta adicional de um trecho já pago nos segmentos 9–10.
+
+        Esta ocorrência não incrementa o contador de trechos. O integrador é
+        responsável por cobrar o segmento e aplicar a fadiga uma única vez.
+        """
+        if direction not in ("outbound", "return"):
+            raise ValueError("Direção inválida")
+        if direction == "return" and self.outbound_segments != self.leg_size:
+            raise ValueError("Retorno exige completar a ida")
+        if (self.pending_resolution is not None or self.pending_choices
+                or self.pending_ambush is not None):
+            raise ValueError("Resolva o evento de Viagem pendente")
+        segment_no = (self.outbound_segments if direction == "outbound"
+                      else self.return_segments)
+        if segment_no < 1:
+            raise ValueError("Carta extra exige trecho noturno já pago")
+        segment_event_id = f"travel-{direction}-{segment_no:03d}"
+        normal = next((event for event in self.events
+                       if event.get("event_id") == segment_event_id), None)
+        if normal is None or normal.get("skipped"):
+            raise ValueError("Carta extra exige trecho normal revelado")
+        event_id = f"{segment_event_id}-extra"
+        if any(event.get("event_id") == event_id for event in self.events):
+            raise ValueError("extra noturna já revelada para este trecho")
+        if self.index >= len(self.deck):
+            raise ValueError("Baralho de Viagem esgotado")
+        card_id = self.deck[self.index]
+        self.index += 1
+        card = CARDS[card_id]
+        event = {
+            "event_id": event_id, "card_id": card_id, "name": card["name"],
+            "text": card["text"], "direction": direction,
+            "ambush": card_id == "ZC-VIA-0005",
+            "minimum_rounds": card["minimum_rounds"], "extra": True,
+            "segment_event_id": segment_event_id,
+        }
+        self.events.append(event)
+        self.pending_resolution = event_id
+        if card_id in CHOICES:
+            self.pending_choices.append(event_id)
+        if event["ambush"]:
+            self.pending_ambush = event_id
+        return deepcopy(event)
+
     def _event(self, event_id: str) -> tuple[dict, str]:
         event = next((item for item in self.events if item["event_id"] == event_id), None)
         if event is None:
@@ -401,7 +453,8 @@ class Travel02:
         context.pressure += effect.get("pressure", 0)
         context.moral = min(5, context.moral + effect.get("moral", 0))
         for hero in context.fatigue:
-            context.fatigue[hero] += effect.get("fatigue", 0)
+            context.fatigue[hero] = min(
+                3, context.fatigue[hero] + effect.get("fatigue", 0))
         context.route_known |= bool(effect.get("route_known"))
         context.bridge_known |= bool(effect.get("bridge_known"))
         context.skip_return_card += effect.get("skip_return_card", 0)
@@ -450,6 +503,8 @@ class Travel02:
         seen_return = False
         event_ids: list[str] = []
         by_id: dict[str, dict] = {}
+        segment_event_ids: dict[str, dict] = {}
+        extra_segments: set[str] = set()
         for event in self.events:
             if not isinstance(event, dict) or event.get("direction") not in segment_counts:
                 raise ValueError("Evento de Viagem inválido no snapshot")
@@ -458,14 +513,29 @@ class Travel02:
                 seen_return = True
             elif seen_return:
                 raise ValueError("Snapshot mistura a ordem das pernas de Viagem")
-            segment_counts[direction] += 1
-            segment_no = segment_counts[direction]
             event_id = event.get("event_id")
-            if event_id != f"travel-{direction}-{segment_no:03d}":
-                raise ValueError("ID de trecho de Viagem fora de sequência")
+            is_extra = event.get("extra") is True
+            if is_extra:
+                segment_event_id = event.get("segment_event_id")
+                segment_event = segment_event_ids.get(segment_event_id)
+                if (segment_event is None or segment_event["direction"] != direction
+                        or segment_event.get("skipped")
+                        or event_id != f"{segment_event_id}-extra"
+                        or segment_event_id in extra_segments):
+                    raise ValueError("ID de extra noturna fora de sequência")
+                extra_segments.add(segment_event_id)
+                segment_no = segment_counts[direction]
+            else:
+                if "extra" in event or "segment_event_id" in event:
+                    raise ValueError("Evento normal marcado como extra")
+                segment_counts[direction] += 1
+                segment_no = segment_counts[direction]
+                if event_id != f"travel-{direction}-{segment_no:03d}":
+                    raise ValueError("ID de trecho de Viagem fora de sequência")
             if event_id in by_id:
                 raise ValueError("Evento de Viagem duplicado")
             by_id[event_id] = event
+            segment_event_ids[event_id] = event
             event_ids.append(event_id)
             if event.get("skipped") is True:
                 expected = {"event_id": event_id, "card_id": None,
@@ -483,6 +553,9 @@ class Travel02:
                             "direction": direction,
                             "ambush": card_id == "ZC-VIA-0005",
                             "minimum_rounds": card["minimum_rounds"]}
+                if event.get("extra") is True:
+                    expected.update({"extra": True,
+                                     "segment_event_id": event_id.removesuffix("-extra")})
                 if event != expected:
                     raise ValueError("Conteúdo do evento de Viagem adulterado")
                 drawn.append(card_id)

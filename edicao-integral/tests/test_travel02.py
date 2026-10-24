@@ -255,5 +255,54 @@ class Travel02Tests(unittest.TestCase):
         self.assertEqual(context.dogs, 1)
 
 
+    def test_night_extra_is_a_second_occurrence_for_same_paid_segment(self):
+        trip = Travel02.from_deck([
+            "ZC-VIA-0001", "ZC-VIA-0008", "ZC-VIA-0001"], "short")
+        context = TravelContext(food=0, water=0, materials=0,
+                                fatigue={"h": 0})
+        normal = trip.reveal("outbound")
+        trip.apply(normal["event_id"], context)
+        extra = trip.reveal_night_extra("outbound")
+        self.assertEqual(extra["card_id"], "ZC-VIA-0008")
+        self.assertEqual(extra["segment_event_id"], normal["event_id"])
+        self.assertTrue(extra["extra"])
+        self.assertEqual(trip.outbound_segments, 1)
+        self.assertEqual(trip.index, 2)
+        trip.apply(extra["event_id"], context)
+        self.assertTrue(context.route_known)
+        with self.assertRaisesRegex(ValueError, "extra noturna já revelada"):
+            trip.reveal_night_extra("outbound")
+        restored = Travel02.from_snapshot(trip.snapshot())
+        self.assertEqual(restored.snapshot(), trip.snapshot())
+
+    def test_night_extra_pending_occurrence_survives_save_and_blocks_next_segment(self):
+        trip = Travel02.from_deck([
+            "ZC-VIA-0001", "ZC-VIA-0002", "ZC-VIA-0001"], "long")
+        context = TravelContext(food=0, water=1, materials=0,
+                                fatigue={"h": 0})
+        normal = trip.reveal("outbound")
+        trip.apply(normal["event_id"], context)
+        extra = trip.reveal_night_extra("outbound")
+        saved = Travel02.from_snapshot(trip.snapshot())
+        with self.assertRaises(ValueError):
+            saved.reveal("outbound")
+        self.assertEqual(saved.resolve(extra["event_id"], "water", context),
+                         {"water_loss": 1})
+        next_segment = saved.reveal("outbound")
+        self.assertEqual(next_segment["event_id"], "travel-outbound-002")
+
+    def test_fatigue_choice_cannot_raise_beyond_canonical_three(self):
+        trip = Travel02.from_deck(["ZC-VIA-0002"], "short")
+        event = trip.reveal("outbound")
+        context = TravelContext(food=0, water=0, materials=0,
+                                fatigue={"h": 3})
+        before = context.snapshot()
+        effect = trip.apply(event["event_id"], context, "fatigue")
+        self.assertEqual(effect, {"fatigue": 1})
+        self.assertEqual(context.fatigue["h"], 3)
+        self.assertEqual(context.snapshot(), before)
+        self.assertIn(event["event_id"], trip.resolved)
+
+
 if __name__ == "__main__":
     unittest.main()
