@@ -33,6 +33,15 @@ class IntegratedCampaignTests(unittest.TestCase):
         self.assertIsNone(game.world)
         self.assertEqual(game.rewards, [])
 
+    def test_complete_cistern_requires_legal_piece_receipts(self):
+        game = IntegratedCampaign.new(42, STARTERS[:2], LINK_IDS[:2])
+        game.cistern.result = 'candidate_victory'
+        game.cistern.filter_active = True
+        game.cistern.health = game.cistern.morale = 1
+        with self.assertRaises((ValueError, NotImplementedError)):
+            game.complete_cistern()
+        self.assertEqual(game.cistern.result, 'candidate_victory')
+
     def test_save_resume_preserves_partial_campaign(self):
         game = IntegratedCampaign.new(41, STARTERS[:2], LINK_IDS[:2])
         game.decide("rota_dia_1", "mercado")

@@ -368,13 +368,20 @@ class IntegratedCampaign:
             raise ValueError("Expedição ainda não retornou")
         self.cistern.next_day()
 
-    def complete_cistern(self) -> None:
-        """Bloqueia transição enquanto não há vitória e migração verificadas."""
+    def complete_cistern(self) -> dict:
+        """Certifica a Cisterna; a migração para o segundo arco é posterior."""
         self._require_running()
         if self.world is not None or not self.cistern.filter_completed:
             raise ValueError("Filtro da Cisterna ainda não está concluído")
-        raise NotImplementedError(
-            "Vitória candidata não certifica expedições; migração integral pendente")
+        if self.cistern.result is None:
+            self.cistern.close_chapter()
+        required={"Oficina:Conexões","Estação:Bomba","Estação:Membrana"}
+        if not required.issubset(set(self.delivered_objectives)):
+            raise NotImplementedError("Vitória candidata sem recibos legais de peças")
+        certificate = self.cistern.certify_victory(self.delivered_objectives)
+        if "verified_victory" not in self.rewards:
+            self.rewards.append("verified_victory")
+        return certificate
 
     def _arc(self) -> Arc2:
         self._require_running()

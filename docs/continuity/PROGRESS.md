@@ -154,3 +154,15 @@ passaram se o gate de campanha ainda estiver fechado.
   experimental: 153 aprovados, 0 falhas.
 - Ainda faltam Emboscada de retorno, efeitos de cão/Ponte persistentes e a
   integração das cinco noites.
+
+## 2026-10-24 — unidade P1: certificado de vitória da Cisterna
+
+- `Cistern02.certify_victory()` agora transforma `candidate_victory` em
+  `verified_victory` somente com os recibos `Oficina:Conexões`,
+  `Estação:Bomba` e `Estação:Membrana`.
+- `IntegratedCampaign.complete_cistern()` não aceita flags de filtro ou
+  recursos sintéticos; sem recibos legais permanece bloqueado.
+- Suíte experimental: 155 aprovados, 0 falhas; `compileall` e
+  `git diff --check` aprovados.
+- A certificação positiva de uma campanha completa ainda não foi declarada:
+  eventos, cercos, cinco noites e migração de estado continuam pendentes.

@@ -274,6 +274,15 @@ class Cistern02:
                      and self.morale>=1 and supplied else 'partial_defeat')
         return self.result
 
+    def certify_victory(self, legal_objectives:list[str]) -> dict:
+        """Emite certificado somente após o candidato e os três recibos legais."""
+        required={"Oficina:Conexões","Estação:Bomba","Estação:Membrana"}
+        if self.result!='candidate_victory' or not required.issubset(set(legal_objectives)):
+            raise ValueError('Vitória não possui prova legal suficiente')
+        self.result='verified_victory'
+        return {'status':'verified_victory','source':'cistern02',
+                'objectives':sorted(required)}
+
     @staticmethod
     def _take(lots:list[int],amount:int) -> int:
         taken=0

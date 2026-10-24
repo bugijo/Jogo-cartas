@@ -88,8 +88,8 @@
         "round-trip save/load"
       ],
       "status": "bloqueada",
-      "commit": null,
-      "blocker": "Migração incompatível e certificado de vitória não emitido"
+      "commit": "pendente neste commit",
+      "blocker": "Certificado agora exige recibos legais; migração de personagens, recursos e World ainda não implementada"
     },
     {
       "id": "P2-PLAYER-CAMPAIGNS",

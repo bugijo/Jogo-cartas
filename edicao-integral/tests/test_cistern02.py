@@ -235,6 +235,13 @@ class Cistern02Tests(unittest.TestCase):
         self.assertEqual(game.close_chapter(),'candidate_victory')
         self.assertNotIn('cistern_complete',game.__dict__)
 
+    def test_candidate_victory_cannot_be_certified_without_legal_objectives(self):
+        game=Cistern02.new(STARTERS[:2],LINK_IDS[:2])
+        game.result='candidate_victory'
+        with self.assertRaises(ValueError):
+            game.certify_victory([])
+        self.assertEqual(game.result,'candidate_victory')
+
     def test_siege_can_disable_completed_filter(self):
         game=Cistern02.new(STARTERS[:2],LINK_IDS[:2])
         game.receive_part('Conexões');game.meal();game.next_day()
