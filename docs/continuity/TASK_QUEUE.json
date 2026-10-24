@@ -68,7 +68,7 @@
       ],
       "status": "em_execucao",
       "commit": "pendente neste commit",
-      "blocker": "TravelContext e Ambush02 estão testados isoladamente; expedição ainda não cria/consome viagens nem integra a Emboscada M1"
+      "blocker": "Entrada de ida e M1 estão integradas e cobertas; retorno, efeitos no estoque real, promessas e fila final ainda incompletos"
     },
     {
       "id": "P1-MIGRATE-CISTERN",

@@ -12,7 +12,9 @@ from pathlib import Path
 
 from arc2 import Arc2
 from cistern02 import Cistern02, LINK_IDS, STARTERS
+from ambush02 import Ambush02
 from cistern_tactics02 import Tactical02
+from travel02 import Travel02, TravelContext
 from system import Expedition, World
 
 
@@ -62,6 +64,11 @@ class IntegratedCampaign:
     battery_available: bool = False
     van_state: str = "abandoned"
     site_states: dict[str, dict] = field(default_factory=dict)
+    travel: Travel02 | None = None
+    travel_context: TravelContext | None = None
+    travel_request: dict | None = None
+    ambush: Ambush02 | None = None
+    travel_segment_paid: bool = False
 
     STATUSES = {"RUNNING", "VICTORY", "DEFEAT", "IMPOSSIBLE", "PAUSED"}
 
@@ -106,7 +113,8 @@ class IntegratedCampaign:
 
     def start_expedition(self, destination: str, team: list[str],
                          route: str = "short",
-                         equipment: dict[str, list[str]] | None = None) -> Tactical02:
+                         equipment: dict[str, list[str]] | None = None,
+                         travel_paid: bool = False) -> Tactical02:
         self._require_running()
         if self.world is not None or self.tactical is not None:
             raise ValueError("Expedição indisponível nesta fase")
@@ -127,10 +135,80 @@ class IntegratedCampaign:
             taken_before=self.delivered_objectives + self.lost_objectives,
             first_visit=destination.lower() not in self.visited_destinations,
             equipment=loadout,
-            prior_state=self.site_states.get(destination.lower()))
+            prior_state=self.site_states.get(destination.lower()),
+            travel_paid=travel_paid)
         self.tactical = tactical
         self.expedition_days.append(self.cistern.day)
         self.visited_destinations.append(destination.lower())
+        return tactical
+
+    def start_travel(self, destination: str, team: list[str], route: str = "short",
+                     deck: list[str] | None = None,
+                     context: TravelContext | None = None,
+                     equipment: dict[str, list[str]] | None = None) -> Travel02:
+        """Prepara a estrada antes de pagar o trecho no mapa tático."""
+        self._require_running()
+        if self.world is not None or self.tactical is not None or self.travel is not None:
+            raise ValueError("Viagem indisponível nesta fase")
+        if self.cistern.meal_day == self.cistern.day or self.cistern.day in self.expedition_days:
+            raise ValueError("Expedição indisponível após refeição ou já usada no dia")
+        if context is None or set(context.fatigue) != set(team):
+            raise ValueError("Contexto de carga da viagem é obrigatório")
+        if deck is None:
+            trip = Travel02.new(self.seed + self.cistern.day, route)
+        else:
+            trip = Travel02.from_deck(deck, route)
+        trip.reveal("outbound")
+        self.travel = trip
+        self.travel_context = context
+        self.travel_request = {"destination": destination, "team": list(team),
+                               "route": route, "equipment": equipment}
+        return trip
+
+    def reveal_travel(self) -> dict:
+        if self.travel is None:
+            raise ValueError("Nenhuma viagem preparada")
+        return self.travel.reveal("outbound")
+
+    def resolve_travel_choice(self, event_id: str, choice: str) -> dict:
+        if self.travel is None or self.travel_context is None:
+            raise ValueError("Nenhuma viagem preparada")
+        return self.travel.apply(event_id, self.travel_context, choice)
+
+    def start_travel_ambush(self) -> Ambush02:
+        if (self.travel is None or self.travel.pending_ambush is None
+                or self.travel_request is None or self.ambush is not None):
+            raise ValueError("Nenhuma Emboscada pendente")
+        self.ambush = Ambush02.start(self.travel_request["team"], self.cistern.clock)
+        return self.ambush
+
+    def finish_travel_ambush(self) -> None:
+        if self.travel is None or self.ambush is None or not self.ambush.returned:
+            raise ValueError("Emboscada ainda não retornou")
+        event_id = self.travel.pending_ambush
+        if event_id is None:
+            raise ValueError("Emboscada já resolvida")
+        self.travel.resolve_ambush(event_id)
+        if self.ambush.clock < self.cistern.clock:
+            raise ValueError("Relógio da Emboscada retrocedeu")
+        self.cistern.clock = self.ambush.clock
+        self.travel_segment_paid = True
+        self.ambush = None
+
+    def enter_expedition(self) -> Tactical02:
+        if self.travel is None or self.travel_request is None:
+            raise ValueError("Prepare a viagem antes de entrar no mapa")
+        if (self.travel.remaining("outbound") or self.travel.pending_choices
+                or self.travel.pending_ambush is not None or self.ambush is not None):
+            raise ValueError("Viagem ainda não foi resolvida")
+        request = self.travel_request
+        tactical = self.start_expedition(
+            request["destination"], request["team"], request["route"],
+            request["equipment"], self.travel_segment_paid)
+        self.travel = None
+        self.travel_context = None
+        self.travel_request = None
+        self.travel_segment_paid = False
         return tactical
 
     def return_expedition(self, by_van: bool = False) -> list[dict]:
@@ -288,6 +366,10 @@ class IntegratedCampaign:
         payload = asdict(self)
         payload["cistern"] = asdict(self.cistern)
         payload["tactical"] = self.tactical.snapshot() if self.tactical else None
+        payload["travel"] = self.travel.snapshot() if self.travel else None
+        payload["travel_context"] = (self.travel_context.snapshot()
+                                      if self.travel_context else None)
+        payload["ambush"] = self.ambush.snapshot() if self.ambush else None
         payload["world"] = _world_payload(self.world) if self.world is not None else None
         payload["world"] = {"schema": 1, **payload["world"]} if payload["world"] else None
         path.write_text(json.dumps(payload, ensure_ascii=False, indent=2) + "\n",
@@ -302,6 +384,12 @@ class IntegratedCampaign:
         if payload.get("tactical") is not None:
             payload["tactical"] = Tactical02.from_snapshot(payload["cistern"],
                                                            payload["tactical"])
+        if payload.get("travel") is not None:
+            payload["travel"] = Travel02.from_snapshot(payload["travel"])
+        if payload.get("travel_context") is not None:
+            payload["travel_context"] = TravelContext(**payload["travel_context"])
+        if payload.get("ambush") is not None:
+            payload["ambush"] = Ambush02.from_snapshot(payload["ambush"])
         if payload.get("world") is not None:
             payload["world"] = _world_from_payload(payload["world"])
         campaign = cls(schema=1, **payload)

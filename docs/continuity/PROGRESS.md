@@ -106,3 +106,15 @@ passaram se o gate de campanha ainda estiver fechado.
 - A revisão independente não encontrou exploração no caminho canônico, mas
   pediu cobertura do save/load depois da recuperação e antes da entrega. O teste
   integrado agora salva/restaura nesse ponto e verifica a entrega única.
+
+## 2026-10-24 — unidade P0: entrada de viagem e M1
+
+- `IntegratedCampaign` agora oferece entrada explícita de viagem: cada trecho
+  precisa ser revelado e resolvido antes do mapa; escolhas pendentes bloqueiam
+  a entrada; snapshots preservam viagem, carga e Emboscada.
+- Uma Emboscada M1 concluída atualiza o relógio real uma vez e a entrada no
+  mapa usa `travel_paid`, evitando cobrança duplicada do trecho.
+- Testes focados de entrada, save/load e M1; suíte experimental: 143
+  aprovados, 0 falhas.
+- O retorno ainda não consome o baralho de volta nem aplica todos os efeitos
+  ao estoque real; a certificação da campanha continua bloqueada.

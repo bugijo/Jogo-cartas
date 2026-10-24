@@ -6,9 +6,59 @@ from pathlib import Path
 
 sys.path.insert(0, str(Path(__file__).resolve().parents[1]))
 from integrated_campaign import IntegratedCampaign, STARTERS, LINK_IDS
+from travel02 import TravelContext
 
 
 class IntegratedTacticalTests(unittest.TestCase):
+    def test_travel_entry_requires_resolution_before_entering_map(self):
+        hero = STARTERS[0]
+        game = IntegratedCampaign.new(114, STARTERS[:2], LINK_IDS[:2])
+        travel = game.start_travel(
+            "Mercado", [hero], "short",
+            deck=["ZC-VIA-0002"],
+            context=TravelContext(food=0, water=1, materials=0,
+                                  fatigue={hero: 0}))
+        with self.assertRaises(ValueError):
+            game.enter_expedition()
+        game.resolve_travel_choice("travel-001", "water")
+        self.assertEqual(game.enter_expedition().destination, "mercado")
+        self.assertEqual(game.cistern.clock, 2)  # trecho + primeira rodada.
+
+    def test_travel_entry_runs_m1_and_does_not_charge_its_segment_twice(self):
+        hero = STARTERS[0]
+        game = IntegratedCampaign.new(115, STARTERS[:2], LINK_IDS[:2])
+        game.start_travel(
+            "Mercado", [hero], "short",
+            deck=["ZC-VIA-0005"],
+            context=TravelContext(food=0, water=0, materials=0,
+                                  fatigue={hero: 0}))
+        ambush = game.start_travel_ambush()
+        ambush.begin_round()
+        ambush.move(hero, 2)
+        ambush.move(hero, 6)
+        ambush.attack(hero, 1, 6)
+        ambush.end_round()
+        ambush.positions[hero] = 1
+        ambush.finish()
+        game.finish_travel_ambush()
+        game.enter_expedition()
+        self.assertEqual(game.cistern.clock, 2)
+
+    def test_pending_travel_round_trips_through_campaign_save(self):
+        hero = STARTERS[0]
+        game = IntegratedCampaign.new(116, STARTERS[:2], LINK_IDS[:2])
+        game.start_travel(
+            "Mercado", [hero], "short",
+            deck=["ZC-VIA-0002"],
+            context=TravelContext(food=0, water=1, materials=0,
+                                  fatigue={hero: 0}))
+        with tempfile.TemporaryDirectory() as directory:
+            path = Path(directory) / "travel.json"
+            game.save(path)
+            resumed = IntegratedCampaign.load(path)
+        self.assertIsNotNone(resumed.travel)
+        resumed.resolve_travel_choice("travel-001", "water")
+        self.assertEqual(resumed.enter_expedition().destination, "mercado")
     def test_legal_trip_delivers_once_and_survives_save(self):
         hero = STARTERS[0]
         game = IntegratedCampaign.new(103, STARTERS[:2], LINK_IDS[:2])

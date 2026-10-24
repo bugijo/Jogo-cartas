@@ -118,7 +118,8 @@ class Tactical02:
               taken_before: list[str] | None = None,
               first_visit: bool = True,
               equipment: dict[str, list[str]] | None = None,
-              prior_state: dict | None = None) -> 'Tactical02':
+              prior_state: dict | None = None,
+              travel_paid: bool = False) -> 'Tactical02':
         if destination.lower() not in MAPS or route not in ('short', 'long'):
             raise ValueError('Destino ou rota inválidos')
         if not team or len(set(team)) != len(team) or any(h not in chapter.founders for h in team):
@@ -126,7 +127,8 @@ class Tactical02:
         people = {p['id']: p for p in chapter.people}
         if any(people[h]['wounds'] >= 3 or people[h].get('fatigue',0) >= 3 for h in team):
             raise ValueError('Herói incapacitado ou exausto')
-        if chapter.result or chapter.clock + (1 if route == 'short' else 2) + 1 > 10:
+        travel_cost = 0 if travel_paid else (1 if route == 'short' else 2)
+        if chapter.result or chapter.clock + travel_cost + 1 > 10:
             raise ValueError('Sem tempo para entrar no mapa')
         if horde_order is not None and (len(horde_order) != 9 or
                                         sorted(horde_order) != sorted(HORDE)):
@@ -141,7 +143,8 @@ class Tactical02:
                   horde_order=list(horde_order) if horde_order else list(HORDE),
                   taken_before=list(taken_before or []),
                   first_market_visit=destination.lower() == 'mercado' and first_visit)
-        chapter.spend_segments(obj.travel_cost)
+        if not travel_paid:
+            chapter.spend_segments(obj.travel_cost)
         obj.positions = {h: obj.map['entry'] for h in team}
         obj.carried = {h: [] for h in team}
         obj.supply_cargo = {h: [] for h in team}
