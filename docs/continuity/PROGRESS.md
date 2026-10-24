@@ -5,6 +5,8 @@
 - Expedição tática parcial, carga, retorno, peças e revisitas persistentes.
 - Posto/combustível parcial e políticas determinísticas para oito perfis.
 - Suíte experimental: 109 testes aprovados.
+- Após a integração das políticas, persistência regional e expedição tática:
+  suíte experimental atual: 124 testes aprovados.
 - Suíte física/legada: 51 aprovados, 1 ignorado, sem falhas na execução com
   dependências e artefatos materializados.
 - `compileall` e `git diff --check`: aprovados.
@@ -12,6 +14,9 @@
   isoladas, com pré-condições sintéticas.
 - Bloqueios P0/P1 permanecem ativos; nenhuma publicação física nova foi
   declarada pronta.
+
+- Fila persistente criada em `docs/continuity/`; P0 marcado como
+  `em_execucao`, P1–P3 como `bloqueada` por dependências verificadas.
 
 ## Regra de atualização
 

@@ -1,7 +1,7 @@
 # Retomada
 
 Estado conhecido: branch `evolucao/zona-zero-sistema-v1`, HEAD esperado
-`8697db9` ou descendente fast-forward.
+`41ee603` ou descendente fast-forward.
 
 Comando idempotente:
 
