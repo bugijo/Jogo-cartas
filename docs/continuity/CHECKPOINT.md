@@ -1,51 +1,66 @@
-# Retomada
+# Checkpoint de retomada — Operação Campanha Viva
 
-Estado inicial da unidade: branch `evolucao/zona-zero-sistema-v1`, HEAD local e
-remoto `94b6e7c7a397fb009d733d95af825c53a5728cee`. Veja os commits desta
-recuperação abaixo e `RECOVERY_AUDIT.md`; as implementações foram integradas
-seletivamente, não por cherry-pick cego.
+Branch: `evolucao/zona-zero-sistema-v1`
+Base remota ao iniciar: `54a95f1a7a498e54a6e39748dca749b2319a6729`
+Commits locais desta sessão: `c8a4a0f` (fases diárias, trabalho nominal e resgate pago), seguido pelo commit do replay de campanha.
+Main e kit físico 0.2 permanecem intocados.
 
-O trabalho anterior de baralhos persistentes de Hordas e Viagem foi preservado.
-Os novos módulos recuperados usam esses baralhos como fonte única; saves sem
-cursores introduzidos depois são migrados de forma explícita e conservadora.
+## Comprovado nesta sessão
 
-O estado recuperado agora inclui Viagem por trecho e Emboscada M1, tática de
-expedição, liquidação do retorno, eventos diários, cercos e recibos da Cisterna.
-Os baralhos recentes de Horda e Viagem permanecem a única fonte persistente.
-Saves pré-eventos preservam recursos e estado, registram eventos passados como
-lacuna não auditável, aplicam só o evento atual e ficam inelegíveis para
-certificação canônica.
+- O controlador `edicao-integral/campaign_player02.py` inicia H2 legalmente a
+  partir de semente e usa as APIs de viagem, tática, abrigo e campanha.
+- Seed 22 completou Mercado no dia 1, Oficina no dia 2 e Estação no dia 3;
+  recuperou e entregou Conexões, Bomba e Membrana com recibos táticos únicos.
+- Foram processados os eventos `ZC-EVE-0001` a `ZC-EVE-0005`, cinco refeições,
+  o cerco de missão do dia 3 e o cerco de Pressão do dia 5. O filtro concluiu
+  A/B no dia 4 e C no dia 5; a noite final terminou abastecida, com Saúde/Moral
+  positivas e sem ameaça pendente.
+- O motor emitiu `verified_victory`. O replay registra seed, preparação,
+  decisões, recibos, eventos, cercos, estado final e save terminal. O verificador
+  repete as decisões e confere save/load.
+- Nesta rota não houve grupo de resgate ou promessa assumida. A campanha oficial
+  não exige resgate para a vitória; promessa só existe quando assumida.
 
-Comando idempotente:
+## Evidência e comando
+
+```bash
+python edicao-integral/verify_campaign_player02.py --write
+python edicao-integral/verify_campaign_player02.py
+python -m unittest discover -s edicao-integral/tests -q
+python edicao-integral/validate_data.py
+python -m compileall -q edicao-integral src
+git diff --check
+```
+
+Replay: `edicao-integral/replays/cisterna_h2_seed22.json`.
+Relatório de fronteira entre arcos: `edicao-integral/CAMPAIGN_INTEGRATION.md`.
+
+## Limitações reais
+
+- Uma vitória H2 seed 22 é prova de possibilidade, não de equilíbrio ou de
+  sucesso geral. Ensaios de outras sementes incluíram emergência, déficit,
+  derrota parcial e falhas da política; eles não foram usados como taxa de
+  vitória.
+- O controlador ainda não é um jogador adaptativo completo. Algumas sementes
+  param por plano de carga inadequado ou por uma expedição perdida.
+- Ainda não há migração canônica dos fundadores e estado persistente para
+  Última Transmissão. Não há campanha contínua certificada.
+- A mecânica de promessas em encontros depende da decisão e do prazo anotado;
+  certos textos de encontros ainda não definem um procedimento automatizado
+  completo. A rota vencedora não precisou dela.
+- Impressão e playtest humano seguem pendentes.
+
+## Próximo passo
+
+Implementar e testar a migração de um save `verified_victory` para Última
+Transmissão, preservando elenco, vínculos, ferimentos, equipamento e estoque.
+Depois, generalizar o controlador H2 e executar a cobertura de 2–6 heróis.
+
+Retomada:
 
 ```bash
 git fetch origin evolucao/zona-zero-sistema-v1
 git merge --ff-only origin/evolucao/zona-zero-sistema-v1
-git status --short
-python3 -m unittest discover -s edicao-integral/tests -q
-python3 -m compileall -q edicao-integral src
-git diff --check
+python edicao-integral/verify_campaign_player02.py
+python -m unittest discover -s edicao-integral/tests -q
 ```
-
-Validação desta unidade: 220 testes experimentais passaram, junto com
-`validate_data.py`, `compileall` e `git diff --check`. O replay roteirizado
-H2–H6 cobre cinco dias, mas não usa apenas ações legais e não demonstra
-`verified_victory`.
-
-Próximo passo: criar um executor de campanha que use exclusivamente a API
-pública Viagem → escolha/Emboscada → mapa → recibos táticos → retorno. Hoje
-`collect_part()` continua bloqueado e o caminho completo não comprova a coleta
-e entrega das três peças sem fixture. Manter `verified_victory` fechado até
-esse replay passar desde preparação legítima.
-
-Commits desta recuperação:
-
-- `6f48cf7` — módulos de Viagem e Emboscada M1, com testes.
-- `8318291` — eventos canônicos, cercos, tática e recibos da Cisterna.
-- `37ff095` — integração da ida/volta, decks únicos e replay H2–H6 corrigido.
-- `494d758` — expedição de oficina legal com ordem natural de Viagem seed 22.
-- `8bae492` — relatório de recuperação e checkpoints atualizados.
-- `1627890` — checkpoint atualizado após documentação.
-
-Publicar somente por fast-forward em `origin/evolucao/zona-zero-sistema-v1`,
-sem merge ou force.

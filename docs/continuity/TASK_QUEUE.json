@@ -9,10 +9,10 @@
       "objective": "Completar fases e consequências restantes da expedição 0.2.",
       "depends_on": [],
       "acceptance": ["recibos legais", "salvamento", "sem recompensa duplicada", "paridade 0.2"],
-      "tests": ["edicao-integral/tests/test_cistern_tactics02.py", "novo teste de fases"],
+      "tests": ["edicao-integral/tests/test_cistern_tactics02.py", "edicao-integral/tests/test_campaign_player02.py", "edicao-integral/verify_campaign_player02.py"],
       "status": "em_execucao",
-      "commit": "37ff095",
-      "blocker": "Viagem por trecho, M1, liquidação de retorno, eventos e cercos foram recuperados e integrados seletivamente. Falta um replay público legal de cinco dias que colete/entregue as três peças, feche A/B/C, processe resgates/promessas e encerre sem fixtures ou mutação administrativa"
+      "commit": "pending-session-commit",
+      "blocker": "Um replay H2 legal foi concluído em seed 22, com três expedições, peças, filtro A/B/C, cinco noites/eventos e verified_victory. Ainda faltam trajetórias confiáveis para outras sementes e grupos H3-H6; há emergências, déficits e derrotas que precisam ser classificados sem virar taxa de vitória"
     },
     {
       "id": "P1-MIGRATE-CISTERN",
@@ -23,7 +23,7 @@
       "tests": ["campanha contínua H2-H6", "round-trip save/load"],
       "status": "bloqueada",
       "commit": null,
-      "blocker": "Modelos de personagens incompatíveis e certificado ainda não emitido"
+      "blocker": "verified_victory existe em uma trajetória H2 reproduzível, mas não há migração canônica que preserve estado para Última Transmissão"
     },
     {
       "id": "P2-PLAYER-CAMPAIGNS",

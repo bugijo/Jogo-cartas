@@ -103,3 +103,31 @@ passaram se o gate de campanha ainda estiver fechado.
 - Próximo bloqueio: ligar o fluxo público a um executor legal de campanha que
   recolha as peças e retorne com recibos; depois validar as cinco noites e
   emitir `verified_victory` apenas se essa trajetória passar.
+
+## 2026-10-24 — primeira campanha H2 reproduzível
+
+- `c8a4a0f` integrou alocação nominal de trabalhadores, bloqueio de trabalho
+  durante expedições, ajuda de resgate paga pela carga física e controle dos
+  recibos de retorno; inclui testes de regressão para o ciclo de noite.
+- O controlador `campaign_player02.py` utiliza ações públicas do integrador e
+  mapas observáveis. Não concede peças, não emite o certificado diretamente e
+  não abre envelopes de intenção.
+- Seed 22 concluiu cinco dias/noites: Mercado → Oficina → Estação; foram
+  entregues Conexões, Bomba e Membrana. Os cinco eventos foram consumidos, os
+  cercos de missão e de Pressão foram resolvidos, e o filtro A/B/C ficou ativo
+  antes do encerramento. O motor retornou `verified_victory`.
+- A rota não acolheu resgatados e não assumiu promessas. Isso não viola o
+  capítulo: `CAMPAIGN.md` não exige resgate para vencer e condiciona promessa à
+  escolha explícita. A rota não testa a compreensão/execução de promessas.
+- `verify_campaign_player02.py` compara o replay determinístico e faz
+  save/load terminal. Artefato: `edicao-integral/replays/cisterna_h2_seed22.json`.
+- Amostra exploratória de dez seeds teve uma vitória H2, uma derrota parcial,
+  emergências e bloqueios do controlador (incluindo carga e logística). Não é
+  amostra estatística nem medida de equilíbrio.
+- A revisão revelou um erro concreto de seleção do controlador: ele tentava
+  resolver custo de material em Viagem sem conferir quantidade. A decisão agora
+  exige material suficiente, e o controlador planeja carregar no máximo uma
+  unidade já existente no estoque. Isso não muda regras nem concede recursos.
+- Estado: campanha legal demonstrada para uma preparação H2; ainda não há
+  campanha geral, cobertura H3-H6, resgate/promessa exercitados ou transição
+  legal para Última Transmissão. Impressão e playtest humano seguem pendentes.

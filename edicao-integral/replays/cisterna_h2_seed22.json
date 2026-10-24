@@ -1,0 +1,2029 @@
+{
+  "schema": 1,
+  "description": "Replay determinístico de A Cisterna, H2, iniciado legitimamente.",
+  "setup": {
+    "seed": 22,
+    "founders": [
+      "ZC-HER-0001",
+      "ZC-HER-0003"
+    ],
+    "links_drawn": [
+      "ZC-VIN-0005",
+      "ZC-VIN-0002"
+    ],
+    "people": [
+      {
+        "id": "ZC-HER-0001",
+        "kind": "hero",
+        "family": "ZC-HER-0001",
+        "hungry": false,
+        "thirsty": false,
+        "streak": 0,
+        "wounds": 0,
+        "fatigue": 0,
+        "alert": false
+      },
+      {
+        "id": "R01",
+        "kind": "adult",
+        "family": "ZC-HER-0001",
+        "hungry": false,
+        "thirsty": false,
+        "streak": 0,
+        "wounds": 0,
+        "fatigue": 0,
+        "alert": false
+      },
+      {
+        "id": "ZC-HER-0003",
+        "kind": "hero",
+        "family": "ZC-HER-0003",
+        "hungry": false,
+        "thirsty": false,
+        "streak": 0,
+        "wounds": 0,
+        "fatigue": 0,
+        "alert": false
+      }
+    ],
+    "food_lots": [
+      4,
+      4
+    ],
+    "water_lots": [
+      4,
+      4
+    ],
+    "materials": 3,
+    "ammo": 2,
+    "event_queue": [
+      "ZC-EVE-0002",
+      "ZC-EVE-0003",
+      "ZC-EVE-0004",
+      "ZC-EVE-0005"
+    ],
+    "starting_equipment": {
+      "ZC-HER-0001": [
+        "Pé de cabra"
+      ],
+      "ZC-HER-0003": [
+        "Pé de cabra"
+      ]
+    }
+  },
+  "trace": {
+    "seed": 22,
+    "founders": [
+      "ZC-HER-0001",
+      "ZC-HER-0003"
+    ],
+    "links": [
+      "ZC-VIN-0005",
+      "ZC-VIN-0002"
+    ],
+    "setup": {
+      "people": [
+        {
+          "id": "ZC-HER-0001",
+          "kind": "hero",
+          "family": "ZC-HER-0001",
+          "hungry": false,
+          "thirsty": false,
+          "streak": 0,
+          "wounds": 0,
+          "fatigue": 0,
+          "alert": false
+        },
+        {
+          "id": "R01",
+          "kind": "adult",
+          "family": "ZC-HER-0001",
+          "hungry": false,
+          "thirsty": false,
+          "streak": 0,
+          "wounds": 0,
+          "fatigue": 0,
+          "alert": false
+        },
+        {
+          "id": "ZC-HER-0003",
+          "kind": "hero",
+          "family": "ZC-HER-0003",
+          "hungry": false,
+          "thirsty": false,
+          "streak": 0,
+          "wounds": 0,
+          "fatigue": 0,
+          "alert": false
+        }
+      ],
+      "food_lots": [
+        4,
+        4
+      ],
+      "water_lots": [
+        4,
+        4
+      ],
+      "materials": 3,
+      "ammo": 2,
+      "event_queue": [
+        "ZC-EVE-0002",
+        "ZC-EVE-0003",
+        "ZC-EVE-0004",
+        "ZC-EVE-0005"
+      ],
+      "starting_equipment": {
+        "ZC-HER-0001": [
+          "Pé de cabra"
+        ],
+        "ZC-HER-0003": [
+          "Pé de cabra"
+        ]
+      }
+    },
+    "days": [
+      {
+        "day": 1,
+        "destination": "Mercado",
+        "clock": 10,
+        "travel_events": [
+          {
+            "leg": "outbound",
+            "event_id": "travel-outbound-001",
+            "card_id": "ZC-VIA-0001",
+            "resolution": {
+              "choice": null,
+              "effect": {}
+            }
+          },
+          {
+            "leg": "return",
+            "event_id": "travel-return-001",
+            "card_id": "ZC-VIA-0010",
+            "resolution": {
+              "choice": null,
+              "effect": {
+                "material_gain": 1
+              }
+            }
+          },
+          {
+            "leg": "return",
+            "event_id": "travel-return-001-extra",
+            "card_id": "ZC-VIA-0004",
+            "resolution": {
+              "choice": "material",
+              "effect": {
+                "material_loss": 1
+              }
+            }
+          }
+        ],
+        "tactical_outcome": "returned",
+        "delivered": [
+          "mercado:Conserva:1",
+          "mercado:Conserva:2",
+          "mercado:Água:1",
+          "mercado:Água:2"
+        ],
+        "night": {
+          "siege": null,
+          "work": {
+            "workers": [],
+            "units": 0,
+            "day": 1
+          },
+          "meal": {
+            "consumers": 3,
+            "meat_used": 0,
+            "food_used": 3,
+            "water_used": 3,
+            "food_missing": 0,
+            "water_missing": 0,
+            "meat_expired": 0,
+            "hungry": [],
+            "thirsty": []
+          },
+          "intentions": []
+        }
+      },
+      {
+        "day": 2,
+        "destination": "Oficina",
+        "clock": 6,
+        "travel_events": [
+          {
+            "leg": "outbound",
+            "event_id": "travel-outbound-001",
+            "card_id": "ZC-VIA-0003",
+            "resolution": {
+              "choice": null,
+              "effect": {
+                "skip_return_card": 1
+              }
+            }
+          },
+          {
+            "leg": "return",
+            "event_id": "travel-return-001",
+            "card_id": null,
+            "resolution": {
+              "skipped": true
+            }
+          }
+        ],
+        "tactical_outcome": "returned",
+        "delivered": [
+          "Oficina:Conexões",
+          "oficina:Conserva:1",
+          "oficina:Machado:1"
+        ],
+        "night": {
+          "siege": null,
+          "work": {
+            "workers": [],
+            "units": 0,
+            "day": 2
+          },
+          "meal": {
+            "consumers": 3,
+            "meat_used": 0,
+            "food_used": 3,
+            "water_used": 3,
+            "food_missing": 0,
+            "water_missing": 0,
+            "meat_expired": 0,
+            "hungry": [],
+            "thirsty": []
+          },
+          "intentions": []
+        }
+      },
+      {
+        "day": 3,
+        "destination": "Estação",
+        "clock": 9,
+        "travel_events": [
+          {
+            "leg": "outbound",
+            "event_id": "travel-outbound-001",
+            "card_id": "ZC-VIA-0008",
+            "resolution": {
+              "choice": null,
+              "effect": {
+                "route_known": 1
+              }
+            }
+          },
+          {
+            "leg": "return",
+            "event_id": "travel-return-001",
+            "card_id": "ZC-VIA-0002",
+            "resolution": {
+              "choice": "fatigue",
+              "effect": {
+                "fatigue": 1
+              }
+            }
+          },
+          {
+            "leg": "return",
+            "event_id": "travel-return-001-extra",
+            "card_id": "ZC-VIA-0011",
+            "resolution": {
+              "choice": null,
+              "effect": {
+                "bridge_known": 1
+              }
+            }
+          }
+        ],
+        "tactical_outcome": "returned",
+        "delivered": [
+          "Estação:Bomba",
+          "Estação:Membrana",
+          "estação:Água:1"
+        ],
+        "night": {
+          "siege": {
+            "trigger": "Barulho no vale",
+            "strength": 4,
+            "defense": 4,
+            "gap": 0,
+            "card_id": null,
+            "food_lost": 0,
+            "water_lost": 0,
+            "damaged": [],
+            "health": 5,
+            "morale": 5,
+            "rolls": [],
+            "targets": []
+          },
+          "work": {
+            "workers": [],
+            "units": 0,
+            "day": 3
+          },
+          "meal": {
+            "consumers": 3,
+            "meat_used": 0,
+            "food_used": 3,
+            "water_used": 3,
+            "food_missing": 0,
+            "water_missing": 0,
+            "meat_expired": 0,
+            "hungry": [],
+            "thirsty": []
+          },
+          "intentions": []
+        }
+      },
+      {
+        "day": 4,
+        "destination": null,
+        "clock": 0,
+        "travel_events": [],
+        "tactical_outcome": "no_expedition",
+        "delivered": [],
+        "night": {
+          "siege": null,
+          "work": {
+            "day": 4,
+            "task": "filter",
+            "workers": [
+              "ZC-HER-0001",
+              "ZC-HER-0003"
+            ],
+            "units": 2,
+            "stage_before": "A",
+            "stage_after": "C",
+            "steps": [
+              {
+                "from": "A",
+                "to": "B"
+              },
+              {
+                "from": "B",
+                "to": "C"
+              }
+            ],
+            "expedition_team": []
+          },
+          "meal": {
+            "consumers": 3,
+            "meat_used": 0,
+            "food_used": 3,
+            "water_used": 3,
+            "food_missing": 0,
+            "water_missing": 0,
+            "meat_expired": 0,
+            "hungry": [],
+            "thirsty": []
+          },
+          "intentions": []
+        }
+      },
+      {
+        "day": 5,
+        "destination": null,
+        "clock": 0,
+        "travel_events": [],
+        "tactical_outcome": "no_expedition",
+        "delivered": [],
+        "night": {
+          "siege": {
+            "trigger": "Pressão",
+            "strength": 4,
+            "defense": 2,
+            "gap": 2,
+            "card_id": "ZC-CER-0004",
+            "food_lost": 4,
+            "water_lost": 0,
+            "damaged": [
+              "Portão"
+            ],
+            "health": 5,
+            "morale": 5,
+            "rolls": [],
+            "targets": [
+              "Portão"
+            ]
+          },
+          "work": {
+            "day": 5,
+            "task": "filter",
+            "workers": [
+              "ZC-HER-0001",
+              "ZC-HER-0003"
+            ],
+            "units": 2,
+            "stage_before": "C",
+            "stage_after": "C",
+            "steps": [
+              {
+                "from": "C",
+                "to": "C"
+              },
+              {
+                "from": "C",
+                "to": "C"
+              }
+            ],
+            "expedition_team": []
+          },
+          "meal": {
+            "consumers": 3,
+            "meat_used": 0,
+            "food_used": 3,
+            "water_used": 3,
+            "food_missing": 0,
+            "water_missing": 0,
+            "meat_expired": 0,
+            "hungry": [],
+            "thirsty": []
+          },
+          "intentions": []
+        }
+      }
+    ],
+    "receipts": [
+      {
+        "event": "pickup_supply",
+        "id": "mercado:Conserva:1",
+        "kind": "Conserva",
+        "lot": 1,
+        "cards": 1,
+        "portions": 4,
+        "zone": 7,
+        "hero": "ZC-HER-0001",
+        "clock": 3
+      },
+      {
+        "event": "pickup_supply",
+        "id": "mercado:Conserva:2",
+        "kind": "Conserva",
+        "lot": 2,
+        "cards": 1,
+        "portions": 4,
+        "zone": 7,
+        "hero": "ZC-HER-0001",
+        "clock": 3
+      },
+      {
+        "event": "pickup_supply",
+        "id": "mercado:Água:1",
+        "kind": "Água",
+        "lot": 1,
+        "cards": 1,
+        "portions": 4,
+        "zone": 14,
+        "hero": "ZC-HER-0003",
+        "clock": 4
+      },
+      {
+        "event": "pickup_supply",
+        "id": "mercado:Água:2",
+        "kind": "Água",
+        "lot": 2,
+        "cards": 1,
+        "portions": 4,
+        "zone": 14,
+        "hero": "ZC-HER-0003",
+        "clock": 4
+      },
+      {
+        "event": "pickup_part",
+        "id": "Oficina:Conexões",
+        "hero": "ZC-HER-0001",
+        "part": "Conexões",
+        "destination": "Oficina",
+        "zone": 7,
+        "clock": 3
+      },
+      {
+        "event": "pickup_supply",
+        "id": "oficina:Conserva:1",
+        "kind": "Conserva",
+        "lot": 1,
+        "cards": 1,
+        "portions": 4,
+        "zone": 7,
+        "hero": "ZC-HER-0001",
+        "clock": 3
+      },
+      {
+        "event": "pickup_equipment",
+        "id": "oficina:Machado:1",
+        "destination": "Oficina",
+        "item": "Machado",
+        "lot": 1,
+        "hero": "ZC-HER-0003",
+        "zone": 14,
+        "clock": 4
+      },
+      {
+        "event": "pickup_part",
+        "id": "Estação:Bomba",
+        "hero": "ZC-HER-0001",
+        "part": "Bomba",
+        "destination": "Estação",
+        "zone": 7,
+        "clock": 3
+      },
+      {
+        "event": "pickup_part",
+        "id": "Estação:Membrana",
+        "hero": "ZC-HER-0003",
+        "part": "Membrana",
+        "destination": "Estação",
+        "zone": 14,
+        "clock": 5
+      },
+      {
+        "event": "pickup_supply",
+        "id": "estação:Água:1",
+        "kind": "Água",
+        "lot": 1,
+        "cards": 1,
+        "portions": 4,
+        "zone": 14,
+        "hero": "ZC-HER-0003",
+        "clock": 5
+      }
+    ],
+    "events": [
+      "ZC-EVE-0001",
+      "ZC-EVE-0002",
+      "ZC-EVE-0003",
+      "ZC-EVE-0004",
+      "ZC-EVE-0005"
+    ],
+    "sieges": [
+      {
+        "day": 3,
+        "trigger": "Barulho no vale",
+        "card_id": null,
+        "cancelled": false,
+        "force": 4,
+        "defense": 4,
+        "gap": 0
+      },
+      {
+        "day": 5,
+        "trigger": "Pressão",
+        "card_id": "ZC-CER-0004",
+        "cancelled": false,
+        "force": 4,
+        "defense": 2,
+        "gap": 2
+      }
+    ],
+    "nights_completed": 5,
+    "delivered_objectives": [
+      "mercado:Conserva:1",
+      "mercado:Conserva:2",
+      "mercado:Água:1",
+      "mercado:Água:2",
+      "Oficina:Conexões",
+      "oficina:Conserva:1",
+      "oficina:Machado:1",
+      "Estação:Bomba",
+      "Estação:Membrana",
+      "estação:Água:1"
+    ],
+    "final_state": {
+      "day": 5,
+      "meal_day": 5,
+      "filter_active": true,
+      "health": 5,
+      "morale": 5,
+      "food_lots": [
+        1
+      ],
+      "water_lots": [
+        1,
+        4,
+        4,
+        2
+      ],
+      "materials": 0,
+      "ammo": 0,
+      "parts": {
+        "Conexões": 2,
+        "Bomba": 3,
+        "Membrana": 3
+      },
+      "people": [
+        {
+          "id": "ZC-HER-0001",
+          "kind": "hero",
+          "family": "ZC-HER-0001",
+          "hungry": false,
+          "thirsty": false,
+          "streak": 0,
+          "wounds": 0,
+          "fatigue": 0,
+          "alert": false
+        },
+        {
+          "id": "R01",
+          "kind": "adult",
+          "family": "ZC-HER-0001",
+          "hungry": false,
+          "thirsty": false,
+          "streak": 0,
+          "wounds": 0,
+          "fatigue": 0,
+          "alert": false
+        },
+        {
+          "id": "ZC-HER-0003",
+          "kind": "hero",
+          "family": "ZC-HER-0003",
+          "hungry": false,
+          "thirsty": false,
+          "streak": 0,
+          "wounds": 0,
+          "fatigue": 0,
+          "alert": false
+        }
+      ],
+      "pending_sieges": [],
+      "groups": [],
+      "rescue_history": {}
+    },
+    "certificate": {
+      "status": "verified_victory",
+      "source": "cistern02",
+      "objectives": [
+        "Estação:Bomba",
+        "Estação:Membrana",
+        "Oficina:Conexões"
+      ]
+    },
+    "decision_count": 98,
+    "decisions": [
+      {
+        "action": "start_travel",
+        "destination": "Mercado",
+        "team": [
+          "ZC-HER-0001",
+          "ZC-HER-0003"
+        ],
+        "day": 1,
+        "route": "short",
+        "materials_carried": 1
+      },
+      {
+        "action": "travel_choice",
+        "event": "travel-outbound-001",
+        "choice": null
+      },
+      {
+        "action": "move",
+        "hero": "ZC-HER-0001",
+        "zone": 2,
+        "round": 1
+      },
+      {
+        "action": "move",
+        "hero": "ZC-HER-0001",
+        "zone": 3,
+        "round": 1
+      },
+      {
+        "action": "open_door",
+        "hero": "ZC-HER-0001",
+        "edge": [
+          3,
+          7
+        ],
+        "round": 1
+      },
+      {
+        "action": "move",
+        "hero": "ZC-HER-0003",
+        "zone": 2,
+        "round": 1
+      },
+      {
+        "action": "move",
+        "hero": "ZC-HER-0003",
+        "zone": 3,
+        "round": 1
+      },
+      {
+        "action": "move",
+        "hero": "ZC-HER-0003",
+        "zone": 7,
+        "round": 1
+      },
+      {
+        "action": "end_round",
+        "round": 1,
+        "clock": 2,
+        "enemies": 1
+      },
+      {
+        "action": "move",
+        "hero": "ZC-HER-0001",
+        "zone": 7,
+        "round": 2
+      },
+      {
+        "action": "pickup_supply",
+        "hero": "ZC-HER-0001",
+        "task": {
+          "action": "pickup_supply",
+          "kind": "Conserva",
+          "lot": 1,
+          "zone": 7,
+          "load": 1,
+          "ap": 1,
+          "done": true,
+          "assigned": "ZC-HER-0001"
+        },
+        "result": true,
+        "round": 2
+      },
+      {
+        "action": "pickup_supply",
+        "hero": "ZC-HER-0001",
+        "task": {
+          "action": "pickup_supply",
+          "kind": "Conserva",
+          "lot": 2,
+          "zone": 7,
+          "load": 1,
+          "ap": 1,
+          "done": true,
+          "assigned": "ZC-HER-0001"
+        },
+        "result": true,
+        "round": 2
+      },
+      {
+        "action": "move",
+        "hero": "ZC-HER-0003",
+        "zone": 11,
+        "round": 2
+      },
+      {
+        "action": "move",
+        "hero": "ZC-HER-0003",
+        "zone": 15,
+        "round": 2
+      },
+      {
+        "action": "move",
+        "hero": "ZC-HER-0003",
+        "zone": 14,
+        "round": 2
+      },
+      {
+        "action": "end_round",
+        "round": 2,
+        "clock": 3,
+        "enemies": 2
+      },
+      {
+        "action": "move",
+        "hero": "ZC-HER-0001",
+        "zone": 3,
+        "round": 3
+      },
+      {
+        "action": "move",
+        "hero": "ZC-HER-0001",
+        "zone": 2,
+        "round": 3
+      },
+      {
+        "action": "move",
+        "hero": "ZC-HER-0001",
+        "zone": 1,
+        "round": 3
+      },
+      {
+        "action": "pickup_supply",
+        "hero": "ZC-HER-0003",
+        "task": {
+          "action": "pickup_supply",
+          "kind": "Água",
+          "lot": 1,
+          "zone": 14,
+          "load": 1,
+          "ap": 1,
+          "done": true,
+          "assigned": "ZC-HER-0003"
+        },
+        "result": true,
+        "round": 3
+      },
+      {
+        "action": "pickup_supply",
+        "hero": "ZC-HER-0003",
+        "task": {
+          "action": "pickup_supply",
+          "kind": "Água",
+          "lot": 2,
+          "zone": 14,
+          "load": 1,
+          "ap": 1,
+          "done": true,
+          "assigned": "ZC-HER-0003"
+        },
+        "result": true,
+        "round": 3
+      },
+      {
+        "action": "open_door",
+        "hero": "ZC-HER-0003",
+        "edge": [
+          13,
+          14
+        ],
+        "round": 3
+      },
+      {
+        "action": "end_round",
+        "round": 3,
+        "clock": 4,
+        "enemies": 2
+      },
+      {
+        "action": "move",
+        "hero": "ZC-HER-0003",
+        "zone": 13,
+        "round": 4
+      },
+      {
+        "action": "open_door",
+        "hero": "ZC-HER-0003",
+        "edge": [
+          9,
+          13
+        ],
+        "round": 4
+      },
+      {
+        "action": "end_round",
+        "round": 4,
+        "clock": 5,
+        "enemies": 3
+      },
+      {
+        "action": "move",
+        "hero": "ZC-HER-0003",
+        "zone": 9,
+        "round": 5
+      },
+      {
+        "action": "move",
+        "hero": "ZC-HER-0003",
+        "zone": 5,
+        "round": 5
+      },
+      {
+        "action": "end_round",
+        "round": 5,
+        "clock": 6,
+        "enemies": 3
+      },
+      {
+        "action": "open_door",
+        "hero": "ZC-HER-0003",
+        "edge": [
+          1,
+          5
+        ],
+        "round": 6
+      },
+      {
+        "action": "move",
+        "hero": "ZC-HER-0003",
+        "zone": 1,
+        "round": 6
+      },
+      {
+        "action": "end_round",
+        "round": 6,
+        "clock": 7,
+        "enemies": 4
+      },
+      {
+        "action": "attack",
+        "hero": "ZC-HER-0001",
+        "enemy": 2,
+        "round": 7,
+        "observed_target": 1,
+        "observed_task": null
+      },
+      {
+        "action": "end_round",
+        "round": 7,
+        "clock": 8,
+        "enemies": 3
+      },
+      {
+        "action": "attack",
+        "hero": "ZC-HER-0001",
+        "enemy": 1,
+        "round": 8,
+        "observed_target": 1,
+        "observed_task": null
+      },
+      {
+        "action": "end_round",
+        "round": 8,
+        "clock": 9,
+        "enemies": 4
+      },
+      {
+        "action": "return_choice",
+        "event": "travel-return-001-extra",
+        "choice": "material"
+      },
+      {
+        "action": "return",
+        "destination": "Mercado",
+        "receipts": [
+          {
+            "event": "pickup_supply",
+            "id": "mercado:Conserva:1",
+            "kind": "Conserva",
+            "lot": 1,
+            "cards": 1,
+            "portions": 4,
+            "zone": 7,
+            "hero": "ZC-HER-0001",
+            "clock": 3
+          },
+          {
+            "event": "pickup_supply",
+            "id": "mercado:Conserva:2",
+            "kind": "Conserva",
+            "lot": 2,
+            "cards": 1,
+            "portions": 4,
+            "zone": 7,
+            "hero": "ZC-HER-0001",
+            "clock": 3
+          },
+          {
+            "event": "pickup_supply",
+            "id": "mercado:Água:1",
+            "kind": "Água",
+            "lot": 1,
+            "cards": 1,
+            "portions": 4,
+            "zone": 14,
+            "hero": "ZC-HER-0003",
+            "clock": 4
+          },
+          {
+            "event": "pickup_supply",
+            "id": "mercado:Água:2",
+            "kind": "Água",
+            "lot": 2,
+            "cards": 1,
+            "portions": 4,
+            "zone": 14,
+            "hero": "ZC-HER-0003",
+            "clock": 4
+          }
+        ],
+        "clock": 10
+      },
+      {
+        "action": "start_travel",
+        "destination": "Oficina",
+        "team": [
+          "ZC-HER-0001",
+          "ZC-HER-0003"
+        ],
+        "day": 2,
+        "route": "short",
+        "materials_carried": 1
+      },
+      {
+        "action": "travel_choice",
+        "event": "travel-outbound-001",
+        "choice": null
+      },
+      {
+        "action": "open_door",
+        "hero": "ZC-HER-0001",
+        "edge": [
+          1,
+          5
+        ],
+        "round": 1
+      },
+      {
+        "action": "move",
+        "hero": "ZC-HER-0001",
+        "zone": 5,
+        "round": 1
+      },
+      {
+        "action": "move",
+        "hero": "ZC-HER-0001",
+        "zone": 6,
+        "round": 1
+      },
+      {
+        "action": "move",
+        "hero": "ZC-HER-0003",
+        "zone": 5,
+        "round": 1
+      },
+      {
+        "action": "move",
+        "hero": "ZC-HER-0003",
+        "zone": 9,
+        "round": 1
+      },
+      {
+        "action": "open_door",
+        "hero": "ZC-HER-0003",
+        "edge": [
+          9,
+          13
+        ],
+        "round": 1
+      },
+      {
+        "action": "end_round",
+        "round": 1,
+        "clock": 2,
+        "enemies": 1
+      },
+      {
+        "action": "move",
+        "hero": "ZC-HER-0001",
+        "zone": 7,
+        "round": 2
+      },
+      {
+        "action": "pickup_part",
+        "hero": "ZC-HER-0001",
+        "task": {
+          "action": "pickup_part",
+          "part": "Conexões",
+          "zone": 7,
+          "load": 1,
+          "ap": 1,
+          "done": true,
+          "assigned": "ZC-HER-0001"
+        },
+        "result": true,
+        "round": 2
+      },
+      {
+        "action": "pickup_supply",
+        "hero": "ZC-HER-0001",
+        "task": {
+          "action": "pickup_supply",
+          "kind": "Conserva",
+          "lot": 1,
+          "zone": 7,
+          "load": 1,
+          "ap": 1,
+          "done": true,
+          "assigned": "ZC-HER-0001"
+        },
+        "result": true,
+        "round": 2
+      },
+      {
+        "action": "move",
+        "hero": "ZC-HER-0003",
+        "zone": 13,
+        "round": 2
+      },
+      {
+        "action": "open_door",
+        "hero": "ZC-HER-0003",
+        "edge": [
+          13,
+          14
+        ],
+        "round": 2
+      },
+      {
+        "action": "move",
+        "hero": "ZC-HER-0003",
+        "zone": 14,
+        "round": 2
+      },
+      {
+        "action": "end_round",
+        "round": 2,
+        "clock": 3,
+        "enemies": 2
+      },
+      {
+        "action": "move",
+        "hero": "ZC-HER-0001",
+        "zone": 6,
+        "round": 3
+      },
+      {
+        "action": "move",
+        "hero": "ZC-HER-0001",
+        "zone": 5,
+        "round": 3
+      },
+      {
+        "action": "move",
+        "hero": "ZC-HER-0001",
+        "zone": 1,
+        "round": 3
+      },
+      {
+        "action": "pickup_equipment",
+        "hero": "ZC-HER-0003",
+        "task": {
+          "action": "pickup_equipment",
+          "item": "Machado",
+          "lot": 1,
+          "zone": 14,
+          "load": 1,
+          "ap": 1,
+          "done": true,
+          "assigned": "ZC-HER-0003"
+        },
+        "result": true,
+        "round": 3
+      },
+      {
+        "action": "move",
+        "hero": "ZC-HER-0003",
+        "zone": 13,
+        "round": 3
+      },
+      {
+        "action": "move",
+        "hero": "ZC-HER-0003",
+        "zone": 9,
+        "round": 3
+      },
+      {
+        "action": "end_round",
+        "round": 3,
+        "clock": 4,
+        "enemies": 2
+      },
+      {
+        "action": "move",
+        "hero": "ZC-HER-0003",
+        "zone": 5,
+        "round": 4
+      },
+      {
+        "action": "move",
+        "hero": "ZC-HER-0003",
+        "zone": 1,
+        "round": 4
+      },
+      {
+        "action": "end_round",
+        "round": 4,
+        "clock": 5,
+        "enemies": 3
+      },
+      {
+        "action": "return",
+        "destination": "Oficina",
+        "receipts": [
+          {
+            "event": "pickup_part",
+            "id": "Oficina:Conexões",
+            "hero": "ZC-HER-0001",
+            "part": "Conexões",
+            "destination": "Oficina",
+            "zone": 7,
+            "clock": 3
+          },
+          {
+            "event": "pickup_supply",
+            "id": "oficina:Conserva:1",
+            "kind": "Conserva",
+            "lot": 1,
+            "cards": 1,
+            "portions": 4,
+            "zone": 7,
+            "hero": "ZC-HER-0001",
+            "clock": 3
+          },
+          {
+            "event": "pickup_equipment",
+            "id": "oficina:Machado:1",
+            "destination": "Oficina",
+            "item": "Machado",
+            "lot": 1,
+            "hero": "ZC-HER-0003",
+            "zone": 14,
+            "clock": 4
+          }
+        ],
+        "clock": 6
+      },
+      {
+        "action": "start_travel",
+        "destination": "Estação",
+        "team": [
+          "ZC-HER-0001",
+          "ZC-HER-0003"
+        ],
+        "day": 3,
+        "route": "short",
+        "materials_carried": 1
+      },
+      {
+        "action": "travel_choice",
+        "event": "travel-outbound-001",
+        "choice": null
+      },
+      {
+        "action": "move",
+        "hero": "ZC-HER-0001",
+        "zone": 2,
+        "round": 1
+      },
+      {
+        "action": "move",
+        "hero": "ZC-HER-0001",
+        "zone": 3,
+        "round": 1
+      },
+      {
+        "action": "open_door",
+        "hero": "ZC-HER-0001",
+        "edge": [
+          3,
+          7
+        ],
+        "round": 1
+      },
+      {
+        "action": "move",
+        "hero": "ZC-HER-0003",
+        "zone": 2,
+        "round": 1
+      },
+      {
+        "action": "move",
+        "hero": "ZC-HER-0003",
+        "zone": 3,
+        "round": 1
+      },
+      {
+        "action": "move",
+        "hero": "ZC-HER-0003",
+        "zone": 7,
+        "round": 1
+      },
+      {
+        "action": "end_round",
+        "round": 1,
+        "clock": 2,
+        "enemies": 2
+      },
+      {
+        "action": "move",
+        "hero": "ZC-HER-0001",
+        "zone": 7,
+        "round": 2
+      },
+      {
+        "action": "pickup_part",
+        "hero": "ZC-HER-0001",
+        "task": {
+          "action": "pickup_part",
+          "part": "Bomba",
+          "zone": 7,
+          "load": 2,
+          "ap": 2,
+          "done": true,
+          "assigned": "ZC-HER-0001"
+        },
+        "result": true,
+        "round": 2
+      },
+      {
+        "action": "move",
+        "hero": "ZC-HER-0003",
+        "zone": 11,
+        "round": 2
+      },
+      {
+        "action": "end_round",
+        "round": 2,
+        "clock": 3,
+        "enemies": 3
+      },
+      {
+        "action": "move",
+        "hero": "ZC-HER-0001",
+        "zone": 3,
+        "round": 3
+      },
+      {
+        "action": "move",
+        "hero": "ZC-HER-0001",
+        "zone": 2,
+        "round": 3
+      },
+      {
+        "action": "move",
+        "hero": "ZC-HER-0001",
+        "zone": 1,
+        "round": 3
+      },
+      {
+        "action": "move",
+        "hero": "ZC-HER-0003",
+        "zone": 15,
+        "round": 3
+      },
+      {
+        "action": "move",
+        "hero": "ZC-HER-0003",
+        "zone": 14,
+        "round": 3
+      },
+      {
+        "action": "end_round",
+        "round": 3,
+        "clock": 4,
+        "enemies": 3
+      },
+      {
+        "action": "pickup_part",
+        "hero": "ZC-HER-0003",
+        "task": {
+          "action": "pickup_part",
+          "part": "Membrana",
+          "zone": 14,
+          "load": 1,
+          "ap": 1,
+          "done": true,
+          "assigned": "ZC-HER-0003"
+        },
+        "result": true,
+        "round": 4
+      },
+      {
+        "action": "pickup_supply",
+        "hero": "ZC-HER-0003",
+        "task": {
+          "action": "pickup_supply",
+          "kind": "Água",
+          "lot": 1,
+          "zone": 14,
+          "load": 1,
+          "ap": 1,
+          "done": true,
+          "assigned": "ZC-HER-0003"
+        },
+        "result": true,
+        "round": 4
+      },
+      {
+        "action": "end_round",
+        "round": 4,
+        "clock": 5,
+        "enemies": 4
+      },
+      {
+        "action": "move",
+        "hero": "ZC-HER-0003",
+        "zone": 15,
+        "round": 5
+      },
+      {
+        "action": "move",
+        "hero": "ZC-HER-0003",
+        "zone": 11,
+        "round": 5
+      },
+      {
+        "action": "end_round",
+        "round": 5,
+        "clock": 6,
+        "enemies": 4
+      },
+      {
+        "action": "move",
+        "hero": "ZC-HER-0003",
+        "zone": 7,
+        "round": 6
+      },
+      {
+        "action": "move",
+        "hero": "ZC-HER-0003",
+        "zone": 3,
+        "round": 6
+      },
+      {
+        "action": "move",
+        "hero": "ZC-HER-0003",
+        "zone": 2,
+        "round": 6
+      },
+      {
+        "action": "end_round",
+        "round": 6,
+        "clock": 7,
+        "enemies": 5
+      },
+      {
+        "action": "move",
+        "hero": "ZC-HER-0003",
+        "zone": 1,
+        "round": 7
+      },
+      {
+        "action": "end_round",
+        "round": 7,
+        "clock": 8,
+        "enemies": 5
+      },
+      {
+        "action": "return_choice",
+        "event": "travel-return-001",
+        "choice": "fatigue"
+      },
+      {
+        "action": "return",
+        "destination": "Estação",
+        "receipts": [
+          {
+            "event": "pickup_part",
+            "id": "Estação:Bomba",
+            "hero": "ZC-HER-0001",
+            "part": "Bomba",
+            "destination": "Estação",
+            "zone": 7,
+            "clock": 3
+          },
+          {
+            "event": "pickup_part",
+            "id": "Estação:Membrana",
+            "hero": "ZC-HER-0003",
+            "part": "Membrana",
+            "destination": "Estação",
+            "zone": 14,
+            "clock": 5
+          },
+          {
+            "event": "pickup_supply",
+            "id": "estação:Água:1",
+            "kind": "Água",
+            "lot": 1,
+            "cards": 1,
+            "portions": 4,
+            "zone": 14,
+            "hero": "ZC-HER-0003",
+            "clock": 5
+          }
+        ],
+        "clock": 9
+      }
+    ],
+    "verified_victory": true,
+    "rewards": [
+      "verified_victory"
+    ]
+  },
+  "terminal_save": {
+    "schema": 1,
+    "campaign_id": "zona-zero-22",
+    "seed": 22,
+    "status": "RUNNING",
+    "cistern": {
+      "founders": [
+        "ZC-HER-0001",
+        "ZC-HER-0003"
+      ],
+      "links": [
+        "ZC-VIN-0005",
+        "ZC-VIN-0002"
+      ],
+      "initial_consumers": 3,
+      "humans": 3,
+      "dogs": 0,
+      "capacity": 8,
+      "food": [
+        1
+      ],
+      "water": [
+        1,
+        4,
+        4,
+        2
+      ],
+      "seed": 22,
+      "people": [
+        {
+          "id": "ZC-HER-0001",
+          "kind": "hero",
+          "family": "ZC-HER-0001",
+          "hungry": false,
+          "thirsty": false,
+          "streak": 0,
+          "wounds": 0,
+          "fatigue": 0,
+          "alert": false
+        },
+        {
+          "id": "R01",
+          "kind": "adult",
+          "family": "ZC-HER-0001",
+          "hungry": false,
+          "thirsty": false,
+          "streak": 0,
+          "wounds": 0,
+          "fatigue": 0,
+          "alert": false
+        },
+        {
+          "id": "ZC-HER-0003",
+          "kind": "hero",
+          "family": "ZC-HER-0003",
+          "hungry": false,
+          "thirsty": false,
+          "streak": 0,
+          "wounds": 0,
+          "fatigue": 0,
+          "alert": false
+        }
+      ],
+      "meat": [],
+      "materials": 0,
+      "day": 5,
+      "clock": 0,
+      "parts": {
+        "Conexões": 2,
+        "Bomba": 3,
+        "Membrana": 3
+      },
+      "reserved": [
+        "A",
+        "B",
+        "C"
+      ],
+      "stage": "C",
+      "stage_work": 0,
+      "works_today": 2,
+      "filter_workers_plan": [],
+      "away_today": [],
+      "work_plan_locked": true,
+      "work_receipts": [
+        {
+          "day": 4,
+          "task": "filter",
+          "workers": [
+            "ZC-HER-0001",
+            "ZC-HER-0003"
+          ],
+          "units": 2,
+          "stage_before": "A",
+          "stage_after": "C",
+          "steps": [
+            {
+              "from": "A",
+              "to": "B"
+            },
+            {
+              "from": "B",
+              "to": "C"
+            }
+          ],
+          "expedition_team": []
+        },
+        {
+          "day": 5,
+          "task": "filter",
+          "workers": [
+            "ZC-HER-0001",
+            "ZC-HER-0003"
+          ],
+          "units": 2,
+          "stage_before": "C",
+          "stage_after": "C",
+          "steps": [
+            {
+              "from": "C",
+              "to": "C"
+            },
+            {
+              "from": "C",
+              "to": "C"
+            }
+          ],
+          "expedition_team": []
+        }
+      ],
+      "meal_day": 5,
+      "filter_active": true,
+      "filter_completed": true,
+      "morale": 5,
+      "health": 5,
+      "pressure": 1,
+      "ammo": 0,
+      "medicine": 2,
+      "structures": [
+        "Cozinha",
+        "Depósito",
+        "Filtro"
+      ],
+      "pending_sieges": [],
+      "planned_guards": [],
+      "siege_day": 5,
+      "intent_deck": [
+        "ZC-INT-0005",
+        "ZC-INT-0002",
+        "ZC-INT-0011",
+        "ZC-INT-0007",
+        "ZC-INT-0009",
+        "ZC-INT-0010",
+        "ZC-INT-0006",
+        "ZC-INT-0012",
+        "ZC-INT-0008",
+        "ZC-INT-0001",
+        "ZC-INT-0004",
+        "ZC-INT-0003"
+      ],
+      "groups": [],
+      "rescue_history": {},
+      "intentions_day": 5,
+      "result": "verified_victory",
+      "event_queue": [],
+      "event_history": [
+        "ZC-EVE-0001",
+        "ZC-EVE-0002",
+        "ZC-EVE-0003",
+        "ZC-EVE-0004",
+        "ZC-EVE-0005"
+      ],
+      "legacy_skipped_events": [],
+      "legacy_event_gap": false,
+      "siege_deck": [
+        "ZC-CER-0002",
+        "ZC-CER-0006",
+        "ZC-CER-0001",
+        "ZC-CER-0003",
+        "ZC-CER-0005"
+      ],
+      "siege_discard": [
+        "ZC-CER-0004"
+      ],
+      "active_siege": null,
+      "siege_receipts": [
+        {
+          "day": 3,
+          "trigger": "Barulho no vale",
+          "card_id": null,
+          "cancelled": false,
+          "force": 4,
+          "defense": 4,
+          "gap": 0
+        },
+        {
+          "day": 5,
+          "trigger": "Pressão",
+          "card_id": "ZC-CER-0004",
+          "cancelled": false,
+          "force": 4,
+          "defense": 2,
+          "gap": 2
+        }
+      ],
+      "bridge_relation": 0,
+      "day5_guard_plan_locked": true,
+      "chapter_receipt": {
+        "day": 5,
+        "meal_day": 5,
+        "events": [
+          "ZC-EVE-0001",
+          "ZC-EVE-0002",
+          "ZC-EVE-0003",
+          "ZC-EVE-0004",
+          "ZC-EVE-0005"
+        ],
+        "event_queue": [],
+        "pending_sieges": [],
+        "siege_receipts": 2,
+        "filter_active": true,
+        "health": 5,
+        "morale": 5,
+        "supplied": true,
+        "result": "verified_victory"
+      },
+      "horde_deck": {
+        "seed": 8124,
+        "deck": [
+          "Peso morto",
+          "Corrida",
+          "Corrida",
+          "Arrastar",
+          "Arrastar",
+          "Aglomerado",
+          "Arrastar",
+          "Aglomerado"
+        ],
+        "discard": [
+          "Arrastar"
+        ],
+        "reshuffles": 1
+      },
+      "travel_deck": {
+        "seed": 8125,
+        "deck": [
+          "ZC-VIA-0005",
+          "ZC-VIA-0006",
+          "ZC-VIA-0007",
+          "ZC-VIA-0009",
+          "ZC-VIA-0012"
+        ],
+        "discard": [
+          "ZC-VIA-0001",
+          "ZC-VIA-0010",
+          "ZC-VIA-0004",
+          "ZC-VIA-0003",
+          "ZC-VIA-0008",
+          "ZC-VIA-0002",
+          "ZC-VIA-0011"
+        ],
+        "reshuffles": 0
+      }
+    },
+    "founders": [
+      "ZC-HER-0001",
+      "ZC-HER-0003"
+    ],
+    "links": [
+      "ZC-VIN-0005",
+      "ZC-VIN-0002"
+    ],
+    "decisions": {},
+    "rewards": [
+      "verified_victory"
+    ],
+    "world": null,
+    "terminal_reason": null,
+    "tactical": null,
+    "expedition_days": [
+      1,
+      2,
+      3
+    ],
+    "visited_destinations": [
+      "mercado",
+      "oficina",
+      "estação"
+    ],
+    "delivered_objectives": [
+      "mercado:Conserva:1",
+      "mercado:Conserva:2",
+      "mercado:Água:1",
+      "mercado:Água:2",
+      "Oficina:Conexões",
+      "oficina:Conserva:1",
+      "oficina:Machado:1",
+      "Estação:Bomba",
+      "Estação:Membrana",
+      "estação:Água:1"
+    ],
+    "lost_objectives": [],
+    "fuel_cards": [],
+    "battery_available": false,
+    "van_state": "abandoned",
+    "site_states": {
+      "mercado": {
+        "doors_open": [
+          [
+            3,
+            7
+          ],
+          [
+            13,
+            14
+          ],
+          [
+            9,
+            13
+          ],
+          [
+            1,
+            5
+          ]
+        ],
+        "enemies": [
+          {
+            "id": 3,
+            "kind": "Bruto",
+            "zone": 3,
+            "hp": 3,
+            "door_target": null,
+            "door_hits": 0
+          },
+          {
+            "id": 4,
+            "kind": "Corredor",
+            "zone": 3,
+            "hp": 1,
+            "door_target": null,
+            "door_hits": 0
+          },
+          {
+            "id": 5,
+            "kind": "Errante",
+            "zone": 16,
+            "hp": 1,
+            "door_target": null,
+            "door_hits": 0
+          },
+          {
+            "id": 6,
+            "kind": "Errante",
+            "zone": 16,
+            "hp": 1,
+            "door_target": null,
+            "door_hits": 0
+          }
+        ],
+        "next_enemy": 7,
+        "horde_index": 5,
+        "van_state": "abandoned",
+        "search_deck": [
+          "ZC-SAQ-0002",
+          "ZC-SAQ-0005",
+          "ZC-SAQ-0004",
+          "ZC-SAQ-0006",
+          "ZC-SAQ-0001",
+          "ZC-SAQ-0003"
+        ],
+        "search_uses": {
+          "5": 3,
+          "12": 3
+        },
+        "search_ground": [],
+        "part_ground": []
+      },
+      "oficina": {
+        "doors_open": [
+          [
+            1,
+            5
+          ],
+          [
+            9,
+            13
+          ],
+          [
+            13,
+            14
+          ]
+        ],
+        "enemies": [
+          {
+            "id": 1,
+            "kind": "Errante",
+            "zone": 3,
+            "hp": 1,
+            "door_target": null,
+            "door_hits": 0
+          },
+          {
+            "id": 2,
+            "kind": "Errante",
+            "zone": 8,
+            "hp": 1,
+            "door_target": null,
+            "door_hits": 0
+          },
+          {
+            "id": 3,
+            "kind": "Errante",
+            "zone": 16,
+            "hp": 1,
+            "door_target": null,
+            "door_hits": 0
+          }
+        ],
+        "next_enemy": 4,
+        "horde_index": 2,
+        "van_state": "abandoned",
+        "search_deck": [
+          "ZC-SAQ-0016",
+          "ZC-SAQ-0015",
+          "ZC-SAQ-0014",
+          "ZC-SAQ-0013",
+          "ZC-SAQ-0017",
+          "ZC-SAQ-0018"
+        ],
+        "search_uses": {
+          "5": 3,
+          "12": 3
+        },
+        "search_ground": [],
+        "part_ground": []
+      },
+      "estação": {
+        "doors_open": [
+          [
+            3,
+            7
+          ]
+        ],
+        "enemies": [
+          {
+            "id": 1,
+            "kind": "Errante",
+            "zone": 7,
+            "hp": 1,
+            "door_target": null,
+            "door_hits": 0
+          },
+          {
+            "id": 2,
+            "kind": "Bruto",
+            "zone": 7,
+            "hp": 3,
+            "door_target": null,
+            "door_hits": 0
+          },
+          {
+            "id": 3,
+            "kind": "Errante",
+            "zone": 7,
+            "hp": 1,
+            "door_target": null,
+            "door_hits": 0
+          },
+          {
+            "id": 4,
+            "kind": "Errante",
+            "zone": 4,
+            "hp": 1,
+            "door_target": null,
+            "door_hits": 0
+          },
+          {
+            "id": 5,
+            "kind": "Errante",
+            "zone": 12,
+            "hp": 1,
+            "door_target": null,
+            "door_hits": 0
+          }
+        ],
+        "next_enemy": 6,
+        "horde_index": 3,
+        "van_state": "abandoned",
+        "search_deck": [
+          "ZC-SAQ-0033",
+          "ZC-SAQ-0035",
+          "ZC-SAQ-0032",
+          "ZC-SAQ-0034",
+          "ZC-SAQ-0036",
+          "ZC-SAQ-0031"
+        ],
+        "search_uses": {
+          "5": 3,
+          "12": 3
+        },
+        "search_ground": [],
+        "part_ground": []
+      }
+    },
+    "travel": null,
+    "travel_context": null,
+    "travel_request": null,
+    "ambush": null,
+    "travel_segments_paid": 0,
+    "return_travel": null,
+    "return_context": null,
+    "return_context_initial": null,
+    "return_settlement_delta": null,
+    "route_known": true,
+    "bridge_known": true,
+    "equipment_inventory": {
+      "ZC-HER-0001": [
+        "Pé de cabra"
+      ],
+      "ZC-HER-0003": [
+        "Pé de cabra",
+        "Machado"
+      ]
+    },
+    "travel_uses_shoe": false,
+    "road_aid_settled": false,
+    "work_phase_resolved": true
+  }
+}
