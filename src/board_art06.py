@@ -32,7 +32,7 @@ def shade(c,x,y,w,h):
 
 @lru_cache(maxsize=128)
 def crop(path,index):
- im=Image.open(P/path)
+ with Image.open(P/path) as source:im=source.copy()
  curated=json.loads((P/'content/production/crops_0.6.json').read_text())
  if path in curated:
   L,T,R,B=curated[path][index];return [math.floor(L),math.floor(T),math.ceil(R),math.ceil(B)],im.size
@@ -58,7 +58,7 @@ def crop(path,index):
 
 @lru_cache(maxsize=32)
 def image_reader(path,econ,box=None):
- im=Image.open(P/path)
+ with Image.open(P/path) as source:im=source.copy()
  if box is not None:im=im.crop(box)  # recorte nativo sem reamostragem; originais intactos
  if econ:
   from PIL import ImageOps
@@ -81,7 +81,8 @@ def material(c,x,y,w,h,kind):
  if ECON or not (P/path).exists():return False
  index={'concrete':0,'asphalt':1,'tile':2,'paver':3,'wood':4,'grass':5}.get(kind)
  if index is None:return False
- iw,ih=Image.open(P/path).size;cw,ch=iw/3,ih/2;tile=60;scale=min(tile/cw,tile/ch,25.4/215);tw,th=cw*scale,ch*scale;l=index%3*cw;t=index//3*ch;bot=t+ch
+ with Image.open(P/path) as source:iw,ih=source.size
+ cw,ch=iw/3,ih/2;tile=60;scale=min(tile/cw,tile/ch,25.4/215);tw,th=cw*scale,ch*scale;l=index%3*cw;t=index//3*ch;bot=t+ch
  c.saveState();bound=c.beginPath();bound.rect(x,y,w,h);c.clipPath(bound,stroke=0)
  for row in range(math.floor(y/th),math.ceil((y+h)/th)):
   for col in range(math.floor(x/tw),math.ceil((x+w)/tw)):
