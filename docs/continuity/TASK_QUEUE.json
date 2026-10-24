@@ -11,7 +11,7 @@
       "acceptance": ["recibos legais", "salvamento", "sem recompensa duplicada", "paridade 0.2"],
       "tests": ["edicao-integral/tests/test_cistern_tactics02.py", "edicao-integral/tests/test_campaign_player02.py", "edicao-integral/verify_campaign_player02.py"],
       "status": "em_execucao",
-      "commit": "pending-session-commit",
+      "commit": "cdc8222",
       "blocker": "Um replay H2 legal foi concluído em seed 22, com três expedições, peças, filtro A/B/C, cinco noites/eventos e verified_victory. Ainda faltam trajetórias confiáveis para outras sementes e grupos H3-H6; há emergências, déficits e derrotas que precisam ser classificados sem virar taxa de vitória"
     },
     {

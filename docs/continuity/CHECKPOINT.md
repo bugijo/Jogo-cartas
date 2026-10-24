@@ -2,7 +2,7 @@
 
 Branch: `evolucao/zona-zero-sistema-v1`
 Base remota ao iniciar: `54a95f1a7a498e54a6e39748dca749b2319a6729`
-Commits locais desta sessão: `c8a4a0f` (fases diárias, trabalho nominal e resgate pago), seguido pelo commit do replay de campanha.
+Commits desta sessão: `c8a4a0f` (fases diárias, trabalho nominal e resgate pago) e `cdc8222` (jogador H2 e replay reproduzível).
 Main e kit físico 0.2 permanecem intocados.
 
 ## Comprovado nesta sessão
