@@ -42,3 +42,43 @@
 Cada unidade deve registrar comando, resultado, commit e próximo bloqueio.
 Não registrar como concluída uma tarefa apenas porque seus testes unitários
 passaram se o gate de campanha ainda estiver fechado.
+
+## 2026-10-24 — Continuação após avanço remoto
+
+- O remoto avançou de `690a597` para `1ca38ea` com `Travel02` e seus recibos.
+  Foi preservado e integrado por rebase sem force push; commit local de
+  observações sem informação oculta foi publicado como `052ada0`.
+- Uma tentativa local de deck paralelo foi removida por duplicar a interface
+  `Travel02` recém publicada.
+- Corrigida a falha em que peça única carregada se perdia na emergência e podia
+  ser duplicada: o estado local registra o item no objetivo canônico, e a
+  próxima expedição recupera por 1 PA. Teste integrado passa por save/load e
+  comprova entrega única no dia 2.
+- Testes atuais: experimental 133/133; legado 51/51; compileall, validação de
+  dados e diff-check aprovados.
+- Próximo bloqueio: conectar `Travel02` ao relógio/tático e executar efeitos,
+  incluindo a emboscada M1, sem pagar trecho duas vezes. Nenhuma campanha foi
+  simulada ou certificada neste lote.
+
+## 2026-10-24 — atualização sobre base remota `052ada0`
+
+- O remoto incorporou `Travel02` e testes determinísticos durante a sessão; a
+  branch foi reconciliada sem reescrita forçada. O deck alternativo iniciado no
+  workspace foi descartado como redundante, preservando o módulo canônico.
+- Fechada localmente a falha de recuperação de peças únicas: estado no chão,
+  bloqueio contra cópia, recuperação por 1 PA, entrega após retorno e save/load.
+- Políticas usam informação pública e não recomendam arrombamento sem ferramenta.
+- 135 testes da suíte experimental e 51 da suíte legada passaram; resta o aviso
+  `ResourceWarning` em `tests/test_boards06.py:64`. Build Python, validação de
+  conteúdo e diff-check passaram.
+- Este lote permanece sem commit até concluir a revisão independente final.
+
+## 2026-10-24 — fast-forward até `e6af1f7`
+
+- A branch remota avançou com `afdc82c` (recibos de resgate no mapa) e
+  `e6af1f7` (checkpoint correspondente). Os arquivos táticos e de campanha
+  foram reconciliados com a correção local de peças de missão.
+- A suíte experimental agora passa com 135 testes nessa base; `Travel02` ainda
+  é infraestrutura isolada e não integra relógio, efeitos ou M1.
+- A auditoria da peça única continua pendente de resposta independente final;
+  nenhuma campanha completa foi rodada neste lote.

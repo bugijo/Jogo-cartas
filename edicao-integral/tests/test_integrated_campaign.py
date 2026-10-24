@@ -46,6 +46,33 @@ class IntegratedCampaignTests(unittest.TestCase):
         self.assertEqual(resumed.cistern.water, game.cistern.water)
         self.assertIsNone(resumed.world)
 
+    def test_emergency_drops_unique_part_and_next_expedition_delivers_same_piece(self):
+        game=IntegratedCampaign.new(41,STARTERS[:2],LINK_IDS[:2])
+        first=game.start_expedition('Oficina',[STARTERS[0]])
+        first.positions[STARTERS[0]]=7
+        first.pickup_part(STARTERS[0],'Conexões')
+        game.emergency_return()
+        key='Oficina:Conexões'
+        self.assertIn(key,game.lost_objectives)
+        self.assertEqual(game.site_states['oficina']['part_ground'],[
+            {'part':'Conexões','destination':'oficina','zone':7,'load':1}])
+        with tempfile.TemporaryDirectory() as directory:
+            path=Path(directory)/'campaign.json'
+            game.save(path)
+            game=IntegratedCampaign.load(path)
+        self.assertIn(key,game.lost_objectives)
+        game.meal(); game.next_cistern_day()
+        second=game.start_expedition('Oficina',[STARTERS[1]])
+        second.positions[STARTERS[1]]=7
+        second.pickup_part(STARTERS[1],'Conexões')
+        with self.assertRaises(ValueError): second.pickup_part(STARTERS[1],'Conexões')
+        second.positions[STARTERS[1]]=second.map['exit']
+        second.enemies.clear(); second.end_round(); second.finish()
+        receipts=game.return_expedition()
+        self.assertEqual([r['event'] for r in receipts],['recover_part'])
+        self.assertEqual(game.cistern.parts,{'Conexões':2})  # dia da entrega
+        self.assertEqual(game.delivered_objectives.count(key),1)
+
     def test_terminal_states_persist(self):
         game = IntegratedCampaign.new(2, STARTERS[:2], LINK_IDS[:2])
         with self.assertRaises(ValueError):

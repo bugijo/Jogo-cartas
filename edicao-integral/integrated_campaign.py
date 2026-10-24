@@ -152,7 +152,7 @@ class IntegratedCampaign:
             if receipt["event"] == "rescue":
                 self.cistern.rescue(receipt["group_id"], receipt["decision"])
                 self.delivered_objectives.append(receipt["group_id"])
-            elif receipt["event"] == "pickup_part":
+            elif receipt["event"] in ("pickup_part", "recover_part"):
                 part = receipt["part"]
                 if part in PART_MISSIONS:
                     self.cistern.receive_part(part)
@@ -204,6 +204,8 @@ class IntegratedCampaign:
             raise ValueError("Nenhuma expedição ativa")
         for receipt in self.tactical.log:
             if receipt["event"] == "pickup_supply":
+                self.lost_objectives.append(receipt["id"])
+            elif receipt["event"] == "pickup_part":
                 self.lost_objectives.append(receipt["id"])
         self.tactical.emergency()
         self.site_states[self.tactical.destination] = self.tactical.site_snapshot()

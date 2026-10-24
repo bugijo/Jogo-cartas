@@ -20,6 +20,16 @@ class Policies02Tests(unittest.TestCase):
         self.assertNotIn('horde_order', tactical_view)
         self.assertEqual(campaign_view['search_remaining']['mercado'], 6)
 
+    def test_policy_does_not_order_blocked_door_without_tool(self):
+        from cistern02 import Cistern02
+        from cistern_tactics02 import Tactical02
+        game=Cistern02.new(STARTERS[:2],LINK_IDS[:2])
+        tactical=Tactical02.start(game,'Oficina',[STARTERS[0]],'long',
+            equipment={STARTERS[0]:['Faca']})
+        tactical.positions[STARTERS[0]]=3
+        decision=ProgrammedPlayer('Explorador',4).choose_local(tactical)
+        self.assertNotEqual(decision.kind,'open_door')
+
     def test_eight_profiles_make_reproducible_legal_opening_choices(self):
         self.assertEqual(len(PROFILES), 8)
         for count in range(2, 7):

@@ -91,6 +91,26 @@ class Tactical02:
     searched_this_visit: list[int] = field(default_factory=list)
     search_cargo: dict[str, list[dict]] = field(default_factory=dict)
     search_ground: list[dict] = field(default_factory=list)
+    part_ground: list[dict] = field(default_factory=list)
+
+    def __post_init__(self) -> None:
+        if not isinstance(self.part_ground, list):
+            raise ValueError('Peças no chão inválidas')
+        seen=set()
+        for item in self.part_ground:
+            if not isinstance(item,dict):
+                raise ValueError('Peça no chão inválida')
+            part=item.get('part'); destination=item.get('destination')
+            place=next((name for name in PARTS if name.lower()==destination),None)
+            spec=PARTS.get(place,{}).get(part)
+            marker=(destination,part)
+            if (spec is None or marker in seen or item.get('zone')!=spec[0]
+                    or item.get('load')!=spec[1]):
+                raise ValueError('Peça no chão diverge do objetivo único canônico')
+            seen.add(marker)
+            key=f'{place}:{part}'
+            if key not in self.taken_before:
+                self.taken_before.append(key)
 
     @classmethod
     def start(cls, chapter: Cistern02, destination: str, team: list[str],
@@ -139,6 +159,8 @@ class Tactical02:
             obj.search_uses = deepcopy(prior_state.get(
                 'search_uses', {'5':3, '12':3}))
             obj.search_ground = deepcopy(prior_state.get('search_ground', []))
+            obj.part_ground = deepcopy(prior_state.get('part_ground', []))
+            obj.__post_init__()
         else:
             count = max(0, ceil(len(team)/2) - (route == 'long'))
             for _ in range(count): obj._spawn('Errante', obj.map['spawn'])
@@ -275,11 +297,27 @@ class Tactical02:
         place = next((name for name in PARTS if name.lower() == self.destination), None)
         spec = PARTS.get(place, {}).get(part)
         key = f'{place}:{part}'
-        if (hero not in self.positions or spec is None or self.positions[hero] != spec[0]
-                or key in self.taken_before or any(part in items for items in self.carried.values())):
+        grounded = next((item for item in self.part_ground
+                         if item['destination'] == self.destination
+                         and item['part'] == part), None)
+        recovering = grounded is not None
+        if (hero not in self.positions or spec is None
+                or (recovering and self.positions[hero] != grounded['zone'])
+                or (not recovering and (self.positions[hero] != spec[0]
+                                        or key in self.taken_before))
+                or any(part in items for items in self.carried.values())):
             raise ValueError('Peça indisponível ou herói fora do objetivo')
-        if self._load(hero) + spec[1] > 4:
+        load = grounded['load'] if recovering else spec[1]
+        if self._load(hero) + load > 4:
             raise ValueError('Carga acima da capacidade')
+        if recovering:
+            self._pay(hero, 1)
+            self.part_ground.remove(grounded)
+            self.carried[hero].append(part)
+            self.log.append({'event':'recover_part','id':key,'hero':hero,'part':part,
+                             'destination':place,'zone':grounded['zone'],
+                             'clock':self.chapter.clock})
+            return True
         if part == 'Bomba':
             if hero in self.pump_attempts or die is None or not 1 <= die <= 6:
                 raise ValueError('Tentativa Técnica inválida')
@@ -294,7 +332,7 @@ class Tactical02:
         else:
             self._pay(hero, 1)
         self.carried[hero].append(part)
-        self.log.append({'event': 'pickup_part', 'hero': hero, 'part': part,
+        self.log.append({'event': 'pickup_part', 'id':key,'hero': hero, 'part': part,
                          'destination': place, 'zone': spec[0],
                          'clock': self.chapter.clock})
         return True
@@ -407,7 +445,7 @@ class Tactical02:
         if not self.finished or self.failed or not any(x['event'] == 'return' for x in self.log):
             return []
         proof = [x.copy() for x in self.log if x['event'] in
-                 ('pickup_part','pickup_supply','rescue')
+                 ('pickup_part','recover_part','pickup_supply','rescue')
                  and (x['event'] != 'pickup_supply' or x['id'] not in self._spent_fuel_ids())]
         if self.van_returned:
             proof.append({'event': 'deliver_van', 'destination': 'posto',
@@ -511,6 +549,18 @@ class Tactical02:
     def emergency(self) -> None:
         if self.finished: raise ValueError('Expedição já encerrada')
         people = {p['id']: p for p in self.chapter.people}
+        for hero, parts in self.carried.items():
+            for part in parts:
+                place = next(name for name, items in PARTS.items() if part in items)
+                key = f'{place}:{part}'
+                ground = {'part':part,'destination':place.lower(),
+                          'zone':PARTS[place][part][0],
+                          'load':PARTS[place][part][1]}
+                if not any(item['destination']==ground['destination']
+                           and item['part']==part for item in self.part_ground):
+                    self.part_ground.append(ground)
+                if key not in self.taken_before:
+                    self.taken_before.append(key)
         for hero in self.team:
             people[hero]['wounds'] += 1
             self.fatigue[hero] = 3
@@ -529,7 +579,7 @@ class Tactical02:
                   'shotgun_used','horde_order','carried','taken_before','pump_attempts',
                   'first_market_visit','equipment','supply_cargo','van_state',
                   'van_attempts','van_returned','search_deck','search_uses',
-                  'searched_this_visit','search_cargo','search_ground')
+                  'searched_this_visit','search_cargo','search_ground','part_ground')
         return deepcopy({name: getattr(self, name) for name in fields})
 
     def site_snapshot(self) -> dict:
@@ -538,7 +588,8 @@ class Tactical02:
                          'next_enemy': self.next_enemy, 'horde_index': self.horde_index,
                          'van_state': 'away' if self.van_returned else self.van_state,
                          'search_deck': self.search_deck, 'search_uses': self.search_uses,
-                         'search_ground': self.search_ground})
+                         'search_ground': self.search_ground,
+                         'part_ground': self.part_ground})
 
     @classmethod
     def from_snapshot(cls, chapter: Cistern02, snap: dict) -> 'Tactical02':

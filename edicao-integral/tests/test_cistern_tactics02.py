@@ -148,6 +148,34 @@ class Tactical02Tests(unittest.TestCase):
         self.assertEqual([(p['part'],p['zone']) for p in proof],[('Conexões',7)])
         self.assertEqual(c.parts,{})  # integrador aceita certificado uma vez
 
+    def test_unique_part_dropped_by_emergency_is_recovered_once_at_same_zone(self):
+        c=chapter(); h=STARTERS[0]
+        first=Tactical02.start(c,'Oficina',[h])
+        first.positions[h]=7
+        self.assertTrue(first.pickup_part(h,'Conexões'))
+        first.emergency()
+        site=first.site_snapshot()
+        self.assertEqual(site['part_ground'],[
+            {'part':'Conexões','destination':'oficina','zone':7,'load':1}])
+        self.assertIn('Oficina:Conexões',first.taken_before)
+        recovered_by=STARTERS[1]
+        second=Tactical02.start(c,'Oficina',[recovered_by],first_visit=False,
+            taken_before=['Oficina:Conexões'],prior_state=site)
+        second.positions[recovered_by]=7
+        before=second.ap[recovered_by]
+        self.assertTrue(second.pickup_part(recovered_by,'Conexões'))
+        self.assertEqual(second.ap[recovered_by],before-1)
+        self.assertEqual(second.part_ground,[])
+        with self.assertRaises(ValueError): second.pickup_part(recovered_by,'Conexões')
+        saved=Tactical02.from_snapshot(c,second.snapshot())
+        self.assertEqual(saved.snapshot(),second.snapshot())
+        malformed=first.site_snapshot()
+        malformed['part_ground']=[{'part':'Conexões','destination':'oficina',
+                                   'zone':3,'load':1}]
+        with self.assertRaises(ValueError):
+            Tactical02.start(c,'Oficina',[STARTERS[1]],first_visit=False,
+                prior_state=malformed)
+
     def test_pump_failure_costs_ap_and_pressure(self):
         c = chapter(); h = STARTERS[0]; t = Tactical02.start(c,'Estação',[h])
         t.positions[h]=7
