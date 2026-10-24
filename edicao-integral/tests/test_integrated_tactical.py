@@ -1,4 +1,5 @@
 """Peças só são entregues por retirada e retorno no mapa canônico."""
+import json
 import sys
 import tempfile
 import unittest
@@ -6,7 +7,7 @@ from pathlib import Path
 
 sys.path.insert(0, str(Path(__file__).resolve().parents[1]))
 from integrated_campaign import IntegratedCampaign, STARTERS, LINK_IDS
-from travel02 import TravelContext
+from travel02 import CARDS as TRAVEL_CARDS, TravelContext
 
 
 class IntegratedTacticalTests(unittest.TestCase):
@@ -79,6 +80,34 @@ class IntegratedTacticalTests(unittest.TestCase):
         with self.assertRaises(ValueError):
             game.return_expedition()
         self.assertEqual(game.travel_shoe["discard"], first)
+
+    def test_campaign_load_rejects_fake_travel_draw_and_segment_mismatch(self):
+        hero = STARTERS[0]
+        game = IntegratedCampaign.new(134, STARTERS[:2], LINK_IDS[:2])
+        game.start_travel("Mercado", [hero], deck=[
+            "ZC-VIA-0001", "ZC-VIA-0007"], context=TravelContext(
+                food=0, water=0, materials=0, fatigue={hero: 0}))
+        with tempfile.TemporaryDirectory() as directory:
+            path = Path(directory) / "campaign.json"
+            game.save(path)
+            payload = json.loads(path.read_text(encoding="utf-8"))
+            trip = payload["travel"]
+            first_id = trip["events"][0]["event_id"]
+            card_id = "ZC-VIA-0007"
+            card = TRAVEL_CARDS[card_id]
+            trip["index"] = 2
+            trip["events"].append({
+                "event_id": "travel-outbound-002", "card_id": card_id,
+                "name": card["name"], "text": card["text"],
+                "direction": "outbound", "ambush": False,
+                "minimum_rounds": card["minimum_rounds"]})
+            trip["resolved"][first_id] = {"choice": None, "effect": {}}
+            trip["pending_choices"] = []
+            trip["pending_ambush"] = None
+            trip["pending_resolution"] = None
+            path.write_text(json.dumps(payload), encoding="utf-8")
+            with self.assertRaises(ValueError):
+                IntegratedCampaign.load(path)
 
     def test_travel_entry_requires_resolution_before_entering_map(self):
         hero = STARTERS[0]

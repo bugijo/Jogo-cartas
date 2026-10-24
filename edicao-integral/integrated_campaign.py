@@ -841,10 +841,12 @@ class IntegratedCampaign:
         payload.setdefault("travel_shoe", TravelShoe02.new(
             int(payload.get("seed", 0)) + 6801).snapshot())
         payload.setdefault("travel_uses_shoe", False)
+        if not isinstance(payload["travel_uses_shoe"], bool):
+            raise ValueError("Marcador de sapato de Viagem inválido")
         shoe = TravelShoe02.from_snapshot(payload["travel_shoe"])
         active_trip = payload.get("travel") or payload.get("return_travel")
         if payload["travel_uses_shoe"] and (
-                active_trip is None or active_trip.deck != shoe.deck):
+                active_trip is None or not shoe.matches_trip(active_trip)):
             raise ValueError("Sapato persistente não corresponde à viagem ativa")
         payload.setdefault("equipment_inventory", {
             hero: ["Pé de cabra"] for hero in payload.get("founders", [])})

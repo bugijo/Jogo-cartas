@@ -216,3 +216,22 @@ campanha completa. Impressão, equilíbrio e playtest humano não foram feitos.
 - Após as correções, teste integrado percorre ida/volta comum e retirada M1 e
   confirma descarte de duas cartas, cursor persistente e ausência de segunda
   liquidação. A suíte experimental passou com 197 testes.
+- Auditoria adicional do ciclo do sapato apontou reshuffle antes do esgotamento
+  quando o trajeto máximo era maior que o monte restante. O código local agora
+  planeja o prefixo incluindo o descarte embaralhado sem mutar o snapshot;
+  `finish_trip` só move o descarte após compra real da pilha reciclada. Novos
+  testes cobrem viagem interrompida antes do fim do monte e compra após
+  esgotamento; suíte experimental 199/199.
+- Uma segunda auditoria adversarial reproduziu snapshot de Viagem adulterado:
+  `index=2` com apenas um trecho outbound era aceito, permitindo contar carta
+  falsa e recibo forjado. `Travel02.from_snapshot` agora cruza cardinalidade
+  dos eventos, ordem/IDs, cartas do prefixo, segmentos de cada perna, estado de
+  escolha/Emboscada e efeitos dos recibos. Teste integrado confirma rejeição no
+  `IntegratedCampaign.load`. Persistem somente alterações locais até revisão e
+  commit; 200 testes experimentais passaram.
+- O auditor confirmou que o recibo resumido de M1 não prova, por si só, combate
+  real em um save editado: uma pessoa que altera manualmente um snapshot coerente
+  ainda consegue forjar um recibo plausível. O validador agora também rejeita
+  duração de M1 maior que os 10 segmentos possíveis, mas o formato não tem
+  assinatura criptográfica e não promete resistência a edição manual. Isso não
+  afeta o fluxo normal da API; campanhas não recebem selo anti-falsificação.

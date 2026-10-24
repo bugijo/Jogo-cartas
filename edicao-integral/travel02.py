@@ -49,32 +49,50 @@ class TravelShoe02:
     def ensure_available(self, count: int) -> None:
         if not isinstance(count, int) or count < 1:
             raise ValueError("Quantidade de cartas necessária inválida")
-        if len(self.deck) < count and self.discard:
-            recycled = self.discard.copy()
-            Random(self.seed + 1_000_003 * (self.reshuffles + 1)).shuffle(recycled)
-            self.reshuffles += 1
-            self.deck.extend(recycled)
-            self.discard.clear()
-        if len(self.deck) < count:
+        if len(self.deck) < count and not self.discard:
             raise ValueError("Sapato de Viagem não tem cartas suficientes")
 
     def prepare_trip(self, count: int) -> list[str]:
         self.ensure_available(count)
-        return self.deck.copy()
+        planned = self.deck.copy()
+        if len(planned) < count:
+            recycled = self.discard.copy()
+            Random(self.seed + 1_000_003 * (self.reshuffles + 1)).shuffle(recycled)
+            planned.extend(recycled)
+        return planned
+
+    def matches_trip(self, trip: "Travel02") -> bool:
+        if trip.deck[:len(self.deck)] != self.deck:
+            return False
+        if len(trip.deck) == len(self.deck):
+            return True
+        if not self.discard:
+            return False
+        recycled = self.discard.copy()
+        Random(self.seed + 1_000_003 * (self.reshuffles + 1)).shuffle(recycled)
+        return trip.deck[len(self.deck):] == recycled
 
     def finish_trip(self, trip: "Travel02") -> None:
-        if trip.deck != self.deck:
+        if not self.matches_trip(trip):
             raise ValueError("A ordem da viagem não corresponde ao sapato ativo")
         if (trip.pending_resolution is not None or trip.pending_choices
                 or trip.pending_ambush is not None):
             raise ValueError("Resolva a ocorrência antes de descartar o sapato")
         drawn = [event["card_id"] for event in trip.events
                  if event.get("card_id") is not None]
-        if (trip.index != len(drawn) or trip.index > len(self.deck)
-                or drawn != self.deck[:trip.index]):
+        if (trip.index != len(drawn) or trip.index > len(trip.deck)
+                or drawn != trip.deck[:trip.index]):
             raise ValueError("A viagem não prova as cartas reveladas do sapato")
-        self.discard.extend(drawn)
-        self.deck = self.deck[trip.index:]
+        draw_pile_size = len(self.deck)
+        if trip.index <= draw_pile_size:
+            self.discard.extend(drawn)
+            self.deck = self.deck[trip.index:]
+        else:
+            consumed_from_discard = trip.index - draw_pile_size
+            recycled = trip.deck[draw_pile_size:]
+            self.deck = recycled[consumed_from_discard:]
+            self.discard = drawn
+            self.reshuffles += 1
         self.validate()
 
     def validate(self) -> None:
@@ -405,6 +423,144 @@ class Travel02:
             "skip_return_card": self.skip_return_card,
         })
 
+    def validate_snapshot_state(self) -> None:
+        if (self.route not in ("short", "long")
+                or not isinstance(self.deck, list)
+                or any(card not in CARDS for card in self.deck)
+                or not isinstance(self.index, int) or isinstance(self.index, bool)
+                or not 0 <= self.index <= len(self.deck)
+                or not isinstance(self.outbound_segments, int)
+                or isinstance(self.outbound_segments, bool)
+                or not isinstance(self.return_segments, int)
+                or isinstance(self.return_segments, bool)
+                or not isinstance(self.events, list)
+                or not isinstance(self.resolved, dict)
+                or not isinstance(self.pending_choices, list)
+                or not isinstance(self.skip_return_card, int)
+                or isinstance(self.skip_return_card, bool)
+                or self.skip_return_card < 0):
+            raise ValueError("Snapshot de Viagem inválido")
+        leg_size = self.leg_size
+        if (not 0 <= self.outbound_segments <= leg_size
+                or not 0 <= self.return_segments <= leg_size):
+            raise ValueError("Contadores de trechos no snapshot inválidos")
+
+        segment_counts = {"outbound": 0, "return": 0}
+        drawn: list[str] = []
+        seen_return = False
+        event_ids: list[str] = []
+        by_id: dict[str, dict] = {}
+        for event in self.events:
+            if not isinstance(event, dict) or event.get("direction") not in segment_counts:
+                raise ValueError("Evento de Viagem inválido no snapshot")
+            direction = event["direction"]
+            if direction == "return":
+                seen_return = True
+            elif seen_return:
+                raise ValueError("Snapshot mistura a ordem das pernas de Viagem")
+            segment_counts[direction] += 1
+            segment_no = segment_counts[direction]
+            event_id = event.get("event_id")
+            if event_id != f"travel-{direction}-{segment_no:03d}":
+                raise ValueError("ID de trecho de Viagem fora de sequência")
+            if event_id in by_id:
+                raise ValueError("Evento de Viagem duplicado")
+            by_id[event_id] = event
+            event_ids.append(event_id)
+            if event.get("skipped") is True:
+                expected = {"event_id": event_id, "card_id": None,
+                            "direction": "return", "skipped": True,
+                            "text": "Ignore a próxima Viagem normal; pague o trecho."}
+                if event != expected:
+                    raise ValueError("Trecho ignorado adulterado")
+            else:
+                card_id = event.get("card_id")
+                if card_id not in CARDS:
+                    raise ValueError("Carta de Viagem inválida no evento")
+                card = CARDS[card_id]
+                expected = {"event_id": event_id, "card_id": card_id,
+                            "name": card["name"], "text": card["text"],
+                            "direction": direction,
+                            "ambush": card_id == "ZC-VIA-0005",
+                            "minimum_rounds": card["minimum_rounds"]}
+                if event != expected:
+                    raise ValueError("Conteúdo do evento de Viagem adulterado")
+                drawn.append(card_id)
+        if (self.index != len(drawn) or drawn != self.deck[:self.index]
+                or segment_counts != {"outbound": self.outbound_segments,
+                                      "return": self.return_segments}
+                or (self.return_segments and self.outbound_segments != leg_size)
+                or self.pending_choices != list(dict.fromkeys(self.pending_choices))):
+            raise ValueError("Eventos, índices e segmentos de Viagem divergem")
+
+        if (self.pending_resolution is not None
+                and (self.pending_resolution not in by_id
+                     or not event_ids
+                     or self.pending_resolution != event_ids[-1])):
+            raise ValueError("Ocorrência pendente de Viagem inválida")
+        expected_resolved = set(event_ids)
+        if self.pending_resolution is not None:
+            expected_resolved.remove(self.pending_resolution)
+        if set(self.resolved) != expected_resolved:
+            raise ValueError("Recibos de Viagem não correspondem aos eventos")
+
+        pending_event = (by_id[self.pending_resolution]
+                         if self.pending_resolution is not None else None)
+        pending_card = pending_event.get("card_id") if pending_event else None
+        expected_choices = ([self.pending_resolution]
+                            if pending_card in CHOICES else [])
+        expected_ambush = (self.pending_resolution
+                           if pending_card == "ZC-VIA-0005" else None)
+        if (self.pending_choices != expected_choices
+                or self.pending_ambush != expected_ambush):
+            raise ValueError("Escolhas/Emboscada pendentes não correspondem à carta")
+
+        remaining_skips = 0
+        for event_id, receipt in self.resolved.items():
+            event = by_id[event_id]
+            if not isinstance(receipt, dict):
+                raise ValueError("Recibo de Viagem inválido")
+            if event.get("skipped"):
+                if receipt != {"skipped": True}:
+                    raise ValueError("Recibo de trecho ignorado inválido")
+                continue
+            card_id = event["card_id"]
+            if card_id == "ZC-VIA-0005":
+                if set(receipt) != {"ambush"} or not isinstance(receipt["ambush"], dict):
+                    raise ValueError("Recibo de Emboscada inválido")
+                proof = receipt["ambush"]
+                if proof.get("map") != "ZC-MOD-0001":
+                    raise ValueError("Mapa de Emboscada divergente")
+                if proof.get("failed") is True:
+                    if (set(proof) != {"map", "failed", "rounds"}
+                            or not isinstance(proof["rounds"], int)
+                            or not 0 <= proof["rounds"] <= 10):
+                        raise ValueError("Retirada da Emboscada inválida")
+                elif (set(proof) != {"map", "rounds", "returned"}
+                      or proof.get("returned") is not True
+                      or not isinstance(proof.get("rounds"), int)
+                      or not event["minimum_rounds"] <= proof["rounds"] <= 10):
+                    raise ValueError("Saída segura da Emboscada inválida")
+                continue
+            if not isinstance(receipt, dict) or set(receipt) != {"choice", "effect"}:
+                raise ValueError("Recibo de Viagem inválido")
+            choice = receipt["choice"]
+            effect = receipt["effect"]
+            if card_id in CHOICES:
+                if choice not in CHOICES[card_id] or effect != CHOICES[card_id][choice]:
+                    raise ValueError("Efeito de escolha de Viagem adulterado")
+            else:
+                expected_effect = deepcopy(AUTO_EFFECTS.get(card_id, {}))
+                if card_id == "ZC-VIA-0010" and event["direction"] == "return":
+                    expected_effect = {"material_gain": 1}
+                if choice is not None or effect != expected_effect:
+                    raise ValueError("Efeito automático de Viagem adulterado")
+            remaining_skips += effect.get("skip_return_card", 0)
+        remaining_skips -= sum(bool(event.get("skipped"))
+                               for event in self.events)
+        if remaining_skips != self.skip_return_card:
+            raise ValueError("Contador de cartas ignoradas diverge dos recibos")
+
     @classmethod
     def from_snapshot(cls, snapshot: dict) -> "Travel02":
         required = {"route", "deck", "index", "outbound_segments",
@@ -414,10 +570,7 @@ class Travel02:
         if set(snapshot) != required:
             raise ValueError("Snapshot de Viagem incompatível")
         trip = cls(**deepcopy(snapshot))
-        if trip.route not in ("short", "long") or any(x not in CARDS for x in trip.deck):
-            raise ValueError("Snapshot de Viagem inválido")
-        if trip.index < 0 or trip.index > len(trip.deck):
-            raise ValueError("Índice de Viagem inválido")
+        trip.validate_snapshot_state()
         return trip
 
 

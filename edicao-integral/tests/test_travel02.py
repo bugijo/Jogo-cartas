@@ -10,9 +10,7 @@ from travel02 import CARDS, Travel02, TravelContext, TravelShoe02
 
 class Travel02Tests(unittest.TestCase):
     @staticmethod
-    def _finish_first_card(shoe):
-        trip = Travel02.from_deck(shoe.prepare_trip(1), "short")
-        event = trip.reveal("outbound")
+    def _resolve_event(trip, event):
         context = TravelContext(food=10, water=10, materials=10,
                                 fatigue={"h": 0}, eligible_dog_adoption=True)
         if event["ambush"]:
@@ -28,6 +26,12 @@ class Travel02Tests(unittest.TestCase):
                        choices.get(event["card_id"], "decline"))
         else:
             trip.apply(event["event_id"], context)
+
+    @staticmethod
+    def _finish_first_card(shoe):
+        trip = Travel02.from_deck(shoe.prepare_trip(1), "short")
+        event = trip.reveal("outbound")
+        Travel02Tests._resolve_event(trip, event)
         shoe.finish_trip(trip)
         return event["card_id"], trip
 
@@ -62,12 +66,49 @@ class Travel02Tests(unittest.TestCase):
         while left.deck:
             for shoe in (left, right):
                 self._finish_first_card(shoe)
-        left.ensure_available(1)
-        right.ensure_available(1)
-        self.assertEqual(left.snapshot(), right.snapshot())
-        self.assertEqual(len(left.deck), len(CARDS))
+        left_plan = left.prepare_trip(1)
+        right_plan = right.prepare_trip(1)
+        self.assertEqual(left_plan, right_plan)
+        self.assertEqual(len(left_plan), len(CARDS))
+        self.assertEqual(left.deck, [])
         resumed = TravelShoe02.from_snapshot(left.snapshot())
         self.assertEqual(resumed.snapshot(), left.snapshot())
+
+    def test_long_trip_does_not_shuffle_discard_before_draw_pile_is_empty(self):
+        shoe = TravelShoe02.new(80)
+        remaining = ["ZC-VIA-0001", "ZC-VIA-0007"]
+        shoe.deck = remaining.copy()
+        shoe.discard = [card for card in CARDS if card not in set(remaining)]
+        before = shoe.snapshot()
+        planned = shoe.prepare_trip(4)
+        self.assertEqual(planned[:2], remaining)
+        self.assertEqual(shoe.snapshot(), before)
+        trip = Travel02.from_deck(planned, "long")
+        for _ in range(2):
+            event = trip.reveal("outbound")
+            self._resolve_event(trip, event)
+        shoe.finish_trip(trip)
+        self.assertEqual(shoe.deck, [])
+        self.assertEqual(shoe.reshuffles, 0)
+        self.assertEqual(shoe.discard[:2], before["discard"][:2])
+
+    def test_long_trip_reshuffles_discard_only_when_it_draws_past_empty_shoe(self):
+        shoe = TravelShoe02.new(81)
+        remaining = ["ZC-VIA-0001", "ZC-VIA-0007"]
+        shoe.deck = remaining.copy()
+        shoe.discard = [card for card in CARDS if card not in set(remaining)]
+        trip = Travel02.from_deck(shoe.prepare_trip(4), "long")
+        events = []
+        for direction in ("outbound", "outbound", "return"):
+            event = trip.reveal(direction)
+            events.append(event["card_id"])
+            self._resolve_event(trip, event)
+        shoe.finish_trip(trip)
+        self.assertEqual(shoe.reshuffles, 1)
+        self.assertEqual(shoe.discard, events)
+        self.assertEqual(len(shoe.deck), len(CARDS) - 3)
+        restored = TravelShoe02.from_snapshot(shoe.snapshot())
+        self.assertEqual(restored.snapshot(), shoe.snapshot())
 
     def test_same_seed_reveals_same_cards_and_route_has_exact_legs(self):
         deck = ["ZC-VIA-0001", "ZC-VIA-0008", "ZC-VIA-0012", "ZC-VIA-0011"]
@@ -120,6 +161,18 @@ class Travel02Tests(unittest.TestCase):
         resumed.reveal("outbound")
         with self.assertRaises(ValueError):
             resumed.reveal("outbound")
+
+    def test_snapshot_rejects_impossible_ambush_duration(self):
+        trip = Travel02.from_deck(["ZC-VIA-0005"], "short")
+        event = trip.reveal("outbound")
+        snapshot = trip.snapshot()
+        snapshot["pending_resolution"] = None
+        snapshot["pending_ambush"] = None
+        snapshot["pending_choices"] = []
+        snapshot["resolved"][event["event_id"]] = {"ambush": {
+            "map": "ZC-MOD-0001", "rounds": 11, "returned": True}}
+        with self.assertRaisesRegex(ValueError, "Saída segura da Emboscada"):
+            Travel02.from_snapshot(snapshot)
 
     def test_return_cannot_start_before_outbound_is_complete(self):
         trip = Travel02.from_deck(["ZC-VIA-0001", "ZC-VIA-0001"], "long")

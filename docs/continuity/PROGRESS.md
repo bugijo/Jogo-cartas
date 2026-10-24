@@ -200,3 +200,18 @@ passaram se o gate de campanha ainda estiver fechado.
 - Publicado em `b399d4139a27ae1634d2fe002ef6d4edb8db80c1` na branch experimental.
 - Regressão adicional confirma sapato avançando após ida/volta normal e M1 de
   retirada, sem dupla liquidação. O teste do lote recém-publicado é 197/197.
+- Revisão posterior achou reshuffle antecipado quando uma rota demandava mais
+  draws que a pilha atual. A implementação local separa plano determinístico de
+  mutação: cartas restantes ficam no monte e o descarte só é misturado quando a
+  expedição realmente compra uma carta após esgotar o monte. Testes agora
+  passaram com 199/199; esta correção ainda não foi publicada.
+- Auditoria adversarial posterior montou save com 2 cartas em apenas 1 segmento
+  de ida; o carregador aceitava o estado. `Travel02.from_snapshot` agora valida
+  eventos, direção/IDs sequenciais, index, contadores de perna, pendências e
+  efeitos dos recibos. Teste de `IntegratedCampaign.load` rejeita o save falso.
+  Suíte experimental atual: 200/200, ainda não publicada.
+- A revisão independente confirmou que o recibo VIA-M1 isolado não é prova
+  criptográfica contra edição manual do save. O validador rejeita M1 com duração
+  acima de 10 segmentos, e os relatórios agora declaram expressamente que saves
+  são editáveis e não têm assinatura anti-falsificação. Testes experimentais
+  atuais: 201/201; regressão legada: 51/51.

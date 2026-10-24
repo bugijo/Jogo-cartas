@@ -27,15 +27,16 @@
   fecha o estado e aplica perda de carga/peças no chão; retirada pode ser
   escolhida mesmo no relógio 10.
 - Verificação desta sessão: `python -m unittest discover -s
-  edicao-integral/tests -q` (197 testes); `compileall`, validação (125 IDs,
+  edicao-integral/tests -q` (201 testes); `compileall`, validação (125 IDs,
   10 heróis, 70 habilidades, 15 NPCs, 8 mapas e 5 pontos de coleta) e
   `git diff --check`.
 - Regressão de preservação: `python -m unittest discover -s tests -q` passou
   (51 testes). Um `ResourceWarning` preexistente aponta arquivo aberto em
   `tests/test_boards06.py:64`; não houve falha.
-- Lote atual corrige dano acima de 3 ferimentos e impõe o limite de duas armas;
-  também implementa o sapato persistente de Viagem com descarte,
-  reembaralhamento determinístico, validação do trajeto e save/load.
+- Lote publicado corrige dano acima de 3 ferimentos, limita loadout a duas
+  armas e implementa sapato persistente VIA. Ajuste local novo prepara um plano
+  determinístico de reshuffle, mas só move o descarte quando uma carta reciclada
+  é realmente comprada, preservando cartas que restam se a viagem abortar.
 - Pendências: efeito mecânico de rota/Ponte ainda não está ligado a navegação;
   carta extra de Viagem nos segmentos noturnos ainda não está resolvida;
   promessas, eventos, noites,
@@ -45,8 +46,9 @@
   e movimentação de carga dentro da expedição ainda não estão integradas. O
   limite atual comprova espaço total disponível, não transferência tática de
   provisões entre heróis.
-- O lote M1/retorno está em `931d572`; esta unidade foi publicada em
-  `b399d4139a27ae1634d2fe002ef6d4edb8db80c1`.
+- O lote M1/retorno está em `931d572`; sapato e correções em `b399d41`, testes
+  de ida/volta em `1ca150e`; validação de saves adulterados e reshuffle
+  aguardam auditoria final e publicação.
 - Não foram executadas campanhas completas, simulações de vitória, impressão
   física ou playtest humano.
 
