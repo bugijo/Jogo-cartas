@@ -14,6 +14,22 @@ def chapter():
 
 
 class Tactical02Tests(unittest.TestCase):
+    def test_each_night_segment_spent_on_long_route_adds_fatigue_once(self):
+        c = chapter(); h = STARTERS[0]; c.clock = 7
+        t = Tactical02.start(c, 'Mercado', [h], route='long')
+        # Travel spends segments 8–9; the opening map round spends segment 10.
+        self.assertEqual(c.clock, 10)
+        self.assertEqual(t.fatigue[h], 2)
+        self.assertEqual(c.people[0]['fatigue'], 2)
+
+    def test_legacy_tactical_save_gets_deterministic_horde_shoe(self):
+        c = chapter(); t = Tactical02.start(c, 'Mercado', [STARTERS[0]])
+        snapshot = t.snapshot()
+        snapshot.pop('horde_deck')
+        resumed = Tactical02.from_snapshot(c, snapshot)
+        self.assertEqual(resumed.horde_deck['seed'], c.seed + 8102)
+        self.assertEqual(len(resumed.horde_deck['deck']), 9)
+
     def test_search_uses_card_from_regional_deck_and_preserves_ground(self):
         c = chapter(); h = STARTERS[0]
         t = Tactical02.start(c, 'Mercado', [h], route='long')
@@ -65,6 +81,13 @@ class Tactical02Tests(unittest.TestCase):
             Tactical02.start(c, 'Mercado', [h], equipment={h: ['Faca'] * 5})
         self.assertEqual(c.clock, 0)
 
+    def test_equipment_loadout_cannot_carry_three_weapons(self):
+        c = chapter(); hero = STARTERS[0]
+        with self.assertRaisesRegex(ValueError, 'duas armas'):
+            Tactical02.start(c, 'Mercado', [hero], equipment={hero: [
+                'Pé de cabra', 'Faca', 'Machado']})
+        self.assertEqual(c.clock, 0)
+
     def test_six_maps_clock_and_geometry(self):
         for name, m in MAPS.items():
             with self.subTest(name=name):
@@ -107,26 +130,7 @@ class Tactical02Tests(unittest.TestCase):
         with self.assertRaises(ValueError): t.move(h,2)
         t.begin_round(); t.end_round()
         self.assertTrue(any(x['event']=='horde' for x in t.log))
-        self.assertEqual(len(c.horde_deck['discard']), 1)
         t.finish(); self.assertEqual(c.clock,4)
-
-    def test_horde_shoe_is_shared_across_sites_and_tactical_save(self):
-        c = chapter(); h = STARTERS[0]
-        market = Tactical02.start(c, 'Mercado', [h])
-        market._horde()
-        self.assertEqual(len(c.horde_deck['discard']), 1)
-        restored = Tactical02.from_snapshot(c, json.loads(json.dumps(market.snapshot())))
-        restored._horde()
-        self.assertEqual(len(c.horde_deck['discard']), 2)
-        self.assertEqual([x['card'] for x in restored.log if x['event']=='horde'],
-                         [x['card'] for x in market.log if x['event']=='horde'] +
-                         [c.horde_deck['discard'][-1]])
-        # A later expedition in a different destination consumes the same
-        # campaign shoe, not a newly shuffled site-local copy.
-        station = Tactical02.start(c, 'Estação', [h], route='long')
-        station._horde()
-        self.assertEqual(len(c.horde_deck['discard']), 3)
-        self.assertIsNone(station.horde_order)
 
     def test_first_market_round_protects_only_first_visit(self):
         c = chapter(); h = STARTERS[0]
@@ -167,6 +171,34 @@ class Tactical02Tests(unittest.TestCase):
         self.assertEqual([(p['part'],p['zone']) for p in proof],[('Conexões',7)])
         self.assertEqual(c.parts,{})  # integrador aceita certificado uma vez
 
+    def test_unique_part_dropped_by_emergency_is_recovered_once_at_same_zone(self):
+        c=chapter(); h=STARTERS[0]
+        first=Tactical02.start(c,'Oficina',[h])
+        first.positions[h]=7
+        self.assertTrue(first.pickup_part(h,'Conexões'))
+        first.emergency()
+        site=first.site_snapshot()
+        self.assertEqual(site['part_ground'],[
+            {'part':'Conexões','destination':'oficina','zone':7,'load':1}])
+        self.assertIn('Oficina:Conexões',first.taken_before)
+        recovered_by=STARTERS[1]
+        second=Tactical02.start(c,'Oficina',[recovered_by],first_visit=False,
+            taken_before=['Oficina:Conexões'],prior_state=site)
+        second.positions[recovered_by]=7
+        before=second.ap[recovered_by]
+        self.assertTrue(second.pickup_part(recovered_by,'Conexões'))
+        self.assertEqual(second.ap[recovered_by],before-1)
+        self.assertEqual(second.part_ground,[])
+        with self.assertRaises(ValueError): second.pickup_part(recovered_by,'Conexões')
+        saved=Tactical02.from_snapshot(c,second.snapshot())
+        self.assertEqual(saved.snapshot(),second.snapshot())
+        malformed=first.site_snapshot()
+        malformed['part_ground']=[{'part':'Conexões','destination':'oficina',
+                                   'zone':3,'load':1}]
+        with self.assertRaises(ValueError):
+            Tactical02.start(c,'Oficina',[STARTERS[1]],first_visit=False,
+                prior_state=malformed)
+
     def test_pump_failure_costs_ap_and_pressure(self):
         c = chapter(); h = STARTERS[0]; t = Tactical02.start(c,'Estação',[h])
         t.positions[h]=7
@@ -194,6 +226,17 @@ class Tactical02Tests(unittest.TestCase):
         self.assertEqual(len(t.enemies),2)
         self.assertEqual(t.enemies[-1]['zone'],16)
         self.assertEqual(c.ammo,0)
+
+    def test_tactical_damage_never_exceeds_three_wounds(self):
+        for initial in (2, 3):
+            with self.subTest(initial=initial):
+                c = chapter(); h = STARTERS[0]
+                t = Tactical02.start(c, 'Hospital', [h], first_visit=False)
+                person = next(p for p in c.people if p['id'] == h)
+                person['wounds'] = initial
+                t.enemies.clear(); t._spawn('Bruto', t.positions[h])
+                t.end_round()
+                self.assertEqual(person['wounds'], 3)
 
 
 if __name__ == '__main__': unittest.main()
