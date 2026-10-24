@@ -5,10 +5,21 @@ from pathlib import Path
 sys.path.insert(0, str(Path(__file__).resolve().parents[1]))
 from cistern02 import LINK_IDS, STARTERS
 from integrated_campaign import IntegratedCampaign
-from player_policies02 import PROFILES, ProgrammedPlayer
+from player_policies02 import PROFILES, ProgrammedPlayer, observe_campaign, observe_tactical
 
 
 class Policies02Tests(unittest.TestCase):
+    def test_observations_hide_unrevealed_deck_order(self):
+        game = IntegratedCampaign.new(112, STARTERS[:2], LINK_IDS[:2])
+        game.start_expedition('Mercado', [STARTERS[0]], 'long')
+        tactical = game.tactical
+        campaign_view = observe_campaign(game)
+        tactical_view = observe_tactical(tactical)
+        self.assertNotIn('search_deck', campaign_view)
+        self.assertNotIn('search_deck', tactical_view)
+        self.assertNotIn('horde_order', tactical_view)
+        self.assertEqual(campaign_view['search_remaining']['mercado'], 6)
+
     def test_eight_profiles_make_reproducible_legal_opening_choices(self):
         self.assertEqual(len(PROFILES), 8)
         for count in range(2, 7):
