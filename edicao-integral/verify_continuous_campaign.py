@@ -1,15 +1,15 @@
 """Replay contínuo até o primeiro bloqueio logístico após a Cisterna.
 
-O replay usa somente as ações públicas existentes e não declara campanha
-completa: a seed 22 vence a Cisterna, pesquisa recursos, recruta Célia pela
-operação atualmente definida no motor, obtém pistas pelo trabalho de pesquisa,
-decifra o rádio, recupera o cartão e combustível regional, e para no Posto/van.
+Este replay não declara campanha completa. Ele usa contato físico com Célia
+no O2 da Estação após obter sustento no Mercado; a posição é uma adaptação
+provisória da integração, ausente da campanha 0.2.
 """
 from __future__ import annotations
 
 import argparse
 import json
 import tempfile
+from copy import deepcopy
 from dataclasses import asdict
 from pathlib import Path
 
@@ -35,6 +35,40 @@ def _move_actor(tactical: TacticalGame, hero: str, destination: int) -> list[int
 
 def _search_at_map(tactical: TacticalGame, count: int) -> list[dict]:
     """Spend one actor PA per search in a printed search zone."""
+    # Prefer opening a printed door that leads directly to a search zone over
+    # repeatedly taking a longer route to the other zone. The action and tool
+    # are still paid through the public tactical API.
+    for search_zone in tactical.snapshot()["search_zones"]:
+        current_paths=[tactical.path_to(hero,search_zone)
+                       for hero in sorted(tactical.snapshot()["heroes"])]
+        current_cost=min((len(path)-1 for path in current_paths if path),default=None)
+        opened=False
+        for edge_id,door in tactical.state["doors"].items():
+            a,b=map(int,edge_id.split("-"))
+            if search_zone not in (a,b) or door["open"]:
+                continue
+            for hero in sorted(tactical.snapshot()["heroes"]):
+                for endpoint in (a,b):
+                    if endpoint==search_zone:
+                        continue
+                    path=tactical.path_to(hero,endpoint)
+                    if current_cost is not None and path and len(path)-1+1>=current_cost:
+                        continue
+                    tools=[instance_id for instance_id,item in
+                           tactical.world.gear[hero].items()
+                           if item["template"]=="EXP-EQU-002"
+                           and item["durability"]>0]
+                    if path and tools:
+                        _move_actor(tactical,hero,endpoint)
+                        if tactical.world.heroes[hero]["actions"]<1:
+                            tactical.activate()
+                        tactical.breach(hero,endpoint,search_zone,tools[0])
+                        opened=True
+                        break
+                if opened:
+                    break
+            if opened:
+                break
     found = []
     for _ in range(count):
         candidates = sorted(tactical.snapshot()["heroes"])
@@ -94,12 +128,82 @@ def execute(seed: int = 22) -> dict:
     if market_arrival != "arrived" or market_return != ["returned"]:
         raise AssertionError("Viagem ao Mercado não completou ida e volta")
 
-    recruited = world.recruit("EXP-NPC-02")
-    if not recruited:
-        raise AssertionError("Célia não pôde ser recrutada com espaço e sustento")
+    market_night = world.end_day()
+    actions.append({"action": "close_day_after_market", "result": market_night,
+                    "clock_reset": world.regional_clock,
+                    "expeditions_reset": world.daily_expeditions})
+
+    contact_trip = "continuous-seed22-celia-contact"
+    world.open_expedition(contact_trip, team, "EXP-LOC-05")
+    contact_out = [world.advance_expedition(contact_trip)
+                   for _ in range(world.expeditions[contact_trip].remaining)]
+    contact_map = TacticalGame.start(world, contact_trip, "station_02")
+    contact_path = _move_actor(contact_map, team[0], 14)
+    contact_receipt = contact_map.contact_npc(team[0], "EXP-NPC-02")
+    try:
+        contact_exit = _clear_exit(contact_map)
+    except ValueError as exc:
+        # Resolve the canonical failure explicitly; never convert it into a
+        # successful return or retain the expedition's loot.
+        clock_at_emergency=world.regional_clock
+        failed_expedition=asdict(world.expeditions[contact_trip])
+        failed_encounter=deepcopy(contact_map.state)
+        emergency=contact_map.emergency_return(
+            'Não há rota segura de extração após contato com Célia')
+        night=world.end_day()
+        snapshot = {
+            "cistern": {
+                "status": game.cistern.result,
+                "days": game.cistern.day,
+                "nights": len(cistern_report["days"]),
+                "expeditions": sum(day["destination"] is not None
+                                    for day in cistern_report["days"]),
+                "decisions": cistern_report["decision_count"],
+                "objectives": list(game.delivered_objectives),
+            },
+            "migration": migration,
+            "last_transmission": {
+                "status": "local_expedition_defeat",
+                "phase": game.phase,
+                "day": world.day,
+                "clock_at_emergency": clock_at_emergency,
+                "clock_after_night": world.regional_clock,
+                "expeditions_today": world.daily_expeditions,
+                "failed_expedition": failed_expedition,
+                "heroes": deepcopy(world.heroes),
+                "npc": deepcopy(world.npcs.get('EXP-NPC-02')),
+                "stock": dict(world.stock),
+                "contact_receipt": contact_receipt,
+                "contact_path": contact_path,
+                "emergency_receipt": emergency,
+                "night": night,
+                "encounter_at_failure": failed_encounter,
+                "blocked_action": "continue_second_arc",
+                "error": str(exc),
+                "campaign_actions": actions,
+                "blocking_requirement": "a rota provisória de contato na Estação causa derrota local; Célia permanece no local e o replay não pode contabilizar seu recrutamento",
+            },
+        }
+        with tempfile.TemporaryDirectory() as directory:
+            path = Path(directory) / "blocked-station.json"
+            game.save(path)
+            restored = IntegratedCampaign.load(path)
+            if asdict(restored.world) != asdict(world):
+                raise AssertionError("Save/load diverged at the regional emergency blocker")
+        return snapshot
+    world.begin_return(contact_trip)
+    contact_back = [world.advance_expedition(contact_trip)
+                    for _ in range(world.expeditions[contact_trip].remaining)]
+    if (contact_out[-1:] != ["arrived"] or contact_back[-1:] != ["returned"]
+            or world.npcs["EXP-NPC-02"]["location"] != "camp"):
+        raise AssertionError("Contato físico de Célia não retornou ao abrigo")
     world.assign("EXP-NPC-02", "teaching")
-    actions.extend([{"action": "recruit", "npc": "EXP-NPC-02", "result": recruited},
-                    {"action": "assign", "npc": "EXP-NPC-02", "job": "teaching"}])
+    actions.extend([
+        {"action": "physical_contact_expedition", "outbound": contact_out,
+         "contact_path": contact_path, "receipt": contact_receipt,
+         "exit_paths": contact_exit, "return": contact_back},
+        {"action": "assign", "npc": "EXP-NPC-02", "job": "teaching"},
+    ])
     daily = []
     daily_clues = []
     for _ in range(2):
@@ -343,14 +447,15 @@ def execute(seed: int = 22) -> dict:
 def write_artifact(path: Path = ARTIFACT) -> None:
     result = execute()
     path.parent.mkdir(parents=True, exist_ok=True)
-    path.write_text(json.dumps({"schema": 1, "status": "blocked_at_military_fuel",
+    status = result["last_transmission"]["status"]
+    path.write_text(json.dumps({"schema": 2, "status": status,
                                 "replay": result}, ensure_ascii=False, indent=2) + "\n",
                     encoding="utf-8")
 
 
 def verify_artifact(path: Path = ARTIFACT) -> dict:
     payload = json.loads(path.read_text(encoding="utf-8"))
-    if payload.get("schema") != 1 or payload.get("status") != "blocked_at_military_fuel":
+    if payload.get("schema") != 2 or payload.get("status") != "local_expedition_defeat":
         raise AssertionError("Artefato de campanha contínua inválido")
     actual = execute()
     if actual != payload["replay"]:
@@ -366,10 +471,10 @@ if __name__ == "__main__":
     if args.write:
         write_artifact(args.path)
     result = verify_artifact(args.path)
-    print(json.dumps({"status": "blocked_at_military_fuel",
+    print(json.dumps({"status": result["last_transmission"]["status"],
                       "cistern_days": result["cistern"]["days"],
                       "second_arc_trace_entries": len(result["last_transmission"]["campaign_actions"]),
-                      "access_card": result["last_transmission"]["access_card"],
-                      "clues": result["last_transmission"]["clues"],
+                      "clock": result["last_transmission"]["clock_at_emergency"],
+                      "blocked_action": result["last_transmission"]["blocked_action"],
                       "blocker": result["last_transmission"]["blocking_requirement"]},
                      ensure_ascii=False))

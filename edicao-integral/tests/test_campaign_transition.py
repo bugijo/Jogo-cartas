@@ -77,24 +77,20 @@ class CampaignTransitionTests(unittest.TestCase):
         self.assertEqual(restored.world.stock, game.world.stock)
         self.assertEqual(restored.transition_to_last_transmission(), receipt)
 
-    def test_replay_reaches_canonical_van_but_blocks_on_regional_fuel_deficit(self):
+    def test_replay_stops_at_regional_emergency_without_forging_return(self):
         replay = execute_continuous(22)
         last = replay["last_transmission"]
-        self.assertTrue(last["radio_code"])
-        self.assertTrue(last["access_card"])
-        self.assertEqual(last["daily_clues"], [1, 1])
-        self.assertEqual(last["daily_missing"], [
-            {"food": 0, "water": 0}, {"food": 0, "water": 0}])
-        self.assertEqual(last["fuel"], 7)
-        self.assertEqual(last["fuel_cards_taken"], 8)
-        self.assertTrue(last["battery_delivered_to_posto"])
-        self.assertTrue(last["van_recovered"])
-        self.assertEqual(last["vehicle"]["EXP-VEI-02"]["location"], "camp")
-        self.assertEqual(last["military_fuel_required"], 12)
-        self.assertEqual(last["fuel_shortfall"], 5)
-        self.assertIsNone(last["post_location_error"])
-        self.assertEqual(last["military_vehicle_error"],
-                         "Combustível insuficiente para ida e volta")
+        self.assertEqual(last["status"], "local_expedition_defeat")
+        self.assertEqual(last["phase"], "last_transmission")
+        self.assertEqual(last["clock_at_emergency"], 7)
+        self.assertEqual(last["clock_after_night"], 0)
+        self.assertEqual(last["blocked_action"], "continue_second_arc")
+        self.assertIn("Movimento indisponível", last["error"])
+        self.assertEqual(last["contact_receipt"]["npc"], "EXP-NPC-02")
+        self.assertEqual(last["emergency_receipt"]["status"], "failed")
+        self.assertEqual(last["emergency_receipt"]["stranded_npcs"], ["EXP-NPC-02"])
+        self.assertEqual(last["heroes"]["ZC-HER-0001"]["health"], 0)
+        self.assertIn("derrota local", last["blocking_requirement"])
 
     def test_all_twelve_cistern_founders_have_world_identity_profiles(self):
         for founder_id in (f"ZC-HER-{number:04d}" for number in range(1, 13)):

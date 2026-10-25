@@ -65,6 +65,9 @@ class TacticalTests(unittest.TestCase):
         with self.assertRaises(ValueError):game.attack('ZC-HER-0002','crowbar',enemy)
         with self.assertRaises(ValueError):w.begin_return('m')
         w.heroes['ZC-HER-0002']['health']=1
+        with self.assertRaisesRegex(ValueError,'zona de saída'):
+            game.finish(retreat=True)
+        game.state['enemies'][enemy]['zone']=16
         game.finish(retreat=True)
         w.begin_return('m')
 

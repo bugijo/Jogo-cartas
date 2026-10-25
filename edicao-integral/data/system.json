@@ -1042,8 +1042,7 @@
       "renewal": "urban",
       "searches": 3,
       "loot": {
-        "scrap": 2,
-        "fuel": 1
+        "scrap": 2
       },
       "distance": "medium"
     },

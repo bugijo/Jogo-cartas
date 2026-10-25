@@ -2,6 +2,7 @@
 import sys
 import tempfile
 import unittest
+from dataclasses import asdict
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[1]
@@ -213,6 +214,373 @@ class PostoVehicleBridgeTests(unittest.TestCase):
         for _ in range(3):
             world.advance_expedition('station')
         self.assertEqual(world.special_stock, ['access_card'])
+
+    def test_celia_physical_contact_is_persisted_and_far_clock_blocks_return(self):
+        hero = 'ZC-HER-0001'
+        world = World.new(22, [hero], {'food': 4, 'water': 4})
+        world.cistern_record = {
+            'status': 'verified_victory', 'source': 'cistern02',
+            'migration': {'receipt': {'id': 'migration-fixture'}},
+        }
+        world.open_expedition('station-contact', [hero], 'EXP-LOC-05')
+        for _ in range(world.expeditions['station-contact'].remaining):
+            world.advance_expedition('station-contact')
+        tactical = TacticalGame.start(world, 'station-contact', 'station_02')
+        with self.assertRaisesRegex(ValueError, 'zona de contato'):
+            tactical.contact_npc(hero, 'EXP-NPC-02')
+        tactical.state['enemies'].clear()  # fixture isola presença e PA de combate
+        tactical.state['heroes'][hero]=14
+        with self.assertRaisesRegex(ValueError, 'contato físico'):
+            world.recruit('EXP-NPC-02')
+        before = world.heroes[hero]['actions']
+        receipt = tactical.contact_npc(hero, 'EXP-NPC-02')
+        self.assertEqual(receipt['zone'], 14)
+        self.assertEqual(world.heroes[hero]['actions'], before - 1)
+        self.assertEqual(world.npcs['EXP-NPC-02']['location'], 'station-contact')
+        self.assertIn('EXP-NPC-02', world.expeditions['station-contact'].crew)
+        with tempfile.TemporaryDirectory() as directory:
+            path = Path(directory) / 'celia-contact.json'
+            world.save(path)
+            world = World.load(path)
+            tactical = TacticalGame(world, 'station-contact')
+        self.assertEqual(tactical.state['npc_followers'], {'EXP-NPC-02': hero})
+        with self.assertRaises(ValueError):
+            tactical.finish()
+        with self.assertRaises(ValueError):
+            world.end_day()
+        for _ in range(3):
+            tactical.activate()
+        result=tactical.activate()
+        self.assertTrue(result['round_closed'])
+        self.assertFalse(result['return_reserve'])
+        self.assertNotEqual(tactical.state['heroes'][hero], tactical.exit_zone)
+        with self.assertRaisesRegex(ValueError, 'Equipe fora da saída'):
+            tactical.finish()
+        world.validate()
+
+    def test_regional_emergency_returns_heroes_and_strands_rescue_without_loot(self):
+        heroes=['ZC-HER-0001','ZC-HER-0003']
+        world=World.new(22,heroes,{'food':4,'water':4})
+        world.cistern_record={
+            'status':'verified_victory','source':'cistern02',
+            'migration':{'receipt':{'id':'migration-emergency-fixture'}},
+        }
+        world.special_stock.append('battery')
+        world.open_expedition('station-emergency',heroes,'EXP-LOC-05',
+                              special_items=['battery'])
+        for _ in range(world.expeditions['station-emergency'].remaining):
+            world.advance_expedition('station-emergency')
+        tactical=TacticalGame.start(world,'station-emergency','station_02')
+        tactical.state['enemies'].clear()  # fixture para isolar liquidação de emergência
+        tactical.state['heroes'][heroes[0]]=14
+        tactical.contact_npc(heroes[0],'EXP-NPC-02')
+        expedition=world.expeditions['station-emergency']
+        expedition.cargo['food']=2
+        world.heroes[heroes[1]]['health']=0  # incapacitado também retorna
+        receipt=tactical.emergency_return('sem tempo para retorno seguro')
+        self.assertEqual(receipt['status'],'failed')
+        self.assertEqual(receipt['lost_cargo'],{'food':2})
+        self.assertEqual(world.stock['food'],4)
+        self.assertEqual(world.special_stock,['battery'])
+        self.assertEqual(world.heroes[heroes[0]]['health'],2)
+        self.assertEqual(world.heroes[heroes[0]]['fatigue'],3)
+        self.assertEqual(world.heroes[heroes[1]]['health'],0)
+        self.assertEqual(world.heroes[heroes[1]]['fatigue'],3)
+        self.assertEqual(world.heroes[heroes[0]]['location'],'camp')
+        self.assertEqual(world.npcs['EXP-NPC-02']['location'],'EXP-LOC-05')
+        self.assertNotIn('station-emergency',world.expeditions)
+        self.assertNotIn('station-emergency',world.encounters)
+        self.assertEqual(world.residents,2)
+        self.assertEqual(world.site_states['EXP-LOC-05']['stranded_npcs'],['EXP-NPC-02'])
+        world.validate()
+        with tempfile.TemporaryDirectory() as directory:
+            path=Path(directory)/'emergency.json'
+            world.save(path)
+            restored=World.load(path)
+        self.assertEqual(asdict(restored),asdict(world))
+
+    def test_emergency_military_trip_keeps_carried_card_but_damages_van(self):
+        hero='ZC-HER-0001'
+        world=World.new(22,[hero],{'food':2,'water':2,'fuel':12})
+        world.cistern_record={
+            'status':'verified_victory','source':'cistern02',
+            'migration':{'receipt':{'id':'migration-military-emergency-fixture'}},
+        }
+        world.flags.update(radio_code=True,access_card=True)
+        world.special_stock.append('access_card')
+        world.vehicles['EXP-VEI-02']={'location':'camp','health':3}
+        Arc2(world).authorize_installation('military-emergency',[hero],'EXP-VEI-02')
+        self.assertEqual(world.stock['fuel'],0)  # ida/volta reservadas desde o estoque
+        for _ in range(3):
+            world.advance_expedition('military-emergency')
+        tactical=TacticalGame.start(world,'military-emergency','military_installation')
+        world.expeditions['military-emergency'].cargo['fuel']=4
+        receipt=tactical.emergency_return('abandonar missão militar')
+        self.assertEqual(receipt['lost_cargo'],{'fuel':4})
+        self.assertEqual(world.special_stock,['access_card'])
+        self.assertTrue(world.flags['access_card'])
+        self.assertFalse(world.flags['military_access'])
+        self.assertEqual(world.vehicles['EXP-VEI-02'],
+                         {'location':'EXP-LOC-06','health':0})
+        world.validate()
+
+    def test_emergency_dropped_access_card_cannot_be_created_again(self):
+        hero='ZC-HER-0001'
+        world=World.new(12,[hero],{'food':4,'water':4})
+        world.cistern_record={
+            'status':'verified_victory','source':'cistern02',
+            'migration':{'receipt':{'id':'migration-card-drop-fixture'}},
+        }
+        world.flags['radio_code']=True
+        world.open_expedition('station-card-drop',[hero],'EXP-LOC-05')
+        for _ in range(3):
+            world.advance_expedition('station-card-drop')
+        tactical=TacticalGame.start(world,'station-card-drop','station_02')
+        tactical.state['heroes'][hero]=5
+        tactical.search(hero)
+        Arc2(world).recover_access_card('station-card-drop')
+        tactical.emergency_return('teste de perda de cartão')
+        self.assertFalse(world.flags['access_card'])
+        self.assertEqual(world.unique_items_at_sites['EXP-LOC-05'],['access_card'])
+        world.end_day()
+        world.open_expedition('station-card-revisit',[hero],'EXP-LOC-05')
+        for _ in range(3):
+            world.advance_expedition('station-card-revisit')
+        revisit=TacticalGame.start(world,'station-card-revisit','station_02')
+        revisit.state['heroes'][hero]=5
+        revisit.search(hero)
+        before=list(world.expeditions['station-card-revisit'].special_cargo)
+        with self.assertRaisesRegex(ValueError,'no chão'):
+            Arc2(world).recover_access_card('station-card-revisit')
+        self.assertEqual(world.expeditions['station-card-revisit'].special_cargo,before)
+        self.assertEqual(world.unique_items_at_sites['EXP-LOC-05'],['access_card'])
+
+    def test_celia_contact_does_not_override_real_food_shortage(self):
+        game = self.migrated_seed22()
+        world = game.world
+        hero = 'ZC-HER-0001'
+        world.open_expedition('station-no-food', [hero], 'EXP-LOC-05')
+        for _ in range(world.expeditions['station-no-food'].remaining):
+            world.advance_expedition('station-no-food')
+        tactical = TacticalGame.start(world, 'station-no-food', 'station_02')
+        tactical.state['heroes'][hero] = 14  # teste isolado do bloqueio de sustento
+        self.assertLess(world.stock['food'], world.residents + 1)
+        with self.assertRaisesRegex(ValueError, 'sustento'):
+            tactical.contact_npc(hero, 'EXP-NPC-02')
+        self.assertNotIn('EXP-NPC-02', world.npcs)
+        self.assertEqual(world.heroes[hero]['actions'], 3)
+
+    def test_celia_contact_is_unavailable_when_founder_is_already_active(self):
+        world = World.new(3, ['ZC-HER-0012'], {'food': 4, 'water': 4})
+        world.cistern_record = {
+            'status': 'verified_victory', 'source': 'cistern02',
+            'migration': {'receipt': {'id': 'migration-fixture'}},
+        }
+        world.open_expedition('duplicate', ['ZC-HER-0012'], 'EXP-LOC-05')
+        for _ in range(3):
+            world.advance_expedition('duplicate')
+        tactical = TacticalGame.start(world, 'duplicate', 'station_02')
+        tactical.state['heroes']['ZC-HER-0012'] = 14
+        with self.assertRaisesRegex(ValueError, 'não disponível'):
+            tactical.contact_npc('ZC-HER-0012', 'EXP-NPC-02')
+
+    def test_continuous_regional_clock_charges_travel_rounds_and_return(self):
+        hero = 'ZC-HER-0001'
+        world = World.new(3, [hero], {'food': 2, 'water': 2})
+        world.cistern_record = {
+            'status': 'verified_victory', 'source': 'cistern02',
+            'migration': {'receipt': {'id': 'migration-clock-fixture'}},
+        }
+        world.open_expedition('regional-clock', [hero], 'EXP-LOC-02')
+        self.assertEqual(world.regional_clock, 0)
+        world.advance_expedition('regional-clock')
+        self.assertEqual(world.regional_clock, 1)
+        tactical = TacticalGame.start(world, 'regional-clock', 'market_intro')
+        self.assertEqual(world.regional_clock, 2)
+        with self.assertRaisesRegex(ValueError, 'TacticalGame.activate'):
+            world.begin_round()
+        tactical.activate()
+        self.assertEqual(world.regional_clock, 3)
+        tactical.finish()
+        world.begin_return('regional-clock')
+        world.advance_expedition('regional-clock')
+        self.assertEqual(world.regional_clock, 4)
+        world.end_day()
+        self.assertEqual(world.regional_clock, 0)
+        self.assertEqual(world.day, 1)
+
+    def test_continuous_regional_clock_refuses_an_eleventh_segment(self):
+        hero = 'ZC-HER-0001'
+        world = World.new(3, [hero], {'food': 2, 'water': 2})
+        world.cistern_record = {
+            'status': 'verified_victory', 'source': 'cistern02',
+            'migration': {'receipt': {'id': 'migration-clock-fixture'}},
+        }
+        world.open_expedition('clock-limit', [hero], 'EXP-LOC-02')
+        world.regional_clock = 10
+        remaining = world.expeditions['clock-limit'].remaining
+        with self.assertRaisesRegex(ValueError, 'dez segmentos'):
+            world.advance_expedition('clock-limit')
+        self.assertEqual(world.expeditions['clock-limit'].remaining, remaining)
+
+    def test_continuous_campaign_limits_one_expedition_per_day(self):
+        hero='ZC-HER-0001'
+        world=World.new(3,[hero],{'food':4,'water':4})
+        world.cistern_record={
+            'status':'verified_victory','source':'cistern02',
+            'migration':{'receipt':{'id':'migration-one-expedition-fixture'}},
+        }
+        world.open_expedition('first',[hero],'EXP-LOC-02')
+        world.advance_expedition('first')
+        TacticalGame.start(world,'first','market_intro').finish()
+        world.begin_return('first')
+        world.advance_expedition('first')
+        with self.assertRaisesRegex(ValueError,'uma expedição por dia'):
+            world.open_expedition('second',[hero],'EXP-LOC-02')
+        world.end_day()
+        world.open_expedition('second',[hero],'EXP-LOC-02')
+
+    def test_exit_does_not_require_clearing_enemies_outside_the_exit_zone(self):
+        hero='ZC-HER-0001'
+        world=World.new(18,[hero],{'food':2,'water':2})
+        world.open_expedition('exit-rule',[hero],'EXP-LOC-02')
+        world.advance_expedition('exit-rule')
+        tactical=TacticalGame.start(world,'exit-rule','market_intro')
+        tactical.spawn('slow',zone=16)
+        tactical.finish()
+        self.assertNotIn('exit-rule',world.encounters)
+        self.assertEqual(world.site_states['EXP-LOC-02']['enemies']['E001']['zone'],16)
+
+    def test_continuous_destination_spawns_initial_group_once_and_station_brute(self):
+        heroes=['ZC-HER-0001','ZC-HER-0002']
+        world=World.new(12,heroes,{'food':5,'water':5})
+        world.cistern_record={
+            'status':'verified_victory','source':'cistern02',
+            'migration':{'receipt':{'id':'migration-spawn-fixture'}},
+        }
+        for visit in ('station-first','station-repeat'):
+            if visit=='station-repeat':
+                world.end_day()
+            world.open_expedition(visit,heroes,'EXP-LOC-05')
+            for _ in range(world.expeditions[visit].remaining):
+                world.advance_expedition(visit)
+            tactical=TacticalGame.start(world,visit,'station_02')
+            enemies=list(tactical.state['enemies'].values())
+            if visit=='station-first':
+                self.assertEqual(sum(enemy['kind']=='slow' for enemy in enemies),1)
+                self.assertEqual(sum(enemy['kind']=='brute' for enemy in enemies),1)
+                self.assertEqual(tactical.state['pressure'],0)
+            else:
+                self.assertEqual(len(enemies),2)
+            tactical.finish(retreat=True)
+            world.begin_return(visit)
+            for _ in range(world.expeditions[visit].remaining):
+                world.advance_expedition(visit)
+
+    def test_regional_pressure_draws_persistent_horde_after_second_round(self):
+        hero='ZC-HER-0001'
+        world=World.new(123,[hero],{'food':2,'water':2})
+        world.cistern_record={
+            'status':'verified_victory','source':'cistern02',
+            'migration':{'receipt':{'id':'migration-horde-fixture'}},
+        }
+        world.open_expedition('regional-horde',[hero],'EXP-LOC-02')
+        world.advance_expedition('regional-horde')
+        tactical=TacticalGame.start(world,'regional-horde','market_intro')
+        first=tactical.activate()
+        self.assertEqual(first['spawned'],[])
+        self.assertEqual(tactical.state['pressure'],1)
+        before=world.regional_horde_deck
+        second=tactical.activate()
+        self.assertGreaterEqual(len(second['spawned']),1)
+        self.assertEqual(tactical.state['pressure'],0)
+        self.assertNotEqual(world.regional_horde_deck,before)
+        self.assertTrue(all(tactical.state['enemies'][enemy]['zone']==16
+                            for enemy in second['spawned']))
+
+    def test_regional_horde_and_clock_are_deterministic_across_save_load(self):
+        hero='ZC-HER-0001'
+        world=World.new(123,[hero],{'food':2,'water':2})
+        world.cistern_record={
+            'status':'verified_victory','source':'cistern02',
+            'migration':{'receipt':{'id':'migration-horde-save-fixture'}},
+        }
+        world.open_expedition('regional-horde-save',[hero],'EXP-LOC-02')
+        world.advance_expedition('regional-horde-save')
+        tactical=TacticalGame.start(world,'regional-horde-save','market_intro')
+        tactical.activate()
+        tactical.activate()  # gatilho de pressão 2 e carta Horda
+        with tempfile.TemporaryDirectory() as directory:
+            path=Path(directory)/'regional-horde-save.json'
+            world.save(path)
+            first=World.load(path)
+            second=World.load(path)
+        self.assertEqual(first.regional_clock,world.regional_clock)
+        self.assertEqual(first.regional_horde_deck,world.regional_horde_deck)
+        self.assertEqual(first.encounters,world.encounters)
+        first_result=TacticalGame(first,'regional-horde-save').activate()
+        second_result=TacticalGame(second,'regional-horde-save').activate()
+        self.assertEqual(first_result,second_result)
+        self.assertEqual(first.regional_horde_deck,second.regional_horde_deck)
+        self.assertEqual(first.encounters,second.encounters)
+
+    def test_night_segments_add_fatigue_and_a_night_round_draws_horde(self):
+        hero='ZC-HER-0001'
+        world=World.new(44,[hero],{'food':2,'water':2})
+        world.cistern_record={
+            'status':'verified_victory','source':'cistern02',
+            'migration':{'receipt':{'id':'migration-night-fixture'}},
+        }
+        world.open_expedition('regional-night',[hero],'EXP-LOC-02')
+        world.regional_clock=8  # fixture de limite noturno
+        world.advance_expedition('regional-night')
+        self.assertEqual(world.regional_clock,9)
+        self.assertEqual(world.heroes[hero]['fatigue'],1)
+        world.regional_clock=0
+        world.expeditions['regional-night'].remaining=0
+        world.expeditions['regional-night'].distance='near'
+        tactical=TacticalGame.start(world,'regional-night','market_intro')
+        tactical.state['first_market_visit']=False
+        world.regional_clock=8
+        tactical.state['round_clock']=9
+        result=tactical.activate()
+        self.assertGreaterEqual(len(result['spawned']),1)
+        self.assertTrue(all(tactical.state['enemies'][enemy]['zone']==16
+                            for enemy in result['spawned']))
+
+    def test_fatigue_reduces_actions_and_a_fed_night_recovers_one(self):
+        heroes=['ZC-HER-0001','ZC-HER-0003']
+        world=World.new(45,heroes,{'food':4,'water':4})
+        world.cistern_record={
+            'status':'verified_victory','source':'cistern02',
+            'migration':{'receipt':{'id':'migration-fatigue-fixture'}},
+        }
+        world.heroes[heroes[0]]['fatigue']=2
+        world.open_expedition('fatigue-round',heroes,'EXP-LOC-02')
+        world.advance_expedition('fatigue-round')
+        tactical=TacticalGame.start(world,'fatigue-round','market_intro')
+        self.assertEqual(world.heroes[heroes[0]]['actions'],2)
+        self.assertEqual(world.heroes[heroes[1]]['actions'],3)
+        tactical.finish()
+        world.begin_return('fatigue-round')
+        world.advance_expedition('fatigue-round')
+        result=world.end_day()
+        self.assertEqual(result['missing'],{'food':0,'water':0})
+        self.assertEqual(world.heroes[heroes[0]]['fatigue'],1)
+
+    def test_fatigue_three_prevents_departure_until_a_fed_night_recovers(self):
+        hero='ZC-HER-0001'
+        world=World.new(45,[hero],{'food':2,'water':2})
+        world.cistern_record={
+            'status':'verified_victory','source':'cistern02',
+            'migration':{'receipt':{'id':'migration-fatigue-lock-fixture'}},
+        }
+        world.heroes[hero]['fatigue']=3
+        with self.assertRaisesRegex(ValueError,'Fadiga 3'):
+            world.open_expedition('fatigue-lock',[hero],'EXP-LOC-02')
+        world.end_day()
+        self.assertEqual(world.heroes[hero]['fatigue'],2)
+        world.open_expedition('fatigue-lock',[hero],'EXP-LOC-02')
 
 
 if __name__ == '__main__':

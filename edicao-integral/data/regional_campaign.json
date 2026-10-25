@@ -1,0 +1,14 @@
+{
+  "schema": 1,
+  "contact_rule_source": "Adaptação provisória solicitada nesta tarefa; a campanha 0.2 não define encontro regional de Célia.",
+  "contacts": {
+    "EXP-NPC-02": {
+      "name": "Célia",
+      "location": "EXP-LOC-05",
+      "map": "station_02",
+      "zone": 14,
+      "moment": "post_cistern_radio_signal",
+      "text": "Célia protege anotações sobre a transmissão e aceita acompanhar o grupo após contato."
+    }
+  }
+}

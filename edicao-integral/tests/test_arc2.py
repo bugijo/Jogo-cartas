@@ -130,7 +130,7 @@ class Arc2Tests(unittest.TestCase):
         for _ in range(3):w.advance_expedition('military')
         with self.assertRaises(ValueError):TacticalGame.start(w,'military','market_intro')
 
-    def test_catalog_fuel_cannot_pay_recovery_and_military_trip(self):
+    def test_workshop_search_does_not_create_uncatalogued_fuel(self):
         w=World.new(23,['ZC-HER-0001','ZC-HER-0002'],{'food':4,'water':4})
         team=list(w.heroes)
         w.open_expedition('parts',team,'EXP-LOC-03')
@@ -138,17 +138,8 @@ class Arc2Tests(unittest.TestCase):
         for _ in range(3):w.search('parts')
         w.begin_return('parts')
         for _ in range(2):w.advance_expedition('parts')
-        self.assertEqual(w.stock['fuel'],3)
-        w.open_expedition('van',team,'EXP-LOC-03')
-        for _ in range(2):w.advance_expedition('van')
-        self.assertTrue(w.recover_vehicle('EXP-VEI-01','van'))
-        w.begin_return('van')
-        for _ in range(2):w.advance_expedition('van')
-        self.assertEqual(w.stock['fuel'],1)
-        w.cistern_record={'status':'verified_victory','source':'cistern02'}
-        w.flags.update(radio_code=True,access_card=True)
-        with self.assertRaises(ValueError):
-            Arc2(w).authorize_installation('military',team,'EXP-VEI-01')
+        self.assertEqual(w.stock['fuel'],0)
+        self.assertEqual(w.stock['scrap'],6)
 
     def test_code_card_access_and_transport_persist(self):
         w=World.new(8,['ZC-HER-0001','ZC-HER-0002'],
@@ -192,6 +183,22 @@ class Arc2Tests(unittest.TestCase):
             for _ in range(3):restored.advance_expedition('military')
             self.assertIn('transmitter',restored.special_stock)
         self.assertEqual(len(ARC_CARDS),5)
+
+    def test_transmitter_dropped_by_emergency_cannot_be_created_again(self):
+        hero='ZC-HER-0001'
+        world=World.new(8,[hero],{'food':2,'water':2,'fuel':6})
+        world.cistern_record={'status':'verified_victory','source':'cistern02'}
+        world.flags.update(radio_code=True,access_card=True)
+        world.vehicles['EXP-VEI-01']={'location':'camp','health':3}
+        arc=Arc2(world)
+        arc.authorize_installation('military-drop',[hero],'EXP-VEI-01')
+        for _ in range(3):world.advance_expedition('military-drop')
+        tactical=TacticalGame.start(world,'military-drop','military_installation')
+        world.unique_items_at_sites['EXP-LOC-06']=['transmitter']
+        tactical.state['heroes'][hero]=6
+        with self.assertRaisesRegex(ValueError,'Transmissor inacessível'):
+            arc.load_transmitter('military-drop')
+        self.assertEqual(world.expeditions['military-drop'].special_cargo,[])
 
 
 if __name__=='__main__':unittest.main()

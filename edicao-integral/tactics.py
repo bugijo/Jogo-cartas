@@ -2,9 +2,11 @@
 import json
 from copy import deepcopy
 from collections import deque
+from math import ceil
 from pathlib import Path
 
-from system import ITEMS, VEHICLES, World
+from system import ITEMS, NPCS, REGIONAL_CONTACTS, VEHICLES, World
+from horde_deck02 import HordeDeck02
 
 TACTICS=json.loads((Path(__file__).parent/'data/tactics.json').read_text(encoding='utf-8'))
 LEGACY_HEROES={hero['id']:hero for hero in json.loads(
@@ -40,26 +42,57 @@ class TacticalGame:
         if any(other.destination==destination and other_id in world.encounters
                for other_id,other in world.expeditions.items()):
             raise ValueError('Local já em uso por outra equipe')
+        contacts={}
+        if world.cistern_verified and (world.cistern_record or {}).get('migration',{}).get('receipt'):
+            for npc_id, contact in REGIONAL_CONTACTS.get('contacts',{}).items():
+                if (contact['location']==destination and contact['map']==map_id
+                        and (npc_id not in world.npcs
+                             or world.npcs[npc_id]['location']==destination)
+                        and NPCS[npc_id].get('source_hero_id') not in world.heroes):
+                    contacts[npc_id]=contact['zone']
         state={
             'map':map_id,'heroes':{h:map_data['entry'] for h in world.expeditions[expedition_id].heroes},
             'search_zones':list(map_data['search']),
             'enemies':{},'next_enemy':1,
             'doors':{edge(*d['edge']):{'open':False,'resistance':d['resistance'],
                                       'blocked':d['blocked']} for d in map_data['doors']},
-            'noise':[],'announced':[],'round':0,
+            'noise':[],'announced':[],'round':0,'pressure':0,'initial_spawned':False,
             'van_state':'abandoned','van_attempts':[],
-            'fuel_cards_taken':[]}
+            'fuel_cards_taken':[],'npc_contacts':contacts,'npc_followers':{}}
         previous=world.site_states.get(destination)
         if previous:
             if previous['map']!=map_id:
                 raise ValueError('Mapa incompatível com a revisita')
-            for key in ('enemies','next_enemy','doors','announced','round',
-                        'van_state','fuel_cards_taken'):
+            for key in ('enemies','next_enemy','doors','announced','round','pressure',
+                        'initial_spawned','van_state','fuel_cards_taken'):
                 if key in previous:
                     state[key]=deepcopy(previous[key])
         state['van_attempts']=[]  # Regra canônica: uma tentativa por herói/visita.
-        world.begin_round()
+        state['first_market_visit']=(world.continuous_campaign
+                                     and destination=='EXP-LOC-02' and previous is None)
+        if world.continuous_campaign:
+            if world.regional_horde_deck is None:
+                world.regional_horde_deck=HordeDeck02.new(world.seed+8102).snapshot()
+            if not state.get('initial_spawned',False):
+                for _ in range(ceil(len(world.expeditions[expedition_id].heroes)/2)):
+                    eid=f"E{state['next_enemy']:03d}"
+                    state['next_enemy']+=1
+                    state['enemies'][eid]={'kind':'slow','zone':map_data['spawn'],
+                                           'health':TACTICS['enemies']['slow']['health']}
+                if destination=='EXP-LOC-05':
+                    eid=f"E{state['next_enemy']:03d}"
+                    state['next_enemy']+=1
+                    state['enemies'][eid]={'kind':'brute','zone':14,
+                                           'health':TACTICS['enemies']['brute']['health']}
+                state['initial_spawned']=True
+        if (world.continuous_campaign
+                and world.regional_clock+1+world.expeditions[expedition_id].segment_cost>10):
+            raise ValueError('Sem reserva no relógio regional para iniciar uma rodada e retornar')
+        world.advance_regional_segment(expedition_id,'map_round')
+        state['round_clock']=world.regional_clock
+        world._refresh_actions()
         world.encounters[expedition_id]=state
+        world.validate()
         return cls(world,expedition_id)
 
     @property
@@ -127,6 +160,56 @@ class TacticalGame:
     def search(self, hero_id: str) -> dict[str, int]:
         """Busca de uma carta/unidade custa 1 PA no setor impresso no mapa."""
         return self.world.search(self.id, hero_id)
+
+    def contact_npc(self, hero_id: str, npc_id: str) -> dict:
+        """Recruit a regional survivor only through physical contact on the map."""
+        exp=self.world.expeditions[self.id]
+        contact=REGIONAL_CONTACTS.get('contacts',{}).get(npc_id)
+        zone=self.state.get('npc_contacts',{}).get(npc_id)
+        if not contact:
+            raise ValueError('Sobrevivente desconhecido')
+        source_hero=NPCS[npc_id].get('source_hero_id')
+        existing=self.world.npcs.get(npc_id)
+        if ((existing and existing['location']!=exp.destination)
+                or source_hero in self.world.heroes):
+            raise ValueError('Sobrevivente não disponível: identidade já está na comunidade')
+        if (zone is None or contact['location']!=exp.destination
+                or contact['map']!=self.state['map'] or hero_id not in self.state['heroes']
+                or self.state['heroes'][hero_id]!=zone):
+            raise ValueError('Célia exige contato físico na zona de contato')
+        if self.world.heroes[hero_id]['health']<1 or self.world.heroes[hero_id]['actions']<1:
+            raise ValueError('Contato indisponível sem herói ativo e 1 PA')
+        if (self.world.residents>=self.world.beds
+                or self.world.stock['food']<self.world.residents+1
+                or self.world.stock['water']<self.world.residents+1):
+            raise ValueError('A comunidade não tem vaga e sustento para acolher Célia')
+        capacity=(VEHICLES[exp.vehicle_id]['seats'] if exp.vehicle_id
+                  else 6*len(exp.heroes))
+        if len(exp.heroes)+len(exp.crew)+1>capacity:
+            raise ValueError('Sem capacidade de transporte para Célia')
+        self.world.heroes[hero_id]['actions']-=1
+        if existing is None:
+            self.world.npcs[npc_id]={'level':1,'job':None,'health':3,'location':self.id}
+        else:
+            existing['location']=self.id
+            site_state=self.world.site_states.get(exp.destination,{})
+            site_state['stranded_npcs']=[person for person in
+                                         site_state.get('stranded_npcs',[])
+                                         if person!=npc_id]
+            self.world.site_states[exp.destination]=site_state
+        exp.crew.append(npc_id)
+        del self.state['npc_contacts'][npc_id]
+        self.state['npc_followers'][npc_id]=hero_id
+        receipt={'npc':npc_id,'hero':hero_id,'zone':zone,'location':exp.destination,
+                 'action_cost':1}
+        self.world.log.append({'day':self.world.day,'expedition':self.id,
+                               'action':'physical_contact_recruit',**receipt})
+        self.world.validate()
+        return receipt
+
+    def emergency_return(self, reason: str) -> dict:
+        """Apply the campaign's explicit failed-expedition return procedure."""
+        return self.world.emergency_return(self.id,reason)
 
     def pickup_unique_item(self, hero_id: str, item: str) -> None:
         """Retira uma peça única no objetivo canônico e a transporta na expedição."""
@@ -239,6 +322,8 @@ class TacticalGame:
     def spawn(self,kind,zone=None):
         if kind not in TACTICS['enemies']:
             raise ValueError('Inimigo desconhecido')
+        if len(self.state['enemies'])>=24:
+            raise ValueError('Limite canônico de 24 inimigos; resolução de excedente pendente')
         zone=self.map['spawn'] if zone is None else zone
         if zone not in self.map['zones']:
             raise ValueError('Zona inválida')
@@ -276,14 +361,26 @@ class TacticalGame:
     def finish(self,retreat=False):
         if any(zone!=self.map['exit'] for zone in self.state['heroes'].values()):
             raise ValueError('Equipe fora da saída')
-        if self.state['enemies'] and not retreat:
-            raise ValueError('Ameaças ainda presentes')
+        for npc_id,hero_id in self.state.get('npc_followers',{}).items():
+            if (self.world.npcs[npc_id]['location']!=self.id
+                    or self.state['heroes'].get(hero_id)!=self.map['exit']):
+                raise ValueError('Resgatado precisa acompanhar seu herói até a saída')
+        if any(enemy['zone']==self.map['exit'] for enemy in self.state['enemies'].values()):
+            raise ValueError('Ameaça ainda presente na zona de saída')
         self.world.log.append({'day':self.world.day,'encounter':self.id,
                                'retreat':bool(retreat),'enemies_remaining':len(self.state['enemies'])})
         destination=self.world.expeditions[self.id].destination
-        self.world.site_states[destination]=deepcopy({key:self.state[key] for key in
-                                                     ('map','enemies','next_enemy','doors','announced','round',
-                                                      'van_state','fuel_cards_taken')})
+        prior_site=self.world.site_states.get(destination,{})
+        saved=deepcopy({key:self.state[key] for key in
+                        ('map','enemies','next_enemy','doors','announced','round','pressure',
+                         'initial_spawned','van_state','fuel_cards_taken')})
+        for key in ('stranded_npcs','lost_special_items'):
+            if prior_site.get(key):
+                saved[key]=deepcopy(prior_site[key])
+        if self.state.get('npc_followers'):
+            saved['stranded_npcs']=[person for person in saved.get('stranded_npcs',[])
+                                    if person not in self.state['npc_followers']]
+        self.world.site_states[destination]=saved
         del self.world.encounters[self.id]
 
     def noise(self,zone,intensity):
@@ -298,17 +395,29 @@ class TacticalGame:
         if delay<0:raise ValueError('Atraso inválido')
         self.state['announced'].append({'kind':kind,'delay':delay})
 
+    def _draw_regional_horde(self):
+        deck=HordeDeck02.from_snapshot(self.world.regional_horde_deck)
+        card=deck.draw()
+        self.world.regional_horde_deck=deck.snapshot()
+        kind,count={
+            'Arrastar':('slow',1),
+            'Corrida':('runner',1),
+            'Aglomerado':('slow',ceil(len(self.world.expeditions[self.id].heroes)/2)),
+            'Peso morto':('brute',1),
+        }[card]
+        spawned=[self.spawn(kind) for _ in range(count)]
+        self.world.log.append({'day':self.world.day,'expedition':self.id,
+                               'action':'regional_horde','card':card,
+                               'enemies':list(spawned)})
+        return spawned
+
     def activate(self):
+        if self.state.get('round_closed'):
+            raise ValueError('Expedição tática encerrada pelo relógio regional')
         spawned=[]
-        later=[]
-        for horde in self.state['announced']:
-            if horde['delay']>0:
-                horde['delay']-=1;later.append(horde)
-            else:
-                spawned.extend(self.spawn(kind) for kind in TACTICS['hordes'][horde['kind']]['units'])
-        self.state['announced']=later
         attacks=[]
-        for eid,enemy in list(self.state['enemies'].items()):
+        protected_market=(self.state.get('first_market_visit') and self.state['round']==0)
+        for eid,enemy in ([] if protected_market else list(self.state['enemies'].items())):
             spec=TACTICS['enemies'][enemy['kind']]
             for _ in range(spec['move']):
                 victims=[h for h,z in self.state['heroes'].items() if z==enemy['zone']
@@ -338,6 +447,41 @@ class TacticalGame:
                 infection=self.world.roll_infection(hero_id) if harm['health']<prior else None
                 attacks.append({'enemy':eid,'hero':hero_id,**harm,'infection':infection})
         self.state['noise']=[]
+        later=[]
+        for horde in self.state['announced']:
+            if horde['delay']>0:
+                horde['delay']-=1
+                later.append(horde)
+            else:
+                spawned.extend(self.spawn(kind)
+                               for kind in TACTICS['hordes'][horde['kind']]['units'])
+        self.state['announced']=later
+        if self.world.continuous_campaign:
+            if protected_market:
+                # The campaign's first market round suppresses activation/spawn;
+                # the printed rule still advances local pressure to one.
+                self.state['pressure']=1
+            else:
+                self.state['pressure']+=1
+                if self.state['pressure']>=2:
+                    self.state['pressure']=0
+                    spawned.extend(self._draw_regional_horde())
+                if self.state.get('round_clock',0)>=9:
+                    spawned.extend(self._draw_regional_horde())
         self.state['round']+=1
+        if self.world.continuous_campaign:
+            exp=self.world.expeditions[self.id]
+            if (self.world.regional_clock>=10
+                    or self.world.regional_clock+1+exp.segment_cost>10):
+                self.state['round_closed']=True
+                return {'spawned':spawned,'attacks':attacks,'round':self.state['round'],
+                        'clock':self.world.regional_clock,'return_reserve':False,
+                        'round_closed':True}
+            clock=self.world.advance_regional_segment(self.id,'map_round')
+            self.state['round_clock']=self.world.regional_clock
+            self.world._refresh_actions()
+            return {'spawned':spawned,'attacks':attacks,'round':self.state['round'],
+                    'clock':self.world.regional_clock,'fatigue':clock['fatigue'],
+                    'return_reserve':True,'round_closed':False}
         self.world.begin_round()
         return {'spawned':spawned,'attacks':attacks,'round':self.state['round']}

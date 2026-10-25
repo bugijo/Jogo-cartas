@@ -172,12 +172,12 @@ class SystemTests(unittest.TestCase):
         with self.assertRaises(ValueError): w.search('a')
         w.advance_expedition('a');w.advance_expedition('a')
         before=dict(w.stock)
-        self.assertEqual(w.search('a'),{'scrap':2,'fuel':1})
+        self.assertEqual(w.search('a'),{'scrap':2})
         self.assertEqual(w.stock,before)
         w.begin_return('a')
         w.advance_expedition('a');w.advance_expedition('a')
         self.assertEqual(w.stock['scrap'],2)
-        self.assertEqual(w.stock['fuel'],1)
+        self.assertEqual(w.stock['fuel'],0)
         self.assertEqual(w.log[-1]['left_behind'],{})
 
     def test_separate_expeditions_and_return(self):
@@ -222,7 +222,7 @@ class SystemTests(unittest.TestCase):
         self.assertEqual(w.expeditions['crew'].segment_cost,1)
         self.assertEqual(w.stock['fuel'],2)
         self.assertEqual(w.advance_expedition('crew'),'arrived')
-        self.assertEqual(w.search('crew'),{'scrap':3,'fuel':1})
+        self.assertEqual(w.search('crew'),{'scrap':3})
         w.begin_return('crew');w.advance_expedition('crew')
         self.assertEqual(w.npcs['EXP-NPC-06']['location'],'camp')
         self.assertEqual(w.npcs['EXP-NPC-09']['location'],'camp')

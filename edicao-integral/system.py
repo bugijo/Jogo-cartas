@@ -6,12 +6,16 @@ from __future__ import annotations
 
 import json
 import random
+from copy import deepcopy
 from dataclasses import asdict, dataclass, field
 from pathlib import Path
+from horde_deck02 import HordeDeck02
 
 DATA = json.loads((Path(__file__).parent / 'data/system.json').read_text(encoding='utf-8'))
 EQUIPMENT = json.loads((Path(__file__).parent / 'data/equipment.json').read_text(encoding='utf-8'))
 TACTICS_DATA = json.loads((Path(__file__).parent / 'data/tactics.json').read_text(encoding='utf-8'))
+REGIONAL_CONTACTS = json.loads((Path(__file__).parent / 'data/regional_campaign.json')
+                               .read_text(encoding='utf-8'))
 ITEMS = {item['id']:item for item in EQUIPMENT['items']}
 HEROES = {h['id']: h for h in DATA['heroes']}
 # A Cisterna 0.2 has twelve selectable founders. The regional prototype only
@@ -79,6 +83,9 @@ class World:
     special_stock: list[str] = field(default_factory=list)
     final_defense: dict | None = None
     cistern_record: dict | None = None
+    regional_clock: int = 0
+    daily_expeditions: int = 0
+    regional_horde_deck: dict | None = None
     garden_worker: str | None = None
     guarding: dict[str, int] = field(default_factory=dict)
     rng_state: object = None
@@ -90,7 +97,7 @@ class World:
             raise ValueError('Heróis iniciais inválidos')
         world = cls(seed=seed)
         world.heroes = {h:{'xp':0,'health':3,'combat_xp':0,'location':'camp',
-                          'infected':False} for h in hero_ids}
+                          'infected':False,'fatigue':0} for h in hero_ids}
         for hero in world.heroes.values():
             hero['actions']=DATA['rules']['actions']
         world.gear = {h:{} for h in hero_ids}
@@ -114,7 +121,9 @@ class World:
     def residents(self) -> int:
         civilians = sum(person['kind'] in ('adult', 'child')
                         for person in self.continuity_people)
-        return len(self.heroes) + len(self.npcs) + civilians
+        shelter_npcs=sum(state['location'] not in LOCATIONS
+                         for state in self.npcs.values())
+        return len(self.heroes) + shelter_npcs + civilians
 
     @property
     def consumers(self) -> int:
@@ -129,10 +138,23 @@ class World:
                     and self.cistern_record.get('source')=='cistern02')
 
     @property
+    def continuous_campaign(self) -> bool:
+        return bool(self.cistern_verified
+                    and (self.cistern_record or {}).get('migration',{}).get('receipt'))
+
+    @property
     def free_terrain(self) -> int:
         return DATA['rules']['terrain_base'] - sum(STRUCTURES[k]['terrain'] for k in self.structures) - sum(STRUCTURES[k]['terrain'] for k in self.projects)
 
     def validate(self) -> None:
+        if (not isinstance(self.regional_clock,int) or isinstance(self.regional_clock,bool)
+                or not 0<=self.regional_clock<=10):
+            raise ValueError('Relógio regional deve permanecer entre zero e dez segmentos')
+        if (not isinstance(self.daily_expeditions,int) or isinstance(self.daily_expeditions,bool)
+                or not 0<=self.daily_expeditions<=1):
+            raise ValueError('Contador diário de expedições inválido')
+        if self.regional_horde_deck is not None:
+            HordeDeck02.from_snapshot(self.regional_horde_deck)
         if any(v < 0 or not isinstance(v,int) for v in self.stock.values()):
             raise ValueError('Estoque inválido')
         if any(k not in RESOURCES for k in self.stock) or sum(self.stock.values()) > self.storage:
@@ -148,7 +170,8 @@ class World:
             raise ValueError('Pessoas/capacidade de continuidade inválidas')
         if any(v < 0 for v in self.searches.values()):
             raise ValueError('Contador de busca negativo')
-        if any(location not in LOCATIONS or any(item != 'battery' for item in items)
+        if any(location not in LOCATIONS
+               or any(item not in ('battery','access_card','transmitter') for item in items)
                for location, items in self.unique_items_at_sites.items()):
             raise ValueError('Item único em local inválido')
         if any(h not in HEROES or state['xp'] > 100 or state['health'] < 0
@@ -189,16 +212,17 @@ class World:
                if hero_id not in active_heroes):
             raise ValueError('Herói fora de expedição')
         active_npcs={n for exp in self.expeditions.values() for n in exp.crew}
-        if any(n['location'] != 'camp' for npc_id,n in self.npcs.items()
-               if npc_id not in active_npcs):
+        if any(n['location'] != 'camp' and n['location'] not in LOCATIONS
+               for npc_id,n in self.npcs.items() if npc_id not in active_npcs):
             raise ValueError('NPC fora de expedição')
         if any(vid not in VEHICLES or state['location'] not in
-               ('camp', 'EXP-LOC-07', *(self.expeditions.keys()))
+               ('camp', *LOCATIONS.keys(), *(self.expeditions.keys()))
                or not 0 <= state['health'] <= VEHICLES[vid]['health']
                for vid,state in self.vehicles.items()):
             raise ValueError('Veículo inválido')
         canonical_van=self.vehicles.get('EXP-VEI-02')
-        if canonical_van and canonical_van['location']=='EXP-LOC-07':
+        if (canonical_van and canonical_van['location']=='EXP-LOC-07'
+                and canonical_van['health']>0):
             repaired=(self.site_states.get('EXP-LOC-07',{}).get('van_state')=='operational'
                       or any(expedition_id in self.encounters
                              and self.encounters[expedition_id].get('map')=='gas_station_02'
@@ -240,8 +264,24 @@ class World:
             if (exp.remaining!=0 or exp.returning
                     or set(encounter['heroes'])!=set(exp.heroes)
                     or any(zone not in zones for zone in encounter['heroes'].values())
-                    or encounter.get('search_zones')!=map_data['search']):
+                    or encounter.get('search_zones')!=map_data['search']
+                    or len(encounter.get('enemies',{}))>24
+                    or not 0<=encounter.get('pressure',0)<=3):
                 raise ValueError('Posições do encontro inválidas')
+            for npc_id, zone in encounter.get('npc_contacts', {}).items():
+                contact=REGIONAL_CONTACTS.get('contacts', {}).get(npc_id)
+                stranded=self.npcs.get(npc_id)
+                if (not contact or (stranded is not None
+                                    and stranded['location']!=contact['location'])
+                        or contact['map']!=encounter['map']
+                        or zone!=contact['zone'] or zone not in zones
+                        or NPCS[npc_id].get('source_hero_id') in self.heroes):
+                    raise ValueError('Contato de sobrevivente inválido')
+            for npc_id, hero_id in encounter.get('npc_followers', {}).items():
+                if (npc_id not in exp.crew or npc_id not in self.npcs
+                        or self.npcs[npc_id]['location']!=expedition_id
+                        or hero_id not in encounter['heroes']):
+                    raise ValueError('Acompanhante do encontro inválido')
             for enemy in encounter['enemies'].values():
                 kind=enemy.get('kind')
                 if (kind not in TACTICS_DATA['enemies'] or enemy.get('zone') not in zones
@@ -316,9 +356,40 @@ class World:
             self.heroes[hero_id]['actions']-=1
 
     def begin_round(self) -> None:
+        if self.continuous_campaign and (self.expeditions or self.encounters):
+            raise ValueError('Use TacticalGame.activate para renovar PA e avançar o relógio')
+        self._refresh_actions()
+
+    def _refresh_actions(self) -> None:
         for hero in self.heroes.values():
-            hero['actions']=DATA['rules']['actions']
+            penalty=1 if hero.get('fatigue',0)>=2 else 0
+            hero['actions']=max(1,DATA['rules']['actions']-penalty)
         self.guarding.clear()
+
+    def advance_regional_segment(self, expedition_id: str, kind: str) -> dict | None:
+        """Charge one canonical travel/map segment only after Cisterna migration."""
+        if not self.continuous_campaign:
+            return None
+        if (expedition_id not in self.expeditions or kind not in ('travel','map_round')
+                or self.regional_clock>=10):
+            raise ValueError('Relógio de dez segmentos esgotado ou segmento inválido')
+        self.regional_clock+=1
+        night=self.regional_clock>=9
+        affected=[]
+        if night:
+            exp=self.expeditions[expedition_id]
+            for person_id in [*exp.heroes,*exp.crew]:
+                person=(self.heroes.get(person_id) if person_id in self.heroes
+                        else self.npcs.get(person_id))
+                if person is None:
+                    continue
+                person['fatigue']=min(3,person.get('fatigue',0)+1)
+                affected.append(person_id)
+        receipt={'segment':self.regional_clock,'kind':kind,'night':night,
+                 'fatigue':affected}
+        self.log.append({'day':self.day,'expedition':expedition_id,
+                         'action':'regional_clock_segment',**receipt})
+        return receipt
 
     def guard(self,hero_id:str) -> int:
         hero=self.heroes[hero_id]
@@ -404,6 +475,8 @@ class World:
         return accepted
 
     def recruit(self, npc_id: str) -> bool:
+        if (self.cistern_record or {}).get('migration', {}).get('receipt'):
+            raise ValueError('contato físico tático obrigatório para recrutar na campanha contínua')
         if (npc_id not in NPCS or npc_id in self.npcs or self.residents >= self.beds
                 or NPCS[npc_id].get('source_hero_id') in self.heroes
                 or self.stock['food'] < self.residents + 1
@@ -413,12 +486,14 @@ class World:
         return True
 
     def assign(self, npc_id: str, job: str) -> None:
-        if npc_id not in self.npcs or job != NPCS[npc_id]['job']:
+        if (npc_id not in self.npcs or self.npcs[npc_id]['location']!='camp'
+                or job != NPCS[npc_id]['job']):
             raise ValueError('Trabalho incompatível')
         self.npcs[npc_id]['job'] = job
 
     def level_npc(self, npc_id: str) -> bool:
-        if npc_id not in self.npcs or self.npcs[npc_id]['level'] >= 3:
+        if (npc_id not in self.npcs or self.npcs[npc_id]['location']!='camp'
+                or self.npcs[npc_id]['level'] >= 3):
             return False
         self.npcs[npc_id]['level'] += 1
         return True
@@ -560,7 +635,7 @@ class World:
         exp = self.expeditions[expedition_id]
         if hero_id is not None and hero_id not in exp.heroes:
             raise ValueError('Herói fora da expedição')
-        continuous=bool((self.cistern_record or {}).get('migration',{}).get('receipt'))
+        continuous=self.continuous_campaign
         if continuous and (hero_id is None or expedition_id not in self.encounters):
             raise ValueError('Campanha contínua exige encontro tático para a busca')
         if exp.remaining != 0 or exp.returning:
@@ -633,6 +708,8 @@ class World:
                         special_items: list[str] | None = None) -> None:
         npc_ids = npc_ids or []
         special_items = special_items or []
+        if self.continuous_campaign and self.daily_expeditions>=1:
+            raise ValueError('A regra canônica permite uma expedição por dia')
         if location_id=='EXP-LOC-06' and (not self.cistern_verified or not vehicle_id or not all(
                 self.flags.get(key) for key in ('radio_code','access_card','military_access'))):
             raise ValueError('Instalação exige código, cartão, missão e veículo')
@@ -645,6 +722,8 @@ class World:
             raise ValueError('Expedição inválida')
         if any(h not in self.heroes or self.heroes[h]['location'] != 'camp' for h in hero_ids):
             raise ValueError('Herói indisponível')
+        if any(self.heroes[h].get('fatigue',0)>=3 for h in hero_ids):
+            raise ValueError('Fadiga 3 impede expedição neste amanhecer')
         if len(set(npc_ids))!=len(npc_ids) or any(n not in self.npcs or self.npcs[n]['location']!='camp' for n in npc_ids):
             raise ValueError('NPC indisponível')
         distance = LOCATIONS[location_id]['distance']
@@ -673,9 +752,16 @@ class World:
             self.heroes[h]['location'] = expedition_id
         for n in npc_ids:
             self.npcs[n]['location'] = expedition_id
+        if self.continuous_campaign:
+            self.daily_expeditions+=1
+        self.log.append({'day':self.day,'expedition':expedition_id,
+                         'action':'open_expedition','destination':location_id,
+                         'distance':distance,'segments':segments,'vehicle':vehicle_id,
+                         'special_items':list(special_items)})
 
     def advance_expedition(self, expedition_id: str) -> str:
         exp = self.expeditions[expedition_id]
+        self.advance_regional_segment(expedition_id,'travel')
         exp.remaining -= 1
         if exp.remaining > 0:
             return 'travel'
@@ -702,6 +788,9 @@ class World:
         exp = self.expeditions[expedition_id]
         if exp.remaining != 0 or exp.returning or expedition_id in self.encounters:
             raise ValueError('Retorno indisponível')
+        if (self.continuous_campaign
+                and self.regional_clock + exp.segment_cost > 10):
+            raise ValueError('Retorno regional excede o relógio; emergência ainda não integrada')
         if vehicle_id is not None:
             if vehicle_id not in VEHICLES or vehicle_id not in self.vehicles:
                 raise ValueError('Veículo indisponível')
@@ -722,10 +811,90 @@ class World:
         exp.returning = True
         exp.remaining = exp.segment_cost
 
+    def emergency_return(self, expedition_id: str, reason: str) -> dict:
+        """Resolve the canonical failed/abandoned expedition without free loot."""
+        if (not self.continuous_campaign or expedition_id not in self.expeditions
+                or expedition_id not in self.encounters or not reason.strip()):
+            raise ValueError('Retirada de emergência indisponível')
+        exp=self.expeditions[expedition_id]
+        encounter=self.encounters[expedition_id]
+        destination=exp.destination
+        # Preserve the map, objective state and persistent enemies for a later visit.
+        site=deepcopy({key:encounter[key] for key in
+                       ('map','enemies','next_enemy','doors','announced','round',
+                        'pressure','initial_spawned','van_state','fuel_cards_taken')
+                       if key in encounter})
+        stranded=sorted(encounter.get('npc_followers',{}))
+        if stranded:
+            site['stranded_npcs']=sorted(set(site.get('stranded_npcs',[]))|set(stranded))
+        self.site_states[destination]=site
+
+        opening=next((entry for entry in reversed(self.log)
+                      if entry.get('expedition')==expedition_id
+                      and entry.get('action')=='open_expedition'),{})
+        carried=list(opening.get('special_items',[]))
+        retained=[]
+        lost_special=[]
+        remaining=list(exp.special_cargo)
+        for item in carried:
+            if item in remaining:
+                remaining.remove(item)
+                retained.append(item)
+        self.special_stock.extend(retained)
+        lost_special.extend(remaining)
+        if lost_special:
+            site['lost_special_items']=sorted(set(site.get('lost_special_items',[]))
+                                               |set(lost_special))
+            for item in lost_special:
+                items=self.unique_items_at_sites.setdefault(destination,[])
+                if item not in items:
+                    items.append(item)
+                if item=='access_card':
+                    self.flags['access_card']=False
+                    self.special_stock=[stored for stored in self.special_stock
+                                        if stored!='access_card']
+                if item=='transmitter':
+                    self.flags['transmitter']=False
+        if destination=='EXP-LOC-06':
+            self.flags['military_access']=False
+
+        lost_cargo=dict(exp.cargo)
+        followers=set(stranded)
+        for hero_id in exp.heroes:
+            state=self.heroes[hero_id]
+            state['health']=max(0,state['health']-1)
+            state['fatigue']=3
+            state['location']='camp'
+        for npc_id in exp.crew:
+            state=self.npcs[npc_id]
+            state['location']=destination if npc_id in followers else 'camp'
+        if exp.vehicle_id:
+            vehicle=self.vehicles[exp.vehicle_id]
+            vehicle['location']=destination
+            vehicle['health']=0
+            site['van_state']='damaged'
+
+        del self.encounters[expedition_id]
+        del self.expeditions[expedition_id]
+        receipt={'day':self.day,'expedition':expedition_id,
+                 'action':'emergency_return','destination':destination,
+                 'reason':reason,'status':'failed','lost_cargo':lost_cargo,
+                 'lost_special_items':lost_special,'retained_special_items':retained,
+                 'stranded_npcs':sorted(followers),'returned_heroes':list(exp.heroes),
+                 'vehicle_damaged':exp.vehicle_id}
+        self.log.append(receipt)
+        self.validate()
+        return deepcopy(receipt)
+
     def end_day(self) -> dict:
+        if self.continuous_campaign and (self.expeditions or self.encounters):
+            raise ValueError('Não encerre o dia com expedição regional em andamento')
         if self.final_defense is not None and self.final_defense['status']=='active':
             raise ValueError('Resolva a defesa final antes do próximo dia')
         self.day += 1
+        if self.continuous_campaign:
+            self.regional_clock=0
+            self.daily_expeditions=0
         produced = dict.fromkeys(RESOURCES,0)
         # Especialistas geram apenas suas tarefas previstas; saídas abstratas não criam recurso.
         for npc_id,state in self.npcs.items():
@@ -766,6 +935,11 @@ class World:
         for hero in self.heroes.values():
             if hero['location']=='camp':
                 hero['combat_xp'] = 0
+        if not any(missing.values()):
+            for person in [*self.heroes.values(),*self.npcs.values()]:
+                if person.get('location')!='camp':
+                    continue
+                person['fatigue']=max(0,person.get('fatigue',0)-1)
         crisis = self._roll_crisis()
         result = {'day':self.day,'produced':produced,'missing':missing,'stock':dict(self.stock),'crisis':crisis}
         self.log.append(result)

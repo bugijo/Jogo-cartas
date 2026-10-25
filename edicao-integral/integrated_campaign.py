@@ -1090,6 +1090,7 @@ class IntegratedCampaign:
             "fuel": len(self.fuel_cards),
         }
         projected = World.new(self.seed, list(self.founders), stock)
+        projected.regional_horde_deck = deepcopy(self.cistern.horde_deck)
         battery_delivered = self.battery_available
         battery_lost = any(
             objective in self.lost_objectives
