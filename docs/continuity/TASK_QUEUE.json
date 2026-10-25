@@ -44,7 +44,7 @@
         "round-trip save/load"
       ],
       "status": "parcial_bloqueada",
-      "commit": "pendente desta unidade",
+      "commit": "3b9fe68",
       "blocker": "Migração seed 22 passa e preserva proveniência. Replay contínuo chega à Estação, obtém o cartão e retorna; para no rádio porque exige 2 pistas e o estado legal tem 0. Não há fonte integrada de pistas. Depois permanecem Posto ausente, combustível insuficiente, Bateria/van divergentes e encontros táticos regionais ausentes."
     },
     {

@@ -1,66 +1,74 @@
-# Checkpoint de retomada — Operação Campanha Viva
+# Checkpoint — migração Cisterna → Última Transmissão
 
 Branch: `evolucao/zona-zero-sistema-v1`
-Base remota ao iniciar: `54a95f1a7a498e54a6e39748dca749b2319a6729`
-Commits desta sessão: `c8a4a0f` (fases diárias, trabalho nominal e resgate pago) e `cdc8222` (jogador H2 e replay reproduzível).
-Main e kit físico 0.2 permanecem intocados.
+Base informada: `81a61e05f1cca494a32f961c2048c6d0927b6908`
+Commit local da unidade: `3b9fe68ebb50025b0b64ce68dd0259ed2d609ce1`
+Estado remoto conferido: ainda em `81a61e0` no último `ls-remote`; unidade local aguardando push.
+`main` e kit físico 0.2 não foram alterados.
 
-## Comprovado nesta sessão
+## Entregue
 
-- O controlador `edicao-integral/campaign_player02.py` inicia H2 legalmente a
-  partir de semente e usa as APIs de viagem, tática, abrigo e campanha.
-- Seed 22 completou Mercado no dia 1, Oficina no dia 2 e Estação no dia 3;
-  recuperou e entregou Conexões, Bomba e Membrana com recibos táticos únicos.
-- Foram processados os eventos `ZC-EVE-0001` a `ZC-EVE-0005`, cinco refeições,
-  o cerco de missão do dia 3 e o cerco de Pressão do dia 5. O filtro concluiu
-  A/B no dia 4 e C no dia 5; a noite final terminou abastecida, com Saúde/Moral
-  positivas e sem ameaça pendente.
-- O motor emitiu `verified_victory`. O replay registra seed, preparação,
-  decisões, recibos, eventos, cercos, estado final e save terminal. O verificador
-  repete as decisões e confere save/load.
-- Nesta rota não houve grupo de resgate ou promessa assumida. A campanha oficial
-  não exige resgate para a vitória; promessa só existe quando assumida.
+- Migração explícita, legal, atômica e idempotente em
+  `IntegratedCampaign.transition_to_last_transmission()`.
+- Certificado da Cisterna, recibos de peças, capítulos/noites completos e
+  ausência de fase pendente são pré-condições. A projeção é validada antes de
+  anexar `world`; nenhuma pista, combustível, Bateria, veículo ou NPC é dado.
+- Save de origem integral, inclusive recibos táticos de retorno, fica em
+  arquivo de continuidade não gastável com hash determinístico de proveniência.
+  O hash serve para consistência/replay; saves editáveis não têm assinatura
+  criptográfica contra adulteração manual.
+- Todos os 12 IDs de fundador têm identidade no motor regional. Téo/Célia não
+  são duplicados como NPCs se migrarem como heróis; habilidades específicas
+  deles da edição 0.2 ainda não foram portadas ao segundo motor.
+- Moradores adultos/crianças/cães e seu estado são preservados. Humanos contam
+  para alojamento; cães também contam para consumo. Comida/água viram contadores
+  com o total exato e as cartas/lotes originais ficam no arquivo.
+- Valores sem equivalente (materiais, estruturas, Moral/Saúde/Pressão, itens
+  sem modelo regional, Bateria/van 0.2 e relações) ficam registrados e não são
+  convertidos para recursos gastáveis.
+- Replay contínuo parcial em
+  `edicao-integral/verify_continuous_campaign.py` e artefato
+  `edicao-integral/replays/cistern_to_transmission_seed22_blocked.json`.
+  Começa na preparação, reproduz cinco dias/noites e 98 decisões de A Cisterna,
+  migra, faz uma viagem abstrata do motor regional à Estação, busca, obtém o
+  cartão de acesso e retorna. A chamada a `decode_radio()` é bloqueada em
+  `Frequência indisponível`: estado tem 0 pistas e a missão exige 2.
 
-## Evidência e comando
+## Verificação
 
-```bash
-python edicao-integral/verify_campaign_player02.py --write
-python edicao-integral/verify_campaign_player02.py
-python -m unittest discover -s edicao-integral/tests -q
-python edicao-integral/validate_data.py
-python -m compileall -q edicao-integral src
-git diff --check
-```
+- `python -m unittest discover -s edicao-integral/tests -q`: 237 testes passaram.
+- `python edicao-integral/verify_campaign_player02.py`: vitória H2 seed 22,
+  5 dias/noites, 3 expedições, 98 decisões; aprovado.
+- `python edicao-integral/verify_continuous_campaign.py`: replay determinístico
+  até o bloqueio do rádio e round-trip save/load; aprovado.
+- `python edicao-integral/validate_data.py`, `python -m compileall -q
+  edicao-integral` e `git diff --check`: aprovados.
+- Nenhuma defesa final, campanha completa, impressão física ou playtest humano.
 
-Replay: `edicao-integral/replays/cisterna_h2_seed22.json`.
-Relatório de fronteira entre arcos: `edicao-integral/CAMPAIGN_INTEGRATION.md`.
+## Primeiro bloqueio e próximos bloqueios
 
-## Limitações reais
+1. Fonte legal das duas pistas: `Cistern02` não guarda pistas e a rota seed 22
+   não as gera; existe uma carta regional experimental com +1 pista, mas não
+   está ligada a gatilho/deck. Recrutar pesquisadores também não tem encontro
+   ou acolhimento que o autorize. Não injetar pistas.
+2. Depois: destino Posto ausente de `LOCATIONS`; a Oficina oferece no máximo
+   três unidades de combustível, insuficientes para as seis exigidas para a
+   instalação; recuperação regional de veículo diverge da regra 0.2, que exige
+   Bateria, 2 PA e teste no Posto; expedições regionais ainda não abrem encontro
+   tático.
 
-- Uma vitória H2 seed 22 é prova de possibilidade, não de equilíbrio ou de
-  sucesso geral. Ensaios de outras sementes incluíram emergência, déficit,
-  derrota parcial e falhas da política; eles não foram usados como taxa de
-  vitória.
-- O controlador ainda não é um jogador adaptativo completo. Algumas sementes
-  param por plano de carga inadequado ou por uma expedição perdida.
-- Ainda não há migração canônica dos fundadores e estado persistente para
-  Última Transmissão. Não há campanha contínua certificada.
-- A mecânica de promessas em encontros depende da decisão e do prazo anotado;
-  certos textos de encontros ainda não definem um procedimento automatizado
-  completo. A rota vencedora não precisou dela.
-- Impressão e playtest humano seguem pendentes.
+Próxima tarefa recomendada: portar, citando a regra/carta oficial, fonte legal
+para pistas; em seguida integrar Posto, Bateria, van, combustível e encontro
+militar com custo/capacidade canônicos. Só então retomar o controlador de
+campanha. Não chamar `final_defense()` até os portões narrativos e logísticos
+serem cumpridos pelo motor.
 
-## Próximo passo
-
-Implementar e testar a migração de um save `verified_victory` para Última
-Transmissão, preservando elenco, vínculos, ferimentos, equipamento e estoque.
-Depois, generalizar o controlador H2 e executar a cobertura de 2–6 heróis.
-
-Retomada:
+Retomada após publicação:
 
 ```bash
 git fetch origin evolucao/zona-zero-sistema-v1
 git merge --ff-only origin/evolucao/zona-zero-sistema-v1
 python edicao-integral/verify_campaign_player02.py
+python edicao-integral/verify_continuous_campaign.py
 python -m unittest discover -s edicao-integral/tests -q
 ```
