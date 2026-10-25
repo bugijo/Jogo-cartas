@@ -2,11 +2,32 @@
 
 Branch: `evolucao/zona-zero-sistema-v1`
 Base recebida: `81a61e05f1cca494a32f961c2048c6d0927b6908`
-Último remoto confirmado no início do lote: `5d83b3760edbf36b44ba821e14e50af8af9c896d`.
-Commits funcionais publicados: `359ec46`, `cdc5b27`.
+HEAD de entrada deste lote: `3b5966119783643d18d2b4efe4df5884a72044f9`.
+Commits funcionais deste lote: pendentes.
 Main e kit físico 0.2 permanecem intactos.
 
-## Estado corrente
+## Atualização ativa do lote atual
+
+- Relógio regional comum de 10 segmentos, uma expedição por dia, fadiga nos
+  segmentos 9–10, surgimento inicial e Horda persistente ligados às expedições
+  do motor contínuo.
+- O replay conclui o Mercado, fecha o dia e tenta contato provisório com Célia
+  na Estação. Um herói é incapacitado no relógio 7/10; a retirada de emergência
+  canônica retorna a equipe ferida/fatigada, descarta carga e deixa Célia no
+  local. É derrota regional registrada; nenhum recrutamento/vitória é fabricado.
+- A ficha de Célia é uma adaptação experimental, ausente do conteúdo canônico
+  0.2. A fixture de teste que a posiciona e limpa inimigos só isola custo/PA e
+  save/load, não comprova a rota física.
+- A decisão de combustível não foi tomada: 8 unidades explicitamente em O1;
+  O2 não explicita combustível; van custa 2/trecho; distância `far=3` e custo
+  fixo 6 de `EXP-MIS-104` permanecem em conflito. A Oficina já não gera a
+  unidade experimental não respaldada.
+- Testes locais: 270 passaram; replay atual reproduz `local_expedition_defeat`
+  e valida save/load após a retirada.
+  Conferir este resumo com `CAMPAIGN_INTEGRATION.md` e
+  `TACTICAL_FUEL_AUDIT.md`; os blocos históricos abaixo não foram reescritos.
+
+## Histórico — ponte regional anterior ao relógio compartilhado
 
 - Cisterna H2 seed22 certificada: cinco dias/noites, três expedições, 98 decisões.
 - Migração preserva arquivo integral com digest, estados sem equivalência em arquivo, e quantidades com equivalência no modelo regional. Idempotência e save/load cobertos.
@@ -16,7 +37,7 @@ Main e kit físico 0.2 permanecem intactos.
 - Replay parcial tem 62 registros resumidos após A Cisterna. Recupera Bateria, pega oito cartas, repara a van, volta gastando quatro cartas e fica com combustível 7. O percurso militar exige 12 pelo modelo canônico regional e falha sem mutação (déficit 5). `verified_victory` só foi emitido na Cisterna.
 - Isso ainda não é campanha integral legal segundo todas as regras físicas: contato/recrutamento, relógio compartilhado, eventos e encontros do arco 2 seguem incompletos. Sem transmissor, defesa final, impressão física ou playtest humano.
 
-## Bloqueio atual
+## Bloqueios registrados antes deste lote
 
 A oferta modelada alcança no máximo 11 combustíveis (3 Oficina + 8 Posto) antes de retorno, menor que as 12 unidades da viagem `far=3` com van (2 por segmento, ida e volta). `data/last_transmission.json` ainda diz 6, em conflito com `RULES.md` §64. Nenhum valor foi mudado nem recurso injetado. Próxima tarefa: decidir/documentar a equivalência entre os arcos antes de prosseguir.
 

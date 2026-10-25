@@ -48,8 +48,8 @@
         "python -m unittest discover -s edicao-integral/tests -q"
       ],
       "status": "parcial_bloqueada",
-      "commit": "cdc5b27",
-      "blocker": "Migração e ponte Posto/van testadas; o replay chega ao gate militar, que exige 12 unidades e rejeita com estoque 7, sem mutação. O modelo oferece 3 Oficina + 8 Posto (máximo 11 antes do retorno), mas o lote do Posto O2 não define se inclui combustível; esclarecer a fonte antes de declarar soft-lock canônico. A divergência do arco experimental (6) contra RULES.md §64 (2 por segmento) permanece sem alteração. Contato de recrutamento, relógio, eventos e encontros automáticos também carecem de paridade física. Auditoria corrigida: save/load de cartão em carga e capacidade incluindo cargas únicas; 253 testes aprovados."
+      "commit": "pendente",
+      "blocker": "Migração e relógio regional (10 segmentos), limite de uma expedição/dia, fadiga, surgimento inicial, Horda persistente e retirada de emergência têm testes. Replay seed 22 termina em derrota local na Estação: a adaptação de contato provisório com Célia leva à incapacitação; a retirada devolve o grupo, perde carga e deixa Célia no destino. Combustível segue sem decisão: 8 unidades explícitas em O1, O2 não define combustível, van custa 2/trecho, far=3 implica 12 ida/volta e EXP-MIS-104 fixa 6."
     },
     {
       "id": "P2-PLAYER-CAMPAIGNS",
@@ -67,9 +67,9 @@
         "simulador completo",
         "auditoria adversarial"
       ],
-      "status": "bloqueada",
-      "commit": null,
-      "blocker": "Bloqueada por unidade de combustível não reconciliada e pela paridade incompleta do arco regional: contato, relógio compartilhado, eventos/emboscadas/hordas e encontros ainda são abstratos."
+      "status": "parcial_bloqueada",
+      "commit": "pendente",
+      "blocker": "Não há campanha completa contínua. A primeira trajetória regional seed 22 sofre derrota local por incapacitação no ponto provisório de contato de Célia. Viagem regional por cartas, recuperação/retorno em revisita e política adaptativa de combate permanecem pendentes."
     },
     {
       "id": "P3-PHYSICAL-EDITION",

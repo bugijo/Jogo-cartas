@@ -1,5 +1,37 @@
 # Bloqueios verificados da sequência completa
 
+## Estado ativo — checkpoint após `3b59661`
+
+- O replay `verify_continuous_campaign.py` continua a certificar A Cisterna H2
+  seed 22 e fecha corretamente o dia após o Mercado. Ele começa Estação no dia
+  seguinte, registra contato provisório com Célia, sofre uma derrota local por
+  incapacitação e aplica a retirada de emergência canônica. O grupo retorna
+  ferido e fatigado, perde a carga obtida e deixa Célia no destino; nenhum
+  retorno normal ou recrutamento completo é forjado. `verified_victory` continua
+  somente no arco da Cisterna.
+- O relógio regional compartilhado e o máximo de uma expedição/dia estão
+  ativos; viagem e rodada tática consomem segmento, e as posições 9–10 causam
+  fadiga conforme `RULES.md` §5. Surgimento inicial, pressão e baralho Horda
+  persistente estão conectados ao encontro tático. A frequência de hordas
+  específicas do segundo arco e o baralho de Viagem regional não têm regra de
+  conteúdo aprovada e permanecem sem implementação.
+- A API de retirada de emergência regional está implementada e testada. O
+  primeiro bloqueio atual é de campanha/estratégia: a adaptação de contato de
+  Célia na Estação termina em derrota local e o replay não pode continuar como
+  se o grupo tivesse regressado com ela.
+- O contato físico de Célia está codificado como adaptação em
+  `data/regional_campaign.json`, não como regra canônica. O ponto Estação/O2
+  exige atravessar uma zona com Bruto, e o replay demonstra incapacitação antes
+  do retorno; o resgate não é considerado completo.
+- O conflito de combustível continua sem decisão: §64 cobra 2 por trecho; a
+  viagem militar experimental é `far=3` (12 ida/volta pela van), enquanto
+  `EXP-MIS-104` fixa 6. Posto O1 traz 8 cartas finitas; O2 não explicita
+  combustível. Nenhuma quantidade foi criada. Ver a matriz atualizada em
+  `TACTICAL_FUEL_AUDIT.md`.
+
+O texto restante abaixo é o registro histórico de bloqueios anterior ao replay
+com relógio e às alterações deste lote. Use este estado ativo como referência.
+
 Estado na branch experimental, após o porte parcial de `cistern02.py`. Nenhum bloqueio foi contornado por concessão de combustível, peças, armas ou flags no fluxo normal.
 
 **Correção após o remoto `8700073`:** a primeira versão de

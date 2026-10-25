@@ -1,5 +1,29 @@
 # Progresso
 
+## 2026-10-25 — relógio regional, Hordas, fadiga e retirada
+
+- Branch `evolucao/zona-zero-sistema-v1`, entrada `3b59661`; trabalho não
+  publicado ainda. A auditoria de combustível mantém as fontes em
+  `edicao-integral/TACTICAL_FUEL_AUDIT.md`; O2 não foi tratado como combustível
+  e a concessão experimental da Oficina foi removida.
+- O motor regional agora cobra relógio comum de 10 segmentos em viagens e
+  rodadas, impõe uma expedição/dia, aplica a fadiga das noites, reduz PA por
+  fadiga, recupera 1 fadiga após noite alimentada/hidratada, persiste surgimento
+  inicial e deck/pressão de Horda em save/load. Regras sem dados regionais novos
+  (baralho de Viagem e frequência de Horda própria) continuam bloqueadas.
+- Recrutar Célia exige contato tático e custo de PA/sustento/capacidade. A
+  localização Station/O2 é adaptação experimental, explicitamente não canônica.
+- Implementada retirada de emergência do arco regional: derrota local registrada,
+  carga obtida perdida, heróis retornam com ferimento/fadiga, acompanhantes
+  ficam no destino e veículo fica danificado; cartas carregadas do abrigo são
+  conservadas. Save/load e conservação cobertos.
+- Replay seed 22 continua provando Cisterna legal. No arco 2, após fechar o dia
+  do Mercado, a rota provisória à Estação sofre incapacitação e termina em
+  `local_expedition_defeat`; não conclui Célia, Posto, transmissor ou defesa.
+- Verificações locais finais deste lote: 270 testes passaram;
+  `verify_campaign_player02.py`, replay contínuo, `validate_data.py`,
+  `compileall` e `git diff --check` passaram.
+
 ## 2026-10-25 — migração seed 22 e primeiro bloqueio contínuo
 
 - Implementada `IntegratedCampaign.transition_to_last_transmission()`: exige

@@ -23,6 +23,35 @@ O replay H2 seed 22 parte de preparação normal e conclui cinco dias/noites, tr
 
 ## Replay contínuo parcial
 
+> **Estado atual, checkpoint de 25/10/2026 (HEAD local `3b59661` antes dos
+> commits deste lote):** o replay histórico abaixo, que alcançava o bloqueio de
+> combustível, foi substituído após ativar o relógio compartilhado e o limite
+> canônico de uma expedição por dia. A execução reproduzível atual conclui a
+> Cisterna seed 22 e a expedição do Mercado, fecha o dia, inicia a expedição
+> regional à Estação e registra contato físico provisório com Célia. A rota
+> termina em derrota local e usa a retirada de emergência canônica: perde a
+> carga obtida, recebe ferimento/fadiga e deixa Célia na Estação. O relógio era
+> 7/10. Não há campanha contínua até Posto/instalação nesse replay. O combustível
+> continua uma decisão posterior e independente.
+
+O contato de Célia em `data/regional_campaign.json` é uma adaptação experimental
+para tornar o requisito físico executável; a campanha 0.2 não define encontro,
+local, custo de acolhimento ou momento regional para ela. O teste de contato
+isolado que limpa inimigos do mapa é uma fixture de unidade, não evidência de
+que a ação seja alcançável nem de que Célia retorne em uma partida legal.
+
+O motor agora cobra no relógio regional os trechos e rodadas táticas, limita a
+uma expedição por dia, persiste a pressão/baralho de Horda e aplica o surgimento
+inicial da campanha na primeira visita. O baralho usa as nove cartas canônicas
+Horda já portadas. A retirada de emergência está implementada para o arco
+regional com conservação de itens únicos, carga, pessoas escoltadas e veículo.
+Cartas de Viagem por trecho e frequência própria das Hordas exclusivas de
+Última Transmissão continuam pendentes; os dados não definem frequência nova e
+ela não foi inventada.
+
+O restante desta seção descreve um replay histórico anterior ao relógio
+compartilhado; não use seus resultados como estado atual.
+
 `python edicao-integral/verify_continuous_campaign.py` parte da preparação e vitória seed 22. O replay salva 62 registros resumidos (não equivalem a 62 ações atômicas: caminhos agregam múltiplos movimentos). Ele conserva o estado migrado e chega a rádio/código, cartão de acesso, recupera a Bateria única no O1 da Oficina por movimento/porta/1 PA, e depois visita o Posto. No Posto, cada uma das oito cartas de combustível é retirada por ação de 1 PA no O1. A inspeção custa 1 PA; o reparo custa 2 PA e faz teste determinístico de Técnica 6. Na seed 22, Lia falha com 1 e Mara passa com 5 + Técnica 3; a Bateria só é consumida no sucesso. A equipe volta na van e consome quatro unidades da carga no retorno regional médio, ficando com sete no abrigo (três da Oficina, quatro trazidas do Posto).
 
 A tentativa de autorização militar é feita pela API pública e falha com `Combustível insuficiente para ida e volta`, sem deixar `military_access`. A van canônica em `EXP-VEI-02` exige 12 unidades no percurso regional `far` de três segmentos por sentido: 3 × 2 sentidos × 2 unidades por segmento. O estado tem 7 após o retorno do Posto, déficit 5. O máximo atualmente modelado antes de custo de retorno é 11 unidades: três buscas da Oficina e oito cartas do Posto. Não se reduz custo nem se cria combustível para continuar.
