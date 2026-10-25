@@ -48,8 +48,8 @@
         "python -m unittest discover -s edicao-integral/tests -q"
       ],
       "status": "parcial_bloqueada",
-      "commit": "359ec46",
-      "blocker": "Migração e ponte física do Posto/van testadas; o replay chega ao gate militar, que exige 12 unidades e rejeita a tentativa com estoque 7, sem mutação. A oferta modelada conhecida é 3 Oficina + 8 Posto (máximo 11 antes do retorno). Há divergência explícita entre custo experimental 6 e RULES.md §64 (2 por segmento); não foi alterada. Permanecem sem paridade física contato de recrutamento, relógio, eventos e encontros automáticos no arco regional."
+      "commit": "cdc5b27",
+      "blocker": "Migração e ponte Posto/van testadas; o replay chega ao gate militar, que exige 12 unidades e rejeita com estoque 7, sem mutação. O modelo oferece 3 Oficina + 8 Posto (máximo 11 antes do retorno), mas o lote do Posto O2 não define se inclui combustível; esclarecer a fonte antes de declarar soft-lock canônico. A divergência do arco experimental (6) contra RULES.md §64 (2 por segmento) permanece sem alteração. Contato de recrutamento, relógio, eventos e encontros automáticos também carecem de paridade física. Auditoria corrigida: save/load de cartão em carga e capacidade incluindo cargas únicas; 253 testes aprovados."
     },
     {
       "id": "P2-PLAYER-CAMPAIGNS",

@@ -3,7 +3,7 @@
 Branch: `evolucao/zona-zero-sistema-v1`
 Base recebida: `81a61e05f1cca494a32f961c2048c6d0927b6908`
 Último remoto confirmado no início do lote: `5d83b3760edbf36b44ba821e14e50af8af9c896d`.
-Commit funcional mais recente: `359ec46` (ponte Posto/Bateria/van e busca por ação).
+Commits funcionais publicados: `359ec46`, `cdc5b27`.
 Main e kit físico 0.2 permanecem intactos.
 
 ## Estado corrente

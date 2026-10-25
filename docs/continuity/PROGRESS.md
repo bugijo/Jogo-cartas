@@ -228,3 +228,21 @@ passaram se o gate de campanha ainda estiver fechado.
 - `verify_campaign_player02.py` preserva a vitória da Cisterna seed22; o replay
   contínuo tem 62 registros resumidos (não ações atômicas), conclui o ciclo do
   Posto/van e não invoca defesa final.
+
+## 2026-10-25 — correções da auditoria adversarial da ponte
+
+- Auditoria independente do commit `359ec46` encontrou dois defeitos reproduzíveis:
+  save/load rejeitava `access_card` em carga regional autorizada; busca não
+  descontava `special_cargo` da capacidade. Foram acrescentados testes que
+  falharam antes da correção e passaram depois.
+- `World.validate()` aceita agora o cartão como componente de missão único e
+  mantém a verificação de não duplicação. `World.search()` inclui carga especial
+  no limite e não gasta PA nem contador se não houver espaço.
+- A verificação independente de fontes não encontrou combustível adicional
+  explícito nas cartas de busca. Porém, `CAMPAIGN.md` deixa indefinido se o
+  “lote de cada provisão” do Posto O2 inclui combustível e sua quantidade; o
+  déficit 11 versus 12 é confirmado pelo modelo atual, não prova definitiva de
+  impossibilidade canônica até essa frase ser esclarecida.
+- Revalidação após as correções: 253 testes passaram; validação de dados,
+  compilação, `git diff --check`, replay da Cisterna e reprodução idêntica do
+  bloqueio contínuo passaram. Nenhum mapa/PDF físico novo foi gerado.
