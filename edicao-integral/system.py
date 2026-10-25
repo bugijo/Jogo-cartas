@@ -437,7 +437,9 @@ class World:
     def assign_garden(self,hero_id:str) -> None:
         if hero_id not in self.heroes or self.heroes[hero_id]['location']!='camp':
             raise ValueError('Trabalhador indisponível')
+        self._require_working_hero(hero_id)
         self.garden_worker=hero_id
+        self.worked_today.append(hero_id)
 
     def _d6(self, count: int = 1) -> list[int]:
         rng=random.Random();rng.setstate(_tuples(self.rng_state))
@@ -504,7 +506,7 @@ class World:
 
     def assign(self, npc_id: str, job: str) -> None:
         if (npc_id not in self.npcs or self.npcs[npc_id]['location']!='camp'
-                or job != NPCS[npc_id]['job']):
+                or job != NPCS[npc_id]['job'] or npc_id in self.departed_today):
             raise ValueError('Trabalho incompatível')
         self.npcs[npc_id]['job'] = job
 
@@ -553,11 +555,9 @@ class World:
         if kind not in self.projects or units <= 0:
             raise ValueError('Projeto/trabalho inválido')
         if hero_id is not None:
-            if hero_id not in self.heroes or self.heroes[hero_id]['location'] != 'camp':
-                raise ValueError('Herói fora do abrigo')
+            self._require_working_hero(hero_id)
             units += self.skill_bonus(hero_id,'build')
-            if hero_id not in self.worked_today:
-                self.worked_today.append(hero_id)
+            self.worked_today.append(hero_id)
         self.projects[kind] += units
         if self.projects[kind] >= STRUCTURES[kind]['work']:
             self.structures[kind] = {'health': STRUCTURES[kind]['max_health'],'age':0}
@@ -571,15 +571,25 @@ class World:
         self.structures[kind]['health'] = max(0,self.structures[kind]['health']-amount)
 
     def repair_structure(self, kind: str, hero_id: str | None = None) -> bool:
+        if hero_id is not None:
+            self._require_working_hero(hero_id)
         if kind not in self.structures or self.stock['scrap'] < 1 or self.structures[kind]['health'] >= STRUCTURES[kind]['max_health']:
             return False
         self.stock['scrap'] -= 1
         bonus=self.skill_bonus(hero_id,'repair') if hero_id is not None else 0
         self.structures[kind]['health']=min(STRUCTURES[kind]['max_health'],
                                            self.structures[kind]['health']+1+bonus)
-        if hero_id is not None and hero_id not in self.worked_today:
+        if hero_id is not None:
             self.worked_today.append(hero_id)
         return True
+
+    def _require_working_hero(self, hero_id: str) -> None:
+        if hero_id not in self.heroes or self.heroes[hero_id]['location']!='camp':
+            raise ValueError('Herói fora do abrigo')
+        if hero_id in self.departed_today:
+            raise ValueError('Expedição no mesmo dia impede trabalho')
+        if hero_id in self.worked_today:
+            raise ValueError('Herói já realizou trabalho no mesmo dia')
 
     def use_structure(self, kind: str, hero_id: str | None = None) -> bool:
         if kind not in self.structures or self.structures[kind]['health'] == 0:
@@ -589,8 +599,8 @@ class World:
             return False
         if any(self.stock[r] < n for r,n in spec['cost'].items()):
             return False
-        if hero_id is not None and (hero_id not in self.heroes or self.heroes[hero_id]['location']!='camp'):
-            raise ValueError('Operador ausente do abrigo')
+        if hero_id is not None:
+            self._require_working_hero(hero_id)
         if spec['kind']=='heal':
             if hero_id not in self.heroes or self.heroes[hero_id]['health'] >= 3:
                 return False
@@ -609,7 +619,7 @@ class World:
         for resource,amount in spec['cost'].items():
             self.stock[resource]-=amount
         self.used_structure_actions[kind]=self.day
-        if hero_id is not None and hero_id not in self.worked_today:
+        if hero_id is not None:
             self.worked_today.append(hero_id)
         return True
 
@@ -745,6 +755,8 @@ class World:
             raise ValueError('Expedição inválida')
         if any(h not in self.heroes or self.heroes[h]['location'] != 'camp' for h in hero_ids):
             raise ValueError('Herói indisponível')
+        if any(h in self.worked_today for h in hero_ids):
+            raise ValueError('Herói que trabalhou não pode sair em expedição no mesmo dia')
         if any(self.heroes[h].get('fatigue',0)>=3 for h in hero_ids):
             raise ValueError('Fadiga 3 impede expedição neste amanhecer')
         if len(set(npc_ids))!=len(npc_ids) or any(n not in self.npcs or self.npcs[n]['location']!='camp' for n in npc_ids):
@@ -925,6 +937,7 @@ class World:
             self.worked_today.append(self.garden_worker)
         for npc_id,person in self.npcs.items():
             if (person.get('job') is not None and person.get('location')=='camp'
+                    and npc_id not in self.departed_today
                     and npc_id not in self.worked_today):
                 self.worked_today.append(npc_id)
         self.day += 1
@@ -934,7 +947,8 @@ class World:
         produced = dict.fromkeys(RESOURCES,0)
         # Especialistas geram apenas suas tarefas previstas; saídas abstratas não criam recurso.
         for npc_id,state in self.npcs.items():
-            if state['job'] is None or state['location']!='camp':
+            if (state['job'] is None or state['location']!='camp'
+                    or npc_id in self.departed_today):
                 continue
             output = NPCS[npc_id]['output']
             if output in RESOURCES:

@@ -177,6 +177,25 @@ class SystemTests(unittest.TestCase):
         self.assertGreaterEqual(days[-1]['produced']['food'],2)
         self.assertEqual(w.structures['garden']['age'],4)
 
+    def test_same_hero_cannot_work_then_leave_on_expedition_same_day(self):
+        w=world(stock={'food':8,'water':8,'wood':2,'scrap':2})
+        hero=next(iter(w.heroes))
+        self.assertTrue(w.start_project('garden'))
+        w.work_project('garden',hero_id=hero)
+        with self.assertRaisesRegex(ValueError,'trabalhou'):
+            w.open_expedition('trip',[hero],'EXP-LOC-01')
+
+    def test_same_hero_cannot_leave_then_work_after_return_same_day(self):
+        w=world(stock={'food':8,'water':8,'wood':2,'scrap':2})
+        hero=next(iter(w.heroes))
+        w.open_expedition('trip',[hero],'EXP-LOC-01')
+        w.advance_expedition('trip')
+        w.begin_return('trip')
+        w.advance_expedition('trip')
+        self.assertTrue(w.start_project('garden'))
+        with self.assertRaisesRegex(ValueError,'Expedição no mesmo dia'):
+            w.work_project('garden',hero_id=hero)
+
     def test_individual_builder_skill_applies_to_project(self):
         w=world(n=6,stock={'food':8,'water':8,'wood':2,'scrap':2})
         self.assertTrue(w.start_project('garden'))

@@ -1123,6 +1123,11 @@ class IntegratedCampaign:
             if not 0 <= wounds <= 3:
                 raise ValueError(f"Ferimentos de {hero_id} não podem ser migrados")
             state["health"] = max(0, 3 - wounds)
+            fatigue = person.get("fatigue", 0)
+            if (not isinstance(fatigue, int) or isinstance(fatigue, bool)
+                    or not 0 <= fatigue <= 3):
+                raise ValueError(f"Fadiga de {hero_id} não pode ser migrada")
+            state["fatigue"] = fatigue
             state["continuity_state"] = deepcopy(person)
 
         projected.continuity_people = [person for person in source_people

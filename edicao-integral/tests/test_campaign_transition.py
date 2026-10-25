@@ -56,6 +56,18 @@ class CampaignTransitionTests(unittest.TestCase):
                          {"mercado", "oficina", "estação"})
         game.world.validate()
 
+    def test_migration_preserves_nonzero_fatigue_in_test_only_state_fixture(self):
+        game=self.completed_seed22()
+        hero=game.founders[0]
+        source=next(person for person in game.cistern.people
+                    if person['id']==hero)
+        # Unit fixture for state mapping only; this does not claim a new legal
+        # campaign trajectory or replace the certified seed-22 replay.
+        source['fatigue']=2
+        game.transition_to_last_transmission()
+        self.assertEqual(game.world.heroes[hero]['fatigue'],2)
+        self.assertEqual(game.world.heroes[hero]['continuity_state']['fatigue'],2)
+
     def test_transition_is_idempotent_and_does_not_duplicate_stock(self):
         game = self.completed_seed22()
         first = game.transition_to_last_transmission()
