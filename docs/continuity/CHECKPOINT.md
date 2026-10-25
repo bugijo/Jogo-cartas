@@ -1,69 +1,42 @@
-# Checkpoint — migração Cisterna → Última Transmissão
+# Checkpoint — campanha contínua Cisterna → Última Transmissão
 
 Branch: `evolucao/zona-zero-sistema-v1`
-Base informada: `81a61e05f1cca494a32f961c2048c6d0927b6908`
-Commit local da unidade: `3b9fe68ebb50025b0b64ce68dd0259ed2d609ce1`
-Estado remoto conferido: ainda em `81a61e0` no último `ls-remote`; unidade local aguardando push.
-`main` e kit físico 0.2 não foram alterados.
+HEAD remoto antes deste lote: `5d83b3760edbf36b44ba821e14e50af8af9c896d`
+Commit funcional publicado neste lote: `359ec46`.
+Main e kit físico 0.2 intactos.
 
-## Entregue
+## Evidência mais recente
 
-- Migração explícita, legal, atômica e idempotente em
-  `IntegratedCampaign.transition_to_last_transmission()`.
-- Certificado da Cisterna, recibos de peças, capítulos/noites completos e
-  ausência de fase pendente são pré-condições. A projeção é validada antes de
-  anexar `world`; nenhuma pista, combustível, Bateria, veículo ou NPC é dado.
-- Save de origem integral, inclusive recibos táticos de retorno, fica em
-  arquivo de continuidade não gastável com hash determinístico de proveniência.
-  O hash serve para consistência/replay; saves editáveis não têm assinatura
-  criptográfica contra adulteração manual.
-- Todos os 12 IDs de fundador têm identidade no motor regional. Téo/Célia não
-  são duplicados como NPCs se migrarem como heróis; habilidades específicas
-  deles da edição 0.2 ainda não foram portadas ao segundo motor.
-- Moradores adultos/crianças/cães e seu estado são preservados. Humanos contam
-  para alojamento; cães também contam para consumo. Comida/água viram contadores
-  com o total exato e as cartas/lotes originais ficam no arquivo.
-- Valores sem equivalente (materiais, estruturas, Moral/Saúde/Pressão, itens
-  sem modelo regional, Bateria/van 0.2 e relações) ficam registrados e não são
-  convertidos para recursos gastáveis.
-- Replay contínuo parcial em
-  `edicao-integral/verify_continuous_campaign.py` e artefato
-  `edicao-integral/replays/cistern_to_transmission_seed22_blocked.json`.
-  Começa na preparação, reproduz cinco dias/noites e 98 decisões de A Cisterna,
-  migra, faz uma viagem abstrata do motor regional à Estação, busca, obtém o
-  cartão de acesso e retorna. A chamada a `decode_radio()` é bloqueada em
-  `Frequência indisponível`: estado tem 0 pistas e a missão exige 2.
+- A Cisterna H2 seed 22 continua como regressão: 5 dias/noites, 3 expedições, 98 decisões e `verified_victory`.
+- Migração atômica/idempotente por `transition_to_last_transmission()` preserva o arquivo integral, digest e quantidades com equivalência. Saves JSON são editáveis; o digest não é autenticação.
+- Seed 22 migra Lia e Mara, o adulto R01, recursos e os recibos. A Bateria não foi retirada na Cisterna: segue como objetivo único na Oficina O1, não como recurso gratuito.
+- O Posto está ativo em `EXP-LOC-07` ligado a `gas_station_02`. Cada uma das 8 cartas de combustível é retirada individualmente por 1 PA no O1. A van canônica tem 6 lugares/12 cargas, exige inspeção, Bateria e teste Técnica 6 por 2 PA. A falha não consome Bateria; sucesso consome. `EXP-VEI-01` não substitui a van na campanha migrada.
+- O replay contínuo parcial `verify_continuous_campaign.py` realiza 62 registros resumidos após a Cisterna: rota de rádio e cartão, recuperação da Bateria por movimento/porta/PA, oito cartas do Posto, inspeção e reparo determinístico, retorno com a van e gate militar. Isso não equivale a 62 ações atômicas. O controlador renova PA por `TacticalGame.activate()`, nunca por `World.begin_round()`.
+- Resultado seed 22: Lia falha no teste com 1; Mara passa com 5 + Técnica 3. Retorno médio com a van consome 4 das 8 cartas do Posto. Ficam 7 unidades no abrigo (3 Oficina + 4 Posto). O gate da instalação militar exige 12 na especificação canônica regional (`far=3`, dois sentidos, 2/segmento), rejeita sem mutação, e registra déficit 5.
+- Busca regional em campanha migrada agora exige encontro tático, presença em zona de busca e 1 PA; cartão de acesso é carga única e precisa voltar ao abrigo. O replay salva/restaura o estado regional integral.
 
-## Verificação
+## Limite e bloqueio
 
-- `python -m unittest discover -s edicao-integral/tests -q`: 237 testes passaram.
-- `python edicao-integral/verify_campaign_player02.py`: vitória H2 seed 22,
-  5 dias/noites, 3 expedições, 98 decisões; aprovado.
-- `python edicao-integral/verify_continuous_campaign.py`: replay determinístico
-  até o bloqueio do rádio e round-trip save/load; aprovado.
-- `python edicao-integral/validate_data.py`, `python -m compileall -q
-  edicao-integral` e `git diff --check`: aprovados.
-- Nenhuma defesa final, campanha completa, impressão física ou playtest humano.
+Não há campanha integral Cisterna → defesa final. O catálogo regional conhecido fornece no máximo 11 combustíveis (3 Oficina + 8 Posto) antes de retorno, abaixo das 12 unidades do modelo canônico; a seed deixa 7 depois de voltar do Posto. `data/last_transmission.json` ainda codifica custo 6, divergente de `RULES.md` §64. Nenhum custo foi reduzido e nenhum combustível foi criado.
 
-## Primeiro bloqueio e próximos bloqueios
+Outras limitações de paridade: recrutamento do pesquisador ainda não tem contato narrativo; a pesquisa/estação e algumas operações regionais continuam protótipos, sem ligar todo o relógio de dez segmentos, eventos/emboscadas/hordas da regra 0.2. A cena regional não é simulada como combate completo em todos destinos. Portanto, o replay de 62 registros demonstra a ponte de estado e ações implementadas, não campanha física integral legal.
 
-1. Fonte legal das duas pistas: `Cistern02` não guarda pistas e a rota seed 22
-   não as gera; existe uma carta regional experimental com +1 pista, mas não
-   está ligada a gatilho/deck. Recrutar pesquisadores também não tem encontro
-   ou acolhimento que o autorize. Não injetar pistas.
-2. Depois: destino Posto ausente de `LOCATIONS`; a Oficina oferece no máximo
-   três unidades de combustível, insuficientes para as seis exigidas para a
-   instalação; recuperação regional de veículo diverge da regra 0.2, que exige
-   Bateria, 2 PA e teste no Posto; expedições regionais ainda não abrem encontro
-   tático.
+Nenhum `verified_victory` foi emitido para Última Transmissão. Transmissor e defesa final não foram alcançados. Não ocorreu impressão física nem playtest humano.
 
-Próxima tarefa recomendada: portar, citando a regra/carta oficial, fonte legal
-para pistas; em seguida integrar Posto, Bateria, van, combustível e encontro
-militar com custo/capacidade canônicos. Só então retomar o controlador de
-campanha. Não chamar `final_defense()` até os portões narrativos e logísticos
-serem cumpridos pelo motor.
+## Próxima decisão técnica
 
-Retomada após publicação:
+Antes de buscar a defesa final, resolver explicitamente a equivalência de combustível entre regional `far=3`, o custo experimental de seis e `RULES.md` §64 (2 por trecho), sem mudar números silenciosamente. Alternativas a avaliar na fila: formalizar uma unidade regional diferente com regra escrita e impacto; ou identificar uma fonte/mecânica de combustível já autorizada pelo conteúdo atual. A oferta atual demonstra déficit, não prova isolada de equilíbrio global.
+
+## Verificação local desta unidade
+
+- Regressão completa: 251 testes passaram.
+- `validate_data.py`: passou (127 IDs únicos; 10 heróis; 70 habilidades; 15 NPCs; 7 locais; 8 mapas táticos).
+- `verify_campaign_player02.py`: `verified_victory`, 5 dias/noites, 3 expedições, 98 decisões.
+- `verify_continuous_campaign.py`: replay reproduzível chega ao gate militar e para sem mutação por falta de combustível; 62 registros resumidos após a Cisterna.
+- `compileall` e `git diff --check`: passaram após as alterações de código e documentação.
+- Revisões independentes somente leitura nesta sessão: auditoria de unidade de combustível; revisão de migração/roteiro. Ambas confirmaram que não se deve afirmar legalidade física completa.
+
+Retomada:
 
 ```bash
 git fetch origin evolucao/zona-zero-sistema-v1

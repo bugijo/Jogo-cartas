@@ -40,12 +40,16 @@
       ],
       "tests": [
         "edicao-integral/tests/test_campaign_transition.py",
+        "edicao-integral/tests/test_posto_vehicle_bridge.py",
+        "edicao-integral/tests/test_regional_search_actions.py",
+        "edicao-integral/verify_campaign_player02.py",
         "edicao-integral/verify_continuous_campaign.py",
-        "round-trip save/load"
+        "edicao-integral/validate_data.py",
+        "python -m unittest discover -s edicao-integral/tests -q"
       ],
       "status": "parcial_bloqueada",
-      "commit": "3b9fe68",
-      "blocker": "Migração seed 22 passa e preserva proveniência. Replay contínuo chega à Estação, obtém o cartão e retorna; para no rádio porque exige 2 pistas e o estado legal tem 0. Não há fonte integrada de pistas. Depois permanecem Posto ausente, combustível insuficiente, Bateria/van divergentes e encontros táticos regionais ausentes."
+      "commit": "359ec46",
+      "blocker": "Migração e ponte física do Posto/van testadas; o replay chega ao gate militar, que exige 12 unidades e rejeita a tentativa com estoque 7, sem mutação. A oferta modelada conhecida é 3 Oficina + 8 Posto (máximo 11 antes do retorno). Há divergência explícita entre custo experimental 6 e RULES.md §64 (2 por segmento); não foi alterada. Permanecem sem paridade física contato de recrutamento, relógio, eventos e encontros automáticos no arco regional."
     },
     {
       "id": "P2-PLAYER-CAMPAIGNS",
@@ -65,7 +69,7 @@
       ],
       "status": "bloqueada",
       "commit": null,
-      "blocker": "Bloqueada pela falta de fonte legal para pistas e pela economia/rota de veículo ainda incompatível entre arcos."
+      "blocker": "Bloqueada por unidade de combustível não reconciliada e pela paridade incompleta do arco regional: contato, relógio compartilhado, eventos/emboscadas/hordas e encontros ainda são abstratos."
     },
     {
       "id": "P3-PHYSICAL-EDITION",

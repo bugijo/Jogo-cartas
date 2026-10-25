@@ -1,72 +1,30 @@
 # Checkpoint de retomada — campanha contínua (25/10/2026)
 
 Branch: `evolucao/zona-zero-sistema-v1`
-HEAD de início desta unidade: `81a61e05f1cca494a32f961c2048c6d0927b6908`
-Main e kit físico 0.2 permanecem intocados.
+Base recebida: `81a61e05f1cca494a32f961c2048c6d0927b6908`
+Último remoto confirmado no início do lote: `5d83b3760edbf36b44ba821e14e50af8af9c896d`.
+Commit funcional mais recente: `359ec46` (ponte Posto/Bateria/van e busca por ação).
+Main e kit físico 0.2 permanecem intactos.
 
-## Estado ativo
+## Estado corrente
 
-- A vitória H2 da Cisterna em seed 22 segue certificada e reproduzível:
-  `python edicao-integral/verify_campaign_player02.py` — 98 decisões, 3
-  expedições, 5 dias/noites, recibos legais de Conexões, Bomba e Membrana.
-- `IntegratedCampaign.transition_to_last_transmission()` implementa migração
-  idempotente, validada e com hash/proveniência; `phase` muda para
-  `last_transmission` sem injetar combustível, pistas, bateria, van ou NPCs.
-- A migração preserva os 12 IDs possíveis de fundadores; Téo/Célia têm perfis
-  de identidade compatíveis no `World`, mas suas habilidades 0.2 seguem no
-  arquivo e não foram portadas. O elenco realmente presente no replay H2 tem
-  2 heróis + 1 adulto; não foram criados os outros dez fundadores.
-- `World.continuity_people` mantém adultos, crianças e cães, e consumo diário
-  conta cães; pessoas contam para capacidade de alojamento. Lotes de comida e
-  água tornam-se contadores exatos; construções, materiais, Moral/Saúde/Pressão,
-  vínculos, promessas, recibos e itens sem modelo equivalente permanecem no
-  manifesto não gastável.
-- O verificador `python edicao-integral/verify_continuous_campaign.py` reproduz
-  a Cisterna, migra, vai legalmente à Estação pelo motor regional, busca, obtém
-  o cartão, retorna e tenta decifrar o rádio. A tentativa para em
-  `Frequência indisponível`: o arco exige 2 pistas e o save legítimo traz 0.
-  Este é um replay parcial bloqueado, não campanha contínua completa.
-- Bloqueios seguintes: Posto não está em `LOCATIONS`; Oficina pode oferecer no
-  máximo 3 unidades de combustível, enquanto a instalação exige 6 na ida/volta;
-  motor regional recupera furgão na Oficina sem Bateria, divergindo da regra 0.2
-  (Bateria + 2 PA + teste no Posto); faltam encontros táticos regionais. Esses
-  itens não foram contornados.
+- Cisterna H2 seed22 certificada: cinco dias/noites, três expedições, 98 decisões.
+- Migração preserva arquivo integral com digest, estados sem equivalência em arquivo, e quantidades com equivalência no modelo regional. Idempotência e save/load cobertos.
+- Bateria não coletada na Cisterna continua no O1 da Oficina; a coleta regional exige mapa, movimento, passagem pela porta e 1 PA.
+- Posto ativo, oito cartas de combustível finitas; van canônica 6/12 com inspeção, Bateria e teste Técnica 6 por 2 PA. API antiga não recupera essa van.
+- Busca regional migrada cobra 1 PA e exige encontro/área de busca. Cartão de acesso tem identidade única e só autoriza a missão quando volta ao abrigo.
+- Replay parcial tem 62 registros resumidos após A Cisterna. Recupera Bateria, pega oito cartas, repara a van, volta gastando quatro cartas e fica com combustível 7. O percurso militar exige 12 pelo modelo canônico regional e falha sem mutação (déficit 5). `verified_victory` só foi emitido na Cisterna.
+- Isso ainda não é campanha integral legal segundo todas as regras físicas: contato/recrutamento, relógio compartilhado, eventos e encontros do arco 2 seguem incompletos. Sem transmissor, defesa final, impressão física ou playtest humano.
 
-## Verificação desta unidade
+## Bloqueio atual
 
-- 8 testes focados de migração/continuidade passaram.
-- `python -m unittest discover -s edicao-integral/tests -q`: 237 passaram.
-- `python edicao-integral/verify_campaign_player02.py`: passou.
-- `python edicao-integral/verify_continuous_campaign.py`: passou como reprodução
-  do bloqueio antes do rádio, incluindo save/load.
-- `python edicao-integral/validate_data.py`, `compileall` e `git diff --check`:
-  passaram. Nenhuma impressão ou playtest humano foi feito.
+A oferta modelada alcança no máximo 11 combustíveis (3 Oficina + 8 Posto) antes de retorno, menor que as 12 unidades da viagem `far=3` com van (2 por segmento, ida e volta). `data/last_transmission.json` ainda diz 6, em conflito com `RULES.md` §64. Nenhum valor foi mudado nem recurso injetado. Próxima tarefa: decidir/documentar a equivalência entre os arcos antes de prosseguir.
 
-Evidências:
-- Cisterna: `edicao-integral/replays/cisterna_h2_seed22.json`
-- Continuidade até bloqueio: `edicao-integral/replays/cistern_to_transmission_seed22_blocked.json`
-- Regras e adaptações: `edicao-integral/CAMPAIGN_INTEGRATION.md`
+## Verificação e retomada
 
-## Próxima unidade necessária
+Os testes direcionados de Posto, migração, arco 2 e busca passaram antes da regressão final. Repetir tudo depois das mudanças: `python -m unittest discover -s edicao-integral/tests -q`, `python edicao-integral/verify_campaign_player02.py`, `python edicao-integral/verify_continuous_campaign.py`, `python edicao-integral/validate_data.py`, `python -m compileall -q edicao-integral`, `git diff --check`.
 
-Portar, a partir de regras/conteúdo com fonte identificável, um caminho legal
-para obter as duas pistas; depois integrar Posto, Bateria, van e combustível
-sem misturar a economia do protótipo regional com a regra 0.2. Até esses
-bloqueios serem resolvidos e testados, não executar a defesa final nem afirmar
-campanha contínua concluída.
-
-Retomada:
-
-```bash
-git fetch origin evolucao/zona-zero-sistema-v1
-git merge --ff-only origin/evolucao/zona-zero-sistema-v1
-python edicao-integral/verify_campaign_player02.py
-python edicao-integral/verify_continuous_campaign.py
-python -m unittest discover -s edicao-integral/tests -q
-```
-
-O material abaixo é histórico de unidades anteriores e pode conter estado
-obsoleto; este checkpoint é a referência vigente.
+O restante deste documento é histórico de unidades anteriores e pode conter estados obsoletos. O estado atual é o resumo acima e `CAMPAIGN_INTEGRATION.md`.
 
 ---
 

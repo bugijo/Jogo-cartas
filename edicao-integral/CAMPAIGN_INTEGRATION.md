@@ -1,85 +1,48 @@
 # Integração de campanhas — estado atual (25/10/2026)
 
-Fontes oficiais do capítulo inicial: `../RULES.md`, `../CAMPAIGN.md` e `../content/catalog.json`. O motor de `edicao-integral/` não substitui esses arquivos. A primeira caixa ainda pode ser jogada com seus PDFs existentes. `cistern02.py` porta preparação, porções, relógio, filtro, privação, acolhimento e cercos/intenções em um estado separado.
+Fontes oficiais da primeira campanha: `../RULES.md`, `../CAMPAIGN.md` e `../content/catalog.json`. O motor em `edicao-integral/` continua experimental e não substitui esses arquivos. O kit físico 0.2 permanece intacto.
 
-Em 24/10/2026 foi concluído e reproduzido um replay legal H2 da Cisterna, seed 22. Ele parte de preparação normal (`IntegratedCampaign.new`), escolhe dois fundadores, sorteia vínculos pelo baralho embaralhado, executa expedições públicas ao Mercado, Oficina e Estação, transporta e entrega Conexões, Bomba e Membrana, processa os cinco eventos, refeições, os cercos dos dias 3 e 5, conclui as etapas A/B/C e recebe `verified_victory` do validador do motor. O replay e o verificador estão em `replays/cisterna_h2_seed22.json` e `verify_campaign_player02.py`.
+## A Cisterna certificada
 
-Esta evidência comprova uma trajetória H2 específica, não a campanha sob todas as sementes, uma taxa de vitória ou equilíbrio. Nenhum resgate foi necessário na rota escolhida; nenhuma promessa foi assumida. Isso satisfaz a condição oficial “sem pessoa abandonada por promessa” porque `CAMPAIGN.md` condiciona a promessa à escolha explícita do grupo e não exige um resgate para vencer. A rota processou dois cercos (missão no dia 3 e Pressão no dia 5), ambos com recibo; o cerco final causou perda de comida e dano ao portão, mas o grupo continuou abastecido naquela refeição.
+O replay H2 seed 22 parte de preparação normal e conclui cinco dias/noites, três expedições, 98 decisões, os eventos e cercos obrigatórios, além das etapas A/B/C do filtro. `verify_campaign_player02.py` recebe `verified_victory` depois de validar os recibos. Isso prova uma trajetória específica, não todas as sementes, equilíbrio ou o arco seguinte. A rota não escolhe resgates nem promessas; as regras não os tornam requisito universal da vitória.
 
-Diferenças materiais que impedem ligar os arcos por uma flag sem perder regras:
+## Migração reproduzível
 
-| Aspecto | Capítulo 0.2 | Motor experimental |
+`IntegratedCampaign.transition_to_last_transmission()` exige certificado, quinta refeição, eventos/noites fechados, três objetivos com recibos e nenhuma expedição/resolução pendente. Projeta o estado em um `World` temporário, valida e anexa uma única vez. A repetição é idempotente. O save preserva o arquivo integral de origem e seu digest SHA-256 determinístico; o digest não é assinatura e não impede adulteração manual de JSON.
+
+| Estado de origem | Projeção ou preservação | Limite conhecido |
 | --- | --- | --- |
-| Elenco | 24 fichas, 12 iniciais, vínculos sorteados | dez protagonistas fixos e 15 NPCs de outro catálogo |
-| Economia | cartas de quatro porções; C inclui cães; validade e lotes locais | contadores food/water por herói/NPC, sem cães ou abertura de carta |
-| Abrigo | Moral, Saúde, Pressão, cercos, acolhimento temporário | estruturas, crises e estoque, sem aqueles três indicadores |
-| Tempo | dez segmentos compartilhados por viagem e combate | segmentos regionais, rodadas táticas independentes |
-| Objetivo | filtro em etapas A/B/C até dia 5, peças Conexões/Bomba/Membrana | flag `cistern_complete`, sem ficha de projeto ou peças |
-| Lugares | seis destinos e quatro módulos impressos por destino | seis locais regionais diferentes, oito plantas funcionais, incluindo as seis geometrias canônicas; Posto e Condomínio ainda sem destino regional |
+| Fundadores ativos, ferimentos e pessoas (adultos, crianças, cães) | IDs e ferimentos dos fundadores, `continuity_people`, consumidores e capacidades | Habilidades antigas de Téo/Célia ainda não são operacionais no segundo motor |
+| Comida e água por lotes | Contadores regionais com soma exata; lotes permanecem no arquivo de origem | Validade/consumo por cartas não foi portado ao modelo regional |
+| Munição e medicamento | Contadores exatos | — |
+| Vínculos, promessas, Moral, Saúde, Pressão, carne, materiais e estruturas | Arquivo de continuidade não gastável | Não têm equivalência operacional completa |
+| Pé de cabra | Instância `EXP-EQU-002` | Correspondência pelo modelo equivalente |
+| Bateria da Oficina | Estoque único se já retirada; objetivo único em `EXP-LOC-03` se ainda estava no local; perdida não reaparece | Item identificado como `battery` no motor regional |
+| Van de manutenção | Mapa Posto / `EXP-VEI-02` (6 lugares, 12 cargas, 2 combustível/segmento) | Se não recuperada na origem, continua abandonada no Posto |
+| Machado, faca e ferramentas sem modelo equivalente | Arquivo de continuidade | Não convertidos sem regra/modelo compatível |
 
-## Transição implementada e reproduzida
+## Replay contínuo parcial
 
-`IntegratedCampaign.transition_to_last_transmission()` agora aceita somente um
-save com `verified_victory` certificado, capítulo validado, quinta refeição e
-noites/eventos encerrados, objetivos entregues por recibos legais e nenhuma
-expedição ou resolução pendente. A projeção é montada em um `World` temporário,
-validada e só então anexada à campanha. Repetir a chamada retorna o mesmo
-recibo sem adicionar recursos; save/load mantém fase e proveniência.
+`python edicao-integral/verify_continuous_campaign.py` parte da preparação e vitória seed 22. O replay salva 62 registros resumidos (não equivalem a 62 ações atômicas: caminhos agregam múltiplos movimentos). Ele conserva o estado migrado e chega a rádio/código, cartão de acesso, recupera a Bateria única no O1 da Oficina por movimento/porta/1 PA, e depois visita o Posto. No Posto, cada uma das oito cartas de combustível é retirada por ação de 1 PA no O1. A inspeção custa 1 PA; o reparo custa 2 PA e faz teste determinístico de Técnica 6. Na seed 22, Lia falha com 1 e Mara passa com 5 + Técnica 3; a Bateria só é consumida no sucesso. A equipe volta na van e consome quatro unidades da carga no retorno regional médio, ficando com sete no abrigo (três da Oficina, quatro trazidas do Posto).
 
-O recibo guarda hash SHA-256 determinístico de um arquivo integral da campanha
-de origem, mais arquivo de continuidade não gastável. O hash detecta divergência
-acidental e permite replay; saves JSON editáveis não são assinados e isso não é
-proteção criptográfica contra adulteração manual.
+A tentativa de autorização militar é feita pela API pública e falha com `Combustível insuficiente para ida e volta`, sem deixar `military_access`. A van canônica em `EXP-VEI-02` exige 12 unidades no percurso regional `far` de três segmentos por sentido: 3 × 2 sentidos × 2 unidades por segmento. O estado tem 7 após o retorno do Posto, déficit 5. O máximo conhecido é 11 unidades antes de qualquer custo de retorno: três buscas da Oficina e oito cartas do Posto. Não se reduz custo nem se cria combustível para continuar.
 
-| Estado da Cisterna | Projeção regional | Tratamento |
-| --- | --- | --- |
-| Fundadores ativos | Mesmo ID em `World.heroes` | Vida calculada pelos ferimentos; o registro de ferimento, fadiga, privação e vínculo também fica anexado ao estado de continuidade |
-| Téo e Célia (fundadores 11/12) | Perfis-ponte por ID, derivados do catálogo canônico | Não são convertidos em NPCs nem duplicados; habilidades 0.2 ficam preservadas no arquivo, mas ainda não funcionam no segundo motor |
-| Adultos, crianças e cães presentes | `World.continuity_people` | Identidade e estado preservados; continuam contando em capacidade humana e consumo diário (cães contam no consumo, não em leitos) |
-| Lotes de comida/água | Contadores numéricos regionais | Quantidades são a soma exata dos lotes; o arquivo guarda a divisão original |
-| Munição e medicamento | Contadores correspondentes | Quantidade exata |
-| Cartas de combustível | Contador `fuel`, uma unidade por carta | Quantidade exata; seed 22 não tem nenhuma |
-| Materiais, estruturas, Moral, Saúde, Pressão, carne, promessas, cercos e histórico | Arquivo de continuidade | Preservados sem efeito/gasto regional até portar regras equivalentes |
-| Pé de cabra | Instância `EXP-EQU-002` na mão | Projeção por correspondência de nome/modelo; cada instância é identificada |
-| Machado, faca, ferramentas, Bateria e van 0.2 | Arquivo de continuidade | Não convertidos para itens/veículos de regras diferentes; ficam sem uso no arco regional por enquanto |
+## Limite da evidência
 
-O replay contínuo `replays/cistern_to_transmission_seed22_blocked.json` começa
-na preparação legal seed 22, reproduz a vitória da Cisterna, migra e executa
-11 chamadas de ação regional: viagem à Estação, busca, recuperação do cartão,
-retorno e tentativa de decifrar o rádio. A carta de acesso é obtida e retorna
-ao abrigo sem alterar combustível. O primeiro bloqueio real é `decode_radio()`:
-requer duas pistas, mas a migração legítima tem zero.
+O Posto agora consta em `LOCATIONS` como `EXP-LOC-07`, e `gas_station_02` está ativo com a ligação desse destino. As oito cartas são finitas, identificadas e custam ação; a recuperação canônica da van exige inspeção, Bateria carregada, PA e teste. A API antiga `recover_vehicle()` não pode recuperar `EXP-VEI-02`, e uma campanha migrada não pode autorizar instalação com o furgão regional experimental `EXP-VEI-01`.
 
-## Bloqueios consecutivos confirmados
+Mesmo com essa ponte, o replay **não é uma campanha integral legal conforme todas as regras físicas**. O motor regional ainda usa buscas e recrutamento abstratos; não modela o contato narrativo para recrutar Célia, o consumo de PA/relógio por toda expedição, nem o disparo automático de encontros e hordas nesses locais. A pesquisa que abre o rádio também é uma regra do protótipo. A restauração de PA no replay foi ajustada para passar pela ativação tática (`TacticalGame.activate()`), não pelo atalho administrativo `World.begin_round()`. Os movimentos e a retirada de Bateria/combustível/van são operações táticas efetivas, mas os demais trechos não devem ser confundidos com paridade completa do manual.
 
-1. `Cistern02` não tem campo nem recibo de pista; a rota H2 seed 22 encerra sem
-   pista. O catálogo regional contém uma carta `EXP-EVT-001` com uma opção que
-   poderia dar uma pista, mas o motor não a sorteia nem a resolve em uma
-   expedição. Célia e NPCs de pesquisa poderiam gerar pistas somente depois de
-   recrutamento, mas o motor não tem encontro/acolhimento que autorize essa
-   contratação. Não é legal chamar `recruit()` para contornar o requisito.
-2. Se o rádio for resolvido por uma futura fonte legítima, ainda falta o Posto
-   em `system.json`/`LOCATIONS`. A planta `gas_station_02` está marcada como
-   referência e não é um destino regional. A Oficina oferece no máximo três
-   buscas de combustível, com uma unidade cada; seed 22 transporta zero cartas
-   de combustível. Isso não cobre a instalação militar (seis unidades na
-   viagem de ida e volta no modelo regional).
-3. A recuperação regional de veículo ocorre na Oficina com custo de combustível
-   e não exige Bateria; a regra canônica 0.2 exige Bateria, 2 PA e teste de
-   Técnica no Posto. O modelo regional de furgão também difere da van 0.2
-   (quatro vs. seis assentos). Nenhuma conversão foi aplicada silenciosamente.
-4. O modelo regional não contém encontros táticos conectados às expedições
-   regionais abstratas. A obtenção do cartão acima prova apenas as operações
-   presentes no motor, não uma expedição tática física completa.
+A divergência de unidade está documentada: `RULES.md` §64 cobra dois combustíveis por trecho, enquanto `data/last_transmission.json` fixa seis unidades para a viagem militar `far=3`. Aplicar a regra canônica ao trajeto regional dá 12; usar as seis do protótipo é uma incompatibilidade ainda não aprovada. Nenhum valor foi alterado nesta entrega.
 
-Não foram adicionados pistas, combustível, Bateria, van, NPCs, resgates ou
-recompensas. Não foi chamada `final_defense()`. Não há campanha contínua
-completa nem `verified_victory` do segundo arco. A menor próxima entrega é
-portar, com fontes oficiais e recibos, o encontro/evento que fornece pistas e
-o destino Posto/Bateria/van; em seguida alinhar custos de transporte e tática
-antes de tentar novamente a campanha integral.
+## Estado e próximo bloqueio
 
-O código da defesa final ainda é conteúdo experimental; o ensaio
-`ENSAIO_DEFESA_20261023.json` injeta requisitos e equipamento e, portanto, não
-é evidência de campanha contínua ou equilíbrio. A execução atual para antes de
-decodificar o rádio.
+- Cisterna: `verified_victory` H2 seed 22 preservada e reproduzível.
+- Migração: preserva origem, identidade, quantidades equivalentes e save/load; não duplica a Bateria.
+- Posto/Bateria/van: ponte implementada e testada por ações de mapa.
+- Última Transmissão: não certificada; falta resolver a insuficiência estrutural de combustível e a paridade de expedição regional.
+- Rádio e cartão: obtidos pela rota experimental atual; recrutamento sem contato narrativo permanece ressalvado.
+- Transmissor, retorno militar, defesa final e vitória do arco: não executados; `final_defense()` não foi chamado.
+- Não houve impressão física nem playtest humano.
+
+Antes de continuar, uma decisão de regra precisa resolver como a economia regional pode pagar a rota militar sem contrariar o custo canônico. A menor evidência atual é: oferta máxima de 11 combustível conhecida versus custo de 12, sem contar retornos. Ajustar esse valor seria uma proposta mecânica explícita, não correção técnica automática.

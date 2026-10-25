@@ -158,3 +158,73 @@ passaram se o gate de campanha ainda estiver fechado.
 - Estado: campanha legal demonstrada para uma preparação H2; ainda não há
   campanha geral, cobertura H3-H6, resgate/promessa exercitados ou transição
   legal para Última Transmissão. Impressão e playtest humano seguem pendentes.
+
+## 2026-10-25 — rota de pistas e bloqueio logístico (revisão da migração)
+
+- A auditoria independente encontrou caminho legal no motor para as duas
+  pistas: quatro buscas no Mercado sustentam quatro consumidores por dois dias;
+  Célia (`EXP-NPC-02`), ausente como fundadora nesse H2, pode ser recrutada e
+  designada a `teaching`, produzindo uma pista por dia. O rádio consome as duas.
+  Não há déficit alimentar nessa rota. Recrutar sem encontro é permitido pelo
+  motor, mas continua uma lacuna narrativa do arco experimental.
+- O replay passou a executar essa rota, depois obtém cartão de acesso na
+  Estação, busca três vezes na Oficina e retorna com apenas três combustíveis.
+  Posto `EXP-LOC-07` falha por destino inexistente; autorização militar falha
+  por veículo indisponível e reverte o gate. Não se chama defesa final.
+- A auditoria canônica confirma Posto com oito cartas únicas (1 PA cada),
+  Bateria da Oficina e van de seis lugares (inspecionar + 2 PA e Técnica 6 no
+  Posto), mas o motor experimental recupera furgão de quatro lugares na Oficina
+  sem Bateria. A equivalência de custo também conflita: 6 unidades no arco 2
+  vs. 2 por trecho 0.2 aplicados a `far=3` (8/12 no round-trip conforme a
+  leitura). Nenhum custo foi alterado nesta rodada.
+- Verificador contínuo agora cobre 34 ações e atualiza o primeiro bloqueio para
+  Posto/veículo/escala de combustível. A campanha integral permanece pendente.
+
+## 2026-10-25 — Posto, Bateria, van e busca regional
+
+- Ativado `EXP-LOC-07` Posto e a planta `gas_station_02` com a geometria
+  existente ligada ao destino. O catálogo registra oito retiradas finitas de
+  combustível; o mapa não gera combustível via busca abstrata.
+- Migração projeta a Bateria de acordo com sua proveniência: já retirada vai ao
+  estoque único; ainda disponível fica no O1 da Oficina; perdida não reaparece.
+  A campanha seed22 a recupera por movimento, porta e 1 PA e a devolve ao
+  estoque como carga única.
+- Implementada a van canônica `EXP-VEI-02` (6 lugares, 12 cargas, 2 unidades por
+  segmento): inspecionar custa 1 PA; reparo requer Bateria, O1, 2 PA e teste
+  Técnica 6 determinístico. Falha preserva Bateria; sucesso consome. Retorno
+  com van consome combustível da carga da expedição. API `recover_vehicle` não
+  permite burlar essa sequência; campanha migrada exige a van canônica.
+- Busca de uma campanha migrada exige mapa tático, presença na área de busca e
+  1 PA. O cartão de acesso é carga única e precisa retornar ao abrigo antes de
+  liberar o gate militar.
+- O replay parcial atualizado tem 62 registros resumidos, chega ao Posto e
+  recupera van com seed22, mas para no gate militar: 7 unidades após retorno vs.
+  12 requeridas. Fontes conhecidas somam 3 Oficina + 8 Posto = 11 antes de
+  retorno. A divergência do arco experimental (6) contra `RULES.md` §64 (2 por
+  trecho) permanece; não foi aplicada alteração de equilíbrio.
+- Revisões read-only independentes confirmaram a incompatibilidade de combustível
+  e que trechos do segundo arco ainda são abstratos (contato/recrutamento,
+  relógio/eventos/encontros). Nenhuma campanha integral ou vitória do arco 2 é
+  declarada.
+
+## 2026-10-25 — legalidade dos turnos e regressão completa
+
+- A regressão inicial encontrou seis quebras: o simulador de um dia usava busca
+  sem ator mesmo após entrar no mapa; um teste de mapa também usava a chamada
+  abstrata; o gerador do catálogo ainda marcava Posto como referência sem
+  destino. O simulador agora busca pela ação tática que cobra 1 PA, e o gerador
+  associa `gas_station_02` a `EXP-LOC-07`. Todos os 251 testes passaram.
+- A busca no mapa exige presença do herói na zona de busca e ação disponível;
+  o replay usa o método tático em vez de busca abstrata.
+- O controlador contínuo deixou de renovar PA via `World.begin_round()` e usa
+  `TacticalGame.activate()`, processando a ativação do mapa. A interface de
+  planejamento ganhou `path_to()` e `exit_zone` públicos para as rotas do
+  controlador. O teste cobre caminho fechado antes e aberto após arrombamento.
+- O replay ainda termina sem mutação no gate militar. A unidade regional é
+  incoerente com a oferta: 7 combustível após retorno; demanda canônica 12;
+  oferta máxima modelada 11 antes do retorno. A regra experimental que diz 6
+  permanece sem alteração. Isso não constitui replay integral físico: contato
+  narrativo, relógio/eventos e surgimentos regionais ainda não estão integrados.
+- `verify_campaign_player02.py` preserva a vitória da Cisterna seed22; o replay
+  contínuo tem 62 registros resumidos (não ações atômicas), conclui o ciclo do
+  Posto/van e não invoca defesa final.
