@@ -2,8 +2,8 @@
 
 ## 2026-10-25 — relógio regional, Hordas, fadiga e retirada
 
-- Branch `evolucao/zona-zero-sistema-v1`, entrada `3b59661`; trabalho não
-  publicado ainda. A auditoria de combustível mantém as fontes em
+- Branch `evolucao/zona-zero-sistema-v1`; commits `2e07b08`, `6d25b43` e
+  `2a24cc7` já publicados. A auditoria de combustível mantém as fontes em
   `edicao-integral/TACTICAL_FUEL_AUDIT.md`; O2 não foi tratado como combustível
   e a concessão experimental da Oficina foi removida.
 - O motor regional agora cobra relógio comum de 10 segmentos em viagens e
@@ -23,6 +23,31 @@
 - Verificações locais finais deste lote: 270 testes passaram;
   `verify_campaign_player02.py`, replay contínuo, `validate_data.py`,
   `compileall` e `git diff --check` passaram.
+
+## 2026-10-25 — recuperação canônica, validação de fadiga e turno protegido
+
+- Commit `60340c4` corrigiu validação de fadiga e o primeiro turno protegido;
+  `f205e55` completou migração de fadiga e exclusividade diária; `0f1ce2a`
+  restringiu trabalho a heróis aptos e horta operacional; `fb48fda` limita
+  cuidado médico a quem está no abrigo. A suíte no HEAD publicado tem 282 testes;
+  Cisterna seed 22, replay contínuo,
+  validação de dados, `compileall` e `git diff --check` passaram.
+- Portada a recuperação do §25 para heróis e NPCs modelados: refeição completa
+  remove uma fadiga; pessoa que não trabalhou nem saiu também recupera um
+  ferimento. Registros diários de trabalho/saída persistem em saves e são
+  validados. Civis genéricos do ledger continuam sem estado operacional para
+  aplicar a mesma recuperação.
+- `World.validate()` rejeita fadiga fora de 0–3. O primeiro turno tutorial do
+  Mercado mantém Hordas anunciadas pendentes sem contagem regressiva ou geração.
+- Revisão seguinte encontrou e corrigiu a exclusividade trabalho/expedição de
+  `RULES.md` §4 nos dois sentidos; NPC em expedição não executa automação de
+  abrigo naquela noite. A migração agora projeta fadiga 0–3 para o arco regional,
+  além de preservar o estado-fonte. O teste de fadiga não zero é uma fixture de
+  unidade e não afirma que uma campanha legal tenha terminado cansada.
+- Replay contínuo segue terminando em derrota local na Estação, relógio 7/10;
+  não chega ao Posto, ao combustível regional nem à instalação militar.
+- O conjunto direcionado executou 55 testes de sistema, transição e tática antes
+  da última correção; a suíte completa de 282 cobriu os módulos restantes.
 
 ## 2026-10-25 — migração seed 22 e primeiro bloqueio contínuo
 

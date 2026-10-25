@@ -2,8 +2,8 @@
 
 Branch: `evolucao/zona-zero-sistema-v1`
 Base recebida: `81a61e05f1cca494a32f961c2048c6d0927b6908`
-HEAD de entrada deste lote: `3b5966119783643d18d2b4efe4df5884a72044f9`.
-Commits funcionais deste lote: pendentes.
+HEAD remoto publicado: `fb48fda`.
+Commits funcionais publicados neste lote: `2e07b08`, `6d25b43`, `2a24cc7`, `60340c4`, `f205e55`, `0f1ce2a`, `fb48fda`.
 Main e kit físico 0.2 permanecem intactos.
 
 ## Atualização ativa do lote atual
@@ -22,8 +22,16 @@ Main e kit físico 0.2 permanecem intactos.
   O2 não explicita combustível; van custa 2/trecho; distância `far=3` e custo
   fixo 6 de `EXP-MIS-104` permanecem em conflito. A Oficina já não gera a
   unidade experimental não respaldada.
-- Testes locais: 270 passaram; replay atual reproduz `local_expedition_defeat`
+- Cartões e transmissor perdidos em emergência ficam únicos no destino e não
+  podem ser duplicados; ainda falta definir uma ação de recuperação do chão.
+- Testes locais: 282 passaram; replay atual reproduz `local_expedition_defeat`
   e valida save/load após a retirada.
+- §25 e §4 agora são aplicados à recuperação e alocação regional: registros
+  diários de trabalho/saída persistem no save, fadiga migra do estado Cisterna,
+  e o mesmo herói não pode trabalhar e sair no mesmo dia em nenhuma ordem.
+  NPCs que viajaram não executam produção automática do abrigo naquela noite.
+  A migração H2 seed 22 ainda é a única trajetória completa do primeiro arco;
+  o teste de fadiga não zero é uma fixture unitária para verificar o mapeamento.
   Conferir este resumo com `CAMPAIGN_INTEGRATION.md` e
   `TACTICAL_FUEL_AUDIT.md`; os blocos históricos abaixo não foram reescritos.
 

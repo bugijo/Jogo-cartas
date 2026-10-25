@@ -1,6 +1,6 @@
 # Bloqueios verificados da sequência completa
 
-## Estado ativo — checkpoint após `3b59661`
+## Estado ativo — checkpoint após `fb48fda` e revisão de regras
 
 - O replay `verify_continuous_campaign.py` continua a certificar A Cisterna H2
   seed 22 e fecha corretamente o dia após o Mercado. Ele começa Estação no dia
@@ -19,10 +19,31 @@
   primeiro bloqueio atual é de campanha/estratégia: a adaptação de contato de
   Célia na Estação termina em derrota local e o replay não pode continuar como
   se o grupo tivesse regressado com ela.
+- Revisão de `RULES.md` §25 encontrou recuperação noturna ausente: agora o motor
+  reduz fadiga após refeição completa e cura um ferimento adicional apenas de
+  heróis/NPCs no abrigo que não trabalharam nem saíram. Trabalho operacional e
+  saída ficam no save e são apagados ao fechar o dia. Isso não substitui o
+  registro integral de alocação de civis/crianças/cães, ainda ausente.
+- `World.validate()` agora rejeita fadiga fora de 0–3 também em saves; o primeiro
+  turno protegido do Mercado mantém Hordas anunciadas pendentes sem avançá-las.
+  Ambas as correções têm regressões dedicadas.
+- A automação médica só cura heróis presentes no abrigo; NPC que saiu não pode
+  aplicar cuidado remoto ao encerrar o dia.
+- O motor regional ainda não revela cartas de Viagem por trecho nem automatiza
+  encontros/emboscadas regionais com cadência canônica. `far=3` continua sem
+  correspondência aprovada a rota longa canônica de dois trechos por sentido.
+- Se um cartão de acesso ou transmissor for perdido em emergência, ele permanece
+  único no destino; a API de autorização/recuperação bloqueia uma segunda cópia.
+  A ação para recolher esses dois itens do chão ainda não foi definida, então
+  essa rota também falha fechada.
 - O contato físico de Célia está codificado como adaptação em
   `data/regional_campaign.json`, não como regra canônica. O ponto Estação/O2
   exige atravessar uma zona com Bruto, e o replay demonstra incapacitação antes
   do retorno; o resgate não é considerado completo.
+- Uma tentativa diagnóstica com apenas Lia na expedição à Estação também chegou
+  a Célia no relógio 6/10, mas o Bruto a incapacitou na ativação seguinte, no
+  segmento 7. Essa rota exploratória não foi salva como replay de campanha nem
+  processada como conclusão; não prova que todas as estratégias de Estação falhem.
 - O conflito de combustível continua sem decisão: §64 cobra 2 por trecho; a
   viagem militar experimental é `far=3` (12 ida/volta pela van), enquanto
   `EXP-MIS-104` fixa 6. Posto O1 traz 8 cartas finitas; O2 não explicita

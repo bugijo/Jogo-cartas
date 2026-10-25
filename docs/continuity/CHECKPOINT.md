@@ -1,8 +1,8 @@
 # Checkpoint — campanha contínua Cisterna → Última Transmissão
 
 Branch: `evolucao/zona-zero-sistema-v1`
-HEAD de entrada: `3b5966119783643d18d2b4efe4df5884a72044f9`
-Commits funcionais deste lote: pendentes de commit/publicação.
+HEAD remoto publicado: `fb48fda`
+Commits funcionais publicados neste lote: `2e07b08`, `6d25b43`, `2a24cc7`, `60340c4`, `f205e55`, `0f1ce2a`, `fb48fda`.
 Main e kit físico 0.2 intactos.
 
 ## Atualização ativa — relógio e primeiro replay regional
@@ -29,15 +29,37 @@ Main e kit físico 0.2 intactos.
 - Retirada de emergência regional está implementada. Viagem regional por
   cartas, frequência de Hordas exclusivas do segundo arco e conclusão da
   campanha permanecem pendentes por lacunas documentais/implementação.
+- §25 agora está aplicado aos heróis e NPCs: ferimento só recupera após refeição
+  completa para pessoa no abrigo que não trabalhou nem saiu; fadiga reduz uma
+  para todos os presentes após refeição completa. Trabalho/saída sobrevivem ao
+  save/load. Validação rejeita fadiga fora de 0–3; Hordas anunciadas ficam
+  pendentes sem avançar no primeiro turno protegido do Mercado.
+- Migração agora preserva fadiga individual (0–3). O motor impede que um herói
+  que trabalhou saia em expedição no mesmo dia e impede trabalho depois de uma
+  saída, mesmo após o retorno; especialistas NPC que saíram não fazem sua
+  automação de abrigo naquela noite.
 
-## Verificação desta unidade (antes de publicar)
+## Verificação no HEAD `fb48fda`
 
-- `python3 -m unittest discover -s edicao-integral/tests -q`: 270 testes passam.
-- `verify_campaign_player02.py`: vitória Cisterna seed 22 reproduzível.
+- `python3 -m unittest discover -s edicao-integral/tests -q`: 282 testes passam.
+- `verify_campaign_player02.py`: vitória Cisterna seed 22 reproduzível (5
+  dias/noites, 3 expedições, 98 decisões).
 - `verify_continuous_campaign.py --write` e verificação: reproduzíveis; a
   sequência registra derrota local, aplica emergência, e salva/restaura o estado.
 - Ainda pendentes: campanha contínua, combustível aprovado, impressão e
   playtest humano.
+- Um cartão/transmissor perdido permanece único no destino e não pode ser
+  duplicado; a ação para recuperá-lo ainda não está definida.
+- A suíte não valida recuperação de ferimentos de civis genéricos migrados,
+  porque o ledger de continuidade não possui estado operacional de trabalho,
+  fadiga e ferimento por pessoa.
+- Trabalho exige herói apto (vida acima de zero e fadiga abaixo de 3); atribuir
+  horta exige estrutura ativa. Testes cobrem essas proibições.
+- O NPC médico não pode tratar herói que esteja fora do abrigo; a automação e o
+  medicamento permanecem intactos se nenhum ferido estiver presente.
+- A matriz de combustível não teve regra escolhida: não existe fonte documental
+  explícita de combustível em O2. Propostas e déficit constam em
+  `edicao-integral/TACTICAL_FUEL_AUDIT.md`.
 
 ## Histórico — antes do relógio regional e da retirada de emergência
 

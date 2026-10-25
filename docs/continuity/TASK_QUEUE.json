@@ -48,8 +48,8 @@
         "python -m unittest discover -s edicao-integral/tests -q"
       ],
       "status": "parcial_bloqueada",
-      "commit": "pendente",
-      "blocker": "Migração e relógio regional (10 segmentos), limite de uma expedição/dia, fadiga, surgimento inicial, Horda persistente e retirada de emergência têm testes. Replay seed 22 termina em derrota local na Estação: a adaptação de contato provisório com Célia leva à incapacitação; a retirada devolve o grupo, perde carga e deixa Célia no destino. Combustível segue sem decisão: 8 unidades explícitas em O1, O2 não define combustível, van custa 2/trecho, far=3 implica 12 ida/volta e EXP-MIS-104 fixa 6."
+      "commit": "fb48fda",
+      "blocker": "Migração, relógio regional (10 segmentos), limite de uma expedição/dia, fadiga e descanso, exclusividade trabalho/expedição, surgimento inicial, Horda persistente e retirada de emergência têm testes. Replay seed 22 termina em derrota local na Estação: a adaptação de contato provisório com Célia leva à incapacitação; a retirada devolve o grupo, perde carga e deixa Célia no destino. Combustível segue sem decisão: 8 unidades explícitas em O1, O2 não define combustível, van custa 2/trecho, far=3 implica 12 ida/volta e EXP-MIS-104 fixa 6. Itens únicos perdidos permanecem no destino e não podem ser duplicados, mas não há ação aprovada para recolher cartão/transmissor do chão. Ainda faltam cartas/emboscadas regionais e recuperação do ferimento de civis migrados."
     },
     {
       "id": "P2-PLAYER-CAMPAIGNS",
@@ -69,7 +69,7 @@
       ],
       "status": "parcial_bloqueada",
       "commit": "pendente",
-      "blocker": "Não há campanha completa contínua. A primeira trajetória regional seed 22 sofre derrota local por incapacitação no ponto provisório de contato de Célia. Viagem regional por cartas, recuperação/retorno em revisita e política adaptativa de combate permanecem pendentes."
+      "blocker": "Não há campanha completa contínua. A primeira trajetória regional seed 22 sofre derrota local por incapacitação no ponto provisório de contato de Célia. Viagem regional por cartas, recuperação/retorno em revisita e política adaptativa de combate permanecem pendentes. Cartões/transmissor deixados no chão após emergência são preservados sem ação de recuperação; isso ainda pode bloquear campanhas futuras."
     },
     {
       "id": "P3-PHYSICAL-EDITION",

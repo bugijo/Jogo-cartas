@@ -23,8 +23,7 @@ O replay H2 seed 22 parte de preparação normal e conclui cinco dias/noites, tr
 
 ## Replay contínuo parcial
 
-> **Estado atual, checkpoint de 25/10/2026 (HEAD local `3b59661` antes dos
-> commits deste lote):** o replay histórico abaixo, que alcançava o bloqueio de
+> **Estado atual, HEAD `fb48fda`:** o replay histórico abaixo, que alcançava o bloqueio de
 > combustível, foi substituído após ativar o relógio compartilhado e o limite
 > canônico de uma expedição por dia. A execução reproduzível atual conclui a
 > Cisterna seed 22 e a expedição do Mercado, fecha o dia, inicia a expedição
@@ -40,14 +39,23 @@ local, custo de acolhimento ou momento regional para ela. O teste de contato
 isolado que limpa inimigos do mapa é uma fixture de unidade, não evidência de
 que a ação seja alcançável nem de que Célia retorne em uma partida legal.
 
+Desde o checkpoint, o motor aplica descanso do §25, preserva fadiga na migração,
+impede trabalho e expedição no mesmo dia nos dois sentidos (§4) e não executa
+automação de abrigo para NPCs que saíram naquele dia. Isso não completa o
+registro diário de trabalho dos civis genéricos arquivados.
+
 O motor agora cobra no relógio regional os trechos e rodadas táticas, limita a
 uma expedição por dia, persiste a pressão/baralho de Horda e aplica o surgimento
 inicial da campanha na primeira visita. O baralho usa as nove cartas canônicas
 Horda já portadas. A retirada de emergência está implementada para o arco
 regional com conservação de itens únicos, carga, pessoas escoltadas e veículo.
-Cartas de Viagem por trecho e frequência própria das Hordas exclusivas de
-Última Transmissão continuam pendentes; os dados não definem frequência nova e
-ela não foi inventada.
+Cartas de Viagem por trecho e encontros/emboscadas regionais ainda não estão
+integrados ao ciclo compartilhado; frequências próprias de Hordas exclusivas de
+Última Transmissão também continuam pendentes, sem dado aprovado para inventá-las.
+O motor agora registra quem trabalhou ou saiu no dia para aplicar o descanso do
+§25 sem curar ferimento de expedicionário/trabalhador. Cartão de acesso ou transmissor perdidos ficam registrados
+no destino e não podem ser criados novamente; a ação para recuperá-los do chão
+ainda não foi definida, então o motor falha fechado.
 
 O restante desta seção descreve um replay histórico anterior ao relógio
 compartilhado; não use seus resultados como estado atual.
