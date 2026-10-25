@@ -33,6 +33,9 @@ class Arc2:
                            for entry in self.world.log)
                 or self.world.flags.get('access_card')):
             raise ValueError('Cartão inacessível')
+        if any('access_card' in items
+               for items in self.world.unique_items_at_sites.values()):
+            raise ValueError('Cartão está no chão; regra de recuperação ainda não definida')
         continuous=bool((self.world.cistern_record or {}).get('migration',{}).get('receipt'))
         if continuous:
             encounter=self.world.encounters.get(expedition_id)
@@ -83,6 +86,8 @@ class Arc2:
         if (not exp or exp.destination!=card['location'] or exp.remaining!=0 or exp.returning
                 or not self.world.flags.get('military_access')
                 or 'transmitter' in self.world.special_stock
+                or any('transmitter' in items
+                       for items in self.world.unique_items_at_sites.values())
                 or any('transmitter' in other.special_cargo
                        for other in self.world.expeditions.values())):
             raise ValueError('Transmissor inacessível')
