@@ -1,51 +1,91 @@
 {
   "schema": 1,
   "branch": "evolucao/zona-zero-sistema-v1",
-  "updated_at": "2026-10-24",
+  "updated_at": "2026-10-25",
   "tasks": [
     {
       "id": "P0-EXPEDITION-COMPLETE",
       "priority": 0,
       "objective": "Completar fases e consequências restantes da expedição 0.2.",
       "depends_on": [],
-      "acceptance": ["recibos legais", "salvamento", "sem recompensa duplicada", "paridade 0.2"],
-      "tests": ["edicao-integral/tests/test_cistern_tactics02.py", "edicao-integral/tests/test_campaign_player02.py", "edicao-integral/verify_campaign_player02.py"],
+      "acceptance": [
+        "recibos legais",
+        "salvamento",
+        "sem recompensa duplicada",
+        "paridade 0.2"
+      ],
+      "tests": [
+        "edicao-integral/tests/test_cistern_tactics02.py",
+        "edicao-integral/tests/test_campaign_player02.py",
+        "edicao-integral/verify_campaign_player02.py"
+      ],
       "status": "em_execucao",
       "commit": "cdc8222",
-      "blocker": "Um replay H2 legal foi concluído em seed 22, com três expedições, peças, filtro A/B/C, cinco noites/eventos e verified_victory. Ainda faltam trajetórias confiáveis para outras sementes e grupos H3-H6; há emergências, déficits e derrotas que precisam ser classificados sem virar taxa de vitória"
+      "blocker": "Seed 22 permanece como regressão legal concluída; cobertura de outras sementes e grupos H3-H6 ainda não foi ampliada nesta unidade."
     },
     {
       "id": "P1-MIGRATE-CISTERN",
       "priority": 1,
       "objective": "Migrar vitória e estado canônicos para Última Transmissão.",
-      "depends_on": ["P0-EXPEDITION-COMPLETE"],
-      "acceptance": ["verified_victory legal", "12 fundadores tratados explicitamente", "recursos preservados"],
-      "tests": ["campanha contínua H2-H6", "round-trip save/load"],
-      "status": "bloqueada",
-      "commit": null,
-      "blocker": "verified_victory existe em uma trajetória H2 reproduzível, mas não há migração canônica que preserve estado para Última Transmissão"
+      "depends_on": [
+        "P0-EXPEDITION-COMPLETE"
+      ],
+      "acceptance": [
+        "verified_victory legal",
+        "migração atômica e idempotente",
+        "12 IDs de fundadores suportados",
+        "pessoas e recursos preservados com ledger",
+        "save/load",
+        "rota legal ao arco 2"
+      ],
+      "tests": [
+        "edicao-integral/tests/test_campaign_transition.py",
+        "edicao-integral/verify_continuous_campaign.py",
+        "round-trip save/load"
+      ],
+      "status": "parcial_bloqueada",
+      "commit": "pendente desta unidade",
+      "blocker": "Migração seed 22 passa e preserva proveniência. Replay contínuo chega à Estação, obtém o cartão e retorna; para no rádio porque exige 2 pistas e o estado legal tem 0. Não há fonte integrada de pistas. Depois permanecem Posto ausente, combustível insuficiente, Bateria/van divergentes e encontros táticos regionais ausentes."
     },
     {
       "id": "P2-PLAYER-CAMPAIGNS",
       "priority": 2,
       "objective": "Executar oito políticas adaptativas em campanhas completas.",
-      "depends_on": ["P1-MIGRATE-CISTERN"],
-      "acceptance": ["H2-H6", "decisões registradas", "resultados reproduzíveis"],
-      "tests": ["simulador completo", "auditoria adversarial"],
+      "depends_on": [
+        "P1-MIGRATE-CISTERN"
+      ],
+      "acceptance": [
+        "H2-H6",
+        "decisões registradas",
+        "resultados reproduzíveis"
+      ],
+      "tests": [
+        "simulador completo",
+        "auditoria adversarial"
+      ],
       "status": "bloqueada",
       "commit": null,
-      "blocker": "Campanha contínua ainda não alcançável legalmente"
+      "blocker": "Bloqueada pela falta de fonte legal para pistas e pela economia/rota de veículo ainda incompatível entre arcos."
     },
     {
       "id": "P3-PHYSICAL-EDITION",
       "priority": 3,
       "objective": "Consolidar e validar a edição física após as campanhas.",
-      "depends_on": ["P2-PLAYER-CAMPAIGNS"],
-      "acceptance": ["catálogo", "PDFs inspecionados", "plano de playtest humano"],
-      "tests": ["auditoria de PDFs", "dimensões e frente/verso"],
+      "depends_on": [
+        "P2-PLAYER-CAMPAIGNS"
+      ],
+      "acceptance": [
+        "catálogo",
+        "PDFs inspecionados",
+        "plano de playtest humano"
+      ],
+      "tests": [
+        "auditoria de PDFs",
+        "dimensões e frente/verso"
+      ],
       "status": "bloqueada",
       "commit": null,
-      "blocker": "Prioridade absoluta continua sendo P0/P1"
+      "blocker": "A integração e o ciclo da campanha continuam incompletos; nenhum PDF novo de campanha foi gerado."
     }
   ]
 }

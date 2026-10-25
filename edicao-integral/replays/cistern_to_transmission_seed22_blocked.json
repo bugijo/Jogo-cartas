@@ -1,0 +1,104 @@
+{
+  "schema": 1,
+  "status": "blocked_before_radio",
+  "replay": {
+    "cistern": {
+      "status": "verified_victory",
+      "days": 5,
+      "nights": 5,
+      "expeditions": 3,
+      "decisions": 98,
+      "objectives": [
+        "mercado:Conserva:1",
+        "mercado:Conserva:2",
+        "mercado:Água:1",
+        "mercado:Água:2",
+        "Oficina:Conexões",
+        "oficina:Conserva:1",
+        "oficina:Machado:1",
+        "Estação:Bomba",
+        "Estação:Membrana",
+        "estação:Água:1"
+      ]
+    },
+    "migration": {
+      "id": "cistern02:4950561ea0f429f7",
+      "source_digest": "4950561ea0f429f7c7bf980decbb61dde1abf9acadbe766a2fab04a570db35a9",
+      "from": "cistern02",
+      "to": "last_transmission",
+      "heroes": [
+        "ZC-HER-0001",
+        "ZC-HER-0003"
+      ],
+      "people": 3,
+      "consumers": 3,
+      "day": 5
+    },
+    "last_transmission": {
+      "phase": "last_transmission",
+      "heroes": [
+        "ZC-HER-0001",
+        "ZC-HER-0003"
+      ],
+      "clues": 0,
+      "access_card": true,
+      "radio_code": false,
+      "station_search": {
+        "water": 2,
+        "scrap": 1
+      },
+      "fuel": 0,
+      "vehicle": {},
+      "day": 0,
+      "campaign_actions": [
+        {
+          "action": "open_expedition",
+          "destination": "EXP-LOC-05"
+        },
+        {
+          "action": "advance_expedition",
+          "result": "travel"
+        },
+        {
+          "action": "advance_expedition",
+          "result": "travel"
+        },
+        {
+          "action": "advance_expedition",
+          "result": "arrived"
+        },
+        {
+          "action": "search",
+          "result": {
+            "water": 2,
+            "scrap": 1
+          }
+        },
+        {
+          "action": "recover_access_card",
+          "result": "access_card"
+        },
+        {
+          "action": "begin_return"
+        },
+        {
+          "action": "advance_expedition",
+          "result": "travel"
+        },
+        {
+          "action": "advance_expedition",
+          "result": "travel"
+        },
+        {
+          "action": "advance_expedition",
+          "result": "returned"
+        },
+        {
+          "action": "decode_radio",
+          "blocked": "Frequência indisponível"
+        }
+      ],
+      "blocking_requirement": "duas pistas para decifrar o rádio"
+    }
+  }
+}

@@ -1,5 +1,32 @@
 # Progresso
 
+## 2026-10-25 — migração seed 22 e primeiro bloqueio contínuo
+
+- Implementada `IntegratedCampaign.transition_to_last_transmission()`: exige
+  certificado real, fim das cinco noites/eventos, recibos legais das três
+  peças e ausência de resolução pendente. A projeção é atômica, idempotente,
+  tem SHA-256 determinístico de proveniência e sobrevive ao save/load.
+- Preservados o estado completo da Cisterna e do integrador em arquivo não
+  gastável; os campos comuns são projetados como recursos contadores, pessoas
+  genéricas seguem consumindo (inclusive cães), o Pé de cabra segue como item
+  ativo, e valores sem equivalente não são convertidos nem descartados.
+- IDs de todos os 12 fundadores são aceitos no `World`. Téo e Célia não são
+  duplicados como NPCs quando já migrados como heróis. As habilidades 0.2 deles
+  permanecem arquivadas e ainda não têm efeito no arco regional.
+- Criado `verify_continuous_campaign.py` e replay bloqueado: seed 22 vence a
+  Cisterna (5 dias, 3 expedições, 98 decisões), migra, executa viagem/busca na
+  Estação, recupera cartão e retorna. A tentativa legal de decifrar o rádio
+  falha com 0 pistas frente ao requisito de 2.
+- O diagnóstico independente confirma bloqueios seguintes: Posto ausente no
+  mapa regional; combustível de Oficina limitado a 3 buscas vs. 6 exigidos
+  pelo motor para a instalação; recuperação de furgão regional diverge da
+  regra canônica de Bateria/PA/teste no Posto; faltam encontros táticos nas
+  expedições regionais. Nenhum desses gates foi contornado.
+- Testes focados: 8 aprovados. Regressão: 237 aprovados; replay da Cisterna,
+  verificador contínuo (até o bloqueio), validador de dados, compileall e
+  `git diff --check` aprovados. Sem campanha integral, defesa final, impressão
+  ou playtest humano.
+
 ## 2026-10-23 — checkpoint remoto `8697db9`
 
 - Expedição tática parcial, carga, retorno, peças e revisitas persistentes.

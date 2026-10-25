@@ -7,6 +7,7 @@ porções, relógio e filtro, enquanto ``World`` executa o segundo arco.
 from __future__ import annotations
 
 import json
+import hashlib
 from collections import Counter
 from copy import deepcopy
 from dataclasses import asdict, dataclass, field
@@ -19,7 +20,7 @@ from cistern_tactics02 import Tactical02, WEAPONS
 from horde_deck02 import HordeDeck02
 from travel02 import Travel02, TravelContext
 from travel_deck02 import TravelDeck02
-from system import Expedition, World
+from system import Expedition, HEROES, World
 
 
 PART_MISSIONS = {
@@ -105,6 +106,7 @@ class IntegratedCampaign:
     travel_uses_shoe: bool = False
     road_aid_settled: bool = False
     work_phase_resolved: bool = False
+    mission_receipts: list[dict] = field(default_factory=list)
 
     STATUSES = {"RUNNING", "VICTORY", "DEFEAT", "IMPOSSIBLE", "PAUSED"}
 
@@ -651,6 +653,14 @@ class IntegratedCampaign:
             if receipt["event"] == "fuel_spent")
         self.cistern.horde_deck = deepcopy(tactical.horde_deck)
         self.site_states[tactical.destination] = tactical.site_snapshot()
+        self.mission_receipts.append({
+            "day": self.cistern.day,
+            "destination": tactical.destination,
+            "team": list(tactical.team),
+            "route": tactical.route,
+            "receipts": deepcopy(proof),
+            "tactical_log": deepcopy(tactical.log),
+        })
         self.tactical = None
         return proof
 
@@ -1005,6 +1015,165 @@ class IntegratedCampaign:
             self.rewards.append("verified_victory")
         return certificate
 
+    def _continuity_source(self) -> dict:
+        """Serializable source ledger for an atomic cross-arc transition."""
+        payload = asdict(self)
+        payload.pop("world", None)
+        payload["founder_roster"] = list(STARTERS)
+        return payload
+
+    @staticmethod
+    def _digest_payload(payload: dict) -> str:
+        canonical = json.dumps(payload, ensure_ascii=False, sort_keys=True,
+                               separators=(",", ":"))
+        return hashlib.sha256(canonical.encode("utf-8")).hexdigest()
+
+    def transition_to_last_transmission(self) -> dict:
+        """Project a certified Cisterna save into the regional engine exactly once.
+
+        Values without a rules-equivalent representation stay in an archival,
+        non-spendable continuity manifest. The conversion is built and validated
+        off to the side before ``self.world`` is assigned, so a failed capacity
+        check cannot partially consume or duplicate the source state.
+        """
+        if self.world is not None:
+            migration = (self.world.cistern_record or {}).get("migration", {})
+            archive = migration.get("source_archive")
+            digest = migration.get("source_digest")
+            receipt = migration.get("receipt")
+            if (archive is None or not digest or self._digest_payload(archive) != digest
+                    or not receipt or receipt.get("source_digest") != digest
+                    or not self.world.cistern_verified):
+                raise ValueError("Transição existente não possui proveniência íntegra")
+            self.world.validate()
+            return deepcopy(receipt)
+
+        self._require_running()
+        if (self.status != "RUNNING" or self.cistern.result != "verified_victory"
+                or "verified_victory" not in self.rewards
+                or self.cistern.chapter_receipt is None
+                or self.cistern.chapter_receipt.get("result") != "verified_victory"):
+            raise ValueError("Transição exige certificado verified_victory")
+        if (self.tactical is not None or self.travel is not None or self.return_travel is not None
+                or self.ambush is not None or self.travel_request is not None
+                or self.cistern.pending_sieges or self.cistern.event_queue
+                or self.cistern.meal_day != self.cistern.day):
+            raise ValueError("Há resolução obrigatória pendente na Cisterna")
+        self.cistern.validate_snapshot()
+        required = {"Oficina:Conexões", "Estação:Bomba", "Estação:Membrana"}
+        if not required.issubset(set(self.delivered_objectives)):
+            raise ValueError("Objetivos legais da Cisterna incompletos")
+        receipt_parts = [f"{receipt['destination']}:{receipt['part']}"
+                         for expedition in self.mission_receipts
+                         for receipt in expedition.get("receipts", [])
+                         if receipt.get("event") in ("pickup_part", "recover_part")]
+        if (len(receipt_parts) != len(set(receipt_parts))
+                or not required.issubset(set(receipt_parts))):
+            raise ValueError("Recibos de expedição não comprovam as três peças")
+        people = {person["id"]: person for person in self.cistern.people}
+        if len(people) != len(self.cistern.people):
+            raise ValueError("Identidades duplicadas no abrigo de origem")
+        if set(self.founders) - set(people) or any(
+                people[founder]["kind"] != "hero" for founder in self.founders):
+            raise ValueError("Fundadores ativos não correspondem às identidades da Cisterna")
+        if any(founder not in HEROES for founder in self.founders):
+            raise ValueError("Fundador sem identidade no motor regional")
+
+        source = self._continuity_source()
+        source_digest = self._digest_payload(source)
+        stock = {
+            "food": sum(self.cistern.food),
+            "water": sum(self.cistern.water),
+            "medicine": self.cistern.medicine,
+            "ammo": self.cistern.ammo,
+            # Each physical fuel card represents one regional fuel unit.
+            "fuel": len(self.fuel_cards),
+        }
+        projected = World.new(self.seed, list(self.founders), stock)
+        source_people = [deepcopy(person) for person in self.cistern.people]
+        for hero_id in self.founders:
+            person = people[hero_id]
+            state = projected.heroes[hero_id]
+            wounds = int(person.get("wounds", 0))
+            if not 0 <= wounds <= 3:
+                raise ValueError(f"Ferimentos de {hero_id} não podem ser migrados")
+            state["health"] = max(0, 3 - wounds)
+            state["continuity_state"] = deepcopy(person)
+
+        projected.continuity_people = [person for person in source_people
+                                       if person["kind"] != "hero"]
+        projected.continuity_beds = self.cistern.capacity - projected.beds
+        for person in projected.continuity_people:
+            if person["kind"] not in ("adult", "child", "dog"):
+                raise ValueError(f"Tipo de morador sem modelo regional: {person['kind']}")
+
+        # Only the identical crowbar has a matching active equipment model.
+        # Other 0.2 items remain present in the immutable source archive until
+        # their combat/stat model is ported; they are never silently converted.
+        equipment_projection = []
+        equipment_archived = []
+        for hero_id in self.founders:
+            counts = Counter(self.equipment_inventory.get(hero_id, []))
+            crowbars = counts.pop("Pé de cabra", 0)
+            for index in range(min(crowbars, 2)):
+                instance_id = f"CIS-{hero_id}-CROWBAR-{index + 1:02d}"
+                projected.give_item(hero_id, instance_id, "EXP-EQU-002", "hand", index)
+                equipment_projection.append({"hero": hero_id, "source_item": "Pé de cabra",
+                                             "instance": instance_id,
+                                             "target_item": "EXP-EQU-002"})
+            if crowbars > 2:
+                equipment_archived.extend([{"hero": hero_id, "item": "Pé de cabra",
+                                            "reason": "limite de duas mãos regionais"}
+                                           for _ in range(crowbars - 2)])
+            for item, amount in counts.items():
+                equipment_archived.extend([{"hero": hero_id, "item": item,
+                                            "reason": "sem modelo regional equivalente"}
+                                           for _ in range(amount)])
+
+        migration_id = f"cistern02:{source_digest[:16]}"
+        receipt = {"id": migration_id, "source_digest": source_digest,
+                   "from": "cistern02", "to": "last_transmission",
+                   "heroes": list(self.founders), "people": len(source_people),
+                   "consumers": self.cistern.consumers, "day": self.cistern.day}
+        ledger = {
+            "schema": 1,
+            "source_digest": source_digest,
+            "source_archive": source,
+            "archive_policy": "auditoria/continuidade; não é inventário gastável",
+            "projection": {
+                "resource_units": stock,
+                "food_lots": list(self.cistern.food),
+                "water_lots": list(self.cistern.water),
+                "meat_lots_archived": list(self.cistern.meat),
+                "materials_archived": self.cistern.materials,
+                "structures_archived": list(self.cistern.structures),
+                "morale_health_pressure_archived": {
+                    "morale": self.cistern.morale, "health": self.cistern.health,
+                    "pressure": self.cistern.pressure,
+                },
+                "relationships_and_promises_archived": {
+                    "links": list(self.links), "rescue_history": deepcopy(self.cistern.rescue_history),
+                    "groups": deepcopy(self.cistern.groups),
+                },
+                "equipment_projected": equipment_projection,
+                "equipment_archived": equipment_archived,
+                "battery_archived": self.battery_available,
+                "vehicle_archived": self.van_state,
+                "unspent_clues": 0,
+            },
+            "receipt": receipt,
+        }
+        projected.decisions = deepcopy(self.decisions)
+        projected.cistern_record = {
+            "status": "verified_victory", "source": "cistern02",
+            "objectives": sorted(required), "certificate": deepcopy(self.cistern.chapter_receipt),
+            "migration": ledger,
+        }
+        projected.log.append({"day": 0, "event": "campaign_transition", **receipt})
+        projected.validate()
+        self.world = projected
+        return deepcopy(receipt)
+
     def _arc(self) -> Arc2:
         self._require_running()
         if self.world is None:
@@ -1019,6 +1188,19 @@ class IntegratedCampaign:
         if all(hero["health"] == 0 for hero in self.world.heroes.values()):
             self.finish("DEFEAT", "todos_os_protagonistas_incapacitados")
         return result
+
+    def decode_radio(self) -> None:
+        return self._arc().decode_radio()
+
+    def recover_access_card(self, expedition_id: str) -> None:
+        return self._arc().recover_access_card(expedition_id)
+
+    def authorize_installation(self, expedition_id: str, hero_ids: list[str],
+                                vehicle_id: str) -> None:
+        return self._arc().authorize_installation(expedition_id, hero_ids, vehicle_id)
+
+    def load_transmitter(self, expedition_id: str) -> None:
+        return self._arc().load_transmitter(expedition_id)
 
     def final_defense(self) -> dict:
         return self._arc().final_defense()
@@ -1134,6 +1316,7 @@ class IntegratedCampaign:
         payload.setdefault("travel_uses_shoe", False)
         payload.setdefault("road_aid_settled", False)
         payload.setdefault("work_phase_resolved", False)
+        payload.setdefault("mission_receipts", [])
         if not isinstance(payload["travel_uses_shoe"], bool):
             raise ValueError("Marcador de sapato de Viagem inválido")
         if (not isinstance(payload["road_aid_settled"], bool)

@@ -1,25 +1,72 @@
-# Checkpoint — última atualização 24/10/2026
+# Checkpoint de retomada — campanha contínua (25/10/2026)
 
-## Estado atual: primeira vitória legal H2 e próximo bloqueio
+Branch: `evolucao/zona-zero-sistema-v1`
+HEAD de início desta unidade: `81a61e05f1cca494a32f961c2048c6d0927b6908`
+Main e kit físico 0.2 permanecem intocados.
 
-Em `evolucao/zona-zero-sistema-v1`, o replay
-`replays/cisterna_h2_seed22.json` conclui legalmente A Cisterna em seed 22 e
-recebe `verified_victory`. Use `python edicao-integral/verify_campaign_player02.py`
-para reproduzir o log e reabrir o save terminal. O estado detalhado e limitações
-estão em [`CAMPAIGN_INTEGRATION.md`](CAMPAIGN_INTEGRATION.md).
+## Estado ativo
 
-Ainda não há migração de `IntegratedCampaign` para `World`: `complete_cistern()`
-certifica a Cisterna, mas deixa `world=None` e `phase="cistern"`. Uma chamada
-imediata a `final_defense()` resulta em `ValueError: Conclua A Cisterna antes da
-Última Transmissão`. Essa é a primeira barreira concreta para a campanha
-contínua. O modelo de destino tem dez heróis, NPCs tipados e estoque numérico;
-o save de origem também contém vínculos, pessoas adultas/crianças/cães, cartas
-de porções, Saúde/Moral/Pressão, estruturas, ferimentos e estado próprio de
-campanha. Não converter por descarte nem criar pessoas/recursos implicitamente.
+- A vitória H2 da Cisterna em seed 22 segue certificada e reproduzível:
+  `python edicao-integral/verify_campaign_player02.py` — 98 decisões, 3
+  expedições, 5 dias/noites, recibos legais de Conexões, Bomba e Membrana.
+- `IntegratedCampaign.transition_to_last_transmission()` implementa migração
+  idempotente, validada e com hash/proveniência; `phase` muda para
+  `last_transmission` sem injetar combustível, pistas, bateria, van ou NPCs.
+- A migração preserva os 12 IDs possíveis de fundadores; Téo/Célia têm perfis
+  de identidade compatíveis no `World`, mas suas habilidades 0.2 seguem no
+  arquivo e não foram portadas. O elenco realmente presente no replay H2 tem
+  2 heróis + 1 adulto; não foram criados os outros dez fundadores.
+- `World.continuity_people` mantém adultos, crianças e cães, e consumo diário
+  conta cães; pessoas contam para capacidade de alojamento. Lotes de comida e
+  água tornam-se contadores exatos; construções, materiais, Moral/Saúde/Pressão,
+  vínculos, promessas, recibos e itens sem modelo equivalente permanecem no
+  manifesto não gastável.
+- O verificador `python edicao-integral/verify_continuous_campaign.py` reproduz
+  a Cisterna, migra, vai legalmente à Estação pelo motor regional, busca, obtém
+  o cartão, retorna e tenta decifrar o rádio. A tentativa para em
+  `Frequência indisponível`: o arco exige 2 pistas e o save legítimo traz 0.
+  Este é um replay parcial bloqueado, não campanha contínua completa.
+- Bloqueios seguintes: Posto não está em `LOCATIONS`; Oficina pode oferecer no
+  máximo 3 unidades de combustível, enquanto a instalação exige 6 na ida/volta;
+  motor regional recupera furgão na Oficina sem Bateria, divergindo da regra 0.2
+  (Bateria + 2 PA + teste no Posto); faltam encontros táticos regionais. Esses
+  itens não foram contornados.
 
-Commits publicados nesta unidade: `c8a4a0f`, `cdc8222`, `d032d99`, `2924633`.
-O restante deste arquivo é histórico de unidades anteriores, não deve ser lido
-como estado atual quando contradizer este bloco.
+## Verificação desta unidade
+
+- 8 testes focados de migração/continuidade passaram.
+- `python -m unittest discover -s edicao-integral/tests -q`: 237 passaram.
+- `python edicao-integral/verify_campaign_player02.py`: passou.
+- `python edicao-integral/verify_continuous_campaign.py`: passou como reprodução
+  do bloqueio antes do rádio, incluindo save/load.
+- `python edicao-integral/validate_data.py`, `compileall` e `git diff --check`:
+  passaram. Nenhuma impressão ou playtest humano foi feito.
+
+Evidências:
+- Cisterna: `edicao-integral/replays/cisterna_h2_seed22.json`
+- Continuidade até bloqueio: `edicao-integral/replays/cistern_to_transmission_seed22_blocked.json`
+- Regras e adaptações: `edicao-integral/CAMPAIGN_INTEGRATION.md`
+
+## Próxima unidade necessária
+
+Portar, a partir de regras/conteúdo com fonte identificável, um caminho legal
+para obter as duas pistas; depois integrar Posto, Bateria, van e combustível
+sem misturar a economia do protótipo regional com a regra 0.2. Até esses
+bloqueios serem resolvidos e testados, não executar a defesa final nem afirmar
+campanha contínua concluída.
+
+Retomada:
+
+```bash
+git fetch origin evolucao/zona-zero-sistema-v1
+git merge --ff-only origin/evolucao/zona-zero-sistema-v1
+python edicao-integral/verify_campaign_player02.py
+python edicao-integral/verify_continuous_campaign.py
+python -m unittest discover -s edicao-integral/tests -q
+```
+
+O material abaixo é histórico de unidades anteriores e pode conter estado
+obsoleto; este checkpoint é a referência vigente.
 
 ---
 

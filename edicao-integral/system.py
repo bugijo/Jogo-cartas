@@ -14,6 +14,19 @@ EQUIPMENT = json.loads((Path(__file__).parent / 'data/equipment.json').read_text
 TACTICS_DATA = json.loads((Path(__file__).parent / 'data/tactics.json').read_text(encoding='utf-8'))
 ITEMS = {item['id']:item for item in EQUIPMENT['items']}
 HEROES = {h['id']: h for h in DATA['heroes']}
+# A Cisterna 0.2 has twelve selectable founders. The regional prototype only
+# models ten, while Téo and Célia were represented as NPCs. Keep their exact
+# source identity/attributes as bridge profiles; legacy abilities remain in
+# the continuity archive until they are explicitly ported.
+_LEGACY_CATALOG = json.loads((Path(__file__).resolve().parents[1] / 'content/catalog.json')
+                             .read_text(encoding='utf-8'))
+for _hero in _LEGACY_CATALOG['heroes']:
+    if _hero.get('initial') and _hero['id'] not in HEROES:
+        HEROES[_hero['id']] = {
+            'id': _hero['id'], 'name': _hero['name'],
+            'profession': _hero['profession'], 'attributes': dict(_hero['attributes']),
+            'skills': [], 'continuity_only': True,
+        }
 NPCS = {n['id']: n for n in DATA['npcs']}
 STRUCTURES = {s['kind']: s for s in DATA['structures']}
 LOCATIONS = {l['id']: l for l in DATA['locations']}
@@ -53,6 +66,8 @@ class World:
     outposts: dict[str, dict] = field(default_factory=dict)
     vehicles: dict[str, dict] = field(default_factory=dict)
     gear: dict[str, dict] = field(default_factory=dict)
+    continuity_people: list[dict] = field(default_factory=list)
+    continuity_beds: int = 0
     camp_xp: int = 0
     clues: int = 0
     used_structure_actions: dict[str, int] = field(default_factory=dict)
@@ -86,7 +101,8 @@ class World:
 
     @property
     def beds(self) -> int:
-        return DATA['rules']['beds_base'] + sum(STRUCTURES[k]['beds_bonus'] for k in self.structures)
+        return (DATA['rules']['beds_base'] + self.continuity_beds
+                + sum(STRUCTURES[k]['beds_bonus'] for k in self.structures))
 
     @property
     def storage(self) -> int:
@@ -95,7 +111,15 @@ class World:
 
     @property
     def residents(self) -> int:
-        return len(self.heroes) + len(self.npcs)
+        civilians = sum(person['kind'] in ('adult', 'child')
+                        for person in self.continuity_people)
+        return len(self.heroes) + len(self.npcs) + civilians
+
+    @property
+    def consumers(self) -> int:
+        """People and dogs carried across from the 0.2 shelter ledger."""
+        dogs = sum(person['kind'] == 'dog' for person in self.continuity_people)
+        return self.residents + dogs
 
     @property
     def cistern_verified(self) -> bool:
@@ -114,6 +138,13 @@ class World:
             raise ValueError('Depósito excedido')
         if self.residents > self.beds or self.free_terrain < 0:
             raise ValueError('Capacidade excedida')
+        continuity_ids = [person.get('id') for person in self.continuity_people]
+        if (len(continuity_ids) != len(set(continuity_ids))
+                or any(not person.get('id') or person.get('kind') not in
+                       ('adult', 'child', 'dog') for person in self.continuity_people)
+                or set(continuity_ids) & (set(self.heroes) | set(self.npcs))
+                or not isinstance(self.continuity_beds, int)):
+            raise ValueError('Pessoas/capacidade de continuidade inválidas')
         if any(v < 0 for v in self.searches.values()):
             raise ValueError('Contador de busca negativo')
         if any(h not in HEROES or state['xp'] > 100 or state['health'] < 0
@@ -126,6 +157,8 @@ class World:
             raise ValueError('Guarda inválida')
         if any(n not in NPCS or not 1 <= state['level'] <= 3 for n,state in self.npcs.items()):
             raise ValueError('NPC inválido')
+        if any(NPCS[n].get('source_hero_id') in self.heroes for n in self.npcs):
+            raise ValueError('Fundador duplicado como NPC')
         active_heroes = set()
         for key, exp in self.expeditions.items():
             if (key != exp.id or exp.destination not in LOCATIONS or exp.remaining < 0
@@ -351,6 +384,7 @@ class World:
 
     def recruit(self, npc_id: str) -> bool:
         if (npc_id not in NPCS or npc_id in self.npcs or self.residents >= self.beds
+                or NPCS[npc_id].get('source_hero_id') in self.heroes
                 or self.stock['food'] < self.residents + 1
                 or self.stock['water'] < self.residents + 1):
             return False
@@ -651,7 +685,7 @@ class World:
                 bonus=(self.skill_bonus(self.garden_worker,'food') if self.garden_worker
                        and self.heroes[self.garden_worker]['location']=='camp' else 0)
                 produced['food'] += self.deposit('food',DATA['rules']['garden_food_per_harvest']+bonus)
-        need = self.residents
+        need = self.consumers
         missing = {}
         for resource in ('food','water'):
             missing[resource] = max(0,need-self.stock[resource])
