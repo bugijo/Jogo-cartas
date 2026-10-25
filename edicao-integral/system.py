@@ -965,7 +965,8 @@ class World:
             elif output == 'research':
                 self.clues += state['level']
             elif output == 'rescue' and self.stock['medicine']:
-                injured = next((hero for hero in self.heroes.values() if hero['health'] < 3),None)
+                injured = next((hero for hero in self.heroes.values()
+                                if hero['location']=='camp' and hero['health'] < 3),None)
                 if injured:
                     self.stock['medicine'] -= 1
                     injured['health'] += 1

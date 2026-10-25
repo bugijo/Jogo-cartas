@@ -124,6 +124,18 @@ class SystemTests(unittest.TestCase):
         self.assertEqual(w.npcs[npc_id]['health'],1)
         self.assertEqual(w.npcs[npc_id]['fatigue'],1)
 
+    def test_npc_medic_does_not_treat_hero_absent_from_camp(self):
+        w=world(stock={'food':3,'water':3,'medicine':1})
+        traveler=list(w.heroes)[0]
+        w.heroes[traveler]['health']=2
+        self.assertTrue(w.recruit('EXP-NPC-12'))
+        w.assign('EXP-NPC-12','rescue')
+        w.open_expedition('trip',[traveler],'EXP-LOC-01')
+        w.advance_expedition('trip')
+        w.end_day()
+        self.assertEqual(w.heroes[traveler]['health'],2)
+        self.assertEqual(w.stock['medicine'],1)
+
     def test_multiple_equipment_instances_save_and_spatial_rules(self):
         w=world(stock={'food':4,'water':4})
         a,b=list(w.heroes)
