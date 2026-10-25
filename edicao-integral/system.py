@@ -85,6 +85,8 @@ class World:
     cistern_record: dict | None = None
     regional_clock: int = 0
     daily_expeditions: int = 0
+    worked_today: list[str] = field(default_factory=list)
+    departed_today: list[str] = field(default_factory=list)
     regional_horde_deck: dict | None = None
     garden_worker: str | None = None
     guarding: dict[str, int] = field(default_factory=dict)
@@ -153,6 +155,13 @@ class World:
         if (not isinstance(self.daily_expeditions,int) or isinstance(self.daily_expeditions,bool)
                 or not 0<=self.daily_expeditions<=1):
             raise ValueError('Contador diário de expedições inválido')
+        if (len(self.worked_today) != len(set(self.worked_today))
+                or any(person not in {*self.heroes, *self.npcs}
+                       for person in self.worked_today)
+                or len(self.departed_today) != len(set(self.departed_today))
+                or any(person not in {*self.heroes, *self.npcs}
+                       for person in self.departed_today)):
+            raise ValueError('Registro diário de trabalho/saída inválido')
         if self.regional_horde_deck is not None:
             HordeDeck02.from_snapshot(self.regional_horde_deck)
         if any(v < 0 or not isinstance(v,int) for v in self.stock.values()):
@@ -175,14 +184,22 @@ class World:
                for location, items in self.unique_items_at_sites.items()):
             raise ValueError('Item único em local inválido')
         if any(h not in HEROES or state['xp'] > 100 or state['health'] < 0
+               or not isinstance(state.get('fatigue', 0), int)
+               or isinstance(state.get('fatigue', 0), bool)
+               or not 0 <= state.get('fatigue', 0) <= 3
                or not 0 <= state['actions'] <= DATA['rules']['actions']
                for h,state in self.heroes.items()):
-            raise ValueError('Herói inválido')
+            raise ValueError('Herói inválido; Fadiga deve ficar entre zero e três')
         if self.garden_worker is not None and self.garden_worker not in self.heroes:
             raise ValueError('Trabalhador de horta inválido')
         if any(hero not in self.heroes or points<0 for hero,points in self.guarding.items()):
             raise ValueError('Guarda inválida')
-        if any(n not in NPCS or not 1 <= state['level'] <= 3 for n,state in self.npcs.items()):
+        if any(n not in NPCS or not 1 <= state['level'] <= 3
+               or ('fatigue' in state and
+                   (not isinstance(state['fatigue'], int)
+                    or isinstance(state['fatigue'], bool)
+                    or not 0 <= state['fatigue'] <= 3))
+               for n,state in self.npcs.items()):
             raise ValueError('NPC inválido')
         if any(NPCS[n].get('source_hero_id') in self.heroes for n in self.npcs):
             raise ValueError('Fundador duplicado como NPC')
@@ -539,6 +556,8 @@ class World:
             if hero_id not in self.heroes or self.heroes[hero_id]['location'] != 'camp':
                 raise ValueError('Herói fora do abrigo')
             units += self.skill_bonus(hero_id,'build')
+            if hero_id not in self.worked_today:
+                self.worked_today.append(hero_id)
         self.projects[kind] += units
         if self.projects[kind] >= STRUCTURES[kind]['work']:
             self.structures[kind] = {'health': STRUCTURES[kind]['max_health'],'age':0}
@@ -558,6 +577,8 @@ class World:
         bonus=self.skill_bonus(hero_id,'repair') if hero_id is not None else 0
         self.structures[kind]['health']=min(STRUCTURES[kind]['max_health'],
                                            self.structures[kind]['health']+1+bonus)
+        if hero_id is not None and hero_id not in self.worked_today:
+            self.worked_today.append(hero_id)
         return True
 
     def use_structure(self, kind: str, hero_id: str | None = None) -> bool:
@@ -588,6 +609,8 @@ class World:
         for resource,amount in spec['cost'].items():
             self.stock[resource]-=amount
         self.used_structure_actions[kind]=self.day
+        if hero_id is not None and hero_id not in self.worked_today:
+            self.worked_today.append(hero_id)
         return True
 
     def establish_outpost(self, location_id: str, npc_id: str) -> bool:
@@ -750,8 +773,12 @@ class World:
             self.special_stock.remove(item)
         for h in hero_ids:
             self.heroes[h]['location'] = expedition_id
+            if h not in self.departed_today:
+                self.departed_today.append(h)
         for n in npc_ids:
             self.npcs[n]['location'] = expedition_id
+            if n not in self.departed_today:
+                self.departed_today.append(n)
         if self.continuous_campaign:
             self.daily_expeditions+=1
         self.log.append({'day':self.day,'expedition':expedition_id,
@@ -891,6 +918,15 @@ class World:
             raise ValueError('Não encerre o dia com expedição regional em andamento')
         if self.final_defense is not None and self.final_defense['status']=='active':
             raise ValueError('Resolva a defesa final antes do próximo dia')
+        if (self.garden_worker in self.heroes and 'garden' in self.structures
+                and self.structures['garden']['health'] > 0
+                and self.heroes[self.garden_worker]['location']=='camp'
+                and self.garden_worker not in self.worked_today):
+            self.worked_today.append(self.garden_worker)
+        for npc_id,person in self.npcs.items():
+            if (person.get('job') is not None and person.get('location')=='camp'
+                    and npc_id not in self.worked_today):
+                self.worked_today.append(npc_id)
         self.day += 1
         if self.continuous_campaign:
             self.regional_clock=0
@@ -936,10 +972,15 @@ class World:
             if hero['location']=='camp':
                 hero['combat_xp'] = 0
         if not any(missing.values()):
-            for person in [*self.heroes.values(),*self.npcs.values()]:
+            for hero_id,person in [*self.heroes.items(),*self.npcs.items()]:
                 if person.get('location')!='camp':
                     continue
                 person['fatigue']=max(0,person.get('fatigue',0)-1)
+                if (hero_id not in self.worked_today
+                        and hero_id not in self.departed_today):
+                    person['health']=min(3,person['health']+1)
+        self.worked_today=[]
+        self.departed_today=[]
         crisis = self._roll_crisis()
         result = {'day':self.day,'produced':produced,'missing':missing,'stock':dict(self.stock),'crisis':crisis}
         self.log.append(result)

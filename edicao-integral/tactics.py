@@ -449,7 +449,11 @@ class TacticalGame:
         self.state['noise']=[]
         later=[]
         for horde in self.state['announced']:
-            if horde['delay']>0:
+            if protected_market:
+                # The introductory round suspends all enemy activation and
+                # spawning; its pending announcements therefore do not tick.
+                later.append(horde)
+            elif horde['delay']>0:
                 horde['delay']-=1
                 later.append(horde)
             else:

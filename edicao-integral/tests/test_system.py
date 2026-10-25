@@ -57,6 +57,73 @@ class SystemTests(unittest.TestCase):
         for npc_id in list(system.NPCS)[:6]: self.assertTrue(w.recruit(npc_id))
         self.assertFalse(w.recruit(list(system.NPCS)[6]))
 
+    def test_save_rejects_fatigue_outside_rule_range(self):
+        for value in (-1, 4, 99, True):
+            w=world()
+            hero=next(iter(w.heroes))
+            w.heroes[hero]['fatigue']=value
+            with tempfile.TemporaryDirectory() as directory:
+                path=Path(directory)/'bad-fatigue.json'
+                with self.subTest(value=value), self.assertRaisesRegex(ValueError, 'Fadiga'):
+                    w.save(path)
+
+    def test_fed_hero_resting_without_work_or_expedition_recovers_wound_and_fatigue(self):
+        w=world(stock={'food':2,'water':2})
+        hero=next(iter(w.heroes))
+        w.heroes[hero].update(health=2,fatigue=2)
+        w.end_day()
+        self.assertEqual(w.heroes[hero]['health'],3)
+        self.assertEqual(w.heroes[hero]['fatigue'],1)
+
+    def test_fed_hero_who_worked_or_departed_recovers_fatigue_but_not_wound(self):
+        worked=world(stock={'food':2,'water':2,'scrap':1})
+        worker=next(iter(worked.heroes))
+        worked.heroes[worker].update(health=2,fatigue=2)
+        worked.structures['garden']={'health':1,'age':0}
+        self.assertTrue(worked.repair_structure('garden',hero_id=worker))
+        worked.end_day()
+        self.assertEqual(worked.heroes[worker]['health'],2)
+        self.assertEqual(worked.heroes[worker]['fatigue'],1)
+
+        traveled=world(stock={'food':2,'water':2})
+        traveler=next(iter(traveled.heroes))
+        traveled.heroes[traveler].update(health=2,fatigue=2)
+        traveled.open_expedition('trip',[traveler],'EXP-LOC-01')
+        traveled.advance_expedition('trip')
+        traveled.begin_return('trip')
+        traveled.advance_expedition('trip')
+        traveled.end_day()
+        self.assertEqual(traveled.heroes[traveler]['health'],2)
+        self.assertEqual(traveled.heroes[traveler]['fatigue'],1)
+
+    def test_daily_rest_eligibility_survives_save_load(self):
+        w=world(stock={'food':2,'water':2,'scrap':1})
+        hero=next(iter(w.heroes))
+        w.heroes[hero]['health']=2
+        w.structures['garden']={'health':1,'age':0}
+        self.assertTrue(w.repair_structure('garden',hero_id=hero))
+        with tempfile.TemporaryDirectory() as directory:
+            path=Path(directory)/'daily-state.json'
+            w.save(path)
+            copy=system.World.load(path)
+        copy.end_day()
+        self.assertEqual(copy.heroes[hero]['health'],2)
+
+    def test_npc_rest_and_assigned_work_affect_injury_recovery(self):
+        w=world(stock={'food':3,'water':3})
+        npc_id='EXP-NPC-01'
+        self.assertTrue(w.recruit(npc_id))
+        w.npcs[npc_id].update(health=1,fatigue=2)
+        w.end_day()
+        self.assertEqual(w.npcs[npc_id]['health'],2)
+        self.assertEqual(w.npcs[npc_id]['fatigue'],1)
+        w.npcs[npc_id].update(health=1,fatigue=2)
+        w.deposit('food',3);w.deposit('water',3)
+        w.assign(npc_id,system.NPCS[npc_id]['job'])
+        w.end_day()
+        self.assertEqual(w.npcs[npc_id]['health'],1)
+        self.assertEqual(w.npcs[npc_id]['fatigue'],1)
+
     def test_multiple_equipment_instances_save_and_spatial_rules(self):
         w=world(stock={'food':4,'water':4})
         a,b=list(w.heroes)

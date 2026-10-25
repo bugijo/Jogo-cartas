@@ -57,6 +57,22 @@ class TacticalTests(unittest.TestCase):
         self.assertGreaterEqual(len(result['spawned']),1)
         self.assertTrue(all(e['health']>0 for e in game.snapshot()['enemies'].values()))
 
+    def test_first_market_tutorial_round_suppresses_announced_horde_without_advancing_it(self):
+        w=self.setup_world(seed=5)
+        # Minimal campaign receipt isolates the tutorial rule; no victory is
+        # claimed by this tactical regression test.
+        w.cistern_record={'status':'verified_victory','source':'cistern02',
+                          'migration':{'receipt':'test-only'}}
+        game=TacticalGame.start(w,'m','market_intro')
+        game.announce_horde('common',0)
+        result=game.activate()
+        self.assertEqual(result['spawned'],[])
+        self.assertEqual(game.state['announced'],[{'kind':'common','delay':0}])
+        self.assertEqual(game.state['pressure'],1)
+        result=game.activate()
+        self.assertGreaterEqual(len(result['spawned']),1)
+        self.assertEqual(game.state['announced'],[])
+
     def test_dead_hero_cannot_attack_and_return_requires_encounter_exit(self):
         w=self.setup_world()
         game=TacticalGame.start(w,'m','market_intro')
