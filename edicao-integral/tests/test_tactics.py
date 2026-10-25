@@ -23,8 +23,11 @@ class TacticalTests(unittest.TestCase):
         w=self.setup_world()
         game=TacticalGame.start(w,'m','market_intro')
         self.assertEqual(len(TACTICS['maps']['market_intro']['zones']),16)
+        self.assertNotEqual(game.path_to('ZC-HER-0002',5),[1,5])
+        self.assertEqual(game.exit_zone,1)
         with self.assertRaises(ValueError):game.move('ZC-HER-0002',5)
         self.assertTrue(game.breach('ZC-HER-0002',1,5,'crowbar'))
+        self.assertEqual(game.path_to('ZC-HER-0002',5),[1,5])
         self.assertEqual(game.move('ZC-HER-0002',5),5)
         self.assertEqual(game.snapshot()['heroes']['ZC-HER-0002'],5)
 
@@ -91,7 +94,7 @@ class TacticalTests(unittest.TestCase):
         with self.assertRaises(ValueError):w.search('m')
         game.breach('ZC-HER-0002',1,5,'crowbar')
         game.move('ZC-HER-0002',5)
-        self.assertTrue(w.search('m'))
+        self.assertTrue(game.search('ZC-HER-0002'))
 
     def test_corrupt_encounter_cannot_be_restored(self):
         w=self.setup_world()

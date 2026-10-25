@@ -33,18 +33,45 @@ class Arc2:
                            for entry in self.world.log)
                 or self.world.flags.get('access_card')):
             raise ValueError('Cartão inacessível')
+        continuous=bool((self.world.cistern_record or {}).get('migration',{}).get('receipt'))
+        if continuous:
+            encounter=self.world.encounters.get(expedition_id)
+            searchers={entry.get('hero') for entry in self.world.log
+                       if entry.get('expedition')==expedition_id
+                       and entry.get('location')==location and entry.get('action')=='search'}
+            carrier=next((hero_id for hero_id in sorted(searchers)
+                          if encounter and hero_id in encounter['heroes']
+                          and encounter['heroes'][hero_id] in encounter['search_zones']
+                          and self.world.heroes[hero_id]['health']>0),None)
+            capacity=(6*len(exp.heroes) if not exp.vehicle_id else
+                      next(v['cargo_capacity'] for v in DATA['vehicles']
+                           if v['id']==exp.vehicle_id))
+            if (carrier is None or 'access_card' in self.world.special_stock
+                    or any('access_card' in other.special_cargo
+                           for other in self.world.expeditions.values())
+                    or sum(exp.cargo.values())+len(exp.special_cargo)+1>capacity):
+                raise ValueError('Cartão não está no alcance/sem carga')
+            exp.special_cargo.append('access_card')
         self.world.flags['access_card']=True
         self.world.log.append({'day':self.world.day,'mission':card['id'],'result':'card'})
 
     def authorize_installation(self,expedition_id:str,hero_ids:list[str],vehicle_id:str) -> None:
         card=ARC_CARDS['EXP-MIS-104']
+        migration=(self.world.cistern_record or {}).get('migration', {})
+        continuous=bool(migration.get('receipt'))
         if (not self.world.cistern_verified or not self.world.flags.get('radio_code')
                 or not self.world.flags.get('access_card')
                 or self.world.flags.get('military_access')):
             raise ValueError('Código/cartão/missão ausente')
+        if continuous and vehicle_id != 'EXP-VEI-02':
+            raise ValueError('Campanha contínua exige a van canônica recuperada no Posto')
+        if continuous and 'access_card' not in self.world.special_stock:
+            raise ValueError('Campanha contínua exige cartão de acesso transportado ao abrigo')
         self.world.flags['military_access']=True
         try:
-            self.world.open_expedition(expedition_id,hero_ids,card['location'],vehicle_id=vehicle_id)
+            self.world.open_expedition(
+                expedition_id,hero_ids,card['location'],vehicle_id=vehicle_id,
+                special_items=['access_card'] if continuous else None)
         except ValueError:
             del self.world.flags['military_access']
             raise

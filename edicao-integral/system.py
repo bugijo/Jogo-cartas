@@ -68,6 +68,7 @@ class World:
     gear: dict[str, dict] = field(default_factory=dict)
     continuity_people: list[dict] = field(default_factory=list)
     continuity_beds: int = 0
+    unique_items_at_sites: dict[str, list[str]] = field(default_factory=dict)
     camp_xp: int = 0
     clues: int = 0
     used_structure_actions: dict[str, int] = field(default_factory=dict)
@@ -147,6 +148,9 @@ class World:
             raise ValueError('Pessoas/capacidade de continuidade inválidas')
         if any(v < 0 for v in self.searches.values()):
             raise ValueError('Contador de busca negativo')
+        if any(location not in LOCATIONS or any(item != 'battery' for item in items)
+               for location, items in self.unique_items_at_sites.items()):
+            raise ValueError('Item único em local inválido')
         if any(h not in HEROES or state['xp'] > 100 or state['health'] < 0
                or not 0 <= state['actions'] <= DATA['rules']['actions']
                for h,state in self.heroes.items()):
@@ -170,7 +174,7 @@ class World:
                     or any(n not in self.npcs or self.npcs[n]['location'] != key
                            for n in exp.crew)
                     or any(r not in RESOURCES or n < 0 for r,n in exp.cargo.items())
-                    or any(item!='transmitter' for item in exp.special_cargo)
+                    or any(item not in ('transmitter', 'battery') for item in exp.special_cargo)
                     or (exp.vehicle_id is None and sum(exp.cargo.values())+len(exp.special_cargo) > 6 * len(exp.heroes))):
                 raise ValueError('Expedição/carga inválida')
             if exp.vehicle_id is not None:
@@ -187,15 +191,31 @@ class World:
         if any(n['location'] != 'camp' for npc_id,n in self.npcs.items()
                if npc_id not in active_npcs):
             raise ValueError('NPC fora de expedição')
-        if any(vid not in VEHICLES or state['location'] not in ('camp',*(self.expeditions.keys()))
+        if any(vid not in VEHICLES or state['location'] not in
+               ('camp', 'EXP-LOC-07', *(self.expeditions.keys()))
                or not 0 <= state['health'] <= VEHICLES[vid]['health']
                for vid,state in self.vehicles.items()):
             raise ValueError('Veículo inválido')
-        if any(item!='transmitter' for item in self.special_stock):
+        canonical_van=self.vehicles.get('EXP-VEI-02')
+        if canonical_van and canonical_van['location']=='EXP-LOC-07':
+            repaired=(self.site_states.get('EXP-LOC-07',{}).get('van_state')=='operational'
+                      or any(expedition_id in self.encounters
+                             and self.encounters[expedition_id].get('map')=='gas_station_02'
+                             and self.encounters[expedition_id].get('van_state')=='operational'
+                             for expedition_id,expedition in self.expeditions.items()
+                             if expedition.destination=='EXP-LOC-07'))
+            if not repaired:
+                raise ValueError('Van canônica sem recibo de reparo no Posto')
+        if any(item not in ('transmitter', 'battery', 'access_card') for item in self.special_stock):
             raise ValueError('Peça de missão desconhecida')
-        if self.special_stock.count('transmitter')+sum(exp.special_cargo.count('transmitter')
-                                                      for exp in self.expeditions.values())>1:
-            raise ValueError('Peça única duplicada')
+        for unique_item in ('transmitter', 'battery', 'access_card'):
+            copies = (self.special_stock.count(unique_item)
+                      + sum(exp.special_cargo.count(unique_item)
+                            for exp in self.expeditions.values())
+                      + sum(items.count(unique_item)
+                            for items in self.unique_items_at_sites.values()))
+            if copies > 1:
+                raise ValueError('Peça única duplicada')
         if self.final_defense is not None:
             defense=self.final_defense
             defense_zones=set(TACTICS_DATA['maps']['camp_final']['zones'])
@@ -539,14 +559,27 @@ class World:
         exp = self.expeditions[expedition_id]
         if hero_id is not None and hero_id not in exp.heroes:
             raise ValueError('Herói fora da expedição')
+        continuous=bool((self.cistern_record or {}).get('migration',{}).get('receipt'))
+        if continuous and (hero_id is None or expedition_id not in self.encounters):
+            raise ValueError('Campanha contínua exige encontro tático para a busca')
         if exp.remaining != 0 or exp.returning:
             raise ValueError('Equipe não está explorando o local')
         encounter=self.encounters.get(expedition_id)
-        if encounter and not any(zone in encounter['search_zones']
-                                 and self.heroes[hero_id]['health']>0
-                                 for hero_id,zone in encounter['heroes'].items()):
-            raise ValueError('Equipe fora da área de busca')
+        if hero_id is not None:
+            actor=self.heroes[hero_id]
+            if actor['health']<1 or actor['actions']<1:
+                raise ValueError('Herói sem ação disponível para buscar')
+            if encounter and encounter['heroes'].get(hero_id) not in encounter['search_zones']:
+                raise ValueError('Herói fora da área de busca')
+        elif encounter:
+            raise ValueError('Busca tática exige identificar o herói')
+        elif not continuous:
+            # The pre-tactical one-day simulator keeps this abstract call for
+            # regression compatibility; campaign replays use the action API.
+            pass
         location_id = exp.destination
+        if location_id == 'EXP-LOC-07':
+            raise ValueError('Posto exige retirada tática por PA')
         if self.searches[location_id] <= 0:
             return {}
         maximum = VEHICLES[exp.vehicle_id]['cargo_capacity'] if exp.vehicle_id else 6 * len(exp.heroes)
@@ -555,7 +588,7 @@ class World:
             return {}
         self.searches[location_id] -= 1
         self.log.append({'day':self.day,'expedition':expedition_id,
-                         'location':location_id,'action':'search'})
+                         'location':location_id,'action':'search','hero':hero_id})
         loot = LOCATIONS[location_id]['loot']
         found = {}
         scouts=sum(self.npcs[n]['level'] for n in exp.crew
@@ -567,10 +600,16 @@ class World:
             exp.cargo[resource] = exp.cargo.get(resource,0) + found[resource]
             capacity -= found[resource]
             scouts=0
+        if hero_id is not None:
+            self.heroes[hero_id]['actions']-=1
         return found
 
     def recover_vehicle(self, vehicle_id: str, expedition_id: str) -> bool:
         if vehicle_id not in VEHICLES or vehicle_id in self.vehicles or expedition_id not in self.expeditions:
+            return False
+        # EXP-VEI-02 is the canonical maintenance van. It is recovered only by
+        # inspection, a carried Workshop battery, and the Posto repair action.
+        if vehicle_id == 'EXP-VEI-02':
             return False
         exp=self.expeditions[expedition_id]
         spec=VEHICLES[vehicle_id]
@@ -586,12 +625,19 @@ class World:
         return True
 
     def open_expedition(self, expedition_id: str, hero_ids: list[str], location_id: str,
-                        vehicle_id: str | None = None, npc_ids: list[str] | None = None) -> None:
+                        vehicle_id: str | None = None, npc_ids: list[str] | None = None,
+                        special_items: list[str] | None = None) -> None:
         npc_ids = npc_ids or []
+        special_items = special_items or []
         if location_id=='EXP-LOC-06' and (not self.cistern_verified or not vehicle_id or not all(
                 self.flags.get(key) for key in ('radio_code','access_card','military_access'))):
             raise ValueError('Instalação exige código, cartão, missão e veículo')
-        if expedition_id in self.expeditions or not hero_ids or len(set(hero_ids)) != len(hero_ids) or location_id not in LOCATIONS:
+        if (expedition_id in self.expeditions or not hero_ids
+                or len(set(hero_ids)) != len(hero_ids) or location_id not in LOCATIONS
+                or len(set(special_items)) != len(special_items)
+                or any(item not in ('battery', 'access_card') or item not in self.special_stock
+                       for item in special_items)
+                or len(special_items) > 6 * len(hero_ids)):
             raise ValueError('Expedição inválida')
         if any(h not in self.heroes or self.heroes[h]['location'] != 'camp' for h in hero_ids):
             raise ValueError('Herói indisponível')
@@ -615,7 +661,10 @@ class World:
             self.vehicles[vehicle_id]['location'] = expedition_id
         self.expeditions[expedition_id] = Expedition(expedition_id,hero_ids,location_id,distance,segments,
                                                     vehicle_id=vehicle_id,crew=npc_ids,
-                                                    segment_cost=segments)
+                                                    segment_cost=segments,
+                                                    special_cargo=list(special_items))
+        for item in special_items:
+            self.special_stock.remove(item)
         for h in hero_ids:
             self.heroes[h]['location'] = expedition_id
         for n in npc_ids:
@@ -645,10 +694,27 @@ class World:
         del self.expeditions[expedition_id]
         return 'returned'
 
-    def begin_return(self, expedition_id: str) -> None:
+    def begin_return(self, expedition_id: str, vehicle_id: str | None = None) -> None:
         exp = self.expeditions[expedition_id]
         if exp.remaining != 0 or exp.returning or expedition_id in self.encounters:
             raise ValueError('Retorno indisponível')
+        if vehicle_id is not None:
+            if vehicle_id not in VEHICLES or vehicle_id not in self.vehicles:
+                raise ValueError('Veículo indisponível')
+            vehicle = self.vehicles[vehicle_id]
+            if (exp.destination != 'EXP-LOC-07' or vehicle_id != 'EXP-VEI-02'
+                    or vehicle['location'] != exp.destination or vehicle['health'] < 1
+                    or self.site_states.get(exp.destination, {}).get('van_state') != 'operational'
+                    or len(exp.heroes) + len(exp.crew) > VEHICLES[vehicle_id]['seats']):
+                raise ValueError('Van operacional indisponível no Posto')
+            fuel_cost = exp.segment_cost * VEHICLES[vehicle_id]['fuel_per_segment']
+            if exp.cargo.get('fuel', 0) < fuel_cost:
+                raise ValueError('Combustível físico insuficiente para retorno da van')
+            exp.cargo['fuel'] -= fuel_cost
+            if exp.cargo['fuel'] == 0:
+                del exp.cargo['fuel']
+            exp.vehicle_id = vehicle_id
+            vehicle['location'] = expedition_id
         exp.returning = True
         exp.remaining = exp.segment_cost
 

@@ -10,6 +10,7 @@ sys.path.insert(0, str(ROOT))
 from integrated_campaign import IntegratedCampaign
 from system import HEROES, World
 from verify_campaign_player02 import execute
+from verify_continuous_campaign import execute as execute_continuous
 
 
 class CampaignTransitionTests(unittest.TestCase):
@@ -76,13 +77,24 @@ class CampaignTransitionTests(unittest.TestCase):
         self.assertEqual(restored.world.stock, game.world.stock)
         self.assertEqual(restored.transition_to_last_transmission(), receipt)
 
-    def test_first_real_second_arc_gate_is_blocked_by_zero_legal_clues(self):
-        game = self.completed_seed22()
-        game.transition_to_last_transmission()
-        self.assertEqual(game.world.clues, 0)
-        with self.assertRaisesRegex(ValueError, "Frequência indisponível"):
-            game.decode_radio()
-        self.assertFalse(game.world.flags.get("radio_code", False))
+    def test_replay_reaches_canonical_van_but_blocks_on_regional_fuel_deficit(self):
+        replay = execute_continuous(22)
+        last = replay["last_transmission"]
+        self.assertTrue(last["radio_code"])
+        self.assertTrue(last["access_card"])
+        self.assertEqual(last["daily_clues"], [1, 1])
+        self.assertEqual(last["daily_missing"], [
+            {"food": 0, "water": 0}, {"food": 0, "water": 0}])
+        self.assertEqual(last["fuel"], 7)
+        self.assertEqual(last["fuel_cards_taken"], 8)
+        self.assertTrue(last["battery_delivered_to_posto"])
+        self.assertTrue(last["van_recovered"])
+        self.assertEqual(last["vehicle"]["EXP-VEI-02"]["location"], "camp")
+        self.assertEqual(last["military_fuel_required"], 12)
+        self.assertEqual(last["fuel_shortfall"], 5)
+        self.assertIsNone(last["post_location_error"])
+        self.assertEqual(last["military_vehicle_error"],
+                         "Combustível insuficiente para ida e volta")
 
     def test_all_twelve_cistern_founders_have_world_identity_profiles(self):
         for founder_id in (f"ZC-HER-{number:04d}" for number in range(1, 13)):

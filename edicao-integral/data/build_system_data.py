@@ -99,6 +99,9 @@ locations = [
     ('hospital','Hospital','urban',3,{'medicine':2,'water':1},'medium'),
     ('station','Estação','urban',2,{'water':2,'scrap':1},'far'),
     ('military','Instalação militar','urban',0,{},'far'),
+    # Fuel is taken as eight unique physical cards by 1-PA tactical actions;
+    # the abstract World.search API is intentionally disabled for this site.
+    ('gas_station','Posto','urban',8,{},'medium'),
 ]
 locations = [{'id':f'EXP-LOC-{i:02d}','kind':kind,'name':name,'renewal':renewal,
               'searches':searches,'loot':loot,'distance':distance}
@@ -132,5 +135,8 @@ data = {'edition':'experimental-1','attributes':base['attributes'],
         'locations':locations,'crises':crises,
         'vehicles':[{'id':'EXP-VEI-01','name':'Furgão recuperado',
                      'seats':4,'cargo_capacity':12,'fuel_per_segment':1,
-                     'health':3}]}
+                     'health':3},
+                    {'id':'EXP-VEI-02','name':'Van de manutenção',
+                     'seats':6,'cargo_capacity':12,'fuel_per_segment':2,
+                     'health':3,'canonical_source':'RULES.md §64'}]}
 (root / 'system.json').write_text(json.dumps(data,ensure_ascii=False,indent=2)+'\n',encoding='utf-8')

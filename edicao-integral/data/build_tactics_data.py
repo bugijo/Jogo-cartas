@@ -8,7 +8,7 @@ MAPPING={
     'Mercado':('market_intro','EXP-LOC-02'),
     'Hospital':('hospital_02','EXP-LOC-04'),
     'Oficina':('workshop_02','EXP-LOC-03'),
-    'Posto':('gas_station_02',None),
+    'Posto':('gas_station_02','EXP-LOC-07'),
     'Condomínio':('condominium_02',None),
     'Estação':('station_02','EXP-LOC-05'),
 }

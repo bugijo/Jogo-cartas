@@ -102,9 +102,13 @@ def play_market_day(seed:int,strategy:str='balanced',team_size:int=2) -> dict:
         game.breach(heroes[1],1,5,'crowbar')
         game.move(heroes[1],5)
         before_search=world.searches['EXP-LOC-02']
-        loot=world.search('market')
+        if world.heroes[heroes[1]]['actions']<1:
+            game.activate()
+        loot=game.search(heroes[1])
         if strategy=='explorer':
-            extra=world.search('market')
+            if world.heroes[heroes[1]]['actions']<1:
+                game.activate()
+            extra=game.search(heroes[1])
             for resource,amount in extra.items():
                 loot[resource]=loot.get(resource,0)+amount
         searches_used=before_search-world.searches['EXP-LOC-02']

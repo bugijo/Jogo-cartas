@@ -1079,6 +1079,15 @@
       "searches": 0,
       "loot": {},
       "distance": "far"
+    },
+    {
+      "id": "EXP-LOC-07",
+      "kind": "gas_station",
+      "name": "Posto",
+      "renewal": "urban",
+      "searches": 8,
+      "loot": {},
+      "distance": "medium"
     }
   ],
   "crises": [
@@ -1152,6 +1161,15 @@
       "cargo_capacity": 12,
       "fuel_per_segment": 1,
       "health": 3
+    },
+    {
+      "id": "EXP-VEI-02",
+      "name": "Van de manutenção",
+      "seats": 6,
+      "cargo_capacity": 12,
+      "fuel_per_segment": 2,
+      "health": 3,
+      "canonical_source": "RULES.md §64"
     }
   ]
 }

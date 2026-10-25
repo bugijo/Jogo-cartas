@@ -1090,6 +1090,30 @@ class IntegratedCampaign:
             "fuel": len(self.fuel_cards),
         }
         projected = World.new(self.seed, list(self.founders), stock)
+        battery_delivered = self.battery_available
+        battery_lost = any(
+            objective in self.lost_objectives
+            for objective in ("Oficina:Bateria", "oficina:Bateria:1")
+        )
+        battery_receipted = any(
+            receipt.get("part") == "Bateria"
+            or receipt.get("item") == "Bateria"
+            for expedition in self.mission_receipts
+            for receipt in expedition.get("receipts", [])
+        )
+        if battery_delivered and battery_lost:
+            raise ValueError("Bateria marcada simultaneamente entregue e perdida")
+        if battery_delivered:
+            projected.special_stock.append("battery")
+        elif battery_lost:
+            # The canonical lost-objective ledger is retained in the source
+            # archive; never respawn a unique part after an emergency loss.
+            pass
+        elif not battery_receipted:
+            # The seed-22 victory left the unique guaranteed Oficina battery
+            # untouched. It remains at its canonical map objective, not in the
+            # shelter inventory.
+            projected.unique_items_at_sites["EXP-LOC-03"] = ["battery"]
         source_people = [deepcopy(person) for person in self.cistern.people]
         for hero_id in self.founders:
             person = people[hero_id]
@@ -1158,6 +1182,10 @@ class IntegratedCampaign:
                 "equipment_projected": equipment_projection,
                 "equipment_archived": equipment_archived,
                 "battery_archived": self.battery_available,
+                "battery_projection": ("camp_stock" if battery_delivered else
+                                       "lost_unavailable" if battery_lost else
+                                       "workshop_objective" if not battery_receipted else
+                                       "source_receipt_requires_review"),
                 "vehicle_archived": self.van_state,
                 "unspent_clues": 0,
             },

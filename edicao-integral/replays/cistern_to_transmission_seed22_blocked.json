@@ -1,6 +1,6 @@
 {
   "schema": 1,
-  "status": "blocked_before_radio",
+  "status": "blocked_at_military_fuel",
   "replay": {
     "cistern": {
       "status": "verified_victory",
@@ -42,15 +42,226 @@
       ],
       "clues": 0,
       "access_card": true,
-      "radio_code": false,
+      "radio_code": true,
+      "recruited_researcher": true,
+      "daily_clues": [
+        1,
+        1
+      ],
+      "daily_missing": [
+        {
+          "food": 0,
+          "water": 0
+        },
+        {
+          "food": 0,
+          "water": 0
+        }
+      ],
+      "market_searches": [
+        {
+          "food": 2,
+          "water": 1
+        },
+        {
+          "food": 2,
+          "water": 1
+        },
+        {
+          "food": 2,
+          "water": 1
+        },
+        {
+          "food": 2,
+          "water": 1
+        }
+      ],
       "station_search": {
         "water": 2,
         "scrap": 1
       },
-      "fuel": 0,
-      "vehicle": {},
-      "day": 0,
+      "workshop_searches": [
+        {
+          "scrap": 2,
+          "fuel": 1
+        },
+        {
+          "scrap": 2,
+          "fuel": 1
+        },
+        {
+          "scrap": 2,
+          "fuel": 1
+        }
+      ],
+      "fuel": 7,
+      "vehicle": {
+        "EXP-VEI-02": {
+          "location": "camp",
+          "health": 3
+        }
+      },
+      "battery_delivered_to_posto": true,
+      "fuel_cards_taken": 8,
+      "van_recovered": true,
+      "van_repair_attempts": [
+        {
+          "hero": "ZC-HER-0001",
+          "roll": 1,
+          "technique": 3,
+          "success": false,
+          "battery_consumed": false
+        },
+        {
+          "hero": "ZC-HER-0003",
+          "roll": 5,
+          "technique": 3,
+          "success": true,
+          "battery_consumed": true
+        }
+      ],
+      "posto_return": "van",
+      "military_fuel_required": 12,
+      "fuel_shortfall": 5,
+      "day": 2,
       "campaign_actions": [
+        {
+          "action": "open_expedition",
+          "destination": "EXP-LOC-02"
+        },
+        {
+          "action": "advance_expedition",
+          "result": "arrived"
+        },
+        {
+          "action": "begin_return",
+          "expedition": "continuous-seed22-market"
+        },
+        {
+          "action": "search",
+          "destination": "EXP-LOC-02",
+          "result": {
+            "food": 2,
+            "water": 1
+          }
+        },
+        {
+          "action": "search",
+          "destination": "EXP-LOC-02",
+          "result": {
+            "food": 2,
+            "water": 1
+          }
+        },
+        {
+          "action": "search",
+          "destination": "EXP-LOC-02",
+          "result": {
+            "food": 2,
+            "water": 1
+          }
+        },
+        {
+          "action": "search",
+          "destination": "EXP-LOC-02",
+          "result": {
+            "food": 2,
+            "water": 1
+          }
+        },
+        {
+          "action": "move_to_exit",
+          "paths": {
+            "ZC-HER-0001": [
+              12,
+              8,
+              4,
+              3,
+              2,
+              1
+            ],
+            "ZC-HER-0003": [
+              1
+            ]
+          }
+        },
+        {
+          "action": "advance_expedition",
+          "result": "returned"
+        },
+        {
+          "action": "recruit",
+          "npc": "EXP-NPC-02",
+          "result": true
+        },
+        {
+          "action": "assign",
+          "npc": "EXP-NPC-02",
+          "job": "teaching"
+        },
+        {
+          "action": "advance_day",
+          "result": {
+            "day": 1,
+            "produced": {
+              "food": 0,
+              "water": 0,
+              "wood": 0,
+              "scrap": 0,
+              "medicine": 0,
+              "fuel": 0,
+              "ammo": 0
+            },
+            "missing": {
+              "food": 0,
+              "water": 0
+            },
+            "stock": {
+              "food": 5,
+              "water": 11,
+              "wood": 0,
+              "scrap": 0,
+              "medicine": 2,
+              "fuel": 0,
+              "ammo": 0
+            },
+            "crisis": null
+          }
+        },
+        {
+          "action": "advance_day",
+          "result": {
+            "day": 2,
+            "produced": {
+              "food": 0,
+              "water": 0,
+              "wood": 0,
+              "scrap": 0,
+              "medicine": 0,
+              "fuel": 0,
+              "ammo": 0
+            },
+            "missing": {
+              "food": 0,
+              "water": 0
+            },
+            "stock": {
+              "food": 1,
+              "water": 7,
+              "wood": 0,
+              "scrap": 0,
+              "medicine": 2,
+              "fuel": 0,
+              "ammo": 0
+            },
+            "crisis": null
+          }
+        },
+        {
+          "action": "decode_radio",
+          "result": "radio_code",
+          "clues_spent": 2
+        },
         {
           "action": "open_expedition",
           "destination": "EXP-LOC-05"
@@ -69,6 +280,7 @@
         },
         {
           "action": "search",
+          "destination": "EXP-LOC-05",
           "result": {
             "water": 2,
             "scrap": 1
@@ -79,7 +291,24 @@
           "result": "access_card"
         },
         {
-          "action": "begin_return"
+          "action": "move_to_exit",
+          "paths": {
+            "ZC-HER-0001": [
+              12,
+              8,
+              4,
+              3,
+              2,
+              1
+            ],
+            "ZC-HER-0003": [
+              1
+            ]
+          }
+        },
+        {
+          "action": "begin_return",
+          "expedition": "continuous-seed22-station"
         },
         {
           "action": "advance_expedition",
@@ -94,11 +323,278 @@
           "result": "returned"
         },
         {
-          "action": "decode_radio",
-          "blocked": "Frequência indisponível"
+          "action": "open_expedition",
+          "destination": "EXP-LOC-03"
+        },
+        {
+          "action": "advance_expedition",
+          "result": "travel"
+        },
+        {
+          "action": "advance_expedition",
+          "result": "arrived"
+        },
+        {
+          "action": "search",
+          "destination": "EXP-LOC-03",
+          "result": {
+            "scrap": 2,
+            "fuel": 1
+          }
+        },
+        {
+          "action": "search",
+          "destination": "EXP-LOC-03",
+          "result": {
+            "scrap": 2,
+            "fuel": 1
+          }
+        },
+        {
+          "action": "search",
+          "destination": "EXP-LOC-03",
+          "result": {
+            "scrap": 2,
+            "fuel": 1
+          }
+        },
+        {
+          "action": "move_to_exit",
+          "paths": {
+            "ZC-HER-0001": [
+              12,
+              8,
+              4,
+              3,
+              2,
+              1
+            ],
+            "ZC-HER-0003": [
+              1
+            ]
+          }
+        },
+        {
+          "action": "begin_return",
+          "expedition": "continuous-seed22-workshop"
+        },
+        {
+          "action": "advance_expedition",
+          "result": "travel"
+        },
+        {
+          "action": "advance_expedition",
+          "result": "returned"
+        },
+        {
+          "action": "open_expedition",
+          "destination": "EXP-LOC-03"
+        },
+        {
+          "action": "advance_expedition",
+          "result": "travel"
+        },
+        {
+          "action": "advance_expedition",
+          "result": "arrived"
+        },
+        {
+          "action": "move",
+          "hero": "ZC-HER-0001",
+          "path": [
+            1,
+            2,
+            3
+          ]
+        },
+        {
+          "action": "breach",
+          "hero": "ZC-HER-0001",
+          "edge": [
+            3,
+            7
+          ],
+          "uses": 2
+        },
+        {
+          "action": "move",
+          "hero": "ZC-HER-0001",
+          "path": [
+            3,
+            7
+          ]
+        },
+        {
+          "action": "pickup_unique_item",
+          "item": "battery",
+          "zone": 7,
+          "pa": 1
+        },
+        {
+          "action": "move",
+          "hero": "ZC-HER-0001",
+          "path": [
+            7,
+            3,
+            2,
+            1
+          ]
+        },
+        {
+          "action": "return_expedition",
+          "delivered": "battery",
+          "travel": [
+            "travel",
+            "returned"
+          ]
+        },
+        {
+          "action": "open_expedition",
+          "destination": "EXP-LOC-07",
+          "special_cargo": [
+            "battery"
+          ]
+        },
+        {
+          "action": "advance_expedition",
+          "result": "travel"
+        },
+        {
+          "action": "advance_expedition",
+          "result": "arrived"
+        },
+        {
+          "action": "move",
+          "hero": "ZC-HER-0001",
+          "path": [
+            1,
+            2,
+            3,
+            4,
+            8,
+            12,
+            11,
+            7
+          ]
+        },
+        {
+          "action": "pickup_fuel_card",
+          "id": "EXP-LOC-07:Combustível:1",
+          "hero": "ZC-HER-0001",
+          "zone": 7,
+          "cargo_fuel": 1
+        },
+        {
+          "action": "pickup_fuel_card",
+          "id": "EXP-LOC-07:Combustível:2",
+          "hero": "ZC-HER-0001",
+          "zone": 7,
+          "cargo_fuel": 2
+        },
+        {
+          "action": "pickup_fuel_card",
+          "id": "EXP-LOC-07:Combustível:3",
+          "hero": "ZC-HER-0001",
+          "zone": 7,
+          "cargo_fuel": 3
+        },
+        {
+          "action": "pickup_fuel_card",
+          "id": "EXP-LOC-07:Combustível:4",
+          "hero": "ZC-HER-0001",
+          "zone": 7,
+          "cargo_fuel": 4
+        },
+        {
+          "action": "pickup_fuel_card",
+          "id": "EXP-LOC-07:Combustível:5",
+          "hero": "ZC-HER-0001",
+          "zone": 7,
+          "cargo_fuel": 5
+        },
+        {
+          "action": "pickup_fuel_card",
+          "id": "EXP-LOC-07:Combustível:6",
+          "hero": "ZC-HER-0001",
+          "zone": 7,
+          "cargo_fuel": 6
+        },
+        {
+          "action": "pickup_fuel_card",
+          "id": "EXP-LOC-07:Combustível:7",
+          "hero": "ZC-HER-0001",
+          "zone": 7,
+          "cargo_fuel": 7
+        },
+        {
+          "action": "pickup_fuel_card",
+          "id": "EXP-LOC-07:Combustível:8",
+          "hero": "ZC-HER-0001",
+          "zone": 7,
+          "cargo_fuel": 8
+        },
+        {
+          "action": "inspect_van",
+          "zone": 7,
+          "pa": 1
+        },
+        {
+          "action": "repair_van",
+          "hero": "ZC-HER-0001",
+          "roll": 1,
+          "technique": 3,
+          "success": false,
+          "battery_consumed": false
+        },
+        {
+          "action": "repair_van",
+          "hero": "ZC-HER-0003",
+          "roll": 5,
+          "technique": 3,
+          "success": true,
+          "battery_consumed": true
+        },
+        {
+          "action": "move_to_exit",
+          "paths": {
+            "ZC-HER-0001": [
+              7,
+              11,
+              12,
+              8,
+              4,
+              3,
+              2,
+              1
+            ],
+            "ZC-HER-0003": [
+              7,
+              11,
+              12,
+              8,
+              4,
+              3,
+              2,
+              1
+            ]
+          }
+        },
+        {
+          "action": "return_by_van",
+          "fuel_spent_from_cargo": 4,
+          "result": [
+            "travel",
+            "returned"
+          ]
+        },
+        {
+          "action": "authorize_installation",
+          "blocked": "Combustível insuficiente para ida e volta"
         }
       ],
-      "blocking_requirement": "duas pistas para decifrar o rádio"
+      "blocking_requirement": "combustível insuficiente para ida e volta à instalação militar",
+      "post_location_error": null,
+      "military_vehicle_error": "Combustível insuficiente para ida e volta"
     }
   }
 }
