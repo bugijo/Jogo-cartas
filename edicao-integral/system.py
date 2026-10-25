@@ -174,7 +174,8 @@ class World:
                     or any(n not in self.npcs or self.npcs[n]['location'] != key
                            for n in exp.crew)
                     or any(r not in RESOURCES or n < 0 for r,n in exp.cargo.items())
-                    or any(item not in ('transmitter', 'battery') for item in exp.special_cargo)
+                    or any(item not in ('transmitter', 'battery', 'access_card')
+                           for item in exp.special_cargo)
                     or (exp.vehicle_id is None and sum(exp.cargo.values())+len(exp.special_cargo) > 6 * len(exp.heroes))):
                 raise ValueError('Expedição/carga inválida')
             if exp.vehicle_id is not None:
@@ -583,7 +584,10 @@ class World:
         if self.searches[location_id] <= 0:
             return {}
         maximum = VEHICLES[exp.vehicle_id]['cargo_capacity'] if exp.vehicle_id else 6 * len(exp.heroes)
-        capacity = maximum - sum(exp.cargo.values())
+        used_capacity = sum(exp.cargo.values()) + len(exp.special_cargo)
+        if used_capacity > maximum:
+            raise ValueError('Carga excede capacidade')
+        capacity = maximum - used_capacity
         if capacity <= 0:
             return {}
         self.searches[location_id] -= 1

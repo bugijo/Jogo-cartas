@@ -169,6 +169,25 @@ class PostoVehicleBridgeTests(unittest.TestCase):
                                         'EXP-VEI-01')
         self.assertNotIn('military_access', game.world.flags)
 
+    def test_authorized_military_expedition_with_card_survives_save_load(self):
+        world = World.new(5, ['ZC-HER-0001', 'ZC-HER-0002'],
+                          {'food': 2, 'water': 2, 'fuel': 12})
+        world.cistern_record = {
+            'status': 'verified_victory', 'source': 'cistern02',
+            'migration': {'receipt': {'id': 'migration-fixture'}},
+        }
+        world.flags.update(radio_code=True, access_card=True)
+        world.special_stock.append('access_card')
+        world.vehicles['EXP-VEI-02'] = {'location': 'camp', 'health': 3}
+        Arc2(world).authorize_installation('military', list(world.heroes), 'EXP-VEI-02')
+        self.assertEqual(world.expeditions['military'].special_cargo, ['access_card'])
+        with tempfile.TemporaryDirectory() as directory:
+            path = Path(directory) / 'military.json'
+            world.save(path)
+            restored = World.load(path)
+        self.assertEqual(restored.expeditions['military'].special_cargo, ['access_card'])
+        self.assertEqual(restored.flags['military_access'], True)
+
     def test_access_card_is_unique_cargo_and_must_return_before_authorization(self):
         hero = 'ZC-HER-0001'
         world = World.new(7, [hero], {'food': 2, 'water': 2})

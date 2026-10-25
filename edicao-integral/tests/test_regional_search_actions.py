@@ -49,6 +49,18 @@ class RegionalSearchActionTests(unittest.TestCase):
             tactical.search('ZC-HER-0001')
         self.assertEqual(world.searches['EXP-LOC-02'], 4)
 
+    def test_search_capacity_counts_unique_mission_cargo(self):
+        world = self.ready_world()
+        world.expeditions['market'].special_cargo.append('access_card')
+        tactical = TacticalGame.start(world, 'market', 'market_intro')
+        tactical.state['heroes']['ZC-HER-0001'] = 5
+        world.expeditions['market'].cargo['food'] = 5
+        before_actions = world.heroes['ZC-HER-0001']['actions']
+        found = tactical.search('ZC-HER-0001')
+        self.assertEqual(found, {})
+        self.assertEqual(world.heroes['ZC-HER-0001']['actions'], before_actions)
+        self.assertEqual(world.searches['EXP-LOC-02'], 4)
+
 
 if __name__ == '__main__':
     unittest.main()
