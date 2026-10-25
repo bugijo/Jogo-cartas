@@ -196,6 +196,22 @@ class SystemTests(unittest.TestCase):
         with self.assertRaisesRegex(ValueError,'Expedição no mesmo dia'):
             w.work_project('garden',hero_id=hero)
 
+    def test_incapacitated_or_fatigue_three_hero_cannot_work(self):
+        for field,value in (('health',0),('fatigue',3)):
+            w=world(stock={'food':8,'water':8,'wood':2,'scrap':2})
+            hero=next(iter(w.heroes))
+            w.heroes[hero][field]=value
+            self.assertTrue(w.start_project('garden'))
+            with self.subTest(field=field), self.assertRaisesRegex(ValueError,'não pode trabalhar'):
+                w.work_project('garden',hero_id=hero)
+
+    def test_garden_worker_requires_operational_garden(self):
+        w=world()
+        hero=next(iter(w.heroes))
+        with self.assertRaisesRegex(ValueError,'Horta ativa'):
+            w.assign_garden(hero)
+        self.assertEqual(w.worked_today,[])
+
     def test_individual_builder_skill_applies_to_project(self):
         w=world(n=6,stock={'food':8,'water':8,'wood':2,'scrap':2})
         self.assertTrue(w.start_project('garden'))

@@ -435,8 +435,8 @@ class World:
         return {'roll':roll,'adjusted':adjusted,'infected':infected}
 
     def assign_garden(self,hero_id:str) -> None:
-        if hero_id not in self.heroes or self.heroes[hero_id]['location']!='camp':
-            raise ValueError('Trabalhador indisponível')
+        if ('garden' not in self.structures or self.structures['garden']['health']<=0):
+            raise ValueError('Horta ativa ausente')
         self._require_working_hero(hero_id)
         self.garden_worker=hero_id
         self.worked_today.append(hero_id)
@@ -586,6 +586,8 @@ class World:
     def _require_working_hero(self, hero_id: str) -> None:
         if hero_id not in self.heroes or self.heroes[hero_id]['location']!='camp':
             raise ValueError('Herói fora do abrigo')
+        if self.heroes[hero_id]['health']<=0 or self.heroes[hero_id].get('fatigue',0)>=3:
+            raise ValueError('Herói incapacitado/fadigado não pode trabalhar')
         if hero_id in self.departed_today:
             raise ValueError('Expedição no mesmo dia impede trabalho')
         if hero_id in self.worked_today:
