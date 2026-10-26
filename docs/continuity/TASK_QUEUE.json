@@ -19,9 +19,9 @@
         "edicao-integral/tests/test_campaign_player02.py",
         "edicao-integral/verify_campaign_player02.py"
       ],
-      "status": "em_execucao",
-      "commit": "cdc8222",
-      "blocker": "Seed 22 permanece como regressão legal concluída; cobertura de outras sementes e grupos H3-H6 ainda não foi ampliada nesta unidade."
+      "status": "regressao_preservada",
+      "commit": "438beb9",
+      "blocker": "A Cisterna H2 seed22 segue certificada (5 dias/noites, 3 expedições, 98 decisões). Esta fila não amplia cobertura H3-H6 neste lote."
     },
     {
       "id": "P1-MIGRATE-CISTERN",
@@ -49,8 +49,8 @@
         "python -m unittest discover -s edicao-integral/tests -q"
       ],
       "status": "parcial_bloqueada",
-      "commit": "3e65893",
-      "blocker": "No lote local após 86a53ff, o replay legal da Cisterna migra e copia uma pista física da Célia, mas falha na extração da Estação em clock 7: mínimo de 13 PA individuais para entrada→Z14→retorno, máximo 9 em três ativações far. A hipótese pre-radio remove o ciclo lógico, não o bloqueio de mesa. Pistas e contato têm receipts, custos/unicidade, correções do controlador e save/load. Viagem/emboscada regional ainda sem implementação. Combustível extra Oficina 8 e EXP-MIS-104=12 estão em experimento, não regra oficial; retorno regional Posto=4 diverge do texto 0.2=2. Não há campanha contínua até defesa."
+      "commit": "438beb9",
+      "blocker": "Migração e persistência do shoe de Viagem preservadas. Grafo físico pre-radio ainda sofre limite tático: seed22 copia uma pista e termina em emergência no clock7. Há somente duas fontes; Célia fundadora/Vicente já acolhido podem remover uma fonte. Viagem regional ainda não revela nem resolve cartas. Estados Fome/Sede não são aplicados após escassez."
     },
     {
       "id": "P2-PLAYER-CAMPAIGNS",
@@ -68,9 +68,9 @@
         "simulador completo",
         "auditoria adversarial"
       ],
-      "status": "parcial_bloqueada",
-      "commit": "pendente",
-      "blocker": "Não há campanha completa contínua. O controlador executa expedições parciais legais; 8 perfis programáticos retornam ao Workshop com o cache experimental em seed 22, sem simular oito jogadores cognitivos. Célia não foi recrutada; a pista é obtida mas não extraída devido ao orçamento do relógio/mapa. Viagem/emboscadas regionais e recuperação de cartão/transmissor deixado no chão continuam pendentes."
+      "status": "bloqueada",
+      "commit": null,
+      "blocker": "Não existe campanha completa contínua. O replay atual só comprova Cisterna seed22 + migração + uma pista física e emergência. 320 testes passam; regressão também protege contra falso status de extração com inimigo bloqueando a saída. Posto/van/transmissor/defesa final não foram concluídos. O teste de Posto local é regressão de controlador, não replay canônico."
     },
     {
       "id": "P3-PHYSICAL-EDITION",
@@ -90,7 +90,51 @@
       ],
       "status": "bloqueada",
       "commit": null,
-      "blocker": "A integração e o ciclo da campanha continuam incompletos; nenhum PDF novo de campanha foi gerado."
+      "blocker": "Campanha regional e regras operacionais ainda incompletas; nenhum PDF novo de campanha produzido nesta retomada."
+    },
+    {
+      "id": "P1-REGIONAL-TRAVEL-SHOE",
+      "priority": 1,
+      "objective": "Ligar baralho persistente de Viagem a cada trecho regional, incluindo decisões, efeitos, emboscada, relógio e save/load.",
+      "depends_on": [
+        "P1-MIGRATE-CISTERN"
+      ],
+      "acceptance": [
+        "uma carta por trecho pago",
+        "efeitos/decisões resolvidos por API pública",
+        "sem repetir carta após save/load",
+        "extra noturna sem segmento adicional",
+        "emboscada não ignorada"
+      ],
+      "tests": [
+        "test_regional_player.py",
+        "test_campaign_transition.py",
+        "tests de Travel02/Ambush02"
+      ],
+      "status": "bloqueada_por_ponte_de_regras",
+      "commit": null,
+      "blocker": "O modelo regional não tem ainda carga física/campo equivalente para todos efeitos de Travel02, nem ponte para Ambush02; mapear sem decisão criaria efeitos ou recursos artificiais."
+    },
+    {
+      "id": "P1-CLUE-SOURCES-AND-EXTRACTION",
+      "priority": 1,
+      "objective": "Garantir duas fontes físicas disponíveis e rota legal de extração sem conceder pistas automaticamente.",
+      "depends_on": [
+        "P1-MIGRATE-CISTERN"
+      ],
+      "acceptance": [
+        "cobrir identidade de fundadores/resgates",
+        "duas pistas com recibos físicos",
+        "rota alcançável e extraível dentro do relógio",
+        "save/load preserva evidências"
+      ],
+      "tests": [
+        "test_arc2_narrative_and_fuel_experimental.py",
+        "verify_continuous_campaign.py"
+      ],
+      "status": "bloqueada",
+      "commit": null,
+      "blocker": "Só há fontes Célia/Vicente e a rota individual seed22 requer 13 PA contra 9 por ator; a divisão da equipe não foi ainda simulada. Escolher fonte/rota é decisão de conteúdo."
     }
   ]
 }

@@ -1,12 +1,27 @@
 # Auditoria independente: expedição 0.2, Posto e transição
 
+## Estado corrigido do texto canônico (2026-10-26)
+
+`RULES.md §11, linha 64` define a van a **2 combustíveis por trecho**;
+`RULES.md §5, linha 29` define rota curta como 1 trecho por sentido e longa
+como 2 por sentido. A menção “ir a pé ao Posto e voltar na van custa dois” em
+`CAMPAIGN.md` é a rota curta explicitamente descrita. “§64” usado em mensagens
+anteriores é uma referência de linha, não o número da seção. Corrigem-se abaixo
+as citações anteriores que diziam que §64 não existia ou atribuíam a regra a
+§11 sem o número de linha.
+
+`data/last_transmission.json` mantém, como hipótese **experimental**, o custo
+militar 12: distância regional `far=3` × ida/volta × 2 por trecho. Isso aplica
+o custo canônico à distância regional do protótipo, cuja equivalência com rota
+curta/longa de 0.2 ainda não está definida. O O2 do Posto continua sem
+combustível explícito.
+
 ## Atualização ativa — hipótese experimental da branch em 2026-10-26
 
-As fontes canônicas continuam inalteradas: a regra real é `RULES.md` §11
-(2 combustíveis por trecho), e a edição 0.2 diz que ir a pé ao Posto e voltar
-na van curta custa 2. A referência a §64 não existe neste manual (seções §1–14).
-O O2 do Posto continua sem quantidade de combustível: “um lote de cada
-provisão” não cria combustível.
+As fontes canônicas continuam inalteradas: a regra real é `RULES.md` §11,
+linha 64 (2 combustíveis por trecho), e a edição 0.2 diz que ir a pé ao Posto
+e voltar na van curta custa 2. O O2 do Posto continua sem quantidade de
+combustível: “um lote de cada provisão” não cria combustível.
 
 A configuração de teste adiciona **uma única reserva experimental de 8 unidades**
 no O1 da Oficina, zona 14, custo de 2 PA, ruído 3, uma retirada, carregada na
@@ -41,42 +56,43 @@ Oficina é a única fonte nova deste experimento, deliberadamente identificada e
 limitada. O segundo arco ainda não tem custo de combustível aprovado para
 impressão/distribuição.
 
-## Matriz documental atualizada — base remota `d3d6137` e rechecagem nesta execução
-
-**Referência §64 não existe na cópia atual de `RULES.md`.** O manual contém
-§§1–14; o custo da van está em §11 (“Veículo”), e os comprimentos de rota em §5.
-Quando o pedido cita §64, esta auditoria registra a divergência e usa o texto
-real de §11, sem inferir um documento ausente.
+## Matriz documental atualizada — checkout verificado em `438beb9`
 
 | Fonte / autoridade | Regra ou dado explícito | Consequência de combustível |
 | --- | --- | --- |
 | `RULES.md` §5, regra canônica 0.2 | Rota curta: 1 trecho de ida e 1 de volta; longa: 2+2. Cada trecho ocupa um segmento; combustível de veículo é adicional. | Ida e volta completas: 2 segmentos curtos ou 4 longos. |
-| `RULES.md` §11, regra canônica 0.2 | Van `EXP-VEI-02` consome 2 Combustíveis por trecho; é permitido ir ao Posto a pé e voltar na van por 2. | O retorno explícito do Posto em van curta custa 2; viagem completa curta custa 4 e longa canônica custa 8. |
+| `RULES.md` §11, linha 64, regra canônica 0.2 | Van `EXP-VEI-02` consome 2 Combustíveis por trecho; é permitido ir ao Posto a pé e voltar na van por 2. | O retorno explícito do Posto em van curta custa 2; viagem completa curta custa 4 e longa canônica custa 8. |
 | `CAMPAIGN.md`, Dia 4 | Posto O1 oferece oito cartas únicas de Combustível, 1 PA cada, sem reposição. | Máximo explícito O1 = 8 unidades. Se todas forem retiradas e trazidas, o retorno curto autorizado consome 2 e deixa até 6. |
-| `content/catalog.json`, missão `ZC-MIS-0004` | O1: oito Combustíveis; O2: “um lote de cada provisão”. | Confirma O1=8; não declara combustível ou quantidade em O2. |
-| `CAMPAIGN.md`, definição geral de lote | Lote de provisão é recompensa única em carta com quatro porções; os tipos são Conserva e Água, organizados em O1/O2 salvo exceção explícita. | O2 significa provisões de comida e água; não autoriza combustível. |
-| `data/last_transmission.json`, missão experimental `EXP-MIS-104` | A revisão em progresso exige e cobra `fuel_round_trip: 12`, com base `2 × 3 × 2`; versão anterior continha 6. | Hipótese experimental explícita; o texto oficial §11 permanece 2 por trecho e a equivalência `far=3` não foi aprovada para edição final. |
-| `data/system.json`, geografia regional experimental | `EXP-LOC-06` é `far=3`; `EXP-VEI-02` custa 2 por segmento. | Leitura implementada: 3 segmentos por sentido × 2 sentidos × 2 = 12. Não existe equivalência aprovada entre `far=3` e rota longa canônica de 2 trechos. |
-| `data/system.json`, Posto e conteúdo regional | Posto `medium=2`; oito cartas de combustível finitas. | Retorno regional de van custa 4 no protótipo; divergência com o retorno por rota curta de 2 expresso em `CAMPAIGN.md`. |
+| `content/catalog.json`, missão `ZC-MIS-0004` | O1: oito Combustíveis; O2: “um lote de cada provisão”. | Confirma O1=8; O2 contém um lote de cada tipo de provisão definido no capítulo, não combustível. |
+| `CAMPAIGN.md`, definição geral de lote | Lote de provisão é recompensa única em carta com quatro porções; os tipos são Conserva e Água, organizados em O1/O2 salvo exceção explícita. | O2 significa um lote de comida e um de água; não autoriza combustível. |
+| `data/last_transmission.json`, missão experimental `EXP-MIS-104` | Exige e cobra `fuel_round_trip: 12`, com base `2 × 3 × 2`. | Hipótese experimental explícita; o texto oficial §11, linha 64, permanece 2 por trecho e a equivalência regional `far=3` não foi aprovada para edição final. |
+| `data/system.json`, geografia regional experimental | `EXP-LOC-06` é `far=3`; `EXP-VEI-02` custa 2 por segmento. | Leitura do motor: 3 segmentos por sentido × 2 sentidos × 2 = 12. Não existe equivalência aprovada entre `far=3` e rota longa canônica de 2 trechos. |
+| `data/system.json`, Posto e conteúdo regional | Posto `medium=2`; oito cartas de combustível finitas. | Retorno regional de van custa 4 no protótipo se percorrer os 2 segmentos; `CAMPAIGN.md` especifica um retorno curto de 1 trecho e custo 2. O mapeamento do local à rota canônica não foi definido. |
 | Catálogo de Saque, campanha e estruturas | Nenhuma carta de Saque ou estrutura produz combustível; reservatório consome combustível. | Nenhuma fonte renovável ou alternativa legal foi localizada. |
 
 ### Contas verificáveis e propostas ainda não aprovadas
 
-| Interpretação | Retorno do Posto em van | Máximo que sobra das 8 unidades | Ida e volta militar | Saldo após missão |
-| --- | ---: | ---: | ---: | ---: |
-| Regra canônica explícita: Posto a pé, retorno curto em van | 2 | 6 | — | — |
-| Equivalência experimental Posto `medium=2` | 4 | 4 | — | — |
-| Região `far=3` + custo §11 | — | 4 ou 6 conforme retorno adotado | 12 | déficit 6 ou 8 |
-| Rota longa canônica §5 + custo §11 | — | 4 ou 6 conforme retorno adotado | 8 | déficit 2 ou 4 |
-| Custo fixo experimental `EXP-MIS-104` | — | 4 ou 6 conforme retorno adotado | 6 | déficit 0 ou 2 |
+| Interpretação | Retorno do Posto em van | Posto O1 restante (não inclui Oficina) | Custo militar | Déficit sem cache Oficina | Saldo após cache experimental + missão |
+| --- | ---: | ---: | ---: | ---: | ---: |
+| Regra explícita `CAMPAIGN.md`: volta curta | 2 | 6 | 12 (`far=3` experimental) | 6 | 2 |
+| Retorno regional `medium=2` no protótipo | 4 | 4 | 12 (`far=3` experimental) | 8 | 0 |
+| Regra explícita `CAMPAIGN.md`: volta curta | 2 | 6 | 8 (se militar mapear a rota longa §5) | 2 | 6 |
+| Retorno regional `medium=2` no protótipo | 4 | 4 | 8 (se militar mapear a rota longa §5) | 4 | 4 |
+| Regra explícita `CAMPAIGN.md`: volta curta | 2 | 6 | 6 (custo fixo experimental) | 0 | 8 |
+| Retorno regional `medium=2` no protótipo | 4 | 4 | 6 (custo fixo experimental) | 2 | 6 |
 
-Nenhuma fonte define O2 como combustível nem define quantidade adicional. A regra canônica explícita deixa até 6 unidades após voltar ao Posto por van na rota curta; o protótipo regional `medium=2` debita 4 e deixa 4. A nova hipótese de reserva de Oficina (8) produz 12 só sob essa leitura regional. Decisões de produto continuam pendentes: (a) mapear `perto/médio/longe` às rotas curtas/longas; (b) aprovar ou rejeitar a reserva experimental de 8; (c) definir se requisito 12 é fixo ou varia com bônus legais de motorista/viagem; (d) não interpretar O2 como combustível sem texto e quantidade explícitos. A hipótese não foi declarada definitiva; ela permite validar uma rota de recursos, mas a Estação/rádio bloqueia a campanha contínua antes do Posto.
+“Déficit sem cache Oficina” compara somente as oito unidades explícitas do
+Posto O1 com o custo da missão; “saldo após cache” inclui as oito unidades
+experimentais da Oficina e o retorno indicado. Esses saldos são aritmética de
+hipóteses, não uma rota já executada.
+
+O2 tem comida e água, não combustível. A regra canônica explícita deixa até 6 unidades após voltar ao Posto por van na rota curta; o protótipo regional `medium=2` debita 4 e deixa 4. A reserva experimental da Oficina (8) produz 12 após esse retorno médio e paga o custo experimental 12 exatamente; se aplicar a volta curta de 2, o saldo seria 14. Decisões de produto continuam pendentes: (a) mapear `perto/médio/longe` às rotas curtas/longas; (b) aprovar ou rejeitar a reserva experimental de 8; (c) definir se requisito 12 é fixo ou varia com bônus legais de motorista/viagem. Essa hipótese não foi declarada definitiva, e a Estação/rádio bloqueia a campanha antes do Posto.
 
 ### Propostas para decisão do proprietário (nenhuma aplicada)
 
 | Proposta | Resultado matemático no conteúdo conhecido | Consequência |
 | --- | --- | --- |
-| Manter 2/unidade por trecho e `far=3` (3 trechos por sentido) | 12 para ida/volta; o replay regional atual termina o Posto com 7 (3 da Oficina + 4 após retorno médio) | Campanha fica bloqueada por déficit 5; mantém literalmente o motor atual. |
+| Manter 2/unidade por trecho e `far=3` (3 trechos por sentido) | 12 para ida/volta; cenário experimental de retorno médio deixa 4 das 8 unidades do Posto | O estoque regional conhecido no replay é 7 (3 da Oficina + 4 após retorno); déficit 5. Não é um replay integral nem resolve o mapeamento canônico de rota. |
 | Mapear a viagem militar a rota longa canônica (2 trechos/sentido) e manter 2/unidade/trecho | 8; o replay após retorno regional médio tem 7 e fica 1 curto. Pela regra explícita de retorno curto do Posto a pé/van, as 8 do Posto deixariam 6; somadas às 3 unidades que o catálogo experimental oferece na Oficina, seriam 9, se legalmente obtidas e preservadas. | Exige definir equivalência de distâncias e rota de retorno, não só trocar o número em uma missão. |
 | Tratar os 6 de `EXP-MIS-104` como custo total especial | 6; o saldo de replay 7 paga e sobra 1. | Fecha a missão experimental, mas contradiz 2 por trecho em `RULES.md` §11 quando aplicada à viagem `far=3`. |
 | Acrescentar combustível explícito a O2 | Quantidade ainda precisaria ser escolhida. Para a rota `far=3`, o estoque após o retorno médio é 7; seriam necessárias pelo menos 5 unidades adicionais, sem outros gastos. | Cria uma recompensa de combustível que não está no texto atual e precisa alterar campanha, catálogo, componentes e testes. |
@@ -84,7 +100,9 @@ Nenhuma fonte define O2 como combustível nem define quantidade adicional. A reg
 | Não alterar regras nem oferta; manter gate fechado | Nenhuma concessão. | Honestidade atual: não há campanha completa certificável. |
 
 > **Snapshot histórico da branch `8700073`.** Esta auditoria antecede a
-> integração subsequente de Viagem/expedição e o replay H2 `verified_victory`.
+> migração do baralho de Viagem para o estado regional e o replay H2
+> `verified_victory`. A revelação/resolução das cartas ainda não está integrada
+> em expedições regionais.
 > Use `CAMPAIGN_INTEGRATION.md` para o estado atual. As diferenças de Posto,
 > combustível e migração entre modelos continuam pertinentes; alegações abaixo
 > de que nenhuma expedição ou certificado legal existe estão supersedidas.

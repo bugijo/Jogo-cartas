@@ -1,5 +1,24 @@
 # Bloqueios verificados da sequência completa
 
+## Estado ativo — retomada após `438beb9` (2026-10-26)
+
+- A referência de custo confirmada é `RULES.md §11, linha 64`: 2 combustível
+  por trecho. A solicitação “§64” refere-se à linha, não a seção 64. Rotas
+  canônicas em §5, linha 29.
+- A evidência pré-rádio por Célia/Vicente permanece experimental, física e
+  separada do contato; mas as duas pistas não são garantidas em todos os estados
+  de identidade. A rota seed22 continua inviável no relógio atual e termina
+  em emergência após obter uma pista.
+- `EXP-MIS-104=12`, `far=3`, e cache Oficina 8 permanecem experimentais. O1 Posto
+  tem 8 cartas; O2 não define combustível. Posto regional `medium=2` custa 4
+  no motor, enquanto `CAMPAIGN.md` descreve a volta curta por 2; equivalência
+  não escolhida.
+- O baralho de Viagem persiste/migra, mas ainda não é sorteado nem resolvido
+  em expedições regionais. O modelo ainda não aplica Fome/Sede depois de
+  escassez diária. Não há sequência integral até a defesa final.
+
+O estado detalhado abaixo deve ser lido como histórico se divergir deste bloco.
+
 ## Estado mais recente — código publicado em `3e65893` (2026-10-26)
 
 - **Cisterna preservada:** o verificador oficial continua a produzir vitória
@@ -39,7 +58,7 @@
   Cisterna + migração + tentativa de uma pista regional + derrota local por
   falta de extração. Não alcança Posto, instalação, transmissor, defesa final ou
   resultado de Última Transmissão.
-- Revisões independentes read-only foram executadas por 3 subagentes para
+- Revisões independentes read-only foram executadas por revisores para
   dependências narrativas, combustível e arquitetura regional. Findings foram
   incorporados/documentados; não são playtests humanos.
 

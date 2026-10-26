@@ -3,6 +3,12 @@
 Status: mapa de requisitos do protótipo experimental em 2026-10-26. Não altera
 `RULES.md`, `CAMPAIGN.md` nem o kit físico 0.2.
 
+**Atualização de desbloqueio:** a investigação física pré-rádio de Célia e a
+obtenção separada de evidências já estão implementadas como conteúdo
+experimental; nenhuma pista vem do contato por si só. Isso remove o ciclo
+lógico original, mas não resolve a disponibilidade condicional dos dois
+autores de pista nem a extração da Estação.
+
 ## Grafo atual
 
 ```mermaid
@@ -12,8 +18,10 @@ flowchart LR
   MIG --> V[Investigar caderno de Vicente na Estação]
   C --> EC[Copiar anotação de Célia: 1 pista]
   V --> EV[Copiar caderno: 1 pista, se Vicente não migrou/resgatado]
-  EC --> T[Retornar ao abrigo com pistas]
-  EV --> T
+  EC --> AND[AND: uma evidência Célia + uma Vicente]
+  EV --> AND
+  AND --> TWO[2 pistas disponíveis]
+  TWO --> T[Retornar ao abrigo com 2 pistas]
   T --> D[Decifrar rádio: custa 2 pistas]
   D --> A[Explorar Estação e buscar cartão]
   D --> P[Preparar acesso ao Posto/van]
@@ -36,7 +44,7 @@ flowchart LR
 | Decifrar rádio | estar no abrigo, Cisterna verificada, pelo menos 2 pistas; consome 2 | `EXP-MIS-102` e API `Arc2.decode_radio` |
 | Militar | rádio, cartão, van canônica e combustível conforme cálculo por segmentos | `EXP-MIS-104` experimental reconciliado para 12, ainda depende de economia/rota |
 
-## Ciclo lógico removido; bloqueio físico permanece
+## Ciclo lógico removido; bloqueio da rota testada permanece
 
 Antes, a condição de Célia “após sinal de rádio” dependia de um rádio que
 exigia pistas e de pesquisa que só Célia/Vicente podiam produzir. A alteração
@@ -44,16 +52,16 @@ experimental permite descobrir Célia antes do rádio sem conceder pista por
 aparecer no mapa. A pista só entra após uma ação separada, em local seguro e
 com recibo. A função de pesquisa de Célia é posterior e opcional.
 
-Isso remove o ciclo lógico `rádio → Célia → pistas → rádio`, mas ainda não
-torna a rota executável: Estação é `far=3`; ida 3 + início de rodada local 1 +
-retorno 3 deixa no máximo 3 ativações locais no relógio de dez segmentos. O
-caminho mais curto atual da entrada à zona 14 é `1–5–9–13–14`: 4 movimentos,
-porta 1–5 (1 PA), porta bloqueada 13–14 (2 PA), investigação (1 PA) e cópia
-da evidência (1 PA). O mesmo herói que atinge 14 precisa de 4 movimentos para
-retornar a 1. Limite inferior: 13 PA individuais. Um herói dispõe de até 9 PA
-em três ativações. Combate, hordas, ruído e demais objetivos só aumentam o
-custo. O teste real seed 22 copia uma pista e falha na extração no relógio 7;
-retirada de emergência mantém Célia no local e aplica suas consequências.
+Isso remove o ciclo lógico `rádio → Célia → pistas → rádio`, mas a rota seed 22
+do controlador ainda não extraiu: Estação é `far=3`; ida 3 + início de rodada
+local 1 + retorno 3 deixa no máximo 3 ativações locais no relógio de dez
+segmentos. O caminho entrada→zona 14 custa 4 movimentos + porta 1–5 (1 PA) +
+porta bloqueada 13–14 (2 PA); investigar e copiar custa 2 PA; voltar exige 4
+movimentos. Para o mesmo herói, o limite inferior é 13 PA, acima dos 9 que ele
+recebe em três ativações. **Isso limita a rota desse ator, não prova uma
+impossibilidade geral**, pois a equipe pode dividir ações entre heróis. Nenhuma
+combinação dividida foi ainda demonstrada pelo replay. O teste seed 22 copia
+uma pista e termina em emergência no clock 7; Célia permanece no local.
 
 Possíveis alterações de design para revisão (nenhuma aplicada): (a) mudar a
 localização da pista para um destino mais próximo, sem mudar os mapas; (b)
@@ -68,6 +76,24 @@ Vicente pode ser fundador/resgatado na origem. A migração preserva `rescue_his
 o contato regional não é criado quando `ZC-MOR-0003` foi acolhido, nem se a
 identidade já existe como fundador/NPC. Os dois IDs experimentais não são dois
 Vicentes: `EXP-NPC-14` é a projeção condicional do mesmo `ZC-MOR-0003`.
+
+## Disponibilidade real das duas pistas
+
+O requisito do rádio é AND: duas pistas, não qualquer uma das fontes. O
+catálogo regional só declara duas fontes experimentais, cada uma valendo uma
+pista. `regional_contact_identity_available()` suprime Célia se ela já foi
+escolhida como fundadora, e suprime Vicente se seu grupo foi acolhido na
+Cisterna ou se a identidade já está presente. Nessas configurações, a
+evidência disponível é no máximo uma; se ambas as condições ocorrerem, é zero.
+O motor não tem outra fonte física conectada ao fluxo de campanha. Não
+conceder pistas automáticas nem usar `campaign.py`/eventos isolados como
+fallback: esses caminhos não fazem parte do replay regional legal.
+
+O menor fechamento de conteúdo ainda depende de desenho: (a) separar as
+anotações/cadernos físicos da presença dos sobreviventes e colocar evidência
+explorável em local real; (b) permitir pesquisar Célia/Vicente já migrados por
+uma ação explícita no abrigo; ou (c) adicionar uma terceira fonte física
+limitada. Nenhuma opção foi aplicada nesta revisão.
 
 ## Limites de validação
 

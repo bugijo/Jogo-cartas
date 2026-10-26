@@ -1,3 +1,16 @@
+# Estado ativo — retomada 2026-10-26
+
+- Base verificada por `git fetch`: branch `evolucao/zona-zero-sistema-v1`, HEAD local/remoto `438beb9eee099b05cba88af0dd8f3ff51ebb0b87`; alterações locais ainda não commitadas. `main` e kit físico 0.2 não foram alterados.
+- Regra de combustível: `RULES.md §11, linha 64` = 2 por trecho; §5, linha 29 define curta 1+1 e longa 2+2. Posto O1 tem oito cartas. O2 “um lote de cada provisão” refere-se a alimento e água e não autoriza combustível. `EXP-MIS-104=12` e cache experimental de 8 na Oficina não são regras aprovadas; equivalência regional `far=3` e retorno `medium=2` continuam pendentes.
+- A Cisterna H2 seed22 segue `verified_victory`: cinco dias/noites, três expedições, 98 decisões. O replay contínuo copia fisicamente uma pista e termina em retirada/emergência no relógio 7; não recruta Célia nem ativa o rádio.
+- Há só duas fontes experimentais de pista. Célia como fundadora ou Vicente acolhido pode tornar uma delas indisponível. O cálculo 13 PA é da rota individual testada; divisão de ações do grupo não está validada, portanto não demonstra impossibilidade universal.
+- O snapshot do baralho de Viagem migra e sobrevive a save/load. Cartas regionais ainda não são reveladas/resolvidas. O controlador testa retirada do Posto após falha de reparo e retorno a pé; é teste de integração do controlador, não campanha canônica. O motor regional ainda não aplica Fome/Sede e lesões por escassez aos moradores.
+- Correção de bug: o controlador não declara extração concluída enquanto o encontro permanece aberto por inimigo. Corrigido o texto da fonte canônica no catálogo gerado e na missão experimental.
+- Verificações frescas: 320 testes passaram; 49 testes focados passaram; `validate_data.py`, `compileall`, JSON e `git diff --check` passaram. Verificador Cisterna passou; replay contínuo reproduziu a emergência descrita, sem vitória do segundo arco.
+- Próxima tarefa: definir o modelo de refeição/Fome/Sede com decisões de distribuição auditáveis e desenhar a ponte de cartas de Viagem para recursos carregados e Ambush02. Não atribuir custos/efeitos não previstos nem tratar as hipóteses de combustível como regra final. Impressão e playtest humano seguem pendentes.
+
+Os blocos de checkpoint seguintes são históricos; quando divergirem deste estado ativo, prevalece este cabeçalho.
+
 # Checkpoint — campanha contínua Cisterna → Última Transmissão
 
 ## Estado ativo desta retomada — commit funcional `3e65893`

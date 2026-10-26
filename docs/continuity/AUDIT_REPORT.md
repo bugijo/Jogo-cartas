@@ -1,3 +1,13 @@
+# Auditoria ativa — reconciliação de pistas e combustível (2026-10-26)
+
+- Regra documental confirmada: `RULES.md §11, linha 64` cobra dois combustíveis por trecho. `§5, linha 29` define rotas curta/longa. O1 do Posto oferece oito cartas finitas; O2 não nomeia combustível nem quantidade. `EXP-MIS-104` é experimental a 12 para `far=3`, sem equivalência canônica aprovada entre distâncias. A reserva de oito no cache da Oficina também é experimental.
+- O grafo de pistas usa investigação física pré-rádio e uma ação distinta de cópia, sem concessão automática. Há apenas duas fontes configuradas, Célia e Vicente; disponibilidade condicional pode bloquear a segunda pista. O replay seed22 copia uma pista na Estação e termina em emergência no clock 7. O requisito 13 PA é de rota individual, não análise conclusiva da equipe dividindo ativações.
+- Código local integra snapshot/save-load do shoe para a transição, mas o motor regional ainda não revela/resolva as cartas. O teste do Posto prova retirada das oito cartas e saída a pé depois de falha de reparo apenas como regressão de controlador; o estado regional não aplica Fome/Sede por escassez, então não é uma campanha legal completa.
+- Corrigido falso estado `objective_completed_and_exited` quando o encontro ainda está ativo e inimigos não permitem saída. Teste focado reproduz o defeito. Referência de fonte gerada corrigida para `§11, linha 64`.
+- Verificação atual: 320 testes (49 focados), validador de dados, compilação, JSON, `git diff --check`, certificado Cisterna seed22 e replay contínuo bloqueado passaram. Nenhum veículo militar, transmissor, defesa final, campanha integral, impressão ou playtest humano foi concluído.
+
+Estado editorial anterior mantido abaixo para histórico; fatos que contradigam esta atualização estão supersedidos.
+
 # Relatório de auditoria — atualização 2026-10-26
 
 ## Revisão desta retomada (código/testes em `3e65893`, push concluído)

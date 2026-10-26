@@ -1,4 +1,14 @@
-# Checkpoint de retomada — campanha contínua (26/10/2026)
+# Checkpoint ativo — retomada 2026-10-26
+
+- Branch `evolucao/zona-zero-sistema-v1`, base local/remota confirmada em `438beb9eee099b05cba88af0dd8f3ff51ebb0b87`; há alterações de trabalho locais a revisar/commit, sem mudança em `main` ou no kit físico 0.2.
+- `RULES.md §11, linha 64` = 2 combustíveis/trecho; rotas estão em §5. O1 do Posto contém oito unidades; O2 não oferece combustível explícito. `EXP-MIS-104=12` (`far=3`) e cache Oficina de oito são hipóteses experimentais. Nenhuma quantidade foi aprovada como regra final.
+- Grafo pré-rádio permite investigar e copiar pista por atos físicos separados, mas existem somente duas fontes, condicionadas à presença de Célia/Vicente. A extração testada na Estação não cabe no clock daquele replay; necessidade individual de 13 PA não prova que dividir ações entre heróis seja impossível.
+- Baralho de Viagem persiste pela migração e save/load, mas ainda não é revelado nem resolvido nas expedições regionais. O teste de Posto só cobre uma retirada com objetivo de reparo incompleto e retorno a pé, não campanha canônica, pois Fome/Sede regional ainda não persistem operacionalmente.
+- Correção recente impede status falso de saída quando o encontro continua ativo e corrige a citação do dado do veículo para seção/linha corretas.
+- Testes atuais: 320 totais, 49 focados; `validate_data.py`, `compileall`, JSON e `git diff --check` passam. Cisterna seed22 está certificada (5 dias/noites, 3 expedições, 98 decisões); replay contínuo termina em emergência no clock 7, sem rádio/Célia/Posto/van/transmissor/defesa.
+- Continuação recomendada: implementar distribuição explícita das refeições/condições de privação e ponte de Viagem/emboscada regional sem converter significados dos componentes por suposição. Campanha integral, revisão física e playtest humano permanecem pendentes.
+
+Os checkpoints históricos abaixo permanecem para rastreabilidade e não devem ser tratados como estado ativo quando divergirem deste bloco.
 
 ## Atualização mais recente desta retomada — commit funcional `3e65893`
 

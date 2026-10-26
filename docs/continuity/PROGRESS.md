@@ -1,3 +1,29 @@
+# 2026-10-26 — correção de fontes e reconciliação ativa
+
+- Checkout confirmado: branch `evolucao/zona-zero-sistema-v1`, HEAD/remoto
+  `438beb9eee099b05cba88af0dd8f3ff51ebb0b87` antes das edições locais.
+- Corrigida a referência de fonte no dado gerado e na missão: `RULES.md §11,
+  linha 64` (2 combustível/trecho). A linha 64 não é uma seção numerada.
+- Mantida a conta experimental `EXP-MIS-104=12` (`far=3`, ida/volta, 2 por
+  trecho) e a reserva experimental Oficina 8; nenhuma das duas virou regra
+  definitiva. O2 do Posto segue sem combustível explícito.
+- Grafo atualizado: pre-radio físico elimina ciclo lógico, mas duas pistas não
+  são garantidas se Célia for fundadora ou Vicente já tiver sido acolhido; rota
+  física atual também bloqueia extração no segmento 7. Sem nova pista inventada.
+- Verificação: suíte 320 aprovada; `validate_data.py`, `compileall`, Cisterna
+  seed22 e replay contínuo executados. Cisterna permanece certificada; o replay
+  contínuo termina em retirada de emergência, sem Célia, rádio, Posto, van,
+  transmissor ou defesa. Impressão física e playtest humano não ocorreram.
+
+Correções adicionais desta unidade: fonte gerada agora aponta exatamente a
+`RULES.md §11, linha 64`; controlador deixou de relatar saída enquanto um
+inimigo ainda mantém o encontro aberto. Regressão cobre a extração falsa.
+
+Próxima unidade: integrar a resolução de Viagem regional somente após definir
+a ponte de recursos físicos e emboscada; em paralelo, implementar distribuição
+de refeição e estados de Fome/Sede com decisões auditáveis, sem escolher
+beneficiários automaticamente.
+
 # Progresso
 
 ## 2026-10-26 — pista física, conservação e bloqueio mensurável da Estação

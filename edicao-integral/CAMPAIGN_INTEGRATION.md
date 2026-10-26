@@ -2,6 +2,12 @@
 
 ## Atualização ativa — pista e combustível regionais (2026-10-26)
 
+**Referência confirmada:** `RULES.md §11, linha 64` (Veículo) define 2
+Combustíveis por trecho; `RULES.md §5, linha 29` define as rotas curta (1
+trecho por sentido) e longa (2 por sentido). A referência “§64” na solicitação
+é a linha 64, não uma seção numerada 64. O `far=3` regional e o custo 12 de
+`EXP-MIS-104` permanecem experimentais.
+
 - `NARRATIVE_DEPENDENCIES.md` contém o grafo e a matriz de desbloqueio. A
   hipótese experimental separa descoberta física, cópia de evidência e
   recrutamento. Nenhuma pista é automática.
@@ -11,15 +17,18 @@
   retirada de emergência no relógio 7. Célia não retorna, não é recrutada,
   `radio_code` permanece falso e só há uma pista. O save/load após a retirada
   reproduz o estado.
-- A causa mensurável é a geometria+clock atual: 13 PA individuais mínimos do
-  herói que visita a zona 14 e volta; há 3 ativações locais no máximo após a
-  rota far, 9 PA por herói. A solução exige decisão de desenho da rota/clock ou
-  da localização; não foi aplicada mudança de equilíbrio.
+- Na rota testada, o agente que atravessou até a zona 14 precisa de 13 PA para
+  investigar, copiar e voltar, contra 9 PA individuais em três ativações far.
+  Isso explica a derrota do controlador seed 22, mas não prova impossibilidade
+  universal: ações podem ser divididas entre heróis, combinação ainda não
+  validada em replay completo.
 - Reserva de 8 Combustíveis na Oficina é uma regra **experimental de teste**,
   não parte do kit 0.2. Cada ação custa 2 PA, ruído 3, uma vez; só retorna ao
   estoque em extração normal. Oito políticas programáticas retornaram a reserva
-  legalmente em seed 22. A premissa do retorno regional do Posto (4) diverge do
-  texto canônico (2); detalhes e alternativas em `TACTICAL_FUEL_AUDIT.md`.
+  legalmente em seed 22. O mapa experimental torna o Posto `medium=2`, cujo
+  retorno na van cobra 4; `CAMPAIGN.md` descreve ida a pé e retorno curto por 2.
+  O mapeamento medium↔rota canônica não foi decidido; detalhes em
+  `TACTICAL_FUEL_AUDIT.md`.
 - O gate `EXP-MIS-104` candidato é 12 (`2 × far 3 × ida/volta`), sob status
   experimental. Nenhuma campanha alcançou o Posto/van depois da origem,
   instalação, transmissor ou defesa final nesta prova.
@@ -27,15 +36,18 @@
   duplicada e recibos de pista que não batem com dados, investigação prévia e
   expedição real. O JSON ainda é editável; isto é validação estrutural, não
   autenticação.
+- Um teste adversarial encontrou status falso de “objetivo concluído e saiu”
+  quando o inimigo ainda ocupava a saída e o limite de tentativas acabava. O
+  controlador agora retorna `step_limit` enquanto o encontro seguir aberto.
 
 ## Histórico de implementação regional em `709c48f` — supersedido pelo estado ativo acima
 
-- A suíte de ações táticas foi alinhada ao texto que existe em `RULES.md`: movimento sob inimigo, porta comum e porta bloqueada. Não há seção §64 no manual desta branch; a regra de veículo aparece em §11. Confira `TACTICAL_FUEL_AUDIT.md`.
+- A suíte de ações táticas foi alinhada ao texto que existe em `RULES.md`: movimento sob inimigo, porta comum e porta bloqueada. Confira a fonte de veículo em §11, linha 64, no relatório de combustível.
 - O despacho regional garante ida + uma rodada local + retorno no relógio. O jogador regional usa ações públicas e não injeta recursos; o teste reproduz Cisterna H2 seed 22, migra, busca 2 comida/1 água no Mercado, salva/restaura, retorna e fecha o dia.
 - O controlador não prova Célia: `contact_npc` exige presença na zona, PA, espaço e sustento, mas a prova isolada usa configuração de teste com inimigos removidos. A rota de campanha seed 22 termina em derrota local anterior; nenhum recrutamento é alegado.
 - Não existe uma partida completa de Última Transmissão. Baralho de Viagem/emboscadas no relógio regional, múltiplas rodadas por mapas regionais, rota ao Posto e retorno militar ainda não estão integrados.
 - Nova inconsistência narrativa: após migração seed 22 há zero pistas; só Célia e Vicente produzem `research`. Célia está localizada provisoriamente após `post_cistern_radio_signal`, enquanto o código de rádio exige duas pistas. O acesso pré-sinal a Célia não deve ser inferido sem atualizar o conteúdo/progressão.
-- Em `TACTICAL_FUEL_AUDIT.md`, custo e oferta estão separados por fonte. §64 é uma referência ausente no RULES.md atual; nenhuma decisão de O2, custo fixo 6 ou mapeamento `far=3` foi aplicada.
+- Em `TACTICAL_FUEL_AUDIT.md`, custo e oferta estão separados por fonte. O2 não recebeu combustível por inferência; não foi escolhido custo diferente de 12 nem mapeamento físico para `far=3`.
 
 Fontes oficiais da primeira campanha: `../RULES.md`, `../CAMPAIGN.md` e `../content/catalog.json`. O motor em `edicao-integral/` continua experimental e não substitui esses arquivos. O kit físico 0.2 permanece intacto.
 
@@ -101,7 +113,7 @@ compartilhado; não use seus resultados como estado atual.
 
 A tentativa de autorização militar é feita pela API pública e falha com `Combustível insuficiente para ida e volta`, sem deixar `military_access`. A van canônica em `EXP-VEI-02` exige 12 unidades no percurso regional `far` de três segmentos por sentido: 3 × 2 sentidos × 2 unidades por segmento. O estado tem 7 após o retorno do Posto, déficit 5. O máximo atualmente modelado antes de custo de retorno é 11 unidades: três buscas da Oficina e oito cartas do Posto. Não se reduz custo nem se cria combustível para continuar.
 
-> **Ressalva de fonte:** `CAMPAIGN.md` também chama o conteúdo de Posto O2 de “um lote de cada provisão”, mas não define se combustível está incluído nem quantas unidades seriam. O catálogo atual não atribui combustível a esse lote; as cartas físicas genéricas de reserva não provam aquisição. Portanto, o déficit é reproduzível no modelo implementado, mas a suficiência canônica total depende de esclarecer documentalmente esse lote antes de declarar um soft-lock definitivo.
+> **Ressalva de fonte:** `CAMPAIGN.md` define “lote de provisão” como carta de Conserva ou Água, quatro porções. Posto O2 recebe um lote de cada tipo, não combustível. O catálogo confirma oito cartas únicas de combustível em O1; não foi encontrada fonte de combustível em O2. Portanto, a oferta explícita é oito unidades no Posto, sem combustível extra interpretado por inferência.
 
 ## Limite da evidência
 
@@ -109,7 +121,11 @@ O Posto agora consta em `LOCATIONS` como `EXP-LOC-07`, e `gas_station_02` está 
 
 Mesmo com essa ponte, o replay **não é uma campanha integral legal conforme todas as regras físicas**. O motor regional ainda usa buscas e recrutamento abstratos; não modela o contato narrativo para recrutar Célia, o consumo de PA/relógio por toda expedição, nem o disparo automático de encontros e hordas nesses locais. A pesquisa que abre o rádio também é uma regra do protótipo. A restauração de PA no replay foi ajustada para passar pela ativação tática (`TacticalGame.activate()`), não pelo atalho administrativo `World.begin_round()`. Os movimentos e a retirada de Bateria/combustível/van são operações táticas efetivas, mas os demais trechos não devem ser confundidos com paridade completa do manual.
 
-A divergência de unidade está documentada: a referência §64 não existe na cópia atual de `RULES.md` (ela vai de §1 a §14); a regra real da van está em §11 e cobra dois combustíveis por trecho. `data/last_transmission.json` fixa seis unidades para a viagem militar `far=3`. Aplicar o custo canônico à distância regional dá 12; usar as seis do protótipo é uma incompatibilidade ainda não aprovada. Nenhum valor foi alterado nesta entrega.
+A referência canônica foi conferida: `RULES.md §11, linha 64` cobra dois
+combustíveis por trecho. O custo experimental de `EXP-MIS-104` é 12, aplicado
+à distância regional `far=3`; esse mapeamento ainda não está definido para a
+edição física. A auditoria atual não escolhe outra quantidade nem interpreta
+O2 como combustível.
 
 ## Estado e próximo bloqueio
 
