@@ -10,6 +10,7 @@ from copy import deepcopy
 from dataclasses import asdict, dataclass, field
 from pathlib import Path
 from horde_deck02 import HordeDeck02
+from travel_deck02 import TravelDeck02
 
 DATA = json.loads((Path(__file__).parent / 'data/system.json').read_text(encoding='utf-8'))
 EQUIPMENT = json.loads((Path(__file__).parent / 'data/equipment.json').read_text(encoding='utf-8'))
@@ -88,6 +89,7 @@ class World:
     worked_today: list[str] = field(default_factory=list)
     departed_today: list[str] = field(default_factory=list)
     regional_horde_deck: dict | None = None
+    regional_travel_deck: dict | None = None
     garden_worker: str | None = None
     guarding: dict[str, int] = field(default_factory=dict)
     rng_state: object = None
@@ -106,6 +108,7 @@ class World:
         world.searches = {key:loc['searches'] for key,loc in LOCATIONS.items()}
         world.stock.update(stock or {})
         world.rng_state = _lists(random.Random(seed).getstate())
+        world.regional_travel_deck = TravelDeck02.new(seed + 8103).snapshot()
         world.validate()
         return world
 
@@ -183,6 +186,8 @@ class World:
             raise ValueError('Registro diário de trabalho/saída inválido')
         if self.regional_horde_deck is not None:
             HordeDeck02.from_snapshot(self.regional_horde_deck)
+        if self.regional_travel_deck is not None:
+            TravelDeck02.from_snapshot(self.regional_travel_deck)
         if any(v < 0 or not isinstance(v,int) for v in self.stock.values()):
             raise ValueError('Estoque inválido')
         if not isinstance(self.clues,int) or isinstance(self.clues,bool) or self.clues<0:

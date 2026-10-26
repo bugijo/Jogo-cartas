@@ -1,4 +1,5 @@
 """Migração da vitória legal da Cisterna para o mundo regional."""
+import json
 import sys
 import tempfile
 import unittest
@@ -8,7 +9,7 @@ ROOT = Path(__file__).resolve().parents[1]
 sys.path.insert(0, str(ROOT))
 
 from integrated_campaign import IntegratedCampaign
-from system import HEROES, World
+from system import HEROES, VEHICLES, World
 from verify_campaign_player02 import execute
 from verify_continuous_campaign import execute as execute_continuous
 
@@ -89,6 +90,25 @@ class CampaignTransitionTests(unittest.TestCase):
         self.assertEqual(restored.world.stock, game.world.stock)
         self.assertEqual(restored.transition_to_last_transmission(), receipt)
 
+    def test_migration_carries_remaining_canonical_travel_deck_into_arc2(self):
+        game = self.completed_seed22()
+        expected_shoe = game.cistern.travel_deck.copy()
+        game.transition_to_last_transmission()
+        self.assertEqual(game.world.regional_travel_deck, expected_shoe)
+        with tempfile.TemporaryDirectory() as directory:
+            path = Path(directory) / "regional-travel-save.json"
+            game.world.save(path)
+            restored = World.load(path)
+        self.assertEqual(restored.regional_travel_deck, expected_shoe)
+
+    def test_van_source_points_to_the_actual_manual_section(self):
+        self.assertEqual(VEHICLES['EXP-VEI-02']['canonical_source'], 'RULES.md §11, linha 64')
+
+    def test_regional_fuel_cost_basis_points_to_canonical_vehicle_rule(self):
+        payload=json.loads((ROOT/'data/last_transmission.json').read_text(encoding='utf-8'))
+        mission=next(card for card in payload['cards'] if card['id']=='EXP-MIS-104')
+        self.assertIn('RULES.md §11, linha 64', mission['cost_basis']['source'])
+
     def test_replay_stops_at_regional_emergency_without_forging_return(self):
         replay = execute_continuous(22)
         regional = replay["regional_expedition"]
@@ -100,7 +120,8 @@ class CampaignTransitionTests(unittest.TestCase):
         self.assertFalse(regional["celia_recruited"])
         self.assertEqual(regional["emergency_receipt"]["status"], "failed")
         self.assertEqual(regional["emergency_receipt"]["stranded_npcs"], [])
-        self.assertIn("13 PA", regional["blocker"])
+        self.assertIn("13 no total", regional["blocker"])
+        self.assertIn("não prova impossibilidade geral", regional["blocker"])
 
     def test_all_twelve_cistern_founders_have_world_identity_profiles(self):
         for founder_id in (f"ZC-HER-{number:04d}" for number in range(1, 13)):

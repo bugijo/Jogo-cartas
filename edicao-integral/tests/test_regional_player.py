@@ -11,6 +11,7 @@ sys.path.insert(0, str(ROOT))
 from regional_player import AdaptiveRegionalPlayer
 from system import World
 from tactics import TacticalGame
+from verify_campaign_player02 import execute as execute_cistern
 
 
 class RegionalPlayerTests(unittest.TestCase):
@@ -25,6 +26,18 @@ class RegionalPlayerTests(unittest.TestCase):
         self.assertEqual(world.advance_expedition('regional-agent-test'), 'arrived')
         tactical = TacticalGame.start(world, 'regional-agent-test', 'market_intro')
         return world, tactical
+
+    def test_objective_completion_is_not_reported_as_exit_while_enemy_blocks_exit(self):
+        world, tactical = self.setup_market()
+        world.gear['ZC-HER-0001'].clear()
+        tactical.spawn('brute', zone=tactical.exit_zone)
+        player = AdaptiveRegionalPlayer('explorer')
+
+        result = player.run_objectives(
+            tactical, [{'kind': 'zone', 'zone': tactical.exit_zone}], max_steps=1)
+
+        self.assertEqual(result['status'], 'step_limit')
+        self.assertIn(tactical.id, world.encounters)
 
     def test_adaptive_player_executes_search_and_returns_using_public_actions(self):
         world, tactical = self.setup_market()
@@ -64,6 +77,48 @@ class RegionalPlayerTests(unittest.TestCase):
             agent.run_expedition(world,'no-fuel-policy','EXP-LOC-02',
                 ['ZC-HER-0001'],'market_intro',{'kind':'search','zone':5},
                 vehicle_id='EXP-VEI-02')
+
+    def test_failed_posto_repair_retires_on_foot_with_collected_fuel_and_battery(self):
+        # Engine/controller regression only, not a full legal replay: the
+        # migrated seed has an unmet food deficit after this end_day(), and the
+        # regional World model still does not project Fome/Sede onto heroes.
+        # Keep the scenario to exercise finite fuel collection, failed repair,
+        # emergency-free foot return, and battery conservation without claiming
+        # that the following expedition is canonically playable.
+        campaign, _ = execute_cistern(22)
+        campaign.game.transition_to_last_transmission()
+        world = campaign.game.world
+        team = list(world.heroes)
+        player = AdaptiveRegionalPlayer('builder')
+
+        workshop = player.run_expedition(
+            world, 'posto-repair-regression-battery', 'EXP-LOC-03', team,
+            'workshop_02', {'kind':'battery','zone':7}, max_steps=120)
+        self.assertEqual(workshop['status'], 'returned')
+        self.assertIn('battery', world.special_stock)
+        night = world.end_day()
+        self.assertEqual(night['missing']['food'], 2)
+
+        trip = 'posto-repair-regression'
+        objectives = ([{'kind':'fuel','zone':7,'lot':lot}
+                       for lot in range(1,9)]
+                      + [{'kind':'inspect_van','zone':7},
+                         {'kind':'repair_van','zone':7}])
+        posto = player.run_expedition(
+            world, trip, 'EXP-LOC-07', team, 'gas_station_02', objectives,
+            max_steps=200, special_items=['battery'],
+            return_vehicle_id='EXP-VEI-02')
+
+        self.assertEqual(posto['status'], 'returned_with_objective_incomplete')
+        self.assertEqual(posto['local']['status'], 'objectives_incomplete_and_exited')
+        self.assertEqual(len(world.site_states['EXP-LOC-07']['fuel_cards_taken']), 8)
+        self.assertEqual(world.site_states['EXP-LOC-07']['van_state'], 'incomplete')
+        self.assertEqual({row['hero'] for row in world.log
+                          if row.get('action')=='repair_van'}, set(team))
+        self.assertEqual(world.stock['fuel'], 8)
+        self.assertIn('battery', world.special_stock)
+        self.assertFalse(any(row.get('action') == 'repair_van'
+                             and row.get('success') for row in world.log))
 
     def test_controller_never_moves_through_a_closed_door_without_breaching(self):
         world, tactical = self.setup_market()

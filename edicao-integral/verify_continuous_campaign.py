@@ -93,7 +93,7 @@ def execute(seed: int = 22) -> dict:
             "fuel_stock": world.stock["fuel"],
             "regional_log": regional_log,
             "emergency_receipt": emergency,
-            "blocker": "no station_02, caminho mais curto à zona 14 custa 7 PA (4 movimentos + portas), investigação e evidência somam 2 PA, e o retorno mais curto custa 4 movimentos: mínimo 13 PA individuais. A rota far=3 deixa 3 ativações locais, máximo de 9 PA por herói; a saída não cabe no relógio atual.",
+            "blocker": "Na rota seed22 deste controlador, o explorador gasta 7 PA até Z14, 2 em investigação/evidência e precisa de 4 para voltar (13 no total, contra 9 por ator nas ativações locais far). O replay não divide ações de deslocamento entre heróis; a falha desta rota não prova impossibilidade geral da equipe.",
         },
     }
     with tempfile.TemporaryDirectory() as directory:

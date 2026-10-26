@@ -58,6 +58,15 @@ class Travel02Tests(unittest.TestCase):
         shoe.finish_trip(trip)
         self.assertEqual(shoe.discard, ["ZC-VIA-0003"])
 
+    def test_one_revealed_return_card_counts_one_return_segment(self):
+        trip = Travel02.from_deck(["ZC-VIA-0001", "ZC-VIA-0001"], "short")
+        outbound = trip.reveal("outbound")
+        self._resolve_event(trip, outbound)
+        returning = trip.reveal("return")
+        self._resolve_event(trip, returning)
+        self.assertEqual(trip.outbound_segments, 1)
+        self.assertEqual(trip.return_segments, 1)
+
     def test_campaign_shoe_preview_is_exact_non_mutating_and_reproducible(self):
         left = TravelShoe02.new(78)
         right = TravelShoe02.from_snapshot(left.snapshot())

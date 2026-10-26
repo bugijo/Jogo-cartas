@@ -54,6 +54,6 @@
       "canonical_cistern_0_2_cost": 2,
       "difference": "CAMPAIGN.md diz que ir a pé ao Posto e voltar na van custa 2; o custo regional 4 é uma hipótese experimental e requer conciliação explícita"
     },
-    "source": "RULES.md §11 para custo e edicao-integral/data/system.json para distância far=3"
+    "source": "RULES.md §11, linha 64 para custo; edicao-integral/data/system.json para distância far=3"
   }
 }

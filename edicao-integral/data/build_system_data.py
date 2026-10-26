@@ -138,5 +138,5 @@ data = {'edition':'experimental-1','attributes':base['attributes'],
                      'health':3},
                     {'id':'EXP-VEI-02','name':'Van de manutenção',
                      'seats':6,'cargo_capacity':12,'fuel_per_segment':2,
-                     'health':3,'canonical_source':'RULES.md §64'}]}
+                     'health':3,'canonical_source':'RULES.md §11, linha 64'}]}
 (root / 'system.json').write_text(json.dumps(data,ensure_ascii=False,indent=2)+'\n',encoding='utf-8')

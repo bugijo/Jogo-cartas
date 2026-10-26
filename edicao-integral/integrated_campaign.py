@@ -1091,6 +1091,9 @@ class IntegratedCampaign:
         }
         projected = World.new(self.seed, list(self.founders), stock)
         projected.regional_horde_deck = deepcopy(self.cistern.horde_deck)
+        # Travel is a campaign-wide finite deck. Continue the 0.2 shoe at its
+        # exact post-Cisterna state; do not start a fresh copy in Arc 2.
+        projected.regional_travel_deck = deepcopy(self.cistern.travel_deck)
         battery_delivered = self.battery_available
         battery_lost = any(
             objective in self.lost_objectives

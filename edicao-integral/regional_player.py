@@ -491,12 +491,28 @@ class AdaptiveRegionalPlayer:
         if not isinstance(objectives,(list,tuple)) or not objectives:
             raise ValueError('A expedição exige ao menos um objetivo')
         start=len(self.history)
+        incomplete_objective=False
         for objective in objectives:
             for _ in range(max_steps):
                 if self._objective_done(tactical,objective):
                     break
+                if (objective.get('kind')=='repair_van'
+                        and tactical.state.get('van_state')=='incomplete'):
+                    eligible={hero for hero in tactical.state['heroes']
+                              if tactical.world.heroes[hero]['health']>0}
+                    if eligible and eligible.issubset(
+                            set(tactical.state.get('van_attempts',[]))):
+                        # Each active hero gets at most one attempt per visit.
+                        # Once all have failed, abandon this objective for now
+                        # and use any remaining legal actions to extract.
+                        incomplete_objective=True
+                        break
                 result=self.step(tactical,objective)
                 if result['action']=='blocked':
+                    if (objective.get('kind')=='repair_van'
+                            and tactical.state.get('round_closed')):
+                        incomplete_objective=True
+                        break
                     return {'status':'blocked','reason':result['reason'],
                             'completed':[goal for goal in objectives
                                          if self._objective_done(tactical,goal)],
@@ -510,6 +526,10 @@ class AdaptiveRegionalPlayer:
                 return {'status':'step_limit','completed':[goal for goal in objectives
                                     if self._objective_done(tactical,goal)],
                         'decisions':self.history[start:]}
+            if incomplete_objective:
+                break
+        completed=[goal for goal in objectives
+                   if self._objective_done(tactical,goal)]
         for _ in range(max_steps):
             if tactical.id not in tactical.world.encounters:
                 break
@@ -517,9 +537,14 @@ class AdaptiveRegionalPlayer:
             if result['action']=='blocked':
                 return {'status':'blocked_during_extraction','reason':result['reason'],
                         'decisions':self.history[start:]}
-        status=('objective_completed_and_exited'
-                if tactical.id not in tactical.world.encounters else 'step_limit')
-        return {'status':status,'completed':list(objectives),
+        fully_completed=len(completed)==len(objectives)
+        if tactical.id in tactical.world.encounters:
+            status='step_limit'
+        elif fully_completed:
+            status='objective_completed_and_exited'
+        else:
+            status='objectives_incomplete_and_exited'
+        return {'status':status,'completed':completed,
                 'decisions':self.history[start:]}
 
     def run_objective(self, tactical, objective, max_steps=100):
@@ -558,7 +583,8 @@ class AdaptiveRegionalPlayer:
                 'decisions':len(self.history)}
 
     def run_expedition(self, world, expedition_id, destination, team, map_id,
-                       objective, max_steps=100, vehicle_id=None):
+                       objective, max_steps=100, vehicle_id=None,
+                       special_items=None, return_vehicle_id=None):
         """Joga uma expedição regional a pé, incluindo ida, mapa e retorno.
 
         Viagens por cartas e direção de veículos ficam fora deste executor
@@ -574,7 +600,8 @@ class AdaptiveRegionalPlayer:
                 or (map_data.get('location') and map_data['location']!=destination)
                 or (destination=='EXP-LOC-06' and map_id!='military_installation')):
             raise ValueError('Mapa incompatível com a expedição regional')
-        world.open_expedition(expedition_id,team,destination)
+        world.open_expedition(expedition_id,team,destination,
+                              special_items=special_items or [])
         outbound=[]
         while world.expeditions[expedition_id].remaining>0:
             outbound.append(world.advance_expedition(expedition_id))
@@ -582,7 +609,8 @@ class AdaptiveRegionalPlayer:
         local=(self.run_objectives(tactical,objective,max_steps)
                if isinstance(objective,(list,tuple)) else
                self.run_objective(tactical,objective,max_steps))
-        if local['status']!='objective_completed_and_exited':
+        if local['status'] not in ('objective_completed_and_exited',
+                                   'objectives_incomplete_and_exited'):
             if expedition_id in world.encounters:
                 emergency=tactical.emergency_return(
                     f'Controlador interrompido: {local.get("reason",local["status"])}')
@@ -590,9 +618,20 @@ class AdaptiveRegionalPlayer:
                         'local':local,'emergency':emergency,'return':[]}
             return {'status':'blocked_before_return','outbound':outbound,
                     'local':local,'return':[]}
-        world.begin_return(expedition_id)
+        return_vehicle=None
+        if return_vehicle_id is not None:
+            candidate=world.vehicles.get(return_vehicle_id)
+            site=world.site_states.get(destination,{})
+            if (candidate and candidate.get('location')==destination
+                    and candidate.get('health',0)>0
+                    and site.get('van_state')=='operational'):
+                return_vehicle=return_vehicle_id
+        world.begin_return(expedition_id,vehicle_id=return_vehicle)
         returning=[]
         while expedition_id in world.expeditions:
             returning.append(world.advance_expedition(expedition_id))
-        return {'status':'returned','outbound':outbound,'local':local,
-                'return':returning,'decisions':list(self.history)}
+        status=('returned' if local['status']=='objective_completed_and_exited'
+                else 'returned_with_objective_incomplete')
+        return {'status':status,'outbound':outbound,'local':local,
+                'return':returning,'return_vehicle':return_vehicle,
+                'decisions':list(self.history)}
