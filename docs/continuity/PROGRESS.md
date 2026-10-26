@@ -1,5 +1,18 @@
 # Progresso
 
+## 2026-10-26 — controlador regional, custos táticos e auditoria de combustível
+
+- Base real confirmada por fetch: `d3d6137660cf0d3e4415e227fcf9b5edad13bccf`, branch `evolucao/zona-zero-sistema-v1`; não havia alterações concorrentes no remoto.
+- Commit `709c48f` com motor/testes/replays publicado por push fast-forward; sem merge ou alteração da `main`.
+- Alinhadas às regras atuais as ações táticas: mover custa 1 PA mais 1 ao sair de uma zona com inimigo; abrir porta comum custa 1 PA; romper porta bloqueada custa 2 PA com ferramenta, sem teste, perda de durabilidade ou ruído não especificados. Clientes e testes que usavam `breach` para porta comum foram migrados.
+- `World.open_expedition()` verifica reserva para ida, uma rodada local e retorno em até dez segmentos antes de despachar. O desconto de motorista e habilidade é considerado antes do teste e de qualquer gasto; teste cobre uma ida de um segmento iniciada no relógio 7 e concluída no 10.
+- `AdaptiveRegionalPlayer` executa um objetivo tático por APIs públicas, com decisões observáveis, save/load de política e retorno. Não dirige veículos enquanto custo/rota estiverem pendentes. Uma auditoria adversarial corrigiu contato de NPC tratado como sucesso por ausência do contato, rota bloqueada sem ferramenta quando há desvio, e mapa inválido cobrado antes da validação.
+- Replay repetível seed 22: Cisterna legal (5 dias/noites, 3 expedições, 98 decisões, `verified_victory`), migração, uma expedição regional a pé ao Mercado, busca (2 comida + 1 água), save/load, retorno, conservação e fechamento do dia. Não prova Célia, Posto, transmissor nem defesa.
+- Bloqueios documentais preservados: `RULES.md` da árvore tem §§1–14, então a referência §64 não está disponível; custo de combustível está em §11, rotas §5. Posto O1=8; O2 não define combustível/quantidade; `EXP-MIS-104` fixa 6, regional `far=3` implica 12 pelo custo canônico. Nenhuma alternativa foi escolhida ou implementada.
+- Bloqueio narrativo novo: migração da Cisterna seed 22 produz zero pistas; somente Célia e Vicente têm saída de pesquisa no catálogo. Célia está marcada `post_cistern_radio_signal`, e o sinal exige duas pistas. A origem/ordem das pistas precisa de decisão de conteúdo.
+- Verificação ao fechar a unidade: suíte completa 296 testes passou. Validação de dados (127 IDs, 10 heróis, 70 habilidades, 15 NPCs), `compileall`, validação de `TASK_QUEUE.json`, `git diff --check` e verificador da Cisterna passaram. Revisor independente executou 51 testes focados; os verificadores contínuo e regional reproduziram seus resultados limitados.
+- Revisor independente read-only executou 51 testes focados e confirmou que o replay não é campanha completa. Sem impressão física, playtest humano ou avaliação de equilíbrio.
+
 ## 2026-10-25 — relógio regional, Hordas, fadiga e retirada
 
 - Branch `evolucao/zona-zero-sistema-v1`; commits `2e07b08`, `6d25b43` e
@@ -249,7 +262,7 @@ passaram se o gate de campanha ainda estiver fechado.
 - O replay parcial atualizado tem 62 registros resumidos, chega ao Posto e
   recupera van com seed22, mas para no gate militar: 7 unidades após retorno vs.
   12 requeridas. Fontes conhecidas somam 3 Oficina + 8 Posto = 11 antes de
-  retorno. A divergência do arco experimental (6) contra `RULES.md` §64 (2 por
+  retorno. A divergência do arco experimental (6) contra `RULES.md` §11 (2 por
   trecho) permanece; não foi aplicada alteração de equilíbrio.
 - Revisões read-only independentes confirmaram a incompatibilidade de combustível
   e que trechos do segundo arco ainda são abstratos (contato/recrutamento,

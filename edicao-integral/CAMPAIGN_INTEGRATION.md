@@ -1,4 +1,13 @@
-# Integração de campanhas — estado atual (25/10/2026)
+# Integração de campanhas — estado atualizado
+
+## Atualização ativa — implementação regional publicada em `709c48f`
+
+- A suíte de ações táticas foi alinhada ao texto que existe em `RULES.md`: movimento sob inimigo, porta comum e porta bloqueada. Não há seção §64 no manual desta branch; a regra de veículo aparece em §11. Confira `TACTICAL_FUEL_AUDIT.md`.
+- O despacho regional garante ida + uma rodada local + retorno no relógio. O jogador regional usa ações públicas e não injeta recursos; o teste reproduz Cisterna H2 seed 22, migra, busca 2 comida/1 água no Mercado, salva/restaura, retorna e fecha o dia.
+- O controlador não prova Célia: `contact_npc` exige presença na zona, PA, espaço e sustento, mas a prova isolada usa configuração de teste com inimigos removidos. A rota de campanha seed 22 termina em derrota local anterior; nenhum recrutamento é alegado.
+- Não existe uma partida completa de Última Transmissão. Baralho de Viagem/emboscadas no relógio regional, múltiplas rodadas por mapas regionais, rota ao Posto e retorno militar ainda não estão integrados.
+- Nova inconsistência narrativa: após migração seed 22 há zero pistas; só Célia e Vicente produzem `research`. Célia está localizada provisoriamente após `post_cistern_radio_signal`, enquanto o código de rádio exige duas pistas. O acesso pré-sinal a Célia não deve ser inferido sem atualizar o conteúdo/progressão.
+- Em `TACTICAL_FUEL_AUDIT.md`, custo e oferta estão separados por fonte. §64 é uma referência ausente no RULES.md atual; nenhuma decisão de O2, custo fixo 6 ou mapeamento `far=3` foi aplicada.
 
 Fontes oficiais da primeira campanha: `../RULES.md`, `../CAMPAIGN.md` e `../content/catalog.json`. O motor em `edicao-integral/` continua experimental e não substitui esses arquivos. O kit físico 0.2 permanece intacto.
 
@@ -72,7 +81,7 @@ O Posto agora consta em `LOCATIONS` como `EXP-LOC-07`, e `gas_station_02` está 
 
 Mesmo com essa ponte, o replay **não é uma campanha integral legal conforme todas as regras físicas**. O motor regional ainda usa buscas e recrutamento abstratos; não modela o contato narrativo para recrutar Célia, o consumo de PA/relógio por toda expedição, nem o disparo automático de encontros e hordas nesses locais. A pesquisa que abre o rádio também é uma regra do protótipo. A restauração de PA no replay foi ajustada para passar pela ativação tática (`TacticalGame.activate()`), não pelo atalho administrativo `World.begin_round()`. Os movimentos e a retirada de Bateria/combustível/van são operações táticas efetivas, mas os demais trechos não devem ser confundidos com paridade completa do manual.
 
-A divergência de unidade está documentada: `RULES.md` §64 cobra dois combustíveis por trecho, enquanto `data/last_transmission.json` fixa seis unidades para a viagem militar `far=3`. Aplicar a regra canônica ao trajeto regional dá 12; usar as seis do protótipo é uma incompatibilidade ainda não aprovada. Nenhum valor foi alterado nesta entrega.
+A divergência de unidade está documentada: a referência §64 não existe na cópia atual de `RULES.md` (ela vai de §1 a §14); a regra real da van está em §11 e cobra dois combustíveis por trecho. `data/last_transmission.json` fixa seis unidades para a viagem militar `far=3`. Aplicar o custo canônico à distância regional dá 12; usar as seis do protótipo é uma incompatibilidade ainda não aprovada. Nenhum valor foi alterado nesta entrega.
 
 ## Estado e próximo bloqueio
 

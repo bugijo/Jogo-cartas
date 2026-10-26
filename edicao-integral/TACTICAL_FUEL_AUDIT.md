@@ -1,28 +1,45 @@
 # Auditoria independente: expedição 0.2, Posto e transição
 
-## Matriz documental atualizada — revisão na branch após `fb48fda`
+## Matriz documental atualizada — base remota `d3d6137` e rechecagem nesta execução
+
+**Referência §64 não existe na cópia atual de `RULES.md`.** O manual contém
+§§1–14; o custo da van está em §11 (“Veículo”), e os comprimentos de rota em §5.
+Quando o pedido cita §64, esta auditoria registra a divergência e usa o texto
+real de §11, sem inferir um documento ausente.
 
 | Fonte / autoridade | Regra ou dado explícito | Consequência de combustível |
 | --- | --- | --- |
-| `RULES.md` §5, regra 0.2 | Rota curta: 1 trecho de ida e 1 de volta; rota longa: 2+2. Cada trecho usa um segmento do relógio. | Ida e volta: 2 segmentos curtos ou 4 longos. |
-| `RULES.md` §64 | A van `EXP-VEI-02` consome 2 Combustíveis por trecho; pode-se ir ao Posto a pé e voltar na van por 2. | Curta de van: 4; longa canônica: 8. |
-| `CAMPAIGN.md`, preparação e dia 4 | Posto O1 tem oito cartas únicas de Combustível, retiradas por 1 PA cada; não se renovam. | Máximo explícito de 8 unidades na visita. |
-| `content/catalog.json`, `ZC-MIS-0004` | “O1 oito Combustíveis”; O2 “um lote de cada provisão”. | Confirma 8 O1; não declara Combustível no O2. |
-| `CAMPAIGN.md`, definição de lote no início | Lotes são cartas de Conserva e Água com quatro porções; os totais canônicos de provisões são 7 lotes de comida e 8 de água. | A leitura consistente de O2 é comida+água, sem quantidade de combustível; o texto pode ser editorialmente esclarecido, mas não autoriza criar combustível. |
-| `data/last_transmission.json`, `EXP-MIS-104` | Requer e cobra `fuel_round_trip: 6`. | Conflita com a van canônica se o regional “far=3” significar 3 trechos por sentido. |
-| `data/system.json`, regra regional experimental | `EXP-LOC-06` é `far=3`; `EXP-VEI-02` custa 2 por segmento. | A interpretação atual do motor resulta em 3 segmentos por sentido × 2 sentidos × 2 = 12. É dado experimental, não equivalência aprovada com “longa”. |
-| `data/system.json`, oficina após regeneração | A Oficina concede sucata, sem combustível. O antigo `fuel:1` era apenas do gerador experimental sem carta/regra canônica correspondente e foi removido nesta branch. | Não contar até 3 combustíveis da Oficina. |
-| Catálogo de Saque/recursos e campanha | Nenhuma carta de Saque fornece combustível; a reposição urbana não renova buscas. O reservatório consome combustível, não o produz. | Nenhuma fonte renovável ou alternativa legal foi encontrada. |
+| `RULES.md` §5, regra canônica 0.2 | Rota curta: 1 trecho de ida e 1 de volta; longa: 2+2. Cada trecho ocupa um segmento; combustível de veículo é adicional. | Ida e volta completas: 2 segmentos curtos ou 4 longos. |
+| `RULES.md` §11, regra canônica 0.2 | Van `EXP-VEI-02` consome 2 Combustíveis por trecho; é permitido ir ao Posto a pé e voltar na van por 2. | O retorno explícito do Posto em van curta custa 2; viagem completa curta custa 4 e longa canônica custa 8. |
+| `CAMPAIGN.md`, Dia 4 | Posto O1 oferece oito cartas únicas de Combustível, 1 PA cada, sem reposição. | Máximo explícito O1 = 8 unidades. Se todas forem retiradas e trazidas, o retorno curto autorizado consome 2 e deixa até 6. |
+| `content/catalog.json`, missão `ZC-MIS-0004` | O1: oito Combustíveis; O2: “um lote de cada provisão”. | Confirma O1=8; não declara combustível ou quantidade em O2. |
+| `CAMPAIGN.md`, definição geral de lote | Lote de provisão é recompensa única em carta com quatro porções; os tipos são Conserva e Água, organizados em O1/O2 salvo exceção explícita. | O2 significa provisões de comida e água; não autoriza combustível. |
+| `data/last_transmission.json`, missão experimental `EXP-MIS-104` | Requer e cobra `fuel_round_trip: 6`. | Custo fixo experimental 6; não revoga a regra canônica nem define sua relação com segmentos. |
+| `data/system.json`, geografia regional experimental | `EXP-LOC-06` é `far=3`; `EXP-VEI-02` custa 2 por segmento. | Leitura implementada: 3 segmentos por sentido × 2 sentidos × 2 = 12. Não existe equivalência aprovada entre `far=3` e rota longa canônica de 2 trechos. |
+| `data/system.json`, Posto e conteúdo regional | Posto `medium=2`; oito usos para combustível e nenhum saque genérico. | O retorno experimental de 2 segmentos na van custa 4 e deixa 4 das oito unidades; essa equivalência ainda depende de decisão de produto. |
+| Catálogo de Saque, campanha e estruturas | Nenhuma carta de Saque ou estrutura produz combustível; reservatório consome combustível. | Nenhuma fonte renovável ou alternativa legal foi localizada. |
 
 ### Contas verificáveis e propostas ainda não aprovadas
 
-| Interpretação | Custo do trecho de ida e volta | Oferta conhecida após trazer a van do Posto | Saldo para a instalação |
-| --- | ---: | ---: | ---: |
-| Rota `far=3` do motor regional + van §11 | 12 | O1 Posto 8 menos 4 do retorno médio da van = 4 | déficit 8 |
-| Rota longa canônica §5 + van §11 | 8 | 4 | déficit 4 |
-| Custo fixo de `EXP-MIS-104` | 6 | 4 | déficit 2 |
+| Interpretação | Retorno do Posto em van | Máximo que sobra das 8 unidades | Ida e volta militar | Saldo após missão |
+| --- | ---: | ---: | ---: | ---: |
+| Regra canônica explícita: Posto a pé, retorno curto em van | 2 | 6 | — | — |
+| Equivalência experimental Posto `medium=2` | 4 | 4 | — | — |
+| Região `far=3` + custo §11 | — | 4 ou 6 conforme retorno adotado | 12 | déficit 6 ou 8 |
+| Rota longa canônica §5 + custo §11 | — | 4 ou 6 conforme retorno adotado | 8 | déficit 2 ou 4 |
+| Custo fixo experimental `EXP-MIS-104` | — | 4 ou 6 conforme retorno adotado | 6 | déficit 0 ou 2 |
 
-Nenhuma fonte define O2 como combustível nem define uma quantidade adicional. Portanto não foi escolhida uma interpretação nem adicionada oferta. A decisão de produto pendente é uma destas: (a) esclarecer e autorizar uma fonte/quantidade extra; (b) definir formalmente o traçado regional e reconciliar o custo com §5/§11; ou (c) aprovar a exceção de custo fixo 6 de `EXP-MIS-104`, ainda insuficiente com a rota atual depois do retorno da van. O replay falha fechado até essa escolha. A única alteração de dados feita foi retirar a concessão experimental não respaldada da Oficina.
+Nenhuma fonte define O2 como combustível nem define quantidade adicional. A regra canônica explícita deixa até 6 unidades após retornar do Posto a pé/van em rota curta; o protótipo regional `medium=2` deixa 4. Isso torna `EXP-MIS-104` (custo 6) possível ou impossível antes de outras viagens, e `far=3` custa 12. Não foi escolhida interpretação nem adicionada oferta. Decisões de produto pendentes: (a) mapear as distâncias regionais perto/médio/longe às rotas curtas/longas canônicas; (b) definir se `EXP-MIS-104` é exceção de custo fixo e sua relação com consumo por trecho; (c) caso se pretenda combustível extra em O2, escrever quantidade e regra de retirada. O replay falha fechado até a aprovação dessa interpretação. A única alteração de dados feita anteriormente foi retirar a concessão experimental não respaldada da Oficina.
+
+### Propostas para decisão do proprietário (nenhuma aplicada)
+
+| Proposta | Resultado matemático no conteúdo conhecido | Consequência |
+| --- | --- | --- |
+| Manter 2/unidade por trecho e `far=3` (3 trechos por sentido) | 12 para ida/volta; o replay regional atual termina o Posto com 7 (3 da Oficina + 4 após retorno médio) | Campanha fica bloqueada por déficit 5; mantém literalmente o motor atual. |
+| Mapear a viagem militar a rota longa canônica (2 trechos/sentido) e manter 2/unidade/trecho | 8; o replay após retorno regional médio tem 7 e fica 1 curto. Pela regra explícita de retorno curto do Posto a pé/van, as 8 do Posto deixariam 6; somadas às 3 unidades que o catálogo experimental oferece na Oficina, seriam 9, se legalmente obtidas e preservadas. | Exige definir equivalência de distâncias e rota de retorno, não só trocar o número em uma missão. |
+| Tratar os 6 de `EXP-MIS-104` como custo total especial | 6; o saldo de replay 7 paga e sobra 1. | Fecha a missão experimental, mas contradiz 2 por trecho em `RULES.md` §11 quando aplicada à viagem `far=3`. |
+| Acrescentar combustível explícito a O2 | Quantidade ainda precisaria ser escolhida. Para a rota `far=3`, o estoque após o retorno médio é 7; seriam necessárias pelo menos 5 unidades adicionais, sem outros gastos. | Cria uma recompensa de combustível que não está no texto atual e precisa alterar campanha, catálogo, componentes e testes. |
+| Não alterar regras nem oferta; manter gate fechado | Nenhuma concessão. | Honestidade atual: não há campanha completa certificável. |
 
 > **Snapshot histórico da branch `8700073`.** Esta auditoria antecede a
 > integração subsequente de Viagem/expedição e o replay H2 `verified_victory`.

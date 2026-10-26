@@ -1,12 +1,62 @@
-# Checkpoint de retomada — campanha contínua (25/10/2026)
+# Checkpoint de retomada — campanha contínua (26/10/2026)
+
+## Estado mais recente desta sessão — 26/10/2026
+
+Base remota conferida: `d3d6137660cf0d3e4415e227fcf9b5edad13bccf`. Este resumo
+substitui o estado no cabeçalho anterior após publicação do novo commit.
+
+- As ações táticas foram corrigidas para o manual: movimento deixa zona com
+  inimigo por 2 PA; porta comum 1 PA; bloqueada 2 PA com ferramenta, sem teste,
+  desgaste ou ruído não escritos.
+- O preflight de relógio garante ida + uma rodada local + retorno, considerando
+  redução de motorista/habilidade antes da cobrança e sem mutação em recusa.
+- `AdaptiveRegionalPlayer` navega, luta se for legal, busca, contata encontro
+  configurado, salva estado e retorna a pé. Não usa APIs administrativas. O
+  player é uma política heurística simples, não oito jogadores independentes.
+- Auditoria adversarial corrigiu falso reconhecimento de Célia por ausência de
+  contato, escolhe desvio aberto sem ferramenta para porta bloqueada e valida
+  mapa antes de iniciar expedição.
+- `verify_regional_player.py` comprova Cisterna H2 seed 22 → migração → busca
+  no Mercado (2 comida/1 água) → save/load → retorno → consumo diário sem
+  déficit e sem combustível criado. Não completa Célia/Posto/instalação.
+- Regra de combustível não escolhida. `RULES.md` só tem §§1–14; não há §64. A
+  van está em §11 (2 unidades/trecho), e rotas em §5. O1=8, O2 sem quantidade
+  explícita, EXP-MIS-104=6 fixos, `far=3`=12 pelo custo da van. Propostas em
+  `TACTICAL_FUEL_AUDIT.md`.
+- Bloqueio adicional: após Cisterna seed22, pistas de rádio=0; apenas Célia e
+  Vicente produzem pesquisa. A adaptação de Célia diz “após sinal”, mas o rádio
+  exige 2 pistas. Ordem não resolvida.
+- Verificação final do lote: 296 testes; `validate_data.py`; `compileall`;
+  JSON da fila; `git diff --check`; replay da Cisterna (5 dias/noites, 3
+  expedições, 98 decisões); replay contínuo termina em derrota local na
+  Estação; replay regional parcial reproduz a busca e retorno.
+- Continuam pendentes: viagem/emboscada regional com regra coerente, resgate
+  legal de Célia, Posto e combustível para viagem militar, transmissor,
+  defesa final, impressão e playtest humano.
 
 Branch: `evolucao/zona-zero-sistema-v1`
-Base recebida: `81a61e05f1cca494a32f961c2048c6d0927b6908`
-HEAD remoto publicado: `fb48fda`.
-Commits funcionais publicados neste lote: `2e07b08`, `6d25b43`, `2a24cc7`, `60340c4`, `f205e55`, `0f1ce2a`, `fb48fda`.
+Base conferida antes do lote: `d3d6137660cf0d3e4415e227fcf9b5edad13bccf`.
+HEAD publicado após código: `709c48f`.
+Commits funcionais publicados neste lote: `2e07b08`, `6d25b43`, `2a24cc7`, `60340c4`, `f205e55`, `0f1ce2a`, `fb48fda`, `709c48f`.
 Main e kit físico 0.2 permanecem intactos.
 
-## Atualização ativa do lote atual
+## Estado ativo após o lote `709c48f`
+
+- `RULES.md` nesta árvore tem §§1–14, não §64. Van: §11 (2 combustíveis por
+  trecho); rotas: §5. O1 do Posto=8; O2 não define combustível; missão
+  experimental fixa 6 e `far=3` com custo canônico dá 12. Sem interpretação
+  aprovada nem combustível adicionado; ver matriz e propostas em
+  `TACTICAL_FUEL_AUDIT.md`.
+- 296 testes passaram. `verify_campaign_player02.py` comprova a vitória da
+  Cisterna seed 22 (5 dias/noites, 3 expedições, 98 decisões). O replay
+  contínuo ainda registra derrota local na Estação. `verify_regional_player.py`
+  comprova apenas uma busca no Mercado após migração, save/load e retorno.
+- O controlador não completou Célia, Posto ou campanha militar; cartas de
+  Viagem/emboscada regional continuam sem integração. Migração seed 22 tem
+  `clues=0`; só Célia/Vicente produzem pesquisa e Célia está marcada para depois
+  do sinal, cujo gate requer duas pistas — ordenação narrativa pendente.
+
+## Atualização ativa do lote anterior
 
 - Relógio regional comum de 10 segmentos, uma expedição por dia, fadiga nos
   segmentos 9–10, surgimento inicial e Horda persistente ligados às expedições
@@ -45,9 +95,9 @@ Main e kit físico 0.2 permanecem intactos.
 - Replay parcial tem 62 registros resumidos após A Cisterna. Recupera Bateria, pega oito cartas, repara a van, volta gastando quatro cartas e fica com combustível 7. O percurso militar exige 12 pelo modelo canônico regional e falha sem mutação (déficit 5). `verified_victory` só foi emitido na Cisterna.
 - Isso ainda não é campanha integral legal segundo todas as regras físicas: contato/recrutamento, relógio compartilhado, eventos e encontros do arco 2 seguem incompletos. Sem transmissor, defesa final, impressão física ou playtest humano.
 
-## Bloqueios registrados antes deste lote
+## Bloqueios registrados no checkpoint anterior (referência histórica)
 
-A oferta modelada alcança no máximo 11 combustíveis (3 Oficina + 8 Posto) antes de retorno, menor que as 12 unidades da viagem `far=3` com van (2 por segmento, ida e volta). `data/last_transmission.json` ainda diz 6, em conflito com `RULES.md` §64. Nenhum valor foi mudado nem recurso injetado. Próxima tarefa: decidir/documentar a equivalência entre os arcos antes de prosseguir.
+A oferta modelada alcança no máximo 11 combustíveis (3 Oficina + 8 Posto) antes de retorno, menor que as 12 unidades da viagem `far=3` com van (2 por segmento, ida e volta). `data/last_transmission.json` ainda diz 6, em conflito com a regra de veículo em `RULES.md` §11. A referência §64 citada anteriormente não existe na cópia atual. Nenhum valor foi mudado nem recurso injetado. Próxima tarefa: decidir/documentar a equivalência entre os arcos antes de prosseguir.
 
 ## Verificação e retomada
 

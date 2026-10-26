@@ -1,7 +1,7 @@
 {
   "schema": 1,
   "branch": "evolucao/zona-zero-sistema-v1",
-  "updated_at": "2026-10-25",
+  "updated_at": "2026-10-26",
   "tasks": [
     {
       "id": "P0-EXPEDITION-COMPLETE",
@@ -43,13 +43,14 @@
         "edicao-integral/tests/test_posto_vehicle_bridge.py",
         "edicao-integral/tests/test_regional_search_actions.py",
         "edicao-integral/verify_campaign_player02.py",
+        "edicao-integral/verify_regional_player.py",
         "edicao-integral/verify_continuous_campaign.py",
         "edicao-integral/validate_data.py",
         "python -m unittest discover -s edicao-integral/tests -q"
       ],
       "status": "parcial_bloqueada",
-      "commit": "fb48fda",
-      "blocker": "Migração, relógio regional (10 segmentos), limite de uma expedição/dia, fadiga e descanso, exclusividade trabalho/expedição, surgimento inicial, Horda persistente e retirada de emergência têm testes. Replay seed 22 termina em derrota local na Estação: a adaptação de contato provisório com Célia leva à incapacitação; a retirada devolve o grupo, perde carga e deixa Célia no destino. Combustível segue sem decisão: 8 unidades explícitas em O1, O2 não define combustível, van custa 2/trecho, far=3 implica 12 ida/volta e EXP-MIS-104 fixa 6. Itens únicos perdidos permanecem no destino e não podem ser duplicados, mas não há ação aprovada para recolher cartão/transmissor do chão. Ainda faltam cartas/emboscadas regionais e recuperação do ferimento de civis migrados."
+      "commit": "709c48f",
+      "blocker": "Migração, relógio regional (10 segmentos), limite de uma expedição/dia, fadiga/descanso, surgimento inicial, Horda persistente, ações de PA, contato físico de Célia e retirada têm cobertura. Uma busca de Mercado com retorno/save-load é reproduzida pelo controlador novo, mas não cobre Célia nem o arco completo. `RULES.md` atual não tem §64: van §11 custa 2/trecho; rota `far=3` custa 12, `EXP-MIS-104` fixa 6; Posto O1 = 8 combustível e O2 não declara combustível. Viagem/emboscada regionais, recuperação de itens únicos perdidos, route mapping, pistas de rádio e a economia para a instalação exigem integração/decisão documentada."
     },
     {
       "id": "P2-PLAYER-CAMPAIGNS",
@@ -69,7 +70,7 @@
       ],
       "status": "parcial_bloqueada",
       "commit": "pendente",
-      "blocker": "Não há campanha completa contínua. A primeira trajetória regional seed 22 sofre derrota local por incapacitação no ponto provisório de contato de Célia. Viagem regional por cartas, recuperação/retorno em revisita e política adaptativa de combate permanecem pendentes. Cartões/transmissor deixados no chão após emergência são preservados sem ação de recuperação; isso ainda pode bloquear campanhas futuras."
+      "blocker": "Não há campanha completa contínua. O controlador adaptativo atual comprova apenas uma expedição a pé no Mercado. Seus perfis são heurísticas simples (diferença operacional principal é distância para priorizar combate), não oito subagentes humanos. Célia não foi legalmente recrutada no replay; o contato configurado é provisório e pista/radio_code tem dependência circular a resolver. Viagem regional por cartas/emboscadas e recuperação de cartão/transmissor deixado no chão continuam pendentes."
     },
     {
       "id": "P3-PHYSICAL-EDITION",

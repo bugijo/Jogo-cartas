@@ -1,8 +1,20 @@
 # Checkpoint — campanha contínua Cisterna → Última Transmissão
 
+## Estado ativo desta retomada — implementação publicada `709c48f`
+
+- O HEAD local/remoto confirmado antes da edição foi `d3d6137660cf0d3e4415e227fcf9b5edad13bccf`; branch `evolucao/zona-zero-sistema-v1`, árvore inicialmente limpa. O HEAD citado na solicitação (`3b5966…`) não é o estado disponível nesta cópia. O commit funcional `709c48f` reúne código, testes e replays e foi publicado por fast-forward normal.
+- Corrigida a matriz de combustível: `RULES.md` nesta cópia termina na §14 e não contém §64. A van e custo de 2 unidades/trecho estão em §11; segmentos de rota estão em §5. `CAMPAIGN.md`/`content/catalog.json` dizem 8 combustíveis únicos no Posto O1 e O2 “um lote de cada provisão”, sem declarar combustível nem quantidade adicional. `EXP-MIS-104` experimental cobra 6 fixos; `EXP-LOC-06 far=3` com custo canônico resulta em 12. Nenhuma regra foi escolhida nem combustível criado.
+- A integração tática foi ajustada ao manual: mover custa 1 PA, mais 1 ao sair de zona ocupada; abrir porta comum custa 1 PA; porta bloqueada custa 2 PA com ferramenta, sem teste, desgaste ou ruído não escrito na regra. O baralho Horda existente permanece persistente.
+- `World.open_expedition()` agora recusa, sem alterar o estado, despacho quando não há reserva para ida + ao menos uma rodada local + retorno dentro do relógio 10.
+- Novo `AdaptiveRegionalPlayer` toma decisões observáveis pela API `World`/`TacticalGame`, inclui save/load de seu plano e uma viagem regional a pé. Rejeita veículo enquanto custo/rota de combustível não estiverem conciliados. A revisão adversarial corrigiu falso sucesso de contato indisponível, rota que ignorava desvio aberto sem ferramenta e validação tardia de mapa.
+- Prova regional reproduzível adicionada: vitória Cisterna H2 seed 22 → migração → busca tática no Mercado → save/load → retorno → contabilização de 2 comida + 1 água e refeição. **Não** cobre Célia, viagem por cartas, Posto, transmissor ou defesa final.
+- Novo bloqueio de narrativa/recursos identificado: a migração seed 22 produz `clues=0`; somente Célia e Vicente têm produção `research` no catálogo regional. Célia está marcada `post_cistern_radio_signal`, mas sua localização/contato é provisória e o código de rádio exige 2 pistas. A ordem para obter essas pistas antes de recrutar Célia precisa ser resolvida no design; não foi alterada.
+- Próximo bloqueio integral permanece: paridade de viagem/emboscada regional e decisão de combustível. Campanha completa em Última Transmissão ainda não foi executada.
+- Verificação final: 296 testes; validador (127 IDs, 10 protagonistas, 70 habilidades, 15 NPCs), `compileall`, JSON da fila e `git diff --check` passaram. Cisterna seed 22 = 5 dias/noites, 3 expedições, 98 decisões, `verified_victory`; replay regional parcial comprovado. O replay contínuo segue em derrota local na Estação.
+
 Branch: `evolucao/zona-zero-sistema-v1`
-HEAD remoto publicado: `fb48fda`
-Commits funcionais publicados neste lote: `2e07b08`, `6d25b43`, `2a24cc7`, `60340c4`, `f205e55`, `0f1ce2a`, `fb48fda`.
+HEAD remoto publicado: `709c48f`
+Commits funcionais publicados neste lote: `2e07b08`, `6d25b43`, `2a24cc7`, `60340c4`, `f205e55`, `0f1ce2a`, `fb48fda`, `709c48f`.
 Main e kit físico 0.2 intactos.
 
 ## Atualização ativa — relógio e primeiro replay regional
@@ -23,7 +35,7 @@ Main e kit físico 0.2 intactos.
   segundo arco. Não usar a fixture de teste que limpa inimigos como prova de
   campanha legal.
 - Combustível permanece sem resolução: O1 do Posto = 8 unidades; O2 “um lote de
-  cada provisão” não autoriza combustível; van = 2 por trecho (§64); `far=3`
+  cada provisão” não autoriza combustível; van = 2 por trecho (§11); `far=3`
   resulta em 12 na ida/volta e `EXP-MIS-104` fixa 6. A Oficina não concede mais
   combustível não autorizado. Ver `edicao-integral/TACTICAL_FUEL_AUDIT.md`.
 - Retirada de emergência regional está implementada. Viagem regional por
@@ -73,7 +85,7 @@ Main e kit físico 0.2 intactos.
 
 ## Bloqueios antigos supersedidos pelo estado ativo acima
 
-Não há campanha integral Cisterna → defesa final. O catálogo regional atualmente modelado fornece no máximo 11 combustíveis (3 Oficina + 8 Posto) antes de retorno, abaixo das 12 unidades do modelo canônico; a seed deixa 7 depois de voltar do Posto. `data/last_transmission.json` ainda codifica custo 6, divergente de `RULES.md` §64. `CAMPAIGN.md` não define se o “lote de cada provisão” do Posto O2 inclui combustível nem a quantidade; por isso, 11 é teto do modelo, mas não prova o soft-lock canônico enquanto essa frase estiver ambígua. Nenhum custo foi reduzido e nenhum combustível foi criado.
+Não há campanha integral Cisterna → defesa final. O catálogo regional atualmente modelado fornece no máximo 11 combustíveis (3 Oficina + 8 Posto) antes de retorno, abaixo das 12 unidades do modelo regional `far=3`; a seed deixa 7 depois de voltar do Posto. `data/last_transmission.json` ainda codifica custo 6, divergente de `RULES.md` §11. `CAMPAIGN.md` não define se o “lote de cada provisão” do Posto O2 inclui combustível nem a quantidade; por isso, 11 é teto do modelo, mas não prova o soft-lock canônico enquanto essa frase estiver ambígua. Nenhum custo foi reduzido e nenhum combustível foi criado.
 
 Outras limitações de paridade: recrutamento do pesquisador ainda não tem contato narrativo; a pesquisa/estação e algumas operações regionais continuam protótipos, sem ligar todo o relógio de dez segmentos, eventos/emboscadas/hordas da regra 0.2. A cena regional não é simulada como combate completo em todos destinos. Portanto, o replay de 62 registros demonstra a ponte de estado e ações implementadas, não campanha física integral legal.
 
@@ -81,7 +93,7 @@ Nenhum `verified_victory` foi emitido para Última Transmissão. Transmissor e d
 
 ## Próxima decisão registrada no checkpoint anterior
 
-Antes de buscar a defesa final, resolver explicitamente a equivalência de combustível entre regional `far=3`, o custo experimental de seis e `RULES.md` §64 (2 por trecho), sem mudar números silenciosamente. Alternativas a avaliar na fila: formalizar uma unidade regional diferente com regra escrita e impacto; ou identificar uma fonte/mecânica de combustível já autorizada pelo conteúdo atual. A oferta atual demonstra déficit, não prova isolada de equilíbrio global.
+Antes de buscar a defesa final, resolver explicitamente a equivalência de combustível entre regional `far=3`, o custo experimental de seis e `RULES.md` §11 (2 por trecho), sem mudar números silenciosamente. O pedido anterior cita §64, mas essa seção não existe na cópia atual do manual. Alternativas a avaliar na fila: formalizar uma unidade regional diferente com regra escrita e impacto; ou identificar uma fonte/mecânica de combustível já autorizada pelo conteúdo atual. A oferta atual demonstra déficit, não prova isolada de equilíbrio global.
 
 ## Verificação histórica do lote de migração
 

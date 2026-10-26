@@ -1,5 +1,29 @@
 # Bloqueios verificados da sequência completa
 
+## Atualização ativa — código publicado em `709c48f`
+
+- Correções independentes de combustível: custo de ação tática agora segue as
+  regras impressas; despacho regional sem reserva para ida/rodada/retorno é
+  rejeitado sem mutação. Novo controlador reproduz uma busca e retorno de
+  Mercado após a vitória Cisterna seed 22 e save/load.
+- A auditoria adversarial encontrou e o lote corrige falso sucesso quando a
+  lista de contatos não contém Célia; também corrige bloqueio do agente diante
+  de rota curta por porta bloqueada sem ferramenta quando existe desvio aberto,
+  e rejeita mapa inválido antes do gasto de viagem.
+- Célia: a regra física de contato existe no motor, mas o encontro da Station/O2
+  é explicitamente provisório. O teste unitário que limpa inimigos e reposiciona
+  o herói só verifica os requisitos da API; não é uma trajetória legal. A
+  migração seed 22 tem 0 pistas e o catálogo só dá `research` a Célia/Vicente,
+  enquanto Célia está marcada para depois do sinal de rádio. Essa ordem impede
+  alegar que o arco está desbloqueado até decisão narrativa explícita.
+- Combustível: este `RULES.md` contém §§1–14, não §64; van está em §11 e custa
+  2 unidades por trecho. Posto O1 fornece oito cartas únicas; O2 não define
+  combustível; a missão experimental fixa 6; distância regional `far=3` com
+  custo canônico resulta em 12. Nenhuma quantidade/rota foi escolhida.
+- Faltam integração de cartas de Viagem, resolução de emboscada no mapa regional,
+  re-visita/recuperação de cartão ou transmissor abandonado, campanha do Posto
+  e Transmissão completa. Ver matriz no `TACTICAL_FUEL_AUDIT.md`.
+
 ## Estado ativo — checkpoint após `fb48fda` e revisão de regras
 
 - O replay `verify_continuous_campaign.py` continua a certificar A Cisterna H2
@@ -44,7 +68,7 @@
   a Célia no relógio 6/10, mas o Bruto a incapacitou na ativação seguinte, no
   segmento 7. Essa rota exploratória não foi salva como replay de campanha nem
   processada como conclusão; não prova que todas as estratégias de Estação falhem.
-- O conflito de combustível continua sem decisão: §64 cobra 2 por trecho; a
+- O conflito de combustível continua sem decisão: RULES.md §11 cobra 2 por trecho; a
   viagem militar experimental é `far=3` (12 ida/volta pela van), enquanto
   `EXP-MIS-104` fixa 6. Posto O1 traz 8 cartas finitas; O2 não explicita
   combustível. Nenhuma quantidade foi criada. Ver a matriz atualizada em
