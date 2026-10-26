@@ -22,6 +22,9 @@ class AdaptiveRegionalPlayer:
 
     PROFILES = {
         'cautious': {'combat_distance': 1},
+        # A distinct low-contact policy avoids optional fights unless a threat
+        # occupies an objective/exit zone; it is useful for long clue routes.
+        'stealth': {'combat_distance': 0},
         'explorer': {'combat_distance': 1},
         'builder': {'combat_distance': 1},
         'combatant': {'combat_distance': 3},

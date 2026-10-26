@@ -11,7 +11,11 @@ sys.path.insert(0, str(ROOT))
 from integrated_campaign import IntegratedCampaign
 from system import HEROES, VEHICLES, World
 from verify_campaign_player02 import execute
-from verify_continuous_campaign import execute as execute_continuous
+from verify_continuous_campaign import (
+    execute as execute_continuous,
+    execute_balanced_blocked,
+)
+from regional_player import AdaptiveRegionalPlayer
 
 
 class CampaignTransitionTests(unittest.TestCase):
@@ -110,7 +114,7 @@ class CampaignTransitionTests(unittest.TestCase):
         self.assertIn('RULES.md §11, linha 64', mission['cost_basis']['source'])
 
     def test_replay_stops_at_regional_emergency_without_forging_return(self):
-        replay = execute_continuous(22)
+        replay = execute_balanced_blocked(22)
         regional = replay["regional_expedition"]
         self.assertEqual(replay["status"], "local_defeat_clock_blocked")
         self.assertEqual(replay["cistern"]["status"], "verified_victory")
@@ -120,8 +124,31 @@ class CampaignTransitionTests(unittest.TestCase):
         self.assertFalse(regional["celia_recruited"])
         self.assertEqual(regional["emergency_receipt"]["status"], "failed")
         self.assertEqual(regional["emergency_receipt"]["stranded_npcs"], [])
-        self.assertIn("13 no total", regional["blocker"])
+        self.assertIn("falha de uma política", regional["blocker"])
         self.assertIn("não prova impossibilidade geral", regional["blocker"])
+
+    def test_stealth_team_can_copy_and_extract_one_physical_station_clue(self):
+        game = self.completed_seed22()
+        game.transition_to_last_transmission()
+        world = game.world
+        result = AdaptiveRegionalPlayer('stealth').run_expedition(
+            world, 'station-clue-stealth', 'EXP-LOC-05', list(world.heroes),
+            'station_02', [
+                {'kind':'investigate_contact','npc':'EXP-NPC-02'},
+                {'kind':'evidence','npc':'EXP-NPC-02'},
+            ], max_steps=120)
+        self.assertEqual(result['status'], 'returned')
+        self.assertEqual(result['local']['status'], 'objective_completed_and_exited')
+        self.assertIn('baralho de Viagem não resolvido',
+                      execute_continuous(22)['scope'])
+        self.assertEqual(world.clues, 1)
+        self.assertFalse(world.flags.get('radio_code', False))
+        self.assertNotIn('EXP-NPC-02', world.npcs)
+        self.assertFalse(any(row.get('action') == 'emergency_return'
+                             for row in result['local']['decisions']))
+        self.assertNotIn('station-clue-stealth', world.expeditions)
+        self.assertTrue(all(state['location'] == 'camp'
+                            for state in world.heroes.values()))
 
     def test_all_twelve_cistern_founders_have_world_identity_profiles(self):
         for founder_id in (f"ZC-HER-{number:04d}" for number in range(1, 13)):

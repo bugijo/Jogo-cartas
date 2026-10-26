@@ -1,0 +1,444 @@
+{
+  "schema": 4,
+  "status": "regional_evidence_returned_incomplete",
+  "replay": {
+    "status": "regional_evidence_returned_incomplete",
+    "scope": "ações táticas públicas do protótipo regional; baralho de Viagem não resolvido; não equivale a expedição canônica integral",
+    "phase": "last_transmission",
+    "seed": 22,
+    "profile": "stealth",
+    "cistern": {
+      "status": "verified_victory",
+      "days": 5,
+      "nights": 5,
+      "expeditions": 3,
+      "decisions": 98
+    },
+    "migration": {
+      "id": "cistern02:4950561ea0f429f7",
+      "source_digest": "4950561ea0f429f7c7bf980decbb61dde1abf9acadbe766a2fab04a570db35a9",
+      "from": "cistern02",
+      "to": "last_transmission",
+      "heroes": [
+        "ZC-HER-0001",
+        "ZC-HER-0003"
+      ],
+      "people": 3,
+      "consumers": 3,
+      "day": 5
+    },
+    "regional_expedition": {
+      "destination": "EXP-LOC-05",
+      "map": "station_02",
+      "status": "returned",
+      "outbound": [
+        "travel",
+        "travel",
+        "arrived"
+      ],
+      "local_status": "objective_completed_and_exited",
+      "decision_count": 23,
+      "decisions": [
+        {
+          "action": "open_door",
+          "hero": "ZC-HER-0001",
+          "edge": [
+            1,
+            5
+          ]
+        },
+        {
+          "action": "move",
+          "hero": "ZC-HER-0001",
+          "from": 1,
+          "to": 5,
+          "target": 14,
+          "cost": 1
+        },
+        {
+          "action": "move",
+          "hero": "ZC-HER-0001",
+          "from": 5,
+          "to": 9,
+          "target": 14,
+          "cost": 1
+        },
+        {
+          "action": "move",
+          "hero": "ZC-HER-0003",
+          "from": 1,
+          "to": 5,
+          "target": 14,
+          "cost": 1
+        },
+        {
+          "action": "move",
+          "hero": "ZC-HER-0003",
+          "from": 5,
+          "to": 9,
+          "target": 14,
+          "cost": 1
+        },
+        {
+          "action": "open_door",
+          "hero": "ZC-HER-0003",
+          "edge": [
+            9,
+            13
+          ]
+        },
+        {
+          "action": "activate",
+          "result": {
+            "spawned": [],
+            "attacks": [],
+            "round": 1,
+            "clock": 5,
+            "fatigue": [],
+            "return_reserve": true,
+            "round_closed": false
+          }
+        },
+        {
+          "action": "move",
+          "hero": "ZC-HER-0001",
+          "from": 9,
+          "to": 13,
+          "target": 14,
+          "cost": 1
+        },
+        {
+          "action": "breach",
+          "hero": "ZC-HER-0001",
+          "edge": [
+            13,
+            14
+          ],
+          "opened": true,
+          "item": "CIS-ZC-HER-0001-CROWBAR-01"
+        },
+        {
+          "action": "move",
+          "hero": "ZC-HER-0003",
+          "from": 9,
+          "to": 13,
+          "target": 14,
+          "cost": 1
+        },
+        {
+          "action": "move",
+          "hero": "ZC-HER-0003",
+          "from": 13,
+          "to": 14,
+          "target": 14,
+          "cost": 1
+        },
+        {
+          "action": "investigate_contact",
+          "hero": "ZC-HER-0003",
+          "result": {
+            "npc": "EXP-NPC-02",
+            "hero": "ZC-HER-0003",
+            "zone": 14,
+            "location": "EXP-LOC-05",
+            "action_cost": 1,
+            "clues_awarded": 0
+          }
+        },
+        {
+          "action": "activate",
+          "result": {
+            "spawned": [
+              "E003"
+            ],
+            "attacks": [],
+            "round": 2,
+            "clock": 6,
+            "fatigue": [],
+            "return_reserve": true,
+            "round_closed": false
+          }
+        },
+        {
+          "action": "collect_evidence",
+          "hero": "ZC-HER-0003",
+          "result": {
+            "evidence_id": "EXP-CLUE-001",
+            "name": "Anotações de Célia",
+            "npc": "EXP-NPC-02",
+            "hero": "ZC-HER-0003",
+            "zone": 14,
+            "location": "EXP-LOC-05",
+            "action_cost": 1,
+            "clues_awarded": 1,
+            "total_clues": 1
+          }
+        },
+        {
+          "action": "move",
+          "hero": "ZC-HER-0001",
+          "from": 13,
+          "to": 9,
+          "target": 1,
+          "cost": 1
+        },
+        {
+          "action": "move",
+          "hero": "ZC-HER-0001",
+          "from": 9,
+          "to": 5,
+          "target": 1,
+          "cost": 1
+        },
+        {
+          "action": "move",
+          "hero": "ZC-HER-0001",
+          "from": 5,
+          "to": 1,
+          "target": 1,
+          "cost": 1
+        },
+        {
+          "action": "move",
+          "hero": "ZC-HER-0003",
+          "from": 14,
+          "to": 13,
+          "target": 1,
+          "cost": 1
+        },
+        {
+          "action": "move",
+          "hero": "ZC-HER-0003",
+          "from": 13,
+          "to": 9,
+          "target": 1,
+          "cost": 1
+        },
+        {
+          "action": "activate",
+          "result": {
+            "spawned": [],
+            "attacks": [],
+            "round": 3,
+            "clock": 7,
+            "fatigue": [],
+            "return_reserve": true,
+            "round_closed": false
+          }
+        },
+        {
+          "action": "move",
+          "hero": "ZC-HER-0003",
+          "from": 9,
+          "to": 5,
+          "target": 1,
+          "cost": 1
+        },
+        {
+          "action": "move",
+          "hero": "ZC-HER-0003",
+          "from": 5,
+          "to": 1,
+          "target": 1,
+          "cost": 1
+        },
+        {
+          "action": "finish_encounter",
+          "returned_to_exit": true
+        }
+      ],
+      "clock": 10,
+      "clock_after_emergency": null,
+      "clues": 1,
+      "clues_physically_returned": 1,
+      "radio_code": false,
+      "celia_recruited": false,
+      "stock_after_return": {
+        "food": 1,
+        "water": 11,
+        "wood": 0,
+        "scrap": 0,
+        "medicine": 2,
+        "fuel": 0,
+        "ammo": 0
+      },
+      "team_fatigue_after_return": {
+        "ZC-HER-0001": 2,
+        "ZC-HER-0003": 2
+      },
+      "emergency_receipts": [],
+      "emergency_receipt": null,
+      "log": [
+        {
+          "day": 0,
+          "expedition": "continuous-seed22-station-clue-stealth",
+          "action": "open_expedition",
+          "destination": "EXP-LOC-05",
+          "distance": "far",
+          "segments": 3,
+          "vehicle": null,
+          "special_items": []
+        },
+        {
+          "day": 0,
+          "expedition": "continuous-seed22-station-clue-stealth",
+          "action": "regional_clock_segment",
+          "segment": 1,
+          "kind": "travel",
+          "night": false,
+          "fatigue": []
+        },
+        {
+          "day": 0,
+          "expedition": "continuous-seed22-station-clue-stealth",
+          "action": "regional_clock_segment",
+          "segment": 2,
+          "kind": "travel",
+          "night": false,
+          "fatigue": []
+        },
+        {
+          "day": 0,
+          "expedition": "continuous-seed22-station-clue-stealth",
+          "action": "regional_clock_segment",
+          "segment": 3,
+          "kind": "travel",
+          "night": false,
+          "fatigue": []
+        },
+        {
+          "day": 0,
+          "expedition": "continuous-seed22-station-clue-stealth",
+          "action": "regional_clock_segment",
+          "segment": 4,
+          "kind": "map_round",
+          "night": false,
+          "fatigue": []
+        },
+        {
+          "day": 0,
+          "expedition": "continuous-seed22-station-clue-stealth",
+          "action": "open_common_door",
+          "hero": "ZC-HER-0001",
+          "edge": "1-5",
+          "action_cost": 1
+        },
+        {
+          "day": 0,
+          "expedition": "continuous-seed22-station-clue-stealth",
+          "action": "open_common_door",
+          "hero": "ZC-HER-0003",
+          "edge": "9-13",
+          "action_cost": 1
+        },
+        {
+          "day": 0,
+          "expedition": "continuous-seed22-station-clue-stealth",
+          "action": "regional_clock_segment",
+          "segment": 5,
+          "kind": "map_round",
+          "night": false,
+          "fatigue": []
+        },
+        {
+          "day": 0,
+          "expedition": "continuous-seed22-station-clue-stealth",
+          "action": "investigate_physical_contact",
+          "npc": "EXP-NPC-02",
+          "hero": "ZC-HER-0003",
+          "zone": 14,
+          "location": "EXP-LOC-05",
+          "action_cost": 1,
+          "clues_awarded": 0
+        },
+        {
+          "day": 0,
+          "expedition": "continuous-seed22-station-clue-stealth",
+          "action": "regional_horde",
+          "card": "Peso morto",
+          "enemies": [
+            "E003"
+          ]
+        },
+        {
+          "day": 0,
+          "expedition": "continuous-seed22-station-clue-stealth",
+          "action": "regional_clock_segment",
+          "segment": 6,
+          "kind": "map_round",
+          "night": false,
+          "fatigue": []
+        },
+        {
+          "day": 0,
+          "expedition": "continuous-seed22-station-clue-stealth",
+          "action": "collect_regional_evidence",
+          "evidence_id": "EXP-CLUE-001",
+          "name": "Anotações de Célia",
+          "npc": "EXP-NPC-02",
+          "hero": "ZC-HER-0003",
+          "zone": 14,
+          "location": "EXP-LOC-05",
+          "action_cost": 1,
+          "clues_awarded": 1,
+          "total_clues": 1
+        },
+        {
+          "day": 0,
+          "expedition": "continuous-seed22-station-clue-stealth",
+          "action": "regional_clock_segment",
+          "segment": 7,
+          "kind": "map_round",
+          "night": false,
+          "fatigue": []
+        },
+        {
+          "day": 0,
+          "encounter": "continuous-seed22-station-clue-stealth",
+          "retreat": false,
+          "enemies_remaining": 3
+        },
+        {
+          "day": 0,
+          "expedition": "continuous-seed22-station-clue-stealth",
+          "action": "regional_clock_segment",
+          "segment": 8,
+          "kind": "travel",
+          "night": false,
+          "fatigue": []
+        },
+        {
+          "day": 0,
+          "expedition": "continuous-seed22-station-clue-stealth",
+          "action": "regional_clock_segment",
+          "segment": 9,
+          "kind": "travel",
+          "night": true,
+          "fatigue": [
+            "ZC-HER-0001",
+            "ZC-HER-0003"
+          ]
+        },
+        {
+          "day": 0,
+          "expedition": "continuous-seed22-station-clue-stealth",
+          "action": "regional_clock_segment",
+          "segment": 10,
+          "kind": "travel",
+          "night": true,
+          "fatigue": [
+            "ZC-HER-0001",
+            "ZC-HER-0003"
+          ]
+        },
+        {
+          "day": 0,
+          "expedition": "continuous-seed22-station-clue-stealth",
+          "delivered": {},
+          "left_behind": {}
+        }
+      ],
+      "blocker": "Uma pista física foi copiada e retornou ao abrigo. O rádio ainda exige duas pistas; esta rota não contata/recruta Célia nem conclui o arco."
+    }
+  }
+}
