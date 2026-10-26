@@ -230,6 +230,7 @@ class PostoVehicleBridgeTests(unittest.TestCase):
             tactical.contact_npc(hero, 'EXP-NPC-02')
         tactical.state['enemies'].clear()  # fixture isola presença e PA de combate
         tactical.state['heroes'][hero]=14
+        tactical.investigate_contact(hero, 'EXP-NPC-02')
         with self.assertRaisesRegex(ValueError, 'contato físico'):
             world.recruit('EXP-NPC-02')
         before = world.heroes[hero]['actions']
@@ -273,6 +274,7 @@ class PostoVehicleBridgeTests(unittest.TestCase):
         tactical=TacticalGame.start(world,'station-emergency','station_02')
         tactical.state['enemies'].clear()  # fixture para isolar liquidação de emergência
         tactical.state['heroes'][heroes[0]]=14
+        tactical.investigate_contact(heroes[0],'EXP-NPC-02')
         tactical.contact_npc(heroes[0],'EXP-NPC-02')
         expedition=world.expeditions['station-emergency']
         expedition.cargo['food']=2
@@ -364,11 +366,14 @@ class PostoVehicleBridgeTests(unittest.TestCase):
             world.advance_expedition('station-no-food')
         tactical = TacticalGame.start(world, 'station-no-food', 'station_02')
         tactical.state['heroes'][hero] = 14  # teste isolado do bloqueio de sustento
+        tactical.state['enemies'].clear()
+        tactical.investigate_contact(hero, 'EXP-NPC-02')
         self.assertLess(world.stock['food'], world.residents + 1)
+        actions_after_investigation = world.heroes[hero]['actions']
         with self.assertRaisesRegex(ValueError, 'sustento'):
             tactical.contact_npc(hero, 'EXP-NPC-02')
         self.assertNotIn('EXP-NPC-02', world.npcs)
-        self.assertEqual(world.heroes[hero]['actions'], 3)
+        self.assertEqual(world.heroes[hero]['actions'], actions_after_investigation)
 
     def test_celia_contact_is_unavailable_when_founder_is_already_active(self):
         world = World.new(3, ['ZC-HER-0012'], {'food': 4, 'water': 4})
@@ -381,8 +386,8 @@ class PostoVehicleBridgeTests(unittest.TestCase):
             world.advance_expedition('duplicate')
         tactical = TacticalGame.start(world, 'duplicate', 'station_02')
         tactical.state['heroes']['ZC-HER-0012'] = 14
-        with self.assertRaisesRegex(ValueError, 'não disponível'):
-            tactical.contact_npc('ZC-HER-0012', 'EXP-NPC-02')
+        with self.assertRaisesRegex(ValueError, 'Identidade já presente'):
+            tactical.investigate_contact('ZC-HER-0012', 'EXP-NPC-02')
 
     def test_continuous_regional_clock_charges_travel_rounds_and_return(self):
         hero = 'ZC-HER-0001'

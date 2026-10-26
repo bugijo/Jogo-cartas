@@ -3,7 +3,7 @@ import json
 from collections import deque
 from pathlib import Path
 
-from system import DATA, ITEMS, TACTICS_DATA, World
+from system import DATA, ITEMS, LOCATIONS, TACTICS_DATA, VEHICLES, World
 
 ARC_DATA=json.loads((Path(__file__).parent/'data/last_transmission.json').read_text(encoding='utf-8'))
 ARC_CARDS={card['id']:card for card in ARC_DATA['cards']}
@@ -15,13 +15,17 @@ class Arc2:
 
     def decode_radio(self) -> None:
         card=ARC_CARDS['EXP-MIS-102']
-        if (not self.world.cistern_verified
+        if (self.world.expeditions or self.world.encounters
+                or not self.world.cistern_verified
                 or self.world.clues<card['requires']['clues']
                 or self.world.flags.get('radio_code')):
-            raise ValueError('Frequência indisponível')
+            raise ValueError('Decodificação exige retorno ao abrigo, Cisterna verificada e duas pistas')
         self.world.clues-=card['cost']['clues']
         self.world.flags['radio_code']=True
-        self.world.log.append({'day':self.world.day,'mission':card['id'],'result':'decoded'})
+        self.world.log.append({'day':self.world.day,'mission':card['id'],
+                               'result':'decoded',
+                               'clues_spent':card['cost']['clues'],
+                               'clues_remaining':self.world.clues})
 
     def recover_access_card(self,expedition_id:str) -> None:
         card=ARC_CARDS['EXP-MIS-103']
@@ -70,6 +74,13 @@ class Arc2:
             raise ValueError('Campanha contínua exige a van canônica recuperada no Posto')
         if continuous and 'access_card' not in self.world.special_stock:
             raise ValueError('Campanha contínua exige cartão de acesso transportado ao abrigo')
+        if continuous:
+            distance=LOCATIONS[card['location']]['distance']
+            segments=DATA['rules']['travel_segments'][distance]
+            expected=2*segments*VEHICLES[vehicle_id]['fuel_per_segment']
+            if (card['cost'].get('fuel')!=expected
+                    or card['requires'].get('fuel_round_trip')!=expected):
+                raise ValueError('Custo da missão não corresponde a 2 Combustíveis por trecho')
         self.world.flags['military_access']=True
         try:
             self.world.open_expedition(

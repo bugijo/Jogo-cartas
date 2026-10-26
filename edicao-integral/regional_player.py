@@ -1,13 +1,10 @@
-"""Jogador adaptativo de exploração regional usando somente APIs públicas.
-
-O controlador executa ida, objetivo tático e retorno a pé. Não define conteúdo
-de cartas de viagem/emboscadas regionais nem a regra de combustível militar.
-"""
+"""Jogador adaptativo de exploração regional usando somente APIs públicas."""
 from collections import deque
 from dataclasses import dataclass, field
 
-from system import ITEMS, NPCS, REGIONAL_CONTACTS
+from system import ITEMS, REGIONAL_CONTACTS
 from tactics import TACTICS, TacticalGame
+from arc2 import Arc2
 
 
 @dataclass
@@ -86,6 +83,31 @@ class AdaptiveRegionalPlayer:
             # A stale controller snapshot cannot replace an in-world receipt.
             self.completed.discard(key)
             return False
+        if kind=='investigate_contact':
+            npc=objective['npc']
+            discovered=(npc in tactical.state.get('npc_contacts',{}) and any(
+                row.get('action')=='investigate_physical_contact'
+                and row.get('location')==tactical.world.expeditions[
+                    tactical.id].destination
+                and row.get('npc')==npc for row in tactical.world.log))
+            if discovered:
+                self.completed.add(key)
+                return True
+            self.completed.discard(key)
+            return False
+        if kind=='evidence':
+            contact=REGIONAL_CONTACTS.get('contacts',{}).get(objective.get('npc'))
+            evidence=contact.get('evidence') if contact else None
+            collected=bool(evidence and any(
+                row.get('action')=='collect_regional_evidence'
+                and row.get('npc')==objective.get('npc')
+                and row.get('evidence_id')==evidence['id']
+                for row in tactical.world.log))
+            if collected:
+                self.completed.add(key)
+                return True
+            self.completed.discard(key)
+            return False
         if key in self.completed:
             return True
         if kind=='zone':
@@ -104,6 +126,12 @@ class AdaptiveRegionalPlayer:
         if kind=='fuel' and objective['lot'] in [
                 int(entry.rsplit(':',1)[-1])
                 for entry in tactical.state.get('fuel_cards_taken',[])]:
+            self.completed.add(key)
+            return True
+        if kind=='fuel_cache' and tactical.state.get('fuel_cache_collected'):
+            self.completed.add(key)
+            return True
+        if kind=='access_card' and tactical.world.flags.get('access_card'):
             self.completed.add(key)
             return True
         if kind=='inspect_van' and tactical.state.get('van_state')!='abandoned':
@@ -131,7 +159,7 @@ class AdaptiveRegionalPlayer:
 
     def _goal(self, tactical, objective):
         kind=objective.get('kind')
-        if kind in ('zone','search','battery','fuel','inspect_van','repair_van'):
+        if kind in ('zone','search','battery','fuel','fuel_cache','inspect_van','repair_van'):
             if objective['zone'] not in tactical.map['zones']:
                 return []
             destination=tactical.world.expeditions[tactical.id].destination
@@ -146,6 +174,13 @@ class AdaptiveRegionalPlayer:
                                  or f'EXP-LOC-07:Combustível:{objective["lot"]}'
                                     in tactical.state.get('fuel_cards_taken',[])):
                 return []
+            if kind=='fuel_cache':
+                source=REGIONAL_CONTACTS.get('experimental_fuel',{})
+                if (destination!=source.get('location')
+                        or tactical.state['map']!=source.get('map')
+                        or tactical.state.get('fuel_cache_collected')
+                        or objective['zone']!=source.get('zone')):
+                    return []
             if kind=='inspect_van' and (destination!='EXP-LOC-07'
                                         or tactical.state.get('van_state')!='abandoned'):
                 return []
@@ -155,7 +190,16 @@ class AdaptiveRegionalPlayer:
                                            tactical.id].special_cargo):
                 return []
             return [objective['zone']]
-        if kind=='contact':
+        if kind=='access_card':
+            if tactical.world.flags.get('access_card'):
+                return []
+            if not any(row.get('action')=='search'
+                       and row.get('expedition')==tactical.id
+                       and row.get('location')==tactical.world.expeditions[
+                           tactical.id].destination for row in tactical.world.log):
+                return []
+            return list(tactical.state['search_zones'])
+        if kind in ('contact','investigate_contact','evidence'):
             npc=objective['npc']
             contact=REGIONAL_CONTACTS.get('contacts',{}).get(npc)
             zone=tactical.state.get('npc_contacts',{}).get(npc)
@@ -163,17 +207,34 @@ class AdaptiveRegionalPlayer:
             vehicle=(tactical.world.vehicles.get(exp.vehicle_id,{}) if exp.vehicle_id else None)
             seats=(vehicle['seats'] if vehicle else 6*len(exp.heroes))
             community=tactical.world
-            npc_spec=NPCS.get(npc,{})
-            existing=community.npcs.get(npc)
-            contact_legal=(community.residents<community.beds
-                           and community.stock['food']>=community.residents+1
-                           and community.stock['water']>=community.residents+1
-                           and len(exp.heroes)+len(exp.crew)+1<=seats
-                           and npc_spec.get('source_hero_id') not in community.heroes
-                           and (existing is None or existing['location']==exp.destination))
-            if (contact and zone is not None and contact['map']==tactical.state['map']
+            if kind=='evidence':
+                contact_legal=bool(not community.flags.get('radio_code')
+                                    and npc in tactical.state.get('discovered_npcs',[]))
+            elif kind=='investigate_contact':
+                contact_legal=community.regional_contact_identity_available(
+                    npc,exp.destination)
+            else:
+                contact_legal=(community.residents<community.beds
+                               and community.stock['food']>=community.residents+1
+                               and community.stock['water']>=community.residents+1
+                               and len(exp.heroes)+len(exp.crew)+1<=seats
+                               and community.regional_contact_identity_available(
+                                   npc,exp.destination))
+            if kind=='contact':
+                available=zone is not None
+            elif kind=='investigate_contact':
+                available=(community.continuous_campaign and zone is None
+                           and not community.flags.get('radio_code')
+                           and contact is not None and contact.get('moment') in (
+                               'post_cistern_pre_radio',
+                               'post_cistern_pre_radio_if_not_in_community'))
+            else:
+                evidence=contact.get('evidence') if contact else None
+                available=bool(evidence and npc in tactical.state.get('discovered_npcs', [])
+                               and not self._objective_done(tactical,objective))
+            if (contact and available and contact['map']==tactical.state['map']
                     and contact['location']==exp.destination and contact_legal):
-                return [zone]
+                return [contact['zone'] if kind=='investigate_contact' else zone]
             return []
         if kind=='exit':
             return [tactical.exit_zone]
@@ -234,6 +295,14 @@ class AdaptiveRegionalPlayer:
             result=tactical.contact_npc(hero_id,objective['npc'])
             self.completed.add(self._key(tactical,objective))
             return {'action':'contact','hero':hero_id,'result':result}
+        if kind=='investigate_contact':
+            result=tactical.investigate_contact(hero_id,objective['npc'])
+            self.completed.add(self._key(tactical,objective))
+            return {'action':'investigate_contact','hero':hero_id,'result':result}
+        if kind=='evidence':
+            result=tactical.collect_contact_evidence(hero_id,objective['npc'])
+            self.completed.add(self._key(tactical,objective))
+            return {'action':'collect_evidence','hero':hero_id,'result':result}
         if kind=='battery':
             tactical.pickup_unique_item(hero_id,'battery')
             self.completed.add(self._key(tactical,objective))
@@ -242,6 +311,15 @@ class AdaptiveRegionalPlayer:
             result=tactical.pickup_fuel_card(hero_id,objective['lot'])
             self.completed.add(self._key(tactical,objective))
             return {'action':'pickup_fuel','hero':hero_id,'result':result}
+        if kind=='fuel_cache':
+            result=tactical.salvage_fuel_cache(hero_id)
+            self.completed.add(self._key(tactical,objective))
+            return {'action':'salvage_fuel_cache','hero':hero_id,'result':result}
+        if kind=='access_card':
+            Arc2(tactical.world).recover_access_card(tactical.id)
+            self.completed.add(self._key(tactical,objective))
+            return {'action':'recover_access_card','hero':hero_id,
+                    'result':'access_card'}
         if kind=='inspect_van':
             tactical.inspect_van(hero_id)
             self.completed.add(self._key(tactical,objective))
@@ -255,14 +333,24 @@ class AdaptiveRegionalPlayer:
 
     @staticmethod
     def _action_cost(objective):
-        return 2 if objective.get('kind')=='repair_van' else 1
+        return 2 if objective.get('kind') in ('repair_van','fuel_cache') else 1
 
     def step(self, tactical, objective):
         """Executa uma decisão e devolve a trilha observável dessa ação."""
+        kind=objective.get('kind')
         if tactical.id not in tactical.world.encounters:
             return {'action':'blocked','reason':'encontro já encerrado'}
         if tactical.state.get('round_closed'):
             return {'action':'blocked','reason':'relógio sem reserva de retorno'}
+        if (objective.get('kind')=='exit'
+                and all(zone==tactical.exit_zone
+                        for zone in tactical.state['heroes'].values())
+                and not any(enemy['zone']==tactical.exit_zone
+                            for enemy in tactical.state['enemies'].values())):
+            tactical.finish()
+            decision={'action':'finish_encounter','returned_to_exit':True}
+            self.history.append(decision)
+            return decision
         if self._objective_done(tactical,objective):
             targets=[tactical.exit_zone]
         else:
@@ -283,10 +371,11 @@ class AdaptiveRegionalPlayer:
         choices=[]
         for hero_id in active:
             zone=tactical.state['heroes'][hero_id]
+            available_actions=tactical.world.heroes[hero_id]['actions']
             for goal in targets:
                 if zone==goal:
-                    if not self._objective_done(tactical,objective) and \
-                            tactical.world.heroes[hero_id]['actions']>=self._action_cost(objective) \
+                    if kind!='exit' and not self._objective_done(tactical,objective) and \
+                            available_actions>=self._action_cost(objective) \
                             and not (objective.get('kind')=='repair_van'
                                      and hero_id in tactical.state.get('van_attempts',[])):
                         choices.append((0,hero_id,goal,'interact'))
@@ -302,10 +391,12 @@ class AdaptiveRegionalPlayer:
                     door=tactical.state['doors'][
                         f'{min(closed_door[0],closed_door[1])}-'
                         f'{max(closed_door[0],closed_door[1])}']
-                    door_actionable=not door['blocked'] or any(
-                        item['slot']=='hand' and item['durability']>0
-                        and ITEMS[item['template']].get('breach',0)>0
-                        for item in tactical.world.gear[hero_id].values())
+                    door_cost=2 if door['blocked'] else 1
+                    door_actionable=(available_actions>=door_cost and
+                        (not door['blocked'] or any(
+                            item['slot']=='hand' and item['durability']>0
+                            and ITEMS[item['template']].get('breach',0)>0
+                            for item in tactical.world.gear[hero_id].values())))
                 # Prefer a short route through an openable printed door over
                 # a very long detour around it. Door crossing still costs the
                 # matching public action below.
@@ -313,7 +404,10 @@ class AdaptiveRegionalPlayer:
                                     len(route)<len(open_path)):
                     choices.append((len(route)-1,hero_id,goal,'door'))
                 elif open_path:
-                    choices.append((len(open_path)-1,hero_id,goal,'move'))
+                    move_cost=1+int(any(enemy['zone']==zone
+                                        for enemy in tactical.state['enemies'].values()))
+                    if available_actions>=move_cost:
+                        choices.append((len(open_path)-1,hero_id,goal,'move'))
         choices.sort()
         if choices:
             _,hero_id,goal,kind=choices[0]
@@ -347,6 +441,8 @@ class AdaptiveRegionalPlayer:
                     decision={'action':'move','hero':hero_id,'from':zone,'to':nxt,
                               'target':goal,'cost':cost}
                 elif not door['blocked']:
+                    if tactical.world.heroes[hero_id]['actions']<1:
+                        return self._activate(tactical)
                     tactical.open_door(hero_id,a,b)
                     decision={'action':'open_door','hero':hero_id,'edge':[a,b]}
                 else:
@@ -389,6 +485,42 @@ class AdaptiveRegionalPlayer:
         decision={'action':'activate','result':result}
         self.history.append(decision)
         return decision
+
+    def run_objectives(self, tactical, objectives, max_steps=120):
+        """Resolve several legal objectives in one visit, then extract once."""
+        if not isinstance(objectives,(list,tuple)) or not objectives:
+            raise ValueError('A expedição exige ao menos um objetivo')
+        start=len(self.history)
+        for objective in objectives:
+            for _ in range(max_steps):
+                if self._objective_done(tactical,objective):
+                    break
+                result=self.step(tactical,objective)
+                if result['action']=='blocked':
+                    return {'status':'blocked','reason':result['reason'],
+                            'completed':[goal for goal in objectives
+                                         if self._objective_done(tactical,goal)],
+                            'decisions':self.history[start:]}
+                if tactical.id not in tactical.world.encounters:
+                    return {'status':'encounter_ended_before_all_objectives',
+                            'completed':[goal for goal in objectives
+                                         if self._objective_done(tactical,goal)],
+                            'decisions':self.history[start:]}
+            else:
+                return {'status':'step_limit','completed':[goal for goal in objectives
+                                    if self._objective_done(tactical,goal)],
+                        'decisions':self.history[start:]}
+        for _ in range(max_steps):
+            if tactical.id not in tactical.world.encounters:
+                break
+            result=self.step(tactical,{'kind':'exit'})
+            if result['action']=='blocked':
+                return {'status':'blocked_during_extraction','reason':result['reason'],
+                        'decisions':self.history[start:]}
+        status=('objective_completed_and_exited'
+                if tactical.id not in tactical.world.encounters else 'step_limit')
+        return {'status':status,'completed':list(objectives),
+                'decisions':self.history[start:]}
 
     def run_objective(self, tactical, objective, max_steps=100):
         baseline=sum(row.get('action')=='search' and row.get('expedition')==tactical.id
@@ -447,7 +579,9 @@ class AdaptiveRegionalPlayer:
         while world.expeditions[expedition_id].remaining>0:
             outbound.append(world.advance_expedition(expedition_id))
         tactical=TacticalGame.start(world,expedition_id,map_id)
-        local=self.run_objective(tactical,objective,max_steps)
+        local=(self.run_objectives(tactical,objective,max_steps)
+               if isinstance(objective,(list,tuple)) else
+               self.run_objective(tactical,objective,max_steps))
         if local['status']!='objective_completed_and_exited':
             if expedition_id in world.encounters:
                 emergency=tactical.emergency_return(

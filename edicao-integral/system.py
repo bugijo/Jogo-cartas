@@ -144,6 +144,25 @@ class World:
         return bool(self.cistern_verified
                     and (self.cistern_record or {}).get('migration',{}).get('receipt'))
 
+    def regional_contact_identity_available(self, npc_id: str,
+                                            destination: str) -> bool:
+        """Avoid recreating a founder or a named Cisterna rescue as a copy."""
+        contact=REGIONAL_CONTACTS.get('contacts',{}).get(npc_id)
+        if not contact or contact.get('location')!=destination:
+            return False
+        if NPCS[npc_id].get('source_hero_id') in self.heroes:
+            return False
+        existing=self.npcs.get(npc_id)
+        if existing is not None and existing.get('location')!=destination:
+            return False
+        group_id=contact.get('source_group_id')
+        migration=(self.cistern_record or {}).get('migration',{})
+        source_archive=migration.get('source_archive',{})
+        cistern=source_archive.get('cistern',{}) if isinstance(source_archive,dict) else {}
+        if (group_id and cistern.get('rescue_history',{}).get(group_id)=='welcome'):
+            return False
+        return True
+
     @property
     def free_terrain(self) -> int:
         return DATA['rules']['terrain_base'] - sum(STRUCTURES[k]['terrain'] for k in self.structures) - sum(STRUCTURES[k]['terrain'] for k in self.projects)
@@ -166,6 +185,8 @@ class World:
             HordeDeck02.from_snapshot(self.regional_horde_deck)
         if any(v < 0 or not isinstance(v,int) for v in self.stock.values()):
             raise ValueError('Estoque inválido')
+        if not isinstance(self.clues,int) or isinstance(self.clues,bool) or self.clues<0:
+            raise ValueError('Contador de pistas inválido')
         if any(k not in RESOURCES for k in self.stock) or sum(self.stock.values()) > self.storage:
             raise ValueError('Depósito excedido')
         if self.residents > self.beds or self.free_terrain < 0:
@@ -285,6 +306,15 @@ class World:
                     or len(encounter.get('enemies',{}))>24
                     or not 0<=encounter.get('pressure',0)<=3):
                 raise ValueError('Posições do encontro inválidas')
+            if ('fuel_cache_collected' in encounter
+                    and not isinstance(encounter['fuel_cache_collected'], bool)):
+                raise ValueError('Estado da reserva experimental inválido')
+            discovered=encounter.get('discovered_npcs', [])
+            if (not isinstance(discovered, list) or len(discovered)!=len(set(discovered))
+                    or any(npc_id not in REGIONAL_CONTACTS.get('contacts', {})
+                           or REGIONAL_CONTACTS['contacts'][npc_id]['map']!=encounter['map']
+                           for npc_id in discovered)):
+                raise ValueError('Registro de investigação de sobreviventes inválido')
             for npc_id, zone in encounter.get('npc_contacts', {}).items():
                 contact=REGIONAL_CONTACTS.get('contacts', {}).get(npc_id)
                 stranded=self.npcs.get(npc_id)
@@ -292,7 +322,8 @@ class World:
                                     and stranded['location']!=contact['location'])
                         or contact['map']!=encounter['map']
                         or zone!=contact['zone'] or zone not in zones
-                        or NPCS[npc_id].get('source_hero_id') in self.heroes):
+                        or not self.regional_contact_identity_available(
+                            npc_id,contact['location'])):
                     raise ValueError('Contato de sobrevivente inválido')
             for npc_id, hero_id in encounter.get('npc_followers', {}).items():
                 if (npc_id not in exp.crew or npc_id not in self.npcs
@@ -307,6 +338,56 @@ class World:
         if any(loc not in LOCATIONS or state['health'] < 0 or state['health'] > 3
                for loc,state in self.outposts.items()):
             raise ValueError('Posto avançado inválido')
+        evidence_rows=[row for row in self.log
+                       if row.get('action')=='collect_regional_evidence']
+        permitted_evidence={contact['evidence']['id']:(npc_id,contact)
+                            for npc_id,contact in REGIONAL_CONTACTS.get(
+                                'contacts',{}).items() if contact.get('evidence')}
+        evidence_ids=[row.get('evidence_id') for row in evidence_rows]
+        if len(evidence_ids)!=len(set(evidence_ids)):
+            raise ValueError('Recibos de evidência regional duplicados/inválidos')
+        for log_index,row in enumerate(self.log):
+            if row.get('action')!='collect_regional_evidence':
+                continue
+            identity=permitted_evidence.get(row.get('evidence_id'))
+            if identity is None:
+                raise ValueError('Recibo de evidência regional inválido')
+            npc_id,contact=identity
+            evidence=contact['evidence']
+            if (row.get('npc')!=npc_id or row.get('location')!=contact['location']
+                    or row.get('zone')!=contact['zone']
+                    or row.get('clues_awarded')!=evidence['clues']
+                    or row.get('action_cost')!=evidence['action_cost']
+                    or row.get('hero') not in self.heroes
+                    or not isinstance(row.get('expedition'),str)
+                    or not row['expedition']
+                    or not isinstance(row.get('total_clues'),int)
+                    or isinstance(row.get('total_clues'),bool)
+                    or row.get('total_clues',0)<evidence['clues']):
+                raise ValueError('recibo de evidência regional diverge do catálogo')
+            prior=self.log[:log_index]
+            expedition_id=row['expedition']
+            has_trip=any(entry.get('action')=='open_expedition'
+                         and entry.get('expedition')==expedition_id
+                         and entry.get('destination')==contact['location']
+                         for entry in prior)
+            has_investigation=any(entry.get('action')=='investigate_physical_contact'
+                                  and entry.get('npc')==npc_id
+                                  and entry.get('location')==contact['location']
+                                  for entry in prior)
+            if not has_trip or not has_investigation:
+                raise ValueError('recibo de evidência sem investigação anterior na expedição')
+        if any('fuel_cache_collected' in site
+               and not isinstance(site['fuel_cache_collected'], bool)
+               for site in self.site_states.values()):
+            raise ValueError('Estado salvo da reserva experimental inválido')
+        for location,site in self.site_states.items():
+            discovered=site.get('discovered_npcs', [])
+            if (not isinstance(discovered, list) or len(discovered)!=len(set(discovered))
+                    or any(npc_id not in REGIONAL_CONTACTS.get('contacts', {})
+                           or REGIONAL_CONTACTS['contacts'][npc_id]['location']!=location
+                           for npc_id in discovered)):
+                raise ValueError('Investigação salva de sobreviventes inválida')
         if set(self.gear) != set(self.heroes):
             raise ValueError('Inventário sem herói')
         seen = set()
@@ -870,7 +951,8 @@ class World:
         # Preserve the map, objective state and persistent enemies for a later visit.
         site=deepcopy({key:encounter[key] for key in
                        ('map','enemies','next_enemy','doors','announced','round',
-                        'pressure','initial_spawned','van_state','fuel_cards_taken')
+                        'pressure','initial_spawned','van_state','fuel_cards_taken',
+                        'fuel_cache_collected','discovered_npcs')
                        if key in encounter})
         stranded=sorted(encounter.get('npc_followers',{}))
         if stranded:

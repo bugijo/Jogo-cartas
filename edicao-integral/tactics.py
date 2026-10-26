@@ -43,13 +43,6 @@ class TacticalGame:
                for other_id,other in world.expeditions.items()):
             raise ValueError('Local já em uso por outra equipe')
         contacts={}
-        if world.cistern_verified and (world.cistern_record or {}).get('migration',{}).get('receipt'):
-            for npc_id, contact in REGIONAL_CONTACTS.get('contacts',{}).items():
-                if (contact['location']==destination and contact['map']==map_id
-                        and (npc_id not in world.npcs
-                             or world.npcs[npc_id]['location']==destination)
-                        and NPCS[npc_id].get('source_hero_id') not in world.heroes):
-                    contacts[npc_id]=contact['zone']
         state={
             'map':map_id,'heroes':{h:map_data['entry'] for h in world.expeditions[expedition_id].heroes},
             'search_zones':list(map_data['search']),
@@ -58,15 +51,29 @@ class TacticalGame:
                                       'blocked':d['blocked']} for d in map_data['doors']},
             'noise':[],'announced':[],'round':0,'pressure':0,'initial_spawned':False,
             'van_state':'abandoned','van_attempts':[],
-            'fuel_cards_taken':[],'npc_contacts':contacts,'npc_followers':{}}
+            'fuel_cards_taken':[],'fuel_cache_collected':False,
+            'discovered_npcs':[],'npc_contacts':contacts,'npc_followers':{}}
         previous=world.site_states.get(destination)
         if previous:
             if previous['map']!=map_id:
                 raise ValueError('Mapa incompatível com a revisita')
             for key in ('enemies','next_enemy','doors','announced','round','pressure',
-                        'initial_spawned','van_state','fuel_cards_taken'):
+                        'initial_spawned','van_state','fuel_cards_taken',
+                        'fuel_cache_collected','discovered_npcs'):
                 if key in previous:
                     state[key]=deepcopy(previous[key])
+            stranded=set(previous.get('stranded_npcs',[]))
+            discovered=set(state.get('discovered_npcs',[])) | stranded
+            if world.cistern_verified and world.continuous_campaign:
+                for npc_id,contact in REGIONAL_CONTACTS.get('contacts',{}).items():
+                    if (npc_id in discovered and contact['location']==destination
+                            and contact['map']==map_id
+                            and world.regional_contact_identity_available(npc_id,destination)):
+                        state['npc_contacts'][npc_id]=contact['zone']
+        elif world.cistern_verified and world.continuous_campaign:
+            # Contacts become visible only after a legal investigation action.
+            # They are not placed automatically at expedition start.
+            pass
         state['van_attempts']=[]  # Regra canônica: uma tentativa por herói/visita.
         state['first_market_visit']=(world.continuous_campaign
                                      and destination=='EXP-LOC-02' and previous is None)
@@ -82,7 +89,9 @@ class TacticalGame:
                 if destination=='EXP-LOC-05':
                     eid=f"E{state['next_enemy']:03d}"
                     state['next_enemy']+=1
-                    state['enemies'][eid]={'kind':'brute','zone':14,
+                    # The station's extra threat uses the printed spawn point,
+                    # never the survivor contact/search objective zone.
+                    state['enemies'][eid]={'kind':'brute','zone':map_data['spawn'],
                                            'health':TACTICS['enemies']['brute']['health']}
                 state['initial_spawned']=True
         if (world.continuous_campaign
@@ -186,6 +195,90 @@ class TacticalGame:
         """Busca de uma carta/unidade custa 1 PA no setor impresso no mapa."""
         return self.world.search(self.id, hero_id)
 
+    def investigate_contact(self, hero_id: str, npc_id: str) -> dict:
+        """Revela um sobrevivente por investigação física, sem conceder pistas.
+
+        Esta disponibilidade regional é experimental e só vale após a vitória
+        certificada da Cisterna, antes do código de rádio. Encontrar alguém e
+        recrutá-lo são ações separadas; a zona precisa estar livre de inimigos.
+        """
+        exp=self.world.expeditions[self.id]
+        contact=REGIONAL_CONTACTS.get('contacts',{}).get(npc_id)
+        if (not self.world.continuous_campaign or not contact
+                or contact.get('moment') not in (
+                    'post_cistern_pre_radio',
+                    'post_cistern_pre_radio_if_not_in_community')
+                or self.world.flags.get('radio_code')
+                or contact['location']!=exp.destination
+                or contact['map']!=self.state['map']
+                or hero_id not in self.state['heroes']
+                or self.state['heroes'][hero_id]!=contact['zone']):
+            raise ValueError('Investigação de contato indisponível neste local/momento')
+        if (not self.world.regional_contact_identity_available(npc_id,exp.destination)
+                or npc_id in self.state['npc_contacts']):
+            raise ValueError('Identidade já presente ou contato já investigado')
+        hero=self.world.heroes[hero_id]
+        discovery=contact.get('discovery',{})
+        cost=discovery.get('action_cost',1)
+        if hero['health']<1 or hero['actions']<cost:
+            raise ValueError('Investigar exige herói ativo e 1 PA')
+        if any(enemy['zone']==contact['zone']
+               for enemy in self.state['enemies'].values()):
+            raise ValueError('Não é seguro investigar contato com ameaça na zona')
+        hero['actions']-=cost
+        self.state['npc_contacts'][npc_id]=contact['zone']
+        if npc_id not in self.state['discovered_npcs']:
+            self.state['discovered_npcs'].append(npc_id)
+        receipt={'npc':npc_id,'hero':hero_id,'zone':contact['zone'],
+                 'location':exp.destination,'action_cost':cost,'clues_awarded':0}
+        self.world.log.append({'day':self.world.day,'expedition':self.id,
+                               'action':'investigate_physical_contact',**receipt})
+        self.world.validate()
+        return receipt
+
+    def collect_contact_evidence(self, hero_id: str, npc_id: str) -> dict:
+        """Registra uma pista somente após uma ação física de leitura/cópia."""
+        exp=self.world.expeditions[self.id]
+        contact=REGIONAL_CONTACTS.get('contacts',{}).get(npc_id)
+        evidence=contact.get('evidence') if contact else None
+        if (not self.world.continuous_campaign or not evidence
+                or self.world.flags.get('radio_code')
+                or contact.get('moment') not in (
+                    'post_cistern_pre_radio',
+                    'post_cistern_pre_radio_if_not_in_community')
+                or npc_id not in self.state.get('discovered_npcs', [])
+                or contact['location']!=exp.destination
+                or contact['map']!=self.state['map']
+                or hero_id not in self.state['heroes']
+                or self.state['heroes'][hero_id]!=contact['zone']):
+            raise ValueError('Evidência indisponível sem investigação física no local')
+        if not any(row.get('action')=='investigate_physical_contact'
+                   and row.get('npc')==npc_id
+                   and row.get('location')==contact['location']
+                   for row in self.world.log):
+            raise ValueError('Evidência indisponível sem recibo de investigação física')
+        evidence_id=evidence['id']
+        if any(row.get('action')=='collect_regional_evidence'
+               and row.get('evidence_id')==evidence_id for row in self.world.log):
+            raise ValueError('Evidência única já coletada')
+        hero=self.world.heroes[hero_id]
+        if hero['health']<1 or hero['actions']<evidence['action_cost']:
+            raise ValueError('Copiar evidência exige herói ativo e 1 PA')
+        if any(enemy['zone']==contact['zone']
+               for enemy in self.state['enemies'].values()):
+            raise ValueError('Não é seguro copiar evidência com ameaça na zona')
+        hero['actions']-=evidence['action_cost']
+        self.world.clues+=evidence['clues']
+        receipt={'evidence_id':evidence_id,'name':evidence['name'],
+                 'npc':npc_id,'hero':hero_id,'zone':contact['zone'],
+                 'location':contact['location'],
+                 'action_cost':evidence['action_cost'],
+                 'clues_awarded':evidence['clues'],'total_clues':self.world.clues}
+        self.world.log.append({'day':self.world.day,'expedition':self.id,
+                               'action':'collect_regional_evidence',**receipt})
+        self.world.validate()
+        return receipt
+
     def contact_npc(self, hero_id: str, npc_id: str) -> dict:
         """Recruit a regional survivor only through physical contact on the map."""
         exp=self.world.expeditions[self.id]
@@ -193,17 +286,27 @@ class TacticalGame:
         zone=self.state.get('npc_contacts',{}).get(npc_id)
         if not contact:
             raise ValueError('Sobrevivente desconhecido')
-        source_hero=NPCS[npc_id].get('source_hero_id')
         existing=self.world.npcs.get(npc_id)
-        if ((existing and existing['location']!=exp.destination)
-                or source_hero in self.world.heroes):
+        if not self.world.regional_contact_identity_available(npc_id,exp.destination):
             raise ValueError('Sobrevivente não disponível: identidade já está na comunidade')
         if (zone is None or contact['location']!=exp.destination
                 or contact['map']!=self.state['map'] or hero_id not in self.state['heroes']
-                or self.state['heroes'][hero_id]!=zone):
-            raise ValueError('Célia exige contato físico na zona de contato')
+                or self.state['heroes'][hero_id]!=zone
+                or not self.world.continuous_campaign
+                or self.world.flags.get('radio_code')
+                or contact.get('moment') not in (
+                    'post_cistern_pre_radio',
+                    'post_cistern_pre_radio_if_not_in_community')
+                or npc_id not in self.state.get('discovered_npcs', [])
+                or not any(row.get('action')=='investigate_physical_contact'
+                           and row.get('npc')==npc_id
+                           and row.get('location')==exp.destination
+                           for row in self.world.log)):
+            raise ValueError('Sobrevivente exige investigação prévia e contato físico na zona de contato')
         if self.world.heroes[hero_id]['health']<1 or self.world.heroes[hero_id]['actions']<1:
             raise ValueError('Contato indisponível sem herói ativo e 1 PA')
+        if any(enemy['zone']==zone for enemy in self.state['enemies'].values()):
+            raise ValueError('Não é seguro contatar sobrevivente com ameaça na zona')
         if (self.world.residents>=self.world.beds
                 or self.world.stock['food']<self.world.residents+1
                 or self.world.stock['water']<self.world.residents+1):
@@ -229,6 +332,47 @@ class TacticalGame:
                  'action_cost':1}
         self.world.log.append({'day':self.world.day,'expedition':self.id,
                                'action':'physical_contact_recruit',**receipt})
+        self.world.validate()
+        return receipt
+
+    def salvage_fuel_cache(self, hero_id: str) -> dict:
+        """Recupera a reserva experimental única da Oficina como carga física.
+
+        A ação custa 2 PA e gera ruído alto. O combustível não entra no estoque
+        até a expedição retornar normalmente; emergência perde a carga sem
+        restaurar a reserva.
+        """
+        source=REGIONAL_CONTACTS.get('experimental_fuel',{})
+        exp=self.world.expeditions[self.id]
+        zone=source.get('zone')
+        if (not self.world.continuous_campaign
+                or not source.get('status','').startswith('experimental')
+                or exp.destination!=source.get('location')
+                or self.state['map']!=source.get('map')
+                or hero_id not in self.state['heroes']
+                or self.state['heroes'][hero_id]!=zone
+                or self.state.get('fuel_cache_collected')):
+            raise ValueError('Reserva experimental indisponível neste local')
+        hero=self.world.heroes[hero_id]
+        cost=source['action_cost']
+        capacity=(VEHICLES[exp.vehicle_id]['cargo_capacity'] if exp.vehicle_id
+                  else 6*len(exp.heroes))
+        amount=source['units']
+        if hero['health']<1 or hero['actions']<cost:
+            raise ValueError('Recuperar a reserva exige herói ativo e 2 PA')
+        if any(enemy['zone']==zone for enemy in self.state['enemies'].values()):
+            raise ValueError('Não é seguro desmontar a reserva com ameaça na zona')
+        if sum(exp.cargo.values())+len(exp.special_cargo)+amount>capacity:
+            raise ValueError('Reserva excede a capacidade de carga')
+        hero['actions']-=cost
+        self.state['fuel_cache_collected']=True
+        exp.cargo['fuel']=exp.cargo.get('fuel',0)+amount
+        self.noise(zone,source['noise'])
+        receipt={'id':source['id'],'hero':hero_id,'zone':zone,'fuel':amount,
+                 'action_cost':cost,'noise':source['noise'],
+                 'cargo_fuel':exp.cargo['fuel'],'stock_added':0}
+        self.world.log.append({'day':self.world.day,'expedition':self.id,
+                               'action':'salvage_fuel_cache',**receipt})
         self.world.validate()
         return receipt
 
@@ -398,7 +542,8 @@ class TacticalGame:
         prior_site=self.world.site_states.get(destination,{})
         saved=deepcopy({key:self.state[key] for key in
                         ('map','enemies','next_enemy','doors','announced','round','pressure',
-                         'initial_spawned','van_state','fuel_cards_taken')})
+                         'initial_spawned','van_state','fuel_cards_taken',
+                         'fuel_cache_collected','discovered_npcs')})
         for key in ('stranded_npcs','lost_special_items'):
             if prior_site.get(key):
                 saved[key]=deepcopy(prior_site[key])

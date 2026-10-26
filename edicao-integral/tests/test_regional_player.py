@@ -104,6 +104,39 @@ class RegionalPlayerTests(unittest.TestCase):
         self.assertEqual(asdict(world_a), asdict(world_b))
         self.assertEqual(player_a.snapshot(), player_b.snapshot())
 
+    def test_controller_uses_an_available_teammate_before_advancing_shared_clock(self):
+        world = World.new(41, ['ZC-HER-0001', 'ZC-HER-0003'],
+                          {'food': 4, 'water': 4})
+        world.cistern_record = {
+            'status': 'verified_victory', 'source': 'cistern02',
+            'migration': {'receipt': {'id': 'test-only-migration'}},
+        }
+        world.open_expedition('shared-actions', list(world.heroes), 'EXP-LOC-02')
+        world.advance_expedition('shared-actions')
+        tactical = TacticalGame.start(world, 'shared-actions', 'market_intro')
+        first, second = sorted(world.heroes)
+        world.heroes[first]['actions'] = 0
+        world.heroes[second]['actions'] = 3
+        player = AdaptiveRegionalPlayer('leader')
+
+        decision = player.step(tactical, {'kind': 'zone', 'zone': 5})
+
+        self.assertNotEqual(decision['action'], 'activate')
+        self.assertEqual(world.regional_clock, 2)
+        self.assertEqual(world.heroes[second]['actions'], 2)
+
+    def test_extraction_waits_for_exit_zone_threat_instead_of_treating_exit_as_action(self):
+        world, tactical = self.setup_market()
+        hero = 'ZC-HER-0001'
+        world.gear[hero].clear()
+        tactical.state['heroes'][hero] = tactical.exit_zone
+        tactical.state['enemies'] = {
+            'exit-threat': {'kind': 'slow', 'zone': tactical.exit_zone, 'health': 1}
+        }
+        decision = AdaptiveRegionalPlayer('novice').step(
+            tactical, {'kind': 'exit'})
+        self.assertIn(decision['action'], ('activate', 'blocked'))
+
     def test_incapacitated_team_returns_a_blocked_result_without_state_mutation(self):
         world, tactical = self.setup_market()
         world.heroes['ZC-HER-0001']['health'] = 0

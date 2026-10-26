@@ -91,18 +91,16 @@ class CampaignTransitionTests(unittest.TestCase):
 
     def test_replay_stops_at_regional_emergency_without_forging_return(self):
         replay = execute_continuous(22)
-        last = replay["last_transmission"]
-        self.assertEqual(last["status"], "local_expedition_defeat")
-        self.assertEqual(last["phase"], "last_transmission")
-        self.assertEqual(last["clock_at_emergency"], 7)
-        self.assertEqual(last["clock_after_night"], 0)
-        self.assertEqual(last["blocked_action"], "continue_second_arc")
-        self.assertIn("incapacitado", last["error"])
-        self.assertEqual(last["contact_receipt"]["npc"], "EXP-NPC-02")
-        self.assertEqual(last["emergency_receipt"]["status"], "failed")
-        self.assertEqual(last["emergency_receipt"]["stranded_npcs"], ["EXP-NPC-02"])
-        self.assertEqual(last["heroes"]["ZC-HER-0001"]["health"], 0)
-        self.assertIn("derrota local", last["blocking_requirement"])
+        regional = replay["regional_expedition"]
+        self.assertEqual(replay["status"], "local_defeat_clock_blocked")
+        self.assertEqual(replay["cistern"]["status"], "verified_victory")
+        self.assertEqual(regional["clock_after_emergency"], 7)
+        self.assertEqual(regional["clues"], 1)
+        self.assertFalse(regional["radio_code"])
+        self.assertFalse(regional["celia_recruited"])
+        self.assertEqual(regional["emergency_receipt"]["status"], "failed")
+        self.assertEqual(regional["emergency_receipt"]["stranded_npcs"], [])
+        self.assertIn("13 PA", regional["blocker"])
 
     def test_all_twelve_cistern_founders_have_world_identity_profiles(self):
         for founder_id in (f"ZC-HER-{number:04d}" for number in range(1, 13)):

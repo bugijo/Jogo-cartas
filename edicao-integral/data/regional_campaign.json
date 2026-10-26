@@ -1,14 +1,59 @@
 {
   "schema": 1,
-  "contact_rule_source": "Adaptação provisória solicitada nesta tarefa; a campanha 0.2 não define encontro regional de Célia.",
+  "status": "adaptações experimentais do segundo arco; não alteram RULES.md nem A Cisterna 0.2",
+  "contact_rule_source": "Encontros regionais e investigação física são regra experimental; a campanha 0.2 não define o encontro regional de Célia. Nenhuma investigação concede pistas.",
   "contacts": {
     "EXP-NPC-02": {
       "name": "Célia",
       "location": "EXP-LOC-05",
       "map": "station_02",
       "zone": 14,
-      "moment": "post_cistern_radio_signal",
-      "text": "Célia protege anotações sobre a transmissão e aceita acompanhar o grupo após contato."
+      "moment": "post_cistern_pre_radio",
+      "discovery": {"action": "investigate_contact", "action_cost": 1},
+      "evidence": {"id": "EXP-CLUE-001", "name": "Anotações de Célia", "clues": 1, "action_cost": 1},
+      "source": "experimental: presença física na Estação após a Cisterna; nenhuma pista é concedida ao encontrá-la",
+      "text": "Célia protege anotações sobre a transmissão. O grupo precisa alcançá-la, investigar o contato e depois recrutá-la fisicamente."
+    },
+    "EXP-NPC-14": {
+      "name": "Vicente",
+      "location": "EXP-LOC-05",
+      "map": "station_02",
+      "zone": 12,
+      "moment": "post_cistern_pre_radio_if_not_in_community",
+      "source_group_id": "ZC-MOR-0003",
+      "discovery": {"action": "investigate_contact", "action_cost": 1},
+      "evidence": {"id": "EXP-CLUE-002", "name": "Caderno de manutenção do rádio", "clues": 1, "action_cost": 1},
+      "source": "identidade canônica de ZC-MOR-0003; disponibilidade regional experimental somente quando Vicente não consta como fundador/NPC migrado",
+      "text": "Vicente manteve registros do rádio na estação. Investigar e contatá-lo são ações físicas distintas; nenhuma pista é concedida automaticamente."
     }
+  },
+  "experimental_fuel": {
+    "id": "EXP-FUEL-CACHE-WORKSHOP-01",
+    "status": "experimental; conteúdo novo para teste de continuidade, não é regra canônica nem conteúdo do kit 0.2",
+    "location": "EXP-LOC-03",
+    "map": "workshop_02",
+    "zone": 14,
+    "units": 8,
+    "action": "salvage_fuel_cache",
+    "action_cost": 2,
+    "noise": 3,
+    "one_use": true,
+    "cargo_rule": "As oito unidades entram na carga da expedição, respeitam a capacidade existente e só chegam ao estoque após retorno normal. Emergência perde a carga e não restaura a reserva.",
+    "narrative": "Reserva selada do gerador de emergência da oficina. Desmontá-la exige tempo, produz ruído alto e pode atrair as ameaças presentes.",
+    "reason": "Sob o mapa regional medium=2, oito unidades da reserva + oito cartas físicas finitas do Posto − 4 unidades do retorno de van (2 segmentos × 2) = 12 para a viagem militar far de três segmentos por sentido. Isso é uma hipótese experimental de custos regionais, não a regra 0.2: CAMPAIGN.md diz que voltar do Posto na van custa 2. Não tratar o saldo como canônico nem como rota integral comprovada."
+  },
+  "regional_fuel_rule": {
+    "status": "aplicação experimental da regra canônica de custo, sem redução",
+    "fuel_per_segment": 2,
+    "military_segments_each_way": 3,
+    "military_round_trip_fuel": 12,
+    "posto_return_assumption": {
+      "regional_segments": 2,
+      "regional_fuel_spent": 4,
+      "basis": "regional medium=2 segmentos × 2 unidades/segmento",
+      "canonical_cistern_0_2_cost": 2,
+      "difference": "CAMPAIGN.md diz que ir a pé ao Posto e voltar na van custa 2; o custo regional 4 é uma hipótese experimental e requer conciliação explícita"
+    },
+    "source": "RULES.md §11 para custo e edicao-integral/data/system.json para distância far=3"
   }
 }
