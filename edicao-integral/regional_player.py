@@ -554,12 +554,16 @@ class AdaptiveRegionalPlayer:
         baseline=sum(row.get('action')=='search' and row.get('expedition')==tactical.id
                      for row in tactical.world.log)
         start_searches=objective.get('searches',1)
+        key=self._key(tactical,objective)
         for _ in range(max_steps):
             if tactical.id not in tactical.world.encounters:
-                return {'status':'objective_completed_and_exited',
+                completed=key in self.completed
+                return {'status':('objective_completed_and_exited' if completed
+                                  else 'objectives_incomplete_and_exited'),
                         'searches':sum(row.get('action')=='search'
                                        and row.get('expedition')==tactical.id
-                                       for row in tactical.world.log)-baseline}
+                                       for row in tactical.world.log)-baseline,
+                        'objective_completed':completed}
             result=self.step(tactical,objective)
             if result['action']=='blocked':
                 return {'status':'blocked','reason':result['reason'],
@@ -577,7 +581,7 @@ class AdaptiveRegionalPlayer:
                     break
         if tactical.id not in tactical.world.encounters:
             status=('objective_completed_and_exited' if
-                    self._objective_done(tactical,objective) else 'objective_not_completed')
+                    key in self.completed else 'objective_not_completed')
         else:
             status='step_limit'
         count=sum(row.get('action')=='search' and row.get('expedition')==tactical.id

@@ -78,13 +78,11 @@ class RegionalPlayerTests(unittest.TestCase):
                 ['ZC-HER-0001'],'market_intro',{'kind':'search','zone':5},
                 vehicle_id='EXP-VEI-02')
 
-    def test_failed_posto_repair_retires_on_foot_with_collected_fuel_and_battery(self):
-        # Engine/controller regression only, not a full legal replay: the
-        # migrated seed has an unmet food deficit after this end_day(), and the
-        # regional World model still does not project Fome/Sede onto heroes.
-        # Keep the scenario to exercise finite fuel collection, failed repair,
-        # emergency-free foot return, and battery conservation without claiming
-        # that the following expedition is canonically playable.
+    def test_hungry_posto_team_emergency_loses_fuel_but_preserves_battery(self):
+        # Controller/rules regression, not a full campaign replay. The first
+        # regional night leaves this migrated H2 team hungry; the resulting PA
+        # loss makes the Posto extraction fail. Fuel is lost by the printed
+        # emergency rule while the unique battery remains at the team.
         campaign, _ = execute_cistern(22)
         campaign.game.transition_to_last_transmission()
         world = campaign.game.world
@@ -96,7 +94,9 @@ class RegionalPlayerTests(unittest.TestCase):
             'workshop_02', {'kind':'battery','zone':7}, max_steps=120)
         self.assertEqual(workshop['status'], 'returned')
         self.assertIn('battery', world.special_stock)
-        night = world.end_day()
+        meal_order = sorted(world.meal_people())
+        night = world.end_day(meal_plan={"food_priority":meal_order,
+                                         "water_priority":meal_order})
         self.assertEqual(night['missing']['food'], 2)
 
         trip = 'posto-repair-regression'
@@ -109,13 +109,15 @@ class RegionalPlayerTests(unittest.TestCase):
             max_steps=200, special_items=['battery'],
             return_vehicle_id='EXP-VEI-02')
 
-        self.assertEqual(posto['status'], 'returned_with_objective_incomplete')
-        self.assertEqual(posto['local']['status'], 'objectives_incomplete_and_exited')
+        self.assertEqual(posto['status'], 'local_defeat_emergency')
+        self.assertEqual(posto['local']['status'], 'blocked_during_extraction')
         self.assertEqual(len(world.site_states['EXP-LOC-07']['fuel_cards_taken']), 8)
-        self.assertEqual(world.site_states['EXP-LOC-07']['van_state'], 'incomplete')
+        self.assertEqual(world.stock['fuel'], 0)
+        self.assertEqual(posto['emergency']['lost_cargo'], {'fuel':8})
+        self.assertIn('battery', posto['emergency']['retained_special_items'])
+        self.assertNotIn('battery', posto['emergency']['lost_special_items'])
         self.assertEqual({row['hero'] for row in world.log
                           if row.get('action')=='repair_van'}, set(team))
-        self.assertEqual(world.stock['fuel'], 8)
         self.assertIn('battery', world.special_stock)
         self.assertFalse(any(row.get('action') == 'repair_van'
                              and row.get('success') for row in world.log))
@@ -194,12 +196,70 @@ class RegionalPlayerTests(unittest.TestCase):
 
     def test_incapacitated_team_returns_a_blocked_result_without_state_mutation(self):
         world, tactical = self.setup_market()
-        world.heroes['ZC-HER-0001']['health'] = 0
+        world._set_hero_health('ZC-HER-0001', 0)
         before = asdict(world)
         result = AdaptiveRegionalPlayer('cautious').step(
             tactical, {'kind': 'search', 'zone': 5})
         self.assertEqual(result['action'], 'blocked')
         self.assertEqual(asdict(world), before)
+
+    def test_celia_can_be_physically_discovered_before_radio_without_free_clue(self):
+        from verify_campaign_player02 import execute as execute_cistern
+        player02, _ = execute_cistern(22)
+        campaign = player02.game
+        campaign.transition_to_last_transmission()
+        world = campaign.world
+        team = sorted(world.heroes)
+        expedition = 'test-celia-before-radio'
+        world.open_expedition(expedition, team, 'EXP-LOC-05')
+        # Testa o controlador tático/local depois da migração. A integração de
+        # cartas de Viagem ainda é pendente; isto não se apresenta como replay
+        # completo de expedição regional.
+        for _ in range(world.expeditions[expedition].segment_cost):
+            world.advance_expedition(expedition)
+        tactical = TacticalGame.start(world, expedition, 'station_02')
+        agent = AdaptiveRegionalPlayer('stealth')
+        result = agent.run_objective(
+            tactical, {'kind':'investigate_contact','npc':'EXP-NPC-02'}, max_steps=40)
+        self.assertEqual(result['status'], 'objective_completed_and_exited')
+        receipt = next(row for row in world.log
+                       if row.get('action') == 'investigate_physical_contact'
+                       and row.get('npc') == 'EXP-NPC-02')
+        self.assertEqual(receipt['clues_awarded'], 0)
+        self.assertEqual(world.clues, 0)
+        self.assertNotIn('EXP-NPC-02', world.npcs)
+        self.assertFalse(world.flags.get('radio_code', False))
+
+    def test_seed22_extracts_one_physical_celia_clue_but_cannot_decode_radio(self):
+        from arc2 import Arc2
+        player02, _ = execute_cistern(22)
+        campaign = player02.game
+        campaign.transition_to_last_transmission()
+        world = campaign.world
+        team = sorted(world.heroes)
+        expedition = 'test-celia-evidence-seed22'
+        world.open_expedition(expedition, team, 'EXP-LOC-05')
+        # Ações de deslocamento atuais preservam segmentos e posição, porém
+        # a camada regional ainda não revela cartas de Viagem.
+        for _ in range(world.expeditions[expedition].segment_cost):
+            world.advance_expedition(expedition)
+        tactical = TacticalGame.start(world, expedition, 'station_02')
+        agent = AdaptiveRegionalPlayer('stealth')
+        result = agent.run_objectives(tactical, [
+            {'kind':'investigate_contact','npc':'EXP-NPC-02'},
+            {'kind':'evidence','npc':'EXP-NPC-02'},
+        ], max_steps=60)
+        self.assertEqual(result['status'], 'objective_completed_and_exited')
+        self.assertEqual(world.clues, 1)
+        self.assertEqual(sum(row.get('clues_awarded', 0) for row in world.log
+                             if row.get('action') == 'collect_regional_evidence'), 1)
+        self.assertFalse(world.flags.get('radio_code', False))
+        world.begin_return(expedition)
+        while expedition in world.expeditions:
+            world.advance_expedition(expedition)
+        self.assertEqual(world.regional_clock, 10)
+        with self.assertRaisesRegex(ValueError, 'duas pistas'):
+            Arc2(world).decode_radio()
 
     def test_unavailable_contact_is_not_mistaken_for_recruitment(self):
         world, tactical = self.setup_market()

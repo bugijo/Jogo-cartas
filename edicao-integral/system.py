@@ -73,6 +73,9 @@ class World:
     gear: dict[str, dict] = field(default_factory=dict)
     continuity_people: list[dict] = field(default_factory=list)
     continuity_beds: int = 0
+    shelter_health: int = 5
+    shelter_morale: int = 5
+    partial_defeat: bool = False
     unique_items_at_sites: dict[str, list[str]] = field(default_factory=dict)
     camp_xp: int = 0
     clues: int = 0
@@ -100,8 +103,10 @@ class World:
         if not hero_ids or len(set(hero_ids)) != len(hero_ids) or any(h not in HEROES for h in hero_ids):
             raise ValueError('Heróis iniciais inválidos')
         world = cls(seed=seed)
-        world.heroes = {h:{'xp':0,'health':3,'combat_xp':0,'location':'camp',
-                          'infected':False,'fatigue':0} for h in hero_ids}
+        world.heroes = {h:{'xp':0,'health':3,'wounds':0,'hungry':False,
+                          'thirsty':False,'streak':0,'combat_xp':0,
+                          'location':'camp','infected':False,'fatigue':0}
+                        for h in hero_ids}
         for hero in world.heroes.values():
             hero['actions']=DATA['rules']['actions']
         world.gear = {h:{} for h in hero_ids}
@@ -135,6 +140,16 @@ class World:
         """People and dogs carried across from the 0.2 shelter ledger."""
         dogs = sum(person['kind'] == 'dog' for person in self.continuity_people)
         return self.residents + dogs
+
+    def meal_people(self) -> dict[str, dict]:
+        """Return this night's actual consumers keyed by their persistent identity."""
+        people = dict(self.heroes)
+        people.update({identifier: person for identifier, person in self.npcs.items()
+                       if person.get('location') not in LOCATIONS})
+        people.update({person['id']: person for person in self.continuity_people})
+        if len(people) != self.consumers:
+            raise ValueError('Identidades de consumidores não correspondem ao censo')
+        return people
 
     @property
     def cistern_verified(self) -> bool:
@@ -209,13 +224,44 @@ class World:
                or any(item not in ('battery','access_card','transmitter') for item in items)
                for location, items in self.unique_items_at_sites.items()):
             raise ValueError('Item único em local inválido')
-        if any(h not in HEROES or state['xp'] > 100 or state['health'] < 0
+        if any(h not in HEROES or state['xp'] > 100
+               or not isinstance(state['health'], int)
+               or isinstance(state['health'], bool)
+               or not 0 <= state['health'] <= 3
+               or ('wounds' in state and state['wounds'] != 3-state['health'])
                or not isinstance(state.get('fatigue', 0), int)
                or isinstance(state.get('fatigue', 0), bool)
                or not 0 <= state.get('fatigue', 0) <= 3
                or not 0 <= state['actions'] <= DATA['rules']['actions']
                for h,state in self.heroes.items()):
             raise ValueError('Herói inválido; Fadiga deve ficar entre zero e três')
+        if (not isinstance(self.shelter_health, int) or isinstance(self.shelter_health, bool)
+                or not 0 <= self.shelter_health <= 5
+                or not isinstance(self.shelter_morale, int)
+                or isinstance(self.shelter_morale, bool)
+                or not 0 <= self.shelter_morale <= 5
+                or not isinstance(self.partial_defeat, bool)):
+            raise ValueError('Estado de Saúde/Moral do abrigo inválido')
+        for identifier, person in [*self.heroes.items(), *self.npcs.items(),
+                                   *((item.get('id'), item)
+                                     for item in self.continuity_people)]:
+            if (not isinstance(person.get('streak', 0), int)
+                    or isinstance(person.get('streak', 0), bool)
+                    or person.get('streak', 0) < 0
+                    or not isinstance(person.get('wounds', 0), int)
+                    or isinstance(person.get('wounds', 0), bool)
+                    or not 0 <= person.get('wounds', 0) <= 3
+                    or not isinstance(person.get('hungry', False), bool)
+                    or not isinstance(person.get('thirsty', False), bool)):
+                raise ValueError('Estado individual de privação inválido')
+        for person in [*self.heroes.values(), *self.npcs.values()]:
+            if ('health' in person and (
+                    not isinstance(person['health'], int)
+                    or isinstance(person['health'], bool)
+                    or not 0 <= person['health'] <= 3
+                    or ('wounds' in person
+                        and person['wounds'] != 3-person['health']))):
+                raise ValueError('Estado de Saúde/Ferimentos individual inconsistente')
         if self.garden_worker is not None and self.garden_worker not in self.heroes:
             raise ValueError('Trabalhador de horta inválido')
         if any(hero not in self.heroes or points<0 for hero,points in self.guarding.items()):
@@ -465,7 +511,9 @@ class World:
 
     def _refresh_actions(self) -> None:
         for hero in self.heroes.values():
-            penalty=1 if hero.get('fatigue',0)>=2 else 0
+            penalty=(int(hero.get('fatigue',0)>=2)
+                     + int(hero.get('hungry',False))
+                     + int(hero.get('thirsty',False)))
             hero['actions']=max(1,DATA['rules']['actions']-penalty)
         self.guarding.clear()
 
@@ -510,8 +558,19 @@ class World:
             raise ValueError('Resgate indisponível')
         self.stock['medicine']-=1
         rescuer['actions']-=1
-        target['health']=min(3,target['health']+1+self.skill_bonus(rescuer_id,'rescue'))
+        self._set_hero_health(target_id, min(3,target['health']+1
+                                            +self.skill_bonus(rescuer_id,'rescue')))
         return target['health']
+
+    def _set_hero_health(self, hero_id: str, health: int) -> None:
+        """Keep wounds as a projection of the authoritative remaining health."""
+        hero = self.heroes[hero_id]
+        hero['health'] = max(0, min(3, int(health)))
+        hero['wounds'] = 3-hero['health']
+        source = hero.get('continuity_state')
+        if isinstance(source, dict):
+            source['health'] = hero['health']
+            source['wounds'] = hero['wounds']
 
     def roll_infection(self,hero_id:str) -> dict:
         roll=self._d6()[0]
@@ -569,7 +628,7 @@ class World:
                 absorbed+=armor_absorbed
                 damage-=armor_absorbed
         hero=self.heroes[hero_id]
-        hero['health']=max(0,hero['health']-damage)
+        self._set_hero_health(hero_id, hero['health']-damage)
         return {'absorbed':absorbed,'health':hero['health']}
 
     def deposit(self, resource: str, amount: int) -> int:
@@ -587,13 +646,19 @@ class World:
                 or self.stock['food'] < self.residents + 1
                 or self.stock['water'] < self.residents + 1):
             return False
-        self.npcs[npc_id] = {'level':1,'job':None,'health':3,'location':'camp'}
+        self.npcs[npc_id] = {'level':1,'job':None,'health':3,'wounds':0,
+                             'hungry':False,'thirsty':False,'streak':0,
+                             'location':'camp'}
         return True
 
     def assign(self, npc_id: str, job: str) -> None:
         if (npc_id not in self.npcs or self.npcs[npc_id]['location']!='camp'
                 or job != NPCS[npc_id]['job'] or npc_id in self.departed_today):
             raise ValueError('Trabalho incompatível')
+        person = self.npcs[npc_id]
+        if (person.get('hungry') or person.get('thirsty')
+                or person.get('fatigue', 0) >= 3 or person.get('health', 3) <= 0):
+            raise ValueError('Morador sem condição física para trabalhar')
         self.npcs[npc_id]['job'] = job
 
     def level_npc(self, npc_id: str) -> bool:
@@ -674,6 +739,8 @@ class World:
             raise ValueError('Herói fora do abrigo')
         if self.heroes[hero_id]['health']<=0 or self.heroes[hero_id].get('fatigue',0)>=3:
             raise ValueError('Herói incapacitado/fadigado não pode trabalhar')
+        if self.heroes[hero_id].get('hungry') or self.heroes[hero_id].get('thirsty'):
+            raise ValueError('Herói com Fome ou Sede não pode trabalhar')
         if hero_id in self.departed_today:
             raise ValueError('Expedição no mesmo dia impede trabalho')
         if hero_id in self.worked_today:
@@ -692,8 +759,9 @@ class World:
         if spec['kind']=='heal':
             if hero_id not in self.heroes or self.heroes[hero_id]['health'] >= 3:
                 return False
-            self.heroes[hero_id]['health']=min(3,self.heroes[hero_id]['health']+spec['health']
-                                               +self.skill_bonus(hero_id,'medicine'))
+            self._set_hero_health(hero_id, min(3,self.heroes[hero_id]['health']
+                                               +spec['health']
+                                               +self.skill_bonus(hero_id,'medicine')))
         else:
             output=dict(spec['output'])
             if hero_id is not None:
@@ -997,7 +1065,7 @@ class World:
         followers=set(stranded)
         for hero_id in exp.heroes:
             state=self.heroes[hero_id]
-            state['health']=max(0,state['health']-1)
+            self._set_hero_health(hero_id, state['health']-1)
             state['fatigue']=3
             state['location']='camp'
         for npc_id in exp.crew:
@@ -1021,7 +1089,23 @@ class World:
         self.validate()
         return deepcopy(receipt)
 
-    def end_day(self) -> dict:
+    def end_day(self, meal_plan: dict | None = None) -> dict:
+        """Close the day, requiring explicit allocation when food/water is scarce.
+
+        The choice is intentionally not automated: this is a player decision in
+        RULES.md. A rejected allocation restores the complete pre-call state.
+        """
+        before = deepcopy(self.__dict__)
+        try:
+            return self._end_day(meal_plan)
+        except Exception:
+            self.__dict__.clear()
+            self.__dict__.update(before)
+            raise
+
+    def _end_day(self, meal_plan: dict | None = None) -> dict:
+        if self.partial_defeat:
+            raise ValueError('Derrota parcial: resolva a Evacuação antes de retomar a campanha')
         if self.continuous_campaign and (self.expeditions or self.encounters):
             raise ValueError('Não encerre o dia com expedição regional em andamento')
         if self.final_defense is not None and self.final_defense['status']=='active':
@@ -1029,10 +1113,15 @@ class World:
         if (self.garden_worker in self.heroes and 'garden' in self.structures
                 and self.structures['garden']['health'] > 0
                 and self.heroes[self.garden_worker]['location']=='camp'
+                and not self.heroes[self.garden_worker].get('hungry')
+                and not self.heroes[self.garden_worker].get('thirsty')
+                and self.heroes[self.garden_worker].get('fatigue', 0)<3
                 and self.garden_worker not in self.worked_today):
             self.worked_today.append(self.garden_worker)
         for npc_id,person in self.npcs.items():
             if (person.get('job') is not None and person.get('location')=='camp'
+                    and not person.get('hungry') and not person.get('thirsty')
+                    and person.get('fatigue', 0)<3 and person.get('health', 3)>0
                     and npc_id not in self.departed_today
                     and npc_id not in self.worked_today):
                 self.worked_today.append(npc_id)
@@ -1044,6 +1133,8 @@ class World:
         # Especialistas geram apenas suas tarefas previstas; saídas abstratas não criam recurso.
         for npc_id,state in self.npcs.items():
             if (state['job'] is None or state['location']!='camp'
+                    or state.get('hungry') or state.get('thirsty')
+                    or state.get('fatigue', 0)>=3 or state.get('health', 3)<=0
                     or npc_id in self.departed_today):
                 continue
             output = NPCS[npc_id]['output']
@@ -1063,37 +1154,122 @@ class World:
                                 if hero['location']=='camp' and hero['health'] < 3),None)
                 if injured:
                     self.stock['medicine'] -= 1
-                    injured['health'] += 1
+                    hero_id = next(identifier for identifier, state in self.heroes.items()
+                                   if state is injured)
+                    self._set_hero_health(hero_id, injured['health']+1)
         if 'garden' in self.structures and self.structures['garden']['health'] > 0:
             garden = self.structures['garden']
             garden['age'] += 1
             if garden['age'] >= DATA['rules']['garden_growth_days']:
                 bonus=(self.skill_bonus(self.garden_worker,'food') if self.garden_worker
-                       and self.heroes[self.garden_worker]['location']=='camp' else 0)
+                       and self.heroes[self.garden_worker]['location']=='camp'
+                       and not self.heroes[self.garden_worker].get('hungry')
+                       and not self.heroes[self.garden_worker].get('thirsty')
+                       and self.heroes[self.garden_worker].get('fatigue', 0)<3 else 0)
                 produced['food'] += self.deposit('food',DATA['rules']['garden_food_per_harvest']+bonus)
-        need = self.consumers
+        people = self.meal_people()
+        identifiers = set(people)
+        need = len(people)
+        shortages = {resource: max(0, need-self.stock[resource])
+                     for resource in ('food','water')}
+        if meal_plan is None:
+            if any(shortages.values()):
+                raise ValueError('Escassez exige distribuição explícita de comida e água')
+            priorities = {resource: sorted(identifiers) for resource in ('food','water')}
+        else:
+            if not isinstance(meal_plan, dict) or set(meal_plan) != {
+                    'food_priority','water_priority'}:
+                raise ValueError('Plano de refeição deve indicar prioridades de comida e água')
+            priorities = {}
+            for resource in ('food','water'):
+                selected = meal_plan[f'{resource}_priority']
+                if (not isinstance(selected, (list, tuple))
+                        or len(selected) != len(set(selected))
+                        or set(selected) != identifiers):
+                    raise ValueError(f'Prioridade inválida de {resource}: indique cada consumidor uma vez')
+                priorities[resource] = list(selected)
+        allocations = {
+            resource: set(priorities[resource][:min(need, self.stock[resource])])
+            for resource in ('food','water')
+        }
         missing = {}
         for resource in ('food','water'):
-            missing[resource] = max(0,need-self.stock[resource])
-            self.stock[resource] = max(0,self.stock[resource]-need)
+            missing[resource] = need-len(allocations[resource])
+            self.stock[resource] -= len(allocations[resource])
+        for identifier, person in people.items():
+            kind = person.get('kind', 'hero' if identifier in self.heroes else 'adult')
+            person['hungry'] = identifier not in allocations['food']
+            person['thirsty'] = identifier not in allocations['water']
+            deprived = person['hungry'] or person['thirsty']
+            person['streak'] = person.get('streak', 0)+1 if deprived else 0
+            if kind == 'dog':
+                person['alert'] = not deprived
+            elif person['streak'] >= 2:
+                if identifier in self.heroes:
+                    self._set_hero_health(identifier, person['health']-1)
+                elif 'health' in person:
+                    person['health'] = max(0, person['health']-1)
+                    person['wounds'] = 3-person['health']
+                else:
+                    person['wounds'] = min(3, person.get('wounds', 0)+1)
+            if identifier in self.heroes and isinstance(person.get('continuity_state'), dict):
+                source = person['continuity_state']
+                for key in ('hungry','thirsty','streak','wounds','fatigue'):
+                    if key in person:
+                        source[key] = person[key]
+                source['health'] = person['health']
+        human_consumers = [person for identifier,person in people.items()
+                           if person.get('kind', 'hero' if identifier in self.heroes else 'adult') != 'dog']
+        collapse_threshold = (len(human_consumers)+3)//4
+        deprived_humans = sum(person.get('streak',0)>=3 for person in human_consumers)
+        if deprived_humans >= collapse_threshold:
+            self.shelter_health = 0
+            self.partial_defeat = True
+        if self.shelter_health == 0 or self.shelter_morale == 0:
+            self.partial_defeat = True
         for loc_id,loc in LOCATIONS.items():
             if loc['renewal'] == 'natural' and self.searches[loc_id] < loc['searches']:
                 self.searches[loc_id] += 1
         for hero in self.heroes.values():
             if hero['location']=='camp':
                 hero['combat_xp'] = 0
-        if not any(missing.values()):
-            for hero_id,person in [*self.heroes.items(),*self.npcs.items()]:
-                if person.get('location')!='camp':
-                    continue
-                person['fatigue']=max(0,person.get('fatigue',0)-1)
-                if (hero_id not in self.worked_today
-                        and hero_id not in self.departed_today):
-                    person['health']=min(3,person['health']+1)
+        # Recovery is individual: a community-wide shortage does not penalize
+        # someone who personally received both portions, nor does it deny that
+        # person's printed overnight recovery.
+        for identifier, person in people.items():
+            fully_supplied = not person['hungry'] and not person['thirsty']
+            if not fully_supplied or person.get('location', 'camp') != 'camp':
+                continue
+            if 'fatigue' in person:
+                person['fatigue'] = max(0, person['fatigue']-1)
+            if (identifier not in self.worked_today
+                    and identifier not in self.departed_today
+                    and 'health' in person):
+                person['health'] = min(3, person['health']+1)
+                person['wounds'] = 3-person['health']
+                if identifier in self.heroes:
+                    self._set_hero_health(identifier, person['health'])
+            elif (identifier not in self.worked_today
+                  and identifier not in self.departed_today
+                  and 'wounds' in person):
+                # Migrated civilians retain the 0.2 injury track without an
+                # experimental HP field; §25 still gives them normal recovery.
+                person['wounds'] = max(0, person['wounds']-1)
+            if identifier in self.heroes and isinstance(person.get('continuity_state'), dict):
+                source = person['continuity_state']
+                for key in ('health','wounds','fatigue'):
+                    if key in person:
+                        source[key] = person[key]
         self.worked_today=[]
         self.departed_today=[]
         crisis = self._roll_crisis()
-        result = {'day':self.day,'produced':produced,'missing':missing,'stock':dict(self.stock),'crisis':crisis}
+        result = {'day':self.day,'produced':produced,'missing':missing,
+                  'unfed': {resource: sorted(identifiers-allocations[resource])
+                            for resource in ('food','water')},
+                  'shelter_health':self.shelter_health,
+                  'shelter_morale':self.shelter_morale,
+                  'partial_defeat':self.partial_defeat,
+                  'stock':dict(self.stock),'crisis':crisis}
         self.log.append(result)
         self.validate()
         return result
@@ -1127,14 +1303,30 @@ class World:
     def save(self, path: Path) -> None:
         self.validate()
         payload = asdict(self)
-        payload['schema'] = 1
+        payload['schema'] = 2
         path.write_text(json.dumps(payload,ensure_ascii=False,indent=2)+'\n',encoding='utf-8')
 
     @classmethod
     def load(cls, path: Path) -> 'World':
         payload = json.loads(path.read_text(encoding='utf-8'))
-        if payload.pop('schema',None) != 1:
+        schema = payload.pop('schema',None)
+        if schema not in (1, 2):
             raise ValueError('Esquema inválido')
+        # Additive schema-1 migration for saves created before health/wounds
+        # were mirrored explicitly in the regional state.
+        if schema == 1:
+            for state in payload.get('heroes', {}).values():
+                state.setdefault('wounds', max(0, min(3, 3-state.get('health', 3))))
+                state.setdefault('hungry', False)
+                state.setdefault('thirsty', False)
+                state.setdefault('streak', 0)
+            for person in [*payload.get('npcs', {}).values(),
+                           *payload.get('continuity_people', [])]:
+                if 'health' in person:
+                    person.setdefault('wounds', max(0, min(3, 3-person.get('health', 3))))
+                person.setdefault('hungry', False)
+                person.setdefault('thirsty', False)
+                person.setdefault('streak', 0)
         payload['expeditions'] = {k:Expedition(**v) for k,v in payload['expeditions'].items()}
         world = cls(**payload)
         world.validate()

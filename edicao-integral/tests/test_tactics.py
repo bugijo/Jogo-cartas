@@ -77,10 +77,10 @@ class TacticalTests(unittest.TestCase):
         w=self.setup_world()
         game=TacticalGame.start(w,'m','market_intro')
         enemy=game.spawn('slow',zone=1)
-        w.heroes['ZC-HER-0002']['health']=0
+        w._set_hero_health('ZC-HER-0002',0)
         with self.assertRaises(ValueError):game.attack('ZC-HER-0002','crowbar',enemy)
         with self.assertRaises(ValueError):w.begin_return('m')
-        w.heroes['ZC-HER-0002']['health']=1
+        w._set_hero_health('ZC-HER-0002',1)
         with self.assertRaisesRegex(ValueError,'zona de saída'):
             game.finish(retreat=True)
         game.state['enemies'][enemy]['zone']=16

@@ -68,7 +68,9 @@ def run_once(seed=22):
             raise AssertionError(f'Recurso entregue sem conservação: {resource}')
     if stock_after_delivery['fuel']!=before_stock['fuel']:
         raise AssertionError('A expedição regional criou combustível')
-    day=world.end_day()
+    meal_order=sorted(world.meal_people())
+    day=world.end_day(meal_plan={'food_priority':meal_order,
+                                'water_priority':meal_order})
     consumers=world.consumers
     expected_after_day=dict(stock_after_delivery)
     for resource in expected_after_day:

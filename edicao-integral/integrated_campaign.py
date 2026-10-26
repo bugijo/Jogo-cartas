@@ -58,7 +58,22 @@ def _world_payload(world: World) -> dict:
 
 def _world_from_payload(payload: dict) -> World:
     payload = dict(payload)
-    payload.pop("schema", None)
+    schema = payload.pop("schema", None)
+    if schema not in (1, 2):
+        raise ValueError("Esquema regional incompatível")
+    if schema == 1:
+        for state in payload.get("heroes", {}).values():
+            state.setdefault("wounds", max(0, min(3, 3-state.get("health", 3))))
+            state.setdefault("hungry", False)
+            state.setdefault("thirsty", False)
+            state.setdefault("streak", 0)
+        for person in [*payload.get("npcs", {}).values(),
+                       *payload.get("continuity_people", [])]:
+            if "health" in person:
+                person.setdefault("wounds", max(0, min(3, 3-person.get("health", 3))))
+            person.setdefault("hungry", False)
+            person.setdefault("thirsty", False)
+            person.setdefault("streak", 0)
     payload["expeditions"] = {
         key: Expedition(**value) for key, value in payload["expeditions"].items()
     }
@@ -1131,10 +1146,16 @@ class IntegratedCampaign:
                     or not 0 <= fatigue <= 3):
                 raise ValueError(f"Fadiga de {hero_id} não pode ser migrada")
             state["fatigue"] = fatigue
+            state["wounds"] = wounds
+            state["hungry"] = bool(person.get("hungry", False))
+            state["thirsty"] = bool(person.get("thirsty", False))
+            state["streak"] = int(person.get("streak", 0))
             state["continuity_state"] = deepcopy(person)
 
         projected.continuity_people = [person for person in source_people
                                        if person["kind"] != "hero"]
+        projected.shelter_health = int(self.cistern.health)
+        projected.shelter_morale = int(self.cistern.morale)
         projected.continuity_beds = self.cistern.capacity - projected.beds
         for person in projected.continuity_people:
             if person["kind"] not in ("adult", "child", "dog"):
@@ -1217,12 +1238,14 @@ class IntegratedCampaign:
             raise ValueError("Conclua A Cisterna antes da Última Transmissão")
         return Arc2(self.world)
 
-    def advance_day(self) -> dict:
+    def advance_day(self, meal_plan: dict | None = None) -> dict:
         self._require_running()
         if self.world is None:
             raise ValueError("Use meal/next_cistern_day na Cisterna")
-        result = self.world.end_day()
-        if all(hero["health"] == 0 for hero in self.world.heroes.values()):
+        result = self.world.end_day(meal_plan=meal_plan)
+        if self.world.partial_defeat:
+            self.finish("DEFEAT", "derrota_parcial; evacuação da campanha pendente")
+        elif all(hero["health"] == 0 for hero in self.world.heroes.values()):
             self.finish("DEFEAT", "todos_os_protagonistas_incapacitados")
         return result
 
@@ -1287,7 +1310,7 @@ class IntegratedCampaign:
                                       if self.return_context else None)
         payload["return_context_initial"] = self.return_context_initial
         payload["world"] = _world_payload(self.world) if self.world is not None else None
-        payload["world"] = {"schema": 1, **payload["world"]} if payload["world"] else None
+        payload["world"] = {"schema": 2, **payload["world"]} if payload["world"] else None
         path.write_text(json.dumps(payload, ensure_ascii=False, indent=2) + "\n",
                         encoding="utf-8")
 

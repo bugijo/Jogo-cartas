@@ -23,18 +23,25 @@ def replay(seed: int, hero_count: int, rescue: bool) -> dict:
     world.open_expedition('mercado',exp_heroes,'EXP-LOC-02')
     outcomes=[]
     for day in range(5):
+        if world.partial_defeat:
+            break
         if 'mercado' in world.expeditions:
             status=world.advance_expedition('mercado')
             if status=='arrived':
                 world.search('mercado')
                 world.begin_return('mercado')
-        outcomes.append(world.end_day())
+        meal_order = sorted(world.meal_people())
+        outcomes.append(world.end_day(meal_plan={
+            'food_priority': meal_order, 'water_priority': meal_order}))
+        if world.partial_defeat:
+            break
     world.validate()
     return {'seed':seed,'heroes':hero_count,'rescue':rescue,
             'missing_food':sum(d['missing']['food'] for d in outcomes),
             'missing_water':sum(d['missing']['water'] for d in outcomes),
             'crises':[d['crisis'] for d in outcomes if d['crisis']],
-            'end_stock':dict(world.stock),'day5':world.day,
+            'end_stock':dict(world.stock),'days_completed':len(outcomes),
+            'partial_defeat':world.partial_defeat,
             'expeditions_unreturned':list(world.expeditions)}
 
 
@@ -51,6 +58,8 @@ def aggregate(start_seed: int, seeds: int) -> dict:
                            'water_shortage_runs':sum(r['missing_water']>0 for r in subset),
                            'food_shortage_total':sum(r['missing_food'] for r in subset),
                            'water_shortage_total':sum(r['missing_water'] for r in subset),
+                           'partial_defeat_runs':sum(r['partial_defeat'] for r in subset),
+                           'days_completed_mean':sum(r['days_completed'] for r in subset)/len(subset),
                            'crises':dict(Counter(c for r in subset for c in r['crises']))}
     return {'start_seed':start_seed,'seeds_per_group':seeds,'total_replays':len(results),
             'scope':'cinco dias de economia e uma busca; sem campanha, combate tático, vitória ou duração de mesa',

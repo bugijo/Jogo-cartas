@@ -15,6 +15,11 @@ spec.loader.exec_module(system)
 def world(seed=17, n=2, stock=None):
     return system.World.new(seed,list(system.HEROES)[:n],stock or {'food':8,'water':8,'wood':4,'scrap':4})
 
+def close_day(game):
+    # Deterministic test policy: prioritize consumer IDs in lexical order.
+    ids=sorted(game.meal_people())
+    return game.end_day(meal_plan={'food_priority':ids,'water_priority':ids})
+
 
 class SystemTests(unittest.TestCase):
     def test_catalog_ids_and_progression(self):
@@ -44,7 +49,7 @@ class SystemTests(unittest.TestCase):
         hero=next(iter(w.heroes))
         w.open_expedition('long',[hero],'EXP-LOC-05')
         self.assertEqual(w.award_xp(hero,20,combat=True),8)
-        w.end_day()
+        close_day(w)
         self.assertEqual(w.award_xp(hero,1,combat=True),0)
         for _ in range(3):w.advance_expedition('long')
         w.begin_return('long')
@@ -70,69 +75,69 @@ class SystemTests(unittest.TestCase):
     def test_fed_hero_resting_without_work_or_expedition_recovers_wound_and_fatigue(self):
         w=world(stock={'food':2,'water':2})
         hero=next(iter(w.heroes))
-        w.heroes[hero].update(health=2,fatigue=2)
-        w.end_day()
+        w._set_hero_health(hero,2);w.heroes[hero]['fatigue']=2
+        close_day(w)
         self.assertEqual(w.heroes[hero]['health'],3)
         self.assertEqual(w.heroes[hero]['fatigue'],1)
 
     def test_fed_hero_who_worked_or_departed_recovers_fatigue_but_not_wound(self):
         worked=world(stock={'food':2,'water':2,'scrap':1})
         worker=next(iter(worked.heroes))
-        worked.heroes[worker].update(health=2,fatigue=2)
+        worked._set_hero_health(worker,2);worked.heroes[worker]['fatigue']=2
         worked.structures['garden']={'health':1,'age':0}
         self.assertTrue(worked.repair_structure('garden',hero_id=worker))
-        worked.end_day()
+        close_day(worked)
         self.assertEqual(worked.heroes[worker]['health'],2)
         self.assertEqual(worked.heroes[worker]['fatigue'],1)
 
         traveled=world(stock={'food':2,'water':2})
         traveler=next(iter(traveled.heroes))
-        traveled.heroes[traveler].update(health=2,fatigue=2)
+        traveled._set_hero_health(traveler,2);traveled.heroes[traveler]['fatigue']=2
         traveled.open_expedition('trip',[traveler],'EXP-LOC-01')
         traveled.advance_expedition('trip')
         traveled.begin_return('trip')
         traveled.advance_expedition('trip')
-        traveled.end_day()
+        close_day(traveled)
         self.assertEqual(traveled.heroes[traveler]['health'],2)
         self.assertEqual(traveled.heroes[traveler]['fatigue'],1)
 
     def test_daily_rest_eligibility_survives_save_load(self):
         w=world(stock={'food':2,'water':2,'scrap':1})
         hero=next(iter(w.heroes))
-        w.heroes[hero]['health']=2
+        w._set_hero_health(hero,2)
         w.structures['garden']={'health':1,'age':0}
         self.assertTrue(w.repair_structure('garden',hero_id=hero))
         with tempfile.TemporaryDirectory() as directory:
             path=Path(directory)/'daily-state.json'
             w.save(path)
             copy=system.World.load(path)
-        copy.end_day()
+        close_day(copy)
         self.assertEqual(copy.heroes[hero]['health'],2)
 
     def test_npc_rest_and_assigned_work_affect_injury_recovery(self):
         w=world(stock={'food':3,'water':3})
         npc_id='EXP-NPC-01'
         self.assertTrue(w.recruit(npc_id))
-        w.npcs[npc_id].update(health=1,fatigue=2)
-        w.end_day()
+        w.npcs[npc_id].update(health=1,wounds=2,fatigue=2)
+        close_day(w)
         self.assertEqual(w.npcs[npc_id]['health'],2)
         self.assertEqual(w.npcs[npc_id]['fatigue'],1)
-        w.npcs[npc_id].update(health=1,fatigue=2)
+        w.npcs[npc_id].update(health=1,wounds=2,fatigue=2)
         w.deposit('food',3);w.deposit('water',3)
         w.assign(npc_id,system.NPCS[npc_id]['job'])
-        w.end_day()
+        close_day(w)
         self.assertEqual(w.npcs[npc_id]['health'],1)
         self.assertEqual(w.npcs[npc_id]['fatigue'],1)
 
     def test_npc_medic_does_not_treat_hero_absent_from_camp(self):
         w=world(stock={'food':3,'water':3,'medicine':1})
         traveler=list(w.heroes)[0]
-        w.heroes[traveler]['health']=2
+        w._set_hero_health(traveler,2)
         self.assertTrue(w.recruit('EXP-NPC-12'))
         w.assign('EXP-NPC-12','rescue')
         w.open_expedition('trip',[traveler],'EXP-LOC-01')
         w.advance_expedition('trip')
-        w.end_day()
+        close_day(w)
         self.assertEqual(w.heroes[traveler]['health'],2)
         self.assertEqual(w.stock['medicine'],1)
 
@@ -185,7 +190,7 @@ class SystemTests(unittest.TestCase):
         self.assertTrue(w.recruit('EXP-NPC-05'))
         w.assign('EXP-NPC-05','farming')
         self.assertTrue(w.level_npc('EXP-NPC-05'))
-        days=[w.end_day() for _ in range(4)]
+        days=[close_day(w) for _ in range(4)]
         self.assertGreaterEqual(days[-1]['produced']['food'],2)
         self.assertEqual(w.structures['garden']['age'],4)
 
@@ -257,13 +262,15 @@ class SystemTests(unittest.TestCase):
         w.work_project('garden',2)
         w.assign_garden(rosa)
         w.award_xp(lia,20)
-        w.heroes[ivo]['health']=0
+        w._set_hero_health(ivo,0)
         self.assertEqual(w.rescue_hero(lia,ivo),2)
         w.guard(ivo)
         self.assertEqual(w.receive_damage(ivo,2)['health'],2)
         result=w.roll_infection(yumi)
         self.assertEqual(result['adjusted'],min(6,result['roll']+w.skill_bonus(yumi,'infection')))
-        days=[w.end_day() for _ in range(4)]
+        meal_order=[rosa]+[hero for hero in sorted(w.meal_people()) if hero!=rosa]
+        days=[w.end_day(meal_plan={'food_priority':meal_order,
+                                   'water_priority':meal_order}) for _ in range(4)]
         self.assertGreaterEqual(days[-1]['produced']['food'],3)
 
     def test_search_urban_depletion_natural_renewal(self):
@@ -275,7 +282,7 @@ class SystemTests(unittest.TestCase):
         w.advance_expedition('market');w.advance_expedition('field')
         for _ in range(system.LOCATIONS[urban]['searches']): w.search('market')
         self.assertEqual(w.search('market'),{})
-        w.search('field');w.end_day()
+        w.search('field');close_day(w)
         self.assertEqual(w.searches[natural],system.LOCATIONS[natural]['searches'])
         self.assertEqual(w.searches[urban],0)
 
@@ -347,8 +354,14 @@ class SystemTests(unittest.TestCase):
         w.structures['garden']={'health':3,'age':0}
         with tempfile.TemporaryDirectory() as directory:
             path=Path(directory)/'save.json';w.save(path);copy=system.World.load(path)
-            self.assertEqual([w.end_day() for _ in range(30)],
-                             [copy.end_day() for _ in range(30)])
+            outcomes=[];copied=[]
+            for _ in range(30):
+                # Isolate RNG/cooldown behavior from the separate hunger rule.
+                for game in (w,copy):
+                    game.stock['food']=max(game.stock['food'],game.consumers)
+                    game.stock['water']=max(game.stock['water'],game.consumers)
+                outcomes.append(close_day(w));copied.append(close_day(copy))
+            self.assertEqual(outcomes,copied)
         for crisis in system.CRISES.values():
             hits=[e['day'] for e in w.log if e['crisis']==crisis['id']]
             self.assertTrue(all(b-a>crisis['cooldown_days'] for a,b in zip(hits,hits[1:])))
@@ -385,8 +398,8 @@ class SystemTests(unittest.TestCase):
         w.assign('EXP-NPC-14','radio')
         w.assign('EXP-NPC-12','rescue')
         self.assertTrue(w.start_project('garden'))
-        hero=next(iter(w.heroes));w.heroes[hero]['health']=2
-        w.end_day()
+        hero=next(iter(w.heroes));w._set_hero_health(hero,2)
+        close_day(w)
         self.assertEqual(w.projects['garden'],1)
         self.assertEqual(w.clues,1)
         self.assertEqual(w.heroes[hero]['health'],3)
@@ -396,7 +409,7 @@ class SystemTests(unittest.TestCase):
         w=world(stock={'food':4,'water':4,'scrap':3,'fuel':1,'medicine':1})
         for kind in ('workshop','infirmary','reservoir'):
             w.structures[kind]={'health':3,'age':0}
-        hero=next(iter(w.heroes));w.heroes[hero]['health']=2
+        hero=next(iter(w.heroes));w._set_hero_health(hero,2)
         self.assertTrue(w.use_structure('workshop'))
         self.assertEqual((w.stock['scrap'],w.stock['ammo']),(1,1))
         self.assertFalse(w.use_structure('workshop'))
@@ -422,7 +435,7 @@ class SystemTests(unittest.TestCase):
             restored=system.World.load(path)
             self.assertEqual(restored.expeditions['x'].cargo,w.expeditions['x'].cargo)
             self.assertEqual(restored.advance_expedition('x'),w.advance_expedition('x'))
-            self.assertEqual(restored.end_day(),w.end_day())
+            self.assertEqual(close_day(restored),close_day(w))
 
     def test_integrated_replay_is_reproducible(self):
         spec2=importlib.util.spec_from_file_location('integral_sim',ROOT/'simulate_system.py')
@@ -464,7 +477,7 @@ class SystemTests(unittest.TestCase):
             loaded=system.World.load(path)
             self.assertEqual(loaded,w)
             for obj in (w,loaded):
-                obj.advance_expedition('e');obj.advance_expedition('e');obj.end_day()
+                obj.advance_expedition('e');obj.advance_expedition('e');close_day(obj)
             self.assertEqual(loaded,w)
 
 

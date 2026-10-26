@@ -278,7 +278,7 @@ class PostoVehicleBridgeTests(unittest.TestCase):
         tactical.contact_npc(heroes[0],'EXP-NPC-02')
         expedition=world.expeditions['station-emergency']
         expedition.cargo['food']=2
-        world.heroes[heroes[1]]['health']=0  # incapacitado também retorna
+        world._set_hero_health(heroes[1],0)  # incapacitado também retorna
         receipt=tactical.emergency_return('sem tempo para retorno seguro')
         self.assertEqual(receipt['status'],'failed')
         self.assertEqual(receipt['lost_cargo'],{'food':2})

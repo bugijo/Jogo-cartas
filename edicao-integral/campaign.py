@@ -122,7 +122,9 @@ def play_market_day(seed:int,strategy:str='balanced',team_size:int=2) -> dict:
     world.begin_return('market')
     world.advance_expedition('market')
     phases.append('return')
-    day=world.end_day()
+    meal_order=sorted(world.meal_people())
+    day=world.end_day(meal_plan={'food_priority':meal_order,
+                                'water_priority':meal_order})
     mission=CARDS['EXP-MIS-001']['requirements']
     complete=(killed>=mission['enemy_defeated_min']
               and searches_used>=mission['searches_min']
