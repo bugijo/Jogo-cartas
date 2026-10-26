@@ -1,5 +1,30 @@
 # Auditoria ativa — reconciliação de pistas e combustível (2026-10-26)
 
+## Atualização após auditoria read-only independente
+
+- Testes e motores locais agora aplicam consumo/Fome/Sede conforme `RULES.md`
+  §§8, 18 e 25. O primeiro full-suite run encontrou uma falha real de
+  continuidade (um herói com saúde 0 podia recuperar vida ao receber um
+  ferimento de privação), que foi corrigida com saúde como autoridade e campo
+  de ferimentos sincronizado. Também foi corrigida a recuperação de civis
+  migrados sem campo de saúde.
+- Outro erro reproduzível: `AdaptiveRegionalPlayer.run_objective()` consultava
+  `tactical.state` depois que `finish()` removia o encontro. O resultado agora
+  se baseia na conclusão registrada enquanto o mapa ainda existia; a rota
+  seed22 de Célia cobre esse caso.
+- Rota local seed22: Célia foi fisicamente investigada antes do rádio, sem
+  pista automática; anotações foram copiadas separadamente por 1 PA; 1 pista
+  retorna ao abrigo no clock 10. Rádio não desbloqueia. Tentativa simultânea
+  das fontes Célia+Vicente falha no clock 7 por ativações inimigas e não foi
+  promovida a resultado de campanha.
+- Limite: cartas regionais de Viagem ainda não são reveladas/resolvidas, então
+  a rota acima é apenas prova da camada tática, não uma expedição canônica
+  completa. Evacuação parcial não foi implementada; motor fecha a campanha
+  fail-closed após colapso. Saves JSON ainda podem ser editados manualmente.
+- Auditoria de fontes do combustível confirmou a matriz do relatório sem
+  alteração de regra: 2/trecho; 4 curta; 8 longa; Posto O1=8; O2 não oferece
+  combustível; cache Oficina 8 e EXP-MIS-104=12 são experiências não aprovadas.
+
 - Regra documental confirmada: `RULES.md §11, linha 64` cobra dois combustíveis por trecho. `§5, linha 29` define rotas curta/longa. O1 do Posto oferece oito cartas finitas; O2 não nomeia combustível nem quantidade. `EXP-MIS-104` é experimental a 12 para `far=3`, sem equivalência canônica aprovada entre distâncias. A reserva de oito no cache da Oficina também é experimental.
 - O grafo de pistas usa investigação física pré-rádio e uma ação distinta de cópia, sem concessão automática. Há apenas duas fontes configuradas, Célia e Vicente; disponibilidade condicional pode bloquear a segunda pista. Uma rota `stealth` seed22 já copiou e trouxe uma pista da Estação após 23 decisões e 10 segmentos; o rádio permanece fechado e Célia não foi recrutada. A política balanced ainda termina em emergência no clock 7 por gastar ações em combate opcional. A comparação demonstra que a falha da política balanced não é bloqueio universal.
 - Código local integra snapshot/save-load do shoe para a transição, mas o motor regional ainda não revela/resolva as cartas. O teste do Posto prova retirada das oito cartas e saída a pé depois de falha de reparo apenas como regressão de controlador; o estado regional não aplica Fome/Sede por escassez, então não é uma campanha legal completa.

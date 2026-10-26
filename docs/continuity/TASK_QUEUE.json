@@ -49,8 +49,8 @@
         "python -m unittest discover -s edicao-integral/tests -q"
       ],
       "status": "parcial_bloqueada",
-      "commit": "081048f",
-      "blocker": "Migração e persistência do shoe de Viagem preservadas. A rota `stealth` seed22 copia e retorna uma pista no segmento 10; balanced termina em emergência no clock7 por combate opcional. Ainda falta segunda pista, contato/recrutamento e conclusão do rádio. Há somente duas fontes; Célia fundadora/Vicente já acolhido podem remover uma fonte. Viagem regional ainda não revela nem resolve cartas. Estados Fome/Sede não são aplicados após escassez."
+      "commit": "d2181c5",
+      "blocker": "Migração preserva a vitória seed22. O motor agora aplica refeições, Fome/Sede, PA, ferimentos/recuperação, colapso e migração de saves schema 1→2. Rota local Célia entrega uma pista, mas o rádio exige duas. Célia/Vicente são fontes condicionais; cartas de Viagem regionais ainda não estão ligadas."
     },
     {
       "id": "P2-PLAYER-CAMPAIGNS",
@@ -70,7 +70,7 @@
       ],
       "status": "bloqueada",
       "commit": null,
-      "blocker": "Não existe campanha completa contínua. O replay atual só comprova Cisterna seed22 + migração + uma pista física e emergência. 321 testes passam; replay `stealth` retorna uma pista e regressão também protege contra falso status de extração com inimigo bloqueando a saída. Posto/van/transmissor/defesa final não foram concluídos. O teste de Posto local é regressão de controlador, não replay canônico."
+      "blocker": "Sem replay completo de Última Transmissão. A Cisterna seed22 continua certificada; o replay regional parcial retorna uma pista física de Célia no clock 10. Tentativa para a segunda pista de Vicente encerrou no clock 7 após ataques. Posto, transmissor e defesa não foram concluídos. 340 testes aprovados não são playtests."
     },
     {
       "id": "P3-PHYSICAL-EDITION",
@@ -113,7 +113,7 @@
       ],
       "status": "bloqueada_por_ponte_de_regras",
       "commit": null,
-      "blocker": "O modelo regional não tem ainda carga física/campo equivalente para todos efeitos de Travel02, nem ponte para Ambush02; mapear sem decisão criaria efeitos ou recursos artificiais."
+      "blocker": "O snapshot do deck sobrevive à migração/save/load, mas nenhuma carta regional é revelada/resolvida. Travel02 usa contexto de carga física (alimento/água/materiais) que não possui ponte aprovada para contadores regionais; custo e distância near/medium/far também não estão conciliados."
     },
     {
       "id": "P1-CLUE-SOURCES-AND-EXTRACTION",
@@ -132,9 +132,32 @@
         "test_arc2_narrative_and_fuel_experimental.py",
         "verify_continuous_campaign.py"
       ],
-      "status": "bloqueada",
-      "commit": null,
-      "blocker": "Só há fontes Célia/Vicente e a rota individual seed22 requer 13 PA contra 9 por ator; a divisão da equipe não foi ainda simulada. Escolher fonte/rota é decisão de conteúdo."
+      "status": "parcial_bloqueada",
+      "commit": "d2181c5",
+      "blocker": "Rota tática local seed22 investiga Célia e extrai uma pista sem recompensa automática; o rádio recusa uma pista. Tentativa das duas fontes na Estação foi bloqueada pelo relógio/Horda no clock 7. Célia fundadora ou Vicente acolhido pode remover fonte. Cartas regionais ainda não resolvidas."
+    },
+    {
+      "id": "P1-REGIONAL-SURVIVAL-STATE",
+      "priority": 1,
+      "objective": "Aplicar consumo, estados de Fome/Sede, descanso e consequências em campanha regional migrada.",
+      "depends_on": [
+        "P1-MIGRATE-CISTERN"
+      ],
+      "acceptance": [
+        "consumidores individuais e porções conservados",
+        "prioridade explícita em escassez",
+        "PA/ferimentos/colapso conforme RULES §§8/18/25",
+        "save/load e migração de save",
+        "derrota parcial fail-closed"
+      ],
+      "tests": [
+        "edicao-integral/tests/test_regional_needs.py",
+        "edicao-integral/tests/test_system.py",
+        "edicao-integral/tests/test_integrated_campaign.py"
+      ],
+      "status": "implementado_parcial",
+      "commit": "d2181c5",
+      "blocker": "Evacuação da campanha não foi portada; estado de derrota encerra fail-closed. Não representa conclusão da continuação."
     }
   ]
 }

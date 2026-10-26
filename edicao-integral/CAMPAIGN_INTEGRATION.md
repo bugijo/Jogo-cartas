@@ -11,18 +11,17 @@ trecho por sentido) e longa (2 por sentido). A referência “§64” na solicit
 - `NARRATIVE_DEPENDENCIES.md` contém o grafo e a matriz de desbloqueio. A
   hipótese experimental separa descoberta física, cópia de evidência e
   recrutamento. Nenhuma pista é automática.
-- `verify_continuous_campaign.py` agora reproduz a tentativa real H2 seed 22:
-  Cisterna `verified_victory` → migração → expedição legal à Estação → 1 PA
-  para investigar Célia → 1 PA para copiar uma evidência → falha de extração e
-  a rota `stealth` extrai uma pista no segmento 10. Célia não é recrutada,
-  `radio_code` permanece falso e a segunda pista ainda falta. Save/load após o
-  retorno preserva o estado e a migração não duplica.
-- Na rota testada, o agente que atravessou até a zona 14 precisa de 13 PA para
-  investigar, copiar e voltar, contra 9 PA individuais em três ativações far.
-  A política `stealth` evita combate opcional e consegue concluir a extração
-  de uma pista. A política balanced permanece como comparação: combate e ruído
-  adicionais consomem o relógio e ela falha no segmento 7. Isso é evidência de
-  diferença de estratégia, não de equilíbrio ou impossibilidade geral.
+- `verify_pre_radio_celia_route.py` reproduz uma rota tática local após Cisterna
+  H2 seed 22 e migração: viagem até a Estação, investigação física de Célia por
+  1 PA (zero pista), cópia separada por 1 PA (+1), saída e retorno no relógio
+  10. O rádio recusa o estado com apenas uma pista; Célia não foi recrutada.
+  A rota não revela cartas regionais de Viagem e portanto não certifica uma
+  expedição canônica completa.
+- A tentativa de obter também as pistas de Vicente e Célia na mesma visita
+  foi bloqueada no clock 7 após ataques e surgimento de inimigos, antes de
+  copiar evidências ou retornar. É uma trajetória específica, não demonstra
+  que todas as políticas ou replays fracassem. Célia/Vicente continuam fontes
+  condicionais: fundador ou resgate já migrado pode removê-los como encontro.
 - Reserva de 8 Combustíveis na Oficina é uma regra **experimental de teste**,
   não parte do kit 0.2. Cada ação custa 2 PA, ruído 3, uma vez; só retorna ao
   estoque em extração normal. Oito políticas programáticas retornaram a reserva
@@ -36,9 +35,24 @@ trecho por sentido) e longa (2 por sentido). A referência “§64” na solicit
   duplicada e recibos de pista que não batem com dados, investigação prévia e
   expedição real. O JSON ainda é editável; isto é validação estrutural, não
   autenticação.
-- Um teste adversarial encontrou status falso de “objetivo concluído e saiu”
-  quando o inimigo ainda ocupava a saída e o limite de tentativas acabava. O
-  controlador agora retorna `step_limit` enquanto o encontro seguir aberto.
+- O controlador `run_objective()` agora usa a última confirmação de objetivo
+  registrada antes de encerrar o encontro; não consulta o mapa após a extração.
+- O motor regional aplica consumo, Fome/Sede, PA, ferimentos consecutivos,
+  colapso e descanso §§8/18/25. Escassez exige ordem explícita de distribuição;
+  civis sem HP também recuperam ferimento quando descansam abastecidos. Como a
+  Evacuação não foi portada, derrota parcial encerra fail-closed.
+- Regressões cobrem morte/ferimentos, saves schema 1→2 e o replay parcial. A
+  suíte atual tem 340 testes; verificadores de Cisterna, rota Célia, replay
+  parcial, validador e compilação passaram. Impressão física e playtest humano
+  não ocorreram.
+
+## Limite atual da campanha
+
+Não há sequência integral Cisterna → defesa final. Ainda faltam duas pistas
+acessíveis em estados compatíveis, contato/recrutamento sustentado de Célia,
+cartas de Viagem regionais, conciliação aprovada de combustível, cartão de
+acesso, transmissor, retorno e defesa final. `verified_victory` permanece
+certificado somente para A Cisterna.
 
 ## Histórico de implementação regional em `709c48f` — supersedido pelo estado ativo acima
 

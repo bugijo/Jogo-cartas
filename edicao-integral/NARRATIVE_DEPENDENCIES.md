@@ -52,14 +52,16 @@ experimental permite descobrir Célia antes do rádio sem conceder pista por
 aparecer no mapa. A pista só entra após uma ação separada, em local seguro e
 com recibo. A função de pesquisa de Célia é posterior e opcional.
 
-Isso remove o ciclo lógico `rádio → Célia → pistas → rádio`. A primeira rota
-seed22 usava a política balanced, que gastava ações com combate opcional e
-terminava em emergência no clock 7. A política `stealth`, que evita atacar
-inimigos fora das zonas de objetivo/saída quando não bloqueiam o trajeto,
-consegue investigar e copiar uma pista, eliminar ameaças apenas quando
-necessário para objetivo/saída e retornar normalmente no segmento 10. A prova
-continua parcial: só uma pista foi extraída; Célia não foi recrutada, o rádio
-não abriu e isso não comprova equilíbrio nem campanha integral.
+Isso remove o ciclo lógico `rádio → Célia → pistas → rádio`. Uma rota tática
+determinística H2 seed22 agora chega a Célia em Z14, registra investigação
+física (0 pistas), gasta 1 PA separado para copiar `EXP-CLUE-001` (+1), retorna
+normalmente no relógio regional 10 e recebe recusa de `Arc2.decode_radio` por
+haver apenas uma pista. A rota usa os APIs atuais de movimento/relógio, mas
+ainda omite a revelação/resolução de cartas de Viagem regional; não é uma
+expedição canônica completa nem prova de campanha. Célia não foi recrutada.
+Uma segunda tentativa que investigou Célia e Vicente foi bloqueada no clock 7
+após ativações inimigas, antes de copiar pistas e extrair; essa trajetória de
+semente fixa não prova que todas as rotas legais falhem.
 
 Possíveis alterações de design para revisão (nenhuma aplicada): (a) mudar a
 localização da pista para um destino mais próximo, sem mudar os mapas; (b)

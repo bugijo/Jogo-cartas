@@ -1,22 +1,32 @@
 # Bloqueios verificados da sequência completa
 
-## Estado ativo — retomada após `081048f` (2026-10-26)
+## Estado ativo — integração regional após `d2181c5` (2026-10-26)
 
 - A referência de custo confirmada é `RULES.md §11, linha 64`: 2 combustível
   por trecho. A solicitação “§64” refere-se à linha, não a seção 64. Rotas
   canônicas em §5, linha 29.
-- A evidência pré-rádio por Célia/Vicente permanece experimental, física e
-  separada do contato; mas as duas pistas não são garantidas em todos os estados
-  de identidade. A política `stealth` seed22 retorna uma pista no segmento 10;
-  `balanced` termina em emergência no clock 7 após combate opcional. Ainda
-  faltam a segunda pista, o contato/recrutamento e o rádio.
+- A hipótese pré-rádio Célia/Vicente permanece experimental, com descobrir,
+  copiar e recrutar como ações separadas. Rota local seed22 da política
+  `stealth` agora consegue investigar Célia, copiar uma pista e extrair no
+  segmento 10; a investigação não concede pista. Célia não foi recrutada, pois
+  a rota não executou contato de acolhimento, e o rádio corretamente recusa
+  uma pista. A tentativa de obter também a evidência de Vicente na mesma visita
+  termina bloqueada no clock 7 após ataques; isso é uma trajetória adversa
+  específica, não prova de impossibilidade global.
 - `EXP-MIS-104=12`, `far=3`, e cache Oficina 8 permanecem experimentais. O1 Posto
   tem 8 cartas; O2 não define combustível. Posto regional `medium=2` custa 4
   no motor, enquanto `CAMPAIGN.md` descreve a volta curta por 2; equivalência
   não escolhida.
 - O baralho de Viagem persiste/migra, mas ainda não é sorteado nem resolvido
-  em expedições regionais. O modelo ainda não aplica Fome/Sede depois de
-  escassez diária. Não há sequência integral até a defesa final.
+  em expedições regionais. Fome/Sede, alocação em escassez, efeitos de PA,
+  ferimentos consecutivos, colapso e recuperação agora são aplicados no motor;
+  Evacuação de derrota parcial continua pendente. Não há sequência integral
+  até a defesa final.
+
+Verificação local antes da publicação: 340 testes passam. A Cisterna seed22
+permanece `verified_victory`; `verify_pre_radio_celia_route.py` reproduz 1 pista
+copiada e retornada, sem rádio. O replay contínuo ainda não chega a Vicente,
+Posto, instalação, transmissor ou defesa.
 
 O estado detalhado abaixo deve ser lido como histórico se divergir deste bloco.
 

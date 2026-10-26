@@ -1,5 +1,35 @@
 # 2026-10-26 — correção de fontes e reconciliação ativa
 
+## Continuação — refeições e rota pré-rádio (HEAD local inicial `794749a`)
+
+- Unidade de código/testes commitada como `d2181c5`; este registro documental segue em commit separado. Push ainda será confirmado após revisão final de árvore/remoto.
+- Portadas ao motor regional as regras documentadas de consumo, distribuição
+  em escassez, Fome/Sede, PA reduzido, ferimento por privação consecutiva,
+  limiar de Colapso, repouso e recuperação do ledger de civis. Save `World`
+  migra schema 1 para schema 2 sem reviver feridos; campanha marca derrota
+  parcial e para até a Evacuação, ainda não portada.
+- Corrigido bug do jogador regional: ao retirar o encontro, `run_objective()`
+  tentava consultar o mapa removido e podia lançar `KeyError`. Uma regressão
+  executa a descoberta de Célia fisicamente antes do rádio.
+- Nova rota reproduzível `edicao-integral/verify_pre_radio_celia_route.py`:
+  Cisterna H2 seed22 (`verified_victory`), migração, investigação física e cópia
+  separada das anotações de Célia, retorno no relógio 10, 1 pista; Rádio falha
+  corretamente por faltar a segunda. O arquivo e o script deixam explícito que
+  não resolveram cartas regionais de Viagem e não certificam expedição/campanha
+  canônica integral.
+- A tentativa de copiar também o caderno de Vicente no mesmo mapa bloqueou no
+  clock 7 depois de ataques/Horda. Não prova impossibilidade global. Célia não
+  foi recrutada nem recebeu pistas automaticamente.
+- Matriz de combustível confirmada por auditoria independente read-only:
+  4 curta, 8 longa; Posto O1 oito unidades; O2 comida+água; a proposta de cache
+  Oficina 8 já existe marcada experimental (2 PA, ruído 3, única, carga, perda
+  em emergência); `far=3`/12 continua proposta sem aprovação. Fonte completa em
+  `edicao-integral/TACTICAL_FUEL_AUDIT.md`.
+- Verificação: 340 testes passam; Cisterna, replays contínuo e regional,
+  verificador novo de Célia, validador de catálogo, compilação e diff-check
+  passaram. Não houve impressão física, playtest humano ou validação de
+  equilíbrio. Subagentes reais fizeram auditorias read-only de código e fontes.
+
 - Checkout confirmado: branch `evolucao/zona-zero-sistema-v1`, HEAD/remoto
   `081048f` após push do replay `stealth`; as alterações restantes são documentais.
 - Corrigida a referência de fonte no dado gerado e na missão: `RULES.md §11,
