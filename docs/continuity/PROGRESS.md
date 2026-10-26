@@ -3,7 +3,7 @@
 ## 2026-10-26 — controlador regional, custos táticos e auditoria de combustível
 
 - Base real confirmada por fetch: `d3d6137660cf0d3e4415e227fcf9b5edad13bccf`, branch `evolucao/zona-zero-sistema-v1`; não havia alterações concorrentes no remoto.
-- Commit `709c48f` com motor/testes/replays publicado por push fast-forward; sem merge ou alteração da `main`.
+- Commits `709c48f` (motor/testes/replays) e `1feacee` (documentação/checkpoint) publicados por push fast-forward; sem merge ou alteração da `main`.
 - Alinhadas às regras atuais as ações táticas: mover custa 1 PA mais 1 ao sair de uma zona com inimigo; abrir porta comum custa 1 PA; romper porta bloqueada custa 2 PA com ferramenta, sem teste, perda de durabilidade ou ruído não especificados. Clientes e testes que usavam `breach` para porta comum foram migrados.
 - `World.open_expedition()` verifica reserva para ida, uma rodada local e retorno em até dez segmentos antes de despachar. O desconto de motorista e habilidade é considerado antes do teste e de qualquer gasto; teste cobre uma ida de um segmento iniciada no relógio 7 e concluída no 10.
 - `AdaptiveRegionalPlayer` executa um objetivo tático por APIs públicas, com decisões observáveis, save/load de política e retorno. Não dirige veículos enquanto custo/rota estiverem pendentes. Uma auditoria adversarial corrigiu contato de NPC tratado como sucesso por ausência do contato, rota bloqueada sem ferramenta quando há desvio, e mapa inválido cobrado antes da validação.

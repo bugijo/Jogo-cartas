@@ -1,8 +1,8 @@
 # Checkpoint — campanha contínua Cisterna → Última Transmissão
 
-## Estado ativo desta retomada — implementação publicada `709c48f`
+## Estado ativo desta retomada — HEAD remoto `1feacee581e04649bcbfd9f4e7f212f3ce21c534`
 
-- O HEAD local/remoto confirmado antes da edição foi `d3d6137660cf0d3e4415e227fcf9b5edad13bccf`; branch `evolucao/zona-zero-sistema-v1`, árvore inicialmente limpa. O HEAD citado na solicitação (`3b5966…`) não é o estado disponível nesta cópia. O commit funcional `709c48f` reúne código, testes e replays e foi publicado por fast-forward normal.
+- O HEAD local/remoto confirmado antes da edição foi `d3d6137660cf0d3e4415e227fcf9b5edad13bccf`; branch `evolucao/zona-zero-sistema-v1`, árvore inicialmente limpa. O HEAD citado na solicitação (`3b5966…`) não é o estado disponível nesta cópia. O commit funcional `709c48f` e o commit documental `1feacee` foram publicados por fast-forward normal.
 - Corrigida a matriz de combustível: `RULES.md` nesta cópia termina na §14 e não contém §64. A van e custo de 2 unidades/trecho estão em §11; segmentos de rota estão em §5. `CAMPAIGN.md`/`content/catalog.json` dizem 8 combustíveis únicos no Posto O1 e O2 “um lote de cada provisão”, sem declarar combustível nem quantidade adicional. `EXP-MIS-104` experimental cobra 6 fixos; `EXP-LOC-06 far=3` com custo canônico resulta em 12. Nenhuma regra foi escolhida nem combustível criado.
 - A integração tática foi ajustada ao manual: mover custa 1 PA, mais 1 ao sair de zona ocupada; abrir porta comum custa 1 PA; porta bloqueada custa 2 PA com ferramenta, sem teste, desgaste ou ruído não escrito na regra. O baralho Horda existente permanece persistente.
 - `World.open_expedition()` agora recusa, sem alterar o estado, despacho quando não há reserva para ida + ao menos uma rodada local + retorno dentro do relógio 10.
@@ -13,8 +13,8 @@
 - Verificação final: 296 testes; validador (127 IDs, 10 protagonistas, 70 habilidades, 15 NPCs), `compileall`, JSON da fila e `git diff --check` passaram. Cisterna seed 22 = 5 dias/noites, 3 expedições, 98 decisões, `verified_victory`; replay regional parcial comprovado. O replay contínuo segue em derrota local na Estação.
 
 Branch: `evolucao/zona-zero-sistema-v1`
-HEAD remoto publicado: `709c48f`
-Commits funcionais publicados neste lote: `2e07b08`, `6d25b43`, `2a24cc7`, `60340c4`, `f205e55`, `0f1ce2a`, `fb48fda`, `709c48f`.
+HEAD remoto publicado: `1feacee581e04649bcbfd9f4e7f212f3ce21c534`
+Commits funcionais/documentais publicados neste lote: `2e07b08`, `6d25b43`, `2a24cc7`, `60340c4`, `f205e55`, `0f1ce2a`, `fb48fda`, `709c48f`, `1feacee`.
 Main e kit físico 0.2 intactos.
 
 ## Atualização ativa — relógio e primeiro replay regional

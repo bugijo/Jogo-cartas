@@ -1,9 +1,8 @@
 # Relatório de auditoria — atualização 2026-10-26
 
 Base local/remota antes deste lote: `d3d6137660cf0d3e4415e227fcf9b5edad13bccf`.
-Implementação de código e testes: commit `709c48f`, publicado por fast-forward
-normal. Este relatório de auditoria e o checkpoint do lote são a próxima
-unidade de documentação.
+Implementação de código e testes: commit `709c48f`; relatório/checkpoint:
+`1feacee`. Ambos publicados por fast-forward normal.
 
 ## Evidência documental de combustível
 

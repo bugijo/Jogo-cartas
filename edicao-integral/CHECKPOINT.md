@@ -36,8 +36,8 @@ substitui o estado no cabeçalho anterior após publicação do novo commit.
 
 Branch: `evolucao/zona-zero-sistema-v1`
 Base conferida antes do lote: `d3d6137660cf0d3e4415e227fcf9b5edad13bccf`.
-HEAD publicado após código: `709c48f`.
-Commits funcionais publicados neste lote: `2e07b08`, `6d25b43`, `2a24cc7`, `60340c4`, `f205e55`, `0f1ce2a`, `fb48fda`, `709c48f`.
+HEAD remoto publicado: `1feacee581e04649bcbfd9f4e7f212f3ce21c534`.
+Commits funcionais/documentais publicados neste lote: `2e07b08`, `6d25b43`, `2a24cc7`, `60340c4`, `f205e55`, `0f1ce2a`, `fb48fda`, `709c48f`, `1feacee`.
 Main e kit físico 0.2 permanecem intactos.
 
 ## Estado ativo após o lote `709c48f`
