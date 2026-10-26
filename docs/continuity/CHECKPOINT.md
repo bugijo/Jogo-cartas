@@ -1,5 +1,48 @@
 # Checkpoint — campanha contínua Cisterna → Última Transmissão
 
+## Estado ativo desta retomada — commit funcional `3e65893`
+
+Árvore local iniciou limpa no ancestral `86a53ffe57b26cdd33fcc1be0d961c0f7d8a7226`.
+O commit funcional `3e65893` foi publicado por fast-forward normal na branch
+experimental; falta publicar este checkpoint documental. `main` e o kit físico
+0.2 não foram alterados.
+
+- Preservada a regressão oficial da Cisterna: H2 seed 22, vitória certificada,
+  5 dias/noites, 3 expedições, 98 decisões.
+- Geração de pista agora exige investigação física pré-rádio, zona segura,
+  custo de PA e receipt único; contato/recrutamento exige receipt de descoberta,
+  mas a busca física não exige que a comunidade já tenha cama/ração disponíveis
+  para acolher. Vicente é a identidade condicional original `ZC-MOR-0003`.
+- Controlador regional corrigido para gastar PA de outro herói antes de avançar
+  relógio; a extração não tenta uma ação inexistente quando um inimigo ocupa a
+  saída. Saves conferem os recibos de evidência contra fonte, ação anterior,
+  missão, valor, local e custo; JSON editável não é autenticado.
+- Hipóteses em `data/regional_campaign.json`: oito unidades no cache finito da
+  Oficina (2 PA, ruído 3, carga, única, emergência perde) e combustível da
+  missão militar = 12 (`2/trecho × 3 far × ida/volta`). Ambas experimentais,
+  sem alteração dos manuais oficiais. O retorno Posto regional (4) diverge do
+  retorno por van 0.2 (2); consultar `TACTICAL_FUEL_AUDIT.md`.
+- Prova atual do segundo arco: 27 decisões, Estação, Célia investigada e 1
+  pista copiada; retirada de emergência no clock 7. Sem recrutamento, rádio,
+  cartão, van, transmissor, defesa ou vitória do segundo arco. Replay em
+  `replays/cistern_to_transmission_seed22_blocked.json` (schema 3).
+- Bloqueio principal: via Estação `far=3`, só 3 ativações locais permanecem;
+  alcançar Z14 + copiar a evidência + voltar exige mínimo 13 PA do explorador,
+  máximo 9. Requer decisão de design sobre rota/tempo/local; não mudar
+  equilíbrio silenciosamente. Grafo: `NARRATIVE_DEPENDENCIES.md`.
+- A reserva experimental de combustível da Oficina foi retornada por 8/8
+  políticas na mesma seed; isso não inclui rota Posto/van nem prova campanha
+  completa. Baralho regional de Viagem/emboscadas continua pendente.
+- Última verificação executada antes do commit funcional: suíte completa 314 passou; `validate_data.py`,
+  `compileall`, JSON da fila e `git diff --check` passaram; replay da Cisterna
+  e replay bloqueado passaram. O teste amplo foi executado antes do commit
+  funcional; a mudança posterior foi documental apenas.
+
+HEAD publicado: `3e65893` (`feat: validate regional clues and experimental fuel route`).
+Próximo passo: publicar o commit documental; depois retomar a decisão de design
+que permita a extração da Estação sem alterar silenciosamente o relógio nem a
+geometria.
+
 ## Estado ativo desta retomada — HEAD remoto `1feacee581e04649bcbfd9f4e7f212f3ce21c534`
 
 - O HEAD local/remoto confirmado antes da edição foi `d3d6137660cf0d3e4415e227fcf9b5edad13bccf`; branch `evolucao/zona-zero-sistema-v1`, árvore inicialmente limpa. O HEAD citado na solicitação (`3b5966…`) não é o estado disponível nesta cópia. O commit funcional `709c48f` e o commit documental `1feacee` foram publicados por fast-forward normal.

@@ -1,6 +1,34 @@
 # Integração de campanhas — estado atualizado
 
-## Atualização ativa — implementação regional publicada em `709c48f`
+## Atualização ativa — pista e combustível regionais (2026-10-26)
+
+- `NARRATIVE_DEPENDENCIES.md` contém o grafo e a matriz de desbloqueio. A
+  hipótese experimental separa descoberta física, cópia de evidência e
+  recrutamento. Nenhuma pista é automática.
+- `verify_continuous_campaign.py` agora reproduz a tentativa real H2 seed 22:
+  Cisterna `verified_victory` → migração → expedição legal à Estação → 1 PA
+  para investigar Célia → 1 PA para copiar uma evidência → falha de extração e
+  retirada de emergência no relógio 7. Célia não retorna, não é recrutada,
+  `radio_code` permanece falso e só há uma pista. O save/load após a retirada
+  reproduz o estado.
+- A causa mensurável é a geometria+clock atual: 13 PA individuais mínimos do
+  herói que visita a zona 14 e volta; há 3 ativações locais no máximo após a
+  rota far, 9 PA por herói. A solução exige decisão de desenho da rota/clock ou
+  da localização; não foi aplicada mudança de equilíbrio.
+- Reserva de 8 Combustíveis na Oficina é uma regra **experimental de teste**,
+  não parte do kit 0.2. Cada ação custa 2 PA, ruído 3, uma vez; só retorna ao
+  estoque em extração normal. Oito políticas programáticas retornaram a reserva
+  legalmente em seed 22. A premissa do retorno regional do Posto (4) diverge do
+  texto canônico (2); detalhes e alternativas em `TACTICAL_FUEL_AUDIT.md`.
+- O gate `EXP-MIS-104` candidato é 12 (`2 × far 3 × ida/volta`), sob status
+  experimental. Nenhuma campanha alcançou o Posto/van depois da origem,
+  instalação, transmissor ou defesa final nesta prova.
+- Validação nova impede contato/evidência sem recibos físicos, evidencia única
+  duplicada e recibos de pista que não batem com dados, investigação prévia e
+  expedição real. O JSON ainda é editável; isto é validação estrutural, não
+  autenticação.
+
+## Histórico de implementação regional em `709c48f` — supersedido pelo estado ativo acima
 
 - A suíte de ações táticas foi alinhada ao texto que existe em `RULES.md`: movimento sob inimigo, porta comum e porta bloqueada. Não há seção §64 no manual desta branch; a regra de veículo aparece em §11. Confira `TACTICAL_FUEL_AUDIT.md`.
 - O despacho regional garante ida + uma rodada local + retorno no relógio. O jogador regional usa ações públicas e não injeta recursos; o teste reproduz Cisterna H2 seed 22, migra, busca 2 comida/1 água no Mercado, salva/restaura, retorna e fecha o dia.
@@ -30,7 +58,7 @@ O replay H2 seed 22 parte de preparação normal e conclui cinco dias/noites, tr
 | Van de manutenção | Mapa Posto / `EXP-VEI-02` (6 lugares, 12 cargas, 2 combustível/segmento) | Se não recuperada na origem, continua abandonada no Posto |
 | Machado, faca e ferramentas sem modelo equivalente | Arquivo de continuidade | Não convertidos sem regra/modelo compatível |
 
-## Replay contínuo parcial
+## Replay contínuo parcial — documentação histórica, replay atual no topo
 
 > **Estado atual, HEAD `fb48fda`:** o replay histórico abaixo, que alcançava o bloqueio de
 > combustível, foi substituído após ativar o relógio compartilhado e o limite

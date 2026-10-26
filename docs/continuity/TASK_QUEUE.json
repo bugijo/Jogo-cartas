@@ -49,8 +49,8 @@
         "python -m unittest discover -s edicao-integral/tests -q"
       ],
       "status": "parcial_bloqueada",
-      "commit": "709c48f",
-      "blocker": "Migração, relógio regional (10 segmentos), limite de uma expedição/dia, fadiga/descanso, surgimento inicial, Horda persistente, ações de PA, contato físico de Célia e retirada têm cobertura. Uma busca de Mercado com retorno/save-load é reproduzida pelo controlador novo, mas não cobre Célia nem o arco completo. `RULES.md` atual não tem §64: van §11 custa 2/trecho; rota `far=3` custa 12, `EXP-MIS-104` fixa 6; Posto O1 = 8 combustível e O2 não declara combustível. Viagem/emboscada regionais, recuperação de itens únicos perdidos, route mapping, pistas de rádio e a economia para a instalação exigem integração/decisão documentada."
+      "commit": "3e65893",
+      "blocker": "No lote local após 86a53ff, o replay legal da Cisterna migra e copia uma pista física da Célia, mas falha na extração da Estação em clock 7: mínimo de 13 PA individuais para entrada→Z14→retorno, máximo 9 em três ativações far. A hipótese pre-radio remove o ciclo lógico, não o bloqueio de mesa. Pistas e contato têm receipts, custos/unicidade, correções do controlador e save/load. Viagem/emboscada regional ainda sem implementação. Combustível extra Oficina 8 e EXP-MIS-104=12 estão em experimento, não regra oficial; retorno regional Posto=4 diverge do texto 0.2=2. Não há campanha contínua até defesa."
     },
     {
       "id": "P2-PLAYER-CAMPAIGNS",
@@ -70,7 +70,7 @@
       ],
       "status": "parcial_bloqueada",
       "commit": "pendente",
-      "blocker": "Não há campanha completa contínua. O controlador adaptativo atual comprova apenas uma expedição a pé no Mercado. Seus perfis são heurísticas simples (diferença operacional principal é distância para priorizar combate), não oito subagentes humanos. Célia não foi legalmente recrutada no replay; o contato configurado é provisório e pista/radio_code tem dependência circular a resolver. Viagem regional por cartas/emboscadas e recuperação de cartão/transmissor deixado no chão continuam pendentes."
+      "blocker": "Não há campanha completa contínua. O controlador executa expedições parciais legais; 8 perfis programáticos retornam ao Workshop com o cache experimental em seed 22, sem simular oito jogadores cognitivos. Célia não foi recrutada; a pista é obtida mas não extraída devido ao orçamento do relógio/mapa. Viagem/emboscadas regionais e recuperação de cartão/transmissor deixado no chão continuam pendentes."
     },
     {
       "id": "P3-PHYSICAL-EDITION",

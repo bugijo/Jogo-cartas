@@ -1,5 +1,33 @@
 # Relatório de auditoria — atualização 2026-10-26
 
+## Revisão desta retomada (código/testes em `3e65893`, push concluído)
+
+- A investigação de Célia deixou de exigir estoque/vaga de recrutamento; esta
+  condição agora só se aplica ao contato que efetivamente adiciona Célia à
+  expedição. A coleta de pistas exige investigação física anterior, janela
+  pré-rádio, zona segura e ID não usado.
+- Corrigido bypass em saves: marcador legado `npc_contacts` sozinho não recruta;
+  cópia de pista precisa de recibo real de investigação. O validador do mundo
+  confere valor, personagem, lugar, custo, quantidade, trip aberto e
+  investigação anterior. Saves continuam editáveis; essa validação não é
+  autenticação criptográfica.
+- Corrigido o controlador: não renova relógio/PA quando outra pessoa da equipe
+  ainda pode executar a ação; saída ocupada por inimigo não é tratada como
+  interação. Regressões TDD demonstraram falhas antes das correções.
+- O verificador de campanha foi atualizado e agora prova uma pista obtida
+  fisicamente, mas bloqueia na extração do mapa da Estação (clock 7). A
+  investigação lógica do ciclo de rádio está resolvida experimentalmente; a
+  rota de mesa ainda exige 13 PA individuais mínimos contra 9 disponíveis.
+- Revisão independente identificou que a hipótese de retorno regional do
+  Posto (4) diverge do texto do kit 0.2 (2). A diferença está explícita no JSON
+  e no relatório de combustível; a conta 12 não está aprovada como regra final.
+- Verificação final da árvore: `python3 -m unittest discover -s
+  edicao-integral/tests -q` (314 testes), `validate_data.py`, `compileall`, JSON
+  dos dados/fila, `git diff --check`, Cisterna seed22, replay do Mercado e
+  replay regional bloqueado passaram.
+- Região não tem ainda baralho próprio de viagem/emboscada com resolução e
+  efeitos definidos; permanece um bloqueio independente.
+
 Base local/remota antes deste lote: `d3d6137660cf0d3e4415e227fcf9b5edad13bccf`.
 Implementação de código e testes: commit `709c48f`; relatório/checkpoint:
 `1feacee`. Ambos publicados por fast-forward normal.

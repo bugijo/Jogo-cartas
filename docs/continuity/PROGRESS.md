@@ -1,5 +1,35 @@
 # Progresso
 
+## 2026-10-26 — pista física, conservação e bloqueio mensurável da Estação
+
+- Código/testes publicados no commit `3e65893` (`feat: validate regional clues and experimental fuel route`), branch experimental por fast-forward comum.
+
+- A hipótese experimental separa descoberta física de Célia, cópia de pista e
+  recrutamento. Encontrar Célia antes do rádio não concede pista; as duas
+  evidências têm IDs distintos, custam 1 PA e só valem pré-rádio. Vicente é a
+  identidade condicional original `ZC-MOR-0003`, sem duplicação.
+- Corrigidos bypasses de marcador legado: `npc_contacts` sozinho não basta
+  para recrutar, pista exige recibo anterior de investigação, e evidência não
+  pode ser coletada depois da decodificação do rádio. `World.validate` confere
+  o recibo com catálogo, ação e viagem; save JSON segue editável e não é
+  autenticado criptograficamente.
+- Corrigido o controlador regional para gastar PA de qualquer herói elegível
+  antes de avançar o relógio e não tratar uma saída ocupada como interação.
+- Replay legal atual: vitória da Cisterna seed 22, migração, expedição à
+  Estação, investigação e cópia de 1 pista; retirada de emergência porque o
+  retorno não cabe no clock 7. Limite inferior: 13 PA individuais do
+  explorador, 9 PA disponíveis em três ativações locais far. Sem Célia
+  recrutada, rádio, cartão, van, transmissor ou defesa. O script anterior foi
+  preservado como `verify_continuous_campaign_historical.py`.
+- Cache experimental finito da Oficina custa 2 PA, produz ruído 3, entra em
+  carga e só retorna ao estoque via extração normal. Oito políticas
+  programáticas retornaram as 8 unidades em seed 22. Isso não demonstra rota
+  Posto/van. A hipótese 8+8−4=12 usa retorno regional `medium=2` e diverge do
+  custo 2 do kit 0.2; não é regra final aprovada.
+- O grafo, a matriz de combustível, replay schema 3 e CHECKPOINT registram o
+  estado e as lacunas; a continuidade até Última Transmissão ainda não está
+  provada.
+
 ## 2026-10-26 — controlador regional, custos táticos e auditoria de combustível
 
 - Base real confirmada por fetch: `d3d6137660cf0d3e4415e227fcf9b5edad13bccf`, branch `evolucao/zona-zero-sistema-v1`; não havia alterações concorrentes no remoto.

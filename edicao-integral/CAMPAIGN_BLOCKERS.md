@@ -1,5 +1,48 @@
 # Bloqueios verificados da sequência completa
 
+## Estado mais recente — código publicado em `3e65893` (2026-10-26)
+
+- **Cisterna preservada:** o verificador oficial continua a produzir vitória
+  legal H2 seed 22 (5 dias/noites, 3 expedições, 98 decisões).
+- **Ciclo de pistas, camada lógica:** Célia pode ser investigada fisicamente
+  antes do rádio sem pista automática; evidência é ação separada de 1 PA, uma
+  por ID. Vicente é uma identidade condicional de `ZC-MOR-0003`, sem duplicar
+  quem migrou/resgatou. Contacto/recrutamento continua distinto de descobrir e
+  copiar pistas. Recibos precisam corresponder ao catálogo e investigação
+  anterior. Ver `NARRATIVE_DEPENDENCIES.md`.
+- **Ciclo de pistas, camada de mesa:** ainda bloqueado. Caminho mais curto
+  entrada Estação → zona 14: 4 movimentos + porta comum 1 PA + porta bloqueada
+  2 PA; investigar 1 PA + copiar 1 PA; retorno exige mais 4 movimentos. São
+  pelo menos 13 PA individuais do explorador. Com far=3, ida 3 + início local
+  1 + retorno 3 deixa só 3 ativações locais (9 PA por herói). Replay real
+  atingiu uma pista, não extraiu; retirada de emergência no clock 7, sem
+  recrutar Célia nem decifrar rádio. Isso é um bloqueio estrutural da rota
+  atual, não uma taxa de falha universal.
+- **Controlador corrigido:** não avança o clock enquanto outro herói ainda tem
+  PA legal; não tenta tratar a saída ocupada por inimigo como uma interação.
+  Esses eram defeitos de decisão, não mudança de regra.
+- **Combustível:** nova fonte de 8 unidades na Oficina está marcada como
+  hipótese experimental (2 PA, ruído 3, retirada única, carga, retorno normal
+  necessário). Oito perfis programáticos retornam nessa expedição e depositam
+  8 no estoque. A conta 8 Oficina + 8 Posto − 4 retorno regional = 12 é
+  condicional: a campanha 0.2 diz retorno ao Posto por 2; o protótipo `medium=2`
+  debita 4. A `EXP-MIS-104` candidata cobra 12 pela regra de 2 × 3 × 2, ainda
+  experimental. Nada disso é regra oficial aprovada. O primeiro bloqueio atual
+  da campanha é o relógio/alcance da Estação, antes de van/combustível.
+- **Viagem regional por cartas e emboscadas regionais:** seguem pendentes. O
+  motor avança segmentos e ativa mapa/Horda, mas ainda não existe uma resolução
+  regional de cartas com efeitos/decisões homologada. Não foi inventada para
+  encobrir a falta de tempo.
+- **Replay da campanha contínua:** `verify_continuous_campaign.py` foi atualizado
+  para registrar o estado real atual, schema 3; o script antigo foi preservado
+  como `verify_continuous_campaign_historical.py`. Replay atual = vitória
+  Cisterna + migração + tentativa de uma pista regional + derrota local por
+  falta de extração. Não alcança Posto, instalação, transmissor, defesa final ou
+  resultado de Última Transmissão.
+- Revisões independentes read-only foram executadas por 3 subagentes para
+  dependências narrativas, combustível e arquitetura regional. Findings foram
+  incorporados/documentados; não são playtests humanos.
+
 ## Atualização ativa — código publicado em `709c48f`
 
 - Correções independentes de combustível: custo de ação tática agora segue as

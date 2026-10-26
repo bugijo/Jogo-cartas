@@ -1,5 +1,25 @@
 # Checkpoint de retomada — campanha contínua (26/10/2026)
 
+## Atualização mais recente desta retomada — commit funcional `3e65893`
+
+- O replay contínuo atual é schema 3, não o replay antigo do Posto: conclui a
+  Cisterna seed22, migra, copia uma pista de Célia via ações físicas, falha em
+  retornar da Estação no relógio 7 e executa retirada; não registra recrutamento
+  nem rádio. Ver `replays/cistern_to_transmission_seed22_blocked.json`.
+- A dependência lógica pré-rádio foi removida como hipótese experimental, mas
+  o caminho de mapa ainda requer 13 PA individuais contra 9 (3 ativações locais
+  após rota far); teste `test_station_celia_evidence_and_return_exceed_far_route_local_action_budget` registra a conta.
+- A fonte de combustível da Oficina (8, 2 PA, ruído 3, uma vez) foi adicionada
+  somente como conteúdo experimental. Oito políticas voltam pela API e entregam
+  as 8; custo de retorno regional Posto 4 diverge do texto 0.2 de 2. O cálculo
+  12 da missão regional segue não aprovado.
+- Controle/validação corrigidos: consumir pistas exige recibos físicos,
+  marcadores antigos não fabricam contato, ações não gastam relógio com outro
+  herói ainda pronto, e a saída ocupada não vira ação. Saves são JSON
+  estruturalmente validados, não assinados.
+- Suíte completa (314), validação de dados, compileall, JSON e `git diff --check`,
+  Cisterna e replay bloqueado foram verificados antes do commit `3e65893`.
+
 ## Estado mais recente desta sessão — 26/10/2026
 
 Base remota conferida: `d3d6137660cf0d3e4415e227fcf9b5edad13bccf`. Este resumo
