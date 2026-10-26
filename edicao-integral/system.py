@@ -766,6 +766,7 @@ class World:
         distance = LOCATIONS[location_id]['distance']
         segments = DATA['rules']['travel_segments'][distance]
         segments=max(1,segments-max(self.skill_bonus(h,'travel') for h in hero_ids))
+        fuel=0
         if vehicle_id is not None:
             driver=any(self.npcs[n]['job']=='driving' for n in npc_ids)
             if driver:
@@ -777,6 +778,12 @@ class World:
             fuel = 2 * segments * VEHICLES[vehicle_id]['fuel_per_segment']
             if self.stock['fuel'] < fuel:
                 raise ValueError('Combustível insuficiente para ida e volta')
+        # Compute the shared-clock reserve from the final segment count,
+        # including legal travel-skill and driver reductions, before any spend.
+        if (self.continuous_campaign
+                and self.regional_clock + segments + 1 + segments > 10):
+            raise ValueError('Relógio regional sem reserva para ida, 1 rodada local e retorno')
+        if vehicle_id is not None:
             self.stock['fuel'] -= fuel
             self.vehicles[vehicle_id]['location'] = expedition_id
         self.expeditions[expedition_id] = Expedition(expedition_id,hero_ids,location_id,distance,segments,

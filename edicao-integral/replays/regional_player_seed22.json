@@ -1,0 +1,152 @@
+{
+  "status": "regional_agent_round_trip_verified",
+  "seed": 22,
+  "cistern": {
+    "status": "verified_victory",
+    "days": 5,
+    "decisions": 98
+  },
+  "migration": {
+    "id": "cistern02:4950561ea0f429f7",
+    "source_digest": "4950561ea0f429f7c7bf980decbb61dde1abf9acadbe766a2fab04a570db35a9",
+    "from": "cistern02",
+    "to": "last_transmission",
+    "heroes": [
+      "ZC-HER-0001",
+      "ZC-HER-0003"
+    ],
+    "people": 3,
+    "consumers": 3,
+    "day": 5
+  },
+  "regional": {
+    "profile": "explorer",
+    "expedition": "regional-player-seed22-market",
+    "destination": "EXP-LOC-02",
+    "team": [
+      "ZC-HER-0001",
+      "ZC-HER-0003"
+    ],
+    "outbound": "arrived",
+    "objective": {
+      "status": "objective_completed_and_exited",
+      "searches": 1,
+      "requested_searches": 1,
+      "decisions": 5
+    },
+    "decisions": [
+      {
+        "action": "open_door",
+        "hero": "ZC-HER-0001",
+        "edge": [
+          1,
+          5
+        ]
+      },
+      {
+        "action": "move",
+        "hero": "ZC-HER-0001",
+        "from": 1,
+        "to": 5,
+        "target": 5,
+        "cost": 1
+      },
+      {
+        "action": "search",
+        "hero": "ZC-HER-0001",
+        "result": {
+          "food": 2,
+          "water": 1
+        }
+      },
+      {
+        "action": "activate",
+        "result": {
+          "spawned": [],
+          "attacks": [],
+          "round": 1,
+          "clock": 3,
+          "fatigue": [],
+          "return_reserve": true,
+          "round_closed": false
+        }
+      },
+      {
+        "action": "move",
+        "hero": "ZC-HER-0001",
+        "from": 5,
+        "to": 1,
+        "target": 1,
+        "cost": 1
+      }
+    ],
+    "search_receipt": {
+      "day": 0,
+      "expedition": "regional-player-seed22-market",
+      "location": "EXP-LOC-02",
+      "action": "search",
+      "hero": "ZC-HER-0001"
+    },
+    "delivery": {
+      "food": 2,
+      "water": 1
+    },
+    "stock_before": {
+      "food": 1,
+      "water": 11,
+      "wood": 0,
+      "scrap": 0,
+      "medicine": 2,
+      "fuel": 0,
+      "ammo": 0
+    },
+    "stock_after_delivery": {
+      "food": 3,
+      "water": 12,
+      "wood": 0,
+      "scrap": 0,
+      "medicine": 2,
+      "fuel": 0,
+      "ammo": 0
+    },
+    "stock_after_day": {
+      "food": 0,
+      "water": 9,
+      "wood": 0,
+      "scrap": 0,
+      "medicine": 2,
+      "fuel": 0,
+      "ammo": 0
+    },
+    "consumers": 3,
+    "day_close": {
+      "day": 1,
+      "produced": {
+        "food": 0,
+        "water": 0,
+        "wood": 0,
+        "scrap": 0,
+        "medicine": 0,
+        "fuel": 0,
+        "ammo": 0
+      },
+      "missing": {
+        "food": 0,
+        "water": 0
+      },
+      "stock": {
+        "food": 0,
+        "water": 9,
+        "wood": 0,
+        "scrap": 0,
+        "medicine": 2,
+        "fuel": 0,
+        "ammo": 0
+      },
+      "crisis": null
+    },
+    "day_after_close": 1,
+    "regional_clock_after_close": 0
+  },
+  "scope_limit": "Não cobre Célia, O2, viagens regionais por cartas, combustível militar, transmissor ou defesa final."
+}

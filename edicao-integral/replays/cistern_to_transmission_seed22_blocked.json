@@ -250,7 +250,7 @@
         "round_clock": 7
       },
       "blocked_action": "continue_second_arc",
-      "error": "Movimento indisponível",
+      "error": "Herói incapacitado não pode mover",
       "campaign_actions": [
         {
           "action": "open_expedition",

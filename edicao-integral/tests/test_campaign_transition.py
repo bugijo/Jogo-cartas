@@ -97,7 +97,7 @@ class CampaignTransitionTests(unittest.TestCase):
         self.assertEqual(last["clock_at_emergency"], 7)
         self.assertEqual(last["clock_after_night"], 0)
         self.assertEqual(last["blocked_action"], "continue_second_arc")
-        self.assertIn("Movimento indisponível", last["error"])
+        self.assertIn("incapacitado", last["error"])
         self.assertEqual(last["contact_receipt"]["npc"], "EXP-NPC-02")
         self.assertEqual(last["emergency_receipt"]["status"], "failed")
         self.assertEqual(last["emergency_receipt"]["stranded_npcs"], ["EXP-NPC-02"])

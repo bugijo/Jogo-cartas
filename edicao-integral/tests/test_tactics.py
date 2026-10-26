@@ -26,7 +26,7 @@ class TacticalTests(unittest.TestCase):
         self.assertNotEqual(game.path_to('ZC-HER-0002',5),[1,5])
         self.assertEqual(game.exit_zone,1)
         with self.assertRaises(ValueError):game.move('ZC-HER-0002',5)
-        self.assertTrue(game.breach('ZC-HER-0002',1,5,'crowbar'))
+        self.assertTrue(game.open_door('ZC-HER-0002',1,5))
         self.assertEqual(game.path_to('ZC-HER-0002',5),[1,5])
         self.assertEqual(game.move('ZC-HER-0002',5),5)
         self.assertEqual(game.snapshot()['heroes']['ZC-HER-0002'],5)
@@ -92,7 +92,7 @@ class TacticalTests(unittest.TestCase):
         game=TacticalGame.start(w,'m','market_intro')
         self.assertFalse(game.line_of_sight(1,5))
         self.assertFalse(game.line_of_sight(1,6))
-        game.breach('ZC-HER-0002',1,5,'crowbar')
+        game.open_door('ZC-HER-0002',1,5)
         self.assertTrue(game.line_of_sight(1,5))
         game.announce_horde('surprise')
         result=game.activate()
@@ -111,7 +111,7 @@ class TacticalTests(unittest.TestCase):
         w=self.setup_world()
         game=TacticalGame.start(w,'m','market_intro')
         with self.assertRaises(ValueError):w.search('m')
-        game.breach('ZC-HER-0002',1,5,'crowbar')
+        game.open_door('ZC-HER-0002',1,5)
         game.move('ZC-HER-0002',5)
         self.assertTrue(game.search('ZC-HER-0002'))
 
@@ -148,7 +148,7 @@ class TacticalTests(unittest.TestCase):
     def test_retreat_keeps_enemy_and_door_for_revisit(self):
         w=self.setup_world()
         game=TacticalGame.start(w,'m','market_intro')
-        game.breach('ZC-HER-0002',1,5,'crowbar')
+        game.open_door('ZC-HER-0002',1,5)
         enemy=game.spawn('slow',zone=12)
         game.finish(retreat=True)
         with tempfile.TemporaryDirectory() as directory:

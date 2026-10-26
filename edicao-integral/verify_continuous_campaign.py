@@ -60,9 +60,13 @@ def _search_at_map(tactical: TacticalGame, count: int) -> list[dict]:
                            and item["durability"]>0]
                     if path and tools:
                         _move_actor(tactical,hero,endpoint)
-                        if tactical.world.heroes[hero]["actions"]<1:
+                        required=2 if door['blocked'] else 1
+                        if tactical.world.heroes[hero]["actions"]<required:
                             tactical.activate()
-                        tactical.breach(hero,endpoint,search_zone,tools[0])
+                        if door['blocked']:
+                            tactical.breach(hero,endpoint,search_zone,tools[0])
+                        else:
+                            tactical.open_door(hero,endpoint,search_zone)
                         opened=True
                         break
                 if opened:
@@ -279,10 +283,12 @@ def execute(seed: int = 22) -> dict:
     crowbar = next(iter(world.gear[hero]))
     workshop_map.move(hero, 2)
     workshop_map.move(hero, 3)
-    workshop_map.breach(hero, 3, 7, crowbar)
-    workshop_map.activate()
+    if world.heroes[hero]['actions']<2:
+        workshop_map.activate()
     workshop_map.breach(hero, 3, 7, crowbar)
     workshop_map.move(hero, 7)
+    if world.heroes[hero]['actions']<1:
+        workshop_map.activate()
     workshop_map.pickup_unique_item(hero, "battery")
     workshop_map.activate()
     workshop_map.move(hero, 3)
@@ -301,7 +307,7 @@ def execute(seed: int = 22) -> dict:
         *[{"action": "advance_expedition", "result": result}
           for result in battery_travel],
         {"action": "move", "hero": hero, "path": [1, 2, 3]},
-        {"action": "breach", "hero": hero, "edge": [3, 7], "uses": 2},
+        {"action": "breach", "hero": hero, "edge": [3, 7], "pa": 2},
         {"action": "move", "hero": hero, "path": [3, 7]},
         {"action": "pickup_unique_item", "item": "battery", "zone": 7, "pa": 1},
         {"action": "move", "hero": hero, "path": [7, 3, 2, 1]},

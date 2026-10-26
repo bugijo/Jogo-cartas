@@ -130,32 +130,57 @@ class TacticalGame:
         if hero_id not in self.state['heroes'] or destination not in self.map['zones']:
             raise ValueError('Herói/zona inválida')
         origin=self.state['heroes'][hero_id]
-        if (not self._passable(origin,destination) or self.world.heroes[hero_id]['actions']<1
-                or self.world.heroes[hero_id]['health']<1):
+        cost=1+int(any(enemy['zone']==origin for enemy in self.state['enemies'].values()))
+        if not self._passable(origin,destination):
             raise ValueError('Movimento indisponível')
-        self.world.heroes[hero_id]['actions']-=1
+        if self.world.heroes[hero_id]['health']<1:
+            raise ValueError('Herói incapacitado não pode mover')
+        if self.world.heroes[hero_id]['actions']<cost:
+            raise ValueError(f'Movimento exige {cost} PA')
+        self.world.heroes[hero_id]['actions']-=cost
         self.state['heroes'][hero_id]=destination
         return destination
 
-    def breach(self,hero_id,a,b,instance_id):
-        if hero_id not in self.state['heroes'] or self.state['heroes'][hero_id]!=a or not self._adjacent(a,b):
+    def open_door(self,hero_id,a,b):
+        """Abre uma porta comum adjacente por 1 PA; porta bloqueada requer ferramenta."""
+        if hero_id not in self.state['heroes'] or not self._adjacent(a,b):
             raise ValueError('Porta fora de alcance')
         door=self.state['doors'].get(edge(a,b))
-        if (not door or door['open'] or self.world.heroes[hero_id]['actions']<1
+        if (not door or door['open'] or door['blocked']
+                or self.state['heroes'][hero_id] not in (a,b)
+                or self.world.heroes[hero_id]['actions']<1
                 or self.world.heroes[hero_id]['health']<1):
+            raise ValueError('Porta comum indisponível ou bloqueada')
+        self.world.heroes[hero_id]['actions']-=1
+        door['open']=True
+        self.world.log.append({'day':self.world.day,'expedition':self.id,
+                               'action':'open_common_door','hero':hero_id,
+                               'edge':edge(a,b),'action_cost':1})
+        return True
+
+    def breach(self,hero_id,a,b,instance_id):
+        if (hero_id not in self.state['heroes']
+                or self.state['heroes'][hero_id] not in (a,b)
+                or not self._adjacent(a,b)):
+            raise ValueError('Porta fora de alcance')
+        door=self.state['doors'].get(edge(a,b))
+        if not door or door['open']:
             raise ValueError('Porta indisponível')
+        if not door['blocked']:
+            raise ValueError('Porta não bloqueada; use open_door')
+        if self.world.heroes[hero_id]['health']<1:
+            raise ValueError('Herói incapacitado não pode arrombar')
+        if self.world.heroes[hero_id]['actions']<2:
+            raise ValueError('Porta bloqueada exige 2 PA')
         item=self.world.gear[hero_id][instance_id]
         spec=ITEMS[item['template']]
         if item['slot']!='hand' or item['durability']<1 or spec['breach']<1:
             raise ValueError('Ferramenta indisponível')
-        item['durability']-=1
-        self.world.heroes[hero_id]['actions']-=1
-        door['resistance']-=spec['breach']
-        opened=door['resistance']<=0
-        if opened:
-            door['open']=True
-        self.noise(a,2)
-        return opened
+        self.world.heroes[hero_id]['actions']-=2
+        # RULES §5: a blocked door takes a fixed two PA with a crowbar/tool,
+        # no test. Experimental resistance values are not another mechanic.
+        door['open']=True
+        return True
 
     def search(self, hero_id: str) -> dict[str, int]:
         """Busca de uma carta/unidade custa 1 PA no setor impresso no mapa."""

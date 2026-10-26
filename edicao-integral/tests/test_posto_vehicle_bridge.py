@@ -69,10 +69,10 @@ class PostoVehicleBridgeTests(unittest.TestCase):
         tactical = self.arrived(world, 'battery-trip', 'EXP-LOC-03', 'workshop_02')
         tactical.move('ZC-HER-0001', 2)
         tactical.move('ZC-HER-0001', 3)
-        tactical.breach('ZC-HER-0001', 3, 7, 'crowbar')
         world.begin_round()
         tactical.breach('ZC-HER-0001', 3, 7, 'crowbar')
         tactical.move('ZC-HER-0001', 7)
+        world.begin_round()
         tactical.pickup_unique_item('ZC-HER-0001', 'battery')
         world.begin_round()
         tactical.move('ZC-HER-0001', 3)
@@ -422,6 +422,47 @@ class PostoVehicleBridgeTests(unittest.TestCase):
         with self.assertRaisesRegex(ValueError, 'dez segmentos'):
             world.advance_expedition('clock-limit')
         self.assertEqual(world.expeditions['clock-limit'].remaining, remaining)
+
+    def test_open_expedition_preflights_one_local_round_and_return_reserve(self):
+        hero = 'ZC-HER-0001'
+        world = World.new(3, [hero], {'food': 2, 'water': 2})
+        world.cistern_record = {
+            'status': 'verified_victory', 'source': 'cistern02',
+            'migration': {'receipt': {'id': 'migration-clock-fixture'}},
+        }
+        world.regional_clock = 8
+        with self.assertRaisesRegex(ValueError, 'reserva para ida'):
+            world.open_expedition('too-late', [hero], 'EXP-LOC-02')
+        self.assertEqual(world.regional_clock, 8)
+        self.assertEqual(world.heroes[hero]['location'], 'camp')
+        self.assertNotIn('too-late', world.expeditions)
+
+        world.regional_clock = 7
+        world.open_expedition('last-safe-trip', [hero], 'EXP-LOC-02')
+        world.advance_expedition('last-safe-trip')
+        tactical = TacticalGame.start(world, 'last-safe-trip', 'market_intro')
+        self.assertEqual(world.regional_clock, 9)
+        tactical.finish()
+        world.begin_return('last-safe-trip')
+        self.assertEqual(world.advance_expedition('last-safe-trip'), 'returned')
+        self.assertEqual(world.regional_clock, 10)
+
+    def test_driver_reduction_is_applied_before_shared_clock_preflight(self):
+        hero='ZC-HER-0001'
+        driver='EXP-NPC-06'
+        world=World.new(3,[hero],{'food':2,'water':2,'fuel':4})
+        world.cistern_record={
+            'status':'verified_victory','source':'cistern02',
+            'migration':{'receipt':{'id':'migration-driver-clock-fixture'}},
+        }
+        world.regional_clock=7
+        world.npcs[driver]={'level':1,'job':'driving','health':3,'location':'camp'}
+        world.vehicles['EXP-VEI-02']={'location':'camp','health':3}
+        world.open_expedition('driver-clock', [hero], 'EXP-LOC-03',
+                              vehicle_id='EXP-VEI-02',npc_ids=[driver])
+        self.assertEqual(world.expeditions['driver-clock'].segment_cost,1)
+        self.assertEqual(world.stock['fuel'],0)
+        self.assertEqual(world.vehicles['EXP-VEI-02']['location'],'driver-clock')
 
     def test_continuous_campaign_limits_one_expedition_per_day(self):
         hero='ZC-HER-0001'

@@ -97,9 +97,11 @@ def play_market_day(seed:int,strategy:str='balanced',team_size:int=2) -> dict:
     loot={}
     searches_used=0
     if killed and world.gear[heroes[1]]['crowbar']['durability']>0:
-        if world.heroes[heroes[1]]['actions']<2:
+        if world.heroes[heroes[1]]['actions']<1:
             game.activate()
-        game.breach(heroes[1],1,5,'crowbar')
+        game.open_door(heroes[1],1,5)
+        if world.heroes[heroes[1]]['actions']<1:
+            game.activate()
         game.move(heroes[1],5)
         before_search=world.searches['EXP-LOC-02']
         if world.heroes[heroes[1]]['actions']<1:
