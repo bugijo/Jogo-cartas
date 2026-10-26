@@ -7,7 +7,7 @@ Status: mapa de requisitos do protótipo experimental em 2026-10-26. Não altera
 obtenção separada de evidências já estão implementadas como conteúdo
 experimental; nenhuma pista vem do contato por si só. Isso remove o ciclo
 lógico original, mas não resolve a disponibilidade condicional dos dois
-autores de pista nem a extração da Estação.
+autores de pista nem o contato/recrutamento da sobrevivente.
 
 ## Grafo atual
 
@@ -44,7 +44,7 @@ flowchart LR
 | Decifrar rádio | estar no abrigo, Cisterna verificada, pelo menos 2 pistas; consome 2 | `EXP-MIS-102` e API `Arc2.decode_radio` |
 | Militar | rádio, cartão, van canônica e combustível conforme cálculo por segmentos | `EXP-MIS-104` experimental reconciliado para 12, ainda depende de economia/rota |
 
-## Ciclo lógico removido; bloqueio da rota testada permanece
+## Ciclo lógico removido; comparação de políticas e limite da prova
 
 Antes, a condição de Célia “após sinal de rádio” dependia de um rádio que
 exigia pistas e de pesquisa que só Célia/Vicente podiam produzir. A alteração
@@ -52,16 +52,14 @@ experimental permite descobrir Célia antes do rádio sem conceder pista por
 aparecer no mapa. A pista só entra após uma ação separada, em local seguro e
 com recibo. A função de pesquisa de Célia é posterior e opcional.
 
-Isso remove o ciclo lógico `rádio → Célia → pistas → rádio`, mas a rota seed 22
-do controlador ainda não extraiu: Estação é `far=3`; ida 3 + início de rodada
-local 1 + retorno 3 deixa no máximo 3 ativações locais no relógio de dez
-segmentos. O caminho entrada→zona 14 custa 4 movimentos + porta 1–5 (1 PA) +
-porta bloqueada 13–14 (2 PA); investigar e copiar custa 2 PA; voltar exige 4
-movimentos. Para o mesmo herói, o limite inferior é 13 PA, acima dos 9 que ele
-recebe em três ativações. **Isso limita a rota desse ator, não prova uma
-impossibilidade geral**, pois a equipe pode dividir ações entre heróis. Nenhuma
-combinação dividida foi ainda demonstrada pelo replay. O teste seed 22 copia
-uma pista e termina em emergência no clock 7; Célia permanece no local.
+Isso remove o ciclo lógico `rádio → Célia → pistas → rádio`. A primeira rota
+seed22 usava a política balanced, que gastava ações com combate opcional e
+terminava em emergência no clock 7. A política `stealth`, que evita atacar
+inimigos fora das zonas de objetivo/saída quando não bloqueiam o trajeto,
+consegue investigar e copiar uma pista, eliminar ameaças apenas quando
+necessário para objetivo/saída e retornar normalmente no segmento 10. A prova
+continua parcial: só uma pista foi extraída; Célia não foi recrutada, o rádio
+não abriu e isso não comprova equilíbrio nem campanha integral.
 
 Possíveis alterações de design para revisão (nenhuma aplicada): (a) mudar a
 localização da pista para um destino mais próximo, sem mudar os mapas; (b)

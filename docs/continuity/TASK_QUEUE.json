@@ -49,8 +49,8 @@
         "python -m unittest discover -s edicao-integral/tests -q"
       ],
       "status": "parcial_bloqueada",
-      "commit": "438beb9",
-      "blocker": "Migração e persistência do shoe de Viagem preservadas. Grafo físico pre-radio ainda sofre limite tático: seed22 copia uma pista e termina em emergência no clock7. Há somente duas fontes; Célia fundadora/Vicente já acolhido podem remover uma fonte. Viagem regional ainda não revela nem resolve cartas. Estados Fome/Sede não são aplicados após escassez."
+      "commit": "081048f",
+      "blocker": "Migração e persistência do shoe de Viagem preservadas. A rota `stealth` seed22 copia e retorna uma pista no segmento 10; balanced termina em emergência no clock7 por combate opcional. Ainda falta segunda pista, contato/recrutamento e conclusão do rádio. Há somente duas fontes; Célia fundadora/Vicente já acolhido podem remover uma fonte. Viagem regional ainda não revela nem resolve cartas. Estados Fome/Sede não são aplicados após escassez."
     },
     {
       "id": "P2-PLAYER-CAMPAIGNS",
@@ -70,7 +70,7 @@
       ],
       "status": "bloqueada",
       "commit": null,
-      "blocker": "Não existe campanha completa contínua. O replay atual só comprova Cisterna seed22 + migração + uma pista física e emergência. 320 testes passam; regressão também protege contra falso status de extração com inimigo bloqueando a saída. Posto/van/transmissor/defesa final não foram concluídos. O teste de Posto local é regressão de controlador, não replay canônico."
+      "blocker": "Não existe campanha completa contínua. O replay atual só comprova Cisterna seed22 + migração + uma pista física e emergência. 321 testes passam; replay `stealth` retorna uma pista e regressão também protege contra falso status de extração com inimigo bloqueando a saída. Posto/van/transmissor/defesa final não foram concluídos. O teste de Posto local é regressão de controlador, não replay canônico."
     },
     {
       "id": "P3-PHYSICAL-EDITION",

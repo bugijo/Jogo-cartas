@@ -1,14 +1,15 @@
 # Bloqueios verificados da sequência completa
 
-## Estado ativo — retomada após `438beb9` (2026-10-26)
+## Estado ativo — retomada após `081048f` (2026-10-26)
 
 - A referência de custo confirmada é `RULES.md §11, linha 64`: 2 combustível
   por trecho. A solicitação “§64” refere-se à linha, não a seção 64. Rotas
   canônicas em §5, linha 29.
 - A evidência pré-rádio por Célia/Vicente permanece experimental, física e
   separada do contato; mas as duas pistas não são garantidas em todos os estados
-  de identidade. A rota seed22 continua inviável no relógio atual e termina
-  em emergência após obter uma pista.
+  de identidade. A política `stealth` seed22 retorna uma pista no segmento 10;
+  `balanced` termina em emergência no clock 7 após combate opcional. Ainda
+  faltam a segunda pista, o contato/recrutamento e o rádio.
 - `EXP-MIS-104=12`, `far=3`, e cache Oficina 8 permanecem experimentais. O1 Posto
   tem 8 cartas; O2 não define combustível. Posto regional `medium=2` custa 4
   no motor, enquanto `CAMPAIGN.md` descreve a volta curta por 2; equivalência

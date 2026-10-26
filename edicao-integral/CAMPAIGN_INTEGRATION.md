@@ -14,14 +14,15 @@ trecho por sentido) e longa (2 por sentido). A referência “§64” na solicit
 - `verify_continuous_campaign.py` agora reproduz a tentativa real H2 seed 22:
   Cisterna `verified_victory` → migração → expedição legal à Estação → 1 PA
   para investigar Célia → 1 PA para copiar uma evidência → falha de extração e
-  retirada de emergência no relógio 7. Célia não retorna, não é recrutada,
-  `radio_code` permanece falso e só há uma pista. O save/load após a retirada
-  reproduz o estado.
+  a rota `stealth` extrai uma pista no segmento 10. Célia não é recrutada,
+  `radio_code` permanece falso e a segunda pista ainda falta. Save/load após o
+  retorno preserva o estado e a migração não duplica.
 - Na rota testada, o agente que atravessou até a zona 14 precisa de 13 PA para
   investigar, copiar e voltar, contra 9 PA individuais em três ativações far.
-  Isso explica a derrota do controlador seed 22, mas não prova impossibilidade
-  universal: ações podem ser divididas entre heróis, combinação ainda não
-  validada em replay completo.
+  A política `stealth` evita combate opcional e consegue concluir a extração
+  de uma pista. A política balanced permanece como comparação: combate e ruído
+  adicionais consomem o relógio e ela falha no segmento 7. Isso é evidência de
+  diferença de estratégia, não de equilíbrio ou impossibilidade geral.
 - Reserva de 8 Combustíveis na Oficina é uma regra **experimental de teste**,
   não parte do kit 0.2. Cada ação custa 2 PA, ruído 3, uma vez; só retorna ao
   estoque em extração normal. Oito políticas programáticas retornaram a reserva
@@ -30,8 +31,7 @@ trecho por sentido) e longa (2 por sentido). A referência “§64” na solicit
   O mapeamento medium↔rota canônica não foi decidido; detalhes em
   `TACTICAL_FUEL_AUDIT.md`.
 - O gate `EXP-MIS-104` candidato é 12 (`2 × far 3 × ida/volta`), sob status
-  experimental. Nenhuma campanha alcançou o Posto/van depois da origem,
-  instalação, transmissor ou defesa final nesta prova.
+  experimental. Nenhuma campanha alcançou o Posto/van, instalação, transmissor ou defesa final nesta prova.
 - Validação nova impede contato/evidência sem recibos físicos, evidencia única
   duplicada e recibos de pista que não batem com dados, investigação prévia e
   expedição real. O JSON ainda é editável; isto é validação estrutural, não
