@@ -111,7 +111,7 @@
    ],
    "status": "implementado_parcial_opcional",
    "commit": null,
-   "blocker": "Ponte opcional (World.regional_travel_cards): uma carta por trecho pago, extra noturna sem segmento, Placa, escolhas sem carga levada, efeitos sem equivalente arquivados, save/load sem redraw. Falta: combate de emboscada regional (ZC-VIA-0005 bloqueia), carga levada regional e ligar a opção nos replays/controlador regional."
+   "blocker": "Ponte opcional (World.regional_travel_cards): uma carta por trecho pago, extra noturna sem segmento, Placa, escolhas sem carga levada, efeitos sem equivalente arquivados, save/load sem redraw. Falta: carga levada regional e ligar a opção nos replays/controlador regional."
   },
   {
    "id": "P1-CLUE-SOURCES-AND-EXTRACTION",
@@ -269,9 +269,9 @@
    "tests": [
     "edicao-integral/tests/test_regional_travel_cards.py"
    ],
-   "status": "pendente",
+   "status": "implementado_ponte",
    "commit": null,
-   "blocker": "Ambush02 é ligado ao capítulo Cistern02; precisa de ponte com o World regional."
+   "blocker": "Ponte M1 0.2 pronta e testada (relógio real, Horda, ferimentos, fadiga, save/load, emergência de estrada). Pendentes: aprovação da leitura de durabilidade; emergência com carga única/veículo; controlador regional que jogue a emboscada; ligar regional_travel_cards nos replays."
   }
  ]
 }

@@ -445,3 +445,8 @@ passaram se o gate de campanha ainda estiver fechado.
 - Cartas de Viagem por trecho pago no motor regional, com escolhas públicas,
   arquivo de efeitos sem equivalente, extra noturna e save/load. Emboscada
   regional pendente. Suíte em 382 testes.
+
+## 2026-10-27 — emboscada regional
+
+- Ponte M1 0.2 para Emboscada de Viagem regional, com emergência de estrada.
+  Leitura de durabilidade pendente. Suíte em 386 testes.

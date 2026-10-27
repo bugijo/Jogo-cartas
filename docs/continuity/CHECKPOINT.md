@@ -1,3 +1,10 @@
+# Estado ativo — emboscada regional, 2026-10-27
+
+- Ponte de Emboscada regional no M1 0.2 (`start_regional_ambush`/`finish_regional_ambush`): relógio real, Horda regional, ferimentos/fadiga/Fome-Sede, sem armas ou Munição inventadas, save/load, emergência de estrada §34. Documentada em `edicao-integral/MANUAL_EXPERIMENTAL.md`.
+- Pendente de aprovação: durabilidade regional não é consumida na emboscada. Não modelado: emergência de estrada com carga única ou veículo.
+- Próximo bloqueio: controlador regional (`AdaptiveRegionalPlayer`) resolver cartas e emboscadas e ligar `regional_travel_cards` num replay contínuo novo, sem alterar os registrados.
+- 386 testes; verificadores, `compileall`, `git diff --check` passaram.
+
 # Estado ativo — ponte de Viagem regional, 2026-10-27
 
 - `World.regional_travel_cards` (opcional, desligado por padrão): uma carta de Viagem por trecho pago no transporte regional, extra noturna sem segmento, Placa, escolhas apenas sem carga levada, Pressão/Material sem equivalente arquivados (não gastáveis), save/load sem repetir carta. Documentado em `edicao-integral/MANUAL_EXPERIMENTAL.md`.
