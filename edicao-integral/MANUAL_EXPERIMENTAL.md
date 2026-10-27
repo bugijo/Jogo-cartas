@@ -35,6 +35,26 @@ aprovação.
   uma por adulto/herói alocado; não acumula com filtro, vigia ou expedição.
 - 25º inimigo (§39): a expedição é perdida e a emergência continua oferecida.
 
+## Ponte de Viagem regional (Última Transmissão) — opcional
+
+`World.regional_travel_cards = True` liga o baralho persistente de Viagem ao
+transporte regional. Desligado por padrão para preservar os replays registrados.
+
+- Uma carta por trecho pago (§29), na ida e na volta, do baralho regional
+  persistente; nenhuma conversão de perto/médio/longe para rota curta/longa: o
+  número de trechos continua o do local regional.
+- Trecho noturno (relógio 9–10) revela uma carta extra sem segmento adicional.
+- Placa (`ZC-VIA-0003`) ignora a próxima carta normal da volta.
+- O motor regional ainda não tem ação de levar comida/água/Material na viagem;
+  por isso só as opções sem carga levada ficam disponíveis: Água → fadiga,
+  Barricada → Pressão, Ajuda → recusar, Cão → recusar. Leitura do motor, não
+  regra nova; muda quando houver carga levada regional.
+- Efeitos sem equivalente regional ficam em `regional_travel_archive`
+  (Pressão externa, Material de Ferragens na volta), não gastáveis, mesma
+  política da migração da Cisterna.
+- Emboscada (`ZC-VIA-0005`) fica pendente e bloqueia a viagem: **o combate de
+  emboscada regional ainda não está ligado** (próximo bloqueio).
+
 ## Ainda sem regra aprovada (não decidir silenciosamente)
 
 - Combustível regional: `far=3` com 2/trecho exige 12; `EXP-MIS-104` cobra 6;

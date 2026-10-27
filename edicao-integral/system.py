@@ -10,7 +10,8 @@ from copy import deepcopy
 from dataclasses import asdict, dataclass, field
 from pathlib import Path
 from horde_deck02 import HordeDeck02
-from travel_deck02 import TravelDeck02
+from travel_deck02 import CARD_IDS as TRAVEL_CARD_IDS, TravelDeck02
+from travel02 import AUTO_EFFECTS, CHOICES
 
 DATA = json.loads((Path(__file__).parent / 'data/system.json').read_text(encoding='utf-8'))
 EQUIPMENT = json.loads((Path(__file__).parent / 'data/equipment.json').read_text(encoding='utf-8'))
@@ -53,6 +54,14 @@ class Expedition:
     crew: list[str] = field(default_factory=list)
     segment_cost: int = 0
     special_cargo: list[str] = field(default_factory=list)
+    # Cartas de Viagem regionais (opcional; ver World.regional_travel_cards).
+    travel_events: list[dict] = field(default_factory=list)
+    pending_travel: dict | None = None
+    leg_paid: bool = False
+    night_extra_due: bool = False
+    skip_return_card: int = 0
+    route_known: bool = False
+    bridge_known: bool = False
 
 
 @dataclass
@@ -93,6 +102,13 @@ class World:
     departed_today: list[str] = field(default_factory=list)
     regional_horde_deck: dict | None = None
     regional_travel_deck: dict | None = None
+    # Opcional: revela uma carta de Viagem por trecho pago (§29). Desligado
+    # preserva os replays regionais registrados antes desta ponte.
+    regional_travel_cards: bool = False
+    # Efeitos de Viagem sem equivalente regional (mesma política da migração:
+    # arquivados para auditoria, não gastáveis).
+    regional_travel_archive: dict[str, int] = field(
+        default_factory=lambda: {'materials': 0, 'pressure': 0})
     garden_worker: str | None = None
     guarding: dict[str, int] = field(default_factory=dict)
     rng_state: object = None
@@ -186,6 +202,16 @@ class World:
         return DATA['rules']['terrain_base'] - sum(STRUCTURES[k]['terrain'] for k in self.structures) - sum(STRUCTURES[k]['terrain'] for k in self.projects)
 
     def validate(self) -> None:
+        archive=self.regional_travel_archive
+        if (not isinstance(archive,dict) or set(archive)!={'materials','pressure'}
+                or any(not isinstance(value,int) or isinstance(value,bool) or value<0
+                       for value in archive.values())):
+            raise ValueError('Arquivo de efeitos de Viagem regional inválido')
+        for exp in self.expeditions.values():
+            pending=exp.pending_travel
+            if pending is not None and (not self.regional_travel_cards
+                                        or pending.get('card_id') not in TRAVEL_CARD_IDS):
+                raise ValueError('Carta de Viagem pendente inválida no save')
         if (not isinstance(self.regional_clock,int) or isinstance(self.regional_clock,bool)
                 or not 0<=self.regional_clock<=10):
             raise ValueError('Relógio regional deve permanecer entre zero e dez segmentos')
@@ -963,7 +989,24 @@ class World:
 
     def advance_expedition(self, expedition_id: str) -> str:
         exp = self.expeditions[expedition_id]
-        self.advance_regional_segment(expedition_id,'travel')
+        if self.regional_travel_cards:
+            if exp.pending_travel is not None:
+                raise ValueError('Resolva a carta de Viagem pendente antes de seguir')
+            if not exp.leg_paid:
+                self.advance_regional_segment(expedition_id,'travel')
+                exp.leg_paid=True
+                exp.night_extra_due=self.continuous_campaign and self.regional_clock>=9
+                self._reveal_regional_travel(exp, extra=False)
+                if exp.pending_travel is not None:
+                    return 'travel_pending'
+            if exp.night_extra_due:
+                exp.night_extra_due=False
+                self._reveal_regional_travel(exp, extra=True)
+                if exp.pending_travel is not None:
+                    return 'travel_pending'
+            exp.leg_paid=False
+        else:
+            self.advance_regional_segment(expedition_id,'travel')
         exp.remaining -= 1
         if exp.remaining > 0:
             return 'travel'
@@ -985,6 +1028,86 @@ class World:
             self.vehicles[exp.vehicle_id]['location']='camp'
         del self.expeditions[expedition_id]
         return 'returned'
+
+    # Escolhas disponíveis sem provisões levadas: o motor regional ainda não
+    # tem ação de levar comida/água/Material na viagem.
+    REGIONAL_TRAVEL_CHOICES = {'ZC-VIA-0002': ('fatigue',), 'ZC-VIA-0004': ('pressure',),
+                               'ZC-VIA-0006': ('decline',), 'ZC-VIA-0009': ('decline',)}
+
+    def _reveal_regional_travel(self, exp: Expedition, extra: bool) -> None:
+        """Revela a carta do trecho pago (ou a extra noturna, sem segmento)."""
+        direction='return' if exp.returning else 'outbound'
+        if direction=='return' and not extra and exp.skip_return_card>0:
+            exp.skip_return_card-=1
+            exp.travel_events.append({'direction':direction,'card_id':None,
+                                      'skipped':True,'segment':self.regional_clock})
+            return
+        deck=TravelDeck02.from_snapshot(self.regional_travel_deck)
+        card_id=deck.draw()
+        self.regional_travel_deck=deck.snapshot()
+        event={'direction':direction,'card_id':card_id,'extra':extra,
+               'segment':self.regional_clock}
+        exp.travel_events.append(event)
+        if card_id=='ZC-VIA-0005':
+            event['ambush']=True
+            exp.pending_travel=event
+        elif card_id in CHOICES:
+            exp.pending_travel=event
+        else:
+            event['effect']=self._apply_regional_travel(exp,card_id,direction,None)
+        self.log.append({'day':self.day,'expedition':exp.id,'action':'regional_travel_card',
+                         **deepcopy(event)})
+
+    def _apply_regional_travel(self, exp: Expedition, card_id: str, direction: str,
+                               choice: str | None) -> dict:
+        effect=deepcopy(CHOICES[card_id][choice] if choice is not None
+                        else AUTO_EFFECTS.get(card_id, {}))
+        if card_id=='ZC-VIA-0010':
+            # Ida: nada levado, nada perdido (decisão aprovada). Volta: Material
+            # sem equivalente regional fica arquivado.
+            effect=({'material_gain':1} if direction=='return'
+                    else {'material_drop':0,'no_material_carried':1})
+        applied={}
+        if effect.get('fatigue'):
+            for person_id in [*exp.heroes,*exp.crew]:
+                person=self.heroes.get(person_id) or self.npcs.get(person_id)
+                person['fatigue']=min(3,person.get('fatigue',0)+effect['fatigue'])
+            applied['fatigue']=list([*exp.heroes,*exp.crew])
+        if effect.get('pressure'):
+            self.regional_travel_archive['pressure']+=effect['pressure']
+            applied['pressure_archived']=effect['pressure']
+        if effect.get('material_gain'):
+            self.regional_travel_archive['materials']+=effect['material_gain']
+            applied['materials_archived']=effect['material_gain']
+        if effect.get('skip_return_card'):
+            exp.skip_return_card+=effect['skip_return_card']
+            applied['skip_return_card']=effect['skip_return_card']
+        if effect.get('route_known'):
+            exp.route_known=True;applied['route_known']=True
+        if effect.get('bridge_known'):
+            exp.bridge_known=True;applied['bridge_known']=True
+        if effect.get('no_material_carried'):
+            applied['no_material_carried']=True
+        return applied
+
+    def resolve_regional_travel(self, expedition_id: str, choice: str) -> dict:
+        """Resolve a carta pendente por decisão pública registrada."""
+        exp=self.expeditions[expedition_id]
+        event=exp.pending_travel
+        if event is None:
+            raise ValueError('Nenhuma carta de Viagem pendente')
+        if event.get('ambush'):
+            raise NotImplementedError('Emboscada regional ainda não tem mapa tático ligado')
+        allowed=self.REGIONAL_TRAVEL_CHOICES[event['card_id']]
+        if choice not in allowed:
+            raise ValueError(f'Escolha indisponível sem provisões levadas: {allowed}')
+        event['choice']=choice
+        event['effect']=self._apply_regional_travel(exp,event['card_id'],
+                                                    event['direction'],choice)
+        exp.pending_travel=None
+        self.log.append({'day':self.day,'expedition':expedition_id,
+                         'action':'regional_travel_choice',**deepcopy(event)})
+        return deepcopy(event)
 
     def begin_return(self, expedition_id: str, vehicle_id: str | None = None) -> None:
         exp = self.expeditions[expedition_id]
