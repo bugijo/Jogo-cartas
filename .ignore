@@ -1,0 +1,12 @@
+# Exclui artefatos grandes das buscas (ripgrep/Claude Code). Não afeta o git.
+# Caminhos passados explicitamente continuam pesquisáveis.
+samples/
+output/
+dist/
+assets/
+kit-final-prova/
+**/__pycache__/
+*.zip
+*.pdf
+*.png
+*.jpg
