@@ -1,163 +1,184 @@
 {
-  "schema": 1,
-  "branch": "evolucao/zona-zero-sistema-v1",
-  "updated_at": "2026-10-26",
-  "tasks": [
-    {
-      "id": "P0-EXPEDITION-COMPLETE",
-      "priority": 0,
-      "objective": "Completar fases e consequências restantes da expedição 0.2.",
-      "depends_on": [],
-      "acceptance": [
-        "recibos legais",
-        "salvamento",
-        "sem recompensa duplicada",
-        "paridade 0.2"
-      ],
-      "tests": [
-        "edicao-integral/tests/test_cistern_tactics02.py",
-        "edicao-integral/tests/test_campaign_player02.py",
-        "edicao-integral/verify_campaign_player02.py"
-      ],
-      "status": "regressao_preservada",
-      "commit": "438beb9",
-      "blocker": "A Cisterna H2 seed22 segue certificada (5 dias/noites, 3 expedições, 98 decisões). Esta fila não amplia cobertura H3-H6 neste lote."
-    },
-    {
-      "id": "P1-MIGRATE-CISTERN",
-      "priority": 1,
-      "objective": "Migrar vitória e estado canônicos para Última Transmissão.",
-      "depends_on": [
-        "P0-EXPEDITION-COMPLETE"
-      ],
-      "acceptance": [
-        "verified_victory legal",
-        "migração atômica e idempotente",
-        "12 IDs de fundadores suportados",
-        "pessoas e recursos preservados com ledger",
-        "save/load",
-        "rota legal ao arco 2"
-      ],
-      "tests": [
-        "edicao-integral/tests/test_campaign_transition.py",
-        "edicao-integral/tests/test_posto_vehicle_bridge.py",
-        "edicao-integral/tests/test_regional_search_actions.py",
-        "edicao-integral/verify_campaign_player02.py",
-        "edicao-integral/verify_regional_player.py",
-        "edicao-integral/verify_continuous_campaign.py",
-        "edicao-integral/validate_data.py",
-        "python -m unittest discover -s edicao-integral/tests -q"
-      ],
-      "status": "parcial_bloqueada",
-      "commit": "d2181c5",
-      "blocker": "Migração preserva a vitória seed22. O motor agora aplica refeições, Fome/Sede, PA, ferimentos/recuperação, colapso e migração de saves schema 1→2. Rota local Célia entrega uma pista, mas o rádio exige duas. Célia/Vicente são fontes condicionais; cartas de Viagem regionais ainda não estão ligadas."
-    },
-    {
-      "id": "P2-PLAYER-CAMPAIGNS",
-      "priority": 2,
-      "objective": "Executar oito políticas adaptativas em campanhas completas.",
-      "depends_on": [
-        "P1-MIGRATE-CISTERN"
-      ],
-      "acceptance": [
-        "H2-H6",
-        "decisões registradas",
-        "resultados reproduzíveis"
-      ],
-      "tests": [
-        "simulador completo",
-        "auditoria adversarial"
-      ],
-      "status": "bloqueada",
-      "commit": null,
-      "blocker": "Sem replay completo de Última Transmissão. A Cisterna seed22 continua certificada; o replay regional parcial retorna uma pista física de Célia no clock 10. Tentativa para a segunda pista de Vicente encerrou no clock 7 após ataques. Posto, transmissor e defesa não foram concluídos. 340 testes aprovados não são playtests."
-    },
-    {
-      "id": "P3-PHYSICAL-EDITION",
-      "priority": 3,
-      "objective": "Consolidar e validar a edição física após as campanhas.",
-      "depends_on": [
-        "P2-PLAYER-CAMPAIGNS"
-      ],
-      "acceptance": [
-        "catálogo",
-        "PDFs inspecionados",
-        "plano de playtest humano"
-      ],
-      "tests": [
-        "auditoria de PDFs",
-        "dimensões e frente/verso"
-      ],
-      "status": "bloqueada",
-      "commit": null,
-      "blocker": "Campanha regional e regras operacionais ainda incompletas; nenhum PDF novo de campanha produzido nesta retomada."
-    },
-    {
-      "id": "P1-REGIONAL-TRAVEL-SHOE",
-      "priority": 1,
-      "objective": "Ligar baralho persistente de Viagem a cada trecho regional, incluindo decisões, efeitos, emboscada, relógio e save/load.",
-      "depends_on": [
-        "P1-MIGRATE-CISTERN"
-      ],
-      "acceptance": [
-        "uma carta por trecho pago",
-        "efeitos/decisões resolvidos por API pública",
-        "sem repetir carta após save/load",
-        "extra noturna sem segmento adicional",
-        "emboscada não ignorada"
-      ],
-      "tests": [
-        "test_regional_player.py",
-        "test_campaign_transition.py",
-        "tests de Travel02/Ambush02"
-      ],
-      "status": "bloqueada_por_ponte_de_regras",
-      "commit": null,
-      "blocker": "O snapshot do deck sobrevive à migração/save/load, mas nenhuma carta regional é revelada/resolvida. Travel02 usa contexto de carga física (alimento/água/materiais) que não possui ponte aprovada para contadores regionais; custo e distância near/medium/far também não estão conciliados."
-    },
-    {
-      "id": "P1-CLUE-SOURCES-AND-EXTRACTION",
-      "priority": 1,
-      "objective": "Garantir duas fontes físicas disponíveis e rota legal de extração sem conceder pistas automaticamente.",
-      "depends_on": [
-        "P1-MIGRATE-CISTERN"
-      ],
-      "acceptance": [
-        "cobrir identidade de fundadores/resgates",
-        "duas pistas com recibos físicos",
-        "rota alcançável e extraível dentro do relógio",
-        "save/load preserva evidências"
-      ],
-      "tests": [
-        "test_arc2_narrative_and_fuel_experimental.py",
-        "verify_continuous_campaign.py"
-      ],
-      "status": "parcial_bloqueada",
-      "commit": "d2181c5",
-      "blocker": "Rota tática local seed22 investiga Célia e extrai uma pista sem recompensa automática; o rádio recusa uma pista. Tentativa das duas fontes na Estação foi bloqueada pelo relógio/Horda no clock 7. Célia fundadora ou Vicente acolhido pode remover fonte. Cartas regionais ainda não resolvidas."
-    },
-    {
-      "id": "P1-REGIONAL-SURVIVAL-STATE",
-      "priority": 1,
-      "objective": "Aplicar consumo, estados de Fome/Sede, descanso e consequências em campanha regional migrada.",
-      "depends_on": [
-        "P1-MIGRATE-CISTERN"
-      ],
-      "acceptance": [
-        "consumidores individuais e porções conservados",
-        "prioridade explícita em escassez",
-        "PA/ferimentos/colapso conforme RULES §§8/18/25",
-        "save/load e migração de save",
-        "derrota parcial fail-closed"
-      ],
-      "tests": [
-        "edicao-integral/tests/test_regional_needs.py",
-        "edicao-integral/tests/test_system.py",
-        "edicao-integral/tests/test_integrated_campaign.py"
-      ],
-      "status": "implementado_parcial",
-      "commit": "d2181c5",
-      "blocker": "Evacuação da campanha não foi portada; estado de derrota encerra fail-closed. Não representa conclusão da continuação."
-    }
-  ]
+ "schema": 1,
+ "branch": "evolucao/zona-zero-sistema-v1",
+ "updated_at": "2026-10-27",
+ "tasks": [
+  {
+   "id": "P0-EXPEDITION-COMPLETE",
+   "priority": 0,
+   "objective": "Completar fases e consequências restantes da expedição 0.2.",
+   "depends_on": [],
+   "acceptance": [
+    "recibos legais",
+    "salvamento",
+    "sem recompensa duplicada",
+    "paridade 0.2"
+   ],
+   "tests": [
+    "edicao-integral/tests/test_cistern_tactics02.py",
+    "edicao-integral/tests/test_campaign_player02.py",
+    "edicao-integral/verify_campaign_player02.py"
+   ],
+   "status": "regressao_preservada",
+   "commit": "438beb9",
+   "blocker": "A Cisterna H2 seed22 segue certificada (5 dias/noites, 3 expedições, 98 decisões). Esta fila não amplia cobertura H3-H6 neste lote."
+  },
+  {
+   "id": "P1-MIGRATE-CISTERN",
+   "priority": 1,
+   "objective": "Migrar vitória e estado canônicos para Última Transmissão.",
+   "depends_on": [
+    "P0-EXPEDITION-COMPLETE"
+   ],
+   "acceptance": [
+    "verified_victory legal",
+    "migração atômica e idempotente",
+    "12 IDs de fundadores suportados",
+    "pessoas e recursos preservados com ledger",
+    "save/load",
+    "rota legal ao arco 2"
+   ],
+   "tests": [
+    "edicao-integral/tests/test_campaign_transition.py",
+    "edicao-integral/tests/test_posto_vehicle_bridge.py",
+    "edicao-integral/tests/test_regional_search_actions.py",
+    "edicao-integral/verify_campaign_player02.py",
+    "edicao-integral/verify_regional_player.py",
+    "edicao-integral/verify_continuous_campaign.py",
+    "edicao-integral/validate_data.py",
+    "python -m unittest discover -s edicao-integral/tests -q"
+   ],
+   "status": "parcial_bloqueada",
+   "commit": "d2181c5",
+   "blocker": "Migração preserva a vitória seed22. O motor agora aplica refeições, Fome/Sede, PA, ferimentos/recuperação, colapso e migração de saves schema 1→2. Rota local Célia entrega uma pista, mas o rádio exige duas. Célia/Vicente são fontes condicionais; cartas de Viagem regionais ainda não estão ligadas."
+  },
+  {
+   "id": "P2-PLAYER-CAMPAIGNS",
+   "priority": 2,
+   "objective": "Executar oito políticas adaptativas em campanhas completas.",
+   "depends_on": [
+    "P1-MIGRATE-CISTERN"
+   ],
+   "acceptance": [
+    "H2-H6",
+    "decisões registradas",
+    "resultados reproduzíveis"
+   ],
+   "tests": [
+    "simulador completo",
+    "auditoria adversarial"
+   ],
+   "status": "bloqueada",
+   "commit": null,
+   "blocker": "Sem replay completo de Última Transmissão. A Cisterna seed22 continua certificada; o replay regional parcial retorna uma pista física de Célia no clock 10. Tentativa para a segunda pista de Vicente encerrou no clock 7 após ataques. Posto, transmissor e defesa não foram concluídos. 340 testes aprovados não são playtests."
+  },
+  {
+   "id": "P3-PHYSICAL-EDITION",
+   "priority": 3,
+   "objective": "Consolidar e validar a edição física após as campanhas.",
+   "depends_on": [
+    "P2-PLAYER-CAMPAIGNS"
+   ],
+   "acceptance": [
+    "catálogo",
+    "PDFs inspecionados",
+    "plano de playtest humano"
+   ],
+   "tests": [
+    "auditoria de PDFs",
+    "dimensões e frente/verso"
+   ],
+   "status": "bloqueada",
+   "commit": null,
+   "blocker": "Campanha regional e regras operacionais ainda incompletas; nenhum PDF novo de campanha produzido nesta retomada."
+  },
+  {
+   "id": "P1-REGIONAL-TRAVEL-SHOE",
+   "priority": 1,
+   "objective": "Ligar baralho persistente de Viagem a cada trecho regional, incluindo decisões, efeitos, emboscada, relógio e save/load.",
+   "depends_on": [
+    "P1-MIGRATE-CISTERN"
+   ],
+   "acceptance": [
+    "uma carta por trecho pago",
+    "efeitos/decisões resolvidos por API pública",
+    "sem repetir carta após save/load",
+    "extra noturna sem segmento adicional",
+    "emboscada não ignorada"
+   ],
+   "tests": [
+    "test_regional_player.py",
+    "test_campaign_transition.py",
+    "tests de Travel02/Ambush02"
+   ],
+   "status": "bloqueada_por_ponte_de_regras",
+   "commit": null,
+   "blocker": "O snapshot do deck sobrevive à migração/save/load, mas nenhuma carta regional é revelada/resolvida. Travel02 usa contexto de carga física (alimento/água/materiais) que não possui ponte aprovada para contadores regionais; custo e distância near/medium/far também não estão conciliados."
+  },
+  {
+   "id": "P1-CLUE-SOURCES-AND-EXTRACTION",
+   "priority": 1,
+   "objective": "Garantir duas fontes físicas disponíveis e rota legal de extração sem conceder pistas automaticamente.",
+   "depends_on": [
+    "P1-MIGRATE-CISTERN"
+   ],
+   "acceptance": [
+    "cobrir identidade de fundadores/resgates",
+    "duas pistas com recibos físicos",
+    "rota alcançável e extraível dentro do relógio",
+    "save/load preserva evidências"
+   ],
+   "tests": [
+    "test_arc2_narrative_and_fuel_experimental.py",
+    "verify_continuous_campaign.py"
+   ],
+   "status": "parcial_bloqueada",
+   "commit": "d2181c5",
+   "blocker": "Rota tática local seed22 investiga Célia e extrai uma pista sem recompensa automática; o rádio recusa uma pista. Tentativa das duas fontes na Estação foi bloqueada pelo relógio/Horda no clock 7. Célia fundadora ou Vicente acolhido pode remover fonte. Cartas regionais ainda não resolvidas."
+  },
+  {
+   "id": "P1-REGIONAL-SURVIVAL-STATE",
+   "priority": 1,
+   "objective": "Aplicar consumo, estados de Fome/Sede, descanso e consequências em campanha regional migrada.",
+   "depends_on": [
+    "P1-MIGRATE-CISTERN"
+   ],
+   "acceptance": [
+    "consumidores individuais e porções conservados",
+    "prioridade explícita em escassez",
+    "PA/ferimentos/colapso conforme RULES §§8/18/25",
+    "save/load e migração de save",
+    "derrota parcial fail-closed"
+   ],
+   "tests": [
+    "edicao-integral/tests/test_regional_needs.py",
+    "edicao-integral/tests/test_system.py",
+    "edicao-integral/tests/test_integrated_campaign.py"
+   ],
+   "status": "implementado_parcial",
+   "commit": "d2181c5",
+   "blocker": "Evacuação da campanha não foi portada; estado de derrota encerra fail-closed. Não representa conclusão da continuação."
+  },
+  {
+   "id": "P2-CISTERN-SWEEP-H2-H6",
+   "priority": 2,
+   "objective": "Medir o controlador da Cisterna em H2–H6 e várias sementes, registrando causas de derrota.",
+   "depends_on": [
+    "P0-EXPEDITION-COMPLETE"
+   ],
+   "acceptance": [
+    "H2–H6",
+    "30 sementes por tamanho",
+    "artefato reproduzível",
+    "seed22 inalterada"
+   ],
+   "tests": [
+    "edicao-integral/tests/test_cistern_sweep.py",
+    "edicao-integral/simulate_cistern_sweep.py"
+   ],
+   "status": "evidencia_registrada",
+   "commit": null,
+   "blocker": "Controlador fixo vence H2 2/30, H3 1/30, H4 1/30, H5–H6 0/30; gargalo na Estação e fome/material. Próximo: estratégia adaptativa (comida dias 4–5, vigias) e decisão sobre lote indivisível ceil(C/4) em H6."
+  }
+ ]
 }

@@ -1,4 +1,41 @@
-# Relatório de partidas automatizadas — atualização 2026-10-26
+# Relatório de partidas automatizadas — atualização 2026-10-27
+
+## Varredura da Cisterna H2–H6 (controlador heurístico, 150 tentativas)
+
+`edicao-integral/simulate_cistern_sweep.py` executa `CampaignPlayer02` em H2–H6,
+sementes 1–30, só por ações públicas; o artefato
+`edicao-integral/replays/cistern_sweep_h2_h6.json` é verificado por igualdade
+(16 684 decisões registradas no total).
+
+| Tamanho | C inicial | Cartas por lote | Vitórias certificadas | Causa dominante |
+|---|---|---|---|---|
+| H2 | 3–5 | 1–2 | 2/30 (seeds 20, 22) | Estação: retirada de emergência (11); filtro sem material/peça (6); derrota parcial por fome (5); Bomba falhou (4) |
+| H3 | 4–7 | 1–2 | 1/30 (seed 22) | Estação: retirada de emergência (27) |
+| H4 | 5–9 | 2–3 | 1/30 (seed 22) | Estação: retirada de emergência (27) |
+| H5 | 7–11 | 2–3 | 0/30 | Estação: retirada de emergência (29) |
+| H6 | 9–13 | 3–4 | 0/30 | Estação: retirada de emergência (29) |
+
+Leitura correta: mede o **plano fixo** Mercado → Oficina → Estação, sem
+expedições nos dias 4–5, sem vigias e sem busca de comida extra. Limitar a
+equipe por destino (grade 2–4 heróis) não alterou a taxa (≈1/30). Isso é
+evidência de fraqueza do controlador e de pressão crescente na Estação com
+grupos grandes, **não** taxa de vitória do jogo nem prova de equilíbrio.
+
+Correções do controlador nesta rodada (sem mudar regras nem o replay seed 22,
+que segue com 98 decisões idênticas): redistribuição quando a carga de
+estrada ocupa espaço; descarte registrado de lotes de mantimento que não cabem
+(peças/equipamento nunca); substituto de peça precisa ter espaço; Machado sai
+com quem o retirou; heróis inaptos ficam no abrigo; filtro com até 2
+trabalhadores aptos; escolha de `ZC-VIA-0004` preserva material necessário ao
+filtro.
+
+Observação de design para aprovação (nenhuma regra alterada): o lote local tem
+`ceil(C/4)` cartas e é indivisível no motor. Em H6 com C 13 o lote ocupa 4
+cartas — exige herói sem nenhum equipamento, e todos começam com Pé de cabra.
+Se `RULES.md`/`CAMPAIGN.md` pretende permitir dividir o lote entre heróis, isso
+precisa ser escrito; hoje o motor segue a leitura de lote inteiro.
+
+## Atualização 2026-10-26
 
 ## Tentativa narrativa/combustível desta retomada
 

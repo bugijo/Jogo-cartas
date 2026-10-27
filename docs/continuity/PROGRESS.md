@@ -396,3 +396,14 @@ passaram se o gate de campanha ainda estiver fechado.
 - Revalidação após as correções: 253 testes passaram; validação de dados,
   compilação, `git diff --check`, replay da Cisterna e reprodução idêntica do
   bloqueio contínuo passaram. Nenhum mapa/PDF físico novo foi gerado.
+
+## 2026-10-27 — varredura H2–H6 da Cisterna
+
+- `CampaignPlayer02.new_hn()` e `simulate_cistern_sweep.py`: 150 tentativas
+  legais (H2–H6 × seeds 1–30) com artefato verificado por igualdade.
+- Vitórias certificadas: H2 2/30, H3 1/30, H4 1/30, H5 0/30, H6 0/30.
+- Defeitos do controlador corrigidos sem alterar a seed 22: carga de estrada não
+  prevista, substituição sem espaço, Machado com portador errado, herói inapto
+  despachado, filtro com mais de 2 trabalhadores, material do filtro gasto em
+  `ZC-VIA-0004`.
+- 7 testes novos (`test_cistern_sweep.py`); suíte em 347.

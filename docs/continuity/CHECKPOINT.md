@@ -1,3 +1,12 @@
+# Estado ativo — varredura H2–H6 da Cisterna, 2026-10-27
+
+- Retomada no HEAD `2e1db33d8bf0a4ac732a19d87a3a8443bdc49b77`, igual ao remoto, árvore limpa (o HEAD `86a53ff` citado no pedido é ancestral). Suíte inicial: 340 testes OK.
+- Nova tarefa independente das decisões pendentes: `CampaignPlayer02.new_hn(seed, size)` (H2–H6; `new_h2` delega com resultado idêntico) e `simulate_cistern_sweep.py` com artefato reproduzível `replays/cistern_sweep_h2_h6.json`.
+- Resultado (150 tentativas, seeds 1–30): vitórias certificadas H2 2/30, H3 1/30, H4 1/30, H5 0/30, H6 0/30. Gargalo dominante em H3+: retirada de emergência na Estação; em H2 também fome e falta de material para as etapas B/C. É medida do controlador fixo, não do equilíbrio. Detalhes em `PLAYTEST_REPORT.md`.
+- Observação de design pendente de aprovação: lote indivisível de `ceil(C/4)` cartas chega a 4 em H6 e só cabe em herói sem equipamento. Nenhuma regra mudou.
+- Verificação: 347 testes, `verify_campaign_player02.py` (seed 22 = 98 decisões, `verified_victory`), `verify_continuous_campaign.py`, `verify_regional_player.py`, `verify_pre_radio_celia_route.py`, `validate_data.py`, `simulate_cistern_sweep.py`, `compileall` e `git diff --check` passaram.
+- Bloqueios do segundo arco inalterados (ver bloco seguinte): cartas de Viagem regionais, segunda pista, combustível e Evacuação. Próximo passo seguro sugerido: estratégia adaptativa da Cisterna (expedição de comida nos dias 4–5 com fundadores extras, vigias em cerco) medida pela mesma varredura.
+
 # Estado ativo — desbloqueio regional, 2026-10-26
 
 - Branch `evolucao/zona-zero-sistema-v1`; a retomada começou no HEAD `794749acc15118fc08f2a08090a6f0e0e7b97cbf`, igual ao remoto, árvore limpa antes das alterações desta rodada. Main e kit físico 0.2 permanecem intactos.
