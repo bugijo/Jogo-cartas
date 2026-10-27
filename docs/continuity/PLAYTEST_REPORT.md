@@ -1,4 +1,49 @@
-# Relatório de partidas automatizadas — atualização 2026-10-27 (Coleta de emergência)
+# Relatório de partidas automatizadas — atualização 2026-10-27 (tática da Estação)
+
+## Diagnóstico
+
+Nas expedições à Estação que falhavam, as tarefas em geral já estavam feitas.
+A emergência vinha de um herói incapacitado longe da saída (ninguém sai sem
+ele), quase sempre o portador da Membrana: ele ia sozinho pela rota 7→11→15→14,
+vizinha ao surgimento (16), enquanto colegas sem tarefa esperavam na saída.
+
+## Mudanças
+
+- **Motor** (`cistern_tactics02.py`): escolta de incapacitado (§31/§43), que não
+  existia. Herói apto na mesma zona liga a escolta; mover não custa PA extra e
+  leva o incapacitado junto; ocupa 2 cargas; um por escoltante; ligação refeita
+  se o escoltante cair; persiste no snapshot (saves antigos carregam).
+  **Decisão pendente:** o texto não fixa o custo de *ligar* a escolta; o motor
+  usa 1 PA (`ESCORT_LINK_AP`), leitura conservadora.
+- **Controlador** (só no modo adaptativo; `tactics` liga cada uma):
+  `escort` (resgatar e levar à saída), `late_retreat` (abandonar tarefas quando
+  só resta tempo para sair, mantendo a carga), `cautious` (rota evita inimigos e
+  vizinhança do surgimento) e `support` (herói sem tarefa acompanha o colega com
+  a tarefa mais distante e ataca os inimigos da zona dele).
+  `wounded_retreat` foi medido e **piorou** (−7 nas sementes 1–30); fica
+  desligado.
+- Política escolhida só nas sementes 1–30: Oficina primeiro em todos os
+  tamanhos. A regra anterior (Estação primeiro em H5+) ficou pior com as táticas.
+
+## Resultado nas sementes reservadas 31–60 (vitórias certificadas / 30)
+
+| Controlador | H2 | H3 | H4 | H5 | H6 | Total |
+|---|---|---|---|---|---|---|
+| Fixo | 2 | 0 | 0 | 0 | 0 | 2 |
+| Adaptativo anterior (sem táticas) | 7 | 0 | 0 | 6 | 10 | 23 |
+| **Adaptativo com táticas** | 5 | **15** | **19** | 9 | **18** | **66** |
+
+Emergências na Estação (falhas/expedições), anterior → novo: H2 17/47 → 23/50,
+H3 55/59 → 8/36, H4 60/62 → 3/35, H5 62/71 → 19/40, H6 51/64 → 8/35.
+
+Leitura: a tática de apoio é a maior alavanca em H3+. Em H2 não há herói livre
+para apoiar e a rota cautelosa custa tempo; H2 piorou um pouco (dentro do ruído,
+mas consistente nas duas medidas) e é o próximo alvo. Nota de método: as
+sementes 31–60 já tinham sido observadas em medições anteriores; nenhum
+parâmetro novo foi escolhido olhando para elas. Continua sendo medida de um
+controlador, não de equilíbrio nem de jogadores humanos.
+
+## Coleta de emergência 2026-10-27
 
 ## Coleta de emergência (RULES §26) no motor e no controlador adaptativo
 

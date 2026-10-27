@@ -424,3 +424,11 @@ passaram se o gate de campanha ainda estiver fechado.
 - Controlador adaptativo usa a coleta; efeito pequeno nas sementes reservadas
   (H2 7, H5 6, H6 10; H3–H4 0). Gargalo segue na Estação.
 - Suíte em 361 testes; artefato contínuo regenerado só no digest da migração.
+
+## 2026-10-27 — tática da Estação
+
+- Motor: escolta de incapacitado (§31/§43); custo de ligação 1 PA pendente.
+- Controlador adaptativo: escolta, recuo por tempo, rota cautelosa e apoio.
+  Sementes reservadas: 66/150 vitórias (antes 23). H3 0→15, H4 0→19, H6 10→18.
+- Próxima medição deve usar sementes novas (61–90), já que 31–60 foram vistas.
+- Suíte em 368 testes.

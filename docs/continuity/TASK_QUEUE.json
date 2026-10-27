@@ -178,7 +178,7 @@
    ],
    "status": "adaptativo_medido",
    "commit": null,
-   "blocker": "Adaptativo em sementes reservadas 31–60: H2 5/30, H3 0, H4 0, H5 7/30, H6 11/30 (fixo 2/0/0/0/0). Gargalo: controlador tático na Estação; fome em H3–H4. Lacuna ZC-VIA-0010 sem Material levado aguarda decisão."
+   "blocker": "Adaptativo com táticas: 66/150 nas sementes reservadas. Lacuna ZC-VIA-0010 e custo da escolta aguardam decisão."
   },
   {
    "id": "P0-EMERGENCY-COLLECTION",
@@ -211,11 +211,32 @@
     "medição em sementes reservadas"
    ],
    "tests": [
+    "edicao-integral/tests/test_cistern_tactics02.py",
+    "edicao-integral/tests/test_cistern_sweep.py",
+    "edicao-integral/simulate_cistern_sweep.py"
+   ],
+   "status": "implementado_medido",
+   "commit": null,
+   "blocker": "Sementes 31–60: 66/150 (H2 5, H3 15, H4 19, H5 9, H6 18). H2 piorou levemente; custo de ligar escolta (1 PA) aguarda aprovação."
+  },
+  {
+   "id": "P2-CISTERN-H2-TACTICS",
+   "priority": 2,
+   "objective": "Melhorar o controlador em H2, onde não há herói livre para apoio.",
+   "depends_on": [
+    "P0-STATION-TACTICAL-AI"
+   ],
+   "acceptance": [
+    "seed22 inalterada",
+    "ajuste só em 1–30",
+    "medição em sementes novas"
+   ],
+   "tests": [
     "edicao-integral/simulate_cistern_sweep.py"
    ],
    "status": "pendente",
    "commit": null,
-   "blocker": "Causa dominante de derrota em todos os tamanhos."
+   "blocker": "H2 5/30 nas reservadas; emergências na Estação 23/50. Usar novas sementes reservadas (61–90) na próxima medição."
   }
  ]
 }

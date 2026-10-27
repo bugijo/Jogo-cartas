@@ -1,3 +1,11 @@
+# Estado ativo — tática da Estação, 2026-10-27
+
+- Motor: escolta de incapacitado (§31/§43) implementada; custo de ligação 1 PA é leitura conservadora **pendente de aprovação**.
+- Controlador adaptativo ganhou táticas `escort`, `late_retreat`, `cautious`, `support` (padrão) e política Oficina primeiro; modo fixo e seed 22 (98 decisões) inalterados; `tactics=()` reproduz exatamente o adaptativo anterior.
+- Sementes reservadas 31–60: 66/150 vitórias (H2 5, H3 15, H4 19, H5 9, H6 18) contra 23 do adaptativo anterior e 2 do fixo. Emergências na Estação caíram muito em H3+; H2 piorou levemente.
+- Verificação: 368 testes; todos os verificadores; varredura reproduzível; `compileall`; `git diff --check`.
+- Próximos passos: H2 (sem herói livre para apoio); decisões pendentes `ZC-VIA-0010` e custo da escolta; depois retomar o segundo arco (cartas de Viagem regionais).
+
 # Estado ativo — Coleta de emergência §26, 2026-10-27
 
 - Motor: Coleta de emergência implementada (`plan_emergency_collection`, resolução na fase de trabalhos), com limites de 2 porções/dia, um trabalho por pessoa, aptidão, cerco antes, save/load e limpeza diária. Campo novo `collection_plan` com padrão vazio; saves antigos carregam.
