@@ -36,6 +36,8 @@ class CampaignPlayer02:
     # Desligado, preserva o plano fixo do replay certificado da seed 22.
     adaptive: bool = False
     adaptive_order: tuple[str, ...] = ("Oficina", "Estação")
+    # §26 no modo adaptativo; desligável para comparar com a medição anterior.
+    emergency_collection: bool = True
 
     def __post_init__(self) -> None:
         self.rng = Random(self.seed ^ 0xC15A)
@@ -643,6 +645,23 @@ class CampaignPlayer02:
                 self.game.plan_guards(guards)
                 self.decisions.append({"action": "adaptive_guards", "day": day,
                                        "guards": guards.copy()})
+        shortfall = self._shortfall()
+        if self.emergency_collection and (shortfall["food"] or shortfall["water"]):
+            busy = set(workers) | set(cistern.planned_guards) | (
+                set(team) if destination else set())
+            collectors = [person["id"] for person in cistern.people
+                          if self._able(person) and person["id"] not in busy
+                          and (person["kind"] == "hero"
+                               or person["family"] in cistern.founders)][:2]
+            plan = []
+            for worker in collectors:
+                kind = "Conserva" if shortfall["food"] >= shortfall["water"] else "Água"
+                shortfall["food" if kind == "Conserva" else "water"] -= 1
+                plan.append({"worker": worker, "kind": kind})
+            if plan:
+                self.game.plan_emergency_collection(plan, team if destination else None)
+                self.decisions.append({"action": "adaptive_collection", "day": day,
+                                       "plan": deepcopy(plan)})
         return destination, team, tasks, loadout
 
     def _grounded(self, site: str, part: str) -> bool:

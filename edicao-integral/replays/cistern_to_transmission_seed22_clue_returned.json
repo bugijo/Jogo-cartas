@@ -15,8 +15,8 @@
       "decisions": 98
     },
     "migration": {
-      "id": "cistern02:4950561ea0f429f7",
-      "source_digest": "4950561ea0f429f7c7bf980decbb61dde1abf9acadbe766a2fab04a570db35a9",
+      "id": "cistern02:3e48f3b90517e31b",
+      "source_digest": "3e48f3b90517e31be3121fc82b18b4bfb8292d7d12574d2147fff1dd8d44e5ee",
       "from": "cistern02",
       "to": "last_transmission",
       "heroes": [

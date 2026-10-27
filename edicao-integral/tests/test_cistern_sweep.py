@@ -87,6 +87,25 @@ class CisternSweepTests(unittest.TestCase):
         self.assertEqual(auto_settings(2)["adaptive_order"][0], "Oficina")
         self.assertEqual(auto_settings(6)["adaptive_order"][0], "Estação")
 
+    def test_adaptive_collection_uses_only_idle_people_and_adds_portions(self):
+        player = CampaignPlayer02.new_hn(31, 6)
+        player.adaptive = True
+        player.adaptive_order = ("Estação", "Oficina")
+        player.attempt_cistern()
+        plans = {item["day"]: item for item in player.decisions
+                 if item["action"] == "adaptive_plan"}
+        collections = [item for item in player.decisions
+                       if item["action"] == "adaptive_collection"]
+        self.assertTrue(collections)
+        for item in collections:
+            self.assertLessEqual(len(item["plan"]), 2)
+            workers = {entry["worker"] for entry in item["plan"]}
+            plan = plans.get(item["day"], {"team": [], "workers": []})
+            self.assertFalse(workers & (set(plan["team"]) | set(plan["workers"])))
+        receipts = [receipt for receipt in player.game.cistern.work_receipts
+                    if receipt["task"] == "emergency_collection"]
+        self.assertEqual(len(receipts), len(collections))
+
     def test_classify_reports_partial_defeat_by_hunger(self):
         report = {"verified_victory": False, "days": [], "result": "partial_defeat",
                   "blocked": None,

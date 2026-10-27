@@ -100,6 +100,9 @@ def sweep() -> dict:
         groups[name] = {"seeds": [SEEDS.start, SEEDS.stop - 1],
                         "summary": _summary(runs), "runs": runs}
     for name, chooser in (("fixed_heldout", lambda size: {}),
+                          ("adaptive_auto_heldout_no_collection",
+                           lambda size: {**auto_settings(size),
+                                         "emergency_collection": False}),
                           ("adaptive_auto_heldout", auto_settings)):
         runs = [{**run_one(size, seed, chooser(size)), "controller": name}
                 for size in SIZES for seed in HELDOUT]

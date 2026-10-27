@@ -62,6 +62,8 @@ class Cistern02:
     filter_workers_plan: list[str] = field(default_factory=list)
     away_today: list[str] = field(default_factory=list)
     work_plan_locked: bool = False
+    # §26: [{'worker': id, 'kind': 'Conserva'|'Água'}], planejado no amanhecer.
+    collection_plan: list[dict] = field(default_factory=list)
     work_receipts: list[dict] = field(default_factory=list)
     meal_day: int = 0
     filter_active: bool = False
@@ -325,7 +327,8 @@ class Cistern02:
         if (self.work_plan_locked or self.day5_guard_plan_locked
                 or self.day==5 and self.meal_day==5
                 or len(heroes)>3 or len(set(heroes))!=len(heroes)
-                or set(heroes)&(set(self.filter_workers_plan)|set(self.away_today))
+                or set(heroes)&(set(self.filter_workers_plan)|set(self.away_today)
+                                |{item['worker'] for item in self.collection_plan})
                 or any(not any(p['id']==hero and p['kind'] in ('hero','adult')
                                and p['wounds']<3 and not p['hungry'] and not p['thirsty']
                                for p in self.people) for hero in heroes)):
@@ -583,13 +586,66 @@ class Cistern02:
                     or person['wounds']>=3 or person.get('fatigue',0)>=3
                     or person['hungry'] or person['thirsty']):
                 raise ValueError('Trabalhador indisponível')
-            if worker in self.planned_guards or worker in self.away_today:
+            if (worker in self.planned_guards or worker in self.away_today
+                    or worker in {item['worker'] for item in self.collection_plan}):
                 raise ValueError('Trabalhador já alocado')
             group=groups.get(person['family'])
             if group is not None and (group['status']!='trusted'
                                       or self.temporary_excess>0):
                 raise ValueError('Morador ainda não está apto ao trabalho')
         self.filter_workers_plan=workers.copy()
+
+    def plan_emergency_collection(self,assignments:list[dict],
+                                  expedition_team:list[str]|None=None) -> None:
+        """§26: cada adulto alocado coleta 1 porção de Conserva ou Água.
+
+        Máximo duas porções por dia para a comunidade inteira; quem tem Fome,
+        Sede, fadiga 3 ou está em observação não trabalha; um trabalho por
+        pessoa (não acumula com filtro, vigia ou expedição).
+        """
+        team=list(expedition_team or [])
+        if (self.work_plan_locked or self.meal_day==self.day or self.collection_plan
+                or not isinstance(assignments,list) or not 1<=len(assignments)<=2
+                or any(not isinstance(item,dict) or set(item)!={'worker','kind'}
+                       or item['kind'] not in ('Conserva','Água') for item in assignments)):
+            raise ValueError('Coleta de emergência inválida')
+        workers=[item['worker'] for item in assignments]
+        if len(set(workers))!=len(workers):
+            raise ValueError('Coleta de emergência inválida')
+        people={person['id']:person for person in self.people}
+        groups={group['id']:group for group in self.groups}
+        for worker in workers:
+            person=people.get(worker)
+            if (person is None or person['kind'] not in ('hero','adult')
+                    or person['wounds']>=3 or person.get('fatigue',0)>=3
+                    or person['hungry'] or person['thirsty']):
+                raise ValueError('Coletor indisponível')
+            if (worker in team or worker in self.away_today
+                    or worker in self.planned_guards or worker in self.filter_workers_plan):
+                raise ValueError('Coletor já alocado')
+            group=groups.get(person['family'])
+            if group is not None and (group['status']!='trusted'
+                                      or self.temporary_excess>0):
+                raise ValueError('Morador ainda não está apto ao trabalho')
+        self.collection_plan=[dict(item) for item in assignments]
+
+    def collect_emergency(self) -> dict | None:
+        """Resolve a coleta planejada na fase de trabalhos, antes da refeição."""
+        if not self.collection_plan:
+            return None
+        if not self.work_plan_locked or self.meal_day==self.day:
+            raise ValueError('Coleta ocorre na fase de trabalhos')
+        if self.pending_sieges and self.siege_day!=self.day:
+            raise ValueError('Cerco precede os trabalhos')
+        for item in self.collection_plan:
+            # Registro de porção avulsa: nunca uma carta cheia de quatro.
+            (self.food if item['kind']=='Conserva' else self.water).append(1)
+        receipt={'day':self.day,'task':'emergency_collection',
+                 'collected':[dict(item) for item in self.collection_plan],
+                 'expedition_team':self.away_today.copy()}
+        self.work_receipts.append(receipt)
+        self.collection_plan=[]
+        return dict(receipt)
 
     def lock_work_plan(self,expedition_team:list[str]) -> None:
         """Fecha a alocação do dia quando a equipe sai ou fica no abrigo."""
@@ -605,6 +661,8 @@ class Cistern02:
             raise ValueError('Trabalhador não pode sair em expedição')
         if set(self.planned_guards)&set(team):
             raise ValueError('Vigia não pode sair em expedição')
+        if {item['worker'] for item in self.collection_plan}&set(team):
+            raise ValueError('Coletor não pode sair em expedição')
         self.away_today=team
         self.work_plan_locked=True
 
@@ -678,6 +736,7 @@ class Cistern02:
                 person['fatigue']=max(0,person.get('fatigue',0)-1)
         self.day+=1;self.clock=0;self.works_today=0;self.planned_guards=[]
         self.filter_workers_plan=[];self.away_today=[];self.work_plan_locked=False
+        self.collection_plan=[]
         self.apply_daily_event()
         if self.filter_active:
             self.water.extend(self._lots(self.initial_consumers))

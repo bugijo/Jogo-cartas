@@ -931,6 +931,16 @@ class IntegratedCampaign:
             raise ValueError("Planejamento de trabalho indisponível nesta fase")
         self.cistern.plan_filter_work(workers,expedition_team)
 
+    def plan_emergency_collection(self,assignments:list[dict],
+                                  expedition_team:list[str]|None=None) -> None:
+        """§26: aloca coleta de emergência no amanhecer, antes de sair."""
+        self._require_running()
+        if (self.world is not None or self.tactical is not None
+                or self.travel is not None or self.return_travel is not None
+                or self.ambush is not None or self.work_phase_resolved):
+            raise ValueError("Coleta de emergência indisponível nesta fase")
+        self.cistern.plan_emergency_collection(assignments,expedition_team)
+
     def reserve_filter_stage(self,stage:str) -> None:
         """Reserva materiais e peça no amanhecer, antes de qualquer expedição."""
         self._require_running()
@@ -995,12 +1005,16 @@ class IntegratedCampaign:
             self.cistern.lock_work_plan([])
         units=len(self.cistern.filter_workers_plan)
         if units==0:
-            self.work_phase_resolved=True
-            return {"workers":[],"units":0,"day":self.cistern.day}
-        receipt_start=len(self.cistern.work_receipts)
-        self.cistern.work(units)
+            result={"workers":[],"units":0,"day":self.cistern.day}
+        else:
+            receipt_start=len(self.cistern.work_receipts)
+            self.cistern.work(units)
+            result=deepcopy(self.cistern.work_receipts[receipt_start])
+        collection=self.cistern.collect_emergency()
+        if collection is not None:
+            result["emergency_collection"]=collection
         self.work_phase_resolved=True
-        return deepcopy(self.cistern.work_receipts[receipt_start])
+        return result
 
     def next_cistern_day(self) -> None:
         self._require_running()
