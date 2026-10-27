@@ -432,3 +432,10 @@ passaram se o gate de campanha ainda estiver fechado.
   Sementes reservadas: 66/150 vitórias (antes 23). H3 0→15, H4 0→19, H6 10→18.
 - Próxima medição deve usar sementes novas (61–90), já que 31–60 foram vistas.
 - Suíte em 368 testes.
+
+## 2026-10-27 — validação 61–90, decisões aprovadas, H2 e auditoria
+
+- Aplicadas: escolta 1 PA; Ferragens sem Material sem perda (`MANUAL_EXPERIMENTAL.md`).
+- Validação cega 61–90: 56/150 (anterior 9, fixo 0); 66/150 após Ferragens.
+- H2: rota cautelosa não é a causa; dupla/rota longa pioram; correção de carga.
+- Auditoria: apoio decisivo em H3–H4; escolta marginal.

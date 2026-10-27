@@ -176,9 +176,9 @@
     "edicao-integral/tests/test_cistern_sweep.py",
     "edicao-integral/simulate_cistern_sweep.py"
    ],
-   "status": "adaptativo_medido",
+   "status": "validado_61_90",
    "commit": null,
-   "blocker": "Adaptativo com táticas: 66/150 nas sementes reservadas. Lacuna ZC-VIA-0010 e custo da escolta aguardam decisão."
+   "blocker": "Validação cega 61–90: 56/150 (66 após Ferragens). Próximas medições em sementes 91–120."
   },
   {
    "id": "P0-EMERGENCY-COLLECTION",
@@ -217,7 +217,7 @@
    ],
    "status": "implementado_medido",
    "commit": null,
-   "blocker": "Sementes 31–60: 66/150 (H2 5, H3 15, H4 19, H5 9, H6 18). H2 piorou levemente; custo de ligar escolta (1 PA) aguarda aprovação."
+   "blocker": "Validado; custo de escolta aprovado (1 PA)."
   },
   {
    "id": "P2-CISTERN-H2-TACTICS",
@@ -234,9 +234,26 @@
    "tests": [
     "edicao-integral/simulate_cistern_sweep.py"
    ],
+   "status": "investigado_sem_ganho",
+   "commit": null,
+   "blocker": "Sementes 1–30: rota cautelosa não prejudica (+1); dupla 5→2; rota longa 5→0. Correção de carga evita abortar. H2 segue 4–6/30; sinal de design para playtest humano."
+  },
+  {
+   "id": "P2-FERRAGENS-GROUND-MATERIAL",
+   "priority": 2,
+   "objective": "Ferragens na ida: Material deixado no chão de Z1 coletável por 1 PA (texto da carta); hoje o motor só descarta.",
+   "depends_on": [],
+   "acceptance": [
+    "Material no chão persistente",
+    "coleta 1 PA",
+    "teste"
+   ],
+   "tests": [
+    "edicao-integral/tests/test_travel02.py"
+   ],
    "status": "pendente",
    "commit": null,
-   "blocker": "H2 5/30 nas reservadas; emergências na Estação 23/50. Usar novas sementes reservadas (61–90) na próxima medição."
+   "blocker": "Exige ponte Travel02 → chão do mapa tático; implementar sem criar Material."
   }
  ]
 }

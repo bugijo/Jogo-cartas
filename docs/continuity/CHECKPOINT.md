@@ -1,3 +1,12 @@
+# Estado ativo — validação 61–90 e decisões aprovadas, 2026-10-27
+
+- Decisões aprovadas e aplicadas (registradas em `edicao-integral/MANUAL_EXPERIMENTAL.md`): escolta 1 PA para iniciar; Ferragens sem Material levado não perde recurso.
+- Validação cega 61–90 (antes de ajustes): adaptativo 56/150, anterior 9, fixo 0. Após a regra de Ferragens: 66/150.
+- H2 continua fraco (4–6/30): rota cautelosa não é a causa; dupla e rota longa pioram; correção de carga evita abortar campanha.
+- Auditoria: apoio é a alavanca de H3–H4; escolta marginal; custo 1 PA de escolta quase sem efeito nas vitórias.
+- Próximas medições do controlador da Cisterna devem usar sementes novas (91–120).
+- Próximo bloco: Última Transmissão — cartas de Viagem regionais (`P1-REGIONAL-TRAVEL-SHOE`).
+
 # Estado ativo — tática da Estação, 2026-10-27
 
 - Motor: escolta de incapacitado (§31/§43) implementada; custo de ligação 1 PA é leitura conservadora **pendente de aprovação**.

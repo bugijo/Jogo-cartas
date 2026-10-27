@@ -1,4 +1,63 @@
-# Relatório de partidas automatizadas — atualização 2026-10-27 (tática da Estação)
+# Relatório de partidas automatizadas — atualização 2026-10-27 (validação 61–90, H2, auditoria)
+
+## Decisões aprovadas aplicadas
+
+Registradas em `edicao-integral/MANUAL_EXPERIMENTAL.md` (sem alterar `RULES.md`):
+escolta custa 1 PA para iniciar, movimento normal depois; Ferragens
+(`ZC-VIA-0010`) sem Material levado não causa perda nem bloqueia a viagem.
+
+## Validação cega nas sementes inéditas 61–90
+
+Medida uma vez, antes de qualquer ajuste e antes da regra de Ferragens:
+
+| Controlador | H2 | H3 | H4 | H5 | H6 | Total |
+|---|---|---|---|---|---|---|
+| Fixo | 0 | 0 | 0 | 0 | 0 | 0 |
+| Adaptativo anterior | 3 | 1 | 0 | 2 | 3 | 9 |
+| **Adaptativo com táticas** | 4 | 8 | 13 | 14 | 17 | **56** |
+
+Depois da regra aprovada de Ferragens (mesmas sementes; não é mais medida cega),
+o adaptativo com táticas fica em 66/150 (4/13/13/19/17). Métricas finais nas
+sementes 61–90 (`replays/cistern_sweep_h2_h6.json`, grupo `adaptive_auto_validation`):
+
+| | H2 | H3 | H4 | H5 | H6 |
+|---|---|---|---|---|---|
+| Vitórias /30 | 4 | 13 | 13 | 19 | 17 |
+| Fome/Sede no fim (média de pessoas) | 2.97 | 3.0 | 2.63 | 1.6 | 3.07 |
+| Emergências na Estação | 30/56 | 10/45 | 9/43 | 8/36 | 14/39 |
+| Incapacitações | 36 | 25 | 16 | 11 | 15 |
+| Rodadas por expedição (média / Estação) | 5.94 / 6.68 | 5.82 / 6.82 | 5.47 / 6.44 | 5.5 / 7.25 | 5.76 / 7.38 |
+
+Adaptativo anterior, mesmas sementes: emergências na Estação 46/53 (H3) a 78/82
+(H5), incapacitações 52–93, fome média 5–8 pessoas a partir de H3.
+
+## H2 (investigação apenas nas sementes de ajuste 1–30)
+
+- A hipótese "a rota cautelosa prejudica H2" **não se confirmou**: sozinha ela
+  dá +1 vitória. Quem eleva as emergências em H2 é o apoio (18/40 → 24/33), sem
+  perder vitórias.
+- Em 16/30 partidas a nova tentativa na Estação era abortada pelo planejador de
+  carga (equipe reduzida não comportava as duas peças) e a campanha parava.
+  Corrigido: o adaptativo leva as peças que cabem ou fica no abrigo. Vitórias
+  iguais (5/30), campanha não aborta mais.
+- Testadas e descartadas: dupla (um herói leva as duas peças, o outro apoia):
+  5 → 2; rota longa para H2 na Estação: 5 → 0.
+- Leitura: com dois heróis a Estação é muito dura para este controlador. Sinal
+  de design para avaliar com playtest humano (não é prova de equilíbrio).
+
+## Auditoria de apoio e escolta (sementes 1–30, vitórias H2..H6)
+
+| Configuração | Vitórias | Observação |
+|---|---|---|
+| Todas as táticas | 5/11/12/12/12 | apoio: 112–387 ataques por 30 partidas |
+| Sem apoio | 4/0/2/10/13 | apoio é a alavanca de H3–H4 |
+| Sem escolta | 5/8/11/10/12 | escolta soma +3/+1/+2 em H3–H5 |
+| Escolta custando 0 PA | 5/11/12/12/12 | sobrevivência com escolta H3 8/12 → 11/12 |
+
+Escolta em H2 nunca salvou (0/4): um único herói apto não consegue resgatar e
+voltar. O custo aprovado de 1 PA tem efeito marginal nas vitórias.
+
+## Tática da Estação 2026-10-27
 
 ## Diagnóstico
 
@@ -37,8 +96,8 @@ Emergências na Estação (falhas/expedições), anterior → novo: H2 17/47 →
 H3 55/59 → 8/36, H4 60/62 → 3/35, H5 62/71 → 19/40, H6 51/64 → 8/35.
 
 Leitura: a tática de apoio é a maior alavanca em H3+. Em H2 não há herói livre
-para apoiar e a rota cautelosa custa tempo; H2 piorou um pouco (dentro do ruído,
-mas consistente nas duas medidas) e é o próximo alvo. Nota de método: as
+para apoiar; H2 piorou um pouco (dentro do ruído). A suposição de que a rota
+cautelosa seria a causa foi refutada depois (ver investigação de H2 acima). Nota de método: as
 sementes 31–60 já tinham sido observadas em medições anteriores; nenhum
 parâmetro novo foi escolhido olhando para elas. Continua sendo medida de um
 controlador, não de equilíbrio nem de jogadores humanos.
