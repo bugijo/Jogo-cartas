@@ -1,4 +1,50 @@
-# Relatório de partidas automatizadas — atualização 2026-10-27
+# Relatório de partidas automatizadas — atualização 2026-10-27 (estratégia adaptativa)
+
+## Controlador adaptativo da Cisterna (`CampaignPlayer02.adaptive=True`)
+
+No amanhecer, sem informação oculta: reserva cada etapa assim que a peça chegou
+em dia anterior; escolhe o destino pelas peças faltantes (nova tentativa na
+Estação/Oficina, inclusive recuperando peça deixada no chão por emergência,
+§34) e depois por déficit projetado de comida/água (Mercado, Hospital,
+Condomínio, Posto — só lotes ainda não retirados); adultos civis trabalham no
+filtro (inclusive etapa A no dia 3); vigias (até 3) saem de quem fica no abrigo.
+O modo fixo continua padrão e preserva o replay certificado da seed 22.
+
+Vitórias certificadas (`replays/cistern_sweep_h2_h6.json`, schema 2, 750 tentativas):
+
+| Controlador | Sementes | H2 | H3 | H4 | H5 | H6 |
+|---|---|---|---|---|---|---|
+| Fixo | 1–30 | 2 | 1 | 1 | 0 | 0 |
+| Adaptativo, Oficina primeiro | 1–30 | 3 | 0 | 0 | 0 | 0 |
+| Adaptativo, Estação primeiro | 1–30 | 0 | 0 | 1 | 7 | 8 |
+| Fixo | 31–60 (reservadas) | 2 | 0 | 0 | 0 | 0 |
+| Adaptativo automático (H≤4 Oficina, H≥5 Estação) | 31–60 (reservadas) | **5** | 0 | 0 | **7** | **11** |
+
+A regra "ordem por tamanho" foi escolhida olhando só as sementes 1–30 e medida
+uma única vez em 31–60. Leitura: o adaptativo melhora H2 e H5–H6; H3–H4 seguem
+em 0 porque a Estação falha repetidamente (retirada de emergência no mapa) e as
+novas tentativas consomem os dias que seriam de comida — no fim, 29–30 das 30
+partidas H3/H4 têm alguém com Fome. O gargalo agora é o **controlador tático na
+Estação**, não o planejamento. Continua não sendo evidência de equilíbrio.
+
+Defeitos corrigidos nesta rodada:
+- **Motor** (`cistern_tactics02.py`): ao 25º inimigo o mapa marcava expedição
+  perdida e depois recusava a emergência que §39 manda oferecer; a campanha
+  travava. Agora a emergência é aceita uma vez após `overrun` (mesma semântica já
+  testada na emboscada). Formato de save inalterado.
+- **Controlador**: vigias planejados nunca rolavam dados (`guard_rolls` virava
+  lista vazia); herói sem ferramenta tentava forçar porta bloqueada; equipamento
+  declarado para quem não viajava; nova rodada após invasão.
+
+Lacuna de regra registrada, sem alteração: `ZC-VIA-0010` (Ferragens) manda, na
+ida, deixar 1 Material levado no chão, mas não define o caso sem Material
+levado. O motor recusa; o controlador encerra a tentativa como
+`blocked_expedition_rule_gap` (1–2 por grupo de 30). Precisa de decisão.
+
+Não implementado no motor: Coleta de emergência (§26, adultos geram até 2
+porções/dia). Seria a resposta natural à fome observada em H3–H4.
+
+## Varredura inicial 2026-10-27
 
 ## Varredura da Cisterna H2–H6 (controlador heurístico, 150 tentativas)
 

@@ -407,3 +407,13 @@ passaram se o gate de campanha ainda estiver fechado.
   despachado, filtro com mais de 2 trabalhadores, material do filtro gasto em
   `ZC-VIA-0004`.
 - 7 testes novos (`test_cistern_sweep.py`); suíte em 347.
+
+## 2026-10-27 — estratégia adaptativa da Cisterna
+
+- Modo `adaptive` do `CampaignPlayer02`: reservas no amanhecer, destino por peça
+  faltante e déficit de comida, adultos no filtro, vigias. Validação em sementes
+  reservadas: H2 5/30, H5 7/30, H6 11/30 (fixo 2/0/0); H3–H4 seguem 0/30.
+- Motor: emergência após o 25º inimigo do mapa (§39) não trava mais.
+- Controlador: dados de vigia, ferramenta, equipamento por equipe, rodada após
+  invasão. Lacuna `ZC-VIA-0010` registrada; Coleta de emergência §26 pendente.
+- Suíte em 351 testes.

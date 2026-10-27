@@ -1,3 +1,13 @@
+# Estado ativo — estratégia adaptativa da Cisterna, 2026-10-27
+
+- Decisão do usuário: manter o lote de mantimentos indivisível (`ceil(C/4)` cartas). Nenhuma regra alterada.
+- `CampaignPlayer02.adaptive` (padrão desligado) planeja no amanhecer: reservas, destino por peça faltante/déficit de comida, trabalho de adultos, vigias. Seed 22 fixa continua `verified_victory` com 98 decisões.
+- Sementes reservadas 31–60, política escolhida antes em 1–30: adaptativo H2 5/30, H3 0, H4 0, H5 7/30, H6 11/30; fixo 2/0/0/0/0. Ver `PLAYTEST_REPORT.md`.
+- Correção do motor: emergência após o 25º inimigo (§39) deixou de travar. Correções do controlador: dados de vigia, ferramenta em porta bloqueada, equipamento por equipe, rodada após invasão.
+- Pendências de decisão: `ZC-VIA-0010` sem Material levado (lacuna). Pendência de implementação: Coleta de emergência §26.
+- Verificação: 351 testes; todos os verificadores, `simulate_cistern_sweep.py` (reprodução idêntica), `compileall`, `git diff --check`.
+- Próximo passo seguro: melhorar o controlador tático na Estação (gargalo de H3–H4) e implementar Coleta de emergência §26 com teste; depois retomar o segundo arco.
+
 # Estado ativo — varredura H2–H6 da Cisterna, 2026-10-27
 
 - Retomada no HEAD `2e1db33d8bf0a4ac732a19d87a3a8443bdc49b77`, igual ao remoto, árvore limpa (o HEAD `86a53ff` citado no pedido é ancestral). Suíte inicial: 340 testes OK.
