@@ -135,6 +135,27 @@ class CisternSweepTests(unittest.TestCase):
         self.assertIn(15, plain)
         self.assertNotIn(15, cautious)
 
+    def test_adaptive_takes_parts_that_fit_and_fixed_still_blocks(self):
+        from campaign_player02 import station_day_tasks
+        player = CampaignPlayer02.new_hn(22, 2)
+        hero = player.game.founders[0]
+        loadout = {hero: ["Pé de cabra", "Machado"]}
+        parts = [task for task in station_day_tasks() if task["action"] == "pickup_part"]
+        with self.assertRaises(ValueError):
+            player._assign_or_trim([hero], loadout, [dict(task) for task in parts])
+        player.adaptive = True
+        tasks = [dict(task) for task in parts]
+        assigned = player._assign_or_trim([hero], loadout, tasks)
+        self.assertEqual([task["part"] for task in assigned[hero]], ["Bomba"])
+        self.assertEqual(player.decisions[-1]["task"]["part"], "Membrana")
+
+    def test_expedition_metrics_do_not_change_certified_trace(self):
+        report = CampaignPlayer02.new_h2(22).attempt_cistern()
+        self.assertEqual(report["decision_count"], 98)
+        self.assertEqual([item["destination"] for item in report["expedition_stats"]],
+                         ["Mercado", "Oficina", "Estação"])
+        self.assertTrue(all(item["survived_map"] for item in report["expedition_stats"]))
+
     def test_classify_reports_partial_defeat_by_hunger(self):
         report = {"verified_victory": False, "days": [], "result": "partial_defeat",
                   "blocked": None,

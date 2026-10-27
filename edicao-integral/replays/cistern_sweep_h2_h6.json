@@ -8302,15 +8302,15 @@
             "verified_victory": 5,
             "expedition_Estação_emergency_after_clock": 1
           },
-          "hungry_or_thirsty_end_mean": 1.3,
-          "expeditions": 73,
-          "map_emergencies": 24,
-          "station_expeditions": 33,
-          "station_map_emergencies": 24,
-          "incapacitations": 24,
+          "hungry_or_thirsty_end_mean": 3.5,
+          "expeditions": 101,
+          "map_emergencies": 35,
+          "station_expeditions": 59,
+          "station_map_emergencies": 33,
+          "incapacitations": 35,
           "escorts": 4,
-          "mean_rounds": 6.26,
-          "mean_station_rounds": 8.3
+          "mean_rounds": 5.68,
+          "mean_station_rounds": 6.32
         },
         "H3": {
           "attempts": 30,
@@ -8339,15 +8339,15 @@
             "partial_defeat_hunger_or_thirst": 1,
             "expedition_Mercado_emergency_after_clock": 1
           },
-          "hungry_or_thirsty_end_mean": 2.5,
-          "expeditions": 109,
-          "map_emergencies": 11,
-          "station_expeditions": 37,
-          "station_map_emergencies": 8,
-          "incapacitations": 18,
+          "hungry_or_thirsty_end_mean": 2.97,
+          "expeditions": 116,
+          "map_emergencies": 13,
+          "station_expeditions": 43,
+          "station_map_emergencies": 10,
+          "incapacitations": 20,
           "escorts": 12,
-          "mean_rounds": 5.77,
-          "mean_station_rounds": 7.3
+          "mean_rounds": 5.63,
+          "mean_station_rounds": 6.81
         },
         "H4": {
           "attempts": 30,
@@ -8378,15 +8378,15 @@
             "expedition_Mercado_emergency_from_map": 1,
             "expedition_Estação_blocked_return": 1
           },
-          "hungry_or_thirsty_end_mean": 1.53,
-          "expeditions": 108,
+          "hungry_or_thirsty_end_mean": 2.07,
+          "expeditions": 111,
           "map_emergencies": 7,
-          "station_expeditions": 35,
+          "station_expeditions": 38,
           "station_map_emergencies": 5,
           "incapacitations": 13,
           "escorts": 11,
-          "mean_rounds": 5.47,
-          "mean_station_rounds": 6.86
+          "mean_rounds": 5.35,
+          "mean_station_rounds": 6.39
         },
         "H5": {
           "attempts": 30,
@@ -8451,15 +8451,15 @@
             "expedition_Estação_blocked_return": 1,
             "partial_defeat_hunger_or_thirst": 1
           },
-          "hungry_or_thirsty_end_mean": 3.2,
-          "expeditions": 110,
-          "map_emergencies": 12,
-          "station_expeditions": 38,
-          "station_map_emergencies": 8,
-          "incapacitations": 10,
+          "hungry_or_thirsty_end_mean": 3.37,
+          "expeditions": 111,
+          "map_emergencies": 13,
+          "station_expeditions": 39,
+          "station_map_emergencies": 9,
+          "incapacitations": 11,
           "escorts": 7,
-          "mean_rounds": 5.65,
-          "mean_station_rounds": 7.13
+          "mean_rounds": 5.68,
+          "mean_station_rounds": 7.18
         }
       },
       "runs": [
@@ -8588,25 +8588,27 @@
         {
           "size": 2,
           "seed": 3,
-          "result": "RUNNING",
+          "result": "unresolved",
           "verified_victory": false,
           "cause": "expedition_Estação_emergency_from_map",
           "consumers": 3,
-          "nights": 2,
-          "decisions": 69,
+          "nights": 5,
+          "decisions": 87,
           "outcomes": [
             "returned",
             "emergency_from_map",
-            "strategy_load_blocked"
+            "emergency_from_map",
+            "no_expedition",
+            "no_expedition"
           ],
           "parts": [
             "Conexões"
           ],
-          "materials": 3,
-          "health": 5,
-          "morale": 5,
-          "blocked": "plan_cargo",
-          "hungry_or_thirsty_end": 0,
+          "materials": 2,
+          "health": 0,
+          "morale": 4,
+          "blocked": "complete_cistern",
+          "hungry_or_thirsty_end": 4,
           "expeditions": [
             {
               "day": 1,
@@ -8621,6 +8623,15 @@
               "day": 2,
               "destination": "Estação",
               "team": 2,
+              "rounds": 9,
+              "incapacitated": 1,
+              "escorts": 0,
+              "survived_map": false
+            },
+            {
+              "day": 3,
+              "destination": "Estação",
+              "team": 1,
               "rounds": 9,
               "incapacitated": 1,
               "escorts": 0,
@@ -8724,25 +8735,27 @@
         {
           "size": 2,
           "seed": 6,
-          "result": "RUNNING",
+          "result": "unresolved",
           "verified_victory": false,
           "cause": "expedition_Estação_emergency_from_map",
           "consumers": 4,
-          "nights": 2,
-          "decisions": 71,
+          "nights": 5,
+          "decisions": 97,
           "outcomes": [
             "returned",
             "emergency_from_map",
-            "strategy_load_blocked"
+            "returned",
+            "emergency_from_map",
+            "no_expedition"
           ],
           "parts": [
             "Conexões"
           ],
           "materials": 1,
-          "health": 5,
-          "morale": 5,
-          "blocked": "plan_cargo",
-          "hungry_or_thirsty_end": 0,
+          "health": 0,
+          "morale": 4,
+          "blocked": "complete_cistern",
+          "hungry_or_thirsty_end": 4,
           "expeditions": [
             {
               "day": 1,
@@ -8761,6 +8774,24 @@
               "incapacitated": 1,
               "escorts": 0,
               "survived_map": false
+            },
+            {
+              "day": 3,
+              "destination": "Estação",
+              "team": 1,
+              "rounds": 1,
+              "incapacitated": 0,
+              "escorts": 0,
+              "survived_map": true
+            },
+            {
+              "day": 4,
+              "destination": "Estação",
+              "team": 1,
+              "rounds": 9,
+              "incapacitated": 1,
+              "escorts": 0,
+              "survived_map": false
             }
           ],
           "controller": "adaptive_oficina_first"
@@ -8768,25 +8799,27 @@
         {
           "size": 2,
           "seed": 7,
-          "result": "RUNNING",
+          "result": "unresolved",
           "verified_victory": false,
           "cause": "expedition_Estação_emergency_after_clock",
           "consumers": 5,
-          "nights": 2,
-          "decisions": 79,
+          "nights": 5,
+          "decisions": 104,
           "outcomes": [
             "returned",
             "emergency_after_clock",
-            "strategy_load_blocked"
+            "returned",
+            "emergency_from_map",
+            "no_expedition"
           ],
           "parts": [
             "Conexões"
           ],
-          "materials": 2,
-          "health": 5,
+          "materials": 1,
+          "health": 0,
           "morale": 5,
-          "blocked": "plan_cargo",
-          "hungry_or_thirsty_end": 0,
+          "blocked": "complete_cistern",
+          "hungry_or_thirsty_end": 6,
           "expeditions": [
             {
               "day": 1,
@@ -8805,6 +8838,24 @@
               "incapacitated": 0,
               "escorts": 0,
               "survived_map": true
+            },
+            {
+              "day": 3,
+              "destination": "Estação",
+              "team": 1,
+              "rounds": 1,
+              "incapacitated": 0,
+              "escorts": 0,
+              "survived_map": true
+            },
+            {
+              "day": 4,
+              "destination": "Estação",
+              "team": 1,
+              "rounds": 9,
+              "incapacitated": 1,
+              "escorts": 0,
+              "survived_map": false
             }
           ],
           "controller": "adaptive_oficina_first"
@@ -8812,25 +8863,27 @@
         {
           "size": 2,
           "seed": 8,
-          "result": "RUNNING",
+          "result": "unresolved",
           "verified_victory": false,
           "cause": "expedition_Estação_emergency_from_map",
           "consumers": 4,
-          "nights": 2,
-          "decisions": 85,
+          "nights": 5,
+          "decisions": 103,
           "outcomes": [
             "returned",
             "emergency_from_map",
-            "strategy_load_blocked"
+            "emergency_from_map",
+            "no_expedition",
+            "no_expedition"
           ],
           "parts": [
             "Conexões"
           ],
           "materials": 2,
-          "health": 5,
-          "morale": 5,
-          "blocked": "plan_cargo",
-          "hungry_or_thirsty_end": 0,
+          "health": 0,
+          "morale": 4,
+          "blocked": "complete_cistern",
+          "hungry_or_thirsty_end": 4,
           "expeditions": [
             {
               "day": 1,
@@ -8849,6 +8902,15 @@
               "incapacitated": 1,
               "escorts": 0,
               "survived_map": false
+            },
+            {
+              "day": 3,
+              "destination": "Estação",
+              "team": 1,
+              "rounds": 9,
+              "incapacitated": 1,
+              "escorts": 0,
+              "survived_map": false
             }
           ],
           "controller": "adaptive_oficina_first"
@@ -8856,25 +8918,27 @@
         {
           "size": 2,
           "seed": 9,
-          "result": "RUNNING",
+          "result": "unresolved",
           "verified_victory": false,
           "cause": "expedition_Estação_emergency_from_map",
           "consumers": 4,
-          "nights": 2,
-          "decisions": 69,
+          "nights": 5,
+          "decisions": 77,
           "outcomes": [
             "returned",
             "emergency_from_map",
-            "strategy_load_blocked"
+            "returned",
+            "no_expedition",
+            "no_expedition"
           ],
           "parts": [
             "Conexões"
           ],
           "materials": 1,
-          "health": 5,
-          "morale": 5,
-          "blocked": "plan_cargo",
-          "hungry_or_thirsty_end": 0,
+          "health": 0,
+          "morale": 4,
+          "blocked": "complete_cistern",
+          "hungry_or_thirsty_end": 4,
           "expeditions": [
             {
               "day": 1,
@@ -8893,6 +8957,15 @@
               "incapacitated": 1,
               "escorts": 0,
               "survived_map": false
+            },
+            {
+              "day": 3,
+              "destination": "Estação",
+              "team": 1,
+              "rounds": 1,
+              "incapacitated": 0,
+              "escorts": 0,
+              "survived_map": true
             }
           ],
           "controller": "adaptive_oficina_first"
@@ -9068,25 +9141,27 @@
         {
           "size": 2,
           "seed": 13,
-          "result": "RUNNING",
+          "result": "unresolved",
           "verified_victory": false,
           "cause": "expedition_Estação_emergency_from_map",
           "consumers": 4,
-          "nights": 2,
-          "decisions": 68,
+          "nights": 5,
+          "decisions": 94,
           "outcomes": [
             "returned",
             "emergency_from_map",
-            "strategy_load_blocked"
+            "returned",
+            "emergency_from_map",
+            "no_expedition"
           ],
           "parts": [
             "Conexões"
           ],
           "materials": 1,
-          "health": 5,
-          "morale": 5,
-          "blocked": "plan_cargo",
-          "hungry_or_thirsty_end": 0,
+          "health": 0,
+          "morale": 4,
+          "blocked": "complete_cistern",
+          "hungry_or_thirsty_end": 4,
           "expeditions": [
             {
               "day": 1,
@@ -9102,6 +9177,24 @@
               "destination": "Estação",
               "team": 2,
               "rounds": 8,
+              "incapacitated": 1,
+              "escorts": 0,
+              "survived_map": false
+            },
+            {
+              "day": 3,
+              "destination": "Estação",
+              "team": 1,
+              "rounds": 1,
+              "incapacitated": 0,
+              "escorts": 0,
+              "survived_map": true
+            },
+            {
+              "day": 4,
+              "destination": "Estação",
+              "team": 1,
+              "rounds": 9,
               "incapacitated": 1,
               "escorts": 0,
               "survived_map": false
@@ -9214,25 +9307,27 @@
         {
           "size": 2,
           "seed": 16,
-          "result": "RUNNING",
+          "result": "unresolved",
           "verified_victory": false,
           "cause": "expedition_Estação_emergency_from_map",
           "consumers": 4,
-          "nights": 2,
-          "decisions": 67,
+          "nights": 5,
+          "decisions": 92,
           "outcomes": [
             "returned",
             "emergency_from_map",
-            "strategy_load_blocked"
+            "returned",
+            "emergency_from_map",
+            "no_expedition"
           ],
           "parts": [
             "Conexões"
           ],
           "materials": 2,
-          "health": 5,
-          "morale": 5,
-          "blocked": "plan_cargo",
-          "hungry_or_thirsty_end": 0,
+          "health": 0,
+          "morale": 4,
+          "blocked": "complete_cistern",
+          "hungry_or_thirsty_end": 5,
           "expeditions": [
             {
               "day": 1,
@@ -9251,6 +9346,24 @@
               "incapacitated": 1,
               "escorts": 0,
               "survived_map": false
+            },
+            {
+              "day": 3,
+              "destination": "Estação",
+              "team": 1,
+              "rounds": 1,
+              "incapacitated": 0,
+              "escorts": 0,
+              "survived_map": true
+            },
+            {
+              "day": 4,
+              "destination": "Estação",
+              "team": 1,
+              "rounds": 9,
+              "incapacitated": 1,
+              "escorts": 0,
+              "survived_map": false
             }
           ],
           "controller": "adaptive_oficina_first"
@@ -9258,25 +9371,27 @@
         {
           "size": 2,
           "seed": 17,
-          "result": "RUNNING",
+          "result": "unresolved",
           "verified_victory": false,
           "cause": "expedition_Estação_emergency_from_map",
           "consumers": 3,
-          "nights": 2,
-          "decisions": 74,
+          "nights": 5,
+          "decisions": 92,
           "outcomes": [
             "returned",
             "emergency_from_map",
-            "strategy_load_blocked"
+            "emergency_from_map",
+            "no_expedition",
+            "no_expedition"
           ],
           "parts": [
             "Conexões"
           ],
           "materials": 1,
-          "health": 5,
-          "morale": 5,
-          "blocked": "plan_cargo",
-          "hungry_or_thirsty_end": 0,
+          "health": 0,
+          "morale": 4,
+          "blocked": "complete_cistern",
+          "hungry_or_thirsty_end": 4,
           "expeditions": [
             {
               "day": 1,
@@ -9295,6 +9410,15 @@
               "incapacitated": 1,
               "escorts": 1,
               "survived_map": false
+            },
+            {
+              "day": 3,
+              "destination": "Estação",
+              "team": 1,
+              "rounds": 9,
+              "incapacitated": 1,
+              "escorts": 0,
+              "survived_map": false
             }
           ],
           "controller": "adaptive_oficina_first"
@@ -9302,25 +9426,27 @@
         {
           "size": 2,
           "seed": 18,
-          "result": "RUNNING",
+          "result": "unresolved",
           "verified_victory": false,
           "cause": "expedition_Estação_emergency_from_map",
           "consumers": 4,
-          "nights": 2,
-          "decisions": 72,
+          "nights": 5,
+          "decisions": 110,
           "outcomes": [
             "returned",
             "emergency_from_map",
-            "strategy_load_blocked"
+            "returned",
+            "returned",
+            "emergency_from_map"
           ],
           "parts": [
             "Conexões"
           ],
           "materials": 2,
-          "health": 5,
-          "morale": 5,
-          "blocked": "plan_cargo",
-          "hungry_or_thirsty_end": 0,
+          "health": 0,
+          "morale": 4,
+          "blocked": "complete_cistern",
+          "hungry_or_thirsty_end": 4,
           "expeditions": [
             {
               "day": 1,
@@ -9335,6 +9461,33 @@
               "day": 2,
               "destination": "Estação",
               "team": 2,
+              "rounds": 9,
+              "incapacitated": 1,
+              "escorts": 0,
+              "survived_map": false
+            },
+            {
+              "day": 3,
+              "destination": "Estação",
+              "team": 1,
+              "rounds": 1,
+              "incapacitated": 0,
+              "escorts": 0,
+              "survived_map": true
+            },
+            {
+              "day": 4,
+              "destination": "Estação",
+              "team": 1,
+              "rounds": 2,
+              "incapacitated": 0,
+              "escorts": 0,
+              "survived_map": true
+            },
+            {
+              "day": 5,
+              "destination": "Mercado",
+              "team": 1,
               "rounds": 9,
               "incapacitated": 1,
               "escorts": 0,
@@ -9412,25 +9565,27 @@
         {
           "size": 2,
           "seed": 20,
-          "result": "RUNNING",
+          "result": "unresolved",
           "verified_victory": false,
           "cause": "expedition_Estação_emergency_from_map",
           "consumers": 3,
-          "nights": 2,
-          "decisions": 69,
+          "nights": 5,
+          "decisions": 94,
           "outcomes": [
             "returned",
             "emergency_from_map",
-            "strategy_load_blocked"
+            "returned",
+            "emergency_from_map",
+            "no_expedition"
           ],
           "parts": [
             "Conexões"
           ],
-          "materials": 2,
-          "health": 5,
+          "materials": 1,
+          "health": 0,
           "morale": 5,
-          "blocked": "plan_cargo",
-          "hungry_or_thirsty_end": 0,
+          "blocked": "complete_cistern",
+          "hungry_or_thirsty_end": 3,
           "expeditions": [
             {
               "day": 1,
@@ -9445,6 +9600,24 @@
               "day": 2,
               "destination": "Estação",
               "team": 2,
+              "rounds": 9,
+              "incapacitated": 1,
+              "escorts": 0,
+              "survived_map": false
+            },
+            {
+              "day": 3,
+              "destination": "Estação",
+              "team": 1,
+              "rounds": 1,
+              "incapacitated": 0,
+              "escorts": 0,
+              "survived_map": true
+            },
+            {
+              "day": 4,
+              "destination": "Estação",
+              "team": 1,
               "rounds": 9,
               "incapacitated": 1,
               "escorts": 0,
@@ -9502,25 +9675,27 @@
         {
           "size": 2,
           "seed": 22,
-          "result": "RUNNING",
+          "result": "unresolved",
           "verified_victory": false,
           "cause": "expedition_Estação_emergency_from_map",
           "consumers": 3,
-          "nights": 2,
-          "decisions": 71,
+          "nights": 5,
+          "decisions": 87,
           "outcomes": [
             "returned",
             "emergency_from_map",
-            "strategy_load_blocked"
+            "returned",
+            "returned",
+            "no_expedition"
           ],
           "parts": [
             "Conexões"
           ],
           "materials": 2,
-          "health": 5,
+          "health": 0,
           "morale": 5,
-          "blocked": "plan_cargo",
-          "hungry_or_thirsty_end": 0,
+          "blocked": "complete_cistern",
+          "hungry_or_thirsty_end": 3,
           "expeditions": [
             {
               "day": 1,
@@ -9539,6 +9714,24 @@
               "incapacitated": 1,
               "escorts": 0,
               "survived_map": false
+            },
+            {
+              "day": 3,
+              "destination": "Estação",
+              "team": 1,
+              "rounds": 1,
+              "incapacitated": 0,
+              "escorts": 0,
+              "survived_map": true
+            },
+            {
+              "day": 4,
+              "destination": "Estação",
+              "team": 1,
+              "rounds": 1,
+              "incapacitated": 0,
+              "escorts": 0,
+              "survived_map": true
             }
           ],
           "controller": "adaptive_oficina_first"
@@ -9546,25 +9739,27 @@
         {
           "size": 2,
           "seed": 23,
-          "result": "RUNNING",
+          "result": "unresolved",
           "verified_victory": false,
           "cause": "expedition_Estação_emergency_from_map",
           "consumers": 4,
-          "nights": 2,
-          "decisions": 69,
+          "nights": 5,
+          "decisions": 77,
           "outcomes": [
             "returned",
             "emergency_from_map",
-            "strategy_load_blocked"
+            "returned",
+            "no_expedition",
+            "no_expedition"
           ],
           "parts": [
             "Conexões"
           ],
-          "materials": 2,
-          "health": 5,
+          "materials": 3,
+          "health": 0,
           "morale": 5,
-          "blocked": "plan_cargo",
-          "hungry_or_thirsty_end": 0,
+          "blocked": "complete_cistern",
+          "hungry_or_thirsty_end": 4,
           "expeditions": [
             {
               "day": 1,
@@ -9583,6 +9778,15 @@
               "incapacitated": 1,
               "escorts": 0,
               "survived_map": false
+            },
+            {
+              "day": 3,
+              "destination": "Estação",
+              "team": 1,
+              "rounds": 1,
+              "incapacitated": 0,
+              "escorts": 0,
+              "survived_map": true
             }
           ],
           "controller": "adaptive_oficina_first"
@@ -9590,25 +9794,27 @@
         {
           "size": 2,
           "seed": 24,
-          "result": "RUNNING",
+          "result": "unresolved",
           "verified_victory": false,
           "cause": "expedition_Estação_emergency_from_map",
           "consumers": 4,
-          "nights": 2,
-          "decisions": 70,
+          "nights": 5,
+          "decisions": 88,
           "outcomes": [
             "returned",
             "emergency_from_map",
-            "strategy_load_blocked"
+            "returned",
+            "returned",
+            "no_expedition"
           ],
           "parts": [
             "Conexões"
           ],
           "materials": 2,
-          "health": 5,
-          "morale": 5,
-          "blocked": "plan_cargo",
-          "hungry_or_thirsty_end": 0,
+          "health": 0,
+          "morale": 4,
+          "blocked": "complete_cistern",
+          "hungry_or_thirsty_end": 4,
           "expeditions": [
             {
               "day": 1,
@@ -9627,6 +9833,24 @@
               "incapacitated": 1,
               "escorts": 0,
               "survived_map": false
+            },
+            {
+              "day": 3,
+              "destination": "Estação",
+              "team": 1,
+              "rounds": 1,
+              "incapacitated": 0,
+              "escorts": 0,
+              "survived_map": true
+            },
+            {
+              "day": 4,
+              "destination": "Estação",
+              "team": 1,
+              "rounds": 2,
+              "incapacitated": 0,
+              "escorts": 0,
+              "survived_map": true
             }
           ],
           "controller": "adaptive_oficina_first"
@@ -9634,25 +9858,27 @@
         {
           "size": 2,
           "seed": 25,
-          "result": "RUNNING",
+          "result": "unresolved",
           "verified_victory": false,
           "cause": "expedition_Estação_emergency_from_map",
           "consumers": 3,
-          "nights": 2,
-          "decisions": 68,
+          "nights": 5,
+          "decisions": 91,
           "outcomes": [
             "returned",
             "emergency_from_map",
-            "strategy_load_blocked"
+            "returned",
+            "emergency_from_map",
+            "no_expedition"
           ],
           "parts": [
             "Conexões"
           ],
           "materials": 2,
-          "health": 5,
-          "morale": 5,
-          "blocked": "plan_cargo",
-          "hungry_or_thirsty_end": 0,
+          "health": 0,
+          "morale": 4,
+          "blocked": "complete_cistern",
+          "hungry_or_thirsty_end": 4,
           "expeditions": [
             {
               "day": 1,
@@ -9668,6 +9894,24 @@
               "destination": "Estação",
               "team": 2,
               "rounds": 9,
+              "incapacitated": 1,
+              "escorts": 0,
+              "survived_map": false
+            },
+            {
+              "day": 3,
+              "destination": "Estação",
+              "team": 1,
+              "rounds": 1,
+              "incapacitated": 0,
+              "escorts": 0,
+              "survived_map": true
+            },
+            {
+              "day": 4,
+              "destination": "Estação",
+              "team": 1,
+              "rounds": 8,
               "incapacitated": 1,
               "escorts": 0,
               "survived_map": false
@@ -9678,25 +9922,27 @@
         {
           "size": 2,
           "seed": 26,
-          "result": "RUNNING",
+          "result": "unresolved",
           "verified_victory": false,
           "cause": "expedition_Estação_emergency_from_map",
           "consumers": 4,
-          "nights": 2,
-          "decisions": 68,
+          "nights": 5,
+          "decisions": 78,
           "outcomes": [
             "returned",
             "emergency_from_map",
-            "strategy_load_blocked"
+            "returned",
+            "no_expedition",
+            "no_expedition"
           ],
           "parts": [
             "Conexões"
           ],
           "materials": 1,
-          "health": 5,
+          "health": 0,
           "morale": 5,
-          "blocked": "plan_cargo",
-          "hungry_or_thirsty_end": 0,
+          "blocked": "complete_cistern",
+          "hungry_or_thirsty_end": 4,
           "expeditions": [
             {
               "day": 1,
@@ -9715,6 +9961,15 @@
               "incapacitated": 1,
               "escorts": 0,
               "survived_map": false
+            },
+            {
+              "day": 3,
+              "destination": "Estação",
+              "team": 1,
+              "rounds": 1,
+              "incapacitated": 0,
+              "escorts": 0,
+              "survived_map": true
             }
           ],
           "controller": "adaptive_oficina_first"
@@ -9834,25 +10089,27 @@
         {
           "size": 2,
           "seed": 29,
-          "result": "RUNNING",
+          "result": "unresolved",
           "verified_victory": false,
           "cause": "expedition_Estação_emergency_from_map",
           "consumers": 4,
-          "nights": 2,
-          "decisions": 72,
+          "nights": 5,
+          "decisions": 109,
           "outcomes": [
             "returned",
             "emergency_from_map",
-            "strategy_load_blocked"
+            "returned",
+            "returned",
+            "emergency_from_map"
           ],
           "parts": [
             "Conexões"
           ],
           "materials": 2,
-          "health": 5,
+          "health": 0,
           "morale": 5,
-          "blocked": "plan_cargo",
-          "hungry_or_thirsty_end": 0,
+          "blocked": "complete_cistern",
+          "hungry_or_thirsty_end": 5,
           "expeditions": [
             {
               "day": 1,
@@ -9867,6 +10124,33 @@
               "day": 2,
               "destination": "Estação",
               "team": 2,
+              "rounds": 9,
+              "incapacitated": 1,
+              "escorts": 0,
+              "survived_map": false
+            },
+            {
+              "day": 3,
+              "destination": "Estação",
+              "team": 1,
+              "rounds": 1,
+              "incapacitated": 0,
+              "escorts": 0,
+              "survived_map": true
+            },
+            {
+              "day": 4,
+              "destination": "Estação",
+              "team": 1,
+              "rounds": 1,
+              "incapacitated": 0,
+              "escorts": 0,
+              "survived_map": true
+            },
+            {
+              "day": 5,
+              "destination": "Mercado",
+              "team": 1,
               "rounds": 9,
               "incapacitated": 1,
               "escorts": 0,
@@ -10524,25 +10808,27 @@
         {
           "size": 3,
           "seed": 10,
-          "result": "RUNNING",
+          "result": "unresolved",
           "verified_victory": false,
           "cause": "expedition_Estação_blocked_return",
           "consumers": 7,
-          "nights": 2,
-          "decisions": 100,
+          "nights": 5,
+          "decisions": 125,
           "outcomes": [
             "returned",
             "blocked_return",
-            "strategy_load_blocked"
+            "returned",
+            "emergency_from_map",
+            "no_expedition"
           ],
           "parts": [
             "Conexões"
           ],
           "materials": 2,
-          "health": 5,
+          "health": 0,
           "morale": 5,
-          "blocked": "plan_cargo",
-          "hungry_or_thirsty_end": 0,
+          "blocked": "complete_cistern",
+          "hungry_or_thirsty_end": 7,
           "expeditions": [
             {
               "day": 1,
@@ -10561,6 +10847,24 @@
               "incapacitated": 1,
               "escorts": 1,
               "survived_map": true
+            },
+            {
+              "day": 3,
+              "destination": "Estação",
+              "team": 1,
+              "rounds": 1,
+              "incapacitated": 0,
+              "escorts": 0,
+              "survived_map": true
+            },
+            {
+              "day": 4,
+              "destination": "Estação",
+              "team": 1,
+              "rounds": 9,
+              "incapacitated": 1,
+              "escorts": 0,
+              "survived_map": false
             }
           ],
           "controller": "adaptive_oficina_first"
@@ -10953,25 +11257,27 @@
         {
           "size": 3,
           "seed": 17,
-          "result": "RUNNING",
+          "result": "unresolved",
           "verified_victory": false,
           "cause": "expedition_Estação_emergency_after_clock",
           "consumers": 4,
-          "nights": 2,
-          "decisions": 101,
+          "nights": 5,
+          "decisions": 125,
           "outcomes": [
             "returned",
             "emergency_after_clock",
-            "strategy_load_blocked"
+            "returned",
+            "emergency_from_map",
+            "no_expedition"
           ],
           "parts": [
             "Conexões"
           ],
           "materials": 1,
-          "health": 5,
-          "morale": 5,
-          "blocked": "plan_cargo",
-          "hungry_or_thirsty_end": 2,
+          "health": 0,
+          "morale": 4,
+          "blocked": "complete_cistern",
+          "hungry_or_thirsty_end": 5,
           "expeditions": [
             {
               "day": 1,
@@ -10990,6 +11296,24 @@
               "incapacitated": 0,
               "escorts": 0,
               "survived_map": true
+            },
+            {
+              "day": 3,
+              "destination": "Estação",
+              "team": 1,
+              "rounds": 1,
+              "incapacitated": 0,
+              "escorts": 0,
+              "survived_map": true
+            },
+            {
+              "day": 4,
+              "destination": "Estação",
+              "team": 1,
+              "rounds": 9,
+              "incapacitated": 1,
+              "escorts": 0,
+              "survived_map": false
             }
           ],
           "controller": "adaptive_oficina_first"
@@ -11646,25 +11970,27 @@
         {
           "size": 3,
           "seed": 28,
-          "result": "RUNNING",
+          "result": "unresolved",
           "verified_victory": false,
           "cause": "expedition_Estação_emergency_from_map",
           "consumers": 5,
-          "nights": 2,
-          "decisions": 89,
+          "nights": 5,
+          "decisions": 115,
           "outcomes": [
             "returned",
             "emergency_from_map",
-            "strategy_load_blocked"
+            "returned",
+            "returned",
+            "returned"
           ],
           "parts": [
             "Conexões"
           ],
           "materials": 1,
-          "health": 5,
-          "morale": 4,
-          "blocked": "plan_cargo",
-          "hungry_or_thirsty_end": 2,
+          "health": 0,
+          "morale": 3,
+          "blocked": "complete_cistern",
+          "hungry_or_thirsty_end": 6,
           "expeditions": [
             {
               "day": 1,
@@ -11683,6 +12009,33 @@
               "incapacitated": 1,
               "escorts": 0,
               "survived_map": false
+            },
+            {
+              "day": 3,
+              "destination": "Estação",
+              "team": 1,
+              "rounds": 1,
+              "incapacitated": 0,
+              "escorts": 0,
+              "survived_map": true
+            },
+            {
+              "day": 4,
+              "destination": "Estação",
+              "team": 1,
+              "rounds": 2,
+              "incapacitated": 0,
+              "escorts": 0,
+              "survived_map": true
+            },
+            {
+              "day": 5,
+              "destination": "Mercado",
+              "team": 1,
+              "rounds": 1,
+              "incapacitated": 0,
+              "escorts": 0,
+              "survived_map": true
             }
           ],
           "controller": "adaptive_oficina_first"
@@ -12375,25 +12728,27 @@
         {
           "size": 4,
           "seed": 10,
-          "result": "RUNNING",
+          "result": "unresolved",
           "verified_victory": false,
           "cause": "expedition_Estação_blocked_return",
           "consumers": 8,
-          "nights": 2,
-          "decisions": 126,
+          "nights": 5,
+          "decisions": 143,
           "outcomes": [
             "returned",
             "blocked_return",
-            "strategy_load_blocked"
+            "returned",
+            "returned",
+            "no_expedition"
           ],
           "parts": [
             "Conexões"
           ],
           "materials": 2,
-          "health": 5,
+          "health": 0,
           "morale": 5,
-          "blocked": "plan_cargo",
-          "hungry_or_thirsty_end": 0,
+          "blocked": "complete_cistern",
+          "hungry_or_thirsty_end": 8,
           "expeditions": [
             {
               "day": 1,
@@ -12411,6 +12766,24 @@
               "rounds": 8,
               "incapacitated": 1,
               "escorts": 1,
+              "survived_map": true
+            },
+            {
+              "day": 3,
+              "destination": "Estação",
+              "team": 1,
+              "rounds": 1,
+              "incapacitated": 0,
+              "escorts": 0,
+              "survived_map": true
+            },
+            {
+              "day": 4,
+              "destination": "Estação",
+              "team": 1,
+              "rounds": 1,
+              "incapacitated": 0,
+              "escorts": 0,
               "survived_map": true
             }
           ],
@@ -13163,25 +13536,27 @@
         {
           "size": 4,
           "seed": 23,
-          "result": "RUNNING",
+          "result": "unresolved",
           "verified_victory": false,
           "cause": "expedition_Estação_emergency_from_map",
           "consumers": 8,
-          "nights": 2,
-          "decisions": 127,
+          "nights": 5,
+          "decisions": 137,
           "outcomes": [
             "returned",
             "emergency_from_map",
-            "strategy_load_blocked"
+            "returned",
+            "no_expedition",
+            "no_expedition"
           ],
           "parts": [
             "Conexões"
           ],
-          "materials": 2,
-          "health": 5,
-          "morale": 5,
-          "blocked": "plan_cargo",
-          "hungry_or_thirsty_end": 0,
+          "materials": 3,
+          "health": 0,
+          "morale": 4,
+          "blocked": "complete_cistern",
+          "hungry_or_thirsty_end": 8,
           "expeditions": [
             {
               "day": 1,
@@ -13200,6 +13575,15 @@
               "incapacitated": 1,
               "escorts": 1,
               "survived_map": false
+            },
+            {
+              "day": 3,
+              "destination": "Estação",
+              "team": 1,
+              "rounds": 1,
+              "incapacitated": 0,
+              "escorts": 0,
+              "survived_map": true
             }
           ],
           "controller": "adaptive_oficina_first"
@@ -17061,26 +17445,27 @@
         {
           "size": 6,
           "seed": 26,
-          "result": "RUNNING",
+          "result": "unresolved",
           "verified_victory": false,
           "cause": "expedition_Estação_emergency_from_map",
           "consumers": 11,
-          "nights": 3,
-          "decisions": 207,
+          "nights": 5,
+          "decisions": 227,
           "outcomes": [
             "returned",
             "emergency_from_map",
             "emergency_from_map",
-            "strategy_load_blocked"
+            "emergency_from_map",
+            "no_expedition"
           ],
           "parts": [
             "Conexões"
           ],
           "materials": 1,
-          "health": 5,
+          "health": 0,
           "morale": 5,
-          "blocked": "plan_cargo",
-          "hungry_or_thirsty_end": 6,
+          "blocked": "complete_cistern",
+          "hungry_or_thirsty_end": 11,
           "expeditions": [
             {
               "day": 1,
@@ -17104,6 +17489,15 @@
               "day": 3,
               "destination": "Estação",
               "team": 5,
+              "rounds": 9,
+              "incapacitated": 1,
+              "escorts": 0,
+              "survived_map": false
+            },
+            {
+              "day": 4,
+              "destination": "Estação",
+              "team": 1,
               "rounds": 9,
               "incapacitated": 1,
               "escorts": 0,
@@ -19039,7 +19433,7 @@
           "cause": "expedition_Estação_emergency_after_clock",
           "consumers": 6,
           "nights": 5,
-          "decisions": 116,
+          "decisions": 117,
           "outcomes": [
             "emergency_after_clock",
             "emergency_from_map",
@@ -19786,7 +20180,7 @@
           "cause": "expedition_Estação_emergency_from_map",
           "consumers": 4,
           "nights": 5,
-          "decisions": 115,
+          "decisions": 116,
           "outcomes": [
             "emergency_from_map",
             "emergency_from_map",
@@ -19905,7 +20299,7 @@
           "cause": "expedition_Estação_emergency_from_map",
           "consumers": 5,
           "nights": 5,
-          "decisions": 116,
+          "decisions": 117,
           "outcomes": [
             "emergency_from_map",
             "emergency_from_map",
@@ -20059,7 +20453,7 @@
           "cause": "expedition_Estação_emergency_after_clock",
           "consumers": 5,
           "nights": 5,
-          "decisions": 116,
+          "decisions": 117,
           "outcomes": [
             "emergency_after_clock",
             "emergency_from_map",
@@ -20112,7 +20506,7 @@
           "cause": "expedition_Estação_blocked_return",
           "consumers": 5,
           "nights": 5,
-          "decisions": 115,
+          "decisions": 116,
           "outcomes": [
             "blocked_return",
             "emergency_from_map",
@@ -20363,7 +20757,7 @@
           "cause": "expedition_Estação_emergency_after_clock",
           "consumers": 5,
           "nights": 5,
-          "decisions": 120,
+          "decisions": 121,
           "outcomes": [
             "emergency_after_clock",
             "emergency_from_map",
@@ -21704,7 +22098,7 @@
           "cause": "expedition_Estação_emergency_from_map",
           "consumers": 7,
           "nights": 5,
-          "decisions": 135,
+          "decisions": 136,
           "outcomes": [
             "emergency_from_map",
             "emergency_from_map",
@@ -22099,7 +22493,7 @@
           "cause": "expedition_Estação_emergency_from_map",
           "consumers": 7,
           "nights": 5,
-          "decisions": 142,
+          "decisions": 143,
           "outcomes": [
             "emergency_from_map",
             "emergency_from_map",
@@ -34124,15 +34518,15 @@
             "expedition_Estação_emergency_after_clock": 1,
             "expedition_Hospital_emergency_after_clock": 1
           },
-          "hungry_or_thirsty_end_mean": 2.53,
-          "expeditions": 99,
-          "map_emergencies": 21,
-          "station_expeditions": 44,
-          "station_map_emergencies": 16,
-          "incapacitations": 21,
+          "hungry_or_thirsty_end_mean": 3.13,
+          "expeditions": 106,
+          "map_emergencies": 23,
+          "station_expeditions": 49,
+          "station_map_emergencies": 17,
+          "incapacitations": 23,
           "escorts": 0,
-          "mean_rounds": 6.3,
-          "mean_station_rounds": 7.77
+          "mean_rounds": 6.1,
+          "mean_station_rounds": 7.24
         },
         "H3": {
           "attempts": 30,
@@ -34605,25 +34999,27 @@
         {
           "size": 2,
           "seed": 37,
-          "result": "RUNNING",
+          "result": "unresolved",
           "verified_victory": false,
           "cause": "expedition_Estação_emergency_from_map",
           "consumers": 5,
-          "nights": 2,
-          "decisions": 74,
+          "nights": 5,
+          "decisions": 93,
           "outcomes": [
             "returned",
             "emergency_from_map",
-            "strategy_load_blocked"
+            "emergency_from_map",
+            "no_expedition",
+            "no_expedition"
           ],
           "parts": [
             "Conexões"
           ],
           "materials": 2,
-          "health": 5,
+          "health": 0,
           "morale": 5,
-          "blocked": "plan_cargo",
-          "hungry_or_thirsty_end": 0,
+          "blocked": "complete_cistern",
+          "hungry_or_thirsty_end": 6,
           "expeditions": [
             {
               "day": 1,
@@ -34640,6 +35036,15 @@
               "team": 2,
               "rounds": 9,
               "incapacitated": 0,
+              "escorts": 0,
+              "survived_map": false
+            },
+            {
+              "day": 3,
+              "destination": "Estação",
+              "team": 1,
+              "rounds": 9,
+              "incapacitated": 1,
               "escorts": 0,
               "survived_map": false
             }
@@ -35126,25 +35531,27 @@
         {
           "size": 2,
           "seed": 46,
-          "result": "RUNNING",
+          "result": "unresolved",
           "verified_victory": false,
           "cause": "expedition_Estação_emergency_from_map",
           "consumers": 5,
-          "nights": 2,
-          "decisions": 65,
+          "nights": 5,
+          "decisions": 101,
           "outcomes": [
             "returned",
             "emergency_from_map",
-            "strategy_load_blocked"
+            "returned",
+            "returned",
+            "emergency_from_map"
           ],
           "parts": [
             "Conexões"
           ],
-          "materials": 2,
-          "health": 5,
+          "materials": 1,
+          "health": 0,
           "morale": 5,
-          "blocked": "plan_cargo",
-          "hungry_or_thirsty_end": 0,
+          "blocked": "complete_cistern",
+          "hungry_or_thirsty_end": 6,
           "expeditions": [
             {
               "day": 1,
@@ -35159,6 +35566,33 @@
               "day": 2,
               "destination": "Estação",
               "team": 2,
+              "rounds": 9,
+              "incapacitated": 1,
+              "escorts": 0,
+              "survived_map": false
+            },
+            {
+              "day": 3,
+              "destination": "Estação",
+              "team": 1,
+              "rounds": 1,
+              "incapacitated": 0,
+              "escorts": 0,
+              "survived_map": true
+            },
+            {
+              "day": 4,
+              "destination": "Estação",
+              "team": 1,
+              "rounds": 1,
+              "incapacitated": 0,
+              "escorts": 0,
+              "survived_map": true
+            },
+            {
+              "day": 5,
+              "destination": "Mercado",
+              "team": 1,
               "rounds": 9,
               "incapacitated": 1,
               "escorts": 0,
@@ -35884,25 +36318,27 @@
         {
           "size": 2,
           "seed": 59,
-          "result": "RUNNING",
+          "result": "unresolved",
           "verified_victory": false,
           "cause": "expedition_Estação_emergency_from_map",
           "consumers": 5,
-          "nights": 2,
-          "decisions": 65,
+          "nights": 5,
+          "decisions": 89,
           "outcomes": [
             "returned",
             "emergency_from_map",
-            "strategy_load_blocked"
+            "returned",
+            "returned",
+            "returned"
           ],
           "parts": [
             "Conexões"
           ],
           "materials": 2,
-          "health": 5,
-          "morale": 5,
-          "blocked": "plan_cargo",
-          "hungry_or_thirsty_end": 0,
+          "health": 0,
+          "morale": 4,
+          "blocked": "complete_cistern",
+          "hungry_or_thirsty_end": 6,
           "expeditions": [
             {
               "day": 1,
@@ -35921,6 +36357,33 @@
               "incapacitated": 1,
               "escorts": 0,
               "survived_map": false
+            },
+            {
+              "day": 3,
+              "destination": "Estação",
+              "team": 1,
+              "rounds": 1,
+              "incapacitated": 0,
+              "escorts": 0,
+              "survived_map": true
+            },
+            {
+              "day": 4,
+              "destination": "Estação",
+              "team": 1,
+              "rounds": 1,
+              "incapacitated": 0,
+              "escorts": 0,
+              "survived_map": true
+            },
+            {
+              "day": 5,
+              "destination": "Mercado",
+              "team": 1,
+              "rounds": 1,
+              "incapacitated": 0,
+              "escorts": 0,
+              "survived_map": true
             }
           ],
           "controller": "adaptive_previous_heldout"
@@ -36118,7 +36581,7 @@
           "cause": "expedition_Estação_emergency_from_map",
           "consumers": 6,
           "nights": 5,
-          "decisions": 93,
+          "decisions": 94,
           "outcomes": [
             "returned",
             "emergency_from_map",
@@ -36779,7 +37242,7 @@
           "cause": "expedition_Estação_emergency_from_map",
           "consumers": 5,
           "nights": 5,
-          "decisions": 95,
+          "decisions": 96,
           "outcomes": [
             "returned",
             "emergency_from_map",
@@ -38102,7 +38565,7 @@
           "cause": "expedition_Estação_emergency_from_map",
           "consumers": 7,
           "nights": 5,
-          "decisions": 107,
+          "decisions": 108,
           "outcomes": [
             "returned",
             "emergency_from_map",
@@ -38948,7 +39411,7 @@
           "cause": "expedition_Estação_emergency_from_map",
           "consumers": 8,
           "nights": 5,
-          "decisions": 107,
+          "decisions": 108,
           "outcomes": [
             "returned",
             "emergency_from_map",
@@ -40108,7 +40571,7 @@
           "cause": "expedition_Estação_emergency_from_map",
           "consumers": 8,
           "nights": 5,
-          "decisions": 106,
+          "decisions": 107,
           "outcomes": [
             "emergency_from_map",
             "emergency_from_map",
@@ -40161,7 +40624,7 @@
           "cause": "expedition_Estação_emergency_from_map",
           "consumers": 11,
           "nights": 5,
-          "decisions": 118,
+          "decisions": 119,
           "outcomes": [
             "emergency_from_map",
             "emergency_from_map",
@@ -40214,7 +40677,7 @@
           "cause": "expedition_Estação_emergency_after_clock",
           "consumers": 9,
           "nights": 5,
-          "decisions": 126,
+          "decisions": 127,
           "outcomes": [
             "emergency_after_clock",
             "emergency_from_map",
@@ -40479,7 +40942,7 @@
           "cause": "expedition_Estação_emergency_from_map",
           "consumers": 9,
           "nights": 5,
-          "decisions": 121,
+          "decisions": 122,
           "outcomes": [
             "emergency_from_map",
             "emergency_from_map",
@@ -40642,7 +41105,7 @@
           "cause": "expedition_Estação_emergency_from_map",
           "consumers": 9,
           "nights": 5,
-          "decisions": 111,
+          "decisions": 112,
           "outcomes": [
             "emergency_from_map",
             "emergency_from_map",
@@ -40862,7 +41325,7 @@
           "cause": "expedition_Estação_emergency_from_map",
           "consumers": 11,
           "nights": 5,
-          "decisions": 104,
+          "decisions": 105,
           "outcomes": [
             "emergency_from_map",
             "emergency_from_map",
@@ -41787,7 +42250,7 @@
           "cause": "expedition_Estação_emergency_from_map",
           "consumers": 10,
           "nights": 5,
-          "decisions": 109,
+          "decisions": 110,
           "outcomes": [
             "emergency_from_map",
             "emergency_from_map",
@@ -42681,15 +43144,15 @@
             "expedition_Mercado_emergency_from_map": 1,
             "expedition_Estação_emergency_after_clock": 1
           },
-          "hungry_or_thirsty_end_mean": 1.2,
-          "expeditions": 76,
-          "map_emergencies": 23,
-          "station_expeditions": 33,
-          "station_map_emergencies": 22,
-          "incapacitations": 24,
+          "hungry_or_thirsty_end_mean": 3.33,
+          "expeditions": 111,
+          "map_emergencies": 38,
+          "station_expeditions": 63,
+          "station_map_emergencies": 32,
+          "incapacitations": 39,
           "escorts": 3,
-          "mean_rounds": 6.5,
-          "mean_station_rounds": 8.27
+          "mean_rounds": 5.85,
+          "mean_station_rounds": 6.1
         },
         "H3": {
           "attempts": 30,
@@ -42721,15 +43184,15 @@
             "expedition_Estação_emergency_after_clock": 1,
             "expedition_Estação_blocked_return": 1
           },
-          "hungry_or_thirsty_end_mean": 2.07,
-          "expeditions": 103,
-          "map_emergencies": 10,
-          "station_expeditions": 34,
-          "station_map_emergencies": 7,
-          "incapacitations": 15,
+          "hungry_or_thirsty_end_mean": 2.43,
+          "expeditions": 107,
+          "map_emergencies": 11,
+          "station_expeditions": 38,
+          "station_map_emergencies": 8,
+          "incapacitations": 16,
           "escorts": 11,
-          "mean_rounds": 5.57,
-          "mean_station_rounds": 6.88
+          "mean_rounds": 5.49,
+          "mean_station_rounds": 6.5
         },
         "H4": {
           "attempts": 30,
@@ -42767,15 +43230,15 @@
             "expedition_Estação_blocked_return": 1,
             "partial_defeat_hunger_or_thirst": 1
           },
-          "hungry_or_thirsty_end_mean": 0.73,
-          "expeditions": 106,
-          "map_emergencies": 5,
-          "station_expeditions": 33,
-          "station_map_emergencies": 3,
-          "incapacitations": 9,
+          "hungry_or_thirsty_end_mean": 1.1,
+          "expeditions": 109,
+          "map_emergencies": 7,
+          "station_expeditions": 36,
+          "station_map_emergencies": 5,
+          "incapacitations": 11,
           "escorts": 7,
-          "mean_rounds": 5.49,
-          "mean_station_rounds": 6.55
+          "mean_rounds": 5.54,
+          "mean_station_rounds": 6.61
         },
         "H5": {
           "attempts": 30,
@@ -42848,40 +43311,42 @@
             "expedition_Estação_emergency_after_clock": 1,
             "partial_defeat_hunger_or_thirst": 1
           },
-          "hungry_or_thirsty_end_mean": 2.5,
-          "expeditions": 106,
+          "hungry_or_thirsty_end_mean": 2.63,
+          "expeditions": 108,
           "map_emergencies": 11,
-          "station_expeditions": 34,
+          "station_expeditions": 35,
           "station_map_emergencies": 7,
           "incapacitations": 8,
           "escorts": 5,
-          "mean_rounds": 5.55,
-          "mean_station_rounds": 7.06
+          "mean_rounds": 5.46,
+          "mean_station_rounds": 6.89
         }
       },
       "runs": [
         {
           "size": 2,
           "seed": 31,
-          "result": "RUNNING",
+          "result": "unresolved",
           "verified_victory": false,
           "cause": "expedition_Estação_emergency_from_map",
           "consumers": 3,
-          "nights": 2,
-          "decisions": 72,
+          "nights": 5,
+          "decisions": 109,
           "outcomes": [
             "returned",
             "emergency_from_map",
-            "strategy_load_blocked"
+            "returned",
+            "returned",
+            "emergency_from_map"
           ],
           "parts": [
             "Conexões"
           ],
           "materials": 2,
-          "health": 5,
+          "health": 0,
           "morale": 5,
-          "blocked": "plan_cargo",
-          "hungry_or_thirsty_end": 0,
+          "blocked": "complete_cistern",
+          "hungry_or_thirsty_end": 4,
           "expeditions": [
             {
               "day": 1,
@@ -42897,6 +43362,33 @@
               "destination": "Estação",
               "team": 2,
               "rounds": 9,
+              "incapacitated": 1,
+              "escorts": 0,
+              "survived_map": false
+            },
+            {
+              "day": 3,
+              "destination": "Estação",
+              "team": 1,
+              "rounds": 1,
+              "incapacitated": 0,
+              "escorts": 0,
+              "survived_map": true
+            },
+            {
+              "day": 4,
+              "destination": "Estação",
+              "team": 1,
+              "rounds": 1,
+              "incapacitated": 0,
+              "escorts": 0,
+              "survived_map": true
+            },
+            {
+              "day": 5,
+              "destination": "Mercado",
+              "team": 1,
+              "rounds": 8,
               "incapacitated": 1,
               "escorts": 0,
               "survived_map": false
@@ -43019,25 +43511,27 @@
         {
           "size": 2,
           "seed": 34,
-          "result": "RUNNING",
+          "result": "unresolved",
           "verified_victory": false,
           "cause": "expedition_Estação_emergency_from_map",
           "consumers": 4,
-          "nights": 2,
-          "decisions": 69,
+          "nights": 5,
+          "decisions": 108,
           "outcomes": [
             "returned",
             "emergency_from_map",
-            "strategy_load_blocked"
+            "returned",
+            "returned",
+            "emergency_from_map"
           ],
           "parts": [
             "Conexões"
           ],
-          "materials": 2,
-          "health": 5,
-          "morale": 5,
-          "blocked": "plan_cargo",
-          "hungry_or_thirsty_end": 0,
+          "materials": 3,
+          "health": 0,
+          "morale": 4,
+          "blocked": "complete_cistern",
+          "hungry_or_thirsty_end": 5,
           "expeditions": [
             {
               "day": 1,
@@ -43052,6 +43546,33 @@
               "day": 2,
               "destination": "Estação",
               "team": 2,
+              "rounds": 9,
+              "incapacitated": 1,
+              "escorts": 0,
+              "survived_map": false
+            },
+            {
+              "day": 3,
+              "destination": "Estação",
+              "team": 1,
+              "rounds": 1,
+              "incapacitated": 0,
+              "escorts": 0,
+              "survived_map": true
+            },
+            {
+              "day": 4,
+              "destination": "Estação",
+              "team": 1,
+              "rounds": 2,
+              "incapacitated": 0,
+              "escorts": 0,
+              "survived_map": true
+            },
+            {
+              "day": 5,
+              "destination": "Mercado",
+              "team": 1,
               "rounds": 9,
               "incapacitated": 1,
               "escorts": 0,
@@ -43201,25 +43722,27 @@
         {
           "size": 2,
           "seed": 38,
-          "result": "RUNNING",
+          "result": "unresolved",
           "verified_victory": false,
           "cause": "expedition_Estação_emergency_from_map",
           "consumers": 4,
-          "nights": 2,
-          "decisions": 69,
+          "nights": 5,
+          "decisions": 93,
           "outcomes": [
             "returned",
             "emergency_from_map",
-            "strategy_load_blocked"
+            "returned",
+            "emergency_from_map",
+            "no_expedition"
           ],
           "parts": [
             "Conexões"
           ],
           "materials": 2,
-          "health": 5,
-          "morale": 5,
-          "blocked": "plan_cargo",
-          "hungry_or_thirsty_end": 0,
+          "health": 0,
+          "morale": 4,
+          "blocked": "complete_cistern",
+          "hungry_or_thirsty_end": 4,
           "expeditions": [
             {
               "day": 1,
@@ -43238,6 +43761,24 @@
               "incapacitated": 1,
               "escorts": 0,
               "survived_map": false
+            },
+            {
+              "day": 3,
+              "destination": "Estação",
+              "team": 1,
+              "rounds": 1,
+              "incapacitated": 0,
+              "escorts": 0,
+              "survived_map": true
+            },
+            {
+              "day": 4,
+              "destination": "Estação",
+              "team": 1,
+              "rounds": 9,
+              "incapacitated": 1,
+              "escorts": 0,
+              "survived_map": false
             }
           ],
           "controller": "adaptive_auto_heldout"
@@ -43245,25 +43786,27 @@
         {
           "size": 2,
           "seed": 39,
-          "result": "RUNNING",
+          "result": "unresolved",
           "verified_victory": false,
           "cause": "expedition_Estação_emergency_from_map",
           "consumers": 4,
-          "nights": 2,
-          "decisions": 69,
+          "nights": 5,
+          "decisions": 93,
           "outcomes": [
             "returned",
             "emergency_from_map",
-            "strategy_load_blocked"
+            "returned",
+            "emergency_from_map",
+            "no_expedition"
           ],
           "parts": [
             "Conexões"
           ],
           "materials": 2,
-          "health": 5,
-          "morale": 5,
-          "blocked": "plan_cargo",
-          "hungry_or_thirsty_end": 0,
+          "health": 0,
+          "morale": 4,
+          "blocked": "complete_cistern",
+          "hungry_or_thirsty_end": 5,
           "expeditions": [
             {
               "day": 1,
@@ -43278,6 +43821,24 @@
               "day": 2,
               "destination": "Estação",
               "team": 2,
+              "rounds": 9,
+              "incapacitated": 1,
+              "escorts": 0,
+              "survived_map": false
+            },
+            {
+              "day": 3,
+              "destination": "Estação",
+              "team": 1,
+              "rounds": 1,
+              "incapacitated": 0,
+              "escorts": 0,
+              "survived_map": true
+            },
+            {
+              "day": 4,
+              "destination": "Estação",
+              "team": 1,
               "rounds": 9,
               "incapacitated": 1,
               "escorts": 0,
@@ -43355,25 +43916,27 @@
         {
           "size": 2,
           "seed": 41,
-          "result": "RUNNING",
+          "result": "unresolved",
           "verified_victory": false,
           "cause": "expedition_Estação_emergency_from_map",
           "consumers": 3,
-          "nights": 2,
-          "decisions": 67,
+          "nights": 5,
+          "decisions": 90,
           "outcomes": [
             "returned",
             "emergency_from_map",
-            "strategy_load_blocked"
+            "returned",
+            "emergency_from_map",
+            "no_expedition"
           ],
           "parts": [
             "Conexões"
           ],
           "materials": 2,
-          "health": 5,
-          "morale": 5,
-          "blocked": "plan_cargo",
-          "hungry_or_thirsty_end": 0,
+          "health": 0,
+          "morale": 4,
+          "blocked": "complete_cistern",
+          "hungry_or_thirsty_end": 4,
           "expeditions": [
             {
               "day": 1,
@@ -43392,6 +43955,24 @@
               "incapacitated": 1,
               "escorts": 0,
               "survived_map": false
+            },
+            {
+              "day": 3,
+              "destination": "Estação",
+              "team": 1,
+              "rounds": 1,
+              "incapacitated": 0,
+              "escorts": 0,
+              "survived_map": true
+            },
+            {
+              "day": 4,
+              "destination": "Estação",
+              "team": 1,
+              "rounds": 9,
+              "incapacitated": 1,
+              "escorts": 0,
+              "survived_map": false
             }
           ],
           "controller": "adaptive_auto_heldout"
@@ -43399,25 +43980,27 @@
         {
           "size": 2,
           "seed": 42,
-          "result": "RUNNING",
+          "result": "unresolved",
           "verified_victory": false,
           "cause": "expedition_Estação_emergency_from_map",
           "consumers": 4,
-          "nights": 2,
-          "decisions": 73,
+          "nights": 5,
+          "decisions": 112,
           "outcomes": [
             "returned",
             "emergency_from_map",
-            "strategy_load_blocked"
+            "returned",
+            "returned",
+            "emergency_from_map"
           ],
           "parts": [
             "Conexões"
           ],
-          "materials": 2,
-          "health": 5,
-          "morale": 5,
-          "blocked": "plan_cargo",
-          "hungry_or_thirsty_end": 0,
+          "materials": 3,
+          "health": 0,
+          "morale": 4,
+          "blocked": "complete_cistern",
+          "hungry_or_thirsty_end": 4,
           "expeditions": [
             {
               "day": 1,
@@ -43436,6 +44019,33 @@
               "incapacitated": 1,
               "escorts": 0,
               "survived_map": false
+            },
+            {
+              "day": 3,
+              "destination": "Estação",
+              "team": 1,
+              "rounds": 1,
+              "incapacitated": 0,
+              "escorts": 0,
+              "survived_map": true
+            },
+            {
+              "day": 4,
+              "destination": "Estação",
+              "team": 1,
+              "rounds": 1,
+              "incapacitated": 0,
+              "escorts": 0,
+              "survived_map": true
+            },
+            {
+              "day": 5,
+              "destination": "Mercado",
+              "team": 1,
+              "rounds": 9,
+              "incapacitated": 1,
+              "escorts": 0,
+              "survived_map": false
             }
           ],
           "controller": "adaptive_auto_heldout"
@@ -43443,25 +44053,27 @@
         {
           "size": 2,
           "seed": 43,
-          "result": "RUNNING",
+          "result": "unresolved",
           "verified_victory": false,
           "cause": "expedition_Estação_emergency_from_map",
           "consumers": 3,
-          "nights": 2,
-          "decisions": 67,
+          "nights": 5,
+          "decisions": 91,
           "outcomes": [
             "returned",
             "emergency_from_map",
-            "strategy_load_blocked"
+            "returned",
+            "emergency_from_map",
+            "no_expedition"
           ],
           "parts": [
             "Conexões"
           ],
-          "materials": 2,
-          "health": 5,
-          "morale": 5,
-          "blocked": "plan_cargo",
-          "hungry_or_thirsty_end": 0,
+          "materials": 1,
+          "health": 0,
+          "morale": 4,
+          "blocked": "complete_cistern",
+          "hungry_or_thirsty_end": 4,
           "expeditions": [
             {
               "day": 1,
@@ -43476,6 +44088,24 @@
               "day": 2,
               "destination": "Estação",
               "team": 2,
+              "rounds": 9,
+              "incapacitated": 1,
+              "escorts": 0,
+              "survived_map": false
+            },
+            {
+              "day": 3,
+              "destination": "Estação",
+              "team": 1,
+              "rounds": 1,
+              "incapacitated": 0,
+              "escorts": 0,
+              "survived_map": true
+            },
+            {
+              "day": 4,
+              "destination": "Estação",
+              "team": 1,
               "rounds": 9,
               "incapacitated": 1,
               "escorts": 0,
@@ -43553,25 +44183,27 @@
         {
           "size": 2,
           "seed": 45,
-          "result": "RUNNING",
+          "result": "unresolved",
           "verified_victory": false,
           "cause": "expedition_Estação_emergency_from_map",
           "consumers": 3,
-          "nights": 2,
-          "decisions": 69,
+          "nights": 5,
+          "decisions": 92,
           "outcomes": [
             "returned",
             "emergency_from_map",
-            "strategy_load_blocked"
+            "returned",
+            "emergency_from_map",
+            "no_expedition"
           ],
           "parts": [
             "Conexões"
           ],
           "materials": 2,
-          "health": 5,
-          "morale": 5,
-          "blocked": "plan_cargo",
-          "hungry_or_thirsty_end": 0,
+          "health": 0,
+          "morale": 4,
+          "blocked": "complete_cistern",
+          "hungry_or_thirsty_end": 3,
           "expeditions": [
             {
               "day": 1,
@@ -43587,6 +44219,24 @@
               "destination": "Estação",
               "team": 2,
               "rounds": 9,
+              "incapacitated": 1,
+              "escorts": 0,
+              "survived_map": false
+            },
+            {
+              "day": 3,
+              "destination": "Estação",
+              "team": 1,
+              "rounds": 1,
+              "incapacitated": 0,
+              "escorts": 0,
+              "survived_map": true
+            },
+            {
+              "day": 4,
+              "destination": "Estação",
+              "team": 1,
+              "rounds": 8,
               "incapacitated": 1,
               "escorts": 0,
               "survived_map": false
@@ -43653,25 +44303,27 @@
         {
           "size": 2,
           "seed": 47,
-          "result": "RUNNING",
+          "result": "unresolved",
           "verified_victory": false,
           "cause": "expedition_Estação_emergency_from_map",
           "consumers": 3,
-          "nights": 2,
-          "decisions": 70,
+          "nights": 5,
+          "decisions": 94,
           "outcomes": [
             "returned",
             "emergency_from_map",
-            "strategy_load_blocked"
+            "returned",
+            "emergency_from_map",
+            "no_expedition"
           ],
           "parts": [
             "Conexões"
           ],
           "materials": 2,
-          "health": 5,
+          "health": 0,
           "morale": 5,
-          "blocked": "plan_cargo",
-          "hungry_or_thirsty_end": 0,
+          "blocked": "complete_cistern",
+          "hungry_or_thirsty_end": 3,
           "expeditions": [
             {
               "day": 1,
@@ -43690,6 +44342,24 @@
               "incapacitated": 1,
               "escorts": 0,
               "survived_map": false
+            },
+            {
+              "day": 3,
+              "destination": "Estação",
+              "team": 1,
+              "rounds": 1,
+              "incapacitated": 0,
+              "escorts": 0,
+              "survived_map": true
+            },
+            {
+              "day": 4,
+              "destination": "Estação",
+              "team": 1,
+              "rounds": 9,
+              "incapacitated": 1,
+              "escorts": 0,
+              "survived_map": false
             }
           ],
           "controller": "adaptive_auto_heldout"
@@ -43697,25 +44367,27 @@
         {
           "size": 2,
           "seed": 48,
-          "result": "RUNNING",
+          "result": "unresolved",
           "verified_victory": false,
           "cause": "expedition_Estação_emergency_from_map",
           "consumers": 4,
-          "nights": 2,
-          "decisions": 67,
+          "nights": 5,
+          "decisions": 90,
           "outcomes": [
             "returned",
             "emergency_from_map",
-            "strategy_load_blocked"
+            "returned",
+            "emergency_from_map",
+            "no_expedition"
           ],
           "parts": [
             "Conexões"
           ],
           "materials": 3,
-          "health": 5,
-          "morale": 5,
-          "blocked": "plan_cargo",
-          "hungry_or_thirsty_end": 2,
+          "health": 0,
+          "morale": 4,
+          "blocked": "complete_cistern",
+          "hungry_or_thirsty_end": 5,
           "expeditions": [
             {
               "day": 1,
@@ -43730,6 +44402,24 @@
               "day": 2,
               "destination": "Estação",
               "team": 2,
+              "rounds": 9,
+              "incapacitated": 1,
+              "escorts": 0,
+              "survived_map": false
+            },
+            {
+              "day": 3,
+              "destination": "Estação",
+              "team": 1,
+              "rounds": 1,
+              "incapacitated": 0,
+              "escorts": 0,
+              "survived_map": true
+            },
+            {
+              "day": 4,
+              "destination": "Estação",
+              "team": 1,
               "rounds": 9,
               "incapacitated": 1,
               "escorts": 0,
@@ -43741,25 +44431,27 @@
         {
           "size": 2,
           "seed": 49,
-          "result": "RUNNING",
+          "result": "unresolved",
           "verified_victory": false,
           "cause": "expedition_Estação_emergency_from_map",
           "consumers": 3,
-          "nights": 2,
-          "decisions": 67,
+          "nights": 5,
+          "decisions": 102,
           "outcomes": [
             "returned",
             "emergency_from_map",
-            "strategy_load_blocked"
+            "returned",
+            "returned",
+            "emergency_from_map"
           ],
           "parts": [
             "Conexões"
           ],
           "materials": 1,
-          "health": 5,
+          "health": 0,
           "morale": 5,
-          "blocked": "plan_cargo",
-          "hungry_or_thirsty_end": 0,
+          "blocked": "complete_cistern",
+          "hungry_or_thirsty_end": 3,
           "expeditions": [
             {
               "day": 1,
@@ -43778,6 +44470,33 @@
               "incapacitated": 1,
               "escorts": 0,
               "survived_map": false
+            },
+            {
+              "day": 3,
+              "destination": "Estação",
+              "team": 1,
+              "rounds": 1,
+              "incapacitated": 0,
+              "escorts": 0,
+              "survived_map": true
+            },
+            {
+              "day": 4,
+              "destination": "Estação",
+              "team": 1,
+              "rounds": 1,
+              "incapacitated": 0,
+              "escorts": 0,
+              "survived_map": true
+            },
+            {
+              "day": 5,
+              "destination": "Mercado",
+              "team": 1,
+              "rounds": 9,
+              "incapacitated": 1,
+              "escorts": 0,
+              "survived_map": false
             }
           ],
           "controller": "adaptive_auto_heldout"
@@ -43785,25 +44504,27 @@
         {
           "size": 2,
           "seed": 50,
-          "result": "RUNNING",
+          "result": "unresolved",
           "verified_victory": false,
           "cause": "expedition_Estação_emergency_from_map",
           "consumers": 3,
-          "nights": 2,
-          "decisions": 73,
+          "nights": 5,
+          "decisions": 91,
           "outcomes": [
             "returned",
             "emergency_from_map",
-            "strategy_load_blocked"
+            "emergency_from_map",
+            "no_expedition",
+            "no_expedition"
           ],
           "parts": [
             "Conexões"
           ],
           "materials": 2,
-          "health": 5,
-          "morale": 5,
-          "blocked": "plan_cargo",
-          "hungry_or_thirsty_end": 0,
+          "health": 0,
+          "morale": 4,
+          "blocked": "complete_cistern",
+          "hungry_or_thirsty_end": 3,
           "expeditions": [
             {
               "day": 1,
@@ -43821,6 +44542,15 @@
               "rounds": 9,
               "incapacitated": 1,
               "escorts": 1,
+              "survived_map": false
+            },
+            {
+              "day": 3,
+              "destination": "Estação",
+              "team": 1,
+              "rounds": 9,
+              "incapacitated": 1,
+              "escorts": 0,
               "survived_map": false
             }
           ],
@@ -43895,25 +44625,27 @@
         {
           "size": 2,
           "seed": 52,
-          "result": "RUNNING",
+          "result": "unresolved",
           "verified_victory": false,
           "cause": "expedition_Estação_emergency_from_map",
           "consumers": 3,
-          "nights": 2,
-          "decisions": 70,
+          "nights": 5,
+          "decisions": 78,
           "outcomes": [
             "returned",
             "emergency_from_map",
-            "strategy_load_blocked"
+            "returned",
+            "no_expedition",
+            "no_expedition"
           ],
           "parts": [
             "Conexões"
           ],
           "materials": 2,
-          "health": 5,
+          "health": 0,
           "morale": 5,
-          "blocked": "plan_cargo",
-          "hungry_or_thirsty_end": 0,
+          "blocked": "complete_cistern",
+          "hungry_or_thirsty_end": 4,
           "expeditions": [
             {
               "day": 1,
@@ -43932,6 +44664,15 @@
               "incapacitated": 1,
               "escorts": 0,
               "survived_map": false
+            },
+            {
+              "day": 3,
+              "destination": "Estação",
+              "team": 1,
+              "rounds": 1,
+              "incapacitated": 0,
+              "escorts": 0,
+              "survived_map": true
             }
           ],
           "controller": "adaptive_auto_heldout"
@@ -43939,25 +44680,27 @@
         {
           "size": 2,
           "seed": 53,
-          "result": "RUNNING",
+          "result": "unresolved",
           "verified_victory": false,
           "cause": "expedition_Estação_emergency_from_map",
           "consumers": 2,
-          "nights": 2,
-          "decisions": 71,
+          "nights": 5,
+          "decisions": 90,
           "outcomes": [
             "returned",
             "emergency_from_map",
-            "strategy_load_blocked"
+            "emergency_from_map",
+            "no_expedition",
+            "no_expedition"
           ],
           "parts": [
             "Conexões"
           ],
-          "materials": 2,
-          "health": 5,
-          "morale": 5,
-          "blocked": "plan_cargo",
-          "hungry_or_thirsty_end": 0,
+          "materials": 1,
+          "health": 0,
+          "morale": 4,
+          "blocked": "complete_cistern",
+          "hungry_or_thirsty_end": 2,
           "expeditions": [
             {
               "day": 1,
@@ -43972,6 +44715,15 @@
               "day": 2,
               "destination": "Estação",
               "team": 2,
+              "rounds": 9,
+              "incapacitated": 1,
+              "escorts": 0,
+              "survived_map": false
+            },
+            {
+              "day": 3,
+              "destination": "Estação",
+              "team": 1,
               "rounds": 9,
               "incapacitated": 1,
               "escorts": 0,
@@ -43983,25 +44735,27 @@
         {
           "size": 2,
           "seed": 54,
-          "result": "RUNNING",
+          "result": "unresolved",
           "verified_victory": false,
           "cause": "expedition_Estação_emergency_from_map",
           "consumers": 4,
-          "nights": 2,
-          "decisions": 67,
+          "nights": 5,
+          "decisions": 76,
           "outcomes": [
             "returned",
             "emergency_from_map",
-            "strategy_load_blocked"
+            "returned",
+            "no_expedition",
+            "no_expedition"
           ],
           "parts": [
             "Conexões"
           ],
           "materials": 2,
-          "health": 5,
-          "morale": 5,
-          "blocked": "plan_cargo",
-          "hungry_or_thirsty_end": 0,
+          "health": 0,
+          "morale": 4,
+          "blocked": "complete_cistern",
+          "hungry_or_thirsty_end": 4,
           "expeditions": [
             {
               "day": 1,
@@ -44020,6 +44774,15 @@
               "incapacitated": 1,
               "escorts": 0,
               "survived_map": false
+            },
+            {
+              "day": 3,
+              "destination": "Estação",
+              "team": 1,
+              "rounds": 1,
+              "incapacitated": 0,
+              "escorts": 0,
+              "survived_map": true
             }
           ],
           "controller": "adaptive_auto_heldout"
@@ -44027,25 +44790,27 @@
         {
           "size": 2,
           "seed": 55,
-          "result": "RUNNING",
+          "result": "unresolved",
           "verified_victory": false,
           "cause": "expedition_Estação_emergency_from_map",
           "consumers": 4,
-          "nights": 2,
-          "decisions": 67,
+          "nights": 5,
+          "decisions": 92,
           "outcomes": [
             "returned",
             "emergency_from_map",
-            "strategy_load_blocked"
+            "returned",
+            "emergency_from_map",
+            "no_expedition"
           ],
           "parts": [
             "Conexões"
           ],
-          "materials": 3,
-          "health": 5,
-          "morale": 5,
-          "blocked": "plan_cargo",
-          "hungry_or_thirsty_end": 0,
+          "materials": 2,
+          "health": 0,
+          "morale": 4,
+          "blocked": "complete_cistern",
+          "hungry_or_thirsty_end": 4,
           "expeditions": [
             {
               "day": 1,
@@ -44060,6 +44825,24 @@
               "day": 2,
               "destination": "Estação",
               "team": 2,
+              "rounds": 9,
+              "incapacitated": 1,
+              "escorts": 0,
+              "survived_map": false
+            },
+            {
+              "day": 3,
+              "destination": "Estação",
+              "team": 1,
+              "rounds": 1,
+              "incapacitated": 0,
+              "escorts": 0,
+              "survived_map": true
+            },
+            {
+              "day": 4,
+              "destination": "Estação",
+              "team": 1,
               "rounds": 9,
               "incapacitated": 1,
               "escorts": 0,
@@ -44325,25 +45108,27 @@
         {
           "size": 2,
           "seed": 60,
-          "result": "RUNNING",
+          "result": "unresolved",
           "verified_victory": false,
           "cause": "expedition_Estação_emergency_from_map",
           "consumers": 4,
-          "nights": 2,
-          "decisions": 77,
+          "nights": 5,
+          "decisions": 116,
           "outcomes": [
             "returned",
             "emergency_from_map",
-            "strategy_load_blocked"
+            "returned",
+            "returned",
+            "emergency_from_map"
           ],
           "parts": [
             "Conexões"
           ],
           "materials": 2,
-          "health": 5,
-          "morale": 5,
-          "blocked": "plan_cargo",
-          "hungry_or_thirsty_end": 0,
+          "health": 0,
+          "morale": 3,
+          "blocked": "complete_cistern",
+          "hungry_or_thirsty_end": 5,
           "expeditions": [
             {
               "day": 1,
@@ -44358,6 +45143,33 @@
               "day": 2,
               "destination": "Estação",
               "team": 2,
+              "rounds": 9,
+              "incapacitated": 1,
+              "escorts": 0,
+              "survived_map": false
+            },
+            {
+              "day": 3,
+              "destination": "Estação",
+              "team": 1,
+              "rounds": 1,
+              "incapacitated": 0,
+              "escorts": 0,
+              "survived_map": true
+            },
+            {
+              "day": 4,
+              "destination": "Estação",
+              "team": 1,
+              "rounds": 2,
+              "incapacitated": 0,
+              "escorts": 0,
+              "survived_map": true
+            },
+            {
+              "day": 5,
+              "destination": "Mercado",
+              "team": 1,
               "rounds": 9,
               "incapacitated": 1,
               "escorts": 0,
@@ -44960,25 +45772,27 @@
         {
           "size": 3,
           "seed": 41,
-          "result": "RUNNING",
+          "result": "unresolved",
           "verified_victory": false,
           "cause": "expedition_Estação_emergency_after_clock",
           "consumers": 4,
-          "nights": 2,
-          "decisions": 101,
+          "nights": 5,
+          "decisions": 125,
           "outcomes": [
             "returned",
             "emergency_after_clock",
-            "strategy_load_blocked"
+            "returned",
+            "emergency_from_map",
+            "no_expedition"
           ],
           "parts": [
             "Conexões"
           ],
           "materials": 2,
-          "health": 5,
-          "morale": 5,
-          "blocked": "plan_cargo",
-          "hungry_or_thirsty_end": 2,
+          "health": 0,
+          "morale": 4,
+          "blocked": "complete_cistern",
+          "hungry_or_thirsty_end": 5,
           "expeditions": [
             {
               "day": 1,
@@ -44997,6 +45811,24 @@
               "incapacitated": 0,
               "escorts": 0,
               "survived_map": true
+            },
+            {
+              "day": 3,
+              "destination": "Estação",
+              "team": 1,
+              "rounds": 1,
+              "incapacitated": 0,
+              "escorts": 0,
+              "survived_map": true
+            },
+            {
+              "day": 4,
+              "destination": "Estação",
+              "team": 1,
+              "rounds": 9,
+              "incapacitated": 1,
+              "escorts": 0,
+              "survived_map": false
             }
           ],
           "controller": "adaptive_auto_heldout"
@@ -45248,25 +46080,27 @@
         {
           "size": 3,
           "seed": 46,
-          "result": "RUNNING",
+          "result": "unresolved",
           "verified_victory": false,
           "cause": "expedition_Estação_emergency_from_map",
           "consumers": 7,
-          "nights": 2,
-          "decisions": 97,
+          "nights": 5,
+          "decisions": 113,
           "outcomes": [
             "returned",
             "emergency_from_map",
-            "strategy_load_blocked"
+            "returned",
+            "returned",
+            "no_expedition"
           ],
           "parts": [
             "Conexões"
           ],
           "materials": 2,
-          "health": 5,
+          "health": 0,
           "morale": 5,
-          "blocked": "plan_cargo",
-          "hungry_or_thirsty_end": 0,
+          "blocked": "complete_cistern",
+          "hungry_or_thirsty_end": 8,
           "expeditions": [
             {
               "day": 1,
@@ -45285,6 +46119,24 @@
               "incapacitated": 1,
               "escorts": 0,
               "survived_map": false
+            },
+            {
+              "day": 3,
+              "destination": "Estação",
+              "team": 1,
+              "rounds": 1,
+              "incapacitated": 0,
+              "escorts": 0,
+              "survived_map": true
+            },
+            {
+              "day": 4,
+              "destination": "Estação",
+              "team": 1,
+              "rounds": 2,
+              "incapacitated": 0,
+              "escorts": 0,
+              "survived_map": true
             }
           ],
           "controller": "adaptive_auto_heldout"
@@ -46290,25 +47142,27 @@
         {
           "size": 4,
           "seed": 33,
-          "result": "RUNNING",
+          "result": "unresolved",
           "verified_victory": false,
           "cause": "expedition_Estação_emergency_from_map",
           "consumers": 7,
-          "nights": 2,
-          "decisions": 126,
+          "nights": 5,
+          "decisions": 157,
           "outcomes": [
             "returned",
             "emergency_from_map",
-            "strategy_load_blocked"
+            "returned",
+            "emergency_from_map",
+            "no_expedition"
           ],
           "parts": [
             "Conexões"
           ],
           "materials": 2,
-          "health": 5,
-          "morale": 4,
-          "blocked": "plan_cargo",
-          "hungry_or_thirsty_end": 2,
+          "health": 0,
+          "morale": 3,
+          "blocked": "complete_cistern",
+          "hungry_or_thirsty_end": 7,
           "expeditions": [
             {
               "day": 1,
@@ -46326,6 +47180,24 @@
               "rounds": 9,
               "incapacitated": 1,
               "escorts": 1,
+              "survived_map": false
+            },
+            {
+              "day": 3,
+              "destination": "Estação",
+              "team": 1,
+              "rounds": 4,
+              "incapacitated": 0,
+              "escorts": 0,
+              "survived_map": true
+            },
+            {
+              "day": 4,
+              "destination": "Estação",
+              "team": 1,
+              "rounds": 9,
+              "incapacitated": 1,
+              "escorts": 0,
               "survived_map": false
             }
           ],
@@ -47523,25 +48395,27 @@
         {
           "size": 4,
           "seed": 53,
-          "result": "RUNNING",
+          "result": "unresolved",
           "verified_victory": false,
           "cause": "expedition_Estação_emergency_from_map",
           "consumers": 6,
-          "nights": 2,
-          "decisions": 129,
+          "nights": 5,
+          "decisions": 147,
           "outcomes": [
             "returned",
             "emergency_from_map",
-            "strategy_load_blocked"
+            "emergency_from_map",
+            "no_expedition",
+            "no_expedition"
           ],
           "parts": [
             "Conexões"
           ],
-          "materials": 2,
-          "health": 5,
-          "morale": 5,
-          "blocked": "plan_cargo",
-          "hungry_or_thirsty_end": 0,
+          "materials": 1,
+          "health": 0,
+          "morale": 4,
+          "blocked": "complete_cistern",
+          "hungry_or_thirsty_end": 6,
           "expeditions": [
             {
               "day": 1,
@@ -47559,6 +48433,15 @@
               "rounds": 9,
               "incapacitated": 1,
               "escorts": 1,
+              "survived_map": false
+            },
+            {
+              "day": 3,
+              "destination": "Estação",
+              "team": 1,
+              "rounds": 9,
+              "incapacitated": 1,
+              "escorts": 0,
               "survived_map": false
             }
           ],
@@ -48306,7 +49189,7 @@
           "cause": "expedition_Estação_emergency_after_clock",
           "consumers": 9,
           "nights": 5,
-          "decisions": 202,
+          "decisions": 203,
           "outcomes": [
             "returned",
             "emergency_after_clock",
@@ -50941,26 +51824,27 @@
         {
           "size": 6,
           "seed": 49,
-          "result": "RUNNING",
+          "result": "unresolved",
           "verified_victory": false,
           "cause": "expedition_Estação_emergency_after_clock",
           "consumers": 9,
-          "nights": 3,
-          "decisions": 215,
+          "nights": 5,
+          "decisions": 229,
           "outcomes": [
             "returned",
             "emergency_after_clock",
             "emergency_from_map",
-            "strategy_load_blocked"
+            "returned",
+            "returned"
           ],
           "parts": [
             "Conexões"
           ],
           "materials": 1,
-          "health": 5,
+          "health": 0,
           "morale": 5,
-          "blocked": "plan_cargo",
-          "hungry_or_thirsty_end": 5,
+          "blocked": "complete_cistern",
+          "hungry_or_thirsty_end": 9,
           "expeditions": [
             {
               "day": 1,
@@ -50988,6 +51872,24 @@
               "incapacitated": 1,
               "escorts": 0,
               "survived_map": false
+            },
+            {
+              "day": 4,
+              "destination": "Estação",
+              "team": 1,
+              "rounds": 1,
+              "incapacitated": 0,
+              "escorts": 0,
+              "survived_map": true
+            },
+            {
+              "day": 5,
+              "destination": "Mercado",
+              "team": 1,
+              "rounds": 1,
+              "incapacitated": 0,
+              "escorts": 0,
+              "survived_map": true
             }
           ],
           "controller": "adaptive_auto_heldout"
@@ -59977,15 +60879,15 @@
             "expedition_Hospital_emergency_after_clock": 1,
             "expedition_Condomínio_emergency_from_map": 1
           },
-          "hungry_or_thirsty_end_mean": 2.2,
-          "expeditions": 96,
-          "map_emergencies": 19,
-          "station_expeditions": 41,
-          "station_map_emergencies": 16,
-          "incapacitations": 17,
+          "hungry_or_thirsty_end_mean": 3.17,
+          "expeditions": 107,
+          "map_emergencies": 23,
+          "station_expeditions": 50,
+          "station_map_emergencies": 20,
+          "incapacitations": 21,
           "escorts": 0,
-          "mean_rounds": 6.27,
-          "mean_station_rounds": 7.83
+          "mean_rounds": 6.03,
+          "mean_station_rounds": 7.24
         },
         "H3": {
           "attempts": 30,
@@ -60002,15 +60904,15 @@
             "expedition_Hospital_emergency_from_map": 1,
             "blocked_complete_cistern": 1
           },
-          "hungry_or_thirsty_end_mean": 4.87,
-          "expeditions": 98,
-          "map_emergencies": 47,
-          "station_expeditions": 52,
-          "station_map_emergencies": 45,
-          "incapacitations": 51,
+          "hungry_or_thirsty_end_mean": 5.07,
+          "expeditions": 99,
+          "map_emergencies": 48,
+          "station_expeditions": 53,
+          "station_map_emergencies": 46,
+          "incapacitations": 52,
           "escorts": 0,
-          "mean_rounds": 6.88,
-          "mean_station_rounds": 8.73
+          "mean_rounds": 6.89,
+          "mean_station_rounds": 8.72
         },
         "H4": {
           "attempts": 30,
@@ -60021,15 +60923,15 @@
             "expedition_Estação_blocked_return": 1,
             "blocked_complete_cistern": 1
           },
-          "hungry_or_thirsty_end_mean": 6.83,
-          "expeditions": 92,
+          "hungry_or_thirsty_end_mean": 7.13,
+          "expeditions": 96,
           "map_emergencies": 58,
-          "station_expeditions": 61,
+          "station_expeditions": 63,
           "station_map_emergencies": 58,
           "incapacitations": 56,
           "escorts": 0,
-          "mean_rounds": 7.21,
-          "mean_station_rounds": 8.82
+          "mean_rounds": 6.95,
+          "mean_station_rounds": 8.57
         },
         "H5": {
           "attempts": 30,
@@ -60085,25 +60987,27 @@
         {
           "size": 2,
           "seed": 61,
-          "result": "RUNNING",
+          "result": "unresolved",
           "verified_victory": false,
           "cause": "expedition_Estação_emergency_from_map",
           "consumers": 5,
-          "nights": 2,
-          "decisions": 65,
+          "nights": 5,
+          "decisions": 97,
           "outcomes": [
             "returned",
             "emergency_from_map",
-            "strategy_load_blocked"
+            "returned",
+            "emergency_from_map",
+            "no_expedition"
           ],
           "parts": [
             "Conexões"
           ],
-          "materials": 2,
+          "materials": 1,
           "health": 5,
           "morale": 5,
-          "blocked": "plan_cargo",
-          "hungry_or_thirsty_end": 0,
+          "blocked": "complete_cistern",
+          "hungry_or_thirsty_end": 5,
           "expeditions": [
             {
               "day": 1,
@@ -60118,6 +61022,24 @@
               "day": 2,
               "destination": "Estação",
               "team": 2,
+              "rounds": 9,
+              "incapacitated": 1,
+              "escorts": 0,
+              "survived_map": false
+            },
+            {
+              "day": 3,
+              "destination": "Estação",
+              "team": 1,
+              "rounds": 1,
+              "incapacitated": 0,
+              "escorts": 0,
+              "survived_map": true
+            },
+            {
+              "day": 4,
+              "destination": "Estação",
+              "team": 1,
               "rounds": 9,
               "incapacitated": 1,
               "escorts": 0,
@@ -60355,25 +61277,27 @@
         {
           "size": 2,
           "seed": 66,
-          "result": "RUNNING",
+          "result": "unresolved",
           "verified_victory": false,
           "cause": "expedition_Estação_emergency_from_map",
           "consumers": 5,
-          "nights": 2,
-          "decisions": 62,
+          "nights": 5,
+          "decisions": 86,
           "outcomes": [
             "returned",
             "emergency_from_map",
-            "strategy_load_blocked"
+            "returned",
+            "returned",
+            "returned"
           ],
           "parts": [
             "Conexões"
           ],
           "materials": 2,
-          "health": 5,
+          "health": 0,
           "morale": 5,
-          "blocked": "plan_cargo",
-          "hungry_or_thirsty_end": 0,
+          "blocked": "complete_cistern",
+          "hungry_or_thirsty_end": 6,
           "expeditions": [
             {
               "day": 1,
@@ -60392,6 +61316,33 @@
               "incapacitated": 1,
               "escorts": 0,
               "survived_map": false
+            },
+            {
+              "day": 3,
+              "destination": "Estação",
+              "team": 1,
+              "rounds": 1,
+              "incapacitated": 0,
+              "escorts": 0,
+              "survived_map": true
+            },
+            {
+              "day": 4,
+              "destination": "Estação",
+              "team": 1,
+              "rounds": 1,
+              "incapacitated": 0,
+              "escorts": 0,
+              "survived_map": true
+            },
+            {
+              "day": 5,
+              "destination": "Mercado",
+              "team": 1,
+              "rounds": 1,
+              "incapacitated": 0,
+              "escorts": 0,
+              "survived_map": true
             }
           ],
           "controller": "adaptive_previous_validation"
@@ -60510,25 +61461,27 @@
         {
           "size": 2,
           "seed": 69,
-          "result": "RUNNING",
+          "result": "unresolved",
           "verified_victory": false,
           "cause": "expedition_Estação_emergency_from_map",
           "consumers": 5,
-          "nights": 2,
-          "decisions": 64,
+          "nights": 5,
+          "decisions": 90,
           "outcomes": [
             "returned",
             "emergency_from_map",
-            "strategy_load_blocked"
+            "returned",
+            "returned",
+            "returned"
           ],
           "parts": [
             "Conexões"
           ],
           "materials": 2,
-          "health": 5,
-          "morale": 5,
-          "blocked": "plan_cargo",
-          "hungry_or_thirsty_end": 0,
+          "health": 0,
+          "morale": 4,
+          "blocked": "complete_cistern",
+          "hungry_or_thirsty_end": 5,
           "expeditions": [
             {
               "day": 1,
@@ -60547,6 +61500,33 @@
               "incapacitated": 1,
               "escorts": 0,
               "survived_map": false
+            },
+            {
+              "day": 3,
+              "destination": "Estação",
+              "team": 1,
+              "rounds": 1,
+              "incapacitated": 0,
+              "escorts": 0,
+              "survived_map": true
+            },
+            {
+              "day": 4,
+              "destination": "Estação",
+              "team": 1,
+              "rounds": 1,
+              "incapacitated": 0,
+              "escorts": 0,
+              "survived_map": true
+            },
+            {
+              "day": 5,
+              "destination": "Mercado",
+              "team": 1,
+              "rounds": 1,
+              "incapacitated": 0,
+              "escorts": 0,
+              "survived_map": true
             }
           ],
           "controller": "adaptive_previous_validation"
@@ -60629,25 +61609,27 @@
         {
           "size": 2,
           "seed": 71,
-          "result": "RUNNING",
+          "result": "unresolved",
           "verified_victory": false,
           "cause": "expedition_Estação_emergency_from_map",
           "consumers": 5,
-          "nights": 2,
-          "decisions": 76,
+          "nights": 5,
+          "decisions": 95,
           "outcomes": [
             "returned",
             "emergency_from_map",
-            "strategy_load_blocked"
+            "emergency_from_map",
+            "no_expedition",
+            "no_expedition"
           ],
           "parts": [
             "Conexões"
           ],
           "materials": 2,
-          "health": 5,
+          "health": 0,
           "morale": 5,
-          "blocked": "plan_cargo",
-          "hungry_or_thirsty_end": 0,
+          "blocked": "complete_cistern",
+          "hungry_or_thirsty_end": 5,
           "expeditions": [
             {
               "day": 1,
@@ -60664,6 +61646,15 @@
               "team": 2,
               "rounds": 9,
               "incapacitated": 0,
+              "escorts": 0,
+              "survived_map": false
+            },
+            {
+              "day": 3,
+              "destination": "Estação",
+              "team": 1,
+              "rounds": 9,
+              "incapacitated": 1,
               "escorts": 0,
               "survived_map": false
             }
@@ -60916,25 +61907,27 @@
         {
           "size": 2,
           "seed": 76,
-          "result": "RUNNING",
+          "result": "unresolved",
           "verified_victory": false,
           "cause": "expedition_Estação_emergency_from_map",
           "consumers": 5,
-          "nights": 2,
-          "decisions": 64,
+          "nights": 5,
+          "decisions": 83,
           "outcomes": [
             "returned",
             "emergency_from_map",
-            "strategy_load_blocked"
+            "emergency_from_map",
+            "no_expedition",
+            "no_expedition"
           ],
           "parts": [
             "Conexões"
           ],
-          "materials": 2,
-          "health": 5,
-          "morale": 5,
-          "blocked": "plan_cargo",
-          "hungry_or_thirsty_end": 0,
+          "materials": 1,
+          "health": 0,
+          "morale": 4,
+          "blocked": "complete_cistern",
+          "hungry_or_thirsty_end": 5,
           "expeditions": [
             {
               "day": 1,
@@ -60949,6 +61942,15 @@
               "day": 2,
               "destination": "Estação",
               "team": 2,
+              "rounds": 9,
+              "incapacitated": 1,
+              "escorts": 0,
+              "survived_map": false
+            },
+            {
+              "day": 3,
+              "destination": "Estação",
+              "team": 1,
               "rounds": 9,
               "incapacitated": 1,
               "escorts": 0,
@@ -61232,25 +62234,27 @@
         {
           "size": 2,
           "seed": 81,
-          "result": "RUNNING",
+          "result": "unresolved",
           "verified_victory": false,
           "cause": "expedition_Estação_emergency_from_map",
           "consumers": 3,
-          "nights": 2,
-          "decisions": 72,
+          "nights": 5,
+          "decisions": 90,
           "outcomes": [
             "returned",
             "emergency_from_map",
-            "strategy_load_blocked"
+            "emergency_from_map",
+            "no_expedition",
+            "no_expedition"
           ],
           "parts": [
             "Conexões"
           ],
           "materials": 1,
-          "health": 5,
-          "morale": 5,
-          "blocked": "plan_cargo",
-          "hungry_or_thirsty_end": 0,
+          "health": 0,
+          "morale": 4,
+          "blocked": "complete_cistern",
+          "hungry_or_thirsty_end": 3,
           "expeditions": [
             {
               "day": 1,
@@ -61267,6 +62271,15 @@
               "team": 2,
               "rounds": 9,
               "incapacitated": 0,
+              "escorts": 0,
+              "survived_map": false
+            },
+            {
+              "day": 3,
+              "destination": "Estação",
+              "team": 1,
+              "rounds": 9,
+              "incapacitated": 1,
               "escorts": 0,
               "survived_map": false
             }
@@ -62174,25 +63187,27 @@
         {
           "size": 3,
           "seed": 67,
-          "result": "RUNNING",
+          "result": "unresolved",
           "verified_victory": false,
           "cause": "expedition_Estação_emergency_from_map",
           "consumers": 5,
-          "nights": 2,
-          "decisions": 80,
+          "nights": 5,
+          "decisions": 96,
           "outcomes": [
             "returned",
             "emergency_from_map",
-            "strategy_load_blocked"
+            "emergency_from_map",
+            "no_expedition",
+            "no_expedition"
           ],
           "parts": [
             "Conexões"
           ],
           "materials": 1,
-          "health": 5,
-          "morale": 5,
-          "blocked": "plan_cargo",
-          "hungry_or_thirsty_end": 0,
+          "health": 0,
+          "morale": 4,
+          "blocked": "complete_cistern",
+          "hungry_or_thirsty_end": 6,
           "expeditions": [
             {
               "day": 1,
@@ -62211,6 +63226,15 @@
               "incapacitated": 0,
               "escorts": 0,
               "survived_map": false
+            },
+            {
+              "day": 3,
+              "destination": "Estação",
+              "team": 1,
+              "rounds": 8,
+              "incapacitated": 1,
+              "escorts": 0,
+              "survived_map": false
             }
           ],
           "controller": "adaptive_previous_validation"
@@ -62223,7 +63247,7 @@
           "cause": "expedition_Estação_emergency_from_map",
           "consumers": 5,
           "nights": 5,
-          "decisions": 92,
+          "decisions": 93,
           "outcomes": [
             "returned",
             "emergency_from_map",
@@ -62850,7 +63874,7 @@
           "cause": "expedition_Estação_emergency_from_map",
           "consumers": 5,
           "nights": 5,
-          "decisions": 86,
+          "decisions": 87,
           "outcomes": [
             "returned",
             "emergency_from_map",
@@ -63147,7 +64171,7 @@
           "cause": "expedition_Estação_emergency_from_map",
           "consumers": 5,
           "nights": 5,
-          "decisions": 101,
+          "decisions": 102,
           "outcomes": [
             "returned",
             "emergency_from_map",
@@ -63607,7 +64631,7 @@
           "cause": "expedition_Estação_emergency_from_map",
           "consumers": 8,
           "nights": 5,
-          "decisions": 111,
+          "decisions": 112,
           "outcomes": [
             "returned",
             "emergency_from_map",
@@ -63781,7 +64805,7 @@
           "cause": "expedition_Estação_emergency_from_map",
           "consumers": 5,
           "nights": 5,
-          "decisions": 92,
+          "decisions": 93,
           "outcomes": [
             "returned",
             "emergency_from_map",
@@ -64051,26 +65075,27 @@
         {
           "size": 4,
           "seed": 70,
-          "result": "RUNNING",
+          "result": "unresolved",
           "verified_victory": false,
           "cause": "expedition_Estação_emergency_from_map",
           "consumers": 7,
-          "nights": 3,
-          "decisions": 95,
+          "nights": 5,
+          "decisions": 111,
           "outcomes": [
             "returned",
             "emergency_from_map",
             "emergency_from_map",
-            "strategy_load_blocked"
+            "returned",
+            "returned"
           ],
           "parts": [
             "Conexões"
           ],
           "materials": 2,
-          "health": 5,
-          "morale": 5,
-          "blocked": "plan_cargo",
-          "hungry_or_thirsty_end": 3,
+          "health": 0,
+          "morale": 4,
+          "blocked": "complete_cistern",
+          "hungry_or_thirsty_end": 8,
           "expeditions": [
             {
               "day": 1,
@@ -64098,6 +65123,24 @@
               "incapacitated": 1,
               "escorts": 0,
               "survived_map": false
+            },
+            {
+              "day": 4,
+              "destination": "Estação",
+              "team": 1,
+              "rounds": 1,
+              "incapacitated": 0,
+              "escorts": 0,
+              "survived_map": true
+            },
+            {
+              "day": 5,
+              "destination": "Mercado",
+              "team": 1,
+              "rounds": 1,
+              "incapacitated": 0,
+              "escorts": 0,
+              "survived_map": true
             }
           ],
           "controller": "adaptive_previous_validation"
@@ -64165,7 +65208,7 @@
           "cause": "expedition_Estação_emergency_from_map",
           "consumers": 7,
           "nights": 5,
-          "decisions": 110,
+          "decisions": 111,
           "outcomes": [
             "returned",
             "emergency_from_map",
@@ -64725,7 +65768,7 @@
           "cause": "expedition_Estação_emergency_from_map",
           "consumers": 6,
           "nights": 5,
-          "decisions": 98,
+          "decisions": 99,
           "outcomes": [
             "returned",
             "emergency_from_map",
@@ -64835,7 +65878,7 @@
           "cause": "expedition_Estação_emergency_from_map",
           "consumers": 6,
           "nights": 5,
-          "decisions": 101,
+          "decisions": 102,
           "outcomes": [
             "returned",
             "emergency_from_map",
@@ -64885,26 +65928,27 @@
         {
           "size": 4,
           "seed": 85,
-          "result": "RUNNING",
+          "result": "unresolved",
           "verified_victory": false,
           "cause": "expedition_Estação_emergency_from_map",
           "consumers": 7,
-          "nights": 3,
-          "decisions": 108,
+          "nights": 5,
+          "decisions": 124,
           "outcomes": [
             "returned",
             "emergency_from_map",
             "emergency_from_map",
-            "strategy_load_blocked"
+            "returned",
+            "returned"
           ],
           "parts": [
             "Conexões"
           ],
-          "materials": 2,
-          "health": 5,
-          "morale": 5,
-          "blocked": "plan_cargo",
-          "hungry_or_thirsty_end": 3,
+          "materials": 3,
+          "health": 0,
+          "morale": 3,
+          "blocked": "complete_cistern",
+          "hungry_or_thirsty_end": 7,
           "expeditions": [
             {
               "day": 1,
@@ -64932,6 +65976,24 @@
               "incapacitated": 1,
               "escorts": 0,
               "survived_map": false
+            },
+            {
+              "day": 4,
+              "destination": "Estação",
+              "team": 1,
+              "rounds": 1,
+              "incapacitated": 0,
+              "escorts": 0,
+              "survived_map": true
+            },
+            {
+              "day": 5,
+              "destination": "Mercado",
+              "team": 1,
+              "rounds": 1,
+              "incapacitated": 0,
+              "escorts": 0,
+              "survived_map": true
             }
           ],
           "controller": "adaptive_previous_validation"
@@ -65380,7 +66442,7 @@
           "cause": "expedition_Estação_emergency_from_map",
           "consumers": 10,
           "nights": 5,
-          "decisions": 99,
+          "decisions": 100,
           "outcomes": [
             "emergency_from_map",
             "emergency_from_map",
@@ -66390,7 +67452,7 @@
           "cause": "expedition_Estação_emergency_after_clock",
           "consumers": 9,
           "nights": 5,
-          "decisions": 123,
+          "decisions": 124,
           "outcomes": [
             "emergency_after_clock",
             "emergency_from_map",
@@ -66443,7 +67505,7 @@
           "cause": "expedition_Estação_emergency_from_map",
           "consumers": 7,
           "nights": 5,
-          "decisions": 93,
+          "decisions": 94,
           "outcomes": [
             "emergency_from_map",
             "emergency_from_map",
@@ -66708,7 +67770,7 @@
           "cause": "expedition_Estação_emergency_from_map",
           "consumers": 10,
           "nights": 5,
-          "decisions": 106,
+          "decisions": 107,
           "outcomes": [
             "emergency_from_map",
             "emergency_from_map",
@@ -67026,7 +68088,7 @@
           "cause": "expedition_Estação_emergency_from_map",
           "consumers": 10,
           "nights": 5,
-          "decisions": 95,
+          "decisions": 96,
           "outcomes": [
             "emergency_from_map",
             "emergency_from_map",
@@ -67207,7 +68269,7 @@
           "cause": "expedition_Estação_emergency_from_map",
           "consumers": 10,
           "nights": 5,
-          "decisions": 109,
+          "decisions": 110,
           "outcomes": [
             "emergency_from_map",
             "emergency_from_map",
@@ -68487,21 +69549,20 @@
             76
           ],
           "causes": {
-            "expedition_Estação_emergency_from_map": 20,
+            "expedition_Estação_emergency_from_map": 21,
             "partial_defeat_hunger_or_thirst": 4,
             "verified_victory": 4,
-            "expedition_Estação_strategy_load_blocked": 1,
             "blocked_complete_cistern": 1
           },
-          "hungry_or_thirsty_end_mean": 1.5,
-          "expeditions": 77,
-          "map_emergencies": 20,
-          "station_expeditions": 34,
-          "station_map_emergencies": 20,
-          "incapacitations": 23,
+          "hungry_or_thirsty_end_mean": 2.97,
+          "expeditions": 102,
+          "map_emergencies": 33,
+          "station_expeditions": 56,
+          "station_map_emergencies": 30,
+          "incapacitations": 36,
           "escorts": 6,
-          "mean_rounds": 6.18,
-          "mean_station_rounds": 7.97
+          "mean_rounds": 5.94,
+          "mean_station_rounds": 6.68
         },
         "H3": {
           "attempts": 30,
@@ -68532,15 +69593,15 @@
             "expedition_Condomínio_emergency_from_map": 1,
             "blocked_complete_cistern": 1
           },
-          "hungry_or_thirsty_end_mean": 2.2,
-          "expeditions": 113,
-          "map_emergencies": 14,
-          "station_expeditions": 40,
-          "station_map_emergencies": 7,
-          "incapacitations": 22,
+          "hungry_or_thirsty_end_mean": 3.0,
+          "expeditions": 118,
+          "map_emergencies": 17,
+          "station_expeditions": 45,
+          "station_map_emergencies": 10,
+          "incapacitations": 25,
           "escorts": 14,
-          "mean_rounds": 5.81,
-          "mean_station_rounds": 6.9
+          "mean_rounds": 5.82,
+          "mean_station_rounds": 6.82
         },
         "H4": {
           "attempts": 30,
@@ -68569,15 +69630,15 @@
             "expedition_Hospital_emergency_from_map": 1,
             "expedition_Mercado_emergency_from_map": 1
           },
-          "hungry_or_thirsty_end_mean": 1.6,
-          "expeditions": 106,
-          "map_emergencies": 7,
-          "station_expeditions": 35,
-          "station_map_emergencies": 5,
-          "incapacitations": 12,
+          "hungry_or_thirsty_end_mean": 2.63,
+          "expeditions": 114,
+          "map_emergencies": 11,
+          "station_expeditions": 43,
+          "station_map_emergencies": 9,
+          "incapacitations": 16,
           "escorts": 10,
-          "mean_rounds": 5.5,
-          "mean_station_rounds": 6.74
+          "mean_rounds": 5.47,
+          "mean_station_rounds": 6.44
         },
         "H5": {
           "attempts": 30,
@@ -68611,15 +69672,15 @@
             "expedition_Estação_emergency_after_clock": 1,
             "partial_defeat_health_or_morale": 1
           },
-          "hungry_or_thirsty_end_mean": 1.37,
-          "expeditions": 114,
-          "map_emergencies": 8,
-          "station_expeditions": 35,
-          "station_map_emergencies": 7,
-          "incapacitations": 10,
+          "hungry_or_thirsty_end_mean": 1.6,
+          "expeditions": 115,
+          "map_emergencies": 9,
+          "station_expeditions": 36,
+          "station_map_emergencies": 8,
+          "incapacitations": 11,
           "escorts": 5,
-          "mean_rounds": 5.48,
-          "mean_station_rounds": 7.23
+          "mean_rounds": 5.5,
+          "mean_station_rounds": 7.25
         },
         "H6": {
           "attempts": 30,
@@ -68652,15 +69713,15 @@
             "expedition_Estação_emergency_after_clock": 1,
             "partial_defeat_health_or_morale": 1
           },
-          "hungry_or_thirsty_end_mean": 2.9,
-          "expeditions": 106,
-          "map_emergencies": 14,
-          "station_expeditions": 38,
-          "station_map_emergencies": 13,
-          "incapacitations": 14,
+          "hungry_or_thirsty_end_mean": 3.07,
+          "expeditions": 107,
+          "map_emergencies": 15,
+          "station_expeditions": 39,
+          "station_map_emergencies": 14,
+          "incapacitations": 15,
           "escorts": 11,
-          "mean_rounds": 5.73,
-          "mean_station_rounds": 7.34
+          "mean_rounds": 5.76,
+          "mean_station_rounds": 7.38
         }
       },
       "runs": [
@@ -68837,25 +69898,27 @@
         {
           "size": 2,
           "seed": 64,
-          "result": "RUNNING",
+          "result": "unresolved",
           "verified_victory": false,
           "cause": "expedition_Estação_emergency_from_map",
           "consumers": 3,
-          "nights": 2,
-          "decisions": 75,
+          "nights": 5,
+          "decisions": 93,
           "outcomes": [
             "returned",
             "emergency_from_map",
-            "strategy_load_blocked"
+            "emergency_from_map",
+            "no_expedition",
+            "no_expedition"
           ],
           "parts": [
             "Conexões"
           ],
           "materials": 2,
-          "health": 5,
-          "morale": 5,
-          "blocked": "plan_cargo",
-          "hungry_or_thirsty_end": 0,
+          "health": 0,
+          "morale": 4,
+          "blocked": "complete_cistern",
+          "hungry_or_thirsty_end": 3,
           "expeditions": [
             {
               "day": 1,
@@ -68873,6 +69936,15 @@
               "rounds": 9,
               "incapacitated": 1,
               "escorts": 1,
+              "survived_map": false
+            },
+            {
+              "day": 3,
+              "destination": "Estação",
+              "team": 1,
+              "rounds": 9,
+              "incapacitated": 1,
+              "escorts": 0,
               "survived_map": false
             }
           ],
@@ -68993,25 +70065,27 @@
         {
           "size": 2,
           "seed": 67,
-          "result": "RUNNING",
+          "result": "unresolved",
           "verified_victory": false,
           "cause": "expedition_Estação_emergency_from_map",
           "consumers": 3,
-          "nights": 2,
-          "decisions": 68,
+          "nights": 5,
+          "decisions": 90,
           "outcomes": [
             "returned",
             "emergency_from_map",
-            "strategy_load_blocked"
+            "returned",
+            "emergency_from_map",
+            "no_expedition"
           ],
           "parts": [
             "Conexões"
           ],
           "materials": 1,
-          "health": 5,
-          "morale": 5,
-          "blocked": "plan_cargo",
-          "hungry_or_thirsty_end": 0,
+          "health": 0,
+          "morale": 4,
+          "blocked": "complete_cistern",
+          "hungry_or_thirsty_end": 4,
           "expeditions": [
             {
               "day": 1,
@@ -69030,6 +70104,24 @@
               "incapacitated": 1,
               "escorts": 0,
               "survived_map": false
+            },
+            {
+              "day": 3,
+              "destination": "Estação",
+              "team": 1,
+              "rounds": 1,
+              "incapacitated": 0,
+              "escorts": 0,
+              "survived_map": true
+            },
+            {
+              "day": 4,
+              "destination": "Estação",
+              "team": 1,
+              "rounds": 9,
+              "incapacitated": 1,
+              "escorts": 0,
+              "survived_map": false
             }
           ],
           "controller": "adaptive_auto_validation"
@@ -69037,24 +70129,26 @@
         {
           "size": 2,
           "seed": 68,
-          "result": "RUNNING",
+          "result": "unresolved",
           "verified_victory": false,
-          "cause": "expedition_Estação_strategy_load_blocked",
+          "cause": "expedition_Estação_emergency_from_map",
           "consumers": 3,
-          "nights": 2,
-          "decisions": 71,
+          "nights": 5,
+          "decisions": 95,
           "outcomes": [
             "returned",
             "returned",
-            "strategy_load_blocked"
+            "returned",
+            "emergency_from_map",
+            "no_expedition"
           ],
           "parts": [
             "Conexões"
           ],
           "materials": 2,
-          "health": 5,
-          "morale": 4,
-          "blocked": "plan_cargo",
+          "health": 0,
+          "morale": 3,
+          "blocked": "complete_cistern",
           "hungry_or_thirsty_end": 4,
           "expeditions": [
             {
@@ -69074,6 +70168,24 @@
               "incapacitated": 1,
               "escorts": 1,
               "survived_map": true
+            },
+            {
+              "day": 3,
+              "destination": "Estação",
+              "team": 1,
+              "rounds": 1,
+              "incapacitated": 0,
+              "escorts": 0,
+              "survived_map": true
+            },
+            {
+              "day": 4,
+              "destination": "Estação",
+              "team": 1,
+              "rounds": 9,
+              "incapacitated": 1,
+              "escorts": 0,
+              "survived_map": false
             }
           ],
           "controller": "adaptive_auto_validation"
@@ -69147,25 +70259,27 @@
         {
           "size": 2,
           "seed": 70,
-          "result": "RUNNING",
+          "result": "unresolved",
           "verified_victory": false,
           "cause": "expedition_Estação_emergency_from_map",
           "consumers": 3,
-          "nights": 2,
-          "decisions": 69,
+          "nights": 5,
+          "decisions": 92,
           "outcomes": [
             "returned",
             "emergency_from_map",
-            "strategy_load_blocked"
+            "returned",
+            "emergency_from_map",
+            "no_expedition"
           ],
           "parts": [
             "Conexões"
           ],
           "materials": 2,
-          "health": 5,
-          "morale": 5,
-          "blocked": "plan_cargo",
-          "hungry_or_thirsty_end": 0,
+          "health": 0,
+          "morale": 4,
+          "blocked": "complete_cistern",
+          "hungry_or_thirsty_end": 3,
           "expeditions": [
             {
               "day": 1,
@@ -69181,6 +70295,24 @@
               "destination": "Estação",
               "team": 2,
               "rounds": 9,
+              "incapacitated": 1,
+              "escorts": 0,
+              "survived_map": false
+            },
+            {
+              "day": 3,
+              "destination": "Estação",
+              "team": 1,
+              "rounds": 1,
+              "incapacitated": 0,
+              "escorts": 0,
+              "survived_map": true
+            },
+            {
+              "day": 4,
+              "destination": "Estação",
+              "team": 1,
+              "rounds": 8,
               "incapacitated": 1,
               "escorts": 0,
               "survived_map": false
@@ -69360,25 +70492,27 @@
         {
           "size": 2,
           "seed": 74,
-          "result": "RUNNING",
+          "result": "unresolved",
           "verified_victory": false,
           "cause": "expedition_Estação_emergency_from_map",
           "consumers": 3,
-          "nights": 2,
-          "decisions": 73,
+          "nights": 5,
+          "decisions": 91,
           "outcomes": [
             "returned",
             "emergency_from_map",
-            "strategy_load_blocked"
+            "emergency_from_map",
+            "no_expedition",
+            "no_expedition"
           ],
           "parts": [
             "Conexões"
           ],
           "materials": 2,
-          "health": 5,
+          "health": 0,
           "morale": 5,
-          "blocked": "plan_cargo",
-          "hungry_or_thirsty_end": 0,
+          "blocked": "complete_cistern",
+          "hungry_or_thirsty_end": 3,
           "expeditions": [
             {
               "day": 1,
@@ -69397,6 +70531,15 @@
               "incapacitated": 1,
               "escorts": 1,
               "survived_map": false
+            },
+            {
+              "day": 3,
+              "destination": "Estação",
+              "team": 1,
+              "rounds": 9,
+              "incapacitated": 1,
+              "escorts": 0,
+              "survived_map": false
             }
           ],
           "controller": "adaptive_auto_validation"
@@ -69404,25 +70547,27 @@
         {
           "size": 2,
           "seed": 75,
-          "result": "RUNNING",
+          "result": "unresolved",
           "verified_victory": false,
           "cause": "expedition_Estação_emergency_from_map",
           "consumers": 3,
-          "nights": 2,
-          "decisions": 67,
+          "nights": 5,
+          "decisions": 107,
           "outcomes": [
             "returned",
             "emergency_from_map",
-            "strategy_load_blocked"
+            "returned",
+            "returned",
+            "emergency_from_map"
           ],
           "parts": [
             "Conexões"
           ],
           "materials": 2,
-          "health": 5,
-          "morale": 5,
-          "blocked": "plan_cargo",
-          "hungry_or_thirsty_end": 0,
+          "health": 0,
+          "morale": 4,
+          "blocked": "complete_cistern",
+          "hungry_or_thirsty_end": 4,
           "expeditions": [
             {
               "day": 1,
@@ -69437,6 +70582,33 @@
               "day": 2,
               "destination": "Estação",
               "team": 2,
+              "rounds": 9,
+              "incapacitated": 1,
+              "escorts": 0,
+              "survived_map": false
+            },
+            {
+              "day": 3,
+              "destination": "Estação",
+              "team": 1,
+              "rounds": 1,
+              "incapacitated": 0,
+              "escorts": 0,
+              "survived_map": true
+            },
+            {
+              "day": 4,
+              "destination": "Estação",
+              "team": 1,
+              "rounds": 2,
+              "incapacitated": 0,
+              "escorts": 0,
+              "survived_map": true
+            },
+            {
+              "day": 5,
+              "destination": "Mercado",
+              "team": 1,
               "rounds": 9,
               "incapacitated": 1,
               "escorts": 0,
@@ -69514,25 +70686,27 @@
         {
           "size": 2,
           "seed": 77,
-          "result": "RUNNING",
+          "result": "unresolved",
           "verified_victory": false,
           "cause": "expedition_Estação_emergency_from_map",
           "consumers": 3,
-          "nights": 2,
-          "decisions": 73,
+          "nights": 5,
+          "decisions": 90,
           "outcomes": [
             "returned",
             "emergency_from_map",
-            "strategy_load_blocked"
+            "emergency_from_map",
+            "no_expedition",
+            "no_expedition"
           ],
           "parts": [
             "Conexões"
           ],
-          "materials": 2,
-          "health": 5,
-          "morale": 5,
-          "blocked": "plan_cargo",
-          "hungry_or_thirsty_end": 0,
+          "materials": 1,
+          "health": 0,
+          "morale": 4,
+          "blocked": "complete_cistern",
+          "hungry_or_thirsty_end": 4,
           "expeditions": [
             {
               "day": 1,
@@ -69551,6 +70725,15 @@
               "incapacitated": 1,
               "escorts": 1,
               "survived_map": false
+            },
+            {
+              "day": 3,
+              "destination": "Estação",
+              "team": 1,
+              "rounds": 9,
+              "incapacitated": 1,
+              "escorts": 0,
+              "survived_map": false
             }
           ],
           "controller": "adaptive_auto_validation"
@@ -69558,25 +70741,27 @@
         {
           "size": 2,
           "seed": 78,
-          "result": "RUNNING",
+          "result": "unresolved",
           "verified_victory": false,
           "cause": "expedition_Estação_emergency_from_map",
           "consumers": 4,
-          "nights": 2,
-          "decisions": 69,
+          "nights": 5,
+          "decisions": 105,
           "outcomes": [
             "returned",
             "emergency_from_map",
-            "strategy_load_blocked"
+            "returned",
+            "returned",
+            "emergency_from_map"
           ],
           "parts": [
             "Conexões"
           ],
           "materials": 2,
-          "health": 5,
+          "health": 0,
           "morale": 5,
-          "blocked": "plan_cargo",
-          "hungry_or_thirsty_end": 0,
+          "blocked": "complete_cistern",
+          "hungry_or_thirsty_end": 5,
           "expeditions": [
             {
               "day": 1,
@@ -69591,6 +70776,33 @@
               "day": 2,
               "destination": "Estação",
               "team": 2,
+              "rounds": 9,
+              "incapacitated": 1,
+              "escorts": 0,
+              "survived_map": false
+            },
+            {
+              "day": 3,
+              "destination": "Estação",
+              "team": 1,
+              "rounds": 1,
+              "incapacitated": 0,
+              "escorts": 0,
+              "survived_map": true
+            },
+            {
+              "day": 4,
+              "destination": "Estação",
+              "team": 1,
+              "rounds": 1,
+              "incapacitated": 0,
+              "escorts": 0,
+              "survived_map": true
+            },
+            {
+              "day": 5,
+              "destination": "Mercado",
+              "team": 1,
               "rounds": 9,
               "incapacitated": 1,
               "escorts": 0,
@@ -69648,25 +70860,27 @@
         {
           "size": 2,
           "seed": 80,
-          "result": "RUNNING",
+          "result": "unresolved",
           "verified_victory": false,
           "cause": "expedition_Estação_emergency_from_map",
           "consumers": 3,
-          "nights": 2,
-          "decisions": 69,
+          "nights": 5,
+          "decisions": 106,
           "outcomes": [
             "returned",
             "emergency_from_map",
-            "strategy_load_blocked"
+            "returned",
+            "returned",
+            "emergency_from_map"
           ],
           "parts": [
             "Conexões"
           ],
           "materials": 2,
-          "health": 5,
-          "morale": 5,
-          "blocked": "plan_cargo",
-          "hungry_or_thirsty_end": 0,
+          "health": 0,
+          "morale": 4,
+          "blocked": "complete_cistern",
+          "hungry_or_thirsty_end": 4,
           "expeditions": [
             {
               "day": 1,
@@ -69685,6 +70899,33 @@
               "incapacitated": 1,
               "escorts": 0,
               "survived_map": false
+            },
+            {
+              "day": 3,
+              "destination": "Estação",
+              "team": 1,
+              "rounds": 1,
+              "incapacitated": 0,
+              "escorts": 0,
+              "survived_map": true
+            },
+            {
+              "day": 4,
+              "destination": "Estação",
+              "team": 1,
+              "rounds": 2,
+              "incapacitated": 0,
+              "escorts": 0,
+              "survived_map": true
+            },
+            {
+              "day": 5,
+              "destination": "Mercado",
+              "team": 1,
+              "rounds": 9,
+              "incapacitated": 1,
+              "escorts": 0,
+              "survived_map": false
             }
           ],
           "controller": "adaptive_auto_validation"
@@ -69692,25 +70933,27 @@
         {
           "size": 2,
           "seed": 81,
-          "result": "RUNNING",
+          "result": "unresolved",
           "verified_victory": false,
           "cause": "expedition_Estação_emergency_from_map",
           "consumers": 3,
-          "nights": 2,
-          "decisions": 73,
+          "nights": 5,
+          "decisions": 91,
           "outcomes": [
             "returned",
             "emergency_from_map",
-            "strategy_load_blocked"
+            "emergency_from_map",
+            "no_expedition",
+            "no_expedition"
           ],
           "parts": [
             "Conexões"
           ],
           "materials": 1,
-          "health": 5,
-          "morale": 5,
-          "blocked": "plan_cargo",
-          "hungry_or_thirsty_end": 0,
+          "health": 0,
+          "morale": 4,
+          "blocked": "complete_cistern",
+          "hungry_or_thirsty_end": 3,
           "expeditions": [
             {
               "day": 1,
@@ -69728,6 +70971,15 @@
               "rounds": 9,
               "incapacitated": 1,
               "escorts": 1,
+              "survived_map": false
+            },
+            {
+              "day": 3,
+              "destination": "Estação",
+              "team": 1,
+              "rounds": 9,
+              "incapacitated": 1,
+              "escorts": 0,
               "survived_map": false
             }
           ],
@@ -69893,25 +71145,27 @@
         {
           "size": 2,
           "seed": 85,
-          "result": "RUNNING",
+          "result": "unresolved",
           "verified_victory": false,
           "cause": "expedition_Estação_emergency_from_map",
           "consumers": 3,
-          "nights": 2,
-          "decisions": 67,
+          "nights": 5,
+          "decisions": 101,
           "outcomes": [
             "returned",
             "emergency_from_map",
-            "strategy_load_blocked"
+            "returned",
+            "emergency_from_map",
+            "no_expedition"
           ],
           "parts": [
             "Conexões"
           ],
-          "materials": 2,
-          "health": 5,
-          "morale": 5,
-          "blocked": "plan_cargo",
-          "hungry_or_thirsty_end": 0,
+          "materials": 1,
+          "health": 0,
+          "morale": 4,
+          "blocked": "complete_cistern",
+          "hungry_or_thirsty_end": 3,
           "expeditions": [
             {
               "day": 1,
@@ -69926,6 +71180,24 @@
               "day": 2,
               "destination": "Estação",
               "team": 2,
+              "rounds": 9,
+              "incapacitated": 1,
+              "escorts": 0,
+              "survived_map": false
+            },
+            {
+              "day": 3,
+              "destination": "Estação",
+              "team": 1,
+              "rounds": 1,
+              "incapacitated": 0,
+              "escorts": 0,
+              "survived_map": true
+            },
+            {
+              "day": 4,
+              "destination": "Estação",
+              "team": 1,
               "rounds": 9,
               "incapacitated": 1,
               "escorts": 0,
@@ -70060,25 +71332,27 @@
         {
           "size": 2,
           "seed": 88,
-          "result": "RUNNING",
+          "result": "unresolved",
           "verified_victory": false,
           "cause": "expedition_Estação_emergency_from_map",
           "consumers": 4,
-          "nights": 2,
-          "decisions": 70,
+          "nights": 5,
+          "decisions": 93,
           "outcomes": [
             "returned",
             "emergency_from_map",
-            "strategy_load_blocked"
+            "returned",
+            "emergency_from_map",
+            "no_expedition"
           ],
           "parts": [
             "Conexões"
           ],
           "materials": 2,
-          "health": 5,
-          "morale": 5,
-          "blocked": "plan_cargo",
-          "hungry_or_thirsty_end": 0,
+          "health": 0,
+          "morale": 4,
+          "blocked": "complete_cistern",
+          "hungry_or_thirsty_end": 4,
           "expeditions": [
             {
               "day": 1,
@@ -70093,6 +71367,24 @@
               "day": 2,
               "destination": "Estação",
               "team": 2,
+              "rounds": 9,
+              "incapacitated": 1,
+              "escorts": 0,
+              "survived_map": false
+            },
+            {
+              "day": 3,
+              "destination": "Estação",
+              "team": 1,
+              "rounds": 1,
+              "incapacitated": 0,
+              "escorts": 0,
+              "survived_map": true
+            },
+            {
+              "day": 4,
+              "destination": "Estação",
+              "team": 1,
               "rounds": 9,
               "incapacitated": 1,
               "escorts": 0,
@@ -70150,25 +71442,27 @@
         {
           "size": 2,
           "seed": 90,
-          "result": "RUNNING",
+          "result": "unresolved",
           "verified_victory": false,
           "cause": "expedition_Estação_emergency_from_map",
           "consumers": 3,
-          "nights": 2,
-          "decisions": 68,
+          "nights": 5,
+          "decisions": 92,
           "outcomes": [
             "returned",
             "emergency_from_map",
-            "strategy_load_blocked"
+            "returned",
+            "emergency_from_map",
+            "no_expedition"
           ],
           "parts": [
             "Conexões"
           ],
-          "materials": 2,
-          "health": 5,
-          "morale": 5,
-          "blocked": "plan_cargo",
-          "hungry_or_thirsty_end": 0,
+          "materials": 1,
+          "health": 0,
+          "morale": 4,
+          "blocked": "complete_cistern",
+          "hungry_or_thirsty_end": 4,
           "expeditions": [
             {
               "day": 1,
@@ -70187,6 +71481,24 @@
               "incapacitated": 1,
               "escorts": 0,
               "survived_map": false
+            },
+            {
+              "day": 3,
+              "destination": "Estação",
+              "team": 1,
+              "rounds": 1,
+              "incapacitated": 0,
+              "escorts": 0,
+              "survived_map": true
+            },
+            {
+              "day": 4,
+              "destination": "Estação",
+              "team": 1,
+              "rounds": 9,
+              "incapacitated": 1,
+              "escorts": 0,
+              "survived_map": false
             }
           ],
           "controller": "adaptive_auto_validation"
@@ -70194,25 +71506,27 @@
         {
           "size": 3,
           "seed": 61,
-          "result": "RUNNING",
+          "result": "unresolved",
           "verified_victory": false,
           "cause": "expedition_Estação_blocked_return",
           "consumers": 6,
-          "nights": 2,
-          "decisions": 103,
+          "nights": 5,
+          "decisions": 124,
           "outcomes": [
             "returned",
             "blocked_return",
-            "strategy_load_blocked"
+            "emergency_from_map",
+            "no_expedition",
+            "no_expedition"
           ],
           "parts": [
             "Conexões"
           ],
           "materials": 2,
-          "health": 5,
-          "morale": 5,
-          "blocked": "plan_cargo",
-          "hungry_or_thirsty_end": 0,
+          "health": 0,
+          "morale": 4,
+          "blocked": "complete_cistern",
+          "hungry_or_thirsty_end": 6,
           "expeditions": [
             {
               "day": 1,
@@ -70231,6 +71545,15 @@
               "incapacitated": 1,
               "escorts": 1,
               "survived_map": true
+            },
+            {
+              "day": 3,
+              "destination": "Estação",
+              "team": 1,
+              "rounds": 9,
+              "incapacitated": 1,
+              "escorts": 0,
+              "survived_map": false
             }
           ],
           "controller": "adaptive_auto_validation"
@@ -70714,25 +72037,27 @@
         {
           "size": 3,
           "seed": 69,
-          "result": "RUNNING",
+          "result": "unresolved",
           "verified_victory": false,
           "cause": "expedition_Estação_emergency_from_map",
           "consumers": 7,
-          "nights": 2,
-          "decisions": 98,
+          "nights": 5,
+          "decisions": 119,
           "outcomes": [
             "returned",
             "emergency_from_map",
-            "strategy_load_blocked"
+            "emergency_from_map",
+            "no_expedition",
+            "no_expedition"
           ],
           "parts": [
             "Conexões"
           ],
           "materials": 2,
-          "health": 5,
-          "morale": 5,
-          "blocked": "plan_cargo",
-          "hungry_or_thirsty_end": 0,
+          "health": 0,
+          "morale": 4,
+          "blocked": "complete_cistern",
+          "hungry_or_thirsty_end": 7,
           "expeditions": [
             {
               "day": 1,
@@ -70750,6 +72075,15 @@
               "rounds": 8,
               "incapacitated": 1,
               "escorts": 1,
+              "survived_map": false
+            },
+            {
+              "day": 3,
+              "destination": "Estação",
+              "team": 1,
+              "rounds": 9,
+              "incapacitated": 1,
+              "escorts": 0,
               "survived_map": false
             }
           ],
@@ -70815,25 +72149,27 @@
         {
           "size": 3,
           "seed": 71,
-          "result": "RUNNING",
+          "result": "unresolved",
           "verified_victory": false,
           "cause": "expedition_Estação_emergency_from_map",
           "consumers": 6,
-          "nights": 2,
-          "decisions": 105,
+          "nights": 5,
+          "decisions": 128,
           "outcomes": [
             "returned",
             "emergency_from_map",
-            "strategy_load_blocked"
+            "returned",
+            "returned",
+            "no_expedition"
           ],
           "parts": [
             "Conexões"
           ],
           "materials": 2,
-          "health": 5,
-          "morale": 5,
-          "blocked": "plan_cargo",
-          "hungry_or_thirsty_end": 0,
+          "health": 0,
+          "morale": 4,
+          "blocked": "complete_cistern",
+          "hungry_or_thirsty_end": 6,
           "expeditions": [
             {
               "day": 1,
@@ -70852,6 +72188,24 @@
               "incapacitated": 1,
               "escorts": 1,
               "survived_map": false
+            },
+            {
+              "day": 3,
+              "destination": "Estação",
+              "team": 1,
+              "rounds": 3,
+              "incapacitated": 0,
+              "escorts": 0,
+              "survived_map": true
+            },
+            {
+              "day": 4,
+              "destination": "Estação",
+              "team": 1,
+              "rounds": 1,
+              "incapacitated": 0,
+              "escorts": 0,
+              "survived_map": true
             }
           ],
           "controller": "adaptive_auto_validation"
@@ -71430,25 +72784,27 @@
         {
           "size": 3,
           "seed": 81,
-          "result": "RUNNING",
+          "result": "unresolved",
           "verified_victory": false,
           "cause": "expedition_Estação_emergency_from_map",
           "consumers": 5,
-          "nights": 2,
-          "decisions": 99,
+          "nights": 5,
+          "decisions": 119,
           "outcomes": [
             "returned",
             "emergency_from_map",
-            "strategy_load_blocked"
+            "emergency_from_map",
+            "no_expedition",
+            "no_expedition"
           ],
           "parts": [
             "Conexões"
           ],
           "materials": 1,
-          "health": 5,
-          "morale": 5,
-          "blocked": "plan_cargo",
-          "hungry_or_thirsty_end": 0,
+          "health": 0,
+          "morale": 4,
+          "blocked": "complete_cistern",
+          "hungry_or_thirsty_end": 5,
           "expeditions": [
             {
               "day": 1,
@@ -71466,6 +72822,15 @@
               "rounds": 9,
               "incapacitated": 1,
               "escorts": 1,
+              "survived_map": false
+            },
+            {
+              "day": 3,
+              "destination": "Estação",
+              "team": 1,
+              "rounds": 9,
+              "incapacitated": 1,
+              "escorts": 0,
               "survived_map": false
             }
           ],
@@ -72086,25 +73451,27 @@
         {
           "size": 4,
           "seed": 61,
-          "result": "RUNNING",
+          "result": "unresolved",
           "verified_victory": false,
           "cause": "expedition_Estação_emergency_from_map",
           "consumers": 8,
-          "nights": 2,
-          "decisions": 130,
+          "nights": 5,
+          "decisions": 156,
           "outcomes": [
             "returned",
             "emergency_from_map",
-            "strategy_load_blocked"
+            "returned",
+            "emergency_from_map",
+            "no_expedition"
           ],
           "parts": [
             "Conexões"
           ],
-          "materials": 2,
-          "health": 5,
-          "morale": 5,
-          "blocked": "plan_cargo",
-          "hungry_or_thirsty_end": 0,
+          "materials": 1,
+          "health": 0,
+          "morale": 4,
+          "blocked": "complete_cistern",
+          "hungry_or_thirsty_end": 8,
           "expeditions": [
             {
               "day": 1,
@@ -72122,6 +73489,24 @@
               "rounds": 9,
               "incapacitated": 1,
               "escorts": 1,
+              "survived_map": false
+            },
+            {
+              "day": 3,
+              "destination": "Estação",
+              "team": 1,
+              "rounds": 1,
+              "incapacitated": 0,
+              "escorts": 0,
+              "survived_map": true
+            },
+            {
+              "day": 4,
+              "destination": "Estação",
+              "team": 1,
+              "rounds": 9,
+              "incapacitated": 1,
+              "escorts": 0,
               "survived_map": false
             }
           ],
@@ -72460,25 +73845,27 @@
         {
           "size": 4,
           "seed": 67,
-          "result": "RUNNING",
+          "result": "unresolved",
           "verified_victory": false,
           "cause": "expedition_Estação_emergency_from_map",
           "consumers": 7,
-          "nights": 2,
-          "decisions": 127,
+          "nights": 5,
+          "decisions": 150,
           "outcomes": [
             "returned",
             "emergency_from_map",
-            "strategy_load_blocked"
+            "returned",
+            "emergency_from_map",
+            "no_expedition"
           ],
           "parts": [
             "Conexões"
           ],
           "materials": 1,
-          "health": 5,
-          "morale": 5,
-          "blocked": "plan_cargo",
-          "hungry_or_thirsty_end": 0,
+          "health": 0,
+          "morale": 4,
+          "blocked": "complete_cistern",
+          "hungry_or_thirsty_end": 8,
           "expeditions": [
             {
               "day": 1,
@@ -72496,6 +73883,24 @@
               "rounds": 9,
               "incapacitated": 1,
               "escorts": 1,
+              "survived_map": false
+            },
+            {
+              "day": 3,
+              "destination": "Estação",
+              "team": 1,
+              "rounds": 1,
+              "incapacitated": 0,
+              "escorts": 0,
+              "survived_map": true
+            },
+            {
+              "day": 4,
+              "destination": "Estação",
+              "team": 1,
+              "rounds": 9,
+              "incapacitated": 1,
+              "escorts": 0,
               "survived_map": false
             }
           ],
@@ -72570,25 +73975,27 @@
         {
           "size": 4,
           "seed": 69,
-          "result": "RUNNING",
+          "result": "unresolved",
           "verified_victory": false,
           "cause": "expedition_Estação_emergency_from_map",
           "consumers": 8,
-          "nights": 2,
-          "decisions": 123,
+          "nights": 5,
+          "decisions": 149,
           "outcomes": [
             "returned",
             "emergency_from_map",
-            "strategy_load_blocked"
+            "returned",
+            "emergency_from_map",
+            "no_expedition"
           ],
           "parts": [
             "Conexões"
           ],
           "materials": 2,
-          "health": 5,
-          "morale": 5,
-          "blocked": "plan_cargo",
-          "hungry_or_thirsty_end": 0,
+          "health": 0,
+          "morale": 4,
+          "blocked": "complete_cistern",
+          "hungry_or_thirsty_end": 8,
           "expeditions": [
             {
               "day": 1,
@@ -72606,6 +74013,24 @@
               "rounds": 8,
               "incapacitated": 1,
               "escorts": 1,
+              "survived_map": false
+            },
+            {
+              "day": 3,
+              "destination": "Estação",
+              "team": 1,
+              "rounds": 2,
+              "incapacitated": 0,
+              "escorts": 0,
+              "survived_map": true
+            },
+            {
+              "day": 4,
+              "destination": "Estação",
+              "team": 1,
+              "rounds": 9,
+              "incapacitated": 1,
+              "escorts": 0,
               "survived_map": false
             }
           ],
@@ -72860,25 +74285,27 @@
         {
           "size": 4,
           "seed": 74,
-          "result": "RUNNING",
+          "result": "unresolved",
           "verified_victory": false,
           "cause": "expedition_Estação_emergency_from_map",
           "consumers": 6,
-          "nights": 2,
-          "decisions": 126,
+          "nights": 5,
+          "decisions": 151,
           "outcomes": [
             "returned",
             "emergency_from_map",
-            "strategy_load_blocked"
+            "returned",
+            "emergency_from_map",
+            "no_expedition"
           ],
           "parts": [
             "Conexões"
           ],
-          "materials": 2,
-          "health": 5,
+          "materials": 3,
+          "health": 0,
           "morale": 5,
-          "blocked": "plan_cargo",
-          "hungry_or_thirsty_end": 0,
+          "blocked": "complete_cistern",
+          "hungry_or_thirsty_end": 7,
           "expeditions": [
             {
               "day": 1,
@@ -72896,6 +74323,24 @@
               "rounds": 9,
               "incapacitated": 1,
               "escorts": 1,
+              "survived_map": false
+            },
+            {
+              "day": 3,
+              "destination": "Estação",
+              "team": 1,
+              "rounds": 1,
+              "incapacitated": 0,
+              "escorts": 0,
+              "survived_map": true
+            },
+            {
+              "day": 4,
+              "destination": "Estação",
+              "team": 1,
+              "rounds": 9,
+              "incapacitated": 1,
+              "escorts": 0,
               "survived_map": false
             }
           ],
@@ -74317,25 +75762,27 @@
         {
           "size": 5,
           "seed": 67,
-          "result": "RUNNING",
+          "result": "unresolved",
           "verified_victory": false,
           "cause": "expedition_Estação_emergency_after_clock",
           "consumers": 8,
-          "nights": 2,
-          "decisions": 149,
+          "nights": 5,
+          "decisions": 165,
           "outcomes": [
             "returned",
             "emergency_after_clock",
-            "strategy_load_blocked"
+            "emergency_from_map",
+            "no_expedition",
+            "no_expedition"
           ],
           "parts": [
             "Conexões"
           ],
           "materials": 1,
-          "health": 5,
-          "morale": 5,
-          "blocked": "plan_cargo",
-          "hungry_or_thirsty_end": 2,
+          "health": 0,
+          "morale": 4,
+          "blocked": "complete_cistern",
+          "hungry_or_thirsty_end": 9,
           "expeditions": [
             {
               "day": 1,
@@ -74354,6 +75801,15 @@
               "incapacitated": 1,
               "escorts": 1,
               "survived_map": true
+            },
+            {
+              "day": 3,
+              "destination": "Estação",
+              "team": 1,
+              "rounds": 8,
+              "incapacitated": 1,
+              "escorts": 0,
+              "survived_map": false
             }
           ],
           "controller": "adaptive_auto_validation"
@@ -76400,26 +77856,27 @@
         {
           "size": 6,
           "seed": 70,
-          "result": "RUNNING",
+          "result": "unresolved",
           "verified_victory": false,
           "cause": "expedition_Estação_emergency_from_map",
           "consumers": 11,
-          "nights": 3,
-          "decisions": 232,
+          "nights": 5,
+          "decisions": 249,
           "outcomes": [
             "returned",
             "emergency_from_map",
             "emergency_from_map",
-            "strategy_load_blocked"
+            "emergency_from_map",
+            "no_expedition"
           ],
           "parts": [
             "Conexões"
           ],
           "materials": 2,
-          "health": 5,
-          "morale": 5,
-          "blocked": "plan_cargo",
-          "hungry_or_thirsty_end": 6,
+          "health": 0,
+          "morale": 4,
+          "blocked": "complete_cistern",
+          "hungry_or_thirsty_end": 11,
           "expeditions": [
             {
               "day": 1,
@@ -76446,6 +77903,15 @@
               "rounds": 9,
               "incapacitated": 1,
               "escorts": 1,
+              "survived_map": false
+            },
+            {
+              "day": 4,
+              "destination": "Estação",
+              "team": 1,
+              "rounds": 9,
+              "incapacitated": 1,
+              "escorts": 0,
               "survived_map": false
             }
           ],

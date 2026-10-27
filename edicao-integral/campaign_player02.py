@@ -545,12 +545,16 @@ class CampaignPlayer02:
                 return self._assign(team, loadout, tasks, base)
             except ValueError:
                 supplies = [task for task in tasks if task["action"] == "pickup_supply"]
-                if not supplies:
+                parts = [task for task in tasks if task["action"] == "pickup_part"]
+                if not supplies and not (self.adaptive and len(parts) > 1):
                     raise
-                dropped = supplies[-1]
+                # No modo adaptativo, equipe reduzida leva as peças que cabem
+                # e deixa as demais para outra visita.
+                dropped = supplies[-1] if supplies else parts[-1]
                 tasks.remove(dropped)
                 self.decisions.append({"action": "drop_task_for_load",
-                    "task": {key: dropped[key] for key in ("kind", "lot", "zone", "load")},
+                    "task": {key: dropped.get(key) for key in
+                             ("kind", "part", "lot", "zone", "load")},
                     "day": self.game.cistern.day})
 
     def _path_cost(self, tactical, start: int, target: int) -> int:
@@ -1011,8 +1015,13 @@ class CampaignPlayer02:
                 "tactical_outcome": self.last_expedition_outcome,
                 "delivered": [item.get("id", item.get("part")) for item in receipts]})
             if self.last_expedition_outcome == "strategy_load_blocked":
-                report["blocked"] = {"day": day, **(self.blocked or {})}
-                break
+                if not self.adaptive:
+                    report["blocked"] = {"day": day, **(self.blocked or {})}
+                    break
+                # Nada coube: a equipe não sai e o dia segue no abrigo.
+                self.decisions.append({"action": "stay_home_load", "day": day,
+                                       "detail": deepcopy(self.blocked)})
+                self.blocked = None
             if self.game.status != "RUNNING":
                 report["result"] = self.game.status
                 break
