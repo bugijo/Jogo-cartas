@@ -52,8 +52,21 @@ transporte regional. Desligado por padrão para preservar os replays registrados
 - Efeitos sem equivalente regional ficam em `regional_travel_archive`
   (Pressão externa, Material de Ferragens na volta), não gastáveis, mesma
   política da migração da Cisterna.
-- Emboscada (`ZC-VIA-0005`) fica pendente e bloqueia a viagem: **o combate de
-  emboscada regional ainda não está ligado** (próximo bloqueio).
+- Emboscada (`ZC-VIA-0005`) fica pendente até ser resolvida no M1 da regra 0.2
+  (§30) por `start_regional_ambush` / `finish_regional_ambush`:
+  - armas: só itens do gabarito regional cujo nome é arma 0.2 (hoje Pé de
+    cabra); sem arma, o herói luta desarmado — nenhum equipamento é criado;
+  - Munição levada: 0 (o motor regional não leva carga na viagem);
+  - ferimentos, fadiga, Fome/Sede (penalidade de PA), Horda regional e relógio
+    real vêm do estado regional e voltam a ele; NPCs da equipe recebem a fadiga
+    noturna das rodadas;
+  - emergência na estrada (§34): +1 ferimento, fadiga 3, perde a carga obtida e
+    todos voltam ao abrigo. Com carga única (cartão/bateria) ou veículo, o motor
+    recusa (`NotImplementedError`), porque o destino dessas peças na estrada não
+    está modelado.
+  - **Leitura pendente de aprovação:** a durabilidade do equipamento regional não
+    é consumida na emboscada, porque o combate segue o M1 da 0.2 (sem
+    durabilidade).
 
 ## Ainda sem regra aprovada (não decidir silenciosamente)
 

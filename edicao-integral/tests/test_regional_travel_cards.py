@@ -107,10 +107,78 @@ class RegionalTravelCardTests(unittest.TestCase):
         world.open_expedition("e1", HEROES, NEAR)
         self.assertEqual(world.advance_expedition("e1"), "travel_pending")
         self.assertTrue(world.expeditions["e1"].pending_travel["ambush"])
-        with self.assertRaises(NotImplementedError):
+        with self.assertRaisesRegex(ValueError, "start/finish"):
             world.resolve_regional_travel("e1", "decline")
         with self.assertRaisesRegex(ValueError, "pendente"):
             world.advance_expedition("e1")
+
+    @staticmethod
+    def _ambush_world():
+        world = world_with(["ZC-VIA-0005", "ZC-VIA-0012"])
+        world.gear = {hero: {f"{hero}-CROWBAR": {"template": "EXP-EQU-002", "slot": "hand",
+                                                  "index": 0, "x": 0, "y": 0,
+                                                  "durability": 5}}
+                      for hero in HEROES}
+        world.regional_horde_deck = __import__("horde_deck02").HordeDeck02.new(3).snapshot()
+        world.open_expedition("e1", HEROES, NEAR)
+        world.advance_expedition("e1")
+        return world
+
+    def test_ambush_uses_regional_state_without_inventing_gear_or_ammo(self):
+        world = self._ambush_world()
+        world.heroes[HEROES[0]]["wounds"] = 1
+        world.heroes[HEROES[0]]["health"] = 2
+        world.heroes[HEROES[1]]["hungry"] = True
+        ambush = world.start_regional_ambush("e1")
+        self.assertEqual(ambush.equipment, {hero: ["Pé de cabra"] for hero in HEROES})
+        self.assertEqual(ambush.ammo, 0)
+        self.assertEqual(ambush.wounds[HEROES[0]], 1)
+        self.assertEqual(ambush.ap_penalty[HEROES[1]], 1)
+        world2 = self._ambush_world()
+        world2.gear[HEROES[1]] = {}
+        self.assertEqual(world2.start_regional_ambush("e1").equipment[HEROES[1]], [])
+        with self.assertRaisesRegex(ValueError, "Nenhuma"):
+            world.start_regional_ambush("e1")
+
+    def test_ambush_rounds_spend_real_segments_and_trip_continues(self):
+        world = self._ambush_world()
+        clock = world.regional_clock
+        ambush = world.start_regional_ambush("e1")
+        ambush.enemies.clear()  # fixture: rodada sem inimigos para testar a ponte
+        ambush.begin_round()
+        ambush.end_round()
+        ambush.finish()
+        self.assertEqual(world.finish_regional_ambush("e1", ambush), "continue")
+        self.assertEqual((ambush.clock, world.regional_clock), (clock + 1, clock + 1))
+        self.assertIsNone(world.expeditions["e1"].pending_travel)
+        self.assertEqual(world.expeditions["e1"].travel_events[0]["ambush_result"]["rounds"], 1)
+        self.assertEqual(world.advance_expedition("e1"), "arrived")
+
+    def test_ambush_emergency_returns_home_with_wound_and_fatigue(self):
+        world = self._ambush_world()
+        ambush = world.start_regional_ambush("e1")
+        ambush.emergency_return()
+        self.assertEqual(world.finish_regional_ambush("e1", ambush), "emergency")
+        self.assertNotIn("e1", world.expeditions)
+        for hero in HEROES:
+            self.assertEqual(world.heroes[hero]["location"], "camp")
+            self.assertEqual(world.heroes[hero]["wounds"], 1)
+            self.assertEqual(world.heroes[hero]["fatigue"], 3)
+
+    def test_unfinished_ambush_cannot_be_settled_and_survives_save(self):
+        world = self._ambush_world()
+        ambush = world.start_regional_ambush("e1")
+        ambush.begin_round()
+        with self.assertRaisesRegex(ValueError, "não concluída"):
+            world.finish_regional_ambush("e1", ambush)
+        world.store_regional_ambush("e1", ambush)
+        with TemporaryDirectory() as directory:
+            path = Path(directory) / "world.json"
+            world.save(path)
+            loaded = World.load(path)
+        resumed = loaded.regional_ambush("e1")
+        self.assertEqual(resumed.round_no, 1)
+        self.assertEqual(resumed.team, HEROES)
 
     def test_pending_card_survives_save_load_without_redraw(self):
         world = world_with(["ZC-VIA-0006"])

@@ -12,6 +12,9 @@ from pathlib import Path
 from horde_deck02 import HordeDeck02
 from travel_deck02 import CARD_IDS as TRAVEL_CARD_IDS, TravelDeck02
 from travel02 import AUTO_EFFECTS, CHOICES
+from ambush02 import Ambush02
+from cistern_tactics02 import WEAPONS as WEAPONS02
+from horde_deck02 import HordeDeck02 as _HordeDeck02
 
 DATA = json.loads((Path(__file__).parent / 'data/system.json').read_text(encoding='utf-8'))
 EQUIPMENT = json.loads((Path(__file__).parent / 'data/equipment.json').read_text(encoding='utf-8'))
@@ -1090,6 +1093,110 @@ class World:
             applied['no_material_carried']=True
         return applied
 
+    def start_regional_ambush(self, expedition_id: str) -> Ambush02:
+        """Abre a Emboscada pendente no M1 da regra 0.2 (§30) para o mundo regional.
+
+        Só armas do gabarito regional cujo nome é arma 0.2 entram; nenhuma
+        Munição é levada (o motor regional não leva carga na viagem). Ferimentos,
+        fadiga, Fome/Sede, relógio e Horda vêm do estado regional.
+        """
+        exp=self.expeditions[expedition_id]
+        event=exp.pending_travel
+        if (event is None or not event.get('ambush') or 'ambush_state' in event
+                or self.regional_horde_deck is None):
+            raise ValueError('Nenhuma Emboscada regional para abrir')
+        team=list(exp.heroes)
+        equipment={hero:[ITEMS[item['template']]['name']
+                         for item in getattr(self,'gear',{}).get(hero,{}).values()
+                         if ITEMS.get(item['template'],{}).get('name') in WEAPONS02][:4]
+                   for hero in team}
+        ambush=Ambush02.start(
+            team,self.regional_clock,equipment=equipment,ammo=0,
+            horde_deck=self.regional_horde_deck,
+            fatigue={hero:self.heroes[hero].get('fatigue',0) for hero in team},
+            ap_penalty={hero:min(2,int(self.heroes[hero].get('hungry',False))
+                                 +int(self.heroes[hero].get('thirsty',False)))
+                        for hero in team},
+            allow_emergency_at_limit=True)
+        ambush.wounds={hero:self.heroes[hero].get('wounds',0) for hero in team}
+        event['ambush_state']=ambush.snapshot()
+        event['ambush_start_clock']=self.regional_clock
+        self.log.append({'day':self.day,'expedition':expedition_id,
+                         'action':'regional_ambush_start','clock':self.regional_clock,
+                         'equipment':deepcopy(equipment)})
+        return ambush
+
+    def regional_ambush(self, expedition_id: str) -> Ambush02:
+        """Retoma a Emboscada salva (por exemplo, após load)."""
+        event=self.expeditions[expedition_id].pending_travel or {}
+        if 'ambush_state' not in event:
+            raise ValueError('Emboscada regional não iniciada')
+        return Ambush02.from_snapshot(event['ambush_state'])
+
+    def store_regional_ambush(self, expedition_id: str, ambush: Ambush02) -> None:
+        event=self.expeditions[expedition_id].pending_travel or {}
+        if 'ambush_state' not in event or ambush.team!=event['ambush_state']['team']:
+            raise ValueError('Emboscada regional divergente')
+        event['ambush_state']=ambush.snapshot()
+
+    def finish_regional_ambush(self, expedition_id: str, ambush: Ambush02) -> str:
+        """Sincroniza o resultado: relógio real, ferimentos, fadiga e Horda.
+
+        Retorna 'continue' (viagem segue no mesmo trecho) ou 'emergency'
+        (retorno automático de estrada pela §34).
+        """
+        exp=self.expeditions[expedition_id]
+        event=exp.pending_travel or {}
+        start_clock=event.get('ambush_start_clock')
+        if ('ambush_state' not in event or not ambush.returned
+                or ambush.team!=event['ambush_state']['team']
+                or not start_clock<=ambush.clock<=10
+                or (not ambush.failed and ambush.round_no<1)):
+            raise ValueError('Emboscada regional não concluída legalmente')
+        _HordeDeck02.from_snapshot(ambush.horde_deck)
+        if ambush.failed and (exp.special_cargo or exp.vehicle_id):
+            raise NotImplementedError(
+                'Emergência de estrada com carga única ou veículo ainda não modelada')
+        self.regional_clock=ambush.clock
+        self.regional_horde_deck=deepcopy(ambush.horde_deck)
+        for hero in ambush.team:
+            state=self.heroes[hero]
+            state['wounds']=ambush.wounds[hero]
+            state['health']=3-ambush.wounds[hero]
+            state['fatigue']=ambush.fatigue[hero]
+        night_rounds=sum(1 for clock in range(start_clock+1,ambush.clock+1) if clock>=9)
+        for npc_id in exp.crew:
+            npc=self.npcs[npc_id]
+            npc['fatigue']=min(3,npc.get('fatigue',0)+night_rounds)
+        event.pop('ambush_state')
+        event['ambush_result']={'rounds':ambush.round_no,'clock':ambush.clock,
+                                'emergency':ambush.failed,
+                                'wounds':deepcopy(ambush.wounds)}
+        exp.pending_travel=None
+        self.log.append({'day':self.day,'expedition':expedition_id,
+                         'action':'regional_ambush_finish',**deepcopy(event['ambush_result'])})
+        if not ambush.failed:
+            return 'continue'
+        self._road_emergency(exp)
+        return 'emergency'
+
+    def _road_emergency(self, exp: Expedition) -> None:
+        """§34 na estrada: perde a carga obtida e todos voltam ao abrigo."""
+        for npc_id in exp.crew:
+            npc=self.npcs[npc_id]
+            npc['wounds']=min(3,npc.get('wounds',0)+1)
+            if 'health' in npc:
+                npc['health']=max(0,3-npc['wounds'])
+            npc['fatigue']=3
+            npc['location']='camp'
+        for hero in exp.heroes:
+            self.heroes[hero]['location']='camp'
+            self.heroes[hero]['combat_xp']=0
+        lost=deepcopy(exp.cargo)
+        self.log.append({'day':self.day,'expedition':exp.id,'action':'road_emergency',
+                         'lost_cargo':lost})
+        del self.expeditions[exp.id]
+
     def resolve_regional_travel(self, expedition_id: str, choice: str) -> dict:
         """Resolve a carta pendente por decisão pública registrada."""
         exp=self.expeditions[expedition_id]
@@ -1097,7 +1204,7 @@ class World:
         if event is None:
             raise ValueError('Nenhuma carta de Viagem pendente')
         if event.get('ambush'):
-            raise NotImplementedError('Emboscada regional ainda não tem mapa tático ligado')
+            raise ValueError('Emboscada se resolve com start/finish_regional_ambush')
         allowed=self.REGIONAL_TRAVEL_CHOICES[event['card_id']]
         if choice not in allowed:
             raise ValueError(f'Escolha indisponível sem provisões levadas: {allowed}')
