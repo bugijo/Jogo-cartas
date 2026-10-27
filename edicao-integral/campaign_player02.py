@@ -14,7 +14,7 @@ from heapq import heappop, heappush
 from math import ceil
 from random import Random
 
-from cistern02 import LINK_IDS, STARTERS
+from cistern02 import LINK_IDS, STAGES, STARTERS
 from integrated_campaign import IntegratedCampaign
 from travel02 import CHOICES, TravelContext
 from cistern_tactics02 import WEAPONS
@@ -30,6 +30,8 @@ class CampaignPlayer02:
     last_expedition_outcome: str = "not_started"
     last_tactical_state: dict | None = None
     current_trip_events: list[dict] = field(default_factory=list)
+    # Máximo de heróis por destino; ausente = todos os fundadores aptos.
+    team_caps: dict[str, int] = field(default_factory=dict)
 
     def __post_init__(self) -> None:
         self.rng = Random(self.seed ^ 0xC15A)
@@ -37,11 +39,22 @@ class CampaignPlayer02:
     @classmethod
     def new_h2(cls, seed: int) -> "CampaignPlayer02":
         """Sorteia vínculos de um baralho embaralhado e inicia dois fundadores."""
+        return cls.new_hn(seed, 2)
+
+    @classmethod
+    def new_hn(cls, seed: int, size: int) -> "CampaignPlayer02":
+        """Inicia H2–H6 com o mesmo sorteio de vínculos, um por fundador.
+
+        Os dois primeiros fundadores são os mesmos de H2; os demais seguem a
+        ordem do catálogo. O plano de expedições continua o heurístico de H2.
+        """
         links = list(LINK_IDS)
         Random(seed).shuffle(links)
         # A escolha tática usa protagonistas disponíveis com Técnica alta;
         # vínculos seguem o sorteio legal do baralho.
-        game = IntegratedCampaign.new(seed, [STARTERS[0], STARTERS[2]], links[:2])
+        founders = [STARTERS[0], STARTERS[2]]
+        founders += [hero for hero in STARTERS if hero not in founders]
+        game = IntegratedCampaign.new(seed, founders[:size], links[:size])
         return cls(seed, game)
 
     @staticmethod
@@ -100,7 +113,12 @@ class CampaignPlayer02:
         if card == "ZC-VIA-0002":
             return "water" if context.water else "fatigue"
         if card == "ZC-VIA-0004":
-            return "material" if context.materials >= 1 else "pressure"
+            # Só entrega material se o abrigo ainda cobrir as etapas do filtro.
+            cistern = self.game.cistern
+            needed = sum(STAGES[stage]["materials"] for stage in STAGES
+                         if stage not in cistern.reserved and not cistern.filter_active)
+            spare = cistern.materials + context.materials - 1 >= needed
+            return "material" if context.materials >= 1 and spare else "pressure"
         if card == "ZC-VIA-0006":
             return ("help" if context.food >= 1 and context.water >= 1
                     and context.moral < 5 else "decline")
@@ -329,6 +347,23 @@ class CampaignPlayer02:
                     if tactical.ap[hero] < cost:
                         break
                     action = task["action"]
+                    if action == "pickup_supply" and \
+                            self._load(tactical, hero) + task["load"] > 4:
+                        # Carga de estrada ocupou espaço previsto; repassa a
+                        # tarefa a quem tenha espaço ou desiste do lote.
+                        replacement = next((candidate for candidate in tactical.team
+                            if candidate != hero and candidate in tactical.positions
+                            and self._load(tactical, candidate) + task["load"] <= 4),
+                            None)
+                        if replacement:
+                            task["assigned"] = replacement
+                        else:
+                            task["done"] = True
+                            task["dropped"] = True
+                        self.decisions.append({"action": "reassign_supply_for_load",
+                            "hero": hero, "replacement": replacement,
+                            "task": task.copy(), "round": tactical.round_no})
+                        continue
                     if action == "pickup_supply":
                         tactical.pickup_supply(hero, task["kind"], task["lot"])
                         task["done"] = True
@@ -346,6 +381,7 @@ class CampaignPlayer02:
                             task.setdefault("failed_by", []).append(hero)
                             replacement = next((candidate for candidate in tactical.team
                                 if candidate != hero and candidate not in task["failed_by"]
+                                and self._load(tactical, candidate) + task["load"] <= 4
                                 and not any(not pending.get("done")
                                     and pending is not task
                                     and pending.get("assigned") == candidate
@@ -363,9 +399,10 @@ class CampaignPlayer02:
                 break
 
     def _assign(self, team: list[str], loadout: dict[str, list[str]],
-                tasks: list[dict]) -> dict[str, list[dict]]:
+                tasks: list[dict], base: dict[str, int] | None = None
+                ) -> dict[str, list[dict]]:
         assigned = {hero: [] for hero in team}
-        used = {hero: len(loadout[hero]) for hero in team}
+        used = base.copy() if base else {hero: len(loadout[hero]) for hero in team}
         # Agrupa tarefas de mesma zona no mesmo herói quando couber.
         for task in tasks:
             choices = [hero for hero in team if used[hero] + task["load"] <= 4]
@@ -378,6 +415,29 @@ class CampaignPlayer02:
             assigned[hero].append(task)
             used[hero] += task["load"]
         return assigned
+
+    def _assign_or_trim(self, team: list[str], loadout: dict[str, list[str]],
+                        tasks: list[dict], base: dict[str, int] | None = None
+                        ) -> dict[str, list[dict]]:
+        """Distribui a carga; se não couber, abandona mantimentos do fim da lista.
+
+        Peças e equipamento nunca são descartados. Lotes maiores (C inicial
+        acima de 4) podem não caber na equipe; a decisão fica registrada.
+        """
+        while True:
+            for task in tasks:
+                task.pop("assigned", None)
+            try:
+                return self._assign(team, loadout, tasks, base)
+            except ValueError:
+                supplies = [task for task in tasks if task["action"] == "pickup_supply"]
+                if not supplies:
+                    raise
+                dropped = supplies[-1]
+                tasks.remove(dropped)
+                self.decisions.append({"action": "drop_task_for_load",
+                    "task": {key: dropped[key] for key in ("kind", "lot", "zone", "load")},
+                    "day": self.game.cistern.day})
 
     def _run_tactical(self, tactical, tasks: list[dict],
                       assignments: dict[str, list[dict]]) -> bool:
@@ -411,7 +471,7 @@ class CampaignPlayer02:
         loadout = equipment or {hero: self.game.equipment_inventory.get(hero, []).copy()
                                 for hero in team}
         try:
-            assignments = self._assign(team, loadout, tasks)
+            assignments = self._assign_or_trim(team, loadout, tasks)
         except ValueError as exc:
             self.blocked = {"action": "plan_cargo", "destination": destination,
                             "error": str(exc), "loadout": deepcopy(loadout),
@@ -434,6 +494,15 @@ class CampaignPlayer02:
             self.last_expedition_outcome = "emergency_on_outbound"
             return []
         tactical = self.game.enter_expedition()
+        loads = {hero: self._load(tactical, hero) for hero in team}
+        planned = {hero: sum(task["load"] for task in assignments[hero]) for hero in team}
+        if any(loads[hero] + planned[hero] > 4 for hero in team):
+            # A carga de estrada caiu sobre um herói com tarefas previstas;
+            # refaz a distribuição uma vez com a carga real.
+            assignments = self._assign_or_trim(team, loadout, tasks, loads)
+            self.decisions.append({"action": "replan_cargo_on_entry",
+                "loads": loads, "assigned": {hero: len(items)
+                for hero, items in assignments.items()}})
         survived = self._run_tactical(tactical, tasks, assignments)
         if not survived:
             self.last_tactical_state = tactical.snapshot()
@@ -455,6 +524,14 @@ class CampaignPlayer02:
                                "receipts": deepcopy(receipts),
                                "clock": self.game.cistern.clock})
         return receipts
+
+    def _filter_workers(self, crew: list[str]) -> list[str]:
+        """Até dois heróis aptos ao trabalho do filtro, na ordem da equipe."""
+        people = {person["id"]: person for person in self.game.cistern.people}
+        able = [hero for hero in crew
+                if people[hero]["wounds"] < 3 and people[hero].get("fatigue", 0) < 3
+                and not people[hero]["hungry"] and not people[hero]["thirsty"]]
+        return able[:2] or crew[:2]
 
     def day_close(self, guards: list[str] | None = None,
                   guard_rolls: list[int] | None = None, ammo: int = 0) -> dict:
@@ -494,7 +571,11 @@ class CampaignPlayer02:
 
     def attempt_cistern(self) -> dict:
         """Primeira rota heurística completa, sem injetar resultados ou itens."""
-        h1, h2 = self.game.founders
+        h1, h2 = self.game.founders[:2]
+        # Em H3–H6 os fundadores extras acompanham as expedições com o
+        # inventário inicial e entram no trabalho do filtro nos dias 4–5.
+        crew = self.game.founders.copy()
+        extras = {hero: self.game.equipment_inventory[hero].copy() for hero in crew[2:]}
         report = {"seed": self.seed, "founders": self.game.founders.copy(),
                   "links": self.game.links.copy(), "days": [], "receipts": [],
                   "result": None, "certificate": None, "blocked": None,
@@ -509,17 +590,17 @@ class CampaignPlayer02:
             "starting_equipment": deepcopy(self.game.equipment_inventory),
         }
         plans = [
-            ("Mercado", [h1, h2], market_day1_tasks(), None),
+            ("Mercado", crew, market_day1_tasks(), None),
             # A Oficina tem pressão crescente após a primeira visita ao Mercado.
             # Levar os dois fundadores distribui ações de coleta e mantém um
             # combatente com Machado; o pé de cabra continua com quem abre a
             # porta bloqueada da rota. O Machado só pode ser usado depois de
             # ser retirado legalmente na Oficina, portanto a primeira viagem
             # mantém o inventário inicial de ambos.
-            ("Oficina", [h1, h2], workshop_day_tasks(),
-             {h1: ["Pé de cabra"], h2: ["Pé de cabra"]}),
-            ("Estação", [h1, h2], station_day_tasks(),
-             {h1: ["Pé de cabra"], h2: ["Machado"]}),
+            ("Oficina", crew, workshop_day_tasks(),
+             {h1: ["Pé de cabra"], h2: ["Pé de cabra"], **extras}),
+            ("Estação", crew, station_day_tasks(),
+             {h1: ["Pé de cabra"], h2: ["Machado"], **extras}),
             (None, [], [], None),
             (None, [], [], None),
         ]
@@ -537,6 +618,30 @@ class CampaignPlayer02:
                         "error": str(exc), "parts": deepcopy(self.game.cistern.parts),
                         "materials": self.game.cistern.materials}
                     break
+            if destination == "Estação":
+                holder = next((hero for hero in crew if "Machado"
+                               in self.game.equipment_inventory.get(hero, [])), None)
+                if holder is not None:
+                    loadout = {hero: (["Machado"] if hero == holder else
+                                      ["Pé de cabra"] if "Pé de cabra"
+                                      in self.game.equipment_inventory.get(hero, [])
+                                      else []) for hero in crew}
+                else:
+                    # Machado não foi retirado: cada herói leva o que possui.
+                    loadout = None
+            if destination is not None:
+                people = {person["id"]: person for person in self.game.cistern.people}
+                fit = [hero for hero in team if people[hero]["wounds"] < 3
+                       and people[hero]["fatigue"] < 3]
+                fit = fit[:self.team_caps.get(destination, len(fit))]
+                if fit != team:
+                    self.decisions.append({"action": "leave_home",
+                        "day": day, "heroes": [hero for hero in team if hero not in fit]})
+                    team = fit
+                    if loadout is not None:
+                        loadout = {hero: loadout[hero] for hero in team}
+                if not team:
+                    destination = None
             if destination is None:
                 receipts = []
                 self.last_expedition_outcome = "no_expedition"
@@ -560,9 +665,9 @@ class CampaignPlayer02:
                 if day == 4:
                     self.game.reserve_filter_stage("B")
                     self.game.reserve_filter_stage("C")
-                    self.game.plan_filter_work([h1, h2])
+                    self.game.plan_filter_work(self._filter_workers(crew))
                 if day == 5:
-                    self.game.plan_filter_work([h1, h2])
+                    self.game.plan_filter_work(self._filter_workers(crew))
                 close = self.day_close(guards=guards,
                                        guard_rolls=None, ammo=ammo)
                 report["days"][-1]["night"] = deepcopy(close)
