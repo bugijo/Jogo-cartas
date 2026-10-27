@@ -387,6 +387,10 @@ class Travel02:
             effect = deepcopy(AUTO_EFFECTS.get(card_id, {}))
             if card_id == "ZC-VIA-0010" and event["direction"] == "return":
                 effect = {"material_gain": 1}
+            elif card_id == "ZC-VIA-0010" and context.materials == 0:
+                # Decisão aprovada (MANUAL_EXPERIMENTAL.md): sem Material
+                # levado, a ida não perde recurso.
+                effect = {"material_drop": 0, "no_material_carried": 1}
         water_loss = effect.get("water_loss", 0)
         food_loss = effect.get("food_loss", 0)
         material_loss = effect.get("material_loss", effect.get("material_drop", 0))

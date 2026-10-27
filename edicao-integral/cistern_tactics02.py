@@ -32,9 +32,9 @@ ENEMIES = {'Errante': (1, 5, 1, 1), 'Corredor': (1, 6, 1, 2),
 WEAPONS = {'Pé de cabra': (1, 1, False), 'Faca': (1, 1, False),
            'Machado': (2, 2, False), 'Pistola': (1, 1, True),
            'Espingarda': (2, 1, True)}  # dano, PA, tiro
-# §31: ligar a escolta de um incapacitado. O texto não fixa o custo da
-# ligação (só que mover escoltando não custa PA extra); 1 PA é a leitura
-# conservadora, pendente de aprovação em docs/continuity.
+# §31: iniciar a escolta de um incapacitado custa 1 PA; o deslocamento
+# seguinte paga o movimento normal, sem PA adicional pela escolta.
+# Decisão aprovada para a branch experimental (MANUAL_EXPERIMENTAL.md).
 ESCORT_LINK_AP = 1
 HORDE = ('Arrastar',) * 4 + ('Corrida',) * 2 + ('Aglomerado',) * 2 + ('Peso morto',)
 PARTS = {'Oficina': {'Conexões': (7, 1), 'Bateria': (7, 1)},

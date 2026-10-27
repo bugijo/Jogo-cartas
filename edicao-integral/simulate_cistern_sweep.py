@@ -22,6 +22,8 @@ SIZES = range(2, 7)
 SEEDS = range(1, 31)
 # Sementes nunca usadas para escolher a política adaptativa por tamanho.
 HELDOUT = range(31, 61)
+# Validação cega: medida uma vez antes de qualquer ajuste (2026-10-27).
+VALIDATION = range(61, 91)
 CONTROLLERS = {
     "fixed": {},
     "adaptive_oficina_first": {"adaptive": True, "adaptive_order": ("Oficina", "Estação")},
@@ -87,6 +89,31 @@ def run_one(size: int, seed: int, settings: dict | None = None) -> dict:
         "materials": final["materials"],
         "health": final["health"], "morale": final["morale"],
         "blocked": (report["blocked"] or {}).get("action"),
+        "hungry_or_thirsty_end": sum(person["hungry"] or person["thirsty"]
+                                     for person in final["people"]),
+        "expeditions": [{key: stat[key] for key in
+                         ("day", "destination", "team", "rounds", "incapacitated",
+                          "escorts", "survived_map")}
+                        for stat in report["expedition_stats"]],
+    }
+
+
+def _metrics(rows: list[dict]) -> dict:
+    expeditions = [item for row in rows for item in row["expeditions"]]
+    station = [item for item in expeditions if item["destination"] == "Estação"]
+    return {
+        "hungry_or_thirsty_end_mean": round(
+            sum(row["hungry_or_thirsty_end"] for row in rows) / len(rows), 2),
+        "expeditions": len(expeditions),
+        "map_emergencies": sum(not item["survived_map"] for item in expeditions),
+        "station_expeditions": len(station),
+        "station_map_emergencies": sum(not item["survived_map"] for item in station),
+        "incapacitations": sum(item["incapacitated"] for item in expeditions),
+        "escorts": sum(item["escorts"] for item in expeditions),
+        "mean_rounds": round(sum(item["rounds"] for item in expeditions)
+                             / max(1, len(expeditions)), 2),
+        "mean_station_rounds": round(sum(item["rounds"] for item in station)
+                                     / max(1, len(station)), 2),
     }
 
 
@@ -99,6 +126,7 @@ def _summary(runs: list[dict]) -> dict:
             "verified_victories": sum(row["verified_victory"] for row in rows),
             "victory_seeds": [row["seed"] for row in rows if row["verified_victory"]],
             "causes": dict(Counter(row["cause"] for row in rows).most_common()),
+            **_metrics(rows),
         }
     return summary
 
@@ -110,13 +138,15 @@ def sweep() -> dict:
                 for size in SIZES for seed in SEEDS]
         groups[name] = {"seeds": [SEEDS.start, SEEDS.stop - 1],
                         "summary": _summary(runs), "runs": runs}
-    for name, chooser in (("fixed_heldout", lambda size: {}),
-                          ("adaptive_previous_heldout", previous_settings),
-                          ("adaptive_auto_heldout", auto_settings)):
-        runs = [{**run_one(size, seed, chooser(size)), "controller": name}
-                for size in SIZES for seed in HELDOUT]
-        groups[name] = {"seeds": [HELDOUT.start, HELDOUT.stop - 1],
-                        "summary": _summary(runs), "runs": runs}
+    for seeds, suffix in ((HELDOUT, "heldout"), (VALIDATION, "validation")):
+        for name, chooser in (("fixed", lambda size: {}),
+                              ("adaptive_previous", previous_settings),
+                              ("adaptive_auto", auto_settings)):
+            label = f"{name}_{suffix}"
+            runs = [{**run_one(size, seed, chooser(size)), "controller": label}
+                    for size in SIZES for seed in seeds]
+            groups[label] = {"seeds": [seeds.start, seeds.stop - 1],
+                             "summary": _summary(runs), "runs": runs}
     return {"schema": 2, "controller": "CampaignPlayer02", "groups": groups}
 
 

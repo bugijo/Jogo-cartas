@@ -30,6 +30,7 @@ class CampaignPlayer02:
     last_expedition_outcome: str = "not_started"
     last_tactical_state: dict | None = None
     current_trip_events: list[dict] = field(default_factory=list)
+    expedition_stats: list[dict] = field(default_factory=list)
     # Máximo de heróis por destino; ausente = todos os fundadores aptos.
     team_caps: dict[str, int] = field(default_factory=dict)
     # Modo adaptativo: busca comida nos dias 4–5 e escala vigias em cercos.
@@ -672,6 +673,15 @@ class CampaignPlayer02:
                 "loads": loads, "assigned": {hero: len(items)
                 for hero, items in assignments.items()}})
         survived = self._run_tactical(tactical, tasks, assignments)
+        people = {person["id"]: person for person in self.game.cistern.people}
+        # Métricas fora de `decisions` para não alterar replays registrados.
+        self.expedition_stats.append({
+            "day": self.game.cistern.day, "destination": destination,
+            "team": len(team), "rounds": tactical.round_no,
+            "clock_on_map_end": self.game.cistern.clock,
+            "incapacitated": sum(people[hero]["wounds"] >= 3 for hero in team),
+            "escorts": sum(entry.get("event") == "escort" for entry in tactical.log),
+            "survived_map": survived})
         if not survived:
             self.last_tactical_state = tactical.snapshot()
             self.game.emergency_return()
@@ -993,17 +1003,7 @@ class CampaignPlayer02:
                 receipts = []
                 self.last_expedition_outcome = "no_expedition"
             else:
-                try:
-                    receipts = self.expedition(destination, team, tasks, loadout)
-                except ValueError as exc:
-                    # Ferragens (ZC-VIA-0010) na ida sem Material levado: a
-                    # carta não define o caso e o motor recusa. Outros erros
-                    # são defeitos e devem propagar.
-                    if "Material levado insuficiente" not in str(exc):
-                        raise
-                    report["blocked"] = {"day": day, "action": "expedition_rule_gap",
-                                         "destination": destination, "error": str(exc)}
-                    break
+                receipts = self.expedition(destination, team, tasks, loadout)
             report["receipts"].extend(deepcopy(receipts))
             report["days"].append({"day": day, "destination": destination,
                 "clock": self.game.cistern.clock,
@@ -1078,6 +1078,7 @@ class CampaignPlayer02:
             "groups": deepcopy(self.game.cistern.groups),
             "rescue_history": deepcopy(self.game.cistern.rescue_history),
         }
+        report["expedition_stats"] = deepcopy(self.expedition_stats)
         report["decision_count"] = len(self.decisions)
         report["decisions"] = deepcopy(self.decisions)
         return report

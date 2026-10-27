@@ -225,19 +225,39 @@ class Travel02Tests(unittest.TestCase):
             trip.apply(event["event_id"], context, "material")
         self.assertEqual(context.snapshot(), before)
 
-    def test_ferragens_outbound_requires_and_drops_carried_material(self):
+    def test_ferragens_outbound_drops_carried_material(self):
         trip = Travel02.from_deck(["ZC-VIA-0010"], "short")
-        context = TravelContext(food=0, water=0, materials=0,
+        context = TravelContext(food=0, water=0, materials=1,
                                 fatigue={"h1": 0})
         event = trip.reveal("outbound")
-        before = context.snapshot()
-        with self.assertRaises(ValueError):
-            trip.apply(event["event_id"], context)
-        self.assertEqual(context.snapshot(), before)
-        context.materials = 1
         self.assertEqual(trip.apply(event["event_id"], context),
                          {"material_drop": 1})
         self.assertEqual(context.materials, 0)
+
+    def test_ferragens_outbound_without_material_loses_nothing(self):
+        # Decisão aprovada (MANUAL_EXPERIMENTAL.md): sem Material levado,
+        # a carta não perde recurso nem bloqueia a viagem.
+        trip = Travel02.from_deck(["ZC-VIA-0010"], "short")
+        context = TravelContext(food=2, water=2, materials=0,
+                                fatigue={"h1": 0})
+        event = trip.reveal("outbound")
+        before = context.snapshot()
+        effect = trip.apply(event["event_id"], context)
+        self.assertEqual(effect, {"material_drop": 0, "no_material_carried": 1})
+        self.assertEqual(context.snapshot(), before)
+        self.assertIsNone(trip.pending_resolution)
+        self.assertEqual(trip.resolved[event["event_id"]]["effect"], effect)
+
+    def test_ferragens_return_still_adds_material_without_carry(self):
+        trip = Travel02.from_deck(["ZC-VIA-0001", "ZC-VIA-0010"], "short")
+        context = TravelContext(food=0, water=0, materials=0,
+                                fatigue={"h1": 0})
+        event = trip.reveal("outbound")
+        trip.apply(event["event_id"], context)
+        event = trip.reveal("return", context)
+        self.assertEqual(event["card_id"], "ZC-VIA-0010")
+        self.assertEqual(trip.apply(event["event_id"], context), {"material_gain": 1})
+        self.assertEqual(context.materials, 1)
 
     def test_road_signal_skips_one_return_card_but_still_uses_the_segment(self):
         trip = Travel02.from_deck(["ZC-VIA-0003", "ZC-VIA-0001",
