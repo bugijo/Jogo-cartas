@@ -1,3 +1,10 @@
+# Estado ativo — ponte de Viagem regional, 2026-10-27
+
+- `World.regional_travel_cards` (opcional, desligado por padrão): uma carta de Viagem por trecho pago no transporte regional, extra noturna sem segmento, Placa, escolhas apenas sem carga levada, Pressão/Material sem equivalente arquivados (não gastáveis), save/load sem repetir carta. Documentado em `edicao-integral/MANUAL_EXPERIMENTAL.md`.
+- Emboscada regional (`ZC-VIA-0005`) fica pendente e bloqueia: **próximo bloqueio** (`P1-REGIONAL-AMBUSH`).
+- Replays regionais registrados inalterados; 382 testes; verificadores, `compileall`, `git diff --check` passaram.
+- Pendências documentadas sem regra aprovada: combustível regional, carga levada regional, Material de Ferragens no chão, narrativa de Célia/pistas.
+
 # Estado ativo — validação 61–90 e decisões aprovadas, 2026-10-27
 
 - Decisões aprovadas e aplicadas (registradas em `edicao-integral/MANUAL_EXPERIMENTAL.md`): escolta 1 PA para iniciar; Ferragens sem Material levado não perde recurso.

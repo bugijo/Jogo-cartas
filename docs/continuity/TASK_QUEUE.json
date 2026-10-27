@@ -107,13 +107,11 @@
     "emboscada não ignorada"
    ],
    "tests": [
-    "test_regional_player.py",
-    "test_campaign_transition.py",
-    "tests de Travel02/Ambush02"
+    "edicao-integral/tests/test_regional_travel_cards.py"
    ],
-   "status": "bloqueada_por_ponte_de_regras",
+   "status": "implementado_parcial_opcional",
    "commit": null,
-   "blocker": "O snapshot do deck sobrevive à migração/save/load, mas nenhuma carta regional é revelada/resolvida. Travel02 usa contexto de carga física (alimento/água/materiais) que não possui ponte aprovada para contadores regionais; custo e distância near/medium/far também não estão conciliados."
+   "blocker": "Ponte opcional (World.regional_travel_cards): uma carta por trecho pago, extra noturna sem segmento, Placa, escolhas sem carga levada, efeitos sem equivalente arquivados, save/load sem redraw. Falta: combate de emboscada regional (ZC-VIA-0005 bloqueia), carga levada regional e ligar a opção nos replays/controlador regional."
   },
   {
    "id": "P1-CLUE-SOURCES-AND-EXTRACTION",
@@ -254,6 +252,26 @@
    "status": "pendente",
    "commit": null,
    "blocker": "Exige ponte Travel02 → chão do mapa tático; implementar sem criar Material."
+  },
+  {
+   "id": "P1-REGIONAL-AMBUSH",
+   "priority": 1,
+   "objective": "Resolver ZC-VIA-0005 no transporte regional com mapa M1 (§30), relógio, Horda e save/load.",
+   "depends_on": [
+    "P1-REGIONAL-TRAVEL-SHOE"
+   ],
+   "acceptance": [
+    "rodada mínima",
+    "segmentos reais",
+    "emergência",
+    "sem ignorar emboscada"
+   ],
+   "tests": [
+    "edicao-integral/tests/test_regional_travel_cards.py"
+   ],
+   "status": "pendente",
+   "commit": null,
+   "blocker": "Ambush02 é ligado ao capítulo Cistern02; precisa de ponte com o World regional."
   }
  ]
 }

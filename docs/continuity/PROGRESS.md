@@ -439,3 +439,9 @@ passaram se o gate de campanha ainda estiver fechado.
 - Validação cega 61–90: 56/150 (anterior 9, fixo 0); 66/150 após Ferragens.
 - H2: rota cautelosa não é a causa; dupla/rota longa pioram; correção de carga.
 - Auditoria: apoio decisivo em H3–H4; escolta marginal.
+
+## 2026-10-27 — ponte de Viagem regional (opcional)
+
+- Cartas de Viagem por trecho pago no motor regional, com escolhas públicas,
+  arquivo de efeitos sem equivalente, extra noturna e save/load. Emboscada
+  regional pendente. Suíte em 382 testes.
