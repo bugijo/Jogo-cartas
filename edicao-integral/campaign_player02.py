@@ -38,6 +38,8 @@ class CampaignPlayer02:
     adaptive_order: tuple[str, ...] = ("Oficina", "Estação")
     # §26 no modo adaptativo; desligável para comparar com a medição anterior.
     emergency_collection: bool = True
+    # Táticas do modo adaptativo, ligáveis uma a uma para medição.
+    tactics: tuple[str, ...] = ("escort", "late_retreat", "cautious", "support")
 
     def __post_init__(self) -> None:
         self.rng = Random(self.seed ^ 0xC15A)
@@ -65,7 +67,7 @@ class CampaignPlayer02:
 
     @staticmethod
     def _path(map_data: dict, start: int, target: int, opened=(), enemies=(),
-              can_force: bool = True) -> list[int]:
+              can_force: bool = True, cautious: bool = False) -> list[int]:
         graph = {zone: [] for zone in map_data["zones"]}
         for a, b in map_data["edges"]:
             graph[a].append(b)
@@ -86,6 +88,12 @@ class CampaignPlayer02:
             for nxt in sorted(graph[zone]):
                 pair = tuple(sorted((zone, nxt)))
                 step = 1 + int(zone in occupied)
+                if cautious and nxt != target:
+                    # Evita atravessar inimigos e a vizinhança do surgimento.
+                    spawn = map_data["spawn"]
+                    near_spawn = nxt == spawn or tuple(sorted((nxt, spawn))) in {
+                        tuple(sorted(edge)) for edge in map_data["edges"]}
+                    step += 2 * int(nxt in occupied) + int(near_spawn)
                 if pair in doors and pair not in opened:
                     if pair in blocked and not can_force:
                         continue
@@ -108,6 +116,7 @@ class CampaignPlayer02:
         part_sizes = {
             "Conexões": 1, "Bateria": 1, "Bomba": 2, "Membrana": 1}
         return (len(tactical.equipment[hero])
+                + 2 * (hero in getattr(tactical, "escorts", {}))
                 + sum(part_sizes[part] for part in tactical.carried[hero])
                 + sum(item["cards"] for item in tactical.supply_cargo[hero])
                 + sum(item["cards"] for item in tactical.search_cargo[hero]))
@@ -287,6 +296,49 @@ class CampaignPlayer02:
                 return task
         return None
 
+    def _support_target(self, tactical, tasks: list[dict], hero: str) -> str | None:
+        """Colega com tarefa pendente mais distante da saída, para acompanhar."""
+        people = {p["id"]: p for p in tactical.chapter.people}
+        exit_zone = tactical.map["exit"]
+        busy = [task for task in tasks if not task.get("done")
+                and task.get("assigned") not in (None, hero)
+                and people[task["assigned"]]["wounds"] < 3]
+        if not busy:
+            return None
+        task = max(busy, key=lambda item: (
+            self._path_cost(tactical, exit_zone, item["zone"]), -tasks.index(item)))
+        return task["assigned"]
+
+    def _rescue_target(self, tactical, tasks: list[dict], hero: str) -> str | None:
+        """Incapacitado sem escolta que cabe a este herói buscar, se houver.
+
+        O resgatador é o apto com menos tarefas pendentes e carga que comporte
+        as duas cargas do incapacitado; desempate pela ordem da equipe.
+        """
+        people = {p["id"]: p for p in tactical.chapter.people}
+        escorts = getattr(tactical, "escorts", {})
+        linked = {target for escort, target in escorts.items()
+                  if people[escort]["wounds"] < 3}
+        victims = [member for member in tactical.team
+                   if people[member]["wounds"] >= 3 and member not in linked
+                   and member in tactical.positions]
+        if not victims:
+            return None
+        candidates = [member for member in tactical.team
+                      if people[member]["wounds"] < 3 and member not in escorts
+                      and self._load(tactical, member) + 2 <= 4]
+        if not candidates:
+            return None
+        pending = {member: sum(1 for task in tasks if not task.get("done")
+                               and task.get("assigned") == member)
+                   for member in candidates}
+        rescuers = sorted(candidates, key=lambda member: (
+            pending[member], self._load(tactical, member), tactical.team.index(member)))
+        for rescuer, victim in zip(rescuers, victims):
+            if rescuer == hero:
+                return victim
+        return None
+
     def _act_tactical(self, tactical, tasks: list[dict],
                       assignments: dict[str, list[dict]]) -> None:
         for hero in tactical.team:
@@ -298,6 +350,52 @@ class CampaignPlayer02:
                 task = self._next_task(tasks, assignments, hero)
                 target = task["zone"] if task else tactical.map["exit"]
                 here = tactical.positions[hero]
+                if (self.adaptive and "wounded_retreat" in self.tactics
+                        and person["wounds"] >= 2 and task is not None) \
+                        and not task.get("done"):
+                    # Ferido grave larga as tarefas e recua com a carga.
+                    for pending in tasks:
+                        if pending.get("assigned") == hero and not pending.get("done"):
+                            pending["done"] = True
+                            pending["abandoned"] = True
+                    self.decisions.append({"action": "wounded_retreat", "hero": hero,
+                                           "round": tactical.round_no})
+                    task, target = None, tactical.map["exit"]
+                if (self.adaptive and "escort" in self.tactics
+                        and hero in getattr(tactical, "escorts", {})):
+                    # Quem escolta só leva o colega para a saída.
+                    task, target = None, tactical.map["exit"]
+                victim = self._rescue_target(tactical, tasks, hero) \
+                    if self.adaptive and "escort" in self.tactics else None
+                if victim is not None:
+                    if tactical.positions[victim] == here:
+                        if tactical.ap[hero] < 1:
+                            break
+                        tactical.escort(hero, victim)
+                        self.decisions.append({"action": "escort", "hero": hero,
+                            "escorted": victim, "round": tactical.round_no})
+                        continue
+                    # Vai buscar o colega; a tarefa espera.
+                    task, target = None, tactical.positions[victim]
+                elif (task is None and self.adaptive and "support" in self.tactics
+                        and hero not in getattr(tactical, "escorts", {})):
+                    protege = self._support_target(tactical, tasks, hero)
+                    if protege is not None:
+                        foe = next((item for item in tactical.enemies
+                                    if item["zone"] == here), None)
+                        arm = next((item for item in tactical.equipment[hero]
+                                    if item in WEAPONS), None)
+                        if foe and arm:
+                            if tactical.ap[hero] < WEAPONS[arm][1]:
+                                break
+                            tactical.attack(hero, foe["id"], arm, self.rng.randint(1, 6))
+                            self.decisions.append({"action": "support_attack",
+                                "hero": hero, "enemy": foe["id"],
+                                "round": tactical.round_no})
+                            continue
+                        if tactical.positions[protege] == here:
+                            break
+                        target = tactical.positions[protege]
                 enemy = next((item for item in tactical.enemies
                               if item["zone"] == here), None)
                 weapon = next((item for item in tactical.equipment[hero]
@@ -327,7 +425,8 @@ class CampaignPlayer02:
                                     if member in tactical.positions
                                     for item in tactical.equipment[member])
                     path = self._path(tactical.map, tactical.positions[hero], target,
-                                      tactical.opened, tactical.enemies, team_tool)
+                                      tactical.opened, tactical.enemies, team_tool,
+                                      cautious=self.adaptive and "cautious" in self.tactics)
                     if len(path) < 2:
                         break
                     here, nxt = path[0], path[1]
@@ -361,7 +460,7 @@ class CampaignPlayer02:
                     if tactical.ap[hero] < cost:
                         break
                     action = task["action"]
-                    if action == "pickup_supply" and \
+                    if action in ("pickup_supply", "pickup_equipment") and \
                             self._load(tactical, hero) + task["load"] > 4:
                         # Carga de estrada ocupou espaço previsto; repassa a
                         # tarefa a quem tenha espaço ou desiste do lote.
@@ -453,11 +552,61 @@ class CampaignPlayer02:
                     "task": {key: dropped[key] for key in ("kind", "lot", "zone", "load")},
                     "day": self.game.cistern.day})
 
+    def _path_cost(self, tactical, start: int, target: int) -> int:
+        """PA estimados de start até target, com portas a abrir."""
+        path = self._path(tactical.map, start, target, tactical.opened, tactical.enemies)
+        if not path:
+            return 99
+        doors = {tuple(sorted(edge)) for edge in tactical.map["doors"]}
+        blocked = {tuple(sorted(edge)) for edge in tactical.map["blocked"]}
+        opened = {tuple(sorted(edge)) for edge in tactical.opened}
+        cost = 0
+        for a, b in zip(path, path[1:]):
+            pair = tuple(sorted((a, b)))
+            cost += 1
+            if pair in doors and pair not in opened:
+                cost += 2 if pair in blocked else 1
+        return cost
+
+    def _retreat_if_late(self, tactical, tasks: list[dict]) -> None:
+        """Abandona tarefas pendentes quando só resta tempo para voltar.
+
+        Sair com parte da carga evita a emergência, que perde tudo, fere e
+        deixa fadiga 3. Estimativa: 3 PA por rodada, mais uma rodada de folga
+        para limpar a saída, mais os trechos de volta.
+        """
+        if all(task.get("done") for task in tasks):
+            return
+        people = {p["id"]: p for p in tactical.chapter.people}
+        exit_zone = tactical.map["exit"]
+        able = [hero for hero in tactical.team if people[hero]["wounds"] < 3]
+        if not able:
+            return
+        costs = [self._path_cost(tactical, tactical.positions[hero], exit_zone)
+                 for hero in able]
+        for victim in tactical.team:
+            if people[victim]["wounds"] >= 3 and victim not in tactical.escorts.values():
+                reach = min(self._path_cost(tactical, tactical.positions[hero],
+                                            tactical.positions[victim]) for hero in able)
+                costs.append(reach + 1 + self._path_cost(
+                    tactical, tactical.positions[victim], exit_zone))
+        rounds = max(1, ceil(max(costs) / 3)) + 1
+        if self.game.cistern.clock + rounds + tactical.travel_cost > 10:
+            for task in tasks:
+                if not task.get("done"):
+                    task["done"] = True
+                    task["abandoned"] = True
+            self.decisions.append({"action": "retreat_late",
+                "clock": self.game.cistern.clock, "round": tactical.round_no,
+                "estimated_rounds": rounds})
+
     def _run_tactical(self, tactical, tasks: list[dict],
                       assignments: dict[str, list[dict]]) -> bool:
         for _ in range(12):
             if tactical.failed:
                 return False
+            if self.adaptive and "late_retreat" in self.tactics:
+                self._retreat_if_late(tactical, tasks)
             self._act_tactical(tactical, tasks, assignments)
             if all(task["done"] for task in tasks) and tactical.can_exit():
                 return True
@@ -693,8 +842,9 @@ class CampaignPlayer02:
                          if task["action"] != "pickup_part"
                          and (f"oficina:{task.get('kind')}:{task['lot']}" not in taken
                               if task["action"] == "pickup_supply"
-                              else not any("Machado" in items for items
-                                           in self.game.equipment_inventory.values()))]
+                              else f"oficina:Machado:{task['lot']}" not in taken
+                              and not any("Machado" in items for items
+                                          in self.game.equipment_inventory.values()))]
                 return "Oficina", [task for task in workshop_day_tasks()
                                    if task["action"] == "pickup_part"] + extra
         shortfall = self._shortfall()

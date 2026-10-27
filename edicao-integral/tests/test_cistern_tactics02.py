@@ -44,6 +44,58 @@ class Tactical02Tests(unittest.TestCase):
         with self.assertRaisesRegex(ValueError, 'encerrada|perdida'):
             t.emergency()
 
+    def _escort_setup(self):
+        c = chapter(); a, b = STARTERS[0], STARTERS[1]
+        t = Tactical02.start(c, 'Mercado', [a, b])
+        t.enemies.clear()
+        people = {p['id']: p for p in c.people}
+        people[b]['wounds'] = 3
+        t.positions[a] = t.positions[b] = 2
+        return c, t, a, b, people
+
+    def test_escort_links_moves_together_without_extra_ap(self):
+        c, t, a, b, people = self._escort_setup()
+        load = t._load(a)
+        t.escort(a, b)
+        self.assertEqual(t.ap[a], 2)  # ligação: 1 PA (leitura conservadora)
+        self.assertEqual(t._load(a), load + 2)
+        t.move(a, 1)
+        self.assertEqual(t.ap[a], 1)
+        self.assertEqual(t.positions[b], 1)
+        snap = t.snapshot()
+        self.assertEqual(snap['escorts'], {a: b})
+        self.assertEqual(Tactical02.from_snapshot(c, snap).escorts, {a: b})
+
+    def test_escort_rejects_invalid_links(self):
+        c, t, a, b, people = self._escort_setup()
+        with self.assertRaisesRegex(ValueError, 'Escolta inválida'):
+            t.escort(b, a)  # incapacitado não escolta / alvo apto
+        t.positions[b] = 1
+        with self.assertRaisesRegex(ValueError, 'Escolta inválida'):
+            t.escort(a, b)  # zonas diferentes
+        t.positions[b] = 2
+        t.equipment[a] = ['Pé de cabra', 'Faca', 'Lanterna']
+        with self.assertRaisesRegex(ValueError, 'carga'):
+            t.escort(a, b)
+
+    def test_each_hero_escorts_only_one(self):
+        c = chapter(); a, b = STARTERS[0], STARTERS[1]
+        t = Tactical02.start(c, 'Mercado', [a, b])
+        t.enemies.clear()
+        people = {p['id']: p for p in c.people}
+        people[b]['wounds'] = 3
+        t.positions[a] = t.positions[b] = 2
+        t.escort(a, b)
+        with self.assertRaisesRegex(ValueError, 'Escolta inválida'):
+            t.escort(a, b)  # cada herói escolta só um
+        self.assertEqual(t.escorts, {a: b})
+
+    def test_old_snapshot_without_escorts_loads(self):
+        c = chapter(); h = STARTERS[0]
+        t = Tactical02.start(c, 'Mercado', [h])
+        snap = t.snapshot(); snap.pop('escorts')
+        self.assertEqual(Tactical02.from_snapshot(c, snap).escorts, {})
+
     def test_each_night_segment_spent_on_long_route_adds_fatigue_once(self):
         c = chapter(); h = STARTERS[0]; c.clock = 7
         t = Tactical02.start(c, 'Mercado', [h], route='long')

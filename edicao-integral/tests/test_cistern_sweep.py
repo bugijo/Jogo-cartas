@@ -59,7 +59,7 @@ class CisternSweepTests(unittest.TestCase):
             ("partial_defeat", "expedition_", "missing_part_", "blocked_")))
 
     def test_adaptive_mode_plans_guards_and_work_with_rolled_dice(self):
-        player = CampaignPlayer02.new_hn(31, 2)
+        player = CampaignPlayer02.new_hn(32, 2)
         player.adaptive = True
         report = player.attempt_cistern()
         actions = {item["action"] for item in player.decisions}
@@ -84,8 +84,11 @@ class CisternSweepTests(unittest.TestCase):
     def test_heldout_auto_policy_is_fixed_before_measurement(self):
         from simulate_cistern_sweep import HELDOUT, SEEDS, auto_settings
         self.assertFalse(set(HELDOUT) & set(SEEDS))
-        self.assertEqual(auto_settings(2)["adaptive_order"][0], "Oficina")
-        self.assertEqual(auto_settings(6)["adaptive_order"][0], "Estação")
+        from simulate_cistern_sweep import previous_settings
+        # Política atual: Oficina primeiro em todos os tamanhos.
+        self.assertEqual({auto_settings(size)["adaptive_order"][0]
+                          for size in range(2, 7)}, {"Oficina"})
+        self.assertEqual(previous_settings(6)["adaptive_order"][0], "Estação")
 
     def test_adaptive_collection_uses_only_idle_people_and_adds_portions(self):
         player = CampaignPlayer02.new_hn(31, 6)
@@ -105,6 +108,32 @@ class CisternSweepTests(unittest.TestCase):
         receipts = [receipt for receipt in player.game.cistern.work_receipts
                     if receipt["task"] == "emergency_collection"]
         self.assertEqual(len(receipts), len(collections))
+
+    def test_station_tactics_are_opt_in_and_used_by_adaptive_mode(self):
+        fixed = CampaignPlayer02.new_hn(31, 4)
+        fixed.attempt_cistern()
+        fixed_actions = {item["action"] for item in fixed.decisions}
+        self.assertFalse(fixed_actions & {"support_attack", "escort", "retreat_late"})
+        player = CampaignPlayer02.new_hn(31, 4)
+        player.adaptive = True
+        player.attempt_cistern()
+        self.assertIn("support_attack", {item["action"] for item in player.decisions})
+
+    def test_empty_tactics_reproduce_previous_adaptive_controller(self):
+        from simulate_cistern_sweep import previous_settings
+        row = run_one(5, 31, previous_settings(5))
+        self.assertNotIn("support", previous_settings(5)["tactics"])
+        self.assertEqual(row, run_one(5, 31, previous_settings(5)))
+
+    def test_cautious_path_avoids_spawn_neighbourhood(self):
+        from cistern_tactics02 import MAPS
+        station = MAPS["estação"]
+        opened = [(1, 5), (9, 13), (3, 7), (13, 14)]
+        enemies = [{"zone": 11}, {"zone": 15}]
+        plain = CampaignPlayer02._path(station, 7, 14, opened, enemies)
+        cautious = CampaignPlayer02._path(station, 7, 14, opened, enemies, cautious=True)
+        self.assertIn(15, plain)
+        self.assertNotIn(15, cautious)
 
     def test_classify_reports_partial_defeat_by_hunger(self):
         report = {"verified_victory": False, "days": [], "result": "partial_defeat",

@@ -32,6 +32,10 @@ ENEMIES = {'Errante': (1, 5, 1, 1), 'Corredor': (1, 6, 1, 2),
 WEAPONS = {'Pé de cabra': (1, 1, False), 'Faca': (1, 1, False),
            'Machado': (2, 2, False), 'Pistola': (1, 1, True),
            'Espingarda': (2, 1, True)}  # dano, PA, tiro
+# §31: ligar a escolta de um incapacitado. O texto não fixa o custo da
+# ligação (só que mover escoltando não custa PA extra); 1 PA é a leitura
+# conservadora, pendente de aprovação em docs/continuity.
+ESCORT_LINK_AP = 1
 HORDE = ('Arrastar',) * 4 + ('Corrida',) * 2 + ('Aglomerado',) * 2 + ('Peso morto',)
 PARTS = {'Oficina': {'Conexões': (7, 1), 'Bateria': (7, 1)},
          'Estação': {'Bomba': (7, 2), 'Membrana': (14, 1)}}
@@ -104,6 +108,8 @@ class Tactical02:
     search_ground: list[dict] = field(default_factory=list)
     part_ground: list[dict] = field(default_factory=list)
     horde_deck: dict | None = None
+    # escoltante -> incapacitado (§31/§43).
+    escorts: dict[str, str] = field(default_factory=dict)
 
     def __post_init__(self) -> None:
         if not isinstance(self.part_ground, list):
@@ -278,6 +284,37 @@ class Tactical02:
         self._pay(hero, cost)
         self.positions[hero] = zone
         self.log.append({'event': 'move', 'hero': hero, 'from': here, 'to': zone, 'ap': cost})
+        escorted = self.escorts.get(hero)
+        if escorted is not None:
+            # Escoltar não custa PA extra de movimento (§31).
+            self.positions[escorted] = zone
+            self.log.append({'event': 'escort_move', 'hero': hero,
+                             'escorted': escorted, 'to': zone})
+
+    def escort(self, hero: str, target: str) -> None:
+        """Liga um herói apto a um incapacitado da mesma zona (§31/§43).
+
+        Cada herói escolta um só; o incapacitado ocupa duas cargas do
+        escoltante. Ligação de escoltante que ficou incapacitado é desfeita.
+        """
+        people = {p['id']: p for p in self.chapter.people}
+        if (hero not in self.positions or target not in self.positions or hero == target
+                or people[target]['wounds'] < 3 or people[hero]['wounds'] >= 3
+                or self.positions[hero] != self.positions[target]
+                or hero in self.escorts):
+            raise ValueError('Escolta inválida')
+        current = next((escort for escort, item in self.escorts.items()
+                        if item == target), None)
+        if current is not None and people[current]['wounds'] < 3:
+            raise ValueError('Incapacitado já escoltado')
+        if self._load(hero) + 2 > 4:
+            raise ValueError('Escolta excede a carga')
+        self._pay(hero, ESCORT_LINK_AP)
+        if current is not None:
+            del self.escorts[current]
+        self.escorts[hero] = target
+        self.log.append({'event': 'escort', 'hero': hero, 'escorted': target,
+                         'zone': self.positions[hero]})
 
     def open_door(self, hero: str, zone: int, tool: str | None = None) -> None:
         if hero not in self.positions: raise ValueError('Herói inválido')
@@ -377,7 +414,7 @@ class Tactical02:
     def _load(self, hero: str) -> int:
         part_place = next((name for name in PARTS if name.lower() == self.destination), None)
         part_load = sum(PARTS[part_place][p][1] for p in self.carried[hero]) if part_place else 0
-        return (len(self.equipment[hero]) + part_load
+        return (len(self.equipment[hero]) + part_load + 2 * (hero in self.escorts)
                 + sum(item['cards'] for item in self.supply_cargo[hero])
                 + sum(item['cards'] for item in self.search_cargo[hero]))
 
@@ -758,7 +795,7 @@ class Tactical02:
                   'first_market_visit','equipment','supply_cargo','van_state',
                   'van_attempts','van_returned','search_deck','search_uses',
                   'searched_this_visit','search_cargo','search_ground','part_ground',
-                  'horde_deck')
+                  'horde_deck','escorts')
         return deepcopy({name: getattr(self, name) for name in fields})
 
     def site_snapshot(self) -> dict:

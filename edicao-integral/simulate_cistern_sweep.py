@@ -29,10 +29,21 @@ CONTROLLERS = {
 }
 
 
-def auto_settings(size: int) -> dict:
-    """Escolha registrada a partir das sementes 1–30, validada em 31–60."""
+def previous_settings(size: int) -> dict:
+    """Adaptativo publicado antes das táticas da Estação (ordem por tamanho)."""
     order = ("Estação", "Oficina") if size >= 5 else ("Oficina", "Estação")
-    return {"adaptive": True, "adaptive_order": order}
+    return {"adaptive": True, "adaptive_order": order, "tactics": ()}
+
+
+def auto_settings(size: int) -> dict:
+    """Escolha registrada a partir das sementes 1–30, validada em 31–60.
+
+    Com escolta, recuo por tempo, rota cautelosa e apoio, Oficina primeiro foi
+    melhor ou próximo em todos os tamanhos nas sementes de ajuste.
+    """
+    return {"adaptive": True, "adaptive_order": ("Oficina", "Estação")}
+
+
 REQUIRED_PARTS = ("Conexões", "Bomba", "Membrana")
 
 
@@ -100,9 +111,7 @@ def sweep() -> dict:
         groups[name] = {"seeds": [SEEDS.start, SEEDS.stop - 1],
                         "summary": _summary(runs), "runs": runs}
     for name, chooser in (("fixed_heldout", lambda size: {}),
-                          ("adaptive_auto_heldout_no_collection",
-                           lambda size: {**auto_settings(size),
-                                         "emergency_collection": False}),
+                          ("adaptive_previous_heldout", previous_settings),
                           ("adaptive_auto_heldout", auto_settings)):
         runs = [{**run_one(size, seed, chooser(size)), "controller": name}
                 for size in SIZES for seed in HELDOUT]
