@@ -20,6 +20,19 @@ ROOT = Path(__file__).resolve().parent
 ARTIFACT = ROOT / "replays" / "cistern_sweep_h2_h6.json"
 SIZES = range(2, 7)
 SEEDS = range(1, 31)
+# Sementes nunca usadas para escolher a política adaptativa por tamanho.
+HELDOUT = range(31, 61)
+CONTROLLERS = {
+    "fixed": {},
+    "adaptive_oficina_first": {"adaptive": True, "adaptive_order": ("Oficina", "Estação")},
+    "adaptive_estacao_first": {"adaptive": True, "adaptive_order": ("Estação", "Oficina")},
+}
+
+
+def auto_settings(size: int) -> dict:
+    """Escolha registrada a partir das sementes 1–30, validada em 31–60."""
+    order = ("Estação", "Oficina") if size >= 5 else ("Oficina", "Estação")
+    return {"adaptive": True, "adaptive_order": order}
 REQUIRED_PARTS = ("Conexões", "Bomba", "Membrana")
 
 
@@ -45,8 +58,11 @@ def classify(report: dict) -> str:
     return f"result_{report['result']}"
 
 
-def run_one(size: int, seed: int) -> dict:
-    report = CampaignPlayer02.new_hn(seed, size).attempt_cistern()
+def run_one(size: int, seed: int, settings: dict | None = None) -> dict:
+    player = CampaignPlayer02.new_hn(seed, size)
+    for key, value in (settings or {}).items():
+        setattr(player, key, value)
+    report = player.attempt_cistern()
     final = report["final_state"]
     return {
         "size": size, "seed": seed, "result": report["result"],
@@ -63,8 +79,7 @@ def run_one(size: int, seed: int) -> dict:
     }
 
 
-def sweep() -> dict:
-    runs = [run_one(size, seed) for size in SIZES for seed in SEEDS]
+def _summary(runs: list[dict]) -> dict:
     summary = {}
     for size in SIZES:
         rows = [row for row in runs if row["size"] == size]
@@ -74,8 +89,23 @@ def sweep() -> dict:
             "victory_seeds": [row["seed"] for row in rows if row["verified_victory"]],
             "causes": dict(Counter(row["cause"] for row in rows).most_common()),
         }
-    return {"schema": 1, "controller": "CampaignPlayer02 (plano fixo H2 estendido)",
-            "seeds": [SEEDS.start, SEEDS.stop - 1], "summary": summary, "runs": runs}
+    return summary
+
+
+def sweep() -> dict:
+    groups = {}
+    for name, settings in CONTROLLERS.items():
+        runs = [{**run_one(size, seed, settings), "controller": name}
+                for size in SIZES for seed in SEEDS]
+        groups[name] = {"seeds": [SEEDS.start, SEEDS.stop - 1],
+                        "summary": _summary(runs), "runs": runs}
+    for name, chooser in (("fixed_heldout", lambda size: {}),
+                          ("adaptive_auto_heldout", auto_settings)):
+        runs = [{**run_one(size, seed, chooser(size)), "controller": name}
+                for size in SIZES for seed in HELDOUT]
+        groups[name] = {"seeds": [HELDOUT.start, HELDOUT.stop - 1],
+                        "summary": _summary(runs), "runs": runs}
+    return {"schema": 2, "controller": "CampaignPlayer02", "groups": groups}
 
 
 def main() -> None:
@@ -91,7 +121,10 @@ def main() -> None:
         stored = json.loads(ARTIFACT.read_text(encoding="utf-8"))
         if stored != result:
             raise SystemExit("Varredura diverge do artefato registrado")
-    print(json.dumps(result["summary"], ensure_ascii=False, indent=2))
+    table = {name: {size: data["verified_victories"]
+                    for size, data in group["summary"].items()}
+             for name, group in result["groups"].items()}
+    print(json.dumps(table, ensure_ascii=False, indent=2))
 
 
 if __name__ == "__main__":

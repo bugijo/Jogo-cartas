@@ -32,6 +32,10 @@ class CampaignPlayer02:
     current_trip_events: list[dict] = field(default_factory=list)
     # Máximo de heróis por destino; ausente = todos os fundadores aptos.
     team_caps: dict[str, int] = field(default_factory=dict)
+    # Modo adaptativo: busca comida nos dias 4–5 e escala vigias em cercos.
+    # Desligado, preserva o plano fixo do replay certificado da seed 22.
+    adaptive: bool = False
+    adaptive_order: tuple[str, ...] = ("Oficina", "Estação")
 
     def __post_init__(self) -> None:
         self.rng = Random(self.seed ^ 0xC15A)
@@ -58,7 +62,8 @@ class CampaignPlayer02:
         return cls(seed, game)
 
     @staticmethod
-    def _path(map_data: dict, start: int, target: int, opened=(), enemies=()) -> list[int]:
+    def _path(map_data: dict, start: int, target: int, opened=(), enemies=(),
+              can_force: bool = True) -> list[int]:
         graph = {zone: [] for zone in map_data["zones"]}
         for a, b in map_data["edges"]:
             graph[a].append(b)
@@ -80,6 +85,8 @@ class CampaignPlayer02:
                 pair = tuple(sorted((zone, nxt)))
                 step = 1 + int(zone in occupied)
                 if pair in doors and pair not in opened:
+                    if pair in blocked and not can_force:
+                        continue
                     step += 2 if pair in blocked else 1
                 candidate = cost + step
                 if candidate < costs.get(nxt, 10**9):
@@ -313,8 +320,12 @@ class CampaignPlayer02:
                             "observed_task": deepcopy(task)})
                         continue
                 if tactical.positions[hero] != target:
+                    tools = ("Pé de cabra", "Ferramentas")
+                    team_tool = any(item in tools for member in tactical.team
+                                    if member in tactical.positions
+                                    for item in tactical.equipment[member])
                     path = self._path(tactical.map, tactical.positions[hero], target,
-                                      tactical.opened, tactical.enemies)
+                                      tactical.opened, tactical.enemies, team_tool)
                     if len(path) < 2:
                         break
                     here, nxt = path[0], path[1]
@@ -325,7 +336,8 @@ class CampaignPlayer02:
                         tool = next((item for item in tactical.equipment[hero]
                                      if item in ("Pé de cabra", "Ferramentas")), None)
                         cost = 2 if blocked else 1
-                        if tactical.ap[hero] < cost:
+                        if tactical.ap[hero] < cost or (blocked and tool is None):
+                            # Sem ferramenta, espera quem a leva abrir a porta.
                             break
                         tactical.open_door(hero, nxt, tool)
                         self.decisions.append({"action": "open_door", "hero": hero,
@@ -453,7 +465,7 @@ class CampaignPlayer02:
                                    "enemies": len(tactical.enemies)})
             if tactical.can_exit():
                 return True
-            if self.game.cistern.clock >= 10:
+            if self.game.cistern.clock >= 10 or tactical.failed:
                 return False
             tactical.begin_round()
         return False
@@ -499,7 +511,12 @@ class CampaignPlayer02:
         if any(loads[hero] + planned[hero] > 4 for hero in team):
             # A carga de estrada caiu sobre um herói com tarefas previstas;
             # refaz a distribuição uma vez com a carga real.
-            assignments = self._assign_or_trim(team, loadout, tasks, loads)
+            try:
+                assignments = self._assign_or_trim(team, loadout, tasks, loads)
+            except ValueError:
+                # Só peças restam e não cabem: mantém o plano e deixa a
+                # checagem de carga em tempo real decidir.
+                pass
             self.decisions.append({"action": "replan_cargo_on_entry",
                 "loads": loads, "assigned": {hero: len(items)
                 for hero, items in assignments.items()}})
@@ -533,10 +550,155 @@ class CampaignPlayer02:
                 and not people[hero]["hungry"] and not people[hero]["thirsty"]]
         return able[:2] or crew[:2]
 
+    def _shortfall(self) -> dict[str, int]:
+        """Porções que faltam para alimentar todos até a noite 5."""
+        cistern = self.game.cistern
+        nights = 5 - cistern.day + 1
+        need = cistern.consumers * nights
+        food = sum(cistern.food) + sum(getattr(cistern, "meat", []))
+        return {"food": max(0, need - food),
+                "water": max(0, need - sum(cistern.water))}
+
+    def _filter_work_left(self) -> int:
+        """Trabalho ainda devido nas etapas A–C a partir da etapa atual."""
+        cistern = self.game.cistern
+        order = list(STAGES)
+        if cistern.filter_active or cistern.stage == "done":
+            return 0
+        start = order.index(cistern.stage) if cistern.stage in order else 0
+        total = 0
+        for stage in order[start:]:
+            if stage not in cistern.reserved:
+                break
+            total += STAGES[stage]["work"]
+        return max(0, total - cistern.stage_work)
+
+    def _able(self, person: dict) -> bool:
+        return (person["kind"] in ("hero", "adult") and person["wounds"] < 3
+                and person.get("fatigue", 0) < 3
+                and not person["hungry"] and not person["thirsty"])
+
+    def _adaptive_dawn(self, day: int, crew: list[str], destination, team,
+                       tasks, loadout):
+        """Planejamento do amanhecer: filtro, destino, vigias.
+
+        Usa só estado observável. Reserva cada etapa assim que sua peça chegou
+        em dia anterior; prioriza peças faltantes (Estação/Oficina, com nova
+        tentativa), depois mantimentos ainda não retirados. Trabalhadores do
+        filtro priorizam adultos civis; vigias saem de quem fica no abrigo.
+        """
+        cistern = self.game.cistern
+        people = {person["id"]: person for person in cistern.people}
+        for stage in STAGES:
+            part = STAGES[stage]["part"]
+            if (stage not in cistern.reserved and not cistern.filter_active
+                    and part in cistern.parts and cistern.parts[part] < day
+                    and cistern.materials >= STAGES[stage]["materials"]):
+                self.game.reserve_filter_stage(stage)
+                self.decisions.append({"action": "adaptive_reserve", "day": day,
+                                       "stage": stage})
+        taken = set(self.game.delivered_objectives) | set(self.game.lost_objectives)
+        fit = [hero for hero in crew
+               if people[hero]["wounds"] < 3 and people[hero]["fatigue"] < 3]
+        adults = [person["id"] for person in cistern.people
+                  if person["kind"] == "adult" and self._able(person)
+                  and person["family"] in cistern.founders]
+        heroes = [hero for hero in crew if self._able(people[hero])]
+        remaining = self._filter_work_left() if cistern.reserved else 0
+        days_left = 5 - day + 1
+        # Trabalho mínimo hoje para ainda caber no prazo (2 por dia).
+        must_work = max(0, remaining - 2 * (days_left - 1))
+        plan = self._adaptive_destination(day, taken)
+        if plan is None:
+            workers = (adults + heroes)[:min(2, remaining)]
+            destination, team, tasks, loadout = None, [], [], None
+        else:
+            destination, tasks = plan
+            workers = adults[:min(2, remaining)]
+            if len(workers) < must_work:
+                workers += [hero for hero in heroes
+                            if hero not in workers][:must_work - len(workers)]
+            team = [hero for hero in fit if hero not in workers]
+            loadout = None
+            if not team:
+                destination, tasks = None, []
+            elif destination == "Oficina":
+                loadout = {hero: self.game.equipment_inventory[hero].copy()
+                           for hero in team}
+            self.decisions.append({"action": "adaptive_plan", "day": day,
+                "destination": destination, "team": team.copy(),
+                "workers": workers.copy(), "shortfall": self._shortfall(),
+                "tasks": [task.get("part") or task.get("item") or task.get("kind")
+                          for task in tasks]})
+        if workers and remaining:
+            self.game.plan_filter_work(workers, team if destination else None)
+        if cistern.pending_sieges:
+            away = set(team) if destination else set()
+            guards = [person["id"] for person in cistern.people
+                      if self._able(person) and person["id"] not in workers
+                      and person["id"] not in away
+                      and (person["kind"] == "hero" or person["family"] in cistern.founders)
+                      ][:3]
+            if guards:
+                self.game.plan_guards(guards)
+                self.decisions.append({"action": "adaptive_guards", "day": day,
+                                       "guards": guards.copy()})
+        return destination, team, tasks, loadout
+
+    def _grounded(self, site: str, part: str) -> bool:
+        """Peça única perdida em emergência e registrada no chão (§34)."""
+        state = self.game.site_states.get(site) or {}
+        return any(item["part"] == part for item in state.get("part_ground", []))
+
+    def _adaptive_destination(self, day: int, taken: set[str]):
+        """Destino e tarefas do dia, ou None para ficar no abrigo."""
+        parts = self.game.cistern.parts
+        order = self.adaptive_order
+        for site in order:
+            if site == "Estação":
+                missing = [task for task in station_day_tasks()
+                           if task["action"] == "pickup_part"
+                           and task["part"] not in parts
+                           and (f"Estação:{task['part']}" not in taken
+                                or self._grounded("estação", task["part"]))]
+                # Peça precisa chegar até o dia 4 para reservar no dia 5.
+                if missing and day <= 4:
+                    water = [task for task in station_day_tasks()
+                             if task["action"] == "pickup_supply"
+                             and f"estação:Água:{task['lot']}" not in taken]
+                    return "Estação", missing + water
+            if (site == "Oficina" and "Conexões" not in parts and day <= 4
+                    and ("Oficina:Conexões" not in taken
+                         or self._grounded("oficina", "Conexões"))):
+                extra = [task for task in workshop_day_tasks()
+                         if task["action"] != "pickup_part"
+                         and (f"oficina:{task.get('kind')}:{task['lot']}" not in taken
+                              if task["action"] == "pickup_supply"
+                              else not any("Machado" in items for items
+                                           in self.game.equipment_inventory.values()))]
+                return "Oficina", [task for task in workshop_day_tasks()
+                                   if task["action"] == "pickup_part"] + extra
+        shortfall = self._shortfall()
+        if not (shortfall["food"] or shortfall["water"]) or self.game.cistern.clock + 3 > 10:
+            return None
+        for site, food_zone in (("Mercado", 7), ("Hospital", 7),
+                                ("Condomínio", 7), ("Posto", 14)):
+            lots = 2 if site == "Mercado" else 1
+            tasks = []
+            for kind, zone, short in (("Conserva", food_zone, shortfall["food"]),
+                                      ("Água", 14, shortfall["water"])):
+                tasks += [{"action": "pickup_supply", "kind": kind, "lot": lot,
+                           "zone": zone, "load": 1, "ap": 1}
+                          for lot in range(1, lots + 1)
+                          if short and f"{site.lower()}:{kind}:{lot}" not in taken]
+            if tasks:
+                return site, tasks
+        return None
+
     def day_close(self, guards: list[str] | None = None,
                   guard_rolls: list[int] | None = None, ammo: int = 0) -> dict:
         guards = guards or []
-        guard_rolls = guard_rolls or []
+        # Sem dados fornecidos, os vigias planejados rolam no cerco.
         if guards and not self.game.cistern.work_plan_locked:
             self.game.plan_guards(guards)
         siege_result = None
@@ -610,7 +772,7 @@ class CampaignPlayer02:
                 report["blocked"] = {"day": day, "action": "day_sequence",
                                      "observed_day": self.game.cistern.day}
                 break
-            if day == 3:
+            if day == 3 and not self.adaptive:
                 try:
                     self.game.reserve_filter_stage("A")
                 except (ValueError, NotImplementedError) as exc:
@@ -618,10 +780,26 @@ class CampaignPlayer02:
                         "error": str(exc), "parts": deepcopy(self.game.cistern.parts),
                         "materials": self.game.cistern.materials}
                     break
+            if self.adaptive:
+                try:
+                    destination, team, tasks, loadout = self._adaptive_dawn(
+                        day, crew, destination, team, tasks, loadout)
+                except (ValueError, NotImplementedError) as exc:
+                    report["blocked"] = {"day": day, "action": "adaptive_dawn",
+                        "error": str(exc), "parts": deepcopy(self.game.cistern.parts),
+                        "materials": self.game.cistern.materials}
+                    break
             if destination == "Estação":
                 holder = next((hero for hero in crew if "Machado"
                                in self.game.equipment_inventory.get(hero, [])), None)
-                if holder is not None:
+                inventory = self.game.equipment_inventory
+                if holder is not None and self.adaptive and holder in team and not any(
+                        "Pé de cabra" in inventory.get(hero, [])
+                        for hero in team if hero != holder):
+                    # Ninguém mais leva ferramenta: o portador do Machado leva
+                    # também o Pé de cabra para a porta bloqueada.
+                    loadout = {hero: inventory.get(hero, []).copy() for hero in crew}
+                elif holder is not None:
                     loadout = {hero: (["Machado"] if hero == holder else
                                       ["Pé de cabra"] if "Pé de cabra"
                                       in self.game.equipment_inventory.get(hero, [])
@@ -638,15 +816,25 @@ class CampaignPlayer02:
                     self.decisions.append({"action": "leave_home",
                         "day": day, "heroes": [hero for hero in team if hero not in fit]})
                     team = fit
-                    if loadout is not None:
-                        loadout = {hero: loadout[hero] for hero in team}
+                if loadout is not None:
+                    loadout = {hero: loadout[hero] for hero in team}
                 if not team:
                     destination = None
             if destination is None:
                 receipts = []
                 self.last_expedition_outcome = "no_expedition"
             else:
-                receipts = self.expedition(destination, team, tasks, loadout)
+                try:
+                    receipts = self.expedition(destination, team, tasks, loadout)
+                except ValueError as exc:
+                    # Ferragens (ZC-VIA-0010) na ida sem Material levado: a
+                    # carta não define o caso e o motor recusa. Outros erros
+                    # são defeitos e devem propagar.
+                    if "Material levado insuficiente" not in str(exc):
+                        raise
+                    report["blocked"] = {"day": day, "action": "expedition_rule_gap",
+                                         "destination": destination, "error": str(exc)}
+                    break
             report["receipts"].extend(deepcopy(receipts))
             report["days"].append({"day": day, "destination": destination,
                 "clock": self.game.cistern.clock,
@@ -662,11 +850,11 @@ class CampaignPlayer02:
             try:
                 guards = []
                 ammo = 2 if day == 3 else 0
-                if day == 4:
+                if day == 4 and not self.adaptive:
                     self.game.reserve_filter_stage("B")
                     self.game.reserve_filter_stage("C")
                     self.game.plan_filter_work(self._filter_workers(crew))
-                if day == 5:
+                if day == 5 and not self.adaptive:
                     self.game.plan_filter_work(self._filter_workers(crew))
                 close = self.day_close(guards=guards,
                                        guard_rolls=None, ammo=ammo)

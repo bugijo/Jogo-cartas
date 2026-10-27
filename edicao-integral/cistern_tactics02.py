@@ -682,7 +682,12 @@ class Tactical02:
     def _emergency(self, allow_finished: bool, event_name: str) -> None:
         if self.finished and not allow_finished:
             raise ValueError('Expedição já encerrada')
-        if self.failed:
+        # §39: ao 25º inimigo a expedição é perdida e a emergência é oferecida;
+        # só recusa se já foi perdida por outro motivo ou já retirou.
+        overrun_pending = (any(e['event'] == 'overrun' for e in self.log)
+                           and not any(e['event'] in ('emergency', 'emergency_return_loss')
+                                       for e in self.log))
+        if self.failed and not overrun_pending:
             raise ValueError('Expedição já está perdida')
         people = {p['id']: p for p in self.chapter.people}
         for hero, parts in self.carried.items():

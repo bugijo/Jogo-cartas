@@ -58,6 +58,35 @@ class CisternSweepTests(unittest.TestCase):
         self.assertTrue(run_one(2, 3)["cause"].startswith(
             ("partial_defeat", "expedition_", "missing_part_", "blocked_")))
 
+    def test_adaptive_mode_plans_guards_and_work_with_rolled_dice(self):
+        player = CampaignPlayer02.new_hn(31, 2)
+        player.adaptive = True
+        report = player.attempt_cistern()
+        actions = {item["action"] for item in player.decisions}
+        self.assertIn("adaptive_plan", actions)
+        self.assertIn("adaptive_guards", actions)
+        sieges = [night["siege"] for day in report["days"]
+                  for night in [day.get("night") or {}] if night.get("siege")]
+        self.assertTrue(sieges)
+        # Antes da correção, vigias planejados nunca rolavam (lista vazia).
+        self.assertTrue(any(siege["rolls"] for siege in sieges))
+
+    def test_adaptive_never_sends_filter_workers_on_expedition(self):
+        for seed in (31, 32, 33):
+            player = CampaignPlayer02.new_hn(seed, 5)
+            player.adaptive = True
+            player.adaptive_order = ("Estação", "Oficina")
+            player.attempt_cistern()
+            for plan in (item for item in player.decisions
+                         if item["action"] == "adaptive_plan"):
+                self.assertFalse(set(plan["workers"]) & set(plan["team"]))
+
+    def test_heldout_auto_policy_is_fixed_before_measurement(self):
+        from simulate_cistern_sweep import HELDOUT, SEEDS, auto_settings
+        self.assertFalse(set(HELDOUT) & set(SEEDS))
+        self.assertEqual(auto_settings(2)["adaptive_order"][0], "Oficina")
+        self.assertEqual(auto_settings(6)["adaptive_order"][0], "Estação")
+
     def test_classify_reports_partial_defeat_by_hunger(self):
         report = {"verified_victory": False, "days": [], "result": "partial_defeat",
                   "blocked": None,

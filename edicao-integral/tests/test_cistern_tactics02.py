@@ -30,6 +30,20 @@ class Tactical02Tests(unittest.TestCase):
         with self.assertRaisesRegex(ValueError,'já resolvido'):
             t.rescue(h,'ZC-MOR-0001','welcome')
 
+    def test_twenty_fifth_map_enemy_marks_loss_and_still_offers_emergency(self):
+        c = chapter(); h = STARTERS[0]
+        t = Tactical02.start(c, 'Mercado', [h])
+        while len(t.enemies) < 24:
+            t._spawn('Errante', 1)
+        t._spawn('Errante', 1)
+        self.assertTrue(t.failed)
+        self.assertEqual(len(t.enemies), 24)
+        t.emergency()
+        self.assertEqual(t.log[-1]['event'], 'emergency')
+        self.assertEqual(t.fatigue[h], 3)
+        with self.assertRaisesRegex(ValueError, 'encerrada|perdida'):
+            t.emergency()
+
     def test_each_night_segment_spent_on_long_route_adds_fatigue_once(self):
         c = chapter(); h = STARTERS[0]; c.clock = 7
         t = Tactical02.start(c, 'Mercado', [h], route='long')
