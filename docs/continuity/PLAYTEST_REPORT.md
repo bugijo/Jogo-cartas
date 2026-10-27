@@ -1,4 +1,36 @@
-# Relatório de partidas automatizadas — atualização 2026-10-27 (estratégia adaptativa)
+# Relatório de partidas automatizadas — atualização 2026-10-27 (Coleta de emergência)
+
+## Coleta de emergência (RULES §26) no motor e no controlador adaptativo
+
+`Cistern02.plan_emergency_collection()` / `IntegratedCampaign.plan_emergency_collection()`:
+no amanhecer, até 2 pessoas (heróis ou adultos confiáveis, sem Fome/Sede/fadiga 3,
+fora de observação) escolhem Conserva ou Água; cada uma gera **1 porção avulsa**
+na fase de trabalhos, máximo 2 por dia para a comunidade. Um trabalho por pessoa:
+não acumula com filtro, vigia ou expedição. Cerco pendente precede a coleta;
+o plano sobrevive a save/load e é limpo no dia seguinte. 9 testes novos.
+
+O controlador adaptativo usa quem sobra no abrigo depois de filtro e vigias,
+quando há déficit projetado. Sementes reservadas 31–60:
+
+| Controlador | H2 | H3 | H4 | H5 | H6 |
+|---|---|---|---|---|---|
+| Fixo | 2 | 0 | 0 | 0 | 0 |
+| Adaptativo automático, sem coleta | 5 | 0 | 0 | 7 | 11 |
+| Adaptativo automático, com coleta | 7 | 0 | 0 | 6 | 10 |
+
+Leitura: efeito pequeno e dentro do ruído de 30 sementes (+2 em H2, −1 em
+H5/H6 por mudanças em cadeia de fome/fadiga/equipe). Fome no fim praticamente
+não muda (H3 30/30, H4 29/30). Duas porções por dia contra 5–13 consumidores
+não compensam a perda das expedições: o gargalo segue sendo o controlador
+tático na Estação. A coleta foi incluída também nos grupos adaptativos 1–30
+(Estação primeiro em H6 passou de 8 para 9).
+
+O artefato `replays/cistern_to_transmission_seed22_clue_returned.json` foi
+regenerado: o estado da Cisterna ganhou `collection_plan`, mudando apenas o
+digest/id da migração. Saves migrados antes continuam válidos, porque o digest é
+conferido contra o arquivo de origem gravado junto.
+
+## Estratégia adaptativa 2026-10-27
 
 ## Controlador adaptativo da Cisterna (`CampaignPlayer02.adaptive=True`)
 

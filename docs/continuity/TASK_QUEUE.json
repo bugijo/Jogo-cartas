@@ -192,15 +192,16 @@
     "save/load"
    ],
    "tests": [
-    "edicao-integral/tests/test_cistern02.py"
+    "edicao-integral/tests/test_emergency_collection.py",
+    "edicao-integral/tests/test_cistern_sweep.py"
    ],
-   "status": "pendente",
+   "status": "implementado",
    "commit": null,
-   "blocker": "Regra escrita, ausente no motor; relevante para a fome observada em H3–H4."
+   "blocker": "Implementada e medida: efeito pequeno (H2 5→7, H5 7→6, H6 11→10 nas sementes 31–60); não resolve H3–H4."
   },
   {
    "id": "P0-STATION-TACTICAL-AI",
-   "priority": 2,
+   "priority": 1,
    "objective": "Melhorar o controlador tático na Estação para reduzir retiradas de emergência.",
    "depends_on": [
     "P2-CISTERN-SWEEP-H2-H6"

@@ -1,3 +1,11 @@
+# Estado ativo — Coleta de emergência §26, 2026-10-27
+
+- Motor: Coleta de emergência implementada (`plan_emergency_collection`, resolução na fase de trabalhos), com limites de 2 porções/dia, um trabalho por pessoa, aptidão, cerco antes, save/load e limpeza diária. Campo novo `collection_plan` com padrão vazio; saves antigos carregam.
+- Controlador adaptativo usa a coleta com quem sobra no abrigo. Sementes reservadas 31–60: H2 7, H3 0, H4 0, H5 6, H6 10 (sem coleta: 5/0/0/7/11). Efeito dentro do ruído; gargalo continua a tática na Estação.
+- Artefato contínuo seed 22 regenerado só pelo digest da migração (estado ganhou um campo).
+- Verificação: 361 testes; todos os verificadores, varredura reproduzível, `compileall`, `git diff --check`.
+- Próximo passo seguro: `P0-STATION-TACTICAL-AI`. Pendente de decisão: `ZC-VIA-0010` sem Material levado.
+
 # Estado ativo — estratégia adaptativa da Cisterna, 2026-10-27
 
 - Decisão do usuário: manter o lote de mantimentos indivisível (`ceil(C/4)` cartas). Nenhuma regra alterada.

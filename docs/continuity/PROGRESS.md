@@ -417,3 +417,10 @@ passaram se o gate de campanha ainda estiver fechado.
 - Controlador: dados de vigia, ferramenta, equipamento por equipe, rodada após
   invasão. Lacuna `ZC-VIA-0010` registrada; Coleta de emergência §26 pendente.
 - Suíte em 351 testes.
+
+## 2026-10-27 — Coleta de emergência (§26)
+
+- Motor: planejamento e resolução da coleta com limites da regra e save/load.
+- Controlador adaptativo usa a coleta; efeito pequeno nas sementes reservadas
+  (H2 7, H5 6, H6 10; H3–H4 0). Gargalo segue na Estação.
+- Suíte em 361 testes; artefato contínuo regenerado só no digest da migração.
