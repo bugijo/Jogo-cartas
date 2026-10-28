@@ -1,7 +1,7 @@
 {
  "schema": 1,
  "branch": "evolucao/zona-zero-sistema-v1",
- "updated_at": "2026-10-27",
+ "updated_at": "2026-10-28",
  "tasks": [
   {
    "id": "P0-EXPEDITION-COMPLETE",
@@ -267,11 +267,12 @@
     "sem ignorar emboscada"
    ],
    "tests": [
-    "edicao-integral/tests/test_regional_travel_cards.py"
+    "edicao-integral/tests/test_regional_travel_cards.py",
+    "edicao-integral/tests/test_regional_travel_controller.py"
    ],
-   "status": "implementado_ponte",
+   "status": "controlador_integrado",
    "commit": null,
-   "blocker": "Ponte M1 0.2 pronta e testada (relógio real, Horda, ferimentos, fadiga, save/load, emergência de estrada). Pendentes: aprovação da leitura de durabilidade; emergência com carga única/veículo; controlador regional que jogue a emboscada; ligar regional_travel_cards nos replays."
+   "blocker": "AdaptiveRegionalPlayer resolve cartas e emboscadas (dados do RNG do mundo); replay verify_regional_travel.py (seed22: Emboscada na ida, Ajuda recusada na volta, retorno no relógio 5). Pendentes: aprovação da durabilidade; emergência de estrada com carga única/veículo; carga levada regional."
   }
  ]
 }

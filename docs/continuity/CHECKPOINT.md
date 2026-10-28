@@ -1,3 +1,11 @@
+# Estado ativo — controlador regional com Viagem e emboscadas, 2026-10-28
+
+- `AdaptiveRegionalPlayer.run_expedition` resolve cartas de Viagem pendentes (opção disponível sem carga levada) e Emboscadas no M1 (segura Z1, ataca com dados do RNG persistido do mundo, aceita emergência de estrada sem tempo). Só age com `World.regional_travel_cards=True`.
+- Novo replay `edicao-integral/verify_regional_travel.py` → `replays/regional_travel_seed22.json`: Cisterna seed22 → migração → Mercado; Emboscada na ida (1 rodada, sem ferimentos), Ajuda recusada na volta, busca concluída, entrega 2 comida + 1 água, relógio 5; save/load preserva baralho e recibos. Replays certificados anteriores inalterados.
+- Ferramentas: `tools/claude-omniroute.sh` (CLI isolado via OmniRoute, ver `tools/CLAUDE_OMNIROUTE.md`). Proposta pendente: tirar `veoaifree-web/seedance` (modelo de vídeo) do pool automático do OmniRoute.
+- Pendências de decisão: durabilidade na emboscada regional; combustível/carga levada regional; narrativa de Célia/pistas.
+- Próximo passo: campanha regional multi-dia com cartas ligadas (refeições/fim de dia entre expedições) e a rota de pistas com Viagem.
+
 # Estado ativo — emboscada regional, 2026-10-27
 
 - Ponte de Emboscada regional no M1 0.2 (`start_regional_ambush`/`finish_regional_ambush`): relógio real, Horda regional, ferimentos/fadiga/Fome-Sede, sem armas ou Munição inventadas, save/load, emergência de estrada §34. Documentada em `edicao-integral/MANUAL_EXPERIMENTAL.md`.

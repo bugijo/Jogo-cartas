@@ -450,3 +450,9 @@ passaram se o gate de campanha ainda estiver fechado.
 
 - Ponte M1 0.2 para Emboscada de Viagem regional, com emergência de estrada.
   Leitura de durabilidade pendente. Suíte em 386 testes.
+
+## 2026-10-28 — CLI via OmniRoute e controlador regional com Viagem
+
+- Launcher isolado do Claude Code CLI para o OmniRoute (`tools/`), sem tocar
+  no Desktop/OAuth; endpoint `/api/v1/messages` confirmado pela spec.
+- Controlador regional resolve cartas e emboscadas; replay novo seed22.
