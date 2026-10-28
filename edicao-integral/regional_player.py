@@ -2,6 +2,7 @@
 from collections import deque
 from dataclasses import dataclass, field
 
+from ambush02 import WEAPONS as AMBUSH_WEAPONS
 from system import ITEMS, REGIONAL_CONTACTS
 from tactics import TACTICS, TacticalGame
 from arc2 import Arc2
@@ -589,6 +590,60 @@ class AdaptiveRegionalPlayer:
         return {'status':status,'searches':count,'requested_searches':start_searches,
                 'decisions':len(self.history)}
 
+    def _fight_ambush(self, world, expedition_id):
+        """Emboscada no M1: segura a entrada Z1, ataca quem chega e sai limpo.
+
+        Os dados vêm de World.regional_ambush_attack; o jogador só escolhe
+        alvo e arma visíveis. Sem tempo, aceita a emergência de estrada.
+        """
+        ambush=world.start_regional_ambush(expedition_id)
+        while True:
+            if ambush.clock>=10:
+                ambush.emergency_return()
+                break
+            ambush.begin_round()
+            for hero in ambush.team:
+                while ambush.ap.get(hero,0)>0 and ambush.wounds[hero]<3:
+                    here=ambush.positions[hero]
+                    foe=next((enemy for enemy in ambush.enemies
+                              if enemy['zone']==here),None)
+                    weapon=next((item for item in ambush.equipment[hero]
+                                 if item in AMBUSH_WEAPONS),None)
+                    if foe is None or weapon is None:
+                        break
+                    world.regional_ambush_attack(expedition_id,ambush,hero,
+                                                 foe['id'],weapon)
+            ambush.end_round()
+            world.store_regional_ambush(expedition_id,ambush)
+            if ambush.failed:
+                if not ambush.returned:
+                    ambush.emergency_return()
+                break
+            if (all(zone==1 for zone in ambush.positions.values())
+                    and not any(enemy['zone']==1 for enemy in ambush.enemies)):
+                ambush.finish()
+                break
+        result=world.finish_regional_ambush(expedition_id,ambush)
+        self.history.append({'action':'regional_ambush','expedition':expedition_id,
+                             'result':result,'rounds':ambush.round_no})
+        return result
+
+    def _advance(self, world, expedition_id):
+        """Avança um trecho resolvendo cartas de Viagem pendentes (§29)."""
+        while True:
+            result=world.advance_expedition(expedition_id)
+            if result!='travel_pending':
+                return result
+            event=world.expeditions[expedition_id].pending_travel
+            if event.get('ambush'):
+                if self._fight_ambush(world,expedition_id)=='emergency':
+                    return 'road_emergency'
+                continue
+            choice=world.REGIONAL_TRAVEL_CHOICES[event['card_id']][0]
+            world.resolve_regional_travel(expedition_id,choice)
+            self.history.append({'action':'travel_choice','expedition':expedition_id,
+                                 'card':event['card_id'],'choice':choice})
+
     def run_expedition(self, world, expedition_id, destination, team, map_id,
                        objective, max_steps=100, vehicle_id=None,
                        special_items=None, return_vehicle_id=None):
@@ -611,7 +666,10 @@ class AdaptiveRegionalPlayer:
                               special_items=special_items or [])
         outbound=[]
         while world.expeditions[expedition_id].remaining>0:
-            outbound.append(world.advance_expedition(expedition_id))
+            outbound.append(self._advance(world,expedition_id))
+            if outbound[-1]=='road_emergency':
+                return {'status':'road_emergency_outbound','outbound':outbound,
+                        'return':[],'decisions':list(self.history)}
         tactical=TacticalGame.start(world,expedition_id,map_id)
         local=(self.run_objectives(tactical,objective,max_steps)
                if isinstance(objective,(list,tuple)) else
@@ -636,7 +694,11 @@ class AdaptiveRegionalPlayer:
         world.begin_return(expedition_id,vehicle_id=return_vehicle)
         returning=[]
         while expedition_id in world.expeditions:
-            returning.append(world.advance_expedition(expedition_id))
+            returning.append(self._advance(world,expedition_id))
+            if returning[-1]=='road_emergency':
+                return {'status':'road_emergency_return','outbound':outbound,
+                        'local':local,'return':returning,
+                        'decisions':list(self.history)}
         status=('returned' if local['status']=='objective_completed_and_exited'
                 else 'returned_with_objective_incomplete')
         return {'status':status,'outbound':outbound,'local':local,

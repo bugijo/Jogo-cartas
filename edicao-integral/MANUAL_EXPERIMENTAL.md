@@ -64,6 +64,8 @@ transporte regional. Desligado por padrão para preservar os replays registrados
     todos voltam ao abrigo. Com carga única (cartão/bateria) ou veículo, o motor
     recusa (`NotImplementedError`), porque o destino dessas peças na estrada não
     está modelado.
+  - dados dos ataques vêm do RNG persistido do mundo
+    (`World.regional_ambush_attack`), nunca do jogador;
   - **Leitura pendente de aprovação:** a durabilidade do equipamento regional não
     é consumida na emboscada, porque o combate segue o M1 da 0.2 (sem
     durabilidade).

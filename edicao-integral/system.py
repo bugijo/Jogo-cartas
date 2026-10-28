@@ -1139,6 +1139,21 @@ class World:
             raise ValueError('Emboscada regional divergente')
         event['ambush_state']=ambush.snapshot()
 
+    def regional_ambush_attack(self, expedition_id: str, ambush: Ambush02, hero: str,
+                               enemy_id: int, weapon: str) -> bool:
+        """Ataque na Emboscada com d6 do RNG persistido do mundo (não do jogador)."""
+        event=self.expeditions[expedition_id].pending_travel or {}
+        if 'ambush_state' not in event or ambush.team!=event['ambush_state']['team']:
+            raise ValueError('Emboscada regional divergente')
+        rng=random.Random();rng.setstate(_tuples(self.rng_state))
+        die=rng.randint(1,6)
+        self.rng_state=_lists(rng.getstate())
+        hit=ambush.attack(hero,enemy_id,weapon,die)
+        self.log.append({'day':self.day,'expedition':expedition_id,
+                         'action':'regional_ambush_attack','hero':hero,
+                         'enemy':enemy_id,'weapon':weapon,'die':die,'hit':hit})
+        return hit
+
     def finish_regional_ambush(self, expedition_id: str, ambush: Ambush02) -> str:
         """Sincroniza o resultado: relógio real, ferimentos, fadiga e Horda.
 

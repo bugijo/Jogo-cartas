@@ -1,0 +1,121 @@
+{
+  "schema": 1,
+  "replay": {
+    "seed": 22,
+    "status": "returned",
+    "outbound": [
+      "arrived"
+    ],
+    "return": [
+      "returned"
+    ],
+    "local_status": "objective_completed_and_exited",
+    "travel_log": [
+      {
+        "expedition": "regional-travel-seed22-market",
+        "action": "regional_travel_card",
+        "direction": "outbound",
+        "card_id": "ZC-VIA-0005",
+        "extra": false,
+        "segment": 1,
+        "ambush": true
+      },
+      {
+        "expedition": "regional-travel-seed22-market",
+        "action": "regional_ambush_start",
+        "clock": 1,
+        "equipment": {
+          "ZC-HER-0001": [
+            "Pé de cabra"
+          ],
+          "ZC-HER-0003": [
+            "Pé de cabra"
+          ]
+        }
+      },
+      {
+        "expedition": "regional-travel-seed22-market",
+        "action": "regional_ambush_finish",
+        "rounds": 1,
+        "clock": 2,
+        "emergency": false,
+        "wounds": {
+          "ZC-HER-0001": 0,
+          "ZC-HER-0003": 0
+        }
+      },
+      {
+        "expedition": "regional-travel-seed22-market",
+        "action": "regional_travel_card",
+        "direction": "return",
+        "card_id": "ZC-VIA-0006",
+        "extra": false,
+        "segment": 5
+      },
+      {
+        "expedition": "regional-travel-seed22-market",
+        "action": "regional_travel_choice",
+        "direction": "return",
+        "card_id": "ZC-VIA-0006",
+        "extra": false,
+        "segment": 5,
+        "choice": "decline",
+        "effect": {}
+      }
+    ],
+    "regional_clock": 5,
+    "archive": {
+      "materials": 0,
+      "pressure": 0
+    },
+    "heroes": {
+      "ZC-HER-0001": {
+        "wounds": 0,
+        "fatigue": 0,
+        "location": "camp"
+      },
+      "ZC-HER-0003": {
+        "wounds": 0,
+        "fatigue": 0,
+        "location": "camp"
+      }
+    },
+    "stock_before": {
+      "food": 1,
+      "water": 11,
+      "wood": 0,
+      "scrap": 0,
+      "medicine": 2,
+      "fuel": 0,
+      "ammo": 0
+    },
+    "stock_after": {
+      "food": 3,
+      "water": 12,
+      "wood": 0,
+      "scrap": 0,
+      "medicine": 2,
+      "fuel": 0,
+      "ammo": 0
+    },
+    "delivered": {
+      "food": 2,
+      "water": 1
+    },
+    "controller_history": [
+      {
+        "action": "regional_ambush",
+        "expedition": "regional-travel-seed22-market",
+        "result": "continue",
+        "rounds": 1
+      },
+      {
+        "action": "travel_choice",
+        "expedition": "regional-travel-seed22-market",
+        "card": "ZC-VIA-0006",
+        "choice": "decline"
+      }
+    ],
+    "scope_limit": "Uma expedição a pé ao Mercado. Não cobre carga levada regional, veículos, combustível, Célia, transmissor ou defesa final."
+  }
+}
