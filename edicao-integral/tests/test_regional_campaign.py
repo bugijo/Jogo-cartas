@@ -17,6 +17,7 @@ def migrated():
     campaign = player.game
     campaign.transition_to_last_transmission()
     campaign.world.regional_travel_cards = True
+    campaign.world.regional_filter_production = True
     return campaign
 
 

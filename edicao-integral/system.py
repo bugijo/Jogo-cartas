@@ -112,6 +112,12 @@ class World:
     # arquivados para auditoria, não gastáveis).
     regional_travel_archive: dict[str, int] = field(
         default_factory=lambda: {'materials': 0, 'pressure': 0})
+    # Filtro da Cisterna consertado no mesmo abrigo (decisão aprovada em
+    # 2026-10-29): produz `output` água a cada amanhecer regional, pelo depósito.
+    # A produção é ligada por `regional_filter_production`, desligada por padrão
+    # para preservar os replays regionais certificados (como a ponte de Viagem).
+    continuity_filter: dict | None = None
+    regional_filter_production: bool = False
     garden_worker: str | None = None
     guarding: dict[str, int] = field(default_factory=dict)
     rng_state: object = None
@@ -236,6 +242,18 @@ class World:
             raise ValueError('Estoque inválido')
         if not isinstance(self.clues,int) or isinstance(self.clues,bool) or self.clues<0:
             raise ValueError('Contador de pistas inválido')
+        if self.continuity_filter is not None and (
+                not isinstance(self.continuity_filter, dict)
+                or set(self.continuity_filter) != {'source', 'output', 'active'}
+                or self.continuity_filter['source'] != 'cistern02'
+                or not isinstance(self.continuity_filter['output'], int)
+                or isinstance(self.continuity_filter['output'], bool)
+                or self.continuity_filter['output'] < 1
+                or not isinstance(self.continuity_filter['active'], bool)
+                or not self.cistern_verified):
+            raise ValueError('Filtro de continuidade inválido')
+        if not isinstance(self.regional_filter_production, bool):
+            raise ValueError('Opção de produção do filtro inválida')
         if any(k not in RESOURCES for k in self.stock) or sum(self.stock.values()) > self.storage:
             raise ValueError('Depósito excedido')
         if self.residents > self.beds or self.free_terrain < 0:
@@ -1507,6 +1525,7 @@ class World:
                         source[key] = person[key]
         self.worked_today=[]
         self.departed_today=[]
+        filter_water = self._continuity_filter_dawn()
         crisis = self._roll_crisis()
         result = {'day':self.day,'produced':produced,'missing':missing,
                   'unfed': {resource: sorted(identifiers-allocations[resource])
@@ -1515,9 +1534,27 @@ class World:
                   'shelter_morale':self.shelter_morale,
                   'partial_defeat':self.partial_defeat,
                   'stock':dict(self.stock),'crisis':crisis}
+        if filter_water is not None:
+            result['filter_water'] = filter_water
         self.log.append(result)
         self.validate()
         return result
+
+    def _continuity_filter_dawn(self) -> dict | None:
+        """Amanhecer: o filtro funcional do mesmo abrigo produz sua água.
+
+        Depois da refeição (não alimenta a noite que terminou). Respeita o
+        depósito: o que não cabe não é criado. Sem produção após Colapso, pois
+        o abrigo deixa de ser o mesmo até a Evacuação.
+        """
+        source = self.continuity_filter
+        if (not self.regional_filter_production or not self.continuous_campaign
+                or source is None or not source['active']):
+            return None
+        if self.partial_defeat:
+            return {'produced': 0, 'not_stored': 0, 'reason': 'partial_defeat'}
+        produced = self.deposit('water', source['output'])
+        return {'produced': produced, 'not_stored': source['output'] - produced}
 
     def _roll_crisis(self) -> str | None:
         rng = random.Random()

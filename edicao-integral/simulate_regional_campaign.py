@@ -38,6 +38,7 @@ def run_one(size: int, seed: int) -> dict | None:
                 "reason": str(exc), "days_played": 0, "clue_evidence": 0,
                 "radio_code": False, "access_card": False, "blockers": []}
     campaign.world.regional_travel_cards = True
+    campaign.world.regional_filter_production = True
     regional = RegionalCampaignPlayer()
     campaign = regional.run(campaign, MAX_DAYS)
     world = campaign.world

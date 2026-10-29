@@ -28,6 +28,7 @@ def run(seed: int = 22) -> dict:
     if not campaign.world.continuous_campaign:
         raise AssertionError("Pré-requisito não veio da campanha legal da Cisterna")
     campaign.world.regional_travel_cards = True
+    campaign.world.regional_filter_production = True
     player = RegionalCampaignPlayer()
     campaign = player.run(campaign, MAX_DAYS)
     world = campaign.world

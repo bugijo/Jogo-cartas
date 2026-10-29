@@ -40,7 +40,7 @@
    "partial_defeat": 12,
    "blocked_rule": 0,
    "migration_refused": 0,
-   "mean_days": 3.8,
+   "mean_days": 3.7,
    "blockers": {
     "no_mapped_food_source": 12
    }
@@ -538,14 +538,14 @@
    "size": 4,
    "seed": 22,
    "consumers": null,
-   "days_played": 4,
+   "days_played": 3,
    "outcome": "partial_defeat",
    "clue_evidence": 0,
    "radio_code": false,
    "access_card": false,
    "plans": {
     "supply": 2,
-    "rest": 2
+    "rest": 1
    },
    "expedition_status": {
     "returned": 2

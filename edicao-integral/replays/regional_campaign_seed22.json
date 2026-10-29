@@ -46,7 +46,7 @@
     },
     "final_stock": {
       "food": 0,
-      "water": 0,
+      "water": 12,
       "wood": 0,
       "scrap": 0,
       "medicine": 2,
@@ -140,7 +140,7 @@
           "day": 1,
           "stock": {
             "food": 2,
-            "water": 10,
+            "water": 13,
             "wood": 0,
             "scrap": 0,
             "medicine": 2,
@@ -209,7 +209,7 @@
           "day": 2,
           "stock": {
             "food": 3,
-            "water": 9,
+            "water": 15,
             "wood": 0,
             "scrap": 0,
             "medicine": 2,
@@ -287,7 +287,7 @@
           "day": 3,
           "stock": {
             "food": 0,
-            "water": 6,
+            "water": 15,
             "wood": 0,
             "scrap": 0,
             "medicine": 2,
@@ -339,7 +339,7 @@
           "day": 4,
           "stock": {
             "food": 0,
-            "water": 3,
+            "water": 15,
             "wood": 0,
             "scrap": 0,
             "medicine": 2,
@@ -391,7 +391,7 @@
           "day": 5,
           "stock": {
             "food": 0,
-            "water": 0,
+            "water": 15,
             "wood": 0,
             "scrap": 0,
             "medicine": 2,
@@ -419,7 +419,7 @@
         "night": {
           "missing": {
             "food": 3,
-            "water": 3
+            "water": 0
           },
           "unfed": {
             "food": [
@@ -427,11 +427,7 @@
               "ZC-HER-0001",
               "ZC-HER-0003"
             ],
-            "water": [
-              "R01",
-              "ZC-HER-0001",
-              "ZC-HER-0003"
-            ]
+            "water": []
           },
           "crisis": null,
           "partial_defeat": true

@@ -1259,6 +1259,11 @@ class IntegratedCampaign:
             "objectives": sorted(required), "certificate": deepcopy(self.cistern.chapter_receipt),
             "migration": ledger,
         }
+        if self.cistern.filter_active:
+            # Mesmo abrigo, filtro funcional: segue produzindo C inicial/amanhecer
+            # (exige o certificado acima; a primeira produção é no próximo amanhecer).
+            projected.continuity_filter = {"source": "cistern02", "active": True,
+                                           "output": int(self.cistern.initial_consumers)}
         projected.log.append({"day": 0, "event": "campaign_transition", **receipt})
         projected.validate()
         self.world = projected
