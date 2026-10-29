@@ -1,5 +1,6 @@
 # 2026-10-29 — campanha regional multi-dia
 
+- Excedente na migração descartado com recibo (decisão aprovada); medição: 52/52 migram, todas colapsam por fome.
 - Commit `9a2f629`: `RegionalCampaignPlayer`, verificador `verify_regional_campaign.py` + artefato, 8 testes novos (7 de campanha, 1 de durabilidade), `check.sh full` com o novo verificador; decisão de durabilidade registrada no manual.
 - Resultado seed 22: 6 dias jogados, 1 pista, derrota parcial por fome no dia 6 (ver checkpoint).
 - Commit `1b4c8ee`: medição H2–H6 sobre vitórias da Cisterna (sementes 1–30); ver `PLAYTEST_REPORT.md`.

@@ -1,3 +1,10 @@
+# Estado ativo — excedente descartado na migração, 2026-10-29
+
+- Decisão aprovada aplicada: estoque acima do depósito regional (30) é descartado na migração e registrado no recibo (`storage_discarded`; água primeiro). Seed 22 e replays certificados inalterados.
+- Medição regenerada: 52/52 vitórias da Cisterna migram; todas terminam em derrota parcial por fome em 3–5 dias; 1 pista no total (H3 s20); rádio nunca.
+- Verificação: 400 testes, 9 verificadores, `compileall`, `git diff --check`.
+- Pendentes: fonte de comida regional (bloqueio principal); pista mantida após emergência; combustível/veículo; carga levada regional; narrativa/ordem de pistas.
+
 # Estado ativo — campanha regional multi-dia, 2026-10-29
 
 - Aprovado e registrado no manual: emboscada regional no M1 não consome durabilidade (teste novo).

@@ -1,3 +1,20 @@
+# Campanha regional — após descarte do excedente na migração, 2026-10-29
+
+Mesma medição (sementes 1–30, até 15 dias, sem ajuste), com o excedente de
+estoque descartado na migração (decisão aprovada). Todas as vitórias migram.
+
+| Tam. | Vitórias migradas | Derrota parcial | ≥1 pista | Rádio | Dias médios |
+|---|---|---|---|---|---|
+| H2 | 5 | 5 | 0 | 0 | 4.6 |
+| H3 | 11 | 11 | 1 | 0 | 4.6 |
+| H4 | 12 | 12 | 0 | 0 | 3.8 |
+| H5 | 12 | 12 | 0 | 0 | 3.3 |
+| H6 | 12 | 12 | 0 | 0 | 3.8 |
+
+- 52/52 campanhas terminam em derrota parcial por fome em 3–5 dias; 1 pista no
+  total; rádio nunca. O gargalo restante é a comida regional
+  (`P2-REGIONAL-FOOD-ECONOMY`).
+
 # Campanha regional multi-dia — 2026-10-29
 
 Política regional escrita só com a seed 22 H2; medida sem ajuste a partir das

@@ -31,6 +31,16 @@ aprovação.
   mudam. Motor: `World.regional_ambush_attack` não altera durabilidade; teste em
   `tests/test_regional_travel_controller.py`.
 
+### Excedente de estoque na migração (aprovada em 2026-10-29)
+- Ao migrar da Cisterna, o que passar do depósito regional (30 na base) é
+  **descartado** e registrado no recibo da migração (`storage_discarded`, com
+  capacidade e quantidades).
+- Ordem do descarte (leitura do motor): água primeiro, depois comida, remédio,
+  Munição e combustível. Na prática só a água excede (até 46 em H6).
+- Migrações dentro do limite não mudam (seed 22 sem campo novo). Motor:
+  `IntegratedCampaign.transition_to_last_transmission`; testes em
+  `tests/test_regional_campaign.py`.
+
 ## Decisões anteriores do responsável
 
 - Lote de mantimentos indivisível: `ceil(C/4)` cartas por lote, retirado
@@ -78,10 +88,6 @@ transporte regional. Desligado por padrão para preservar os replays registrados
 
 ## Ainda sem regra aprovada (não decidir silenciosamente)
 
-- Migração com estoque acima do depósito regional (30): vitórias da Cisterna
-  com muita água (até 46 em H6) são recusadas por `World.validate`. Falta regra:
-  descartar o excedente, a Cisterna contar como depósito, ou outra. O motor e a
-  medição só registram a recusa.
 - Economia de comida regional: só o Mercado tem mapa tático e comida (4 buscas
   × 2); a Horta `EXP-LOC-01` não tem mapa; projetos exigem madeira sem fonte.
 - Pista coletada antes de emergência local/de estrada é mantida (comportamento
