@@ -9,6 +9,7 @@ sys.path.insert(0, str(Path(__file__).resolve().parents[1]))
 from regional_campaign_player import RegionalCampaignPlayer
 from verify_campaign_player02 import execute as execute_cistern
 from verify_regional_campaign import ARTIFACT
+from simulate_regional_campaign import run_one
 
 
 def migrated():
@@ -87,6 +88,14 @@ class RegionalCampaignTests(unittest.TestCase):
                          len(replay["objectives"]["clue_evidence"]))
         self.assertFalse(replay["objectives"]["military_access"])
         self.assertEqual(replay["final_stock"]["fuel"], 0)
+
+
+    def test_migration_over_storage_is_recorded_not_bypassed(self):
+        # H6 seed 2 vence a Cisterna com 46 de água; depósito regional é 30.
+        row = run_one(6, 2)
+        self.assertEqual(row["outcome"], "migration_refused")
+        self.assertIn("Depósito", row["reason"])
+        self.assertEqual(row["days_played"], 0)
 
 
 if __name__ == "__main__":

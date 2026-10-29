@@ -34,7 +34,7 @@ case ${1:-} in
     for script in verify_campaign_player02.py verify_continuous_campaign.py \
                   verify_regional_player.py verify_regional_travel.py verify_regional_campaign.py \
                   verify_pre_radio_celia_route.py \
-                  validate_data.py simulate_cistern_sweep.py; do
+                  validate_data.py simulate_cistern_sweep.py simulate_regional_campaign.py; do
       step "$script" python3 "$script"
     done
     step "compileall" python3 -m compileall -q .

@@ -1,0 +1,837 @@
+{
+ "schema": 1,
+ "max_days": 15,
+ "seeds": [
+  1,
+  30
+ ],
+ "summary": {
+  "H2": {
+   "cistern_victories": 5,
+   "radio_code": 0,
+   "access_card": 0,
+   "clues_ge1": 0,
+   "partial_defeat": 3,
+   "blocked_rule": 0,
+   "migration_refused": 2,
+   "mean_days": 4.3,
+   "blockers": {
+    "no_mapped_food_source": 3
+   }
+  },
+  "H3": {
+   "cistern_victories": 11,
+   "radio_code": 0,
+   "access_card": 0,
+   "clues_ge1": 1,
+   "partial_defeat": 10,
+   "blocked_rule": 0,
+   "migration_refused": 1,
+   "mean_days": 4.4,
+   "blockers": {
+    "no_mapped_food_source": 10
+   }
+  },
+  "H4": {
+   "cistern_victories": 12,
+   "radio_code": 0,
+   "access_card": 0,
+   "clues_ge1": 0,
+   "partial_defeat": 5,
+   "blocked_rule": 0,
+   "migration_refused": 7,
+   "mean_days": 3.8,
+   "blockers": {
+    "no_mapped_food_source": 5
+   }
+  },
+  "H5": {
+   "cistern_victories": 12,
+   "radio_code": 0,
+   "access_card": 0,
+   "clues_ge1": 0,
+   "partial_defeat": 3,
+   "blocked_rule": 0,
+   "migration_refused": 9,
+   "mean_days": 3.0,
+   "blockers": {
+    "no_mapped_food_source": 3
+   }
+  },
+  "H6": {
+   "cistern_victories": 12,
+   "radio_code": 0,
+   "access_card": 0,
+   "clues_ge1": 0,
+   "partial_defeat": 0,
+   "blocked_rule": 0,
+   "migration_refused": 12,
+   "mean_days": null,
+   "blockers": {}
+  }
+ },
+ "runs": [
+  {
+   "size": 2,
+   "seed": 2,
+   "consumers": null,
+   "days_played": 4,
+   "outcome": "partial_defeat",
+   "clue_evidence": 0,
+   "radio_code": false,
+   "access_card": false,
+   "plans": {
+    "supply": 2,
+    "rest": 2
+   },
+   "expedition_status": {
+    "returned": 2
+   },
+   "blockers": [
+    "no_mapped_food_source"
+   ]
+  },
+  {
+   "size": 2,
+   "seed": 10,
+   "outcome": "migration_refused",
+   "reason": "Depósito excedido",
+   "days_played": 0,
+   "clue_evidence": 0,
+   "radio_code": false,
+   "access_card": false,
+   "blockers": []
+  },
+  {
+   "size": 2,
+   "seed": 19,
+   "consumers": null,
+   "days_played": 4,
+   "outcome": "partial_defeat",
+   "clue_evidence": 0,
+   "radio_code": false,
+   "access_card": false,
+   "plans": {
+    "supply": 2,
+    "rest": 2
+   },
+   "expedition_status": {
+    "returned": 2
+   },
+   "blockers": [
+    "no_mapped_food_source"
+   ]
+  },
+  {
+   "size": 2,
+   "seed": 27,
+   "outcome": "migration_refused",
+   "reason": "Depósito excedido",
+   "days_played": 0,
+   "clue_evidence": 0,
+   "radio_code": false,
+   "access_card": false,
+   "blockers": []
+  },
+  {
+   "size": 2,
+   "seed": 30,
+   "consumers": null,
+   "days_played": 5,
+   "outcome": "partial_defeat",
+   "clue_evidence": 0,
+   "radio_code": false,
+   "access_card": false,
+   "plans": {
+    "supply": 2,
+    "rest": 3
+   },
+   "expedition_status": {
+    "returned": 2
+   },
+   "blockers": [
+    "no_mapped_food_source"
+   ]
+  },
+  {
+   "size": 3,
+   "seed": 2,
+   "consumers": null,
+   "days_played": 5,
+   "outcome": "partial_defeat",
+   "clue_evidence": 0,
+   "radio_code": false,
+   "access_card": false,
+   "plans": {
+    "supply": 2,
+    "rest": 3
+   },
+   "expedition_status": {
+    "returned": 2
+   },
+   "blockers": [
+    "no_mapped_food_source"
+   ]
+  },
+  {
+   "size": 3,
+   "seed": 3,
+   "consumers": null,
+   "days_played": 4,
+   "outcome": "partial_defeat",
+   "clue_evidence": 0,
+   "radio_code": false,
+   "access_card": false,
+   "plans": {
+    "supply": 2,
+    "rest": 2
+   },
+   "expedition_status": {
+    "returned": 2
+   },
+   "blockers": [
+    "no_mapped_food_source"
+   ]
+  },
+  {
+   "size": 3,
+   "seed": 7,
+   "consumers": null,
+   "days_played": 4,
+   "outcome": "partial_defeat",
+   "clue_evidence": 0,
+   "radio_code": false,
+   "access_card": false,
+   "plans": {
+    "supply": 2,
+    "rest": 2
+   },
+   "expedition_status": {
+    "returned": 2
+   },
+   "blockers": [
+    "no_mapped_food_source"
+   ]
+  },
+  {
+   "size": 3,
+   "seed": 8,
+   "consumers": null,
+   "days_played": 4,
+   "outcome": "partial_defeat",
+   "clue_evidence": 0,
+   "radio_code": false,
+   "access_card": false,
+   "plans": {
+    "supply": 2,
+    "rest": 2
+   },
+   "expedition_status": {
+    "returned": 2
+   },
+   "blockers": [
+    "no_mapped_food_source"
+   ]
+  },
+  {
+   "size": 3,
+   "seed": 14,
+   "consumers": null,
+   "days_played": 4,
+   "outcome": "partial_defeat",
+   "clue_evidence": 0,
+   "radio_code": false,
+   "access_card": false,
+   "plans": {
+    "supply": 2,
+    "rest": 2
+   },
+   "expedition_status": {
+    "returned": 2
+   },
+   "blockers": [
+    "no_mapped_food_source"
+   ]
+  },
+  {
+   "size": 3,
+   "seed": 19,
+   "consumers": null,
+   "days_played": 4,
+   "outcome": "partial_defeat",
+   "clue_evidence": 0,
+   "radio_code": false,
+   "access_card": false,
+   "plans": {
+    "supply": 2,
+    "rest": 2
+   },
+   "expedition_status": {
+    "returned": 2
+   },
+   "blockers": [
+    "no_mapped_food_source"
+   ]
+  },
+  {
+   "size": 3,
+   "seed": 20,
+   "consumers": null,
+   "days_played": 5,
+   "outcome": "partial_defeat",
+   "clue_evidence": 1,
+   "radio_code": false,
+   "access_card": false,
+   "plans": {
+    "supply": 2,
+    "clue": 1,
+    "rest": 2
+   },
+   "expedition_status": {
+    "returned": 3
+   },
+   "blockers": [
+    "no_mapped_food_source"
+   ]
+  },
+  {
+   "size": 3,
+   "seed": 22,
+   "outcome": "migration_refused",
+   "reason": "Depósito excedido",
+   "days_played": 0,
+   "clue_evidence": 0,
+   "radio_code": false,
+   "access_card": false,
+   "blockers": []
+  },
+  {
+   "size": 3,
+   "seed": 25,
+   "consumers": null,
+   "days_played": 4,
+   "outcome": "partial_defeat",
+   "clue_evidence": 0,
+   "radio_code": false,
+   "access_card": false,
+   "plans": {
+    "supply": 2,
+    "rest": 2
+   },
+   "expedition_status": {
+    "returned": 2
+   },
+   "blockers": [
+    "no_mapped_food_source"
+   ]
+  },
+  {
+   "size": 3,
+   "seed": 27,
+   "consumers": null,
+   "days_played": 5,
+   "outcome": "partial_defeat",
+   "clue_evidence": 0,
+   "radio_code": false,
+   "access_card": false,
+   "plans": {
+    "supply": 2,
+    "rest": 3
+   },
+   "expedition_status": {
+    "returned": 2
+   },
+   "blockers": [
+    "no_mapped_food_source"
+   ]
+  },
+  {
+   "size": 3,
+   "seed": 29,
+   "consumers": null,
+   "days_played": 5,
+   "outcome": "partial_defeat",
+   "clue_evidence": 0,
+   "radio_code": false,
+   "access_card": false,
+   "plans": {
+    "supply": 2,
+    "rest": 3
+   },
+   "expedition_status": {
+    "returned": 2
+   },
+   "blockers": [
+    "no_mapped_food_source"
+   ]
+  },
+  {
+   "size": 4,
+   "seed": 2,
+   "outcome": "migration_refused",
+   "reason": "Depósito excedido",
+   "days_played": 0,
+   "clue_evidence": 0,
+   "radio_code": false,
+   "access_card": false,
+   "blockers": []
+  },
+  {
+   "size": 4,
+   "seed": 7,
+   "outcome": "migration_refused",
+   "reason": "Depósito excedido",
+   "days_played": 0,
+   "clue_evidence": 0,
+   "radio_code": false,
+   "access_card": false,
+   "blockers": []
+  },
+  {
+   "size": 4,
+   "seed": 12,
+   "consumers": null,
+   "days_played": 4,
+   "outcome": "partial_defeat",
+   "clue_evidence": 0,
+   "radio_code": false,
+   "access_card": false,
+   "plans": {
+    "supply": 2,
+    "rest": 2
+   },
+   "expedition_status": {
+    "returned": 2
+   },
+   "blockers": [
+    "no_mapped_food_source"
+   ]
+  },
+  {
+   "size": 4,
+   "seed": 14,
+   "outcome": "migration_refused",
+   "reason": "Depósito excedido",
+   "days_played": 0,
+   "clue_evidence": 0,
+   "radio_code": false,
+   "access_card": false,
+   "blockers": []
+  },
+  {
+   "size": 4,
+   "seed": 16,
+   "consumers": null,
+   "days_played": 4,
+   "outcome": "partial_defeat",
+   "clue_evidence": 0,
+   "radio_code": false,
+   "access_card": false,
+   "plans": {
+    "supply": 2,
+    "rest": 2
+   },
+   "expedition_status": {
+    "returned": 2
+   },
+   "blockers": [
+    "no_mapped_food_source"
+   ]
+  },
+  {
+   "size": 4,
+   "seed": 19,
+   "consumers": null,
+   "days_played": 4,
+   "outcome": "partial_defeat",
+   "clue_evidence": 0,
+   "radio_code": false,
+   "access_card": false,
+   "plans": {
+    "supply": 2,
+    "rest": 2
+   },
+   "expedition_status": {
+    "returned": 2
+   },
+   "blockers": [
+    "no_mapped_food_source"
+   ]
+  },
+  {
+   "size": 4,
+   "seed": 20,
+   "outcome": "migration_refused",
+   "reason": "Depósito excedido",
+   "days_played": 0,
+   "clue_evidence": 0,
+   "radio_code": false,
+   "access_card": false,
+   "blockers": []
+  },
+  {
+   "size": 4,
+   "seed": 22,
+   "outcome": "migration_refused",
+   "reason": "Depósito excedido",
+   "days_played": 0,
+   "clue_evidence": 0,
+   "radio_code": false,
+   "access_card": false,
+   "blockers": []
+  },
+  {
+   "size": 4,
+   "seed": 25,
+   "consumers": null,
+   "days_played": 4,
+   "outcome": "partial_defeat",
+   "clue_evidence": 0,
+   "radio_code": false,
+   "access_card": false,
+   "plans": {
+    "supply": 2,
+    "rest": 2
+   },
+   "expedition_status": {
+    "returned": 2
+   },
+   "blockers": [
+    "no_mapped_food_source"
+   ]
+  },
+  {
+   "size": 4,
+   "seed": 27,
+   "consumers": null,
+   "days_played": 3,
+   "outcome": "partial_defeat",
+   "clue_evidence": 0,
+   "radio_code": false,
+   "access_card": false,
+   "plans": {
+    "supply": 2,
+    "rest": 1
+   },
+   "expedition_status": {
+    "returned": 2
+   },
+   "blockers": [
+    "no_mapped_food_source"
+   ]
+  },
+  {
+   "size": 4,
+   "seed": 29,
+   "outcome": "migration_refused",
+   "reason": "Depósito excedido",
+   "days_played": 0,
+   "clue_evidence": 0,
+   "radio_code": false,
+   "access_card": false,
+   "blockers": []
+  },
+  {
+   "size": 4,
+   "seed": 30,
+   "outcome": "migration_refused",
+   "reason": "Depósito excedido",
+   "days_played": 0,
+   "clue_evidence": 0,
+   "radio_code": false,
+   "access_card": false,
+   "blockers": []
+  },
+  {
+   "size": 5,
+   "seed": 2,
+   "outcome": "migration_refused",
+   "reason": "Depósito excedido",
+   "days_played": 0,
+   "clue_evidence": 0,
+   "radio_code": false,
+   "access_card": false,
+   "blockers": []
+  },
+  {
+   "size": 5,
+   "seed": 3,
+   "consumers": null,
+   "days_played": 3,
+   "outcome": "partial_defeat",
+   "clue_evidence": 0,
+   "radio_code": false,
+   "access_card": false,
+   "plans": {
+    "supply": 2,
+    "rest": 1
+   },
+   "expedition_status": {
+    "returned": 2
+   },
+   "blockers": [
+    "no_mapped_food_source"
+   ]
+  },
+  {
+   "size": 5,
+   "seed": 10,
+   "outcome": "migration_refused",
+   "reason": "Depósito excedido",
+   "days_played": 0,
+   "clue_evidence": 0,
+   "radio_code": false,
+   "access_card": false,
+   "blockers": []
+  },
+  {
+   "size": 5,
+   "seed": 14,
+   "outcome": "migration_refused",
+   "reason": "Depósito excedido",
+   "days_played": 0,
+   "clue_evidence": 0,
+   "radio_code": false,
+   "access_card": false,
+   "blockers": []
+  },
+  {
+   "size": 5,
+   "seed": 16,
+   "outcome": "migration_refused",
+   "reason": "Depósito excedido",
+   "days_played": 0,
+   "clue_evidence": 0,
+   "radio_code": false,
+   "access_card": false,
+   "blockers": []
+  },
+  {
+   "size": 5,
+   "seed": 19,
+   "outcome": "migration_refused",
+   "reason": "Depósito excedido",
+   "days_played": 0,
+   "clue_evidence": 0,
+   "radio_code": false,
+   "access_card": false,
+   "blockers": []
+  },
+  {
+   "size": 5,
+   "seed": 20,
+   "consumers": null,
+   "days_played": 3,
+   "outcome": "partial_defeat",
+   "clue_evidence": 0,
+   "radio_code": false,
+   "access_card": false,
+   "plans": {
+    "supply": 2,
+    "rest": 1
+   },
+   "expedition_status": {
+    "returned": 2
+   },
+   "blockers": [
+    "no_mapped_food_source"
+   ]
+  },
+  {
+   "size": 5,
+   "seed": 21,
+   "consumers": null,
+   "days_played": 3,
+   "outcome": "partial_defeat",
+   "clue_evidence": 0,
+   "radio_code": false,
+   "access_card": false,
+   "plans": {
+    "supply": 2,
+    "rest": 1
+   },
+   "expedition_status": {
+    "returned": 2
+   },
+   "blockers": [
+    "no_mapped_food_source"
+   ]
+  },
+  {
+   "size": 5,
+   "seed": 22,
+   "outcome": "migration_refused",
+   "reason": "Depósito excedido",
+   "days_played": 0,
+   "clue_evidence": 0,
+   "radio_code": false,
+   "access_card": false,
+   "blockers": []
+  },
+  {
+   "size": 5,
+   "seed": 27,
+   "outcome": "migration_refused",
+   "reason": "Depósito excedido",
+   "days_played": 0,
+   "clue_evidence": 0,
+   "radio_code": false,
+   "access_card": false,
+   "blockers": []
+  },
+  {
+   "size": 5,
+   "seed": 29,
+   "outcome": "migration_refused",
+   "reason": "Depósito excedido",
+   "days_played": 0,
+   "clue_evidence": 0,
+   "radio_code": false,
+   "access_card": false,
+   "blockers": []
+  },
+  {
+   "size": 5,
+   "seed": 30,
+   "outcome": "migration_refused",
+   "reason": "Depósito excedido",
+   "days_played": 0,
+   "clue_evidence": 0,
+   "radio_code": false,
+   "access_card": false,
+   "blockers": []
+  },
+  {
+   "size": 6,
+   "seed": 2,
+   "outcome": "migration_refused",
+   "reason": "Depósito excedido",
+   "days_played": 0,
+   "clue_evidence": 0,
+   "radio_code": false,
+   "access_card": false,
+   "blockers": []
+  },
+  {
+   "size": 6,
+   "seed": 3,
+   "outcome": "migration_refused",
+   "reason": "Depósito excedido",
+   "days_played": 0,
+   "clue_evidence": 0,
+   "radio_code": false,
+   "access_card": false,
+   "blockers": []
+  },
+  {
+   "size": 6,
+   "seed": 10,
+   "outcome": "migration_refused",
+   "reason": "Depósito excedido",
+   "days_played": 0,
+   "clue_evidence": 0,
+   "radio_code": false,
+   "access_card": false,
+   "blockers": []
+  },
+  {
+   "size": 6,
+   "seed": 14,
+   "outcome": "migration_refused",
+   "reason": "Depósito excedido",
+   "days_played": 0,
+   "clue_evidence": 0,
+   "radio_code": false,
+   "access_card": false,
+   "blockers": []
+  },
+  {
+   "size": 6,
+   "seed": 16,
+   "outcome": "migration_refused",
+   "reason": "Depósito excedido",
+   "days_played": 0,
+   "clue_evidence": 0,
+   "radio_code": false,
+   "access_card": false,
+   "blockers": []
+  },
+  {
+   "size": 6,
+   "seed": 19,
+   "outcome": "migration_refused",
+   "reason": "Depósito excedido",
+   "days_played": 0,
+   "clue_evidence": 0,
+   "radio_code": false,
+   "access_card": false,
+   "blockers": []
+  },
+  {
+   "size": 6,
+   "seed": 20,
+   "outcome": "migration_refused",
+   "reason": "Depósito excedido",
+   "days_played": 0,
+   "clue_evidence": 0,
+   "radio_code": false,
+   "access_card": false,
+   "blockers": []
+  },
+  {
+   "size": 6,
+   "seed": 22,
+   "outcome": "migration_refused",
+   "reason": "Depósito excedido",
+   "days_played": 0,
+   "clue_evidence": 0,
+   "radio_code": false,
+   "access_card": false,
+   "blockers": []
+  },
+  {
+   "size": 6,
+   "seed": 25,
+   "outcome": "migration_refused",
+   "reason": "Depósito excedido",
+   "days_played": 0,
+   "clue_evidence": 0,
+   "radio_code": false,
+   "access_card": false,
+   "blockers": []
+  },
+  {
+   "size": 6,
+   "seed": 27,
+   "outcome": "migration_refused",
+   "reason": "Depósito excedido",
+   "days_played": 0,
+   "clue_evidence": 0,
+   "radio_code": false,
+   "access_card": false,
+   "blockers": []
+  },
+  {
+   "size": 6,
+   "seed": 29,
+   "outcome": "migration_refused",
+   "reason": "Depósito excedido",
+   "days_played": 0,
+   "clue_evidence": 0,
+   "radio_code": false,
+   "access_card": false,
+   "blockers": []
+  },
+  {
+   "size": 6,
+   "seed": 30,
+   "outcome": "migration_refused",
+   "reason": "Depósito excedido",
+   "days_played": 0,
+   "clue_evidence": 0,
+   "radio_code": false,
+   "access_card": false,
+   "blockers": []
+  }
+ ]
+}
