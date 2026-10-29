@@ -59,6 +59,29 @@ class RegionalTravelControllerTests(unittest.TestCase):
         self.assertIn(result["status"], ("returned", "returned_with_objective_incomplete"))
         self.assertEqual(player.history[0]["action"], "regional_ambush")
 
+    def test_regional_ambush_does_not_consume_durability(self):
+        # Decisão aprovada em 2026-10-29: o M1 da 0.2 não tem durabilidade.
+        world = migrated(["ZC-VIA-0005", "ZC-VIA-0001"])
+        original = world.start_regional_ambush
+
+        def start_with_enemy_at_entry(expedition_id):
+            ambush = original(expedition_id)
+            ambush.enemies[0]["zone"] = 1  # fixture: força combate na entrada
+            world.store_regional_ambush(expedition_id, ambush)
+            return ambush
+
+        world.start_regional_ambush = start_with_enemy_at_entry
+        before = {hero: {item: dict(state) for item, state in gear.items()}
+                  for hero, gear in world.gear.items()}
+        run(world)
+        attacks = [row for row in world.log if row.get("action") == "regional_ambush_attack"]
+        self.assertTrue(attacks)
+        self.assertTrue(any(gear for gear in before.values()))
+        for hero, gear in before.items():
+            for item, state in gear.items():
+                if item in world.gear[hero]:
+                    self.assertEqual(world.gear[hero][item]["durability"], state["durability"])
+
     def test_ambush_without_time_becomes_road_emergency(self):
         world = migrated(["ZC-VIA-0005"])
         original = world.start_regional_ambush

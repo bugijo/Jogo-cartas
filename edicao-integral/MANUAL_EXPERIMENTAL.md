@@ -24,6 +24,13 @@ aprovação.
   continua acrescentando 1 Material ao estoque.
 - Motor: `Travel02.apply()`; testes em `tests/test_travel02.py`.
 
+### Durabilidade na emboscada regional (aprovada em 2026-10-29)
+- Nas emboscadas regionais jogadas no mapa M1 da 0.2, **não se consome
+  durabilidade** dos equipamentos: essa mecânica não faz parte do combate 0.2.
+- Vale só para a ponte regional experimental; `RULES.md` e o kit físico 0.2 não
+  mudam. Motor: `World.regional_ambush_attack` não altera durabilidade; teste em
+  `tests/test_regional_travel_controller.py`.
+
 ## Decisões anteriores do responsável
 
 - Lote de mantimentos indivisível: `ceil(C/4)` cartas por lote, retirado
@@ -66,9 +73,8 @@ transporte regional. Desligado por padrão para preservar os replays registrados
     está modelado.
   - dados dos ataques vêm do RNG persistido do mundo
     (`World.regional_ambush_attack`), nunca do jogador;
-  - **Leitura pendente de aprovação:** a durabilidade do equipamento regional não
-    é consumida na emboscada, porque o combate segue o M1 da 0.2 (sem
-    durabilidade).
+  - a durabilidade do equipamento regional não é consumida na emboscada
+    (decisão aprovada em 2026-10-29, abaixo).
 
 ## Ainda sem regra aprovada (não decidir silenciosamente)
 
