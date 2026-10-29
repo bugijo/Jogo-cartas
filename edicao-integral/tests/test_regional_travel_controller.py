@@ -59,6 +59,18 @@ class RegionalTravelControllerTests(unittest.TestCase):
         self.assertIn(result["status"], ("returned", "returned_with_objective_incomplete"))
         self.assertEqual(player.history[0]["action"], "regional_ambush")
 
+    def test_ambush_without_time_to_finish_trip_takes_emergency(self):
+        world = migrated(["ZC-VIA-0005"])
+        world.regional_clock = 7  # fixture: fim de dia
+        world.open_expedition("late", sorted(world.heroes), "EXP-LOC-02")
+        self.assertEqual(world.advance_expedition("late"), "travel_pending")
+        world.expeditions["late"].remaining = 3  # fixture: dois trechos depois deste
+        player = AdaptiveRegionalPlayer("explorer")
+        self.assertEqual(player._fight_ambush(world, "late"), "emergency")
+        self.assertEqual(player.history[-1]["rounds"], 0)
+        self.assertNotIn("late", world.expeditions)
+        self.assertLessEqual(world.regional_clock, 10)
+
     def test_regional_ambush_does_not_consume_durability(self):
         # Decisão aprovada em 2026-10-29: o M1 da 0.2 não tem durabilidade.
         world = migrated(["ZC-VIA-0005", "ZC-VIA-0001"])

@@ -381,7 +381,11 @@ class AdaptiveRegionalPlayer:
                     if kind!='exit' and not self._objective_done(tactical,objective) and \
                             available_actions>=self._action_cost(objective) \
                             and not (objective.get('kind')=='repair_van'
-                                     and hero_id in tactical.state.get('van_attempts',[])):
+                                     and hero_id in tactical.state.get('van_attempts',[])) \
+                            and not (kind in ('investigate_contact','evidence')
+                                     and any(enemy['zone']==zone for enemy in
+                                             tactical.state['enemies'].values())):
+                        # Investigar/copiar exige zona sem ameaça (sem arma, espera ou sai).
                         choices.append((0,hero_id,goal,'interact'))
                     continue
                 open_path=tactical.path_to(hero_id,goal)
@@ -597,8 +601,11 @@ class AdaptiveRegionalPlayer:
         alvo e arma visíveis. Sem tempo, aceita a emergência de estrada.
         """
         ambush=world.start_regional_ambush(expedition_id)
+        # Trechos ainda a pagar depois do atual (já pago ou extra sem segmento).
+        legs_after=world.expeditions[expedition_id].remaining-1
         while True:
-            if ambush.clock>=10:
+            if ambush.clock>=10 or ambush.clock+1+legs_after>10:
+                # Outra rodada deixaria a equipe sem relógio para terminar a viagem.
                 ambush.emergency_return()
                 break
             ambush.begin_round()
