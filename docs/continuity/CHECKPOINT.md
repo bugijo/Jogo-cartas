@@ -5,6 +5,13 @@
 - **Bloqueios para decisão:** camas regionais para os 3 acolhidos; depósito regional cheio de água impede a colheita. Detalhes em `edicao-integral/HORTA_CONTINUITY.md`.
 - `check.sh full` verde: suíte, verificadores e `simulate_regional_campaign.py --garden` (novo no full).
 
+# Estado ativo — Escritório Dev, barra no Desktop e jogadores virtuais, 2026-10-29
+
+- Barra de progresso: mod oficial do Claude Code (`edicao-integral/tools/desktop-mod/zona-zero-progresso/`) desenha faixa, painel (`/zz-progresso`) e status a partir de `docs/continuity/progress.json`; percentual = pesos de critérios com evidência (`tools/progress.py`). Carrega só após o responsável aceitar os mods da sessão; visibilidade não comprovada por mim.
+- Escritório Dev: 10 papéis em `edicao-integral/dev_office.py`; referência Hermes só leitura (`ESCRITORIO_DEV.md`).
+- 18 personas (`virtual_players.py`) e mesas A/B/C/mista H2–H6 (`simulate_virtual_players.py`): piloto 1–3 (60 mesas) e ampliação 1–30 (600). Vitórias A 4, B 34, C 34, mista 26 de 150; roteiro fixo 3/174 × adaptativo 95/426. Simulação, não playtest; plano humano em `PLAYTEST_HUMANO.md`.
+- Horta H1 escolhida pelo responsável; implementação/medição em outra sessão (arquivos do motor não commitados por esta).
+
 # Estado ativo — filtro contínuo e investigação da Horta, 2026-10-29
 
 - Filtro da Cisterna produz C água por amanhecer no regional (`4f13ced`), pelo depósito, opcional via `regional_filter_production` (replays certificados intactos). 408 testes, 9 verificadores.

@@ -335,3 +335,14 @@ python3 edicao-integral/verify_campaign_player02.py
 python3 edicao-integral/verify_continuous_campaign.py
 python3 edicao-integral/verify_regional_player.py
 ```
+
+## Jogadores virtuais (simulação, não playtest) — 2026-10-29
+
+| Grupo | Mesas | Vitórias | Roteiro fixo | Noites médias | Conflitos/mesa |
+|---|---|---|---|---|---|
+| A | 150 | 4 | 125 | 3,46 | 11,8 |
+| B | 150 | 34 | 0 | 4,99 | 34,1 |
+| C | 150 | 34 | 11 | 4,87 | 17,1 |
+| mista | 150 | 26 | 38 | 4,53 | 32,1 |
+
+Resultados refletem traços escolhidos para as personas; hipóteses em `edicao-integral/ESCRITORIO_DEV.md`.

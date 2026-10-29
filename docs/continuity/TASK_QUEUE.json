@@ -349,6 +349,26 @@
    "blocker": "Sem reserva experimental da Oficina, o militar é inalcançável (faltam 2–8). Decisões 1–6 em TACTICAL_FUEL_AUDIT.md."
   },
   {
+   "id": "P2-DEV-OFFICE-VIRTUAL-PLAYERS",
+   "priority": 2,
+   "objective": "Barra de progresso no Desktop, Escritório Dev com 10 papéis e 18 jogadores virtuais com métricas por grupo.",
+   "depends_on": [],
+   "acceptance": [
+    "progresso só por critérios com evidência",
+    "10 papéis com critérios e entregas",
+    "18 personas distintas",
+    "piloto e ampliação reprodutíveis",
+    "política de referência reproduz o controlador"
+   ],
+   "tests": [
+    "tests/test_virtual_players.py",
+    "simulate_virtual_players.py --seeds 1-3"
+   ],
+   "status": "concluído",
+   "commit": null,
+   "blocker": "Mod carrega só após aceite do responsável; carregamento permanente exige aprovação de configuração."
+  },
+  {
    "id": "P1-REGIONAL-GARDEN-H1",
    "priority": 1,
    "objective": "Horta §61 construída na Cisterna e migrada ao regional (H1, aprovada).",

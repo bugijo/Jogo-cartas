@@ -465,3 +465,6 @@ passaram se o gate de campanha ainda estiver fechado.
 - Launcher isolado do Claude Code CLI para o OmniRoute (`tools/`), sem tocar
   no Desktop/OAuth; endpoint `/api/v1/messages` confirmado pela spec.
 - Controlador regional resolve cartas e emboscadas; replay novo seed22.
+
+## 2026-10-29 — Escritório Dev e jogadores virtuais
+- Barra de progresso via mod do Claude Code; 10 papéis; 18 personas; 660 mesas simuladas (`edicao-integral/ESCRITORIO_DEV.md`).
