@@ -118,6 +118,9 @@ class World:
     # para preservar os replays regionais certificados (como a ponte de Viagem).
     continuity_filter: dict | None = None
     regional_filter_production: bool = False
+    # Horta §61 concluída na Cisterna (H1, aprovada em 2026-10-29): produz
+    # `output` comida no dia em que um herói ou adulto é designado no amanhecer.
+    continuity_garden: dict | None = None
     garden_worker: str | None = None
     guarding: dict[str, int] = field(default_factory=dict)
     rng_state: object = None
@@ -254,6 +257,17 @@ class World:
             raise ValueError('Filtro de continuidade inválido')
         if not isinstance(self.regional_filter_production, bool):
             raise ValueError('Opção de produção do filtro inválida')
+        garden = self.continuity_garden
+        if garden is not None and (
+                not isinstance(garden, dict)
+                or set(garden) != {'source', 'output', 'active', 'worker'}
+                or garden['source'] != 'cistern02' or garden['output'] != 4
+                or not isinstance(garden['active'], bool)
+                or garden['worker'] is not None
+                and garden['worker'] not in self.worked_today
+                and garden['worker'] not in {item['id'] for item in self.continuity_people}
+                or not self.cistern_verified):
+            raise ValueError('Horta de continuidade inválida')
         if any(k not in RESOURCES for k in self.stock) or sum(self.stock.values()) > self.storage:
             raise ValueError('Depósito excedido')
         if self.residents > self.beds or self.free_terrain < 0:
@@ -632,6 +646,43 @@ class World:
         self._require_working_hero(hero_id)
         self.garden_worker=hero_id
         self.worked_today.append(hero_id)
+
+    def assign_continuity_garden(self, person_id: str) -> None:
+        """Amanhecer: um herói ou adulto apto trabalha na Horta da Cisterna."""
+        garden = self.continuity_garden
+        if garden is None or not garden['active'] or garden['worker'] is not None:
+            raise ValueError('Horta de continuidade indisponível hoje')
+        if self.partial_defeat or self.continuous_campaign and (
+                self.expeditions or self.daily_expeditions):
+            raise ValueError('Trabalho da Horta se planeja antes da expedição')
+        if person_id in self.heroes:
+            self._require_working_hero(person_id)
+        else:
+            person = next((item for item in self.continuity_people
+                           if item['id'] == person_id), None)
+            if (person is None or person['kind'] != 'adult'
+                    or person.get('wounds', 0) >= 3 or person.get('fatigue', 0) >= 3
+                    or person.get('hungry') or person.get('thirsty')):
+                raise ValueError('Trabalhador da Horta indisponível')
+        garden['worker'] = person_id
+        if person_id in self.heroes:
+            self.worked_today.append(person_id)
+
+    def _continuity_garden_harvest(self) -> dict | None:
+        """Fase de trabalhos: o trabalhador designado colhe antes da refeição."""
+        garden = self.continuity_garden
+        if garden is None or garden['worker'] is None:
+            return None
+        worker = garden['worker']
+        garden['worker'] = None
+        if worker not in self.worked_today:
+            # Civil migrado: conta como trabalho até o fim do dia (sem recuperação).
+            self.worked_today.append(worker)
+        if not garden['active']:
+            return {'worker': worker, 'produced': 0, 'not_stored': 0, 'reason': 'inactive'}
+        produced = self.deposit('food', garden['output'])
+        return {'worker': worker, 'produced': produced,
+                'not_stored': garden['output'] - produced}
 
     def _d6(self, count: int = 1) -> list[int]:
         rng=random.Random();rng.setstate(_tuples(self.rng_state))
@@ -1430,6 +1481,7 @@ class World:
                        and not self.heroes[self.garden_worker].get('thirsty')
                        and self.heroes[self.garden_worker].get('fatigue', 0)<3 else 0)
                 produced['food'] += self.deposit('food',DATA['rules']['garden_food_per_harvest']+bonus)
+        garden_food = self._continuity_garden_harvest()
         people = self.meal_people()
         identifiers = set(people)
         need = len(people)
@@ -1536,6 +1588,8 @@ class World:
                   'stock':dict(self.stock),'crisis':crisis}
         if filter_water is not None:
             result['filter_water'] = filter_water
+        if garden_food is not None:
+            result['garden_food'] = garden_food
         self.log.append(result)
         self.validate()
         return result

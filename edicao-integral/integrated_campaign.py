@@ -14,7 +14,7 @@ from dataclasses import asdict, dataclass, field
 from pathlib import Path
 
 from arc2 import Arc2
-from cistern02 import CATALOG, Cistern02, LINK_IDS, STARTERS
+from cistern02 import CATALOG, Cistern02, LINK_IDS, STARTERS, GARDEN
 from ambush02 import Ambush02
 from cistern_tactics02 import Tactical02, WEAPONS
 from horde_deck02 import HordeDeck02
@@ -626,6 +626,8 @@ class IntegratedCampaign:
                     self.cistern.water.extend([4] * receipt["cards"])
                 elif receipt["kind"] == "Combustível":
                     self.fuel_cards.append(receipt["id"])
+                elif receipt["kind"] == "Sementes":
+                    self.cistern.receive_seeds()
                 self.delivered_objectives.append(receipt["id"])
             elif receipt["event"] == "pickup_equipment":
                 item = receipt["item"]
@@ -921,7 +923,7 @@ class IntegratedCampaign:
         if self.cistern.pending_sieges and self.cistern.siege_day!=self.cistern.day:
             raise ValueError("Resolva o cerco antes da refeição")
         if not self.work_phase_resolved:
-            if self.cistern.filter_workers_plan:
+            if self.cistern.filter_workers_plan or self.cistern.garden_workers_plan:
                 raise ValueError("Resolva os trabalhos planejados antes da refeição")
             self.resolve_filter_work()
         return self.cistern.meal()
@@ -952,6 +954,25 @@ class IntegratedCampaign:
                 or self.ambush is not None or self.cistern.meal_day==self.cistern.day):
             raise ValueError("Reserva do filtro indisponível nesta fase")
         self.cistern.reserve(stage)
+
+    def reserve_garden(self) -> None:
+        """RULES §61: reserva a Horta no amanhecer, antes de qualquer expedição."""
+        self._require_running()
+        if (self.world is not None or self.tactical is not None
+                or self.travel is not None or self.return_travel is not None
+                or self.ambush is not None or self.cistern.meal_day==self.cistern.day):
+            raise ValueError("Reserva da Horta indisponível nesta fase")
+        self.cistern.reserve_garden()
+
+    def plan_garden_work(self,workers:list[str],
+                         expedition_team:list[str]|None=None) -> None:
+        """Aloca obra ou produção da Horta antes de sair."""
+        self._require_running()
+        if (self.world is not None or self.tactical is not None
+                or self.travel is not None or self.return_travel is not None
+                or self.ambush is not None or self.work_phase_resolved):
+            raise ValueError("Trabalho da Horta indisponível nesta fase")
+        self.cistern.plan_garden_work(workers,expedition_team)
 
     def plan_guards(self,heroes:list[str]) -> None:
         """Registra vigias antes da saída, pela interface da campanha."""
@@ -1013,6 +1034,9 @@ class IntegratedCampaign:
             receipt_start=len(self.cistern.work_receipts)
             self.cistern.work(units)
             result=deepcopy(self.cistern.work_receipts[receipt_start])
+        garden=self.cistern.work_garden()
+        if garden is not None:
+            result["garden"]=garden
         collection=self.cistern.collect_emergency()
         if collection is not None:
             result["emergency_collection"]=collection
@@ -1051,6 +1075,12 @@ class IntegratedCampaign:
         """Serializable source ledger for an atomic cross-arc transition."""
         payload = asdict(self)
         payload.pop("world", None)
+        # Campos da Horta só entram no digest quando usados: migrações sem
+        # Horta mantêm o mesmo recibo dos replays certificados.
+        for key, empty in (("seeds", 0), ("seeds_day", 0), ("garden", None),
+                           ("garden_workers_plan", [])):
+            if payload["cistern"].get(key) == empty:
+                payload["cistern"].pop(key, None)
         payload["founder_roster"] = list(STARTERS)
         return payload
 
@@ -1264,6 +1294,15 @@ class IntegratedCampaign:
             # (exige o certificado acima; a primeira produção é no próximo amanhecer).
             projected.continuity_filter = {"source": "cistern02", "active": True,
                                            "output": int(self.cistern.initial_consumers)}
+        garden = self.cistern.garden
+        if garden is not None and garden["active"]:
+            # RULES §61: a Horta pronta segue no mesmo abrigo; produz só com um
+            # trabalhador designado no regional (4 comida/dia, sem bônus).
+            projected.continuity_garden = {"source": "cistern02", "active": True,
+                                           "output": GARDEN["output"], "worker": None}
+        if self.cistern.seeds or garden is not None:
+            ledger["projection"]["garden_archived"] = {
+                "seeds_unspent": self.cistern.seeds, "garden": deepcopy(garden)}
         projected.log.append({"day": 0, "event": "campaign_transition", **receipt})
         projected.validate()
         self.world = projected

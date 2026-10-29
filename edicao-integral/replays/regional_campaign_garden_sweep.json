@@ -1,0 +1,1119 @@
+{
+ "schema": 1,
+ "max_days": 15,
+ "seeds": [
+  1,
+  30
+ ],
+ "summary": {
+  "H2": {
+   "cistern_victories": 4,
+   "radio_code": 0,
+   "access_card": 0,
+   "clues_ge1": 0,
+   "partial_defeat": 4,
+   "blocked_rule": 0,
+   "migration_refused": 0,
+   "mean_days": 4.5,
+   "blockers": {
+    "no_mapped_food_source": 4
+   },
+   "garden_migrated": 0,
+   "survived": 0,
+   "survived_with_garden": 0
+  },
+  "H3": {
+   "cistern_victories": 10,
+   "radio_code": 0,
+   "access_card": 0,
+   "clues_ge1": 0,
+   "partial_defeat": 10,
+   "blocked_rule": 0,
+   "migration_refused": 0,
+   "mean_days": 4.6,
+   "blockers": {
+    "no_mapped_food_source": 10
+   },
+   "garden_migrated": 0,
+   "survived": 0,
+   "survived_with_garden": 0
+  },
+  "H4": {
+   "cistern_victories": 14,
+   "radio_code": 0,
+   "access_card": 0,
+   "clues_ge1": 0,
+   "partial_defeat": 8,
+   "blocked_rule": 0,
+   "migration_refused": 6,
+   "mean_days": 3.6,
+   "blockers": {
+    "no_mapped_food_source": 8
+   },
+   "garden_migrated": 0,
+   "survived": 0,
+   "survived_with_garden": 0
+  },
+  "H5": {
+   "cistern_victories": 14,
+   "radio_code": 0,
+   "access_card": 0,
+   "clues_ge1": 0,
+   "partial_defeat": 8,
+   "blocked_rule": 0,
+   "migration_refused": 6,
+   "mean_days": 3.2,
+   "blockers": {
+    "no_mapped_food_source": 8
+   },
+   "garden_migrated": 1,
+   "survived": 0,
+   "survived_with_garden": 0
+  },
+  "H6": {
+   "cistern_victories": 11,
+   "radio_code": 0,
+   "access_card": 0,
+   "clues_ge1": 0,
+   "partial_defeat": 7,
+   "blocked_rule": 0,
+   "migration_refused": 4,
+   "mean_days": 3.7,
+   "blockers": {
+    "no_mapped_food_source": 7
+   },
+   "garden_migrated": 1,
+   "survived": 0,
+   "survived_with_garden": 0
+  }
+ },
+ "runs": [
+  {
+   "size": 2,
+   "seed": 2,
+   "consumers": null,
+   "days_played": 4,
+   "outcome": "partial_defeat",
+   "clue_evidence": 0,
+   "radio_code": false,
+   "access_card": false,
+   "plans": {
+    "supply": 2,
+    "rest": 2
+   },
+   "expedition_status": {
+    "returned": 2
+   },
+   "blockers": [
+    "no_mapped_food_source"
+   ],
+   "garden_migrated": false,
+   "garden_food": 0,
+   "survived": false
+  },
+  {
+   "size": 2,
+   "seed": 10,
+   "consumers": null,
+   "days_played": 5,
+   "outcome": "partial_defeat",
+   "clue_evidence": 0,
+   "radio_code": false,
+   "access_card": false,
+   "plans": {
+    "supply": 2,
+    "rest": 3
+   },
+   "expedition_status": {
+    "returned": 2
+   },
+   "blockers": [
+    "no_mapped_food_source"
+   ],
+   "garden_migrated": false,
+   "garden_food": 0,
+   "survived": false
+  },
+  {
+   "size": 2,
+   "seed": 19,
+   "consumers": null,
+   "days_played": 4,
+   "outcome": "partial_defeat",
+   "clue_evidence": 0,
+   "radio_code": false,
+   "access_card": false,
+   "plans": {
+    "supply": 2,
+    "rest": 2
+   },
+   "expedition_status": {
+    "returned": 2
+   },
+   "blockers": [
+    "no_mapped_food_source"
+   ],
+   "garden_migrated": false,
+   "garden_food": 0,
+   "survived": false
+  },
+  {
+   "size": 2,
+   "seed": 27,
+   "consumers": null,
+   "days_played": 5,
+   "outcome": "partial_defeat",
+   "clue_evidence": 0,
+   "radio_code": false,
+   "access_card": false,
+   "plans": {
+    "supply": 2,
+    "rest": 3
+   },
+   "expedition_status": {
+    "returned": 2
+   },
+   "blockers": [
+    "no_mapped_food_source"
+   ],
+   "garden_migrated": false,
+   "garden_food": 0,
+   "survived": false
+  },
+  {
+   "size": 3,
+   "seed": 2,
+   "consumers": null,
+   "days_played": 5,
+   "outcome": "partial_defeat",
+   "clue_evidence": 0,
+   "radio_code": false,
+   "access_card": false,
+   "plans": {
+    "supply": 2,
+    "rest": 3
+   },
+   "expedition_status": {
+    "returned": 2
+   },
+   "blockers": [
+    "no_mapped_food_source"
+   ],
+   "garden_migrated": false,
+   "garden_food": 0,
+   "survived": false
+  },
+  {
+   "size": 3,
+   "seed": 3,
+   "consumers": null,
+   "days_played": 4,
+   "outcome": "partial_defeat",
+   "clue_evidence": 0,
+   "radio_code": false,
+   "access_card": false,
+   "plans": {
+    "supply": 2,
+    "rest": 2
+   },
+   "expedition_status": {
+    "returned": 2
+   },
+   "blockers": [
+    "no_mapped_food_source"
+   ],
+   "garden_migrated": false,
+   "garden_food": 0,
+   "survived": false
+  },
+  {
+   "size": 3,
+   "seed": 7,
+   "consumers": null,
+   "days_played": 4,
+   "outcome": "partial_defeat",
+   "clue_evidence": 0,
+   "radio_code": false,
+   "access_card": false,
+   "plans": {
+    "supply": 2,
+    "rest": 2
+   },
+   "expedition_status": {
+    "returned": 2
+   },
+   "blockers": [
+    "no_mapped_food_source"
+   ],
+   "garden_migrated": false,
+   "garden_food": 0,
+   "survived": false
+  },
+  {
+   "size": 3,
+   "seed": 8,
+   "consumers": null,
+   "days_played": 4,
+   "outcome": "partial_defeat",
+   "clue_evidence": 0,
+   "radio_code": false,
+   "access_card": false,
+   "plans": {
+    "supply": 2,
+    "rest": 2
+   },
+   "expedition_status": {
+    "returned": 2
+   },
+   "blockers": [
+    "no_mapped_food_source"
+   ],
+   "garden_migrated": false,
+   "garden_food": 0,
+   "survived": false
+  },
+  {
+   "size": 3,
+   "seed": 14,
+   "consumers": null,
+   "days_played": 4,
+   "outcome": "partial_defeat",
+   "clue_evidence": 0,
+   "radio_code": false,
+   "access_card": false,
+   "plans": {
+    "supply": 2,
+    "rest": 2
+   },
+   "expedition_status": {
+    "returned": 2
+   },
+   "blockers": [
+    "no_mapped_food_source"
+   ],
+   "garden_migrated": false,
+   "garden_food": 0,
+   "survived": false
+  },
+  {
+   "size": 3,
+   "seed": 19,
+   "consumers": null,
+   "days_played": 4,
+   "outcome": "partial_defeat",
+   "clue_evidence": 0,
+   "radio_code": false,
+   "access_card": false,
+   "plans": {
+    "supply": 2,
+    "rest": 2
+   },
+   "expedition_status": {
+    "returned": 2
+   },
+   "blockers": [
+    "no_mapped_food_source"
+   ],
+   "garden_migrated": false,
+   "garden_food": 0,
+   "survived": false
+  },
+  {
+   "size": 3,
+   "seed": 22,
+   "consumers": null,
+   "days_played": 7,
+   "outcome": "partial_defeat",
+   "clue_evidence": 0,
+   "radio_code": false,
+   "access_card": false,
+   "plans": {
+    "rest": 5,
+    "supply": 2
+   },
+   "expedition_status": {
+    "returned": 2
+   },
+   "blockers": [
+    "no_mapped_food_source"
+   ],
+   "garden_migrated": false,
+   "garden_food": 0,
+   "survived": false
+  },
+  {
+   "size": 3,
+   "seed": 25,
+   "consumers": null,
+   "days_played": 4,
+   "outcome": "partial_defeat",
+   "clue_evidence": 0,
+   "radio_code": false,
+   "access_card": false,
+   "plans": {
+    "supply": 2,
+    "rest": 2
+   },
+   "expedition_status": {
+    "returned": 2
+   },
+   "blockers": [
+    "no_mapped_food_source"
+   ],
+   "garden_migrated": false,
+   "garden_food": 0,
+   "survived": false
+  },
+  {
+   "size": 3,
+   "seed": 27,
+   "consumers": null,
+   "days_played": 5,
+   "outcome": "partial_defeat",
+   "clue_evidence": 0,
+   "radio_code": false,
+   "access_card": false,
+   "plans": {
+    "rest": 3,
+    "supply": 2
+   },
+   "expedition_status": {
+    "returned": 2
+   },
+   "blockers": [
+    "no_mapped_food_source"
+   ],
+   "garden_migrated": false,
+   "garden_food": 0,
+   "survived": false
+  },
+  {
+   "size": 3,
+   "seed": 29,
+   "consumers": null,
+   "days_played": 5,
+   "outcome": "partial_defeat",
+   "clue_evidence": 0,
+   "radio_code": false,
+   "access_card": false,
+   "plans": {
+    "supply": 2,
+    "rest": 3
+   },
+   "expedition_status": {
+    "returned": 2
+   },
+   "blockers": [
+    "no_mapped_food_source"
+   ],
+   "garden_migrated": false,
+   "garden_food": 0,
+   "survived": false
+  },
+  {
+   "size": 4,
+   "seed": 2,
+   "consumers": null,
+   "days_played": 3,
+   "outcome": "partial_defeat",
+   "clue_evidence": 0,
+   "radio_code": false,
+   "access_card": false,
+   "plans": {
+    "supply": 2,
+    "rest": 1
+   },
+   "expedition_status": {
+    "returned": 2
+   },
+   "blockers": [
+    "no_mapped_food_source"
+   ],
+   "garden_migrated": false,
+   "garden_food": 0,
+   "survived": false
+  },
+  {
+   "size": 4,
+   "seed": 7,
+   "consumers": null,
+   "days_played": 3,
+   "outcome": "partial_defeat",
+   "clue_evidence": 0,
+   "radio_code": false,
+   "access_card": false,
+   "plans": {
+    "supply": 2,
+    "rest": 1
+   },
+   "expedition_status": {
+    "returned": 2
+   },
+   "blockers": [
+    "no_mapped_food_source"
+   ],
+   "garden_migrated": false,
+   "garden_food": 0,
+   "survived": false
+  },
+  {
+   "size": 4,
+   "seed": 8,
+   "outcome": "migration_refused",
+   "reason": "Capacidade excedida",
+   "days_played": 0,
+   "clue_evidence": 0,
+   "radio_code": false,
+   "access_card": false,
+   "blockers": []
+  },
+  {
+   "size": 4,
+   "seed": 12,
+   "consumers": null,
+   "days_played": 4,
+   "outcome": "partial_defeat",
+   "clue_evidence": 0,
+   "radio_code": false,
+   "access_card": false,
+   "plans": {
+    "supply": 2,
+    "rest": 2
+   },
+   "expedition_status": {
+    "returned": 2
+   },
+   "blockers": [
+    "no_mapped_food_source"
+   ],
+   "garden_migrated": false,
+   "garden_food": 0,
+   "survived": false
+  },
+  {
+   "size": 4,
+   "seed": 14,
+   "consumers": null,
+   "days_played": 3,
+   "outcome": "partial_defeat",
+   "clue_evidence": 0,
+   "radio_code": false,
+   "access_card": false,
+   "plans": {
+    "supply": 2,
+    "rest": 1
+   },
+   "expedition_status": {
+    "returned": 2
+   },
+   "blockers": [
+    "no_mapped_food_source"
+   ],
+   "garden_migrated": false,
+   "garden_food": 0,
+   "survived": false
+  },
+  {
+   "size": 4,
+   "seed": 16,
+   "consumers": null,
+   "days_played": 4,
+   "outcome": "partial_defeat",
+   "clue_evidence": 0,
+   "radio_code": false,
+   "access_card": false,
+   "plans": {
+    "supply": 2,
+    "rest": 2
+   },
+   "expedition_status": {
+    "returned": 2
+   },
+   "blockers": [
+    "no_mapped_food_source"
+   ],
+   "garden_migrated": false,
+   "garden_food": 0,
+   "survived": false
+  },
+  {
+   "size": 4,
+   "seed": 19,
+   "consumers": null,
+   "days_played": 4,
+   "outcome": "partial_defeat",
+   "clue_evidence": 0,
+   "radio_code": false,
+   "access_card": false,
+   "plans": {
+    "supply": 2,
+    "rest": 2
+   },
+   "expedition_status": {
+    "returned": 2
+   },
+   "blockers": [
+    "no_mapped_food_source"
+   ],
+   "garden_migrated": false,
+   "garden_food": 0,
+   "survived": false
+  },
+  {
+   "size": 4,
+   "seed": 20,
+   "outcome": "migration_refused",
+   "reason": "Capacidade excedida",
+   "days_played": 0,
+   "clue_evidence": 0,
+   "radio_code": false,
+   "access_card": false,
+   "blockers": []
+  },
+  {
+   "size": 4,
+   "seed": 22,
+   "consumers": null,
+   "days_played": 4,
+   "outcome": "partial_defeat",
+   "clue_evidence": 0,
+   "radio_code": false,
+   "access_card": false,
+   "plans": {
+    "supply": 2,
+    "rest": 2
+   },
+   "expedition_status": {
+    "returned": 2
+   },
+   "blockers": [
+    "no_mapped_food_source"
+   ],
+   "garden_migrated": false,
+   "garden_food": 0,
+   "survived": false
+  },
+  {
+   "size": 4,
+   "seed": 25,
+   "outcome": "migration_refused",
+   "reason": "Capacidade excedida",
+   "days_played": 0,
+   "clue_evidence": 0,
+   "radio_code": false,
+   "access_card": false,
+   "blockers": []
+  },
+  {
+   "size": 4,
+   "seed": 26,
+   "outcome": "migration_refused",
+   "reason": "Capacidade excedida",
+   "days_played": 0,
+   "clue_evidence": 0,
+   "radio_code": false,
+   "access_card": false,
+   "blockers": []
+  },
+  {
+   "size": 4,
+   "seed": 27,
+   "outcome": "migration_refused",
+   "reason": "Capacidade excedida",
+   "days_played": 0,
+   "clue_evidence": 0,
+   "radio_code": false,
+   "access_card": false,
+   "blockers": []
+  },
+  {
+   "size": 4,
+   "seed": 29,
+   "consumers": null,
+   "days_played": 4,
+   "outcome": "partial_defeat",
+   "clue_evidence": 0,
+   "radio_code": false,
+   "access_card": false,
+   "plans": {
+    "supply": 2,
+    "rest": 2
+   },
+   "expedition_status": {
+    "returned": 2
+   },
+   "blockers": [
+    "no_mapped_food_source"
+   ],
+   "garden_migrated": false,
+   "garden_food": 0,
+   "survived": false
+  },
+  {
+   "size": 4,
+   "seed": 30,
+   "outcome": "migration_refused",
+   "reason": "Capacidade excedida",
+   "days_played": 0,
+   "clue_evidence": 0,
+   "radio_code": false,
+   "access_card": false,
+   "blockers": []
+  },
+  {
+   "size": 5,
+   "seed": 2,
+   "outcome": "migration_refused",
+   "reason": "Capacidade excedida",
+   "days_played": 0,
+   "clue_evidence": 0,
+   "radio_code": false,
+   "access_card": false,
+   "blockers": []
+  },
+  {
+   "size": 5,
+   "seed": 3,
+   "consumers": null,
+   "days_played": 3,
+   "outcome": "partial_defeat",
+   "clue_evidence": 0,
+   "radio_code": false,
+   "access_card": false,
+   "plans": {
+    "supply": 2,
+    "rest": 1
+   },
+   "expedition_status": {
+    "returned": 2
+   },
+   "blockers": [
+    "no_mapped_food_source"
+   ],
+   "garden_migrated": false,
+   "garden_food": 0,
+   "survived": false
+  },
+  {
+   "size": 5,
+   "seed": 10,
+   "consumers": null,
+   "days_played": 3,
+   "outcome": "partial_defeat",
+   "clue_evidence": 0,
+   "radio_code": false,
+   "access_card": false,
+   "plans": {
+    "supply": 2,
+    "rest": 1
+   },
+   "expedition_status": {
+    "returned": 2
+   },
+   "blockers": [
+    "no_mapped_food_source"
+   ],
+   "garden_migrated": true,
+   "garden_food": 1,
+   "survived": false
+  },
+  {
+   "size": 5,
+   "seed": 13,
+   "outcome": "migration_refused",
+   "reason": "Capacidade excedida",
+   "days_played": 0,
+   "clue_evidence": 0,
+   "radio_code": false,
+   "access_card": false,
+   "blockers": []
+  },
+  {
+   "size": 5,
+   "seed": 14,
+   "consumers": null,
+   "days_played": 3,
+   "outcome": "partial_defeat",
+   "clue_evidence": 0,
+   "radio_code": false,
+   "access_card": false,
+   "plans": {
+    "supply": 2,
+    "rest": 1
+   },
+   "expedition_status": {
+    "returned": 2
+   },
+   "blockers": [
+    "no_mapped_food_source"
+   ],
+   "garden_migrated": false,
+   "garden_food": 0,
+   "survived": false
+  },
+  {
+   "size": 5,
+   "seed": 16,
+   "outcome": "migration_refused",
+   "reason": "Capacidade excedida",
+   "days_played": 0,
+   "clue_evidence": 0,
+   "radio_code": false,
+   "access_card": false,
+   "blockers": []
+  },
+  {
+   "size": 5,
+   "seed": 19,
+   "consumers": null,
+   "days_played": 4,
+   "outcome": "partial_defeat",
+   "clue_evidence": 0,
+   "radio_code": false,
+   "access_card": false,
+   "plans": {
+    "supply": 2,
+    "rest": 2
+   },
+   "expedition_status": {
+    "returned": 2
+   },
+   "blockers": [
+    "no_mapped_food_source"
+   ],
+   "garden_migrated": false,
+   "garden_food": 0,
+   "survived": false
+  },
+  {
+   "size": 5,
+   "seed": 20,
+   "outcome": "migration_refused",
+   "reason": "Capacidade excedida",
+   "days_played": 0,
+   "clue_evidence": 0,
+   "radio_code": false,
+   "access_card": false,
+   "blockers": []
+  },
+  {
+   "size": 5,
+   "seed": 21,
+   "consumers": null,
+   "days_played": 3,
+   "outcome": "partial_defeat",
+   "clue_evidence": 0,
+   "radio_code": false,
+   "access_card": false,
+   "plans": {
+    "supply": 2,
+    "rest": 1
+   },
+   "expedition_status": {
+    "returned": 2
+   },
+   "blockers": [
+    "no_mapped_food_source"
+   ],
+   "garden_migrated": false,
+   "garden_food": 0,
+   "survived": false
+  },
+  {
+   "size": 5,
+   "seed": 22,
+   "consumers": null,
+   "days_played": 4,
+   "outcome": "partial_defeat",
+   "clue_evidence": 0,
+   "radio_code": false,
+   "access_card": false,
+   "plans": {
+    "supply": 2,
+    "rest": 2
+   },
+   "expedition_status": {
+    "returned": 2
+   },
+   "blockers": [
+    "no_mapped_food_source"
+   ],
+   "garden_migrated": false,
+   "garden_food": 0,
+   "survived": false
+  },
+  {
+   "size": 5,
+   "seed": 26,
+   "outcome": "migration_refused",
+   "reason": "Capacidade excedida",
+   "days_played": 0,
+   "clue_evidence": 0,
+   "radio_code": false,
+   "access_card": false,
+   "blockers": []
+  },
+  {
+   "size": 5,
+   "seed": 27,
+   "outcome": "migration_refused",
+   "reason": "Capacidade excedida",
+   "days_played": 0,
+   "clue_evidence": 0,
+   "radio_code": false,
+   "access_card": false,
+   "blockers": []
+  },
+  {
+   "size": 5,
+   "seed": 29,
+   "consumers": null,
+   "days_played": 3,
+   "outcome": "partial_defeat",
+   "clue_evidence": 0,
+   "radio_code": false,
+   "access_card": false,
+   "plans": {
+    "supply": 2,
+    "rest": 1
+   },
+   "expedition_status": {
+    "returned": 2
+   },
+   "blockers": [
+    "no_mapped_food_source"
+   ],
+   "garden_migrated": false,
+   "garden_food": 0,
+   "survived": false
+  },
+  {
+   "size": 5,
+   "seed": 30,
+   "consumers": null,
+   "days_played": 3,
+   "outcome": "partial_defeat",
+   "clue_evidence": 0,
+   "radio_code": false,
+   "access_card": false,
+   "plans": {
+    "supply": 2,
+    "rest": 1
+   },
+   "expedition_status": {
+    "returned": 2
+   },
+   "blockers": [
+    "no_mapped_food_source"
+   ],
+   "garden_migrated": false,
+   "garden_food": 0,
+   "survived": false
+  },
+  {
+   "size": 6,
+   "seed": 2,
+   "consumers": null,
+   "days_played": 4,
+   "outcome": "partial_defeat",
+   "clue_evidence": 0,
+   "radio_code": false,
+   "access_card": false,
+   "plans": {
+    "supply": 2,
+    "rest": 2
+   },
+   "expedition_status": {
+    "returned": 2
+   },
+   "blockers": [
+    "no_mapped_food_source"
+   ],
+   "garden_migrated": false,
+   "garden_food": 0,
+   "survived": false
+  },
+  {
+   "size": 6,
+   "seed": 3,
+   "consumers": null,
+   "days_played": 5,
+   "outcome": "partial_defeat",
+   "clue_evidence": 0,
+   "radio_code": false,
+   "access_card": false,
+   "plans": {
+    "rest": 3,
+    "supply": 2
+   },
+   "expedition_status": {
+    "returned": 2
+   },
+   "blockers": [
+    "no_mapped_food_source"
+   ],
+   "garden_migrated": false,
+   "garden_food": 0,
+   "survived": false
+  },
+  {
+   "size": 6,
+   "seed": 10,
+   "consumers": null,
+   "days_played": 3,
+   "outcome": "partial_defeat",
+   "clue_evidence": 0,
+   "radio_code": false,
+   "access_card": false,
+   "plans": {
+    "supply": 2,
+    "rest": 1
+   },
+   "expedition_status": {
+    "returned": 2
+   },
+   "blockers": [
+    "no_mapped_food_source"
+   ],
+   "garden_migrated": true,
+   "garden_food": 0,
+   "survived": false
+  },
+  {
+   "size": 6,
+   "seed": 14,
+   "consumers": null,
+   "days_played": 4,
+   "outcome": "partial_defeat",
+   "clue_evidence": 0,
+   "radio_code": false,
+   "access_card": false,
+   "plans": {
+    "supply": 2,
+    "rest": 2
+   },
+   "expedition_status": {
+    "returned": 2
+   },
+   "blockers": [
+    "no_mapped_food_source"
+   ],
+   "garden_migrated": false,
+   "garden_food": 0,
+   "survived": false
+  },
+  {
+   "size": 6,
+   "seed": 19,
+   "consumers": null,
+   "days_played": 3,
+   "outcome": "partial_defeat",
+   "clue_evidence": 0,
+   "radio_code": false,
+   "access_card": false,
+   "plans": {
+    "supply": 2,
+    "rest": 1
+   },
+   "expedition_status": {
+    "returned": 2
+   },
+   "blockers": [
+    "no_mapped_food_source"
+   ],
+   "garden_migrated": false,
+   "garden_food": 0,
+   "survived": false
+  },
+  {
+   "size": 6,
+   "seed": 20,
+   "outcome": "migration_refused",
+   "reason": "Capacidade excedida",
+   "days_played": 0,
+   "clue_evidence": 0,
+   "radio_code": false,
+   "access_card": false,
+   "blockers": []
+  },
+  {
+   "size": 6,
+   "seed": 22,
+   "outcome": "migration_refused",
+   "reason": "Capacidade excedida",
+   "days_played": 0,
+   "clue_evidence": 0,
+   "radio_code": false,
+   "access_card": false,
+   "blockers": []
+  },
+  {
+   "size": 6,
+   "seed": 25,
+   "outcome": "migration_refused",
+   "reason": "Capacidade excedida",
+   "days_played": 0,
+   "clue_evidence": 0,
+   "radio_code": false,
+   "access_card": false,
+   "blockers": []
+  },
+  {
+   "size": 6,
+   "seed": 27,
+   "outcome": "migration_refused",
+   "reason": "Capacidade excedida",
+   "days_played": 0,
+   "clue_evidence": 0,
+   "radio_code": false,
+   "access_card": false,
+   "blockers": []
+  },
+  {
+   "size": 6,
+   "seed": 29,
+   "consumers": null,
+   "days_played": 3,
+   "outcome": "partial_defeat",
+   "clue_evidence": 0,
+   "radio_code": false,
+   "access_card": false,
+   "plans": {
+    "supply": 2,
+    "rest": 1
+   },
+   "expedition_status": {
+    "returned": 2
+   },
+   "blockers": [
+    "no_mapped_food_source"
+   ],
+   "garden_migrated": false,
+   "garden_food": 0,
+   "survived": false
+  },
+  {
+   "size": 6,
+   "seed": 30,
+   "consumers": null,
+   "days_played": 4,
+   "outcome": "partial_defeat",
+   "clue_evidence": 0,
+   "radio_code": false,
+   "access_card": false,
+   "plans": {
+    "supply": 2,
+    "rest": 2
+   },
+   "expedition_status": {
+    "returned": 2
+   },
+   "blockers": [
+    "no_mapped_food_source"
+   ],
+   "garden_migrated": false,
+   "garden_food": 0,
+   "survived": false
+  }
+ ]
+}

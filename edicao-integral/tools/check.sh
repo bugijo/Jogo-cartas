@@ -37,6 +37,7 @@ case ${1:-} in
                   validate_data.py simulate_cistern_sweep.py simulate_regional_campaign.py; do
       step "$script" python3 "$script"
     done
+    step "simulate_regional_campaign.py --garden" python3 simulate_regional_campaign.py --garden
     step "compileall" python3 -m compileall -q .
     step "git diff --check" git -C .. diff --check
     ;;

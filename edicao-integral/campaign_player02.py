@@ -14,7 +14,7 @@ from heapq import heappop, heappush
 from math import ceil
 from random import Random
 
-from cistern02 import LINK_IDS, STAGES, STARTERS
+from cistern02 import GARDEN, LINK_IDS, SEED_GROUPS, STAGES, STARTERS
 from integrated_campaign import IntegratedCampaign
 from travel02 import CHOICES, TravelContext
 from cistern_tactics02 import WEAPONS
@@ -41,6 +41,14 @@ class CampaignPlayer02:
     emergency_collection: bool = True
     # Táticas do modo adaptativo, ligáveis uma a uma para medição.
     tactics: tuple[str, ...] = ("escort", "late_retreat", "cautious", "support")
+    # Horta §61 (H1, aprovada em 2026-10-29): acolhe ZC-MOR-0006 no Condomínio,
+    # busca Material e constrói/colhe a Horta. Desligado preserva os replays.
+    garden: bool = False
+    # Política da Horta, medida em 2026-10-29 (sementes 1–30).
+    garden_trips: int = 1  # idas ao Condomínio, com ou sem sucesso
+    garden_replace_food: bool = False  # trocar também dias de busca de comida
+    garden_searches: bool = True  # buscar Material em B1/B2 do Condomínio
+    garden_requires_supplied: bool = False  # só sai se já há comida/água até a noite 5
 
     def __post_init__(self) -> None:
         self.rng = Random(self.seed ^ 0xC15A)
@@ -486,6 +494,18 @@ class CampaignPlayer02:
                         tactical.pickup_equipment(hero, task["item"], task["lot"])
                         task["done"] = True
                         result = True
+                    elif action == "rescue":
+                        result = tactical.rescue(hero, task["group"], task["decision"])
+                        task["done"] = True
+                    elif action == "search":
+                        zone = tactical.positions[hero]
+                        if (zone in tactical.searched_this_visit
+                                or tactical.search_uses[str(zone)] < 1
+                                or not tactical.search_deck):
+                            result = None  # buscas desta zona esgotadas
+                        else:
+                            result = tactical.search(hero)
+                        task["done"] = True
                     elif action == "pickup_part":
                         die = self.rng.randint(1, 6) if task["part"] == "Bomba" else None
                         result = tactical.pickup_part(hero, task["part"], die=die)
@@ -762,6 +782,12 @@ class CampaignPlayer02:
                 self.game.reserve_filter_stage(stage)
                 self.decisions.append({"action": "adaptive_reserve", "day": day,
                                        "stage": stage})
+        if self.garden and self._garden_materials_free() >= GARDEN["materials"] \
+                and cistern.garden is None and cistern.seeds \
+                and cistern.seeds_day < day:
+            self.game.reserve_garden()
+            self.decisions.append({"action": "garden_reserve", "day": day,
+                                   "materials_left": cistern.materials})
         taken = set(self.game.delivered_objectives) | set(self.game.lost_objectives)
         fit = [hero for hero in crew
                if people[hero]["wounds"] < 3 and people[hero]["fatigue"] < 3]
@@ -774,6 +800,8 @@ class CampaignPlayer02:
         # Trabalho mínimo hoje para ainda caber no prazo (2 por dia).
         must_work = max(0, remaining - 2 * (days_left - 1))
         plan = self._adaptive_destination(day, taken)
+        if self.garden:
+            plan = self._garden_destination(day, plan, taken)
         if plan is None:
             workers = (adults + heroes)[:min(2, remaining)]
             destination, team, tasks, loadout = None, [], [], None
@@ -797,6 +825,16 @@ class CampaignPlayer02:
                           for task in tasks]})
         if workers and remaining:
             self.game.plan_filter_work(workers, team if destination else None)
+        garden_workers = []
+        if self.garden and cistern.garden is not None:
+            garden_workers = self._garden_workers(
+                day, set(workers) | (set(team) if destination else set()))
+            if garden_workers:
+                self.game.plan_garden_work(garden_workers, team if destination else None)
+                self.decisions.append({"action": "garden_work", "day": day,
+                                       "workers": garden_workers.copy(),
+                                       "done": cistern.garden["done"]})
+        workers = workers + garden_workers
         if cistern.pending_sieges:
             away = set(team) if destination else set()
             guards = [person["id"] for person in cistern.people
@@ -826,6 +864,75 @@ class CampaignPlayer02:
                 self.decisions.append({"action": "adaptive_collection", "day": day,
                                        "plan": deepcopy(plan)})
         return destination, team, tasks, loadout
+
+    def _garden_materials_free(self) -> int:
+        """Materiais além dos que as etapas do filtro ainda vão reservar."""
+        cistern = self.game.cistern
+        owed = 0 if cistern.filter_active else sum(
+            STAGES[stage]["materials"] for stage in STAGES if stage not in cistern.reserved)
+        return cistern.materials - owed
+
+    def _garden_destination(self, day: int, plan, taken: set[str]):
+        """Troca um dia sem peça por Condomínio: acolher, buscar Material, comida.
+
+        Peças do filtro sempre vêm antes. Sementes precisam chegar até o dia 4
+        (reserva no 5, dois trabalhos no 5). Só acolhe com vaga para o grupo.
+        """
+        cistern = self.game.cistern
+        if plan is not None and any(task["action"] == "pickup_part" for task in plan[1]):
+            return plan
+        if cistern.garden is not None or day > 4:
+            return plan
+        if plan is not None and not self.garden_replace_food:
+            return plan
+        trips = sum(item["action"] == "garden_destination" for item in self.decisions)
+        if trips >= self.garden_trips:
+            return plan
+        if self.garden_requires_supplied and any(self._shortfall().values()):
+            return plan
+        group = SEED_GROUPS[0]
+        rescue = (cistern.rescue_history.get(group) is None
+                  and cistern.humans + 3 <= cistern.capacity + 2)
+        if not rescue and not cistern.seeds:
+            return plan
+        state = self.game.site_states.get("condomínio") or {}
+        uses = state.get("search_uses", {"5": 3, "12": 3})
+        need = GARDEN["materials"] - self._garden_materials_free()
+        tasks = []
+        if rescue:
+            tasks.append({"action": "rescue", "group": group, "decision": "welcome",
+                          "zone": 14, "load": 1, "ap": 1})
+        for zone in (5, 12):
+            if self.garden_searches and need > 0 and uses.get(str(zone), 0) > 0:
+                tasks.append({"action": "search", "zone": zone, "load": 1, "ap": 1})
+        if not tasks:
+            return plan
+        shortfall = self._shortfall()
+        for kind, zone, short in (("Conserva", 7, shortfall["food"]),
+                                  ("Água", 14, shortfall["water"])):
+            if short and f"condomínio:{kind}:1" not in taken:
+                tasks.append({"action": "pickup_supply", "kind": kind, "lot": 1,
+                              "zone": zone, "load": 1, "ap": 1})
+        self.decisions.append({"action": "garden_destination", "day": day,
+                               "replaces": plan[0] if plan else None,
+                               "rescue": rescue, "materials_needed": max(0, need)})
+        return "Condomínio", tasks
+
+    def _garden_workers(self, day: int, busy: set[str]) -> list[str]:
+        """Obra: até 2 trabalhos; pronta: 1 colhedor a partir do dia seguinte."""
+        cistern = self.game.cistern
+        garden = cistern.garden
+        trusted = {group["id"] for group in cistern.groups
+                   if group["status"] == "trusted"} if cistern.temporary_excess == 0 else set()
+        able = [person["id"] for person in cistern.people
+                if self._able(person) and person["id"] not in busy
+                and person["id"] not in cistern.planned_guards
+                and (person["kind"] == "hero" or person["family"] in cistern.founders
+                     or person["family"] in trusted)]
+        able.sort(key=lambda key: key in cistern.founders)  # civis primeiro
+        if garden["done"]:
+            return able[:1] if garden["active"] and garden["completed_day"] < day else []
+        return able[:min(2, GARDEN["work"] - garden["work"])]
 
     def _grounded(self, site: str, part: str) -> bool:
         """Peça única perdida em emergência e registrada no chão (§34)."""

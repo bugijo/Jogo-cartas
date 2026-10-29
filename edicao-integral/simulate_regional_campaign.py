@@ -1,10 +1,12 @@
 """Mede a campanha regional multi-dia a partir de vitórias legais da Cisterna.
 
-Uso: python edicao-integral/simulate_regional_campaign.py [--write]
+Uso: python edicao-integral/simulate_regional_campaign.py [--garden] [--write]
 Para cada tamanho H2–H6 e semente 1–30, joga a Cisterna com o adaptativo
 publicado (`auto_settings`); só as `verified_victory` migram. Depois liga as
 cartas regionais e deixa `RegionalCampaignPlayer` jogar até `MAX_DAYS` dias.
 Nada é ajustado aqui: a política regional foi escrita olhando só a seed 22 H2.
+Com `--garden`, a Cisterna usa o modo Horta (H1) do controlador e o artefato é
+`regional_campaign_garden_sweep.json`; a medição sem Horta não muda.
 """
 from __future__ import annotations
 
@@ -19,15 +21,17 @@ from simulate_cistern_sweep import auto_settings
 
 ROOT = Path(__file__).resolve().parent
 ARTIFACT = ROOT / "replays" / "regional_campaign_sweep.json"
+GARDEN_ARTIFACT = ROOT / "replays" / "regional_campaign_garden_sweep.json"
 MAX_DAYS = 15
 SIZES = (2, 3, 4, 5, 6)
 SEEDS = range(1, 31)
 
 
-def run_one(size: int, seed: int) -> dict | None:
+def run_one(size: int, seed: int, garden: bool = False) -> dict | None:
     player = CampaignPlayer02.new_hn(seed, size)
     for key, value in auto_settings(size).items():
         setattr(player, key, value)
+    player.garden = garden
     if not player.attempt_cistern()["verified_victory"]:
         return None
     campaign = player.game
@@ -45,7 +49,7 @@ def run_one(size: int, seed: int) -> dict | None:
     plans = Counter(day.get("plan") for day in regional.days if "plan" in day)
     statuses = Counter(day["expedition"]["status"] for day in regional.days
                        if day.get("expedition"))
-    return {
+    row = {
         "size": size, "seed": seed,
         "consumers": len(world.meal_people()) if not world.partial_defeat else None,
         "days_played": sum(1 for day in regional.days if "plan" in day),
@@ -59,11 +63,19 @@ def run_one(size: int, seed: int) -> dict | None:
         "plans": dict(plans), "expedition_status": dict(statuses),
         "blockers": [row["code"] for row in regional.blockers],
     }
+    if garden:
+        row["garden_migrated"] = world.continuity_garden is not None
+        row["garden_food"] = sum(day["night"]["garden_food"]["produced"]
+                                 for day in regional.days
+                                 if "garden_food" in day.get("night", {}))
+        row["survived"] = (not world.partial_defeat
+                           and row["days_played"] == MAX_DAYS)
+    return row
 
 
-def sweep() -> dict:
+def sweep(garden: bool = False) -> dict:
     rows = [row for size in SIZES for seed in SEEDS
-            if (row := run_one(size, seed)) is not None]
+            if (row := run_one(size, seed, garden)) is not None]
     summary = {}
     for size in SIZES:
         group = [row for row in rows if row["size"] == size]
@@ -80,6 +92,13 @@ def sweep() -> dict:
                                 / len(migrated), 1) if migrated else None),
             "blockers": dict(Counter(code for row in group for code in row["blockers"])),
         }
+        if garden:
+            summary[f"H{size}"].update(
+                garden_migrated=sum(row.get("garden_migrated", False) for row in group),
+                survived=sum(row.get("survived", False) for row in group),
+                survived_with_garden=sum(row.get("survived", False)
+                                         and row.get("garden_migrated", False)
+                                         for row in group))
     return {"schema": 1, "max_days": MAX_DAYS, "seeds": [SEEDS.start, SEEDS.stop - 1],
             "summary": summary, "runs": rows}
 
@@ -87,12 +106,14 @@ def sweep() -> dict:
 def main() -> None:
     parser = argparse.ArgumentParser()
     parser.add_argument("--write", action="store_true")
+    parser.add_argument("--garden", action="store_true")
     args = parser.parse_args()
-    result = sweep()
+    result = sweep(args.garden)
+    artifact = GARDEN_ARTIFACT if args.garden else ARTIFACT
     if args.write:
-        ARTIFACT.write_text(json.dumps(result, ensure_ascii=False, indent=1) + "\n",
+        artifact.write_text(json.dumps(result, ensure_ascii=False, indent=1) + "\n",
                             encoding="utf-8")
-    elif json.loads(ARTIFACT.read_text(encoding="utf-8")) != result:
+    elif json.loads(artifact.read_text(encoding="utf-8")) != result:
         raise SystemExit("Medição da campanha regional diverge do artefato registrado")
     print(json.dumps(result["summary"], ensure_ascii=False, indent=1))
 

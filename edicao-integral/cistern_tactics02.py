@@ -13,7 +13,7 @@ from math import ceil
 from pathlib import Path
 from random import Random
 
-from cistern02 import CATALOG, Cistern02, RESCUE_GROUPS
+from cistern02 import CATALOG, Cistern02, RESCUE_GROUPS, SEED_GROUPS
 from horde_deck02 import HordeDeck02
 
 
@@ -588,7 +588,15 @@ class Tactical02:
             receipt['aid_from_road']={
                 'food':self._consume_portions('Conserva',humans),
                 'water':self._consume_portions('Água',humans)}
+        if decision=='welcome' and group_id in SEED_GROUPS:
+            # Carta MOR: "Sementes carga 1 se acolher" — só se houver espaço.
+            receipt['seeds']=self._load(hero)+1<=4
         self.log.append(receipt)
+        if receipt.get('seeds'):
+            item={'id':f'{self.destination}:Sementes:1','kind':'Sementes','cards':1,
+                  'portions':0,'zone':site[1],'hero':hero}
+            self.supply_cargo[hero].append(item)
+            self.log.append({'event':'pickup_supply',**item,'clock':self.chapter.clock})
         return receipt.copy()
 
     def delivery_proof(self) -> list[dict]:

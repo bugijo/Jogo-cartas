@@ -100,6 +100,26 @@ class RegionalCampaignPlayer:
                                                  key not in world.heroes, key))
         return {'food_priority': order, 'water_priority': list(order)}
 
+    @staticmethod
+    def garden_worker(world, kind):
+        """Horta da Cisterna: adulto apto primeiro; herói só em dia de descanso."""
+        garden = world.continuity_garden
+        if garden is None or not garden['active'] or garden['worker'] is not None:
+            return None
+        for person in world.continuity_people:
+            if (person['kind'] == 'adult' and person.get('wounds', 0) < 3
+                    and person.get('fatigue', 0) < 3 and not person.get('hungry')
+                    and not person.get('thirsty')
+                    and person['id'] not in world.worked_today):
+                return person['id']
+        if kind != 'rest':
+            return None
+        return next((hero for hero, state in sorted(world.heroes.items())
+                     if state['location'] == 'camp' and state['health'] > 0
+                     and state.get('fatigue', 0) < 3 and not state.get('hungry')
+                     and not state.get('thirsty') and hero not in world.worked_today
+                     and hero not in world.departed_today), None)
+
     # --- um dia ------------------------------------------------------------------
     def play_day(self, world):
         dawn = {'day': world.day, 'stock': dict(world.stock), 'clues': world.clues,
@@ -126,6 +146,10 @@ class RegionalCampaignPlayer:
                 and world.searches[MARKET] <= 0):
             self._block(world, 'no_mapped_food_source',
                         'Mercado esgotado; nenhum outro local com mapa tático dá comida')
+        worker = self.garden_worker(world, kind)
+        if worker:
+            world.assign_continuity_garden(worker)
+            record['garden_worker'] = worker
         record['plan'] = kind
         if kind != 'rest':
             expedition_id = f'campaign-day{world.day}-{kind}'
@@ -159,6 +183,8 @@ class RegionalCampaignPlayer:
         record['night'] = {key: night[key] for key in
                            ('missing', 'unfed', 'crisis', 'partial_defeat')}
         record['clock_reset'] = world.regional_clock == 0
+        if 'garden_food' in night:
+            record['night']['garden_food'] = night['garden_food']
         record['clues'] = world.clues
         record['radio_code'] = bool(world.flags.get('radio_code'))
         record['access_card'] = bool(world.flags.get('access_card'))

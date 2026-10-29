@@ -34,6 +34,10 @@ RESCUE_GROUPS={
     'ZC-MOR-0007':('adult','dog'),
     'ZC-MOR-0008':('adult',),
 }
+# Cartas MOR que entregam Sementes ao acolher (texto da carta, RULES §61).
+SEED_GROUPS=('ZC-MOR-0006',)
+# Horta ZC-PRO-0007: 2 Materiais + Sementes + 2 trabalhos; 4 comida/dia por trabalhador.
+GARDEN={'materials':2,'seeds':1,'work':2,'output':4}
 INTENT_IDS=tuple(card['id'] for card in CATALOG['cards'] if card['family']=='INT')
 SIEGE_CARDS={card['id']:card for card in CATALOG['cards'] if card['family']=='CER'}
 
@@ -95,6 +99,11 @@ class Cistern02:
     chapter_receipt: dict | None = None
     horde_deck: dict | None = None
     travel_deck: dict | None = None
+    # Horta §61: Sementes entregues no retorno; obra reservada no amanhecer.
+    seeds: int = 0
+    seeds_day: int = 0
+    garden: dict | None = None
+    garden_workers_plan: list[str] = field(default_factory=list)
 
     def __post_init__(self) -> None:
         if self.horde_deck is None:
@@ -328,6 +337,7 @@ class Cistern02:
                 or self.day==5 and self.meal_day==5
                 or len(heroes)>3 or len(set(heroes))!=len(heroes)
                 or set(heroes)&(set(self.filter_workers_plan)|set(self.away_today)
+                                |set(self.garden_workers_plan)
                                 |{item['worker'] for item in self.collection_plan})
                 or any(not any(p['id']==hero and p['kind'] in ('hero','adult')
                                and p['wounds']<3 and not p['hungry'] and not p['thirsty']
@@ -387,6 +397,7 @@ class Cistern02:
         for name in damage_targets:
             self.structures.remove(name)
             if name=='Filtro':self.filter_active=False
+            if name=='Horta':self.garden['active']=False
         food_lost=0;water_lost=0
         if gap:
             food_lost=self._take(self.food,4)
@@ -451,6 +462,14 @@ class Cistern02:
         if (Counter(cards)!=Counter(SIEGE_CARDS.keys())
                 or not -2<=self.bridge_relation<=2):
             raise ValueError('Baralho/relação de Cerco inválidos no save')
+        garden=self.garden
+        if (not 0<=self.seeds<=2 or garden is not None and (
+                set(garden)!={'terrain','work','done','active','reserved_day','completed_day'}
+                or not 0<=garden['work']<=GARDEN['work']
+                or garden['done']!=(garden['work']==GARDEN['work'])
+                or garden['active'] and not garden['done']
+                or garden['active']!=('Horta' in self.structures))):
+            raise ValueError('Sementes/Horta inválidas no save')
         if self.result in ('candidate_victory','partial_defeat','verified_victory'):
             receipt=self.chapter_receipt
             if not receipt or receipt.get('day')!=5 or receipt.get('meal_day')!=5:
@@ -587,6 +606,7 @@ class Cistern02:
                     or person['hungry'] or person['thirsty']):
                 raise ValueError('Trabalhador indisponível')
             if (worker in self.planned_guards or worker in self.away_today
+                    or worker in self.garden_workers_plan
                     or worker in {item['worker'] for item in self.collection_plan}):
                 raise ValueError('Trabalhador já alocado')
             group=groups.get(person['family'])
@@ -621,7 +641,8 @@ class Cistern02:
                     or person['hungry'] or person['thirsty']):
                 raise ValueError('Coletor indisponível')
             if (worker in team or worker in self.away_today
-                    or worker in self.planned_guards or worker in self.filter_workers_plan):
+                    or worker in self.planned_guards or worker in self.filter_workers_plan
+                    or worker in self.garden_workers_plan):
                 raise ValueError('Coletor já alocado')
             group=groups.get(person['family'])
             if group is not None and (group['status']!='trusted'
@@ -663,6 +684,8 @@ class Cistern02:
             raise ValueError('Vigia não pode sair em expedição')
         if {item['worker'] for item in self.collection_plan}&set(team):
             raise ValueError('Coletor não pode sair em expedição')
+        if set(self.garden_workers_plan)&set(team):
+            raise ValueError('Trabalhador da Horta não pode sair em expedição')
         self.away_today=team
         self.work_plan_locked=True
 
@@ -720,6 +743,79 @@ class Cistern02:
                                    'expedition_team':self.away_today.copy()})
         self.filter_workers_plan=[]
 
+    def receive_seeds(self) -> None:
+        """Sementes entregues no retorno; reserváveis só a partir de amanhã."""
+        if self.seeds>=2:raise ValueError('Só existem duas cartas de Sementes')
+        self.seeds+=1;self.seeds_day=self.day
+
+    def reserve_garden(self) -> None:
+        """RULES §61/§24: reserva terreno, 2 Materiais e Sementes no amanhecer."""
+        if (self.work_plan_locked or self.meal_day==self.day or self.garden is not None
+                or self.seeds<GARDEN['seeds'] or self.seeds_day>=self.day
+                or self.materials<GARDEN['materials']):
+            raise ValueError('Horta não pode ser reservada hoje')
+        self.materials-=GARDEN['materials'];self.seeds-=GARDEN['seeds']
+        # Terrenos 1–7 iniciais; H5/H6 ocupam 8–9 com barracas extras (RULES l.11).
+        self.garden={'terrain':8+max(0,len(self.founders)-4),'work':0,'done':False,
+                     'active':False,'reserved_day':self.day,'completed_day':0}
+
+    def plan_garden_work(self,workers:list[str],
+                         expedition_team:list[str]|None=None) -> None:
+        """Obra (até 2 trabalhos/dia no projeto) ou produção (1 trabalhador)."""
+        team=list(expedition_team or [])
+        garden=self.garden
+        if (self.work_plan_locked or self.meal_day==self.day or self.garden_workers_plan
+                or garden is None or not isinstance(workers,list)
+                or len(set(workers))!=len(workers)):
+            raise ValueError('Trabalho da Horta inválido')
+        if garden['done']:
+            if not garden['active'] or garden['completed_day']>=self.day or len(workers)!=1:
+                raise ValueError('Horta ainda não produz hoje')
+        elif not 1<=len(workers)<=min(2,GARDEN['work']-garden['work']):
+            raise ValueError('Trabalho da Horta acima do necessário ou do limite diário')
+        people={person['id']:person for person in self.people}
+        groups={group['id']:group for group in self.groups}
+        for worker in workers:
+            person=people.get(worker)
+            if (person is None or person['kind'] not in ('hero','adult')
+                    or person['wounds']>=3 or person.get('fatigue',0)>=3
+                    or person['hungry'] or person['thirsty']):
+                raise ValueError('Trabalhador indisponível')
+            if (worker in team or worker in self.away_today
+                    or worker in self.planned_guards or worker in self.filter_workers_plan
+                    or worker in {item['worker'] for item in self.collection_plan}):
+                raise ValueError('Trabalhador já alocado')
+            group=groups.get(person['family'])
+            if group is not None and (group['status']!='trusted'
+                                      or self.temporary_excess>0):
+                raise ValueError('Morador ainda não está apto ao trabalho')
+        self.garden_workers_plan=workers.copy()
+
+    def work_garden(self) -> dict | None:
+        """Fase de trabalhos: avança a obra ou colhe 4 comida antes da refeição."""
+        if not self.garden_workers_plan:
+            return None
+        if not self.work_plan_locked or self.meal_day==self.day:
+            raise ValueError('Horta trabalha na fase de trabalhos')
+        if self.pending_sieges and self.siege_day!=self.day:
+            raise ValueError('Cerco precede os trabalhos')
+        garden=self.garden;workers=self.garden_workers_plan.copy()
+        if garden['done']:
+            self.food.append(GARDEN['output'])
+            receipt={'day':self.day,'task':'garden_produce','workers':workers,
+                     'food':GARDEN['output']}
+        else:
+            garden['work']+=len(workers)
+            if garden['work']==GARDEN['work']:
+                garden.update(done=True,active=True,completed_day=self.day)
+                self.structures.append('Horta')
+            receipt={'day':self.day,'task':'garden_build','workers':workers,
+                     'units':len(workers),'work':garden['work'],'done':garden['done']}
+        receipt['expedition_team']=self.away_today.copy()
+        self.work_receipts.append(receipt)
+        self.garden_workers_plan=[]
+        return dict(receipt)
+
     @staticmethod
     def _lots(amount:int) -> list[int]:
         return [4]*(amount//4)+([amount%4] if amount%4 else [])
@@ -736,7 +832,7 @@ class Cistern02:
                 person['fatigue']=max(0,person.get('fatigue',0)-1)
         self.day+=1;self.clock=0;self.works_today=0;self.planned_guards=[]
         self.filter_workers_plan=[];self.away_today=[];self.work_plan_locked=False
-        self.collection_plan=[]
+        self.collection_plan=[];self.garden_workers_plan=[]
         self.apply_daily_event()
         if self.filter_active:
             self.water.extend(self._lots(self.initial_consumers))
