@@ -1,3 +1,24 @@
+# Opções de comida regional — protótipos medidos, 2026-10-29 (não implementadas)
+
+Protótipos só no rascunho (fora do repositório), mesma varredura: 53 campanhas
+(vitórias da Cisterna H2–H6, sementes 1–30, mais a seed 22 fixa), até 15 dias.
+
+| Opção | Base | Sobrevivem 15 dias | ≥1 pista | Rádio | Cartão |
+|---|---|---|---|---|---|
+| Atual | — | 0 | 2 | 0 | 0 |
+| A — Coleta §26 (2 porções/dia) | RULES §26 | 0 | 3 | 1 | 0 |
+| C — mapa para a Horta `EXP-LOC-01` | dados regionais (sem mapa hoje) | 0 | 0 | 0 | 0 |
+| D — filtro produz C água/amanhecer | CAMPAIGN (Cisterna) | 0 | 2 | 0 | 0 |
+| B — Horta-estrutura 4 comida/dia | RULES §61 | 0 | 10 | 3 | 0 |
+| **B + D** | RULES §61 + CAMPAIGN | **31** | 39 | 24 | 10 |
+| A + D | | 2 | 3 | 1 | 0 |
+| A + B + D | | 21 | 15 | 7 | 0 |
+
+- Comida e água travam juntas: só B+D fecha as duas. Com B+D, todo caminho
+  vivo termina no bloqueio de combustível da instalação militar.
+- B assume a Horta pronta na migração; a regra exige 2 Materiais + Sementes +
+  2 trabalhos, e o regional não tem Sementes nem Materiais gastáveis.
+
 # Campanha regional — após descarte do excedente na migração, 2026-10-29
 
 Mesma medição (sementes 1–30, até 15 dias, sem ajuste), com o excedente de

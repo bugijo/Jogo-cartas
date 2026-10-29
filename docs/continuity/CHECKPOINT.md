@@ -1,3 +1,9 @@
+# Estado ativo — opções de comida regional medidas, 2026-10-29
+
+- Correções do controlador (`5d9c4a8`): aceita emergência na Emboscada quando outra rodada deixaria a viagem sem relógio; não copia/investiga evidência com inimigo na zona. Artefatos inalterados; 401 testes.
+- Protótipos (fora do repo) de fonte de comida: só Horta-estrutura (RULES §61) + produção de água do filtro (CAMPAIGN) sustentam a campanha: 31/53 sobrevivem 15 dias, rádio em 24, cartão em 10, depois bloqueio de combustível. Ver `PLAYTEST_REPORT.md`.
+- Aguardando decisão: quais fontes implementar (`P2-REGIONAL-FOOD-ECONOMY`).
+
 # Estado ativo — excedente descartado na migração, 2026-10-29
 
 - Decisão aprovada aplicada: estoque acima do depósito regional (30) é descartado na migração e registrado no recibo (`storage_discarded`; água primeiro). Seed 22 e replays certificados inalterados.
