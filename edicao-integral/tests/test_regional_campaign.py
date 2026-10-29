@@ -90,13 +90,33 @@ class RegionalCampaignTests(unittest.TestCase):
         self.assertEqual(replay["final_stock"]["fuel"], 0)
 
 
-    def test_migration_over_storage_is_recorded_not_bypassed(self):
-        # H6 seed 2 vence a Cisterna com 46 de água; depósito regional é 30.
+    def test_migration_discards_excess_over_storage_with_receipt(self):
+        # Decisão aprovada 2026-10-29: H6 seed 2 vence com 46 de água; depósito 30.
+        import tempfile
+        from campaign_player02 import CampaignPlayer02
+        from integrated_campaign import IntegratedCampaign
+        from simulate_cistern_sweep import auto_settings
+        player = CampaignPlayer02.new_hn(2, 6)
+        for key, value in auto_settings(6).items():
+            setattr(player, key, value)
+        self.assertTrue(player.attempt_cistern()["verified_victory"])
+        receipt = player.game.transition_to_last_transmission()
+        world = player.game.world
+        self.assertEqual(receipt["storage_discarded"],
+                         {"capacity": 30, "resources": {"water": 26}})
+        self.assertEqual(sum(world.stock.values()), world.storage)
+        self.assertEqual(world.stock["food"], 8)
+        with tempfile.TemporaryDirectory() as directory:
+            path = Path(directory) / "c.json"
+            player.game.save(path)
+            self.assertEqual(IntegratedCampaign.load(path).world.stock, world.stock)
         row = run_one(6, 2)
-        self.assertEqual(row["outcome"], "migration_refused")
-        self.assertIn("Depósito", row["reason"])
-        self.assertEqual(row["days_played"], 0)
+        self.assertNotEqual(row["outcome"], "migration_refused")
 
+    def test_migration_within_storage_has_no_discard_receipt(self):
+        receipt = migrated().world.log[0]
+        self.assertEqual(receipt["event"], "campaign_transition")
+        self.assertNotIn("storage_discarded", receipt)
 
 if __name__ == "__main__":
     unittest.main()

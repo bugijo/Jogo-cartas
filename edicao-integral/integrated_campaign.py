@@ -30,6 +30,9 @@ PART_MISSIONS = {
 }
 
 
+STORAGE_DISCARD_ORDER = ("water", "food", "medicine", "ammo", "fuel")
+
+
 def _migrate_horde_snapshot(snapshot: dict | None) -> dict | None:
     """Converte o antigo snapshot por IDs para o sapato atual por tipo."""
     if snapshot is None:
@@ -1118,6 +1121,19 @@ class IntegratedCampaign:
             # Each physical fuel card represents one regional fuel unit.
             "fuel": len(self.fuel_cards),
         }
+        # Decisão aprovada (2026-10-29): o que passar do depósito regional é
+        # descartado na migração e registrado no recibo. Ordem: água primeiro
+        # (único recurso que a Cisterna consertada acumula acima do limite).
+        capacity = World.new(self.seed, list(self.founders)).storage
+        discarded = {}
+        for resource in STORAGE_DISCARD_ORDER:
+            excess = sum(stock.values()) - capacity
+            if excess <= 0:
+                break
+            cut = min(excess, stock[resource])
+            if cut:
+                stock[resource] -= cut
+                discarded[resource] = cut
         projected = World.new(self.seed, list(self.founders), stock)
         projected.regional_horde_deck = deepcopy(self.cistern.horde_deck)
         # Travel is a campaign-wide finite deck. Continue the 0.2 shoe at its
@@ -1203,6 +1219,8 @@ class IntegratedCampaign:
                    "from": "cistern02", "to": "last_transmission",
                    "heroes": list(self.founders), "people": len(source_people),
                    "consumers": self.cistern.consumers, "day": self.cistern.day}
+        if discarded:
+            receipt["storage_discarded"] = {"capacity": capacity, "resources": discarded}
         ledger = {
             "schema": 1,
             "source_digest": source_digest,
