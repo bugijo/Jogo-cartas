@@ -41,6 +41,17 @@ aprovação.
   `IntegratedCampaign.transition_to_last_transmission`; testes em
   `tests/test_regional_campaign.py`.
 
+### Filtro da Cisterna no regional (aprovada em 2026-10-29)
+- Se a Cisterna termina com o filtro funcional e o abrigo é o mesmo, a migração
+  registra `continuity_filter` (produção = C inicial). A cada amanhecer regional,
+  depois da refeição, o filtro deposita essa água **respeitando o depósito**; o
+  que não cabe não é criado (`filter_water.not_stored`). Sem produção após
+  Colapso (o abrigo deixa de ser o mesmo).
+- Ligado por `World.regional_filter_production` (padrão desligado, como a ponte
+  de Viagem) para não alterar os replays regionais certificados; a campanha
+  contínua e a medição ligam. Testes: `tests/test_continuity_filter.py`.
+- Não modelado: dano ao filtro no regional (crises/cercos regionais não o atingem).
+
 ## Decisões anteriores do responsável
 
 - Lote de mantimentos indivisível: `ceil(C/4)` cartas por lote, retirado
@@ -89,7 +100,7 @@ transporte regional. Desligado por padrão para preservar os replays registrados
 ## Ainda sem regra aprovada (não decidir silenciosamente)
 
 - Economia de comida regional: só o Mercado tem mapa tático e comida (4 buscas
-  × 2); a Horta `EXP-LOC-01` não tem mapa; projetos exigem madeira sem fonte.
+  × 2). Horta §61 entre capítulos: alternativas em `HORTA_CONTINUITY.md`.
 - Pista coletada antes de emergência local/de estrada é mantida (comportamento
   atual do motor: pista não é carga). Confirmar se as anotações físicas deveriam
   ser perdidas como carga.

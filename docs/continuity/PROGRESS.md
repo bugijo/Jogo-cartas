@@ -1,5 +1,6 @@
 # 2026-10-29 — campanha regional multi-dia
 
+- `4f13ced`: filtro contínuo no regional (opcional por mundo); medição real 0/52; investigação da Horta em `HORTA_CONTINUITY.md`.
 - Excedente na migração descartado com recibo (decisão aprovada); medição: 52/52 migram, todas colapsam por fome.
 - Commit `9a2f629`: `RegionalCampaignPlayer`, verificador `verify_regional_campaign.py` + artefato, 8 testes novos (7 de campanha, 1 de durabilidade), `check.sh full` com o novo verificador; decisão de durabilidade registrada no manual.
 - Resultado seed 22: 6 dias jogados, 1 pista, derrota parcial por fome no dia 6 (ver checkpoint).

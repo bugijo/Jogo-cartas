@@ -1,4 +1,13 @@
-# Opções de comida regional — protótipos medidos, 2026-10-29 (não implementadas)
+# Campanha regional com filtro contínuo — resultado real, 2026-10-29
+
+Filtro implementado no motor (decisão aprovada). Medição real (`simulate_regional_campaign.py`,
+52 vitórias H2–H6, sementes 1–30, até 15 dias): **0 sobrevivem**, colapso por
+fome em 3,3–4,6 dias, 1 pista no total, rádio nunca — igual ao protótipo D.
+A comida trava antes da água; a Horta (protótipo B+D: 31/53) depende de decisão
+(`edicao-integral/HORTA_CONTINUITY.md`). Os números da tabela abaixo marcados
+como protótipo não são resultados do motor.
+
+# Opções de comida regional — PROTÓTIPOS medidos, 2026-10-29 (não implementadas)
 
 Protótipos só no rascunho (fora do repositório), mesma varredura: 53 campanhas
 (vitórias da Cisterna H2–H6, sementes 1–30, mais a seed 22 fixa), até 15 dias.
