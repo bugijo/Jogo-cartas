@@ -1,3 +1,26 @@
+# Campanha regional multi-dia — 2026-10-29
+
+Política regional escrita só com a seed 22 H2; medida sem ajuste a partir das
+vitórias legais da Cisterna (adaptativo publicado, sementes 1–30), até 15 dias,
+cartas de Viagem ligadas. Artefato: `edicao-integral/replays/regional_campaign_sweep.json`.
+
+| Tam. | Vitórias Cisterna | Migração recusada | Derrota parcial | ≥1 pista | Rádio | Dias médios |
+|---|---|---|---|---|---|---|
+| H2 | 5 | 2 | 3 | 0 | 0 | 4.3 |
+| H3 | 11 | 1 | 10 | 1 | 0 | 4.4 |
+| H4 | 12 | 7 | 5 | 0 | 0 | 3.8 |
+| H5 | 12 | 9 | 3 | 0 | 0 | 3.0 |
+| H6 | 12 | 12 | 0 | 0 | 0 | None |
+
+- Recusa de migração: água da Cisterna acima do depósito regional 30 (regra pendente).
+- Toda campanha migrada colapsa por fome em ~3–4 dias: o Mercado (9 porções no
+  máximo) é a única comida com mapa; a Estação a pé com cartas quase nunca cabe
+  no relógio 10. Só H3 seed 20 coletou 1 pista; nenhuma decodificou o rádio.
+- Seed 22 H2 (replay `regional_campaign_seed22.json`): 6 dias, 3 expedições,
+  1 pista (Célia), derrota parcial no dia 6.
+- Leitura: limite de design da economia regional, não do controlador; decisão
+  pendente `P2-REGIONAL-FOOD-ECONOMY`.
+
 # Relatório de partidas automatizadas — atualização 2026-10-27 (validação 61–90, H2, auditoria)
 
 ## Decisões aprovadas aplicadas

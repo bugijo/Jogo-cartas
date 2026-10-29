@@ -78,6 +78,16 @@ transporte regional. Desligado por padrão para preservar os replays registrados
 
 ## Ainda sem regra aprovada (não decidir silenciosamente)
 
+- Migração com estoque acima do depósito regional (30): vitórias da Cisterna
+  com muita água (até 46 em H6) são recusadas por `World.validate`. Falta regra:
+  descartar o excedente, a Cisterna contar como depósito, ou outra. O motor e a
+  medição só registram a recusa.
+- Economia de comida regional: só o Mercado tem mapa tático e comida (4 buscas
+  × 2); a Horta `EXP-LOC-01` não tem mapa; projetos exigem madeira sem fonte.
+- Pista coletada antes de emergência local/de estrada é mantida (comportamento
+  atual do motor: pista não é carga). Confirmar se as anotações físicas deveriam
+  ser perdidas como carga.
+
 - Combustível regional: `far=3` com 2/trecho exige 12; `EXP-MIS-104` cobra 6;
   Posto O2 não declara combustível. Ver `TACTICAL_FUEL_AUDIT.md`.
 - Ferragens na ida diz que o Material fica no chão de Z1 e pode ser coletado por

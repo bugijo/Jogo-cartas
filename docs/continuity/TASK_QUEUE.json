@@ -298,8 +298,8 @@
   },
   {
    "id": "P2-REGIONAL-FOOD-ECONOMY",
-   "priority": 2,
-   "objective": "Decidir fonte de comida regional sustentável (Horta EXP-LOC-01 sem mapa tático; renovação urbana; projetos sem madeira) para a campanha não colapsar antes do rádio.",
+   "priority": 1,
+   "objective": "Decidir fonte de comida regional sustentável (Horta EXP-LOC-01 sem mapa tático; renovação urbana; projetos sem madeira) para a campanha não colapsar antes do rádio. Também: excedente de água na migração (estoque > depósito 30 recusa 31 de 52 vitórias).",
    "depends_on": [
     "P1-REGIONAL-MULTIDAY-CAMPAIGN"
    ],
@@ -307,7 +307,9 @@
     "regra aprovada",
     "replay novo"
    ],
-   "tests": [],
+   "tests": [
+    "edicao-integral/simulate_regional_campaign.py"
+   ],
    "status": "pendente_decisao",
    "commit": null,
    "blocker": "Decisão de design: não criar comida sem regra aprovada."

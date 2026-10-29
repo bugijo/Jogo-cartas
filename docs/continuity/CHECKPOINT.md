@@ -6,7 +6,9 @@
 - Achados de design: Mercado é o único local com mapa tático e comida (9 porções para 3 consumidores); Estação a pé com cartas quase nunca cabe no relógio 10; Horta `EXP-LOC-01` não tem mapa. Ver `P2-REGIONAL-FOOD-ECONOMY`.
 - Bloqueios: combustível/veículo (militar), carga levada regional, emergência de estrada com carga única, narrativa/ordem de pistas, economia de comida regional.
 - Verificação: 398 testes, 8 verificadores, varredura, `compileall`, `git diff --check`.
-- Próximo passo seguro: medir a campanha regional partindo de outras vitórias legais da Cisterna (adaptativo, sementes de ajuste) para separar sorte da seed 22 de limite de design.
+- Medição (`simulate_regional_campaign.py`, commit `1b4c8ee`): 52 vitórias da Cisterna H2–H6 (sementes 1–30); 31 migrações recusadas por depósito (água > 30); as 21 migradas colapsam por fome em ~3–4 dias; 1 pista no total (H3 s20); rádio nunca. Limite de design, não sorte da seed 22.
+- Decisões pendentes novas: excedente de estoque na migração; fonte de comida regional; pista mantida após emergência.
+- Próximo passo: aguardar decisões de economia regional; sem elas, o controlador não tem caminho legal até o rádio.
 
 # Estado ativo — controlador regional com Viagem e emboscadas, 2026-10-28
 
