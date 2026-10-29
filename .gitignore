@@ -22,3 +22,7 @@ assets/v0.5/rascunhos/
 output/edicao-acabamento-v0.5/rascunhos_comparacao/
 
 assets/v0.6/rascunhos/
+
+# Estado vivo da barra de progresso (mod do Claude Code Desktop)
+docs/continuity/progress.json
+docs/continuity/progress.tmp

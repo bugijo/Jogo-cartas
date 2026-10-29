@@ -38,6 +38,7 @@ case ${1:-} in
       step "$script" python3 "$script"
     done
     step "simulate_regional_campaign.py --garden" python3 simulate_regional_campaign.py --garden
+    step "simulate_virtual_players.py --seeds 1-3" python3 simulate_virtual_players.py --seeds 1-3
     step "compileall" python3 -m compileall -q .
     step "git diff --check" git -C .. diff --check
     ;;

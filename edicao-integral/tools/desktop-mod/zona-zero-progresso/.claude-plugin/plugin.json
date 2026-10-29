@@ -1,0 +1,1 @@
+{ "name": "zona-zero-progresso", "version": "0.1.0", "description": "Barra de progresso do desenvolvimento do Zona Zero, lida de docs/continuity/progress.json", "types": "./types/index.d.ts" }

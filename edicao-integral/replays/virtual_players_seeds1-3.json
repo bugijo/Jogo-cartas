@@ -1,0 +1,2712 @@
+{
+ "schema": 1,
+ "kind": "simulação automatizada (não é playtest humano)",
+ "seeds": [
+  1,
+  3
+ ],
+ "regional": true,
+ "summary": {
+  "A": {
+   "tables": 15,
+   "victories": 0,
+   "scripted_tables": 12,
+   "mean_nights": 3.53,
+   "emergencies": 15,
+   "hero_wounds": 108,
+   "incapacitated": 25,
+   "rule_errors_per_table": 4.87,
+   "conflicts_per_table": 14.8,
+   "leader_agreement": 0.808,
+   "top_participation": 0.378,
+   "regional_mean_days": null
+  },
+  "B": {
+   "tables": 15,
+   "victories": 5,
+   "scripted_tables": 0,
+   "mean_nights": 4.93,
+   "emergencies": 16,
+   "hero_wounds": 125,
+   "incapacitated": 37,
+   "rule_errors_per_table": 5.6,
+   "conflicts_per_table": 32.0,
+   "leader_agreement": 0.7,
+   "top_participation": 0.373,
+   "regional_mean_days": 3.0
+  },
+  "C": {
+   "tables": 15,
+   "victories": 4,
+   "scripted_tables": 1,
+   "mean_nights": 4.87,
+   "emergencies": 17,
+   "hero_wounds": 127,
+   "incapacitated": 38,
+   "rule_errors_per_table": 5.53,
+   "conflicts_per_table": 16.07,
+   "leader_agreement": 0.908,
+   "top_participation": 0.384,
+   "regional_mean_days": 2.5
+  },
+  "mista": {
+   "tables": 15,
+   "victories": 6,
+   "scripted_tables": 1,
+   "mean_nights": 4.87,
+   "emergencies": 16,
+   "hero_wounds": 120,
+   "incapacitated": 34,
+   "rule_errors_per_table": 6.67,
+   "conflicts_per_table": 36.0,
+   "leader_agreement": 0.792,
+   "top_participation": 0.366,
+   "regional_mean_days": 3.0
+  }
+ },
+ "tables": [
+  {
+   "group": "A",
+   "size": 2,
+   "seed": 1,
+   "personas": [
+    "A13",
+    "A19"
+   ],
+   "scripted": true,
+   "leader": "A19",
+   "leader_agreement": 1.0,
+   "victory": false,
+   "nights": 3,
+   "expeditions": 3,
+   "emergencies": 1,
+   "hero_wounds": 5,
+   "incapacitated": 1,
+   "food": {
+    "start": 12,
+    "end": 18
+   },
+   "water": {
+    "start": 12,
+    "end": 0
+   },
+   "participation": {
+    "A13": 0.556,
+    "A19": 0.444
+   },
+   "conflicts": 4,
+   "conflict_topics": {
+    "far_first": 1,
+    "retreat": 1,
+    "escort": 1,
+    "whole_team": 1
+   },
+   "rule_errors": 3,
+   "rule_misread_legal": 0,
+   "pressure_days": 0
+  },
+  {
+   "group": "A",
+   "size": 2,
+   "seed": 2,
+   "personas": [
+    "A18",
+    "A19"
+   ],
+   "scripted": false,
+   "leader": "A18",
+   "leader_agreement": 1.0,
+   "victory": false,
+   "nights": 5,
+   "expeditions": 3,
+   "emergencies": 1,
+   "hero_wounds": 6,
+   "incapacitated": 2,
+   "food": {
+    "start": 12,
+    "end": 0
+   },
+   "water": {
+    "start": 12,
+    "end": 0
+   },
+   "participation": {
+    "A18": 0.553,
+    "A19": 0.447
+   },
+   "conflicts": 30,
+   "conflict_topics": {
+    "adaptive": 6,
+    "retreat": 6,
+    "escort": 6,
+    "collection": 6,
+    "whole_team": 6
+   },
+   "rule_errors": 3,
+   "rule_misread_legal": 0,
+   "pressure_days": 5
+  },
+  {
+   "group": "A",
+   "size": 2,
+   "seed": 3,
+   "personas": [
+    "A17",
+    "A19"
+   ],
+   "scripted": true,
+   "leader": "A19",
+   "leader_agreement": 1.0,
+   "victory": false,
+   "nights": 5,
+   "expeditions": 3,
+   "emergencies": 0,
+   "hero_wounds": 0,
+   "incapacitated": 0,
+   "food": {
+    "start": 8,
+    "end": 0
+   },
+   "water": {
+    "start": 8,
+    "end": 2
+   },
+   "participation": {
+    "A17": 0.394,
+    "A19": 0.606
+   },
+   "conflicts": 0,
+   "conflict_topics": {},
+   "rule_errors": 4,
+   "rule_misread_legal": 0,
+   "pressure_days": 0
+  },
+  {
+   "group": "A",
+   "size": 3,
+   "seed": 1,
+   "personas": [
+    "A13",
+    "A17",
+    "A15"
+   ],
+   "scripted": true,
+   "leader": "A15",
+   "leader_agreement": 0.75,
+   "victory": false,
+   "nights": 3,
+   "expeditions": 3,
+   "emergencies": 1,
+   "hero_wounds": 5,
+   "incapacitated": 1,
+   "food": {
+    "start": 12,
+    "end": 15
+   },
+   "water": {
+    "start": 12,
+    "end": 0
+   },
+   "participation": {
+    "A13": 0.241,
+    "A17": 0.373,
+    "A15": 0.386
+   },
+   "conflicts": 3,
+   "conflict_topics": {
+    "retreat": 1,
+    "escort": 1,
+    "whole_team": 1
+   },
+   "rule_errors": 2,
+   "rule_misread_legal": 0,
+   "pressure_days": 0
+  },
+  {
+   "group": "A",
+   "size": 3,
+   "seed": 2,
+   "personas": [
+    "A16",
+    "A17",
+    "A19"
+   ],
+   "scripted": true,
+   "leader": "A19",
+   "leader_agreement": 0.875,
+   "victory": false,
+   "nights": 3,
+   "expeditions": 3,
+   "emergencies": 1,
+   "hero_wounds": 5,
+   "incapacitated": 1,
+   "food": {
+    "start": 12,
+    "end": 15
+   },
+   "water": {
+    "start": 12,
+    "end": 0
+   },
+   "participation": {
+    "A16": 0.275,
+    "A17": 0.362,
+    "A19": 0.362
+   },
+   "conflicts": 2,
+   "conflict_topics": {
+    "far_first": 1,
+    "escort": 1
+   },
+   "rule_errors": 5,
+   "rule_misread_legal": 0,
+   "pressure_days": 0
+  },
+  {
+   "group": "A",
+   "size": 3,
+   "seed": 3,
+   "personas": [
+    "A15",
+    "A16",
+    "A13"
+   ],
+   "scripted": true,
+   "leader": "A15",
+   "leader_agreement": 0.875,
+   "victory": false,
+   "nights": 3,
+   "expeditions": 3,
+   "emergencies": 1,
+   "hero_wounds": 6,
+   "incapacitated": 1,
+   "food": {
+    "start": 12,
+    "end": 18
+   },
+   "water": {
+    "start": 12,
+    "end": 2
+   },
+   "participation": {
+    "A15": 0.282,
+    "A16": 0.352,
+    "A13": 0.366
+   },
+   "conflicts": 3,
+   "conflict_topics": {
+    "retreat": 1,
+    "escort": 1,
+    "whole_team": 1
+   },
+   "rule_errors": 2,
+   "rule_misread_legal": 0,
+   "pressure_days": 0
+  },
+  {
+   "group": "A",
+   "size": 4,
+   "seed": 1,
+   "personas": [
+    "A16",
+    "A15",
+    "A18",
+    "A19"
+   ],
+   "scripted": true,
+   "leader": "A15",
+   "leader_agreement": 1.0,
+   "victory": false,
+   "nights": 3,
+   "expeditions": 3,
+   "emergencies": 0,
+   "hero_wounds": 2,
+   "incapacitated": 0,
+   "food": {
+    "start": 16,
+    "end": 13
+   },
+   "water": {
+    "start": 16,
+    "end": 13
+   },
+   "participation": {
+    "A16": 0.184,
+    "A15": 0.33,
+    "A18": 0.301,
+    "A19": 0.184
+   },
+   "conflicts": 8,
+   "conflict_topics": {
+    "adaptive": 1,
+    "far_first": 2,
+    "retreat": 1,
+    "escort": 2,
+    "collection": 1,
+    "whole_team": 1
+   },
+   "rule_errors": 4,
+   "rule_misread_legal": 0,
+   "pressure_days": 0
+  },
+  {
+   "group": "A",
+   "size": 4,
+   "seed": 2,
+   "personas": [
+    "A17",
+    "A18",
+    "A16",
+    "A19"
+   ],
+   "scripted": false,
+   "leader": "A18",
+   "leader_agreement": 0.875,
+   "victory": false,
+   "nights": 5,
+   "expeditions": 3,
+   "emergencies": 2,
+   "hero_wounds": 12,
+   "incapacitated": 4,
+   "food": {
+    "start": 16,
+    "end": 0
+   },
+   "water": {
+    "start": 16,
+    "end": 0
+   },
+   "participation": {
+    "A17": 0.258,
+    "A18": 0.29,
+    "A16": 0.258,
+    "A19": 0.194
+   },
+   "conflicts": 54,
+   "conflict_topics": {
+    "adaptive": 12,
+    "far_first": 6,
+    "retreat": 12,
+    "escort": 6,
+    "collection": 12,
+    "whole_team": 6
+   },
+   "rule_errors": 8,
+   "rule_misread_legal": 0,
+   "pressure_days": 5
+  },
+  {
+   "group": "A",
+   "size": 4,
+   "seed": 3,
+   "personas": [
+    "A18",
+    "A15",
+    "A13",
+    "A17"
+   ],
+   "scripted": false,
+   "leader": "A15",
+   "leader_agreement": 0.375,
+   "victory": false,
+   "nights": 5,
+   "expeditions": 3,
+   "emergencies": 2,
+   "hero_wounds": 12,
+   "incapacitated": 4,
+   "food": {
+    "start": 12,
+    "end": 0
+   },
+   "water": {
+    "start": 12,
+    "end": 0
+   },
+   "participation": {
+    "A18": 0.308,
+    "A15": 0.346,
+    "A13": 0.308,
+    "A17": 0.038
+   },
+   "conflicts": 60,
+   "conflict_topics": {
+    "adaptive": 12,
+    "far_first": 12,
+    "retreat": 6,
+    "escort": 6,
+    "collection": 12,
+    "whole_team": 12
+   },
+   "rule_errors": 6,
+   "rule_misread_legal": 0,
+   "pressure_days": 5
+  },
+  {
+   "group": "A",
+   "size": 5,
+   "seed": 1,
+   "personas": [
+    "A16",
+    "A18",
+    "A17",
+    "A15",
+    "A19"
+   ],
+   "scripted": true,
+   "leader": "A15",
+   "leader_agreement": 0.75,
+   "victory": false,
+   "nights": 3,
+   "expeditions": 3,
+   "emergencies": 1,
+   "hero_wounds": 9,
+   "incapacitated": 2,
+   "food": {
+    "start": 20,
+    "end": 23
+   },
+   "water": {
+    "start": 20,
+    "end": 11
+   },
+   "participation": {
+    "A16": 0.158,
+    "A18": 0.307,
+    "A17": 0.218,
+    "A15": 0.198,
+    "A19": 0.119
+   },
+   "conflicts": 8,
+   "conflict_topics": {
+    "adaptive": 1,
+    "far_first": 2,
+    "retreat": 1,
+    "escort": 2,
+    "collection": 1,
+    "whole_team": 1
+   },
+   "rule_errors": 5,
+   "rule_misread_legal": 0,
+   "pressure_days": 0
+  },
+  {
+   "group": "A",
+   "size": 5,
+   "seed": 2,
+   "personas": [
+    "A18",
+    "A16",
+    "A15",
+    "A17",
+    "A19"
+   ],
+   "scripted": true,
+   "leader": "A15",
+   "leader_agreement": 0.75,
+   "victory": false,
+   "nights": 3,
+   "expeditions": 3,
+   "emergencies": 1,
+   "hero_wounds": 9,
+   "incapacitated": 2,
+   "food": {
+    "start": 20,
+    "end": 23
+   },
+   "water": {
+    "start": 20,
+    "end": 11
+   },
+   "participation": {
+    "A18": 0.172,
+    "A16": 0.323,
+    "A15": 0.237,
+    "A17": 0.14,
+    "A19": 0.129
+   },
+   "conflicts": 8,
+   "conflict_topics": {
+    "adaptive": 1,
+    "far_first": 2,
+    "retreat": 1,
+    "escort": 2,
+    "collection": 1,
+    "whole_team": 1
+   },
+   "rule_errors": 7,
+   "rule_misread_legal": 0,
+   "pressure_days": 0
+  },
+  {
+   "group": "A",
+   "size": 5,
+   "seed": 3,
+   "personas": [
+    "A18",
+    "A16",
+    "A17",
+    "A19",
+    "A13"
+   ],
+   "scripted": true,
+   "leader": "A18",
+   "leader_agreement": 0.625,
+   "victory": false,
+   "nights": 3,
+   "expeditions": 3,
+   "emergencies": 1,
+   "hero_wounds": 7,
+   "incapacitated": 1,
+   "food": {
+    "start": 16,
+    "end": 13
+   },
+   "water": {
+    "start": 16,
+    "end": 5
+   },
+   "participation": {
+    "A18": 0.226,
+    "A16": 0.298,
+    "A17": 0.298,
+    "A19": 0.179,
+    "A13": 0.0
+   },
+   "conflicts": 9,
+   "conflict_topics": {
+    "adaptive": 1,
+    "far_first": 2,
+    "retreat": 2,
+    "escort": 1,
+    "collection": 1,
+    "whole_team": 2
+   },
+   "rule_errors": 4,
+   "rule_misread_legal": 0,
+   "pressure_days": 0
+  },
+  {
+   "group": "A",
+   "size": 6,
+   "seed": 1,
+   "personas": [
+    "A15",
+    "A19",
+    "A13",
+    "A17",
+    "A16",
+    "A18"
+   ],
+   "scripted": true,
+   "leader": "A15",
+   "leader_agreement": 0.75,
+   "victory": false,
+   "nights": 3,
+   "expeditions": 3,
+   "emergencies": 1,
+   "hero_wounds": 10,
+   "incapacitated": 2,
+   "food": {
+    "start": 24,
+    "end": 21
+   },
+   "water": {
+    "start": 24,
+    "end": 9
+   },
+   "participation": {
+    "A15": 0.158,
+    "A19": 0.307,
+    "A13": 0.218,
+    "A17": 0.198,
+    "A16": 0.119,
+    "A18": 0.0
+   },
+   "conflicts": 11,
+   "conflict_topics": {
+    "adaptive": 1,
+    "far_first": 3,
+    "retreat": 2,
+    "escort": 2,
+    "collection": 1,
+    "whole_team": 2
+   },
+   "rule_errors": 6,
+   "rule_misread_legal": 0,
+   "pressure_days": 0
+  },
+  {
+   "group": "A",
+   "size": 6,
+   "seed": 2,
+   "personas": [
+    "A18",
+    "A16",
+    "A19",
+    "A13",
+    "A15",
+    "A17"
+   ],
+   "scripted": true,
+   "leader": "A15",
+   "leader_agreement": 0.75,
+   "victory": false,
+   "nights": 3,
+   "expeditions": 3,
+   "emergencies": 1,
+   "hero_wounds": 10,
+   "incapacitated": 2,
+   "food": {
+    "start": 24,
+    "end": 21
+   },
+   "water": {
+    "start": 24,
+    "end": 9
+   },
+   "participation": {
+    "A18": 0.172,
+    "A16": 0.323,
+    "A19": 0.237,
+    "A13": 0.14,
+    "A15": 0.129,
+    "A17": 0.0
+   },
+   "conflicts": 11,
+   "conflict_topics": {
+    "adaptive": 1,
+    "far_first": 3,
+    "retreat": 2,
+    "escort": 2,
+    "collection": 1,
+    "whole_team": 2
+   },
+   "rule_errors": 9,
+   "rule_misread_legal": 0,
+   "pressure_days": 0
+  },
+  {
+   "group": "A",
+   "size": 6,
+   "seed": 3,
+   "personas": [
+    "A15",
+    "A19",
+    "A13",
+    "A18",
+    "A17",
+    "A16"
+   ],
+   "scripted": true,
+   "leader": "A15",
+   "leader_agreement": 0.75,
+   "victory": false,
+   "nights": 3,
+   "expeditions": 3,
+   "emergencies": 1,
+   "hero_wounds": 10,
+   "incapacitated": 2,
+   "food": {
+    "start": 24,
+    "end": 24
+   },
+   "water": {
+    "start": 24,
+    "end": 12
+   },
+   "participation": {
+    "A15": 0.172,
+    "A19": 0.323,
+    "A13": 0.237,
+    "A18": 0.14,
+    "A17": 0.129,
+    "A16": 0.0
+   },
+   "conflicts": 11,
+   "conflict_topics": {
+    "adaptive": 1,
+    "far_first": 3,
+    "retreat": 2,
+    "escort": 2,
+    "collection": 1,
+    "whole_team": 2
+   },
+   "rule_errors": 5,
+   "rule_misread_legal": 0,
+   "pressure_days": 0
+  },
+  {
+   "group": "B",
+   "size": 2,
+   "seed": 1,
+   "personas": [
+    "B33",
+    "B35"
+   ],
+   "scripted": false,
+   "leader": "B35",
+   "leader_agreement": 1.0,
+   "victory": false,
+   "nights": 5,
+   "expeditions": 2,
+   "emergencies": 1,
+   "hero_wounds": 6,
+   "incapacitated": 2,
+   "food": {
+    "start": 12,
+    "end": 0
+   },
+   "water": {
+    "start": 12,
+    "end": 0
+   },
+   "participation": {
+    "B33": 0.6,
+    "B35": 0.4
+   },
+   "conflicts": 0,
+   "conflict_topics": {},
+   "rule_errors": 3,
+   "rule_misread_legal": 0,
+   "pressure_days": 5
+  },
+  {
+   "group": "B",
+   "size": 2,
+   "seed": 2,
+   "personas": [
+    "B30",
+    "B33"
+   ],
+   "scripted": false,
+   "leader": "B33",
+   "leader_agreement": 1.0,
+   "victory": false,
+   "nights": 5,
+   "expeditions": 1,
+   "emergencies": 1,
+   "hero_wounds": 6,
+   "incapacitated": 2,
+   "food": {
+    "start": 12,
+    "end": 0
+   },
+   "water": {
+    "start": 12,
+    "end": 0
+   },
+   "participation": {
+    "B30": 0.393,
+    "B33": 0.607
+   },
+   "conflicts": 0,
+   "conflict_topics": {},
+   "rule_errors": 3,
+   "rule_misread_legal": 0,
+   "pressure_days": 5
+  },
+  {
+   "group": "B",
+   "size": 2,
+   "seed": 3,
+   "personas": [
+    "B33",
+    "B21"
+   ],
+   "scripted": false,
+   "leader": "B21",
+   "leader_agreement": 1.0,
+   "victory": true,
+   "nights": 5,
+   "expeditions": 4,
+   "emergencies": 0,
+   "hero_wounds": 0,
+   "incapacitated": 0,
+   "food": {
+    "start": 8,
+    "end": 0
+   },
+   "water": {
+    "start": 8,
+    "end": 9
+   },
+   "participation": {
+    "B33": 0.459,
+    "B21": 0.541
+   },
+   "conflicts": 0,
+   "conflict_topics": {},
+   "rule_errors": 2,
+   "rule_misread_legal": 0,
+   "pressure_days": 4,
+   "regional_days": 4
+  },
+  {
+   "group": "B",
+   "size": 3,
+   "seed": 1,
+   "personas": [
+    "B35",
+    "B33",
+    "B21"
+   ],
+   "scripted": false,
+   "leader": "B21",
+   "leader_agreement": 0.75,
+   "victory": false,
+   "nights": 5,
+   "expeditions": 3,
+   "emergencies": 2,
+   "hero_wounds": 9,
+   "incapacitated": 3,
+   "food": {
+    "start": 12,
+    "end": 0
+   },
+   "water": {
+    "start": 12,
+    "end": 0
+   },
+   "participation": {
+    "B35": 0.241,
+    "B33": 0.333,
+    "B21": 0.426
+   },
+   "conflicts": 30,
+   "conflict_topics": {
+    "cautious": 6,
+    "retreat": 6,
+    "escort": 6,
+    "collection": 6,
+    "whole_team": 6
+   },
+   "rule_errors": 5,
+   "rule_misread_legal": 0,
+   "pressure_days": 5
+  },
+  {
+   "group": "B",
+   "size": 3,
+   "seed": 2,
+   "personas": [
+    "B35",
+    "B24",
+    "B27"
+   ],
+   "scripted": false,
+   "leader": "B27",
+   "leader_agreement": 1.0,
+   "victory": false,
+   "nights": 5,
+   "expeditions": 3,
+   "emergencies": 2,
+   "hero_wounds": 9,
+   "incapacitated": 3,
+   "food": {
+    "start": 12,
+    "end": 0
+   },
+   "water": {
+    "start": 12,
+    "end": 0
+   },
+   "participation": {
+    "B35": 0.269,
+    "B24": 0.365,
+    "B27": 0.365
+   },
+   "conflicts": 30,
+   "conflict_topics": {
+    "adaptive": 6,
+    "cautious": 6,
+    "support": 6,
+    "collection": 6,
+    "whole_team": 6
+   },
+   "rule_errors": 5,
+   "rule_misread_legal": 0,
+   "pressure_days": 5
+  },
+  {
+   "group": "B",
+   "size": 3,
+   "seed": 3,
+   "personas": [
+    "B35",
+    "B30",
+    "B33"
+   ],
+   "scripted": false,
+   "leader": "B35",
+   "leader_agreement": 0.75,
+   "victory": true,
+   "nights": 5,
+   "expeditions": 4,
+   "emergencies": 0,
+   "hero_wounds": 6,
+   "incapacitated": 0,
+   "food": {
+    "start": 12,
+    "end": 3
+   },
+   "water": {
+    "start": 12,
+    "end": 12
+   },
+   "participation": {
+    "B35": 0.345,
+    "B30": 0.353,
+    "B33": 0.302
+   },
+   "conflicts": 12,
+   "conflict_topics": {
+    "support": 6,
+    "whole_team": 6
+   },
+   "rule_errors": 3,
+   "rule_misread_legal": 0,
+   "pressure_days": 5,
+   "regional_days": 3
+  },
+  {
+   "group": "B",
+   "size": 4,
+   "seed": 1,
+   "personas": [
+    "B30",
+    "B24",
+    "B35",
+    "B33"
+   ],
+   "scripted": false,
+   "leader": "B35",
+   "leader_agreement": 0.75,
+   "victory": false,
+   "nights": 4,
+   "expeditions": 4,
+   "emergencies": 0,
+   "hero_wounds": 2,
+   "incapacitated": 0,
+   "food": {
+    "start": 16,
+    "end": 3
+   },
+   "water": {
+    "start": 16,
+    "end": 3
+   },
+   "participation": {
+    "B30": 0.261,
+    "B24": 0.273,
+    "B35": 0.242,
+    "B33": 0.224
+   },
+   "conflicts": 30,
+   "conflict_topics": {
+    "adaptive": 6,
+    "cautious": 6,
+    "support": 6,
+    "collection": 6,
+    "whole_team": 6
+   },
+   "rule_errors": 7,
+   "rule_misread_legal": 0,
+   "pressure_days": 5
+  },
+  {
+   "group": "B",
+   "size": 4,
+   "seed": 2,
+   "personas": [
+    "B21",
+    "B30",
+    "B27",
+    "B35"
+   ],
+   "scripted": false,
+   "leader": "B21",
+   "leader_agreement": 0.375,
+   "victory": false,
+   "nights": 5,
+   "expeditions": 3,
+   "emergencies": 2,
+   "hero_wounds": 12,
+   "incapacitated": 4,
+   "food": {
+    "start": 16,
+    "end": 0
+   },
+   "water": {
+    "start": 16,
+    "end": 0
+   },
+   "participation": {
+    "B21": 0.276,
+    "B30": 0.328,
+    "B27": 0.31,
+    "B35": 0.086
+   },
+   "conflicts": 30,
+   "conflict_topics": {
+    "cautious": 6,
+    "retreat": 6,
+    "escort": 6,
+    "collection": 6,
+    "whole_team": 6
+   },
+   "rule_errors": 4,
+   "rule_misread_legal": 0,
+   "pressure_days": 5
+  },
+  {
+   "group": "B",
+   "size": 4,
+   "seed": 3,
+   "personas": [
+    "B21",
+    "B35",
+    "B30",
+    "B27"
+   ],
+   "scripted": false,
+   "leader": "B21",
+   "leader_agreement": 0.375,
+   "victory": false,
+   "nights": 5,
+   "expeditions": 3,
+   "emergencies": 2,
+   "hero_wounds": 12,
+   "incapacitated": 4,
+   "food": {
+    "start": 12,
+    "end": 0
+   },
+   "water": {
+    "start": 12,
+    "end": 0
+   },
+   "participation": {
+    "B21": 0.317,
+    "B35": 0.317,
+    "B30": 0.3,
+    "B27": 0.067
+   },
+   "conflicts": 30,
+   "conflict_topics": {
+    "cautious": 6,
+    "retreat": 6,
+    "escort": 6,
+    "collection": 6,
+    "whole_team": 6
+   },
+   "rule_errors": 5,
+   "rule_misread_legal": 0,
+   "pressure_days": 5
+  },
+  {
+   "group": "B",
+   "size": 5,
+   "seed": 1,
+   "personas": [
+    "B21",
+    "B35",
+    "B27",
+    "B24",
+    "B33"
+   ],
+   "scripted": false,
+   "leader": "B21",
+   "leader_agreement": 0.75,
+   "victory": false,
+   "nights": 5,
+   "expeditions": 3,
+   "emergencies": 2,
+   "hero_wounds": 15,
+   "incapacitated": 5,
+   "food": {
+    "start": 20,
+    "end": 0
+   },
+   "water": {
+    "start": 20,
+    "end": 0
+   },
+   "participation": {
+    "B21": 0.181,
+    "B35": 0.223,
+    "B27": 0.16,
+    "B24": 0.277,
+    "B33": 0.16
+   },
+   "conflicts": 60,
+   "conflict_topics": {
+    "adaptive": 6,
+    "cautious": 12,
+    "retreat": 6,
+    "escort": 6,
+    "support": 6,
+    "collection": 12,
+    "whole_team": 12
+   },
+   "rule_errors": 8,
+   "rule_misread_legal": 0,
+   "pressure_days": 5
+  },
+  {
+   "group": "B",
+   "size": 5,
+   "seed": 2,
+   "personas": [
+    "B24",
+    "B30",
+    "B33",
+    "B35",
+    "B21"
+   ],
+   "scripted": false,
+   "leader": "B21",
+   "leader_agreement": 0.75,
+   "victory": true,
+   "nights": 5,
+   "expeditions": 5,
+   "emergencies": 0,
+   "hero_wounds": 5,
+   "incapacitated": 1,
+   "food": {
+    "start": 20,
+    "end": 9
+   },
+   "water": {
+    "start": 20,
+    "end": 33
+   },
+   "participation": {
+    "B24": 0.344,
+    "B30": 0.266,
+    "B33": 0.117,
+    "B35": 0.18,
+    "B21": 0.094
+   },
+   "conflicts": 42,
+   "conflict_topics": {
+    "adaptive": 6,
+    "cautious": 6,
+    "retreat": 6,
+    "escort": 6,
+    "support": 6,
+    "collection": 6,
+    "whole_team": 6
+   },
+   "rule_errors": 9,
+   "rule_misread_legal": 0,
+   "pressure_days": 5,
+   "regional_days": 3
+  },
+  {
+   "group": "B",
+   "size": 5,
+   "seed": 3,
+   "personas": [
+    "B33",
+    "B35",
+    "B21",
+    "B27",
+    "B30"
+   ],
+   "scripted": false,
+   "leader": "B21",
+   "leader_agreement": 0.5,
+   "victory": false,
+   "nights": 5,
+   "expeditions": 3,
+   "emergencies": 2,
+   "hero_wounds": 15,
+   "incapacitated": 5,
+   "food": {
+    "start": 16,
+    "end": 0
+   },
+   "water": {
+    "start": 16,
+    "end": 0
+   },
+   "participation": {
+    "B33": 0.195,
+    "B35": 0.232,
+    "B21": 0.22,
+    "B27": 0.146,
+    "B30": 0.207
+   },
+   "conflicts": 36,
+   "conflict_topics": {
+    "cautious": 6,
+    "retreat": 6,
+    "escort": 6,
+    "collection": 6,
+    "whole_team": 12
+   },
+   "rule_errors": 5,
+   "rule_misread_legal": 0,
+   "pressure_days": 5
+  },
+  {
+   "group": "B",
+   "size": 6,
+   "seed": 1,
+   "personas": [
+    "B33",
+    "B27",
+    "B35",
+    "B21",
+    "B24",
+    "B30"
+   ],
+   "scripted": false,
+   "leader": "B21",
+   "leader_agreement": 0.5,
+   "victory": false,
+   "nights": 5,
+   "expeditions": 3,
+   "emergencies": 2,
+   "hero_wounds": 18,
+   "incapacitated": 6,
+   "food": {
+    "start": 24,
+    "end": 0
+   },
+   "water": {
+    "start": 24,
+    "end": 0
+   },
+   "participation": {
+    "B33": 0.21,
+    "B27": 0.21,
+    "B35": 0.15,
+    "B21": 0.24,
+    "B24": 0.16,
+    "B30": 0.03
+   },
+   "conflicts": 60,
+   "conflict_topics": {
+    "adaptive": 6,
+    "cautious": 12,
+    "retreat": 6,
+    "escort": 6,
+    "support": 6,
+    "collection": 12,
+    "whole_team": 12
+   },
+   "rule_errors": 9,
+   "rule_misread_legal": 0,
+   "pressure_days": 5
+  },
+  {
+   "group": "B",
+   "size": 6,
+   "seed": 2,
+   "personas": [
+    "B27",
+    "B35",
+    "B30",
+    "B21",
+    "B24",
+    "B33"
+   ],
+   "scripted": false,
+   "leader": "B21",
+   "leader_agreement": 0.5,
+   "victory": true,
+   "nights": 5,
+   "expeditions": 4,
+   "emergencies": 0,
+   "hero_wounds": 5,
+   "incapacitated": 1,
+   "food": {
+    "start": 24,
+    "end": 4
+   },
+   "water": {
+    "start": 24,
+    "end": 34
+   },
+   "participation": {
+    "B27": 0.269,
+    "B35": 0.345,
+    "B30": 0.126,
+    "B21": 0.176,
+    "B24": 0.084,
+    "B33": 0.0
+   },
+   "conflicts": 60,
+   "conflict_topics": {
+    "adaptive": 6,
+    "cautious": 12,
+    "retreat": 6,
+    "escort": 6,
+    "support": 6,
+    "collection": 12,
+    "whole_team": 12
+   },
+   "rule_errors": 9,
+   "rule_misread_legal": 0,
+   "pressure_days": 5,
+   "regional_days": 2
+  },
+  {
+   "group": "B",
+   "size": 6,
+   "seed": 3,
+   "personas": [
+    "B24",
+    "B33",
+    "B21",
+    "B27",
+    "B35",
+    "B30"
+   ],
+   "scripted": false,
+   "leader": "B21",
+   "leader_agreement": 0.5,
+   "victory": true,
+   "nights": 5,
+   "expeditions": 5,
+   "emergencies": 0,
+   "hero_wounds": 5,
+   "incapacitated": 1,
+   "food": {
+    "start": 24,
+    "end": 11
+   },
+   "water": {
+    "start": 24,
+    "end": 32
+   },
+   "participation": {
+    "B24": 0.352,
+    "B33": 0.266,
+    "B21": 0.117,
+    "B27": 0.188,
+    "B35": 0.078,
+    "B30": 0.0
+   },
+   "conflicts": 60,
+   "conflict_topics": {
+    "adaptive": 6,
+    "cautious": 12,
+    "retreat": 6,
+    "escort": 6,
+    "support": 6,
+    "collection": 12,
+    "whole_team": 12
+   },
+   "rule_errors": 7,
+   "rule_misread_legal": 0,
+   "pressure_days": 5,
+   "regional_days": 3
+  },
+  {
+   "group": "C",
+   "size": 2,
+   "seed": 1,
+   "personas": [
+    "C42",
+    "C55"
+   ],
+   "scripted": false,
+   "leader": "C55",
+   "leader_agreement": 1.0,
+   "victory": false,
+   "nights": 5,
+   "expeditions": 3,
+   "emergencies": 1,
+   "hero_wounds": 6,
+   "incapacitated": 2,
+   "food": {
+    "start": 12,
+    "end": 0
+   },
+   "water": {
+    "start": 12,
+    "end": 0
+   },
+   "participation": {
+    "C42": 0.37,
+    "C55": 0.63
+   },
+   "conflicts": 0,
+   "conflict_topics": {},
+   "rule_errors": 5,
+   "rule_misread_legal": 0,
+   "pressure_days": 5
+  },
+  {
+   "group": "C",
+   "size": 2,
+   "seed": 2,
+   "personas": [
+    "C63",
+    "C48"
+   ],
+   "scripted": false,
+   "leader": "C48",
+   "leader_agreement": 1.0,
+   "victory": false,
+   "nights": 5,
+   "expeditions": 3,
+   "emergencies": 1,
+   "hero_wounds": 6,
+   "incapacitated": 2,
+   "food": {
+    "start": 12,
+    "end": 0
+   },
+   "water": {
+    "start": 12,
+    "end": 0
+   },
+   "participation": {
+    "C63": 0.538,
+    "C48": 0.462
+   },
+   "conflicts": 12,
+   "conflict_topics": {
+    "far_first": 6,
+    "support": 6
+   },
+   "rule_errors": 2,
+   "rule_misread_legal": 0,
+   "pressure_days": 5
+  },
+  {
+   "group": "C",
+   "size": 2,
+   "seed": 3,
+   "personas": [
+    "C55",
+    "C42"
+   ],
+   "scripted": false,
+   "leader": "C55",
+   "leader_agreement": 1.0,
+   "victory": false,
+   "nights": 5,
+   "expeditions": 3,
+   "emergencies": 2,
+   "hero_wounds": 6,
+   "incapacitated": 2,
+   "food": {
+    "start": 8,
+    "end": 0
+   },
+   "water": {
+    "start": 8,
+    "end": 0
+   },
+   "participation": {
+    "C55": 0.522,
+    "C42": 0.478
+   },
+   "conflicts": 0,
+   "conflict_topics": {},
+   "rule_errors": 2,
+   "rule_misread_legal": 0,
+   "pressure_days": 5
+  },
+  {
+   "group": "C",
+   "size": 3,
+   "seed": 1,
+   "personas": [
+    "C55",
+    "C63",
+    "C70"
+   ],
+   "scripted": false,
+   "leader": "C55",
+   "leader_agreement": 0.875,
+   "victory": false,
+   "nights": 5,
+   "expeditions": 5,
+   "emergencies": 1,
+   "hero_wounds": 8,
+   "incapacitated": 2,
+   "food": {
+    "start": 12,
+    "end": 0
+   },
+   "water": {
+    "start": 12,
+    "end": 0
+   },
+   "participation": {
+    "C55": 0.322,
+    "C63": 0.492,
+    "C70": 0.186
+   },
+   "conflicts": 18,
+   "conflict_topics": {
+    "adaptive": 6,
+    "far_first": 6,
+    "support": 6
+   },
+   "rule_errors": 4,
+   "rule_misread_legal": 0,
+   "pressure_days": 5
+  },
+  {
+   "group": "C",
+   "size": 3,
+   "seed": 2,
+   "personas": [
+    "C36",
+    "C63",
+    "C55"
+   ],
+   "scripted": false,
+   "leader": "C36",
+   "leader_agreement": 0.75,
+   "victory": false,
+   "nights": 5,
+   "expeditions": 5,
+   "emergencies": 1,
+   "hero_wounds": 9,
+   "incapacitated": 3,
+   "food": {
+    "start": 12,
+    "end": 0
+   },
+   "water": {
+    "start": 12,
+    "end": 0
+   },
+   "participation": {
+    "C36": 0.322,
+    "C63": 0.492,
+    "C55": 0.186
+   },
+   "conflicts": 18,
+   "conflict_topics": {
+    "far_first": 6,
+    "cautious": 6,
+    "support": 6
+   },
+   "rule_errors": 6,
+   "rule_misread_legal": 0,
+   "pressure_days": 5
+  },
+  {
+   "group": "C",
+   "size": 3,
+   "seed": 3,
+   "personas": [
+    "C42",
+    "C70",
+    "C48"
+   ],
+   "scripted": true,
+   "leader": "C48",
+   "leader_agreement": 0.875,
+   "victory": false,
+   "nights": 3,
+   "expeditions": 3,
+   "emergencies": 1,
+   "hero_wounds": 4,
+   "incapacitated": 1,
+   "food": {
+    "start": 12,
+    "end": 18
+   },
+   "water": {
+    "start": 12,
+    "end": 2
+   },
+   "participation": {
+    "C42": 0.265,
+    "C70": 0.368,
+    "C48": 0.368
+   },
+   "conflicts": 1,
+   "conflict_topics": {
+    "adaptive": 1
+   },
+   "rule_errors": 3,
+   "rule_misread_legal": 0,
+   "pressure_days": 0
+  },
+  {
+   "group": "C",
+   "size": 4,
+   "seed": 1,
+   "personas": [
+    "C42",
+    "C70",
+    "C48",
+    "C36"
+   ],
+   "scripted": false,
+   "leader": "C36",
+   "leader_agreement": 1.0,
+   "victory": false,
+   "nights": 5,
+   "expeditions": 3,
+   "emergencies": 2,
+   "hero_wounds": 12,
+   "incapacitated": 4,
+   "food": {
+    "start": 16,
+    "end": 0
+   },
+   "water": {
+    "start": 16,
+    "end": 0
+   },
+   "participation": {
+    "C42": 0.173,
+    "C70": 0.24,
+    "C48": 0.307,
+    "C36": 0.28
+   },
+   "conflicts": 18,
+   "conflict_topics": {
+    "adaptive": 6,
+    "cautious": 12
+   },
+   "rule_errors": 5,
+   "rule_misread_legal": 0,
+   "pressure_days": 5
+  },
+  {
+   "group": "C",
+   "size": 4,
+   "seed": 2,
+   "personas": [
+    "C48",
+    "C63",
+    "C42",
+    "C70"
+   ],
+   "scripted": false,
+   "leader": "C48",
+   "leader_agreement": 1.0,
+   "victory": false,
+   "nights": 5,
+   "expeditions": 3,
+   "emergencies": 2,
+   "hero_wounds": 12,
+   "incapacitated": 4,
+   "food": {
+    "start": 16,
+    "end": 0
+   },
+   "water": {
+    "start": 16,
+    "end": 0
+   },
+   "participation": {
+    "C48": 0.276,
+    "C63": 0.328,
+    "C42": 0.31,
+    "C70": 0.086
+   },
+   "conflicts": 18,
+   "conflict_topics": {
+    "adaptive": 6,
+    "far_first": 6,
+    "support": 6
+   },
+   "rule_errors": 4,
+   "rule_misread_legal": 0,
+   "pressure_days": 5
+  },
+  {
+   "group": "C",
+   "size": 4,
+   "seed": 3,
+   "personas": [
+    "C55",
+    "C42",
+    "C70",
+    "C48"
+   ],
+   "scripted": false,
+   "leader": "C48",
+   "leader_agreement": 1.0,
+   "victory": false,
+   "nights": 5,
+   "expeditions": 3,
+   "emergencies": 2,
+   "hero_wounds": 12,
+   "incapacitated": 4,
+   "food": {
+    "start": 12,
+    "end": 0
+   },
+   "water": {
+    "start": 12,
+    "end": 0
+   },
+   "participation": {
+    "C55": 0.317,
+    "C42": 0.317,
+    "C70": 0.3,
+    "C48": 0.067
+   },
+   "conflicts": 6,
+   "conflict_topics": {
+    "adaptive": 6
+   },
+   "rule_errors": 6,
+   "rule_misread_legal": 0,
+   "pressure_days": 5
+  },
+  {
+   "group": "C",
+   "size": 5,
+   "seed": 1,
+   "personas": [
+    "C42",
+    "C36",
+    "C48",
+    "C63",
+    "C70"
+   ],
+   "scripted": false,
+   "leader": "C36",
+   "leader_agreement": 0.875,
+   "victory": false,
+   "nights": 5,
+   "expeditions": 3,
+   "emergencies": 2,
+   "hero_wounds": 15,
+   "incapacitated": 5,
+   "food": {
+    "start": 20,
+    "end": 0
+   },
+   "water": {
+    "start": 20,
+    "end": 0
+   },
+   "participation": {
+    "C42": 0.211,
+    "C36": 0.189,
+    "C48": 0.189,
+    "C63": 0.179,
+    "C70": 0.232
+   },
+   "conflicts": 24,
+   "conflict_topics": {
+    "adaptive": 6,
+    "far_first": 6,
+    "cautious": 6,
+    "support": 6
+   },
+   "rule_errors": 5,
+   "rule_misread_legal": 0,
+   "pressure_days": 5
+  },
+  {
+   "group": "C",
+   "size": 5,
+   "seed": 2,
+   "personas": [
+    "C70",
+    "C48",
+    "C55",
+    "C63",
+    "C36"
+   ],
+   "scripted": false,
+   "leader": "C36",
+   "leader_agreement": 0.875,
+   "victory": true,
+   "nights": 5,
+   "expeditions": 4,
+   "emergencies": 0,
+   "hero_wounds": 4,
+   "incapacitated": 0,
+   "food": {
+    "start": 20,
+    "end": 12
+   },
+   "water": {
+    "start": 20,
+    "end": 34
+   },
+   "participation": {
+    "C70": 0.308,
+    "C48": 0.279,
+    "C55": 0.212,
+    "C63": 0.106,
+    "C36": 0.096
+   },
+   "conflicts": 24,
+   "conflict_topics": {
+    "adaptive": 6,
+    "far_first": 6,
+    "cautious": 6,
+    "support": 6
+   },
+   "rule_errors": 7,
+   "rule_misread_legal": 0,
+   "pressure_days": 5,
+   "regional_days": 3
+  },
+  {
+   "group": "C",
+   "size": 5,
+   "seed": 3,
+   "personas": [
+    "C36",
+    "C42",
+    "C63",
+    "C70",
+    "C55"
+   ],
+   "scripted": false,
+   "leader": "C36",
+   "leader_agreement": 0.75,
+   "victory": true,
+   "nights": 5,
+   "expeditions": 4,
+   "emergencies": 0,
+   "hero_wounds": 5,
+   "incapacitated": 1,
+   "food": {
+    "start": 16,
+    "end": 0
+   },
+   "water": {
+    "start": 16,
+    "end": 29
+   },
+   "participation": {
+    "C36": 0.104,
+    "C42": 0.29,
+    "C63": 0.251,
+    "C70": 0.224,
+    "C55": 0.131
+   },
+   "conflicts": 30,
+   "conflict_topics": {
+    "adaptive": 6,
+    "far_first": 6,
+    "cautious": 6,
+    "support": 12
+   },
+   "rule_errors": 9,
+   "rule_misread_legal": 0,
+   "pressure_days": 5,
+   "regional_days": 2
+  },
+  {
+   "group": "C",
+   "size": 6,
+   "seed": 1,
+   "personas": [
+    "C36",
+    "C42",
+    "C48",
+    "C55",
+    "C70",
+    "C63"
+   ],
+   "scripted": false,
+   "leader": "C36",
+   "leader_agreement": 0.875,
+   "victory": false,
+   "nights": 5,
+   "expeditions": 3,
+   "emergencies": 2,
+   "hero_wounds": 18,
+   "incapacitated": 6,
+   "food": {
+    "start": 24,
+    "end": 0
+   },
+   "water": {
+    "start": 24,
+    "end": 0
+   },
+   "participation": {
+    "C36": 0.208,
+    "C42": 0.208,
+    "C48": 0.149,
+    "C55": 0.238,
+    "C70": 0.158,
+    "C63": 0.04
+   },
+   "conflicts": 24,
+   "conflict_topics": {
+    "adaptive": 6,
+    "far_first": 6,
+    "cautious": 6,
+    "support": 6
+   },
+   "rule_errors": 7,
+   "rule_misread_legal": 0,
+   "pressure_days": 5
+  },
+  {
+   "group": "C",
+   "size": 6,
+   "seed": 2,
+   "personas": [
+    "C48",
+    "C63",
+    "C55",
+    "C70",
+    "C36",
+    "C42"
+   ],
+   "scripted": false,
+   "leader": "C36",
+   "leader_agreement": 0.875,
+   "victory": true,
+   "nights": 5,
+   "expeditions": 4,
+   "emergencies": 0,
+   "hero_wounds": 5,
+   "incapacitated": 1,
+   "food": {
+    "start": 24,
+    "end": 4
+   },
+   "water": {
+    "start": 24,
+    "end": 34
+   },
+   "participation": {
+    "C48": 0.269,
+    "C63": 0.345,
+    "C55": 0.126,
+    "C70": 0.176,
+    "C36": 0.084,
+    "C42": 0.0
+   },
+   "conflicts": 24,
+   "conflict_topics": {
+    "adaptive": 6,
+    "far_first": 6,
+    "cautious": 6,
+    "support": 6
+   },
+   "rule_errors": 9,
+   "rule_misread_legal": 0,
+   "pressure_days": 5,
+   "regional_days": 2
+  },
+  {
+   "group": "C",
+   "size": 6,
+   "seed": 3,
+   "personas": [
+    "C70",
+    "C55",
+    "C48",
+    "C36",
+    "C63",
+    "C42"
+   ],
+   "scripted": false,
+   "leader": "C36",
+   "leader_agreement": 0.875,
+   "victory": true,
+   "nights": 5,
+   "expeditions": 5,
+   "emergencies": 0,
+   "hero_wounds": 5,
+   "incapacitated": 1,
+   "food": {
+    "start": 24,
+    "end": 11
+   },
+   "water": {
+    "start": 24,
+    "end": 32
+   },
+   "participation": {
+    "C70": 0.352,
+    "C55": 0.266,
+    "C48": 0.117,
+    "C36": 0.188,
+    "C63": 0.078,
+    "C42": 0.0
+   },
+   "conflicts": 24,
+   "conflict_topics": {
+    "adaptive": 6,
+    "far_first": 6,
+    "cautious": 6,
+    "support": 6
+   },
+   "rule_errors": 9,
+   "rule_misread_legal": 0,
+   "pressure_days": 5,
+   "regional_days": 3
+  },
+  {
+   "group": "mista",
+   "size": 2,
+   "seed": 1,
+   "personas": [
+    "A17",
+    "B35"
+   ],
+   "scripted": false,
+   "leader": "B35",
+   "leader_agreement": 1.0,
+   "victory": false,
+   "nights": 5,
+   "expeditions": 2,
+   "emergencies": 1,
+   "hero_wounds": 6,
+   "incapacitated": 2,
+   "food": {
+    "start": 12,
+    "end": 0
+   },
+   "water": {
+    "start": 12,
+    "end": 0
+   },
+   "participation": {
+    "A17": 0.6,
+    "B35": 0.4
+   },
+   "conflicts": 0,
+   "conflict_topics": {},
+   "rule_errors": 3,
+   "rule_misread_legal": 0,
+   "pressure_days": 5
+  },
+  {
+   "group": "mista",
+   "size": 2,
+   "seed": 2,
+   "personas": [
+    "A17",
+    "B35"
+   ],
+   "scripted": false,
+   "leader": "B35",
+   "leader_agreement": 1.0,
+   "victory": false,
+   "nights": 5,
+   "expeditions": 3,
+   "emergencies": 1,
+   "hero_wounds": 6,
+   "incapacitated": 2,
+   "food": {
+    "start": 12,
+    "end": 0
+   },
+   "water": {
+    "start": 12,
+    "end": 0
+   },
+   "participation": {
+    "A17": 0.538,
+    "B35": 0.462
+   },
+   "conflicts": 0,
+   "conflict_topics": {},
+   "rule_errors": 5,
+   "rule_misread_legal": 0,
+   "pressure_days": 5
+  },
+  {
+   "group": "mista",
+   "size": 2,
+   "seed": 3,
+   "personas": [
+    "A18",
+    "B30"
+   ],
+   "scripted": false,
+   "leader": "A18",
+   "leader_agreement": 1.0,
+   "victory": true,
+   "nights": 5,
+   "expeditions": 4,
+   "emergencies": 0,
+   "hero_wounds": 0,
+   "incapacitated": 0,
+   "food": {
+    "start": 8,
+    "end": 2
+   },
+   "water": {
+    "start": 8,
+    "end": 9
+   },
+   "participation": {
+    "A18": 0.459,
+    "B30": 0.541
+   },
+   "conflicts": 0,
+   "conflict_topics": {},
+   "rule_errors": 3,
+   "rule_misread_legal": 0,
+   "pressure_days": 4,
+   "regional_days": 4
+  },
+  {
+   "group": "mista",
+   "size": 3,
+   "seed": 1,
+   "personas": [
+    "A19",
+    "B24",
+    "C70"
+   ],
+   "scripted": true,
+   "leader": "A19",
+   "leader_agreement": 0.75,
+   "victory": false,
+   "nights": 3,
+   "expeditions": 3,
+   "emergencies": 1,
+   "hero_wounds": 5,
+   "incapacitated": 1,
+   "food": {
+    "start": 12,
+    "end": 15
+   },
+   "water": {
+    "start": 12,
+    "end": 0
+   },
+   "participation": {
+    "A19": 0.241,
+    "B24": 0.373,
+    "C70": 0.386
+   },
+   "conflicts": 6,
+   "conflict_topics": {
+    "cautious": 1,
+    "retreat": 1,
+    "escort": 1,
+    "support": 1,
+    "collection": 1,
+    "whole_team": 1
+   },
+   "rule_errors": 6,
+   "rule_misread_legal": 0,
+   "pressure_days": 0
+  },
+  {
+   "group": "mista",
+   "size": 3,
+   "seed": 2,
+   "personas": [
+    "A17",
+    "B24",
+    "C36"
+   ],
+   "scripted": false,
+   "leader": "C36",
+   "leader_agreement": 0.75,
+   "victory": true,
+   "nights": 5,
+   "expeditions": 5,
+   "emergencies": 0,
+   "hero_wounds": 4,
+   "incapacitated": 0,
+   "food": {
+    "start": 12,
+    "end": 6
+   },
+   "water": {
+    "start": 12,
+    "end": 13
+   },
+   "participation": {
+    "A17": 0.373,
+    "B24": 0.342,
+    "C36": 0.285
+   },
+   "conflicts": 24,
+   "conflict_topics": {
+    "adaptive": 6,
+    "support": 6,
+    "collection": 6,
+    "whole_team": 6
+   },
+   "rule_errors": 8,
+   "rule_misread_legal": 0,
+   "pressure_days": 5,
+   "regional_days": 4
+  },
+  {
+   "group": "mista",
+   "size": 3,
+   "seed": 3,
+   "personas": [
+    "A19",
+    "B33",
+    "C55"
+   ],
+   "scripted": false,
+   "leader": "A19",
+   "leader_agreement": 0.5,
+   "victory": false,
+   "nights": 5,
+   "expeditions": 4,
+   "emergencies": 2,
+   "hero_wounds": 9,
+   "incapacitated": 3,
+   "food": {
+    "start": 12,
+    "end": 0
+   },
+   "water": {
+    "start": 12,
+    "end": 0
+   },
+   "participation": {
+    "A19": 0.265,
+    "B33": 0.342,
+    "C55": 0.393
+   },
+   "conflicts": 24,
+   "conflict_topics": {
+    "adaptive": 6,
+    "retreat": 6,
+    "escort": 6,
+    "support": 6
+   },
+   "rule_errors": 3,
+   "rule_misread_legal": 0,
+   "pressure_days": 5
+  },
+  {
+   "group": "mista",
+   "size": 4,
+   "seed": 1,
+   "personas": [
+    "A18",
+    "B27",
+    "C48",
+    "B30"
+   ],
+   "scripted": false,
+   "leader": "B27",
+   "leader_agreement": 1.0,
+   "victory": false,
+   "nights": 5,
+   "expeditions": 4,
+   "emergencies": 2,
+   "hero_wounds": 12,
+   "incapacitated": 4,
+   "food": {
+    "start": 16,
+    "end": 0
+   },
+   "water": {
+    "start": 16,
+    "end": 0
+   },
+   "participation": {
+    "A18": 0.205,
+    "B27": 0.26,
+    "C48": 0.342,
+    "B30": 0.192
+   },
+   "conflicts": 6,
+   "conflict_topics": {
+    "cautious": 6
+   },
+   "rule_errors": 2,
+   "rule_misread_legal": 0,
+   "pressure_days": 5
+  },
+  {
+   "group": "mista",
+   "size": 4,
+   "seed": 2,
+   "personas": [
+    "A17",
+    "B33",
+    "C42",
+    "C36"
+   ],
+   "scripted": false,
+   "leader": "C36",
+   "leader_agreement": 0.75,
+   "victory": true,
+   "nights": 5,
+   "expeditions": 4,
+   "emergencies": 0,
+   "hero_wounds": 4,
+   "incapacitated": 0,
+   "food": {
+    "start": 16,
+    "end": 0
+   },
+   "water": {
+    "start": 16,
+    "end": 29
+   },
+   "participation": {
+    "A17": 0.275,
+    "B33": 0.265,
+    "C42": 0.22,
+    "C36": 0.24
+   },
+   "conflicts": 12,
+   "conflict_topics": {
+    "support": 6,
+    "whole_team": 6
+   },
+   "rule_errors": 9,
+   "rule_misread_legal": 0,
+   "pressure_days": 5,
+   "regional_days": 2
+  },
+  {
+   "group": "mista",
+   "size": 4,
+   "seed": 3,
+   "personas": [
+    "A18",
+    "B30",
+    "C48",
+    "B35"
+   ],
+   "scripted": false,
+   "leader": "A18",
+   "leader_agreement": 0.875,
+   "victory": false,
+   "nights": 5,
+   "expeditions": 3,
+   "emergencies": 2,
+   "hero_wounds": 12,
+   "incapacitated": 4,
+   "food": {
+    "start": 12,
+    "end": 0
+   },
+   "water": {
+    "start": 12,
+    "end": 0
+   },
+   "participation": {
+    "A18": 0.317,
+    "B30": 0.317,
+    "C48": 0.3,
+    "B35": 0.067
+   },
+   "conflicts": 6,
+   "conflict_topics": {
+    "cautious": 6
+   },
+   "rule_errors": 4,
+   "rule_misread_legal": 0,
+   "pressure_days": 5
+  },
+  {
+   "group": "mista",
+   "size": 5,
+   "seed": 1,
+   "personas": [
+    "A16",
+    "B27",
+    "C70",
+    "C36",
+    "B21"
+   ],
+   "scripted": false,
+   "leader": "B21",
+   "leader_agreement": 0.5,
+   "victory": false,
+   "nights": 5,
+   "expeditions": 3,
+   "emergencies": 2,
+   "hero_wounds": 15,
+   "incapacitated": 5,
+   "food": {
+    "start": 20,
+    "end": 0
+   },
+   "water": {
+    "start": 20,
+    "end": 0
+   },
+   "participation": {
+    "A16": 0.211,
+    "B27": 0.189,
+    "C70": 0.189,
+    "C36": 0.179,
+    "B21": 0.232
+   },
+   "conflicts": 72,
+   "conflict_topics": {
+    "adaptive": 12,
+    "far_first": 6,
+    "cautious": 12,
+    "retreat": 12,
+    "escort": 6,
+    "collection": 12,
+    "whole_team": 12
+   },
+   "rule_errors": 5,
+   "rule_misread_legal": 0,
+   "pressure_days": 5
+  },
+  {
+   "group": "mista",
+   "size": 5,
+   "seed": 2,
+   "personas": [
+    "A16",
+    "B33",
+    "C48",
+    "A13",
+    "A17"
+   ],
+   "scripted": false,
+   "leader": "C48",
+   "leader_agreement": 0.5,
+   "victory": false,
+   "nights": 5,
+   "expeditions": 3,
+   "emergencies": 3,
+   "hero_wounds": 15,
+   "incapacitated": 5,
+   "food": {
+    "start": 20,
+    "end": 0
+   },
+   "water": {
+    "start": 20,
+    "end": 0
+   },
+   "participation": {
+    "A16": 0.188,
+    "B33": 0.261,
+    "C48": 0.145,
+    "A13": 0.043,
+    "A17": 0.362
+   },
+   "conflicts": 48,
+   "conflict_topics": {
+    "adaptive": 12,
+    "far_first": 6,
+    "cautious": 6,
+    "retreat": 6,
+    "collection": 6,
+    "whole_team": 12
+   },
+   "rule_errors": 12,
+   "rule_misread_legal": 0,
+   "pressure_days": 5
+  },
+  {
+   "group": "mista",
+   "size": 5,
+   "seed": 3,
+   "personas": [
+    "A17",
+    "B24",
+    "C55",
+    "A13",
+    "C70"
+   ],
+   "scripted": false,
+   "leader": "A17",
+   "leader_agreement": 1.0,
+   "victory": true,
+   "nights": 5,
+   "expeditions": 4,
+   "emergencies": 0,
+   "hero_wounds": 4,
+   "incapacitated": 0,
+   "food": {
+    "start": 16,
+    "end": 1
+   },
+   "water": {
+    "start": 16,
+    "end": 25
+   },
+   "participation": {
+    "A17": 0.223,
+    "B24": 0.251,
+    "C55": 0.161,
+    "A13": 0.19,
+    "C70": 0.175
+   },
+   "conflicts": 72,
+   "conflict_topics": {
+    "adaptive": 18,
+    "far_first": 6,
+    "cautious": 12,
+    "support": 12,
+    "collection": 12,
+    "whole_team": 12
+   },
+   "rule_errors": 10,
+   "rule_misread_legal": 0,
+   "pressure_days": 5,
+   "regional_days": 2
+  },
+  {
+   "group": "mista",
+   "size": 6,
+   "seed": 1,
+   "personas": [
+    "A15",
+    "B24",
+    "C70",
+    "B33",
+    "C55",
+    "B27"
+   ],
+   "scripted": false,
+   "leader": "A15",
+   "leader_agreement": 0.5,
+   "victory": false,
+   "nights": 5,
+   "expeditions": 3,
+   "emergencies": 2,
+   "hero_wounds": 18,
+   "incapacitated": 6,
+   "food": {
+    "start": 24,
+    "end": 0
+   },
+   "water": {
+    "start": 24,
+    "end": 0
+   },
+   "participation": {
+    "A15": 0.17,
+    "B24": 0.21,
+    "C70": 0.15,
+    "B33": 0.21,
+    "C55": 0.13,
+    "B27": 0.13
+   },
+   "conflicts": 78,
+   "conflict_topics": {
+    "adaptive": 18,
+    "far_first": 6,
+    "cautious": 12,
+    "retreat": 6,
+    "escort": 6,
+    "support": 6,
+    "collection": 12,
+    "whole_team": 12
+   },
+   "rule_errors": 9,
+   "rule_misread_legal": 0,
+   "pressure_days": 5
+  },
+  {
+   "group": "mista",
+   "size": 6,
+   "seed": 2,
+   "personas": [
+    "A15",
+    "B24",
+    "C63",
+    "C55",
+    "B21",
+    "C48"
+   ],
+   "scripted": false,
+   "leader": "B21",
+   "leader_agreement": 0.75,
+   "victory": true,
+   "nights": 5,
+   "expeditions": 4,
+   "emergencies": 0,
+   "hero_wounds": 5,
+   "incapacitated": 1,
+   "food": {
+    "start": 24,
+    "end": 7
+   },
+   "water": {
+    "start": 24,
+    "end": 33
+   },
+   "participation": {
+    "A15": 0.276,
+    "B24": 0.331,
+    "C63": 0.118,
+    "C55": 0.181,
+    "B21": 0.094,
+    "C48": 0.0
+   },
+   "conflicts": 96,
+   "conflict_topics": {
+    "adaptive": 12,
+    "far_first": 12,
+    "cautious": 12,
+    "retreat": 12,
+    "escort": 12,
+    "support": 12,
+    "collection": 12,
+    "whole_team": 12
+   },
+   "rule_errors": 11,
+   "rule_misread_legal": 0,
+   "pressure_days": 5,
+   "regional_days": 3
+  },
+  {
+   "group": "mista",
+   "size": 6,
+   "seed": 3,
+   "personas": [
+    "A16",
+    "B24",
+    "C48",
+    "A18",
+    "C63",
+    "A13"
+   ],
+   "scripted": false,
+   "leader": "A18",
+   "leader_agreement": 1.0,
+   "victory": true,
+   "nights": 5,
+   "expeditions": 5,
+   "emergencies": 0,
+   "hero_wounds": 5,
+   "incapacitated": 1,
+   "food": {
+    "start": 24,
+    "end": 11
+   },
+   "water": {
+    "start": 24,
+    "end": 36
+   },
+   "participation": {
+    "A16": 0.338,
+    "B24": 0.262,
+    "C48": 0.115,
+    "A18": 0.192,
+    "C63": 0.092,
+    "A13": 0.0
+   },
+   "conflicts": 96,
+   "conflict_topics": {
+    "adaptive": 18,
+    "far_first": 18,
+    "cautious": 12,
+    "retreat": 6,
+    "support": 12,
+    "collection": 18,
+    "whole_team": 12
+   },
+   "rule_errors": 10,
+   "rule_misread_legal": 0,
+   "pressure_days": 5,
+   "regional_days": 3
+  }
+ ]
+}
