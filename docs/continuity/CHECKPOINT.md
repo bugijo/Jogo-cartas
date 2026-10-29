@@ -1,3 +1,13 @@
+# Estado ativo — campanha regional multi-dia, 2026-10-29
+
+- Aprovado e registrado no manual: emboscada regional no M1 não consome durabilidade (teste novo).
+- `RegionalCampaignPlayer` (`edicao-integral/regional_campaign_player.py`): uma expedição por dia (Mercado para comida, Estação para pistas Célia→Vicente, cartão após o rádio), rádio decodificado no amanhecer com 2 pistas, descanso quando a equipe não está pronta para a Estação, refeição com prioridade explícita (maior privação primeiro), save/load a cada dia continuando do mundo recarregado, bloqueios registrados sem decidir regra.
+- Replay novo `verify_regional_campaign.py` → `replays/regional_campaign_seed22.json` (determinístico): 6 dias, 3 expedições (2 Mercado, 1 Estação), 10 cartas, 2 emboscadas (1 resolvida, 1 emergência de estrada no relógio 10), 1 pista (Célia), sem rádio; derrota parcial no dia 6 por fome. Replays anteriores inalterados.
+- Achados de design: Mercado é o único local com mapa tático e comida (9 porções para 3 consumidores); Estação a pé com cartas quase nunca cabe no relógio 10; Horta `EXP-LOC-01` não tem mapa. Ver `P2-REGIONAL-FOOD-ECONOMY`.
+- Bloqueios: combustível/veículo (militar), carga levada regional, emergência de estrada com carga única, narrativa/ordem de pistas, economia de comida regional.
+- Verificação: 398 testes, 8 verificadores, varredura, `compileall`, `git diff --check`.
+- Próximo passo seguro: medir a campanha regional partindo de outras vitórias legais da Cisterna (adaptativo, sementes de ajuste) para separar sorte da seed 22 de limite de design.
+
 # Estado ativo — controlador regional com Viagem e emboscadas, 2026-10-28
 
 - `AdaptiveRegionalPlayer.run_expedition` resolve cartas de Viagem pendentes (opção disponível sem carga levada) e Emboscadas no M1 (segura Z1, ataca com dados do RNG persistido do mundo, aceita emergência de estrada sem tempo). Só age com `World.regional_travel_cards=True`.

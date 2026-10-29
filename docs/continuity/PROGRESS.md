@@ -1,3 +1,8 @@
+# 2026-10-29 — campanha regional multi-dia
+
+- Commit `9a2f629`: `RegionalCampaignPlayer`, verificador `verify_regional_campaign.py` + artefato, 8 testes novos (7 de campanha, 1 de durabilidade), `check.sh full` com o novo verificador; decisão de durabilidade registrada no manual.
+- Resultado seed 22: 6 dias jogados, 1 pista, derrota parcial por fome no dia 6 (ver checkpoint).
+
 # 2026-10-26 — correção de fontes e reconciliação ativa
 
 ## Continuação — refeições e rota pré-rádio (HEAD local inicial `794749a`)

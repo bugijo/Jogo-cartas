@@ -1,7 +1,7 @@
 {
  "schema": 1,
  "branch": "evolucao/zona-zero-sistema-v1",
- "updated_at": "2026-10-28",
+ "updated_at": "2026-10-29",
  "tasks": [
   {
    "id": "P0-EXPEDITION-COMPLETE",
@@ -272,7 +272,45 @@
    ],
    "status": "controlador_integrado",
    "commit": null,
-   "blocker": "AdaptiveRegionalPlayer resolve cartas e emboscadas (dados do RNG do mundo); replay verify_regional_travel.py (seed22: Emboscada na ida, Ajuda recusada na volta, retorno no relógio 5). Pendentes: aprovação da durabilidade; emergência de estrada com carga única/veículo; carga levada regional."
+   "blocker": "AdaptiveRegionalPlayer resolve cartas e emboscadas (dados do RNG do mundo); replay verify_regional_travel.py (seed22: Emboscada na ida, Ajuda recusada na volta, retorno no relógio 5). Durabilidade não consumida (aprovado 2026-10-29). Pendentes: emergência de estrada com carga única/veículo; carga levada regional."
+  },
+  {
+   "id": "P1-REGIONAL-MULTIDAY-CAMPAIGN",
+   "priority": 1,
+   "objective": "Controlador regional joga vários dias seguidos: expedições sucessivas, Viagem/Emboscadas, refeições, fadiga/descanso, fim de dia, save/load diário, pistas e rádio, bloqueios registrados.",
+   "depends_on": [
+    "P1-REGIONAL-AMBUSH"
+   ],
+   "acceptance": [
+    "uma expedição por dia",
+    "refeição explícita",
+    "save/load a cada dia",
+    "sem recurso inventado",
+    "bloqueios registrados"
+   ],
+   "tests": [
+    "edicao-integral/tests/test_regional_campaign.py",
+    "edicao-integral/verify_regional_campaign.py"
+   ],
+   "status": "implementado",
+   "commit": "9a2f629",
+   "blocker": "Seed 22: 6 dias, 3 expedições, 1 pista (Célia); derrota parcial no dia 6 por fome. Mercado é o único local com mapa e comida (9 porções alcançáveis para 3 consumidores); Estação a pé com cartas estoura o relógio (emergência de estrada na volta). Militar bloqueado por regra de combustível."
+  },
+  {
+   "id": "P2-REGIONAL-FOOD-ECONOMY",
+   "priority": 2,
+   "objective": "Decidir fonte de comida regional sustentável (Horta EXP-LOC-01 sem mapa tático; renovação urbana; projetos sem madeira) para a campanha não colapsar antes do rádio.",
+   "depends_on": [
+    "P1-REGIONAL-MULTIDAY-CAMPAIGN"
+   ],
+   "acceptance": [
+    "regra aprovada",
+    "replay novo"
+   ],
+   "tests": [],
+   "status": "pendente_decisao",
+   "commit": null,
+   "blocker": "Decisão de design: não criar comida sem regra aprovada."
   }
  ]
 }
