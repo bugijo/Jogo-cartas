@@ -310,9 +310,9 @@
    "tests": [
     "edicao-integral/simulate_regional_campaign.py"
    ],
-   "status": "pendente_decisao",
+   "status": "h1_implementada",
    "commit": null,
-   "blocker": "Filtro implementado (4f13ced); real 0/52. Horta §61: alternativas em edicao-integral/HORTA_CONTINUITY.md, aguardando escolha (H1 construir na Cisterna e migrar recomendado)."
+   "blocker": "H1 escolhida e implementada (7f19a5e); ver P1-REGIONAL-GARDEN-H1."
   },
   {
    "id": "P1-REGIONAL-FILTER-CONTINUITY",
@@ -347,6 +347,28 @@
    "status": "auditado",
    "commit": null,
    "blocker": "Sem reserva experimental da Oficina, o militar é inalcançável (faltam 2–8). Decisões 1–6 em TACTICAL_FUEL_AUDIT.md."
+  },
+  {
+   "id": "P1-REGIONAL-GARDEN-H1",
+   "priority": 1,
+   "objective": "Horta §61 construída na Cisterna e migrada ao regional (H1, aprovada).",
+   "depends_on": [
+    "P2-REGIONAL-FOOD-ECONOMY"
+   ],
+   "acceptance": [
+    "Sementes só por acolhimento legal",
+    "custos §61",
+    "migração só com Horta ativa",
+    "replays certificados intactos",
+    "medição real"
+   ],
+   "tests": [
+    "edicao-integral/tests/test_garden_continuity.py",
+    "edicao-integral/simulate_regional_campaign.py --garden"
+   ],
+   "status": "implementado_bloqueado",
+   "commit": "7f19a5e",
+   "blocker": "Real: 4 Hortas com vitória; regional 0 sobrevivem. Decidir camas para os 3 acolhidos (16 migrações recusadas) e depósito cheio de água (colheita não cabe)."
   }
  ]
 }

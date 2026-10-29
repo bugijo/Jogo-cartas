@@ -1,6 +1,49 @@
-# Horta entre a Cisterna e a campanha regional — investigação (2026-10-29)
+# Horta entre a Cisterna e a campanha regional (2026-10-29)
 
-Nada aqui foi implementado. A Horta não é criada automaticamente.
+## Resultado real da H1 (escolhida pelo responsável; commit `7f19a5e`)
+
+Medição H2–H6, sementes 1–30 (sementes de ajuste), `auto_settings`.
+
+Variantes do controlador da Cisterna (só ações legais; nada criado):
+
+| Variante | Vitórias | Acolheram | Horta pronta | Vitória + Horta ativa |
+|---|---|---|---|---|
+| Base (sem Horta) | 52 | 0 | 0 | 0 |
+| Ingênua (troca dias de comida, repete idas) | 19 | 41 | 5 | 3 |
+| **A: só dia livre, 1 ida (padrão do modo)** | **53** | 31 | 4 | **4** |
+| B: dia livre ou de comida, 1 ida | 29 | 41 | 3 | 2 |
+| C: A + só se já suprido até a noite 5 | 53 | 31 | 4 | 4 |
+| D: dia de comida, até 2 idas | 19 | 41 | 5 | 3 |
+| E: A sem buscar Material | 48 | 36 | 0 | 0 |
+
+A perde 3 vitórias da base (H2 s30, H3 s20, H6 s16) e ganha 4 (H4 s8 e s26,
+H5 s13 e s26). Hortas com vitória: H4 s20, H5 s10, H5 s16, H6 s10. As derrotas da
+ingênua vinham de emergências no Condomínio (96) que deixavam o filtro sem
+trabalhadores aptos.
+
+Campanha regional (`replays/regional_campaign_garden_sweep.json`, 15 dias):
+
+| | Base | H1 |
+|---|---|---|
+| Vitórias da Cisterna | 52 | 53 |
+| Migração recusada | 0 | 16 |
+| Migram com Horta | — | 2 |
+| Sobrevivem 15 dias | 0 | 0 |
+| Comida colhida no regional (total) | — | 1 |
+
+Protótipo anterior (Horta pronta + filtro, sem os bloqueios abaixo): 31/53. A
+diferença vem de dois bloqueios reais, **pendentes de decisão**:
+
+1. **Camas regionais.** Acolher o grupo (3 humanos) faz o censo exceder as camas
+   do abrigo regional: "Capacidade excedida" em 16 migrações (2 das 4 Hortas).
+2. **Depósito cheio de água.** O depósito regional (30) chega com 27–28 água
+   (migração + filtro a cada amanhecer); a colheita antes da refeição não cabe
+   (0 ou 1 de 4). Opções: colher depois da refeição; permitir descarte
+   voluntário de água; aumentar o depósito por estrutura migrada.
+
+Sem uma dessas decisões a H1 não muda o resultado regional.
+
+## Investigação anterior
 
 ## Fatos levantados
 
@@ -34,4 +77,4 @@ campanhas sobrevivem 15 dias.
 3. Controlador adaptativo: incluir o Condomínio quando sobrar dia e Material (opcional, medido em 1–30 e validado em 91–120).
 4. Migração: `continuity_garden` (ativa, trabalhador exigido), produção diária no regional pelo depósito, opcional como o filtro.
 
-Decisão pendente do responsável: escolher H1, H2 (com as regras que faltam) ou H4.
+Decisão do responsável (2026-10-29): H1. Resultado no topo deste arquivo.

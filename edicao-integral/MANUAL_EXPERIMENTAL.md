@@ -52,6 +52,22 @@ aprovação.
   contínua e a medição ligam. Testes: `tests/test_continuity_filter.py`.
 - Não modelado: dano ao filtro no regional (crises/cercos regionais não o atingem).
 
+### Horta §61 construída na Cisterna e migrada — H1 (aprovada em 2026-10-29)
+- Acolher `ZC-MOR-0006` no O2 do Condomínio entrega 1 Sementes como carga 1 do
+  herói, se houver espaço (texto da carta); a carga só chega com retorno legal.
+- Na Cisterna: reserva no amanhecer de terreno (8 + barracas extras), 2 Materiais
+  e Sementes recebidas em dia anterior; 2 trabalhos concluem; a partir do dia
+  seguinte um trabalhador (herói ou adulto apto) colhe 4 comida na fase de
+  trabalhos. Cerco que danifica a Horta a desativa.
+- Migra como `continuity_garden` só pronta e ativa; no regional, um herói ou
+  adulto designado no amanhecer colhe 4 comida antes da refeição, pelo depósito
+  (o que não cabe não é criado). Herói designado não sai em expedição.
+- Leituras do motor: limite de 2 trabalhos/dia **por projeto** (RULES l.24), à
+  parte do filtro; "Material encontrado hoje só reservável amanhã" não é checado
+  (mesma leitura já usada nas etapas do filtro); reparo da Horta não modelado.
+- Controlador: `CampaignPlayer02.garden` (desligado por padrão). Testes:
+  `tests/test_garden_continuity.py`. Resultado e bloqueios em `HORTA_CONTINUITY.md`.
+
 ## Decisões anteriores do responsável
 
 - Lote de mantimentos indivisível: `ceil(C/4)` cartas por lote, retirado
@@ -100,7 +116,10 @@ transporte regional. Desligado por padrão para preservar os replays registrados
 ## Ainda sem regra aprovada (não decidir silenciosamente)
 
 - Economia de comida regional: só o Mercado tem mapa tático e comida (4 buscas
-  × 2). Horta §61 entre capítulos: alternativas em `HORTA_CONTINUITY.md`.
+  × 2). Horta H1 implementada, mas dois bloqueios dependem de decisão
+  (`HORTA_CONTINUITY.md`): (1) os 3 acolhidos excedem as camas regionais e a
+  migração é recusada; (2) o depósito regional chega cheio de água e a colheita
+  não cabe (ordem colheita × refeição, ou descarte voluntário de água).
 - Pista coletada antes de emergência local/de estrada é mantida (comportamento
   atual do motor: pista não é carga). Confirmar se as anotações físicas deveriam
   ser perdidas como carga.

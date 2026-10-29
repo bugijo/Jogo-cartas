@@ -1,3 +1,12 @@
+# Horta H1 — resultado real, 2026-10-29
+
+Motor e controlador (`7f19a5e`), H2–H6, sementes 1–30. Cisterna: variante A
+53 vitórias (base 52), 4 com Horta pronta. Regional (15 dias): 16 migrações
+recusadas por camas (base 0), 2 migram com Horta, **0 sobrevivem**, colheita
+total 1 comida porque o depósito chega cheio de água. Diferente do protótipo
+B+D (31/53), que não tinha esses limites. Tabelas em
+`edicao-integral/HORTA_CONTINUITY.md`.
+
 # Campanha regional com filtro contínuo — resultado real, 2026-10-29
 
 Filtro implementado no motor (decisão aprovada). Medição real (`simulate_regional_campaign.py`,

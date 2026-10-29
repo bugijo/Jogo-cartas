@@ -1,3 +1,10 @@
+# Estado ativo — Horta H1 implementada e medida, 2026-10-29
+
+- `7f19a5e`: Sementes ao acolher `ZC-MOR-0006`, projeto Horta §61 na Cisterna, migração `continuity_garden` e colheita regional com trabalhador. Modo `garden` do controlador é opcional; seed 22 segue 98 decisões; replays certificados intactos (campos vazios da Horta fora do digest).
+- Real (H2–H6, 1–30): variante A dá 53 vitórias (base 52; perde 3, ganha 4) e 4 Hortas com vitória. Regional: 16 migrações recusadas por camas; 2 migram com Horta; 0 sobrevivem 15 dias; colheita total 1 comida.
+- **Bloqueios para decisão:** camas regionais para os 3 acolhidos; depósito regional cheio de água impede a colheita. Detalhes em `edicao-integral/HORTA_CONTINUITY.md`.
+- `check.sh full` verde: suíte, verificadores e `simulate_regional_campaign.py --garden` (novo no full).
+
 # Estado ativo — filtro contínuo e investigação da Horta, 2026-10-29
 
 - Filtro da Cisterna produz C água por amanhecer no regional (`4f13ced`), pelo depósito, opcional via `regional_filter_production` (replays certificados intactos). 408 testes, 9 verificadores.
