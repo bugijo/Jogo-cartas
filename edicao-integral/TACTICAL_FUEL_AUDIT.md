@@ -1,5 +1,43 @@
 # Auditoria independente: expedição 0.2, Posto e transição
 
+## Auditoria regional de combustível e veículo — 2026-10-29
+
+Sem alteração de custos, sem abastecimento novo. Estado do motor no HEAD
+`144144f`; medição sobre as 52 vitórias da Cisterna (H2–H6, sementes 1–30).
+
+### Cadeia até a Instalação militar (`EXP-LOC-06`)
+
+| Passo | Motor regional | Situação |
+|---|---|---|
+| Migração: combustível | `fuel = nº de cartas físicas da Cisterna` | **0 em 52/52** (o controlador da Cisterna não visita o Posto). |
+| Migração: van | `vehicle_archived = van_state`; `world.vehicles` fica vazio | `abandoned` em 52/52. **Lacuna:** uma van 0.2 operacional seria só arquivada (não vira veículo regional). |
+| Bateria | Oficina `medium=2`, `pickup_unique_item` 1 PA na zona 7 | Volta como carga única; Emboscada com emergência e carga única → `NotImplementedError` (não modelado). |
+| Posto: combustível | 8 cartas, 1 PA cada, zona 7 (O1), finitas | Única fonte canônica: **8**. |
+| Posto: van | inspeção 1 PA; reparo 2 PA + Bateria + d6+Técnica ≥ 6, uma tentativa por herói/visita | 11 PA no total com as cartas; cabe em ~4 rodadas com 3 PA/herói, sujeito ao relógio. |
+| Retorno de van | cobra `segment_cost × 2 = 4` da carga | **Diverge** de CAMPAIGN (voltar do Posto custa 2). |
+| Militar | `open_expedition` cobra `2 × 3 × 2 = 12` do estoque; exige rádio, cartão, acesso | `far=3` e 12 são hipóteses experimentais (`EXP-MIS-104`). |
+| Controlador | recusa `vehicle_id` na ida; aceita voltar de van do Posto | Ida de veículo + cartas de Viagem com veículo não modeladas (emergência de estrada recusa). |
+| Furgão `EXP-VEI-01` | `recover_vehicle` na Oficina, 1 por trecho | Sem fonte canônica (dado experimental). Não usar sem aprovação. |
+| Reserva da Oficina (+8) | `salvage_fuel_cache` | Conteúdo **criado nesta branch**, não canônico. Tratado aqui como abastecimento artificial: fora do saldo legal. |
+
+### Saldo com fontes canônicas apenas (sem reserva da Oficina)
+
+| Leitura do retorno do Posto | Sobra após voltar | Militar 12 (`far=3`) | Militar 8 (rota longa §5) |
+|---|---:|---:|---:|
+| Motor atual (`medium=2` → 4) | 4 | falta 8 | falta 4 |
+| CAMPAIGN (voltar custa 2) | 6 | falta 6 | falta 2 |
+
+Conclusão: **sem a reserva experimental, nenhuma leitura documentada alcança a
+Instalação militar.** Com a reserva, o motor fecha em exatamente 12 (margem 0).
+
+### Decisões pendentes (não decididas aqui)
+1. Custo do retorno de van do Posto no regional: 4 (motor) ou 2 (CAMPAIGN).
+2. Distância/custo militar: `far=3` → 12, ou rota longa §5 → 8.
+3. Manter, retirar ou aprovar a reserva experimental da Oficina (+8).
+4. Projeção da van 0.2 operacional na migração (hoje se perde).
+5. Emergência de estrada com veículo ou carga única (Bateria, cartão).
+6. Ida de veículo com cartas de Viagem regionais.
+
 ## Estado corrigido do texto canônico (2026-10-26)
 
 `RULES.md §11, linha 64` define a van a **2 combustíveis por trecho**;

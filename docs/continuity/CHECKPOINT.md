@@ -3,7 +3,7 @@
 - Filtro da Cisterna produz C água por amanhecer no regional (`4f13ced`), pelo depósito, opcional via `regional_filter_production` (replays certificados intactos). 408 testes, 9 verificadores.
 - Medição real com filtro: 0/52 sobrevivem (fome em 3–5 dias). Protótipos separados no `PLAYTEST_REPORT.md`.
 - Horta: Sementes só ao acolher `ZC-MOR-0006` no Condomínio (não implementado); vitórias terminam com 0–1 Material; motor 0.2 não constrói projetos. Alternativas H1–H4 em `edicao-integral/HORTA_CONTINUITY.md`. **Bloqueio: decisão do responsável.**
-- Próximo: auditoria de combustível e veículo regional (sem mudar custos).
+- Auditoria de combustível/veículo (`edicao-integral/TACTICAL_FUEL_AUDIT.md`, topo): migração traz 0 combustível e van abandonada em 52/52; só o Posto (8) é fonte canônica; sem a reserva experimental da Oficina nenhuma leitura alcança o militar (faltam 2–8). Seis decisões pendentes listadas; nenhum custo alterado.
 
 # Estado ativo — opções de comida regional medidas, 2026-10-29
 

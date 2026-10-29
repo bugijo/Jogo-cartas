@@ -344,9 +344,9 @@
     "bloqueios"
    ],
    "tests": [],
-   "status": "em_andamento",
+   "status": "auditado",
    "commit": null,
-   "blocker": null
+   "blocker": "Sem reserva experimental da Oficina, o militar é inalcançável (faltam 2–8). Decisões 1–6 em TACTICAL_FUEL_AUDIT.md."
   }
  ]
 }
