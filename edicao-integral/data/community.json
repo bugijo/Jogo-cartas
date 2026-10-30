@@ -90,8 +90,15 @@
  "levels": {"normal": {"start_structures": []},
             "acolhedor": {"start_structures": ["canteiro"], "evacuation_food_per_consumer": 2}},
  "location_renew_every": {"EXP-LOC-01": 2},
+ "weapon_maintenance": {"scrap": 1, "per_hero_per_day": 1},
+ "final_defense_waves": {
+  "2": [["slow"], ["runner"], ["slow", "slow"]],
+  "3": [["slow", "slow"], ["runner"], ["brute"]],
+  "4": [["slow", "slow"], ["runner", "slow"], ["brute"]],
+  "5": [["slow", "slow", "slow"], ["runner", "slow", "slow"], ["brute"]],
+  "6": [["slow", "slow", "slow", "slow"], ["runner", "slow", "slow"], ["brute", "slow"]]},
  "vehicles": {"route_trechos": {"near": 1, "medium": 1, "far": 2},
-              "truck_tank": {"location": "EXP-LOC-07", "zone": 14, "fuel": 4, "actions": 1}},
+              "truck_tank": {"location": "EXP-LOC-07", "zone": 14, "fuel": 6, "actions": 1}},
  "arrival": {"max_hero_health": 2},
  "morale": {"on": true, "unfed_per_drop": 0, "recover": 1},
  "water_tanks": {"base": 30, "per_reservoir": 12}

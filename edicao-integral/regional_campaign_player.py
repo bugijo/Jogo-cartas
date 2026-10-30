@@ -11,14 +11,18 @@ from __future__ import annotations
 import tempfile
 from pathlib import Path
 
+import community
 from arc2 import Arc2
 from integrated_campaign import IntegratedCampaign
 from regional_player import AdaptiveRegionalPlayer
-from system import LOCATIONS, REGIONAL_CONTACTS
+from system import ITEMS, LOCATIONS, REGIONAL_CONTACTS, VEHICLES
 
 MARKET = 'EXP-LOC-02'
 STATION = 'EXP-LOC-05'
 GARDEN_EDGE = 'EXP-LOC-01'
+POSTO = 'EXP-LOC-07'
+MILITARY = 'EXP-LOC-06'
+VAN = 'EXP-VEI-02'
 # Local de comida → (mapa tático, zonas de busca). A Horta abandonada só existe
 # na edição integral (regras Comunidade); os replays certificados não a veem.
 FOOD_SITES = {MARKET: ('market_intro', (5, 12)), GARDEN_EDGE: ('garden_edge_01', (6, 11))}
@@ -97,11 +101,132 @@ class RegionalCampaignPlayer:
                         [{'kind': 'search', 'zone': 5}, {'kind': 'access_card'}])
             self._block(world, 'access_card_no_search_left',
                         'Cartão exige busca na Estação e as buscas acabaram')
+        if (world.flags.get('radio_code') and world.flags.get('access_card')
+                and 'access_card' in world.special_stock):
+            ending = self.endgame(world)
+            if ending:
+                return ending
         if world.flags.get('radio_code') and world.flags.get('access_card'):
+            if world.final_defense is not None:
+                return ('rest', None, None, None)
+            if world.community is not None:
+                self._block(world, 'endgame_stalled',
+                            'Fim de campanha sem passo legal (bateria perdida, '
+                            'combustível esgotado ou cartão fora do abrigo)')
+                return ('rest', None, None, None)
             self._block(world, 'military_fuel_rule_pending',
                         'Instalação militar exige veículo e combustível regional '
                         '(regra pendente de aprovação)')
         return ('rest', None, None, None)
+
+    def endgame(self, world):
+        """Edição integral (D-22): bateria → van no Posto → Instalação → defesa."""
+        if world.community is None or world.final_defense is not None:
+            return None  # a defesa final acontece uma vez (vencida ou perdida)
+        if 'transmitter' in world.special_stock:
+            alive = [s for s in world.heroes.values() if s['health'] > 0]
+            ready = all(s['location'] == 'camp' and s['health'] >= 2
+                        and s.get('fatigue', 0) == 0 and not s.get('hungry') for s in alive)
+            self.maintain_weapons(world)
+            if not ready:  # a defesa é uma só: esperar a equipe descansada
+                self._kind = None
+                return ('rest', None, None, None)
+            self._kind = 'defense'
+            return ('defense', None, None, None)
+        van = world.vehicles.get(VAN)
+        posto = world.site_states.get(POSTO, {})
+        taken = {int(card.rsplit(':', 1)[-1]) for card in posto.get('fuel_cards_taken', [])}
+        fuel = [{'kind': 'fuel', 'zone': 7, 'lot': lot} for lot in range(1, 9)
+                if lot not in taken][:world.searches[POSTO]]
+        if not world.flags.get('truck_tank_drained'):
+            fuel.append({'kind': 'truck_tank', 'zone': 14})
+        # Visitas curtas ao Posto (o relógio e a horda crescem a cada rodada):
+        # com o conserto, só 2 cartas (o bastante para voltar dirigindo); a
+        # pé, até 3 itens, tanque primeiro (rende 4).
+        cards = [o for o in fuel if o['kind'] == 'fuel']
+        tank = [o for o in fuel if o['kind'] == 'truck_tank']
+        short = (tank + cards)[:3]
+        if not (van and van['location'] == 'camp' and van['health'] > 0):
+            if (van and van['location'] == POSTO and van['health'] > 0
+                    and posto.get('van_state') == 'operational'):
+                if not short:
+                    return None
+                self._kind = 'van'  # consertada antes: buscar combustível e voltar dirigindo
+                return ('van', POSTO, 'gas_station_02', short)
+            if 'battery' not in world.special_stock:
+                if 'battery' in world.unique_items_at_sites.get('EXP-LOC-03', []):
+                    self._kind = 'battery'
+                    return ('battery', 'EXP-LOC-03', 'workshop_02',
+                            [{'kind': 'battery', 'zone': 7}])
+                return None
+            self._kind = 'van'
+            return ('van', POSTO, 'gas_station_02',
+                    [{'kind': 'inspect_van', 'zone': 7}, {'kind': 'repair_van', 'zone': 7}]
+                    + cards[:2])
+        need = (2 * community.vehicle_trechos(world, LOCATIONS[MILITARY]['distance'])
+                * VEHICLES[VAN]['fuel_per_segment'])
+        if world.stock['fuel'] < need:
+            if not fuel:
+                return None
+            self._kind = 'fuel'
+            return ('fuel', POSTO, 'gas_station_02', short)
+        self._kind = 'military'
+        return ('military', MILITARY, 'military_installation',
+                [{'kind': 'transmitter', 'zone': 6}])
+
+    @staticmethod
+    def maintain_weapons(world):
+        """Véspera da defesa: 1 sucata por arma gasta, a mais gasta primeiro."""
+        worn = sorted((item['durability'], hero, iid)
+                      for hero, gear in sorted(world.gear.items())
+                      if world.heroes[hero]['health'] > 0
+                      for iid, item in sorted(gear.items())
+                      if item['slot'] == 'hand' and ITEMS[item['template']].get('combat')
+                      and item['durability'] < ITEMS[item['template']]['durability'])
+        done = set()
+        for _, hero, iid in worn:
+            if hero in done or world.stock['scrap'] < 1:
+                continue
+            try:
+                community.maintain_weapon(world, hero, iid)
+                done.add(hero)
+            except ValueError:
+                continue
+
+    def run_defense(self, world):
+        """Defesa final no abrigo: atacar o mais próximo ao alcance, senão segurar Z1."""
+        arc = Arc2(world)
+        arc.final_defense()
+        for _ in range(40):
+            defense = world.final_defense
+            if defense['status'] != 'active':
+                break
+            for hero in sorted(defense['heroes']):
+                state = world.heroes[hero]
+                weapons = [iid for iid, item in sorted(world.gear[hero].items())
+                           if item['slot'] == 'hand' and item['durability'] > 0
+                           and ITEMS[item['template']].get('combat')]
+                while state['health'] > 0 and state['actions'] > 0 and defense['enemies']:
+                    zone = defense['heroes'][hero]
+                    target = None
+                    for iid in weapons:
+                        if world.gear[hero][iid]['durability'] < 1:
+                            continue
+                        reach = ITEMS[world.gear[hero][iid]['template']]['combat'].get('range', 1)
+                        near = [(arc._distance(zone, e['zone']), eid)
+                                for eid, e in sorted(defense['enemies'].items())]
+                        near = [pair for pair in near if pair[0] <= reach]
+                        if near:
+                            target = (iid, min(near)[1])
+                            break
+                    if target:
+                        arc.defense_attack(hero, *target)
+                    elif zone < 4 and weapons:
+                        arc.defense_move(hero, zone + 1)
+                    else:
+                        break
+            arc.defense_activate()
+        return dict(world.final_defense)
 
     def _block(self, world, code, reason):
         if not any(row['code'] == code for row in self.blockers):
@@ -157,7 +282,8 @@ class RegionalCampaignPlayer:
         if kind != 'rest' and not team:
             kind = 'rest'
             record['rest_reason'] = 'sem herói apto (fadiga 3 ou ferido)'
-        elif kind in ('clue', 'access_card') and not self.ready_for_far(world, team):
+        elif (kind in ('clue', 'access_card', 'military', 'battery', 'van', 'fuel')
+              and not self.ready_for_far(world, team)):
             # Estação é longe: só sai com a equipe inteira descansada e curada.
             kind = 'rest'
             record['rest_reason'] = 'recuperar ferimentos/fadiga antes da Estação'
@@ -175,12 +301,21 @@ class RegionalCampaignPlayer:
         if camp:
             record['camp'] = camp
         record['plan'] = kind
-        if kind != 'rest':
+        if kind == 'defense':
+            record['defense'] = self.run_defense(world)
+        elif kind != 'rest':
             expedition_id = f'campaign-day{world.day}-{kind}'
             player = AdaptiveRegionalPlayer('explorer' if kind == 'supply' else 'stealth')
+            extra = {}
+            if kind == 'van':
+                extra = {'special_items': [i for i in ('battery',) if i in world.special_stock],
+                         'return_vehicle_id': VAN}
             try:
+                if kind == 'military':
+                    Arc2(world).authorize_installation(expedition_id, team, VAN)
+                    extra = {'opened': True}
                 result = player.run_expedition(world, expedition_id, destination, team,
-                                               map_id, objectives, max_steps=80)
+                                               map_id, objectives, max_steps=80, **extra)
             except NotImplementedError as exc:
                 self._block(world, 'road_emergency_with_unique_cargo', str(exc))
                 record['result'] = 'blocked_rule'
@@ -272,8 +407,11 @@ class StrategicRegionalPlayer(RegionalCampaignPlayer):
                 and hero not in world.worked_today]
 
     def team(self, world):
-        if self._kind in ('clue', 'access_card'):
+        if self._kind in ('clue', 'access_card', 'military', 'battery', 'van', 'fuel'):
             return self.far_team(world)
+        if self._kind == 'defense':
+            return [h for h, s in sorted(world.heroes.items())
+                    if s['location'] == 'camp' and s['health'] > 0]
         return RegionalCampaignPlayer.team(world)
 
     def ready_for_far(self, world, team):

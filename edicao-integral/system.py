@@ -1682,6 +1682,21 @@ class World:
             self.flags['military_access']=False
 
         lost_cargo=dict(exp.cargo)
+        if (lost_cargo.get('fuel') and destination=='EXP-LOC-07'
+                and self.community is not None):
+            # Edição integral (D-22): o combustível largado na fuga fica no chão do
+            # Posto e volta a ser carta para buscar (até as 8 cartas do local).
+            taken=site.get('fuel_cards_taken',[])
+            back=min(lost_cargo['fuel'],len(taken))
+            del taken[len(taken)-back:]
+            self.searches[destination]=min(LOCATIONS[destination]['searches'],
+                                           self.searches[destination]+back)
+            rest=lost_cargo['fuel']-back
+            if rest and self.flags.get('truck_tank_drained'):
+                # o resto volta ao tanque do caminhão, na quantidade largada
+                self.flags['truck_tank_drained']=False
+                site['truck_tank_fuel']=rest
+            site['fuel_dropped']=lost_cargo['fuel']
         followers=set(stranded)
         for hero_id in exp.heroes:
             state=self.heroes[hero_id]

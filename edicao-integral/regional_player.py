@@ -144,6 +144,13 @@ class AdaptiveRegionalPlayer:
         if kind=='repair_van' and tactical.state.get('van_state')=='operational':
             self.completed.add(key)
             return True
+        if kind=='truck_tank' and tactical.world.flags.get('truck_tank_drained'):
+            self.completed.add(key)
+            return True
+        if kind=='transmitter' and 'transmitter' in tactical.world.expeditions[
+                tactical.id].special_cargo:
+            self.completed.add(key)
+            return True
         return False
 
     @staticmethod
@@ -163,10 +170,19 @@ class AdaptiveRegionalPlayer:
 
     def _goal(self, tactical, objective):
         kind=objective.get('kind')
-        if kind in ('zone','search','battery','fuel','fuel_cache','inspect_van','repair_van'):
+        if kind in ('zone','search','battery','fuel','fuel_cache','inspect_van','repair_van',
+                    'truck_tank','transmitter'):
             if objective['zone'] not in tactical.map['zones']:
                 return []
             destination=tactical.world.expeditions[tactical.id].destination
+            if kind=='truck_tank' and (destination!='EXP-LOC-07'
+                                       or tactical.world.community is None
+                                       or tactical.world.flags.get('truck_tank_drained')):
+                return []
+            if kind=='transmitter' and (destination!='EXP-LOC-06'
+                                        or 'transmitter' in tactical.world.expeditions[
+                                            tactical.id].special_cargo):
+                return []
             if kind=='search' and (objective['zone'] not in tactical.state['search_zones']
                                    or tactical.world.searches[destination]<1):
                 return []
@@ -336,6 +352,14 @@ class AdaptiveRegionalPlayer:
             if result['success']:
                 self.completed.add(self._key(tactical,objective))
             return {'action':'repair_van','hero':hero_id,'result':result}
+        if kind=='truck_tank':
+            result=tactical.drain_truck_tank(hero_id)
+            self.completed.add(self._key(tactical,objective))
+            return {'action':'drain_truck_tank','hero':hero_id,'result':result}
+        if kind=='transmitter':
+            Arc2(tactical.world).load_transmitter(tactical.id)
+            self.completed.add(self._key(tactical,objective))
+            return {'action':'load_transmitter','hero':hero_id}
         raise ValueError(f'Objetivo regional sem ação: {kind}')
 
     @staticmethod
@@ -656,7 +680,7 @@ class AdaptiveRegionalPlayer:
 
     def run_expedition(self, world, expedition_id, destination, team, map_id,
                        objective, max_steps=100, vehicle_id=None,
-                       special_items=None, return_vehicle_id=None):
+                       special_items=None, return_vehicle_id=None, opened=False):
         """Joga uma expedição regional a pé, incluindo ida, mapa e retorno.
 
         Viagens por cartas e direção de veículos ficam fora deste executor
@@ -672,8 +696,9 @@ class AdaptiveRegionalPlayer:
                 or (map_data.get('location') and map_data['location']!=destination)
                 or (destination=='EXP-LOC-06' and map_id!='military_installation')):
             raise ValueError('Mapa incompatível com a expedição regional')
-        world.open_expedition(expedition_id,team,destination,
-                              special_items=special_items or [])
+        if not opened:  # `opened`: a autorização militar (EXP-MIS-104) já abriu de van
+            world.open_expedition(expedition_id,team,destination,
+                                  special_items=special_items or [])
         outbound=[]
         while world.expeditions[expedition_id].remaining>0:
             outbound.append(self._advance(world,expedition_id))

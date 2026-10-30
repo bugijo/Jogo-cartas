@@ -373,10 +373,10 @@ class CommunityTests(unittest.TestCase):
             migrated(level='facil')
 
     # --- combustível e van na edição integral (D-21) -----------------------------
-    def _at_posto(self, expedition_id='posto'):
+    def _at_posto(self, expedition_id='posto', size=1):
         world = self.world
         hero = sorted(world.heroes)[0]
-        world.open_expedition(expedition_id, [hero], 'EXP-LOC-07')
+        world.open_expedition(expedition_id, sorted(world.heroes)[:size], 'EXP-LOC-07')
         while world.expeditions[expedition_id].remaining:
             world.advance_expedition(expedition_id)
         return world, hero
@@ -400,14 +400,55 @@ class CommunityTests(unittest.TestCase):
         self.assertEqual(world.stock['fuel'], 0)                       # 2 × 2 trechos × 2
         self.assertEqual(world.expeditions['military'].segment_cost, 2)
 
-    def test_posto_truck_tank_gives_four_fuel_once(self):
+    def test_posto_truck_tank_gives_six_fuel_once(self):
         world, hero = self._at_posto()
         tactical = TacticalGame.start(world, 'posto', 'gas_station_02')
         tactical.state['heroes'][hero] = 14
         receipt = tactical.drain_truck_tank(hero)
-        self.assertEqual((receipt['fuel'], world.expeditions['posto'].cargo['fuel']), (4, 4))
+        self.assertEqual((receipt['fuel'], world.expeditions['posto'].cargo['fuel']), (6, 6))
         with self.assertRaises(ValueError):
             tactical.drain_truck_tank(hero)
+
+    # --- fim de campanha (D-22) ---------------------------------------------------
+    def test_weapon_maintenance_costs_one_scrap_once_per_hero_per_day(self):
+        world = self.world
+        hero = sorted(world.heroes)[0]
+        iid, item = next((i, g) for i, g in world.gear[hero].items() if g['slot'] == 'hand')
+        item['durability'] = 1
+        world.stock['scrap'] = 2
+        community.maintain_weapon(world, hero, iid)
+        self.assertEqual((item['durability'], world.stock['scrap']), (5, 1))
+        item['durability'] = 1
+        with self.assertRaises(ValueError):            # uma por herói por dia
+            community.maintain_weapon(world, hero, iid)
+
+    def test_final_defense_scales_waves_skips_travellers_and_opens_a_round(self):
+        world = self.world
+        world.flags.update(radio_code=True, access_card=True, military_access=True)
+        world.special_stock += ['access_card', 'transmitter']
+        heroes = sorted(world.heroes)
+        for hero in heroes:
+            world.heroes[hero]['actions'] = 0
+        community.send_trip(world, heroes[0], 'coleta', 1)
+        defense = Arc2(world).final_defense()
+        self.assertNotIn(heroes[0], defense['heroes'])
+        defenders = len(defense['heroes'])
+        self.assertEqual(sorted(e['kind'] for e in defense['enemies'].values()),
+                         sorted(community.defense_waves(world, defenders)[0]))
+        self.assertTrue(all(world.heroes[h]['actions'] > 0 for h in defense['heroes']))
+
+    def test_fuel_dropped_in_posto_emergency_goes_back_to_the_floor(self):
+        world, hero = self._at_posto(size=2)               # carga 12: carta + tanque
+        tactical = TacticalGame.start(world, 'posto', 'gas_station_02')
+        tactical.state['heroes'][hero] = 7
+        tactical.pickup_fuel_card(hero, 1)
+        tactical.state['heroes'][hero] = 14
+        tactical.drain_truck_tank(hero)
+        searches = world.searches['EXP-LOC-07']
+        tactical.emergency_return('teste: fuga com combustível')
+        self.assertEqual(world.searches['EXP-LOC-07'], searches + 1)   # a carta volta
+        self.assertFalse(world.flags['truck_tank_drained'])            # o resto, ao tanque
+        self.assertEqual(world.site_states['EXP-LOC-07']['truck_tank_fuel'], 6)
 
     def test_dog_joins_trip_adds_bonus_and_eats_from_it(self):
         world = self.world

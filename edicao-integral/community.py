@@ -761,6 +761,46 @@ def vehicle_trechos(world, distance: str) -> int | None:
     return RULES['vehicles']['route_trechos'][distance]
 
 
+def maintain_weapon(world, hero_id: str, instance_id: str) -> dict:
+    """Manutenção (D-22): no amanhecer, herói no abrigo gasta 1 sucata e a arma
+    de mão volta à durabilidade máxima. Uma por herói por dia."""
+    _require_dawn(world)
+    rule = RULES['weapon_maintenance']
+    hero = world.heroes.get(hero_id)
+    item = (world.gear.get(hero_id) or {}).get(instance_id)
+    done = [r for r in world.log if r.get('action') == 'maintain_weapon'
+            and r.get('day') == world.day and r.get('hero') == hero_id]
+    if (hero is None or hero['location'] != 'camp' or hero_id in away(world)
+            or item is None or item['slot'] != 'hand'
+            or len(done) >= rule['per_hero_per_day']):
+        raise ValueError('Manutenção indisponível')
+    top = world_items()[item['template']]['durability']
+    if item['durability'] >= top:
+        raise ValueError('Arma já está inteira')
+    if world.stock['scrap'] < rule['scrap']:
+        raise ValueError('Sem sucata para a manutenção')
+    world.stock['scrap'] -= rule['scrap']
+    before, item['durability'] = item['durability'], top
+    row = {'day': world.day, 'action': 'maintain_weapon', 'hero': hero_id,
+           'item': instance_id, 'durability': [before, top]}
+    world.log.append(row)
+    return row
+
+
+def world_items() -> dict:
+    from system import ITEMS  # evita import circular (system importa community)
+    return ITEMS
+
+
+def defense_waves(world, defenders: int) -> list | None:
+    """Ondas da defesa final pelo número de heróis que defendem (D-22)."""
+    if world.community is None:
+        return None
+    table = RULES['final_defense_waves']
+    key = str(min(max(defenders, int(min(table))), int(max(table))))
+    return table[key]
+
+
 def crowded(world) -> bool:
     return world.community is not None and world.residents > world.beds
 

@@ -229,6 +229,15 @@ def run_one(args):
                                  if r.get('action') == 'arrival_accepted'),
         'arrivals_refused': sum(r.get('action') == 'arrival_refused' for r in world.log),
         'crowded_nights': sum(bool((row.get('community') or {}).get('crowded')) for row in nights),
+        # D-22: até onde o fim de campanha chegou
+        'endgame': ('venceu_defesa' if (world.final_defense or {}).get('status') == 'won'
+                    else 'perdeu_defesa' if (world.final_defense or {}).get('status') == 'lost'
+                    else 'transmissor' if 'transmitter' in world.special_stock
+                    else 'instalacao' if world.flags.get('military_access')
+                    else 'van' if (world.vehicles.get('EXP-VEI-02') or {}).get('location') == 'camp'
+                    else 'bateria' if 'battery' in world.special_stock
+                    else 'cartao' if 'access_card' in world.special_stock
+                    else 'radio' if world.flags.get('radio_code') else 'inicio'),
     }
 
 
@@ -264,6 +273,7 @@ def summarize(rows):
             'by_size': {s: f"{sum(r['outcome']=='survived' for r in migrated if r['size']==s)}/"
                            f"{sum(r['size']==s for r in migrated)}" for s in SIZES},
             'blockers': dict(Counter(b for r in migrated for b in r['blockers'])),
+            'endgame': dict(Counter(r.get('endgame') for r in migrated)),
         }
     return out
 
@@ -273,6 +283,7 @@ def main():
     parser.add_argument('--seeds', default='1-30')
     parser.add_argument('--configs', default='BASE,STRAT,COMM')
     parser.add_argument('--jobs', type=int, default=6)
+    parser.add_argument('--days', type=int, default=DAYS, help='horizonte regional (padrão 15)')
     parser.add_argument('--reps', type=int, default=1,
                         help='repetições do regional por fim de Cisterna (dados novos)')
     parser.add_argument('--json')
@@ -280,6 +291,7 @@ def main():
     first, last = map(int, args.seeds.split('-'))
     if last >= 91:
         raise SystemExit('Sementes 91–120 reservadas para a validação cega final')
+    globals()['DAYS'] = args.days  # os processos do Pool herdam no fork
     tasks = [(c, s, seed, rep) for c in args.configs.split(',') for s in SIZES
              for seed in range(first, last + 1) for rep in range(args.reps)]
     with Pool(args.jobs) as pool:

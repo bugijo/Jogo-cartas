@@ -444,14 +444,16 @@ class TacticalGame:
                 or self.world.heroes[hero_id]['health']<1
                 or self.world.heroes[hero_id]['actions']<tank['actions']):
             raise ValueError('Tanque do caminhão indisponível ou fora do O2')
+        amount=self.world.site_states.get(tank['location'],{}).get('truck_tank_fuel',
+                                                                   tank['fuel'])
         capacity=(VEHICLES[exp.vehicle_id]['cargo_capacity'] if exp.vehicle_id
                   else 6*len(exp.heroes))
-        if sum(exp.cargo.values())+len(exp.special_cargo)+tank['fuel']>capacity:
+        if sum(exp.cargo.values())+len(exp.special_cargo)+amount>capacity:
             raise ValueError('Carga sem espaço para o combustível do tanque')
         self.world.heroes[hero_id]['actions']-=tank['actions']
         self.world.flags['truck_tank_drained']=True
-        exp.cargo['fuel']=exp.cargo.get('fuel',0)+tank['fuel']
-        receipt={'hero':hero_id,'zone':tank['zone'],'fuel':tank['fuel'],
+        exp.cargo['fuel']=exp.cargo.get('fuel',0)+amount
+        receipt={'hero':hero_id,'zone':tank['zone'],'fuel':amount,
                  'cargo_fuel':exp.cargo['fuel']}
         self.world.log.append({'day':self.world.day,'expedition':self.id,
                                'action':'drain_truck_tank',**receipt})

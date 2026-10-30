@@ -3,6 +3,7 @@ import json
 from collections import deque
 from pathlib import Path
 
+import community as community_rules
 from system import DATA, ITEMS, LOCATIONS, TACTICS_DATA, VEHICLES, World
 
 ARC_DATA=json.loads((Path(__file__).parent/'data/last_transmission.json').read_text(encoding='utf-8'))
@@ -161,10 +162,14 @@ class Arc2:
                            ('radio_code','access_card','military_access'))
                 or not any(h['health']>0 for h in w.heroes.values())):
             raise ValueError('Defesa final indisponível')
+        away=community_rules.away(w)  # quem está em viagem automática não defende
         w.final_defense={'status':'active','map':'camp_final','integrity':3,'wave':1,
-                         'heroes':{h:1 for h,state in w.heroes.items() if state['health']>0},
+                         'heroes':{h:1 for h,state in w.heroes.items()
+                                   if state['health']>0 and h not in away},
                          'enemies':{},'next_enemy':1,'round':0}
         self._spawn_wave()
+        if w.community is not None:
+            w.begin_round()  # D-22: a defesa abre rodada nova, como a entrada num mapa
         w.log.append({'day':w.day,'mission':'EXP-MIS-106','result':'started'})
         return w.final_defense
 
@@ -176,8 +181,9 @@ class Arc2:
 
     def _spawn_wave(self) -> None:
         defense=self._active_defense()
-        spec=ARC_DATA['final_defense']
-        for kind in spec['waves'][defense['wave']-1]:
+        waves=(community_rules.defense_waves(self.world,len(defense['heroes']))
+               or ARC_DATA['final_defense']['waves'])
+        for kind in waves[defense['wave']-1]:
             eid=f"E{defense['next_enemy']:03d}"
             defense['next_enemy']+=1
             defense['enemies'][eid]={'kind':kind,'zone':4,
@@ -226,7 +232,8 @@ class Arc2:
 
     def defense_activate(self) -> dict:
         defense=self._active_defense()
-        waves=ARC_DATA['final_defense']['waves']
+        waves=(community_rules.defense_waves(self.world,len(defense['heroes']))
+               or ARC_DATA['final_defense']['waves'])
         if not defense['enemies']:
             if defense['wave']==len(waves):
                 defense['status']='won'
