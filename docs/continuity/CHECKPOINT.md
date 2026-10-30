@@ -1,3 +1,10 @@
+# Estado ativo — fase mecânica publicada; direção artística, 2026-10-30
+
+- Push autorizado feito (fast-forward): `origin/evolucao/zona-zero-sistema-v1` = `a041a67` (38 commits; `check.sh full` verde, 523 testes, seed 22 certificada). Sem force push, sem tocar na main, sem release.
+- Direção artística iniciada fora do repositório: o proprietário leva `edicao-integral/PACOTE_DIRECAO_ARTE.md` e `edicao-integral/INVENTARIO_DIRECAO_ARTE.md` (gerado por `tools/art_inventory.py`) ao ChatGPT para 4 propostas. Nenhuma arte definitiva até a escolha.
+- Pendências mantidas: fome nas sobreviventes 10–13% (meta 10%); validação cega 91–120 (D-12, uma vez, depois de congelar; não usar antes); playtest humano (D-13); D-09/D-10/D-11 depois da direção escolhida.
+- Retomada: ler este bloco e `DIRECTOR_QUEUE.md` (D-33 aguarda a escolha do proprietário).
+
 # Estado ativo — Integração total das mecânicas (D-23..D-32), 2026-10-30
 
 - Acampamento em lotes (`edicao-integral/camp.py`, `data/community.json#camp`): grade 2×2→3×3→4×4 (9+ humanos chegam no 3×3), barracas em lotes, família com barraca, estoque por categoria, horta por lotes (2 porções, chuva 4–6), Crise 0–10 (único colapso), ração de obra, 5 cartas de conhecimento, profissões fundidas, prazo do dia 25, Vigia/guardas na defesa. Modelo abstrato anterior: `camp.on=false`.

@@ -89,7 +89,9 @@ precisa de frente "pronta" e verso "em obra".
 | Tabuleiros | painel do acampamento (2 folhas A4), tabuleiro de lotes (A4 retrato), entorno, 9 mapas táticos | `print/` |
 | Marcadores | trilhas (8), limite (2), Crise (1), cubos de obra (6), peões (12), viajantes (6), armadilhas (2) | inventário |
 
-Lista por identificador: `data/print_inventory.json` (decks, peças, tabuleiros).
+Lista por identificador: `INVENTARIO_DIRECAO_ARTE.md` (heróis, sobreviventes,
+inimigos, cartas por família e nome, peças e mapas; gerado por
+`tools/art_inventory.py`) e `data/print_inventory.json`.
 
 ## 8. Elementos visuais a representar
 

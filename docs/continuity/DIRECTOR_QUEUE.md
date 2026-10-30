@@ -38,3 +38,5 @@ cujas dependências estejam `concluída`. Não replanejar do zero.
 | D-30 | Painel e tabuleiro do acampamento funcionais (sem arte) | D-26 | board_games + grafico | concluída | `print/painel_abrigo.pdf`, `print/tabuleiro_acampamento.pdf`, manifesto |
 | D-31 | Inventário técnico de componentes | D-30 | card_games | concluída | `data/print_inventory.json` (peças de lote, conhecimento) |
 | D-32 | Pacote de transição para direção artística | D-31, D-28 | narrativa + grafico | concluída | `edicao-integral/PACOTE_DIRECAO_ARTE.md` |
+| D-33 | Direção artística: proprietário + ChatGPT comparam 4 propostas a partir do pacote; depois nomes definitivos, descrição visual por carta e layout | D-32 | proprietário | bloqueada | aguarda a escolha; sem arte definitiva antes dela |
+| D-34 | Ajuste fino da fome nas sobreviventes (10–13% contra meta 10%) sem recurso grátis | D-28 | economia | pendente | medir só em 1–30/31–90; 91–120 reservadas para D-12 |
