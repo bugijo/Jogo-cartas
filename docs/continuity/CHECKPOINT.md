@@ -1,3 +1,8 @@
+# Estado ativo — D-19 lacunas táticas, 2026-10-30
+
+- Regra do diretor: cartão de acesso caído fica no local da falha; nova expedição o recolhe com 1 PA numa zona de busca, sem nova busca, sem duplicar. 0 erros de motor em 10.800 partidas.
+- Próximas: D-08 (tabuleiros, painel do abrigo, mapa da Horta abandonada), D-09, D-10, D-11. Commits locais, sem push; 91–120 intactas.
+
 # Estado ativo — D-15 Horta abandonada e D-18 preparação Acolhedor, 2026-10-30
 
 - Mapa tático `garden_edge_01` (EXP-LOC-01; renova 1 busca a cada 2 noites na edição integral). 1–30: 38/53 (72%), T2 22/38; 31–90: 95/138 (69%), T2 64/95; fome 3,6–5,0%. Descanso 65% → 44–46%.

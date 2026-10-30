@@ -261,6 +261,7 @@ Código `community.py`; testes `tests/test_community.py`.
 | Mapa tático de comida além do Mercado | Fila D-08 (conteúdo) | dias de Mercado já caem para ~12% |
 | Escala por tamanho (D-17) | Travessia (Vida máx. 2 na chegada) + Moral da escassez; abrigo nunca vazio | 31–90: H2–H6 57–77% (antes 29–95%); fome nas sobreviventes 7,8% |
 | Ameaça noturna por tamanho e limite de colapso | Rejeitados (testados no ciclo 9) | H6 seguia 88–93%; mais dados e vigias na mesa sem ganho |
+| Cartão de acesso caído (D-19) | fica no chão do local onde a expedição falhou; nova expedição ao local o recolhe com 1 PA de herói vivo numa zona de busca (mesma carga); sem nova busca; nunca duplica | lacuna de regra travava o controlador; 0 erros em 10.800 partidas depois |
 | Horta abandonada (D-15) | mapa tático novo; renova 1 busca a cada 2 noites | todas as noites: sobreviventes confortáveis demais (T2 41%); a cada 2: T2 58–67%, descanso 65% → 44% |
 | Preparação Acolhedor (D-18) | canteiro pronto + 2 rações/consumidor, opcional | grupo A de personas 16 → 31/53; B/C ≤ 74%; como padrão tiraria a pressão (T2 32%) |
 | Crescimento do abrigo (D-20) | 2 chegadas (dias 4 e 10), recusa Moral −1; terreno para obras da Comunidade; cerca; níveis 2 de Depósito e Alojamento | acolher, recusar ou lotar dão 61–64% (31–90): dilema sem estratégia dominante; 4 chegadas derrubavam H6 a 26% |
@@ -269,16 +270,10 @@ Código `community.py`; testes `tests/test_community.py`.
 
 
 
-- Economia de comida regional: só o Mercado tem mapa tático e comida (4 buscas
-  × 2). Horta H1 implementada, mas dois bloqueios dependem de decisão
-  (`HORTA_CONTINUITY.md`): (1) os 3 acolhidos excedem as camas regionais e a
-  migração é recusada (opções em `HORTA_CONTINUITY.md`); (2) depósito cheio:
-  resolvido pelo descarte voluntário acima.
-- Fome em rodízio (balanceamento, não bug): pela RULES l.49 o ferimento só vem
-  na 2ª noite seguida de privação; comendo em noites alternadas a sequência fica
-  em 1. Assim 4 comida/dia sustentam 10–11 consumidores por 15 dias com 6–7
-  porções faltando toda noite. Avaliar se a sobrevivência regional deve exigir
-  mais que isso.
+- *Resolvido na edição integral (Comunidade):* economia de comida regional
+  (viagens, canteiro, Horta abandonada com mapa — D-15), camas na migração
+  (lotação +2) e fome em rodízio (Moral da escassez — D-17). Sem a Comunidade o
+  comportamento certificado continua o descrito em `HORTA_CONTINUITY.md`.
 - Pista coletada antes de emergência local/de estrada é mantida (comportamento
   atual do motor: pista não é carga). Confirmar se as anotações físicas deveriam
   ser perdidas como carga.
