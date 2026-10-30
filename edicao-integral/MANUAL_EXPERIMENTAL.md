@@ -157,7 +157,62 @@ ficam idênticos (`regional_camp = None`).
 Testes: `tests/test_regional_camp.py`. Medição: `ECONOMY_EXPERIMENTS.md`
 (ciclos 10–13) e `CAMP_GROWTH.md`.
 
+## Comunidade (Missão Mestre, aprovada em princípio em 2026-10-30)
+
+Princípios aprovados pelo criador; números provisórios em `data/community.json`
+(`COMUNIDADE_BALANCEAMENTO.md`). Liga por campanha na migração
+(`transition_to_last_transmission(community=True)`); desligada, nada muda.
+Código `community.py`; testes `tests/test_community.py`.
+
+- **Trabalhadores**: adultos migrados e especialistas sem trabalho fixo
+  trabalham sem supervisão; uma função por dia (cozinhar, obra, cuidar,
+  vigiar, armadilha, Horta ou viagem). Heróis podem pegar trabalhos do
+  acampamento quando não saem na expedição tática.
+- **Profissões** (11, baralho de profissões; especialistas EXP-NPC usam a
+  sua): +1 no D6 da atividade compatível; agricultor +1 comida na Horta;
+  cozinheiro +1 carne por cozimento; carpinteiro +1 trabalho de obra;
+  enfermeiro cuida de 2; guarda evita a crise com 3+ (demais 4+). Profissão
+  não impede outra atividade, só não dá o bônus.
+- **Bagagem** (D6 ao resgatar): nada / 1 comida / 1 comida + 1 água /
+  2 comida / 1 madeira + 1 sucata / 1 remédio + 1 comida.
+- **Viagem automática** (só não heróis): escolhe pessoa, atividade e 1–3
+  dias; leva até 1 comida + 1 água por dia (é a refeição dela: fora, não come
+  no abrigo); volta no amanhecer de partida + dias. Rendimento = (D6 + bônus)
+  × dias − 1 por dia sem ração; unidades = pontos ÷ fator, até 6 de carga e
+  até a reserva do entorno. Fatores: caça 4 (carne), pesca 2 (comida),
+  lenha 2 (madeira), coleta 2 (frutas), sucata 3, água 1 (bruta). Cartas
+  (baralho de 12): 1 por viagem, +1 com 3 dias, +1 em caça/sucata. Tranquila
+  ×3, abundância (+D6 pontos), descoberta (+1 sucata), chuva (−2 pontos),
+  atraso (volta 1 dia depois, sem ração), ferimento, perda (metade da carga),
+  equipamento (−1 sucata do abrigo ou −1 unidade), zumbis (D6: 1–2 ferimento e
+  metade; 3–4 −1 unidade), pista (+1 pista, uma vez por campanha).
+- **Entorno finito**: caça 6 (+1/dia), peixe 8 (+2), madeira 12 (+1),
+  frutas 10 (+2), sucata das ruínas 6 (sem reposição). Floresta, rio e
+  ruínas são zonas de trabalho automático, não mapas táticos.
+- **Comida**: carne crua dura 2 noites; cozinhar (1 carne por trabalho) dá
+  **4 porções** com 1 madeira ou com a Cozinha, 2 porções improvisadas.
+  Frutas: 1 comida cada e +1 água a cada 2. Água bruta precisa do filtro, do
+  Reservatório ou de 1 madeira a cada 3.
+- **Água em tanques**: 30 (+12 com Reservatório), fora do depósito seco
+  (30): água não ocupa o lugar da comida.
+- **Coletor de chuva** (1 madeira + 1 sucata, 1 trabalho): D6 no amanhecer,
+  4–5 = 2 água, 6 = 4 água, máximo 4. **Cozinha** (2 madeira + 1 sucata,
+  2 trabalhos). **Armadilhas** (1 madeira, até 2): D6 no amanhecer, 5–6 = 1
+  carne da reserva de caça, 1 = quebra. Obras EXP-BLD também aceitam
+  trabalhadores.
+- **Camas**: até 2 moradores além das camas (inclusive na migração); com o
+  abrigo lotado ninguém recupera Vida pelo descanso (§25), a fadiga sim.
+- **Recursos iniciais dos heróis**: na chegada ao regional, cada herói rola
+  a tabela de bagagem uma vez. *Leitura do motor* (a Cisterna não muda):
+  confirmar se é isso que o criador quis.
+
 ## Ainda sem regra aprovada (não decidir silenciosamente)
+
+- Comunidade — decisões pendentes (medidas em `COMUNIDADE_BALANCEAMENTO.md`):
+  heróis em viagens automáticas (hoje proibido); ração-ponte G na chegada;
+  custo de 1 ponto por dia sem ração (era 2); penalidade do abrigo lotado;
+  serraria e bancadas (sem regra escrita); conservação longa de carne.
+
 
 - Economia de comida regional: só o Mercado tem mapa tático e comida (4 buscas
   × 2). Horta H1 implementada, mas dois bloqueios dependem de decisão

@@ -1,3 +1,10 @@
+# Estado ativo — Comunidade (Missão Mestre), 2026-10-30
+
+- `0c1bb06`: `community.py` + `data/community.json` (provisório) + `community_player.py`; opt-in na migração (`community=True`); desligado, replays certificados idênticos. 480 testes; seed 22 98 decisões.
+- Implementado: trabalhadores sem heróis (1 função/dia), 11 profissões, viagens automáticas D6 × dias com cartas e ração, entorno finito (floresta/rio/ruínas), carne = 4 porções, frutas, água bruta, coletor de chuva, cozinha, armadilhas, tanques de água separados, abrigo lotado +2, bagagem e kits dos heróis (leitura a confirmar).
+- Medição (`COMUNIDADE_BALANCEAMENTO.md`): 1–30 COMM 3/53 sobrevivem (base 2/37, 16 recusas → 0); 31–90 7/138 (base 0/107). Com heróis em viagem + G: 11/53 e 13/138. **T1/T3 falham.** Matriz e % em `REFERENCIA_ZONA_ZERO.md` (86,1%).
+- Decisões do criador: heróis em viagens, G, mapa de comida além do Mercado, penalidade do lotado, serraria/bancadas. Sementes 91–120 intactas.
+
 # Estado ativo — acampamento regional (F, G, C2, D) e personas no regional, 2026-10-30
 
 - Push fast-forward dos 9 commits (`c8e9f47..8d36bbe`); ramo principal intacto (`9c38aa5`).

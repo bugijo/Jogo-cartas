@@ -447,6 +447,26 @@
    ],
    "status": "concluida",
    "notes": "876922f; 600 mesas em 1–30; sem artefato gravado."
+  },
+  {
+   "id": "P1-COMUNIDADE",
+   "priority": 1,
+   "objective": "Missão Mestre: trabalhadores, profissões, viagens automáticas, recursos naturais, camas e armazenamento.",
+   "depends_on": [
+    "P2-PERSONAS-REGIONAL"
+   ],
+   "acceptance": [
+    "regras documentadas e rastreadas",
+    "opt-in sem alterar replays certificados",
+    "testes por mecânica",
+    "simulação antes × depois em 1–30 e 31–90"
+   ],
+   "tests": [
+    "edicao-integral/tests/test_community.py",
+    "edicao-integral/experiments/community_economy.py --seeds 1-30"
+   ],
+   "status": "parcial",
+   "notes": "0c1bb06; 86,1% pela matriz; metas T1/T3 não cumpridas; decisões do criador pendentes."
   }
  ]
 }

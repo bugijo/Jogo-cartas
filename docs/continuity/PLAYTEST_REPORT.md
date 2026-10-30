@@ -1,3 +1,15 @@
+# Comunidade (Missão Mestre) — simulação, 2026-10-30
+
+Simulação automatizada, não playtest. `experiments/community_economy.py`; H2–H6, 15 dias.
+
+| Cenário | 1–30 sobrevivem | 31–90 sobrevivem | Fome nas sobreviventes (1–30) |
+|---|---|---|---|
+| Base publicada | 2/37 (16 recusas) | 0/107 (31 recusas) | 62% |
+| Comunidade (aprovada) | 3/53 | 7/138 | 36% |
+| + heróis em viagem + G (não aprovados) | 11/53 | 13/138 | 21% |
+
+Detalhes e decisões: `edicao-integral/COMUNIDADE_BALANCEAMENTO.md`.
+
 # Acampamento regional e personas no regional — simulação, 2026-10-30
 
 F+G+C2+D: 3/37 (1–30) e 18/107 (31–90); falta de comida 21–28% nas sobreviventes

@@ -1,5 +1,6 @@
 # 2026-10-29 — campanha regional multi-dia
 
+- 2026-10-30: Comunidade (Missão Mestre) implementada opt-in; 1–30 3/53 e 31–90 7/138 sobrevivem; recusas por cama zeradas; T1/T3 falham (`COMUNIDADE_BALANCEAMENTO.md`).
 - 2026-10-30: F aprovada no motor; G, C2, D em protótipo; personas no regional; ciclos 10–13 sem cumprir T1/T3/T5; materiais em `CAMP_GROWTH.md`.
 - 2026-10-30: controlador estratégico + ciclos C/D/F/G/E; E cumpre 4/5 metas no ajuste, falha T3; acampamento sem madeira (`ECONOMY_EXPERIMENTS.md`).
 - Fase 6 economia: alvos pré-registrados; recompensa e Horta não movem a sobrevivência; reposição do Mercado move, mas por rodízio (`ECONOMY_EXPERIMENTS.md`).
