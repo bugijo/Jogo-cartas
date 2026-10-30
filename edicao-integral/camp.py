@@ -59,6 +59,10 @@ def new_camp(world, ready_horta: int = 0) -> dict:
              'horta_ready': {}, 'crisis': 0, 'deficit_prev': False, 'knowledge': [],
              'rain': False}
     world.community['camp'] = state
+    # Grupo grande limpa mais terra na chegada: nível inicial pelo número de humanos.
+    for level, humans in sorted(RULES['start_level_humans'].items()):
+        if _humans(world) >= humans:
+            state['level'] = max(state['level'], int(level))
     people = -(-_humans(world) // RULES['start_tent_people'])
     state['tents']['barraca'] = people
     pitch_tents(world)

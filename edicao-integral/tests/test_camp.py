@@ -44,6 +44,7 @@ class CampTests(unittest.TestCase):
     # --- grade e barracas ---------------------------------------------------------
     def test_clearing_starts_two_by_two_with_core_and_tents(self):
         world, state = self.world, self.state
+        self.assertLess(world.residents, camp.RULES['start_level_humans']['2'])
         self.assertEqual(state['level'], 1)
         self.assertEqual(camp.open_lots(world), ['r1c1', 'r1c2', 'r2c1', 'r2c2'])
         tents = camp.built(world, 'barraca')
@@ -59,6 +60,11 @@ class CampTests(unittest.TestCase):
         self.assertEqual(state['level'], 2)
         self.assertEqual(camp.built(world, 'horta'), 2)
         self.assertEqual(len(camp.ready_horta(world)), 2)
+
+    def test_large_group_arrives_with_the_three_by_three_cleared(self):
+        world = migrated(2, 5, lots=True).world   # 12 humanos
+        self.assertGreaterEqual(world.residents, camp.RULES['start_level_humans']['2'])
+        self.assertEqual(world.community['camp']['level'], 2)
 
     def test_lot_categories_and_stacked_tents(self):
         world = self.world

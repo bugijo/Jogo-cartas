@@ -139,11 +139,20 @@ class CommunityRegionalPlayer(CampRegionalPlayer):
             wishes = [k for k in wishes if k not in blocked]
         return [k for k in wishes if k not in state['projects']]
 
+    CAMP_BUILD_ORDER = ('storage', 'watch', 'workshop', 'infirmary', 'reservoir', 'lodging')
+
     def _build(self, world, team):
-        """Em lotes: obra EXP-BLD só quando a Comunidade não espera madeira."""
-        if (world.community is not None and camp.on(world) and not world.projects
-                and (world.community['projects'] or self._camp_wishes(world))):
-            return {}
+        """Em lotes: obra EXP-BLD só quando a Comunidade não espera madeira;
+        Depósito e Vigia primeiro (estoque e defesa final)."""
+        if world.community is not None and camp.on(world):
+            if not world.projects and (world.community['projects']
+                                       or self._camp_wishes(world)):
+                return {}
+            order, self.BUILD_ORDER = self.BUILD_ORDER, self.CAMP_BUILD_ORDER
+            try:
+                return super()._build(world, team)
+            finally:
+                self.BUILD_ORDER = order
         return super()._build(world, team)
 
     def _wood_target(self, world):

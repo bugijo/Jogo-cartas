@@ -46,6 +46,8 @@ CAMP = {'COMM-ABS': {'on': False}, 'COMM-ACOLHEDOR-ABS': {'on': False},
         'COMM-CRH': {'crisis': {'small_share': 2, 'repeat': 1}},
         'COMM-CRH2': {'crisis': {'small_share': 2}},
         # D-23: apoio do acampamento na defesa final
+        'COMM-L9': {'start_level_humans': {'2': 9}},
+        'COMM-L10': {'start_level_humans': {'2': 10}},
         'COMM-DEF': {'defense_support': {'on': True}},
         'COMM-DEF-W2': {'defense_support': {'on': True, 'watch': 2}}}
 DAYS = 15
