@@ -1,0 +1,136 @@
+{
+ "painel_abrigo": {
+  "deposito_seco": [
+   30,
+   12,
+   12
+  ],
+  "tanques_agua": [
+   30,
+   12
+  ],
+  "moral": 5,
+  "carne": 6,
+  "carne_noites": 2,
+  "camas": [
+   8,
+   4,
+   4
+  ],
+  "lotacao_extra": 2,
+  "terreno": [
+   7,
+   3,
+   3
+  ],
+  "dias": 15,
+  "chegadas": [
+   4,
+   10
+  ],
+  "chegada_D6": {
+   "1": [
+    "adult"
+   ],
+   "2": [
+    "adult"
+   ],
+   "3": [
+    "adult",
+    "child"
+   ],
+   "4": [
+    "adult",
+    "child"
+   ],
+   "5": [
+    "adult",
+    "adult"
+   ],
+   "6": []
+  },
+  "horta_abandonada_renova": 2
+ },
+ "tabuleiro_entorno": {
+  "reservas": {
+   "caca": [
+    6,
+    6,
+    1
+   ],
+   "peixe": [
+    8,
+    12,
+    3
+   ],
+   "madeira": [
+    12,
+    12,
+    1
+   ],
+   "frutas": [
+    10,
+    12,
+    3
+   ],
+   "sucata": [
+    6,
+    6,
+    0
+   ]
+  },
+  "atividades": {
+   "caca": [
+    4,
+    "meat"
+   ],
+   "pesca": [
+    1,
+    "food"
+   ],
+   "lenha": [
+    2,
+    "wood"
+   ],
+   "coleta": [
+    1,
+    "fruit"
+   ],
+   "sucata": [
+    3,
+    "scrap"
+   ],
+   "agua": [
+    1,
+    "raw_water"
+   ]
+  },
+  "viajantes": 6,
+  "armadilhas": 2,
+  "capacidade_viagem": 6,
+  "baralho_acontecimentos": 12
+ },
+ "montagem_horta_abandonada": {
+  "zonas": 16,
+  "entrada": 1,
+  "surgimento": 16,
+  "buscas": [
+   6,
+   11
+  ],
+  "cercas": [
+   [
+    2,
+    6
+   ],
+   [
+    5,
+    6
+   ]
+  ],
+  "loot": {
+   "food": 2
+  },
+  "buscas_max": 3
+ }
+}

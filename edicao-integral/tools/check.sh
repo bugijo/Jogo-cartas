@@ -40,6 +40,7 @@ case ${1:-} in
     step "simulate_regional_campaign.py --garden" python3 simulate_regional_campaign.py --garden
     step "simulate_virtual_players.py --seeds 1-3" python3 simulate_virtual_players.py --seeds 1-3
     step "card_inventory.py" python3 tools/card_inventory.py
+    step "build_boards_integral.py --check" python3 tools/build_boards_integral.py --check
     step "compileall" python3 -m compileall -q .
     step "git diff --check" git -C .. diff --check
     ;;
