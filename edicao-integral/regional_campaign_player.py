@@ -220,3 +220,74 @@ class RegionalCampaignPlayer:
     def location_food():
         """Locais com comida no loot (para relatório de bloqueio)."""
         return sorted(key for key, loc in LOCATIONS.items() if loc['loot'].get('food'))
+
+
+class StrategicRegionalPlayer(RegionalCampaignPlayer):
+    """Controlador experimental de médio prazo (não muda regras).
+
+    O controlador base vai ao Mercado sempre que a comida está abaixo de dois
+    dias de consumo; com oferta menor que o consumo isso nunca termina e a
+    Estação não é tentada. Este equilibra, só com estado observável:
+    - pista quando a noite de hoje está coberta; com `risk='short'`, também
+      quando ninguém está com privação em sequência (uma noite curta não leva
+      a Colapso);
+    - equipe de longe = heróis com Vida >= 2 e fadiga <= 1 (os demais ficam);
+    - Mercado com buscas proporcionais ao déficit de dois dias;
+    - descanso quando menos de dois heróis estão aptos para ir longe.
+    """
+
+    def __init__(self, *args, risk='covered', **kwargs):
+        super().__init__(*args, **kwargs)
+        self.risk = risk  # 'covered': pista só com a noite coberta; 'short': aceita uma noite curta
+        self._kind = None
+
+    @staticmethod
+    def far_team(world):
+        return [hero for hero, state in sorted(world.heroes.items())
+                if state['location'] == 'camp' and state['health'] >= 2
+                and state.get('fatigue', 0) <= 1 and not state.get('hungry')
+                and hero not in world.worked_today]
+
+    def team(self, world):
+        if self._kind in ('clue', 'access_card'):
+            return self.far_team(world)
+        return RegionalCampaignPlayer.team(world)
+
+    def ready_for_far(self, world, team):
+        return len(team) >= 2
+
+    def _supply(self, world, consumers):
+        food_per_search = max(1, LOCATIONS[MARKET]['loot'].get('food', 1))
+        deficit = max(1, self.food_days * consumers - world.stock['food'])
+        searches = min(world.searches[MARKET], 4, -(-deficit // food_per_search))
+        objectives = [{'kind': 'search', 'zone': 5, 'searches': min(2, searches)}]
+        if searches > 2:
+            objectives.append({'kind': 'search', 'zone': 12, 'searches': searches - 2})
+        return ('supply', MARKET, 'market_intro', objectives)
+
+    def plan(self, world):
+        consumers = len(world.meal_people())
+        people = world.meal_people()
+        covered = world.stock['food'] >= consumers
+        safe_short = max(p.get('streak', 0) for p in people.values()) == 0
+        far = len(self.far_team(world)) >= 2
+        npc = self.next_clue(world)
+        progress = None
+        if npc:
+            progress = ('clue', STATION, 'station_02',
+                        [{'kind': 'investigate_contact', 'npc': npc},
+                         {'kind': 'evidence', 'npc': npc}])
+        elif (world.flags.get('radio_code') and not world.flags.get('access_card')
+              and world.searches[STATION] > 0):
+            progress = ('access_card', STATION, 'station_02',
+                        [{'kind': 'search', 'zone': 5}, {'kind': 'access_card'}])
+        if progress and far and (covered or self.risk == 'short' and safe_short):
+            self._kind = progress[0]
+            return progress
+        if world.stock['food'] < self.food_days * consumers and world.searches[MARKET] > 0:
+            self._kind = 'supply'
+            return self._supply(world, consumers)
+        self._kind = None
+        if progress:  # pista possível, mas sem equipe apta: recuperar
+            return ('rest', None, None, None)
+        return super().plan(world)

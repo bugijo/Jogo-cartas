@@ -1,7 +1,9 @@
 """Experimento isolado da economia de comida regional (Fase 6).
 
 Uso: python edicao-integral/experiments/food_economy.py [--seeds 1-30] [--grid]
-     [--food 1.5] [--garden-output 6] [--jobs 4]
+     [--food 1.5] [--garden-output 6] [--jobs 4] [--controller strategic]
+     [--market-renewal] [--forage] [--regional-garden] [--delivery-discard]
+     [--bridge]
 
 Nada aqui muda o motor nem os artefatos: as variantes são aplicadas só na
 memória deste processo. Comida por busca = arredondamento para cima de metade
@@ -53,29 +55,167 @@ def apply_variant(food: float, garden_output: int) -> None:
     system.World._continuity_garden_harvest = variant_harvest
 
 
-def measure(food: float, garden_output: int, seeds: range) -> dict:
+def apply_market_renewal() -> None:
+    """Referência experimental: Mercado repõe 1 busca por noite (renovação natural)."""
+    system.LOCATIONS[rcp.MARKET]["renewal"] = "natural"
+
+
+def apply_forage(per_worker: int = 1) -> None:
+    """Fonte C2: coleta no entorno ligada a trabalhadores, proporcional e limitada.
+
+    Antes da refeição, cada adulto civil apto e cada herói no abrigo que não saiu
+    nem trabalhou coleta `per_worker` comida, no máximo ceil(consumidores / 2) no
+    total, pelo depósito. Quem coleta conta como trabalho (sem recuperação §25).
+    """
+    end = system.World.__dict__.get("_base_end_day") or system.World._end_day
+    system.World._base_end_day = end
+
+    def end_day(self, meal_plan):
+        cap = -(-len(self.meal_people()) // 2)
+        workers = [p["id"] for p in self.continuity_people if p["kind"] == "adult"
+                   and p.get("wounds", 0) < 3 and p.get("fatigue", 0) < 3
+                   and not p.get("hungry") and not p.get("thirsty")
+                   and p["id"] not in self.worked_today]
+        workers += [h for h, s in sorted(self.heroes.items()) if s["location"] == "camp"
+                    and s["health"] > 0 and s.get("fatigue", 0) < 3
+                    and not s.get("hungry") and not s.get("thirsty")
+                    and h not in self.worked_today and h not in self.departed_today]
+        workers = workers[:cap // per_worker if per_worker else 0]
+        if (self.continuity_garden or {}).get("worker") in workers:
+            workers.remove(self.continuity_garden["worker"])
+        self.deposit("food", per_worker * len(workers))
+        self.worked_today.extend(workers)
+        FORAGE.append(per_worker * len(workers))
+        return end(self, meal_plan)
+    system.World._end_day = end_day
+
+
+FORAGE: list[int] = []
+
+
+def apply_regional_garden(ready_after: int = 3) -> None:
+    """Frente D, teto otimista: Sementes guardadas na Cisterna viram Horta §61 regional.
+
+    Só quando a Cisterna termina com Sementes e sem Horta (acolhimento legal de
+    ZC-MOR-0006). A Horta fica ativa `ready_after` dias depois da migração, sem
+    cobrar a ida à Oficina (sucata no lugar de Materiais) nem os 2 trabalhos:
+    mede o máximo que essa rota poderia dar, não a regra.
+    """
+    import integrated_campaign
+    cls = integrated_campaign.IntegratedCampaign
+    migrate = cls.__dict__.get("_base_migrate") or cls.transition_to_last_transmission
+    cls._base_migrate = migrate
+
+    def transition(self, *args, **kwargs):
+        result = migrate(self, *args, **kwargs)
+        world = self.world
+        if self.cistern.seeds and world.continuity_garden is None:
+            world.continuity_garden = {"source": "cistern02", "active": False,
+                                       "output": 4, "worker": None}
+            PENDING_GARDEN[id(world)] = world.day + ready_after
+        return result
+    cls.transition_to_last_transmission = transition
+    end = system.World.__dict__.get("_base_end_day_d") or system.World._end_day
+    system.World._base_end_day_d = end
+
+    def end_day(self, meal_plan):
+        result = end(self, meal_plan)
+        ready = PENDING_GARDEN.get(id(self))
+        if ready is not None and self.day >= ready and self.continuity_garden:
+            self.continuity_garden["active"] = True
+            PENDING_GARDEN.pop(id(self))
+        return result
+    system.World._end_day = end_day
+
+
+PENDING_GARDEN: dict[int, int] = {}
+
+
+def apply_delivery_discard() -> None:
+    """Hipótese F: descarte voluntário de água também quando chega comida.
+
+    Mesmo princípio aprovado para a colheita: só o espaço que falta e só a água
+    acima do consumo previsto da noite. Vale para carga entregue e coleta.
+    """
+    deposit = system.World.__dict__.get("_base_deposit") or system.World.deposit
+    system.World._base_deposit = deposit
+
+    def variant(self, resource, amount):
+        if resource == "food" and amount > 0:
+            free = self.storage - sum(self.stock.values())
+            spare = max(0, self.stock["water"] - len(self.meal_people()))
+            self.stock["water"] -= min(spare, max(0, amount - free))
+        return deposit(self, resource, amount)
+    system.World.deposit = variant
+
+
+def apply_bridge_ration() -> None:
+    """Hipótese G: ração-ponte única na chegada (leitura de CAMPAIGN l.32).
+
+    O texto da Evacuação dá uma vez 1 porção de comida e água por consumidor.
+    Aqui aplicado à migração, pelo depósito com o descarte da hipótese F.
+    """
+    import integrated_campaign
+    cls = integrated_campaign.IntegratedCampaign
+    migrate = cls.__dict__.get("_base_migrate_g") or cls.transition_to_last_transmission
+    cls._base_migrate_g = migrate
+
+    def transition(self, *args, **kwargs):
+        result = migrate(self, *args, **kwargs)
+        self.world.deposit("food", len(self.world.meal_people()))
+        return result
+    cls.transition_to_last_transmission = transition
+
+
+def measure(food: float, garden_output: int, seeds: range, controller: str = "base",
+            renewal: bool = False, forage: bool = False,
+            regional_garden: bool = False, delivery_discard: bool = False,
+            bridge: bool = False) -> dict:
     apply_variant(food, garden_output)
+    if delivery_discard or bridge:
+        apply_delivery_discard()
+    if bridge:
+        apply_bridge_ration()
+    if regional_garden:
+        apply_regional_garden()
+    if renewal:
+        apply_market_renewal()
+    if forage:
+        apply_forage()
+    player_cls = rcp.RegionalCampaignPlayer
+    if controller.startswith("strategic"):
+        risk = "short" if controller == "strategic-short" else "covered"
+
+        class player_cls(rcp.StrategicRegionalPlayer):  # noqa: N801
+            def __init__(self, *args, **kwargs):
+                super().__init__(*args, risk=risk, **kwargs)
     last = []
-    base_run = rcp.RegionalCampaignPlayer.run
+    base_run = player_cls.run
 
     def run(self, *args, **kwargs):
         last[:] = [self]
         return base_run(self, *args, **kwargs)
-    rcp.RegionalCampaignPlayer.run = run
+    player_cls.run = run
     rows = []
     for size in regional.SIZES:
         for seed in seeds:
             last.clear()
-            row = regional.run_one(size, seed, garden=True)
+            FORAGE.clear()
+            row = regional.run_one(size, seed, garden=True, player_cls=player_cls)
             if row is None:
                 continue
             if last:
                 nights = [day["night"] for day in last[0].days if day.get("night")]
                 row["missing_food"] = sum(n["missing"]["food"] for n in nights)
                 row["short_nights"] = sum(n["missing"]["food"] > 0 for n in nights)
+            row["forage_food"] = sum(FORAGE)
             rows.append(row)
-    rcp.RegionalCampaignPlayer.run = base_run
-    return summarize(food, garden_output, seeds, rows)
+    player_cls.run = base_run
+    result = summarize(food, garden_output, seeds, rows)
+    result.update(controller=controller, renewal=renewal, forage=forage,
+                  regional_garden=regional_garden, delivery_discard=delivery_discard,
+                  bridge=bridge)
+    return result
 
 
 def summarize(food, garden_output, seeds, rows) -> dict:
@@ -106,6 +246,10 @@ def summarize(food, garden_output, seeds, rows) -> dict:
             "garden_migrated": sum(r.get("garden_migrated", False) for r in rows),
             "by_size_survived_of_migrated": by_size,
             "blockers": dict(Counter(c for r in rows for c in r["blockers"])),
+            "day_plans": dict(sum((Counter(r.get("plans", {})) for r in migrated), Counter())),
+            "clue_evidence": sum(r["clue_evidence"] for r in migrated),
+            "radio_all": sum(r["radio_code"] for r in migrated),
+            "forage_food": sum(r.get("forage_food", 0) for r in migrated),
             "targets": targets}
 
 
@@ -120,13 +264,21 @@ def main() -> None:
     parser.add_argument("--garden-output", type=int, default=4)
     parser.add_argument("--grid", action="store_true")
     parser.add_argument("--jobs", type=int, default=4)
+    parser.add_argument("--controller", choices=("base", "strategic", "strategic-short"), default="base")
+    parser.add_argument("--market-renewal", action="store_true")
+    parser.add_argument("--forage", action="store_true")
+    parser.add_argument("--regional-garden", action="store_true")
+    parser.add_argument("--delivery-discard", action="store_true")
+    parser.add_argument("--bridge", action="store_true")
     args = parser.parse_args()
     start, stop = map(int, args.seeds.split("-"))
     seeds = range(start, stop + 1)
     if start <= 120 and stop >= 91:
         raise SystemExit("Sementes 91–120 reservadas para a validação cega final")
-    configs = ([(f, g, seeds) for f in FOOD_STEPS for g in GARDEN_STEPS] if args.grid
-               else [(args.food, args.garden_output, seeds)])
+    extra = (args.controller, args.market_renewal, args.forage, args.regional_garden,
+             args.delivery_discard, args.bridge)
+    configs = ([(f, g, seeds, *extra) for f in FOOD_STEPS for g in GARDEN_STEPS] if args.grid
+               else [(args.food, args.garden_output, seeds, *extra)])
     with Pool(min(args.jobs, len(configs))) as pool:
         for result in pool.imap(_job, configs):
             print(json.dumps(result, ensure_ascii=False), flush=True)

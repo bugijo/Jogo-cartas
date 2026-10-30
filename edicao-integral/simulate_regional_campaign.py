@@ -30,7 +30,8 @@ SEEDS = range(1, 31)
 
 
 def run_one(size: int, seed: int, garden: bool = False,
-            discard_water: bool = True) -> dict | None:
+            discard_water: bool = True,
+            player_cls=RegionalCampaignPlayer) -> dict | None:
     player = CampaignPlayer02.new_hn(seed, size)
     for key, value in auto_settings(size).items():
         setattr(player, key, value)
@@ -46,7 +47,7 @@ def run_one(size: int, seed: int, garden: bool = False,
                 "radio_code": False, "access_card": False, "blockers": []}
     campaign.world.regional_travel_cards = True
     campaign.world.regional_filter_production = True
-    regional = RegionalCampaignPlayer(discard_water=garden and discard_water)
+    regional = player_cls(discard_water=garden and discard_water)
     campaign = regional.run(campaign, MAX_DAYS)
     world = campaign.world
     plans = Counter(day.get("plan") for day in regional.days if "plan" in day)
