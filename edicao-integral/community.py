@@ -23,7 +23,7 @@ TRIPS = RULES['trips']
 STRUCTURES = RULES['structures']
 CAMP_JOBS = ('cozinhar', 'obra', 'cuidar', 'vigiar', 'armadilha', 'canteiro')
 KEYS = {'rng', 'professions', 'jobs', 'trips', 'pools', 'meat', 'built', 'projects',
-        'deck', 'traps', 'pista_used', 'trip_seq'}
+        'deck', 'traps', 'pista_used', 'trip_seq', 'arrival', 'arrival_seq'}
 
 
 def _lists(value):
@@ -57,7 +57,8 @@ def new_state(world) -> dict:
     state = {'professions': professions, 'jobs': {}, 'trips': [], 'meat': [],
              'pools': {name: spec['start'] for name, spec in RULES['pools'].items()},
              'built': [], 'projects': {}, 'deck': {'order': events, 'pos': 0},
-             'traps': [], 'pista_used': False, 'trip_seq': 0}
+             'traps': [], 'pista_used': False, 'trip_seq': 0,
+             'arrival': None, 'arrival_seq': 0}
     _save_rng(state, rng)
     return state
 
@@ -267,7 +268,12 @@ def start_build(world, kind: str) -> None:
     if (kind not in STRUCTURES or state['built'].count(kind) >= limit
             or kind in state['projects']):
         raise ValueError('Obra comunitária indisponível')
-    cost = STRUCTURES[kind]['cost']
+    spec = STRUCTURES[kind]
+    if spec.get('requires') and spec['requires'] not in world.structures:
+        raise ValueError('Obra exige a estrutura do nível anterior')
+    if world.free_terrain < spec.get('terrain', 0):
+        raise ValueError('Sem terreno livre: amplie a cerca')
+    cost = spec['cost']
     if any(world.stock[res] < n for res, n in cost.items()):
         raise ValueError('Recursos insuficientes para a obra')
     for res, n in cost.items():
@@ -629,6 +635,9 @@ def dawn(world) -> dict | None:
     if spoiled:
         out['meat_spoiled'] = spoiled
     state['jobs'] = {}
+    _arrival_roll(world, state, rng)
+    if state['arrival']:
+        out['arrival'] = dict(state['arrival'])
     _save_rng(state, rng)
     return out or None
 
@@ -638,6 +647,89 @@ def garden_bonus(world, person_id: str) -> int:
     if world.community is None:
         return 0
     return 1 if specialist(world, person_id, 'horta') else 0
+
+
+# --- crescimento do abrigo (D-20) -------------------------------------------------
+def _sum_built(world, key: str) -> int:
+    state = world.community
+    if state is None:
+        return 0
+    return sum(STRUCTURES[k].get(key, 0) for k in state['built'])
+
+
+def terrain_delta(world) -> int:
+    """Cerca amplia o terreno; obras da Comunidade (prontas ou em obra) ocupam."""
+    state = world.community
+    if state is None:
+        return 0
+    used = _sum_built(world, 'terrain') + sum(STRUCTURES[k].get('terrain', 0)
+                                              for k in state['projects'])
+    return _sum_built(world, 'terrain_bonus') - used
+
+
+def beds_bonus(world) -> int:
+    return _sum_built(world, 'beds_bonus')
+
+
+def storage_bonus(world) -> int:
+    return _sum_built(world, 'storage_bonus')
+
+
+def _arrival_roll(world, state, rng) -> None:
+    rule = RULES['arrivals']
+    if state['arrival'] is not None:
+        # Ninguém decidiu no amanhecer: o grupo seguiu caminho (= recusa).
+        _refuse(world, state, 'sem_decisao')
+    if world.day in rule['days']:
+        roll = rng.randint(1, 6)
+        state['arrival'] = {'day': world.day, 'roll': roll, 'people': list(rule['table'][str(roll)])}
+        if not state['arrival']['people']:
+            state['arrival'] = None
+        world.log.append({'day': world.day, 'action': 'arrival', 'roll': roll,
+                          'people': list(rule['table'][str(roll)])})
+
+
+def _refuse(world, state, reason: str) -> None:
+    before = world.shelter_morale
+    world.shelter_morale = max(0, before - RULES['arrivals']['refuse_morale'])
+    world.log.append({'day': world.day, 'action': 'arrival_refused', 'reason': reason,
+                      'people': state['arrival']['people'], 'morale': world.shelter_morale})
+    state['arrival'] = None
+
+
+def arrival_fits(world) -> bool:
+    state = world.community
+    if not state or not state['arrival']:
+        return False
+    humans = len(state['arrival']['people'])
+    return world.residents + humans <= world.beds + bed_allowance(world)
+
+
+def receive(world, accept: bool) -> dict:
+    """Amanhecer de chegada: acolher todo o grupo (exige cama) ou recusar (Moral −1)."""
+    _require_dawn(world)
+    state = world.community
+    if not state['arrival']:
+        raise ValueError('Ninguém chegou hoje')
+    if not accept:
+        people = state['arrival']['people']
+        _refuse(world, state, 'recusa')
+        return {'accepted': False, 'people': people}
+    if not arrival_fits(world):
+        raise ValueError('Sem cama para acolher o grupo')
+    joined = []
+    for kind in state['arrival']['people']:
+        state['arrival_seq'] += 1
+        person_id = f"N{state['arrival_seq']:02d}"
+        world.continuity_people.append({'id': person_id, 'kind': kind, 'family': None,
+                                        'hungry': False, 'thirsty': False, 'streak': 0,
+                                        'wounds': 0, 'fatigue': 0, 'alert': False})
+        if kind == 'adult':
+            join(world, person_id)
+        joined.append(person_id)
+    state['arrival'] = None
+    world.log.append({'day': world.day, 'action': 'arrival_accepted', 'people': joined})
+    return {'accepted': True, 'people': joined}
 
 
 def crowded(world) -> bool:

@@ -67,9 +67,12 @@
     "lodging": 1,
     "coletor": 1,
     "cozinha": 1,
-    "canteiro": 1
+    "canteiro": 1,
+    "cerca": 1,
+    "deposito2": 1,
+    "alojamento2": 1
    },
-   "total": 10
+   "total": 13
   },
   "locais_regionais": {
    "source": "data/system.json#locations",
@@ -112,9 +115,10 @@
     "bagagem_D6": 1,
     "viagem_automatica": 1,
     "comida_agua": 1,
-    "clima_coletor": 1
+    "clima_coletor": 1,
+    "chegadas_D6": 1
    },
-   "total": 4
+   "total": 5
   }
  },
  "boards": {
@@ -164,7 +168,7 @@
  "tokens_new": {
   "viajante (marcador de dias)": 6,
   "armadilha": 2,
-  "obra comunitária": 3
+  "obra comunitária": 6
  },
  "reuse": {
   "carne_REC_0.2": 8

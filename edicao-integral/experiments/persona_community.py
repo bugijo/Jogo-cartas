@@ -60,6 +60,7 @@ class PersonaCommunityPlayer(CommunityRegionalPlayer):
         self.options = {'priority', 'build'} if policy['invest'] else {'priority'}
         self.community_builds = (('canteiro', 'coletor', 'canteiro', 'cozinha')
                                  if policy['invest'] else ())
+        self.accept = 'beds' if policy['invest'] else 'fits'   # quem planeja olha as camas
         leader = BY_ID[vote['leader']]
         rng = Random(zlib.crc32(f'{self.seed}:{leader.id}:{world.day}'.encode()))
         self._slip = None

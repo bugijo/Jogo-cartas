@@ -159,12 +159,14 @@ class World:
     @property
     def beds(self) -> int:
         return (DATA['rules']['beds_base'] + self.continuity_beds
-                + sum(STRUCTURES[k]['beds_bonus'] for k in self.structures))
+                + sum(STRUCTURES[k]['beds_bonus'] for k in self.structures)
+                + community_rules.beds_bonus(self))
 
     @property
     def storage(self) -> int:
         skill=max((self.skill_bonus(hero_id,'storage') for hero_id in self.heroes),default=0)
-        return DATA['rules']['storage_base'] + sum(STRUCTURES[k]['storage_bonus'] for k in self.structures)+skill
+        return (DATA['rules']['storage_base'] + sum(STRUCTURES[k]['storage_bonus'] for k in self.structures)
+                + skill + community_rules.storage_bonus(self))
 
     @property
     def water_capacity(self) -> int | None:
@@ -240,7 +242,8 @@ class World:
 
     @property
     def free_terrain(self) -> int:
-        return DATA['rules']['terrain_base'] - sum(STRUCTURES[k]['terrain'] for k in self.structures) - sum(STRUCTURES[k]['terrain'] for k in self.projects)
+        return (DATA['rules']['terrain_base'] - sum(STRUCTURES[k]['terrain'] for k in self.structures)
+                - sum(STRUCTURES[k]['terrain'] for k in self.projects) + community_rules.terrain_delta(self))
 
     def validate(self) -> None:
         archive=self.regional_travel_archive

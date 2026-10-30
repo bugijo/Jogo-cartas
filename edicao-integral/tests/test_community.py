@@ -35,6 +35,10 @@ class CommunityTests(unittest.TestCase):
         self.world = self.campaign.world
         self.world.stock.update(food=20, water=20)
         self.adults = [p for p in community.workers(self.world)]
+        # Chegadas (D-20) só nos testes que as pedem: não consomem os D6 forçados.
+        patcher = mock.patch.dict(community.RULES['arrivals'], {'days': []})
+        patcher.start()
+        self.addCleanup(patcher.stop)
 
     def roll(self, *values):
         """Força os D6 da Comunidade (o resto do RNG segue igual)."""
@@ -272,6 +276,66 @@ class CommunityTests(unittest.TestCase):
         world.stock.update(wood=5, scrap=5)
         with self.assertRaises(ValueError):  # máximo 2
             community.start_build(world, 'canteiro')
+
+    # --- crescimento do abrigo (D-20) --------------------------------------------
+    def test_terrain_used_by_community_builds_and_widened_by_fence(self):
+        world = self.world
+        free = world.free_terrain
+        world.stock.update(wood=10, scrap=5)
+        community.start_build(world, 'canteiro')           # em obra já ocupa
+        self.assertEqual(world.free_terrain, free - 1)
+        world.community['built'] += ['cerca']
+        self.assertEqual(world.free_terrain, free + 2)
+        with mock.patch.object(World, 'free_terrain', property(lambda self: 0)):
+            with self.assertRaisesRegex(ValueError, 'terreno'):
+                community.start_build(world, 'coletor')
+            community.start_build(world, 'cerca')          # a cerca não ocupa terreno
+
+    def test_second_levels_need_the_first_and_add_capacity(self):
+        world = self.world
+        world.stock.update(wood=10, scrap=5)
+        with self.assertRaisesRegex(ValueError, 'nível anterior'):
+            community.start_build(world, 'deposito2')
+        storage, beds = world.storage, world.beds
+        world.structures['storage'] = {'health': 3}
+        world.structures['lodging'] = {'health': 3}
+        world.community['built'] += ['deposito2', 'alojamento2']
+        self.assertEqual(world.storage, storage + 12 + 12)
+        self.assertEqual(world.beds, beds + 4 + 4)
+
+    def test_arrival_accept_brings_workers_and_refuse_costs_morale(self):
+        world = self.world
+        world.community['arrival'] = {'day': world.day, 'roll': 5, 'people': ['adult', 'adult']}
+        self.assertTrue(community.arrival_fits(world))
+        residents = world.residents
+        with self.roll(4, 4):  # bagagem de cada adulto
+            receipt = community.receive(world, True)
+        self.assertEqual(world.residents, residents + 2)
+        self.assertTrue(set(receipt['people']) <= set(community.workers(world)))
+        self.assertTrue(all(pid in world.community['professions'] for pid in receipt['people']))
+        world.community['arrival'] = {'day': world.day, 'roll': 1, 'people': ['adult']}
+        community.receive(world, False)
+        self.assertEqual(world.shelter_morale, 4)
+        with self.assertRaises(ValueError):
+            community.receive(world, True)                # ninguém esperando
+
+    def test_arrival_needs_a_bed_and_undecided_group_leaves(self):
+        world = self.world
+        spare = world.beds + community.bed_allowance(world) - world.residents
+        world.community['arrival'] = {'day': world.day, 'roll': 5,
+                                      'people': ['adult'] * (spare + 1)}
+        with self.assertRaisesRegex(ValueError, 'cama'):
+            community.receive(world, True)
+        world.end_day(self.plan())                         # amanhecer sem decisão
+        self.assertIsNone(world.community['arrival'])
+        self.assertEqual(world.shelter_morale, 4)
+
+    def test_arrivals_rolled_on_scheduled_dawn(self):
+        world = self.world
+        with mock.patch.dict(community.RULES['arrivals'], {'days': [world.day + 1]}):
+            with self.roll(*([3] * 40)):
+                world.end_day(self.plan())
+        self.assertEqual(world.community['arrival']['people'], ['adult', 'child'])
 
     def test_dog_joins_trip_adds_bonus_and_eats_from_it(self):
         world = self.world

@@ -67,11 +67,20 @@
                 "chuva", "atraso", "ferimento", "perda", "equipamento", "zumbis", "pista"],
  "structures": {
   "coletor": {"name": "Coletor de chuva", "cost": {"wood": 1, "scrap": 1}, "work": 1,
-              "rain": {"4": 2, "5": 2, "6": 4}, "capacity": 4},
-  "cozinha": {"name": "Cozinha", "cost": {"wood": 2, "scrap": 1}, "work": 2},
+              "terrain": 1, "rain": {"4": 2, "5": 2, "6": 4}, "capacity": 4},
+  "cozinha": {"name": "Cozinha", "cost": {"wood": 2, "scrap": 1}, "work": 2, "terrain": 1},
   "canteiro": {"name": "Canteiro", "cost": {"wood": 2, "scrap": 1}, "work": 2, "max": 2,
-               "food_per_worker": 2}
+               "terrain": 1, "food_per_worker": 2},
+  "cerca": {"name": "Cerca ampliada", "cost": {"wood": 2}, "work": 2, "max": 2,
+            "terrain_bonus": 3},
+  "deposito2": {"name": "Depósito nível 2", "cost": {"wood": 2, "scrap": 1}, "work": 2,
+                "requires": "storage", "storage_bonus": 12},
+  "alojamento2": {"name": "Alojamento nível 2", "cost": {"wood": 3, "scrap": 1}, "work": 2,
+                  "requires": "lodging", "beds_bonus": 4}
  },
+ "arrivals": {"days": [4, 10], "refuse_morale": 1,
+              "table": {"1": ["adult"], "2": ["adult"], "3": ["adult", "child"],
+                        "4": ["adult", "child"], "5": ["adult", "adult"], "6": []}},
  "guard": {"prevent_at": 4, "specialist_prevent_at": 3},
  "care": {"people": 1, "specialist_people": 2},
  "crowding": {"extra_people": 2},

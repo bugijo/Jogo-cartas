@@ -29,7 +29,7 @@ from simulate_cistern_sweep import auto_settings  # noqa: E402
 import community  # noqa: E402
 
 ORIGINAL = deepcopy({key: community.RULES[key]
-                     for key in ('activities', 'pools', 'trips', 'arrival', 'morale')})
+                     for key in ('activities', 'pools', 'trips', 'arrival', 'morale', 'arrivals')})
 ORIGINAL_GARDEN = community.RULES['garden_food_per_harvest']
 DAYS = 15
 SIZES = (2, 3, 4, 5, 6)
@@ -87,7 +87,12 @@ DECK = {'COMM-EV-F2': ['tranquila', 'ferimento'], 'COMM-EV-Z2': ['tranquila', 'z
 MORALE = {'COMM-NOMORALE': {'on': False},
           'COMM-M4': {'unfed_per_drop': 4}, 'COMM-M3': {'unfed_per_drop': 3},
           'COMM-M1R0': {'recover': 0}}
-for _name in [*POOLS, *ARRIVAL, *DECK, *MORALE]:
+# D-20: chegadas de sobreviventes e obras de crescimento
+ARRIVALS = {'COMM-NOGROWTH': {'days': []}, 'COMM-ARR4': {'days': [3, 6, 9, 12]}}
+CONFIGS['COMM-NOGROWTH'] = (CommunityRegionalPlayer, True, {'growth': False})
+CONFIGS['COMM-REFUSE'] = (CommunityRegionalPlayer, True, {'accept': 'never'})
+CONFIGS['COMM-FITS'] = (CommunityRegionalPlayer, True, {'accept': 'fits'})
+for _name in [*POOLS, *ARRIVAL, *DECK, *MORALE, 'COMM-ARR4']:
     CONFIGS[_name] = (CommunityRegionalPlayer, True, {})
 
 def _counting(cls):
@@ -123,6 +128,7 @@ def run_one(args):
     community.RULES['trips'].update(TRIP_OVERRIDES.get(config, {}))
     community.RULES['arrival'].update(ARRIVAL.get(config, {}))
     community.RULES['morale'].update(MORALE.get(config, {}))
+    community.RULES['arrivals'].update(ARRIVALS.get(config, {}))
     deck = list(ORIGINAL_DECK)
     if config in DECK:
         out, new = DECK[config]
@@ -204,6 +210,11 @@ def run_one(args):
         'workers_incapacitated': sum(p.get('wounds', 0) >= 3 for p in world.continuity_people
                                      if p['kind'] == 'adult'),
         'blockers': sorted({row['code'] for row in regional.blockers}),
+        'residents_end': world.residents,
+        'arrivals_accepted': sum(len(r['people']) for r in world.log
+                                 if r.get('action') == 'arrival_accepted'),
+        'arrivals_refused': sum(r.get('action') == 'arrival_refused' for r in world.log),
+        'crowded_nights': sum(bool((row.get('community') or {}).get('crowded')) for row in nights),
     }
 
 

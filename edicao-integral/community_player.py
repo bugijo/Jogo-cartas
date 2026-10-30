@@ -30,8 +30,10 @@ class CommunityRegionalPlayer(CampRegionalPlayer):
     def __init__(self, *args, options=('priority', 'build'), trips=True,
                  community_builds=('canteiro', 'coletor', 'canteiro', 'cozinha'),
                  max_days=3, risk='covered',
-                 per_day_choice=False, dogs=True, **kwargs):
+                 per_day_choice=False, dogs=True, accept='beds', growth=True, **kwargs):
         super().__init__(*args, options=options, risk=risk, **kwargs)
+        self.accept = accept
+        self.growth = growth
         self.trips = trips
         self.community_builds = tuple(community_builds)
         self.max_days = max_days
@@ -76,6 +78,8 @@ class CommunityRegionalPlayer(CampRegionalPlayer):
         for done_kind in state['built']:
             if done_kind in wanted:
                 wanted.remove(done_kind)
+        if self.growth:
+            wanted = self._growth_builds(world, wanted)
         for kind in wanted:
             if kind not in state['projects']:
                 return community.STRUCTURES[kind]['cost'].get('wood', 0)
@@ -113,12 +117,42 @@ class CommunityRegionalPlayer(CampRegionalPlayer):
         best = max(options, key=score)
         return best if score(best)[0] > 0 else (None, days)
 
+    def _growth_builds(self, world, wanted):
+        """Obras de crescimento quando o espaço visível aperta (D-20)."""
+        state = world.community
+        needs = []
+        beds_short = (world.residents >= world.beds
+                      or (state['arrival'] and not community.arrival_fits(world)))
+        if beds_short and 'lodging' in world.structures and 'alojamento2' not in state['built']:
+            needs.append('alojamento2')
+        if 'storage' in world.structures and world.free_space('food') <= 4:
+            needs.append('deposito2')
+        upcoming = [k for k in wanted if k not in state['projects']][:1]
+        need_terrain = max([community.STRUCTURES[k].get('terrain', 0) for k in upcoming]
+                           + [STRUCTURES[k]['terrain'] for k in self.BUILD_ORDER
+                              if k not in world.structures][:1] or [0])
+        if (need_terrain > world.free_terrain
+                and state['built'].count('cerca') < community.STRUCTURES['cerca']['max']):
+            needs.append('cerca')
+        return [k for k in needs if k not in state['built']] + wanted
+
     # --- amanhecer -----------------------------------------------------------------
     def camp_work(self, world, kind, team):
         done = super().camp_work(world, kind, team) or {}
         if world.community is None:
             return done or None
         state = world.community
+        # 0. chegada de sobreviventes: acolher se houver cama (mais braços e bocas)
+        if state['arrival']:
+            arriving = len(state['arrival']['people'])
+            accept = community.arrival_fits(world) and (
+                self.accept == 'fits'
+                or (self.accept == 'beds' and world.residents + arriving <= world.beds)
+                or (self.accept == 'stock'
+                    and world.stock['food'] >= len(world.meal_people()) + arriving))
+            receipt = community.receive(world, accept)
+            done.setdefault('community', []).append(('chegada', receipt['accepted'],
+                                                     len(receipt['people'])))
         consumers = len(world.meal_people())
         covered = world.stock['food'] >= consumers
         free = [p for p in community.workers(world) if community.able(world, p)]
@@ -149,6 +183,8 @@ class CommunityRegionalPlayer(CampRegionalPlayer):
         for done_kind in state['built']:
             if done_kind in wanted:
                 wanted.remove(done_kind)
+        if self.growth:
+            wanted = self._growth_builds(world, wanted)
         for build in wanted:
             if build in state['projects']:
                 break

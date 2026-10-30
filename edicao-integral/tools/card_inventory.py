@@ -60,8 +60,9 @@ def inventory() -> dict:
                                'cards': {str(c.get('id', i)): 1 for i, c in enumerate(last['cards'])},
                                'total': len(last['cards'])},
         'referencia_comunidade': {'source': 'data/community.json', 'cards': {
-            'bagagem_D6': 1, 'viagem_automatica': 1, 'comida_agua': 1, 'clima_coletor': 1},
-            'total': 4},
+            'bagagem_D6': 1, 'viagem_automatica': 1, 'comida_agua': 1, 'clima_coletor': 1,
+            'chegadas_D6': 1},
+            'total': 5},
     }
     boards = {
         'mapas_cisterna_0.2': [m['id'] for m in catalog['maps']],
