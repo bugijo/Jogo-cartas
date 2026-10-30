@@ -42,6 +42,8 @@ LOCATIONS = {l['id']: l for l in DATA['locations']}
 CRISES = {c['id']: c for c in DATA['crises']}
 VEHICLES = {v['id']: v for v in DATA['vehicles']}
 RESOURCES = ('food', 'water', 'wood', 'scrap', 'medicine', 'fuel', 'ammo')
+# D (protótipo): Horta §61 regional; sucata no lugar dos Materiais da Cisterna.
+GARDEN_BUILD = {'seeds': 1, 'scrap': 2, 'work': 2}
 
 
 @dataclass
@@ -121,6 +123,10 @@ class World:
     # Horta §61 concluída na Cisterna (H1, aprovada em 2026-10-29): produz
     # `output` comida no dia em que um herói ou adulto é designado no amanhecer.
     continuity_garden: dict | None = None
+    # Acampamento regional (2026-10-30). F (aprovada): prioridade de comida no
+    # depósito. G, C2 e D: protótipos ligados só por `enable_regional_prototypes`.
+    # None preserva os saves e replays regionais anteriores.
+    regional_camp: dict | None = None
     garden_worker: str | None = None
     guarding: dict[str, int] = field(default_factory=dict)
     rng_state: object = None
@@ -263,13 +269,15 @@ class World:
                 or set(garden) - {'discard_water'} != {'source', 'output', 'active', 'worker'}
                 or 'discard_water' in garden and (garden['discard_water'] is not True
                                                   or garden['worker'] is None)
-                or garden['source'] != 'cistern02' or garden['output'] != 4
+                or garden['source'] not in ('cistern02', 'regional_build')
+                or garden['output'] != 4
                 or not isinstance(garden['active'], bool)
                 or garden['worker'] is not None
                 and garden['worker'] not in self.worked_today
                 and garden['worker'] not in {item['id'] for item in self.continuity_people}
                 or not self.cistern_verified):
             raise ValueError('Horta de continuidade inválida')
+        self._validate_regional_camp()
         if any(k not in RESOURCES for k in self.stock) or sum(self.stock.values()) > self.storage:
             raise ValueError('Depósito excedido')
         if self.residents > self.beds or self.free_terrain < 0:
@@ -701,6 +709,241 @@ class World:
         receipt.update(produced=produced, not_stored=garden['output'] - produced)
         return receipt
 
+    # --- acampamento regional: F aprovada; G, C2 e D em protótipo ---------------
+    CAMP_PROTOTYPES = ('bridge', 'forage', 'garden_build')
+
+    def _camp(self) -> dict:
+        if self.regional_camp is None:
+            self.regional_camp = {}
+        return self.regional_camp
+
+    def _validate_regional_camp(self) -> None:
+        camp = self.regional_camp
+        if camp is None:
+            return
+        allowed = {'food_priority', 'prototypes', 'bridge_claimed', 'forage',
+                   'garden_build', 'seeds_spent'}
+        ok = isinstance(camp, dict) and set(camp) <= allowed and all(
+            isinstance(camp.get(key, False), bool)
+            for key in ('food_priority', 'bridge_claimed', 'seeds_spent'))
+        protos = camp.get('prototypes', []) if ok else None
+        ok = ok and isinstance(protos, list) and len(protos) == len(set(protos)) \
+            and set(protos) <= set(self.CAMP_PROTOTYPES)
+        forage = camp.get('forage') if ok else None
+        if ok and forage is not None:
+            ok = ('forage' in protos and isinstance(forage, dict)
+                  and set(forage) == {'pool', 'max', 'regrow', 'workers'}
+                  and all(isinstance(forage[k], int) and not isinstance(forage[k], bool)
+                          for k in ('pool', 'max', 'regrow'))
+                  and 0 <= forage['pool'] <= forage['max'] and forage['regrow'] >= 0
+                  and isinstance(forage['workers'], list)
+                  and len(forage['workers']) == len(set(forage['workers'])))
+        build = camp.get('garden_build') if ok else None
+        if ok and build is not None:
+            ok = ('garden_build' in protos and camp.get('seeds_spent') is True
+                  and isinstance(build, dict)
+                  and set(build) == {'work', 'workers', 'done'}
+                  and isinstance(build['work'], int) and not isinstance(build['work'], bool)
+                  and 0 <= build['work'] <= GARDEN_BUILD['work']
+                  and isinstance(build['workers'], list) and len(build['workers']) <= 2
+                  and build['done'] == (build['work'] >= GARDEN_BUILD['work']))
+        if not ok:
+            raise ValueError('Estado do acampamento regional inválido')
+
+    def enable_regional_prototypes(self, *names: str, forage_max: int | None = None,
+                                   forage_regrow: int | None = None) -> None:
+        """Liga protótipos aprovados para teste (G, C2, D). Não é regra definitiva."""
+        if not self.continuous_campaign or not self.cistern_verified:
+            raise ValueError('Protótipos só na campanha regional após a Cisterna')
+        if not names or set(names) - set(self.CAMP_PROTOTYPES):
+            raise ValueError('Protótipo desconhecido')
+        camp = self._camp()
+        protos = camp.setdefault('prototypes', [])
+        for name in names:
+            if name not in protos:
+                protos.append(name)
+        if 'forage' in names and 'forage' not in camp:
+            consumers = len(self.meal_people())
+            top = forage_max if forage_max is not None else 2 * consumers
+            camp['forage'] = {'pool': top, 'max': top, 'workers': [],
+                              'regrow': forage_regrow if forage_regrow is not None
+                              else -(-consumers // 4)}
+        self.validate()
+
+    def set_storage_priority(self, food_first: bool) -> None:
+        """F (aprovada em 2026-10-30): o abrigo prioriza comida no depósito.
+
+        Com a prioridade ligada, toda comida que chega descarta só a água que
+        falta de espaço e só a acima do consumo previsto da noite. Capacidade
+        do depósito inalterada; cada descarte entra no histórico.
+        """
+        if not isinstance(food_first, bool):
+            raise ValueError('Prioridade de depósito inválida')
+        self._camp()['food_priority'] = food_first
+        self.log.append({'day': self.day, 'action': 'storage_priority',
+                         'food_first': food_first})
+
+    def _make_room_for_food(self, amount: int, reason: str) -> int:
+        free = self.storage - sum(self.stock.values())
+        spare = max(0, self.stock['water'] - len(self.meal_people()))
+        discarded = min(spare, max(0, amount - free))
+        if discarded:
+            self.stock['water'] -= discarded
+            self.log.append({'day': self.day, 'action': 'storage_discard',
+                             'resource': 'water', 'amount': discarded,
+                             'for': 'food', 'reason': reason})
+        return discarded
+
+    def _require_camp_prototype(self, name: str) -> dict:
+        camp = self.regional_camp or {}
+        if name not in camp.get('prototypes', []):
+            raise ValueError('Protótipo desligado nesta campanha')
+        return camp
+
+    def _require_dawn_camp_worker(self, person_id: str) -> None:
+        """Trabalho do acampamento: amanhecer, um trabalho por pessoa por dia."""
+        if self.partial_defeat or self.continuous_campaign and (
+                self.expeditions or self.daily_expeditions):
+            raise ValueError('Trabalho do acampamento se planeja antes da expedição')
+        camp = self.regional_camp or {}
+        busy = set(self.worked_today) | set(self.departed_today)
+        busy |= set((camp.get('forage') or {}).get('workers', []))
+        busy |= set((camp.get('garden_build') or {}).get('workers', []))
+        if (self.continuity_garden or {}).get('worker'):
+            busy.add(self.continuity_garden['worker'])
+        if person_id in busy:
+            raise ValueError('Trabalhador já ocupado hoje')
+        if person_id in self.heroes:
+            self._require_working_hero(person_id)
+            return
+        person = next((item for item in self.continuity_people
+                       if item['id'] == person_id), None)
+        if (person is None or person['kind'] != 'adult'
+                or person.get('wounds', 0) >= 3 or person.get('fatigue', 0) >= 3
+                or person.get('hungry') or person.get('thirsty')):
+            raise ValueError('Trabalhador do acampamento indisponível')
+
+    def claim_bridge_ration(self) -> dict:
+        """G (protótipo): ração-ponte única na chegada, 1 comida por consumidor.
+
+        Origem: a Ponte acolhe o grupo evacuado (CAMPAIGN, Evacuação) e entrega
+        uma vez a ração de viagem. Só no dia da migração; nunca de novo.
+        """
+        camp = self._require_camp_prototype('bridge')
+        if camp.get('bridge_claimed'):
+            raise ValueError('Ração-ponte já recebida')
+        arrived = any(row.get('event') == 'campaign_transition' for row in self.log)
+        if not arrived or any('missing' in row for row in self.log):
+            raise ValueError('Ração-ponte só no dia da chegada')
+        amount = len(self.meal_people())
+        stored = self.deposit('food', amount)
+        camp['bridge_claimed'] = True
+        receipt = {'day': self.day, 'action': 'bridge_ration', 'food': amount,
+                   'stored': stored}
+        self.log.append(receipt)
+        self.validate()
+        return dict(receipt)
+
+    def assign_forage(self, person_id: str) -> None:
+        """C2 (protótipo): coleta no entorno, 1 comida por trabalhador.
+
+        Limites: no máximo ceil(consumidores/2) coletores por dia e o entorno
+        tem reserva própria (`pool`) que só se recompõe `regrow` por amanhecer.
+        Coletar é o trabalho do dia (sem recuperação §25, sem outra tarefa).
+        """
+        forage = self._require_camp_prototype('forage')['forage']
+        self._require_dawn_camp_worker(person_id)
+        if len(forage['workers']) >= -(-len(self.meal_people()) // 2):
+            raise ValueError('Limite diário de coletores atingido')
+        if len(forage['workers']) >= forage['pool']:
+            raise ValueError('Entorno esgotado por hoje')
+        forage['workers'].append(person_id)
+        if person_id in self.heroes:
+            self.worked_today.append(person_id)
+
+    def _forage_harvest(self) -> dict | None:
+        forage = (self.regional_camp or {}).get('forage')
+        if forage is None:
+            return None
+        workers = forage['workers']
+        forage['workers'] = []
+        gathered = min(len(workers), forage['pool'])
+        forage['pool'] -= gathered
+        for worker in workers:
+            if worker not in self.worked_today:
+                self.worked_today.append(worker)
+        stored = self.deposit('food', gathered) if gathered else 0
+        return {'workers': list(workers), 'gathered': gathered, 'stored': stored,
+                'pool': forage['pool']}
+
+    def _forage_regrow(self) -> None:
+        forage = (self.regional_camp or {}).get('forage')
+        if forage is not None:
+            forage['pool'] = min(forage['max'], forage['pool'] + forage['regrow'])
+
+    def regional_seeds_available(self) -> int:
+        """Sementes não gastas na Cisterna, arquivadas na migração."""
+        if (self.regional_camp or {}).get('seeds_spent'):
+            return 0
+        archived = (((self.cistern_record or {}).get('migration') or {})
+                    .get('projection') or {}).get('garden_archived') or {}
+        return int(archived.get('seeds_unspent') or 0)
+
+    def start_regional_garden(self) -> dict:
+        """D (protótipo): Horta §61 no abrigo regional com Sementes transportadas.
+
+        Custo: 1 Sementes + 2 sucata (no lugar dos 2 Materiais, sem equivalente
+        regional) + 2 trabalhos (máximo 2 por dia). Produz 4 comida por dia com
+        um trabalhador designado, a partir do amanhecer seguinte à conclusão.
+        """
+        camp = self._require_camp_prototype('garden_build')
+        if self.continuity_garden is not None or camp.get('garden_build') is not None:
+            raise ValueError('O abrigo já tem Horta ou obra de Horta')
+        if self.regional_seeds_available() < GARDEN_BUILD['seeds']:
+            raise ValueError('Sem Sementes transportadas')
+        if self.stock['scrap'] < GARDEN_BUILD['scrap']:
+            raise ValueError('Sucata insuficiente para a Horta')
+        if self.partial_defeat or self.expeditions:
+            raise ValueError('Obra da Horta se inicia no abrigo')
+        self.stock['scrap'] -= GARDEN_BUILD['scrap']
+        camp['seeds_spent'] = True
+        camp['garden_build'] = {'work': 0, 'workers': [], 'done': False}
+        self.log.append({'day': self.day, 'action': 'start_regional_garden',
+                         'paid': {'scrap': GARDEN_BUILD['scrap'],
+                                  'seeds': GARDEN_BUILD['seeds']}})
+        self.validate()
+        return dict(camp['garden_build'])
+
+    def work_regional_garden(self, person_id: str) -> None:
+        build = self._require_camp_prototype('garden_build').get('garden_build')
+        if build is None or build['done']:
+            raise ValueError('Sem obra de Horta em andamento')
+        if (len(build['workers']) >= 2
+                or build['work'] + len(build['workers']) >= GARDEN_BUILD['work']):
+            raise ValueError('Obra da Horta não aceita mais trabalho hoje')
+        self._require_dawn_camp_worker(person_id)
+        build['workers'].append(person_id)
+        if person_id in self.heroes:
+            self.worked_today.append(person_id)
+
+    def _garden_build_work(self) -> dict | None:
+        build = (self.regional_camp or {}).get('garden_build')
+        if build is None or not build['workers']:
+            return None
+        workers = build['workers']
+        build['workers'] = []
+        for worker in workers:
+            if worker not in self.worked_today:
+                self.worked_today.append(worker)
+        build['work'] += len(workers)
+        build['done'] = build['work'] >= GARDEN_BUILD['work']
+        if build['done']:
+            # Concluída nos trabalhos: produz a partir do próximo amanhecer.
+            self.continuity_garden = {'source': 'regional_build', 'active': False,
+                                      'output': 4, 'worker': None}
+            self.log.append({'day': self.day, 'action': 'regional_garden_done'})
+        return {'workers': list(workers), 'work': build['work'], 'done': build['done']}
+
     def _d6(self, count: int = 1) -> list[int]:
         rng=random.Random();rng.setstate(_tuples(self.rng_state))
         rolls=[rng.randint(1,6) for _ in range(count)]
@@ -749,6 +992,8 @@ class World:
     def deposit(self, resource: str, amount: int) -> int:
         if resource not in RESOURCES or amount < 0:
             raise ValueError('Recurso inválido')
+        if resource == 'food' and amount and (self.regional_camp or {}).get('food_priority'):
+            self._make_room_for_food(amount, 'storage_priority')
         accepted = min(amount, self.storage - sum(self.stock.values()))
         self.stock[resource] += accepted
         return accepted
@@ -1499,6 +1744,8 @@ class World:
                        and self.heroes[self.garden_worker].get('fatigue', 0)<3 else 0)
                 produced['food'] += self.deposit('food',DATA['rules']['garden_food_per_harvest']+bonus)
         garden_food = self._continuity_garden_harvest()
+        forage = self._forage_harvest()
+        garden_build = self._garden_build_work()
         people = self.meal_people()
         identifiers = set(people)
         need = len(people)
@@ -1595,6 +1842,9 @@ class World:
         self.worked_today=[]
         self.departed_today=[]
         filter_water = self._continuity_filter_dawn()
+        self._forage_regrow()
+        if (self.continuity_garden or {}).get('source') == 'regional_build':
+            self.continuity_garden['active'] = True
         crisis = self._roll_crisis()
         result = {'day':self.day,'produced':produced,'missing':missing,
                   'unfed': {resource: sorted(identifiers-allocations[resource])
@@ -1607,6 +1857,10 @@ class World:
             result['filter_water'] = filter_water
         if garden_food is not None:
             result['garden_food'] = garden_food
+        if forage is not None:
+            result['forage'] = forage
+        if garden_build is not None:
+            result['garden_build'] = garden_build
         self.log.append(result)
         self.validate()
         return result

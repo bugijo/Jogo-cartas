@@ -121,6 +121,10 @@ class RegionalCampaignPlayer:
                      and not state.get('thirsty') and hero not in world.worked_today
                      and hero not in world.departed_today), None)
 
+    def camp_work(self, world, kind, team):
+        """Gancho de amanhecer para trabalhos do acampamento (base: nenhum)."""
+        return None
+
     # --- um dia ------------------------------------------------------------------
     def play_day(self, world):
         dawn = {'day': world.day, 'stock': dict(world.stock), 'clues': world.clues,
@@ -151,6 +155,9 @@ class RegionalCampaignPlayer:
         if worker:
             world.assign_continuity_garden(worker, self.discard_water)
             record['garden_worker'] = worker
+        camp = self.camp_work(world, kind, team if kind != 'rest' else [])
+        if camp:
+            record['camp'] = camp
         record['plan'] = kind
         if kind != 'rest':
             expedition_id = f'campaign-day{world.day}-{kind}'
@@ -291,3 +298,144 @@ class StrategicRegionalPlayer(RegionalCampaignPlayer):
         if progress:  # pista possível, mas sem equipe apta: recuperar
             return ('rest', None, None, None)
         return super().plan(world)
+
+
+WORKSHOP = 'EXP-LOC-03'
+
+
+class CampRegionalPlayer(StrategicRegionalPlayer):
+    """Controlador experimental com as opções de acampamento (F, G, C2, D).
+
+    Só usa ações públicas do World. `options` escolhe o que o grupo usa:
+    'priority' (F), 'bridge' (G), 'forage' (C2), 'garden' (D). Os protótipos
+    precisam estar ligados no World; o controlador não liga regra nenhuma.
+    Ordem dos trabalhos no amanhecer, com quem não sai em expedição: obra da
+    Horta (até 2), depois coleta (até o limite), adultos antes de heróis.
+    """
+
+    def __init__(self, *args, options=('priority', 'bridge', 'forage', 'garden'),
+                 **kwargs):
+        super().__init__(*args, **kwargs)
+        self.options = set(options)
+
+    def _scrap_target(self, world):
+        """Sucata que falta para a próxima obra (Horta D primeiro)."""
+        if self._build_pending(world):
+            return 2
+        if 'build' in self.options and not world.projects:
+            kind = next((k for k in self.BUILD_ORDER if k not in world.structures), None)
+            from system import STRUCTURES
+            # Sem madeira no estoque a obra não começa: não buscar sucata à toa.
+            if kind and world.stock['wood'] >= STRUCTURES[kind]['cost'].get('wood', 0):
+                return STRUCTURES[kind]['cost'].get('scrap', 0)
+        return 0
+
+    def _build_pending(self, world):
+        return ('garden' in self.options and world.continuity_garden is None
+                and (world.regional_camp or {}).get('garden_build') is None
+                and world.regional_seeds_available() > 0)
+
+    def _setup(self, world):
+        """Decisões de chegada, antes do plano: prioridade F e ração-ponte G."""
+        done = {}
+        camp = world.regional_camp or {}
+        if 'priority' in self.options and not camp.get('food_priority'):
+            world.set_storage_priority(True)
+            done['priority'] = True
+        if ('bridge' in self.options and 'bridge' in camp.get('prototypes', [])
+                and not camp.get('bridge_claimed')):
+            done['bridge'] = world.claim_bridge_ration()['stored']
+        self._arrival = done
+
+    def plan(self, world):
+        self._setup(world)
+        consumers = len(world.meal_people())
+        people = world.meal_people()
+        safe_short = max(p.get('streak', 0) for p in people.values()) == 0
+        if (world.stock['scrap'] < self._scrap_target(world)
+                and world.searches[WORKSHOP] > 0
+                and (world.stock['food'] >= consumers
+                     or self.risk == 'short' and safe_short)):
+            self._kind = 'scrap'
+            searches = min(world.searches[WORKSHOP], 2)
+            return ('scrap', WORKSHOP, 'workshop_02',
+                    [{'kind': 'search', 'zone': 5, 'searches': searches}])
+        return super().plan(world)
+
+    def team(self, world):
+        if self._kind == 'scrap':
+            return RegionalCampaignPlayer.team(world)
+        return super().team(world)
+
+    def _free_people(self, world, team):
+        adults = [p['id'] for p in world.continuity_people if p['kind'] == 'adult'
+                  and p.get('wounds', 0) < 3 and p.get('fatigue', 0) < 3
+                  and not p.get('hungry') and not p.get('thirsty')]
+        # Medido no ciclo 11: poupar o herói ferido corta a coleta pela metade
+        # e encurta a campanha (fome impede a recuperação §25 de qualquer modo).
+        heroes = [h for h, s in sorted(world.heroes.items())
+                  if s['location'] == 'camp' and s['health'] > 0
+                  and s.get('fatigue', 0) < 3 and not s.get('hungry')
+                  and not s.get('thirsty') and h not in team]
+        return adults + heroes
+
+    def camp_work(self, world, kind, team):
+        done = dict(getattr(self, '_arrival', {}))
+        self._arrival = {}
+        camp = world.regional_camp or {}
+        if (self._build_pending(world) and world.stock['scrap'] >= 2
+                and 'garden_build' in camp.get('prototypes', [])):
+            world.start_regional_garden()
+            done['garden_started'] = True
+        build = (world.regional_camp or {}).get('garden_build')
+        for person in self._free_people(world, team):
+            if build is None or build['done']:
+                break
+            try:
+                world.work_regional_garden(person)
+            except ValueError:
+                continue
+            done.setdefault('garden_build', []).append(person)
+        if 'build' in self.options:
+            built = self._build(world, team)
+            if built:
+                done['build'] = built
+        if 'forage' in self.options and camp.get('forage') is not None:
+            for person in self._free_people(world, team):
+                try:
+                    world.assign_forage(person)
+                except ValueError as exc:
+                    if 'Limite' in str(exc) or 'esgotado' in str(exc):
+                        break
+                    continue
+                done.setdefault('forage', []).append(person)
+        return done or None
+
+    # Ordem de crescimento: comida passiva, depois espaço, defesa e o resto.
+    BUILD_ORDER = ('garden', 'storage', 'watch', 'infirmary', 'workshop',
+                   'lodging', 'reservoir')
+
+    def _build(self, world, team):
+        """Obras do acampamento (estruturas EXP-BLD) pela API pública do World.
+
+        Começa a primeira estrutura da ordem que o estoque paga e põe heróis
+        sem expedição nem trabalho hoje na obra (só heróis trabalham obras).
+        """
+        done = {}
+        if not world.projects:
+            for kind in self.BUILD_ORDER:
+                if kind not in world.structures and world.start_project(kind):
+                    done['started'] = kind
+                    break
+        for kind in list(world.projects):
+            for hero in self._free_people(world, team):
+                if hero not in world.heroes or kind not in world.projects:
+                    continue
+                try:
+                    finished = world.work_project(kind, 1, hero)
+                except ValueError:
+                    continue
+                done.setdefault('workers', []).append(hero)
+                if finished:
+                    done['finished'] = kind
+        return done
