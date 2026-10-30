@@ -326,7 +326,7 @@ class PostoVehicleBridgeTests(unittest.TestCase):
                          {'location':'EXP-LOC-06','health':0})
         world.validate()
 
-    def test_emergency_dropped_access_card_cannot_be_created_again(self):
+    def test_emergency_dropped_access_card_is_recovered_not_duplicated(self):
         hero='ZC-HER-0001'
         world=World.new(12,[hero],{'food':4,'water':4})
         world.cistern_record={
@@ -350,12 +350,15 @@ class PostoVehicleBridgeTests(unittest.TestCase):
             world.advance_expedition('station-card-revisit')
         revisit=TacticalGame.start(world,'station-card-revisit','station_02')
         revisit.state['heroes'][hero]=5
-        revisit.search(hero)
-        before=list(world.expeditions['station-card-revisit'].special_cargo)
-        with self.assertRaisesRegex(ValueError,'no chão'):
+        actions=world.heroes[hero]['actions']
+        # D-19: o cartão caído é recolhido (1 PA numa zona de busca), sem nova busca.
+        Arc2(world).recover_access_card('station-card-revisit')
+        self.assertEqual(world.expeditions['station-card-revisit'].special_cargo,['access_card'])
+        self.assertEqual(world.unique_items_at_sites['EXP-LOC-05'],[])
+        self.assertEqual(world.heroes[hero]['actions'],actions-1)
+        self.assertTrue(world.flags['access_card'])
+        with self.assertRaises(ValueError):            # um só cartão
             Arc2(world).recover_access_card('station-card-revisit')
-        self.assertEqual(world.expeditions['station-card-revisit'].special_cargo,before)
-        self.assertEqual(world.unique_items_at_sites['EXP-LOC-05'],['access_card'])
 
     def test_celia_contact_does_not_override_real_food_shortage(self):
         game = self.migrated_seed22()

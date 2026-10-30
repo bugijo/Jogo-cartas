@@ -197,6 +197,9 @@ class AdaptiveRegionalPlayer:
         if kind=='access_card':
             if tactical.world.flags.get('access_card'):
                 return []
+            destination=tactical.world.expeditions[tactical.id].destination
+            if 'access_card' in tactical.world.unique_items_at_sites.get(destination,[]):
+                return list(tactical.state['search_zones'])  # cartão caído: recolher
             if not any(row.get('action')=='search'
                        and row.get('expedition')==tactical.id
                        and row.get('location')==tactical.world.expeditions[

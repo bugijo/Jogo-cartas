@@ -31,6 +31,11 @@ class Arc2:
         card=ARC_CARDS['EXP-MIS-103']
         exp=self.world.expeditions.get(expedition_id)
         location=card['location']
+        floor=next((site for site,items in sorted(self.world.unique_items_at_sites.items())
+                    if 'access_card' in items),None)
+        if floor is not None:
+            self._pick_dropped_card(expedition_id,floor)
+            return
         if (not exp or exp.destination!=location or exp.remaining!=0 or exp.returning
                 or not any(entry.get('expedition')==expedition_id
                            and entry.get('location')==location and entry.get('action')=='search'
@@ -61,6 +66,35 @@ class Arc2:
             exp.special_cargo.append('access_card')
         self.world.flags['access_card']=True
         self.world.log.append({'day':self.world.day,'mission':card['id'],'result':'card'})
+
+    def _pick_dropped_card(self,expedition_id:str,site:str) -> None:
+        """Cartão perdido numa expedição que falhou (decisão do diretor, D-19).
+
+        Fica no chão do local onde caiu. Uma nova expedição a esse local o
+        recolhe: herói vivo numa zona de busca gasta 1 PA; mesma regra de carga.
+        Não exige nova busca (o local pode estar esgotado).
+        """
+        exp=self.world.expeditions.get(expedition_id)
+        if (not exp or exp.destination!=site or exp.remaining!=0 or exp.returning
+                or self.world.flags.get('access_card')):
+            raise ValueError('Cartão inacessível')
+        encounter=self.world.encounters.get(expedition_id)
+        carrier=next((hero_id for hero_id in sorted(exp.heroes)
+                      if self.world.heroes[hero_id]['health']>0
+                      and self.world.heroes[hero_id]['actions']>=1
+                      and (encounter is None or (hero_id in encounter['heroes']
+                           and encounter['heroes'][hero_id] in encounter['search_zones']))),None)
+        capacity=(6*len(exp.heroes) if not exp.vehicle_id else
+                  next(v['cargo_capacity'] for v in DATA['vehicles']
+                       if v['id']==exp.vehicle_id))
+        if carrier is None or sum(exp.cargo.values())+len(exp.special_cargo)+1>capacity:
+            raise ValueError('Cartão não está no alcance/sem carga')
+        self.world.heroes[carrier]['actions']-=1
+        self.world.unique_items_at_sites[site].remove('access_card')
+        exp.special_cargo.append('access_card')
+        self.world.flags['access_card']=True
+        self.world.log.append({'day':self.world.day,'mission':'EXP-MIS-103','result':'card',
+                               'recovered_from_floor':site,'hero':carrier})
 
     def authorize_installation(self,expedition_id:str,hero_ids:list[str],vehicle_id:str) -> None:
         card=ARC_CARDS['EXP-MIS-104']
