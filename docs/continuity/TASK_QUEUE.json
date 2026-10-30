@@ -390,6 +390,24 @@
    "status": "implementado_bloqueado",
    "commit": "7f19a5e",
    "blocker": "Depósito resolvido por descarte voluntário (2/53 sobrevivem em 1–30; 0/138 em 31–90). Pendentes: camas para recepção temporária (47 recusas, 5 Hortas; 4 opções em HORTA_CONTINUITY.md) e fome em rodízio sem penalidade (RULES l.49)."
+  },
+  {
+   "id": "P1-REGIONAL-FOOD-SUPPLY",
+   "priority": 1,
+   "objective": "Economia de comida regional viável sem rodízio (Fase 6).",
+   "depends_on": [
+    "P1-REGIONAL-GARDEN-H1"
+   ],
+   "acceptance": [
+    "T1–T5 de ECONOMY_TARGETS.md em 1–30",
+    "T1, T3 e T4 em 31–90",
+    "91–120 só na validação cega"
+   ],
+   "tests": [
+    "edicao-integral/experiments/food_economy.py --grid --seeds 1-30"
+   ],
+   "status": "aguardando_decisao",
+   "blocker": "Recompensa e Horta não movem; reposição move por rodízio. Escolher entre 4 propostas em ECONOMY_EXPERIMENTS.md."
   }
  ]
 }

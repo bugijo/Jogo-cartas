@@ -1,5 +1,6 @@
 # 2026-10-29 — campanha regional multi-dia
 
+- Fase 6 economia: alvos pré-registrados; recompensa e Horta não movem a sobrevivência; reposição do Mercado move, mas por rodízio (`ECONOMY_EXPERIMENTS.md`).
 - Descarte voluntário de água na colheita da Horta (aprovado): 2/53 sobrevivem em 1–30, 0/138 em 31–90; fome em rodízio e camas pendentes (`HORTA_CONTINUITY.md`).
 - `7f19a5e`: Horta H1 (Cisterna → regional); real: 4 Hortas com vitória, 0 sobrevivem no regional; bloqueios de camas e depósito ver `HORTA_CONTINUITY.md`.
 - `4f13ced`: filtro contínuo no regional (opcional por mundo); medição real 0/52; investigação da Horta em `HORTA_CONTINUITY.md`.

@@ -1,3 +1,11 @@
+# Economia de comida regional — experimentos, 2026-10-29
+
+Alvos pré-registrados (`ECONOMY_TARGETS.md`). Comida ×1,25–×2 e Horta 4–8: até
+2/37 (1–30) e 1/107 (31–90). Mercado repondo 1 busca/noite com comida ×1,5:
+68% e 71%, porém ~50% das porções faltando nas sobreviventes e nenhum rádio.
+Nenhuma variante cumpre T1–T5. Simulação, não playtest. Detalhes em
+`edicao-integral/ECONOMY_EXPERIMENTS.md`.
+
 # Fome em rodízio — protótipo, 2026-10-29
 
 Quatro variantes da privação medidas fora do repositório (1–30 e 31–90). A

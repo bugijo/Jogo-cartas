@@ -1,3 +1,11 @@
+# Estado ativo — economia de comida regional (Fase 6), 2026-10-29
+
+- Alvos T1–T5 registrados antes de medir (`b01d7e7`, `edicao-integral/ECONOMY_TARGETS.md`). Experimento reproduzível `edicao-integral/experiments/food_economy.py`; motor intacto.
+- Comida ×1,25/×1,5/×2 e Horta 4/6/8 (12 combinações): no máximo 2/37 em 1–30 e 1/107 em 31–90. Oferta total do Mercado é 8 por campanha.
+- Protótipo Mercado repondo 1 busca/noite: ×1,5 dá 68% (1–30) e 71% (31–90), mas fome 48–53% nas sobreviventes e rádio 0: falha T3 e T5.
+- Revisão de abordagem após 3 ciclos: oferta e regra de fome acopladas. Quatro propostas em `edicao-integral/ECONOMY_EXPERIMENTS.md`. **Decisão do responsável.** Sementes 91–120 intactas.
+- Commits locais, sem push.
+
 # Estado ativo — descarte voluntário de água na Horta, 2026-10-29
 
 - Aprovado e implementado: na colheita regional, só a água acima do consumo da noite e só o espaço que falta para as 4 comida; depósito segue 30; `garden_food.water_discarded`. Cisterna e replays certificados intactos.
