@@ -1,3 +1,7 @@
+# Crescimento do abrigo (D-20) — simulação, 2026-10-30
+
+Simulação, não playtest. Com chegadas de sobreviventes: 1–30 35/53 (66%), 31–90 88/138 (64%); fome 5,8% e 8,7%. Acolher, recusar ou lotar: 61–64% (31–90). Personas 1–30: A 11/53, B 35/53, C 34/53, mista 29/53. `edicao-integral/COMUNIDADE_BALANCEAMENTO.md` ciclo 10.
+
 # Escala por tamanho (D-17) — simulação, 2026-10-30
 
 Simulação, não playtest. Sobrevivem 15 dias: 1–30 39/53 (74%), 31–90 91/138 (66%); fome nas sobreviventes 6,5% e 7,8%.

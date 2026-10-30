@@ -230,3 +230,31 @@ O grupo A quase não constrói (0,4 estrutura/mesa) nem guarda comida → D-18.
 Lacunas fora da Comunidade vistas com mais ferimentos (1 caso em 1.240 cada):
 cartão de acesso no chão sem regra de recuperação; trabalhador indisponível no
 controlador tático → D-19.
+
+## Ciclo 10 — crescimento do abrigo (D-20)
+
+Auditoria (1–90, regras D-17): a população não mudava em 15 dias; depósito
+com pico de 14–20 de 30 (perda de comida ~0,3 por campanha); terreno com 2–4
+livres no fim; só camas apertavam (H4–H6, 3–5 noites lotadas). Sem gente nova,
+alojamento, terreno e depósito não tinham motivo.
+
+Sistema adotado: chegadas de sobreviventes (D6), terreno para obras da
+Comunidade, cerca (+3 de terreno), níveis 2 de Depósito e Alojamento
+(`MANUAL_EXPERIMENTAL.md`).
+
+| Variante (31–90) | Sobrevivem | Fome | H2/H3/H4/H5/H6 | Acolhidos / recusas por campanha |
+|---|---|---|---|---|
+| Sem crescimento (D-17) | 66% | 7,8% | 57/57/66/77/66 | — |
+| 4 chegadas (3, 6, 9, 12), acolhe até lotar | 49% | 6,5% | 57/57/63/53/26 | 2,8 / 0,9 |
+| 4 chegadas, acolhe só com cama | 58% (2 rep.) | 6,7% | 57/54/61/68/51 | 1,4 / 1,6 |
+| **2 chegadas (4, 10), acolhe só com cama (adotado)** | **64%** | **8,7%** | 57/64/63/73/58 | 1,1 / 0,7 |
+| 2 chegadas, sempre recusa | 61% | 7,5% | 71/57/63/67/55 | 0 / 1,3 |
+| 2 chegadas, acolhe até lotar | 62% | 8,7% | 57/64/66/67/53 | 1,7 / 0,3 |
+
+Oficial (1 repetição): **1–30 35/53 (66%)**, fome 5,8%, T2 28/35, rádio 34;
+**31–90 88/138 (64%)**, fome 8,7%, T2 75/88, rádio 84. T1–T5 cumpridas; todos
+os tamanhos entre 55% e 90%. Obras por campanha (31–90): cerca 46, alojamento
+35, Depósito nível 2 2, Alojamento nível 2 0 em 138 — o 2º nível quase não é
+necessário em 15 dias (fica como opção de mesa; o depósito raramente enche).
+
+Personas (1–30, 212 mesas): A 11/53, B 35/53, C 34/53, mista 29/53.

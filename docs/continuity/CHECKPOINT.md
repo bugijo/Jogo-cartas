@@ -1,3 +1,9 @@
+# Estado ativo — D-20 crescimento do abrigo, 2026-10-30
+
+- Chegadas de sobreviventes (dias 4 e 10; acolher exige cama, recusar Moral −1), obras da Comunidade ocupam terreno, cerca (+3), níveis 2 de Depósito/Alojamento. 1–30: 35/53 (66%), fome 5,8%; 31–90: 88/138 (64%), fome 8,7%; tamanhos 55–90%. T1–T5 ✓.
+- Inventário: 59 cartas novas (383 no total). Personas 1–30: A 11/53 (D-18).
+- Próximas: D-18 (grupo A), D-15, D-19, D-08. Commits locais, sem push; 91–120 intactas.
+
 # Estado ativo — D-17 escala por tamanho, 2026-10-30
 
 - Defeito: abrigo vazio (todos em viagem) contava como colapso; agora a viagem que esvaziaria o abrigo é recusada.

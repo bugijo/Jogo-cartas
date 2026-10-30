@@ -214,6 +214,21 @@ Código `community.py`; testes `tests/test_community.py`.
   derrota parcial (regra já existente do abrigo).
 - **Abrigo nunca vazio** (D-17): uma viagem automática que deixaria o abrigo
   sem nenhum humano é recusada.
+- **Crescimento do abrigo** (decisão do diretor, D-20):
+  - *Chegadas*: no amanhecer dos dias 4 e 10 role 1 D6 — 1–2: 1 adulto;
+    3–4: 1 adulto e 1 criança; 5: 2 adultos; 6: ninguém. O grupo acolhe todos
+    (precisa de cama: camas + 2 de lotação) ou recusa (Moral −1). Sem decisão
+    no amanhecer, o grupo segue caminho (= recusa). Adulto acolhido sorteia
+    profissão e rola bagagem.
+  - *Terreno*: obras da Comunidade ocupam 1 de terreno (coletor, cozinha, cada
+    canteiro), as EXP-BLD 2. **Cerca ampliada** (2 madeira, 2 trabalhos, até 2):
+    +3 de terreno.
+  - *Níveis*: **Depósito nível 2** (exige Depósito; 2 madeira + 1 sucata,
+    2 trabalhos): +12 no depósito seco. **Alojamento nível 2** (exige
+    Alojamento; 3 madeira + 1 sucata, 2 trabalhos): +4 camas. Níveis não ocupam
+    terreno novo.
+  - *Esforço*: toda obra paga materiais na largada e trabalhos (1 por
+    trabalhador por dia, construtor 2) até ficar pronta.
 - **Canteiro** (decisão do diretor, D-14; 2 madeira + 1 sucata, 2 trabalhos,
   até 2 por abrigo): produz 2 comida no dia em que um trabalhador cuida dele
   (agricultor +1). Não gasta o entorno: transforma trabalho em comida no meio
@@ -237,6 +252,7 @@ Código `community.py`; testes `tests/test_community.py`.
 | Mapa tático de comida além do Mercado | Fila D-08 (conteúdo) | dias de Mercado já caem para ~12% |
 | Escala por tamanho (D-17) | Travessia (Vida máx. 2 na chegada) + Moral da escassez; abrigo nunca vazio | 31–90: H2–H6 57–77% (antes 29–95%); fome nas sobreviventes 7,8% |
 | Ameaça noturna por tamanho e limite de colapso | Rejeitados (testados no ciclo 9) | H6 seguia 88–93%; mais dados e vigias na mesa sem ganho |
+| Crescimento do abrigo (D-20) | 2 chegadas (dias 4 e 10), recusa Moral −1; terreno para obras da Comunidade; cerca; níveis 2 de Depósito e Alojamento | acolher, recusar ou lotar dão 61–64% (31–90): dilema sem estratégia dominante; 4 chegadas derrubavam H6 a 26% |
 
 ## Ainda sem regra aprovada (não decidir silenciosamente)
 

@@ -1,6 +1,6 @@
 # Crescimento do acampamento regional — economia de materiais (2026-10-30)
 
-Fase 7. Estado do motor e propostas para decisão. Nada aqui é regra aprovada.
+Fase 7. Estado do motor e propostas para decisão. **Atualização D-20 (2026-10-30):** o crescimento adotado (chegadas, terreno, cerca, níveis 2; madeira das viagens de lenha) está em `MANUAL_EXPERIMENTAL.md` e `COMUNIDADE_BALANCEAMENTO.md` ciclo 10; o texto abaixo é histórico.
 
 ## O que o acampamento pode construir (dados atuais, `data/system.json`)
 
