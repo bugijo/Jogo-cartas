@@ -1,3 +1,10 @@
+# Estado ativo — fila do diretor D-05..D-07, 2026-10-30
+
+- D-05 parcial: 4 variantes sem efeito na fome tardia (13–16%); teto = produção sustentável por trabalhador → D-14.
+- D-06: 18 personas na Comunidade (60 mesas, 1–10): A 4/15, B 8/15, C 9/15, mista 8/15; obras decidem (22/26 vs 7/34); dias repetidos 68% → D-15. Avaliações simuladas em `edicao-integral/AVALIACOES_PERSONAS.md`.
+- D-07: `tools/card_inventory.py` (no `check.sh full`): 324 cartas 0.2 + 54 novas = 378; tabuleiros do abrigo e do entorno a desenhar (`INVENTARIO_CARTAS.md`).
+- Próximas: D-14 (produção do meio de jogo), D-15 (local tático de comida), D-08 (tabuleiros). Commits locais, sem push; 91–120 intactas.
+
 # Estado ativo — Direção do jogo: economia da Comunidade rebalanceada, 2026-10-30
 
 - Proprietário delegou decisões de design. Decisões do diretor em `MANUAL_EXPERIMENTAL.md` (heróis em viagem, suprimento de evacuação, rendimento/entorno, Horta 4/dia com Comunidade, serraria eliminada).
