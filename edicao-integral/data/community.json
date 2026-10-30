@@ -78,5 +78,7 @@
  "traps": {"max": 2, "cost_wood": 1, "catch_at": 5},
  "garden_food_per_harvest": 4,
  "evacuation_supply": {"food_per_consumer": 1},
+ "arrival": {"max_hero_health": 2},
+ "morale": {"on": true, "unfed_per_drop": 0, "recover": 1},
  "water_tanks": {"base": 30, "per_reservoir": 12}
 }

@@ -292,6 +292,51 @@ class CommunityTests(unittest.TestCase):
         self.assertEqual((ret['bonus'], ret['points']), (1, 8))
         self.assertNotIn(dog, community.away(world))
 
+    def test_arrival_fatigue_caps_health_but_keeps_wounds(self):
+        tired = next(r for r in self.world.log if r.get('event') == 'community_rules_on')
+        self.assertTrue(all(h['health'] <= 2 for h in self.world.heroes.values()))
+        self.assertTrue(all(before == 3 for before in tired['arrival_fatigue'].values()))
+        base = migrated(on=False).world
+        for hero_id, hero in base.heroes.items():
+            self.assertEqual(self.world.heroes[hero_id]['health'], min(2, hero['health']))
+
+    def test_trip_cannot_empty_the_shelter(self):
+        world = self.world
+        worker = self.adults[0]
+        dog = next(p for p in world.continuity_people if p['kind'] == 'dog')
+        alone = {worker: community._person(world, worker), dog['id']: dog}
+        with mock.patch.object(World, 'meal_people', lambda self: alone):
+            with self.assertRaisesRegex(ValueError, 'sem nenhum humano'):
+                community.send_trip(world, worker, 'coleta', 1)
+        community.send_trip(world, worker, 'coleta', 1)  # com gente em casa, sai
+
+    def test_morale_drops_with_scarcity_and_recovers_when_all_eat(self):
+        world = self.world
+        people = world.meal_people()
+        human = next(pid for pid, p in people.items() if p.get('kind') != 'dog')
+        world.stock.update(food=len(people) - 1, water=25)
+        order = [human] + sorted(pid for pid in people if pid != human)
+        world.end_day({'food_priority': order[1:] + [human], 'water_priority': order})
+        self.assertEqual(world.shelter_morale, 4)
+        world.stock.update(food=20, water=25)
+        world.end_day(self.plan())
+        self.assertEqual(world.shelter_morale, 5)
+
+    def test_unfed_dog_does_not_lower_morale_and_zero_morale_is_defeat(self):
+        world = self.world
+        people = world.meal_people()
+        dog = next(pid for pid, p in people.items() if p.get('kind') == 'dog')
+        world.stock.update(food=len(people) - 1, water=25)
+        world.end_day({'food_priority': sorted(pid for pid in people if pid != dog) + [dog],
+                       'water_priority': sorted(people)})
+        self.assertEqual(world.shelter_morale, 5)
+        world.shelter_morale = 1
+        people = world.meal_people()
+        world.stock.update(food=0, water=25)
+        world.end_day({'food_priority': sorted(people), 'water_priority': sorted(people)})
+        self.assertEqual(world.shelter_morale, 0)
+        self.assertTrue(world.partial_defeat)
+
     def test_rescued_survivor_brings_baggage_and_profession(self):
         world = self.world
         world.stock.update(food=0)

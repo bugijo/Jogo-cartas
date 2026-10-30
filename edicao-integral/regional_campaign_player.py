@@ -276,7 +276,7 @@ class StrategicRegionalPlayer(RegionalCampaignPlayer):
         consumers = len(world.meal_people())
         people = world.meal_people()
         covered = world.stock['food'] >= consumers
-        safe_short = max(p.get('streak', 0) for p in people.values()) == 0
+        safe_short = max((p.get('streak', 0) for p in people.values()), default=0) == 0
         far = len(self.far_team(world)) >= 2
         npc = self.next_clue(world)
         progress = None
@@ -351,7 +351,7 @@ class CampRegionalPlayer(StrategicRegionalPlayer):
         self._setup(world)
         consumers = len(world.meal_people())
         people = world.meal_people()
-        safe_short = max(p.get('streak', 0) for p in people.values()) == 0
+        safe_short = max((p.get('streak', 0) for p in people.values()), default=0) == 0
         if (world.stock['scrap'] < self._scrap_target(world)
                 and world.searches[WORKSHOP] > 0
                 and (world.stock['food'] >= consumers

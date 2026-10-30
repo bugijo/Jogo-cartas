@@ -28,7 +28,8 @@ from simulate_cistern_sweep import auto_settings  # noqa: E402
 
 import community  # noqa: E402
 
-ORIGINAL = deepcopy({key: community.RULES[key] for key in ('activities', 'pools', 'trips')})
+ORIGINAL = deepcopy({key: community.RULES[key]
+                     for key in ('activities', 'pools', 'trips', 'arrival', 'morale')})
 ORIGINAL_GARDEN = community.RULES['garden_food_per_harvest']
 DAYS = 15
 SIZES = (2, 3, 4, 5, 6)
@@ -76,7 +77,18 @@ TRIP_OVERRIDES = {'COMM-PPU1-CAP8': {'capacity': 8}}
 for _name in [*PPU, *POOLS]:
     CONFIGS[_name] = (CommunityRegionalPlayer, True, {})
 CONFIGS['COMM-NOHERO'] = (CommunityRegionalPlayer, True, {})
-
+# D-17: escala por tamanho (variantes em memória; a ameaça noturna e o
+# limite de colapso testados no ciclo 9 foram rejeitados e saíram do motor)
+POOLS['COMM-R2'] = {'peixe': {'regrow': 2}, 'frutas': {'regrow': 2}}
+ARRIVAL = {'COMM-NOFATIGUE': {'max_hero_health': 3}}
+ORIGINAL_DECK = list(community.RULES['event_deck'])
+DECK = {'COMM-EV-F2': ['tranquila', 'ferimento'], 'COMM-EV-Z2': ['tranquila', 'zumbis'],
+        'COMM-EV-P2': ['tranquila', 'perda']}   # troca 1 carta: tira a 1ª, põe a 2ª
+MORALE = {'COMM-NOMORALE': {'on': False},
+          'COMM-M4': {'unfed_per_drop': 4}, 'COMM-M3': {'unfed_per_drop': 3},
+          'COMM-M1R0': {'recover': 0}}
+for _name in [*POOLS, *ARRIVAL, *DECK, *MORALE]:
+    CONFIGS[_name] = (CommunityRegionalPlayer, True, {})
 
 def _counting(cls):
     """Registra o número de consumidores de cada noite (plano de refeição)."""
@@ -93,7 +105,7 @@ def _counting(cls):
 
 
 def run_one(args):
-    config, size, seed = args
+    config, size, seed, rep = args
     cls, community_on, options = CONFIGS[config]
     import community
     # Variantes só em memória (nada muda em data/community.json). Restaura os
@@ -109,6 +121,13 @@ def run_one(args):
     for key, value in POOLS.get(config, {}).items():
         community.RULES['pools'][key].update(value)
     community.RULES['trips'].update(TRIP_OVERRIDES.get(config, {}))
+    community.RULES['arrival'].update(ARRIVAL.get(config, {}))
+    community.RULES['morale'].update(MORALE.get(config, {}))
+    deck = list(ORIGINAL_DECK)
+    if config in DECK:
+        out, new = DECK[config]
+        deck[deck.index(out)] = new
+    community.RULES['event_deck'][:] = deck
     if config in GARDEN_OUTPUT:
         community.RULES['garden_food_per_harvest'] = GARDEN_OUTPUT[config]
     player = CampaignPlayer02.new_hn(seed, size)
@@ -124,12 +143,25 @@ def run_one(args):
         return {'config': config, 'size': size, 'seed': seed,
                 'outcome': 'migration_refused', 'reason': str(exc)[:80]}
     world = campaign.world
+    if rep:
+        # Repetição: mesmo fim de Cisterna, dados regionais novos (amostra maior
+        # para tamanhos raros sem tocar nas sementes reservadas).
+        import random as _random
+        world.rng_state = community._lists(_random.Random(seed * 7919 + rep * 104729).getstate())
+        if world.community is not None:
+            world.community['rng'] = community._lists(
+                _random.Random(seed * 6007 + rep * 130363).getstate())
     world.regional_travel_cards = True
     world.regional_filter_production = True
     if 'bridge' in options.get('options', ()):
         world.enable_regional_prototypes('bridge')  # G: protótipo não aprovado
     regional = _counting(cls)(discard_water=True, **options)
-    campaign = regional.run(campaign, DAYS)
+    try:
+        campaign = regional.run(campaign, DAYS)
+    except ValueError as exc:
+        # Lacuna de regra/controlador fora da Comunidade: conta à parte.
+        return {'config': config, 'size': size, 'seed': seed, 'rep': rep,
+                'outcome': 'engine_error', 'reason': str(exc)[:80]}
     world = campaign.world
     nights = [row for row in world.log if 'missing' in row and 'stock' in row]
     consumers = [len(row['unfed']['food']) for row in nights]
@@ -150,7 +182,7 @@ def run_one(args):
     community = world.community or {}
     survived = not world.partial_defeat and played == DAYS
     return {
-        'config': config, 'size': size, 'seed': seed,
+        'config': config, 'size': size, 'seed': seed, 'rep': rep,
         'outcome': 'survived' if survived else ('partial_defeat' if world.partial_defeat
                                                 else 'stopped'),
         'days': played,
@@ -179,12 +211,14 @@ def summarize(rows):
     out = {}
     for config in dict.fromkeys(r['config'] for r in rows):
         group = [r for r in rows if r['config'] == config]
-        migrated = [r for r in group if r['outcome'] != 'migration_refused']
+        errors = [r for r in group if r['outcome'] == 'engine_error']
+        migrated = [r for r in group if r['outcome'] not in ('migration_refused', 'engine_error')]
         surv = [r for r in migrated if r['outcome'] == 'survived']
         pn = sum(r['people_nights'] for r in surv) or 1
         out[config] = {
             'victories_cistern': len(group),
-            'migration_refused': len(group) - len(migrated),
+            'migration_refused': len(group) - len(migrated) - len(errors),
+            'engine_errors': dict(Counter(r['reason'] for r in errors)),
             'migrated': len(migrated), 'survived': len(surv),
             'survival_rate': round(len(surv) / len(migrated), 3) if migrated else 0,
             'mean_days': round(sum(r['days'] for r in migrated) / max(1, len(migrated)), 2),
@@ -214,13 +248,15 @@ def main():
     parser.add_argument('--seeds', default='1-30')
     parser.add_argument('--configs', default='BASE,STRAT,COMM')
     parser.add_argument('--jobs', type=int, default=6)
+    parser.add_argument('--reps', type=int, default=1,
+                        help='repetições do regional por fim de Cisterna (dados novos)')
     parser.add_argument('--json')
     args = parser.parse_args()
     first, last = map(int, args.seeds.split('-'))
     if last >= 91:
         raise SystemExit('Sementes 91–120 reservadas para a validação cega final')
-    tasks = [(c, s, seed) for c in args.configs.split(',') for s in SIZES
-             for seed in range(first, last + 1)]
+    tasks = [(c, s, seed, rep) for c in args.configs.split(',') for s in SIZES
+             for seed in range(first, last + 1) for rep in range(args.reps)]
     with Pool(args.jobs) as pool:
         rows = [r for r in pool.map(run_one, tasks) if r is not None]
     summary = summarize(rows)

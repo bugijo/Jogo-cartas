@@ -1838,6 +1838,7 @@ class World:
                         source[key] = person[key]
                 source['health'] = person['health']
         community_care = community_rules.after_meal(self, people)
+        community_morale = community_rules.morale_night(self, people, allocations)
         human_consumers = [person for identifier,person in people.items()
                            if person.get('kind', 'hero' if identifier in self.heroes else 'adult') != 'dog']
         collapse_threshold = (len(human_consumers)+3)//4
@@ -1910,7 +1911,7 @@ class World:
             result['garden_build'] = garden_build
         if self.community is not None:
             result['community'] = {key: value for key, value in (
-                ('work', community_work), ('care', community_care), ('guard', guard),
+                ('work', community_work), ('care', community_care), ('morale', community_morale), ('guard', guard),
                 ('dawn', community_dawn), ('crowded', crowded)) if value}
         self.log.append(result)
         self.validate()

@@ -206,7 +206,10 @@ class CommunityRegionalPlayer(CampRegionalPlayer):
                     dog = next((p['id'] for p in world.continuity_people
                                 if p['kind'] == 'dog' and p['id'] not in community.away(world)
                                 and not p.get('hungry') and not p.get('thirsty')), None)
-                community.send_trip(world, person, activity, days, dog=dog)
+                try:
+                    community.send_trip(world, person, activity, days, dog=dog)
+                except ValueError:
+                    continue      # o abrigo não pode ficar vazio
                 free.remove(person)
                 done.setdefault('community', []).append((person, 'viagem', activity, days))
         # 4. armadilha e cuidados

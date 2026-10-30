@@ -205,6 +205,22 @@ def arrival_kits(world) -> dict:
     return kits
 
 
+def arrival_fatigue(world) -> dict:
+    """Travessia: ninguém chega descansado ao regional (Vida máxima na chegada).
+
+    Decisão do diretor (D-17): grupos grandes terminavam a Cisterna mais
+    inteiros e chegavam com folga; o teto nivela a chegada sem apagar
+    ferimentos piores que ele.
+    """
+    cap = RULES['arrival']['max_hero_health']
+    tired = {}
+    for hero_id, hero in sorted(world.heroes.items()):
+        if hero['health'] > cap:
+            tired[hero_id] = hero['health']
+            world._set_hero_health(hero_id, cap)
+    return tired
+
+
 def evacuation_supply(world) -> dict:
     """Suprimento de evacuação: a Ponte entrega 1 ração por consumidor, uma vez.
 
@@ -364,6 +380,29 @@ def after_meal(world, people: dict) -> dict | None:
     return {'healed': healed} if healed else None
 
 
+def morale_night(world, people: dict, fed: dict) -> dict | None:
+    """Escassez progressiva: noite com humano sem comer ou beber baixa o Moral.
+
+    `unfed_per_drop` 0 = basta 1 humano sem a porção; N = 1 a cada N humanos
+    (arredondado para cima). Noite com todos servidos recupera `recover`.
+    Moral 0 já é derrota parcial no motor.
+    """
+    rule = RULES['morale']
+    if world.community is None or not rule['on']:
+        return None
+    humans = [pid for pid, p in people.items() if p.get('kind') != 'dog']
+    unfed = [pid for pid in humans if pid not in fed['food'] or pid not in fed['water']]
+    per = rule['unfed_per_drop']
+    limit = max(1, -(-len(humans) // per)) if per else 1
+    before = world.shelter_morale
+    if len(unfed) >= limit:
+        world.shelter_morale = max(0, before - 1)
+    elif not unfed:
+        world.shelter_morale = min(5, before + rule['recover'])
+    return {'unfed_humans': len(unfed), 'limit': limit, 'morale': world.shelter_morale,
+            'change': world.shelter_morale - before}
+
+
 def guard_roll(world) -> dict | None:
     """Vigia: rola antes da crise da noite; com sucesso a crise não acontece."""
     state = world.community
@@ -399,6 +438,9 @@ def send_trip(world, person_id: str, activity: str, days: int,
     if ((person_id not in workers(world) and person_id not in world.heroes)
             or not able(world, person_id, TRIPS['depart_max_wounds'])):
         raise ValueError('Trabalhador indisponível para viagem')
+    home = [i for i, p in world.meal_people().items() if p.get('kind') != 'dog' and i != person_id]
+    if not home:
+        raise ValueError('O abrigo não pode ficar sem nenhum humano')
     if dog is not None:
         pet = next((p for p in world.continuity_people if p['id'] == dog), None)
         if (pet is None or pet['kind'] != 'dog' or dog in away(world)
