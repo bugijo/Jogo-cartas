@@ -30,13 +30,13 @@ restrições. Números e ids vêm de `data/` e de `data/print_inventory.json`
    acolhe famílias e segue pistas de uma transmissão de rádio. Rádio →
    cartão de acesso → bateria da Oficina → van do Posto → combustível →
    Instalação militar (transmissor) → defesa final do acampamento.
-   Prazo em estudo: 25 dias.
+   Prazo: depois do dia 25 a frequência cala.
 
 ## 3. Personagens
 
 | Grupo | Quantidade | Onde está | O que ilustrar |
 |---|---|---|---|
-| Heróis jogáveis | 10 (Lia, Ivo, Mara, Caio, Nara, Bento, Duda, Rosa, Joel, Yumi) + 2 da ponte da Cisterna | `data/system.json#heroes` | retrato, ficha com Vida 3, ações, perícias |
+| Heróis jogáveis | 24 no catálogo da Cisterna (12 iniciais, 12 desbloqueáveis); 10 deles no motor regional (Lia, Ivo, Mara, Caio, Nara, Bento, Duda, Rosa, Joel, Yumi) | `content/catalog.json#heroes`, `data/system.json#heroes` | retrato, ficha com Vida 3, ações, perícias |
 | Especialistas nomeados | 15 (Téo, Célia, Aline, Samuel, Bruna, Raul, Denise, Hugo, Sol, Otávio, Jana, Miguel, Bia, Vicente, Lúcia) | `data/system.json#npcs` | retrato e ofício |
 | Sobreviventes comuns | adultos, crianças, cães (sem nome fixo) | migração e chegadas | 6–8 silhuetas genéricas reutilizáveis |
 | Profissões | 9 (caçador, agricultor, coletor, cozinheiro, carpinteiro, mecânico, enfermeiro, guarda, comum) em 12 cartas | `data/community.json#profession_deck` | ícone + ferramenta do ofício |
