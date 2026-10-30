@@ -53,6 +53,13 @@ class CampTests(unittest.TestCase):
         self.assertEqual(world.storage, 24)
         self.assertIsNone(migrated(lots=False).world.community['camp'])
 
+    def test_welcoming_level_opens_three_by_three_with_two_planted_lots(self):
+        world = migrated(lots=True, level='acolhedor').world
+        state = world.community['camp']
+        self.assertEqual(state['level'], 2)
+        self.assertEqual(camp.built(world, 'horta'), 2)
+        self.assertEqual(len(camp.ready_horta(world)), 2)
+
     def test_lot_categories_and_stacked_tents(self):
         world = self.world
         self.assertIsNone(camp.free_lot(world, 'oficina'))
@@ -175,6 +182,15 @@ class CampTests(unittest.TestCase):
         people = world.meal_people()
         world.end_day({'food_priority': sorted(people), 'water_priority': sorted(people)})
         self.assertTrue(world.partial_defeat)
+
+    def test_crisis_is_the_only_collective_collapse_in_lots(self):
+        world = self.world
+        people = world.meal_people()
+        for _ in range(3):
+            world.stock.update(food=0, water=24)
+            world.end_day({'food_priority': sorted(people), 'water_priority': sorted(people)})
+        self.assertLess(self.state['crisis'], camp.CRISIS['max'])
+        self.assertFalse(world.partial_defeat)  # 3 noites sem comida: Crise alta, sem colapso §25
 
     def test_only_bedded_people_recover_and_grave_crisis_stops_recovery(self):
         world, state = self.world, self.state

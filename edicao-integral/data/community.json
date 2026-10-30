@@ -104,7 +104,8 @@
  "garden_food_per_harvest": 4,
  "evacuation_supply": {"food_per_consumer": 1},
  "levels": {"normal": {"start_structures": []},
-            "acolhedor": {"start_structures": ["canteiro"], "evacuation_food_per_consumer": 2}},
+            "acolhedor": {"start_structures": ["canteiro"], "evacuation_food_per_consumer": 2,
+                          "camp_level": 2, "camp_horta": 2}},
  "location_renew_every": {"EXP-LOC-01": 2},
  "weapon_maintenance": {"scrap": 1, "per_hero_per_day": 1},
  "final_defense_waves": {

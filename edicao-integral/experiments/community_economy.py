@@ -183,6 +183,8 @@ CONFIGS.update({
     'SC-F-CRISIS': (CommunityRegionalPlayer, True, {}),
     'SC-G-DEV': (CommunityRegionalPlayer, True, {}),
     'SC-G-DEV-NOMARKET': (CommunityRegionalPlayer, True, {'edge': 'never', 'no_market': True}),
+    'COMM-W0': (CommunityRegionalPlayer, True, {'water_days': 0}),
+    'COMM-W2': (CommunityRegionalPlayer, True, {'water_days': 2}),
 })
 SETUP['SC-G-DEV-NOMARKET'] = _developed
 ARRIVALS['SC-B-REFUSE'] = {'days': [3]}

@@ -1898,7 +1898,8 @@ class World:
                            if person.get('kind', 'hero' if identifier in self.heroes else 'adult') != 'dog']
         collapse_threshold = (len(human_consumers)+3)//4
         deprived_humans = sum(person.get('streak',0)>=3 for person in human_consumers)
-        if deprived_humans >= collapse_threshold:
+        # Em lotes, a Crise 0–10 é o colapso coletivo (uma regra, não duas).
+        if deprived_humans >= collapse_threshold and not camp_rules.on(self):
             self.shelter_health = 0
             self.partial_defeat = True
         if self.shelter_health == 0 or self.shelter_morale == 0:

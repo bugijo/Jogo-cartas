@@ -33,13 +33,14 @@ class CommunityRegionalPlayer(CampRegionalPlayer):
                  max_days=3, risk='covered',
                  per_day_choice=False, dogs=True, accept='beds', growth=True,
                  edge='short', horta_target=6, horta_per_adult=2, tents_first=False,
-                 no_market=False, **kwargs):
+                 no_market=False, water_days=1.0, **kwargs):
         super().__init__(*args, options=options, risk=risk, **kwargs)
         self.accept = accept
         self.horta_target = horta_target
         self.horta_per_adult = horta_per_adult
         self.tents_first = tents_first  # situação A: barracas antes da produção
         self.no_market = no_market      # situação G: sem Mercado nem Horta abandonada
+        self.water_days = water_days    # viagem de água abaixo de N noites de água
         self.growth = growth
         self.edge = edge  # Horta abandonada: 'always', 'short' (noite descoberta), 'never'
         self.trips = trips
@@ -298,6 +299,9 @@ class CommunityRegionalPlayer(CampRegionalPlayer):
             while free and lots_left > 0:
                 if not state['camp']['rain'] and spare < 1:
                     break
+                farmer = any(community.specialist(world, p, 'horta') for p in free)
+                if lots_left < camp.HORTA['lots_per_worker'] and not farmer:
+                    break  # 1 lote rende menos que uma viagem: fica sem cuidado hoje
                 worker = take(free, 'horta')
                 try:
                     community.assign_job(world, worker, 'horta')
@@ -339,7 +343,7 @@ class CommunityRegionalPlayer(CampRegionalPlayer):
                              or (world.continuity_filter or {}).get('active'))
                 water_trip = any(t['activity'] == 'agua' for t in state['trips'])
                 if (activity is None and camp.on(world) and free_boil and not water_trip
-                        and world.stock['water'] < 2 * consumers):
+                        and world.stock['water'] < self.water_days * consumers):
                     activity, days = 'agua', min(2, self.max_days)  # rio, sem ferver
                 if activity is None and stock_days < self.food_days:
                     activity, days = self._food_activity(world, person, days, planned)

@@ -257,13 +257,17 @@ def start_structures(world, level: str = 'normal') -> list[str]:
         raise ValueError('Nível de preparação desconhecido')
     built = list(RULES['levels'][level]['start_structures'])
     if camp.on(world):
-        # Em lotes, o canteiro pronto do Acolhedor é um lote de horta plantado.
-        for kind in built:
+        # Em lotes, o Acolhedor abre a clareira 3×3 e planta lotes de horta.
+        spec = RULES['levels'][level]
+        camp.expand(world, spec.get('camp_level', 1))
+        planted = []
+        for _ in range(spec.get('camp_horta', 0)):
             lot = camp.free_lot(world, 'horta')
-            if kind == 'canteiro' and lot:
+            if lot:
                 world.community['camp']['lots'][lot].append('horta')
                 world.community['camp']['horta_ready'][lot] = world.day
-        return built
+                planted.append(lot)
+        return [f'nivel_{spec.get("camp_level", 1)}'] + ['horta'] * len(planted)
     world.community['built'] += built
     return built
 
