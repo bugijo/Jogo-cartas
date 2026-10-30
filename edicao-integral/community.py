@@ -21,7 +21,7 @@ PROFESSIONS = RULES['professions']
 ACTIVITIES = RULES['activities']
 TRIPS = RULES['trips']
 STRUCTURES = RULES['structures']
-CAMP_JOBS = ('cozinhar', 'obra', 'cuidar', 'vigiar', 'armadilha')
+CAMP_JOBS = ('cozinhar', 'obra', 'cuidar', 'vigiar', 'armadilha', 'canteiro')
 KEYS = {'rng', 'professions', 'jobs', 'trips', 'pools', 'meat', 'built', 'projects',
         'deck', 'traps', 'pista_used', 'trip_seq'}
 
@@ -75,6 +75,7 @@ def validate(world) -> None:
     ok = ok and all(trip['activity'] in ACTIVITIES for trip in state['trips'])
     ok = ok and sum(m['units'] for m in state['meat']) <= RULES['meat']['track']
     ok = ok and set(state['built']) <= set(STRUCTURES) and set(state['projects']) <= set(STRUCTURES)
+    ok = ok and all(state['built'].count(k) <= STRUCTURES[k].get('max', 1) for k in STRUCTURES)
     ok = ok and len(state['traps']) <= RULES['traps']['max']
     if not ok:
         raise ValueError('Estado da Comunidade inválido')
@@ -226,6 +227,10 @@ def assign_job(world, person_id: str, job: str, target: str | None = None) -> No
             raise ValueError('Sem obra iniciada para esse alvo')
     if job == 'cozinhar' and not state['meat']:
         raise ValueError('Sem carne para cozinhar')
+    if job == 'canteiro':
+        tended = sum(j['job'] == 'canteiro' for j in state['jobs'].values())
+        if tended >= state['built'].count('canteiro'):
+            raise ValueError('Sem canteiro livre hoje')
     if job == 'armadilha':
         if len(state['traps']) >= RULES['traps']['max']:
             raise ValueError('Limite de armadilhas')
@@ -240,7 +245,9 @@ def start_build(world, kind: str) -> None:
     """Obra comunitária (coletor de chuva, cozinha): paga o custo na largada."""
     _require_dawn(world)
     state = world.community
-    if kind not in STRUCTURES or kind in state['built'] or kind in state['projects']:
+    limit = STRUCTURES.get(kind, {}).get('max', 1)
+    if (kind not in STRUCTURES or state['built'].count(kind) >= limit
+            or kind in state['projects']):
         raise ValueError('Obra comunitária indisponível')
     cost = STRUCTURES[kind]['cost']
     if any(world.stock[res] < n for res, n in cost.items()):
@@ -314,6 +321,11 @@ def day_work(world) -> dict | None:
         elif kind == 'obra':
             out.setdefault('build', []).append({'person': person_id,
                                                 **_build(world, person_id, job['target'])})
+        elif kind == 'canteiro':
+            food = STRUCTURES['canteiro']['food_per_worker'] + (
+                1 if specialist(world, person_id, 'horta') else 0)
+            out.setdefault('canteiro', []).append(
+                {'person': person_id, 'food': food, 'stored': world.deposit('food', food)})
         elif kind == 'armadilha':
             world.stock['wood'] -= RULES['traps']['cost_wood']
             state['traps'].append({'set_day': world.day})

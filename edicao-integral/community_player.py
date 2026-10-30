@@ -28,7 +28,8 @@ class CommunityRegionalPlayer(CampRegionalPlayer):
                    'reservoir')
 
     def __init__(self, *args, options=('priority', 'build'), trips=True,
-                 community_builds=('coletor', 'cozinha'), max_days=3, risk='covered',
+                 community_builds=('canteiro', 'coletor', 'canteiro', 'cozinha'),
+                 max_days=3, risk='covered',
                  per_day_choice=False, **kwargs):
         super().__init__(*args, options=options, risk=risk, **kwargs)
         self.trips = trips
@@ -70,8 +71,12 @@ class CommunityRegionalPlayer(CampRegionalPlayer):
             kind = next((k for k in self.BUILD_ORDER if k not in world.structures), None)
             if kind:
                 return STRUCTURES[kind]['cost'].get('wood', 0)
-        for kind in self.community_builds:
-            if kind not in state['built'] and kind not in state['projects']:
+        wanted = list(self.community_builds)
+        for done_kind in state['built']:
+            if done_kind in wanted:
+                wanted.remove(done_kind)
+        for kind in wanted:
+            if kind not in state['projects']:
                 return community.STRUCTURES[kind]['cost'].get('wood', 0)
         return 0
 
@@ -139,9 +144,13 @@ class CommunityRegionalPlayer(CampRegionalPlayer):
                 community.assign_job(world, cook, 'cozinhar')
                 done.setdefault('community', []).append((cook, 'cozinhar'))
         # 2. obras comunitárias
-        for build in self.community_builds:
-            if build in state['built'] or build in state['projects']:
-                continue
+        wanted = list(self.community_builds)
+        for done_kind in state['built']:
+            if done_kind in wanted:
+                wanted.remove(done_kind)
+        for build in wanted:
+            if build in state['projects']:
+                break
             try:
                 community.start_build(world, build)
                 done.setdefault('community', []).append(('start', build))
@@ -155,6 +164,13 @@ class CommunityRegionalPlayer(CampRegionalPlayer):
                 if worker:
                     community.assign_job(world, worker, 'obra', target)
                     done.setdefault('community', []).append((worker, 'obra', target))
+        # 2b. canteiros: um trabalhador por canteiro pronto (comida sem esgotar o entorno)
+        for _ in range(state['built'].count('canteiro')):
+            worker = take(free, 'horta')
+            if not worker:
+                break
+            community.assign_job(world, worker, 'canteiro')
+            done.setdefault('community', []).append((worker, 'canteiro'))
         # 3. viagens automáticas
         if self.trips:
             planned = {}

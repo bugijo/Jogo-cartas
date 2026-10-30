@@ -255,6 +255,24 @@ class CommunityTests(unittest.TestCase):
         world.end_day(self.plan())
         self.assertIn('coletor', world.community['built'])
 
+    def test_canteiro_needs_a_worker_and_has_a_limit(self):
+        world = self.world
+        state = world.community
+        state['built'] += ['canteiro']
+        a, b = self.adults[:2]
+        state['professions'][a] = 'agricultor'
+        community.assign_job(world, a, 'canteiro')
+        with self.assertRaises(ValueError):  # um trabalhador por canteiro
+            community.assign_job(world, b, 'canteiro')
+        food = world.stock['food']
+        out = community.day_work(world)
+        self.assertEqual(out['canteiro'][0]['food'], 3)  # 2 + agricultor
+        self.assertEqual(world.stock['food'], food + 3)
+        state['built'] += ['canteiro']
+        world.stock.update(wood=5, scrap=5)
+        with self.assertRaises(ValueError):  # máximo 2
+            community.start_build(world, 'canteiro')
+
     def test_rescued_survivor_brings_baggage_and_profession(self):
         world = self.world
         world.stock.update(food=0)
