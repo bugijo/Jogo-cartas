@@ -350,7 +350,19 @@ class CampTests(unittest.TestCase):
             self.assertEqual(len(defense['support'][0]), 2)
             left = sum(e['health'] for e in defense['enemies'].values())
             self.assertLessEqual(left, health - 2)
-        self.assertEqual(camp.defense_shooters(world), [])  # regra desligada no padrão
+        with mock.patch.dict(camp.RULES['defense_support'], {'on': False}):
+            self.assertEqual(camp.defense_shooters(world), [])
+
+    def test_transmission_deadline_closes_the_final_defense(self):
+        from arc2 import Arc2
+        world = self.world
+        world.flags.update(radio_code=True, access_card=True, military_access=True)
+        world.special_stock += ['access_card', 'transmitter']
+        world.day = community.RULES['transmission_deadline'] + 1
+        with self.assertRaisesRegex(ValueError, 'frequência calou'):
+            Arc2(world).final_defense()
+        world.day -= 1
+        self.assertEqual(Arc2(world).final_defense()['status'], 'active')
 
     def test_water_has_its_own_track(self):
         world = self.world

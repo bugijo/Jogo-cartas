@@ -163,6 +163,8 @@ class Arc2:
                            ('radio_code','access_card','military_access'))
                 or not any(h['health']>0 for h in w.heroes.values())):
             raise ValueError('Defesa final indisponível')
+        if community_rules.transmission_silent(w):
+            raise ValueError('A frequência calou: prazo da transmissão encerrado')
         away=community_rules.away(w)  # quem está em viagem automática não defende
         w.final_defense={'status':'active','map':'camp_final','integrity':3,'wave':1,
                          'heroes':{h:1 for h,state in w.heroes.items()
@@ -251,7 +253,7 @@ class Arc2:
             eid=min(defense['enemies'],key=lambda e:(defense['enemies'][e]['zone'],e))
             target=defense['enemies'][eid]
             target['health']=max(0,target['health']-camp_rules.RULES['defense_support']['damage'])
-            support.append((shooter,eid))
+            support.append([shooter,eid])
             if target['health']==0:
                 del defense['enemies'][eid]
         if support:

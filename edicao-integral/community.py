@@ -943,6 +943,11 @@ def world_items() -> dict:
     return ITEMS
 
 
+def transmission_silent(world) -> bool:
+    """D-23: depois do dia do prazo a frequência cala; sem defesa, sem vitória."""
+    return world.community is not None and world.day > RULES['transmission_deadline']
+
+
 def defense_waves(world, defenders: int) -> list | None:
     """Ondas da defesa final pelo número de heróis que defendem (D-22)."""
     if world.community is None:

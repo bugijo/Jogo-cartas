@@ -145,8 +145,9 @@ class CommunityRegionalPlayer(CampRegionalPlayer):
         """Em lotes: obra EXP-BLD só quando a Comunidade não espera madeira;
         Depósito e Vigia primeiro (estoque e defesa final)."""
         if world.community is not None and camp.on(world):
-            if not world.projects and (world.community['projects']
-                                       or self._camp_wishes(world)):
+            urgent = [k for k in self._camp_wishes(world)
+                      if k in ('barraca', 'horta') or k.startswith('expansao')]
+            if not world.projects and (world.community['projects'] or urgent):
                 return {}
             order, self.BUILD_ORDER = self.BUILD_ORDER, self.CAMP_BUILD_ORDER
             try:

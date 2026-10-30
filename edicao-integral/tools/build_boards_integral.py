@@ -48,7 +48,8 @@ def manifest() -> dict:
             'carne': community['meat']['track'],
             'carne_noites': community['meat']['keeps_nights'],
             'crise': camp['crisis'], 'camas': camp['beds'],
-            'dias': 25, 'chegadas': community['arrivals']['days'],
+            'dias': community['transmission_deadline'],
+            'chegadas': community['arrivals']['days'],
             'chegada_D6': camp['arrivals_table'], 'chuva': camp['rain_at'],
             'horta': camp['horta'], 'racao_obra': camp['work_ration'],
             'horta_abandonada_renova': community['location_renew_every']['EXP-LOC-01'],
@@ -253,9 +254,13 @@ def draw_shelter(cairo, path, data):
         sheet.text(x + 5.2, y + 9, str(day), 8, bold=True, align='center')
         if day in arrivals:
             sheet.text(x + 5.2, y + 13.5, 'CHEGA', 4.2, align='center')
+        if day == data['dias']:
+            sheet.text(x + 5.2, y + 13.5, 'CALA', 4.2, bold=True, align='center')
         if day % renew == 0:
             sheet.text(x + 5.2, y + 18.5, 'H.ab+1', 3.8, align='center', grey=0.35)
     y += 26
+    y = sheet.para(12, y, 270, f'Prazo: depois do dia {data["dias"]} a frequência cala; a '
+                   'defesa final (vitória) precisa acontecer até esse dia.', 6.8)
     names = {'adult': 'adulto', 'child': 'criança'}
     tents = {'barraca': 'barraca', 'barraca_familiar': 'barraca familiar'}
     parts = []

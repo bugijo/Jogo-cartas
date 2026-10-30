@@ -107,6 +107,7 @@
             "acolhedor": {"start_structures": ["canteiro"], "evacuation_food_per_consumer": 2,
                           "camp_level": 2, "camp_horta": 2}},
  "location_renew_every": {"EXP-LOC-01": 2},
+ "transmission_deadline": 25,
  "weapon_maintenance": {"scrap": 1, "per_hero_per_day": 1},
  "final_defense_waves": {
   "2": [["slow"], ["runner"], ["slow", "slow"]],
@@ -152,7 +153,7 @@
   "start_tent_people": 2,
   "start_level_humans": {"2": 9},
   "rain_at": 4,
-  "defense_support": {"on": false, "watch": 1, "guards": 2, "damage": 1},
+  "defense_support": {"on": true, "watch": 1, "guards": 2, "damage": 1},
   "arrivals_table": {"1": {"people": ["adult"]}, "2": {"people": ["adult"]},
                      "3": {"people": ["adult", "child"], "tent": "barraca"},
                      "4": {"people": ["adult", "child"], "tent": "barraca"},
