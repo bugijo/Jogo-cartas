@@ -1,3 +1,9 @@
+# Estado ativo — D-14 Canteiro, 2026-10-30
+
+- Canteiro (2 madeira + 1 sucata, 2 trabalhos, até 2; 2 comida/dia com trabalhador, agricultor +1). 1–30: 33/53, fome tardia 10,4%; 31–90: 92/138 (67%), fome tardia 14,4%. T3 ainda falha; H2–H3 abaixo (D-16).
+- Inventário: 55 cartas novas (379 no total). `check.sh full` verde.
+- Próximas: D-16, D-15, D-08. Commits locais, sem push; 91–120 intactas.
+
 # Estado ativo — fila do diretor D-05..D-07, 2026-10-30
 
 - D-05 parcial: 4 variantes sem efeito na fome tardia (13–16%); teto = produção sustentável por trabalhador → D-14.

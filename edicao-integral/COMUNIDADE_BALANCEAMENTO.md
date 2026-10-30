@@ -147,3 +147,24 @@ Diagnóstico: a fome tardia não vem da estratégia nem da regra de fome; o teto
 a produção sustentável por trabalhador perto do consumo (peixe e frutas se
 esgotam; caça e madeira sobram). Próximo passo D-14 (estrutura de produção do
 meio de jogo).
+
+## Ciclo 7 — Canteiro (D-14)
+
+Estrutura nova do meio de jogo: 2 madeira + 1 sucata, 2 trabalhos, até 2 por
+abrigo; 2 comida por dia com um trabalhador (agricultor +1). Transforma
+trabalho em comida sem esgotar peixe e frutas. Construído em 31 de 53
+campanhas (1–30); 2+ canteiros em várias.
+
+| 1–30 | Sobrevivem | Fome | Fome tardia | Rádio (sobrev.) |
+|---|---|---|---|---|
+| Sem canteiro | 33/53 | 16,8% | 13,2% | 31 |
+| **Com canteiro (adotado)** | **33/53** | **14,4%** | **10,4%** | 29 |
+
+| 31–90 | Sobrevivem | Fome | Fome tardia | Rádio (sobrev.) |
+|---|---|---|---|---|
+| Sem canteiro | 89/138 | 21,8% | 18,9% | 82 |
+| **Com canteiro (adotado)** | **92/138 (67%)** | **18,4%** | **14,4%** | 85 |
+
+Metas com o canteiro: T1 ✓ (62% e 67%), T2 ✓, T4 ✓, T5 ✓; **T3 ainda ✗**
+(fome tardia 10,4% no ajuste, 14,4% na confirmação). Grupos de 2–3 heróis
+seguem abaixo (H2 2/7, H3 11/28 em 31–90).

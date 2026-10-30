@@ -202,6 +202,10 @@ Código `community.py`; testes `tests/test_community.py`.
   2 trabalhos). **Armadilhas** (1 madeira, até 2): D6 no amanhecer, 5–6 = 1
   carne da reserva de caça, 1 = quebra. Obras EXP-BLD também aceitam
   trabalhadores.
+- **Canteiro** (decisão do diretor, D-14; 2 madeira + 1 sucata, 2 trabalhos,
+  até 2 por abrigo): produz 2 comida no dia em que um trabalhador cuida dele
+  (agricultor +1). Não gasta o entorno: transforma trabalho em comida no meio
+  de jogo.
 - **Camas**: até 2 moradores além das camas (inclusive na migração); com o
   abrigo lotado ninguém recupera Vida pelo descanso (§25), a fadiga sim.
 - **Recursos iniciais dos heróis**: na chegada ao regional, cada herói rola
