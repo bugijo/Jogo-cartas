@@ -58,7 +58,8 @@ class PersonaCommunityPlayer(CommunityRegionalPlayer):
         self.risk = 'short' if policy['risk_short'] or policy['progress_first'] else 'covered'
         self.food_days = 3 if policy['reserve_3_days'] else (2 if policy['forage'] else 1)
         self.options = {'priority', 'build'} if policy['invest'] else {'priority'}
-        self.community_builds = ('coletor', 'cozinha') if policy['invest'] else ()
+        self.community_builds = (('canteiro', 'coletor', 'canteiro', 'cozinha')
+                                 if policy['invest'] else ())
         leader = BY_ID[vote['leader']]
         rng = Random(zlib.crc32(f'{self.seed}:{leader.id}:{world.day}'.encode()))
         self._slip = None
