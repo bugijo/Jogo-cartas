@@ -1852,7 +1852,8 @@ class World:
         if self.shelter_health == 0 or self.shelter_morale == 0:
             self.partial_defeat = True
         for loc_id,loc in LOCATIONS.items():
-            if loc['renewal'] == 'natural' and self.searches[loc_id] < loc['searches']:
+            if (loc['renewal'] == 'natural' and self.searches[loc_id] < loc['searches']
+                    and self.day % community_rules.renew_every(self, loc_id) == 0):
                 self.searches[loc_id] += 1
         for hero in self.heroes.values():
             if hero['location']=='camp':

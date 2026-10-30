@@ -222,13 +222,24 @@ def arrival_fatigue(world) -> dict:
     return tired
 
 
-def evacuation_supply(world) -> dict:
+def start_structures(world, level: str = 'normal') -> list[str]:
+    """Preparação: obras que o abrigo já tem na chegada (Acolhedor: um canteiro)."""
+    if level not in RULES['levels']:
+        raise ValueError('Nível de preparação desconhecido')
+    built = list(RULES['levels'][level]['start_structures'])
+    world.community['built'] += built
+    return built
+
+
+def evacuation_supply(world, level: str = 'normal') -> dict:
     """Suprimento de evacuação: a Ponte entrega 1 ração por consumidor, uma vez.
 
     Decisão do diretor (2026-10-30): o grupo chega com comida para menos de uma
     noite; sem esta ração as viagens não voltam antes do Colapso.
     """
-    amount = RULES['evacuation_supply']['food_per_consumer'] * len(world.meal_people())
+    per = RULES['levels'][level].get('evacuation_food_per_consumer',
+                                     RULES['evacuation_supply']['food_per_consumer'])
+    amount = per * len(world.meal_people())
     return {'food': amount, 'stored': world.deposit('food', amount)}
 
 
@@ -730,6 +741,13 @@ def receive(world, accept: bool) -> dict:
     state['arrival'] = None
     world.log.append({'day': world.day, 'action': 'arrival_accepted', 'people': joined})
     return {'accepted': True, 'people': joined}
+
+
+def renew_every(world, location_id: str) -> int:
+    """Noites por busca renovada num local natural (Horta abandonada: 2)."""
+    if world.community is None:
+        return 1
+    return RULES['location_renew_every'].get(location_id, 1)
 
 
 def crowded(world) -> bool:

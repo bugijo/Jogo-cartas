@@ -12,16 +12,17 @@ sys.path.insert(0, str(Path(__file__).resolve().parents[1]))
 import community
 from campaign_player02 import CampaignPlayer02
 from simulate_cistern_sweep import auto_settings
-from system import World
+from regional_campaign_player import GARDEN_EDGE, MARKET, RegionalCampaignPlayer
+from system import TACTICS_DATA, World
 
 
-def migrated(seed=2, size=4, on=True):
+def migrated(seed=2, size=4, on=True, level='normal'):
     player = CampaignPlayer02.new_hn(seed, size)
     for key, value in auto_settings(size).items():
         setattr(player, key, value)
     player.garden = True
     assert player.attempt_cistern()['verified_victory']
-    player.game.transition_to_last_transmission(community=on)
+    player.game.transition_to_last_transmission(community=on, level=level)
     return player.game
 
 
@@ -336,6 +337,38 @@ class CommunityTests(unittest.TestCase):
             with self.roll(*([3] * 40)):
                 world.end_day(self.plan())
         self.assertEqual(world.community['arrival']['people'], ['adult', 'child'])
+
+    # --- Horta abandonada e níveis de preparação (D-15, D-18) ---------------------
+    def test_garden_edge_map_renews_every_other_night_in_integral_edition(self):
+        self.assertEqual(TACTICS_DATA['maps']['garden_edge_01']['location'], GARDEN_EDGE)
+        world = self.world
+        world.searches[GARDEN_EDGE] = 0
+        renewed = []
+        for _ in range(4):
+            world.end_day(self.plan())
+            renewed.append(world.searches[GARDEN_EDGE])
+        self.assertEqual(renewed[-1], 2)            # 4 noites → 2 buscas
+        self.assertEqual(community.renew_every(migrated(on=False).world, GARDEN_EDGE), 1)
+
+    def test_controller_goes_to_garden_edge_only_in_integral_edition(self):
+        player = RegionalCampaignPlayer()
+        world = self.world
+        world.searches[MARKET] = 0
+        self.assertEqual(player.food_site(world), GARDEN_EDGE)
+        old = migrated(on=False).world
+        old.searches[MARKET] = 0
+        self.assertIsNone(player.food_site(old))
+
+    def test_welcoming_level_starts_with_canteiro_and_more_rations(self):
+        normal = self.base.world
+        cozy = migrated(level='acolhedor').world
+        self.assertNotIn('canteiro', normal.community['built'])
+        self.assertEqual(cozy.community['built'], ['canteiro'])
+        supply = lambda w: next(r for r in w.log if r.get('event') == 'community_rules_on')[
+            'evacuation_supply']['food']
+        self.assertEqual(supply(cozy), 2 * supply(normal))
+        with self.assertRaisesRegex(ValueError, 'Nível'):
+            migrated(level='facil')
 
     def test_dog_joins_trip_adds_bonus_and_eats_from_it(self):
         world = self.world

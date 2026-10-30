@@ -18,6 +18,10 @@ from system import LOCATIONS, REGIONAL_CONTACTS
 
 MARKET = 'EXP-LOC-02'
 STATION = 'EXP-LOC-05'
+GARDEN_EDGE = 'EXP-LOC-01'
+# Local de comida → (mapa tático, zonas de busca). A Horta abandonada só existe
+# na edição integral (regras Comunidade); os replays certificados não a veem.
+FOOD_SITES = {MARKET: ('market_intro', (5, 12)), GARDEN_EDGE: ('garden_edge_01', (6, 11))}
 CLUE_ORDER = ('EXP-NPC-02', 'EXP-NPC-14')  # Célia, depois Vicente (ordem provisória)
 
 
@@ -61,17 +65,27 @@ class RegionalCampaignPlayer:
                 return npc
         return None
 
+    def food_site(self, world):
+        """Local de comida com mapa e buscas: Mercado; depois a Horta abandonada."""
+        if world.searches[MARKET] > 0:
+            return MARKET
+        if world.community is not None and world.searches[GARDEN_EDGE] > 0:
+            return GARDEN_EDGE
+        return None
+
     def plan(self, world):
         """Escolhe o objetivo do dia. Retorna (tipo, destino, mapa, objetivos)."""
         consumers = len(world.meal_people())
         food_short = world.stock['food'] < self.food_days * consumers
-        if food_short and world.searches[MARKET] > 0:
-            searches = min(world.searches[MARKET], self.market_searches)
-            objectives = [{'kind': 'search', 'zone': 5, 'searches': min(2, searches)}]
+        site = self.food_site(world)
+        if food_short and site:
+            map_id, (first, second) = FOOD_SITES[site]
+            searches = min(world.searches[site], self.market_searches)
+            objectives = [{'kind': 'search', 'zone': first, 'searches': min(2, searches)}]
             if searches > 2:
-                objectives.append({'kind': 'search', 'zone': 12,
+                objectives.append({'kind': 'search', 'zone': second,
                                    'searches': min(2, searches - 2)})
-            return ('supply', MARKET, 'market_intro', objectives)
+            return ('supply', site, map_id, objectives)
         npc = self.next_clue(world)
         if npc:
             return ('clue', STATION, 'station_02',
@@ -148,9 +162,11 @@ class RegionalCampaignPlayer:
             kind = 'rest'
             record['rest_reason'] = 'recuperar ferimentos/fadiga antes da Estação'
         if (kind == 'rest' and world.stock['food'] < len(world.meal_people())
-                and world.searches[MARKET] <= 0):
+                and self.food_site(world) is None):
             self._block(world, 'no_mapped_food_source',
-                        'Mercado esgotado; nenhum outro local com mapa tático dá comida')
+                        'Mercado esgotado; nenhum outro local com mapa tático dá comida'
+                        if world.community is None else
+                        'Mercado esgotado e Horta abandonada sem busca')
         worker = self.garden_worker(world, kind)
         if worker:
             world.assign_continuity_garden(worker, self.discard_water)
@@ -264,13 +280,15 @@ class StrategicRegionalPlayer(RegionalCampaignPlayer):
         return len(team) >= 2
 
     def _supply(self, world, consumers):
-        food_per_search = max(1, LOCATIONS[MARKET]['loot'].get('food', 1))
+        site = self.food_site(world)
+        map_id, (first, second) = FOOD_SITES[site]
+        food_per_search = max(1, LOCATIONS[site]['loot'].get('food', 1))
         deficit = max(1, self.food_days * consumers - world.stock['food'])
-        searches = min(world.searches[MARKET], 4, -(-deficit // food_per_search))
-        objectives = [{'kind': 'search', 'zone': 5, 'searches': min(2, searches)}]
+        searches = min(world.searches[site], 4, -(-deficit // food_per_search))
+        objectives = [{'kind': 'search', 'zone': first, 'searches': min(2, searches)}]
         if searches > 2:
-            objectives.append({'kind': 'search', 'zone': 12, 'searches': searches - 2})
-        return ('supply', MARKET, 'market_intro', objectives)
+            objectives.append({'kind': 'search', 'zone': second, 'searches': searches - 2})
+        return ('supply', site, map_id, objectives)
 
     def plan(self, world):
         consumers = len(world.meal_people())
@@ -291,7 +309,7 @@ class StrategicRegionalPlayer(RegionalCampaignPlayer):
         if progress and far and (covered or self.risk == 'short' and safe_short):
             self._kind = progress[0]
             return progress
-        if world.stock['food'] < self.food_days * consumers and world.searches[MARKET] > 0:
+        if world.stock['food'] < self.food_days * consumers and self.food_site(world):
             self._kind = 'supply'
             return self._supply(world, consumers)
         self._kind = None

@@ -92,6 +92,16 @@ ARRIVALS = {'COMM-NOGROWTH': {'days': []}, 'COMM-ARR4': {'days': [3, 6, 9, 12]}}
 CONFIGS['COMM-NOGROWTH'] = (CommunityRegionalPlayer, True, {'growth': False})
 CONFIGS['COMM-REFUSE'] = (CommunityRegionalPlayer, True, {'accept': 'never'})
 CONFIGS['COMM-FITS'] = (CommunityRegionalPlayer, True, {'accept': 'fits'})
+# D-15: Horta abandonada (mapa tático de comida)
+CONFIGS['COMM-EDGE-ALWAYS'] = (CommunityRegionalPlayer, True, {'edge': 'always'})
+CONFIGS['COMM-EDGE-NEVER'] = (CommunityRegionalPlayer, True, {'edge': 'never'})
+EDGE_LOOT = {'COMM-EDGE-L1': 1}
+LEVEL = {'COMM-ACOLHEDOR': 'acolhedor'}
+CONFIGS['COMM-ACOLHEDOR'] = (CommunityRegionalPlayer, True, {})
+EDGE_RENEW = {'COMM-EDGE-R1': 1, 'COMM-EDGE-R3': 3}
+for _name in EDGE_RENEW:
+    CONFIGS[_name] = (CommunityRegionalPlayer, True, {})
+CONFIGS['COMM-EDGE-L1'] = (CommunityRegionalPlayer, True, {})
 for _name in [*POOLS, *ARRIVAL, *DECK, *MORALE, 'COMM-ARR4']:
     CONFIGS[_name] = (CommunityRegionalPlayer, True, {})
 
@@ -129,6 +139,9 @@ def run_one(args):
     community.RULES['arrival'].update(ARRIVAL.get(config, {}))
     community.RULES['morale'].update(MORALE.get(config, {}))
     community.RULES['arrivals'].update(ARRIVALS.get(config, {}))
+    from system import LOCATIONS
+    LOCATIONS['EXP-LOC-01']['loot']['food'] = EDGE_LOOT.get(config, 2)
+    community.RULES['location_renew_every']['EXP-LOC-01'] = EDGE_RENEW.get(config, 2)
     deck = list(ORIGINAL_DECK)
     if config in DECK:
         out, new = DECK[config]
@@ -144,7 +157,8 @@ def run_one(args):
         return None
     campaign = player.game
     try:
-        campaign.transition_to_last_transmission(community=community_on)
+        campaign.transition_to_last_transmission(community=community_on,
+                                                 level=LEVEL.get(config, 'normal'))
     except ValueError as exc:
         return {'config': config, 'size': size, 'seed': seed,
                 'outcome': 'migration_refused', 'reason': str(exc)[:80]}

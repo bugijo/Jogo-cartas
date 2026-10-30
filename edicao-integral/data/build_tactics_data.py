@@ -38,6 +38,13 @@ def build_content() -> dict:
         'entry':1,'exit':1,'spawn':16,'search':[],'objectives':[6],
         'doors':[{'edge':[2,6],'resistance':2,'blocked':False}],
         'location':'EXP-LOC-06'}
+    # Edição integral (D-15): Horta abandonada, campo aberto. Buscas no centro,
+    # mais perto do surgimento; cercas fracas no lugar de portas.
+    maps['garden_edge_01']={'zones':list(range(1,17)),'edges':edges,
+        'entry':1,'exit':1,'spawn':16,'search':[6,11],'objectives':[6,11],
+        'doors':[{'edge':[2,6],'resistance':1,'blocked':False},
+                 {'edge':[5,6],'resistance':1,'blocked':False}],
+        'source_id':'ZZ-MAP-0101','location':'EXP-LOC-01'}
     return {'schema':1,'maps':maps,'enemies':{
         'slow':{'health':1,'attack':1,'move':1,'sight':2,'xp':1},
         'runner':{'health':1,'attack':1,'move':2,'sight':3,'xp':2},

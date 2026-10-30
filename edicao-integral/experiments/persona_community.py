@@ -86,6 +86,9 @@ class PersonaCommunityPlayer(CommunityRegionalPlayer):
         return activity, days
 
 
+LEVEL = 'normal'  # --level acolhedor: preparação com canteiro (mesas casuais)
+
+
 def run_one(args):
     group, size, seed = args
     personas = table(group, size, seed)
@@ -96,7 +99,7 @@ def run_one(args):
     if not player.attempt_cistern()['verified_victory']:
         return None
     campaign = player.game
-    campaign.transition_to_last_transmission(community=True)
+    campaign.transition_to_last_transmission(community=True, level=LEVEL)
     campaign.world.regional_travel_cards = True
     campaign.world.regional_filter_production = True
     regional = PersonaCommunityPlayer(personas, seed, discard_water=True)
@@ -170,7 +173,10 @@ def main():
     parser.add_argument('--jobs', type=int, default=6)
     parser.add_argument('--json')
     parser.add_argument('--md')
+    parser.add_argument('--level', default='normal', help='preparação: normal ou acolhedor')
     args = parser.parse_args()
+    global LEVEL
+    LEVEL = args.level
     first, last = map(int, args.seeds.split('-'))
     if last >= 91:
         raise SystemExit('Sementes 91–120 reservadas')

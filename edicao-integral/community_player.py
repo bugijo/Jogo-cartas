@@ -30,10 +30,12 @@ class CommunityRegionalPlayer(CampRegionalPlayer):
     def __init__(self, *args, options=('priority', 'build'), trips=True,
                  community_builds=('canteiro', 'coletor', 'canteiro', 'cozinha'),
                  max_days=3, risk='covered',
-                 per_day_choice=False, dogs=True, accept='beds', growth=True, **kwargs):
+                 per_day_choice=False, dogs=True, accept='beds', growth=True,
+                 edge='short', **kwargs):
         super().__init__(*args, options=options, risk=risk, **kwargs)
         self.accept = accept
         self.growth = growth
+        self.edge = edge  # Horta abandonada: 'always', 'short' (noite descoberta), 'never'
         self.trips = trips
         self.community_builds = tuple(community_builds)
         self.max_days = max_days
@@ -57,6 +59,14 @@ class CommunityRegionalPlayer(CampRegionalPlayer):
             return None
         return next((h for h in sorted(world.heroes)
                      if community.able(world, h) and world.heroes[h]['health'] > 0), None)
+
+    def food_site(self, world):
+        site = super().food_site(world)
+        if site != 'EXP-LOC-01' or self.edge == 'always':
+            return site
+        if self.edge == 'short' and world.stock['food'] < len(world.meal_people()):
+            return site
+        return None
 
     @staticmethod
     def far_team(world):

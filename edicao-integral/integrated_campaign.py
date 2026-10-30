@@ -1091,12 +1091,14 @@ class IntegratedCampaign:
                                separators=(",", ":"))
         return hashlib.sha256(canonical.encode("utf-8")).hexdigest()
 
-    def transition_to_last_transmission(self, community: bool = False) -> dict:
+    def transition_to_last_transmission(self, community: bool = False,
+                                        level: str = "normal") -> dict:
         """Project a certified Cisterna save into the regional engine exactly once.
 
         ``community`` liga as regras Comunidade (``community.py``) na chegada:
         profissões dos adultos, viagens automáticas e abrigo lotado (até +2
-        moradores sem cama). Desligado, a migração é a certificada.
+        moradores sem cama). Desligado, a migração é a certificada. ``level``
+        é a preparação da Comunidade (``normal`` ou ``acolhedor``).
 
         Values without a rules-equivalent representation stay in an archival,
         non-spendable continuity manifest. The conversion is built and validated
@@ -1318,8 +1320,11 @@ class IntegratedCampaign:
                                   "hero_kits": community_rules.arrival_kits(projected),
                                   "arrival_fatigue":
                                       community_rules.arrival_fatigue(projected),
+                                  "level": level,
+                                  "start_structures":
+                                      community_rules.start_structures(projected, level),
                                   "evacuation_supply":
-                                      community_rules.evacuation_supply(projected)})
+                                      community_rules.evacuation_supply(projected, level)})
         projected.validate()
         self.world = projected
         return deepcopy(receipt)
