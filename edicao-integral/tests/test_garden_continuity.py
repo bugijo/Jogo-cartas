@@ -229,5 +229,94 @@ class RegionalGardenTests(unittest.TestCase):
             fresh.validate()  # sem Cisterna certificada não há Horta
 
 
+
+def fill(world, water):
+    """fixture: água definida e o resto do depósito ocupado por remédio."""
+    world.stock['water'] = water
+    world.stock['medicine'] += world.storage - sum(world.stock.values())
+
+
+class WaterDiscardTests(unittest.TestCase):
+    def setUp(self):
+        self.world = migrated_with_garden().world
+        self.adult = next(p['id'] for p in self.world.continuity_people
+                          if p['kind'] == 'adult')
+        self.need = len(self.world.meal_people())
+
+    def test_full_storage_discards_only_the_missing_space(self):
+        world = self.world
+        fill(world, self.need + 10)
+        world.stock['medicine'] -= 1  # 1 vaga livre: faltam 3
+        world.assign_continuity_garden(self.adult, discard_water=True)
+        water = world.stock['water']
+        day = end_day(world)
+        self.assertEqual(day['garden_food'], {'worker': self.adult, 'water_discarded': 3,
+                                              'produced': 4, 'not_stored': 0})
+        self.assertLessEqual(sum(world.stock.values()), world.storage)
+        self.assertEqual(world.storage, 30)
+        self.assertIn(day, world.log)  # histórico de recursos do dia
+        self.assertEqual(water - 3 - (self.need - day['missing']['water']),
+                         world.stock['water'] - (day.get('filter_water') or {}).get('produced', 0))
+
+    def test_never_discards_water_needed_for_the_meal(self):
+        world = self.world
+        fill(world, self.need + 1)  # só 1 água acima da refeição
+        world.assign_continuity_garden(self.adult, discard_water=True)
+        day = end_day(world)
+        self.assertEqual(day['garden_food']['water_discarded'], 1)
+        self.assertEqual((day['garden_food']['produced'], day['garden_food']['not_stored']), (1, 3))
+        self.assertEqual(day['missing']['water'], 0)
+
+    def test_water_scarcity_discards_nothing(self):
+        world = self.world
+        fill(world, self.need - 1)
+        world.assign_continuity_garden(self.adult, discard_water=True)
+        day = end_day(world)
+        self.assertEqual(day['garden_food']['water_discarded'], 0)
+        self.assertEqual(day['garden_food']['produced'], 0)
+        self.assertEqual(day['missing']['water'], 1)
+
+    def test_free_space_or_opt_out_discards_nothing(self):
+        world = self.world
+        world.assign_continuity_garden(self.adult, discard_water=True)
+        self.assertIn('discard_water', world.continuity_garden)
+        world.validate()
+        day = end_day(world)
+        self.assertEqual(day['garden_food']['water_discarded'], 0)
+        self.assertNotIn('discard_water', world.continuity_garden)
+        fill(world, self.need + 10)
+        world.assign_continuity_garden(self.adult)  # sem descarte: igual a antes
+        day = end_day(world)
+        self.assertNotIn('water_discarded', day['garden_food'])
+        self.assertEqual(day['garden_food']['produced'], 0)
+
+    def test_successive_harvests_discard_each_day_only_what_is_needed(self):
+        world = self.world
+        fill(world, self.need + 12)
+        discarded = []
+        for _ in range(3):
+            adult = next(p['id'] for p in world.continuity_people if p['kind'] == 'adult'
+                         and not p.get('hungry') and not p.get('thirsty'))
+            world.assign_continuity_garden(adult, discard_water=True)
+            free = world.storage - sum(world.stock.values())
+            day = end_day(world)
+            self.assertEqual(day['garden_food']['water_discarded'], max(0, 4 - free))
+            self.assertEqual(day['garden_food']['produced'], 4)
+            discarded.append(day['garden_food']['water_discarded'])
+        self.assertEqual(discarded[0], 4)
+
+    def test_without_garden_there_is_no_discard(self):
+        world = World.new(1, STARTERS[:2])
+        with self.assertRaises(ValueError):
+            world.assign_continuity_garden('R01', discard_water=True)
+        world = self.world
+        world.continuity_garden['discard_water'] = True  # sem trabalhador: inválido
+        with self.assertRaises(ValueError):
+            world.validate()
+        world.continuity_garden['discard_water'] = False
+        with self.assertRaises(ValueError):
+            world.validate()
+
+
 if __name__ == '__main__':
     unittest.main()

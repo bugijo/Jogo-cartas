@@ -260,7 +260,9 @@ class World:
         garden = self.continuity_garden
         if garden is not None and (
                 not isinstance(garden, dict)
-                or set(garden) != {'source', 'output', 'active', 'worker'}
+                or set(garden) - {'discard_water'} != {'source', 'output', 'active', 'worker'}
+                or 'discard_water' in garden and (garden['discard_water'] is not True
+                                                  or garden['worker'] is None)
                 or garden['source'] != 'cistern02' or garden['output'] != 4
                 or not isinstance(garden['active'], bool)
                 or garden['worker'] is not None
@@ -647,8 +649,12 @@ class World:
         self.garden_worker=hero_id
         self.worked_today.append(hero_id)
 
-    def assign_continuity_garden(self, person_id: str) -> None:
-        """Amanhecer: um herói ou adulto apto trabalha na Horta da Cisterna."""
+    def assign_continuity_garden(self, person_id: str, discard_water: bool = False) -> None:
+        """Amanhecer: um herói ou adulto apto trabalha na Horta da Cisterna.
+
+        `discard_water`: o abrigo aceita descartar, na colheita, só a água
+        excedente necessária para a comida caber no depósito.
+        """
         garden = self.continuity_garden
         if garden is None or not garden['active'] or garden['worker'] is not None:
             raise ValueError('Horta de continuidade indisponível hoje')
@@ -665,6 +671,8 @@ class World:
                     or person.get('hungry') or person.get('thirsty')):
                 raise ValueError('Trabalhador da Horta indisponível')
         garden['worker'] = person_id
+        if discard_water:
+            garden['discard_water'] = True
         if person_id in self.heroes:
             self.worked_today.append(person_id)
 
@@ -675,14 +683,23 @@ class World:
             return None
         worker = garden['worker']
         garden['worker'] = None
+        discard = garden.pop('discard_water', False)
         if worker not in self.worked_today:
             # Civil migrado: conta como trabalho até o fim do dia (sem recuperação).
             self.worked_today.append(worker)
         if not garden['active']:
             return {'worker': worker, 'produced': 0, 'not_stored': 0, 'reason': 'inactive'}
+        receipt = {'worker': worker}
+        if discard:
+            # Descarte voluntário: só o que falta de espaço e só a água acima do
+            # consumo previsto da refeição desta noite.
+            free = self.storage - sum(self.stock.values())
+            spare = max(0, self.stock['water'] - len(self.meal_people()))
+            receipt['water_discarded'] = min(spare, max(0, garden['output'] - free))
+            self.stock['water'] -= receipt['water_discarded']
         produced = self.deposit('food', garden['output'])
-        return {'worker': worker, 'produced': produced,
-                'not_stored': garden['output'] - produced}
+        receipt.update(produced=produced, not_stored=garden['output'] - produced)
+        return receipt
 
     def _d6(self, count: int = 1) -> list[int]:
         rng=random.Random();rng.setstate(_tuples(self.rng_state))

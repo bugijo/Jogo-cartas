@@ -6,7 +6,9 @@ publicado (`auto_settings`); só as `verified_victory` migram. Depois liga as
 cartas regionais e deixa `RegionalCampaignPlayer` jogar até `MAX_DAYS` dias.
 Nada é ajustado aqui: a política regional foi escrita olhando só a seed 22 H2.
 Com `--garden`, a Cisterna usa o modo Horta (H1) do controlador e o artefato é
-`regional_campaign_garden_sweep.json`; a medição sem Horta não muda.
+`regional_campaign_garden_sweep.json`; a medição sem Horta não muda. No regional,
+a Horta usa o descarte voluntário de água (`--no-discard` mede sem ele).
+`--seeds A-B` mede outro intervalo sem gravar artefato (só validação).
 """
 from __future__ import annotations
 
@@ -27,7 +29,8 @@ SIZES = (2, 3, 4, 5, 6)
 SEEDS = range(1, 31)
 
 
-def run_one(size: int, seed: int, garden: bool = False) -> dict | None:
+def run_one(size: int, seed: int, garden: bool = False,
+            discard_water: bool = True) -> dict | None:
     player = CampaignPlayer02.new_hn(seed, size)
     for key, value in auto_settings(size).items():
         setattr(player, key, value)
@@ -43,7 +46,7 @@ def run_one(size: int, seed: int, garden: bool = False) -> dict | None:
                 "radio_code": False, "access_card": False, "blockers": []}
     campaign.world.regional_travel_cards = True
     campaign.world.regional_filter_production = True
-    regional = RegionalCampaignPlayer()
+    regional = RegionalCampaignPlayer(discard_water=garden and discard_water)
     campaign = regional.run(campaign, MAX_DAYS)
     world = campaign.world
     plans = Counter(day.get("plan") for day in regional.days if "plan" in day)
@@ -68,14 +71,17 @@ def run_one(size: int, seed: int, garden: bool = False) -> dict | None:
         row["garden_food"] = sum(day["night"]["garden_food"]["produced"]
                                  for day in regional.days
                                  if "garden_food" in day.get("night", {}))
+        row["water_discarded"] = sum(day["night"]["garden_food"].get("water_discarded", 0)
+                                     for day in regional.days
+                                     if "garden_food" in day.get("night", {}))
         row["survived"] = (not world.partial_defeat
                            and row["days_played"] == MAX_DAYS)
     return row
 
 
-def sweep(garden: bool = False) -> dict:
-    rows = [row for size in SIZES for seed in SEEDS
-            if (row := run_one(size, seed, garden)) is not None]
+def sweep(garden: bool = False, seeds=SEEDS, discard_water: bool = True) -> dict:
+    rows = [row for size in SIZES for seed in seeds
+            if (row := run_one(size, seed, garden, discard_water)) is not None]
     summary = {}
     for size in SIZES:
         group = [row for row in rows if row["size"] == size]
@@ -99,7 +105,7 @@ def sweep(garden: bool = False) -> dict:
                 survived_with_garden=sum(row.get("survived", False)
                                          and row.get("garden_migrated", False)
                                          for row in group))
-    return {"schema": 1, "max_days": MAX_DAYS, "seeds": [SEEDS.start, SEEDS.stop - 1],
+    return {"schema": 1, "max_days": MAX_DAYS, "seeds": [seeds.start, seeds.stop - 1],
             "summary": summary, "runs": rows}
 
 
@@ -107,8 +113,17 @@ def main() -> None:
     parser = argparse.ArgumentParser()
     parser.add_argument("--write", action="store_true")
     parser.add_argument("--garden", action="store_true")
+    parser.add_argument("--no-discard", action="store_true")
+    parser.add_argument("--seeds", help="A-B: validação fora do artefato")
     args = parser.parse_args()
-    result = sweep(args.garden)
+    seeds = SEEDS
+    if args.seeds:
+        start, stop = map(int, args.seeds.split("-"))
+        seeds = range(start, stop + 1)
+    result = sweep(args.garden, seeds, not args.no_discard)
+    if args.seeds or args.no_discard:
+        print(json.dumps(result, ensure_ascii=False, indent=1))
+        return
     artifact = GARDEN_ARTIFACT if args.garden else ARTIFACT
     if args.write:
         artifact.write_text(json.dumps(result, ensure_ascii=False, indent=1) + "\n",

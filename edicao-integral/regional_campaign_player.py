@@ -30,9 +30,10 @@ def _collected(world, npc_id):
 class RegionalCampaignPlayer:
     """Política determinística de amanhecer sobre o estado observável."""
 
-    def __init__(self, food_days=2, market_searches=2):
+    def __init__(self, food_days=2, market_searches=2, discard_water=False):
         self.food_days = food_days  # reserva-alvo de comida em dias de consumo
         self.market_searches = market_searches  # buscas máximas por ida ao Mercado
+        self.discard_water = discard_water  # descarte voluntário para a colheita caber
         self.days: list[dict] = []
         self.blockers: list[dict] = []
 
@@ -148,7 +149,7 @@ class RegionalCampaignPlayer:
                         'Mercado esgotado; nenhum outro local com mapa tático dá comida')
         worker = self.garden_worker(world, kind)
         if worker:
-            world.assign_continuity_garden(worker)
+            world.assign_continuity_garden(worker, self.discard_water)
             record['garden_worker'] = worker
         record['plan'] = kind
         if kind != 'rest':

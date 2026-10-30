@@ -56,35 +56,35 @@
   },
   "H5": {
    "cistern_victories": 14,
-   "radio_code": 0,
+   "radio_code": 1,
    "access_card": 0,
-   "clues_ge1": 0,
-   "partial_defeat": 8,
+   "clues_ge1": 1,
+   "partial_defeat": 7,
    "blocked_rule": 0,
    "migration_refused": 6,
-   "mean_days": 3.2,
+   "mean_days": 4.8,
    "blockers": {
     "no_mapped_food_source": 8
    },
    "garden_migrated": 1,
-   "survived": 0,
-   "survived_with_garden": 0
+   "survived": 1,
+   "survived_with_garden": 1
   },
   "H6": {
    "cistern_victories": 11,
    "radio_code": 0,
    "access_card": 0,
    "clues_ge1": 0,
-   "partial_defeat": 7,
+   "partial_defeat": 6,
    "blocked_rule": 0,
    "migration_refused": 4,
-   "mean_days": 3.7,
+   "mean_days": 5.4,
    "blockers": {
     "no_mapped_food_source": 7
    },
    "garden_migrated": 1,
-   "survived": 0,
-   "survived_with_garden": 0
+   "survived": 1,
+   "survived_with_garden": 1
   }
  },
  "runs": [
@@ -109,6 +109,7 @@
    ],
    "garden_migrated": false,
    "garden_food": 0,
+   "water_discarded": 0,
    "survived": false
   },
   {
@@ -132,6 +133,7 @@
    ],
    "garden_migrated": false,
    "garden_food": 0,
+   "water_discarded": 0,
    "survived": false
   },
   {
@@ -155,6 +157,7 @@
    ],
    "garden_migrated": false,
    "garden_food": 0,
+   "water_discarded": 0,
    "survived": false
   },
   {
@@ -178,6 +181,7 @@
    ],
    "garden_migrated": false,
    "garden_food": 0,
+   "water_discarded": 0,
    "survived": false
   },
   {
@@ -201,6 +205,7 @@
    ],
    "garden_migrated": false,
    "garden_food": 0,
+   "water_discarded": 0,
    "survived": false
   },
   {
@@ -224,6 +229,7 @@
    ],
    "garden_migrated": false,
    "garden_food": 0,
+   "water_discarded": 0,
    "survived": false
   },
   {
@@ -247,6 +253,7 @@
    ],
    "garden_migrated": false,
    "garden_food": 0,
+   "water_discarded": 0,
    "survived": false
   },
   {
@@ -270,6 +277,7 @@
    ],
    "garden_migrated": false,
    "garden_food": 0,
+   "water_discarded": 0,
    "survived": false
   },
   {
@@ -293,6 +301,7 @@
    ],
    "garden_migrated": false,
    "garden_food": 0,
+   "water_discarded": 0,
    "survived": false
   },
   {
@@ -316,6 +325,7 @@
    ],
    "garden_migrated": false,
    "garden_food": 0,
+   "water_discarded": 0,
    "survived": false
   },
   {
@@ -339,6 +349,7 @@
    ],
    "garden_migrated": false,
    "garden_food": 0,
+   "water_discarded": 0,
    "survived": false
   },
   {
@@ -362,6 +373,7 @@
    ],
    "garden_migrated": false,
    "garden_food": 0,
+   "water_discarded": 0,
    "survived": false
   },
   {
@@ -385,6 +397,7 @@
    ],
    "garden_migrated": false,
    "garden_food": 0,
+   "water_discarded": 0,
    "survived": false
   },
   {
@@ -408,6 +421,7 @@
    ],
    "garden_migrated": false,
    "garden_food": 0,
+   "water_discarded": 0,
    "survived": false
   },
   {
@@ -431,6 +445,7 @@
    ],
    "garden_migrated": false,
    "garden_food": 0,
+   "water_discarded": 0,
    "survived": false
   },
   {
@@ -454,6 +469,7 @@
    ],
    "garden_migrated": false,
    "garden_food": 0,
+   "water_discarded": 0,
    "survived": false
   },
   {
@@ -488,6 +504,7 @@
    ],
    "garden_migrated": false,
    "garden_food": 0,
+   "water_discarded": 0,
    "survived": false
   },
   {
@@ -511,6 +528,7 @@
    ],
    "garden_migrated": false,
    "garden_food": 0,
+   "water_discarded": 0,
    "survived": false
   },
   {
@@ -534,6 +552,7 @@
    ],
    "garden_migrated": false,
    "garden_food": 0,
+   "water_discarded": 0,
    "survived": false
   },
   {
@@ -557,6 +576,7 @@
    ],
    "garden_migrated": false,
    "garden_food": 0,
+   "water_discarded": 0,
    "survived": false
   },
   {
@@ -591,6 +611,7 @@
    ],
    "garden_migrated": false,
    "garden_food": 0,
+   "water_discarded": 0,
    "survived": false
   },
   {
@@ -647,6 +668,7 @@
    ],
    "garden_migrated": false,
    "garden_food": 0,
+   "water_discarded": 0,
    "survived": false
   },
   {
@@ -692,30 +714,34 @@
    ],
    "garden_migrated": false,
    "garden_food": 0,
+   "water_discarded": 0,
    "survived": false
   },
   {
    "size": 5,
    "seed": 10,
-   "consumers": null,
-   "days_played": 3,
-   "outcome": "partial_defeat",
-   "clue_evidence": 0,
-   "radio_code": false,
+   "consumers": 10,
+   "days_played": 15,
+   "outcome": "running",
+   "clue_evidence": 2,
+   "radio_code": true,
    "access_card": false,
    "plans": {
     "supply": 2,
-    "rest": 1
+    "rest": 11,
+    "clue": 2
    },
    "expedition_status": {
-    "returned": 2
+    "returned": 3,
+    "local_defeat_emergency": 1
    },
    "blockers": [
     "no_mapped_food_source"
    ],
    "garden_migrated": true,
-   "garden_food": 1,
-   "survived": false
+   "garden_food": 56,
+   "water_discarded": 4,
+   "survived": true
   },
   {
    "size": 5,
@@ -749,6 +775,7 @@
    ],
    "garden_migrated": false,
    "garden_food": 0,
+   "water_discarded": 0,
    "survived": false
   },
   {
@@ -783,6 +810,7 @@
    ],
    "garden_migrated": false,
    "garden_food": 0,
+   "water_discarded": 0,
    "survived": false
   },
   {
@@ -817,6 +845,7 @@
    ],
    "garden_migrated": false,
    "garden_food": 0,
+   "water_discarded": 0,
    "survived": false
   },
   {
@@ -840,6 +869,7 @@
    ],
    "garden_migrated": false,
    "garden_food": 0,
+   "water_discarded": 0,
    "survived": false
   },
   {
@@ -885,6 +915,7 @@
    ],
    "garden_migrated": false,
    "garden_food": 0,
+   "water_discarded": 0,
    "survived": false
   },
   {
@@ -908,6 +939,7 @@
    ],
    "garden_migrated": false,
    "garden_food": 0,
+   "water_discarded": 0,
    "survived": false
   },
   {
@@ -931,6 +963,7 @@
    ],
    "garden_migrated": false,
    "garden_food": 0,
+   "water_discarded": 0,
    "survived": false
   },
   {
@@ -954,20 +987,21 @@
    ],
    "garden_migrated": false,
    "garden_food": 0,
+   "water_discarded": 0,
    "survived": false
   },
   {
    "size": 6,
    "seed": 10,
-   "consumers": null,
-   "days_played": 3,
-   "outcome": "partial_defeat",
+   "consumers": 11,
+   "days_played": 15,
+   "outcome": "running",
    "clue_evidence": 0,
    "radio_code": false,
    "access_card": false,
    "plans": {
     "supply": 2,
-    "rest": 1
+    "rest": 13
    },
    "expedition_status": {
     "returned": 2
@@ -976,8 +1010,9 @@
     "no_mapped_food_source"
    ],
    "garden_migrated": true,
-   "garden_food": 0,
-   "survived": false
+   "garden_food": 56,
+   "water_discarded": 4,
+   "survived": true
   },
   {
    "size": 6,
@@ -1000,6 +1035,7 @@
    ],
    "garden_migrated": false,
    "garden_food": 0,
+   "water_discarded": 0,
    "survived": false
   },
   {
@@ -1023,6 +1059,7 @@
    ],
    "garden_migrated": false,
    "garden_food": 0,
+   "water_discarded": 0,
    "survived": false
   },
   {
@@ -1090,6 +1127,7 @@
    ],
    "garden_migrated": false,
    "garden_food": 0,
+   "water_discarded": 0,
    "survived": false
   },
   {
@@ -1113,6 +1151,7 @@
    ],
    "garden_migrated": false,
    "garden_food": 0,
+   "water_discarded": 0,
    "survived": false
   }
  ]
