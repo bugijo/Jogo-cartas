@@ -16,14 +16,17 @@ import json
 import random
 from pathlib import Path
 
+import camp
+
 RULES = json.loads((Path(__file__).parent / 'data/community.json').read_text(encoding='utf-8'))
 PROFESSIONS = RULES['professions']
 ACTIVITIES = RULES['activities']
 TRIPS = RULES['trips']
 STRUCTURES = RULES['structures']
-CAMP_JOBS = ('cozinhar', 'obra', 'cuidar', 'vigiar', 'armadilha', 'canteiro')
+CAMP_JOBS = ('cozinhar', 'obra', 'cuidar', 'vigiar', 'armadilha', 'canteiro', 'horta',
+             'remedio')
 KEYS = {'rng', 'professions', 'jobs', 'trips', 'pools', 'meat', 'built', 'projects',
-        'deck', 'traps', 'pista_used', 'trip_seq', 'arrival', 'arrival_seq'}
+        'deck', 'traps', 'pista_used', 'trip_seq', 'arrival', 'arrival_seq', 'camp'}
 
 
 def _lists(value):
@@ -58,9 +61,34 @@ def new_state(world) -> dict:
              'pools': {name: spec['start'] for name, spec in RULES['pools'].items()},
              'built': [], 'projects': {}, 'deck': {'order': events, 'pos': 0},
              'traps': [], 'pista_used': False, 'trip_seq': 0,
-             'arrival': None, 'arrival_seq': 0}
+             'arrival': None, 'arrival_seq': 0, 'camp': None}
     _save_rng(state, rng)
     return state
+
+
+def setup_camp(world) -> dict | None:
+    """Acampamento em lotes (D-24): clareira 2×2 na chegada, depois dos kits.
+
+    A Horta da Cisterna chega como lotes já plantados; o que passar do estoque
+    inicial (comida, água, madeira, metal) fica registrado como perdido.
+    """
+    if not camp.RULES['on']:
+        return None
+    ready = 0
+    garden = world.continuity_garden
+    if garden is not None and garden.get('active'):
+        ready = camp.RULES['cistern_horta_lots']
+        world.continuity_garden = None
+    camp.new_camp(world, ready)
+    lost = {}
+    for resource in ('food', 'water', 'wood', 'scrap'):
+        excess = world.stock[resource] - camp.capacity(world, resource)
+        if excess > 0:
+            world.stock[resource] -= excess
+            lost[resource] = excess
+    state = world.community['camp']
+    return {'lots': {lot: list(items) for lot, items in state['lots'].items() if items},
+            'tents_left': dict(state['tents']), 'horta_lots': ready, 'lost': lost}
 
 
 def validate(world) -> None:
@@ -80,6 +108,7 @@ def validate(world) -> None:
     ok = ok and len(state['traps']) <= RULES['traps']['max']
     if not ok:
         raise ValueError('Estado da Comunidade inválido')
+    camp.validate(world)
 
 
 # --- pessoas ---------------------------------------------------------------------
@@ -227,6 +256,14 @@ def start_structures(world, level: str = 'normal') -> list[str]:
     if level not in RULES['levels']:
         raise ValueError('Nível de preparação desconhecido')
     built = list(RULES['levels'][level]['start_structures'])
+    if camp.on(world):
+        # Em lotes, o canteiro pronto do Acolhedor é um lote de horta plantado.
+        for kind in built:
+            lot = camp.free_lot(world, 'horta')
+            if kind == 'canteiro' and lot:
+                world.community['camp']['lots'][lot].append('horta')
+                world.community['camp']['horta_ready'][lot] = world.day
+        return built
     world.community['built'] += built
     return built
 
@@ -255,6 +292,23 @@ def assign_job(world, person_id: str, job: str, target: str | None = None) -> No
     if job == 'obra':
         if target not in world.projects and target not in state['projects']:
             raise ValueError('Sem obra iniciada para esse alvo')
+        spec = STRUCTURES.get(target) if target in state['projects'] else {}
+        blocked = camp.work_allowed(world, target, spec)
+        if blocked:
+            raise ValueError(blocked)
+    if job == 'remedio':
+        if not camp.has(world, 'ambulatorio'):
+            raise ValueError('Remédio exige o Ambulatório')
+        if world.stock['food'] < camp.EFFECTS['remedio_food']:
+            raise ValueError('Remédio exige ervas e comida no estoque')
+    if job == 'horta':
+        if not camp.on(world):
+            raise ValueError('Horta por lotes só no acampamento em lotes')
+        covered = sum(camp.HORTA['specialist_lots'] if specialist(world, pid, 'horta')
+                      else camp.HORTA['lots_per_worker']
+                      for pid, j in state['jobs'].items() if j['job'] == 'horta')
+        if covered >= len(camp.ready_horta(world)):
+            raise ValueError('Sem lote de horta pronto sem cuidado hoje')
     if job == 'cozinhar' and not state['meat']:
         raise ValueError('Sem carne para cozinhar')
     if job == 'canteiro':
@@ -272,7 +326,7 @@ def assign_job(world, person_id: str, job: str, target: str | None = None) -> No
 
 
 def start_build(world, kind: str) -> None:
-    """Obra comunitária (coletor de chuva, cozinha): paga o custo na largada."""
+    """Obra comunitária: paga o custo na largada e reserva o lote (em lotes)."""
     _require_dawn(world)
     state = world.community
     limit = STRUCTURES.get(kind, {}).get('max', 1)
@@ -280,15 +334,33 @@ def start_build(world, kind: str) -> None:
             or kind in state['projects']):
         raise ValueError('Obra comunitária indisponível')
     spec = STRUCTURES[kind]
-    if spec.get('requires') and spec['requires'] not in world.structures:
+    if spec.get('camp', camp.on(world)) != camp.on(world):
+        raise ValueError('Obra de outro modelo de acampamento')
+    if spec.get('knowledge') and spec['knowledge'] not in state['camp']['knowledge']:
+        raise ValueError('Obra exige o conhecimento encontrado em expedição')
+    required = spec.get('requires')
+    if required and required not in world.structures and required not in state['built']:
         raise ValueError('Obra exige a estrutura do nível anterior')
-    if world.free_terrain < spec.get('terrain', 0):
+    if spec.get('requires_any') and not any(k in world.structures
+                                            for k in spec['requires_any']):
+        raise ValueError('Expansão exige Depósito, Oficina ou Vigia')
+    if spec.get('expansion') and camp.on(world):
+        if world.community['camp']['level'] + 1 != spec['expansion']:
+            raise ValueError('Expansão fora de ordem')
+        if world.community['camp']['crisis'] >= camp.CRISIS['grave']:
+            raise ValueError('Crise grave: sem expansão')
+    if camp.on(world):
+        if not camp.can_claim(world, kind):
+            raise ValueError('Sem lote livre dessa categoria: amplie o acampamento')
+    elif world.free_terrain < spec.get('terrain', 0):
         raise ValueError('Sem terreno livre: amplie a cerca')
     cost = spec['cost']
     if any(world.stock[res] < n for res, n in cost.items()):
         raise ValueError('Recursos insuficientes para a obra')
     for res, n in cost.items():
         world.stock[res] -= n
+    if camp.on(world):
+        camp.claim(world, kind)
     state['projects'][kind] = 0
     world.log.append({'day': world.day, 'action': 'community_build_start', 'kind': kind,
                       'paid': dict(cost)})
@@ -311,6 +383,8 @@ def _cook(world, person_id: str) -> dict:
     wood = 0
     if 'cozinha' in state['built']:
         portions = RULES['meat']['portions_cooked']
+    elif camp.has(world, 'defumador'):
+        portions = RULES['meat']['portions_cooked']  # fogo do defumador
     elif world.stock['wood'] >= 1:
         world.stock['wood'] -= 1
         wood = 1
@@ -324,21 +398,39 @@ def _cook(world, person_id: str) -> dict:
 def _build(world, person_id: str, target: str) -> dict:
     state = world.community
     units = 1 + (1 if specialist(world, person_id, 'obra') else 0)
+    if camp.has(world, 'bancada'):
+        units += camp.EFFECTS['bancada_units']
+    ration = 0
+    spec = STRUCTURES.get(target, {}) if target in state['projects'] else {}
+    # Obra EXP-BLD cobra a ração em World.work_project.
+    if camp.on(world) and target in state['projects'] and camp.heavy(target, spec):
+        if camp.work_allowed(world, target, spec):
+            return {'target': target, 'units': 0, 'done': False, 'reason': 'parada'}
+        ration = camp.RULES['work_ration']
+        world.stock['food'] -= ration  # ração de obra: quem carrega come mais
     if target in state['projects']:
         state['projects'][target] += units
         done = state['projects'][target] >= STRUCTURES[target]['work']
         if done:
             del state['projects'][target]
             state['built'].append(target)
-        return {'target': target, 'units': units, 'done': done}
+            if camp.on(world):
+                camp.finish(world, target)
+                if spec.get('expansion'):
+                    camp.expand(world, spec['expansion'])
+        return {'target': target, 'units': units, 'done': done, 'ration': ration}
     if target not in world.projects:
         return {'target': target, 'units': 0, 'done': False, 'reason': 'sem obra'}
+    if camp.on(world) and camp.work_allowed(world, target, {}):
+        return {'target': target, 'units': 0, 'done': False, 'reason': 'parada'}
     if person_id in world.heroes:
         world.worked_today.remove(person_id)  # work_project registra o herói de novo
         done = world.work_project(target, units, person_id)
     else:
         done = world.work_project(target, units)
-    return {'target': target, 'units': units, 'done': done}
+    if camp.on(world) and camp.heavy(target, {}):
+        ration = camp.RULES['work_ration']
+    return {'target': target, 'units': units, 'done': done, 'ration': ration}
 
 
 def day_work(world) -> dict | None:
@@ -347,6 +439,7 @@ def day_work(world) -> dict | None:
     if state is None or not state['jobs']:
         return None
     out = {}
+    horta = []
     for person_id, job in sorted(state['jobs'].items()):
         if person_id not in world.worked_today:
             world.worked_today.append(person_id)  # sem recuperação §25 hoje
@@ -365,6 +458,23 @@ def day_work(world) -> dict | None:
             world.stock['wood'] -= RULES['traps']['cost_wood']
             state['traps'].append({'set_day': world.day})
             out['traps_set'] = out.get('traps_set', 0) + 1
+        elif kind == 'horta':
+            horta.append(person_id)
+        elif kind == 'remedio':
+            rng = _rng(state)
+            roll = rng.randint(1, 6)
+            _save_rng(state, rng)
+            ok = specialist(world, person_id, 'cuidar') or roll >= camp.EFFECTS['remedio_roll']
+            world.stock['food'] -= camp.EFFECTS['remedio_food']
+            out.setdefault('remedio', []).append(
+                {'person': person_id, 'roll': roll,
+                 'medicine': world.deposit('medicine', 1) if ok else 0})
+    if horta:
+        # Agricultor escolhe primeiro: cuida de mais lotes.
+        horta.sort(key=lambda pid: (not specialist(world, pid, 'horta'), pid))
+        rng = _rng(state)
+        out['horta'] = camp.tend(world, horta, lambda pid: specialist(world, pid, 'horta'), rng)
+        _save_rng(state, rng)
     return out or None
 
 
@@ -379,6 +489,8 @@ def after_meal(world, people: dict) -> dict | None:
             continue
         care = RULES['care']
         slots = care['specialist_people'] if specialist(world, person_id, 'cuidar') else care['people']
+        if camp.has(world, 'ambulatorio'):
+            slots += camp.EFFECTS['ambulatorio_people']
         candidates = sorted((pid for pid, p in people.items() if pid != person_id
                              and p.get('kind') != 'dog' and not p.get('hungry')
                              and not p.get('thirsty') and _wounds(world, pid) > 0
@@ -407,6 +519,8 @@ def morale_night(world, people: dict, fed: dict) -> dict | None:
     rule = RULES['morale']
     if world.community is None or not rule['on']:
         return None
+    if camp.on(world):
+        return camp.night(world, people, fed)  # a Crise 0–10 substitui o Moral
     humans = [pid for pid, p in people.items() if p.get('kind') != 'dog']
     unfed = [pid for pid in humans if pid not in fed['food'] or pid not in fed['water']]
     per = rule['unfed_per_drop']
@@ -586,8 +700,9 @@ def _deliver(world, output: str, units: int) -> dict:
         room = RULES['meat']['track'] - sum(m['units'] for m in state['meat'])
         kept = min(units, room)
         if kept:
-            state['meat'].append({'units': kept,
-                                  'spoils': world.day + RULES['meat']['keeps_nights']})
+            keeps = RULES['meat']['keeps_nights'] + (
+                camp.EFFECTS['defumador_nights'] if camp.has(world, 'defumador') else 0)
+            state['meat'].append({'units': kept, 'spoils': world.day + keeps})
         return {'meat': kept, 'meat_lost': units - kept}
     if output == 'fruit':
         water = units // RULES['fruit_water_every']
@@ -596,7 +711,7 @@ def _deliver(world, output: str, units: int) -> dict:
         treated = units
         wood = 0
         if not ((world.continuity_filter or {}).get('active')
-                or 'reservoir' in world.structures):
+                or 'reservoir' in world.structures or camp.has(world, 'filtro')):
             per = RULES['raw_water_per_wood']
             wood = min(world.stock['wood'], -(-units // per))
             treated = min(units, wood * per)
@@ -626,7 +741,16 @@ def dawn(world) -> dict | None:
     for name, spec in RULES['pools'].items():
         if spec['regrow'] and world.day % spec['every'] == 0:
             state['pools'][name] = min(spec['max'], state['pools'][name] + spec['regrow'])
-    if 'coletor' in state['built']:
+    if camp.on(world):
+        # Um D6 de tempo por amanhecer: 4–6 chove (horta não pede água; coletor enche).
+        roll = rng.randint(1, 6)
+        state['camp']['rain'] = roll >= camp.RULES['rain_at']
+        out['weather'] = {'roll': roll, 'rain': state['camp']['rain']}
+        if 'coletor' in state['built']:
+            rain = min(STRUCTURES['coletor']['rain'].get(str(roll), 0),
+                       STRUCTURES['coletor']['capacity'])
+            out['rain'] = {'roll': roll, 'water': world.deposit('water', rain) if rain else 0}
+    elif 'coletor' in state['built']:
         roll = rng.randint(1, 6)
         rain = min(STRUCTURES['coletor']['rain'].get(str(roll), 0),
                    STRUCTURES['coletor']['capacity'])
@@ -645,6 +769,10 @@ def dawn(world) -> dict | None:
     state['meat'] = [m for m in state['meat'] if m['spoils'] > world.day]
     if spoiled:
         out['meat_spoiled'] = spoiled
+    if camp.on(world):
+        fight = camp.conflict(world, rng)
+        if fight:
+            out['conflict'] = fight
     state['jobs'] = {}
     _arrival_roll(world, state, rng)
     if state['arrival']:
@@ -693,14 +821,26 @@ def _arrival_roll(world, state, rng) -> None:
         _refuse(world, state, 'sem_decisao')
     if world.day in rule['days']:
         roll = rng.randint(1, 6)
-        state['arrival'] = {'day': world.day, 'roll': roll, 'people': list(rule['table'][str(roll)])}
+        if camp.on(world):
+            entry = camp.RULES['arrivals_table'][str(roll)]
+        else:
+            entry = {'people': rule['table'][str(roll)]}
+        state['arrival'] = {'day': world.day, 'roll': roll, 'people': list(entry['people'])}
+        if entry.get('tent'):
+            state['arrival']['tent'] = entry['tent']
         if not state['arrival']['people']:
             state['arrival'] = None
         world.log.append({'day': world.day, 'action': 'arrival', 'roll': roll,
-                          'people': list(rule['table'][str(roll)])})
+                          'people': list(entry['people']), 'tent': entry.get('tent')})
 
 
 def _refuse(world, state, reason: str) -> None:
+    if camp.on(world):
+        camp.raise_crisis(world, camp.CRISIS['refuse'], 'recusa')
+        world.log.append({'day': world.day, 'action': 'arrival_refused', 'reason': reason,
+                          'people': state['arrival']['people']})
+        state['arrival'] = None
+        return
     before = world.shelter_morale
     world.shelter_morale = max(0, before - RULES['arrivals']['refuse_morale'])
     world.log.append({'day': world.day, 'action': 'arrival_refused', 'reason': reason,
@@ -712,6 +852,8 @@ def arrival_fits(world) -> bool:
     state = world.community
     if not state or not state['arrival']:
         return False
+    if camp.on(world):
+        return True  # sem proibição: falta de cama tem custo (Crise, recuperação)
     humans = len(state['arrival']['people'])
     return world.residents + humans <= world.beds + bed_allowance(world)
 
@@ -738,6 +880,11 @@ def receive(world, accept: bool) -> dict:
         if kind == 'adult':
             join(world, person_id)
         joined.append(person_id)
+    tent = state['arrival'].get('tent')
+    if tent:
+        tents = state['camp']['tents']
+        tents[tent] = tents.get(tent, 0) + 1
+        camp.pitch_tents(world)
     state['arrival'] = None
     world.log.append({'day': world.day, 'action': 'arrival_accepted', 'people': joined})
     return {'accepted': True, 'people': joined}
@@ -802,8 +949,12 @@ def defense_waves(world, defenders: int) -> list | None:
 
 
 def crowded(world) -> bool:
+    if camp.on(world):
+        return False  # em lotes: só quem tem cama recupera (camp.recovery_slots)
     return world.community is not None and world.residents > world.beds
 
 
 def bed_allowance(world) -> int:
+    if camp.on(world):
+        return 10 ** 6  # sem teto: a falta de cama tem custo, não proibição
     return RULES['crowding']['extra_people'] if world.community is not None else 0

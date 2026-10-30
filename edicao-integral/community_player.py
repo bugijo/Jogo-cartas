@@ -15,11 +15,12 @@ pessoas, profissões e reservas visíveis do entorno.
 """
 from __future__ import annotations
 
+import camp
 import community
 from regional_campaign_player import CampRegionalPlayer
 from system import STRUCTURES
 
-FOOD_ACTIVITY = {'cacador': 'caca', 'pescador': 'pesca', 'coletor': 'coleta',
+FOOD_ACTIVITY = {'cacador': 'caca', 'coletor': 'coleta',
                  'agricultor': 'coleta'}
 
 
@@ -31,9 +32,14 @@ class CommunityRegionalPlayer(CampRegionalPlayer):
                  community_builds=('canteiro', 'coletor', 'canteiro', 'cozinha'),
                  max_days=3, risk='covered',
                  per_day_choice=False, dogs=True, accept='beds', growth=True,
-                 edge='short', **kwargs):
+                 edge='short', horta_target=6, horta_per_adult=2, tents_first=False,
+                 no_market=False, **kwargs):
         super().__init__(*args, options=options, risk=risk, **kwargs)
         self.accept = accept
+        self.horta_target = horta_target
+        self.horta_per_adult = horta_per_adult
+        self.tents_first = tents_first  # situação A: barracas antes da produção
+        self.no_market = no_market      # situação G: sem Mercado nem Horta abandonada
         self.growth = growth
         self.edge = edge  # Horta abandonada: 'always', 'short' (noite descoberta), 'never'
         self.trips = trips
@@ -62,6 +68,8 @@ class CommunityRegionalPlayer(CampRegionalPlayer):
 
     def food_site(self, world):
         site = super().food_site(world)
+        if self.no_market:
+            return None
         if site != 'EXP-LOC-01' or self.edge == 'always':
             return site
         if self.edge == 'short' and world.stock['food'] < len(world.meal_people()):
@@ -78,18 +86,77 @@ class CommunityRegionalPlayer(CampRegionalPlayer):
         return [h for h in super().team(world) if h not in away]
 
     # --- alvos visíveis ----------------------------------------------------------
-    def _wood_target(self, world):
+    def _wanted(self, world):
+        if camp.on(world):
+            return self._camp_wishes(world)
         state = world.community
-        if not world.projects:
-            kind = next((k for k in self.BUILD_ORDER if k not in world.structures), None)
-            if kind:
-                return STRUCTURES[kind]['cost'].get('wood', 0)
         wanted = list(self.community_builds)
         for done_kind in state['built']:
             if done_kind in wanted:
                 wanted.remove(done_kind)
         if self.growth:
             wanted = self._growth_builds(world, wanted)
+        return wanted
+
+    def _camp_wishes(self, world):
+        """Acampamento em lotes: cama para quem chega, horta para quem trabalha,
+        expansão quando falta lote; o resto (coletor, cozinha) depois."""
+        state = world.community
+        lots = state['camp']
+        wishes = []
+        humans = world.residents + len((state['arrival'] or {}).get('people', []))
+        if humans > world.beds:
+            wishes.append('barraca')
+        adults = [p for p in community.workers(world) if p not in world.npcs]
+        horta = camp.built(world, 'horta') + ('horta' in state['projects'])
+        target = min(self.horta_target, self.horta_per_adult * max(1, len(adults)))
+        if self.tents_first and world.day < 6:
+            wishes.insert(0, 'barraca')  # situação A: abrigar antes de produzir
+            target = 0
+        if horta < target:
+            wishes.append('horta')
+        if horta >= 1 and 'coletor' not in state['built']:
+            wishes.append('coletor')
+        if 'cozinha' not in state['built'] and 'cozinha' in self.community_builds:
+            wishes.append('cozinha')
+        for kind in ('composteira', 'filtro', 'defumador', 'bancada', 'ambulatorio'):
+            spec = community.STRUCTURES[kind]
+            required = spec.get('requires')
+            if (spec['knowledge'] in lots['knowledge'] and kind not in state['built']
+                    and (not required or required in world.structures)):
+                wishes.append(kind)
+        blocked = [k for k in wishes if not camp.can_claim(world, k)]
+        nxt = f"expansao{lots['level'] + 1}"
+        if blocked and nxt in community.STRUCTURES:
+            spec = community.STRUCTURES[nxt]
+            if spec.get('requires_any') and not any(k in world.structures
+                                                    for k in spec['requires_any']):
+                wishes = [k for k in wishes if k not in blocked]
+            else:
+                wishes = [nxt] + [k for k in wishes if k not in blocked]
+        else:
+            wishes = [k for k in wishes if k not in blocked]
+        return [k for k in wishes if k not in state['projects']]
+
+    def _build(self, world, team):
+        """Em lotes: obra EXP-BLD só quando a Comunidade não espera madeira."""
+        if (world.community is not None and camp.on(world) and not world.projects
+                and (world.community['projects'] or self._camp_wishes(world))):
+            return {}
+        return super()._build(world, team)
+
+    def _wood_target(self, world):
+        state = world.community
+        if not world.projects and not camp.on(world):
+            kind = next((k for k in self.BUILD_ORDER if k not in world.structures), None)
+            if kind:
+                return STRUCTURES[kind]['cost'].get('wood', 0)
+        wanted = self._wanted(world)
+        if camp.on(world) and not wanted and not world.projects:
+            kind = next((k for k in self.BUILD_ORDER if k not in world.structures
+                         and k != 'garden'), None)
+            if kind:
+                return STRUCTURES[kind]['cost'].get('wood', 0)
         for kind in wanted:
             if kind not in state['projects']:
                 return community.STRUCTURES[kind]['cost'].get('wood', 0)
@@ -155,9 +222,13 @@ class CommunityRegionalPlayer(CampRegionalPlayer):
         # 0. chegada de sobreviventes: acolher se houver cama (mais braços e bocas)
         if state['arrival']:
             arriving = len(state['arrival']['people'])
+            beds = world.beds
+            tent = state['arrival'].get('tent')
+            if camp.on(world) and tent and camp.free_lot(world, 'barraca', tent):
+                beds += camp.RULES['beds'][tent]  # a família monta a própria barraca
             accept = community.arrival_fits(world) and (
                 self.accept == 'fits'
-                or (self.accept == 'beds' and world.residents + arriving <= world.beds)
+                or (self.accept == 'beds' and world.residents + arriving <= beds)
                 or (self.accept == 'stock'
                     and world.stock['food'] >= len(world.meal_people()) + arriving))
             receipt = community.receive(world, accept)
@@ -189,12 +260,7 @@ class CommunityRegionalPlayer(CampRegionalPlayer):
                 community.assign_job(world, cook, 'cozinhar')
                 done.setdefault('community', []).append((cook, 'cozinhar'))
         # 2. obras comunitárias
-        wanted = list(self.community_builds)
-        for done_kind in state['built']:
-            if done_kind in wanted:
-                wanted.remove(done_kind)
-        if self.growth:
-            wanted = self._growth_builds(world, wanted)
+        wanted = self._wanted(world)
         for build in wanted:
             if build in state['projects']:
                 break
@@ -205,12 +271,33 @@ class CommunityRegionalPlayer(CampRegionalPlayer):
                 pass
             break
         targets = list(state['projects']) + list(world.projects)
-        if targets and covered:
+        # Em lotes, obra leve (horta, barraca) vale o investimento com meia noite coberta.
+        half = world.stock['food'] >= consumers // 2
+        if targets and (covered or (camp.on(world) and half)):
             for target in targets:
-                worker = take(free, 'obra') or take(heroes, 'obra')
-                if worker:
+                spec = community.STRUCTURES.get(target, {}) if target in state['projects'] else {}
+                if camp.work_allowed(world, target, spec):
+                    continue
+                # Em lotes: a expansão é um mutirão (até o trabalho que falta, 3 pessoas).
+                crew = 1
+                if camp.on(world) and spec.get('expansion'):
+                    crew = min(3, spec['work'] - state['projects'][target])
+                for _ in range(crew):
+                    worker = take(free, 'obra') or take(heroes, 'obra')
+                    if not worker:
+                        break
                     community.assign_job(world, worker, 'obra', target)
                     done.setdefault('community', []).append((worker, 'obra', target))
+        # 2a. horta por lotes: agricultor primeiro, até cobrir os lotes prontos
+        if camp.on(world):
+            while free:
+                worker = take(free, 'horta')
+                try:
+                    community.assign_job(world, worker, 'horta')
+                except ValueError:
+                    free.insert(0, worker)
+                    break
+                done.setdefault('community', []).append((worker, 'horta'))
         # 2b. canteiros: um trabalhador por canteiro pronto (comida sem esgotar o entorno)
         for _ in range(state['built'].count('canteiro')):
             worker = take(free, 'horta')
@@ -258,6 +345,12 @@ class CommunityRegionalPlayer(CampRegionalPlayer):
                     continue      # o abrigo não pode ficar vazio
                 free.remove(person)
                 done.setdefault('community', []).append((person, 'viagem', activity, days))
+        # 3b. remédio no Ambulatório quando o estoque de remédio acaba
+        if (free and camp.has(world, 'ambulatorio') and world.stock['medicine'] < 2
+                and world.stock['food'] > consumers + camp.EFFECTS['remedio_food']):
+            person = take(free, 'cuidar')
+            community.assign_job(world, person, 'remedio')
+            done.setdefault('community', []).append((person, 'remedio'))
         # 4. armadilha e cuidados
         if (free and world.stock['wood'] > self._wood_target(world)
                 and len(state['traps']) < community.RULES['traps']['max']

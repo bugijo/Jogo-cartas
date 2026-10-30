@@ -61,15 +61,31 @@ def inventory() -> dict:
                                'total': len(last['cards'])},
         'referencia_comunidade': {'source': 'data/community.json', 'cards': {
             'bagagem_D6': 1, 'viagem_automatica': 1, 'comida_agua': 1, 'clima_coletor': 1,
-            'chegadas_D6': 1},
-            'total': 5},
+            'chegadas_D6': 1, 'horta_lotes': 1, 'crise_0_10': 1, 'obras_e_racao': 1},
+            'total': 8},
+        # D-27: conhecimento encontrado na 1ª busca de cada local
+        'conhecimento': {'source': 'data/community.json#camp.knowledge',
+                         'cards': {k: 1 for k in community['camp']['knowledge']},
+                         'total': len(community['camp']['knowledge'])},
     }
+    camp = community['camp']
+    pieces = Counter()
+    for kind, spec in community['structures'].items():
+        if spec.get('expansion') or spec.get('camp') is False:
+            continue
+        pieces[kind] = spec.get('max', 1)
+    for structure in system['structures']:
+        if structure['kind'] != 'garden':
+            pieces[structure['kind']] = 1
+    pieces['barraca'] += 4    # evacuação: até 14 moradores no início (7 barracas)
+    pieces['barraca_familiar'] = 4  # chegadas e resgates
     boards = {
         'mapas_cisterna_0.2': [m['id'] for m in catalog['maps']],
         'mapas_taticos_motor': sorted(tactics['maps']),
-        'tabuleiro_abrigo_regional': ['trilhas de estoque (depósito seco 30, tanque 30)',
-                                      'camas e lotação (+2)', 'obras e estruturas',
-                                      'trilha de carne (6)', 'dia e relógio regional'],
+        'painel_acampamento': ['comida 0–48 com ficha de limite', 'água 0–36 com ficha de limite',
+                               'madeira 0–20', 'metal 0–20', 'carne crua (6)',
+                               'moradores e camas 0–30', 'Crise 0–10', 'dias 1–25'],
+        'tabuleiro_acampamento': sorted(camp['grid']),
         'tabuleiro_entorno': list(community['pools']),
     }
     heroes = {'cisterna_0.2': sum(1 for h in catalog['heroes'] if h.get('initial')),
@@ -77,7 +93,10 @@ def inventory() -> dict:
               'regional_motor': len(system['heroes'])}
     tokens = dict(Counter(t['kind'] for t in catalog['tokens']))
     tokens_new = {'viajante (marcador de dias)': 6, 'armadilha': community['traps']['max'],
-                  'obra comunitária': len(community['structures'])}
+                  'peças de lote': dict(sorted(pieces.items())),
+                  'tiras de mato (níveis)': 2, 'ficha de limite': 2,
+                  'marcadores de trilha': 8, 'cubo de obra': 6,
+                  'peão de trabalhador': 12}
     return {'decks': decks, 'boards': boards, 'heroes': heroes,
             'tokens_0.2': tokens, 'tokens_new': tokens_new,
             'reuse': {'carne_REC_0.2': meat_cards}}

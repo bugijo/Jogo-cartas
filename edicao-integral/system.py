@@ -15,6 +15,7 @@ from travel02 import AUTO_EFFECTS, CHOICES
 from ambush02 import Ambush02
 from cistern_tactics02 import WEAPONS as WEAPONS02
 from horde_deck02 import HordeDeck02 as _HordeDeck02
+import camp as camp_rules
 import community as community_rules
 
 DATA = json.loads((Path(__file__).parent / 'data/system.json').read_text(encoding='utf-8'))
@@ -158,12 +159,16 @@ class World:
 
     @property
     def beds(self) -> int:
+        if camp_rules.on(self):
+            return camp_rules.beds(self)
         return (DATA['rules']['beds_base'] + self.continuity_beds
                 + sum(STRUCTURES[k]['beds_bonus'] for k in self.structures)
                 + community_rules.beds_bonus(self))
 
     @property
     def storage(self) -> int:
+        if camp_rules.on(self):
+            return camp_rules.capacity(self, 'food')
         skill=max((self.skill_bonus(hero_id,'storage') for hero_id in self.heroes),default=0)
         return (DATA['rules']['storage_base'] + sum(STRUCTURES[k]['storage_bonus'] for k in self.structures)
                 + skill + community_rules.storage_bonus(self))
@@ -173,10 +178,15 @@ class World:
         """Comunidade: água em tanques próprios, fora do depósito seco."""
         if self.community is None:
             return None
+        if camp_rules.on(self):
+            return camp_rules.capacity(self, 'water')
         tanks = community_rules.RULES['water_tanks']
         return tanks['base'] + tanks['per_reservoir'] * ('reservoir' in self.structures)
 
     def free_space(self, resource: str) -> int:
+        if camp_rules.on(self):
+            # Em lotes, cada recurso tem a sua trilha no painel.
+            return camp_rules.capacity(self, resource) - self.stock[resource]
         if self.community is not None:
             if resource == 'water':
                 return self.water_capacity - self.stock['water']
@@ -242,6 +252,8 @@ class World:
 
     @property
     def free_terrain(self) -> int:
+        if camp_rules.on(self):
+            return camp_rules.free_lots(self)
         return (DATA['rules']['terrain_base'] - sum(STRUCTURES[k]['terrain'] for k in self.structures)
                 - sum(STRUCTURES[k]['terrain'] for k in self.projects) + community_rules.terrain_delta(self))
 
@@ -1092,16 +1104,29 @@ class World:
         if kind not in STRUCTURES or kind in self.projects or kind in self.structures:
             return False
         spec = STRUCTURES[kind]
-        if self.free_terrain < spec['terrain'] or any(self.stock[r] < n for r,n in spec['cost'].items()):
+        if camp_rules.on(self):
+            # Em lotes, a Horta EXP-BLD vira lotes de horta da Comunidade.
+            if kind == 'garden' or not camp_rules.can_claim(self, kind):
+                return False
+        elif self.free_terrain < spec['terrain']:
+            return False
+        if any(self.stock[r] < n for r,n in spec['cost'].items()):
             return False
         for resource, amount in spec['cost'].items():
             self.stock[resource] -= amount
+        if camp_rules.on(self):
+            camp_rules.claim(self, kind)
         self.projects[kind] = 0
         return True
 
     def work_project(self, kind: str, units: int = 1, hero_id: str | None = None) -> bool:
         if kind not in self.projects or units <= 0:
             raise ValueError('Projeto/trabalho inválido')
+        blocked = camp_rules.work_allowed(self, kind, STRUCTURES[kind])
+        if blocked:
+            raise ValueError(blocked)
+        if camp_rules.on(self) and camp_rules.heavy(kind, STRUCTURES[kind]):
+            self.stock['food'] -= camp_rules.RULES['work_ration']  # ração de obra
         if hero_id is not None:
             self._require_working_hero(hero_id)
             units += self.skill_bonus(hero_id,'build')
@@ -1110,6 +1135,8 @@ class World:
         if self.projects[kind] >= STRUCTURES[kind]['work']:
             self.structures[kind] = {'health': STRUCTURES[kind]['max_health'],'age':0}
             del self.projects[kind]
+            if camp_rules.on(self):
+                camp_rules.finish(self, kind)
             return True
         return False
 
@@ -1254,6 +1281,7 @@ class World:
         self.searches[location_id] -= 1
         self.log.append({'day':self.day,'expedition':expedition_id,
                          'location':location_id,'action':'search','hero':hero_id})
+        camp_rules.find_knowledge(self, location_id)
         loot = LOCATIONS[location_id]['loot']
         found = {}
         scouts=sum(self.npcs[n]['level'] for n in exp.crew
@@ -1781,7 +1809,9 @@ class World:
                 if damaged:
                     self.repair_structure(damaged)
             elif output == 'build' and self.projects:
-                self.work_project(next(iter(self.projects)),state['level'])
+                kind = next(iter(self.projects))
+                if not camp_rules.work_allowed(self, kind, STRUCTURES[kind]):
+                    self.work_project(kind,state['level'])
             elif output == 'research':
                 self.clues += state['level']
             elif output == 'rescue' and self.stock['medicine']:
@@ -1861,6 +1891,8 @@ class World:
                         source[key] = person[key]
                 source['health'] = person['health']
         community_care = community_rules.after_meal(self, people)
+        # Cama e crise grave valem pela noite que começa (antes da refeição mexer na Crise).
+        slots = camp_rules.recovery_slots(self)
         community_morale = community_rules.morale_night(self, people, allocations)
         human_consumers = [person for identifier,person in people.items()
                            if person.get('kind', 'hero' if identifier in self.heroes else 'adult') != 'dog']
@@ -1883,13 +1915,21 @@ class World:
         # person's printed overnight recovery.
         # Comunidade: abrigo lotado (mais moradores que camas) não recupera Vida.
         crowded = community_rules.crowded(self)
+        # Em lotes: só quem tem cama recupera Vida; a cama vai primeiro a quem
+        # está ferido (escolha da mesa). Crise grave: ninguém recupera.
+        bedded = None
+        if slots is not None:
+            humans = sorted((pid for pid, p in people.items() if p.get('kind') != 'dog'),
+                            key=lambda pid: (-community_rules._wounds(self, pid), pid))
+            bedded = set(humans[:slots])
         for identifier, person in people.items():
             fully_supplied = not person['hungry'] and not person['thirsty']
             if not fully_supplied or person.get('location', 'camp') != 'camp':
                 continue
             if 'fatigue' in person:
                 person['fatigue'] = max(0, person['fatigue']-1)
-            if crowded:
+            if crowded or (bedded is not None and identifier not in bedded
+                           and people[identifier].get('kind') != 'dog'):
                 pass
             elif (identifier not in self.worked_today
                     and identifier not in self.departed_today

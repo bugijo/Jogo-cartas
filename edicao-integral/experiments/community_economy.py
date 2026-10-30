@@ -26,11 +26,25 @@ from regional_campaign_player import (RegionalCampaignPlayer,  # noqa: E402
                                       StrategicRegionalPlayer)
 from simulate_cistern_sweep import auto_settings  # noqa: E402
 
+import camp  # noqa: E402
 import community  # noqa: E402
 
 ORIGINAL = deepcopy({key: community.RULES[key]
                      for key in ('activities', 'pools', 'trips', 'arrival', 'morale', 'arrivals')})
 ORIGINAL_GARDEN = community.RULES['garden_food_per_harvest']
+ORIGINAL_CAMP = deepcopy(camp.RULES)
+# D-24: acampamento em lotes (padrão) e variantes; COMM-ABS = modelo abstrato anterior
+CAMP = {'COMM-ABS': {'on': False}, 'COMM-ACOLHEDOR-ABS': {'on': False},
+        'COMM-H2': {'horta': {'food_per_lot': 2}},
+        'COMM-W3': {'horta': {'lots_per_worker': 3, 'specialist_lots': 6}},
+        'COMM-CR1': {'crisis': {'large': 1}},
+        'COMM-STO30': {'storage': {'food': {'base': 30, 'storage': 12, 'deposito2': 12},
+                                   'water': {'base': 30, 'reservoir': 12},
+                                   'wood': 20, 'scrap': 20}},
+        'COMM-NORATION': {'work_ration': 0},
+        'COMM-CR1R1': {'crisis': {'large': 1, 'repeat': 1}},
+        'COMM-CRH': {'crisis': {'small_share': 2, 'repeat': 1}},
+        'COMM-CRH2': {'crisis': {'small_share': 2}}}
 DAYS = 15
 SIZES = (2, 3, 4, 5, 6)
 # nome: (controlador, regras Comunidade, opções do controlador)
@@ -96,7 +110,9 @@ CONFIGS['COMM-FITS'] = (CommunityRegionalPlayer, True, {'accept': 'fits'})
 CONFIGS['COMM-EDGE-ALWAYS'] = (CommunityRegionalPlayer, True, {'edge': 'always'})
 CONFIGS['COMM-EDGE-NEVER'] = (CommunityRegionalPlayer, True, {'edge': 'never'})
 EDGE_LOOT = {'COMM-EDGE-L1': 1}
-LEVEL = {'COMM-ACOLHEDOR': 'acolhedor'}
+LEVEL = {'COMM-ACOLHEDOR': 'acolhedor', 'COMM-ACOLHEDOR-ABS': 'acolhedor'}
+for _name in CAMP:
+    CONFIGS[_name] = (CommunityRegionalPlayer, True, {})
 CONFIGS['COMM-ACOLHEDOR'] = (CommunityRegionalPlayer, True, {})
 EDGE_RENEW = {'COMM-EDGE-R1': 1, 'COMM-EDGE-R3': 3}
 for _name in EDGE_RENEW:
@@ -119,6 +135,66 @@ def _counting(cls):
     return Counting
 
 
+# --- D-28: situações dirigidas A–H (acampamento em lotes) -----------------------------
+def _all_common(world):
+    for person in world.community['professions']:
+        world.community['professions'][person] = 'comum'
+
+
+def _no_food(world):
+    world.stock['food'] = 0
+
+
+def _developed(world):
+    """Situação G: acampamento 4×4 com horta, água, depósito, oficina e vigia."""
+    state = world.community['camp']
+    state['level'] = 3
+    for kind in ('storage', 'workshop', 'watch', 'reservoir'):
+        world.structures[kind] = {'health': 3, 'age': 0}
+        state['lots'][camp.free_lot(world, camp.category(kind))].append(kind)
+    for _ in range(6):
+        lot = camp.free_lot(world, 'horta')
+        state['lots'][lot].append('horta')
+        state['horta_ready'][lot] = world.day
+    lot = camp.free_lot(world, 'agua')
+    state['lots'][lot].append('coletor')
+    world.community['built'] += ['horta'] * 6 + ['coletor', 'cozinha']
+
+
+SETUP = {'SC-D-NOSPEC': _all_common, 'SC-F-CRISIS': _no_food, 'SC-G-DEV': _developed}
+_FAMILY = {str(n): {'people': ['adult', 'adult', 'child'], 'tent': 'barraca_familiar'}
+           for n in range(1, 7)}
+CAMP.update({'SC-B-FAMILY': {'arrivals_table': _FAMILY}})
+ARRIVALS.update({'SC-B-FAMILY': {'days': [3]}})
+CONFIGS.update({
+    'SC-A-TENTS': (CommunityRegionalPlayer, True, {'accept': 'fits', 'tents_first': True}),
+    'SC-B-FAMILY': (CommunityRegionalPlayer, True, {'accept': 'fits'}),
+    'SC-B-REFUSE': (CommunityRegionalPlayer, True, {'accept': 'never'}),
+    'SC-C-HORTA': (CommunityRegionalPlayer, True, {'horta_target': 10, 'horta_per_adult': 3}),
+    'SC-D-NOSPEC': (CommunityRegionalPlayer, True, {}),
+    'SC-F-CRISIS': (CommunityRegionalPlayer, True, {}),
+    'SC-G-DEV': (CommunityRegionalPlayer, True, {}),
+    'SC-G-DEV-NOMARKET': (CommunityRegionalPlayer, True, {'edge': 'never', 'no_market': True}),
+})
+SETUP['SC-G-DEV-NOMARKET'] = _developed
+ARRIVALS['SC-B-REFUSE'] = {'days': [3]}
+CAMP['SC-B-REFUSE'] = {'arrivals_table': _FAMILY}
+
+
+def _camp_row(world, nights):
+    if world.community is None or world.community.get('camp') is None:
+        return {}
+    state = world.community['camp']
+    crisis = [((row.get('community') or {}).get('morale') or {}).get('crisis', 0)
+              for row in nights]
+    return {'camp_level': state['level'], 'horta_lots': camp.built(world, 'horta'),
+            'beds_end': world.beds, 'crisis_end': state['crisis'],
+            'crisis_max': max(crisis, default=0),
+            'unhoused_nights': sum(((row.get('community') or {}).get('morale') or {})
+                                   .get('unhoused', 0) > 0 for row in nights),
+            'lots_used': sum(bool(v) for v in state['lots'].values())}
+
+
 def run_one(args):
     config, size, seed, rep = args
     cls, community_on, options = CONFIGS[config]
@@ -130,6 +206,17 @@ def run_one(args):
         target.clear()
         target.update(value)
     community.RULES['garden_food_per_harvest'] = ORIGINAL_GARDEN
+    camp.RULES.clear()
+    camp.RULES.update(deepcopy(ORIGINAL_CAMP))
+    for key, value in CAMP.get(config, {}).items():
+        if isinstance(value, dict):
+            camp.RULES[key].update(value)
+        else:
+            camp.RULES[key] = value
+    camp.CRISIS.clear()
+    camp.CRISIS.update(camp.RULES['crisis'])
+    camp.HORTA.clear()
+    camp.HORTA.update(camp.RULES['horta'])
     community.TRIPS['heroes_allowed'] = not config.startswith('COMM-NOHERO')
     for key, value in PPU.get(config, {}).items():
         community.ACTIVITIES[key]['points_per_unit'] = value
@@ -171,6 +258,8 @@ def run_one(args):
         if world.community is not None:
             world.community['rng'] = community._lists(
                 _random.Random(seed * 6007 + rep * 130363).getstate())
+    if config in SETUP:
+        SETUP[config](world)
     world.regional_travel_cards = True
     world.regional_filter_production = True
     if 'bridge' in options.get('options', ()):
@@ -229,6 +318,8 @@ def run_one(args):
                                  if r.get('action') == 'arrival_accepted'),
         'arrivals_refused': sum(r.get('action') == 'arrival_refused' for r in world.log),
         'crowded_nights': sum(bool((row.get('community') or {}).get('crowded')) for row in nights),
+        # D-24: acampamento em lotes
+        **_camp_row(world, nights),
         # D-22: até onde o fim de campanha chegou
         'endgame': ('venceu_defesa' if (world.final_defense or {}).get('status') == 'won'
                     else 'perdeu_defesa' if (world.final_defense or {}).get('status') == 'lost'

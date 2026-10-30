@@ -36,25 +36,29 @@ def manifest() -> dict:
     """O que as folhas mostram, derivado só dos dados."""
     community, system, tactics = load('community.json'), load('system.json'), load('tactics.json')
     rules = system['rules']
-    storage = {s['kind']: s['storage_bonus'] for s in system['structures'] if s['storage_bonus']}
-    beds = {s['kind']: s['beds_bonus'] for s in system['structures'] if s['beds_bonus']}
     level2 = community['structures']
     edge = tactics['maps']['garden_edge_01']
+    camp = community['camp']
+    food, water = camp['storage']['food'], camp['storage']['water']
     return {
         'painel_abrigo': {
-            'deposito_seco': [rules['storage_base'], storage['storage'],
-                              level2['deposito2']['storage_bonus']],
-            'tanques_agua': [community['water_tanks']['base'],
-                             community['water_tanks']['per_reservoir']],
-            'moral': 5, 'carne': community['meat']['track'],
+            'comida': [food['base'], food['storage'], food['deposito2']],
+            'agua': [water['base'], water['reservoir']],
+            'madeira': camp['storage']['wood'], 'metal': camp['storage']['scrap'],
+            'carne': community['meat']['track'],
             'carne_noites': community['meat']['keeps_nights'],
-            'camas': [rules['beds_base'], beds['lodging'], level2['alojamento2']['beds_bonus']],
-            'lotacao_extra': community['crowding']['extra_people'],
-            'terreno': [rules['terrain_base']] + [level2['cerca']['terrain_bonus']]
-                       * level2['cerca']['max'],
-            'dias': 15, 'chegadas': community['arrivals']['days'],
-            'chegada_D6': community['arrivals']['table'],
+            'crise': camp['crisis'], 'camas': camp['beds'],
+            'dias': 25, 'chegadas': community['arrivals']['days'],
+            'chegada_D6': camp['arrivals_table'], 'chuva': camp['rain_at'],
+            'horta': camp['horta'], 'racao_obra': camp['work_ration'],
             'horta_abandonada_renova': community['location_renew_every']['EXP-LOC-01'],
+        },
+        'tabuleiro_acampamento': {
+            'grade': camp['grid'],
+            'expansoes': {k: [v['cost'], v['work']] for k, v in level2.items()
+                          if v.get('expansion')},
+            'categorias': camp['category'],
+            'conhecimento': {k: v['location'] for k, v in camp['knowledge'].items()},
         },
         'tabuleiro_entorno': {
             'reservas': {k: [v['start'], v['max'], v['regrow']]
@@ -169,124 +173,158 @@ class Sheet:
 
 
 def draw_shelter(cairo, path, data):
+    """Painel do acampamento em lotes (D-30): trilhas com ficha de limite, Crise, dias."""
     surface = cairo.PDFSurface(str(path), mm(A4_LANDSCAPE[0]), mm(A4_LANDSCAPE[1]))
-    surface.set_metadata(cairo.PDF_METADATA_TITLE, 'Painel do abrigo — edição integral')
+    surface.set_metadata(cairo.PDF_METADATA_TITLE, 'Painel do acampamento — edição integral')
     surface.set_metadata(cairo.PDF_METADATA_CREATE_DATE, CREATED)  # bytes estáveis
     sheet = Sheet(surface, cairo)
-    base, deposit, deposit2 = data['deposito_seco']
-    sheet.header('Painel do abrigo — estoques e condições',
-                 'Um marcador por recurso. Depósito seco: a SOMA de comida, madeira, '
-                 'sucata, remédio, combustível e munição não passa da capacidade.')
-    cap = base + deposit + deposit2
-    cap_marks = {base: f'Depósito +{deposit}', base + deposit: f'Depósito 2 +{deposit2}'}
+    sheet.header('Painel do acampamento — estoques',
+                 'Um marcador por trilha e uma ficha LIMITE no número do nível atual. '
+                 'Cada recurso tem a sua trilha: água não ocupa espaço de comida.')
+    base, deposit, deposit2 = data['comida']
+    food_cap = base + deposit + deposit2
+    marks = {base: 'limite inicial', base + deposit: f'Depósito +{deposit}',
+             food_cap: f'Depósito 2 +{deposit2}'}
     y = 34
-    y = sheet.track(12, y, 'Comida (0–27)', 28, cell=9.5)
-    y = sheet.track(12, y, 'Comida (28–54)', 27, cell=9.5, start=28,
-                    marks={k: v for k, v in cap_marks.items() if k >= 28},
-                    shade=set(range(base, cap + 1)))
-    tank, reservoir = data['tanques_agua']
-    y = sheet.track(12, y, 'Água (tanques próprios, fora do depósito seco)', 22, cell=9.5)
-    y = sheet.track(12, y, 'Água (22–42)', 21, cell=9.5, start=22,
-                    marks={tank: f'Reservatório +{reservoir}'},
-                    shade=set(range(tank, tank + reservoir + 1)))
+    y = sheet.track(12, y, 'Comida (porções)', 25, cell=10.8, marks={base: marks[base]})
+    y = sheet.track(12, y, 'Comida (25–48)', 24, cell=10.8, start=25,
+                    marks={k: v for k, v in marks.items() if k >= 25},
+                    shade=set(range(base + 1, food_cap + 1)))
+    tank, reservoir = data['agua']
+    y = sheet.track(12, y, 'Água', 25, cell=10.8, marks={tank: 'limite inicial'})
+    y = sheet.track(12, y, 'Água (25–36)', 12, cell=10.8, start=25,
+                    marks={tank + reservoir: f'Reservatório +{reservoir}'},
+                    shade=set(range(tank + 1, tank + reservoir + 1)))
     row = y
-    for offset, label in ((0, 'Madeira'), (140, 'Sucata')):
-        sheet.track(12 + offset, row, label, 13, cell=9.5)
-    row += 9.5 + 7.5
-    for offset, label in ((0, 'Remédio'), (93, 'Combustível'), (186, 'Munição')):
-        sheet.track(12 + offset, row, label, 9, cell=9.5)
-    y = row + 12
-    sheet.text(12, y + 4, f'Capacidade do depósito seco: {base} · com Depósito {base + deposit}'
-               f' · com Depósito nível 2 {cap}. Casas cinza = só com a obra.', 7, grey=0.25)
-    # Moral e carne
-    y += 11
-    sheet.track(12, y, 'Moral do abrigo', data['moral'] + 1, cell=10,
-                note='0 = derrota parcial')
-    sheet.para(12, y + 16, 60, 'Noite com humano sem comida ou água: −1. Todos servidos: +1. '
-               'Recusar uma chegada: −1. Cão sem porção não conta.', 6.5)
-    meat_x = 100
+    sheet.track(12, row, f'Madeira (máx. {data["madeira"]})', data['madeira'] + 1, cell=6.4)
+    sheet.track(150, row, f'Metal (máx. {data["metal"]})', data['metal'] + 1, cell=6.4)
+    y = row + 15
+    meat_x = 12
     sheet.text(meat_x, y - 1.5, f'Carne crua (máx. {data["carne"]})', 8, bold=True)
     for index in range(data['carne']):
         sheet.rect(meat_x + index * 15, y, 14, 10)
         sheet.text(meat_x + index * 15 + 1, y + 3, 'estraga dia', 5, grey=0.4)
-    sheet.para(meat_x, y + 16, 88, f'Anote o dia em que estraga (chegada + '
-               f'{data["carne_noites"]} noites). Cozinhar: 4 porções com madeira ou Cozinha, '
-               '2 improvisadas.', 6.5)
+    sheet.para(meat_x, y + 15, 95, f'Anote o dia em que estraga (chegada + '
+               f'{data["carne_noites"]} noites; defumador +3). Cozinhar: 4 porções com '
+               'madeira, Cozinha ou defumador; 2 improvisadas.', 6.5)
+    sheet.para(110, y + 1, 170, 'Remédio, munição, combustível, peças e conhecimento ficam '
+               'como cartas ao lado do painel (sem trilha). Ração de obra: cada pessoa em obra '
+               f'pesada come {data["racao_obra"]} porção a mais no dia.', 6.8)
     surface.show_page()
 
-    # página 2: pessoas, terreno, obras, dias
+    # página 2: pessoas, Crise, dias
     sheet = Sheet(surface, cairo)
-    sheet.header('Painel do abrigo — pessoas, terreno e obras',
-                 'Camas, lotação, terreno, obras em andamento e o relógio de 15 dias.')
-    beds, lodging, lodging2 = data['camas']
-    extra = data['lotacao_extra']
-    total = beds + lodging + lodging2
-    sheet.text(12, 31, 'Camas', 8, bold=True)
-    sheet.text(285, 31, 'Camas da Cisterna somam às de base (anote no espaço livre)', 6,
-               align='right', grey=0.35)
-    for index in range(total + extra + 4):
-        x = 12 + index * 9.5
-        label = ('base' if index < beds else f'Aloj. +{lodging}' if index < beds + lodging
-                 else f'Aloj.2 +{lodging2}' if index < total else 'Cisterna' if
-                 index < total + 4 else 'lotação')
-        sheet.rect(x, 33, 9, 12, fill=0.85 if label == 'lotação' else
-                   (0.94 if label != 'base' else None), dash=label == 'lotação')
-        sheet.text(x + 4.5, 43, label, 4.2, align='center', grey=0.3)
-    sheet.para(12, 52, 270, f'Lotação: até {extra} moradores além das camas; com o abrigo '
-               'lotado ninguém recupera Vida pelo descanso (a fadiga sim). Acima disso '
-               'ninguém entra.', 6.5)
-    # terreno
-    sheet.text(12, 64, 'Terreno', 8, bold=True)
-    terrain = data['terreno']
-    slots = sum(terrain)
-    for index in range(slots):
-        x = 12 + index * 13
-        part = 0 if index < terrain[0] else 1 if index < terrain[0] + terrain[1] else 2
-        sheet.rect(x, 66, 12.5, 12.5, fill=None if part == 0 else 0.92, dash=part > 0)
-        sheet.text(x + 6.2, 76, 'base' if part == 0 else f'cerca {part}', 5, align='center',
-                   grey=0.35)
-    sheet.para(12, 85, 170, 'Obras EXP-BLD ocupam 2 casas; coletor, cozinha e cada '
-               'canteiro 1; Depósito 2 e Alojamento 2 ficam sobre a obra de nível 1. '
-               f'Cerca ampliada (até {len(terrain) - 1}): +{terrain[1]} casas.', 6.5)
-    # obras em andamento
-    sheet.text(190, 64, 'Obras em andamento', 8, bold=True)
-    for index in range(3):
-        y = 66 + index * 9
-        sheet.rect(190, y, 55, 8)
-        for work in range(3):
-            sheet.rect(247 + work * 8, y, 7, 8)
-        sheet.text(192, y + 5.5, 'obra:', 6, grey=0.4)
-    sheet.text(247, 95.5, 'trabalhos (1 por pessoa/dia, construtor 2)', 5, grey=0.4)
-    # dias
-    sheet.text(12, 106, 'Dias da Última Transmissão', 8, bold=True)
+    crisis = data['crisis'] if 'crisis' in data else data['crise']
+    sheet.header('Painel do acampamento — pessoas, Crise e dias',
+                 'Moradores e camas na mesma trilha (dois marcadores). A Crise mede fome, '
+                 'sede, gente sem cama e recusas.')
+    y = sheet.track(12, 34, 'Moradores (marcador redondo) e camas (marcador quadrado)', 31,
+                    cell=8.8)
+    beds = data['camas']
+    sheet.para(12, y - 2, 270, f'Camas: barraca {beds["barraca"]}, barraca familiar '
+               f'{beds["barraca_familiar"]}, alojamento {beds["lodging"]} (+{beds["alojamento2"]} '
+               'no nível 2). Só quem tem cama recupera Vida à noite (cama vai primeiro a '
+               'quem está ferido). Pode haver mais moradores que camas.', 6.8)
+    y += 10
+    bands = {0: 'calma', 1: 'leve', crisis['moderate']: 'moderada', crisis['grave']: 'grave',
+             crisis['max']: 'COLAPSO'}
+    y = sheet.track(12, y, 'Crise', crisis['max'] + 1, cell=14, marks=bands,
+                    shade={crisis['max']})
+    small = crisis['small_share']
+    rules = [
+        f'Noite com humano sem porção: +{crisis["small"]} (até 1/{small} dos humanos) ou '
+        f'+{crisis["large"]} (mais que isso). Todos servidos: −{crisis["recover"]}; '
+        f'−{crisis["recover_reserve"]} se o estoque ainda cobre outra noite.',
+        f'Mais de {crisis["unhoused_over"]} moradores sem cama: +1. Recusar quem chega: '
+        f'+{crisis["refuse"]}.',
+        f'Moderada ({crisis["moderate"]}+): obras pesadas param. Grave ({crisis["grave"]}+): '
+        f'ninguém recupera Vida; no amanhecer D6 ≤ {crisis["conflict_at"]} perde 1 madeira '
+        f'ou metal. {crisis["max"]}: colapso (derrota parcial).',
+    ]
+    for line in rules:
+        y = sheet.para(12, y, 270, line, 6.8)
+    y += 4
+    sheet.text(12, y, 'Dias da Última Transmissão', 8, bold=True)
     arrivals = set(data['chegadas'])
     renew = data['horta_abandonada_renova']
     for day in range(1, data['dias'] + 1):
-        x = 12 + (day - 1) * 18
-        sheet.rect(x, 108, 17, 17, fill=0.88 if day in arrivals else None)
-        sheet.text(x + 8.5, 115, str(day), 10, bold=True, align='center')
+        x = 12 + (day - 1) * 10.8
+        sheet.rect(x, y + 2, 10.4, 13, fill=0.88 if day in arrivals else None)
+        sheet.text(x + 5.2, y + 9, str(day), 8, bold=True, align='center')
         if day in arrivals:
-            sheet.text(x + 8.5, 120, 'CHEGADA', 4.5, align='center')
-            sheet.text(x + 8.5, 123, 'role D6', 4.5, align='center')
+            sheet.text(x + 5.2, y + 13.5, 'CHEGA', 4.2, align='center')
         if day % renew == 0:
-            sheet.text(x + 8.5, 129.5, 'Horta ab. +1', 4.2, align='center', grey=0.35)
-    table = data['chegada_D6']
+            sheet.text(x + 5.2, y + 18.5, 'H.ab+1', 3.8, align='center', grey=0.35)
+    y += 26
     names = {'adult': 'adulto', 'child': 'criança'}
+    tents = {'barraca': 'barraca', 'barraca_familiar': 'barraca familiar'}
     parts = []
-    for face, people in sorted(table.items()):
-        parts.append(f'{face}: ' + (' + '.join(names[p] for p in people) or 'ninguém'))
-    sheet.para(12, 137, 270, 'Chegada (D6 no amanhecer): ' + '; '.join(parts) + '. '
-               'Acolher todos exige cama (camas + lotação); recusar ou não decidir: Moral −1. '
-               'Adulto acolhido sorteia profissão e rola bagagem.', 6.8)
-    sheet.text(12, 152, 'Ordem do dia', 8, bold=True)
-    steps = ['1 retornos de viagem (cartas de acontecimento)', '2 reservas do entorno crescem',
-             '3 coletor de chuva, armadilhas, carne estraga',
-             '4 chegada (dias marcados): acolher ou recusar',
-             '5 escolher funções, viagens e a expedição tática',
-             '6 fim do dia: cozinhar, obras e canteiros resolvem',
-             '7 noite: refeição, Moral, vigia e crise']
+    for face, entry in sorted(data['chegada_D6'].items()):
+        who = ' + '.join(names[p] for p in entry['people']) or 'ninguém'
+        if entry.get('tent'):
+            who += f' (traz {tents[entry["tent"]]})'
+        parts.append(f'{face}: {who}')
+    y = sheet.para(12, y, 270, 'Chegada (D6 no amanhecer): ' + '; '.join(parts) + '.', 6.8)
+    horta = data['horta']
+    y = sheet.para(12, y + 1, 270, f'Tempo (D6 a cada amanhecer): {data["chuva"]}–6 chove. '
+                   f'Horta: cada pessoa cuida de {horta["lots_per_worker"]} lotes (agricultor '
+                   f'{horta["specialist_lots"]}); lote cuidado dá {horta["food_per_lot"]} '
+                   f'porções; sem chuva, 1 água a cada {horta["lots_per_water"]} lotes; D6 = '
+                   f'{horta["pest_at"]} da pessoa: praga, −1 porção.', 6.8)
+    sheet.text(12, y + 4, 'Ordem do dia', 8, bold=True)
+    steps = ['1 tempo (D6), retornos de viagem, armadilhas, carne estraga',
+             '2 chegada (dias marcados): acolher ou recusar',
+             '3 funções nos lotes, viagens e expedição tática',
+             '4 fim do dia: horta, obras (ração), cozinha', '5 noite: refeição e Crise',
+             '6 recuperação (só com cama), vigia e crise da noite']
     for index, step in enumerate(steps):
-        sheet.text(12 + (index // 4) * 140, 158 + (index % 4) * 5, step, 6.5)
+        sheet.text(12 + (index // 3) * 140, y + 10 + (index % 3) * 5, step, 6.5)
+    surface.finish()
+
+
+SYMBOLS = {'barraca': 'B', 'horta': 'H', 'agua': 'A', 'estoque': 'E', 'oficina': 'O',
+           'defesa': 'D'}
+SYMBOL_NAMES = {'B': 'barraca', 'H': 'horta', 'A': 'água', 'E': 'estoque',
+                'O': 'oficina/enfermaria', 'D': 'defesa'}
+
+
+def draw_camp_board(cairo, path, data):
+    """Tabuleiro 4×4 de lotes (45 mm) em A4 retrato; níveis por tiras de mato."""
+    width, height = A4_LANDSCAPE[1], A4_LANDSCAPE[0]
+    surface = cairo.PDFSurface(str(path), mm(width), mm(height))
+    surface.set_metadata(cairo.PDF_METADATA_TITLE, 'Tabuleiro do acampamento — edição integral')
+    surface.set_metadata(cairo.PDF_METADATA_CREATE_DATE, CREATED)
+    sheet = Sheet(surface, cairo)
+    sheet.text(12, 15, 'Tabuleiro do acampamento (lotes)', 15, bold=True)
+    sheet.text(12, 21, 'Funcional, sem arte. Nível 1 = 2×2; 2 = 3×3; 3 = 4×4.', 7.5, grey=0.35)
+    lot, x0, y0 = 45, 15, 40
+    sheet.rect(x0 - 2, y0 - 12, 4 * lot + 4, 10, fill=0.9)
+    sheet.text(x0 + 2 * lot, y0 - 5.5, 'FOGUEIRA E ESTOQUE INICIAL (fora dos lotes)', 7,
+               bold=True, align='center')
+    for lot_id, cats in data['grade'].items():
+        row, col = int(lot_id[1]) - 1, int(lot_id[3]) - 1
+        x, y = x0 + col * lot, y0 + row * lot
+        level = max(1, max(row, col))
+        sheet.rect(x, y, lot, lot, fill=None if level == 1 else (0.95 if level == 2 else 0.9))
+        sheet.text(x + 2, y + 5, lot_id.upper(), 6, grey=0.4)
+        sheet.text(x + lot - 2, y + 5, f'nível {level}', 5.5, align='right', grey=0.4)
+        letters = [SYMBOLS[c] for c in cats]
+        sheet.text(x + lot / 2, y + lot / 2 + 4, ' / '.join(letters), 16, bold=True,
+                   align='center')
+    y = y0 + 4 * lot + 8
+    legend = '; '.join(f'{k} = {v}' for k, v in SYMBOL_NAMES.items())
+    y = sheet.para(12, y, width - 24, 'Símbolos: ' + legend + '. Um lote recebe uma '
+                   'construção ou até 2 barracas pequenas; símbolo duplo = escolha.', 7)
+    costs = []
+    for kind, (cost, work) in sorted(data['expansoes'].items()):
+        paid = ' + '.join(f'{n} {NAMES.get(r, r)}' for r, n in cost.items())
+        costs.append(f'{kind}: {paid}, {work} trabalhos (obra pesada)')
+    y = sheet.para(12, y + 1, width - 24, 'Expansões: ' + '; '.join(costs) + '. A 4×4 exige '
+                   'Depósito, Oficina ou Vigia pronta. Na expansão, retire as tiras de mato.', 7)
+    places = '; '.join(f'{k} ({v})' for k, v in data['conhecimento'].items())
+    sheet.para(12, y + 1, width - 24, 'Conhecimento (1ª busca do local): ' + places + '.', 7)
+    sheet.text(width - 12, height - 7, 'A4 retrato, 100%, uma face. Valores de data/ (gerado).',
+               6, align='right', grey=0.45)
     surface.finish()
 
 
@@ -418,6 +456,7 @@ def main(argv=None) -> int:
     import cairo
     OUT.mkdir(exist_ok=True)
     draw_shelter(cairo, OUT / 'painel_abrigo.pdf', data['painel_abrigo'])
+    draw_camp_board(cairo, OUT / 'tabuleiro_acampamento.pdf', data['tabuleiro_acampamento'])
     draw_surroundings(cairo, OUT / 'tabuleiro_entorno.pdf', data['tabuleiro_entorno'])
     draw_garden_map(cairo, OUT / 'montagem_horta_abandonada.pdf',
                     data['montagem_horta_abandonada'])

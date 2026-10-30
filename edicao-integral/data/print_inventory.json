@@ -41,12 +41,10 @@
   "profissoes": {
    "source": "data/community.json#profession_deck",
    "cards": {
-    "cacador": 1,
-    "pescador": 1,
+    "cacador": 2,
     "agricultor": 1,
     "cozinheiro": 1,
-    "lenhador": 1,
-    "coletor": 1,
+    "coletor": 2,
     "mecanico": 1,
     "carpinteiro": 1,
     "enfermeiro": 1,
@@ -70,9 +68,18 @@
     "canteiro": 1,
     "cerca": 1,
     "deposito2": 1,
-    "alojamento2": 1
+    "alojamento2": 1,
+    "barraca": 1,
+    "horta": 1,
+    "expansao2": 1,
+    "expansao3": 1,
+    "composteira": 1,
+    "defumador": 1,
+    "bancada": 1,
+    "ambulatorio": 1,
+    "filtro": 1
    },
-   "total": 13
+   "total": 22
   },
   "locais_regionais": {
    "source": "data/system.json#locations",
@@ -116,7 +123,21 @@
     "viagem_automatica": 1,
     "comida_agua": 1,
     "clima_coletor": 1,
-    "chegadas_D6": 1
+    "chegadas_D6": 1,
+    "horta_lotes": 1,
+    "crise_0_10": 1,
+    "obras_e_racao": 1
+   },
+   "total": 8
+  },
+  "conhecimento": {
+   "source": "data/community.json#camp.knowledge",
+   "cards": {
+    "K-AGR": 1,
+    "K-CON": 1,
+    "K-FER": 1,
+    "K-SAU": 1,
+    "K-AGU": 1
    },
    "total": 5
   }
@@ -141,12 +162,33 @@
    "station_02",
    "workshop_02"
   ],
-  "tabuleiro_abrigo_regional": [
-   "trilhas de estoque (depósito seco 30, tanque 30)",
-   "camas e lotação (+2)",
-   "obras e estruturas",
-   "trilha de carne (6)",
-   "dia e relógio regional"
+  "painel_acampamento": [
+   "comida 0–48 com ficha de limite",
+   "água 0–36 com ficha de limite",
+   "madeira 0–20",
+   "metal 0–20",
+   "carne crua (6)",
+   "moradores e camas 0–30",
+   "Crise 0–10",
+   "dias 1–25"
+  ],
+  "tabuleiro_acampamento": [
+   "r1c1",
+   "r1c2",
+   "r1c3",
+   "r1c4",
+   "r2c1",
+   "r2c2",
+   "r2c3",
+   "r2c4",
+   "r3c1",
+   "r3c2",
+   "r3c3",
+   "r3c4",
+   "r4c1",
+   "r4c2",
+   "r4c3",
+   "r4c4"
   ],
   "tabuleiro_entorno": [
    "caca",
@@ -169,7 +211,31 @@
  "tokens_new": {
   "viajante (marcador de dias)": 6,
   "armadilha": 2,
-  "obra comunitária": 6
+  "peças de lote": {
+   "alojamento2": 1,
+   "ambulatorio": 1,
+   "bancada": 1,
+   "barraca": 16,
+   "barraca_familiar": 4,
+   "coletor": 1,
+   "composteira": 1,
+   "cozinha": 1,
+   "defumador": 1,
+   "deposito2": 1,
+   "filtro": 1,
+   "horta": 12,
+   "infirmary": 1,
+   "lodging": 1,
+   "reservoir": 1,
+   "storage": 1,
+   "watch": 1,
+   "workshop": 1
+  },
+  "tiras de mato (níveis)": 2,
+  "ficha de limite": 2,
+  "marcadores de trilha": 8,
+  "cubo de obra": 6,
+  "peão de trabalhador": 12
  },
  "reuse": {
   "carne_REC_0.2": 8

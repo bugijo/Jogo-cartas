@@ -9,6 +9,7 @@ from unittest import mock
 
 sys.path.insert(0, str(Path(__file__).resolve().parents[1]))
 
+import camp
 import community
 from campaign_player02 import CampaignPlayer02
 from simulate_cistern_sweep import auto_settings
@@ -18,13 +19,15 @@ from system import TACTICS_DATA, World
 from tactics import TacticalGame
 
 
-def migrated(seed=2, size=4, on=True, level='normal'):
+def migrated(seed=2, size=4, on=True, level='normal', lots=False):
+    """Campanha migrada. `lots=False`: modelo abstrato anterior (terreno, Moral)."""
     player = CampaignPlayer02.new_hn(seed, size)
     for key, value in auto_settings(size).items():
         setattr(player, key, value)
     player.garden = True
     assert player.attempt_cistern()['verified_victory']
-    player.game.transition_to_last_transmission(community=on, level=level)
+    with mock.patch.dict(camp.RULES, {'on': lots}):
+        player.game.transition_to_last_transmission(community=on, level=level)
     return player.game
 
 
@@ -153,7 +156,7 @@ class CommunityTests(unittest.TestCase):
         state = world.community
         state['deck']['order'] = ['tranquila'] * 12
         state['deck']['pos'] = 0
-        state['professions'][self.adults[0]] = 'pescador'
+        state['professions'][self.adults[0]] = 'cacador'
         community.send_trip(world, self.adults[0], 'pesca', 1, rations=0)
         with self.roll(3):  # (3+1) × 1 − 1 (dia sem ração) = 3 pontos
             world.end_day(self.plan())

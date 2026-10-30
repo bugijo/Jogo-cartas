@@ -1,55 +1,193 @@
 {
  "painel_abrigo": {
-  "deposito_seco": [
-   30,
+  "comida": [
+   24,
    12,
    12
   ],
-  "tanques_agua": [
-   30,
+  "agua": [
+   24,
    12
   ],
-  "moral": 5,
+  "madeira": 20,
+  "metal": 20,
   "carne": 6,
   "carne_noites": 2,
-  "camas": [
-   8,
-   4,
-   4
-  ],
-  "lotacao_extra": 2,
-  "terreno": [
-   7,
-   3,
-   3
-  ],
-  "dias": 15,
+  "crise": {
+   "max": 10,
+   "small_share": 2,
+   "small": 1,
+   "large": 2,
+   "repeat": 0,
+   "recover": 1,
+   "recover_reserve": 2,
+   "moderate": 4,
+   "grave": 7,
+   "refuse": 1,
+   "unhoused_over": 2,
+   "conflict_at": 2
+  },
+  "camas": {
+   "barraca": 2,
+   "barraca_familiar": 4,
+   "lodging": 8,
+   "alojamento2": 4
+  },
+  "dias": 25,
   "chegadas": [
    4,
    10
   ],
   "chegada_D6": {
-   "1": [
-    "adult"
-   ],
-   "2": [
-    "adult"
-   ],
-   "3": [
-    "adult",
-    "child"
-   ],
-   "4": [
-    "adult",
-    "child"
-   ],
-   "5": [
-    "adult",
-    "adult"
-   ],
-   "6": []
+   "1": {
+    "people": [
+     "adult"
+    ]
+   },
+   "2": {
+    "people": [
+     "adult"
+    ]
+   },
+   "3": {
+    "people": [
+     "adult",
+     "child"
+    ],
+    "tent": "barraca"
+   },
+   "4": {
+    "people": [
+     "adult",
+     "child"
+    ],
+    "tent": "barraca"
+   },
+   "5": {
+    "people": [
+     "adult",
+     "adult",
+     "child"
+    ],
+    "tent": "barraca_familiar"
+   },
+   "6": {
+    "people": []
+   }
   },
+  "chuva": 4,
+  "horta": {
+   "lots_per_worker": 2,
+   "specialist_lots": 4,
+   "food_per_lot": 2,
+   "lots_per_water": 2,
+   "grow_days": 3,
+   "pest_at": 1
+  },
+  "racao_obra": 1,
   "horta_abandonada_renova": 2
+ },
+ "tabuleiro_acampamento": {
+  "grade": {
+   "r1c1": [
+    "barraca",
+    "horta"
+   ],
+   "r1c2": [
+    "barraca",
+    "horta"
+   ],
+   "r2c1": [
+    "barraca"
+   ],
+   "r2c2": [
+    "barraca",
+    "horta"
+   ],
+   "r1c3": [
+    "horta",
+    "agua"
+   ],
+   "r2c3": [
+    "barraca",
+    "estoque"
+   ],
+   "r3c1": [
+    "horta",
+    "agua"
+   ],
+   "r3c2": [
+    "oficina",
+    "estoque"
+   ],
+   "r3c3": [
+    "barraca",
+    "horta"
+   ],
+   "r1c4": [
+    "defesa",
+    "oficina"
+   ],
+   "r2c4": [
+    "horta",
+    "oficina"
+   ],
+   "r3c4": [
+    "barraca",
+    "defesa"
+   ],
+   "r4c1": [
+    "defesa",
+    "agua"
+   ],
+   "r4c2": [
+    "horta"
+   ],
+   "r4c3": [
+    "barraca",
+    "oficina"
+   ],
+   "r4c4": [
+    "horta",
+    "agua"
+   ]
+  },
+  "expansoes": {
+   "expansao2": [
+    {
+     "wood": 3
+    },
+    3
+   ],
+   "expansao3": [
+    {
+     "wood": 5,
+     "scrap": 2
+    },
+    5
+   ]
+  },
+  "categorias": {
+   "barraca": "barraca",
+   "barraca_familiar": "barraca",
+   "lodging": "barraca",
+   "horta": "horta",
+   "coletor": "agua",
+   "reservoir": "agua",
+   "storage": "estoque",
+   "workshop": "oficina",
+   "infirmary": "oficina",
+   "watch": "defesa",
+   "bancada": "oficina",
+   "filtro": "agua"
+  },
+  "conhecimento": {
+   "K-AGR": "EXP-LOC-01",
+   "K-CON": "EXP-LOC-02",
+   "K-FER": "EXP-LOC-03",
+   "K-SAU": "EXP-LOC-04",
+   "K-AGU": "EXP-LOC-05"
+  }
  },
  "tabuleiro_entorno": {
   "reservas": {

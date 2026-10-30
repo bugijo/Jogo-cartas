@@ -1317,6 +1317,7 @@ class IntegratedCampaign:
         if community:
             projected.log.append({"day": 0, "event": "community_rules_on",
                                   "professions": dict(projected.community["professions"]),
+                                  "camp": community_rules.setup_camp(projected),
                                   "hero_kits": community_rules.arrival_kits(projected),
                                   "arrival_fatigue":
                                       community_rules.arrival_fatigue(projected),
