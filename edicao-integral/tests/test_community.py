@@ -284,6 +284,12 @@ class CommunityTests(unittest.TestCase):
         self.assertLessEqual(sum(world.stock.values()), total + 4 * 6 + 10)
         self.assertNotIn(self.adults[0], night['unfed']['food'])
 
+    def test_hero_arrival_kits_logged_once(self):
+        rows = [r for r in self.world.log if r.get('event') == 'community_rules_on']
+        self.assertEqual(len(rows), 1)
+        self.assertEqual(set(rows[0]['hero_kits']), set(self.world.heroes))
+        self.assertTrue(all(1 <= kit['roll'] <= 6 for kit in rows[0]['hero_kits'].values()))
+
     def test_invalid_state_rejected(self):
         world = self.world
         world.community['pools']['caca'] = 99
