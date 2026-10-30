@@ -292,6 +292,10 @@ Código `community.py`; testes `tests/test_community.py`.
 | Crise 0–10 (D-26) | substitui o Moral da escassez; +1 até metade sem porção, +2 acima; −1/−2 servidos | +1/+2 a 1/4 dos humanos: 50%; +1 fixo: fome 13%; adotada: 59%, fome 10,9% |
 | Ração de obra (D-26) | obra pesada: 1 porção por pessoa no dia | custa ~13 pontos de sobrevivência; mantida por ser pedido do proprietário e pesar decisão |
 | Conhecimento (D-27) | 5 cartas, 1ª busca de cada local; liberam composteira, defumador, bancada, ambulatório, filtro | substitui as decisões antigas "Serraria e bancadas eliminadas" e "Defumador ideia futura": agora vêm de exploração, não de compra |
+| Clareira por tamanho (D-17/D-24) | 9+ humanos chegam com o 3×3 aberto | 31–90: H6 32% → 71%, H5 47% → 57%, total 54% → 70%; limite 10 dava 67% |
+| Prazo e apoio na defesa (D-23) | dia 25; Vigia e até 2 guardas atiram 1 por rodada | 1–30×2, 25 dias: vitórias 36 → 39/106 (37%), defesas vencidas 70%; nenhum tamanho < 25%; a Vigia só aparece em 11/106 campanhas |
+| Colapso único (D-26) | em lotes, a Crise substitui o Colapso §25 de 3 noites | as duas regras faziam o mesmo papel; o §25 derrubava grupos com Crise 5–6 no dia 5–7 |
+| Acolhedor em lotes (D-18/D-26) | clareira 3×3 + 2 lotes plantados + 2 rações | o canteiro único virava 1 lote sem cuidado e ocupava o último lote livre (50% < Normal); redefinido: 88%, fome 3,5% |
 | Profissões (D-27) | pescador → caçador, lenhador → coletor (mesmas posições no baralho) | funções repetidas; nenhuma atividade ficou sem especialista |
 
 ## Acampamento em lotes (D-24..D-27, edição integral, 2026-10-30)
@@ -304,7 +308,8 @@ Moral da escassez. Painel e tabuleiro: `PAINEL_ACAMPAMENTO.md`.
    madeira, 3 trabalhos), nível 3 abre 4×4 (5 madeira + 2 metal, 5 trabalhos,
    exige Depósito, Oficina ou Vigia). Cada lote mostra 1–2 categorias (barraca,
    horta, água, estoque, oficina, defesa) e recebe uma construção ou até 2
-   barracas. Obra reserva o lote ao começar.
+   barracas. Obra reserva o lote ao começar. Grupo que chega com 9 ou mais
+   humanos já encontra a clareira 3×3 aberta (mais braços limpam mais terra).
 2. **Barracas e camas.** Barraca 2 lugares (2 madeira, 1 trabalho), barraca
    familiar 4 (só trazida por quem chega ou encontrada), Alojamento 8 (+4 no
    nível 2). A evacuação chega com 1 barraca para cada 2 humanos. Pode haver
@@ -321,12 +326,15 @@ Moral da escassez. Painel e tabuleiro: `PAINEL_ACAMPAMENTO.md`.
    (agricultor 4). Cada lote cuidado e regado dá 2 porções. Tempo: um D6 por
    amanhecer, 4–6 chove; dia sem chuva gasta 1 água a cada 2 lotes cuidados.
    D6 = 1 da pessoa: praga, −1 porção. A Horta da Cisterna chega como 2 lotes
-   plantados; o Acolhedor dá 1 lote plantado.
+   plantados. Preparação Acolhedor (opcional): clareira já 3×3, 2 lotes de
+   horta plantados e 2 rações por consumidor.
 6. **Crise 0–10.** Depois da refeição: humano sem comida ou água → +1 se
    falta para até metade dos humanos, +2 se mais; todos servidos → −1, ou −2
    se o estoque ainda cobre outra noite. 4–6 moderada: obras pesadas param.
    7–9 grave: ninguém recupera Vida; no amanhecer D6 ≤ 2 perde 1 madeira ou
-   metal. 10: colapso (derrota parcial). Cão não conta.
+   metal. 10: colapso (derrota parcial). Cão não conta. Em lotes, a Crise é o
+   único colapso coletivo: o Colapso §25 (1/4 dos humanos 3 noites sem comer)
+   não se aplica; a 2ª noite seguida sem porção ainda fere a pessoa.
 7. **Ração de obra.** Obra pesada (expansões, Depósito, Oficina, Enfermaria,
    Vigia, Reservatório, Alojamento e níveis 2) consome 1 porção por pessoa
    trabalhando no dia; sem porção no estoque, não se trabalha nela.
@@ -337,7 +345,12 @@ Moral da escassez. Painel e tabuleiro: `PAINEL_ACAMPAMENTO.md`.
    Enfermaria: +1 pessoa nos cuidados; função "remédio": 2 porções → 1 remédio,
    enfermeiro sempre, outros com D6 ≥ 4); Estação → filtro de areia (água bruta
    sem ferver).
-9. **Profissões.** Caçador (caça e pesca), Agricultor, Coletor (coleta, água,
+9. **Prazo e defesa (D-23).** Depois do dia 25 a frequência cala: a defesa
+   final deixa de estar disponível e a campanha não pode mais ser vencida. Na
+   defesa final, antes dos inimigos andarem, a Vigia (se construída) e até 2
+   guardas aptos que ficaram no acampamento causam 1 de dano cada no inimigo
+   mais próximo.
+10. **Profissões.** Caçador (caça e pesca), Agricultor, Coletor (coleta, água,
    lenha), Cozinheiro, Carpinteiro, Mecânico, Enfermeiro, Guarda, comum. Sem
    especialista, a função funciona com menos rendimento.
 

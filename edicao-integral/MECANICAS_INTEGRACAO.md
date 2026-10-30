@@ -85,3 +85,30 @@ Números iniciais são hipóteses; o ajuste fica em `COMUNIDADE_BALANCEAMENTO.md
 | D-31 | Inventário técnico de componentes | ids estáveis, quantidades, finalidade |
 | D-32 | Pacote de transição para direção artística | documento único |
 | D-23 | Vitória e prazo da Última Transmissão | meta registrada na fila |
+
+## 5. Estado ao fim da missão (2026-10-30)
+
+| § | Pedido | Estado | Evidência |
+|---|---|---|---|
+| 2–3 | Acampamento interligado, tabuleiro 2×2 → 3×3 → 4×4 com categorias | ✓ motor, teste, simulação, componente | `camp.py`; `tests/test_camp.py`; `print/tabuleiro_acampamento.pdf` |
+| 4 | Barracas, alojamento, família com barraca, penalidade proporcional | ✓ | situação B; cama só para quem recupera; Crise +1 com 3+ sem cama |
+| 5 | Horta por lotes, 2/4 lotes por pessoa, água, praga | ✓ | 2 porções por lote; chuva 4–6 |
+| 6 | Caça, pesca, coleta, armadilhas, ambientação | ✓ (sem mudança de regra) | viagens e armadilhas existentes; fauna em `PACOTE_DIRECAO_ARTE.md` §1 |
+| 7 | Economia de porções, reservas, perdas | ✓ | estoque por categoria; carne 4; carne estraga |
+| 8 | Esforço das obras | ✓ | ração de obra (obras pesadas) |
+| 9 | Painel físico | ✓ funcional, sem arte | `print/painel_abrigo.pdf`, `PAINEL_ACAMPAMENTO.md` |
+| 10 | Crise 0–10 sem espiral | ✓ | situação F (54% sobrevivem partindo de 0 comida); produção não é cortada pela Crise |
+| 11 | Expedições de vários dias | ✓ | situação E (teste) |
+| 12 | Conhecimento | ✓ | 5 cartas, 5 melhorias |
+| 13 | Profissões úteis sem dependência | ✓ | situação D: 63% contra 64% |
+| 14 | Equilíbrio 2–6 | ✓ simulado | 31–90: todos os tamanhos 63–86% |
+| 15 | Situações A–H | ✓ | `COMUNIDADE_BALANCEAMENTO.md` ciclo 14 |
+| 16 | Administrável na mesa | ◐ estimado | 6–10 movimentos por amanhecer; falta playtest |
+| 17 | Baralhos e inventário técnico | ✓ | `data/print_inventory.json` |
+| 18 | Pacote de direção artística | ✓ | `PACOTE_DIRECAO_ARTE.md` |
+| D-23 | Vitória da Última Transmissão | ✓ simulado | prazo dia 25; 37% de vitória em 1–30×2 |
+
+Pendências que não são da fase mecânica: playtest humano (D-13), validação
+cega 91–120 (D-12, uma vez, depois de congelar), fichas e manual diagramados
+(D-09/D-10/D-11, depois da direção de arte). Fome nas sobreviventes acima de
+10% em 31–90 (12%) fica anotada como ajuste fino.

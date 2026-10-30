@@ -467,6 +467,24 @@
       ],
       "status": "parcial",
       "notes": "T1–T5 cumpridas; crescimento (D-20), Horta abandonada (D-15) e preparação Acolhedor (D-18) adotados: 72% (1–30), 69% (31–90); continuação em docs/continuity/DIRECTOR_QUEUE.md (D-19, D-08..D-12)."
+    },
+    {
+      "id": "D-24-CAMP-LOTS",
+      "priority": 1,
+      "objective": "Integração total das mecânicas do acampamento (lotes, horta, Crise, conhecimento, prazo) e pacote de direção artística.",
+      "depends_on": [],
+      "acceptance": [
+        "check.sh full verde",
+        "1–30 e 31–90 dentro de T1 por tamanho",
+        "situações A–H medidas",
+        "inventário técnico e pacote de arte"
+      ],
+      "tests": [
+        "edicao-integral/tests/test_camp.py",
+        "edicao-integral/tests/test_community.py"
+      ],
+      "status": "concluida_simulacao",
+      "blocker": "playtest humano (D-13) e validação cega 91–120 (D-12) pendentes"
     }
   ]
 }

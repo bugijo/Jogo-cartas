@@ -12,7 +12,7 @@ números vêm de `data/community.json` (`camp`); se mudarem, o gerador
 | Grade | 4×4 lotes de 45 mm (180 × 180 mm), margem de 15 mm |
 | Borda | fogueira e estoque inicial impressos fora da grade (não ocupam lote) |
 | Símbolos por lote | 1–2 categorias: barraca, horta, água, estoque, oficina, defesa |
-| Níveis | 1 = 2×2 (linhas e colunas 1–2); 2 = 3×3; 3 = 4×4. As faixas fechadas ficam cobertas por 2 tiras de "mato" (L), retiradas na expansão |
+| Níveis | 1 = 2×2 (linhas e colunas 1–2); 2 = 3×3; 3 = 4×4. As faixas fechadas ficam cobertas por 2 tiras de "mato" (L), retiradas na expansão. Grupo com 9+ humanos começa no 3×3 |
 | Peças | construção 40 × 40 mm; barraca pequena 40 × 19 mm (2 por lote); barraca familiar e alojamento 40 × 40 mm |
 | Obra em andamento | a peça entra virada (verso "em obra") com cubos de trabalho por cima |
 | Horta plantada | peça de horta virada até o amanhecer em que fica pronta (3 amanheceres) |
@@ -21,7 +21,7 @@ Mapa de símbolos (linha × coluna):
 
 | | c1 | c2 | c3 | c4 |
 |---|---|---|---|---|
-| r1 | barraca/horta | barraca/horta | horta/água | defesa/oficina |
+| r1 | barraca/horta | barraca/horta | defesa/água | defesa/oficina |
 | r2 | barraca | barraca/horta | barraca/estoque | horta/oficina |
 | r3 | horta/água | oficina/estoque | barraca/horta | barraca/defesa |
 | r4 | defesa/água | horta | barraca/oficina | horta/água |

@@ -345,3 +345,62 @@ Adotado: a última linha. Tudo dentro de T1 (40–85%) por tamanho; T3 (≤10%)
 no limite. Grupos grandes ficaram mais difíceis que os pequenos (o contrário
 do D-17): mais bocas na mesma clareira. Confirmação em 31–90 e situações A–H
 no ciclo 14.
+
+### Ciclo 13b — controlador e colapso (1–30 × 2)
+
+| Passo | Sobrevivem | Fome nas sobreviventes |
+|---|---|---|
+| Situações (1ª rodada): base com viagem de água abaixo de 2 noites | 52/106 (49%) | 13,6% |
+| Viagem de água só abaixo de 1 noite de água | 69/106 (65%) | 12,8% |
+| Sem viagem de água | 64/106 (60%) | 12,1% |
+| Horta só com 2+ lotes por pessoa | 66/106 (62%) | 14,4% |
+| **Crise como único colapso (sem §25 de 3 noites)** | **68/106 (64%)** | **14,7%** |
+| Acolhedor antigo (1 lote plantado) | 56/106 (53%) | 12,2% |
+| **Acolhedor em lotes (3×3 + 2 lotes plantados)** | **93/106 (88%)** | **3,5%** |
+
+Por tamanho (base): H2 7/8, H3 15/20, H4 19/28, H5 15/28, H6 12/22 — todos
+≥ 54% (T1). T3 (fome ≤ 10% nas sobreviventes) **não** está atendida: 14,7%.
+A fome passa a ser o custo de sobreviver nos primeiros dias, antes da horta; a
+Crise segura o colapso. Pendência registrada para o ajuste fino (D-28).
+
+## Ciclo 14 — situações A–H, tamanhos e D-23 (acampamento em lotes)
+
+Situações dirigidas (1–30 × 2, 15 dias, 106 campanhas cada; E e H em testes
+determinísticos de `tests/test_camp.py`):
+
+| Situação | Sobrevivem | Fome | Leitura |
+|---|---|---|---|
+| Base | 68/106 (64%) | 14,7% | referência desta rodada |
+| A — barracas antes de produzir | 50/106 (47%) | 15,9% | expandir sem comida custa caro; ainda há recuperação |
+| B — família de 3 com barraca acolhida no dia 3 | 64/106 (60%) | 13,2% | mais bocas, mais braços |
+| B — mesma família recusada | 71/106 (67%) | 15,3% | recusar (Crise +1) não domina: dilema real |
+| C — meta de 10 lotes de horta | 68/106 (64%) | 14,7% | igual à base: o gargalo é lote livre e braço |
+| D — ninguém com profissão | 67/106 (63%) | 15,5% | nenhuma profissão é indispensável |
+| E — heróis 3 dias fora | teste | — | horta, refeição e retorno sem eles |
+| F — chegada sem comida | 57/106 (54%) | 20,8% | Crise alta, mas há saída |
+| G — acampamento desenvolvido (4×4, 6 hortas, água, Depósito, Oficina, Vigia) | 102/106 (96%) | 1,9% | autossuficiente |
+| G — o mesmo sem Mercado nem Horta abandonada | 102/106 (96%) | 2,4% | não precisa de exploração repetitiva |
+| H — dependências | teste | — | toda obra tem caminho legal a partir da clareira |
+
+Correções do controlador nesta rodada: herói escalado duas vezes no mutirão
+(erro do motor), rega só com água acima da bebida, viagem de água só abaixo
+de 1 noite, horta só com 2+ lotes por pessoa.
+
+Tamanho: com a clareira 2×2 para todos, 31–90 dava 75/138 (54%), H5 14/30,
+H6 12/38. Grupo com 9+ humanos chegando no 3×3: 97/138 (70%), H6 27/38
+(limite 10: 93/138). Adotado 9.
+
+Resultado (antes do ajuste final do controlador, 15 dias): 1–30×2 86/106
+(81%), fome 9,6%; 31–90 98/138 (71%), fome 12,0%; por tamanho em 31–90:
+6/7, 22/28, 24/35, 19/30, 27/38. Acolhedor: 94% e 82%, fome ~4%.
+
+D-23 (25 dias, 1–30×2): vitórias 36/106 sem apoio; **39/106 (37%)** com
+Vigia e guardas atirando (2/8, 6/20, 12/28, 12/28, 7/22). Prazo do dia 25
+adotado. Meta pré-registrada (≥ 30%, nenhum tamanho < 15%) atingida em 1–30;
+31–90 fica para a validação cega (D-12).
+
+**Final do ciclo 14 (controlador definitivo, 15 dias):** 1–30×2 83/106
+(78%), fome 10,4%; 31–90 100/138 (72%), fome 12,9%; por tamanho em 31–90:
+7/7, 22/28, 26/35, 18/30, 27/38. Acolhedor: 92% e 81%, fome 3,7–5,6%.
+Personas 1–30 (Normal): A 30, B 37, C 42, mista 41 de 53; Acolhedor: A 47,
+B 47, C 50, mista 46. 0 erros do motor.

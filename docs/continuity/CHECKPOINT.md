@@ -1,3 +1,9 @@
+# Estado ativo — Integração total das mecânicas (D-23..D-32), 2026-10-30
+
+- Acampamento em lotes (`edicao-integral/camp.py`, `data/community.json#camp`): grade 2×2→3×3→4×4 (9+ humanos chegam no 3×3), barracas em lotes, família com barraca, estoque por categoria, horta por lotes (2 porções, chuva 4–6), Crise 0–10 (único colapso), ração de obra, 5 cartas de conhecimento, profissões fundidas, prazo do dia 25, Vigia/guardas na defesa. Modelo abstrato anterior: `camp.on=false`.
+- Números: 1–30×2 78%, 31–90 72% (fome 10–13%), vitória 37% em 25 dias; situações A–H no ciclo 14; personas A 30/53. Pacote de arte: `edicao-integral/PACOTE_DIRECAO_ARTE.md`; matriz: `edicao-integral/MECANICAS_INTEGRACAO.md`.
+- Próximas: aguardar escolha da direção de arte (proprietário + ChatGPT); depois D-09/D-10/D-11; D-12 (91–120, uma vez) quando os valores congelarem; D-13 humano. Commits locais, sem push; 91–120 intactas.
+
 # Estado ativo — D-22 fim de campanha jogável, 2026-10-30
 
 - Controlador percorre bateria → van → combustível → Instalação → defesa. Regras do diretor: combustível largado volta ao Posto, tanque 6, manutenção de arma (1 sucata), defesa única com ondas por defensores. 25 dias: 38 vitórias, 42 derrotas na defesa (191 campanhas). 15 dias: sobrevivência 70% / 65%.

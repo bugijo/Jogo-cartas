@@ -1,3 +1,7 @@
+# Acampamento em lotes e situações A–H (D-24..D-32) — simulação, 2026-10-30
+
+Simulação, não playtest. 15 dias: 1–30×2 83/106 (78%), 31–90 100/138 (72%); fome nas sobreviventes 10,4% e 12,9%; tamanhos 31–90 60–100%. Acolhedor 92%/81%. Situações: barracas antes da produção 47%, família acolhida 60% / recusada 67%, sem especialistas 63%, sem comida na chegada 54%, acampamento desenvolvido sem Mercado 96%. 25 dias: vitória 39/106 (37%). Personas 1–30: A 30, B 37, C 42, mista 41 de 53. `edicao-integral/COMUNIDADE_BALANCEAMENTO.md` ciclos 13–14.
+
 # Fim de campanha (D-22) — simulação, 2026-10-30
 
 Simulação, não playtest. Em 25 dias regionais, defesa final vencida em 1–30 15/53 e 31–90 23/138; derrotas na defesa 42 no total. Defesa isolada por tamanho (Vida 2): 60–80%. `edicao-integral/COMUNIDADE_BALANCEAMENTO.md` ciclo 12.

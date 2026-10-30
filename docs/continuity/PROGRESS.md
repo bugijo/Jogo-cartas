@@ -1,5 +1,6 @@
 # 2026-10-29 — campanha regional multi-dia
 
+- 2026-10-30: Integração total das mecânicas: acampamento em lotes (2×2→3×3→4×4), barracas, horta por lotes, Crise 0–10, ração de obra, conhecimento, profissões fundidas, prazo do dia 25; 1–30 78%, 31–90 72%; vitória 37% (25 dias); situações A–H; pacote de direção artística.
 - 2026-10-30: D-22 fim de campanha jogado pelo controlador (bateria, van, combustível, Instalação, defesa); 38 vitórias em 191 campanhas de 25 dias.
 - 2026-10-30: D-21 regra de combustível da edição integral (rota curta/longa, tanque do caminhão no Posto); fim da campanha alcançável em combustível.
 - 2026-10-30: D-08 tabuleiros da edição integral gerados (painel do abrigo, entorno, Horta abandonada) em `edicao-integral/print/`.
