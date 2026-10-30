@@ -1,3 +1,13 @@
+# Estado ativo — acampamento regional (F, G, C2, D) e personas no regional, 2026-10-30
+
+- Push fast-forward dos 9 commits (`c8e9f47..8d36bbe`); ramo principal intacto (`9c38aa5`).
+- `876922f`: F aprovada (prioridade de comida no depósito, descarte rastreável); G, C2 e D como protótipos do motor, desligados por padrão; `CampRegionalPlayer`; `RegionalTablePlayer` (18 personas votam no regional). 456 testes; replays certificados intactos.
+- Ciclos 10–13 (`ECONOMY_EXPERIMENTS.md`): F+G+C2+D dá 3/37 (1–30) e 18/107 (31–90), T2 e T4 ok; **falha T1, T3, T5**. F+G+C2 baixa a falta para 16%. Obras com madeira experimental (W2): 22 Hortas e 2 Depósitos em 37, 5/37 sobrevivem.
+- D quase não ocorre em 1–30: 11 de 12 campanhas com Sementes são recusadas na migração por camas.
+- Personas no regional (600 mesas, 1–30): 0 sobrevivem sem protótipos; com protótipos 2 sobrevivem, pistas 6–36 por faixa. Simulação, não playtest.
+- Materiais: 17 madeira + 15 sucata para todas as estruturas; 0 madeira e 8 sucata disponíveis. Propostas W1–W5 em `CAMP_GROWTH.md`. **Decisão do responsável.**
+- Portão da Fase 9 segue reprovado; arte não iniciada. Sementes 91–120 intactas.
+
 # Estado ativo — controlador estratégico e fontes de comida, 2026-10-30
 
 - Laço do controlador confirmado (só Mercado; 0 Estação). `StrategicRegionalPlayer` (subclasse experimental) multiplica pistas e rádio; base e artefatos intactos.

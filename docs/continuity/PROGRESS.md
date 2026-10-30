@@ -1,5 +1,6 @@
 # 2026-10-29 — campanha regional multi-dia
 
+- 2026-10-30: F aprovada no motor; G, C2, D em protótipo; personas no regional; ciclos 10–13 sem cumprir T1/T3/T5; materiais em `CAMP_GROWTH.md`.
 - 2026-10-30: controlador estratégico + ciclos C/D/F/G/E; E cumpre 4/5 metas no ajuste, falha T3; acampamento sem madeira (`ECONOMY_EXPERIMENTS.md`).
 - Fase 6 economia: alvos pré-registrados; recompensa e Horta não movem a sobrevivência; reposição do Mercado move, mas por rodízio (`ECONOMY_EXPERIMENTS.md`).
 - Descarte voluntário de água na colheita da Horta (aprovado): 2/53 sobrevivem em 1–30, 0/138 em 31–90; fome em rodízio e camas pendentes (`HORTA_CONTINUITY.md`).

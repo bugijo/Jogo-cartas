@@ -1,3 +1,11 @@
+# Acampamento regional e personas no regional — simulação, 2026-10-30
+
+F+G+C2+D: 3/37 (1–30) e 18/107 (31–90); falta de comida 21–28% nas sobreviventes
+(meta ≤ 10%); rádio 2 e 0 nas sobreviventes. Com obras e madeira experimental
+W2: 22 Hortas e 2 Depósitos em 37 campanhas, 5/37 sobrevivem. Mesas de personas
+(600, 1–30) no regional: 2 sobrevivem com protótipos. Simulação, não playtest.
+Detalhes em `edicao-integral/ECONOMY_EXPERIMENTS.md` e `CAMP_GROWTH.md`.
+
 # Controlador estratégico e fontes de comida — simulação, 2026-10-30
 
 Base 2/37 (1–30) e 0/107 (31–90). Controlador estratégico: pistas 2 → 18, sem

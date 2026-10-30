@@ -125,3 +125,70 @@ Leitura:
 3. D — Horta §61 regional com Sementes guardadas e sucata.
 4. C2 — coleta por trabalhador, limitada a ceil(consumidores/2).
 5. Fonte de madeira (ou custo em sucata) para as estruturas regionais (Fase 7).
+
+## Ciclos 10–13 (2026-10-30): F aprovada, protótipos G, C2, D e obras
+
+Motor: F como regra (opcional por decisão do grupo); G, C2 e D como protótipos
+(`MANUAL_EXPERIMENTAL.md`). Controlador `CampRegionalPlayer` (estratégico com
+risco 'short' + trabalhos do acampamento). Reprodução:
+`experiments/camp_economy.py --seeds 1-30 [--configs ...] [--salvage 12]`.
+Sobrevivem 15 dias / migradas; falta = porções faltando ÷ consumidor-noites
+nas sobreviventes.
+
+| Config (1–30) | Sobrevivem | Dias médios | Falta | Pistas | Rádio (sobrev./todas) | T1–T5 |
+|---|---|---|---|---|---|---|
+| B (estratégico) | 2/37 | 4,1 | 62% | 18 | 0/1 | ·✓··· |
+| B+F | 2/37 | 4,4 | 62% | 18 | 0/1 | ·✓··· |
+| B+G | 2/37 | 4,6 | 62% | 19 | 0/2 | ·✓··· |
+| B+C2 | 2/37 | 5,5 | 57% | 18 | 0/1 | ·✓··· |
+| B+D | 2/37 | 4,1 | 62% | 17 | 0/1 | ·✓··· |
+| B+F+G | 2/37 | 5,2 | 55% | 40 | 0/18 | ·✓··· |
+| B+F+C2 | 2/37 | 6,8 | 23% | 21 | 0/4 | ·✓··· |
+| B+F+G+C2 | 2/37 | 7,8 | 16% | 40 | 2/18 | ·✓··✓ |
+| F+G+C2+D (ALL) | 3/37 | 8,1 | 21% | 38 | 2/17 | ·✓··✓ |
+| ALL + obras + W2 madeira | 5/37 | 6,5 | 15% | 10 | 3/4 | ·✓··✓ |
+| idem + Mercado ×1,5 (ref.) | 7/37 | 7,2 | 38% | 6 | 1/1 | ·✓··· |
+
+Confirmação 31–90 (vistas, só confirmação):
+
+| Config | Sobrevivem | Falta | Por tamanho H2/H3/H4/H5/H6 | T1–T5 |
+|---|---|---|---|---|
+| B | 0/107 | — | 0/0/0/0/0 | ····· |
+| B+F+G+C2 | 1/107 | 13% | 0/1/0/0/0 | ·✓··· |
+| ALL | 18/107 (17%) | 28% | 2/7, 3/28, 1/21, 6/22, 6/29 | ·✓·✓· |
+| ALL + obras + W2 | 12/107 | 23% | 1/7, 3/28, 3/21, 3/22, 2/29 | ·✓·✓· |
+
+Leitura:
+- Isoladas, F, G e D não mudam a sobrevivência; C2 alonga a campanha. Juntas, F
+  e G liberam a Estação (pistas 18 → 40) porque a chegada deixa de ser só água.
+- F+G+C2 corta a falta de 62% para 16%: é a primeira combinação perto de T3
+  (≤ 10%), mas as campanhas ainda caem (média 7,8 dias).
+- D quase nunca acontece em 1–30: as campanhas com Sementes são recusadas na
+  migração por camas (11 de 12 em 1–30). Em 31–90 a Horta D sai em 19.
+- Obras (ciclo 12, com madeira só pela variante W2): 22 Hortas EXP-BLD-01 e 2
+  Depósitos em 37 campanhas; primeiras sobrevivências de H3 e H4 em 1–30; mas o
+  investimento custa comida agora e as pistas caem (38 → 10).
+- Ciclo 11 (não melhorou, revertido): poupar herói ferido do trabalho corta a
+  coleta pela metade (683 → 333) e a campanha encurta (7,8 → 5,8 dias).
+  Reposição do entorno de 25% a 100% dos consumidores: sem efeito (o limite são
+  os trabalhadores aptos, não o entorno).
+- Ciclo 13 (defeito do controlador corrigido): obras não buscam sucata sem a
+  madeira no estoque. Mesas de personas: pistas 6 → 36 na faixa B. ALL + obras
+  com W2: 3/37 e 9/107 (a Horta EXP-BLD-01 sai mais tarde).
+
+### Revisão de abordagem (ciclos 10–13)
+
+Nenhuma configuração legal chega a T1 (40%). As causas são estruturais, não do
+controlador:
+1. Chegada em déficit: comida para menos de uma noite e depósito cheio de água.
+   F+G resolvem o depósito, mas G cobre uma noite.
+2. Espiral da fome: com Fome ou Sede não se trabalha (RULES l.22); o Colapso
+   vem em 3 noites. Obras com 4 dias de crescimento chegam tarde.
+3. Grupos pequenos: poucos trabalhadores; heróis chegam feridos da Cisterna.
+4. Camas: quem tem Sementes é recusado na migração (D fica fora de alcance).
+5. Água: o filtro produz C inicial; com acolhidos falta água toda noite
+   (H6 s29: 4 por noite).
+6. Madeira: nenhum local tem; sem a variante W2 não há obra regional.
+
+Mercado renovável segue só como referência (aumenta a sobrevivência, mas a falta
+sobe para 38% e o rádio some). Propostas estruturais em `CAMP_GROWTH.md`.

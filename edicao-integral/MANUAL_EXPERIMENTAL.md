@@ -126,6 +126,37 @@ transporte regional. Desligado por padrão para preservar os replays registrados
   (`RegionalCampaignPlayer(discard_water=True)`) aceita o descarte só na medição
   com Horta. Testes: `tests/test_garden_continuity.py` (`WaterDiscardTests`).
 
+## Acampamento regional (2026-10-30)
+
+**F — prioridade de comida no depósito (aprovada).** Decisão do grupo, registrada
+no histórico (`storage_priority`): enquanto ligada, toda comida que chega
+(entrega, colheita, coleta, ração) descarta só a água que falta de espaço e só a
+acima do consumo previsto da noite; cada descarte vira `storage_discard` no
+histórico. Depósito continua 30; nada é criado. Desligada por padrão
+(`World.set_storage_priority`). Sucata e madeira não descartam água.
+
+**Protótipos (aprovados só para teste; não são regra definitiva).** Ligados por
+mundo com `World.enable_regional_prototypes`; desligados, saves e replays antigos
+ficam idênticos (`regional_camp = None`).
+
+- G — ração-ponte: uma vez, antes da primeira noite regional, 1 comida por
+  consumidor, pelo depósito. Origem: a Ponte acolhe o grupo evacuado (CAMPAIGN,
+  Evacuação) e entrega a ração de viagem. Nunca de novo (`bridge_claimed`).
+- C2 — coleta no entorno: no amanhecer, antes da expedição, adulto ou herói
+  apto coleta 1 comida (fase de trabalhos). Limites: ceil(consumidores/2)
+  coletores por dia; o entorno tem reserva `pool` (padrão 2 × consumidores na
+  chegada) que repõe ceil(consumidores/4) por amanhecer. Coletar é o trabalho
+  do dia: sem recuperação §25 e sem outra tarefa (Horta, obra, expedição).
+  Precedente: trabalho local da Ponte (CAMPAIGN, Recuperar Santa Aurora).
+- D — Horta §61 regional: 1 Sementes transportadas da Cisterna (arquivadas na
+  migração) + 2 sucata (no lugar dos 2 Materiais, sem equivalente regional) +
+  2 trabalhos de adulto ou herói (máximo 2 por dia). Produz 4 comida por dia
+  com um trabalhador, a partir do amanhecer seguinte à conclusão. Uma só por
+  campanha (as Sementes se gastam).
+
+Testes: `tests/test_regional_camp.py`. Medição: `ECONOMY_EXPERIMENTS.md`
+(ciclos 10–13) e `CAMP_GROWTH.md`.
+
 ## Ainda sem regra aprovada (não decidir silenciosamente)
 
 - Economia de comida regional: só o Mercado tem mapa tático e comida (4 buscas

@@ -1,7 +1,7 @@
 {
  "schema": 1,
  "branch": "evolucao/zona-zero-sistema-v1",
- "updated_at": "2026-10-29",
+ "updated_at": "2026-10-30",
  "tasks": [
   {
    "id": "P0-EXPEDITION-COMPLETE",
@@ -404,11 +404,13 @@
     "91–120 só na validação cega"
    ],
    "tests": [
+    "edicao-integral/experiments/camp_economy.py --seeds 1-30",
     "edicao-integral/experiments/food_economy.py --grid --seeds 1-30",
+    "edicao-integral/tests/test_regional_camp.py",
     "edicao-integral/tests/test_strategic_regional_player.py"
    ],
-   "status": "aguardando_decisao",
-   "blocker": "E (estratégico+ponte+coleta+Horta+Mercado renovável) cumpre 4/5 no ajuste; falha T3 (rodízio 36–38%). Aprovar ou recusar propostas G, F, D, C2 em ECONOMY_EXPERIMENTS.md."
+   "status": "em_andamento",
+   "notes": "F aprovada e implementada; G, C2, D em protótipo (876922f). Melhor legal: F+G+C2+D 3/37 e 18/107; falha T1, T3, T5. Ver ECONOMY_EXPERIMENTS.md ciclos 10–13."
   },
   {
    "id": "P1-REGIONAL-CAMP-GROWTH",
@@ -421,9 +423,30 @@
     "construções concluídas em campanhas reais",
     "benefício medido"
    ],
-   "tests": [],
-   "status": "bloqueado_conteudo",
-   "blocker": "Estruturas regionais custam madeira; nenhum local tem madeira no saque (0 construções em todas as variantes)."
+   "tests": [
+    "edicao-integral/experiments/camp_economy.py --configs ALL+BUILD --salvage 12"
+   ],
+   "status": "aguardando_decisao",
+   "blocker": "Nenhuma madeira legal; propostas W1–W5 em edicao-integral/CAMP_GROWTH.md. Com W2 experimental: 22 Hortas e 2 Depósitos em 37 campanhas."
+  },
+  {
+   "id": "P2-PERSONAS-REGIONAL",
+   "priority": 2,
+   "objective": "18 personas jogam também a campanha regional (voto no amanhecer).",
+   "depends_on": [
+    "P2-DEV-OFFICE-VIRTUAL-PLAYERS"
+   ],
+   "acceptance": [
+    "mesas A, B, C e mista no regional",
+    "voto reprodutível",
+    "métricas por faixa sem avaliação subjetiva"
+   ],
+   "tests": [
+    "edicao-integral/tests/test_regional_table_player.py",
+    "edicao-integral/experiments/persona_regional.py --seeds 1-30 --prototypes"
+   ],
+   "status": "concluida",
+   "notes": "876922f; 600 mesas em 1–30; sem artefato gravado."
   }
  ]
 }
