@@ -168,3 +168,19 @@ campanhas (1–30); 2+ canteiros em várias.
 Metas com o canteiro: T1 ✓ (62% e 67%), T2 ✓, T4 ✓, T5 ✓; **T3 ainda ✗**
 (fome tardia 10,4% no ajuste, 14,4% na confirmação). Grupos de 2–3 heróis
 seguem abaixo (H2 2/7, H3 11/28 em 31–90).
+
+## Ciclo 8 — cão na viagem (D-16)
+
+Diagnóstico: grupos pequenos chegam com o mesmo ~1,5 cão e heróis feridos;
+trabalhadores/consumidores 0,59 (H2) contra 0,75 (H6). Regra: o cão acompanha
+uma viagem (+1 no D6, −1 ponto por noite), sai da refeição do abrigo.
+
+| Cenário | Sobrevivem | Fome | Fome tardia | T2 | Rádio (sobrev.) | Por tamanho H2/H3/H4/H5/H6 |
+|---|---|---|---|---|---|---|
+| 1–30 sem cão | 33/53 | 14,4% | 10,4% | — | 29 | 3/4, 2/10, 9/14, 11/14, 8/11 |
+| **1–30 com cão (adotado)** | **41/53 (77%)** | **8,1%** | 5,8% | — | 37 | 4/4, 5/10, 10/14, 14/14, 8/11 |
+| **31–90 com cão (adotado)** | **100/138 (72%)** | **9,7%** | 7,0% | 89/100 | 95 | 2/7, 10/28, 27/35, 25/30, 36/38 |
+
+**T1–T5 cumpridas nas duas faixas** pela primeira vez. Problema que fica:
+escala por tamanho — H6 sobrevive 95% (fácil demais) e H2–H3 ~33–36% em 31–90.
+Nova tarefa D-17 (dificuldade proporcional ao tamanho, sem recurso grátis).

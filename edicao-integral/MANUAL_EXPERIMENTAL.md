@@ -202,6 +202,9 @@ Código `community.py`; testes `tests/test_community.py`.
   2 trabalhos). **Armadilhas** (1 madeira, até 2): D6 no amanhecer, 5–6 = 1
   carne da reserva de caça, 1 = quebra. Obras EXP-BLD também aceitam
   trabalhadores.
+- **Cão na viagem** (decisão do diretor, D-16): um cão apto pode acompanhar
+  uma viagem automática: +1 no D6, −1 ponto por noite (come da viagem) e não
+  come no abrigo enquanto estiver fora.
 - **Canteiro** (decisão do diretor, D-14; 2 madeira + 1 sucata, 2 trabalhos,
   até 2 por abrigo): produz 2 comida no dia em que um trabalhador cuida dele
   (agricultor +1). Não gasta o entorno: transforma trabalho em comida no meio

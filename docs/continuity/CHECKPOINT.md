@@ -1,3 +1,9 @@
+# Estado ativo — D-16 cão na viagem, 2026-10-30
+
+- Cão acompanha viagem (+1 no D6, −1 ponto/noite, fora da refeição). 1–30: 41/53 (77%), fome 8,1%; 31–90: 100/138 (72%), fome 9,7%. **T1–T5 cumpridas nas duas faixas.**
+- Escala: H6 36/38 (fácil demais), H2 2/7 e H3 10/28 em 31–90 → D-17.
+- Próximas: D-17, D-15, D-08. Commits locais, sem push; 91–120 intactas.
+
 # Estado ativo — D-14 Canteiro, 2026-10-30
 
 - Canteiro (2 madeira + 1 sucata, 2 trabalhos, até 2; 2 comida/dia com trabalhador, agricultor +1). 1–30: 33/53, fome tardia 10,4%; 31–90: 92/138 (67%), fome tardia 14,4%. T3 ainda falha; H2–H3 abaixo (D-16).
