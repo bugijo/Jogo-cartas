@@ -317,3 +317,31 @@ Vitória na campanha (defesa vencida), 25 dias: 1–30 15/53 (28%), 31–90 23/1
 (17%); por tamanho em 31–90: 0/7, 4/28, 10/35, 5/30, 4/38. Sobrevivência a 15
 dias inalterada (1–30 70%, 31–90 65%). A campanha precisa de ~20 dias para
 fechar: prazo e equilíbrio da vitória → D-23.
+
+## Ciclo 13 — acampamento em lotes (D-24..D-26), 1–30 × 2 repetições
+
+Modelo novo (`camp.py`): grade 2×2 → 3×3 → 4×4, barracas em lotes, horta por
+lotes, estoque por categoria, Crise 0–10, ração de obra. 106 campanhas por
+linha (sementes 1–30, 2 repetições do regional); 15 dias.
+
+| Passo | Sobrevivem | Fome nas sobreviventes | Observação |
+|---|---|---|---|
+| Modelo abstrato anterior (referência) | 73/106 (69%) | 3,8% | terreno 7, canteiro, Moral |
+| 1ª versão (núcleo ocupa lote, expansão 4 madeira + 2 metal, Crise +1/+2/+1) | 20/53 (38%) | 10,3% | 46/53 sem expandir |
+| Expansão 3 madeira; Crise sem agravamento | 28/53 (53%) | 14% | grupos de 12 enchem a clareira de barracas |
+| Fogueira e estoque fora dos lotes; 1 porção/lote | 21/53 (40%) | 11% | horta rende menos que pescar |
+| Horta 2 porções por lote cuidado e regado | 30/53 (57%) | 5% | H6 1/11 |
+| Mutirão na expansão (até 3 pessoas) | 30/53 (57%) | 7,5% | — |
+| Viagens de água (rejeitado) | 20/53 (38%) | 8% | ferver gasta a madeira das obras |
+| Chuva no D6 do amanhecer (4–6): horta sem água | 53/106 (50%) | 10,6% | base das ablações |
+| Ablação: estoque 30 em vez de 24 | 52/106 (49%) | 9,5% | estoque não é o gargalo |
+| Ablação: sem ração de obra | 67/106 (63%) | 7,7% | ração custa ~13 pontos; mantida (pedido do proprietário) |
+| Ablação: Crise +1 em qualquer déficit | 73/106 (69%) | 13,2% | tolera fome demais |
+| Crise com agravamento em noites seguidas | 52/106 (49%) | 9,4% | rejeitado |
+| Horta só com trabalho (sem madeira) | 48/106 (45%) | 8,8% | madeira fica para cerca e cozinha |
+| **Crise +1 até metade dos humanos sem porção, +2 acima** | **63/106 (59%)** | **10,9%** | H2 5/8, H3 14/20, H4 16/28, H5 19/28, H6 9/22 |
+
+Adotado: a última linha. Tudo dentro de T1 (40–85%) por tamanho; T3 (≤10%)
+no limite. Grupos grandes ficaram mais difíceis que os pequenos (o contrário
+do D-17): mais bocas na mesma clareira. Confirmação em 31–90 e situações A–H
+no ciclo 14.

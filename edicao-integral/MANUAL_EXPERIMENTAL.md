@@ -287,6 +287,59 @@ Código `community.py`; testes `tests/test_community.py`.
 | Horta abandonada (D-15) | mapa tático novo; renova 1 busca a cada 2 noites | todas as noites: sobreviventes confortáveis demais (T2 41%); a cada 2: T2 58–67%, descanso 65% → 44% |
 | Preparação Acolhedor (D-18) | canteiro pronto + 2 rações/consumidor, opcional | grupo A de personas 16 → 31/53; B/C ≤ 74%; como padrão tiraria a pressão (T2 32%) |
 | Crescimento do abrigo (D-20) | 2 chegadas (dias 4 e 10), recusa Moral −1; terreno para obras da Comunidade; cerca; níveis 2 de Depósito e Alojamento | acolher, recusar ou lotar dão 61–64% (31–90): dilema sem estratégia dominante; 4 chegadas derrubavam H6 a 26% |
+| Acampamento em lotes (D-24) | grade 2×2 → 3×3 → 4×4 com símbolos por lote; fogueira e estoque na borda; expansão = obra pesada | modelo anterior não tinha espaço físico; 2×2 com núcleo ocupando lote travava grupos de 12 (46/53 sem expandir) |
+| Horta unificada (D-25) | EXP-BLD-01, §61, protótipo D e canteiro viram lotes de horta: 2 lotes por pessoa (agricultor 4), 2 porções por lote, água só em dia sem chuva | 1 porção/lote rendia menos que pescar (40%); 2 porções: fome 5–11% |
+| Crise 0–10 (D-26) | substitui o Moral da escassez; +1 até metade sem porção, +2 acima; −1/−2 servidos | +1/+2 a 1/4 dos humanos: 50%; +1 fixo: fome 13%; adotada: 59%, fome 10,9% |
+| Ração de obra (D-26) | obra pesada: 1 porção por pessoa no dia | custa ~13 pontos de sobrevivência; mantida por ser pedido do proprietário e pesar decisão |
+| Conhecimento (D-27) | 5 cartas, 1ª busca de cada local; liberam composteira, defumador, bancada, ambulatório, filtro | substitui as decisões antigas "Serraria e bancadas eliminadas" e "Defumador ideia futura": agora vêm de exploração, não de compra |
+| Profissões (D-27) | pescador → caçador, lenhador → coletor (mesmas posições no baralho) | funções repetidas; nenhuma atividade ficou sem especialista |
+
+## Acampamento em lotes (D-24..D-27, edição integral, 2026-10-30)
+
+Liga com a Comunidade (`data/community.json#camp`, `camp.py`). Substitui, no
+regional, terreno abstrato, camas 8, depósito único, canteiro, Horta §61 e
+Moral da escassez. Painel e tabuleiro: `PAINEL_ACAMPAMENTO.md`.
+
+1. **Lotes.** Tabuleiro 4×4; nível 1 abre 2×2, nível 2 abre 3×3 (Expansão: 3
+   madeira, 3 trabalhos), nível 3 abre 4×4 (5 madeira + 2 metal, 5 trabalhos,
+   exige Depósito, Oficina ou Vigia). Cada lote mostra 1–2 categorias (barraca,
+   horta, água, estoque, oficina, defesa) e recebe uma construção ou até 2
+   barracas. Obra reserva o lote ao começar.
+2. **Barracas e camas.** Barraca 2 lugares (2 madeira, 1 trabalho), barraca
+   familiar 4 (só trazida por quem chega ou encontrada), Alojamento 8 (+4 no
+   nível 2). A evacuação chega com 1 barraca para cada 2 humanos. Pode haver
+   mais moradores que camas: só quem tem cama recupera Vida (cama vai primeiro
+   a ferido); mais de 2 sem cama: Crise +1 por noite.
+3. **Chegadas (dias 4 e 10, D6).** 1–2 adulto; 3–4 adulto + criança com
+   barraca; 5 dois adultos + criança com barraca familiar; 6 ninguém. Acolher
+   não exige cama; recusar: Crise +1.
+4. **Estoque.** Comida 24 (+12 Depósito, +12 Depósito nível 2), água 24
+   (+12 Reservatório), madeira 20, metal 20, cada um na sua trilha. O excedente
+   da chegada é descartado e registrado.
+5. **Horta por lotes.** Lote de horta: 1 trabalho, sem material; produz 3
+   amanheceres depois. Função "horta": a pessoa cuida de 2 lotes prontos
+   (agricultor 4). Cada lote cuidado e regado dá 2 porções. Tempo: um D6 por
+   amanhecer, 4–6 chove; dia sem chuva gasta 1 água a cada 2 lotes cuidados.
+   D6 = 1 da pessoa: praga, −1 porção. A Horta da Cisterna chega como 2 lotes
+   plantados; o Acolhedor dá 1 lote plantado.
+6. **Crise 0–10.** Depois da refeição: humano sem comida ou água → +1 se
+   falta para até metade dos humanos, +2 se mais; todos servidos → −1, ou −2
+   se o estoque ainda cobre outra noite. 4–6 moderada: obras pesadas param.
+   7–9 grave: ninguém recupera Vida; no amanhecer D6 ≤ 2 perde 1 madeira ou
+   metal. 10: colapso (derrota parcial). Cão não conta.
+7. **Ração de obra.** Obra pesada (expansões, Depósito, Oficina, Enfermaria,
+   Vigia, Reservatório, Alojamento e níveis 2) consome 1 porção por pessoa
+   trabalhando no dia; sem porção no estoque, não se trabalha nela.
+8. **Conhecimento.** A primeira busca bem-sucedida em cada local dá a sua
+   carta: Horta abandonada → composteira (+1 porção por pessoa na horta);
+   Mercado → defumador (carne dura +3 noites, cozinha sem madeira); Oficina →
+   bancada (+1 trabalho por pessoa em obra); Hospital → ambulatório (exige
+   Enfermaria: +1 pessoa nos cuidados; função "remédio": 2 porções → 1 remédio,
+   enfermeiro sempre, outros com D6 ≥ 4); Estação → filtro de areia (água bruta
+   sem ferver).
+9. **Profissões.** Caçador (caça e pesca), Agricultor, Coletor (coleta, água,
+   lenha), Cozinheiro, Carpinteiro, Mecânico, Enfermeiro, Guarda, comum. Sem
+   especialista, a função funciona com menos rendimento.
 
 ## Ainda sem regra aprovada (não decidir silenciosamente)
 
