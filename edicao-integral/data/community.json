@@ -40,7 +40,9 @@
   "depart_max_wounds": 1,
   "dangerous": ["caca", "sucata"],
   "long_trip_days": 3,
-  "heroes_allowed": true
+  "heroes_allowed": true,
+  "dog_bonus": 1,
+  "dog_cost_per_day": 1
  },
  "activities": {
   "caca":   {"zone": "floresta", "pool": "caca",    "points_per_unit": 4, "output": "meat"},

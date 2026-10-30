@@ -30,12 +30,13 @@ class CommunityRegionalPlayer(CampRegionalPlayer):
     def __init__(self, *args, options=('priority', 'build'), trips=True,
                  community_builds=('canteiro', 'coletor', 'canteiro', 'cozinha'),
                  max_days=3, risk='covered',
-                 per_day_choice=False, **kwargs):
+                 per_day_choice=False, dogs=True, **kwargs):
         super().__init__(*args, options=options, risk=risk, **kwargs)
         self.trips = trips
         self.community_builds = tuple(community_builds)
         self.max_days = max_days
         self.per_day_choice = per_day_choice
+        self.dogs = dogs
 
     @staticmethod
     def garden_worker(world, kind):
@@ -200,7 +201,12 @@ class CommunityRegionalPlayer(CampRegionalPlayer):
                         3.5 * days // spec['points_per_unit'])
                 # A ração é a refeição de quem viaja (não come no abrigo): leva o
                 # que houver, até um dia de ração por dia de viagem.
-                community.send_trip(world, person, activity, days)
+                dog = None
+                if self.dogs and activity in ('caca', 'coleta', 'pesca'):
+                    dog = next((p['id'] for p in world.continuity_people
+                                if p['kind'] == 'dog' and p['id'] not in community.away(world)
+                                and not p.get('hungry') and not p.get('thirsty')), None)
+                community.send_trip(world, person, activity, days, dog=dog)
                 free.remove(person)
                 done.setdefault('community', []).append((person, 'viagem', activity, days))
         # 4. armadilha e cuidados

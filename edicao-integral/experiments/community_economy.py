@@ -49,6 +49,7 @@ CONFIGS = {
                     {'community_builds': ('coletor', 'cozinha')}),
     'COMM-CANT1': (CommunityRegionalPlayer, True,
                    {'community_builds': ('canteiro', 'coletor', 'cozinha')}),
+    'COMM-NODOG': (CommunityRegionalPlayer, True, {'dogs': False}),
     'COMM-FD3': (CommunityRegionalPlayer, True, {'food_days': 3}),
     'COMM-FD4': (CommunityRegionalPlayer, True, {'food_days': 4}),
     'COMM-NOBUILD': (CommunityRegionalPlayer, True, {'options': ('priority',),

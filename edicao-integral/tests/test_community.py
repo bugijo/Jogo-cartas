@@ -273,6 +273,25 @@ class CommunityTests(unittest.TestCase):
         with self.assertRaises(ValueError):  # máximo 2
             community.start_build(world, 'canteiro')
 
+    def test_dog_joins_trip_adds_bonus_and_eats_from_it(self):
+        world = self.world
+        dog = next(p['id'] for p in world.continuity_people if p['kind'] == 'dog')
+        state = world.community
+        state['deck']['order'] = ['tranquila'] * 12
+        state['deck']['pos'] = 0
+        state['professions'][self.adults[0]] = 'comum'
+        before = len(world.meal_people())
+        community.send_trip(world, self.adults[0], 'pesca', 2, dog=dog)
+        self.assertEqual(len(world.meal_people()), before - 2)  # pessoa e cão fora
+        with self.assertRaises(ValueError):
+            community.send_trip(world, self.adults[1], 'coleta', 1, dog=dog)
+        with self.roll(4):  # (4+1) × 2 − 2 (o cão come) = 8 pontos
+            world.end_day(self.plan())
+            world.end_day(self.plan())
+        ret = next(r for r in world.log if r.get('action') == 'worker_trip_return')
+        self.assertEqual((ret['bonus'], ret['points']), (1, 8))
+        self.assertNotIn(dog, community.away(world))
+
     def test_rescued_survivor_brings_baggage_and_profession(self):
         world = self.world
         world.stock.update(food=0)

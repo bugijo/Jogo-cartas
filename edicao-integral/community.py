@@ -83,7 +83,9 @@ def validate(world) -> None:
 
 # --- pessoas ---------------------------------------------------------------------
 def away(world) -> set[str]:
-    return {trip['worker'] for trip in (world.community or {}).get('trips', [])}
+    trips = (world.community or {}).get('trips', [])
+    return ({trip['worker'] for trip in trips}
+            | {trip['dog'] for trip in trips if trip.get('dog')})
 
 
 def profession(world, person_id: str) -> str:
@@ -379,7 +381,7 @@ def guard_roll(world) -> dict | None:
 
 # --- viagens automáticas --------------------------------------------------------
 def send_trip(world, person_id: str, activity: str, days: int,
-              rations: int | None = None) -> dict:
+              rations: int | None = None, dog: str | None = None) -> dict:
     """Trabalhador sai sozinho por `days` dias; volta no amanhecer do dia + days.
 
     Ração: 1 comida + 1 água por dia levadas do depósito (no máximo `days`).
@@ -397,6 +399,11 @@ def send_trip(world, person_id: str, activity: str, days: int,
     if ((person_id not in workers(world) and person_id not in world.heroes)
             or not able(world, person_id, TRIPS['depart_max_wounds'])):
         raise ValueError('Trabalhador indisponível para viagem')
+    if dog is not None:
+        pet = next((p for p in world.continuity_people if p['id'] == dog), None)
+        if (pet is None or pet['kind'] != 'dog' or dog in away(world)
+                or pet.get('hungry') or pet.get('thirsty')):
+            raise ValueError('Cão indisponível para a viagem')
     top = min(days, world.stock['food'], world.stock['water'])
     rations = top if rations is None else rations
     if not isinstance(rations, int) or not 0 <= rations <= top:
@@ -407,7 +414,7 @@ def send_trip(world, person_id: str, activity: str, days: int,
     state['trip_seq'] += 1
     trip = {'id': state['trip_seq'], 'worker': person_id, 'activity': activity,
             'days': days, 'depart': world.day, 'return_day': world.day + days,
-            'rations': rations, 'delayed': False}
+            'rations': rations, 'delayed': False, 'dog': dog}
     state['trips'].append(trip)
     world.log.append({'day': world.day, 'action': 'worker_trip_depart', **trip})
     return dict(trip)
@@ -449,10 +456,14 @@ def _resolve_trip(world, trip: dict, rng: random.Random) -> dict | None:
         return None  # volta no próximo amanhecer; sorteia de novo então
     worker = trip['worker']
     bonus = TRIPS['specialist_bonus'] if specialist(world, worker, trip['activity']) else 0
+    if trip.get('dog'):
+        bonus += TRIPS['dog_bonus']  # o cão fareja e carrega
     roll = rng.randint(1, 6)
     nights = trip['days'] + (1 if trip['delayed'] else 0)
     points = (roll + bonus) * trip['days']
     points -= TRIPS['unsupplied_day_cost'] * (nights - trip['rations'])
+    if trip.get('dog'):
+        points -= TRIPS['dog_cost_per_day'] * nights  # o cão come da viagem
     effects = {}
     for card in cards:
         if card == 'abundancia':
