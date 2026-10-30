@@ -132,3 +132,18 @@ Leitura crítica:
 - Heróis em viagem: ganho pequeno no ajuste, claro na confirmação (+12 em
   138); mantido.
 - Sementes 91–120 não usadas.
+
+## Ciclo 6 — fome crônica (D-05), 1–30
+
+| Variante (uma por vez sobre o adotado) | Sobrevivem | Fome | Fome tardia (noites 8–14) | Decisão |
+|---|---|---|---|---|
+| Adotado | 34/53 | 16,6% | 12,9% | — |
+| Alvo de estoque 3 dias | 31/53 | 18,3% | 13,5% | rejeitado |
+| Alvo de estoque 4 dias | 34/53 | 17,3% | 12,1% | rejeitado (sem ganho) |
+| Trabalhar com 1 noite de fome (exceção à RULES l.22) | 34/53 | 15,5% | 11,7% | rejeitado: ganho mínimo, regra extra na mesa |
+| Escolha de viagem por rendimento/dia (caça 2+ dias) | 32/53 | 18,8% | 15,6% | rejeitado: dobra a carne, não a sobrevivência |
+
+Diagnóstico: a fome tardia não vem da estratégia nem da regra de fome; o teto é
+a produção sustentável por trabalhador perto do consumo (peixe e frutas se
+esgotam; caça e madeira sobram). Próximo passo D-14 (estrutura de produção do
+meio de jogo).
