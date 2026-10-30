@@ -1,3 +1,7 @@
+# Fim de campanha (D-22) — simulação, 2026-10-30
+
+Simulação, não playtest. Em 25 dias regionais, defesa final vencida em 1–30 15/53 e 31–90 23/138; derrotas na defesa 42 no total. Defesa isolada por tamanho (Vida 2): 60–80%. `edicao-integral/COMUNIDADE_BALANCEAMENTO.md` ciclo 12.
+
 # Horta abandonada (D-15) e preparação Acolhedor (D-18) — simulação, 2026-10-30
 
 Simulação, não playtest. Normal: 1–30 38/53 (72%), 31–90 95/138 (69%); fome 3,6% e 5,0%. Personas 1–30 (Normal / Acolhedor): A 16/31, B 35/36, C 39/39, mista 29/33 de 53. `edicao-integral/COMUNIDADE_BALANCEAMENTO.md` ciclo 11.

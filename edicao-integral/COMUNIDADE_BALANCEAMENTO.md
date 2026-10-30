@@ -292,3 +292,28 @@ virou preparação opcional **Acolhedor** (canteiro + 2 rações por consumidor)
 Controlador no Acolhedor: 1–30 72%, 31–90 62%, fome 1,3–1,7% (modo fácil:
 pressão baixa por desenho). Personas no Normal: descanso 46% dos dias,
 Mercado/Horta 33%, pistas 15%.
+
+## Ciclo 12 — fim de campanha jogado pelo controlador (D-22)
+
+O controlador da edição integral percorre: rádio → cartão → bateria
+(Oficina) → Posto (inspecionar, consertar, combustível, voltar de van) →
+combustível → Instalação militar de van (transmissor) → defesa final.
+
+| Passo do ajuste | 15 dias: venceu / perdeu defesa | 25 dias: venceu / perdeu | Trava |
+|---|---|---|---|
+| Primeira versão | 1 / 2 | — | 7 erros "defesa indisponível" |
+| Defesa uma vez só | 8 / 22 | — | 30 |
+| Visitas curtas ao Posto, equipe descansada | 3 / 5 | — | 25 |
+| Combustível largado volta ao Posto | 3 / 5 | 7 / 21 | 9 (15 d) |
+| Tanque do caminhão 6 | 6 / 25 | 20 / 65 | 1 |
+| Defesa abre rodada nova | 7 / 22 | 22 / 59 | — |
+| **Manutenção de arma (1 sucata)** | **12 / 17** | **38 / 42** | — |
+
+Defesa isolada (300 partidas por tamanho, armas inteiras): ondas fixas davam
+5–13% (H2) a 100% (H6); com ondas por defensores, Vida 2: H2 63%, H3 60%,
+H4 80%, H5 75%, H6 73%.
+
+Vitória na campanha (defesa vencida), 25 dias: 1–30 15/53 (28%), 31–90 23/138
+(17%); por tamanho em 31–90: 0/7, 4/28, 10/35, 5/30, 4/38. Sobrevivência a 15
+dias inalterada (1–30 70%, 31–90 65%). A campanha precisa de ~20 dias para
+fechar: prazo e equilíbrio da vitória → D-23.

@@ -1,3 +1,8 @@
+# Estado ativo — D-22 fim de campanha jogável, 2026-10-30
+
+- Controlador percorre bateria → van → combustível → Instalação → defesa. Regras do diretor: combustível largado volta ao Posto, tanque 6, manutenção de arma (1 sucata), defesa única com ondas por defensores. 25 dias: 38 vitórias, 42 derrotas na defesa (191 campanhas). 15 dias: sobrevivência 70% / 65%.
+- Próximas: D-23 (prazo e vitória, painel 25 dias, mapa militar), D-09, D-10, D-11. Commits locais, sem push; 91–120 intactas.
+
 # Estado ativo — D-21 combustível regional, 2026-10-30
 
 - Regra do diretor (edição integral): van por rota (perto/médio 1 trecho, longe 2) a 2/trecho; volta do Posto 2; Instalação 8; O2 do Posto = tanque do caminhão (4, uma vez). Protótipo certificado intacto.

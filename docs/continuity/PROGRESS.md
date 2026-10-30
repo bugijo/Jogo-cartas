@@ -1,5 +1,6 @@
 # 2026-10-29 — campanha regional multi-dia
 
+- 2026-10-30: D-22 fim de campanha jogado pelo controlador (bateria, van, combustível, Instalação, defesa); 38 vitórias em 191 campanhas de 25 dias.
 - 2026-10-30: D-21 regra de combustível da edição integral (rota curta/longa, tanque do caminhão no Posto); fim da campanha alcançável em combustível.
 - 2026-10-30: D-08 tabuleiros da edição integral gerados (painel do abrigo, entorno, Horta abandonada) em `edicao-integral/print/`.
 - 2026-10-30: D-19 cartão de acesso caído recolhível (regra do diretor); 0 erros de motor em 10.800 partidas.

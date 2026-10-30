@@ -242,10 +242,22 @@ Código `community.py`; testes `tests/test_community.py`.
   conta a rota, não a caminhada — perto e médio são rota curta (1 trecho por
   sentido), longe é rota longa (2 trechos; RULES.md §5 l.29), a 2 combustíveis
   por trecho (§11 l.64). Voltar do Posto de van: 2. Instalação militar ida e
-  volta: 8. O O2 do Posto é o **tanque do caminhão**: 1 PA, 4 combustível, uma
-  vez por campanha. Saldo: 8 cartas + 4 do tanque − 2 da volta = 10 no abrigo
-  para os 8 da Instalação (margem 2, mais o que vier da Cisterna). A reserva
-  experimental da Oficina (+8) continua fora do saldo legal.
+  volta: 8. O O2 do Posto é o **tanque do caminhão**: 1 PA, 6 combustível, uma
+  vez por campanha (D-22; era 4). Saldo: 8 cartas + 6 do tanque − 2 da volta =
+  12 no abrigo para os 8 da Instalação. A reserva experimental da Oficina (+8)
+  continua fora do saldo legal.
+- **Fim de campanha** (decisões do diretor, D-22; edição integral):
+  - *Combustível largado*: numa emergência no Posto, o combustível da carga
+    fica no chão do Posto — volta como cartas (as que tinham sido tiradas) e o
+    resto volta ao tanque do caminhão.
+  - *Manutenção de armas*: no amanhecer, herói no abrigo gasta 1 sucata e uma
+    arma de mão volta à durabilidade máxima (1 por herói por dia).
+  - *Defesa final*: acontece uma vez (vencida ou perdida); abre com rodada
+    nova; quem está em viagem automática não defende; as ondas dependem de
+    quantos heróis defendem (2: lento / corredor / 2 lentos; 3: 2 lentos /
+    corredor / brutamontes; 4: 2 lentos / corredor + lento / brutamontes;
+    5: 3 lentos / corredor + 2 lentos / brutamontes; 6: 4 lentos / corredor +
+    2 lentos / brutamontes + lento).
 - **Canteiro** (decisão do diretor, D-14; 2 madeira + 1 sucata, 2 trabalhos,
   até 2 por abrigo): produz 2 comida no dia em que um trabalhador cuida dele
   (agricultor +1). Não gasta o entorno: transforma trabalho em comida no meio
@@ -269,6 +281,7 @@ Código `community.py`; testes `tests/test_community.py`.
 | Mapa tático de comida além do Mercado | Fila D-08 (conteúdo) | dias de Mercado já caem para ~12% |
 | Escala por tamanho (D-17) | Travessia (Vida máx. 2 na chegada) + Moral da escassez; abrigo nunca vazio | 31–90: H2–H6 57–77% (antes 29–95%); fome nas sobreviventes 7,8% |
 | Ameaça noturna por tamanho e limite de colapso | Rejeitados (testados no ciclo 9) | H6 seguia 88–93%; mais dados e vigias na mesa sem ganho |
+| Fim de campanha (D-22) | combustível largado volta ao Posto; tanque 6; manutenção de arma (1 sucata); defesa única, rodada nova, ondas por defensores | defesa isolada com Vida 2: 60–88% por tamanho (antes 5–100%); campanhas de 25 dias: 38 vitórias em 191 |
 | Van e combustível (D-21) | rota curta/longa de RULES §5; volta do Posto 2, Instalação 8; O2 do Posto = tanque do caminhão (4) | só cartas do Posto (8) não alcançavam a Instalação por nenhuma leitura documentada; com o tanque sobram 2 |
 | Cartão de acesso caído (D-19) | fica no chão do local onde a expedição falhou; nova expedição ao local o recolhe com 1 PA de herói vivo numa zona de busca (mesma carga); sem nova busca; nunca duplica | lacuna de regra travava o controlador; 0 erros em 10.800 partidas depois |
 | Horta abandonada (D-15) | mapa tático novo; renova 1 busca a cada 2 noites | todas as noites: sobreviventes confortáveis demais (T2 41%); a cada 2: T2 58–67%, descanso 65% → 44% |
