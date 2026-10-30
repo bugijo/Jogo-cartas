@@ -1,3 +1,14 @@
+# Escala por tamanho (D-17) — simulação, 2026-10-30
+
+Simulação, não playtest. Sobrevivem 15 dias: 1–30 39/53 (74%), 31–90 91/138 (66%); fome nas sobreviventes 6,5% e 7,8%.
+
+| Heróis | 2 | 3 | 4 | 5 | 6 |
+|---|---|---|---|---|---|
+| 1–30 | 4/4 | 7/10 | 9/14 | 10/14 | 9/11 |
+| 31–90 | 4/7 | 16/28 | 23/35 | 23/30 | 25/38 |
+
+Personas (1–30, 212 mesas): A 12/53, B 36/53, C 39/53, mista 30/53. `edicao-integral/COMUNIDADE_BALANCEAMENTO.md` ciclo 9.
+
 # Comunidade rebalanceada pelo diretor — simulação, 2026-10-30
 
 Simulação, não playtest. Sobrevivem 15 dias: 1–30 34/53 (64%), 31–90 88/138 (64%); antes 2/37 e 0/107. Fome nas sobreviventes 17–22% (meta ≤ 10% não cumprida). `edicao-integral/COMUNIDADE_BALANCEAMENTO.md`.

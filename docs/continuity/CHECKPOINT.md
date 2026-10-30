@@ -1,3 +1,9 @@
+# Estado ativo — D-17 escala por tamanho, 2026-10-30
+
+- Defeito: abrigo vazio (todos em viagem) contava como colapso; agora a viagem que esvaziaria o abrigo é recusada.
+- Regras do diretor: travessia (herói chega com Vida máx. 2) e Moral da escassez (humano sem porção −1, todos servidos +1). 1–30: 39/53 (74%), fome 6,5%; 31–90: 91/138 (66%), fome 7,8%; tamanhos 57–82%. T1–T5 ✓. `COMUNIDADE_BALANCEAMENTO.md` ciclo 9.
+- Personas 1–30: A 23% (não constrói) → D-18. Próximas: D-20 (crescimento do acampamento), D-18, D-15, D-19. Commits locais, sem push; 91–120 intactas.
+
 # Estado ativo — D-16 cão na viagem, 2026-10-30
 
 - Cão acompanha viagem (+1 no D6, −1 ponto/noite, fora da refeição). 1–30: 41/53 (77%), fome 8,1%; 31–90: 100/138 (72%), fome 9,7%. **T1–T5 cumpridas nas duas faixas.**

@@ -205,6 +205,15 @@ Código `community.py`; testes `tests/test_community.py`.
 - **Cão na viagem** (decisão do diretor, D-16): um cão apto pode acompanhar
   uma viagem automática: +1 no D6, −1 ponto por noite (come da viagem) e não
   come no abrigo enquanto estiver fora.
+- **Travessia** (decisão do diretor, D-17): na chegada ao regional, todo
+  herói com 3 de Vida fica com 2 (ninguém chega descansado). Ferimentos piores
+  ficam como estão.
+- **Moral da escassez** (decisão do diretor, D-17): depois da refeição, se
+  algum humano ficou sem comida ou sem água, o Moral do abrigo cai 1; se todos
+  comeram e beberam, sobe 1 (máximo 5). Cão sem porção não conta. Moral 0 é
+  derrota parcial (regra já existente do abrigo).
+- **Abrigo nunca vazio** (D-17): uma viagem automática que deixaria o abrigo
+  sem nenhum humano é recusada.
 - **Canteiro** (decisão do diretor, D-14; 2 madeira + 1 sucata, 2 trabalhos,
   até 2 por abrigo): produz 2 comida no dia em que um trabalhador cuida dele
   (agricultor +1). Não gasta o entorno: transforma trabalho em comida no meio
@@ -226,6 +235,8 @@ Código `community.py`; testes `tests/test_community.py`.
 | Serraria e bancadas | Eliminadas: a Oficina (EXP-BLD-02) é a bancada; lenha vem das viagens | não acrescentam decisão nova no jogo físico |
 | Defumador | Ideia futura | carne já dura 2 noites e vira 4 porções |
 | Mapa tático de comida além do Mercado | Fila D-08 (conteúdo) | dias de Mercado já caem para ~12% |
+| Escala por tamanho (D-17) | Travessia (Vida máx. 2 na chegada) + Moral da escassez; abrigo nunca vazio | 31–90: H2–H6 57–77% (antes 29–95%); fome nas sobreviventes 7,8% |
+| Ameaça noturna por tamanho e limite de colapso | Rejeitados (testados no ciclo 9) | H6 seguia 88–93%; mais dados e vigias na mesa sem ganho |
 
 ## Ainda sem regra aprovada (não decidir silenciosamente)
 

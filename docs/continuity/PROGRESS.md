@@ -1,5 +1,6 @@
 # 2026-10-29 — campanha regional multi-dia
 
+- 2026-10-30: D-17 escala por tamanho: abrigo nunca vazio, travessia e Moral da escassez; 74% (1–30) e 66% (31–90), todos os tamanhos 57–82%, T1–T5 ✓.
 - 2026-10-30: diretor rebalanceou a Comunidade; 64% sobrevivem em 1–30 e 31–90; T3 falha; fila `DIRECTOR_QUEUE.md`.
 - 2026-10-30: Comunidade (Missão Mestre) implementada opt-in; 1–30 3/53 e 31–90 7/138 sobrevivem; recusas por cama zeradas; T1/T3 falham (`COMUNIDADE_BALANCEAMENTO.md`).
 - 2026-10-30: F aprovada no motor; G, C2, D em protótipo; personas no regional; ciclos 10–13 sem cumprir T1/T3/T5; materiais em `CAMP_GROWTH.md`.

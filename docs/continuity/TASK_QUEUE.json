@@ -1,472 +1,472 @@
 {
- "schema": 1,
- "branch": "evolucao/zona-zero-sistema-v1",
- "updated_at": "2026-10-30",
- "tasks": [
-  {
-   "id": "P0-EXPEDITION-COMPLETE",
-   "priority": 0,
-   "objective": "Completar fases e consequências restantes da expedição 0.2.",
-   "depends_on": [],
-   "acceptance": [
-    "recibos legais",
-    "salvamento",
-    "sem recompensa duplicada",
-    "paridade 0.2"
-   ],
-   "tests": [
-    "edicao-integral/tests/test_cistern_tactics02.py",
-    "edicao-integral/tests/test_campaign_player02.py",
-    "edicao-integral/verify_campaign_player02.py"
-   ],
-   "status": "regressao_preservada",
-   "commit": "438beb9",
-   "blocker": "A Cisterna H2 seed22 segue certificada (5 dias/noites, 3 expedições, 98 decisões). Esta fila não amplia cobertura H3-H6 neste lote."
-  },
-  {
-   "id": "P1-MIGRATE-CISTERN",
-   "priority": 1,
-   "objective": "Migrar vitória e estado canônicos para Última Transmissão.",
-   "depends_on": [
-    "P0-EXPEDITION-COMPLETE"
-   ],
-   "acceptance": [
-    "verified_victory legal",
-    "migração atômica e idempotente",
-    "12 IDs de fundadores suportados",
-    "pessoas e recursos preservados com ledger",
-    "save/load",
-    "rota legal ao arco 2"
-   ],
-   "tests": [
-    "edicao-integral/tests/test_campaign_transition.py",
-    "edicao-integral/tests/test_posto_vehicle_bridge.py",
-    "edicao-integral/tests/test_regional_search_actions.py",
-    "edicao-integral/verify_campaign_player02.py",
-    "edicao-integral/verify_regional_player.py",
-    "edicao-integral/verify_continuous_campaign.py",
-    "edicao-integral/validate_data.py",
-    "python -m unittest discover -s edicao-integral/tests -q"
-   ],
-   "status": "parcial_bloqueada",
-   "commit": "d2181c5",
-   "blocker": "Migração preserva a vitória seed22. O motor agora aplica refeições, Fome/Sede, PA, ferimentos/recuperação, colapso e migração de saves schema 1→2. Rota local Célia entrega uma pista, mas o rádio exige duas. Célia/Vicente são fontes condicionais; cartas de Viagem regionais ainda não estão ligadas."
-  },
-  {
-   "id": "P2-PLAYER-CAMPAIGNS",
-   "priority": 2,
-   "objective": "Executar oito políticas adaptativas em campanhas completas.",
-   "depends_on": [
-    "P1-MIGRATE-CISTERN"
-   ],
-   "acceptance": [
-    "H2-H6",
-    "decisões registradas",
-    "resultados reproduzíveis"
-   ],
-   "tests": [
-    "simulador completo",
-    "auditoria adversarial"
-   ],
-   "status": "bloqueada",
-   "commit": null,
-   "blocker": "Sem replay completo de Última Transmissão. A Cisterna seed22 continua certificada; o replay regional parcial retorna uma pista física de Célia no clock 10. Tentativa para a segunda pista de Vicente encerrou no clock 7 após ataques. Posto, transmissor e defesa não foram concluídos. 340 testes aprovados não são playtests."
-  },
-  {
-   "id": "P3-PHYSICAL-EDITION",
-   "priority": 3,
-   "objective": "Consolidar e validar a edição física após as campanhas.",
-   "depends_on": [
-    "P2-PLAYER-CAMPAIGNS"
-   ],
-   "acceptance": [
-    "catálogo",
-    "PDFs inspecionados",
-    "plano de playtest humano"
-   ],
-   "tests": [
-    "auditoria de PDFs",
-    "dimensões e frente/verso"
-   ],
-   "status": "bloqueada",
-   "commit": null,
-   "blocker": "Campanha regional e regras operacionais ainda incompletas; nenhum PDF novo de campanha produzido nesta retomada."
-  },
-  {
-   "id": "P1-REGIONAL-TRAVEL-SHOE",
-   "priority": 1,
-   "objective": "Ligar baralho persistente de Viagem a cada trecho regional, incluindo decisões, efeitos, emboscada, relógio e save/load.",
-   "depends_on": [
-    "P1-MIGRATE-CISTERN"
-   ],
-   "acceptance": [
-    "uma carta por trecho pago",
-    "efeitos/decisões resolvidos por API pública",
-    "sem repetir carta após save/load",
-    "extra noturna sem segmento adicional",
-    "emboscada não ignorada"
-   ],
-   "tests": [
-    "edicao-integral/tests/test_regional_travel_cards.py"
-   ],
-   "status": "implementado_parcial_opcional",
-   "commit": null,
-   "blocker": "Ponte opcional (World.regional_travel_cards): uma carta por trecho pago, extra noturna sem segmento, Placa, escolhas sem carga levada, efeitos sem equivalente arquivados, save/load sem redraw. Falta: carga levada regional e ligar a opção nos replays/controlador regional."
-  },
-  {
-   "id": "P1-CLUE-SOURCES-AND-EXTRACTION",
-   "priority": 1,
-   "objective": "Garantir duas fontes físicas disponíveis e rota legal de extração sem conceder pistas automaticamente.",
-   "depends_on": [
-    "P1-MIGRATE-CISTERN"
-   ],
-   "acceptance": [
-    "cobrir identidade de fundadores/resgates",
-    "duas pistas com recibos físicos",
-    "rota alcançável e extraível dentro do relógio",
-    "save/load preserva evidências"
-   ],
-   "tests": [
-    "test_arc2_narrative_and_fuel_experimental.py",
-    "verify_continuous_campaign.py"
-   ],
-   "status": "parcial_bloqueada",
-   "commit": "d2181c5",
-   "blocker": "Rota tática local seed22 investiga Célia e extrai uma pista sem recompensa automática; o rádio recusa uma pista. Tentativa das duas fontes na Estação foi bloqueada pelo relógio/Horda no clock 7. Célia fundadora ou Vicente acolhido pode remover fonte. Cartas regionais ainda não resolvidas."
-  },
-  {
-   "id": "P1-REGIONAL-SURVIVAL-STATE",
-   "priority": 1,
-   "objective": "Aplicar consumo, estados de Fome/Sede, descanso e consequências em campanha regional migrada.",
-   "depends_on": [
-    "P1-MIGRATE-CISTERN"
-   ],
-   "acceptance": [
-    "consumidores individuais e porções conservados",
-    "prioridade explícita em escassez",
-    "PA/ferimentos/colapso conforme RULES §§8/18/25",
-    "save/load e migração de save",
-    "derrota parcial fail-closed"
-   ],
-   "tests": [
-    "edicao-integral/tests/test_regional_needs.py",
-    "edicao-integral/tests/test_system.py",
-    "edicao-integral/tests/test_integrated_campaign.py"
-   ],
-   "status": "implementado_parcial",
-   "commit": "d2181c5",
-   "blocker": "Evacuação da campanha não foi portada; estado de derrota encerra fail-closed. Não representa conclusão da continuação."
-  },
-  {
-   "id": "P2-CISTERN-SWEEP-H2-H6",
-   "priority": 2,
-   "objective": "Medir o controlador da Cisterna em H2–H6 e várias sementes, registrando causas de derrota.",
-   "depends_on": [
-    "P0-EXPEDITION-COMPLETE"
-   ],
-   "acceptance": [
-    "H2–H6",
-    "30 sementes por tamanho",
-    "artefato reproduzível",
-    "seed22 inalterada"
-   ],
-   "tests": [
-    "edicao-integral/tests/test_cistern_sweep.py",
-    "edicao-integral/simulate_cistern_sweep.py"
-   ],
-   "status": "validado_61_90",
-   "commit": null,
-   "blocker": "Validação cega 61–90: 56/150 (66 após Ferragens). Próximas medições em sementes 91–120."
-  },
-  {
-   "id": "P0-EMERGENCY-COLLECTION",
-   "priority": 0,
-   "objective": "Implementar Coleta de emergência (RULES §26) no motor da Cisterna.",
-   "depends_on": [],
-   "acceptance": [
-    "1 porção por adulto alocado",
-    "máximo 2 porções/dia",
-    "recém-chegado não coleta",
-    "save/load"
-   ],
-   "tests": [
-    "edicao-integral/tests/test_emergency_collection.py",
-    "edicao-integral/tests/test_cistern_sweep.py"
-   ],
-   "status": "implementado",
-   "commit": null,
-   "blocker": "Implementada e medida: efeito pequeno (H2 5→7, H5 7→6, H6 11→10 nas sementes 31–60); não resolve H3–H4."
-  },
-  {
-   "id": "P0-STATION-TACTICAL-AI",
-   "priority": 1,
-   "objective": "Melhorar o controlador tático na Estação para reduzir retiradas de emergência.",
-   "depends_on": [
-    "P2-CISTERN-SWEEP-H2-H6"
-   ],
-   "acceptance": [
-    "seed22 inalterada",
-    "medição em sementes reservadas"
-   ],
-   "tests": [
-    "edicao-integral/tests/test_cistern_tactics02.py",
-    "edicao-integral/tests/test_cistern_sweep.py",
-    "edicao-integral/simulate_cistern_sweep.py"
-   ],
-   "status": "implementado_medido",
-   "commit": null,
-   "blocker": "Validado; custo de escolta aprovado (1 PA)."
-  },
-  {
-   "id": "P2-CISTERN-H2-TACTICS",
-   "priority": 2,
-   "objective": "Melhorar o controlador em H2, onde não há herói livre para apoio.",
-   "depends_on": [
-    "P0-STATION-TACTICAL-AI"
-   ],
-   "acceptance": [
-    "seed22 inalterada",
-    "ajuste só em 1–30",
-    "medição em sementes novas"
-   ],
-   "tests": [
-    "edicao-integral/simulate_cistern_sweep.py"
-   ],
-   "status": "investigado_sem_ganho",
-   "commit": null,
-   "blocker": "Sementes 1–30: rota cautelosa não prejudica (+1); dupla 5→2; rota longa 5→0. Correção de carga evita abortar. H2 segue 4–6/30; sinal de design para playtest humano."
-  },
-  {
-   "id": "P2-FERRAGENS-GROUND-MATERIAL",
-   "priority": 2,
-   "objective": "Ferragens na ida: Material deixado no chão de Z1 coletável por 1 PA (texto da carta); hoje o motor só descarta.",
-   "depends_on": [],
-   "acceptance": [
-    "Material no chão persistente",
-    "coleta 1 PA",
-    "teste"
-   ],
-   "tests": [
-    "edicao-integral/tests/test_travel02.py"
-   ],
-   "status": "pendente",
-   "commit": null,
-   "blocker": "Exige ponte Travel02 → chão do mapa tático; implementar sem criar Material."
-  },
-  {
-   "id": "P1-REGIONAL-AMBUSH",
-   "priority": 1,
-   "objective": "Resolver ZC-VIA-0005 no transporte regional com mapa M1 (§30), relógio, Horda e save/load.",
-   "depends_on": [
-    "P1-REGIONAL-TRAVEL-SHOE"
-   ],
-   "acceptance": [
-    "rodada mínima",
-    "segmentos reais",
-    "emergência",
-    "sem ignorar emboscada"
-   ],
-   "tests": [
-    "edicao-integral/tests/test_regional_travel_cards.py",
-    "edicao-integral/tests/test_regional_travel_controller.py"
-   ],
-   "status": "controlador_integrado",
-   "commit": null,
-   "blocker": "AdaptiveRegionalPlayer resolve cartas e emboscadas (dados do RNG do mundo); replay verify_regional_travel.py (seed22: Emboscada na ida, Ajuda recusada na volta, retorno no relógio 5). Durabilidade não consumida (aprovado 2026-10-29). Pendentes: emergência de estrada com carga única/veículo; carga levada regional."
-  },
-  {
-   "id": "P1-REGIONAL-MULTIDAY-CAMPAIGN",
-   "priority": 1,
-   "objective": "Controlador regional joga vários dias seguidos: expedições sucessivas, Viagem/Emboscadas, refeições, fadiga/descanso, fim de dia, save/load diário, pistas e rádio, bloqueios registrados.",
-   "depends_on": [
-    "P1-REGIONAL-AMBUSH"
-   ],
-   "acceptance": [
-    "uma expedição por dia",
-    "refeição explícita",
-    "save/load a cada dia",
-    "sem recurso inventado",
-    "bloqueios registrados"
-   ],
-   "tests": [
-    "edicao-integral/tests/test_regional_campaign.py",
-    "edicao-integral/verify_regional_campaign.py"
-   ],
-   "status": "implementado",
-   "commit": "9a2f629",
-   "blocker": "Seed 22: 6 dias, 3 expedições, 1 pista (Célia); derrota parcial no dia 6 por fome. Mercado é o único local com mapa e comida (9 porções alcançáveis para 3 consumidores); Estação a pé com cartas estoura o relógio (emergência de estrada na volta). Militar bloqueado por regra de combustível."
-  },
-  {
-   "id": "P2-REGIONAL-FOOD-ECONOMY",
-   "priority": 1,
-   "objective": "Decidir fonte de comida regional sustentável (Horta EXP-LOC-01 sem mapa tático; renovação urbana; projetos sem madeira) para a campanha não colapsar antes do rádio.",
-   "depends_on": [
-    "P1-REGIONAL-MULTIDAY-CAMPAIGN"
-   ],
-   "acceptance": [
-    "regra aprovada",
-    "replay novo"
-   ],
-   "tests": [
-    "edicao-integral/simulate_regional_campaign.py"
-   ],
-   "status": "h1_implementada",
-   "commit": null,
-   "blocker": "H1 escolhida e implementada (7f19a5e); ver P1-REGIONAL-GARDEN-H1."
-  },
-  {
-   "id": "P1-REGIONAL-FILTER-CONTINUITY",
-   "priority": 1,
-   "objective": "Filtro da Cisterna produz água no regional.",
-   "depends_on": [],
-   "acceptance": [
-    "migração",
-    "produção diária",
-    "save/load",
-    "depósito"
-   ],
-   "tests": [
-    "edicao-integral/tests/test_continuity_filter.py"
-   ],
-   "status": "implementado",
-   "commit": "4f13ced",
-   "blocker": null
-  },
-  {
-   "id": "P1-REGIONAL-FUEL-VEHICLE-AUDIT",
-   "priority": 1,
-   "objective": "Auditar combustível e veículo regional sem alterar custos nem criar abastecimento.",
-   "depends_on": [],
-   "acceptance": [
-    "fontes",
-    "custos",
-    "caminho até EXP-LOC-06",
-    "bloqueios"
-   ],
-   "tests": [],
-   "status": "auditado",
-   "commit": null,
-   "blocker": "Sem reserva experimental da Oficina, o militar é inalcançável (faltam 2–8). Decisões 1–6 em TACTICAL_FUEL_AUDIT.md."
-  },
-  {
-   "id": "P2-DEV-OFFICE-VIRTUAL-PLAYERS",
-   "priority": 2,
-   "objective": "Barra de progresso no Desktop, Escritório Dev com 10 papéis e 18 jogadores virtuais com métricas por grupo.",
-   "depends_on": [],
-   "acceptance": [
-    "progresso só por critérios com evidência",
-    "10 papéis com critérios e entregas",
-    "18 personas distintas",
-    "piloto e ampliação reprodutíveis",
-    "política de referência reproduz o controlador"
-   ],
-   "tests": [
-    "tests/test_virtual_players.py",
-    "simulate_virtual_players.py --seeds 1-3"
-   ],
-   "status": "concluído",
-   "commit": null,
-   "blocker": "Mod carrega só após aceite do responsável; carregamento permanente exige aprovação de configuração."
-  },
-  {
-   "id": "P1-REGIONAL-GARDEN-H1",
-   "priority": 1,
-   "objective": "Horta §61 construída na Cisterna e migrada ao regional (H1, aprovada).",
-   "depends_on": [
-    "P2-REGIONAL-FOOD-ECONOMY"
-   ],
-   "acceptance": [
-    "Sementes só por acolhimento legal",
-    "custos §61",
-    "migração só com Horta ativa",
-    "replays certificados intactos",
-    "medição real"
-   ],
-   "tests": [
-    "edicao-integral/tests/test_garden_continuity.py",
-    "edicao-integral/simulate_regional_campaign.py --garden",
-    "edicao-integral/simulate_regional_campaign.py --garden --seeds 31-90"
-   ],
-   "status": "implementado_bloqueado",
-   "commit": "7f19a5e",
-   "blocker": "Depósito resolvido por descarte voluntário (2/53 sobrevivem em 1–30; 0/138 em 31–90). Pendentes: camas para recepção temporária (47 recusas, 5 Hortas; 4 opções em HORTA_CONTINUITY.md) e fome em rodízio sem penalidade (RULES l.49)."
-  },
-  {
-   "id": "P1-REGIONAL-FOOD-SUPPLY",
-   "priority": 1,
-   "objective": "Economia de comida regional viável sem rodízio (Fase 6).",
-   "depends_on": [
-    "P1-REGIONAL-GARDEN-H1"
-   ],
-   "acceptance": [
-    "T1–T5 de ECONOMY_TARGETS.md em 1–30",
-    "T1, T3 e T4 em 31–90",
-    "91–120 só na validação cega"
-   ],
-   "tests": [
-    "edicao-integral/experiments/camp_economy.py --seeds 1-30",
-    "edicao-integral/experiments/food_economy.py --grid --seeds 1-30",
-    "edicao-integral/tests/test_regional_camp.py",
-    "edicao-integral/tests/test_strategic_regional_player.py"
-   ],
-   "status": "em_andamento",
-   "notes": "F aprovada e implementada; G, C2, D em protótipo (876922f). Melhor legal: F+G+C2+D 3/37 e 18/107; falha T1, T3, T5. Ver ECONOMY_EXPERIMENTS.md ciclos 10–13."
-  },
-  {
-   "id": "P1-REGIONAL-CAMP-GROWTH",
-   "priority": 1,
-   "objective": "Acampamento regional que cresce (Fase 7).",
-   "depends_on": [
-    "P1-REGIONAL-FOOD-SUPPLY"
-   ],
-   "acceptance": [
-    "construções concluídas em campanhas reais",
-    "benefício medido"
-   ],
-   "tests": [
-    "edicao-integral/experiments/camp_economy.py --configs ALL+BUILD --salvage 12"
-   ],
-   "status": "aguardando_decisao",
-   "blocker": "Nenhuma madeira legal; propostas W1–W5 em edicao-integral/CAMP_GROWTH.md. Com W2 experimental: 22 Hortas e 2 Depósitos em 37 campanhas."
-  },
-  {
-   "id": "P2-PERSONAS-REGIONAL",
-   "priority": 2,
-   "objective": "18 personas jogam também a campanha regional (voto no amanhecer).",
-   "depends_on": [
-    "P2-DEV-OFFICE-VIRTUAL-PLAYERS"
-   ],
-   "acceptance": [
-    "mesas A, B, C e mista no regional",
-    "voto reprodutível",
-    "métricas por faixa sem avaliação subjetiva"
-   ],
-   "tests": [
-    "edicao-integral/tests/test_regional_table_player.py",
-    "edicao-integral/experiments/persona_regional.py --seeds 1-30 --prototypes"
-   ],
-   "status": "concluida",
-   "notes": "876922f; 600 mesas em 1–30; sem artefato gravado."
-  },
-  {
-   "id": "P1-COMUNIDADE",
-   "priority": 1,
-   "objective": "Missão Mestre: trabalhadores, profissões, viagens automáticas, recursos naturais, camas e armazenamento.",
-   "depends_on": [
-    "P2-PERSONAS-REGIONAL"
-   ],
-   "acceptance": [
-    "regras documentadas e rastreadas",
-    "opt-in sem alterar replays certificados",
-    "testes por mecânica",
-    "simulação antes × depois em 1–30 e 31–90"
-   ],
-   "tests": [
-    "edicao-integral/tests/test_community.py",
-    "edicao-integral/experiments/community_economy.py --seeds 1-30"
-   ],
-   "status": "parcial",
-   "notes": "0c1bb06 + rebalanceamento do diretor; 64% em 1–30 e 31–90; T3 falha; continuação em docs/continuity/DIRECTOR_QUEUE.md."
-  }
- ]
+  "schema": 1,
+  "branch": "evolucao/zona-zero-sistema-v1",
+  "updated_at": "2026-10-30",
+  "tasks": [
+    {
+      "id": "P0-EXPEDITION-COMPLETE",
+      "priority": 0,
+      "objective": "Completar fases e consequências restantes da expedição 0.2.",
+      "depends_on": [],
+      "acceptance": [
+        "recibos legais",
+        "salvamento",
+        "sem recompensa duplicada",
+        "paridade 0.2"
+      ],
+      "tests": [
+        "edicao-integral/tests/test_cistern_tactics02.py",
+        "edicao-integral/tests/test_campaign_player02.py",
+        "edicao-integral/verify_campaign_player02.py"
+      ],
+      "status": "regressao_preservada",
+      "commit": "438beb9",
+      "blocker": "A Cisterna H2 seed22 segue certificada (5 dias/noites, 3 expedições, 98 decisões). Esta fila não amplia cobertura H3-H6 neste lote."
+    },
+    {
+      "id": "P1-MIGRATE-CISTERN",
+      "priority": 1,
+      "objective": "Migrar vitória e estado canônicos para Última Transmissão.",
+      "depends_on": [
+        "P0-EXPEDITION-COMPLETE"
+      ],
+      "acceptance": [
+        "verified_victory legal",
+        "migração atômica e idempotente",
+        "12 IDs de fundadores suportados",
+        "pessoas e recursos preservados com ledger",
+        "save/load",
+        "rota legal ao arco 2"
+      ],
+      "tests": [
+        "edicao-integral/tests/test_campaign_transition.py",
+        "edicao-integral/tests/test_posto_vehicle_bridge.py",
+        "edicao-integral/tests/test_regional_search_actions.py",
+        "edicao-integral/verify_campaign_player02.py",
+        "edicao-integral/verify_regional_player.py",
+        "edicao-integral/verify_continuous_campaign.py",
+        "edicao-integral/validate_data.py",
+        "python -m unittest discover -s edicao-integral/tests -q"
+      ],
+      "status": "parcial_bloqueada",
+      "commit": "d2181c5",
+      "blocker": "Migração preserva a vitória seed22. O motor agora aplica refeições, Fome/Sede, PA, ferimentos/recuperação, colapso e migração de saves schema 1→2. Rota local Célia entrega uma pista, mas o rádio exige duas. Célia/Vicente são fontes condicionais; cartas de Viagem regionais ainda não estão ligadas."
+    },
+    {
+      "id": "P2-PLAYER-CAMPAIGNS",
+      "priority": 2,
+      "objective": "Executar oito políticas adaptativas em campanhas completas.",
+      "depends_on": [
+        "P1-MIGRATE-CISTERN"
+      ],
+      "acceptance": [
+        "H2-H6",
+        "decisões registradas",
+        "resultados reproduzíveis"
+      ],
+      "tests": [
+        "simulador completo",
+        "auditoria adversarial"
+      ],
+      "status": "bloqueada",
+      "commit": null,
+      "blocker": "Sem replay completo de Última Transmissão. A Cisterna seed22 continua certificada; o replay regional parcial retorna uma pista física de Célia no clock 10. Tentativa para a segunda pista de Vicente encerrou no clock 7 após ataques. Posto, transmissor e defesa não foram concluídos. 340 testes aprovados não são playtests."
+    },
+    {
+      "id": "P3-PHYSICAL-EDITION",
+      "priority": 3,
+      "objective": "Consolidar e validar a edição física após as campanhas.",
+      "depends_on": [
+        "P2-PLAYER-CAMPAIGNS"
+      ],
+      "acceptance": [
+        "catálogo",
+        "PDFs inspecionados",
+        "plano de playtest humano"
+      ],
+      "tests": [
+        "auditoria de PDFs",
+        "dimensões e frente/verso"
+      ],
+      "status": "bloqueada",
+      "commit": null,
+      "blocker": "Campanha regional e regras operacionais ainda incompletas; nenhum PDF novo de campanha produzido nesta retomada."
+    },
+    {
+      "id": "P1-REGIONAL-TRAVEL-SHOE",
+      "priority": 1,
+      "objective": "Ligar baralho persistente de Viagem a cada trecho regional, incluindo decisões, efeitos, emboscada, relógio e save/load.",
+      "depends_on": [
+        "P1-MIGRATE-CISTERN"
+      ],
+      "acceptance": [
+        "uma carta por trecho pago",
+        "efeitos/decisões resolvidos por API pública",
+        "sem repetir carta após save/load",
+        "extra noturna sem segmento adicional",
+        "emboscada não ignorada"
+      ],
+      "tests": [
+        "edicao-integral/tests/test_regional_travel_cards.py"
+      ],
+      "status": "implementado_parcial_opcional",
+      "commit": null,
+      "blocker": "Ponte opcional (World.regional_travel_cards): uma carta por trecho pago, extra noturna sem segmento, Placa, escolhas sem carga levada, efeitos sem equivalente arquivados, save/load sem redraw. Falta: carga levada regional e ligar a opção nos replays/controlador regional."
+    },
+    {
+      "id": "P1-CLUE-SOURCES-AND-EXTRACTION",
+      "priority": 1,
+      "objective": "Garantir duas fontes físicas disponíveis e rota legal de extração sem conceder pistas automaticamente.",
+      "depends_on": [
+        "P1-MIGRATE-CISTERN"
+      ],
+      "acceptance": [
+        "cobrir identidade de fundadores/resgates",
+        "duas pistas com recibos físicos",
+        "rota alcançável e extraível dentro do relógio",
+        "save/load preserva evidências"
+      ],
+      "tests": [
+        "test_arc2_narrative_and_fuel_experimental.py",
+        "verify_continuous_campaign.py"
+      ],
+      "status": "parcial_bloqueada",
+      "commit": "d2181c5",
+      "blocker": "Rota tática local seed22 investiga Célia e extrai uma pista sem recompensa automática; o rádio recusa uma pista. Tentativa das duas fontes na Estação foi bloqueada pelo relógio/Horda no clock 7. Célia fundadora ou Vicente acolhido pode remover fonte. Cartas regionais ainda não resolvidas."
+    },
+    {
+      "id": "P1-REGIONAL-SURVIVAL-STATE",
+      "priority": 1,
+      "objective": "Aplicar consumo, estados de Fome/Sede, descanso e consequências em campanha regional migrada.",
+      "depends_on": [
+        "P1-MIGRATE-CISTERN"
+      ],
+      "acceptance": [
+        "consumidores individuais e porções conservados",
+        "prioridade explícita em escassez",
+        "PA/ferimentos/colapso conforme RULES §§8/18/25",
+        "save/load e migração de save",
+        "derrota parcial fail-closed"
+      ],
+      "tests": [
+        "edicao-integral/tests/test_regional_needs.py",
+        "edicao-integral/tests/test_system.py",
+        "edicao-integral/tests/test_integrated_campaign.py"
+      ],
+      "status": "implementado_parcial",
+      "commit": "d2181c5",
+      "blocker": "Evacuação da campanha não foi portada; estado de derrota encerra fail-closed. Não representa conclusão da continuação."
+    },
+    {
+      "id": "P2-CISTERN-SWEEP-H2-H6",
+      "priority": 2,
+      "objective": "Medir o controlador da Cisterna em H2–H6 e várias sementes, registrando causas de derrota.",
+      "depends_on": [
+        "P0-EXPEDITION-COMPLETE"
+      ],
+      "acceptance": [
+        "H2–H6",
+        "30 sementes por tamanho",
+        "artefato reproduzível",
+        "seed22 inalterada"
+      ],
+      "tests": [
+        "edicao-integral/tests/test_cistern_sweep.py",
+        "edicao-integral/simulate_cistern_sweep.py"
+      ],
+      "status": "validado_61_90",
+      "commit": null,
+      "blocker": "Validação cega 61–90: 56/150 (66 após Ferragens). Próximas medições em sementes 91–120."
+    },
+    {
+      "id": "P0-EMERGENCY-COLLECTION",
+      "priority": 0,
+      "objective": "Implementar Coleta de emergência (RULES §26) no motor da Cisterna.",
+      "depends_on": [],
+      "acceptance": [
+        "1 porção por adulto alocado",
+        "máximo 2 porções/dia",
+        "recém-chegado não coleta",
+        "save/load"
+      ],
+      "tests": [
+        "edicao-integral/tests/test_emergency_collection.py",
+        "edicao-integral/tests/test_cistern_sweep.py"
+      ],
+      "status": "implementado",
+      "commit": null,
+      "blocker": "Implementada e medida: efeito pequeno (H2 5→7, H5 7→6, H6 11→10 nas sementes 31–60); não resolve H3–H4."
+    },
+    {
+      "id": "P0-STATION-TACTICAL-AI",
+      "priority": 1,
+      "objective": "Melhorar o controlador tático na Estação para reduzir retiradas de emergência.",
+      "depends_on": [
+        "P2-CISTERN-SWEEP-H2-H6"
+      ],
+      "acceptance": [
+        "seed22 inalterada",
+        "medição em sementes reservadas"
+      ],
+      "tests": [
+        "edicao-integral/tests/test_cistern_tactics02.py",
+        "edicao-integral/tests/test_cistern_sweep.py",
+        "edicao-integral/simulate_cistern_sweep.py"
+      ],
+      "status": "implementado_medido",
+      "commit": null,
+      "blocker": "Validado; custo de escolta aprovado (1 PA)."
+    },
+    {
+      "id": "P2-CISTERN-H2-TACTICS",
+      "priority": 2,
+      "objective": "Melhorar o controlador em H2, onde não há herói livre para apoio.",
+      "depends_on": [
+        "P0-STATION-TACTICAL-AI"
+      ],
+      "acceptance": [
+        "seed22 inalterada",
+        "ajuste só em 1–30",
+        "medição em sementes novas"
+      ],
+      "tests": [
+        "edicao-integral/simulate_cistern_sweep.py"
+      ],
+      "status": "investigado_sem_ganho",
+      "commit": null,
+      "blocker": "Sementes 1–30: rota cautelosa não prejudica (+1); dupla 5→2; rota longa 5→0. Correção de carga evita abortar. H2 segue 4–6/30; sinal de design para playtest humano."
+    },
+    {
+      "id": "P2-FERRAGENS-GROUND-MATERIAL",
+      "priority": 2,
+      "objective": "Ferragens na ida: Material deixado no chão de Z1 coletável por 1 PA (texto da carta); hoje o motor só descarta.",
+      "depends_on": [],
+      "acceptance": [
+        "Material no chão persistente",
+        "coleta 1 PA",
+        "teste"
+      ],
+      "tests": [
+        "edicao-integral/tests/test_travel02.py"
+      ],
+      "status": "pendente",
+      "commit": null,
+      "blocker": "Exige ponte Travel02 → chão do mapa tático; implementar sem criar Material."
+    },
+    {
+      "id": "P1-REGIONAL-AMBUSH",
+      "priority": 1,
+      "objective": "Resolver ZC-VIA-0005 no transporte regional com mapa M1 (§30), relógio, Horda e save/load.",
+      "depends_on": [
+        "P1-REGIONAL-TRAVEL-SHOE"
+      ],
+      "acceptance": [
+        "rodada mínima",
+        "segmentos reais",
+        "emergência",
+        "sem ignorar emboscada"
+      ],
+      "tests": [
+        "edicao-integral/tests/test_regional_travel_cards.py",
+        "edicao-integral/tests/test_regional_travel_controller.py"
+      ],
+      "status": "controlador_integrado",
+      "commit": null,
+      "blocker": "AdaptiveRegionalPlayer resolve cartas e emboscadas (dados do RNG do mundo); replay verify_regional_travel.py (seed22: Emboscada na ida, Ajuda recusada na volta, retorno no relógio 5). Durabilidade não consumida (aprovado 2026-10-29). Pendentes: emergência de estrada com carga única/veículo; carga levada regional."
+    },
+    {
+      "id": "P1-REGIONAL-MULTIDAY-CAMPAIGN",
+      "priority": 1,
+      "objective": "Controlador regional joga vários dias seguidos: expedições sucessivas, Viagem/Emboscadas, refeições, fadiga/descanso, fim de dia, save/load diário, pistas e rádio, bloqueios registrados.",
+      "depends_on": [
+        "P1-REGIONAL-AMBUSH"
+      ],
+      "acceptance": [
+        "uma expedição por dia",
+        "refeição explícita",
+        "save/load a cada dia",
+        "sem recurso inventado",
+        "bloqueios registrados"
+      ],
+      "tests": [
+        "edicao-integral/tests/test_regional_campaign.py",
+        "edicao-integral/verify_regional_campaign.py"
+      ],
+      "status": "implementado",
+      "commit": "9a2f629",
+      "blocker": "Seed 22: 6 dias, 3 expedições, 1 pista (Célia); derrota parcial no dia 6 por fome. Mercado é o único local com mapa e comida (9 porções alcançáveis para 3 consumidores); Estação a pé com cartas estoura o relógio (emergência de estrada na volta). Militar bloqueado por regra de combustível."
+    },
+    {
+      "id": "P2-REGIONAL-FOOD-ECONOMY",
+      "priority": 1,
+      "objective": "Decidir fonte de comida regional sustentável (Horta EXP-LOC-01 sem mapa tático; renovação urbana; projetos sem madeira) para a campanha não colapsar antes do rádio.",
+      "depends_on": [
+        "P1-REGIONAL-MULTIDAY-CAMPAIGN"
+      ],
+      "acceptance": [
+        "regra aprovada",
+        "replay novo"
+      ],
+      "tests": [
+        "edicao-integral/simulate_regional_campaign.py"
+      ],
+      "status": "h1_implementada",
+      "commit": null,
+      "blocker": "H1 escolhida e implementada (7f19a5e); ver P1-REGIONAL-GARDEN-H1."
+    },
+    {
+      "id": "P1-REGIONAL-FILTER-CONTINUITY",
+      "priority": 1,
+      "objective": "Filtro da Cisterna produz água no regional.",
+      "depends_on": [],
+      "acceptance": [
+        "migração",
+        "produção diária",
+        "save/load",
+        "depósito"
+      ],
+      "tests": [
+        "edicao-integral/tests/test_continuity_filter.py"
+      ],
+      "status": "implementado",
+      "commit": "4f13ced",
+      "blocker": null
+    },
+    {
+      "id": "P1-REGIONAL-FUEL-VEHICLE-AUDIT",
+      "priority": 1,
+      "objective": "Auditar combustível e veículo regional sem alterar custos nem criar abastecimento.",
+      "depends_on": [],
+      "acceptance": [
+        "fontes",
+        "custos",
+        "caminho até EXP-LOC-06",
+        "bloqueios"
+      ],
+      "tests": [],
+      "status": "auditado",
+      "commit": null,
+      "blocker": "Sem reserva experimental da Oficina, o militar é inalcançável (faltam 2–8). Decisões 1–6 em TACTICAL_FUEL_AUDIT.md."
+    },
+    {
+      "id": "P2-DEV-OFFICE-VIRTUAL-PLAYERS",
+      "priority": 2,
+      "objective": "Barra de progresso no Desktop, Escritório Dev com 10 papéis e 18 jogadores virtuais com métricas por grupo.",
+      "depends_on": [],
+      "acceptance": [
+        "progresso só por critérios com evidência",
+        "10 papéis com critérios e entregas",
+        "18 personas distintas",
+        "piloto e ampliação reprodutíveis",
+        "política de referência reproduz o controlador"
+      ],
+      "tests": [
+        "tests/test_virtual_players.py",
+        "simulate_virtual_players.py --seeds 1-3"
+      ],
+      "status": "concluído",
+      "commit": null,
+      "blocker": "Mod carrega só após aceite do responsável; carregamento permanente exige aprovação de configuração."
+    },
+    {
+      "id": "P1-REGIONAL-GARDEN-H1",
+      "priority": 1,
+      "objective": "Horta §61 construída na Cisterna e migrada ao regional (H1, aprovada).",
+      "depends_on": [
+        "P2-REGIONAL-FOOD-ECONOMY"
+      ],
+      "acceptance": [
+        "Sementes só por acolhimento legal",
+        "custos §61",
+        "migração só com Horta ativa",
+        "replays certificados intactos",
+        "medição real"
+      ],
+      "tests": [
+        "edicao-integral/tests/test_garden_continuity.py",
+        "edicao-integral/simulate_regional_campaign.py --garden",
+        "edicao-integral/simulate_regional_campaign.py --garden --seeds 31-90"
+      ],
+      "status": "implementado_bloqueado",
+      "commit": "7f19a5e",
+      "blocker": "Depósito resolvido por descarte voluntário (2/53 sobrevivem em 1–30; 0/138 em 31–90). Pendentes: camas para recepção temporária (47 recusas, 5 Hortas; 4 opções em HORTA_CONTINUITY.md) e fome em rodízio sem penalidade (RULES l.49)."
+    },
+    {
+      "id": "P1-REGIONAL-FOOD-SUPPLY",
+      "priority": 1,
+      "objective": "Economia de comida regional viável sem rodízio (Fase 6).",
+      "depends_on": [
+        "P1-REGIONAL-GARDEN-H1"
+      ],
+      "acceptance": [
+        "T1–T5 de ECONOMY_TARGETS.md em 1–30",
+        "T1, T3 e T4 em 31–90",
+        "91–120 só na validação cega"
+      ],
+      "tests": [
+        "edicao-integral/experiments/camp_economy.py --seeds 1-30",
+        "edicao-integral/experiments/food_economy.py --grid --seeds 1-30",
+        "edicao-integral/tests/test_regional_camp.py",
+        "edicao-integral/tests/test_strategic_regional_player.py"
+      ],
+      "status": "em_andamento",
+      "notes": "F aprovada e implementada; G, C2, D em protótipo (876922f). Melhor legal: F+G+C2+D 3/37 e 18/107; falha T1, T3, T5. Ver ECONOMY_EXPERIMENTS.md ciclos 10–13."
+    },
+    {
+      "id": "P1-REGIONAL-CAMP-GROWTH",
+      "priority": 1,
+      "objective": "Acampamento regional que cresce (Fase 7).",
+      "depends_on": [
+        "P1-REGIONAL-FOOD-SUPPLY"
+      ],
+      "acceptance": [
+        "construções concluídas em campanhas reais",
+        "benefício medido"
+      ],
+      "tests": [
+        "edicao-integral/experiments/camp_economy.py --configs ALL+BUILD --salvage 12"
+      ],
+      "status": "aguardando_decisao",
+      "blocker": "Nenhuma madeira legal; propostas W1–W5 em edicao-integral/CAMP_GROWTH.md. Com W2 experimental: 22 Hortas e 2 Depósitos em 37 campanhas."
+    },
+    {
+      "id": "P2-PERSONAS-REGIONAL",
+      "priority": 2,
+      "objective": "18 personas jogam também a campanha regional (voto no amanhecer).",
+      "depends_on": [
+        "P2-DEV-OFFICE-VIRTUAL-PLAYERS"
+      ],
+      "acceptance": [
+        "mesas A, B, C e mista no regional",
+        "voto reprodutível",
+        "métricas por faixa sem avaliação subjetiva"
+      ],
+      "tests": [
+        "edicao-integral/tests/test_regional_table_player.py",
+        "edicao-integral/experiments/persona_regional.py --seeds 1-30 --prototypes"
+      ],
+      "status": "concluida",
+      "notes": "876922f; 600 mesas em 1–30; sem artefato gravado."
+    },
+    {
+      "id": "P1-COMUNIDADE",
+      "priority": 1,
+      "objective": "Missão Mestre: trabalhadores, profissões, viagens automáticas, recursos naturais, camas e armazenamento.",
+      "depends_on": [
+        "P2-PERSONAS-REGIONAL"
+      ],
+      "acceptance": [
+        "regras documentadas e rastreadas",
+        "opt-in sem alterar replays certificados",
+        "testes por mecânica",
+        "simulação antes × depois em 1–30 e 31–90"
+      ],
+      "tests": [
+        "edicao-integral/tests/test_community.py",
+        "edicao-integral/experiments/community_economy.py --seeds 1-30"
+      ],
+      "status": "parcial",
+      "notes": "T1–T5 cumpridas em 1–30 (74%) e 31–90 (66%); escala por tamanho resolvida (D-17); continuação em docs/continuity/DIRECTOR_QUEUE.md (D-18..D-20)."
+    }
+  ]
 }

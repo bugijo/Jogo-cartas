@@ -184,3 +184,49 @@ uma viagem (+1 no D6, −1 ponto por noite), sai da refeição do abrigo.
 **T1–T5 cumpridas nas duas faixas** pela primeira vez. Problema que fica:
 escala por tamanho — H6 sobrevive 95% (fácil demais) e H2–H3 ~33–36% em 31–90.
 Nova tarefa D-17 (dificuldade proporcional ao tamanho, sem recurso grátis).
+
+## Ciclo 9 — escala por tamanho (D-17)
+
+**Defeito encontrado.** Com todos os humanos fora em viagem, o limite de
+colapso virava 0 (`(0+3)//4`) e o abrigo vazio "colapsava". Derrubava sobretudo
+H2–H3. Correção como regra: uma viagem não pode deixar o abrigo sem humanos.
+Sem o defeito, o jogo ficou fácil e desigual (1–90: H2 73%, H3 63%, H4 88%,
+H5 93%, H6 98%).
+
+**Diagnóstico.** Na chegada, Vida dos heróis 44% (H2–H3) contra 72% (H6):
+herói com 1 de Vida não viaja. E o rodízio espalha a fome entre muitas pessoas:
+H5–H6 passam mais fome (12%) e sobrevivem mais, porque ninguém chega à 3ª noite.
+
+Variantes (1–90, 3 repetições do regional por fim de Cisterna; `--reps`):
+
+| Variante | 1–30 | 31–90 | Fome sobrev. (31–90) | 31–90 H2/H3/H4/H5/H6 | Decisão |
+|---|---|---|---|---|---|
+| Sem defeito, sem regra nova | 89% | 77% | 10,3% | 71/65/80/81/80 | 1–30 acima de T1 |
+| Ameaça noturna (1 dado/3–5 humanos, vigia anula) | — | 80–82% (1–90) | 10–11% | H6 88–93% | rejeitada |
+| Limite de colapso mínimo 2 ou 1/6 | — | 86–88% (1–90) | 9% | sem efeito | rejeitada |
+| Entorno +2/dia (R2) | 79% | 67% | 12,7% | 67/65/74/62/65 | fome acima de T3 |
+| Baralho com mais ferimento/zumbis/perda | 84–87% | 71–77% | 11–11,5% | — | fome acima de T3 |
+| Travessia (Vida máx. 2) | 83% | 78% | 11,1% | 57/61/83/83/87 | adotada |
+| **Travessia + Moral (1 humano sem porção −1, todos +1)** | **75%** | **63%** | **7,2%** | 62/58/64/69/62 | **adotada** |
+| Moral 1 a cada 4 humanos | 79% | 69% | 8,1% | 62/60/70/74/71 | mais fácil, menos simples |
+| Moral sem recuperação | 62% | 51% | 5,1% | 62/46/57/50/46 | duro demais |
+| Moral sem travessia | 79% | 69% | 6,0% | 62/57/66/79/75 | tamanhos se afastam |
+
+Medição oficial (1 repetição, como nos ciclos anteriores):
+
+| Cenário | Sobrevivem | Fome | Fome tardia | T2 | Rádio (sobrev.) | H2/H3/H4/H5/H6 |
+|---|---|---|---|---|---|---|
+| **1–30 adotado** | **39/53 (74%)** | **6,5%** | 3,6% | 30/39 | 37 | 4/4, 7/10, 9/14, 10/14, 9/11 |
+| **31–90 adotado** | **91/138 (66%)** | **7,8%** | 2,1% | 79/91 | 89 | 4/7, 16/28, 23/35, 23/30, 25/38 |
+
+T1–T5 cumpridas nas duas faixas; todos os tamanhos entre 40% e 85% (H2 em
+1–30 é 4/4 com só 4 fins de Cisterna; nas repetições, 92–100%). Amostra pequena
+de H2: 11 vitórias de Cisterna em 1–90.
+
+Personas (18, sementes 1–30, 212 mesas): A 12/53 (23%), B 36/53, C 39/53,
+mista 30/53. O controlador das personas não construía canteiro (corrigido).
+O grupo A quase não constrói (0,4 estrutura/mesa) nem guarda comida → D-18.
+
+Lacunas fora da Comunidade vistas com mais ferimentos (1 caso em 1.240 cada):
+cartão de acesso no chão sem regra de recuperação; trabalhador indisponível no
+controlador tático → D-19.
