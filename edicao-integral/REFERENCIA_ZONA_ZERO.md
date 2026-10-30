@@ -109,7 +109,7 @@ Critérios por subsistema (cada um vale 1/6): **D** regra documentada,
 **I** implementação, **N** integração com campanha/motor, **T** teste
 automatizado, **S** simulação relevante, **R** sem regressão conhecida
 (`check.sh full` verde, seed 22 com 98 decisões). Percentual = critérios
-cumpridos ÷ 6. Estado em 2026-10-30, commit `0c1bb06`.
+cumpridos ÷ 6. Estado em 2026-10-30 (Comunidade com valores do diretor).
 
 | Subsistema | Regra | Código | Teste | D I N T S R | % |
 |---|---|---|---|---|---|
@@ -129,13 +129,20 @@ cumpridos ÷ 6. Estado em 2026-10-30, commit `0c1bb06`.
 | Bagagem dos resgatados | MANUAL §Comunidade | `community.join`, `tactics.py` | `test_rescued_survivor…` | ✓✓✓✓·✓ | 83 |
 | Recursos iniciais dos heróis | MANUAL (leitura a confirmar) | `community.arrival_kits` | `test_hero_arrival_kits…` | ✓✓✓✓✓✓ | 100* |
 | Vigia contra crise, cuidados | MANUAL §Comunidade | `guard_roll`, `after_meal` | `test_guard…` | ✓✓✓✓·✓ | 83 |
-| Serraria e bancadas | sem regra escrita | — | — | ······ | 0 |
-| Conservação longa (defumador) | ideia futura | — | — | ······ | 0 |
+| Inventário de baralhos da edição integral | — | — | — | ······ | 0 |
+| Mapas táticos e tabuleiro de zonas (impressão) | — | `maps/` do motor | testes táticos | ·✓✓✓·· | 50 |
+| Fichas de heróis e sobreviventes (impressão) | — | `data/system.json` | `validate_data.py` | ·✓✓✓·· | 50 |
+| Manual e livro de campanha da edição integral | — | — | — | ······ | 0 |
+| Kit A4 conferido (cartas frente/verso, tokens, guia) | — | — | — | ······ | 0 |
+| Avaliação das 18 personas na campanha completa | `ESCRITORIO_DEV.md` | `virtual_players.py` (Cisterna) | `test_virtual_players` | ✓····· | 17 |
+| Validação cega 91–120 | `ECONOMY_TARGETS.md` | — | — | ······ | 0 |
 
-\* implementada como leitura do motor; precisa de confirmação do criador.
+\* recursos iniciais dos heróis: leitura do motor, mantida pelo diretor.
+Serraria e bancadas foram eliminadas (a Oficina é a bancada); defumador é
+ideia futura — saem da matriz (`MANUAL_EXPERIMENTAL.md`, decisões do diretor).
 
-**Projeto (mecânicas listadas): (13 × 100 + 3 × 83,3 + 2 × 0) ÷ 18 = 86,1%.** Não é 100%: serraria,
-bancadas e conservação longa não têm regra aprovada; profissões, bagagem e
-vigia/cuidados ainda não têm simulação própria (S). Equilíbrio de
-sobrevivência não entra no percentual: é meta de balanceamento (T1–T5,
-`ECONOMY_TARGETS.md`) e **não está cumprida** (`COMUNIDADE_BALANCEAMENTO.md`).
+**Projeto: (13 × 100 + 3 × 83,3 + 2 × 50 + 16,7 + 4 × 0) ÷ 23 = 72,5%.**
+Mecânicas do motor: 96,9% (16 linhas). O que falta é o jogo físico (baralhos,
+manual, kit A4), avaliação das personas e a validação cega. Equilíbrio
+(`COMUNIDADE_BALANCEAMENTO.md`): 4 de 5 metas em 1–30 e 31–90; T3 (fome
+crônica) falha. Nada aqui é playtest humano.

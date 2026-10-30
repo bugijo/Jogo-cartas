@@ -1,3 +1,11 @@
+# Estado ativo — Direção do jogo: economia da Comunidade rebalanceada, 2026-10-30
+
+- Proprietário delegou decisões de design. Decisões do diretor em `MANUAL_EXPERIMENTAL.md` (heróis em viagem, suprimento de evacuação, rendimento/entorno, Horta 4/dia com Comunidade, serraria eliminada).
+- Resultado (`COMUNIDADE_BALANCEAMENTO.md`): 1–30 34/53 (64%), 31–90 88/138 (64%) sobrevivem 15 dias; T1, T2, T4, T5 ✓; **T3 ✗** (fome 17–22%). H2–H3 abaixo dos demais.
+- Matriz (`REFERENCIA_ZONA_ZERO.md`): motor 96,9%; projeto 72,5% (faltam baralhos, manual, kit A4, personas, validação cega).
+- Fila persistente: `docs/continuity/DIRECTOR_QUEUE.md` (próxima: D-05 fome crônica; D-06 personas; D-07 baralhos). Skill `.claude/skills/zona-zero-game-director`.
+- Sementes 91–120 intactas. Commits locais, sem push.
+
 # Estado ativo — Comunidade (Missão Mestre), 2026-10-30
 
 - `0c1bb06`: `community.py` + `data/community.json` (provisório) + `community_player.py`; opt-in na migração (`community=True`); desligado, replays certificados idênticos. 480 testes; seed 22 98 decisões.

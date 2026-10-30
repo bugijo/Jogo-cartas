@@ -1,3 +1,7 @@
+# Comunidade rebalanceada pelo diretor — simulação, 2026-10-30
+
+Simulação, não playtest. Sobrevivem 15 dias: 1–30 34/53 (64%), 31–90 88/138 (64%); antes 2/37 e 0/107. Fome nas sobreviventes 17–22% (meta ≤ 10% não cumprida). `edicao-integral/COMUNIDADE_BALANCEAMENTO.md`.
+
 # Comunidade (Missão Mestre) — simulação, 2026-10-30
 
 Simulação automatizada, não playtest. `experiments/community_economy.py`; H2–H6, 15 dias.

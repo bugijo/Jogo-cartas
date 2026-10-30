@@ -175,19 +175,21 @@ Código `community.py`; testes `tests/test_community.py`.
   não impede outra atividade, só não dá o bônus.
 - **Bagagem** (D6 ao resgatar): nada / 1 comida / 1 comida + 1 água /
   2 comida / 1 madeira + 1 sucata / 1 remédio + 1 comida.
-- **Viagem automática** (só não heróis): escolhe pessoa, atividade e 1–3
+- **Viagem automática** (trabalhadores e heróis que não saem na expedição
+  tática do dia; herói em viagem não entra em expedição): escolhe pessoa, atividade e 1–3
   dias; leva até 1 comida + 1 água por dia (é a refeição dela: fora, não come
   no abrigo); volta no amanhecer de partida + dias. Rendimento = (D6 + bônus)
   × dias − 1 por dia sem ração; unidades = pontos ÷ fator, até 6 de carga e
-  até a reserva do entorno. Fatores: caça 4 (carne), pesca 2 (comida),
-  lenha 2 (madeira), coleta 2 (frutas), sucata 3, água 1 (bruta). Cartas
+  até a reserva do entorno. Fatores: caça 4 (carne), pesca 1 (comida),
+  lenha 2 (madeira), coleta 1 (frutas), sucata 3, água 1 (bruta). Cartas
   (baralho de 12): 1 por viagem, +1 com 3 dias, +1 em caça/sucata. Tranquila
   ×3, abundância (+D6 pontos), descoberta (+1 sucata), chuva (−2 pontos),
   atraso (volta 1 dia depois, sem ração), ferimento, perda (metade da carga),
   equipamento (−1 sucata do abrigo ou −1 unidade), zumbis (D6: 1–2 ferimento e
   metade; 3–4 −1 unidade), pista (+1 pista, uma vez por campanha).
-- **Entorno finito**: caça 6 (+1/dia), peixe 8 (+2), madeira 12 (+1),
-  frutas 10 (+2), sucata das ruínas 6 (sem reposição). Floresta, rio e
+- **Entorno finito**: caça 6 (+1/dia), peixe 8 de início, máx. 12 (+3),
+  madeira 12 (+1), frutas 10 de início, máx. 12 (+3), sucata das ruínas 6
+  (sem reposição). Horta EXP-BLD-01 com Comunidade: 4 comida/dia (era 2). Floresta, rio e
   ruínas são zonas de trabalho automático, não mapas táticos.
 - **Comida**: carne crua dura 2 noites; cozinhar (1 carne por trabalho) dá
   **4 porções** com 1 madeira ou com a Cozinha, 2 porções improvisadas.
@@ -206,12 +208,20 @@ Código `community.py`; testes `tests/test_community.py`.
   a tabela de bagagem uma vez. *Leitura do motor* (a Cisterna não muda):
   confirmar se é isso que o criador quis.
 
+### Decisões do diretor (autonomia delegada pelo proprietário, 2026-10-30)
+
+| Decisão | Escolha | Evidência |
+|---|---|---|
+| Heróis em viagens automáticas | Permitido; o herói perde a expedição tática do dia e não come no abrigo | 1–30: 8 → 11 sobrevivem com G |
+| Suprimento de evacuação | 1 ração por consumidor na migração, uma vez (a Ponte entrega) | chegada média com 0,4 dia de comida; Colapso na 3ª noite |
+| Rendimento e entorno | pesca/coleta 1 ponto por unidade; peixe e frutas até 12, +3/dia; Horta EXP-BLD-01 4/dia | 1–30: 7/53 → 34/53 (ciclos 3–5) |
+| Abrigo lotado | Mantido: ninguém recupera Vida pelo descanso | simples de jogar; zera recusas de migração |
+| Serraria e bancadas | Eliminadas: a Oficina (EXP-BLD-02) é a bancada; lenha vem das viagens | não acrescentam decisão nova no jogo físico |
+| Defumador | Ideia futura | carne já dura 2 noites e vira 4 porções |
+| Mapa tático de comida além do Mercado | Fila D-08 (conteúdo) | dias de Mercado já caem para ~12% |
+
 ## Ainda sem regra aprovada (não decidir silenciosamente)
 
-- Comunidade — decisões pendentes (medidas em `COMUNIDADE_BALANCEAMENTO.md`):
-  heróis em viagens automáticas (hoje proibido); ração-ponte G na chegada;
-  custo de 1 ponto por dia sem ração (era 2); penalidade do abrigo lotado;
-  serraria e bancadas (sem regra escrita); conservação longa de carne.
 
 
 - Economia de comida regional: só o Mercado tem mapa tático e comida (4 buscas

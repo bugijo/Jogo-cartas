@@ -466,7 +466,7 @@
     "edicao-integral/experiments/community_economy.py --seeds 1-30"
    ],
    "status": "parcial",
-   "notes": "0c1bb06; 86,1% pela matriz; metas T1/T3 não cumpridas; decisões do criador pendentes."
+   "notes": "0c1bb06 + rebalanceamento do diretor; 64% em 1–30 e 31–90; T3 falha; continuação em docs/continuity/DIRECTOR_QUEUE.md."
   }
  ]
 }

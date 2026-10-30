@@ -92,3 +92,43 @@ conclusivas.
 4. Penalidade do abrigo lotado: sem recuperação de Vida pelo descanso (atual)
    ou outra.
 5. Serraria e bancadas: sem regra escrita; não implementadas.
+
+## Ciclos 3–5 (diretor, autonomia delegada, 2026-10-30)
+
+Defeito encontrado no harness: variantes em memória vazavam entre partidas
+nos processos reutilizados do Pool; corrigido (restaura os valores a cada
+partida). As comparações de rendimento feitas antes disso foram descartadas.
+
+| Ciclo | Mudança (uma por vez) | 1–30 sobrevivem | Fome nas sobrev. |
+|---|---|---|---|
+| 3 | + suprimento de evacuação + heróis em viagem (COMM-V1) | 7/53 | 9% |
+| 3 | controlador escolhe a atividade pelo rendimento visível esperado | (incluído acima) | — |
+| 4 | pesca/coleta 1 ponto por unidade (era 2) | 23/53 | 28% |
+| 4 | + peixe/frutas até 12, +3/dia | 30/53 | 25% |
+| 5 | + Horta EXP-BLD-01 4/dia com Comunidade (era 2) | **34/53 (64%)** | 17% |
+| — | capacidade 8 em vez de 6 (rejeitado) | 20/53 | 30% |
+| — | Horta 3/dia (intermediário) | 31/53 | 19% |
+
+## Resultado adotado — metas T1–T5 (`ECONOMY_TARGETS.md`)
+
+| Cenário | Sementes | Sobrevivem | T1 40–85% | T2 ≥ 50% com falta | T3 fome ≤ 10% | T4 nenhum tamanho zerado | T5 rádio ≥ 30% |
+|---|---|---|---|---|---|---|---|
+| COMM (adotado) | 1–30 | 34/53 = 64% | ✓ | ✓ 30/34 | ✗ 16,6% (tardia 12,9%) | ✓ | ✓ 31/34 |
+| COMM (adotado) | 31–90 | 88/138 = 64% | ✓ | ✓ 85/88 | ✗ 21,7% (tardia 18,8%) | ✓ | ✓ 81/88 |
+| COMM sem heróis em viagem | 1–30 | 36/53 = 68% | ✓ | ✓ | ✗ 21,9% | ✓ | ✓ |
+| COMM sem heróis em viagem | 31–90 | 76/138 = 55% | ✓ | ✓ | ✗ 26,3% | ✓ | ✓ |
+| Controlador anterior (STRAT) | 31–90 | 0/107 (31 recusas) | ✗ | — | — | ✗ | ✗ |
+
+Por tamanho (31–90, adotado): H2 4/7, H3 11/28, H4 20/35, H5 20/30, H6 33/38.
+Grupos pequenos (H2–H3) ficam bem abaixo: menos braços para o mesmo número de
+crianças e cães migrados. Tarefa aberta (D-05).
+
+Outros números (31–90, adotado): 4 188 viagens, 560 ferimentos em viagem,
+2,4 estruturas por campanha, Mercado em 11% dos dias, dias médios 12,4.
+
+Leitura crítica:
+- 4 de 5 metas cumpridas no ajuste e na confirmação; T3 falha: as
+  sobreviventes ainda vivem com ~1 porção faltando a cada 5 consumidor-noites.
+- Heróis em viagem: ganho pequeno no ajuste, claro na confirmação (+12 em
+  138); mantido.
+- Sementes 91–120 não usadas.
