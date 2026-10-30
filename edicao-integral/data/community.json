@@ -39,21 +39,22 @@
   "unsupplied_day_cost": 1,
   "depart_max_wounds": 1,
   "dangerous": ["caca", "sucata"],
-  "long_trip_days": 3
+  "long_trip_days": 3,
+  "heroes_allowed": true
  },
  "activities": {
   "caca":   {"zone": "floresta", "pool": "caca",    "points_per_unit": 4, "output": "meat"},
-  "pesca":  {"zone": "rio",      "pool": "peixe",   "points_per_unit": 2, "output": "food"},
+  "pesca":  {"zone": "rio",      "pool": "peixe",   "points_per_unit": 1, "output": "food"},
   "lenha":  {"zone": "floresta", "pool": "madeira", "points_per_unit": 2, "output": "wood"},
-  "coleta": {"zone": "floresta", "pool": "frutas",  "points_per_unit": 2, "output": "fruit"},
+  "coleta": {"zone": "floresta", "pool": "frutas",  "points_per_unit": 1, "output": "fruit"},
   "sucata": {"zone": "ruinas",   "pool": "sucata",  "points_per_unit": 3, "output": "scrap"},
   "agua":   {"zone": "rio",      "pool": null,      "points_per_unit": 1, "output": "raw_water"}
  },
  "pools": {
   "caca":    {"start": 6,  "max": 6,  "regrow": 1, "every": 1},
-  "peixe":   {"start": 8,  "max": 8,  "regrow": 2, "every": 1},
+  "peixe":   {"start": 8,  "max": 12, "regrow": 3, "every": 1},
   "madeira": {"start": 12, "max": 12, "regrow": 1, "every": 1},
-  "frutas":  {"start": 10, "max": 10, "regrow": 2, "every": 1},
+  "frutas":  {"start": 10, "max": 12, "regrow": 3, "every": 1},
   "sucata":  {"start": 6,  "max": 6,  "regrow": 0, "every": 1}
  },
  "fruit_water_every": 2,
@@ -71,5 +72,7 @@
  "care": {"people": 1, "specialist_people": 2},
  "crowding": {"extra_people": 2},
  "traps": {"max": 2, "cost_wood": 1, "catch_at": 5},
+ "garden_food_per_harvest": 4,
+ "evacuation_supply": {"food_per_consumer": 1},
  "water_tanks": {"base": 30, "per_reservoir": 12}
 }

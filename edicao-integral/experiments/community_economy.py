@@ -13,6 +13,7 @@ from __future__ import annotations
 import argparse
 import json
 import sys
+from copy import deepcopy
 from collections import Counter
 from multiprocessing import Pool
 from pathlib import Path
@@ -25,6 +26,10 @@ from regional_campaign_player import (RegionalCampaignPlayer,  # noqa: E402
                                       StrategicRegionalPlayer)
 from simulate_cistern_sweep import auto_settings  # noqa: E402
 
+import community  # noqa: E402
+
+ORIGINAL = deepcopy({key: community.RULES[key] for key in ('activities', 'pools', 'trips')})
+ORIGINAL_GARDEN = community.RULES['garden_food_per_harvest']
 DAYS = 15
 SIZES = (2, 3, 4, 5, 6)
 # nome: (controlador, regras Comunidade, opções do controlador)
@@ -42,6 +47,27 @@ CONFIGS = {
     'COMM-NOBUILD': (CommunityRegionalPlayer, True, {'options': ('priority',),
                                                       'community_builds': ()}),
 }
+
+
+PPU = {'COMM-V1': {'pesca': 2, 'coleta': 2},
+       'COMM-PPU1': {'pesca': 1, 'coleta': 1},
+       'COMM-PPU-CACA2': {'caca': 2},
+       'COMM-PPU15': {'pesca': 1, 'coleta': 1, 'caca': 3}}
+POOLS = {'COMM-V1': {'peixe': {'max': 8, 'regrow': 2}, 'frutas': {'max': 10, 'regrow': 2}},
+         'COMM-POOL3': {'peixe': {'max': 12, 'regrow': 3}, 'frutas': {'max': 12, 'regrow': 3}},
+         'COMM-POOL3C2': {'peixe': {'max': 12, 'regrow': 3}, 'frutas': {'max': 12, 'regrow': 3},
+                          'caca': {'max': 8, 'regrow': 2}}}
+PPU['COMM-PPU1-POOL3'] = PPU['COMM-PPU1']
+POOLS['COMM-PPU1-POOL3'] = POOLS['COMM-POOL3']
+PPU['COMM-PPU1-CAP8'] = PPU['COMM-PPU1']
+for _name in ('COMM-PPU1-POOL3-H4', 'COMM-PPU1-POOL3-H3'):
+    PPU[_name] = PPU['COMM-PPU1']
+    POOLS[_name] = POOLS['COMM-POOL3']
+GARDEN_OUTPUT = {'COMM-PPU1-POOL3-H4': 4, 'COMM-PPU1-POOL3-H3': 3, 'COMM-V1': 2}
+TRIP_OVERRIDES = {'COMM-PPU1-CAP8': {'capacity': 8}}
+for _name in [*PPU, *POOLS]:
+    CONFIGS[_name] = (CommunityRegionalPlayer, True, {})
+CONFIGS['COMM-NOHERO'] = (CommunityRegionalPlayer, True, {})
 
 
 def _counting(cls):
@@ -62,7 +88,21 @@ def run_one(args):
     config, size, seed = args
     cls, community_on, options = CONFIGS[config]
     import community
-    community.TRIPS['heroes_allowed'] = config.startswith('COMM-HEROTRIP')  # só em memória
+    # Variantes só em memória (nada muda em data/community.json). Restaura os
+    # valores originais a cada partida: os processos do Pool são reutilizados.
+    for key, value in deepcopy(ORIGINAL).items():
+        target = community.RULES[key]
+        target.clear()
+        target.update(value)
+    community.RULES['garden_food_per_harvest'] = ORIGINAL_GARDEN
+    community.TRIPS['heroes_allowed'] = not config.startswith('COMM-NOHERO')
+    for key, value in PPU.get(config, {}).items():
+        community.ACTIVITIES[key]['points_per_unit'] = value
+    for key, value in POOLS.get(config, {}).items():
+        community.RULES['pools'][key].update(value)
+    community.RULES['trips'].update(TRIP_OVERRIDES.get(config, {}))
+    if config in GARDEN_OUTPUT:
+        community.RULES['garden_food_per_harvest'] = GARDEN_OUTPUT[config]
     player = CampaignPlayer02.new_hn(seed, size)
     for key, value in auto_settings(size).items():
         setattr(player, key, value)
@@ -107,6 +147,8 @@ def run_one(args):
                                                 else 'stopped'),
         'days': played,
         'food_missing': food_missing, 'water_missing': water_missing,
+        'missing_by_night': [row['missing']['food'] for row in nights],
+        'consumers_by_night': counts,
         'people_nights': people_nights,
         'nights_short': sum(row['missing']['food'] > 0 for row in nights),
         'food_stock_days': round(sum(stock_days) / len(stock_days), 2) if stock_days else 0,
@@ -139,6 +181,9 @@ def summarize(rows):
             'survival_rate': round(len(surv) / len(migrated), 3) if migrated else 0,
             'mean_days': round(sum(r['days'] for r in migrated) / max(1, len(migrated)), 2),
             'hunger_in_survivors': round(sum(r['food_missing'] for r in surv) / pn, 3),
+            'hunger_late_survivors': round(
+                sum(sum(r['missing_by_night'][8:]) for r in surv)
+                / max(1, sum(sum(r['consumers_by_night'][8:]) for r in surv)), 3),
             'radio_all': sum(r['radio'] for r in migrated),
             'radio_survivors': sum(r['radio'] for r in surv),
             'clues_mean': round(sum(r['clues'] for r in migrated) / max(1, len(migrated)), 2),

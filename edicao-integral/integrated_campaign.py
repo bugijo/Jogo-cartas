@@ -1315,7 +1315,9 @@ class IntegratedCampaign:
         if community:
             projected.log.append({"day": 0, "event": "community_rules_on",
                                   "professions": dict(projected.community["professions"]),
-                                  "hero_kits": community_rules.arrival_kits(projected)})
+                                  "hero_kits": community_rules.arrival_kits(projected),
+                                  "evacuation_supply":
+                                      community_rules.evacuation_supply(projected)})
         projected.validate()
         self.world = projected
         return deepcopy(receipt)

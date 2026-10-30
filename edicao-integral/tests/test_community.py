@@ -85,7 +85,7 @@ class CommunityTests(unittest.TestCase):
         self.assertEqual(len(returns), 1)
         self.assertGreater(returns[0]['delivered']['food'], 0)
 
-    def test_one_function_per_worker_and_no_heroes_on_trips(self):
+    def test_one_function_per_worker(self):
         world = self.world
         worker = self.adults[0]
         community.send_trip(world, worker, 'lenha', 2)
@@ -95,8 +95,18 @@ class CommunityTests(unittest.TestCase):
             community.send_trip(world, worker, 'pesca', 1)
         with self.assertRaises(ValueError):
             world.assign_continuity_garden(worker)
+
+    def test_hero_on_trip_skips_tactical_expedition_and_shelter_meal(self):
+        world = self.world
+        hero = sorted(world.heroes)[0]
+        community.send_trip(world, hero, 'pesca', 2)
+        self.assertNotIn(hero, world.meal_people())
         with self.assertRaises(ValueError):
-            community.send_trip(world, sorted(world.heroes)[0], 'pesca', 1)
+            world.open_expedition('x', [hero], 'EXP-LOC-02')
+
+    def test_evacuation_supply_logged_once(self):
+        row = next(r for r in self.world.log if r.get('event') == 'community_rules_on')
+        self.assertEqual(row['evacuation_supply']['food'], len(self.base.world.meal_people()))
 
     # --- viagens: duração, D6 × dias, conversão, consumo, cartas ---------------------
     def test_duration_limits(self):
@@ -138,10 +148,11 @@ class CommunityTests(unittest.TestCase):
         state['deck']['pos'] = 0
         state['professions'][self.adults[0]] = 'pescador'
         community.send_trip(world, self.adults[0], 'pesca', 1, rations=0)
-        with self.roll(3):  # (3+1) × 1 − 1 (dia sem ração) = 3 pontos → 1 peixe
+        with self.roll(3):  # (3+1) × 1 − 1 (dia sem ração) = 3 pontos
             world.end_day(self.plan())
         ret = next(r for r in world.log if r.get('action') == 'worker_trip_return')
-        self.assertEqual((ret['bonus'], ret['points'], ret['units']), (1, 3, 1))
+        per = community.ACTIVITIES['pesca']['points_per_unit']
+        self.assertEqual((ret['bonus'], ret['points'], ret['units']), (1, 3, 3 // per))
 
     def test_event_cards_wound_and_lose_cargo(self):
         world = self.world

@@ -193,6 +193,16 @@ def arrival_kits(world) -> dict:
     return kits
 
 
+def evacuation_supply(world) -> dict:
+    """Suprimento de evacuação: a Ponte entrega 1 ração por consumidor, uma vez.
+
+    Decisão do diretor (2026-10-30): o grupo chega com comida para menos de uma
+    noite; sem esta ração as viagens não voltam antes do Colapso.
+    """
+    amount = RULES['evacuation_supply']['food_per_consumer'] * len(world.meal_people())
+    return {'food': amount, 'stored': world.deposit('food', amount)}
+
+
 # --- trabalhos do acampamento -------------------------------------------------------
 def assign_job(world, person_id: str, job: str, target: str | None = None) -> None:
     """Uma função por pessoa por dia, sem supervisão de herói."""

@@ -1305,6 +1305,8 @@ class World:
             raise ValueError('Expedição inválida')
         if any(h not in self.heroes or self.heroes[h]['location'] != 'camp' for h in hero_ids):
             raise ValueError('Herói indisponível')
+        if set(hero_ids) & community_rules.away(self):
+            raise ValueError('Herói em viagem automática não entra na expedição')
         if any(h in self.worked_today for h in hero_ids):
             raise ValueError('Herói que trabalhou não pode sair em expedição no mesmo dia')
         if any(self.heroes[h].get('fatigue',0)>=3 for h in hero_ids):
@@ -1776,7 +1778,10 @@ class World:
                        and not self.heroes[self.garden_worker].get('hungry')
                        and not self.heroes[self.garden_worker].get('thirsty')
                        and self.heroes[self.garden_worker].get('fatigue', 0)<3 else 0)
-                produced['food'] += self.deposit('food',DATA['rules']['garden_food_per_harvest']+bonus)
+                harvest = (community_rules.RULES['garden_food_per_harvest']
+                           if self.community is not None
+                           else DATA['rules']['garden_food_per_harvest'])
+                produced['food'] += self.deposit('food',harvest+bonus)
         garden_food = self._continuity_garden_harvest()
         forage = self._forage_harvest()
         garden_build = self._garden_build_work()

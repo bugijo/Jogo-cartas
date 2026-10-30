@@ -74,19 +74,26 @@ class CommunityRegionalPlayer(CampRegionalPlayer):
                 return community.STRUCTURES[kind]['cost'].get('wood', 0)
         return 0
 
-    def _food_activity(self, world, person):
-        pools = world.community['pools']
-        prof = community.profession(world, person)
-        cook_ready = world.stock['wood'] >= 1 or 'cozinha' in world.community['built']
-        preferred = FOOD_ACTIVITY.get(prof)
-        # Caça rende mais por ponto (1 carne = 4 porções com lenha; 2 sem).
-        options = [preferred] if preferred else []
-        options += ['caca', 'pesca', 'coleta'] if cook_ready else ['pesca', 'coleta', 'caca']
-        for activity in options:
-            pool = community.ACTIVITIES[activity]['pool']
-            if pools[pool] >= 2:
-                return activity
-        return None
+    def _expected_food(self, world, person, activity, days, planned):
+        """Comida esperada (média do D6 = 3,5), pela reserva visível do entorno."""
+        spec = community.ACTIVITIES[activity]
+        bonus = community.TRIPS['specialist_bonus'] if community.specialist(
+            world, person, activity) else 0
+        units = int((3.5 + bonus) * days // spec['points_per_unit'])
+        units = min(units, community.TRIPS['capacity'],
+                    world.community['pools'][spec['pool']] - planned.get(spec['pool'], 0))
+        if units <= 0:
+            return 0
+        if spec['output'] == 'meat':
+            cook = world.stock['wood'] >= 1 or 'cozinha' in world.community['built']
+            return units * community.RULES['meat'][
+                'portions_cooked' if cook else 'portions_improvised']
+        return units
+
+    def _food_activity(self, world, person, days, planned):
+        best = max(('caca', 'pesca', 'coleta'),
+                   key=lambda a: (self._expected_food(world, person, a, days, planned), a))
+        return best if self._expected_food(world, person, best, days, planned) > 0 else None
 
     # --- amanhecer -----------------------------------------------------------------
     def camp_work(self, world, kind, team):
@@ -138,6 +145,7 @@ class CommunityRegionalPlayer(CampRegionalPlayer):
                     done.setdefault('community', []).append((worker, 'obra', target))
         # 3. viagens automáticas
         if self.trips:
+            planned = {}
             for person in list(free):
                 if not community.able(world, person, community.TRIPS['depart_max_wounds']):
                     continue
@@ -148,16 +156,20 @@ class CommunityRegionalPlayer(CampRegionalPlayer):
                 if (world.stock['wood'] < 2 and not wood_trip and len(free) >= 2
                         and stock_days >= 1 and state['pools']['madeira'] >= 2):
                     activity = 'lenha'  # lenha para cozinhar a caça
-                elif stock_days < self.food_days:
-                    activity = self._food_activity(world, person)
-                if activity is None and need_wood and state['pools']['madeira'] >= 2:
-                    activity = 'lenha'
-                if activity is None:
-                    continue
                 # Estoque não cobre a noite: volta amanhã; coberto: viagem longa.
                 days = (1 if stock_days < 1 else 2 if stock_days < self.food_days
                         else self.max_days)
                 days = min(days, self.max_days)
+                if activity is None and stock_days < self.food_days:
+                    activity = self._food_activity(world, person, days, planned)
+                if activity is None and need_wood and state['pools']['madeira'] >= 2:
+                    activity = 'lenha'
+                if activity is None:
+                    continue
+                spec = community.ACTIVITIES[activity]
+                if spec['pool']:
+                    planned[spec['pool']] = planned.get(spec['pool'], 0) + int(
+                        3.5 * days // spec['points_per_unit'])
                 # A ração é a refeição de quem viaja (não come no abrigo): leva o
                 # que houver, até um dia de ração por dia de viagem.
                 community.send_trip(world, person, activity, days)
