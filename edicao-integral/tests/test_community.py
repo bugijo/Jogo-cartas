@@ -13,7 +13,9 @@ import community
 from campaign_player02 import CampaignPlayer02
 from simulate_cistern_sweep import auto_settings
 from regional_campaign_player import GARDEN_EDGE, MARKET, RegionalCampaignPlayer
+from arc2 import Arc2
 from system import TACTICS_DATA, World
+from tactics import TacticalGame
 
 
 def migrated(seed=2, size=4, on=True, level='normal'):
@@ -369,6 +371,43 @@ class CommunityTests(unittest.TestCase):
         self.assertEqual(supply(cozy), 2 * supply(normal))
         with self.assertRaisesRegex(ValueError, 'Nível'):
             migrated(level='facil')
+
+    # --- combustível e van na edição integral (D-21) -----------------------------
+    def _at_posto(self, expedition_id='posto'):
+        world = self.world
+        hero = sorted(world.heroes)[0]
+        world.open_expedition(expedition_id, [hero], 'EXP-LOC-07')
+        while world.expeditions[expedition_id].remaining:
+            world.advance_expedition(expedition_id)
+        return world, hero
+
+    def test_van_returns_from_posto_by_the_short_route(self):
+        world, _ = self._at_posto()
+        exp = world.expeditions['posto']
+        exp.cargo['fuel'] = 8
+        world.vehicles['EXP-VEI-02'] = {'location': 'EXP-LOC-07', 'health': 3}
+        world.site_states['EXP-LOC-07'] = {'van_state': 'operational'}
+        world.begin_return('posto', vehicle_id='EXP-VEI-02')
+        self.assertEqual((exp.cargo['fuel'], exp.remaining), (6, 1))  # 1 trecho × 2
+
+    def test_military_round_trip_by_van_costs_eight(self):
+        world = self.world
+        world.flags.update(radio_code=True, access_card=True)
+        world.special_stock.append('access_card')
+        world.vehicles['EXP-VEI-02'] = {'location': 'camp', 'health': 3}
+        world.stock['fuel'] = 8
+        Arc2(world).authorize_installation('military', sorted(world.heroes)[:2], 'EXP-VEI-02')
+        self.assertEqual(world.stock['fuel'], 0)                       # 2 × 2 trechos × 2
+        self.assertEqual(world.expeditions['military'].segment_cost, 2)
+
+    def test_posto_truck_tank_gives_four_fuel_once(self):
+        world, hero = self._at_posto()
+        tactical = TacticalGame.start(world, 'posto', 'gas_station_02')
+        tactical.state['heroes'][hero] = 14
+        receipt = tactical.drain_truck_tank(hero)
+        self.assertEqual((receipt['fuel'], world.expeditions['posto'].cargo['fuel']), (4, 4))
+        with self.assertRaises(ValueError):
+            tactical.drain_truck_tank(hero)
 
     def test_dog_joins_trip_adds_bonus_and_eats_from_it(self):
         world = self.world

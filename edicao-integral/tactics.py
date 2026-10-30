@@ -428,6 +428,35 @@ class TacticalGame:
                                'action':'pickup_fuel_card',**receipt})
         return receipt
 
+    def drain_truck_tank(self, hero_id: str) -> dict:
+        """O2 do Posto na edição integral (D-21): tanque do caminhão, uma vez.
+
+        1 PA na zona do O2; o combustível vira carga física da expedição.
+        """
+        exp=self.world.expeditions[self.id]
+        if self.world.community is None:
+            raise ValueError('Tanque do caminhão só existe na edição integral')
+        tank=community_rules.RULES['vehicles']['truck_tank']
+        if (exp.destination!=tank['location'] or self.state['map']!='gas_station_02'
+                or hero_id not in self.state['heroes']
+                or self.state['heroes'][hero_id]!=tank['zone']
+                or self.world.flags.get('truck_tank_drained')
+                or self.world.heroes[hero_id]['health']<1
+                or self.world.heroes[hero_id]['actions']<tank['actions']):
+            raise ValueError('Tanque do caminhão indisponível ou fora do O2')
+        capacity=(VEHICLES[exp.vehicle_id]['cargo_capacity'] if exp.vehicle_id
+                  else 6*len(exp.heroes))
+        if sum(exp.cargo.values())+len(exp.special_cargo)+tank['fuel']>capacity:
+            raise ValueError('Carga sem espaço para o combustível do tanque')
+        self.world.heroes[hero_id]['actions']-=tank['actions']
+        self.world.flags['truck_tank_drained']=True
+        exp.cargo['fuel']=exp.cargo.get('fuel',0)+tank['fuel']
+        receipt={'hero':hero_id,'zone':tank['zone'],'fuel':tank['fuel'],
+                 'cargo_fuel':exp.cargo['fuel']}
+        self.world.log.append({'day':self.world.day,'expedition':self.id,
+                               'action':'drain_truck_tank',**receipt})
+        return receipt
+
     def inspect_van(self, hero_id: str) -> None:
         exp=self.world.expeditions[self.id]
         if (exp.destination!='EXP-LOC-07' or self.state['map']!='gas_station_02'

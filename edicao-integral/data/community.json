@@ -90,6 +90,8 @@
  "levels": {"normal": {"start_structures": []},
             "acolhedor": {"start_structures": ["canteiro"], "evacuation_food_per_consumer": 2}},
  "location_renew_every": {"EXP-LOC-01": 2},
+ "vehicles": {"route_trechos": {"near": 1, "medium": 1, "far": 2},
+              "truck_tank": {"location": "EXP-LOC-07", "zone": 14, "fuel": 4, "actions": 1}},
  "arrival": {"max_hero_health": 2},
  "morale": {"on": true, "unfed_per_drop": 0, "recover": 1},
  "water_tanks": {"base": 30, "per_reservoir": 12}

@@ -750,6 +750,17 @@ def renew_every(world, location_id: str) -> int:
     return RULES['location_renew_every'].get(location_id, 1)
 
 
+def vehicle_trechos(world, distance: str) -> int | None:
+    """Trechos de van por sentido (D-21): rota curta 1 (perto/médio), longa 2.
+
+    RULES.md §5 l.29 e §11 l.64 (2 combustíveis por trecho). None fora da
+    edição integral: o protótipo certificado usa a distância a pé.
+    """
+    if world.community is None:
+        return None
+    return RULES['vehicles']['route_trechos'][distance]
+
+
 def crowded(world) -> bool:
     return world.community is not None and world.residents > world.beds
 

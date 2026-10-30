@@ -1324,6 +1324,8 @@ class World:
             driver=any(self.npcs[n]['job']=='driving' for n in npc_ids)
             if driver:
                 segments=max(1,segments-1)
+            # Edição integral (D-21): de van conta a rota, não a caminhada.
+            segments=community_rules.vehicle_trechos(self, distance) or segments
             if (vehicle_id not in self.vehicles or self.vehicles[vehicle_id]['location'] != 'camp'
                     or self.vehicles[vehicle_id]['health'] == 0
                     or len(hero_ids)+len(npc_ids) > VEHICLES[vehicle_id]['seats']):
@@ -1617,9 +1619,12 @@ class World:
                     or self.site_states.get(exp.destination, {}).get('van_state') != 'operational'
                     or len(exp.heroes) + len(exp.crew) > VEHICLES[vehicle_id]['seats']):
                 raise ValueError('Van operacional indisponível no Posto')
-            fuel_cost = exp.segment_cost * VEHICLES[vehicle_id]['fuel_per_segment']
+            # Volta de van pela rota (D-21); fora da edição integral, a pé.
+            trechos = community_rules.vehicle_trechos(self, exp.distance) or exp.segment_cost
+            fuel_cost = trechos * VEHICLES[vehicle_id]['fuel_per_segment']
             if exp.cargo.get('fuel', 0) < fuel_cost:
                 raise ValueError('Combustível físico insuficiente para retorno da van')
+            exp.segment_cost = trechos
             exp.cargo['fuel'] -= fuel_cost
             if exp.cargo['fuel'] == 0:
                 del exp.cargo['fuel']

@@ -108,7 +108,7 @@ class Arc2:
             raise ValueError('Campanha contínua exige a van canônica recuperada no Posto')
         if continuous and 'access_card' not in self.world.special_stock:
             raise ValueError('Campanha contínua exige cartão de acesso transportado ao abrigo')
-        if continuous:
+        if continuous and self.world.community is None:
             distance=LOCATIONS[card['location']]['distance']
             segments=DATA['rules']['travel_segments'][distance]
             expected=2*segments*VEHICLES[vehicle_id]['fuel_per_segment']
