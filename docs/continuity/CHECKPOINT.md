@@ -1,3 +1,8 @@
+# Estado ativo — D-08 tabuleiros da edição integral, 2026-10-30
+
+- `tools/build_boards_integral.py` (pycairo, sem instalar nada): painel do abrigo (2 A4), entorno (1 A4) e montagem da Horta abandonada (1 A4) em `edicao-integral/print/`; valores de `data/`, manifesto no `check.sh full`, PDFs com bytes estáveis. QA visual por render (pdftoppm).
+- Próximas: D-21 (combustível + mapa militar), D-09 (fichas), D-10 (manual), D-11 (cartas A4). Commits locais, sem push; 91–120 intactas.
+
 # Estado ativo — D-19 lacunas táticas, 2026-10-30
 
 - Regra do diretor: cartão de acesso caído fica no local da falha; nova expedição o recolhe com 1 PA numa zona de busca, sem nova busca, sem duplicar. 0 erros de motor em 10.800 partidas.

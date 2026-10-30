@@ -39,9 +39,9 @@ Total da edição integral: 324 (0.2) + 59 novas = **383 cartas**.
 | 6 mapas da Cisterna 0.2 | prontos (kit 0.2) |
 | Mapas táticos do motor: market_intro, hospital_02, workshop_02, gas_station_02, condominium_02, station_02, camp_final | jogáveis no motor; impressão da edição integral pendente (D-08) |
 | military_installation | **pendente**: depende da regra de combustível (`TACTICAL_FUEL_AUDIT.md`) |
-| garden_edge_01 (Horta abandonada, EXP-LOC-01) | **novo**: jogável no motor (D-15); arte e impressão pendentes (D-08) |
-| Tabuleiro do abrigo regional (trilhas de estoque, Moral, camas/lotação, terreno, obras, carne, dia/relógio com chegadas nos dias 4 e 10) | **novo, a desenhar** (D-08) |
-| Tabuleiro do entorno (caça, peixe, madeira, frutas, sucata; não tático) | **novo, a desenhar** (D-08) |
+| garden_edge_01 (Horta abandonada, EXP-LOC-01) | **pronto para imprimir**: folha de montagem sobre os 4 módulos comuns (`print/montagem_horta_abandonada.pdf`) |
+| Painel do abrigo regional (estoques, Moral, carne, camas/lotação, terreno, obras, dias com chegadas) | **pronto para imprimir**: 2 folhas A4 (`print/painel_abrigo.pdf`) |
+| Tabuleiro do entorno (reservas, atividades, viajantes, armadilhas, baralho de acontecimentos) | **pronto para imprimir**: 1 folha A4 (`print/tabuleiro_entorno.pdf`) |
 
 ## Heróis e fichas
 
@@ -56,6 +56,6 @@ do 0.2.
 
 ## Faltando para o kit (fila do diretor)
 
-D-08 tabuleiros do abrigo e do entorno; D-09 fichas regionais; D-10 manual
+D-08 feito (painel, entorno, Horta abandonada; mapa militar depende de D-21); D-09 fichas regionais; D-10 manual
 da edição integral; D-11 impressão A4 das 59 cartas novas, tabuleiros e
 fichas, com QA de frente/verso.

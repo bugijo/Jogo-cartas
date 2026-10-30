@@ -1,5 +1,6 @@
 # 2026-10-29 — campanha regional multi-dia
 
+- 2026-10-30: D-08 tabuleiros da edição integral gerados (painel do abrigo, entorno, Horta abandonada) em `edicao-integral/print/`.
 - 2026-10-30: D-19 cartão de acesso caído recolhível (regra do diretor); 0 erros de motor em 10.800 partidas.
 - 2026-10-30: D-15 Horta abandonada (mapa tático) e D-18 preparação Acolhedor; 72% (1–30) e 69% (31–90), T1–T5 ✓; personas A 31/53 no Acolhedor.
 - 2026-10-30: D-20 crescimento do abrigo (chegadas, terreno, cerca, níveis 2); 66% (1–30) e 64% (31–90), T1–T5 ✓; 383 cartas.
