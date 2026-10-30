@@ -1,0 +1,171 @@
+{
+ "decks": {
+  "cisterna_0.2": {
+   "source": "content/catalog.json",
+   "cards": {
+    "VIN": 12,
+    "INT": 12,
+    "REC": 156,
+    "PEC": 6,
+    "EQU": 18,
+    "SAQ": 36,
+    "VIA": 12,
+    "HOR": 9,
+    "CER": 6,
+    "EVE": 5,
+    "PRO": 10,
+    "STR": 17,
+    "MOR": 8,
+    "MIS": 8,
+    "VEI": 1,
+    "AJU": 8
+   },
+   "total": 324
+  },
+  "acontecimentos_viagem": {
+   "source": "data/community.json#event_deck",
+   "cards": {
+    "tranquila": 3,
+    "abundancia": 1,
+    "descoberta": 1,
+    "chuva": 1,
+    "atraso": 1,
+    "ferimento": 1,
+    "perda": 1,
+    "equipamento": 1,
+    "zumbis": 1,
+    "pista": 1
+   },
+   "total": 12
+  },
+  "profissoes": {
+   "source": "data/community.json#profession_deck",
+   "cards": {
+    "cacador": 1,
+    "pescador": 1,
+    "agricultor": 1,
+    "cozinheiro": 1,
+    "lenhador": 1,
+    "coletor": 1,
+    "mecanico": 1,
+    "carpinteiro": 1,
+    "enfermeiro": 1,
+    "guarda": 1,
+    "comum": 2
+   },
+   "total": 12
+  },
+  "estruturas_regionais": {
+   "source": "data/system.json#structures + data/community.json#structures",
+   "cards": {
+    "garden": 1,
+    "workshop": 1,
+    "infirmary": 1,
+    "watch": 1,
+    "storage": 1,
+    "reservoir": 1,
+    "lodging": 1,
+    "coletor": 1,
+    "cozinha": 1
+   },
+   "total": 9
+  },
+  "locais_regionais": {
+   "source": "data/system.json#locations",
+   "cards": {
+    "EXP-LOC-01": 1,
+    "EXP-LOC-02": 1,
+    "EXP-LOC-03": 1,
+    "EXP-LOC-04": 1,
+    "EXP-LOC-05": 1,
+    "EXP-LOC-06": 1,
+    "EXP-LOC-07": 1
+   },
+   "total": 7
+  },
+  "crises_regionais": {
+   "source": "data/system.json#crises",
+   "cards": {
+    "EXP-CRI-01": 1,
+    "EXP-CRI-02": 1,
+    "EXP-CRI-03": 1,
+    "EXP-CRI-04": 1,
+    "EXP-CRI-05": 1
+   },
+   "total": 5
+  },
+  "ultima_transmissao": {
+   "source": "data/last_transmission.json#cards",
+   "cards": {
+    "EXP-MIS-102": 1,
+    "EXP-MIS-103": 1,
+    "EXP-MIS-104": 1,
+    "EXP-MIS-105": 1,
+    "EXP-MIS-106": 1
+   },
+   "total": 5
+  },
+  "referencia_comunidade": {
+   "source": "data/community.json",
+   "cards": {
+    "bagagem_D6": 1,
+    "viagem_automatica": 1,
+    "comida_agua": 1,
+    "clima_coletor": 1
+   },
+   "total": 4
+  }
+ },
+ "boards": {
+  "mapas_cisterna_0.2": [
+   "ZC-MAP-0001",
+   "ZC-MAP-0002",
+   "ZC-MAP-0003",
+   "ZC-MAP-0004",
+   "ZC-MAP-0005",
+   "ZC-MAP-0006"
+  ],
+  "mapas_taticos_motor": [
+   "camp_final",
+   "condominium_02",
+   "gas_station_02",
+   "hospital_02",
+   "market_intro",
+   "military_installation",
+   "station_02",
+   "workshop_02"
+  ],
+  "tabuleiro_abrigo_regional": [
+   "trilhas de estoque (depósito seco 30, tanque 30)",
+   "camas e lotação (+2)",
+   "obras e estruturas",
+   "trilha de carne (6)",
+   "dia e relógio regional"
+  ],
+  "tabuleiro_entorno": [
+   "caca",
+   "peixe",
+   "madeira",
+   "frutas",
+   "sucata"
+  ]
+ },
+ "heroes": {
+  "cisterna_0.2": 12,
+  "catalogo_0.2_total": 24,
+  "regional_motor": 10
+ },
+ "tokens_0.2": {
+  "hero": 24,
+  "enemy": 24,
+  "marker": 150
+ },
+ "tokens_new": {
+  "viajante (marcador de dias)": 6,
+  "armadilha": 2,
+  "obra comunitária": 2
+ },
+ "reuse": {
+  "carne_REC_0.2": 8
+ }
+}

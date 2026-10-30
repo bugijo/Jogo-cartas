@@ -140,8 +140,17 @@ def able(world, person_id: str, max_wounds: int = 2) -> bool:
             return False  # especialista com trabalho fixo já produz
     elif person['kind'] != 'adult':
         return False
-    return (not person.get('hungry') and not person.get('thirsty')
-            and person.get('fatigue', 0) < 3 and _wounds(world, person_id) <= max_wounds)
+    if hunger_blocks(world, person_id):
+        return False
+    return person.get('fatigue', 0) < 3 and _wounds(world, person_id) <= max_wounds
+
+
+def hunger_blocks(world, person_id: str) -> bool:
+    """Fome/sede impedem trabalho (RULES l.22), também na Comunidade."""
+    person = _person(world, person_id)
+    if not (person.get('hungry') or person.get('thirsty')):
+        return False
+    return True  # medido: liberar 1 noite de fome não mudou o resultado (diretor)
 
 
 def workers(world) -> list[str]:

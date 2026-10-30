@@ -29,11 +29,12 @@ class CommunityRegionalPlayer(CampRegionalPlayer):
 
     def __init__(self, *args, options=('priority', 'build'), trips=True,
                  community_builds=('coletor', 'cozinha'), max_days=3, risk='covered',
-                 **kwargs):
+                 per_day_choice=False, **kwargs):
         super().__init__(*args, options=options, risk=risk, **kwargs)
         self.trips = trips
         self.community_builds = tuple(community_builds)
         self.max_days = max_days
+        self.per_day_choice = per_day_choice
 
     @staticmethod
     def garden_worker(world, kind):
@@ -91,9 +92,20 @@ class CommunityRegionalPlayer(CampRegionalPlayer):
         return units
 
     def _food_activity(self, world, person, days, planned):
-        best = max(('caca', 'pesca', 'coleta'),
-                   key=lambda a: (self._expected_food(world, person, a, days, planned), a))
-        return best if self._expected_food(world, person, best, days, planned) > 0 else None
+        """(atividade, dias) com mais comida esperada por dia fora.
+
+        Caça só rende carne com 2+ dias (4 pontos por carne), então entra com
+        no mínimo 2 dias mesmo quando a noite de hoje não está coberta.
+        """
+        options = [(a, days) for a in ('pesca', 'coleta')]
+        options.append(('caca', max(days, 2) if self.per_day_choice else days))
+        options = [(a, min(d, self.max_days)) for a, d in options]
+
+        def score(option):
+            food = self._expected_food(world, person, option[0], option[1], planned)
+            return (food / option[1] if self.per_day_choice else food, option[0])
+        best = max(options, key=score)
+        return best if score(best)[0] > 0 else (None, days)
 
     # --- amanhecer -----------------------------------------------------------------
     def camp_work(self, world, kind, team):
@@ -161,7 +173,7 @@ class CommunityRegionalPlayer(CampRegionalPlayer):
                         else self.max_days)
                 days = min(days, self.max_days)
                 if activity is None and stock_days < self.food_days:
-                    activity = self._food_activity(world, person, days, planned)
+                    activity, days = self._food_activity(world, person, days, planned)
                 if activity is None and need_wood and state['pools']['madeira'] >= 2:
                     activity = 'lenha'
                 if activity is None:

@@ -44,6 +44,9 @@ CONFIGS = {
                         {'options': ('priority', 'build', 'bridge')}),
     'COMM-G': (CommunityRegionalPlayer, True, {'options': ('priority', 'build', 'bridge')}),
     'COMM-SHORT': (CommunityRegionalPlayer, True, {'risk': 'short'}),
+    'COMM-PERDAY': (CommunityRegionalPlayer, True, {'per_day_choice': True}),
+    'COMM-FD3': (CommunityRegionalPlayer, True, {'food_days': 3}),
+    'COMM-FD4': (CommunityRegionalPlayer, True, {'food_days': 4}),
     'COMM-NOBUILD': (CommunityRegionalPlayer, True, {'options': ('priority',),
                                                       'community_builds': ()}),
 }

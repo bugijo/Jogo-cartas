@@ -705,7 +705,7 @@ class World:
                            if item['id'] == person_id), None)
             if (person is None or person['kind'] != 'adult'
                     or person.get('wounds', 0) >= 3 or person.get('fatigue', 0) >= 3
-                    or person.get('hungry') or person.get('thirsty')):
+                    or community_rules.hunger_blocks(self, person_id)):
                 raise ValueError('Trabalhador da Horta indisponível')
         garden['worker'] = person_id
         if discard_water:
@@ -854,7 +854,7 @@ class World:
                        if item['id'] == person_id), None)
         if (person is None or person['kind'] != 'adult'
                 or person.get('wounds', 0) >= 3 or person.get('fatigue', 0) >= 3
-                or person.get('hungry') or person.get('thirsty')):
+                or community_rules.hunger_blocks(self, person_id)):
             raise ValueError('Trabalhador do acampamento indisponível')
 
     def claim_bridge_ration(self) -> dict:
