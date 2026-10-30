@@ -21,6 +21,7 @@ from horde_deck02 import HordeDeck02
 from travel02 import Travel02, TravelContext
 from travel_deck02 import TravelDeck02
 from system import Expedition, HEROES, World
+import community as community_rules
 
 
 PART_MISSIONS = {
@@ -1090,8 +1091,12 @@ class IntegratedCampaign:
                                separators=(",", ":"))
         return hashlib.sha256(canonical.encode("utf-8")).hexdigest()
 
-    def transition_to_last_transmission(self) -> dict:
+    def transition_to_last_transmission(self, community: bool = False) -> dict:
         """Project a certified Cisterna save into the regional engine exactly once.
+
+        ``community`` liga as regras Comunidade (``community.py``) na chegada:
+        profissões dos adultos, viagens automáticas e abrigo lotado (até +2
+        moradores sem cama). Desligado, a migração é a certificada.
 
         Values without a rules-equivalent representation stay in an archival,
         non-spendable continuity manifest. The conversion is built and validated
@@ -1220,6 +1225,9 @@ class IntegratedCampaign:
         for person in projected.continuity_people:
             if person["kind"] not in ("adult", "child", "dog"):
                 raise ValueError(f"Tipo de morador sem modelo regional: {person['kind']}")
+        if community:
+            # Antes das demais validações: abrigo lotado (+2) só vale com Comunidade.
+            projected.community = community_rules.new_state(projected)
 
         # Only the identical crowbar has a matching active equipment model.
         # Other 0.2 items remain present in the immutable source archive until
@@ -1304,6 +1312,10 @@ class IntegratedCampaign:
             ledger["projection"]["garden_archived"] = {
                 "seeds_unspent": self.cistern.seeds, "garden": deepcopy(garden)}
         projected.log.append({"day": 0, "event": "campaign_transition", **receipt})
+        if community:
+            projected.log.append({"day": 0, "event": "community_rules_on",
+                                  "professions": dict(projected.community["professions"]),
+                                  "hero_kits": community_rules.arrival_kits(projected)})
         projected.validate()
         self.world = projected
         return deepcopy(receipt)

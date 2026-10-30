@@ -1,0 +1,75 @@
+{
+ "schema": 1,
+ "note": "Regras Comunidade (Missão Mestre, 2026-10-30). Todos os números são provisórios; mudanças em COMUNIDADE_BALANCEAMENTO.md.",
+ "professions": {
+  "cacador": {"name": "Caçador", "bonus": ["caca"]},
+  "pescador": {"name": "Pescador", "bonus": ["pesca"]},
+  "agricultor": {"name": "Agricultor", "bonus": ["horta", "coleta"]},
+  "cozinheiro": {"name": "Cozinheiro", "bonus": ["cozinhar"]},
+  "lenhador": {"name": "Lenhador", "bonus": ["lenha"]},
+  "coletor": {"name": "Coletor", "bonus": ["coleta", "agua"]},
+  "mecanico": {"name": "Mecânico", "bonus": ["sucata"]},
+  "carpinteiro": {"name": "Carpinteiro", "bonus": ["obra"]},
+  "enfermeiro": {"name": "Enfermeiro", "bonus": ["cuidar"]},
+  "guarda": {"name": "Guarda", "bonus": ["vigiar"]},
+  "comum": {"name": "Sobrevivente comum", "bonus": []}
+ },
+ "profession_deck": ["cacador", "pescador", "agricultor", "cozinheiro", "lenhador",
+                     "coletor", "mecanico", "carpinteiro", "enfermeiro", "guarda",
+                     "comum", "comum"],
+ "npc_professions": {
+  "farming": "agricultor", "cooking": "cozinheiro", "carpentry": "carpinteiro",
+  "mechanics": "mecanico", "maintenance": "mecanico", "electricity": "mecanico",
+  "medicine": "enfermeiro", "veterinary": "enfermeiro", "rescue": "enfermeiro",
+  "guard": "guarda", "scouting": "coletor", "plumbing": "coletor"
+ },
+ "baggage": {
+  "1": {},
+  "2": {"food": 1},
+  "3": {"food": 1, "water": 1},
+  "4": {"food": 2},
+  "5": {"wood": 1, "scrap": 1},
+  "6": {"medicine": 1, "food": 1}
+ },
+ "trips": {
+  "min_days": 1,
+  "max_days": 3,
+  "capacity": 6,
+  "specialist_bonus": 1,
+  "unsupplied_day_cost": 1,
+  "depart_max_wounds": 1,
+  "dangerous": ["caca", "sucata"],
+  "long_trip_days": 3
+ },
+ "activities": {
+  "caca":   {"zone": "floresta", "pool": "caca",    "points_per_unit": 4, "output": "meat"},
+  "pesca":  {"zone": "rio",      "pool": "peixe",   "points_per_unit": 2, "output": "food"},
+  "lenha":  {"zone": "floresta", "pool": "madeira", "points_per_unit": 2, "output": "wood"},
+  "coleta": {"zone": "floresta", "pool": "frutas",  "points_per_unit": 2, "output": "fruit"},
+  "sucata": {"zone": "ruinas",   "pool": "sucata",  "points_per_unit": 3, "output": "scrap"},
+  "agua":   {"zone": "rio",      "pool": null,      "points_per_unit": 1, "output": "raw_water"}
+ },
+ "pools": {
+  "caca":    {"start": 6,  "max": 6,  "regrow": 1, "every": 1},
+  "peixe":   {"start": 8,  "max": 8,  "regrow": 2, "every": 1},
+  "madeira": {"start": 12, "max": 12, "regrow": 1, "every": 1},
+  "frutas":  {"start": 10, "max": 10, "regrow": 2, "every": 1},
+  "sucata":  {"start": 6,  "max": 6,  "regrow": 0, "every": 1}
+ },
+ "fruit_water_every": 2,
+ "raw_water_per_wood": 3,
+ "meat": {"portions_cooked": 4, "portions_improvised": 2, "track": 6, "keeps_nights": 2},
+ "cooking": {"meat_per_job": 1, "specialist_extra": 1, "kitchen_extra": 1},
+ "event_deck": ["tranquila", "tranquila", "tranquila", "abundancia", "descoberta",
+                "chuva", "atraso", "ferimento", "perda", "equipamento", "zumbis", "pista"],
+ "structures": {
+  "coletor": {"name": "Coletor de chuva", "cost": {"wood": 1, "scrap": 1}, "work": 1,
+              "rain": {"4": 2, "5": 2, "6": 4}, "capacity": 4},
+  "cozinha": {"name": "Cozinha", "cost": {"wood": 2, "scrap": 1}, "work": 2}
+ },
+ "guard": {"prevent_at": 4, "specialist_prevent_at": 3},
+ "care": {"people": 1, "specialist_people": 2},
+ "crowding": {"extra_people": 2},
+ "traps": {"max": 2, "cost_wood": 1, "catch_at": 5},
+ "water_tanks": {"base": 30, "per_reservoir": 12}
+}

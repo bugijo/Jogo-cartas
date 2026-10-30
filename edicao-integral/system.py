@@ -15,6 +15,7 @@ from travel02 import AUTO_EFFECTS, CHOICES
 from ambush02 import Ambush02
 from cistern_tactics02 import WEAPONS as WEAPONS02
 from horde_deck02 import HordeDeck02 as _HordeDeck02
+import community as community_rules
 
 DATA = json.loads((Path(__file__).parent / 'data/system.json').read_text(encoding='utf-8'))
 EQUIPMENT = json.loads((Path(__file__).parent / 'data/equipment.json').read_text(encoding='utf-8'))
@@ -127,6 +128,10 @@ class World:
     # depósito. G, C2 e D: protótipos ligados só por `enable_regional_prototypes`.
     # None preserva os saves e replays regionais anteriores.
     regional_camp: dict | None = None
+    # Regras Comunidade (Missão Mestre, aprovadas em 2026-10-30): trabalhadores,
+    # profissões, viagens automáticas, recursos naturais (`community.py`).
+    # None preserva saves e replays certificados.
+    community: dict | None = None
     garden_worker: str | None = None
     guarding: dict[str, int] = field(default_factory=dict)
     rng_state: object = None
@@ -162,6 +167,21 @@ class World:
         return DATA['rules']['storage_base'] + sum(STRUCTURES[k]['storage_bonus'] for k in self.structures)+skill
 
     @property
+    def water_capacity(self) -> int | None:
+        """Comunidade: água em tanques próprios, fora do depósito seco."""
+        if self.community is None:
+            return None
+        tanks = community_rules.RULES['water_tanks']
+        return tanks['base'] + tanks['per_reservoir'] * ('reservoir' in self.structures)
+
+    def free_space(self, resource: str) -> int:
+        if self.community is not None:
+            if resource == 'water':
+                return self.water_capacity - self.stock['water']
+            return self.storage - sum(v for k, v in self.stock.items() if k != 'water')
+        return self.storage - sum(self.stock.values())
+
+    @property
     def residents(self) -> int:
         civilians = sum(person['kind'] in ('adult', 'child')
                         for person in self.continuity_people)
@@ -173,7 +193,8 @@ class World:
     def consumers(self) -> int:
         """People and dogs carried across from the 0.2 shelter ledger."""
         dogs = sum(person['kind'] == 'dog' for person in self.continuity_people)
-        return self.residents + dogs
+        # Quem está em viagem automática come da própria ração, não no abrigo.
+        return self.residents + dogs - len(community_rules.away(self))
 
     def meal_people(self) -> dict[str, dict]:
         """Return this night's actual consumers keyed by their persistent identity."""
@@ -181,6 +202,8 @@ class World:
         people.update({identifier: person for identifier, person in self.npcs.items()
                        if person.get('location') not in LOCATIONS})
         people.update({person['id']: person for person in self.continuity_people})
+        for identifier in community_rules.away(self):
+            people.pop(identifier, None)
         if len(people) != self.consumers:
             raise ValueError('Identidades de consumidores não correspondem ao censo')
         return people
@@ -278,9 +301,12 @@ class World:
                 or not self.cistern_verified):
             raise ValueError('Horta de continuidade inválida')
         self._validate_regional_camp()
-        if any(k not in RESOURCES for k in self.stock) or sum(self.stock.values()) > self.storage:
+        community_rules.validate(self)
+        if (any(k not in RESOURCES for k in self.stock)
+                or any(self.free_space(k) < 0 for k in ('food', 'water'))):
             raise ValueError('Depósito excedido')
-        if self.residents > self.beds or self.free_terrain < 0:
+        if (self.residents > self.beds + community_rules.bed_allowance(self)
+                or self.free_terrain < 0):
             raise ValueError('Capacidade excedida')
         continuity_ids = [person.get('id') for person in self.continuity_people]
         if (len(continuity_ids) != len(set(continuity_ids))
@@ -669,6 +695,9 @@ class World:
         if self.partial_defeat or self.continuous_campaign and (
                 self.expeditions or self.daily_expeditions):
             raise ValueError('Trabalho da Horta se planeja antes da expedição')
+        if self.community is not None and (person_id in community_rules.away(self)
+                                           or person_id in self.community['jobs']):
+            raise ValueError('Trabalhador da Horta indisponível')
         if person_id in self.heroes:
             self._require_working_hero(person_id)
         else:
@@ -698,15 +727,16 @@ class World:
         if not garden['active']:
             return {'worker': worker, 'produced': 0, 'not_stored': 0, 'reason': 'inactive'}
         receipt = {'worker': worker}
-        if discard:
+        output = garden['output'] + community_rules.garden_bonus(self, worker)
+        if discard and self.community is None:  # Comunidade: água tem tanque próprio
             # Descarte voluntário: só o que falta de espaço e só a água acima do
             # consumo previsto da refeição desta noite.
-            free = self.storage - sum(self.stock.values())
+            free = self.free_space('food')
             spare = max(0, self.stock['water'] - len(self.meal_people()))
-            receipt['water_discarded'] = min(spare, max(0, garden['output'] - free))
+            receipt['water_discarded'] = min(spare, max(0, output - free))
             self.stock['water'] -= receipt['water_discarded']
-        produced = self.deposit('food', garden['output'])
-        receipt.update(produced=produced, not_stored=garden['output'] - produced)
+        produced = self.deposit('food', output)
+        receipt.update(produced=produced, not_stored=output - produced)
         return receipt
 
     # --- acampamento regional: F aprovada; G, C2 e D em protótipo ---------------
@@ -784,7 +814,9 @@ class World:
                          'food_first': food_first})
 
     def _make_room_for_food(self, amount: int, reason: str) -> int:
-        free = self.storage - sum(self.stock.values())
+        if self.community is not None:
+            return 0  # Comunidade: água em tanques próprios não ocupa o depósito
+        free = self.free_space('food')
         spare = max(0, self.stock['water'] - len(self.meal_people()))
         discarded = min(spare, max(0, amount - free))
         if discarded:
@@ -811,6 +843,8 @@ class World:
         busy |= set((camp.get('garden_build') or {}).get('workers', []))
         if (self.continuity_garden or {}).get('worker'):
             busy.add(self.continuity_garden['worker'])
+        if self.community is not None:
+            busy |= community_rules.away(self) | set(self.community['jobs'])
         if person_id in busy:
             raise ValueError('Trabalhador já ocupado hoje')
         if person_id in self.heroes:
@@ -994,7 +1028,7 @@ class World:
             raise ValueError('Recurso inválido')
         if resource == 'food' and amount and (self.regional_camp or {}).get('food_priority'):
             self._make_room_for_food(amount, 'storage_priority')
-        accepted = min(amount, self.storage - sum(self.stock.values()))
+        accepted = min(amount, self.free_space(resource))
         self.stock[resource] += accepted
         return accepted
 
@@ -1746,6 +1780,7 @@ class World:
         garden_food = self._continuity_garden_harvest()
         forage = self._forage_harvest()
         garden_build = self._garden_build_work()
+        community_work = community_rules.day_work(self)
         people = self.meal_people()
         identifiers = set(people)
         need = len(people)
@@ -1797,6 +1832,7 @@ class World:
                     if key in person:
                         source[key] = person[key]
                 source['health'] = person['health']
+        community_care = community_rules.after_meal(self, people)
         human_consumers = [person for identifier,person in people.items()
                            if person.get('kind', 'hero' if identifier in self.heroes else 'adult') != 'dog']
         collapse_threshold = (len(human_consumers)+3)//4
@@ -1815,13 +1851,17 @@ class World:
         # Recovery is individual: a community-wide shortage does not penalize
         # someone who personally received both portions, nor does it deny that
         # person's printed overnight recovery.
+        # Comunidade: abrigo lotado (mais moradores que camas) não recupera Vida.
+        crowded = community_rules.crowded(self)
         for identifier, person in people.items():
             fully_supplied = not person['hungry'] and not person['thirsty']
             if not fully_supplied or person.get('location', 'camp') != 'camp':
                 continue
             if 'fatigue' in person:
                 person['fatigue'] = max(0, person['fatigue']-1)
-            if (identifier not in self.worked_today
+            if crowded:
+                pass
+            elif (identifier not in self.worked_today
                     and identifier not in self.departed_today
                     and 'health' in person):
                 person['health'] = min(3, person['health']+1)
@@ -1845,7 +1885,9 @@ class World:
         self._forage_regrow()
         if (self.continuity_garden or {}).get('source') == 'regional_build':
             self.continuity_garden['active'] = True
-        crisis = self._roll_crisis()
+        guard = community_rules.guard_roll(self)
+        crisis = self._roll_crisis(blocked=bool(guard and guard['prevents']))
+        community_dawn = community_rules.dawn(self)
         result = {'day':self.day,'produced':produced,'missing':missing,
                   'unfed': {resource: sorted(identifiers-allocations[resource])
                             for resource in ('food','water')},
@@ -1861,6 +1903,10 @@ class World:
             result['forage'] = forage
         if garden_build is not None:
             result['garden_build'] = garden_build
+        if self.community is not None:
+            result['community'] = {key: value for key, value in (
+                ('work', community_work), ('care', community_care), ('guard', guard),
+                ('dawn', community_dawn), ('crowded', crowded)) if value}
         self.log.append(result)
         self.validate()
         return result
@@ -1881,7 +1927,7 @@ class World:
         produced = self.deposit('water', source['output'])
         return {'produced': produced, 'not_stored': source['output'] - produced}
 
-    def _roll_crisis(self) -> str | None:
+    def _roll_crisis(self, blocked: bool = False) -> str | None:
         rng = random.Random()
         rng.setstate(_tuples(self.rng_state))
         trigger = rng.randrange(DATA['rules']['crisis_chance_denominator']) == 0
@@ -1890,6 +1936,11 @@ class World:
                     and self.day-self.crises_last_day.get(c['id'],-999) > c['cooldown_days']]
         chosen = rng.choice(eligible) if trigger and eligible else None
         self.rng_state = _lists(rng.getstate())
+        if chosen and blocked:
+            # Comunidade: a vigia percebeu a ameaça a tempo.
+            self.log.append({'day': self.day, 'action': 'crisis_prevented',
+                             'crisis': chosen['id']})
+            return None
         if chosen:
             self.crises_last_day[chosen['id']] = self.day
             self.active_crises.append(chosen['id'])

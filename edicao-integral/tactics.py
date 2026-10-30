@@ -6,6 +6,7 @@ from math import ceil
 from pathlib import Path
 
 from system import ITEMS, NPCS, REGIONAL_CONTACTS, VEHICLES, World
+import community as community_rules
 from horde_deck02 import HordeDeck02
 
 TACTICS=json.loads((Path(__file__).parent/'data/tactics.json').read_text(encoding='utf-8'))
@@ -307,7 +308,7 @@ class TacticalGame:
             raise ValueError('Contato indisponível sem herói ativo e 1 PA')
         if any(enemy['zone']==zone for enemy in self.state['enemies'].values()):
             raise ValueError('Não é seguro contatar sobrevivente com ameaça na zona')
-        if (self.world.residents>=self.world.beds
+        if (self.world.residents>=self.world.beds+community_rules.bed_allowance(self.world)
                 or self.world.stock['food']<self.world.residents+1
                 or self.world.stock['water']<self.world.residents+1):
             raise ValueError('A comunidade não tem vaga e sustento para acolher Célia')
@@ -326,6 +327,8 @@ class TacticalGame:
                                          if person!=npc_id]
             self.world.site_states[exp.destination]=site_state
         exp.crew.append(npc_id)
+        if self.world.community is not None and existing is None:
+            community_rules.join(self.world, npc_id)
         del self.state['npc_contacts'][npc_id]
         self.state['npc_followers'][npc_id]=hero_id
         receipt={'npc':npc_id,'hero':hero_id,'zone':zone,'location':exp.destination,
