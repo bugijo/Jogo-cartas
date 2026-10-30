@@ -49,6 +49,18 @@ Opções para decisão:
 4. **Barraca regional** (Materiais + Lona): exige trazer Materiais ao regional,
    hoje arquivados.
 
+Protótipo fora do repo (descarte ligado; nada commitado no motor):
+
+| Opção | Sementes | Vitórias | Recusas | Migram com Horta | Sobrevivem 15 dias |
+|---|---|---|---|---|---|
+| Atual | 1–30 / 31–90 | 53 / 138 | 16 / 31 | 2 / 1 | 2 / 0 |
+| 1: recepção migra, −1 Moral −1 Saúde por noite | 1–30 / 31–90 | 53 / 138 | 0 / 0 | 4 / 4 | 2 / 0 |
+| 3: controlador só acolhe com vaga | 1–30 / 31–90 | 49 / 141 | 0 / 0 | 0 / 1 | 0 / 0 |
+
+Na opção 1 as Hortas que antes eram recusadas (H4 s20, H5 s16, H4 s85, H6 s32,
+H6 s85) migram, mas caem em 4–5 dias. Na opção 3 não sobram vagas para o grupo
+das Sementes nas sementes 1–30. Nenhuma das duas muda a sobrevivência.
+
 ## Resultado real da H1 (escolhida pelo responsável; commit `7f19a5e`)
 
 Medição H2–H6, sementes 1–30 (sementes de ajuste), `auto_settings`.
