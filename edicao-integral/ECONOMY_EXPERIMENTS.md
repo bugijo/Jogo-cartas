@@ -55,3 +55,73 @@ Propostas para decisão (nada implementado):
 3. Horta §61 construível no regional com Materiais e Sementes levados da
    Cisterna (hoje arquivados).
 4. Ajustar o controlador para alternar comida e pistas antes de julgar T5.
+
+## Ciclos 4–9 (2026-10-30): controlador, fontes e Horta
+
+Mesmos alvos T1–T5. Sementes 1–30 (ajuste) e 31–90 (confirmação, já vistas);
+91–120 não usadas. Variantes de regra só na memória do experimento.
+
+### Controlador (falha de estratégia × falha de regra)
+
+- **Laço confirmado**: o controlador base vai ao Mercado sempre que a comida
+  está abaixo de 2 dias de consumo. Com Mercado renovável: 435 dias de Mercado,
+  3 de descanso, 0 de Estação (1–30). Além disso exige todos os heróis com Vida 3.
+- **`StrategicRegionalPlayer`** (subclasse; o base e os artefatos não mudam):
+  pista quando a noite está coberta (`risk='covered'`) ou também quando ninguém
+  está em privação seguida (`risk='short'`); equipe de longe só com heróis
+  Vida ≥ 2 e fadiga ≤ 1; buscas no Mercado proporcionais ao déficit.
+- Falha de **regra**, não de estratégia: o Mercado renovável repõe no máximo 1
+  busca/noite (2–3 comida) e o consumo é 5–11. Trocar dia de Mercado por pista
+  sempre custa comida; o controlador só escolhe onde perder.
+- Achado do motor: a carga entregue entra pelo depósito (`World.deposit`); com o
+  depósito cheio da água do filtro, **22% da comida trazida se perde** (88 de
+  408 na base; 176 de 1748 com reposição).
+- A campanha migra com 4,4 de comida para 8,7 consumidores (média, 1–30): falta
+  comida desde a noite 0.
+
+### Variantes (sobrevivem / migradas; fome = porções faltando nas sobreviventes)
+
+| Config | 1–30 | 31–90 | Fome | Rádio (todas) 1–30 / 31–90 | Metas 1–30 / 31–90 |
+|---|---|---|---|---|---|
+| A: motor + controlador base | 2/37 | 0/107 | 62% | 1 / 0 | ·✓··✓ / ····· |
+| B: controlador estratégico (short) | 2/37 | 0/107 | 62% | 1 / 4 (pistas 18 / 68) | ·✓··· / ····· |
+| C1: B + Mercado renovável ×1,5 (referência) | 7/37 | 25/107 | 46–58% | 2 / 7 | ·✓··· / ·✓·✓· |
+| C2: B + coleta por trabalhador (≤ ceil(consumidores/2)) | 2/37 | 1/107 | 21–25% | 1 / 4 | ·✓··· / ·✓··· |
+| D: B + Sementes guardadas viram Horta no dia 3 (teto) | 2/37 | 0/107 | 62% | 1 / 4 | ·✓··· / ····· |
+| F: base + descarte de água na entrega | 1/37 | 0/107 | 59% | 0 / 0 | ·✓··· / ····· |
+| G: base + ração-ponte (1 porção/consumidor) | 1/37 | 1/107 | 43–53% | 0 / 1 | ·✓··· / ·✓··✓ |
+| B + G + C2 | 2/37 | 1/107 | 14% | **18 / 39** | ·✓··✓ / ·✓··· |
+| **E: B + G + C2 + D + C1 ×1,5** | **26/37 (70%)** | **70/107 (65%)** | 36–38% | 17 / 38 | **✓✓·✓✓** / ✓✓·✓· |
+
+Por tamanho em E (sobrevivem/migradas), 1–30: H2 4/4, H3 7/10, H4 5/8, H5 6/8,
+H6 4/7; 31–90: H2 7/7, H3 26/28, H4 10/21, H5 12/22, H6 15/29.
+
+Leitura:
+- O controlador estratégico multiplica o avanço narrativo (pistas 2 → 18; com
+  ração-ponte e coleta, rádio em 18/37 e 39/107), mas sozinho não muda a
+  sobrevivência: falta de oferta.
+- D: 31–90 tem 25 campanhas que terminam a Cisterna com Sementes e sem Horta
+  (Materiais acabam no filtro). Mesmo pronta no dia 3, a Horta chega depois do
+  Colapso típico (dia 4). Ela só pesa com uma ponte que segure os primeiros dias.
+- E cumpre 4 de 5 metas no ajuste, mas **falha T3**: as sobreviventes ainda
+  vivem de rodízio (36–38% de porções faltando). Em 31–90 também cai T5 (26%).
+  E depende do Mercado renovável (referência, não solução) e de G (leitura nova).
+- **Crescimento do acampamento: 0 construções regionais em todas as variantes.**
+  As estruturas regionais custam madeira e nenhum local tem madeira no saque.
+  Bloqueio de conteúdo para a Fase 7.
+
+### Caminho legal da Horta (resumo)
+- Sementes: só acolhendo `ZC-MOR-0006` no Condomínio (1–30: 19 vitórias com
+  Sementes; 4 viram Horta ativa; 15 param sem Materiais).
+- Materiais: 3 iniciais vão ao filtro; 1 carta por região, buscas 5/12.
+- Regional: Materiais arquivados na migração; Oficina (`workshop_02`) tem mapa
+  e sucata. Proposta D: Horta §61 regional com Sementes guardadas + 2 sucata
+  como Materiais + 2 trabalhos (precisa de aprovação; medido só como teto).
+
+### Propostas para decisão (nenhuma implementada no motor)
+1. G — ração-ponte única na migração (estender CAMPAIGN l.32).
+2. F — descarte voluntário de água também na entrega de comida (estende a regra
+   já aprovada para a colheita).
+3. D — Horta §61 regional com Sementes guardadas e sucata.
+4. C2 — coleta por trabalhador, limitada a ceil(consumidores/2).
+5. Fonte de madeira (ou custo em sucata) para as estruturas regionais (Fase 7).

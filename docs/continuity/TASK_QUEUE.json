@@ -404,10 +404,26 @@
     "91–120 só na validação cega"
    ],
    "tests": [
-    "edicao-integral/experiments/food_economy.py --grid --seeds 1-30"
+    "edicao-integral/experiments/food_economy.py --grid --seeds 1-30",
+    "edicao-integral/tests/test_strategic_regional_player.py"
    ],
    "status": "aguardando_decisao",
-   "blocker": "Recompensa e Horta não movem; reposição move por rodízio. Escolher entre 4 propostas em ECONOMY_EXPERIMENTS.md."
+   "blocker": "E (estratégico+ponte+coleta+Horta+Mercado renovável) cumpre 4/5 no ajuste; falha T3 (rodízio 36–38%). Aprovar ou recusar propostas G, F, D, C2 em ECONOMY_EXPERIMENTS.md."
+  },
+  {
+   "id": "P1-REGIONAL-CAMP-GROWTH",
+   "priority": 1,
+   "objective": "Acampamento regional que cresce (Fase 7).",
+   "depends_on": [
+    "P1-REGIONAL-FOOD-SUPPLY"
+   ],
+   "acceptance": [
+    "construções concluídas em campanhas reais",
+    "benefício medido"
+   ],
+   "tests": [],
+   "status": "bloqueado_conteudo",
+   "blocker": "Estruturas regionais custam madeira; nenhum local tem madeira no saque (0 construções em todas as variantes)."
   }
  ]
 }

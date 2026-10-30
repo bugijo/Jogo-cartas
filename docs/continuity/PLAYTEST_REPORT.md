@@ -1,3 +1,11 @@
+# Controlador estratégico e fontes de comida — simulação, 2026-10-30
+
+Base 2/37 (1–30) e 0/107 (31–90). Controlador estratégico: pistas 2 → 18, sem
+mudar a sobrevivência. Melhor combinação experimental E: 26/37 e 70/107, rádio
+17 e 38, mas 36–38% das porções faltando nas sobreviventes (falha T3).
+Nenhuma construção regional (sem madeira). Simulação, não playtest. Detalhes em
+`edicao-integral/ECONOMY_EXPERIMENTS.md`.
+
 # Economia de comida regional — experimentos, 2026-10-29
 
 Alvos pré-registrados (`ECONOMY_TARGETS.md`). Comida ×1,25–×2 e Horta 4–8: até

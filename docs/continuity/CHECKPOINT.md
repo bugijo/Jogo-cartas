@@ -1,3 +1,11 @@
+# Estado ativo — controlador estratégico e fontes de comida, 2026-10-30
+
+- Laço do controlador confirmado (só Mercado; 0 Estação). `StrategicRegionalPlayer` (subclasse experimental) multiplica pistas e rádio; base e artefatos intactos.
+- Achados: 22% da comida entregue se perde por depósito cheio de água; migração chega com 4,4 comida para 8,7 consumidores.
+- Melhor combinação E (estratégico + ração-ponte + coleta + Horta de Sementes guardadas + Mercado renovável ×1,5): 70% (1–30) e 65% (31–90), rádio em 17/38; **falha T3** (36–38% de fome) e T5 em 31–90. Depende de propostas não aprovadas.
+- Acampamento regional: 0 construções (sem fonte de madeira). Fase 7 bloqueada por conteúdo.
+- Portão da Fase 9 reprovado; arte não iniciada. Detalhes e 5 propostas em `edicao-integral/ECONOMY_EXPERIMENTS.md`.
+
 # Estado ativo — economia de comida regional (Fase 6), 2026-10-29
 
 - Alvos T1–T5 registrados antes de medir (`b01d7e7`, `edicao-integral/ECONOMY_TARGETS.md`). Experimento reproduzível `edicao-integral/experiments/food_economy.py`; motor intacto.
