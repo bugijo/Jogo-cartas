@@ -1,5 +1,54 @@
 # Horta entre a Cisterna e a campanha regional (2026-10-29)
 
+## Descarte voluntário de água (aprovado; medição real)
+
+Regra no `MANUAL_EXPERIMENTAL.md`. Medição H2–H6, 15 dias regionais, modo Horta.
+Sementes 1–30 são de ajuste; 31–90 já vistas, usadas só como validação (nada
+ajustado). 91–120 não usadas.
+
+| Sementes 1–30 | Sem descarte | Com descarte |
+|---|---|---|
+| Vitórias da Cisterna | 53 | 53 |
+| Migração recusada (camas) | 16 | 16 |
+| Migram com Horta | 2 | 2 |
+| Sobrevivem 15 dias | 0 | 2 (H5 s10, H6 s10) |
+| Comida colhida (H5 / H6) | 1 / 0 | 56 / 56 |
+| Água descartada (H5 / H6) | — | 4 / 4 (só no 1º dia) |
+
+| Sementes 31–90 | Base | Horta sem descarte | Horta com descarte |
+|---|---|---|---|
+| Vitórias da Cisterna | 143 | 138 | 138 |
+| Migração recusada (camas) | 0 | 31 | 31 |
+| Migram com Horta | — | 1 (H3 s70) | 1 |
+| Sobrevivem 15 dias | 0 | 0 | 0 (H3 s70 cai no dia 7, 20 comida colhidas, descarte 0) |
+
+**Não está fácil demais no agregado** (2 de 191 vitórias sobrevivem, todas com
+Horta), mas as 2 sobrevivências são **fome em rodízio**: 10–11 consumidores,
+6–7 porções faltando **toda** noite, ninguém com 2 noites seguidas sem comer, logo
+sem ferimento nem Colapso (RULES l.49). Rádio só em H5 s10; cartão em nenhuma.
+O descarte só destrava o 1º dia; o que sustenta é a Horta + rodízio. Avaliar se a
+regra de privação deve pesar nesse padrão — pendente, não alterado.
+
+## Bloqueio de camas (investigação, nada alterado)
+
+- Na Cisterna, acolher aceita até capacidade + 2 humanos como recepção
+  temporária (`Cistern02.rescue`; RULES l.81: da 3ª noite, −1 Moral e −1 Saúde
+  por noite sem vaga). O controlador vence com 1–2 humanos acima das vagas.
+- No regional, `World.validate` exige residentes ≤ camas (camas = vagas da
+  Cisterna) e a migração é recusada: 47 recusas em 1–90 (excedente 1 em 34,
+  2 em 13). Hortas ativas perdidas: H4 s20, H5 s16, H4 s85, H6 s32, H6 s85.
+- O regional não tem Barraca construível; não há como abrir vaga depois.
+
+Opções para decisão:
+1. **Migrar a recepção temporária**: excedente entra sem cama, com a penalidade
+   da RULES l.81 por noite até haver vaga (no regional, para sempre).
+2. **Ponte de acolhimento** (CAMPAIGN l.32: 2 vagas por fundador até construir):
+   texto é da Evacuação; usar na migração seria nova leitura.
+3. **Controlador só acolhe com vaga definitiva** (ou constrói Barraca antes):
+   sem regra nova, mas perde as Sementes nessas sementes.
+4. **Barraca regional** (Materiais + Lona): exige trazer Materiais ao regional,
+   hoje arquivados.
+
 ## Resultado real da H1 (escolhida pelo responsável; commit `7f19a5e`)
 
 Medição H2–H6, sementes 1–30 (sementes de ajuste), `auto_settings`.

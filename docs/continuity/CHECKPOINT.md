@@ -1,3 +1,11 @@
+# Estado ativo — descarte voluntário de água na Horta, 2026-10-29
+
+- Aprovado e implementado: na colheita regional, só a água acima do consumo da noite e só o espaço que falta para as 4 comida; depósito segue 30; `garden_food.water_discarded`. Cisterna e replays certificados intactos.
+- Real 1–30: 2 de 53 sobrevivem 15 dias (H5 s10, H6 s10; antes 0). 31–90 (validação): 0 de 138; H3 s70 cai no dia 7.
+- As 2 sobrevivências são fome em rodízio (6–7 porções faltando toda noite, sem ferimento pela RULES l.49) — balanceamento pendente.
+- Camas: 47 recusas em 1–90 (excedente 1–2 da recepção temporária); 5 Hortas perdidas. Quatro opções em `edicao-integral/HORTA_CONTINUITY.md`. **Decisão do responsável.**
+- Commits locais, sem push (pedido do responsável).
+
 # Estado ativo — Horta H1 implementada e medida, 2026-10-29
 
 - `7f19a5e`: Sementes ao acolher `ZC-MOR-0006`, projeto Horta §61 na Cisterna, migração `continuity_garden` e colheita regional com trabalhador. Modo `garden` do controlador é opcional; seed 22 segue 98 decisões; replays certificados intactos (campos vazios da Horta fora do digest).

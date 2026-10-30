@@ -1,3 +1,12 @@
+# Horta com descarte voluntário de água — resultado real, 2026-10-29
+
+H2–H6, 15 dias regionais. Sementes 1–30: 2 de 53 sobrevivem (H5 s10 e H6 s10,
+56 comida colhidas cada; sem descarte 0). Validação 31–90: 0 de 138 (só H3 s70
+migra com Horta e cai no dia 7). As duas sobrevivências mantêm 6–7 porções
+faltando por noite em rodízio, sem ferimento (RULES l.49): não indicam economia
+saudável. 47 migrações recusadas por camas em 1–90. Detalhes em
+`edicao-integral/HORTA_CONTINUITY.md`.
+
 # Horta H1 — resultado real, 2026-10-29
 
 Motor e controlador (`7f19a5e`), H2–H6, sementes 1–30. Cisterna: variante A

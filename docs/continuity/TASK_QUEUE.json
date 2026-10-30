@@ -384,11 +384,12 @@
    ],
    "tests": [
     "edicao-integral/tests/test_garden_continuity.py",
-    "edicao-integral/simulate_regional_campaign.py --garden"
+    "edicao-integral/simulate_regional_campaign.py --garden",
+    "edicao-integral/simulate_regional_campaign.py --garden --seeds 31-90"
    ],
    "status": "implementado_bloqueado",
    "commit": "7f19a5e",
-   "blocker": "Real: 4 Hortas com vitória; regional 0 sobrevivem. Decidir camas para os 3 acolhidos (16 migrações recusadas) e depósito cheio de água (colheita não cabe)."
+   "blocker": "Depósito resolvido por descarte voluntário (2/53 sobrevivem em 1–30; 0/138 em 31–90). Pendentes: camas para recepção temporária (47 recusas, 5 Hortas; 4 opções em HORTA_CONTINUITY.md) e fome em rodízio sem penalidade (RULES l.49)."
   }
  ]
 }

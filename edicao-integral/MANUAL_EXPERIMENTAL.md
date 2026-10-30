@@ -113,13 +113,31 @@ transporte regional. Desligado por padrão para preservar os replays registrados
   - a durabilidade do equipamento regional não é consumida na emboscada
     (decisão aprovada em 2026-10-29, abaixo).
 
+### Descarte voluntário de água para a colheita da Horta (aprovada em 2026-10-29)
+- Ao designar o trabalhador da Horta no amanhecer regional, o abrigo pode
+  aceitar o descarte (`World.assign_continuity_garden(pessoa, discard_water=True)`).
+- Na colheita (antes da refeição) descarta-se só o que falta de espaço para as
+  4 comida, e só a água acima do consumo previsto da refeição desta noite
+  (1 por consumidor). Com espaço livre ou água no limite, nada é descartado.
+- O depósito regional segue 30; o que ainda não couber não é criado.
+- Registro: `garden_food.water_discarded` no resultado do dia (`World.log`).
+  Sem o aceite, o recibo da colheita não muda.
+- Cisterna e replays certificados não mudam. O controlador regional
+  (`RegionalCampaignPlayer(discard_water=True)`) aceita o descarte só na medição
+  com Horta. Testes: `tests/test_garden_continuity.py` (`WaterDiscardTests`).
+
 ## Ainda sem regra aprovada (não decidir silenciosamente)
 
 - Economia de comida regional: só o Mercado tem mapa tático e comida (4 buscas
   × 2). Horta H1 implementada, mas dois bloqueios dependem de decisão
   (`HORTA_CONTINUITY.md`): (1) os 3 acolhidos excedem as camas regionais e a
-  migração é recusada; (2) o depósito regional chega cheio de água e a colheita
-  não cabe (ordem colheita × refeição, ou descarte voluntário de água).
+  migração é recusada (opções em `HORTA_CONTINUITY.md`); (2) depósito cheio:
+  resolvido pelo descarte voluntário acima.
+- Fome em rodízio (balanceamento, não bug): pela RULES l.49 o ferimento só vem
+  na 2ª noite seguida de privação; comendo em noites alternadas a sequência fica
+  em 1. Assim 4 comida/dia sustentam 10–11 consumidores por 15 dias com 6–7
+  porções faltando toda noite. Avaliar se a sobrevivência regional deve exigir
+  mais que isso.
 - Pista coletada antes de emergência local/de estrada é mantida (comportamento
   atual do motor: pista não é carga). Confirmar se as anotações físicas deveriam
   ser perdidas como carga.
