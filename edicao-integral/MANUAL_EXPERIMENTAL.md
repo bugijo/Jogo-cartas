@@ -229,6 +229,15 @@ Código `community.py`; testes `tests/test_community.py`.
     terreno novo.
   - *Esforço*: toda obra paga materiais na largada e trabalhos (1 por
     trabalhador por dia, construtor 2) até ficar pronta.
+- **Horta abandonada** (decisão do diretor, D-15): EXP-LOC-01 ganha o mapa
+  tático `garden_edge_01` (campo aberto 4×4, buscas nas zonas 6 e 11,
+  surgimento na 16, duas cercas de resistência 1). 3 buscas de 2 comida; na
+  edição integral renova 1 busca a cada 2 noites. É a fonte tática de comida
+  depois do Mercado.
+- **Preparação** (decisão do diretor, D-18): **Normal** (padrão) ou
+  **Acolhedor** — o abrigo regional já tem 1 canteiro pronto e o suprimento de
+  evacuação é 2 rações por consumidor. Recomendado para a primeira partida e
+  mesas que preferem ação a planejamento.
 - **Canteiro** (decisão do diretor, D-14; 2 madeira + 1 sucata, 2 trabalhos,
   até 2 por abrigo): produz 2 comida no dia em que um trabalhador cuida dele
   (agricultor +1). Não gasta o entorno: transforma trabalho em comida no meio
@@ -252,6 +261,8 @@ Código `community.py`; testes `tests/test_community.py`.
 | Mapa tático de comida além do Mercado | Fila D-08 (conteúdo) | dias de Mercado já caem para ~12% |
 | Escala por tamanho (D-17) | Travessia (Vida máx. 2 na chegada) + Moral da escassez; abrigo nunca vazio | 31–90: H2–H6 57–77% (antes 29–95%); fome nas sobreviventes 7,8% |
 | Ameaça noturna por tamanho e limite de colapso | Rejeitados (testados no ciclo 9) | H6 seguia 88–93%; mais dados e vigias na mesa sem ganho |
+| Horta abandonada (D-15) | mapa tático novo; renova 1 busca a cada 2 noites | todas as noites: sobreviventes confortáveis demais (T2 41%); a cada 2: T2 58–67%, descanso 65% → 44% |
+| Preparação Acolhedor (D-18) | canteiro pronto + 2 rações/consumidor, opcional | grupo A de personas 16 → 31/53; B/C ≤ 74%; como padrão tiraria a pressão (T2 32%) |
 | Crescimento do abrigo (D-20) | 2 chegadas (dias 4 e 10), recusa Moral −1; terreno para obras da Comunidade; cerca; níveis 2 de Depósito e Alojamento | acolher, recusar ou lotar dão 61–64% (31–90): dilema sem estratégia dominante; 4 chegadas derrubavam H6 a 26% |
 
 ## Ainda sem regra aprovada (não decidir silenciosamente)

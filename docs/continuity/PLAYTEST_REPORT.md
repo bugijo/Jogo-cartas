@@ -1,3 +1,7 @@
+# Horta abandonada (D-15) e preparação Acolhedor (D-18) — simulação, 2026-10-30
+
+Simulação, não playtest. Normal: 1–30 38/53 (72%), 31–90 95/138 (69%); fome 3,6% e 5,0%. Personas 1–30 (Normal / Acolhedor): A 16/31, B 35/36, C 39/39, mista 29/33 de 53. `edicao-integral/COMUNIDADE_BALANCEAMENTO.md` ciclo 11.
+
 # Crescimento do abrigo (D-20) — simulação, 2026-10-30
 
 Simulação, não playtest. Com chegadas de sobreviventes: 1–30 35/53 (66%), 31–90 88/138 (64%); fome 5,8% e 8,7%. Acolher, recusar ou lotar: 61–64% (31–90). Personas 1–30: A 11/53, B 35/53, C 34/53, mista 29/53. `edicao-integral/COMUNIDADE_BALANCEAMENTO.md` ciclo 10.

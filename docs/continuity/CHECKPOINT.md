@@ -1,3 +1,9 @@
+# Estado ativo — D-15 Horta abandonada e D-18 preparação Acolhedor, 2026-10-30
+
+- Mapa tático `garden_edge_01` (EXP-LOC-01; renova 1 busca a cada 2 noites na edição integral). 1–30: 38/53 (72%), T2 22/38; 31–90: 95/138 (69%), T2 64/95; fome 3,6–5,0%. Descanso 65% → 44–46%.
+- Preparação Acolhedor (canteiro + 2 rações/consumidor), opcional: personas A 16 → 31/53; B/C ≤ 74%.
+- Próximas: D-19 (lacunas táticas), D-08 (tabuleiros/painel), D-09, D-10. Commits locais, sem push; 91–120 intactas.
+
 # Estado ativo — D-20 crescimento do abrigo, 2026-10-30
 
 - Chegadas de sobreviventes (dias 4 e 10; acolher exige cama, recusar Moral −1), obras da Comunidade ocupam terreno, cerca (+3), níveis 2 de Depósito/Alojamento. 1–30: 35/53 (66%), fome 5,8%; 31–90: 88/138 (64%), fome 8,7%; tamanhos 55–90%. T1–T5 ✓.

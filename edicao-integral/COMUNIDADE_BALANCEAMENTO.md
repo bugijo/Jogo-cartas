@@ -258,3 +258,37 @@ os tamanhos entre 55% e 90%. Obras por campanha (31–90): cerca 46, alojamento
 necessário em 15 dias (fica como opção de mesa; o depósito raramente enche).
 
 Personas (1–30, 212 mesas): A 11/53, B 35/53, C 34/53, mista 29/53.
+
+## Ciclo 11 — Horta abandonada (D-15) e preparação Acolhedor (D-18)
+
+D-15: depois do Mercado não havia comida tática (bloqueio
+`no_mapped_food_source` em 104–169 campanhas); heróis descansavam 65% dos dias.
+EXP-LOC-01 ganhou mapa (`garden_edge_01`). Controlador vai lá quando a noite
+não está coberta.
+
+| Variante (1 rep. salvo indicado) | 1–30 | T2 1–30 | 31–90 | T2 31–90 | Fome 31–90 | Descanso |
+|---|---|---|---|---|---|---|
+| Sem Horta abandonada | 66% | 28/35 | 64% | 75/88 | 8,7% | 65% |
+| Renova toda noite, vai com < 2 dias de estoque | 74% | 16/39 | 59% | 43/82 | 2,8% | 37% |
+| Renova toda noite, vai com noite descoberta (2 rep.) | 72% | 35/76 | 62% | 92/170 | 3,5% | — |
+| Rende 1 comida por busca (2 rep.) | 67% | 49/71 | 48% | 89/131 | 5,6% | — |
+| **Renova a cada 2 noites (adotado)** | **72%** | **22/38** | **69%** | **64/95** | **5,0%** | **44%** |
+| Renova a cada 3 noites (2 rep.) | 75% | 51/79 | 65% | 130/179 | 5,0% | 49% |
+
+Adotado por tamanho: 1–30 4/4, 8/10, 9/14, 9/14, 8/11; 31–90 5/7, 17/28,
+23/35, 24/30, 26/38. T1–T5 cumpridas.
+
+D-18: o grupo A (casual) não planeja obras. Canteiro pronto na chegada como
+regra padrão tirava a pressão das mesas que planejam (T2 15/45 e 35/94), então
+virou preparação opcional **Acolhedor** (canteiro + 2 rações por consumidor).
+
+| Personas 1–30 (53 mesas cada) | A | B | C | mista |
+|---|---|---|---|---|
+| D-17 (antes) | 12 | 36 | 39 | 30 |
+| Normal com Horta abandonada | 16 | 35 | 39 | 29 |
+| Acolhedor só com canteiro | 19 | 35 | 41 | 37 |
+| **Acolhedor (canteiro + 2 rações)** | **31** | **36** | **39** | **33** |
+
+Controlador no Acolhedor: 1–30 72%, 31–90 62%, fome 1,3–1,7% (modo fácil:
+pressão baixa por desenho). Personas no Normal: descanso 46% dos dias,
+Mercado/Horta 33%, pistas 15%.
