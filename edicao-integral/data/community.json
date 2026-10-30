@@ -150,6 +150,7 @@
             "lots_per_water": 2, "grow_days": 3, "pest_at": 1},
   "start_tent_people": 2,
   "rain_at": 4,
+  "defense_support": {"on": false, "watch": 1, "guards": 2, "damage": 1},
   "arrivals_table": {"1": {"people": ["adult"]}, "2": {"people": ["adult"]},
                      "3": {"people": ["adult", "child"], "tent": "barraca"},
                      "4": {"people": ["adult", "child"], "tent": "barraca"},

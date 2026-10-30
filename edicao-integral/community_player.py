@@ -246,6 +246,8 @@ class CommunityRegionalPlayer(CampRegionalPlayer):
                   and community.able(world, h)]
 
         def take(people, prefer=None):
+            # Um herói pode estar nas duas listas (livres e heróis): só uma função por dia.
+            people[:] = [p for p in people if p not in state['jobs']]
             if prefer:
                 for person in people:
                     if community.specialist(world, person, prefer):
@@ -290,13 +292,24 @@ class CommunityRegionalPlayer(CampRegionalPlayer):
                     done.setdefault('community', []).append((worker, 'obra', target))
         # 2a. horta por lotes: agricultor primeiro, até cobrir os lotes prontos
         if camp.on(world):
-            while free:
+            # Dia seco: rega só com a água que sobra acima da bebida desta noite.
+            spare = world.stock['water'] - consumers
+            lots_left = len(camp.ready_horta(world))
+            while free and lots_left > 0:
+                if not state['camp']['rain'] and spare < 1:
+                    break
                 worker = take(free, 'horta')
                 try:
                     community.assign_job(world, worker, 'horta')
                 except ValueError:
                     free.insert(0, worker)
                     break
+                cap = (camp.HORTA['specialist_lots'] if community.specialist(world, worker, 'horta')
+                       else camp.HORTA['lots_per_worker'])
+                tended = min(cap, lots_left)
+                lots_left -= tended
+                if not state['camp']['rain']:
+                    spare -= -(-tended // camp.HORTA['lots_per_water'])
                 done.setdefault('community', []).append((worker, 'horta'))
         # 2b. canteiros: um trabalhador por canteiro pronto (comida sem esgotar o entorno)
         for _ in range(state['built'].count('canteiro')):
@@ -322,6 +335,12 @@ class CommunityRegionalPlayer(CampRegionalPlayer):
                 days = (1 if stock_days < 1 else 2 if stock_days < self.food_days
                         else self.max_days)
                 days = min(days, self.max_days)
+                free_boil = ('reservoir' in world.structures or camp.has(world, 'filtro')
+                             or (world.continuity_filter or {}).get('active'))
+                water_trip = any(t['activity'] == 'agua' for t in state['trips'])
+                if (activity is None and camp.on(world) and free_boil and not water_trip
+                        and world.stock['water'] < 2 * consumers):
+                    activity, days = 'agua', min(2, self.max_days)  # rio, sem ferver
                 if activity is None and stock_days < self.food_days:
                     activity, days = self._food_activity(world, person, days, planned)
                 if activity is None and need_wood and state['pools']['madeira'] >= 2:

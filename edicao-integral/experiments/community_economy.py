@@ -44,7 +44,10 @@ CAMP = {'COMM-ABS': {'on': False}, 'COMM-ACOLHEDOR-ABS': {'on': False},
         'COMM-NORATION': {'work_ration': 0},
         'COMM-CR1R1': {'crisis': {'large': 1, 'repeat': 1}},
         'COMM-CRH': {'crisis': {'small_share': 2, 'repeat': 1}},
-        'COMM-CRH2': {'crisis': {'small_share': 2}}}
+        'COMM-CRH2': {'crisis': {'small_share': 2}},
+        # D-23: apoio do acampamento na defesa final
+        'COMM-DEF': {'defense_support': {'on': True}},
+        'COMM-DEF-W2': {'defense_support': {'on': True, 'watch': 2}}}
 DAYS = 15
 SIZES = (2, 3, 4, 5, 6)
 # nome: (controlador, regras Comunidade, opções do controlador)
@@ -154,11 +157,16 @@ def _developed(world):
         state['lots'][camp.free_lot(world, camp.category(kind))].append(kind)
     for _ in range(6):
         lot = camp.free_lot(world, 'horta')
+        if lot is None:
+            break
         state['lots'][lot].append('horta')
         state['horta_ready'][lot] = world.day
     lot = camp.free_lot(world, 'agua')
-    state['lots'][lot].append('coletor')
-    world.community['built'] += ['horta'] * 6 + ['coletor', 'cozinha']
+    if lot:
+        state['lots'][lot].append('coletor')
+    world.community['built'] += ['horta'] * camp.built(world, 'horta') + ['cozinha']
+    if lot:
+        world.community['built'].append('coletor')
 
 
 SETUP = {'SC-D-NOSPEC': _all_common, 'SC-F-CRISIS': _no_food, 'SC-G-DEV': _developed}

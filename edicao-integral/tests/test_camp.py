@@ -311,6 +311,25 @@ class CampTests(unittest.TestCase):
         self.assertFalse(set(heroes) & community.away(world))
         self.assertTrue(any(r.get('action') == 'worker_trip_return' for r in world.log))
 
+    def test_watch_and_guards_shoot_in_the_final_defense(self):
+        from arc2 import Arc2
+        world = self.world
+        world.flags.update(radio_code=True, access_card=True, military_access=True)
+        world.special_stock += ['access_card', 'transmitter']
+        world.structures['watch'] = {'health': 3, 'age': 0}
+        guard = self.adults[0]
+        world.community['professions'][guard] = 'guarda'
+        with mock.patch.dict(camp.RULES['defense_support'], {'on': True}):
+            self.assertEqual(camp.defense_shooters(world), ['vigia', guard])
+            arc = Arc2(world)
+            defense = arc.final_defense()
+            health = sum(e['health'] for e in defense['enemies'].values())
+            arc.defense_activate()
+            self.assertEqual(len(defense['support'][0]), 2)
+            left = sum(e['health'] for e in defense['enemies'].values())
+            self.assertLessEqual(left, health - 2)
+        self.assertEqual(camp.defense_shooters(world), [])  # regra desligada no padrão
+
     def test_water_has_its_own_track(self):
         world = self.world
         world.stock.update(water=24, food=0)

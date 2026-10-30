@@ -3,6 +3,7 @@ import json
 from collections import deque
 from pathlib import Path
 
+import camp as camp_rules
 import community as community_rules
 from system import DATA, ITEMS, LOCATIONS, TACTICS_DATA, VEHICLES, World
 
@@ -242,6 +243,19 @@ class Arc2:
                 return {'status':'won','integrity':defense['integrity']}
             defense['wave']+=1
             self._spawn_wave()
+        # D-23: Vigia e guardas do acampamento atiram no inimigo mais próximo.
+        support=[]
+        for shooter in camp_rules.defense_shooters(self.world):
+            if not defense['enemies']:
+                break
+            eid=min(defense['enemies'],key=lambda e:(defense['enemies'][e]['zone'],e))
+            target=defense['enemies'][eid]
+            target['health']=max(0,target['health']-camp_rules.RULES['defense_support']['damage'])
+            support.append((shooter,eid))
+            if target['health']==0:
+                del defense['enemies'][eid]
+        if support:
+            defense.setdefault('support',[]).append(support)
         for enemy in defense['enemies'].values():
             for _ in range(TACTICS_DATA['enemies'][enemy['kind']]['move']):
                 if enemy['zone']>1:enemy['zone']-=1

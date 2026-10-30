@@ -336,6 +336,21 @@ def conflict(world, rng) -> dict | None:
     return {'roll': roll, 'lost': lost}
 
 
+# --- defesa final (D-23) --------------------------------------------------------------
+def defense_shooters(world) -> list[str]:
+    """Apoio do acampamento na defesa final: Vigia e guardas aptos atiram 1 por rodada."""
+    rule = RULES['defense_support']
+    if not on(world) or not rule['on']:
+        return []
+    shooters = ['vigia'] * rule['watch'] if 'watch' in world.structures else []
+    import community  # tardio: community importa este módulo
+    away = community.away(world)
+    guards = [p for p in sorted(world.community['professions'])
+              if world.community['professions'][p] == 'guarda' and p not in away
+              and community.able(world, p)]
+    return shooters + guards[:rule['guards']]
+
+
 def heavy(kind: str, spec: dict) -> bool:
     return bool(spec.get('heavy')) or kind in RULES['heavy_kinds']
 
