@@ -1,3 +1,8 @@
+# Estado ativo — D-21 combustível regional, 2026-10-30
+
+- Regra do diretor (edição integral): van por rota (perto/médio 1 trecho, longe 2) a 2/trecho; volta do Posto 2; Instalação 8; O2 do Posto = tanque do caminhão (4, uma vez). Protótipo certificado intacto.
+- Próximas: D-22 (controlador até a defesa final), D-09, D-10, D-11. Commits locais, sem push; 91–120 intactas.
+
 # Estado ativo — D-08 tabuleiros da edição integral, 2026-10-30
 
 - `tools/build_boards_integral.py` (pycairo, sem instalar nada): painel do abrigo (2 A4), entorno (1 A4) e montagem da Horta abandonada (1 A4) em `edicao-integral/print/`; valores de `data/`, manifesto no `check.sh full`, PDFs com bytes estáveis. QA visual por render (pdftoppm).

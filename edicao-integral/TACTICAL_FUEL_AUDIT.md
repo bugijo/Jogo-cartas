@@ -1,5 +1,14 @@
 # Auditoria independente: expedição 0.2, Posto e transição
 
+## Decisão do diretor na edição integral — 2026-10-30 (D-21)
+
+Com as regras Comunidade ligadas: (1) volta de van do Posto = rota curta, 2;
+(2) Instalação militar = rota longa, 8 ida e volta; (3) reserva da Oficina fora
+do saldo legal; O2 do Posto = tanque do caminhão (4, uma vez). Itens 4–6
+(van 0.2 na migração, emergência de estrada com veículo, ida de veículo com
+cartas de Viagem) seguem abertos e entram na D-22 se o controlador precisar.
+Sem a Comunidade nada muda (protótipo certificado). `MANUAL_EXPERIMENTAL.md`.
+
 ## Auditoria regional de combustível e veículo — 2026-10-29
 
 Sem alteração de custos, sem abastecimento novo. Estado do motor no HEAD

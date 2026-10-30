@@ -238,6 +238,14 @@ Código `community.py`; testes `tests/test_community.py`.
   **Acolhedor** — o abrigo regional já tem 1 canteiro pronto e o suprimento de
   evacuação é 2 rações por consumidor. Recomendado para a primeira partida e
   mesas que preferem ação a planejamento.
+- **Van e combustível** (decisão do diretor, D-21; edição integral): de van
+  conta a rota, não a caminhada — perto e médio são rota curta (1 trecho por
+  sentido), longe é rota longa (2 trechos; RULES.md §5 l.29), a 2 combustíveis
+  por trecho (§11 l.64). Voltar do Posto de van: 2. Instalação militar ida e
+  volta: 8. O O2 do Posto é o **tanque do caminhão**: 1 PA, 4 combustível, uma
+  vez por campanha. Saldo: 8 cartas + 4 do tanque − 2 da volta = 10 no abrigo
+  para os 8 da Instalação (margem 2, mais o que vier da Cisterna). A reserva
+  experimental da Oficina (+8) continua fora do saldo legal.
 - **Canteiro** (decisão do diretor, D-14; 2 madeira + 1 sucata, 2 trabalhos,
   até 2 por abrigo): produz 2 comida no dia em que um trabalhador cuida dele
   (agricultor +1). Não gasta o entorno: transforma trabalho em comida no meio
@@ -261,6 +269,7 @@ Código `community.py`; testes `tests/test_community.py`.
 | Mapa tático de comida além do Mercado | Fila D-08 (conteúdo) | dias de Mercado já caem para ~12% |
 | Escala por tamanho (D-17) | Travessia (Vida máx. 2 na chegada) + Moral da escassez; abrigo nunca vazio | 31–90: H2–H6 57–77% (antes 29–95%); fome nas sobreviventes 7,8% |
 | Ameaça noturna por tamanho e limite de colapso | Rejeitados (testados no ciclo 9) | H6 seguia 88–93%; mais dados e vigias na mesa sem ganho |
+| Van e combustível (D-21) | rota curta/longa de RULES §5; volta do Posto 2, Instalação 8; O2 do Posto = tanque do caminhão (4) | só cartas do Posto (8) não alcançavam a Instalação por nenhuma leitura documentada; com o tanque sobram 2 |
 | Cartão de acesso caído (D-19) | fica no chão do local onde a expedição falhou; nova expedição ao local o recolhe com 1 PA de herói vivo numa zona de busca (mesma carga); sem nova busca; nunca duplica | lacuna de regra travava o controlador; 0 erros em 10.800 partidas depois |
 | Horta abandonada (D-15) | mapa tático novo; renova 1 busca a cada 2 noites | todas as noites: sobreviventes confortáveis demais (T2 41%); a cada 2: T2 58–67%, descanso 65% → 44% |
 | Preparação Acolhedor (D-18) | canteiro pronto + 2 rações/consumidor, opcional | grupo A de personas 16 → 31/53; B/C ≤ 74%; como padrão tiraria a pressão (T2 32%) |
@@ -278,8 +287,8 @@ Código `community.py`; testes `tests/test_community.py`.
   atual do motor: pista não é carga). Confirmar se as anotações físicas deveriam
   ser perdidas como carga.
 
-- Combustível regional: `far=3` com 2/trecho exige 12; `EXP-MIS-104` cobra 6;
-  Posto O2 não declara combustível. Ver `TACTICAL_FUEL_AUDIT.md`.
+- Combustível regional: *resolvido na edição integral* (D-21, acima). Sem a
+  Comunidade o protótipo certificado mantém `far=3` → 12 (`TACTICAL_FUEL_AUDIT.md`).
 - Ferragens na ida diz que o Material fica no chão de Z1 e pode ser coletado por
   1 PA; o motor hoje só descarta. Pendente de implementação/decisão.
 - Narrativa do segundo arco: local/contato de Célia e ordem das pistas são
