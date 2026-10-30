@@ -1,3 +1,10 @@
+# Fome em rodízio — protótipo, 2026-10-29
+
+Quatro variantes da privação medidas fora do repositório (1–30 e 31–90). A
+sobrevivência atual (2/191) vem do rodízio, permitido por RULES l.49 + §25.
+Endurecer a sequência (A) ou punir Moral (C) leva a 0/191; B não muda; D 2/191
+com sementes diferentes. Tabela em `edicao-integral/HORTA_CONTINUITY.md`.
+
 # Horta com descarte voluntário de água — resultado real, 2026-10-29
 
 H2–H6, 15 dias regionais. Sementes 1–30: 2 de 53 sobrevivem (H5 s10 e H6 s10,

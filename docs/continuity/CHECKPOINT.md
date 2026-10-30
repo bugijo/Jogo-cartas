@@ -5,6 +5,7 @@
 - As 2 sobrevivências são fome em rodízio (6–7 porções faltando toda noite, sem ferimento pela RULES l.49) — balanceamento pendente.
 - Camas: 47 recusas em 1–90 (excedente 1–2 da recepção temporária); 5 Hortas perdidas. Quatro opções em `edicao-integral/HORTA_CONTINUITY.md`. **Decisão do responsável.**
 - Protótipo de camas: opção 1 (recepção migra com penalidade) leva 8 Hortas ao regional, todas caem em 4–5 dias; opção 3 (só acolher com vaga) zera as Hortas em 1–30. Sobrevivência igual (2/191).
+- Fome em rodízio (protótipo): leitura fiel (l.49 + cura §25). Variantes A/C zeram a sobrevivência (0/191), B não muda (2/191), D dá 2/191 com outras sementes. **Decisão do responsável.**
 - Commits locais, sem push (pedido do responsável).
 
 # Estado ativo — Horta H1 implementada e medida, 2026-10-29

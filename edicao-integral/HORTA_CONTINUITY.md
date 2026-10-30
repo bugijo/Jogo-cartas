@@ -29,6 +29,29 @@ sem ferimento nem Colapso (RULES l.49). Rádio só em H5 s10; cartão em nenhuma
 O descarte só destrava o 1º dia; o que sustenta é a Horta + rodízio. Avaliar se a
 regra de privação deve pesar nesse padrão — pendente, não alterado.
 
+## Fome em rodízio (protótipo fora do repo; nada alterado)
+
+Por que sobrevivem: comendo em noites alternadas, o ferimento da 2ª noite seguida
+(RULES l.49) é curado na noite alimentada seguinte (§25), e a sequência nunca
+chega a 3. Leitura fiel às regras, não bug.
+
+Descarte ligado, modo Horta, 15 dias. Sobrevivem / dias médios dos migrados:
+
+| Variante | 1–30 | 31–90 | Porções faltando nas sobreviventes |
+|---|---|---|---|
+| Atual | 2 / 4,57 | 0 / 4,01 | 89 e 105 em 15 noites |
+| A: sequência só zera após 2 noites plenas seguidas | 0 / 3,95 | 0 / 3,93 | — (H5/H6 s10 caem no dia 4) |
+| B: ferimento com 2 privações em 3 noites | 2 / 4,57 | 0 / 4,01 | igual à atual (cura §25 anula) |
+| C: −1 Moral na noite com ceil(humanos/4) sem comida/água | 0 / 4,03 | 0 / 3,99 | — (caem no dia 5) |
+| D: 1ª noite alimentada após privação não cura ferimento | 1 / 4,54 | 1 / 4,08 | 105 (H6 s10) e 67 (H3 s70) |
+
+- B não muda nada; D não é monotônica (H3 s70 passa a sobreviver, H5 s10 cai no
+  dia 14), sinal de que o controlador reage aos ferimentos.
+- A e C eliminam a sobrevivência com rodízio, mas também zeram tudo: com só a
+  Horta (4/dia) para 10–11 consumidores nenhuma campanha sobrevive.
+- Qualquer variante muda a regra regional de privação e exigiria regravar os
+  replays regionais certificados que têm fome (seed 22 regional).
+
 ## Bloqueio de camas (investigação, nada alterado)
 
 - Na Cisterna, acolher aceita até capacidade + 2 humanos como recepção
