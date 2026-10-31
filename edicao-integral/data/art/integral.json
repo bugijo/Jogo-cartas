@@ -1,0 +1,91 @@
+{
+ "schema": 1,
+ "note": "Cartas da edição integral. Chave = chave do motor (event_deck, profession_deck, estruturas, ids EXP-*, K-*). Cartas sem id físico recebem ZI-<família>-NN no gerador; a chave do motor não muda.",
+ "acontecimentos": {
+  "tranquila": {"nome": "Viagem tranquila", "texto": "Sem efeito.", "i": "Coletora atravessando um riacho raso com o cesto cheio, luz de tarde, mata calma.", "e": ["trilha", "cesto", "calma"]},
+  "abundancia": {"nome": "Abundância", "texto": "Some 1D6 aos pontos da viagem.", "i": "Pé de goiaba carregado e cardume no remanso; mãos enchendo o saco.", "e": ["fartura", "goiabeira", "cardume"]},
+  "descoberta": {"nome": "Descoberta", "texto": "Traga 1 sucata para o estoque.", "i": "Carcaça de trator no meio do pasto com peças aproveitáveis.", "e": ["trator abandonado", "peças"]},
+  "chuva": {"nome": "Chuva", "texto": "−2 pontos na viagem.", "i": "Temporal no rio, viajante encharcado sob folha de bananeira.", "e": ["temporal", "folha de bananeira"]},
+  "atraso": {"nome": "Atraso", "texto": "A viagem volta 1 amanhecer depois (uma vez); sorteie de novo na volta.", "i": "Ponte de troncos levada pela cheia; viajante sentado esperando a água baixar.", "e": ["ponte caída", "rio cheio", "espera"]},
+  "ferimento": {"nome": "Ferimento", "texto": "O viajante volta com 1 ferimento.", "i": "Tornozelo enfaixado com camisa rasgada, cajado improvisado.", "e": ["faixa improvisada", "cajado", "vermelho de destaque"]},
+  "perda": {"nome": "Perda de carga", "texto": "Perde metade do que encontrou (arredonda para baixo o que fica).", "i": "Saco rasgado no arame, frutas espalhadas no barranco.", "e": ["saco rasgado", "carga espalhada"]},
+  "equipamento": {"nome": "Equipamento quebrado", "texto": "Gaste 1 sucata do estoque; sem sucata, perde 1 unidade encontrada.", "i": "Vara de pesca partida e anzol perdido na margem.", "e": ["vara quebrada"]},
+  "zumbis": {"nome": "Zumbis no caminho", "texto": "Role 1D6: 1–2 ferimento e metade da carga; 3–4 perde 1 unidade; 5–6 escapa.", "i": "Errantes saindo do bambuzal, viajante correndo com a carga.", "e": ["bambuzal", "errantes", "fuga"]},
+  "pista": {"nome": "Pista", "texto": "+1 pista (só a primeira vez na campanha).", "i": "Panfleto rasgado com frequência de rádio preso num tronco.", "e": ["panfleto", "frequência escrita"]}
+ },
+ "profissoes": {
+  "cacador": {"i": "Caçador de chapéu de palha com arco de bambu e varas de pesca nas costas, beira do rio.", "e": ["arco", "vara de pesca", "ícones caça/pesca"]},
+  "agricultor": {"i": "Agricultora de enxada no ombro entre canteiros, mãos de terra.", "e": ["enxada", "canteiros", "ícones horta/coleta"]},
+  "coletor": {"i": "Coletor com cesto de taquara, facão e galão de água, trilha da mata.", "e": ["cesto", "facão", "galão", "ícones coleta/água/lenha"]},
+  "cozinheiro": {"i": "Cozinheiro de avental mexendo panelão no fogão a lenha.", "e": ["panelão", "avental", "ícone cozinhar"]},
+  "carpinteiro": {"i": "Carpinteiro medindo tábua com trena, lápis atrás da orelha.", "e": ["trena", "serrote", "ícone obra"]},
+  "mecanico": {"i": "Mecânica com macacão sujo segurando chave de roda, sucata ao fundo.", "e": ["chave de roda", "macacão", "ícone sucata"]},
+  "enfermeiro": {"i": "Enfermeiro trocando curativo com cuidado, maleta aberta.", "e": ["curativo", "maleta", "ícone cuidar"]},
+  "guarda": {"i": "Guarda de vigia no alto da torre com binóculo e apito.", "e": ["binóculo", "apito", "ícone vigiar"]},
+  "comum": {"nome": "Sobrevivente comum", "i": "Pessoa comum carregando balde e enxada, roupa remendada; sem ícone de especialidade.", "e": ["balde", "sem especialidade"]}
+ },
+ "estruturas": {
+  "garden": {"a": "compartilhada:STR:Horta", "i": "Horta grande com canteiros elevados de tábua e espantalho de roupa velha.", "e": ["canteiros", "espantalho"], "obs": "No acampamento em lotes, vira lotes de horta; a carta EXP-BLD-01 fica para o modelo abstrato."},
+  "workshop": {"a": "compartilhada:STR:Oficina", "i": "Oficina de lona e madeira com bancada, morsa e torno manual.", "e": ["bancada", "morsa"]},
+  "infirmary": {"a": "compartilhada:STR:Enfermaria", "i": "Enfermaria em contêiner com cruz pintada, maca e lampião.", "e": ["contêiner", "cruz", "maca"]},
+  "watch": {"a": "compartilhada:STR:Torre", "i": "Vigia: torre de bambu e madeira com sino e holofote a pilha.", "e": ["torre", "sino", "atira na defesa final"]},
+  "storage": {"a": "compartilhada:STR:Depósito", "i": "Depósito de alvenaria baixa com prateleiras e portas de grade.", "e": ["prateleiras", "porta de grade", "+12 comida"]},
+  "reservoir": {"i": "Reservatório: duas caixas-d'água de 1000 L ligadas por cano, bomba manual.", "e": ["caixas-d'água", "bomba", "+12 água"]},
+  "lodging": {"i": "Alojamento coletivo de madeira com beliches e redes.", "e": ["beliches", "redes", "8 camas"]},
+  "coletor": {"i": "Calhas de lona levando chuva para tambores azuis.", "e": ["calha", "tambores", "chuva"]},
+  "cozinha": {"a": "compartilhada:STR:Cozinha", "i": "Cozinha comunitária coberta junto à fogueira, mesa longa.", "e": ["fogão", "mesa longa"]},
+  "canteiro": {"i": "Canteiro simples de pneus.", "e": ["pneus"], "obs": "Só no modelo abstrato; no acampamento em lotes não se imprime."},
+  "cerca": {"i": "Cerca de bambu ampliando o terreno.", "e": ["bambu"], "obs": "Só no modelo abstrato; no acampamento em lotes a expansão substitui."},
+  "deposito2": {"i": "Depósito com mezanino e sacos de grão empilhados.", "e": ["mezanino", "+12 comida"]},
+  "alojamento2": {"i": "Alojamento ampliado com segunda ala e varal comprido.", "e": ["segunda ala", "+4 camas"]},
+  "barraca": {"a": "compartilhada:STR:Barraca", "i": "Barraca improvisada de lona e bambu para 2 pessoas, colchonete visível.", "e": ["lona", "bambu", "2 camas"], "nome": "Barraca improvisada"},
+  "horta": {"i": "Lote de horta recém-plantado: leiras de terra escura, mudas pequenas, regador.", "e": ["leiras", "mudas", "2 porções"]},
+  "expansao2": {"i": "Mutirão roçando o mato e fincando mourões para abrir o terreno 3×3.", "e": ["roçada", "mourões", "obra pesada"]},
+  "expansao3": {"i": "Cerca de mourões e arame circundando o acampamento 4×4, portão novo.", "e": ["perímetro", "portão", "obra pesada"]},
+  "composteira": {"i": "Composteira de paletes com cascas e folhas, minhocas sugeridas.", "e": ["paletes", "composto", "+1 porção"]},
+  "defumador": {"i": "Defumador de tambor com carne pendurada e fumaça fina.", "e": ["tambor", "carne defumada"]},
+  "bancada": {"i": "Bancada de ferramentas organizada com ferramentas recuperadas da Oficina.", "e": ["ferramentas em painel", "+1 trabalho"], "nome": "Bancada de ferramentas"},
+  "ambulatorio": {"i": "Ambulatório ao lado da enfermaria: prateleira de vidros, alambique de ervas, caderno de fórmulas.", "e": ["vidros", "ervas", "remédio"]},
+  "filtro": {"i": "Filtro de areia em tambores empilhados (areia, carvão, cascalho) com torneira.", "e": ["camadas visíveis", "torneira"]}
+ },
+ "locais": {
+  "EXP-LOC-01": {"a": "compartilhada:LOCAL:Horta abandonada"},
+  "EXP-LOC-02": {"a": "compartilhada:LOCAL:Mercado"},
+  "EXP-LOC-03": {"a": "compartilhada:LOCAL:Oficina"},
+  "EXP-LOC-04": {"a": "compartilhada:LOCAL:Hospital"},
+  "EXP-LOC-05": {"a": "compartilhada:LOCAL:Estação"},
+  "EXP-LOC-06": {"a": "compartilhada:LOCAL:Instalação militar"},
+  "EXP-LOC-07": {"a": "compartilhada:LOCAL:Posto"}
+ },
+ "crises": {
+  "EXP-CRI-01": {"i": "Horta pisoteada por animais, cerca derrubada, mudas arrancadas.", "e": ["horta danificada"]},
+  "EXP-CRI-02": {"i": "Nuvem de gafanhotos sobre os canteiros, pessoas batendo panelas.", "e": ["gafanhotos", "panelas"]},
+  "EXP-CRI-03": {"i": "Viga de madeira esfarelando de cupim no depósito.", "e": ["cupim", "madeira oca"]},
+  "EXP-CRI-04": {"i": "Água turva com espuma no reservatório, criança impedida de beber.", "e": ["água turva", "aviso"]},
+  "EXP-CRI-05": {"i": "Telhado do alojamento cedendo após temporal, escoras de emergência.", "e": ["telhado cedendo", "escoras"]}
+ },
+ "ultima_transmissao": {
+  "EXP-MIS-102": {"i": "Mesa de cozinha com rádio aberto, duas pistas presas com fita, lápis decifrando números.", "e": ["rádio", "2 pistas", "números"]},
+  "EXP-MIS-103": {"i": "Cartão de acesso militar caído entre trilhos da Estação, sol rasante.", "e": ["cartão de acesso", "trilhos"]},
+  "EXP-MIS-104": {"i": "Van chegando ao portão da Instalação militar, leitor de cartão com luz verde.", "e": ["van", "portão militar", "combustível"]},
+  "EXP-MIS-105": {"i": "Heróis carregando o transmissor em caixa reforçada pela rampa do galpão militar.", "e": ["transmissor", "caixa reforçada"]},
+  "EXP-MIS-106": {"i": "Defesa final ao entardecer: acampamento iluminado, antena erguida, heróis na cerca e a Vigia atirando.", "e": ["antena", "defesa", "Vigia", "único entardecer da edição"]}
+ },
+ "referencia": {
+  "bagagem_D6": {"nome": "Bagagem do resgatado", "texto": "D6 ao acolher um adulto: 1 nada; 2 1 comida; 3 1 comida + 1 água; 4 2 comida; 5 1 madeira + 1 sucata; 6 1 remédio + 1 comida."},
+  "viagem_automatica": {"nome": "Viagem automática", "texto": "1–3 dias; pontos = (D6 + especialista + cão) × dias − dias sem ração; conversão por atividade; 1 carta de acontecimento (+1 em viagem longa ou perigosa)."},
+  "comida_agua": {"nome": "Comida e água", "texto": "Cada pessoa: 1 porção de comida e 1 de água por noite. Carne cozida rende 4 porções; fruta dá água a cada 2."},
+  "clima_coletor": {"nome": "Tempo e coletor", "texto": "D6 por amanhecer: 4–6 chove. Coletor: 4–5 +2 água, 6 +4."},
+  "chegadas_D6": {"nome": "Chegadas", "texto": "Dias 4 e 10, D6: 1–2 adulto; 3–4 adulto + criança com barraca; 5 dois adultos + criança com barraca familiar; 6 ninguém. Recusar: Crise +1."},
+  "horta_lotes": {"nome": "Horta por lotes", "texto": "Pessoa cuida de 2 lotes (agricultor 4); lote cuidado dá 2 porções; dia seco: 1 água a cada 2 lotes; D6 = 1: −1 porção."},
+  "crise_0_10": {"nome": "Crise", "texto": "Falta para até metade: +1; mais: +2; todos servidos: −1 (−2 com reserva). 4 obras pesadas param; 7 ninguém recupera; 10 colapso."},
+  "obras_e_racao": {"nome": "Obras e ração", "texto": "Obra pesada: 1 porção por pessoa no dia. Barraca e horta são leves. Expansão 3×3: 3 madeira, 3 trabalhos; 4×4: 5 madeira + 2 sucata, 5 trabalhos."}
+ },
+ "conhecimento": {
+  "K-AGR": {"i": "Caderno de cultivo com desenhos de leiras e calendário de plantio, terra entre as páginas.", "e": ["caderno", "desenho de leiras"]},
+  "K-CON": {"i": "Manual de conservas com receita de defumação, fotos de potes.", "e": ["manual", "potes"]},
+  "K-FER": {"i": "Catálogo de ferramentas com páginas marcadas e anotações.", "e": ["catálogo", "marcações"]},
+  "K-SAU": {"i": "Fichário de farmácia de manipulação com fórmulas fictícias e etiquetas de ervas (sem instruções reais).", "e": ["fichário", "etiquetas de ervas", "fórmulas fictícias"]},
+  "K-AGU": {"i": "Esquema técnico de filtro de areia em folha quadriculada, camadas coloridas a lápis.", "e": ["esquema", "camadas"]}
+ }
+}

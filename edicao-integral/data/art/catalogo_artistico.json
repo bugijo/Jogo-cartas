@@ -1,0 +1,4586 @@
+{
+ "counts": {
+  "cartas": 400,
+  "artes_de_carta_exclusivas": 133,
+  "retratos": 25,
+  "inimigos": 8,
+  "artes_chave_de_local": 9,
+  "pinturas_de_mapa": 9,
+  "tabuleiros": 3,
+  "versos": 29,
+  "ilustracoes_total": 184
+ },
+ "cards": [
+  {
+   "ids": [
+    "ZC-VIN-0001",
+    "ZC-VIN-0002",
+    "ZC-VIN-0003",
+    "ZC-VIN-0004"
+   ],
+   "nome": "Sozinho",
+   "nome_sugerido": null,
+   "familia": "VIN",
+   "categoria": "Vínculo",
+   "copias": 4,
+   "texto": "Somente fundador. +0 humanos, +0 cães.",
+   "ilustracao": "Herói sentado sozinho na escada de uma casa de vila, mochila aos pés, olhando a rua vazia ao meio-dia; uma única caneca ao lado.",
+   "elementos": [
+    "uma só pessoa",
+    "mochila",
+    "caneca",
+    "rua vazia"
+   ],
+   "verso": "V-VIN",
+   "arte": "exclusiva",
+   "chave_arte": "VIN:Sozinho",
+   "origem": "Cisterna 0.2 (certificada)"
+  },
+  {
+   "ids": [
+    "ZC-VIN-0005",
+    "ZC-VIN-0006",
+    "ZC-VIN-0007",
+    "ZC-VIN-0008"
+   ],
+   "nome": "Parceiro ou parceira",
+   "nome_sugerido": null,
+   "familia": "VIN",
+   "categoria": "Vínculo",
+   "copias": 4,
+   "texto": "+1 adulto civil, +1 consumidor e vaga.",
+   "ilustracao": "Duas mãos adultas apertadas sobre o capô empoeirado de um carro, alianças visíveis; ao fundo, borrado, o rosto do civil que acompanha o herói.",
+   "elementos": [
+    "duas mãos adultas",
+    "aliança",
+    "civil sem arma"
+   ],
+   "verso": "V-VIN",
+   "arte": "exclusiva",
+   "chave_arte": "VIN:Parceiro ou parceira",
+   "origem": "Cisterna 0.2 (certificada)"
+  },
+  {
+   "ids": [
+    "ZC-VIN-0009",
+    "ZC-VIN-0010"
+   ],
+   "nome": "Filho ou filha",
+   "nome_sugerido": null,
+   "familia": "VIN",
+   "categoria": "Vínculo",
+   "copias": 2,
+   "texto": "+1 criança, +1 consumidor e vaga; sem trabalho ou combate.",
+   "ilustracao": "Criança de uns 8 anos segurando a alça da mochila do adulto, tênis gasto, boné grande demais; o adulto fora de quadro, só a mão.",
+   "elementos": [
+    "criança",
+    "mão adulta",
+    "sem arma"
+   ],
+   "verso": "V-VIN",
+   "arte": "exclusiva",
+   "chave_arte": "VIN:Filho ou filha",
+   "origem": "Cisterna 0.2 (certificada)"
+  },
+  {
+   "ids": [
+    "ZC-VIN-0011"
+   ],
+   "nome": "Cachorro",
+   "nome_sugerido": null,
+   "familia": "VIN",
+   "categoria": "Vínculo",
+   "copias": 1,
+   "texto": "+1 cão consumidor; sem vaga humana; alerta coletivo +1.",
+   "ilustracao": "Vira-lata caramelo de orelha em pé, coleira de corda, sentado alerta ao lado de um portão de ferro.",
+   "elementos": [
+    "vira-lata caramelo",
+    "coleira de corda",
+    "postura de alerta"
+   ],
+   "verso": "V-VIN",
+   "arte": "exclusiva",
+   "chave_arte": "VIN:Cachorro",
+   "origem": "Cisterna 0.2 (certificada)"
+  },
+  {
+   "ids": [
+    "ZC-VIN-0012"
+   ],
+   "nome": "Parceiro e cachorro",
+   "nome_sugerido": null,
+   "familia": "VIN",
+   "categoria": "Vínculo",
+   "copias": 1,
+   "texto": "+1 adulto civil e +1 cão. Dois consumidores extras; uma vaga extra.",
+   "ilustracao": "Adulto civil agachado amarrando a coleira de um cão magro, ambos olhando para a mesma direção, estrada de terra ao fundo.",
+   "elementos": [
+    "adulto civil",
+    "cão",
+    "estrada de terra"
+   ],
+   "verso": "V-VIN",
+   "arte": "exclusiva",
+   "chave_arte": "VIN:Parceiro e cachorro",
+   "origem": "Cisterna 0.2 (certificada)"
+  },
+  {
+   "ids": [
+    "ZC-INT-0001",
+    "ZC-INT-0002",
+    "ZC-INT-0003",
+    "ZC-INT-0004",
+    "ZC-INT-0005",
+    "ZC-INT-0006",
+    "ZC-INT-0007"
+   ],
+   "nome": "Solidário",
+   "nome_sugerido": null,
+   "familia": "INT",
+   "categoria": "Intenção",
+   "copias": 7,
+   "texto": "Permanece; após duas noites e vaga definitiva, apto no próximo amanhecer.",
+   "ilustracao": "Recém-chegado dividindo um pão em dois e oferecendo metade, sorriso cansado, luz de manhã.",
+   "elementos": [
+    "pão dividido",
+    "gesto de oferta"
+   ],
+   "verso": "V-INT",
+   "arte": "exclusiva",
+   "chave_arte": "INT:Solidário",
+   "origem": "Cisterna 0.2 (certificada)"
+  },
+  {
+   "ids": [
+    "ZC-INT-0008",
+    "ZC-INT-0009",
+    "ZC-INT-0010"
+   ],
+   "nome": "Assustado",
+   "nome_sugerido": null,
+   "familia": "INT",
+   "categoria": "Intenção",
+   "copias": 3,
+   "texto": "Fica, mas requer um trabalho de cuidado além de observação e vaga.",
+   "ilustracao": "Pessoa encolhida num canto com cobertor nos ombros, olhos arregalados, mãos tremendo segurando a xícara.",
+   "elementos": [
+    "cobertor",
+    "xícara",
+    "olhar assustado"
+   ],
+   "verso": "V-INT",
+   "arte": "exclusiva",
+   "chave_arte": "INT:Assustado",
+   "origem": "Cisterna 0.2 (certificada)"
+  },
+  {
+   "ids": [
+    "ZC-INT-0011"
+   ],
+   "nome": "Oportunista",
+   "nome_sugerido": null,
+   "familia": "INT",
+   "categoria": "Intenção",
+   "copias": 1,
+   "texto": "Sem Verificado nesta noite: rouba até quatro porções de conserva e grupo parte. Verificado: parte sem roubo.",
+   "ilustracao": "Mão enfiando latas de conserva numa mochila enquanto o dono olha para trás, depósito na penumbra.",
+   "elementos": [
+    "latas de conserva",
+    "mochila aberta",
+    "olhar furtivo"
+   ],
+   "verso": "V-INT",
+   "arte": "exclusiva",
+   "chave_arte": "INT:Oportunista",
+   "origem": "Cisterna 0.2 (certificada)"
+  },
+  {
+   "ids": [
+    "ZC-INT-0012"
+   ],
+   "nome": "Infiltrado",
+   "nome_sugerido": null,
+   "familia": "INT",
+   "categoria": "Intenção",
+   "copias": 1,
+   "texto": "Sem Verificado nesta noite: +1 Pressão e grupo parte. Verificado: parte sem efeito.",
+   "ilustracao": "Pessoa de boné escrevendo num papel dobrado a contagem de gente e armas do abrigo, rádio pequeno no bolso.",
+   "elementos": [
+    "bilhete com contagem",
+    "rádio no bolso"
+   ],
+   "verso": "V-INT",
+   "arte": "exclusiva",
+   "chave_arte": "INT:Infiltrado",
+   "origem": "Cisterna 0.2 (certificada)"
+  },
+  {
+   "ids": [
+    "ZC-REC-0001",
+    "ZC-REC-0002",
+    "ZC-REC-0003",
+    "ZC-REC-0004",
+    "ZC-REC-0005",
+    "ZC-REC-0006",
+    "ZC-REC-0007",
+    "ZC-REC-0008",
+    "ZC-REC-0009",
+    "ZC-REC-0010",
+    "ZC-REC-0011",
+    "ZC-REC-0012",
+    "ZC-REC-0013",
+    "ZC-REC-0014",
+    "ZC-REC-0015",
+    "ZC-REC-0016",
+    "ZC-REC-0017",
+    "ZC-REC-0018",
+    "ZC-REC-0019",
+    "ZC-REC-0020",
+    "ZC-REC-0021",
+    "ZC-REC-0022",
+    "ZC-REC-0023",
+    "ZC-REC-0024",
+    "ZC-REC-0025",
+    "ZC-REC-0026",
+    "ZC-REC-0027",
+    "ZC-REC-0028",
+    "ZC-REC-0029",
+    "ZC-REC-0030",
+    "ZC-REC-0031",
+    "ZC-REC-0032"
+   ],
+   "nome": "Conserva",
+   "nome_sugerido": "Conservas",
+   "familia": "REC",
+   "categoria": "Recurso",
+   "copias": 32,
+   "texto": "4 porções. Cursor 4 / 3 / 2 / 1. Carga 1. Vazio: reserva, nunca monte/estoque.",
+   "ilustracao": "Pilha de latas amassadas sem rótulo e com rótulo desbotado (feijão, milho, sardinha) sobre caixote, uma aberta com colher.",
+   "elementos": [
+    "latas",
+    "cursor de porções 4/3/2/1"
+   ],
+   "verso": "V-REC",
+   "arte": "exclusiva",
+   "chave_arte": "REC:Conserva",
+   "origem": "Cisterna 0.2 (certificada)"
+  },
+  {
+   "ids": [
+    "ZC-REC-0033",
+    "ZC-REC-0034",
+    "ZC-REC-0035",
+    "ZC-REC-0036",
+    "ZC-REC-0037",
+    "ZC-REC-0038",
+    "ZC-REC-0039",
+    "ZC-REC-0040",
+    "ZC-REC-0041",
+    "ZC-REC-0042",
+    "ZC-REC-0043",
+    "ZC-REC-0044",
+    "ZC-REC-0045",
+    "ZC-REC-0046",
+    "ZC-REC-0047",
+    "ZC-REC-0048",
+    "ZC-REC-0049",
+    "ZC-REC-0050",
+    "ZC-REC-0051",
+    "ZC-REC-0052",
+    "ZC-REC-0053",
+    "ZC-REC-0054",
+    "ZC-REC-0055",
+    "ZC-REC-0056",
+    "ZC-REC-0057",
+    "ZC-REC-0058",
+    "ZC-REC-0059",
+    "ZC-REC-0060",
+    "ZC-REC-0061",
+    "ZC-REC-0062",
+    "ZC-REC-0063",
+    "ZC-REC-0064",
+    "ZC-REC-0065",
+    "ZC-REC-0066",
+    "ZC-REC-0067",
+    "ZC-REC-0068"
+   ],
+   "nome": "Água",
+   "nome_sugerido": null,
+   "familia": "REC",
+   "categoria": "Recurso",
+   "copias": 36,
+   "texto": "4 porções. Cursor 4 / 3 / 2 / 1. Carga 1. Vazio: reserva, nunca monte/estoque.",
+   "ilustracao": "Galões de 5 L e garrafas PET reaproveitadas com água límpida, gotas na superfície, sobre pano xadrez.",
+   "elementos": [
+    "galão",
+    "garrafas PET",
+    "cursor de porções 4/3/2/1"
+   ],
+   "verso": "V-REC",
+   "arte": "exclusiva",
+   "chave_arte": "REC:Água",
+   "origem": "Cisterna 0.2 (certificada)"
+  },
+  {
+   "ids": [
+    "ZC-REC-0069",
+    "ZC-REC-0070",
+    "ZC-REC-0071",
+    "ZC-REC-0072",
+    "ZC-REC-0073",
+    "ZC-REC-0074",
+    "ZC-REC-0075",
+    "ZC-REC-0076"
+   ],
+   "nome": "Carne",
+   "nome_sugerido": null,
+   "familia": "REC",
+   "categoria": "Recurso",
+   "copias": 8,
+   "texto": "4 porções. Cursor 4 / 3 / 2 / 1. Carga 1. Vazio: reserva, nunca monte/estoque. Vence após refeição de hoje.",
+   "ilustracao": "Peça de carne embrulhada em folha de bananeira e barbante, sobre tábua; moscas sugeridas; faca ao lado.",
+   "elementos": [
+    "folha de bananeira",
+    "carne crua",
+    "aviso visual de que estraga",
+    "cursor de porções 4/3/2/1"
+   ],
+   "verso": "V-REC",
+   "arte": "exclusiva",
+   "chave_arte": "REC:Carne",
+   "origem": "Cisterna 0.2 (certificada)"
+  },
+  {
+   "ids": [
+    "ZC-REC-0077",
+    "ZC-REC-0078",
+    "ZC-REC-0079",
+    "ZC-REC-0080",
+    "ZC-REC-0081",
+    "ZC-REC-0082",
+    "ZC-REC-0083",
+    "ZC-REC-0084",
+    "ZC-REC-0085",
+    "ZC-REC-0086",
+    "ZC-REC-0087",
+    "ZC-REC-0088",
+    "ZC-REC-0089",
+    "ZC-REC-0090",
+    "ZC-REC-0091",
+    "ZC-REC-0092",
+    "ZC-REC-0093",
+    "ZC-REC-0094",
+    "ZC-REC-0095",
+    "ZC-REC-0096",
+    "ZC-REC-0097",
+    "ZC-REC-0098",
+    "ZC-REC-0099",
+    "ZC-REC-0100"
+   ],
+   "nome": "Material",
+   "nome_sugerido": "Material (sucata)",
+   "familia": "REC",
+   "categoria": "Recurso",
+   "copias": 24,
+   "texto": "1 unidade. Carga 1. Vazio: reserva, nunca monte/estoque.",
+   "ilustracao": "Monte de sucata útil: chapas, parafusos em lata de tinta, arame, pedaços de cano.",
+   "elementos": [
+    "sucata metálica",
+    "arame",
+    "parafusos"
+   ],
+   "verso": "V-REC",
+   "arte": "exclusiva",
+   "chave_arte": "REC:Material",
+   "origem": "Cisterna 0.2 (certificada)"
+  },
+  {
+   "ids": [
+    "ZC-REC-0101",
+    "ZC-REC-0102",
+    "ZC-REC-0103",
+    "ZC-REC-0104",
+    "ZC-REC-0105",
+    "ZC-REC-0106",
+    "ZC-REC-0107",
+    "ZC-REC-0108",
+    "ZC-REC-0109",
+    "ZC-REC-0110",
+    "ZC-REC-0111",
+    "ZC-REC-0112"
+   ],
+   "nome": "Combustível",
+   "nome_sugerido": null,
+   "familia": "REC",
+   "categoria": "Recurso",
+   "copias": 12,
+   "texto": "1 unidade. Carga 1. Vazio: reserva, nunca monte/estoque.",
+   "ilustracao": "Galão vermelho de gasolina riscado, mangueira de sifão enrolada, mancha de óleo no chão.",
+   "elementos": [
+    "galão vermelho",
+    "mangueira"
+   ],
+   "verso": "V-REC",
+   "arte": "exclusiva",
+   "chave_arte": "REC:Combustível",
+   "origem": "Cisterna 0.2 (certificada)"
+  },
+  {
+   "ids": [
+    "ZC-REC-0113",
+    "ZC-REC-0114",
+    "ZC-REC-0115",
+    "ZC-REC-0116",
+    "ZC-REC-0117",
+    "ZC-REC-0118",
+    "ZC-REC-0119",
+    "ZC-REC-0120",
+    "ZC-REC-0121",
+    "ZC-REC-0122",
+    "ZC-REC-0123",
+    "ZC-REC-0124",
+    "ZC-REC-0125",
+    "ZC-REC-0126",
+    "ZC-REC-0127",
+    "ZC-REC-0128",
+    "ZC-REC-0129",
+    "ZC-REC-0130"
+   ],
+   "nome": "Munição",
+   "nome_sugerido": null,
+   "familia": "REC",
+   "categoria": "Recurso",
+   "copias": 18,
+   "texto": "1 unidade. Carga 1. Vazio: reserva, nunca monte/estoque.",
+   "ilustracao": "Caixa de papelão de cartuchos com poucas balas soltas e cartuchos de espingarda vermelhos.",
+   "elementos": [
+    "caixa de munição",
+    "cartuchos"
+   ],
+   "verso": "V-REC",
+   "arte": "exclusiva",
+   "chave_arte": "REC:Munição",
+   "origem": "Cisterna 0.2 (certificada)"
+  },
+  {
+   "ids": [
+    "ZC-REC-0131",
+    "ZC-REC-0132",
+    "ZC-REC-0133",
+    "ZC-REC-0134",
+    "ZC-REC-0135",
+    "ZC-REC-0136",
+    "ZC-REC-0137",
+    "ZC-REC-0138",
+    "ZC-REC-0139",
+    "ZC-REC-0140",
+    "ZC-REC-0141",
+    "ZC-REC-0142"
+   ],
+   "nome": "Medicamento",
+   "nome_sugerido": null,
+   "familia": "REC",
+   "categoria": "Recurso",
+   "copias": 12,
+   "texto": "1 unidade. Carga 1. Vazio: reserva, nunca monte/estoque.",
+   "ilustracao": "Blísters de comprimidos, frasco âmbar e gaze dentro de uma pochete de primeiros socorros com cruz desbotada.",
+   "elementos": [
+    "blíster",
+    "frasco âmbar",
+    "gaze",
+    "cruz desbotada"
+   ],
+   "verso": "V-REC",
+   "arte": "exclusiva",
+   "chave_arte": "REC:Medicamento",
+   "origem": "Cisterna 0.2 (certificada)"
+  },
+  {
+   "ids": [
+    "ZC-REC-0143",
+    "ZC-REC-0144",
+    "ZC-REC-0145",
+    "ZC-REC-0146",
+    "ZC-REC-0147",
+    "ZC-REC-0148"
+   ],
+   "nome": "Lona",
+   "nome_sugerido": null,
+   "familia": "REC",
+   "categoria": "Recurso",
+   "copias": 6,
+   "texto": "1 unidade. Carga 1. Vazio: reserva, nunca monte/estoque.",
+   "ilustracao": "Lona azul dobrada amarrada com corda de náilon amarela, ilhós metálicos.",
+   "elementos": [
+    "lona azul",
+    "corda amarela"
+   ],
+   "verso": "V-REC",
+   "arte": "exclusiva",
+   "chave_arte": "REC:Lona",
+   "origem": "Cisterna 0.2 (certificada)"
+  },
+  {
+   "ids": [
+    "ZC-REC-0149",
+    "ZC-REC-0150",
+    "ZC-REC-0151",
+    "ZC-REC-0152",
+    "ZC-REC-0153",
+    "ZC-REC-0154"
+   ],
+   "nome": "Madeira",
+   "nome_sugerido": null,
+   "familia": "REC",
+   "categoria": "Recurso",
+   "copias": 6,
+   "texto": "1 unidade. Carga 1. Vazio: reserva, nunca monte/estoque.",
+   "ilustracao": "Feixe de tábuas e caibros de demolição com pregos tortos, amarrados com arame.",
+   "elementos": [
+    "tábuas",
+    "pregos tortos"
+   ],
+   "verso": "V-REC",
+   "arte": "exclusiva",
+   "chave_arte": "REC:Madeira",
+   "origem": "Cisterna 0.2 (certificada)"
+  },
+  {
+   "ids": [
+    "ZC-REC-0155",
+    "ZC-REC-0156"
+   ],
+   "nome": "Sementes",
+   "nome_sugerido": null,
+   "familia": "REC",
+   "categoria": "Recurso",
+   "copias": 2,
+   "texto": "1 unidade. Carga 1. Vazio: reserva, nunca monte/estoque.",
+   "ilustracao": "Saquinhos de papel kraft com sementes (feijão, milho, abóbora) escritos a lápis, numa caixa de sapato.",
+   "elementos": [
+    "saquinhos de papel",
+    "letras a lápis"
+   ],
+   "verso": "V-REC",
+   "arte": "exclusiva",
+   "chave_arte": "REC:Sementes",
+   "origem": "Cisterna 0.2 (certificada)"
+  },
+  {
+   "ids": [
+    "ZC-PEC-0001"
+   ],
+   "nome": "Conexões",
+   "nome_sugerido": null,
+   "familia": "PEC",
+   "categoria": "Peça de missão",
+   "copias": 1,
+   "texto": "Componente de projeto, não consumível de cuidado. Carga 1. Uso único ao instalar; mantenha sobre estrutura.",
+   "ilustracao": "Conexões de PVC e registro de metal sobre jornal, fita veda-rosca.",
+   "elementos": [
+    "conexões de PVC",
+    "registro",
+    "veda-rosca"
+   ],
+   "verso": "V-PEC",
+   "arte": "exclusiva",
+   "chave_arte": "PEC:Conexões",
+   "origem": "Cisterna 0.2 (certificada)"
+  },
+  {
+   "ids": [
+    "ZC-PEC-0002"
+   ],
+   "nome": "Bomba",
+   "nome_sugerido": null,
+   "familia": "PEC",
+   "categoria": "Peça de missão",
+   "copias": 1,
+   "texto": "Componente de projeto, não consumível de cuidado. Carga 2. Uso único ao instalar; mantenha sobre estrutura.",
+   "ilustracao": "Bomba d'água periférica com carcaça azul descascada, fios soltos, sobre carrinho de mão.",
+   "elementos": [
+    "bomba d'água",
+    "carrinho de mão"
+   ],
+   "verso": "V-PEC",
+   "arte": "exclusiva",
+   "chave_arte": "PEC:Bomba",
+   "origem": "Cisterna 0.2 (certificada)"
+  },
+  {
+   "ids": [
+    "ZC-PEC-0003"
+   ],
+   "nome": "Membrana",
+   "nome_sugerido": null,
+   "familia": "PEC",
+   "categoria": "Peça de missão",
+   "copias": 1,
+   "texto": "Componente de projeto, não consumível de cuidado. Carga 1. Uso único ao instalar; mantenha sobre estrutura.",
+   "ilustracao": "Cartucho de membrana de filtro ainda no plástico, mãos com luvas segurando como algo precioso.",
+   "elementos": [
+    "cartucho de filtro",
+    "luvas"
+   ],
+   "verso": "V-PEC",
+   "arte": "exclusiva",
+   "chave_arte": "PEC:Membrana",
+   "origem": "Cisterna 0.2 (certificada)"
+  },
+  {
+   "ids": [
+    "ZC-PEC-0004"
+   ],
+   "nome": "Bateria",
+   "nome_sugerido": null,
+   "familia": "PEC",
+   "categoria": "Peça de missão",
+   "copias": 1,
+   "texto": "Componente de projeto, não consumível de cuidado. Carga 1. Uso único ao instalar; mantenha sobre estrutura.",
+   "ilustracao": "Bateria automotiva 60 Ah com terminais limpos e alça de corda, etiqueta de oficina.",
+   "elementos": [
+    "bateria automotiva",
+    "alça de corda"
+   ],
+   "verso": "V-PEC",
+   "arte": "exclusiva",
+   "chave_arte": "PEC:Bateria",
+   "origem": "Cisterna 0.2 (certificada)"
+  },
+  {
+   "ids": [
+    "ZC-PEC-0005"
+   ],
+   "nome": "Kit de instalação médica",
+   "nome_sugerido": null,
+   "familia": "PEC",
+   "categoria": "Peça de missão",
+   "copias": 1,
+   "texto": "Componente de projeto, não consumível de cuidado. Carga 2. Uso único ao instalar; mantenha sobre estrutura.",
+   "ilustracao": "Maleta de alumínio aberta com suportes de soro, estetoscópio e caixas lacradas.",
+   "elementos": [
+    "maleta de alumínio",
+    "suporte de soro"
+   ],
+   "verso": "V-PEC",
+   "arte": "exclusiva",
+   "chave_arte": "PEC:Kit de instalação médica",
+   "origem": "Cisterna 0.2 (certificada)"
+  },
+  {
+   "ids": [
+    "ZC-PEC-0006"
+   ],
+   "nome": "Bancada",
+   "nome_sugerido": "Bancada de oficina",
+   "familia": "PEC",
+   "categoria": "Peça de missão",
+   "copias": 1,
+   "texto": "Componente de projeto, não consumível de cuidado. Carga 2. Uso único ao instalar; mantenha sobre estrutura.",
+   "ilustracao": "Tampo de bancada com morsa presa, desmontado para transporte e amarrado com cinta.",
+   "elementos": [
+    "morsa",
+    "cinta de carga"
+   ],
+   "verso": "V-PEC",
+   "arte": "exclusiva",
+   "chave_arte": "PEC:Bancada",
+   "origem": "Cisterna 0.2 (certificada)"
+  },
+  {
+   "ids": [
+    "ZC-EQU-0001",
+    "ZC-EQU-0002",
+    "ZC-EQU-0003",
+    "ZC-EQU-0004",
+    "ZC-EQU-0005",
+    "ZC-EQU-0006"
+   ],
+   "nome": "Pé de cabra",
+   "nome_sugerido": null,
+   "familia": "EQU",
+   "categoria": "Equipamento",
+   "copias": 6,
+   "texto": "Próximo: Corpo vs Defesa; 1 PA, dano 1. Abre porta bloqueada por 2 PA.",
+   "ilustracao": "Pé de cabra vermelho descascado encostado numa porta de aço arrombada.",
+   "elementos": [
+    "pé de cabra",
+    "porta arrombada"
+   ],
+   "verso": "V-EQU",
+   "arte": "exclusiva",
+   "chave_arte": "EQU:Pé de cabra",
+   "origem": "Cisterna 0.2 (certificada)"
+  },
+  {
+   "ids": [
+    "ZC-EQU-0007",
+    "ZC-EQU-0008"
+   ],
+   "nome": "Faca",
+   "nome_sugerido": null,
+   "familia": "EQU",
+   "categoria": "Equipamento",
+   "copias": 2,
+   "texto": "Próximo, dano 1, 1 PA. +1 Corpo no primeiro ataque da rodada.",
+   "ilustracao": "Faca de cozinha com cabo enrolado em fita isolante, bainha de garrafa PET cortada.",
+   "elementos": [
+    "faca",
+    "fita isolante"
+   ],
+   "verso": "V-EQU",
+   "arte": "exclusiva",
+   "chave_arte": "EQU:Faca",
+   "origem": "Cisterna 0.2 (certificada)"
+  },
+  {
+   "ids": [
+    "ZC-EQU-0009",
+    "ZC-EQU-0010"
+   ],
+   "nome": "Machado",
+   "nome_sugerido": null,
+   "familia": "EQU",
+   "categoria": "Equipamento",
+   "copias": 2,
+   "texto": "Próximo, dano 2; 2 PA por ataque.",
+   "ilustracao": "Machado de lenha com cabo gasto cravado num toco.",
+   "elementos": [
+    "machado",
+    "toco"
+   ],
+   "verso": "V-EQU",
+   "arte": "exclusiva",
+   "chave_arte": "EQU:Machado",
+   "origem": "Cisterna 0.2 (certificada)"
+  },
+  {
+   "ids": [
+    "ZC-EQU-0011",
+    "ZC-EQU-0012"
+   ],
+   "nome": "Pistola",
+   "nome_sugerido": null,
+   "familia": "EQU",
+   "categoria": "Equipamento",
+   "copias": 2,
+   "texto": "Mesma/adjacente visível; Agilidade vs Defesa. 1 PA+1 Munição, dano 1; gera Ruído.",
+   "ilustracao": "Pistola sobre pano de prato, carregador ao lado, com sinal de ruído sugerido (ondas sonoras gráficas discretas).",
+   "elementos": [
+    "pistola",
+    "carregador",
+    "ícone de Ruído"
+   ],
+   "verso": "V-EQU",
+   "arte": "exclusiva",
+   "chave_arte": "EQU:Pistola",
+   "origem": "Cisterna 0.2 (certificada)"
+  },
+  {
+   "ids": [
+    "ZC-EQU-0013"
+   ],
+   "nome": "Espingarda",
+   "nome_sugerido": null,
+   "familia": "EQU",
+   "categoria": "Equipamento",
+   "copias": 1,
+   "texto": "Mesma/adjacente visível; Agilidade. 1 PA+1 Munição, dano 2, uma vez/rodada; Ruído.",
+   "ilustracao": "Espingarda calibre 12 de cano curto pendurada num prego, cartuchos no cinto ao lado.",
+   "elementos": [
+    "espingarda",
+    "cartucheira",
+    "ícone de Ruído"
+   ],
+   "verso": "V-EQU",
+   "arte": "exclusiva",
+   "chave_arte": "EQU:Espingarda",
+   "origem": "Cisterna 0.2 (certificada)"
+  },
+  {
+   "ids": [
+    "ZC-EQU-0014",
+    "ZC-EQU-0015",
+    "ZC-EQU-0016"
+   ],
+   "nome": "Ferramentas",
+   "nome_sugerido": null,
+   "familia": "EQU",
+   "categoria": "Equipamento",
+   "copias": 3,
+   "texto": "Permite abrir bloqueio por 2 PA e reparar van. Carga 1; não é consumido salvo projeto que o exige.",
+   "ilustracao": "Caixa de ferramentas aberta: chave de fenda, alicate, chave inglesa, fita.",
+   "elementos": [
+    "caixa de ferramentas",
+    "chave inglesa"
+   ],
+   "verso": "V-EQU",
+   "arte": "exclusiva",
+   "chave_arte": "EQU:Ferramentas",
+   "origem": "Cisterna 0.2 (certificada)"
+  },
+  {
+   "ids": [
+    "ZC-EQU-0017",
+    "ZC-EQU-0018"
+   ],
+   "nome": "Lanterna",
+   "nome_sugerido": null,
+   "familia": "EQU",
+   "categoria": "Equipamento",
+   "copias": 2,
+   "texto": "Uma vez/visita, permite olhar carta Saque do topo e devolver; 1 PA. Carga 1.",
+   "ilustracao": "Lanterna de mão acesa iluminando uma prateleira de saque no escuro; único cartão de Equipamento com interior escuro.",
+   "elementos": [
+    "facho de luz",
+    "prateleira"
+   ],
+   "verso": "V-EQU",
+   "arte": "exclusiva",
+   "chave_arte": "EQU:Lanterna",
+   "origem": "Cisterna 0.2 (certificada)"
+  },
+  {
+   "ids": [
+    "ZC-SAQ-0001"
+   ],
+   "nome": "Mercado: Conserva",
+   "nome_sugerido": null,
+   "familia": "SAQ",
+   "categoria": "Saque",
+   "copias": 1,
+   "texto": "Ganhe 1 carta(s) física(s) Conserva da reserva; carga 1/carta. Retire um uso de busca e descarte aqui. Não repõe em nova visita.",
+   "ilustracao": "Arte do recurso Conserva com faixa do local Mercado sobre o mapa.",
+   "elementos": [
+    "faixa Mercado",
+    "arte REC:Conserva"
+   ],
+   "verso": "V-SAQ (Mercado)",
+   "arte": "compartilhada:REC:Conserva",
+   "chave_arte": "SAQ:Mercado: Conserva",
+   "origem": "Cisterna 0.2 (certificada)"
+  },
+  {
+   "ids": [
+    "ZC-SAQ-0002"
+   ],
+   "nome": "Mercado: Água",
+   "nome_sugerido": null,
+   "familia": "SAQ",
+   "categoria": "Saque",
+   "copias": 1,
+   "texto": "Ganhe 1 carta(s) física(s) Água da reserva; carga 1/carta. Retire um uso de busca e descarte aqui. Não repõe em nova visita.",
+   "ilustracao": "Arte do recurso Água com faixa do local Mercado sobre o mapa.",
+   "elementos": [
+    "faixa Mercado",
+    "arte REC:Água"
+   ],
+   "verso": "V-SAQ (Mercado)",
+   "arte": "compartilhada:REC:Água",
+   "chave_arte": "SAQ:Mercado: Água",
+   "origem": "Cisterna 0.2 (certificada)"
+  },
+  {
+   "ids": [
+    "ZC-SAQ-0003"
+   ],
+   "nome": "Mercado: Material",
+   "nome_sugerido": null,
+   "familia": "SAQ",
+   "categoria": "Saque",
+   "copias": 1,
+   "texto": "Ganhe 1 carta(s) física(s) Material da reserva; carga 1/carta. Retire um uso de busca e descarte aqui. Não repõe em nova visita.",
+   "ilustracao": "Arte do recurso Material com faixa do local Mercado sobre o mapa.",
+   "elementos": [
+    "faixa Mercado",
+    "arte REC:Material"
+   ],
+   "verso": "V-SAQ (Mercado)",
+   "arte": "compartilhada:REC:Material",
+   "chave_arte": "SAQ:Mercado: Material",
+   "origem": "Cisterna 0.2 (certificada)"
+  },
+  {
+   "ids": [
+    "ZC-SAQ-0004"
+   ],
+   "nome": "Mercado: Munição",
+   "nome_sugerido": null,
+   "familia": "SAQ",
+   "categoria": "Saque",
+   "copias": 1,
+   "texto": "Ganhe 2 carta(s) física(s) Munição da reserva; carga 1/carta. Retire um uso de busca e descarte aqui. Não repõe em nova visita.",
+   "ilustracao": "Arte do recurso Munição com faixa do local Mercado sobre o mapa.",
+   "elementos": [
+    "faixa Mercado",
+    "arte REC:Munição"
+   ],
+   "verso": "V-SAQ (Mercado)",
+   "arte": "compartilhada:REC:Munição",
+   "chave_arte": "SAQ:Mercado: Munição",
+   "origem": "Cisterna 0.2 (certificada)"
+  },
+  {
+   "ids": [
+    "ZC-SAQ-0005"
+   ],
+   "nome": "Mercado: Medicamento",
+   "nome_sugerido": null,
+   "familia": "SAQ",
+   "categoria": "Saque",
+   "copias": 1,
+   "texto": "Ganhe 1 carta(s) física(s) Medicamento da reserva; carga 1/carta. Retire um uso de busca e descarte aqui. Não repõe em nova visita.",
+   "ilustracao": "Arte do recurso Medicamento com faixa do local Mercado sobre o mapa.",
+   "elementos": [
+    "faixa Mercado",
+    "arte REC:Medicamento"
+   ],
+   "verso": "V-SAQ (Mercado)",
+   "arte": "compartilhada:REC:Medicamento",
+   "chave_arte": "SAQ:Mercado: Medicamento",
+   "origem": "Cisterna 0.2 (certificada)"
+  },
+  {
+   "ids": [
+    "ZC-SAQ-0006"
+   ],
+   "nome": "Mercado: Carne",
+   "nome_sugerido": null,
+   "familia": "SAQ",
+   "categoria": "Saque",
+   "copias": 1,
+   "texto": "Ganhe 1 carta(s) física(s) Carne da reserva; carga 1/carta. Retire um uso de busca e descarte aqui. Não repõe em nova visita.",
+   "ilustracao": "Arte do recurso Carne com faixa do local Mercado sobre o mapa.",
+   "elementos": [
+    "faixa Mercado",
+    "arte REC:Carne"
+   ],
+   "verso": "V-SAQ (Mercado)",
+   "arte": "compartilhada:REC:Carne",
+   "chave_arte": "SAQ:Mercado: Carne",
+   "origem": "Cisterna 0.2 (certificada)"
+  },
+  {
+   "ids": [
+    "ZC-SAQ-0007"
+   ],
+   "nome": "Hospital: Conserva",
+   "nome_sugerido": null,
+   "familia": "SAQ",
+   "categoria": "Saque",
+   "copias": 1,
+   "texto": "Ganhe 1 carta(s) física(s) Conserva da reserva; carga 1/carta. Retire um uso de busca e descarte aqui. Não repõe em nova visita.",
+   "ilustracao": "Arte do recurso Conserva com faixa do local Hospital sobre o mapa.",
+   "elementos": [
+    "faixa Hospital",
+    "arte REC:Conserva"
+   ],
+   "verso": "V-SAQ (Hospital)",
+   "arte": "compartilhada:REC:Conserva",
+   "chave_arte": "SAQ:Hospital: Conserva",
+   "origem": "Cisterna 0.2 (certificada)"
+  },
+  {
+   "ids": [
+    "ZC-SAQ-0008"
+   ],
+   "nome": "Hospital: Água",
+   "nome_sugerido": null,
+   "familia": "SAQ",
+   "categoria": "Saque",
+   "copias": 1,
+   "texto": "Ganhe 1 carta(s) física(s) Água da reserva; carga 1/carta. Retire um uso de busca e descarte aqui. Não repõe em nova visita.",
+   "ilustracao": "Arte do recurso Água com faixa do local Hospital sobre o mapa.",
+   "elementos": [
+    "faixa Hospital",
+    "arte REC:Água"
+   ],
+   "verso": "V-SAQ (Hospital)",
+   "arte": "compartilhada:REC:Água",
+   "chave_arte": "SAQ:Hospital: Água",
+   "origem": "Cisterna 0.2 (certificada)"
+  },
+  {
+   "ids": [
+    "ZC-SAQ-0009"
+   ],
+   "nome": "Hospital: Material",
+   "nome_sugerido": null,
+   "familia": "SAQ",
+   "categoria": "Saque",
+   "copias": 1,
+   "texto": "Ganhe 1 carta(s) física(s) Material da reserva; carga 1/carta. Retire um uso de busca e descarte aqui. Não repõe em nova visita.",
+   "ilustracao": "Arte do recurso Material com faixa do local Hospital sobre o mapa.",
+   "elementos": [
+    "faixa Hospital",
+    "arte REC:Material"
+   ],
+   "verso": "V-SAQ (Hospital)",
+   "arte": "compartilhada:REC:Material",
+   "chave_arte": "SAQ:Hospital: Material",
+   "origem": "Cisterna 0.2 (certificada)"
+  },
+  {
+   "ids": [
+    "ZC-SAQ-0010"
+   ],
+   "nome": "Hospital: Munição",
+   "nome_sugerido": null,
+   "familia": "SAQ",
+   "categoria": "Saque",
+   "copias": 1,
+   "texto": "Ganhe 2 carta(s) física(s) Munição da reserva; carga 1/carta. Retire um uso de busca e descarte aqui. Não repõe em nova visita.",
+   "ilustracao": "Arte do recurso Munição com faixa do local Hospital sobre o mapa.",
+   "elementos": [
+    "faixa Hospital",
+    "arte REC:Munição"
+   ],
+   "verso": "V-SAQ (Hospital)",
+   "arte": "compartilhada:REC:Munição",
+   "chave_arte": "SAQ:Hospital: Munição",
+   "origem": "Cisterna 0.2 (certificada)"
+  },
+  {
+   "ids": [
+    "ZC-SAQ-0011"
+   ],
+   "nome": "Hospital: Medicamento",
+   "nome_sugerido": null,
+   "familia": "SAQ",
+   "categoria": "Saque",
+   "copias": 1,
+   "texto": "Ganhe 1 carta(s) física(s) Medicamento da reserva; carga 1/carta. Retire um uso de busca e descarte aqui. Não repõe em nova visita.",
+   "ilustracao": "Arte do recurso Medicamento com faixa do local Hospital sobre o mapa.",
+   "elementos": [
+    "faixa Hospital",
+    "arte REC:Medicamento"
+   ],
+   "verso": "V-SAQ (Hospital)",
+   "arte": "compartilhada:REC:Medicamento",
+   "chave_arte": "SAQ:Hospital: Medicamento",
+   "origem": "Cisterna 0.2 (certificada)"
+  },
+  {
+   "ids": [
+    "ZC-SAQ-0012"
+   ],
+   "nome": "Hospital: Carne",
+   "nome_sugerido": null,
+   "familia": "SAQ",
+   "categoria": "Saque",
+   "copias": 1,
+   "texto": "Ganhe 1 carta(s) física(s) Carne da reserva; carga 1/carta. Retire um uso de busca e descarte aqui. Não repõe em nova visita.",
+   "ilustracao": "Arte do recurso Carne com faixa do local Hospital sobre o mapa.",
+   "elementos": [
+    "faixa Hospital",
+    "arte REC:Carne"
+   ],
+   "verso": "V-SAQ (Hospital)",
+   "arte": "compartilhada:REC:Carne",
+   "chave_arte": "SAQ:Hospital: Carne",
+   "origem": "Cisterna 0.2 (certificada)"
+  },
+  {
+   "ids": [
+    "ZC-SAQ-0013"
+   ],
+   "nome": "Oficina: Conserva",
+   "nome_sugerido": null,
+   "familia": "SAQ",
+   "categoria": "Saque",
+   "copias": 1,
+   "texto": "Ganhe 1 carta(s) física(s) Conserva da reserva; carga 1/carta. Retire um uso de busca e descarte aqui. Não repõe em nova visita.",
+   "ilustracao": "Arte do recurso Conserva com faixa do local Oficina sobre o mapa.",
+   "elementos": [
+    "faixa Oficina",
+    "arte REC:Conserva"
+   ],
+   "verso": "V-SAQ (Oficina)",
+   "arte": "compartilhada:REC:Conserva",
+   "chave_arte": "SAQ:Oficina: Conserva",
+   "origem": "Cisterna 0.2 (certificada)"
+  },
+  {
+   "ids": [
+    "ZC-SAQ-0014"
+   ],
+   "nome": "Oficina: Água",
+   "nome_sugerido": null,
+   "familia": "SAQ",
+   "categoria": "Saque",
+   "copias": 1,
+   "texto": "Ganhe 1 carta(s) física(s) Água da reserva; carga 1/carta. Retire um uso de busca e descarte aqui. Não repõe em nova visita.",
+   "ilustracao": "Arte do recurso Água com faixa do local Oficina sobre o mapa.",
+   "elementos": [
+    "faixa Oficina",
+    "arte REC:Água"
+   ],
+   "verso": "V-SAQ (Oficina)",
+   "arte": "compartilhada:REC:Água",
+   "chave_arte": "SAQ:Oficina: Água",
+   "origem": "Cisterna 0.2 (certificada)"
+  },
+  {
+   "ids": [
+    "ZC-SAQ-0015"
+   ],
+   "nome": "Oficina: Material",
+   "nome_sugerido": null,
+   "familia": "SAQ",
+   "categoria": "Saque",
+   "copias": 1,
+   "texto": "Ganhe 1 carta(s) física(s) Material da reserva; carga 1/carta. Retire um uso de busca e descarte aqui. Não repõe em nova visita.",
+   "ilustracao": "Arte do recurso Material com faixa do local Oficina sobre o mapa.",
+   "elementos": [
+    "faixa Oficina",
+    "arte REC:Material"
+   ],
+   "verso": "V-SAQ (Oficina)",
+   "arte": "compartilhada:REC:Material",
+   "chave_arte": "SAQ:Oficina: Material",
+   "origem": "Cisterna 0.2 (certificada)"
+  },
+  {
+   "ids": [
+    "ZC-SAQ-0016"
+   ],
+   "nome": "Oficina: Munição",
+   "nome_sugerido": null,
+   "familia": "SAQ",
+   "categoria": "Saque",
+   "copias": 1,
+   "texto": "Ganhe 2 carta(s) física(s) Munição da reserva; carga 1/carta. Retire um uso de busca e descarte aqui. Não repõe em nova visita.",
+   "ilustracao": "Arte do recurso Munição com faixa do local Oficina sobre o mapa.",
+   "elementos": [
+    "faixa Oficina",
+    "arte REC:Munição"
+   ],
+   "verso": "V-SAQ (Oficina)",
+   "arte": "compartilhada:REC:Munição",
+   "chave_arte": "SAQ:Oficina: Munição",
+   "origem": "Cisterna 0.2 (certificada)"
+  },
+  {
+   "ids": [
+    "ZC-SAQ-0017"
+   ],
+   "nome": "Oficina: Medicamento",
+   "nome_sugerido": null,
+   "familia": "SAQ",
+   "categoria": "Saque",
+   "copias": 1,
+   "texto": "Ganhe 1 carta(s) física(s) Medicamento da reserva; carga 1/carta. Retire um uso de busca e descarte aqui. Não repõe em nova visita.",
+   "ilustracao": "Arte do recurso Medicamento com faixa do local Oficina sobre o mapa.",
+   "elementos": [
+    "faixa Oficina",
+    "arte REC:Medicamento"
+   ],
+   "verso": "V-SAQ (Oficina)",
+   "arte": "compartilhada:REC:Medicamento",
+   "chave_arte": "SAQ:Oficina: Medicamento",
+   "origem": "Cisterna 0.2 (certificada)"
+  },
+  {
+   "ids": [
+    "ZC-SAQ-0018"
+   ],
+   "nome": "Oficina: Carne",
+   "nome_sugerido": null,
+   "familia": "SAQ",
+   "categoria": "Saque",
+   "copias": 1,
+   "texto": "Ganhe 1 carta(s) física(s) Carne da reserva; carga 1/carta. Retire um uso de busca e descarte aqui. Não repõe em nova visita.",
+   "ilustracao": "Arte do recurso Carne com faixa do local Oficina sobre o mapa.",
+   "elementos": [
+    "faixa Oficina",
+    "arte REC:Carne"
+   ],
+   "verso": "V-SAQ (Oficina)",
+   "arte": "compartilhada:REC:Carne",
+   "chave_arte": "SAQ:Oficina: Carne",
+   "origem": "Cisterna 0.2 (certificada)"
+  },
+  {
+   "ids": [
+    "ZC-SAQ-0019"
+   ],
+   "nome": "Posto: Conserva",
+   "nome_sugerido": null,
+   "familia": "SAQ",
+   "categoria": "Saque",
+   "copias": 1,
+   "texto": "Ganhe 1 carta(s) física(s) Conserva da reserva; carga 1/carta. Retire um uso de busca e descarte aqui. Não repõe em nova visita.",
+   "ilustracao": "Arte do recurso Conserva com faixa do local Posto sobre o mapa.",
+   "elementos": [
+    "faixa Posto",
+    "arte REC:Conserva"
+   ],
+   "verso": "V-SAQ (Posto)",
+   "arte": "compartilhada:REC:Conserva",
+   "chave_arte": "SAQ:Posto: Conserva",
+   "origem": "Cisterna 0.2 (certificada)"
+  },
+  {
+   "ids": [
+    "ZC-SAQ-0020"
+   ],
+   "nome": "Posto: Água",
+   "nome_sugerido": null,
+   "familia": "SAQ",
+   "categoria": "Saque",
+   "copias": 1,
+   "texto": "Ganhe 1 carta(s) física(s) Água da reserva; carga 1/carta. Retire um uso de busca e descarte aqui. Não repõe em nova visita.",
+   "ilustracao": "Arte do recurso Água com faixa do local Posto sobre o mapa.",
+   "elementos": [
+    "faixa Posto",
+    "arte REC:Água"
+   ],
+   "verso": "V-SAQ (Posto)",
+   "arte": "compartilhada:REC:Água",
+   "chave_arte": "SAQ:Posto: Água",
+   "origem": "Cisterna 0.2 (certificada)"
+  },
+  {
+   "ids": [
+    "ZC-SAQ-0021"
+   ],
+   "nome": "Posto: Material",
+   "nome_sugerido": null,
+   "familia": "SAQ",
+   "categoria": "Saque",
+   "copias": 1,
+   "texto": "Ganhe 1 carta(s) física(s) Material da reserva; carga 1/carta. Retire um uso de busca e descarte aqui. Não repõe em nova visita.",
+   "ilustracao": "Arte do recurso Material com faixa do local Posto sobre o mapa.",
+   "elementos": [
+    "faixa Posto",
+    "arte REC:Material"
+   ],
+   "verso": "V-SAQ (Posto)",
+   "arte": "compartilhada:REC:Material",
+   "chave_arte": "SAQ:Posto: Material",
+   "origem": "Cisterna 0.2 (certificada)"
+  },
+  {
+   "ids": [
+    "ZC-SAQ-0022"
+   ],
+   "nome": "Posto: Munição",
+   "nome_sugerido": null,
+   "familia": "SAQ",
+   "categoria": "Saque",
+   "copias": 1,
+   "texto": "Ganhe 2 carta(s) física(s) Munição da reserva; carga 1/carta. Retire um uso de busca e descarte aqui. Não repõe em nova visita.",
+   "ilustracao": "Arte do recurso Munição com faixa do local Posto sobre o mapa.",
+   "elementos": [
+    "faixa Posto",
+    "arte REC:Munição"
+   ],
+   "verso": "V-SAQ (Posto)",
+   "arte": "compartilhada:REC:Munição",
+   "chave_arte": "SAQ:Posto: Munição",
+   "origem": "Cisterna 0.2 (certificada)"
+  },
+  {
+   "ids": [
+    "ZC-SAQ-0023"
+   ],
+   "nome": "Posto: Medicamento",
+   "nome_sugerido": null,
+   "familia": "SAQ",
+   "categoria": "Saque",
+   "copias": 1,
+   "texto": "Ganhe 1 carta(s) física(s) Medicamento da reserva; carga 1/carta. Retire um uso de busca e descarte aqui. Não repõe em nova visita.",
+   "ilustracao": "Arte do recurso Medicamento com faixa do local Posto sobre o mapa.",
+   "elementos": [
+    "faixa Posto",
+    "arte REC:Medicamento"
+   ],
+   "verso": "V-SAQ (Posto)",
+   "arte": "compartilhada:REC:Medicamento",
+   "chave_arte": "SAQ:Posto: Medicamento",
+   "origem": "Cisterna 0.2 (certificada)"
+  },
+  {
+   "ids": [
+    "ZC-SAQ-0024"
+   ],
+   "nome": "Posto: Carne",
+   "nome_sugerido": null,
+   "familia": "SAQ",
+   "categoria": "Saque",
+   "copias": 1,
+   "texto": "Ganhe 1 carta(s) física(s) Carne da reserva; carga 1/carta. Retire um uso de busca e descarte aqui. Não repõe em nova visita.",
+   "ilustracao": "Arte do recurso Carne com faixa do local Posto sobre o mapa.",
+   "elementos": [
+    "faixa Posto",
+    "arte REC:Carne"
+   ],
+   "verso": "V-SAQ (Posto)",
+   "arte": "compartilhada:REC:Carne",
+   "chave_arte": "SAQ:Posto: Carne",
+   "origem": "Cisterna 0.2 (certificada)"
+  },
+  {
+   "ids": [
+    "ZC-SAQ-0025"
+   ],
+   "nome": "Condomínio: Conserva",
+   "nome_sugerido": null,
+   "familia": "SAQ",
+   "categoria": "Saque",
+   "copias": 1,
+   "texto": "Ganhe 1 carta(s) física(s) Conserva da reserva; carga 1/carta. Retire um uso de busca e descarte aqui. Não repõe em nova visita.",
+   "ilustracao": "Arte do recurso Conserva com faixa do local Condomínio sobre o mapa.",
+   "elementos": [
+    "faixa Condomínio",
+    "arte REC:Conserva"
+   ],
+   "verso": "V-SAQ (Condomínio)",
+   "arte": "compartilhada:REC:Conserva",
+   "chave_arte": "SAQ:Condomínio: Conserva",
+   "origem": "Cisterna 0.2 (certificada)"
+  },
+  {
+   "ids": [
+    "ZC-SAQ-0026"
+   ],
+   "nome": "Condomínio: Água",
+   "nome_sugerido": null,
+   "familia": "SAQ",
+   "categoria": "Saque",
+   "copias": 1,
+   "texto": "Ganhe 1 carta(s) física(s) Água da reserva; carga 1/carta. Retire um uso de busca e descarte aqui. Não repõe em nova visita.",
+   "ilustracao": "Arte do recurso Água com faixa do local Condomínio sobre o mapa.",
+   "elementos": [
+    "faixa Condomínio",
+    "arte REC:Água"
+   ],
+   "verso": "V-SAQ (Condomínio)",
+   "arte": "compartilhada:REC:Água",
+   "chave_arte": "SAQ:Condomínio: Água",
+   "origem": "Cisterna 0.2 (certificada)"
+  },
+  {
+   "ids": [
+    "ZC-SAQ-0027"
+   ],
+   "nome": "Condomínio: Material",
+   "nome_sugerido": null,
+   "familia": "SAQ",
+   "categoria": "Saque",
+   "copias": 1,
+   "texto": "Ganhe 1 carta(s) física(s) Material da reserva; carga 1/carta. Retire um uso de busca e descarte aqui. Não repõe em nova visita.",
+   "ilustracao": "Arte do recurso Material com faixa do local Condomínio sobre o mapa.",
+   "elementos": [
+    "faixa Condomínio",
+    "arte REC:Material"
+   ],
+   "verso": "V-SAQ (Condomínio)",
+   "arte": "compartilhada:REC:Material",
+   "chave_arte": "SAQ:Condomínio: Material",
+   "origem": "Cisterna 0.2 (certificada)"
+  },
+  {
+   "ids": [
+    "ZC-SAQ-0028"
+   ],
+   "nome": "Condomínio: Munição",
+   "nome_sugerido": null,
+   "familia": "SAQ",
+   "categoria": "Saque",
+   "copias": 1,
+   "texto": "Ganhe 2 carta(s) física(s) Munição da reserva; carga 1/carta. Retire um uso de busca e descarte aqui. Não repõe em nova visita.",
+   "ilustracao": "Arte do recurso Munição com faixa do local Condomínio sobre o mapa.",
+   "elementos": [
+    "faixa Condomínio",
+    "arte REC:Munição"
+   ],
+   "verso": "V-SAQ (Condomínio)",
+   "arte": "compartilhada:REC:Munição",
+   "chave_arte": "SAQ:Condomínio: Munição",
+   "origem": "Cisterna 0.2 (certificada)"
+  },
+  {
+   "ids": [
+    "ZC-SAQ-0029"
+   ],
+   "nome": "Condomínio: Medicamento",
+   "nome_sugerido": null,
+   "familia": "SAQ",
+   "categoria": "Saque",
+   "copias": 1,
+   "texto": "Ganhe 1 carta(s) física(s) Medicamento da reserva; carga 1/carta. Retire um uso de busca e descarte aqui. Não repõe em nova visita.",
+   "ilustracao": "Arte do recurso Medicamento com faixa do local Condomínio sobre o mapa.",
+   "elementos": [
+    "faixa Condomínio",
+    "arte REC:Medicamento"
+   ],
+   "verso": "V-SAQ (Condomínio)",
+   "arte": "compartilhada:REC:Medicamento",
+   "chave_arte": "SAQ:Condomínio: Medicamento",
+   "origem": "Cisterna 0.2 (certificada)"
+  },
+  {
+   "ids": [
+    "ZC-SAQ-0030"
+   ],
+   "nome": "Condomínio: Carne",
+   "nome_sugerido": null,
+   "familia": "SAQ",
+   "categoria": "Saque",
+   "copias": 1,
+   "texto": "Ganhe 1 carta(s) física(s) Carne da reserva; carga 1/carta. Retire um uso de busca e descarte aqui. Não repõe em nova visita.",
+   "ilustracao": "Arte do recurso Carne com faixa do local Condomínio sobre o mapa.",
+   "elementos": [
+    "faixa Condomínio",
+    "arte REC:Carne"
+   ],
+   "verso": "V-SAQ (Condomínio)",
+   "arte": "compartilhada:REC:Carne",
+   "chave_arte": "SAQ:Condomínio: Carne",
+   "origem": "Cisterna 0.2 (certificada)"
+  },
+  {
+   "ids": [
+    "ZC-SAQ-0031"
+   ],
+   "nome": "Estação: Conserva",
+   "nome_sugerido": null,
+   "familia": "SAQ",
+   "categoria": "Saque",
+   "copias": 1,
+   "texto": "Ganhe 1 carta(s) física(s) Conserva da reserva; carga 1/carta. Retire um uso de busca e descarte aqui. Não repõe em nova visita.",
+   "ilustracao": "Arte do recurso Conserva com faixa do local Estação sobre o mapa.",
+   "elementos": [
+    "faixa Estação",
+    "arte REC:Conserva"
+   ],
+   "verso": "V-SAQ (Estação)",
+   "arte": "compartilhada:REC:Conserva",
+   "chave_arte": "SAQ:Estação: Conserva",
+   "origem": "Cisterna 0.2 (certificada)"
+  },
+  {
+   "ids": [
+    "ZC-SAQ-0032"
+   ],
+   "nome": "Estação: Água",
+   "nome_sugerido": null,
+   "familia": "SAQ",
+   "categoria": "Saque",
+   "copias": 1,
+   "texto": "Ganhe 1 carta(s) física(s) Água da reserva; carga 1/carta. Retire um uso de busca e descarte aqui. Não repõe em nova visita.",
+   "ilustracao": "Arte do recurso Água com faixa do local Estação sobre o mapa.",
+   "elementos": [
+    "faixa Estação",
+    "arte REC:Água"
+   ],
+   "verso": "V-SAQ (Estação)",
+   "arte": "compartilhada:REC:Água",
+   "chave_arte": "SAQ:Estação: Água",
+   "origem": "Cisterna 0.2 (certificada)"
+  },
+  {
+   "ids": [
+    "ZC-SAQ-0033"
+   ],
+   "nome": "Estação: Material",
+   "nome_sugerido": null,
+   "familia": "SAQ",
+   "categoria": "Saque",
+   "copias": 1,
+   "texto": "Ganhe 1 carta(s) física(s) Material da reserva; carga 1/carta. Retire um uso de busca e descarte aqui. Não repõe em nova visita.",
+   "ilustracao": "Arte do recurso Material com faixa do local Estação sobre o mapa.",
+   "elementos": [
+    "faixa Estação",
+    "arte REC:Material"
+   ],
+   "verso": "V-SAQ (Estação)",
+   "arte": "compartilhada:REC:Material",
+   "chave_arte": "SAQ:Estação: Material",
+   "origem": "Cisterna 0.2 (certificada)"
+  },
+  {
+   "ids": [
+    "ZC-SAQ-0034"
+   ],
+   "nome": "Estação: Munição",
+   "nome_sugerido": null,
+   "familia": "SAQ",
+   "categoria": "Saque",
+   "copias": 1,
+   "texto": "Ganhe 2 carta(s) física(s) Munição da reserva; carga 1/carta. Retire um uso de busca e descarte aqui. Não repõe em nova visita.",
+   "ilustracao": "Arte do recurso Munição com faixa do local Estação sobre o mapa.",
+   "elementos": [
+    "faixa Estação",
+    "arte REC:Munição"
+   ],
+   "verso": "V-SAQ (Estação)",
+   "arte": "compartilhada:REC:Munição",
+   "chave_arte": "SAQ:Estação: Munição",
+   "origem": "Cisterna 0.2 (certificada)"
+  },
+  {
+   "ids": [
+    "ZC-SAQ-0035"
+   ],
+   "nome": "Estação: Medicamento",
+   "nome_sugerido": null,
+   "familia": "SAQ",
+   "categoria": "Saque",
+   "copias": 1,
+   "texto": "Ganhe 1 carta(s) física(s) Medicamento da reserva; carga 1/carta. Retire um uso de busca e descarte aqui. Não repõe em nova visita.",
+   "ilustracao": "Arte do recurso Medicamento com faixa do local Estação sobre o mapa.",
+   "elementos": [
+    "faixa Estação",
+    "arte REC:Medicamento"
+   ],
+   "verso": "V-SAQ (Estação)",
+   "arte": "compartilhada:REC:Medicamento",
+   "chave_arte": "SAQ:Estação: Medicamento",
+   "origem": "Cisterna 0.2 (certificada)"
+  },
+  {
+   "ids": [
+    "ZC-SAQ-0036"
+   ],
+   "nome": "Estação: Carne",
+   "nome_sugerido": null,
+   "familia": "SAQ",
+   "categoria": "Saque",
+   "copias": 1,
+   "texto": "Ganhe 1 carta(s) física(s) Carne da reserva; carga 1/carta. Retire um uso de busca e descarte aqui. Não repõe em nova visita.",
+   "ilustracao": "Arte do recurso Carne com faixa do local Estação sobre o mapa.",
+   "elementos": [
+    "faixa Estação",
+    "arte REC:Carne"
+   ],
+   "verso": "V-SAQ (Estação)",
+   "arte": "compartilhada:REC:Carne",
+   "chave_arte": "SAQ:Estação: Carne",
+   "origem": "Cisterna 0.2 (certificada)"
+  },
+  {
+   "ids": [
+    "ZC-VIA-0001"
+   ],
+   "nome": "Rua vazia",
+   "nome_sugerido": null,
+   "familia": "VIA",
+   "categoria": "Viagem",
+   "copias": 1,
+   "texto": "Sem efeito adicional.",
+   "ilustracao": "Rua de cidade pequena ao meio-dia, carros parados, varal com roupa, nenhum movimento.",
+   "elementos": [
+    "rua vazia",
+    "carros parados"
+   ],
+   "verso": "V-VIA",
+   "arte": "exclusiva",
+   "chave_arte": "VIA:Rua vazia",
+   "origem": "Cisterna 0.2 (certificada)"
+  },
+  {
+   "ids": [
+    "ZC-VIA-0002"
+   ],
+   "nome": "Chuva ácida de fuligem",
+   "nome_sugerido": "Chuva de fuligem",
+   "familia": "VIA",
+   "categoria": "Viagem",
+   "copias": 1,
+   "texto": "Escolham perder uma porção água levada OU cada herói ganha 1 fadiga.",
+   "ilustracao": "Chuva cinza manchando o para-brisa de uma van, heróis cobrindo galões com o corpo.",
+   "elementos": [
+    "chuva escura",
+    "galões protegidos"
+   ],
+   "verso": "V-VIA",
+   "arte": "exclusiva",
+   "chave_arte": "VIA:Chuva ácida de fuligem",
+   "origem": "Cisterna 0.2 (certificada)"
+  },
+  {
+   "ids": [
+    "ZC-VIA-0003"
+   ],
+   "nome": "Sinal de passagem",
+   "nome_sugerido": null,
+   "familia": "VIA",
+   "categoria": "Viagem",
+   "copias": 1,
+   "texto": "Se voltarem hoje por esta rota, ignorem a próxima Viagem normal da volta, mas paguem tempo e combustível.",
+   "ilustracao": "Seta pintada com spray num muro e pedras empilhadas indicando atalho.",
+   "elementos": [
+    "seta de spray",
+    "pedras empilhadas"
+   ],
+   "verso": "V-VIA",
+   "arte": "exclusiva",
+   "chave_arte": "VIA:Sinal de passagem",
+   "origem": "Cisterna 0.2 (certificada)"
+  },
+  {
+   "ids": [
+    "ZC-VIA-0004"
+   ],
+   "nome": "Barricada",
+   "nome_sugerido": null,
+   "familia": "VIA",
+   "categoria": "Viagem",
+   "copias": 1,
+   "texto": "Paguem 1 Material levado OU +1 Pressão externa. Sem tempo extra.",
+   "ilustracao": "Barricada de carros e móveis numa ponte de concreto, passagem estreita.",
+   "elementos": [
+    "carros",
+    "móveis",
+    "passagem estreita"
+   ],
+   "verso": "V-VIA",
+   "arte": "exclusiva",
+   "chave_arte": "VIA:Barricada",
+   "origem": "Cisterna 0.2 (certificada)"
+  },
+  {
+   "ids": [
+    "ZC-VIA-0005"
+   ],
+   "nome": "Emboscada",
+   "nome_sugerido": null,
+   "familia": "VIA",
+   "categoria": "Viagem",
+   "copias": 1,
+   "texto": "Use M1: Z1/2/5/6. Grupo Z1; ceil(H/2) Errantes e surgimento em Z6. Porta 1–5 fechada comum; pressão local 0. Uma rodada completa obrigatória, mesmo relógio. Saída Z1 livre. Sem Saque; retome a viagem sem pagar de novo o trecho.",
+   "ilustracao": "Errantes saindo do canavial dos dois lados da estrada de terra, heróis recuando de costas.",
+   "elementos": [
+    "canavial",
+    "errantes",
+    "heróis cercados"
+   ],
+   "verso": "V-VIA",
+   "arte": "exclusiva",
+   "chave_arte": "VIA:Emboscada",
+   "origem": "Cisterna 0.2 (certificada)"
+  },
+  {
+   "ids": [
+    "ZC-VIA-0006"
+   ],
+   "nome": "Vizinho na janela",
+   "nome_sugerido": null,
+   "familia": "VIA",
+   "categoria": "Viagem",
+   "copias": 1,
+   "texto": "Podem entregar 1 comida+1 água levadas: +1 Moral, máximo 5. Sem resgate.",
+   "ilustracao": "Idosa acenando atrás de grade de janela com cortina de renda, pedindo água.",
+   "elementos": [
+    "janela com grade",
+    "idosa",
+    "gesto de pedido"
+   ],
+   "verso": "V-VIA",
+   "arte": "exclusiva",
+   "chave_arte": "VIA:Vizinho na janela",
+   "origem": "Cisterna 0.2 (certificada)"
+  },
+  {
+   "ids": [
+    "ZC-VIA-0007"
+   ],
+   "nome": "Ruído distante",
+   "nome_sugerido": null,
+   "familia": "VIA",
+   "categoria": "Viagem",
+   "copias": 1,
+   "texto": "+1 Pressão externa.",
+   "ilustracao": "Fumaça e pássaros levantando voo ao longe, sobre o morro.",
+   "elementos": [
+    "fumaça distante",
+    "revoada"
+   ],
+   "verso": "V-VIA",
+   "arte": "exclusiva",
+   "chave_arte": "VIA:Ruído distante",
+   "origem": "Cisterna 0.2 (certificada)"
+  },
+  {
+   "ids": [
+    "ZC-VIA-0008"
+   ],
+   "nome": "Desvio sinalizado",
+   "nome_sugerido": null,
+   "familia": "VIA",
+   "categoria": "Viagem",
+   "copias": 1,
+   "texto": "Sem efeito; registrem rota conhecida.",
+   "ilustracao": "Placa de obra 'DESVIO' tombada e uma trilha alternativa pela fazenda.",
+   "elementos": [
+    "placa DESVIO",
+    "trilha"
+   ],
+   "verso": "V-VIA",
+   "arte": "exclusiva",
+   "chave_arte": "VIA:Desvio sinalizado",
+   "origem": "Cisterna 0.2 (certificada)"
+  },
+  {
+   "ids": [
+    "ZC-VIA-0009"
+   ],
+   "nome": "Cão perdido",
+   "nome_sugerido": null,
+   "familia": "VIA",
+   "categoria": "Viagem",
+   "copias": 1,
+   "texto": "Sem vínculo humano: se uma família sem cão aceitar, +1 cão à chegada. Consome uma comida e uma água na refeição; não há custo adicional na estrada. Caso contrário segue seguro no local, sem punição.",
+   "ilustracao": "Cão sujo seguindo o grupo a distância pela estrada, rabo baixo.",
+   "elementos": [
+    "cão",
+    "distância"
+   ],
+   "verso": "V-VIA",
+   "arte": "exclusiva",
+   "chave_arte": "VIA:Cão perdido",
+   "origem": "Cisterna 0.2 (certificada)"
+  },
+  {
+   "ids": [
+    "ZC-VIA-0010"
+   ],
+   "nome": "Ferragens",
+   "nome_sugerido": null,
+   "familia": "VIA",
+   "categoria": "Viagem",
+   "copias": 1,
+   "texto": "Ida: deixe 1 Material no chão Z1 do destino; coletar custa 1 PA. Volta: acrescente 1 Material ao estoque ao chegar. Uma unidade por ocorrência, nunca ambos.",
+   "ilustracao": "Ferro-velho à beira da estrada com peças úteis expostas ao sol.",
+   "elementos": [
+    "ferro-velho",
+    "sucata útil"
+   ],
+   "verso": "V-VIA",
+   "arte": "exclusiva",
+   "chave_arte": "VIA:Ferragens",
+   "origem": "Cisterna 0.2 (certificada)"
+  },
+  {
+   "ids": [
+    "ZC-VIA-0011"
+   ],
+   "nome": "Ponte avistada",
+   "nome_sugerido": null,
+   "familia": "VIA",
+   "categoria": "Viagem",
+   "copias": 1,
+   "texto": "Marque Ponte conhecida; não encaminha de graça.",
+   "ilustracao": "Vista do alto de uma ponte de ferro sobre rio barrento com bandeira improvisada.",
+   "elementos": [
+    "ponte de ferro",
+    "bandeira"
+   ],
+   "verso": "V-VIA",
+   "arte": "exclusiva",
+   "chave_arte": "VIA:Ponte avistada",
+   "origem": "Cisterna 0.2 (certificada)"
+  },
+  {
+   "ids": [
+    "ZC-VIA-0012"
+   ],
+   "nome": "Caminho limpo",
+   "nome_sugerido": null,
+   "familia": "VIA",
+   "categoria": "Viagem",
+   "copias": 1,
+   "texto": "Sem efeito. Não gera recursos.",
+   "ilustracao": "Estrada de chão reta entre eucaliptos, céu aberto.",
+   "elementos": [
+    "estrada reta",
+    "eucaliptos"
+   ],
+   "verso": "V-VIA",
+   "arte": "exclusiva",
+   "chave_arte": "VIA:Caminho limpo",
+   "origem": "Cisterna 0.2 (certificada)"
+  },
+  {
+   "ids": [
+    "ZC-HOR-0001",
+    "ZC-HOR-0002",
+    "ZC-HOR-0003",
+    "ZC-HOR-0004"
+   ],
+   "nome": "Arrastar",
+   "nome_sugerido": null,
+   "familia": "HOR",
+   "categoria": "Horda",
+   "copias": 4,
+   "texto": "Coloque 1 Errante em S.",
+   "ilustracao": "Errante solitário arrastando o pé pelo corredor de um mercado, carrinho tombado.",
+   "elementos": [
+    "1 errante",
+    "pé arrastado"
+   ],
+   "verso": "V-HOR",
+   "arte": "exclusiva",
+   "chave_arte": "HOR:Arrastar",
+   "origem": "Cisterna 0.2 (certificada)"
+  },
+  {
+   "ids": [
+    "ZC-HOR-0005",
+    "ZC-HOR-0006"
+   ],
+   "nome": "Corrida",
+   "nome_sugerido": null,
+   "familia": "HOR",
+   "categoria": "Horda",
+   "copias": 2,
+   "texto": "Coloque 1 Corredor em S.",
+   "ilustracao": "Corredor em disparada, borrão de movimento, boca aberta, vindo pelo estacionamento.",
+   "elementos": [
+    "1 corredor",
+    "movimento rápido"
+   ],
+   "verso": "V-HOR",
+   "arte": "exclusiva",
+   "chave_arte": "HOR:Corrida",
+   "origem": "Cisterna 0.2 (certificada)"
+  },
+  {
+   "ids": [
+    "ZC-HOR-0007",
+    "ZC-HOR-0008"
+   ],
+   "nome": "Aglomerado",
+   "nome_sugerido": null,
+   "familia": "HOR",
+   "categoria": "Horda",
+   "copias": 2,
+   "texto": "Coloque ceil(H/2) Errantes em S.",
+   "ilustracao": "Grupo de errantes pressionando uma porta de vidro, mãos espalmadas.",
+   "elementos": [
+    "vários errantes",
+    "porta de vidro"
+   ],
+   "verso": "V-HOR",
+   "arte": "exclusiva",
+   "chave_arte": "HOR:Aglomerado",
+   "origem": "Cisterna 0.2 (certificada)"
+  },
+  {
+   "ids": [
+    "ZC-HOR-0009"
+   ],
+   "nome": "Peso morto",
+   "nome_sugerido": null,
+   "familia": "HOR",
+   "categoria": "Horda",
+   "copias": 1,
+   "texto": "Coloque 1 Bruto em S.",
+   "ilustracao": "Bruto enorme de macacão de frigorífico atravessando uma parede de drywall.",
+   "elementos": [
+    "1 bruto",
+    "parede quebrada"
+   ],
+   "verso": "V-HOR",
+   "arte": "exclusiva",
+   "chave_arte": "HOR:Peso morto",
+   "origem": "Cisterna 0.2 (certificada)"
+  },
+  {
+   "ids": [
+    "ZC-CER-0001"
+   ],
+   "nome": "Portão pressionado",
+   "nome_sugerido": null,
+   "familia": "CER",
+   "categoria": "Cerco",
+   "copias": 1,
+   "texto": "Força 4. Zumbis. Defesa: portão 2 + torre 1 + cão 1 + até 3 vigias 4+ + até 2 Munições. Consulte perdas no painel.",
+   "ilustracao": "Noite: portão do abrigo envergando sob mãos e corpos, lanternas dos vigias no alto.",
+   "elementos": [
+    "portão",
+    "vigias com lanterna",
+    "noite"
+   ],
+   "verso": "V-CER",
+   "arte": "exclusiva",
+   "chave_arte": "CER:Portão pressionado",
+   "origem": "Cisterna 0.2 (certificada)"
+  },
+  {
+   "ids": [
+    "ZC-CER-0002"
+   ],
+   "nome": "Fila na cerca",
+   "nome_sugerido": null,
+   "familia": "CER",
+   "categoria": "Cerco",
+   "copias": 1,
+   "texto": "Força 5. Zumbis. Defesa: portão 2 + torre 1 + cão 1 + até 3 vigias 4+ + até 2 Munições. Consulte perdas no painel.",
+   "ilustracao": "Noite: fila de errantes ao longo da cerca de arame, vista de cima da torre.",
+   "elementos": [
+    "cerca",
+    "fila",
+    "vista da torre"
+   ],
+   "verso": "V-CER",
+   "arte": "exclusiva",
+   "chave_arte": "CER:Fila na cerca",
+   "origem": "Cisterna 0.2 (certificada)"
+  },
+  {
+   "ids": [
+    "ZC-CER-0003"
+   ],
+   "nome": "Mãos no arame",
+   "nome_sugerido": null,
+   "familia": "CER",
+   "categoria": "Cerco",
+   "copias": 1,
+   "texto": "Força 6. Zumbis. Defesa: portão 2 + torre 1 + cão 1 + até 3 vigias 4+ + até 2 Munições. Consulte perdas no painel.",
+   "ilustracao": "Close de dedos podres enroscados em arame farpado sob luz de lampião.",
+   "elementos": [
+    "arame farpado",
+    "mãos",
+    "lampião"
+   ],
+   "verso": "V-CER",
+   "arte": "exclusiva",
+   "chave_arte": "CER:Mãos no arame",
+   "origem": "Cisterna 0.2 (certificada)"
+  },
+  {
+   "ids": [
+    "ZC-CER-0004"
+   ],
+   "nome": "Passos no escuro",
+   "nome_sugerido": null,
+   "familia": "CER",
+   "categoria": "Cerco",
+   "copias": 1,
+   "texto": "Força 4. Zumbis. Defesa: portão 2 + torre 1 + cão 1 + até 3 vigias 4+ + até 2 Munições. Consulte perdas no painel.",
+   "ilustracao": "Noite sem lua, só pegadas na lama iluminadas pela lanterna e olhos na mata.",
+   "elementos": [
+    "pegadas",
+    "lanterna",
+    "olhos na mata"
+   ],
+   "verso": "V-CER",
+   "arte": "exclusiva",
+   "chave_arte": "CER:Passos no escuro",
+   "origem": "Cisterna 0.2 (certificada)"
+  },
+  {
+   "ids": [
+    "ZC-CER-0005"
+   ],
+   "nome": "Cobrança da Ponte",
+   "nome_sugerido": null,
+   "familia": "CER",
+   "categoria": "Cerco",
+   "copias": 1,
+   "texto": "Força 5. Rivais: ajuste Força por relação: −2 +1; +2 −1. Defesa: portão 2 + torre 1 + cão 1 + até 3 vigias 4+ + até 2 Munições. Consulte perdas no painel.",
+   "ilustracao": "Grupo armado de outra comunidade parado no portão, líder com caderno de dívidas, faixas vermelhas no braço.",
+   "elementos": [
+    "rivais humanos",
+    "caderno",
+    "faixa vermelha"
+   ],
+   "verso": "V-CER",
+   "arte": "exclusiva",
+   "chave_arte": "CER:Cobrança da Ponte",
+   "origem": "Cisterna 0.2 (certificada)"
+  },
+  {
+   "ids": [
+    "ZC-CER-0006"
+   ],
+   "nome": "Caravana hostil",
+   "nome_sugerido": null,
+   "familia": "CER",
+   "categoria": "Cerco",
+   "copias": 1,
+   "texto": "Força 6. Rivais: podem pagar 4 comida+4 água do estoque antes dos dados para cancelar este cerco. Defesa: portão 2 + torre 1 + cão 1 + até 3 vigias 4+ + até 2 Munições. Consulte perdas no painel.",
+   "ilustracao": "Caminhonete com homens armados e luzes altas apontadas para o abrigo, buzina.",
+   "elementos": [
+    "caminhonete",
+    "faróis",
+    "rivais humanos"
+   ],
+   "verso": "V-CER",
+   "arte": "exclusiva",
+   "chave_arte": "CER:Caravana hostil",
+   "origem": "Cisterna 0.2 (certificada)"
+  },
+  {
+   "ids": [
+    "ZC-EVE-0001"
+   ],
+   "nome": "Bilhete na caixa",
+   "nome_sugerido": null,
+   "familia": "EVE",
+   "categoria": "Evento do dia",
+   "copias": 1,
+   "texto": "Dia 1: leia introdução do capítulo. Mercado ensina primeira rodada sem inimigos.",
+   "ilustracao": "Bilhete manuscrito na caixa de correio do abrigo: mapa do Mercado e um aviso.",
+   "elementos": [
+    "caixa de correio",
+    "bilhete",
+    "dia 1"
+   ],
+   "verso": "V-EVE",
+   "arte": "exclusiva",
+   "chave_arte": "EVE:Bilhete na caixa",
+   "origem": "Cisterna 0.2 (certificada)"
+  },
+  {
+   "ids": [
+    "ZC-EVE-0002"
+   ],
+   "nome": "Batidas na cerca",
+   "nome_sugerido": null,
+   "familia": "EVE",
+   "categoria": "Evento do dia",
+   "copias": 1,
+   "texto": "Dia 2: +1 Pressão externa.",
+   "ilustracao": "Pedaço de pau batendo na cerca durante a tarde, ninguém visível.",
+   "elementos": [
+    "cerca",
+    "batidas",
+    "dia 2"
+   ],
+   "verso": "V-EVE",
+   "arte": "exclusiva",
+   "chave_arte": "EVE:Batidas na cerca",
+   "origem": "Cisterna 0.2 (certificada)"
+  },
+  {
+   "ids": [
+    "ZC-EVE-0003"
+   ],
+   "nome": "Barulho no vale",
+   "nome_sugerido": null,
+   "familia": "EVE",
+   "categoria": "Evento do dia",
+   "copias": 1,
+   "texto": "Dia 3: enfileire Cerco de missão Força 4 para esta noite.",
+   "ilustracao": "Do alto, o vale com nuvem de poeira se aproximando.",
+   "elementos": [
+    "vale",
+    "poeira",
+    "dia 3"
+   ],
+   "verso": "V-EVE",
+   "arte": "exclusiva",
+   "chave_arte": "EVE:Barulho no vale",
+   "origem": "Cisterna 0.2 (certificada)"
+  },
+  {
+   "ids": [
+    "ZC-EVE-0004"
+   ],
+   "nome": "Fumaça no posto",
+   "nome_sugerido": null,
+   "familia": "EVE",
+   "categoria": "Evento do dia",
+   "copias": 1,
+   "texto": "Dia 4: +1 Pressão externa.",
+   "ilustracao": "Coluna de fumaça preta subindo do posto de gasolina na saída da cidade.",
+   "elementos": [
+    "posto",
+    "fumaça preta",
+    "dia 4"
+   ],
+   "verso": "V-EVE",
+   "arte": "exclusiva",
+   "chave_arte": "EVE:Fumaça no posto",
+   "origem": "Cisterna 0.2 (certificada)"
+  },
+  {
+   "ids": [
+    "ZC-EVE-0005"
+   ],
+   "nome": "A última manhã",
+   "nome_sugerido": null,
+   "familia": "EVE",
+   "categoria": "Evento do dia",
+   "copias": 1,
+   "texto": "Dia 5: +1 Pressão; prazo termina após noite.",
+   "ilustracao": "Nascer do sol pálido sobre o abrigo, todos de pé, mochilas prontas.",
+   "elementos": [
+    "amanhecer",
+    "grupo reunido",
+    "dia 5"
+   ],
+   "verso": "V-EVE",
+   "arte": "exclusiva",
+   "chave_arte": "EVE:A última manhã",
+   "origem": "Cisterna 0.2 (certificada)"
+  },
+  {
+   "ids": [
+    "ZC-PRO-0001"
+   ],
+   "nome": "Barraca",
+   "nome_sugerido": "Projeto: Barraca",
+   "familia": "PRO",
+   "categoria": "Projeto de obra",
+   "copias": 1,
+   "texto": "2 Materiais + Lona + 1 trabalho. Um terreno; +2 vagas.",
+   "ilustracao": "Croqui a lápis de barraca de lona com medidas, sobre foto da lona dobrada.",
+   "elementos": [
+    "croqui",
+    "lona",
+    "custo"
+   ],
+   "verso": "V-PRO",
+   "arte": "compartilhada:STR:Barraca",
+   "chave_arte": "PRO:Barraca",
+   "origem": "Cisterna 0.2 (certificada)"
+  },
+  {
+   "ids": [
+    "ZC-PRO-0002"
+   ],
+   "nome": "Casa simples",
+   "nome_sugerido": "Projeto: Casa simples",
+   "familia": "PRO",
+   "categoria": "Projeto de obra",
+   "copias": 1,
+   "texto": "Substitui barraca; 4 Materiais + Madeira + 2 trabalhos. Quatro vagas totais.",
+   "ilustracao": "Croqui de casinha de madeira com telha de amianto reaproveitada.",
+   "elementos": [
+    "croqui",
+    "telhado"
+   ],
+   "verso": "V-PRO",
+   "arte": "compartilhada:STR:Casa simples",
+   "chave_arte": "PRO:Casa simples",
+   "origem": "Cisterna 0.2 (certificada)"
+  },
+  {
+   "ids": [
+    "ZC-PRO-0003"
+   ],
+   "nome": "Enfermaria",
+   "nome_sugerido": "Projeto: Enfermaria",
+   "familia": "PRO",
+   "categoria": "Projeto de obra",
+   "copias": 1,
+   "texto": "3 Materiais + Kit de instalação + 2 trabalhos. Um terreno; cuidado dispensa Medicamento.",
+   "ilustracao": "Croqui de cômodo com maca e pia.",
+   "elementos": [
+    "croqui",
+    "maca"
+   ],
+   "verso": "V-PRO",
+   "arte": "compartilhada:STR:Enfermaria",
+   "chave_arte": "PRO:Enfermaria",
+   "origem": "Cisterna 0.2 (certificada)"
+  },
+  {
+   "ids": [
+    "ZC-PRO-0004"
+   ],
+   "nome": "Oficina",
+   "nome_sugerido": "Projeto: Oficina",
+   "familia": "PRO",
+   "categoria": "Projeto de obra",
+   "copias": 1,
+   "texto": "3 Materiais + Bancada + 2 trabalhos. Um terreno; habilita reparo de van sem Ferramentas (custo de materiais/trabalho permanece).",
+   "ilustracao": "Croqui de oficina com bancada e van.",
+   "elementos": [
+    "croqui",
+    "bancada"
+   ],
+   "verso": "V-PRO",
+   "arte": "compartilhada:STR:Oficina",
+   "chave_arte": "PRO:Oficina",
+   "origem": "Cisterna 0.2 (certificada)"
+  },
+  {
+   "ids": [
+    "ZC-PRO-0005"
+   ],
+   "nome": "Garagem",
+   "nome_sugerido": "Projeto: Garagem",
+   "familia": "PRO",
+   "categoria": "Projeto de obra",
+   "copias": 1,
+   "texto": "4 Materiais + Ferramentas + 3 trabalhos. Dois terrenos; +4 cargas de estoque protegido de cerco, escolhidas ao planejar.",
+   "ilustracao": "Croqui de garagem com portão de enrolar.",
+   "elementos": [
+    "croqui",
+    "portão de enrolar"
+   ],
+   "verso": "V-PRO",
+   "arte": "compartilhada:STR:Garagem",
+   "chave_arte": "PRO:Garagem",
+   "origem": "Cisterna 0.2 (certificada)"
+  },
+  {
+   "ids": [
+    "ZC-PRO-0006"
+   ],
+   "nome": "Torre",
+   "nome_sugerido": "Projeto: Torre",
+   "familia": "PRO",
+   "categoria": "Projeto de obra",
+   "copias": 1,
+   "texto": "2 Materiais + Madeira + 2 trabalhos. Perímetro; +1 Defesa ativa.",
+   "ilustracao": "Croqui de torre de vigia de madeira.",
+   "elementos": [
+    "croqui",
+    "torre"
+   ],
+   "verso": "V-PRO",
+   "arte": "compartilhada:STR:Torre",
+   "chave_arte": "PRO:Torre",
+   "origem": "Cisterna 0.2 (certificada)"
+  },
+  {
+   "ids": [
+    "ZC-PRO-0007"
+   ],
+   "nome": "Horta",
+   "nome_sugerido": "Projeto: Horta",
+   "familia": "PRO",
+   "categoria": "Projeto de obra",
+   "copias": 1,
+   "texto": "2 Materiais + Sementes + 2 trabalhos. Um terreno; trabalhador produz 4 comida/dia depois de pronta.",
+   "ilustracao": "Croqui de canteiros com sementes.",
+   "elementos": [
+    "croqui",
+    "canteiros"
+   ],
+   "verso": "V-PRO",
+   "arte": "compartilhada:STR:Horta",
+   "chave_arte": "PRO:Horta",
+   "origem": "Cisterna 0.2 (certificada)"
+  },
+  {
+   "ids": [
+    "ZC-PRO-0008"
+   ],
+   "nome": "Filtro",
+   "nome_sugerido": "Projeto: Filtro",
+   "familia": "PRO",
+   "categoria": "Projeto de obra",
+   "copias": 1,
+   "texto": "Etapa A: 1 Material+Conexões+1 trabalho. B: 1 Material+Bomba+1. C: 1 Material+Membrana+2. Max 2 trabalhos/dia; enchimento 2C água ao concluir; depois C/amanhecer.",
+   "ilustracao": "Croqui em três etapas (A, B, C) do filtro da cisterna: conexões, bomba, membrana.",
+   "elementos": [
+    "três etapas",
+    "conexões",
+    "bomba",
+    "membrana"
+   ],
+   "verso": "V-PRO",
+   "arte": "exclusiva",
+   "chave_arte": "PRO:Filtro",
+   "origem": "Cisterna 0.2 (certificada)"
+  },
+  {
+   "ids": [
+    "ZC-PRO-0009"
+   ],
+   "nome": "Expansão",
+   "nome_sugerido": "Projeto: Expansão",
+   "familia": "PRO",
+   "categoria": "Projeto de obra",
+   "copias": 1,
+   "texto": "Limpeza adjacente concluída +4 Materiais+2 Madeiras+2 trabalhos. Adicione seis terrenos; máximo uma.",
+   "ilustracao": "Grupo com enxadas limpando terreno ao lado do abrigo, estacas com barbante.",
+   "elementos": [
+    "enxadas",
+    "estacas",
+    "terreno limpo"
+   ],
+   "verso": "V-PRO",
+   "arte": "exclusiva",
+   "chave_arte": "PRO:Expansão",
+   "origem": "Cisterna 0.2 (certificada)"
+  },
+  {
+   "ids": [
+    "ZC-PRO-0010"
+   ],
+   "nome": "Reparo",
+   "nome_sugerido": "Projeto: Reparo",
+   "familia": "PRO",
+   "categoria": "Projeto de obra",
+   "copias": 1,
+   "texto": "2 Materiais+1 trabalho por estrutura danificada. Volta a funcionar à noite, depois do cerco.",
+   "ilustracao": "Mãos martelando tábua nova sobre parede rachada.",
+   "elementos": [
+    "martelo",
+    "tábua nova",
+    "rachadura"
+   ],
+   "verso": "V-PRO",
+   "arte": "exclusiva",
+   "chave_arte": "PRO:Reparo",
+   "origem": "Cisterna 0.2 (certificada)"
+  },
+  {
+   "ids": [
+    "ZC-STR-0001",
+    "ZC-STR-0002",
+    "ZC-STR-0003",
+    "ZC-STR-0004",
+    "ZC-STR-0005",
+    "ZC-STR-0006"
+   ],
+   "nome": "Barraca",
+   "nome_sugerido": null,
+   "familia": "STR",
+   "categoria": "Estrutura",
+   "copias": 6,
+   "texto": "Coloque no terreno reservado ao concluir. Danificada: vire 90 graus, inativa. Reparo 2 Materiais+1 trabalho. Barracas/casas não são alvos de cerco.",
+   "ilustracao": "Barraca de lona azul armada com cordas, roupa secando, chinelo na porta, quintal de terra.",
+   "elementos": [
+    "lona azul",
+    "varal",
+    "2 vagas"
+   ],
+   "verso": "V-STR",
+   "arte": "exclusiva",
+   "chave_arte": "STR:Barraca",
+   "origem": "Cisterna 0.2 (certificada)"
+  },
+  {
+   "ids": [
+    "ZC-STR-0007",
+    "ZC-STR-0008"
+   ],
+   "nome": "Casa simples",
+   "nome_sugerido": null,
+   "familia": "STR",
+   "categoria": "Estrutura",
+   "copias": 2,
+   "texto": "Coloque no terreno reservado ao concluir. Danificada: vire 90 graus, inativa. Reparo 2 Materiais+1 trabalho. Barracas/casas não são alvos de cerco.",
+   "ilustracao": "Casinha de madeira com janela de vidro trincado, flores em lata na porta.",
+   "elementos": [
+    "casa de madeira",
+    "4 vagas"
+   ],
+   "verso": "V-STR",
+   "arte": "exclusiva",
+   "chave_arte": "STR:Casa simples",
+   "origem": "Cisterna 0.2 (certificada)"
+  },
+  {
+   "ids": [
+    "ZC-STR-0009"
+   ],
+   "nome": "Cozinha",
+   "nome_sugerido": null,
+   "familia": "STR",
+   "categoria": "Estrutura",
+   "copias": 1,
+   "texto": "Coloque no terreno reservado ao concluir. Danificada: vire 90 graus, inativa. Reparo 2 Materiais+1 trabalho. Barracas/casas não são alvos de cerco.",
+   "ilustracao": "Fogão a lenha de tijolos com panela de ferro fumegante, cozinheira mexendo.",
+   "elementos": [
+    "fogão a lenha",
+    "panela"
+   ],
+   "verso": "V-STR",
+   "arte": "exclusiva",
+   "chave_arte": "STR:Cozinha",
+   "origem": "Cisterna 0.2 (certificada)"
+  },
+  {
+   "ids": [
+    "ZC-STR-0010"
+   ],
+   "nome": "Depósito",
+   "nome_sugerido": null,
+   "familia": "STR",
+   "categoria": "Estrutura",
+   "copias": 1,
+   "texto": "Coloque no terreno reservado ao concluir. Danificada: vire 90 graus, inativa. Reparo 2 Materiais+1 trabalho. Barracas/casas não são alvos de cerco.",
+   "ilustracao": "Prateleiras de estrado com caixotes etiquetados a giz.",
+   "elementos": [
+    "prateleiras",
+    "giz"
+   ],
+   "verso": "V-STR",
+   "arte": "exclusiva",
+   "chave_arte": "STR:Depósito",
+   "origem": "Cisterna 0.2 (certificada)"
+  },
+  {
+   "ids": [
+    "ZC-STR-0011"
+   ],
+   "nome": "Cisterna / filtro",
+   "nome_sugerido": null,
+   "familia": "STR",
+   "categoria": "Estrutura",
+   "copias": 1,
+   "texto": "Coloque no terreno reservado ao concluir. Danificada: vire 90 graus, inativa. Reparo 2 Materiais+1 trabalho. Barracas/casas não são alvos de cerco.",
+   "ilustracao": "Caixa-d'água azul sobre base de tijolos com o filtro instalado e torneira pingando.",
+   "elementos": [
+    "caixa-d'água",
+    "filtro",
+    "torneira"
+   ],
+   "verso": "V-STR",
+   "arte": "exclusiva",
+   "chave_arte": "STR:Cisterna / filtro",
+   "origem": "Cisterna 0.2 (certificada)"
+  },
+  {
+   "ids": [
+    "ZC-STR-0012"
+   ],
+   "nome": "Enfermaria",
+   "nome_sugerido": null,
+   "familia": "STR",
+   "categoria": "Estrutura",
+   "copias": 1,
+   "texto": "Coloque no terreno reservado ao concluir. Danificada: vire 90 graus, inativa. Reparo 2 Materiais+1 trabalho. Barracas/casas não são alvos de cerco.",
+   "ilustracao": "Maca de lona com lençol limpo, varal de soro, lampião, cruz pintada a mão.",
+   "elementos": [
+    "maca",
+    "cruz pintada"
+   ],
+   "verso": "V-STR",
+   "arte": "exclusiva",
+   "chave_arte": "STR:Enfermaria",
+   "origem": "Cisterna 0.2 (certificada)"
+  },
+  {
+   "ids": [
+    "ZC-STR-0013"
+   ],
+   "nome": "Oficina",
+   "nome_sugerido": null,
+   "familia": "STR",
+   "categoria": "Estrutura",
+   "copias": 1,
+   "texto": "Coloque no terreno reservado ao concluir. Danificada: vire 90 graus, inativa. Reparo 2 Materiais+1 trabalho. Barracas/casas não são alvos de cerco.",
+   "ilustracao": "Bancada com morsa e ferramentas penduradas em painel de compensado.",
+   "elementos": [
+    "bancada",
+    "painel de ferramentas"
+   ],
+   "verso": "V-STR",
+   "arte": "exclusiva",
+   "chave_arte": "STR:Oficina",
+   "origem": "Cisterna 0.2 (certificada)"
+  },
+  {
+   "ids": [
+    "ZC-STR-0014"
+   ],
+   "nome": "Garagem",
+   "nome_sugerido": null,
+   "familia": "STR",
+   "categoria": "Estrutura",
+   "copias": 1,
+   "texto": "Coloque no terreno reservado ao concluir. Danificada: vire 90 graus, inativa. Reparo 2 Materiais+1 trabalho. Barracas/casas não são alvos de cerco.",
+   "ilustracao": "Garagem com portão de enrolar meio aberto, van parcialmente visível, caixas trancadas.",
+   "elementos": [
+    "portão de enrolar",
+    "van",
+    "estoque protegido"
+   ],
+   "verso": "V-STR",
+   "arte": "exclusiva",
+   "chave_arte": "STR:Garagem",
+   "origem": "Cisterna 0.2 (certificada)"
+  },
+  {
+   "ids": [
+    "ZC-STR-0015"
+   ],
+   "nome": "Torre",
+   "nome_sugerido": null,
+   "familia": "STR",
+   "categoria": "Estrutura",
+   "copias": 1,
+   "texto": "Coloque no terreno reservado ao concluir. Danificada: vire 90 graus, inativa. Reparo 2 Materiais+1 trabalho. Barracas/casas não são alvos de cerco.",
+   "ilustracao": "Torre de vigia de madeira com escada, vigia com binóculo ao sol.",
+   "elementos": [
+    "torre",
+    "binóculo",
+    "+1 Defesa"
+   ],
+   "verso": "V-STR",
+   "arte": "exclusiva",
+   "chave_arte": "STR:Torre",
+   "origem": "Cisterna 0.2 (certificada)"
+  },
+  {
+   "ids": [
+    "ZC-STR-0016"
+   ],
+   "nome": "Horta",
+   "nome_sugerido": null,
+   "familia": "STR",
+   "categoria": "Estrutura",
+   "copias": 1,
+   "texto": "Coloque no terreno reservado ao concluir. Danificada: vire 90 graus, inativa. Reparo 2 Materiais+1 trabalho. Barracas/casas não são alvos de cerco.",
+   "ilustracao": "Canteiros de couve, alface e feijão em pneus pintados, regador de lata.",
+   "elementos": [
+    "canteiros em pneu",
+    "regador"
+   ],
+   "verso": "V-STR",
+   "arte": "exclusiva",
+   "chave_arte": "STR:Horta",
+   "origem": "Cisterna 0.2 (certificada)"
+  },
+  {
+   "ids": [
+    "ZC-STR-0017"
+   ],
+   "nome": "Portão",
+   "nome_sugerido": null,
+   "familia": "STR",
+   "categoria": "Estrutura",
+   "copias": 1,
+   "texto": "Coloque no terreno reservado ao concluir. Danificada: vire 90 graus, inativa. Reparo 2 Materiais+1 trabalho. Barracas/casas não são alvos de cerco.",
+   "ilustracao": "Portão de chapas soldadas com tranca de cano e correntes.",
+   "elementos": [
+    "portão soldado",
+    "corrente"
+   ],
+   "verso": "V-STR",
+   "arte": "exclusiva",
+   "chave_arte": "STR:Portão",
+   "origem": "Cisterna 0.2 (certificada)"
+  },
+  {
+   "ids": [
+    "ZC-MOR-0001"
+   ],
+   "nome": "Jana e criança",
+   "nome_sugerido": null,
+   "familia": "MOR",
+   "categoria": "Morador resgatado",
+   "copias": 1,
+   "texto": "Mercado O1; 2 humanos. Jana cozinheira de campo, criança sem trabalho. Pista: protege mochila. Até dia 5. Acolher: vagas ou recepção até +2/duas noites; sorteie uma Intenção por grupo. Ajuda local: 1 comida+1 água/humano. Contato 1 PA em O1.",
+   "ilustracao": "Jana (cozinheira de campo, ZC-HER-0021) abraçando a mochila de mantimentos, criança agarrada à sua perna, corredor do Mercado.",
+   "elementos": [
+    "retrato de Jana (mesma arte do herói ZC-HER-0021)",
+    "criança",
+    "mochila"
+   ],
+   "verso": "V-MOR",
+   "arte": "exclusiva",
+   "chave_arte": "MOR:Jana e criança",
+   "origem": "Cisterna 0.2 (certificada)"
+  },
+  {
+   "ids": [
+    "ZC-MOR-0002"
+   ],
+   "nome": "Bia",
+   "nome_sugerido": null,
+   "familia": "MOR",
+   "categoria": "Morador resgatado",
+   "copias": 1,
+   "texto": "Oficina O1; 1 adulta mecânica. Pista: sabe o chassi. Até dia 5. Acolher: vagas ou recepção até +2/duas noites; sorteie uma Intenção por grupo. Ajuda local: 1 comida+1 água/humano. Contato 1 PA em O1.",
+   "ilustracao": "Bia (mecânica, ZC-HER-0023) debaixo de um chassi na Oficina, só o rosto sujo de graxa visível.",
+   "elementos": [
+    "retrato de Bia (ZC-HER-0023)",
+    "chassi",
+    "graxa"
+   ],
+   "verso": "V-MOR",
+   "arte": "exclusiva",
+   "chave_arte": "MOR:Bia",
+   "origem": "Cisterna 0.2 (certificada)"
+  },
+  {
+   "ids": [
+    "ZC-MOR-0003"
+   ],
+   "nome": "Vicente e Sol",
+   "nome_sugerido": null,
+   "familia": "MOR",
+   "categoria": "Morador resgatado",
+   "copias": 1,
+   "texto": "Estação O2; 2 adultos, rádio e guia. Pista: estática. Até dia 5. Acolher: vagas ou recepção até +2/duas noites; sorteie uma Intenção por grupo. Ajuda local: 1 comida+1 água/humano. Contato 1 PA em O2.",
+   "ilustracao": "Vicente (operador de rádio, ZC-HER-0024) com fones e Sol (guia, ZC-HER-0019) apontando no mapa, sala de rádio da Estação.",
+   "elementos": [
+    "Vicente",
+    "Sol",
+    "rádio",
+    "mapa"
+   ],
+   "verso": "V-MOR",
+   "arte": "exclusiva",
+   "chave_arte": "MOR:Vicente e Sol",
+   "origem": "Cisterna 0.2 (certificada)"
+  },
+  {
+   "ids": [
+    "ZC-MOR-0004"
+   ],
+   "nome": "Raul e Otávio",
+   "nome_sugerido": null,
+   "familia": "MOR",
+   "categoria": "Morador resgatado",
+   "copias": 1,
+   "texto": "Posto O2; 2 adultos. Pista: negociam chaves. Até dia 5. Acolher: vagas ou recepção até +2/duas noites; sorteie uma Intenção por grupo. Ajuda local: 1 comida+1 água/humano. Contato 1 PA em O2.",
+   "ilustracao": "Raul (caminhoneiro, ZC-HER-0016) e Otávio (porteiro, ZC-HER-0020) negociando um molho de chaves na conveniência do Posto.",
+   "elementos": [
+    "Raul",
+    "Otávio",
+    "molho de chaves"
+   ],
+   "verso": "V-MOR",
+   "arte": "exclusiva",
+   "chave_arte": "MOR:Raul e Otávio",
+   "origem": "Cisterna 0.2 (certificada)"
+  },
+  {
+   "ids": [
+    "ZC-MOR-0005"
+   ],
+   "nome": "Denise, Miguel e civil",
+   "nome_sugerido": null,
+   "familia": "MOR",
+   "categoria": "Morador resgatado",
+   "copias": 1,
+   "texto": "Hospital O2; 3 humanos, um civil com ferimento 1. Pista: ninguém fica. Até dia 5. Acolher: vagas ou recepção até +2/duas noites; sorteie uma Intenção por grupo. Ajuda local: 1 comida+1 água/humano. Contato 1 PA em O2.",
+   "ilustracao": "Denise (médica, ZC-HER-0017) e Miguel (socorrista, ZC-HER-0022) carregando um civil ferido numa maca no corredor do Hospital.",
+   "elementos": [
+    "Denise",
+    "Miguel",
+    "civil ferido",
+    "maca"
+   ],
+   "verso": "V-MOR",
+   "arte": "exclusiva",
+   "chave_arte": "MOR:Denise, Miguel e civil",
+   "origem": "Cisterna 0.2 (certificada)"
+  },
+  {
+   "ids": [
+    "ZC-MOR-0006"
+   ],
+   "nome": "Samuel, Bruna e criança",
+   "nome_sugerido": null,
+   "familia": "MOR",
+   "categoria": "Morador resgatado",
+   "copias": 1,
+   "texto": "Condomínio O2; 3 humanos. Sementes carga 1 se acolher. Pista: saco fechado. Até dia 5. Acolher: vagas ou recepção até +2/duas noites; sorteie uma Intenção por grupo. Ajuda local: 1 comida+1 água/humano. Contato 1 PA em O2.",
+   "ilustracao": "Samuel (carpinteiro, ZC-HER-0014) e Bruna (agricultora, ZC-HER-0015) com um saco fechado de sementes, criança ao lado, varanda do Condomínio.",
+   "elementos": [
+    "Samuel",
+    "Bruna",
+    "criança",
+    "saco de sementes"
+   ],
+   "verso": "V-MOR",
+   "arte": "exclusiva",
+   "chave_arte": "MOR:Samuel, Bruna e criança",
+   "origem": "Cisterna 0.2 (certificada)"
+  },
+  {
+   "ids": [
+    "ZC-MOR-0007"
+   ],
+   "nome": "Aline e cão",
+   "nome_sugerido": null,
+   "familia": "MOR",
+   "categoria": "Morador resgatado",
+   "copias": 1,
+   "texto": "Hospital segunda visita; 1 humana veterinária+1 cão. Pista: examina mordidas. Não duplicar no condomínio. Acolher: vagas ou recepção até +2/duas noites; sorteie uma Intenção por grupo. Ajuda local: 1 comida+1 água/humano. Contato 1 PA em O2.",
+   "ilustracao": "Aline (veterinária, ZC-HER-0013) examinando a pata de um cão no Hospital, lanterna de bolso.",
+   "elementos": [
+    "Aline",
+    "cão",
+    "exame"
+   ],
+   "verso": "V-MOR",
+   "arte": "exclusiva",
+   "chave_arte": "MOR:Aline e cão",
+   "origem": "Cisterna 0.2 (certificada)"
+  },
+  {
+   "ids": [
+    "ZC-MOR-0008"
+   ],
+   "nome": "Hugo",
+   "nome_sugerido": null,
+   "familia": "MOR",
+   "categoria": "Morador resgatado",
+   "copias": 1,
+   "texto": "Condomínio segunda visita; 1 adulto eletricista. Pista: traz fios enrolados. Até dia 5. Acolher: vagas ou recepção até +2/duas noites; sorteie uma Intenção por grupo. Ajuda local: 1 comida+1 água/humano. Contato 1 PA em O2.",
+   "ilustracao": "Hugo (eletricista, ZC-HER-0018) com rolos de fio no ombro, escada de alumínio, garagem do Condomínio.",
+   "elementos": [
+    "Hugo",
+    "rolos de fio"
+   ],
+   "verso": "V-MOR",
+   "arte": "exclusiva",
+   "chave_arte": "MOR:Hugo",
+   "origem": "Cisterna 0.2 (certificada)"
+  },
+  {
+   "ids": [
+    "ZC-MIS-0001"
+   ],
+   "nome": "Mercado",
+   "nome_sugerido": null,
+   "familia": "MIS",
+   "categoria": "Missão",
+   "copias": 1,
+   "texto": "Entregar um lote comida e um água. Revele Ponte na primeira interação O1. Lotes 2 comida e 2 água.",
+   "ilustracao": "Fachada de mercadinho de bairro com letreiro caído, carrinhos tombados, lotes de comida e água marcados.",
+   "elementos": [
+    "mercado",
+    "comida",
+    "água"
+   ],
+   "verso": "V-MIS",
+   "arte": "compartilhada:LOCAL:Mercado",
+   "chave_arte": "MIS:Mercado",
+   "origem": "Cisterna 0.2 (certificada)"
+  },
+  {
+   "ids": [
+    "ZC-MIS-0002"
+   ],
+   "nome": "Oficina",
+   "nome_sugerido": null,
+   "familia": "MIS",
+   "categoria": "Missão",
+   "copias": 1,
+   "texto": "Entregar Conexões. O1 Conexões+Bateria; O2 três Materiais+Ferramentas+Bancada. Um lote de cada provisão.",
+   "ilustracao": "Oficina mecânica com portão de enrolar, bateria e conexões em destaque na bancada.",
+   "elementos": [
+    "oficina",
+    "bateria",
+    "conexões"
+   ],
+   "verso": "V-MIS",
+   "arte": "compartilhada:LOCAL:Oficina",
+   "chave_arte": "MIS:Oficina",
+   "origem": "Cisterna 0.2 (certificada)"
+  },
+  {
+   "ids": [
+    "ZC-MIS-0003"
+   ],
+   "nome": "Estação",
+   "nome_sugerido": null,
+   "familia": "MIS",
+   "categoria": "Missão",
+   "copias": 1,
+   "texto": "Entregar Bomba+Membrana. O1 Bomba 2 PA+Técnica 6; falha +1 Pressão. O2 Membrana 1 PA e dois lotes água.",
+   "ilustracao": "Estação de tratamento de água com tanques, bomba e membrana a recuperar.",
+   "elementos": [
+    "tanques",
+    "bomba",
+    "membrana"
+   ],
+   "verso": "V-MIS",
+   "arte": "compartilhada:LOCAL:Estação",
+   "chave_arte": "MIS:Estação",
+   "origem": "Cisterna 0.2 (certificada)"
+  },
+  {
+   "ids": [
+    "ZC-MIS-0004"
+   ],
+   "nome": "Posto",
+   "nome_sugerido": null,
+   "familia": "MIS",
+   "categoria": "Missão",
+   "copias": 1,
+   "texto": "Recuperar van com Bateria+2 PA+Técnica 6. O1 oito Combustíveis. O2 um lote de cada provisão.",
+   "ilustracao": "Posto de gasolina com van de manutenção parada e galões.",
+   "elementos": [
+    "posto",
+    "van",
+    "combustível"
+   ],
+   "verso": "V-MIS",
+   "arte": "compartilhada:LOCAL:Posto",
+   "chave_arte": "MIS:Posto",
+   "origem": "Cisterna 0.2 (certificada)"
+  },
+  {
+   "ids": [
+    "ZC-MIS-0005"
+   ],
+   "nome": "Hospital",
+   "nome_sugerido": null,
+   "familia": "MIS",
+   "categoria": "Missão",
+   "copias": 1,
+   "texto": "Entregar Kit ou resgatar ferido. O1 Kit+3 Medicamentos. O2 um lote de cada provisão.",
+   "ilustracao": "Entrada de hospital regional com ambulância e kit médico.",
+   "elementos": [
+    "hospital",
+    "kit médico",
+    "ferido"
+   ],
+   "verso": "V-MIS",
+   "arte": "compartilhada:LOCAL:Hospital",
+   "chave_arte": "MIS:Hospital",
+   "origem": "Cisterna 0.2 (certificada)"
+  },
+  {
+   "ids": [
+    "ZC-MIS-0006"
+   ],
+   "nome": "Condomínio",
+   "nome_sugerido": null,
+   "familia": "MIS",
+   "categoria": "Missão",
+   "copias": 1,
+   "texto": "Entregar Lona ou limpar expansão: O1 2 PA+Corpo 6, falha Errante em S. O1 duas Lonas+duas Madeiras; O2 um lote de cada provisão.",
+   "ilustracao": "Condomínio de casas com lonas e madeiras empilhadas.",
+   "elementos": [
+    "condomínio",
+    "lonas",
+    "madeiras"
+   ],
+   "verso": "V-MIS",
+   "arte": "compartilhada:LOCAL:Condomínio",
+   "chave_arte": "MIS:Condomínio",
+   "origem": "Cisterna 0.2 (certificada)"
+  },
+  {
+   "ids": [
+    "ZC-MIS-0007"
+   ],
+   "nome": "Contato / encaminhamento",
+   "nome_sugerido": null,
+   "familia": "MIS",
+   "categoria": "Missão",
+   "copias": 1,
+   "texto": "Contato: rota curta+1 rodada sem combate revela Ponte. Encaminhar: expedição rota curta e 1 comida+1 água/passageiro; saem, +1 relação.",
+   "ilustracao": "Dois grupos se encontrando numa estrada rural com mãos levantadas, sinal de paz.",
+   "elementos": [
+    "encontro",
+    "mãos levantadas",
+    "passageiros"
+   ],
+   "verso": "V-MIS",
+   "arte": "exclusiva",
+   "chave_arte": "MIS:Contato / encaminhamento",
+   "origem": "Cisterna 0.2 (certificada)"
+  },
+  {
+   "ids": [
+    "ZC-MIS-0008"
+   ],
+   "nome": "Segurança final",
+   "nome_sugerido": null,
+   "familia": "MIS",
+   "categoria": "Missão",
+   "copias": 1,
+   "texto": "Dia 5: filtro completo, comida/água para todos, Saúde/Moral >=1. Resolva cercos pendentes sem nova expedição ou produção. Falha abre Evacuação.",
+   "ilustracao": "O abrigo inteiro de pé ao amanhecer, filtro funcionando, estoque cheio, portão reforçado.",
+   "elementos": [
+    "abrigo completo",
+    "filtro",
+    "amanhecer"
+   ],
+   "verso": "V-MIS",
+   "arte": "exclusiva",
+   "chave_arte": "MIS:Segurança final",
+   "origem": "Cisterna 0.2 (certificada)"
+  },
+  {
+   "ids": [
+    "ZC-VEI-0001"
+   ],
+   "nome": "Van de manutenção",
+   "nome_sugerido": null,
+   "familia": "VEI",
+   "categoria": "Veículo",
+   "copias": 1,
+   "texto": "Seis humanos + um cão; 12 cargas; 2 Combustíveis/trecho. Abandonada → incompleta por inspeção → operacional com Bateria e reparo. Danificada: não transporta. Ver manual §11.",
+   "ilustracao": "Van branca de prefeitura com faixa laranja, pneus murchos, capô aberto, em pátio de posto.",
+   "elementos": [
+    "van",
+    "faixa laranja",
+    "capô aberto"
+   ],
+   "verso": "V-VEI",
+   "arte": "exclusiva",
+   "chave_arte": "VEI:Van de manutenção",
+   "origem": "Cisterna 0.2 (certificada)"
+  },
+  {
+   "ids": [
+    "ZC-AJU-0001",
+    "ZC-AJU-0002"
+   ],
+   "nome": "Ordem do dia",
+   "nome_sugerido": null,
+   "familia": "AJU",
+   "categoria": "Ajuda",
+   "copias": 2,
+   "texto": "Amanhecer → Planejamento → Expedição → Noite: retorno, um Cerco, trabalhos, refeição, intenções, vencimento → registro.",
+   "ilustracao": "Diagrama da sequência do dia sobre quadro de cortiça.",
+   "elementos": [
+    "sequência numerada"
+   ],
+   "verso": "V-AJU",
+   "arte": "compartilhada:diagrama",
+   "chave_arte": "AJU:Ordem do dia",
+   "origem": "Cisterna 0.2 (certificada)"
+  },
+  {
+   "ids": [
+    "ZC-AJU-0003",
+    "ZC-AJU-0004"
+   ],
+   "nome": "PA",
+   "nome_sugerido": null,
+   "familia": "AJU",
+   "categoria": "Ajuda",
+   "copias": 2,
+   "texto": "Normal 3; fadiga>=2 −1, Fome −1, Sede −1; mínimo 1. Mover/abrir/atacar/buscar/transferir 1; bloqueio com ferramenta 2.",
+   "ilustracao": "Diagrama de pontos de ação com ícones.",
+   "elementos": [
+    "ícones de PA"
+   ],
+   "verso": "V-AJU",
+   "arte": "compartilhada:diagrama",
+   "chave_arte": "AJU:PA",
+   "origem": "Cisterna 0.2 (certificada)"
+  },
+  {
+   "ids": [
+    "ZC-AJU-0005",
+    "ZC-AJU-0006"
+   ],
+   "nome": "Retorno",
+   "nome_sugerido": null,
+   "familia": "AJU",
+   "categoria": "Ajuda",
+   "copias": 2,
+   "texto": "Relógio 0–10; curta 1+1, longa 2+2; rodada 1. Segmentos 9–10: +1 fadiga cada, Horda se rodada / Viagem extra se trecho. Emergência perde carga encontrada e objetivo, +1 ferimento e fadiga 3.",
+   "ilustracao": "Relógio de 0 a 10 segmentos.",
+   "elementos": [
+    "relógio 0–10"
+   ],
+   "verso": "V-AJU",
+   "arte": "compartilhada:diagrama",
+   "chave_arte": "AJU:Retorno",
+   "origem": "Cisterna 0.2 (certificada)"
+  },
+  {
+   "ids": [
+    "ZC-AJU-0007",
+    "ZC-AJU-0008"
+   ],
+   "nome": "Reserva não é estoque",
+   "nome_sugerido": null,
+   "familia": "AJU",
+   "categoria": "Ajuda",
+   "copias": 2,
+   "texto": "Saque revela achado. Físico sai da reserva para mochila/chão; entrega vira estoque. Consumido volta só à reserva. Busca usada não se renova.",
+   "ilustracao": "Diagrama reserva → mochila → estoque.",
+   "elementos": [
+    "fluxo de cartas"
+   ],
+   "verso": "V-AJU",
+   "arte": "compartilhada:diagrama",
+   "chave_arte": "AJU:Reserva não é estoque",
+   "origem": "Cisterna 0.2 (certificada)"
+  },
+  {
+   "ids": [
+    "ZI-ACO-01",
+    "ZI-ACO-02",
+    "ZI-ACO-03"
+   ],
+   "nome": "Viagem tranquila",
+   "nome_sugerido": null,
+   "familia": "ACO",
+   "categoria": "Acontecimento de viagem",
+   "copias": 3,
+   "texto": "Sem efeito.",
+   "ilustracao": "Coletora atravessando um riacho raso com o cesto cheio, luz de tarde, mata calma.",
+   "elementos": [
+    "trilha",
+    "cesto",
+    "calma"
+   ],
+   "verso": "V-ACO",
+   "arte": "exclusiva",
+   "chave_arte": "ACO:tranquila",
+   "chave_motor": "tranquila",
+   "origem": "edição integral",
+   "obs": null
+  },
+  {
+   "ids": [
+    "ZI-ACO-04"
+   ],
+   "nome": "Abundância",
+   "nome_sugerido": null,
+   "familia": "ACO",
+   "categoria": "Acontecimento de viagem",
+   "copias": 1,
+   "texto": "Some 1D6 aos pontos da viagem.",
+   "ilustracao": "Pé de goiaba carregado e cardume no remanso; mãos enchendo o saco.",
+   "elementos": [
+    "fartura",
+    "goiabeira",
+    "cardume"
+   ],
+   "verso": "V-ACO",
+   "arte": "exclusiva",
+   "chave_arte": "ACO:abundancia",
+   "chave_motor": "abundancia",
+   "origem": "edição integral",
+   "obs": null
+  },
+  {
+   "ids": [
+    "ZI-ACO-05"
+   ],
+   "nome": "Descoberta",
+   "nome_sugerido": null,
+   "familia": "ACO",
+   "categoria": "Acontecimento de viagem",
+   "copias": 1,
+   "texto": "Traga 1 sucata para o estoque.",
+   "ilustracao": "Carcaça de trator no meio do pasto com peças aproveitáveis.",
+   "elementos": [
+    "trator abandonado",
+    "peças"
+   ],
+   "verso": "V-ACO",
+   "arte": "exclusiva",
+   "chave_arte": "ACO:descoberta",
+   "chave_motor": "descoberta",
+   "origem": "edição integral",
+   "obs": null
+  },
+  {
+   "ids": [
+    "ZI-ACO-06"
+   ],
+   "nome": "Chuva",
+   "nome_sugerido": null,
+   "familia": "ACO",
+   "categoria": "Acontecimento de viagem",
+   "copias": 1,
+   "texto": "−2 pontos na viagem.",
+   "ilustracao": "Temporal no rio, viajante encharcado sob folha de bananeira.",
+   "elementos": [
+    "temporal",
+    "folha de bananeira"
+   ],
+   "verso": "V-ACO",
+   "arte": "exclusiva",
+   "chave_arte": "ACO:chuva",
+   "chave_motor": "chuva",
+   "origem": "edição integral",
+   "obs": null
+  },
+  {
+   "ids": [
+    "ZI-ACO-07"
+   ],
+   "nome": "Atraso",
+   "nome_sugerido": null,
+   "familia": "ACO",
+   "categoria": "Acontecimento de viagem",
+   "copias": 1,
+   "texto": "A viagem volta 1 amanhecer depois (uma vez); sorteie de novo na volta.",
+   "ilustracao": "Ponte de troncos levada pela cheia; viajante sentado esperando a água baixar.",
+   "elementos": [
+    "ponte caída",
+    "rio cheio",
+    "espera"
+   ],
+   "verso": "V-ACO",
+   "arte": "exclusiva",
+   "chave_arte": "ACO:atraso",
+   "chave_motor": "atraso",
+   "origem": "edição integral",
+   "obs": null
+  },
+  {
+   "ids": [
+    "ZI-ACO-08"
+   ],
+   "nome": "Ferimento",
+   "nome_sugerido": null,
+   "familia": "ACO",
+   "categoria": "Acontecimento de viagem",
+   "copias": 1,
+   "texto": "O viajante volta com 1 ferimento.",
+   "ilustracao": "Tornozelo enfaixado com camisa rasgada, cajado improvisado.",
+   "elementos": [
+    "faixa improvisada",
+    "cajado",
+    "vermelho de destaque"
+   ],
+   "verso": "V-ACO",
+   "arte": "exclusiva",
+   "chave_arte": "ACO:ferimento",
+   "chave_motor": "ferimento",
+   "origem": "edição integral",
+   "obs": null
+  },
+  {
+   "ids": [
+    "ZI-ACO-09"
+   ],
+   "nome": "Perda de carga",
+   "nome_sugerido": null,
+   "familia": "ACO",
+   "categoria": "Acontecimento de viagem",
+   "copias": 1,
+   "texto": "Perde metade do que encontrou (arredonda para baixo o que fica).",
+   "ilustracao": "Saco rasgado no arame, frutas espalhadas no barranco.",
+   "elementos": [
+    "saco rasgado",
+    "carga espalhada"
+   ],
+   "verso": "V-ACO",
+   "arte": "exclusiva",
+   "chave_arte": "ACO:perda",
+   "chave_motor": "perda",
+   "origem": "edição integral",
+   "obs": null
+  },
+  {
+   "ids": [
+    "ZI-ACO-10"
+   ],
+   "nome": "Equipamento quebrado",
+   "nome_sugerido": null,
+   "familia": "ACO",
+   "categoria": "Acontecimento de viagem",
+   "copias": 1,
+   "texto": "Gaste 1 sucata do estoque; sem sucata, perde 1 unidade encontrada.",
+   "ilustracao": "Vara de pesca partida e anzol perdido na margem.",
+   "elementos": [
+    "vara quebrada"
+   ],
+   "verso": "V-ACO",
+   "arte": "exclusiva",
+   "chave_arte": "ACO:equipamento",
+   "chave_motor": "equipamento",
+   "origem": "edição integral",
+   "obs": null
+  },
+  {
+   "ids": [
+    "ZI-ACO-11"
+   ],
+   "nome": "Zumbis no caminho",
+   "nome_sugerido": null,
+   "familia": "ACO",
+   "categoria": "Acontecimento de viagem",
+   "copias": 1,
+   "texto": "Role 1D6: 1–2 ferimento e metade da carga; 3–4 perde 1 unidade; 5–6 escapa.",
+   "ilustracao": "Errantes saindo do bambuzal, viajante correndo com a carga.",
+   "elementos": [
+    "bambuzal",
+    "errantes",
+    "fuga"
+   ],
+   "verso": "V-ACO",
+   "arte": "exclusiva",
+   "chave_arte": "ACO:zumbis",
+   "chave_motor": "zumbis",
+   "origem": "edição integral",
+   "obs": null
+  },
+  {
+   "ids": [
+    "ZI-ACO-12"
+   ],
+   "nome": "Pista",
+   "nome_sugerido": null,
+   "familia": "ACO",
+   "categoria": "Acontecimento de viagem",
+   "copias": 1,
+   "texto": "+1 pista (só a primeira vez na campanha).",
+   "ilustracao": "Panfleto rasgado com frequência de rádio preso num tronco.",
+   "elementos": [
+    "panfleto",
+    "frequência escrita"
+   ],
+   "verso": "V-ACO",
+   "arte": "exclusiva",
+   "chave_arte": "ACO:pista",
+   "chave_motor": "pista",
+   "origem": "edição integral",
+   "obs": null
+  },
+  {
+   "ids": [
+    "ZI-PRF-01",
+    "ZI-PRF-02"
+   ],
+   "nome": "Caçador",
+   "nome_sugerido": null,
+   "familia": "PRF",
+   "categoria": "Profissão",
+   "copias": 2,
+   "texto": "Especialista em: caca, pesca.",
+   "ilustracao": "Caçador de chapéu de palha com arco de bambu e varas de pesca nas costas, beira do rio.",
+   "elementos": [
+    "arco",
+    "vara de pesca",
+    "ícones caça/pesca"
+   ],
+   "verso": "V-PRF",
+   "arte": "exclusiva",
+   "chave_arte": "PRF:cacador",
+   "chave_motor": "cacador",
+   "origem": "edição integral",
+   "obs": null
+  },
+  {
+   "ids": [
+    "ZI-PRF-03"
+   ],
+   "nome": "Agricultor",
+   "nome_sugerido": null,
+   "familia": "PRF",
+   "categoria": "Profissão",
+   "copias": 1,
+   "texto": "Especialista em: horta, coleta.",
+   "ilustracao": "Agricultora de enxada no ombro entre canteiros, mãos de terra.",
+   "elementos": [
+    "enxada",
+    "canteiros",
+    "ícones horta/coleta"
+   ],
+   "verso": "V-PRF",
+   "arte": "exclusiva",
+   "chave_arte": "PRF:agricultor",
+   "chave_motor": "agricultor",
+   "origem": "edição integral",
+   "obs": null
+  },
+  {
+   "ids": [
+    "ZI-PRF-04"
+   ],
+   "nome": "Cozinheiro",
+   "nome_sugerido": null,
+   "familia": "PRF",
+   "categoria": "Profissão",
+   "copias": 1,
+   "texto": "Especialista em: cozinhar.",
+   "ilustracao": "Cozinheiro de avental mexendo panelão no fogão a lenha.",
+   "elementos": [
+    "panelão",
+    "avental",
+    "ícone cozinhar"
+   ],
+   "verso": "V-PRF",
+   "arte": "exclusiva",
+   "chave_arte": "PRF:cozinheiro",
+   "chave_motor": "cozinheiro",
+   "origem": "edição integral",
+   "obs": null
+  },
+  {
+   "ids": [
+    "ZI-PRF-05",
+    "ZI-PRF-06"
+   ],
+   "nome": "Coletor",
+   "nome_sugerido": null,
+   "familia": "PRF",
+   "categoria": "Profissão",
+   "copias": 2,
+   "texto": "Especialista em: coleta, agua, lenha.",
+   "ilustracao": "Coletor com cesto de taquara, facão e galão de água, trilha da mata.",
+   "elementos": [
+    "cesto",
+    "facão",
+    "galão",
+    "ícones coleta/água/lenha"
+   ],
+   "verso": "V-PRF",
+   "arte": "exclusiva",
+   "chave_arte": "PRF:coletor",
+   "chave_motor": "coletor",
+   "origem": "edição integral",
+   "obs": null
+  },
+  {
+   "ids": [
+    "ZI-PRF-07"
+   ],
+   "nome": "Mecânico",
+   "nome_sugerido": null,
+   "familia": "PRF",
+   "categoria": "Profissão",
+   "copias": 1,
+   "texto": "Especialista em: sucata.",
+   "ilustracao": "Mecânica com macacão sujo segurando chave de roda, sucata ao fundo.",
+   "elementos": [
+    "chave de roda",
+    "macacão",
+    "ícone sucata"
+   ],
+   "verso": "V-PRF",
+   "arte": "exclusiva",
+   "chave_arte": "PRF:mecanico",
+   "chave_motor": "mecanico",
+   "origem": "edição integral",
+   "obs": null
+  },
+  {
+   "ids": [
+    "ZI-PRF-08"
+   ],
+   "nome": "Carpinteiro",
+   "nome_sugerido": null,
+   "familia": "PRF",
+   "categoria": "Profissão",
+   "copias": 1,
+   "texto": "Especialista em: obra.",
+   "ilustracao": "Carpinteiro medindo tábua com trena, lápis atrás da orelha.",
+   "elementos": [
+    "trena",
+    "serrote",
+    "ícone obra"
+   ],
+   "verso": "V-PRF",
+   "arte": "exclusiva",
+   "chave_arte": "PRF:carpinteiro",
+   "chave_motor": "carpinteiro",
+   "origem": "edição integral",
+   "obs": null
+  },
+  {
+   "ids": [
+    "ZI-PRF-09"
+   ],
+   "nome": "Enfermeiro",
+   "nome_sugerido": null,
+   "familia": "PRF",
+   "categoria": "Profissão",
+   "copias": 1,
+   "texto": "Especialista em: cuidar.",
+   "ilustracao": "Enfermeiro trocando curativo com cuidado, maleta aberta.",
+   "elementos": [
+    "curativo",
+    "maleta",
+    "ícone cuidar"
+   ],
+   "verso": "V-PRF",
+   "arte": "exclusiva",
+   "chave_arte": "PRF:enfermeiro",
+   "chave_motor": "enfermeiro",
+   "origem": "edição integral",
+   "obs": null
+  },
+  {
+   "ids": [
+    "ZI-PRF-10"
+   ],
+   "nome": "Guarda",
+   "nome_sugerido": null,
+   "familia": "PRF",
+   "categoria": "Profissão",
+   "copias": 1,
+   "texto": "Especialista em: vigiar.",
+   "ilustracao": "Guarda de vigia no alto da torre com binóculo e apito.",
+   "elementos": [
+    "binóculo",
+    "apito",
+    "ícone vigiar"
+   ],
+   "verso": "V-PRF",
+   "arte": "exclusiva",
+   "chave_arte": "PRF:guarda",
+   "chave_motor": "guarda",
+   "origem": "edição integral",
+   "obs": null
+  },
+  {
+   "ids": [
+    "ZI-PRF-11",
+    "ZI-PRF-12"
+   ],
+   "nome": "Sobrevivente comum",
+   "nome_sugerido": null,
+   "familia": "PRF",
+   "categoria": "Profissão",
+   "copias": 2,
+   "texto": "Especialista em: nenhuma (faz qualquer função com rendimento normal).",
+   "ilustracao": "Pessoa comum carregando balde e enxada, roupa remendada; sem ícone de especialidade.",
+   "elementos": [
+    "balde",
+    "sem especialidade"
+   ],
+   "verso": "V-PRF",
+   "arte": "exclusiva",
+   "chave_arte": "PRF:comum",
+   "chave_motor": "comum",
+   "origem": "edição integral",
+   "obs": null
+  },
+  {
+   "ids": [
+    "EXP-BLD-01"
+   ],
+   "nome": "Horta",
+   "nome_sugerido": null,
+   "familia": "OBR",
+   "categoria": "Estrutura regional",
+   "copias": 1,
+   "texto": "Custo 2 madeira + 1 sucata; 2 trabalho(s). Modelo abstrato: 2 comida por amanhecer depois de 4 dias.",
+   "ilustracao": "Horta grande com canteiros elevados de tábua e espantalho de roupa velha.",
+   "elementos": [
+    "canteiros",
+    "espantalho"
+   ],
+   "verso": "V-OBR",
+   "arte": "compartilhada:STR:Horta",
+   "chave_arte": "OBR:garden",
+   "chave_motor": "garden",
+   "origem": "edição integral",
+   "obs": "No acampamento em lotes, vira lotes de horta; a carta EXP-BLD-01 fica para o modelo abstrato."
+  },
+  {
+   "ids": [
+    "EXP-BLD-02"
+   ],
+   "nome": "Oficina",
+   "nome_sugerido": null,
+   "familia": "OBR",
+   "categoria": "Estrutura regional",
+   "copias": 1,
+   "texto": "Custo 2 madeira + 3 sucata; 3 trabalho(s). Ocupa 1 lote de oficina. Oficina do acampamento (reparos, fabricar munição). Obra pesada: ração de obra.",
+   "ilustracao": "Oficina de lona e madeira com bancada, morsa e torno manual.",
+   "elementos": [
+    "bancada",
+    "morsa"
+   ],
+   "verso": "V-OBR",
+   "arte": "compartilhada:STR:Oficina",
+   "chave_arte": "OBR:workshop",
+   "chave_motor": "workshop",
+   "origem": "edição integral",
+   "obs": null
+  },
+  {
+   "ids": [
+    "EXP-BLD-03"
+   ],
+   "nome": "Enfermaria",
+   "nome_sugerido": null,
+   "familia": "OBR",
+   "categoria": "Estrutura regional",
+   "copias": 1,
+   "texto": "Custo 2 madeira + 2 sucata + 1 remédio; 3 trabalho(s). Ocupa 1 lote de oficina. Cura com remédio; exigida pelo Ambulatório. Obra pesada: ração de obra.",
+   "ilustracao": "Enfermaria em contêiner com cruz pintada, maca e lampião.",
+   "elementos": [
+    "contêiner",
+    "cruz",
+    "maca"
+   ],
+   "verso": "V-OBR",
+   "arte": "compartilhada:STR:Enfermaria",
+   "chave_arte": "OBR:infirmary",
+   "chave_motor": "infirmary",
+   "origem": "edição integral",
+   "obs": null
+  },
+  {
+   "ids": [
+    "EXP-BLD-04"
+   ],
+   "nome": "Vigia",
+   "nome_sugerido": null,
+   "familia": "OBR",
+   "categoria": "Estrutura regional",
+   "copias": 1,
+   "texto": "Custo 2 madeira + 2 sucata; 2 trabalho(s). Ocupa 1 lote de defesa. Na defesa final, atira 1 por rodada; vigia contra a crise da noite. Obra pesada: ração de obra.",
+   "ilustracao": "Vigia: torre de bambu e madeira com sino e holofote a pilha.",
+   "elementos": [
+    "torre",
+    "sino",
+    "atira na defesa final"
+   ],
+   "verso": "V-OBR",
+   "arte": "compartilhada:STR:Torre",
+   "chave_arte": "OBR:watch",
+   "chave_motor": "watch",
+   "origem": "edição integral",
+   "obs": null
+  },
+  {
+   "ids": [
+    "EXP-BLD-05"
+   ],
+   "nome": "Depósito",
+   "nome_sugerido": null,
+   "familia": "OBR",
+   "categoria": "Estrutura regional",
+   "copias": 1,
+   "texto": "Custo 3 madeira + 2 sucata; 3 trabalho(s). Ocupa 1 lote de estoque. +12 de limite de comida. Obra pesada: ração de obra.",
+   "ilustracao": "Depósito de alvenaria baixa com prateleiras e portas de grade.",
+   "elementos": [
+    "prateleiras",
+    "porta de grade",
+    "+12 comida"
+   ],
+   "verso": "V-OBR",
+   "arte": "compartilhada:STR:Depósito",
+   "chave_arte": "OBR:storage",
+   "chave_motor": "storage",
+   "origem": "edição integral",
+   "obs": null
+  },
+  {
+   "ids": [
+    "EXP-BLD-06"
+   ],
+   "nome": "Reservatório",
+   "nome_sugerido": null,
+   "familia": "OBR",
+   "categoria": "Estrutura regional",
+   "copias": 1,
+   "texto": "Custo 2 madeira + 3 sucata; 3 trabalho(s). Ocupa 1 lote de agua. +12 de limite de água; água bruta sem ferver. Obra pesada: ração de obra.",
+   "ilustracao": "Reservatório: duas caixas-d'água de 1000 L ligadas por cano, bomba manual.",
+   "elementos": [
+    "caixas-d'água",
+    "bomba",
+    "+12 água"
+   ],
+   "verso": "V-OBR",
+   "arte": "exclusiva",
+   "chave_arte": "OBR:reservoir",
+   "chave_motor": "reservoir",
+   "origem": "edição integral",
+   "obs": null
+  },
+  {
+   "ids": [
+    "EXP-BLD-07"
+   ],
+   "nome": "Alojamento",
+   "nome_sugerido": null,
+   "familia": "OBR",
+   "categoria": "Estrutura regional",
+   "copias": 1,
+   "texto": "Custo 4 madeira + 2 sucata; 3 trabalho(s). Ocupa 1 lote de barraca. 8 camas. Obra pesada: ração de obra.",
+   "ilustracao": "Alojamento coletivo de madeira com beliches e redes.",
+   "elementos": [
+    "beliches",
+    "redes",
+    "8 camas"
+   ],
+   "verso": "V-OBR",
+   "arte": "exclusiva",
+   "chave_arte": "OBR:lodging",
+   "chave_motor": "lodging",
+   "origem": "edição integral",
+   "obs": null
+  },
+  {
+   "ids": [
+    "ZI-OBR-01"
+   ],
+   "nome": "Coletor de chuva",
+   "nome_sugerido": null,
+   "familia": "OBR",
+   "categoria": "Obra da Comunidade",
+   "copias": 1,
+   "texto": "Custo 1 madeira + 1 sucata; 1 trabalho(s). Ocupa 1 lote de agua. Chuva: D6 4–5 +2 água, 6 +4.",
+   "ilustracao": "Calhas de lona levando chuva para tambores azuis.",
+   "elementos": [
+    "calha",
+    "tambores",
+    "chuva"
+   ],
+   "verso": "V-OBR",
+   "arte": "exclusiva",
+   "chave_arte": "OBR:coletor",
+   "chave_motor": "coletor",
+   "origem": "edição integral",
+   "obs": null
+  },
+  {
+   "ids": [
+    "ZI-OBR-02"
+   ],
+   "nome": "Cozinha",
+   "nome_sugerido": null,
+   "familia": "OBR",
+   "categoria": "Obra da Comunidade",
+   "copias": 1,
+   "texto": "Custo 2 madeira + 1 sucata; 2 trabalho(s). Carne cozida rende 4 porções sem madeira; +1 carne por cozinheiro.",
+   "ilustracao": "Cozinha comunitária coberta junto à fogueira, mesa longa.",
+   "elementos": [
+    "fogão",
+    "mesa longa"
+   ],
+   "verso": "V-OBR",
+   "arte": "compartilhada:STR:Cozinha",
+   "chave_arte": "OBR:cozinha",
+   "chave_motor": "cozinha",
+   "origem": "edição integral",
+   "obs": null
+  },
+  {
+   "ids": [
+    "ZI-OBR-03"
+   ],
+   "nome": "Canteiro",
+   "nome_sugerido": null,
+   "familia": "OBR",
+   "categoria": "Obra da Comunidade",
+   "copias": 1,
+   "texto": "Custo 2 madeira + 1 sucata; 2 trabalho(s). Modelo abstrato: 2 comida por trabalhador.",
+   "ilustracao": "Canteiro simples de pneus.",
+   "elementos": [
+    "pneus"
+   ],
+   "verso": "V-OBR",
+   "arte": "exclusiva",
+   "chave_arte": "OBR:canteiro",
+   "chave_motor": "canteiro",
+   "origem": "edição integral",
+   "obs": "Só no modelo abstrato; no acampamento em lotes não se imprime."
+  },
+  {
+   "ids": [
+    "ZI-OBR-04"
+   ],
+   "nome": "Cerca ampliada",
+   "nome_sugerido": null,
+   "familia": "OBR",
+   "categoria": "Obra da Comunidade",
+   "copias": 1,
+   "texto": "Custo 2 madeira; 2 trabalho(s). Modelo abstrato: +3 terreno.",
+   "ilustracao": "Cerca de bambu ampliando o terreno.",
+   "elementos": [
+    "bambu"
+   ],
+   "verso": "V-OBR",
+   "arte": "exclusiva",
+   "chave_arte": "OBR:cerca",
+   "chave_motor": "cerca",
+   "origem": "edição integral",
+   "obs": "Só no modelo abstrato; no acampamento em lotes a expansão substitui."
+  },
+  {
+   "ids": [
+    "ZI-OBR-05"
+   ],
+   "nome": "Depósito nível 2",
+   "nome_sugerido": null,
+   "familia": "OBR",
+   "categoria": "Obra da Comunidade",
+   "copias": 1,
+   "texto": "Custo 2 madeira + 1 sucata; 2 trabalho(s). +12 de limite de comida (exige Depósito).",
+   "ilustracao": "Depósito com mezanino e sacos de grão empilhados.",
+   "elementos": [
+    "mezanino",
+    "+12 comida"
+   ],
+   "verso": "V-OBR",
+   "arte": "exclusiva",
+   "chave_arte": "OBR:deposito2",
+   "chave_motor": "deposito2",
+   "origem": "edição integral",
+   "obs": null
+  },
+  {
+   "ids": [
+    "ZI-OBR-06"
+   ],
+   "nome": "Alojamento nível 2",
+   "nome_sugerido": null,
+   "familia": "OBR",
+   "categoria": "Obra da Comunidade",
+   "copias": 1,
+   "texto": "Custo 3 madeira + 1 sucata; 2 trabalho(s). +4 camas (exige Alojamento). Obra pesada: ração de obra.",
+   "ilustracao": "Alojamento ampliado com segunda ala e varal comprido.",
+   "elementos": [
+    "segunda ala",
+    "+4 camas"
+   ],
+   "verso": "V-OBR",
+   "arte": "exclusiva",
+   "chave_arte": "OBR:alojamento2",
+   "chave_motor": "alojamento2",
+   "origem": "edição integral",
+   "obs": null
+  },
+  {
+   "ids": [
+    "ZI-OBR-07"
+   ],
+   "nome": "Barraca improvisada",
+   "nome_sugerido": null,
+   "familia": "OBR",
+   "categoria": "Obra da Comunidade",
+   "copias": 1,
+   "texto": "Custo 2 madeira; 1 trabalho(s). Ocupa 1 lote de barraca. 2 camas; até 2 por lote.",
+   "ilustracao": "Barraca improvisada de lona e bambu para 2 pessoas, colchonete visível.",
+   "elementos": [
+    "lona",
+    "bambu",
+    "2 camas"
+   ],
+   "verso": "V-OBR",
+   "arte": "compartilhada:STR:Barraca",
+   "chave_arte": "OBR:barraca",
+   "chave_motor": "barraca",
+   "origem": "edição integral",
+   "obs": null
+  },
+  {
+   "ids": [
+    "ZI-OBR-08"
+   ],
+   "nome": "Lote de horta",
+   "nome_sugerido": null,
+   "familia": "OBR",
+   "categoria": "Obra da Comunidade",
+   "copias": 1,
+   "texto": "Custo sem material; 1 trabalho(s). Ocupa 1 lote de horta. Pronta 3 amanheceres depois; cuidada dá 2 porções.",
+   "ilustracao": "Lote de horta recém-plantado: leiras de terra escura, mudas pequenas, regador.",
+   "elementos": [
+    "leiras",
+    "mudas",
+    "2 porções"
+   ],
+   "verso": "V-OBR",
+   "arte": "exclusiva",
+   "chave_arte": "OBR:horta",
+   "chave_motor": "horta",
+   "origem": "edição integral",
+   "obs": null
+  },
+  {
+   "ids": [
+    "ZI-OBR-09"
+   ],
+   "nome": "Expansão 3×3",
+   "nome_sugerido": null,
+   "familia": "OBR",
+   "categoria": "Obra da Comunidade",
+   "copias": 1,
+   "texto": "Custo 3 madeira; 3 trabalho(s). Abre o acampamento 3×3 (obra pesada). Obra pesada: ração de obra.",
+   "ilustracao": "Mutirão roçando o mato e fincando mourões para abrir o terreno 3×3.",
+   "elementos": [
+    "roçada",
+    "mourões",
+    "obra pesada"
+   ],
+   "verso": "V-OBR",
+   "arte": "exclusiva",
+   "chave_arte": "OBR:expansao2",
+   "chave_motor": "expansao2",
+   "origem": "edição integral",
+   "obs": null
+  },
+  {
+   "ids": [
+    "ZI-OBR-10"
+   ],
+   "nome": "Expansão 4×4",
+   "nome_sugerido": null,
+   "familia": "OBR",
+   "categoria": "Obra da Comunidade",
+   "copias": 1,
+   "texto": "Custo 5 madeira + 2 sucata; 5 trabalho(s). Abre o 4×4; exige Depósito, Oficina ou Vigia (obra pesada). Obra pesada: ração de obra.",
+   "ilustracao": "Cerca de mourões e arame circundando o acampamento 4×4, portão novo.",
+   "elementos": [
+    "perímetro",
+    "portão",
+    "obra pesada"
+   ],
+   "verso": "V-OBR",
+   "arte": "exclusiva",
+   "chave_arte": "OBR:expansao3",
+   "chave_motor": "expansao3",
+   "origem": "edição integral",
+   "obs": null
+  },
+  {
+   "ids": [
+    "ZI-OBR-11"
+   ],
+   "nome": "Composteira",
+   "nome_sugerido": null,
+   "familia": "OBR",
+   "categoria": "Obra da Comunidade",
+   "copias": 1,
+   "texto": "Custo 1 madeira; 1 trabalho(s). +1 porção por pessoa na horta (exige K-AGR).",
+   "ilustracao": "Composteira de paletes com cascas e folhas, minhocas sugeridas.",
+   "elementos": [
+    "paletes",
+    "composto",
+    "+1 porção"
+   ],
+   "verso": "V-OBR",
+   "arte": "exclusiva",
+   "chave_arte": "OBR:composteira",
+   "chave_motor": "composteira",
+   "origem": "edição integral",
+   "obs": null
+  },
+  {
+   "ids": [
+    "ZI-OBR-12"
+   ],
+   "nome": "Defumador",
+   "nome_sugerido": null,
+   "familia": "OBR",
+   "categoria": "Obra da Comunidade",
+   "copias": 1,
+   "texto": "Custo 2 madeira; 1 trabalho(s). Carne dura +3 noites e cozinha sem madeira (exige K-CON).",
+   "ilustracao": "Defumador de tambor com carne pendurada e fumaça fina.",
+   "elementos": [
+    "tambor",
+    "carne defumada"
+   ],
+   "verso": "V-OBR",
+   "arte": "exclusiva",
+   "chave_arte": "OBR:defumador",
+   "chave_motor": "defumador",
+   "origem": "edição integral",
+   "obs": null
+  },
+  {
+   "ids": [
+    "ZI-OBR-13"
+   ],
+   "nome": "Bancada de ferramentas",
+   "nome_sugerido": null,
+   "familia": "OBR",
+   "categoria": "Obra da Comunidade",
+   "copias": 1,
+   "texto": "Custo 1 madeira + 2 sucata; 2 trabalho(s). Ocupa 1 lote de oficina. +1 trabalho por pessoa em obra (exige K-FER).",
+   "ilustracao": "Bancada de ferramentas organizada com ferramentas recuperadas da Oficina.",
+   "elementos": [
+    "ferramentas em painel",
+    "+1 trabalho"
+   ],
+   "verso": "V-OBR",
+   "arte": "exclusiva",
+   "chave_arte": "OBR:bancada",
+   "chave_motor": "bancada",
+   "origem": "edição integral",
+   "obs": null
+  },
+  {
+   "ids": [
+    "ZI-OBR-14"
+   ],
+   "nome": "Ambulatório",
+   "nome_sugerido": null,
+   "familia": "OBR",
+   "categoria": "Obra da Comunidade",
+   "copias": 1,
+   "texto": "Custo 1 madeira + 1 sucata; 2 trabalho(s). +1 pessoa nos cuidados; função remédio: 2 porções → 1 remédio (exige K-SAU e Enfermaria).",
+   "ilustracao": "Ambulatório ao lado da enfermaria: prateleira de vidros, alambique de ervas, caderno de fórmulas.",
+   "elementos": [
+    "vidros",
+    "ervas",
+    "remédio"
+   ],
+   "verso": "V-OBR",
+   "arte": "exclusiva",
+   "chave_arte": "OBR:ambulatorio",
+   "chave_motor": "ambulatorio",
+   "origem": "edição integral",
+   "obs": null
+  },
+  {
+   "ids": [
+    "ZI-OBR-15"
+   ],
+   "nome": "Filtro de areia",
+   "nome_sugerido": null,
+   "familia": "OBR",
+   "categoria": "Obra da Comunidade",
+   "copias": 1,
+   "texto": "Custo 1 madeira + 1 sucata; 1 trabalho(s). Ocupa 1 lote de agua. Água bruta vira potável sem ferver (exige K-AGU).",
+   "ilustracao": "Filtro de areia em tambores empilhados (areia, carvão, cascalho) com torneira.",
+   "elementos": [
+    "camadas visíveis",
+    "torneira"
+   ],
+   "verso": "V-OBR",
+   "arte": "exclusiva",
+   "chave_arte": "OBR:filtro",
+   "chave_motor": "filtro",
+   "origem": "edição integral",
+   "obs": null
+  },
+  {
+   "ids": [
+    "EXP-LOC-01"
+   ],
+   "nome": "Horta abandonada",
+   "nome_sugerido": null,
+   "familia": "LOC",
+   "categoria": "Local regional",
+   "copias": 1,
+   "texto": "Distância near; 3 busca(s); saque 2 comida; renovação natural. 1ª busca: conhecimento K-AGR.",
+   "ilustracao": "Sítio com horta tomada pelo mato, cerca de bambu caída, poço e galinheiro vazio.",
+   "elementos": [
+    "cerca de bambu",
+    "poço",
+    "mato alto"
+   ],
+   "verso": "V-LOC",
+   "arte": "compartilhada:LOCAL:Horta abandonada",
+   "chave_arte": "LOC:EXP-LOC-01",
+   "chave_motor": "EXP-LOC-01",
+   "origem": "edição integral",
+   "obs": null
+  },
+  {
+   "ids": [
+    "EXP-LOC-02"
+   ],
+   "nome": "Mercado",
+   "nome_sugerido": null,
+   "familia": "LOC",
+   "categoria": "Local regional",
+   "copias": 1,
+   "texto": "Distância near; 4 busca(s); saque 2 comida + 1 água; renovação urban. 1ª busca: conhecimento K-CON.",
+   "ilustracao": "Mercadinho de bairro de esquina, letreiro caído, prateleiras reviradas, carrinhos no estacionamento; dia claro.",
+   "elementos": [
+    "letreiro",
+    "carrinhos"
+   ],
+   "verso": "V-LOC",
+   "arte": "compartilhada:LOCAL:Mercado",
+   "chave_arte": "LOC:EXP-LOC-02",
+   "chave_motor": "EXP-LOC-02",
+   "origem": "edição integral",
+   "obs": null
+  },
+  {
+   "ids": [
+    "EXP-LOC-03"
+   ],
+   "nome": "Oficina",
+   "nome_sugerido": null,
+   "familia": "LOC",
+   "categoria": "Local regional",
+   "copias": 1,
+   "texto": "Distância medium; 3 busca(s); saque 2 sucata; renovação urban. 1ª busca: conhecimento K-FER.",
+   "ilustracao": "Oficina mecânica de portão de enrolar, carros sobre cavaletes, pneus empilhados.",
+   "elementos": [
+    "portão de enrolar",
+    "pneus"
+   ],
+   "verso": "V-LOC",
+   "arte": "compartilhada:LOCAL:Oficina",
+   "chave_arte": "LOC:EXP-LOC-03",
+   "chave_motor": "EXP-LOC-03",
+   "origem": "edição integral",
+   "obs": null
+  },
+  {
+   "ids": [
+    "EXP-LOC-04"
+   ],
+   "nome": "Hospital",
+   "nome_sugerido": null,
+   "familia": "LOC",
+   "categoria": "Local regional",
+   "copias": 1,
+   "texto": "Distância medium; 3 busca(s); saque 2 remédio + 1 água; renovação urban. 1ª busca: conhecimento K-SAU.",
+   "ilustracao": "Hospital regional de dois andares com ambulância parada e lençóis nas janelas.",
+   "elementos": [
+    "ambulância",
+    "lençóis nas janelas"
+   ],
+   "verso": "V-LOC",
+   "arte": "compartilhada:LOCAL:Hospital",
+   "chave_arte": "LOC:EXP-LOC-04",
+   "chave_motor": "EXP-LOC-04",
+   "origem": "edição integral",
+   "obs": null
+  },
+  {
+   "ids": [
+    "EXP-LOC-05"
+   ],
+   "nome": "Estação",
+   "nome_sugerido": null,
+   "familia": "LOC",
+   "categoria": "Local regional",
+   "copias": 1,
+   "texto": "Distância far; 2 busca(s); saque 2 água + 1 sucata; renovação urban. 1ª busca: conhecimento K-AGU.",
+   "ilustracao": "Estação de tratamento de água e ferroviária desativada lado a lado, tanques e trilhos.",
+   "elementos": [
+    "tanques",
+    "trilhos",
+    "sala de rádio"
+   ],
+   "verso": "V-LOC",
+   "arte": "compartilhada:LOCAL:Estação",
+   "chave_arte": "LOC:EXP-LOC-05",
+   "chave_motor": "EXP-LOC-05",
+   "origem": "edição integral",
+   "obs": null
+  },
+  {
+   "ids": [
+    "EXP-LOC-06"
+   ],
+   "nome": "Instalação militar",
+   "nome_sugerido": null,
+   "familia": "LOC",
+   "categoria": "Local regional",
+   "copias": 1,
+   "texto": "Distância far; 0 busca(s); saque sem saque comum; renovação urban.",
+   "ilustracao": "Portão militar com guarita, galpões verdes, antena de rádio, arame em concertina.",
+   "elementos": [
+    "guarita",
+    "galpões",
+    "antena"
+   ],
+   "verso": "V-LOC",
+   "arte": "compartilhada:LOCAL:Instalação militar",
+   "chave_arte": "LOC:EXP-LOC-06",
+   "chave_motor": "EXP-LOC-06",
+   "origem": "edição integral",
+   "obs": null
+  },
+  {
+   "ids": [
+    "EXP-LOC-07"
+   ],
+   "nome": "Posto",
+   "nome_sugerido": null,
+   "familia": "LOC",
+   "categoria": "Local regional",
+   "copias": 1,
+   "texto": "Distância medium; 8 busca(s); saque sem saque comum; renovação urban.",
+   "ilustracao": "Posto de gasolina de beira de estrada, bombas antigas, caminhão-tanque parado, conveniência saqueada.",
+   "elementos": [
+    "bombas",
+    "caminhão-tanque"
+   ],
+   "verso": "V-LOC",
+   "arte": "compartilhada:LOCAL:Posto",
+   "chave_arte": "LOC:EXP-LOC-07",
+   "chave_motor": "EXP-LOC-07",
+   "origem": "edição integral",
+   "obs": null
+  },
+  {
+   "ids": [
+    "EXP-CRI-01"
+   ],
+   "nome": "Horta danificada",
+   "nome_sugerido": null,
+   "familia": "CRI",
+   "categoria": "Crise regional",
+   "copias": 1,
+   "texto": "Alvo: garden; dano 1; perde nada; intervalo 2 dias.",
+   "ilustracao": "Horta pisoteada por animais, cerca derrubada, mudas arrancadas.",
+   "elementos": [
+    "horta danificada"
+   ],
+   "verso": "V-CRI",
+   "arte": "exclusiva",
+   "chave_arte": "CRI:EXP-CRI-01",
+   "chave_motor": "EXP-CRI-01",
+   "origem": "edição integral",
+   "obs": null
+  },
+  {
+   "ids": [
+    "EXP-CRI-02"
+   ],
+   "nome": "Gafanhotos",
+   "nome_sugerido": null,
+   "familia": "CRI",
+   "categoria": "Crise regional",
+   "copias": 1,
+   "texto": "Alvo: garden; dano 2; perde 1 comida; intervalo 3 dias.",
+   "ilustracao": "Nuvem de gafanhotos sobre os canteiros, pessoas batendo panelas.",
+   "elementos": [
+    "gafanhotos",
+    "panelas"
+   ],
+   "verso": "V-CRI",
+   "arte": "exclusiva",
+   "chave_arte": "CRI:EXP-CRI-02",
+   "chave_motor": "EXP-CRI-02",
+   "origem": "edição integral",
+   "obs": null
+  },
+  {
+   "ids": [
+    "EXP-CRI-03"
+   ],
+   "nome": "Cupins",
+   "nome_sugerido": null,
+   "familia": "CRI",
+   "categoria": "Crise regional",
+   "copias": 1,
+   "texto": "Alvo: storage; dano 1; perde 1 madeira; intervalo 3 dias.",
+   "ilustracao": "Viga de madeira esfarelando de cupim no depósito.",
+   "elementos": [
+    "cupim",
+    "madeira oca"
+   ],
+   "verso": "V-CRI",
+   "arte": "exclusiva",
+   "chave_arte": "CRI:EXP-CRI-03",
+   "chave_motor": "EXP-CRI-03",
+   "origem": "edição integral",
+   "obs": null
+  },
+  {
+   "ids": [
+    "EXP-CRI-04"
+   ],
+   "nome": "Água contaminada",
+   "nome_sugerido": null,
+   "familia": "CRI",
+   "categoria": "Crise regional",
+   "copias": 1,
+   "texto": "Alvo: reservoir; dano 1; perde 2 água; intervalo 3 dias.",
+   "ilustracao": "Água turva com espuma no reservatório, criança impedida de beber.",
+   "elementos": [
+    "água turva",
+    "aviso"
+   ],
+   "verso": "V-CRI",
+   "arte": "exclusiva",
+   "chave_arte": "CRI:EXP-CRI-04",
+   "chave_motor": "EXP-CRI-04",
+   "origem": "edição integral",
+   "obs": null
+  },
+  {
+   "ids": [
+    "EXP-CRI-05"
+   ],
+   "nome": "Estrutura comprometida",
+   "nome_sugerido": null,
+   "familia": "CRI",
+   "categoria": "Crise regional",
+   "copias": 1,
+   "texto": "Alvo: lodging; dano 2; perde nada; intervalo 2 dias.",
+   "ilustracao": "Telhado do alojamento cedendo após temporal, escoras de emergência.",
+   "elementos": [
+    "telhado cedendo",
+    "escoras"
+   ],
+   "verso": "V-CRI",
+   "arte": "exclusiva",
+   "chave_arte": "CRI:EXP-CRI-05",
+   "chave_motor": "EXP-CRI-05",
+   "origem": "edição integral",
+   "obs": null
+  },
+  {
+   "ids": [
+    "EXP-MIS-102"
+   ],
+   "nome": "Decifrar a frequência",
+   "nome_sugerido": null,
+   "familia": "UTR",
+   "categoria": "Última Transmissão",
+   "copias": 1,
+   "texto": "Exige: cistern_complete True, clues 2. Custo: 2 clues. Efeito: radio_code.",
+   "ilustracao": "Mesa de cozinha com rádio aberto, duas pistas presas com fita, lápis decifrando números.",
+   "elementos": [
+    "rádio",
+    "2 pistas",
+    "números"
+   ],
+   "verso": "V-UTR",
+   "arte": "exclusiva",
+   "chave_arte": "UTR:EXP-MIS-102",
+   "chave_motor": "EXP-MIS-102",
+   "origem": "edição integral",
+   "obs": null
+  },
+  {
+   "ids": [
+    "EXP-MIS-103"
+   ],
+   "nome": "Cartão na estação",
+   "nome_sugerido": null,
+   "familia": "UTR",
+   "categoria": "Última Transmissão",
+   "copias": 1,
+   "texto": "Exige: searches_used 1. Custo: —. Efeito: access_card.",
+   "ilustracao": "Cartão de acesso militar caído entre trilhos da Estação, sol rasante.",
+   "elementos": [
+    "cartão de acesso",
+    "trilhos"
+   ],
+   "verso": "V-UTR",
+   "arte": "exclusiva",
+   "chave_arte": "UTR:EXP-MIS-103",
+   "chave_motor": "EXP-MIS-103",
+   "origem": "edição integral",
+   "obs": null
+  },
+  {
+   "ids": [
+    "EXP-MIS-104"
+   ],
+   "nome": "Acesso militar",
+   "nome_sugerido": null,
+   "familia": "UTR",
+   "categoria": "Última Transmissão",
+   "copias": 1,
+   "texto": "Exige: radio_code True, access_card True, vehicle True, fuel_round_trip 12. Custo: 12 combustível. Efeito: military_access.",
+   "ilustracao": "Van chegando ao portão da Instalação militar, leitor de cartão com luz verde.",
+   "elementos": [
+    "van",
+    "portão militar",
+    "combustível"
+   ],
+   "verso": "V-UTR",
+   "arte": "exclusiva",
+   "chave_arte": "UTR:EXP-MIS-104",
+   "chave_motor": "EXP-MIS-104",
+   "origem": "edição integral",
+   "obs": null
+  },
+  {
+   "ids": [
+    "EXP-MIS-105"
+   ],
+   "nome": "Transporte do transmissor",
+   "nome_sugerido": null,
+   "familia": "UTR",
+   "categoria": "Última Transmissão",
+   "copias": 1,
+   "texto": "Exige: military_access True, cargo_capacity 1. Custo: 1 actions. Efeito: transmitter.",
+   "ilustracao": "Heróis carregando o transmissor em caixa reforçada pela rampa do galpão militar.",
+   "elementos": [
+    "transmissor",
+    "caixa reforçada"
+   ],
+   "verso": "V-UTR",
+   "arte": "exclusiva",
+   "chave_arte": "UTR:EXP-MIS-105",
+   "chave_motor": "EXP-MIS-105",
+   "origem": "edição integral",
+   "obs": null
+  },
+  {
+   "ids": [
+    "EXP-MIS-106"
+   ],
+   "nome": "Defesa da última transmissão",
+   "nome_sugerido": null,
+   "familia": "UTR",
+   "categoria": "Última Transmissão",
+   "copias": 1,
+   "texto": "Exige: transmitter True, final_defense True. Custo: —. Efeito: free_survival.",
+   "ilustracao": "Defesa final ao entardecer: acampamento iluminado, antena erguida, heróis na cerca e a Vigia atirando.",
+   "elementos": [
+    "antena",
+    "defesa",
+    "Vigia",
+    "único entardecer da edição"
+   ],
+   "verso": "V-UTR",
+   "arte": "exclusiva",
+   "chave_arte": "UTR:EXP-MIS-106",
+   "chave_motor": "EXP-MIS-106",
+   "origem": "edição integral",
+   "obs": null
+  },
+  {
+   "ids": [
+    "ZI-REF-01"
+   ],
+   "nome": "Bagagem do resgatado",
+   "nome_sugerido": null,
+   "familia": "REF",
+   "categoria": "Referência da comunidade",
+   "copias": 1,
+   "texto": "D6 ao acolher um adulto: 1 nada; 2 1 comida; 3 1 comida + 1 água; 4 2 comida; 5 1 madeira + 1 sucata; 6 1 remédio + 1 comida.",
+   "ilustracao": "Sem ilustração: ícones e diagrama sobre prancheta.",
+   "elementos": [
+    "ícones"
+   ],
+   "verso": "V-REF",
+   "arte": "compartilhada:diagrama",
+   "chave_arte": "REF:bagagem_D6",
+   "chave_motor": "bagagem_D6",
+   "origem": "edição integral",
+   "obs": null
+  },
+  {
+   "ids": [
+    "ZI-REF-02"
+   ],
+   "nome": "Viagem automática",
+   "nome_sugerido": null,
+   "familia": "REF",
+   "categoria": "Referência da comunidade",
+   "copias": 1,
+   "texto": "1–3 dias; pontos = (D6 + especialista + cão) × dias − dias sem ração; conversão por atividade; 1 carta de acontecimento (+1 em viagem longa ou perigosa).",
+   "ilustracao": "Sem ilustração: ícones e diagrama sobre prancheta.",
+   "elementos": [
+    "ícones"
+   ],
+   "verso": "V-REF",
+   "arte": "compartilhada:diagrama",
+   "chave_arte": "REF:viagem_automatica",
+   "chave_motor": "viagem_automatica",
+   "origem": "edição integral",
+   "obs": null
+  },
+  {
+   "ids": [
+    "ZI-REF-03"
+   ],
+   "nome": "Comida e água",
+   "nome_sugerido": null,
+   "familia": "REF",
+   "categoria": "Referência da comunidade",
+   "copias": 1,
+   "texto": "Cada pessoa: 1 porção de comida e 1 de água por noite. Carne cozida rende 4 porções; fruta dá água a cada 2.",
+   "ilustracao": "Sem ilustração: ícones e diagrama sobre prancheta.",
+   "elementos": [
+    "ícones"
+   ],
+   "verso": "V-REF",
+   "arte": "compartilhada:diagrama",
+   "chave_arte": "REF:comida_agua",
+   "chave_motor": "comida_agua",
+   "origem": "edição integral",
+   "obs": null
+  },
+  {
+   "ids": [
+    "ZI-REF-04"
+   ],
+   "nome": "Tempo e coletor",
+   "nome_sugerido": null,
+   "familia": "REF",
+   "categoria": "Referência da comunidade",
+   "copias": 1,
+   "texto": "D6 por amanhecer: 4–6 chove. Coletor: 4–5 +2 água, 6 +4.",
+   "ilustracao": "Sem ilustração: ícones e diagrama sobre prancheta.",
+   "elementos": [
+    "ícones"
+   ],
+   "verso": "V-REF",
+   "arte": "compartilhada:diagrama",
+   "chave_arte": "REF:clima_coletor",
+   "chave_motor": "clima_coletor",
+   "origem": "edição integral",
+   "obs": null
+  },
+  {
+   "ids": [
+    "ZI-REF-05"
+   ],
+   "nome": "Chegadas",
+   "nome_sugerido": null,
+   "familia": "REF",
+   "categoria": "Referência da comunidade",
+   "copias": 1,
+   "texto": "Dias 4 e 10, D6: 1–2 adulto; 3–4 adulto + criança com barraca; 5 dois adultos + criança com barraca familiar; 6 ninguém. Recusar: Crise +1.",
+   "ilustracao": "Sem ilustração: ícones e diagrama sobre prancheta.",
+   "elementos": [
+    "ícones"
+   ],
+   "verso": "V-REF",
+   "arte": "compartilhada:diagrama",
+   "chave_arte": "REF:chegadas_D6",
+   "chave_motor": "chegadas_D6",
+   "origem": "edição integral",
+   "obs": null
+  },
+  {
+   "ids": [
+    "ZI-REF-06"
+   ],
+   "nome": "Horta por lotes",
+   "nome_sugerido": null,
+   "familia": "REF",
+   "categoria": "Referência da comunidade",
+   "copias": 1,
+   "texto": "Pessoa cuida de 2 lotes (agricultor 4); lote cuidado dá 2 porções; dia seco: 1 água a cada 2 lotes; D6 = 1: −1 porção.",
+   "ilustracao": "Sem ilustração: ícones e diagrama sobre prancheta.",
+   "elementos": [
+    "ícones"
+   ],
+   "verso": "V-REF",
+   "arte": "compartilhada:diagrama",
+   "chave_arte": "REF:horta_lotes",
+   "chave_motor": "horta_lotes",
+   "origem": "edição integral",
+   "obs": null
+  },
+  {
+   "ids": [
+    "ZI-REF-07"
+   ],
+   "nome": "Crise",
+   "nome_sugerido": null,
+   "familia": "REF",
+   "categoria": "Referência da comunidade",
+   "copias": 1,
+   "texto": "Falta para até metade: +1; mais: +2; todos servidos: −1 (−2 com reserva). 4 obras pesadas param; 7 ninguém recupera; 10 colapso.",
+   "ilustracao": "Sem ilustração: ícones e diagrama sobre prancheta.",
+   "elementos": [
+    "ícones"
+   ],
+   "verso": "V-REF",
+   "arte": "compartilhada:diagrama",
+   "chave_arte": "REF:crise_0_10",
+   "chave_motor": "crise_0_10",
+   "origem": "edição integral",
+   "obs": null
+  },
+  {
+   "ids": [
+    "ZI-REF-08"
+   ],
+   "nome": "Obras e ração",
+   "nome_sugerido": null,
+   "familia": "REF",
+   "categoria": "Referência da comunidade",
+   "copias": 1,
+   "texto": "Obra pesada: 1 porção por pessoa no dia. Barraca e horta são leves. Expansão 3×3: 3 madeira, 3 trabalhos; 4×4: 5 madeira + 2 sucata, 5 trabalhos.",
+   "ilustracao": "Sem ilustração: ícones e diagrama sobre prancheta.",
+   "elementos": [
+    "ícones"
+   ],
+   "verso": "V-REF",
+   "arte": "compartilhada:diagrama",
+   "chave_arte": "REF:obras_e_racao",
+   "chave_motor": "obras_e_racao",
+   "origem": "edição integral",
+   "obs": null
+  },
+  {
+   "ids": [
+    "K-AGR"
+   ],
+   "nome": "Caderno de cultivo",
+   "nome_sugerido": null,
+   "familia": "CON",
+   "categoria": "Conhecimento",
+   "copias": 1,
+   "texto": "1ª busca em EXP-LOC-01. Libera a obra Composteira.",
+   "ilustracao": "Caderno de cultivo com desenhos de leiras e calendário de plantio, terra entre as páginas.",
+   "elementos": [
+    "caderno",
+    "desenho de leiras"
+   ],
+   "verso": "V-CON",
+   "arte": "exclusiva",
+   "chave_arte": "CON:K-AGR",
+   "chave_motor": "K-AGR",
+   "origem": "edição integral",
+   "obs": null
+  },
+  {
+   "ids": [
+    "K-CON"
+   ],
+   "nome": "Manual de conservas",
+   "nome_sugerido": null,
+   "familia": "CON",
+   "categoria": "Conhecimento",
+   "copias": 1,
+   "texto": "1ª busca em EXP-LOC-02. Libera a obra Defumador.",
+   "ilustracao": "Manual de conservas com receita de defumação, fotos de potes.",
+   "elementos": [
+    "manual",
+    "potes"
+   ],
+   "verso": "V-CON",
+   "arte": "exclusiva",
+   "chave_arte": "CON:K-CON",
+   "chave_motor": "K-CON",
+   "origem": "edição integral",
+   "obs": null
+  },
+  {
+   "ids": [
+    "K-FER"
+   ],
+   "nome": "Catálogo de ferramentas",
+   "nome_sugerido": null,
+   "familia": "CON",
+   "categoria": "Conhecimento",
+   "copias": 1,
+   "texto": "1ª busca em EXP-LOC-03. Libera a obra Bancada de ferramentas.",
+   "ilustracao": "Catálogo de ferramentas com páginas marcadas e anotações.",
+   "elementos": [
+    "catálogo",
+    "marcações"
+   ],
+   "verso": "V-CON",
+   "arte": "exclusiva",
+   "chave_arte": "CON:K-FER",
+   "chave_motor": "K-FER",
+   "origem": "edição integral",
+   "obs": null
+  },
+  {
+   "ids": [
+    "K-SAU"
+   ],
+   "nome": "Fórmulas de manipulação",
+   "nome_sugerido": null,
+   "familia": "CON",
+   "categoria": "Conhecimento",
+   "copias": 1,
+   "texto": "1ª busca em EXP-LOC-04. Libera a obra Ambulatório.",
+   "ilustracao": "Fichário de farmácia de manipulação com fórmulas fictícias e etiquetas de ervas (sem instruções reais).",
+   "elementos": [
+    "fichário",
+    "etiquetas de ervas",
+    "fórmulas fictícias"
+   ],
+   "verso": "V-CON",
+   "arte": "exclusiva",
+   "chave_arte": "CON:K-SAU",
+   "chave_motor": "K-SAU",
+   "origem": "edição integral",
+   "obs": null
+  },
+  {
+   "ids": [
+    "K-AGU"
+   ],
+   "nome": "Esquema de filtro de areia",
+   "nome_sugerido": null,
+   "familia": "CON",
+   "categoria": "Conhecimento",
+   "copias": 1,
+   "texto": "1ª busca em EXP-LOC-05. Libera a obra Filtro de areia.",
+   "ilustracao": "Esquema técnico de filtro de areia em folha quadriculada, camadas coloridas a lápis.",
+   "elementos": [
+    "esquema",
+    "camadas"
+   ],
+   "verso": "V-CON",
+   "arte": "exclusiva",
+   "chave_arte": "CON:K-AGU",
+   "chave_motor": "K-AGU",
+   "origem": "edição integral",
+   "obs": null
+  }
+ ]
+}

@@ -1,0 +1,48 @@
+{
+ "schema": 1,
+ "note": "Direção artística escolhida pelo proprietário (2026-10-30). Camada só de arte: ids, nomes e textos mecânicos vêm de content/catalog.json e data/*.json.",
+ "direction": {
+  "estilo": "Pintura digital semirrealista, pós-apocalíptica, acabamento dark/grunge (textura de pincel seco, manchas, desgaste nas bordas), cenas e mapas predominantemente diurnos.",
+  "ambiente": "Interior do Sudeste brasileiro meses após o colapso: Mata Atlântica degradada, pasto alto, cafezais e canaviais abandonados, rio barrento, cidade pequena com muros de chapisco, fiação caída, placas comerciais desbotadas, ônibus e motos enferrujados.",
+  "pessoas": "Humanos realistas, expressivos e distintos (idade, corpo, etnia, cabelo, roupas de trabalho e remendos). Brasileiros comuns, sem estética militar de cinema.",
+  "atmosfera": "Sobrevivência, abandono, perigo e reconstrução: sempre um sinal de cuidado humano (remendo, panela no fogo, horta nova) ao lado da ruína.",
+  "paleta": {"verde_natural": "#5E7341", "verde_escuro": "#2F3D24", "marrom_terra": "#6B4A2F", "ferrugem": "#9A4F25", "cinza_concreto": "#7B7D78", "cinza_carvao": "#2A2B2A", "creme_leitura": "#EDE6D3", "vermelho_destaque": "#B32A22"},
+  "uso_do_vermelho": "Só para perigo, ferimento, Crise e destaque de regra crítica; nunca como fundo grande.",
+  "luz": "Dia: sol de fim de manhã ou tarde nublada, sombras macias; noite só nas cartas de Cerco, Horda noturna e Passos no escuro.",
+  "cartas": "Moldura escura (cinza-carvão com desgaste de metal/madeira), ilustração no terço superior/metade superior, caixa de texto clara (creme) com tipografia legível; ícone de família no canto superior esquerdo; id discreto no rodapé.",
+  "tabuleiros": "Mapas táticos em vista isométrica clara (luz do dia), zonas legíveis com bordas desenhadas, portas e bloqueios marcados por ícones, sem escurecer as áreas de jogo.",
+  "proibicoes": "Identidade original: não copiar arte, personagens, logotipos ou composições de outros jogos ou filmes. Nada de gore explícito em close; mordida e sangue apenas sugeridos. Nomes vistos em imagens conceituais não são personagens oficiais: valem só os ids e nomes do catálogo."
+ },
+ "backs": {
+  "V-VIN": "Vínculo: foto rasgada de família presa por fita adesiva sobre madeira escura.",
+  "V-INT": "Intenção (oculta): rosto na sombra atrás de grade de portão; idêntico para as 4 intenções.",
+  "V-REC": "Recurso: caixote de feira de madeira com estêncil 'ESTOQUE'.",
+  "V-PEC": "Peça de missão: chapa metálica com parafusos e etiqueta de patrimônio.",
+  "V-EQU": "Equipamento: lona verde com ferramentas em silhueta.",
+  "V-SAQ": "Saque: faixa com o nome do local sobre fundo do mapa daquele local (6 versões: Mercado, Hospital, Oficina, Posto, Condomínio, Estação).",
+  "V-VIA": "Viagem: estrada de terra entre pasto alto, placa de quilometragem.",
+  "V-HOR": "Horda: mãos e silhuetas contra portão, tons ferrugem.",
+  "V-CER": "Cerco: cerca de arame à noite com lanterna.",
+  "V-EVE": "Evento do dia: calendário de parede marcado a caneta.",
+  "V-PRO": "Projeto de obra: papel de pão com croqui a lápis.",
+  "V-STR": "Estrutura: tábua com régua de pedreiro e prumo.",
+  "V-MOR": "Morador: crachá de abrigo com cordão.",
+  "V-MIS": "Missão: mapa rodoviário dobrado com círculo vermelho.",
+  "V-VEI": "Veículo: chave de van com chaveiro de oficina.",
+  "V-AJU": "Ajuda: quadro de avisos de cortiça.",
+  "V-ACO": "Acontecimento de viagem automática: trilha na mata com pegadas.",
+  "V-PRF": "Profissão (sorteio oculto): luvas de trabalho sobre bancada; igual para as 12.",
+  "V-OBR": "Obra regional: lote de terra com estacas e barbante.",
+  "V-LOC": "Local regional: placa de estrada com km e seta.",
+  "V-CRI": "Crise regional: céu de tempestade sobre plantação.",
+  "V-UTR": "Última Transmissão: rádio de ondas curtas com ponteiro aceso.",
+  "V-REF": "Referência da comunidade: prancheta com folha de controle.",
+  "V-CON": "Conhecimento: caderno de capa dura com fita adesiva."
+ },
+ "frames": {
+  "padrao": "63 × 88 mm; moldura 3 mm; ilustração 57 × 44 mm; caixa de texto creme 57 × 30 mm; sangria 3 mm fora do corte.",
+  "recurso": "Ilustração maior (57 × 52 mm) e cursor de porções 4/3/2/1 na borda direita (Conserva, Água, Carne).",
+  "saque": "Arte do recurso (compartilhada com REC) + faixa superior com o local; texto curto.",
+  "referencia": "Sem ilustração grande: ícones e diagrama; frente e verso podem ser texto."
+ }
+}

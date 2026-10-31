@@ -1,0 +1,93 @@
+{
+ "schema": 1,
+ "note": "Pessoas, inimigos, locais, mapas, peças e marcadores. Uma pessoa = um retrato, usado na ficha de herói, na carta de Morador e na carta de especialista (EXP-NPC). Idades e aparências são sugestões de arte, não regra.",
+ "people": {
+  "ZC-HER-0001": {"i": "Lia, ~40 anos, mulher negra de tranças presas, colete de agente de saúde desbotado, prancheta e mochila de primeiros socorros; olhar firme e acolhedor.", "e": ["colete de agente de saúde", "prancheta", "kit de socorro"]},
+  "ZC-HER-0002": {"i": "Ivo, ~45 anos, homem pardo corpulento, careca, uniforme de vigilante sem distintivo, cassetete trocado por pé de cabra, barba grisalha.", "e": ["uniforme de vigilante", "pé de cabra"]},
+  "ZC-HER-0003": {"i": "Mara, ~30 anos, mulher branca de cabelo curto castanho, jaleco cortado na manga, estetoscópio, olheiras.", "e": ["jaleco", "estetoscópio"]},
+  "ZC-HER-0004": {"i": "Caio, ~22 anos, rapaz negro magro, capacete de ciclista riscado, bag térmica de entregas nas costas, tênis de corrida.", "e": ["capacete", "bag de entrega", "bicicleta ao fundo"]},
+  "ZC-HER-0005": {"i": "Nara, ~35 anos, mulher indígena de cabelo liso preso, botas de borracha, macacão de saneamento, chave de registro.", "e": ["botas de borracha", "macacão", "chave de registro"]},
+  "ZC-HER-0006": {"i": "Bento, ~55 anos, homem branco queimado de sol, chapéu de pedreiro, colher de pedreiro no cinto, mãos grossas.", "e": ["colher de pedreiro", "chapéu", "nível"]},
+  "ZC-HER-0007": {"i": "Duda, ~26 anos, pessoa não binária de cabelo raspado nas laterais, óculos remendados, multímetro e fios no bolso.", "e": ["óculos remendados", "multímetro"]},
+  "ZC-HER-0008": {"i": "Rosa, ~60 anos, mulher parda baixa de touca e avental de cozinha escolar, concha de alumínio, sorriso cansado.", "e": ["touca", "avental", "concha"]},
+  "ZC-HER-0009": {"i": "Joel, ~38 anos, homem negro alto, jaqueta de bombeiro civil com faixa refletiva, machadinha.", "e": ["jaqueta refletiva", "machadinha"]},
+  "ZC-HER-0010": {"i": "Yumi, ~33 anos, mulher nipo-brasileira de franja, avental de laboratório manchado, caixa térmica com amostras.", "e": ["avental de laboratório", "caixa térmica"]},
+  "ZC-HER-0011": {"i": "Téo, ~48 anos, homem branco de bigode, encanador de bermuda e camiseta de loja de material, chave grifo no ombro.", "e": ["chave grifo", "camiseta de loja"]},
+  "ZC-HER-0012": {"i": "Célia, ~52 anos, professora negra de óculos de grau e cabelo crespo grisalho, cadernos sob o braço, rádio portátil.", "e": ["óculos", "cadernos", "rádio portátil"]},
+  "ZC-HER-0013": {"i": "Aline, ~29 anos, veterinária branca de rabo de cavalo ruivo, colete com bolsos, coleira e lanterna de bolso.", "e": ["colete veterinário", "coleira"]},
+  "ZC-HER-0014": {"i": "Samuel, ~50 anos, carpinteiro pardo de barba, lápis na orelha, serrote nas costas.", "e": ["serrote", "lápis na orelha"]},
+  "ZC-HER-0015": {"i": "Bruna, ~36 anos, agricultora negra de chapéu de palha e lenço, saco de sementes, mãos de terra.", "e": ["chapéu de palha", "saco de sementes"]},
+  "ZC-HER-0016": {"i": "Raul, ~58 anos, caminhoneiro branco barrigudo de boné de transportadora, camisa aberta, chaves no cinto.", "e": ["boné", "molho de chaves"]},
+  "ZC-HER-0017": {"i": "Denise, ~46 anos, médica parda de cabelo curto grisalho, jaleco sujo, crachá de hospital, expressão exausta.", "e": ["jaleco", "crachá"]},
+  "ZC-HER-0018": {"i": "Hugo, ~40 anos, eletricista negro de capacete branco, cinto de ferramentas, rolos de fio.", "e": ["capacete", "rolos de fio"]},
+  "ZC-HER-0019": {"i": "Sol, ~24 anos, guia indígena de cabelo longo, mochila de trilha, bússola e facão.", "e": ["bússola", "facão", "mochila de trilha"]},
+  "ZC-HER-0020": {"i": "Otávio, ~65 anos, porteiro branco de cabelo branco penteado, camisa social gasta, molho de chaves e rádio HT.", "e": ["camisa social", "rádio HT"]},
+  "ZC-HER-0021": {"i": "Jana, ~34 anos, cozinheira de campo parda de cabelo cacheado preso em lenço, avental de lona, mochila de mantimentos.", "e": ["lenço", "avental de lona", "mochila"]},
+  "ZC-HER-0022": {"i": "Miguel, ~27 anos, socorrista branco de colete laranja, prancha rígida no ombro.", "e": ["colete laranja", "prancha"]},
+  "ZC-HER-0023": {"i": "Bia, ~31 anos, mecânica negra de macacão com mangas amarradas na cintura, rosto com graxa, chave de roda.", "e": ["macacão", "graxa", "chave de roda"]},
+  "ZC-HER-0024": {"i": "Vicente, ~70 anos, operador de rádio branco magro, fones antigos, cardigã, caderno de frequências.", "e": ["fones", "caderno de frequências"]},
+  "EXP-NPC-15": {"i": "Lúcia, ~44 anos, zeladora de manutenção parda de cabelo curto, uniforme de prefeitura, caixa de ferramentas e lanterna de cabeça.", "e": ["uniforme de prefeitura", "caixa de ferramentas"], "obs": "Só especialista regional; não existe como herói do catálogo."}
+ },
+ "enemies": {
+  "slow": {"nome": "Errante", "i": "Morto-vivo lento de roupa comum rasgada (camisa de time, chinelo), pele acinzentada, andar arrastado; 4 variações (homem, mulher, idoso, trabalhador de uniforme).", "e": ["4 variações", "andar arrastado"], "arts": 4},
+  "runner": {"nome": "Corredor", "i": "Morto-vivo magro e ágil, corpo inclinado para a frente, roupas esportivas rasgadas; 2 variações.", "e": ["inclinação de corrida", "2 variações"], "arts": 2},
+  "brute": {"nome": "Bruto", "i": "Morto-vivo enorme, de macacão de frigorífico ou colete de segurança, ombros largos, pedaço de grade preso ao braço.", "e": ["tamanho grande", "macacão"], "arts": 1},
+  "rivais": {"nome": "Rivais humanos", "i": "Grupo armado de outra comunidade com faixas vermelhas no braço (Cerco: Cobrança da Ponte, Caravana hostil).", "e": ["faixa vermelha", "armas improvisadas"], "arts": 1}
+ },
+ "locais": {
+  "Mercado": {"i": "Mercadinho de bairro de esquina, letreiro caído, prateleiras reviradas, carrinhos no estacionamento; dia claro.", "e": ["letreiro", "carrinhos"]},
+  "Hospital": {"i": "Hospital regional de dois andares com ambulância parada e lençóis nas janelas.", "e": ["ambulância", "lençóis nas janelas"]},
+  "Oficina": {"i": "Oficina mecânica de portão de enrolar, carros sobre cavaletes, pneus empilhados.", "e": ["portão de enrolar", "pneus"]},
+  "Posto": {"i": "Posto de gasolina de beira de estrada, bombas antigas, caminhão-tanque parado, conveniência saqueada.", "e": ["bombas", "caminhão-tanque"]},
+  "Condomínio": {"i": "Condomínio de casas geminadas com muro alto e guarita vazia.", "e": ["muro", "guarita"]},
+  "Estação": {"i": "Estação de tratamento de água e ferroviária desativada lado a lado, tanques e trilhos.", "e": ["tanques", "trilhos", "sala de rádio"]},
+  "Horta abandonada": {"i": "Sítio com horta tomada pelo mato, cerca de bambu caída, poço e galinheiro vazio.", "e": ["cerca de bambu", "poço", "mato alto"]},
+  "Instalação militar": {"i": "Portão militar com guarita, galpões verdes, antena de rádio, arame em concertina.", "e": ["guarita", "galpões", "antena"]},
+  "Acampamento": {"i": "Clareira da comunidade: barracas azuis, fogueira, varal, primeiras leiras, mato em volta; usado no tabuleiro e na defesa final.", "e": ["barracas", "fogueira", "leiras"]}
+ },
+ "maps": {
+  "ZC-MAP-0001": {"local": "Mercado", "uso": "Cisterna 0.2 (certificado)"},
+  "ZC-MAP-0002": {"local": "Hospital", "uso": "Cisterna 0.2 (certificado)"},
+  "ZC-MAP-0003": {"local": "Oficina", "uso": "Cisterna 0.2 (certificado)"},
+  "ZC-MAP-0004": {"local": "Posto", "uso": "Cisterna 0.2 (certificado)"},
+  "ZC-MAP-0005": {"local": "Condomínio", "uso": "Cisterna 0.2 (certificado)"},
+  "ZC-MAP-0006": {"local": "Estação", "uso": "Cisterna 0.2 (certificado)"},
+  "market_intro": {"local": "Mercado", "uso": "regional"},
+  "hospital_02": {"local": "Hospital", "uso": "regional"},
+  "workshop_02": {"local": "Oficina", "uso": "regional"},
+  "gas_station_02": {"local": "Posto", "uso": "regional (tanque do caminhão na zona 14)"},
+  "condominium_02": {"local": "Condomínio", "uso": "regional"},
+  "station_02": {"local": "Estação", "uso": "regional"},
+  "military_installation": {"local": "Instalação militar", "uso": "regional (transmissor)"},
+  "garden_edge_01": {"local": "Horta abandonada", "uso": "regional (4×4 zonas)"},
+  "camp_final": {"local": "Acampamento", "uso": "defesa final"}
+ },
+ "map_rules": "Vista isométrica diurna, zonas numeradas legíveis, portas (comum, bloqueada, cerca) e pontos de busca/objetivo como ícones sobre a arte; o mesmo local da Cisterna e do regional pode dividir a pintura de base e mudar só a camada de zonas.",
+ "boards": {
+  "tabuleiro_acampamento": "4×4 lotes de 45 mm em terra batida vista de cima; cada lote com os símbolos de categoria; fogueira e estoque inicial na borda; 2 tiras de mato em L para os lotes fechados.",
+  "painel_abrigo": "Duas folhas: trilhas de comida, água, madeira, metal, carne, moradores/camas, Crise 0–10 (gradiente creme → vermelho) e dias 1–25 (dia 25 'a frequência cala'); fundo de prancheta.",
+  "tabuleiro_entorno": "Mapa ilustrado de floresta, rio e ruínas com as reservas de caça, peixe, madeira, frutas e sucata."
+ },
+ "tokens": {
+  "hero": {"qtd": 24, "i": "Retrato em círculo de cada herói (mesma arte da ficha), borda na cor do jogador."},
+  "enemy": {"qtd": 24, "i": "Silhueta Errante/Corredor/Bruto numerada E01–E24 (fichas do motor tático)."},
+  "Errante": {"qtd": 12, "i": "Ficha redonda com a arte do Errante."},
+  "Corredor": {"qtd": 6, "i": "Ficha redonda com a arte do Corredor."},
+  "Bruto": {"qtd": 6, "i": "Ficha redonda maior com a arte do Bruto."},
+  "Porta": {"qtd": 12, "i": "Porta de madeira/aço em vista isométrica (aberta no verso)."},
+  "Bloqueio": {"qtd": 6, "i": "Móveis empilhados bloqueando passagem."},
+  "Busca": {"qtd": 12, "i": "Ícone de lupa sobre caixote; verso 'usada'."},
+  "Fome": {"qtd": 12, "i": "Prato vazio (vermelho de destaque)."},
+  "Sede": {"qtd": 12, "i": "Copo vazio rachado."},
+  "Dano": {"qtd": 8, "i": "Gota/rasgo vermelho."},
+  "Verificado": {"qtd": 6, "i": "Prancheta com visto."},
+  "numeros_1_4": {"qtd": 56, "i": "Fichas numéricas 1 (20), 2 (12), 3 (12), 4 (12) para cursores."},
+  "Relógio": {"qtd": 1, "i": "Ponteiro de relógio de 0–10."},
+  "Pressão": {"qtd": 1, "i": "Marcador de pressão externa."},
+  "marcadores_integral": {"qtd": "ver print_inventory.json#tokens_new", "i": "Trilhas (8), ficha LIMITE (2), Crise (1, vermelho), cubos de obra (6), peões de trabalhador (12), viajantes (6), armadilhas (2)."}
+ },
+ "pieces": {
+  "note": "Peças de lote usam a arte da carta de estrutura correspondente (data/art/integral.json#estruturas) em recorte quadrado 40 × 40 mm, frente 'pronta' e verso 'em obra' (estacas e barbante).",
+  "barraca_familiar": {"i": "Barraca familiar de camping de 4 lugares, desbotada, com varal e cadeiras de praia.", "e": ["4 camas", "trazida por quem chega"]}
+ }
+}
