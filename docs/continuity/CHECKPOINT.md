@@ -1,3 +1,9 @@
+# Estado ativo — catálogo artístico em revisão (D-33), 2026-10-30
+
+- Direção escolhida pelo proprietário: pintura digital semirrealista, pós-apocalíptica, dark/grunge, diurna; mapas isométricos claros; paleta verdes/marrom/ferrugem/cinza + vermelho de destaque (`edicao-integral/data/art/style.json`).
+- Catálogo: `edicao-integral/CATALOGO_ARTISTICO.md` + `data/art/catalogo_artistico.json`, gerados por `tools/art_catalog.py` (conferido no `check.sh full`). 400 cartas; 184 ilustrações (133 de carta, 25 retratos, 8 inimigos, 9 artes-chave de local, 9 pinturas de mapa); 29 versos. 7 inconsistências documentadas, nenhuma mecânica alterada.
+- Próximo: revisão do proprietário; depois produção das artes. Pendências mantidas: D-34 (fome 10–13%), D-12 (91–120 intactas), D-13.
+
 # Estado ativo — fase mecânica publicada; direção artística, 2026-10-30
 
 - Push autorizado feito (fast-forward): `origin/evolucao/zona-zero-sistema-v1` = `a041a67` (38 commits; `check.sh full` verde, 523 testes, seed 22 certificada). Sem force push, sem tocar na main, sem release.

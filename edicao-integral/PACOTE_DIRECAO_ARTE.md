@@ -37,7 +37,7 @@ restrições. Números e ids vêm de `data/` e de `data/print_inventory.json`
 | Grupo | Quantidade | Onde está | O que ilustrar |
 |---|---|---|---|
 | Heróis jogáveis | 24 no catálogo da Cisterna (12 iniciais, 12 desbloqueáveis); 10 deles no motor regional (Lia, Ivo, Mara, Caio, Nara, Bento, Duda, Rosa, Joel, Yumi) | `content/catalog.json#heroes`, `data/system.json#heroes` | retrato, ficha com Vida 3, ações, perícias |
-| Especialistas nomeados | 15 (Téo, Célia, Aline, Samuel, Bruna, Raul, Denise, Hugo, Sol, Otávio, Jana, Miguel, Bia, Vicente, Lúcia) | `data/system.json#npcs` | retrato e ofício |
+| Especialistas nomeados | 15 (Téo, Célia, Aline, Samuel, Bruna, Raul, Denise, Hugo, Sol, Otávio, Jana, Miguel, Bia, Vicente, Lúcia) — 14 são os heróis ZC-HER-0011..0024; só Lúcia é nova: **25 retratos no total** | `data/system.json#npcs` | o mesmo retrato do herói |
 | Sobreviventes comuns | adultos, crianças, cães (sem nome fixo) | migração e chegadas | 6–8 silhuetas genéricas reutilizáveis |
 | Profissões | 9 (caçador, agricultor, coletor, cozinheiro, carpinteiro, mecânico, enfermeiro, guarda, comum) em 12 cartas | `data/community.json#profession_deck` | ícone + ferramenta do ofício |
 
@@ -136,3 +136,10 @@ inimigos, cartas por família e nome, peças e mapas; gerado por
   abaixo de 25% de vitória (1–30) nem de 60% de sobrevivência (31–90).
 - Não validado: playtest com pessoas (D-13), legibilidade das peças na mesa,
   tempo real de partida.
+
+## 13. Catálogo artístico (D-33)
+
+A direção escolhida (pintura digital semirrealista, dark/grunge, diurna) e a
+descrição carta a carta estão em `CATALOGO_ARTISTICO.md`, gerado por
+`tools/art_catalog.py` a partir de `data/art/` e dos dados oficiais: 400
+cartas, 184 ilustrações a pintar, 29 versos.
